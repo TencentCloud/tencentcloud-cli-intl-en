@@ -116,7 +116,6 @@
       "document": "CreateApiImportUserJob request structure.",
       "members": [
         {
-          "default": "",
           "document": "User directory ID",
           "example": "xxx",
           "member": "string",
@@ -125,7 +124,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Imported user data",
           "example": "xxx",
           "member": "ImportUser",
@@ -161,7 +159,6 @@
       "document": "CreateFileExportUserJob request structure.",
       "members": [
         {
-          "default": "",
           "document": "User directory ID",
           "example": "xxx",
           "member": "string",
@@ -170,7 +167,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Exported data type\n\n<li> **NDJSON** </li>  New-line Delimited JSON\n<li> **CSV** </li>  Comma-Separated Values",
           "example": "xxx",
           "member": "string",
@@ -179,7 +175,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Valid values of `Key`: `condition`, `userGroupId`.\n\n<li> **condition** </li>\tValues = Query condition, which can be user ID, username, mobile number, or email address.\n<li> **userGroupId** </li>\tValues = User group ID",
           "example": "xxx",
           "member": "Filter",
@@ -188,7 +183,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Attributes and mapping names included in the exported user information. If this parameter is empty, all attributes will be included.",
           "example": "xxx",
           "member": "ExportPropertyMap",
@@ -224,7 +218,6 @@
       "document": "CreateUser request structure.",
       "members": [
         {
-          "default": "",
           "document": "User directory ID",
           "example": "xxx",
           "member": "string",
@@ -233,7 +226,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Mobile number",
           "example": "xxx",
           "member": "string",
@@ -242,7 +234,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Email address",
           "example": "xxx",
           "member": "string",
@@ -251,7 +242,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Password",
           "example": "xxx",
           "member": "string",
@@ -260,7 +250,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Username",
           "example": "xxx",
           "member": "string",
@@ -269,7 +258,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Nickname",
           "example": "xxx",
           "member": "string",
@@ -278,7 +266,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Address",
           "example": "xxx",
           "member": "string",
@@ -287,7 +274,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User group ID",
           "example": "[\"xxx\"]",
           "member": "string",
@@ -296,7 +282,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Date of birth",
           "example": "0",
           "member": "int64",
@@ -305,7 +290,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Custom attribute",
           "example": "无",
           "member": "MemberMap",
@@ -314,7 +298,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Index field 1",
           "example": "xxx",
           "member": "string",
@@ -323,7 +306,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Index field 2",
           "example": "xxx",
           "member": "string",
@@ -332,7 +314,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Index field 3",
           "example": "xxx",
           "member": "string",
@@ -341,7 +322,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Index field 4",
           "example": "xxx",
           "member": "string",
@@ -350,7 +330,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Index field 5",
           "example": "xxx",
           "member": "string",
@@ -386,7 +365,6 @@
       "document": "DeleteUsers request structure.",
       "members": [
         {
-          "default": "",
           "document": "User directory ID",
           "example": "xxx",
           "member": "string",
@@ -395,7 +373,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Array of user IDs",
           "example": "[xxx]",
           "member": "string",
@@ -422,7 +399,6 @@
       "document": "DescribeUserById request structure.",
       "members": [
         {
-          "default": "",
           "document": "User directory ID",
           "example": "xxx",
           "member": "string",
@@ -431,7 +407,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User ID",
           "example": "xxx",
           "member": "string",
@@ -440,7 +415,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether the content is passed through\n\n<li> **false** </li>Default. The returned information is desensitized.\n<li> **true** </li>Return the original content.",
           "example": "true",
           "member": "bool",
@@ -476,7 +450,6 @@
       "document": "DescribeUser request structure.",
       "members": [
         {
-          "default": "",
           "document": "User directory ID",
           "example": "xxx",
           "member": "string",
@@ -485,7 +458,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Pagination data",
           "example": "无",
           "member": "Pageable",
@@ -494,7 +466,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Query condition (`propertycode` and `propertykey`)",
           "example": "无",
           "member": "QueryUserFilter",
@@ -503,7 +474,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether the plaintext is returned",
           "example": "true",
           "member": "bool",
@@ -512,7 +482,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Sorting configuration",
           "example": "无",
           "member": "Sort",
@@ -566,7 +535,6 @@
       "document": "Failure details",
       "members": [
         {
-          "default": "",
           "document": "User information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -576,7 +544,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Failure cause",
           "example": "xxx",
           "member": "string",
@@ -592,7 +559,6 @@
       "document": "Exported attribute mapping",
       "members": [
         {
-          "default": "",
           "document": "User attribute code",
           "example": "xxx",
           "member": "string",
@@ -602,7 +568,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User attribute mapping name",
           "example": "xxx",
           "member": "string",
@@ -618,7 +583,6 @@
       "document": "Failed user",
       "members": [
         {
-          "default": "",
           "document": "ID of the failed user\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -628,7 +592,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Failure cause for user import\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -644,7 +607,6 @@
       "document": "Query condition",
       "members": [
         {
-          "default": "",
           "document": "Key value",
           "example": "xxx",
           "member": "string",
@@ -654,7 +616,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Value",
           "example": "[xxx]",
           "member": "string",
@@ -664,7 +625,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Logical value",
           "example": "true",
           "member": "bool",
@@ -680,7 +640,6 @@
       "document": "Imported user information\n1. One of the eight attributes of `UserName`, `PhoneNumber`, `Email`, `WechatOpenId`, `WechatUnionId`, `AlipayUserId`, `QqOpenId`, and `QqUnionId` must be included during import and comply with the regular expression rules for initializing custom attributes. The regular expressions for `UserName`, `PhoneNumber`, and `Email` can be queried in the custom attributes in the console.\n2. For password import, the imported password supports plaintext import, MD5 ciphertext import, SHA1 ciphertext import, and BCRYPT ciphertext import. This needs to be specified in the `PasswordEncryptTypeEnum` field.\n3. `IdentityVerified` and `IdentityVerificationMethod` can be imported.\nIf `IdentityVerified` is `true`, `IdentityVerificationMethod` is required.\nIf `IdentityVerificationMethod` is `nameAndIdCard`, `Name` and `ResidentIdentityCard` are required.\nIf `IdentityVerificationMethod` is `nameIdCardAndPhone`, `Name`, `PhoneNumber`, and `ResidentIdentityCard` are required.",
       "members": [
         {
-          "default": "",
           "document": "Username",
           "example": "xxx",
           "member": "string",
@@ -690,7 +649,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Mobile number",
           "example": "xxx",
           "member": "string",
@@ -700,7 +658,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Email address",
           "example": "xxx",
           "member": "string",
@@ -710,7 +667,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID card number",
           "example": "xxx",
           "member": "string",
@@ -720,7 +676,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Nickname",
           "example": "xxx",
           "member": "string",
@@ -730,7 +685,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Address",
           "example": "xxx",
           "member": "string",
@@ -740,7 +694,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User group ID",
           "example": "[xxx]",
           "member": "string",
@@ -750,7 +703,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "`qqOpenId` on QQ",
           "example": "xxx",
           "member": "string",
@@ -760,7 +712,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "`qqUnionId` on QQ",
           "example": "xxx",
           "member": "string",
@@ -770,7 +721,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "`wechatOpenId` on WeChat",
           "example": "xxx",
           "member": "string",
@@ -780,7 +730,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "`wechatUnionId` on WeChat",
           "example": "xxx",
           "member": "string",
@@ -790,7 +739,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "`alipayUserId` on Alipay",
           "example": "xxx",
           "member": "string",
@@ -800,7 +748,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Description",
           "example": "xxx",
           "member": "string",
@@ -810,7 +757,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Date of birth",
           "example": "xxx",
           "member": "date",
@@ -820,7 +766,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Name",
           "example": "xxx",
           "member": "string",
@@ -830,7 +775,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Coordinate",
           "example": "xxx",
           "member": "string",
@@ -840,7 +784,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Gender. Valid values: `MALE`, `FEMALE`, `UNKNOWN`.",
           "example": "xxx",
           "member": "string",
@@ -850,7 +793,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Identity verification method",
           "example": "xxx",
           "member": "string",
@@ -860,7 +802,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the identity is verified",
           "example": "xxx",
           "member": "bool",
@@ -870,7 +811,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Job",
           "example": "xxx",
           "member": "string",
@@ -880,7 +820,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Country/Region",
           "example": "xxx",
           "member": "string",
@@ -890,7 +829,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Time zone",
           "example": "xxx",
           "member": "string",
@@ -900,7 +838,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Password ciphertext",
           "example": "xxx",
           "member": "string",
@@ -910,7 +847,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Custom attribute",
           "example": "无",
           "member": "MemberMap",
@@ -920,7 +856,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Password salt",
           "example": "无",
           "member": "Salt",
@@ -930,7 +865,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Password encryption method. Valid values: `SHA1`, `BCRYPT`.",
           "example": "xxx",
           "member": "string",
@@ -940,7 +874,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Index field 1",
           "example": "xxx",
           "member": "string",
@@ -950,7 +883,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Index field 2",
           "example": "xxx",
           "member": "string",
@@ -960,7 +892,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Index field 3",
           "example": "xxx",
           "member": "string",
@@ -970,7 +901,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Index field 4",
           "example": "xxx",
           "member": "string",
@@ -980,7 +910,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Index field 5",
           "example": "xxx",
           "member": "string",
@@ -996,7 +925,6 @@
       "document": "Task details",
       "members": [
         {
-          "default": "",
           "document": "Task ID",
           "example": "xxx",
           "member": "string",
@@ -1006,7 +934,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task status\n\n<li> **PENDING** </li>  Pending\n<li> **PROCESSING** </li>  Executing\n<li> **COMPLETED** </li>  Completed\n<li> **FAILED** </li>  Failed",
           "example": "xxx",
           "member": "string",
@@ -1016,7 +943,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task type\n\n<li> **IMPORT_USER** </li>  User import\n<li> **EXPORT_USER** </li>  User export",
           "example": "xxx",
           "member": "string",
@@ -1026,7 +952,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task creation time",
           "example": "10",
           "member": "int64",
@@ -1036,7 +961,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data type of the task\n\n<li> **NDJSON** </li>  New-line Delimited JSON\n<li> **CSV** </li>  Comma-Separated Values\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1046,7 +970,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Task result download address\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1056,7 +979,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Failure details\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "ErrorDetails",
@@ -1066,7 +988,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Failed user\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "FailedUsers",
@@ -1082,7 +1003,6 @@
       "document": "LinkAccount request structure.",
       "members": [
         {
-          "default": "",
           "document": "User directory ID",
           "example": "xxx",
           "member": "string",
@@ -1091,7 +1011,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Primary user ID",
           "example": "xxx",
           "member": "string",
@@ -1100,7 +1019,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Secondary user ID",
           "example": "xxx",
           "member": "string",
@@ -1109,7 +1027,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Fusion attribute\n\n<li> **PHONENUMBER** </li>\t  Mobile number\n<li> **EMAIL** </li>  Email",
           "example": "xxx",
           "member": "string",
@@ -1136,7 +1053,6 @@
       "document": "ListJobs request structure.",
       "members": [
         {
-          "default": "",
           "document": "User directory ID",
           "example": "xxx",
           "member": "string",
@@ -1145,7 +1061,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of task IDs. If this parameter is empty, all tasks will be returned.",
           "example": "[xxx]",
           "member": "string",
@@ -1181,7 +1096,6 @@
       "document": "ListLogMessageByCondition request structure.",
       "members": [
         {
-          "default": "",
           "document": "User pool ID",
           "example": "xxx",
           "member": "string",
@@ -1190,7 +1104,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Pagination data",
           "example": "无",
           "member": "Pageable",
@@ -1199,7 +1112,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Start timestamp accurate to the millisecond",
           "example": "10",
           "member": "int64",
@@ -1208,7 +1120,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Valid values of `Key`: `events`.\n\n<li> **events** </li>\tValues can be one or multiple items in [\"SIGNUP\", \"USER_UPDATE\", \"USER_DELETE\", \"USER_CREATE\", \"ACCOUNT_LINKING\"].",
           "example": "无",
           "member": "Filter",
@@ -1262,7 +1173,6 @@
       "document": "ListUserByProperty request structure.",
       "members": [
         {
-          "default": "",
           "document": "User directory ID",
           "example": "xxx",
           "member": "string",
@@ -1271,7 +1181,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Query attribute\n\n<li> **phoneNumber** </li>\t  Mobile number\n<li> **email** </li>  Email",
           "example": "xxx",
           "member": "string",
@@ -1280,7 +1189,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Attribute value",
           "example": "xxx",
           "member": "string",
@@ -1289,7 +1197,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether the content is passed through",
           "example": "true",
           "member": "bool",
@@ -1325,7 +1232,6 @@
       "document": "ListUser request structure.",
       "members": [
         {
-          "default": "",
           "document": "User directory ID",
           "example": "xxx",
           "member": "string",
@@ -1334,7 +1240,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Pagination data",
           "example": "无",
           "member": "Pageable",
@@ -1343,7 +1248,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Valid values of `Key`: `condition`, `userGroupId`.\n\n<li> **condition** </li>\tValues = Query condition, which can be user ID, username, mobile number, or email address.\n<li> **userGroupId** </li>\tValues = User group ID",
           "example": "无",
           "member": "Filter",
@@ -1352,7 +1256,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether the content is passed through",
           "example": "true",
           "member": "bool",
@@ -1406,7 +1309,6 @@
       "document": "Log details",
       "members": [
         {
-          "default": "",
           "document": "Log ID",
           "example": "xxx",
           "member": "string",
@@ -1416,7 +1318,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tenant ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1426,7 +1327,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User pool ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1436,7 +1336,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Event code\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1446,7 +1345,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Event timestamp in milliseconds\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "int64",
@@ -1456,7 +1354,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Description\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1466,7 +1363,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Event participant\n\n<li> **TENANT** </li>  Tenant\n<li> **USER** </li>  User\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1476,7 +1372,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application `clientId`\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1486,7 +1381,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1496,7 +1390,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Authentication source ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1506,7 +1399,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Authentication source name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1516,7 +1408,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Authentication source type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1526,7 +1417,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Authentication source category\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1536,7 +1426,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "IP address\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1546,7 +1435,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User agent\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1556,7 +1444,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1566,7 +1453,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Details\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1582,7 +1468,6 @@
       "document": "Map data type",
       "members": [
         {
-          "default": "",
           "document": "Key",
           "example": "xxx",
           "member": "string",
@@ -1592,7 +1477,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Value",
           "example": "xxx",
           "member": "string",
@@ -1602,7 +1486,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1618,7 +1501,6 @@
       "document": "Pagination object",
       "members": [
         {
-          "default": "",
           "document": "Number of entries per page",
           "example": "10",
           "member": "int64",
@@ -1628,7 +1510,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Current page number",
           "example": "1",
           "member": "int64",
@@ -1644,7 +1525,6 @@
       "document": "Conditions to query the user information ",
       "members": [
         {
-          "default": "",
           "document": "Property key",
           "example": "xxx",
           "member": "string",
@@ -1654,7 +1534,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Property value",
           "example": "xxx",
           "member": "string",
@@ -1664,7 +1543,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Logic value. `True` or `False`",
           "example": "true",
           "member": "bool",
@@ -1674,7 +1552,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Operator. Values: `>`, `<`, `=`, `>=`, `<=`, `!=` and `between`. ",
           "example": "xxx",
           "member": "string",
@@ -1690,7 +1567,6 @@
       "document": "ResetPassword request structure.",
       "members": [
         {
-          "default": "",
           "document": "User ID",
           "example": "xxx",
           "member": "string",
@@ -1699,7 +1575,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User directory ID",
           "example": "xxx",
           "member": "string",
@@ -1735,7 +1610,6 @@
       "document": "Password salt",
       "members": [
         {
-          "default": "",
           "document": "Salt value",
           "example": "xxx",
           "member": "string",
@@ -1745,7 +1619,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Salt value location",
           "example": "无",
           "member": "SaltLocation",
@@ -1761,7 +1634,6 @@
       "document": "Salt location",
       "members": [
         {
-          "default": "",
           "document": "Password salt type. Valid values: `HEAD`, `TAIL`, `OTHER`.",
           "example": "xxx",
           "member": "string",
@@ -1771,7 +1643,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Salting rule",
           "example": "xxx",
           "member": "SaltLocationRule",
@@ -1787,7 +1658,6 @@
       "document": "Salt location rule",
       "members": [
         {
-          "default": "",
           "document": "Expression",
           "example": "xxx",
           "member": "string",
@@ -1803,7 +1673,6 @@
       "document": "SetPassword request structure.",
       "members": [
         {
-          "default": "",
           "document": "User directory ID",
           "example": "xxx",
           "member": "string",
@@ -1812,7 +1681,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User ID",
           "example": "xxx",
           "member": "string",
@@ -1821,7 +1689,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Password",
           "example": "xxx",
           "member": "string",
@@ -1848,7 +1715,6 @@
       "document": "Sorting of the result of user query",
       "members": [
         {
-          "default": "",
           "document": "Key for sorting. See custom attributes",
           "example": "xxx",
           "member": "string",
@@ -1858,7 +1724,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "`ASC` or `DESC`",
           "example": "xxx",
           "member": "string",
@@ -1874,7 +1739,6 @@
       "document": "UpdateUser request structure.",
       "members": [
         {
-          "default": "",
           "document": "User ID",
           "example": "xxx",
           "member": "string",
@@ -1883,7 +1747,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User directory ID",
           "example": "xxx",
           "member": "string",
@@ -1892,7 +1755,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Username",
           "example": "xxx",
           "member": "string",
@@ -1901,7 +1763,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Mobile number",
           "example": "xxx",
           "member": "string",
@@ -1910,7 +1771,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Email address",
           "example": "xxx",
           "member": "string",
@@ -1919,7 +1779,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Nickname",
           "example": "xxx",
           "member": "string",
@@ -1928,7 +1787,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Address",
           "example": "xxx",
           "member": "string",
@@ -1937,7 +1795,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User group",
           "example": "[\"xxx\"]",
           "member": "string",
@@ -1946,7 +1803,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Date of birth",
           "example": "0",
           "member": "int64",
@@ -1955,7 +1811,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Custom attribute",
           "example": "无",
           "member": "MemberMap",
@@ -1964,7 +1819,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Index field 1",
           "example": "xxx",
           "member": "string",
@@ -1973,7 +1827,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Index field 2",
           "example": "xxx",
           "member": "string",
@@ -1982,7 +1835,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Index field 3",
           "example": "xxx",
           "member": "string",
@@ -1991,7 +1843,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Index field 4",
           "example": "xxx",
           "member": "string",
@@ -2000,7 +1851,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Index field 5",
           "example": "xxx",
           "member": "string",
@@ -2036,7 +1886,6 @@
       "document": "UpdateUserStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "User directory ID",
           "example": "xxx",
           "member": "string",
@@ -2045,7 +1894,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User ID",
           "example": "xxx",
           "member": "string",
@@ -2054,7 +1902,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User status\n\n<li> **NORMAL** </li>\t  Normal\n<li> **LOCK** </li>  Locked\n<li> **FREEZE** </li>\t  Frozen",
           "example": "xxx",
           "member": "string",
@@ -2081,7 +1928,6 @@
       "document": "User information",
       "members": [
         {
-          "default": "",
           "document": "User ID",
           "example": "xxx",
           "member": "string",
@@ -2091,7 +1937,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Username\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2101,7 +1946,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Mobile number\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2111,7 +1955,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Email address\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2121,7 +1964,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Last login time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "int64",
@@ -2131,7 +1973,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time",
           "example": "xxx",
           "member": "int64",
@@ -2141,7 +1982,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Status",
           "example": "xxx",
           "member": "string",
@@ -2151,7 +1991,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User source",
           "example": "xxx",
           "member": "string",
@@ -2161,7 +2000,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Nickname\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2171,7 +2009,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Address\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2181,7 +2018,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Date of birth\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -2191,7 +2027,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User group ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[xxx]",
           "member": "string",
@@ -2201,7 +2036,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Last modified time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -2211,7 +2045,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Custom attribute\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "MemberMap",
@@ -2221,7 +2054,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID card number\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2231,7 +2063,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "`OpenId` on QQ\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2241,7 +2072,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "`UnionId` on QQ\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2251,7 +2081,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "`WechatOpenId` on WeChat\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2261,7 +2090,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "`WechatUnionId` on WeChat\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2271,7 +2099,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "`AlipayUserId` on Alipay\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2281,7 +2108,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Description\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2291,7 +2117,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2301,7 +2126,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Coordinate\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2311,7 +2135,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Gender\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2321,7 +2144,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Identity verification method\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2331,7 +2153,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the identity is verified\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -2341,7 +2162,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Job\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2351,7 +2171,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Country/Region\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2361,7 +2180,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the account is the primary account (after account merge, this parameter is `true` for primary accounts and `false` for secondary account).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -2371,7 +2189,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Time zone\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2381,7 +2198,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the account has ever logged in.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -2391,7 +2207,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Tenant ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2401,7 +2216,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User directory ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2411,7 +2225,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -2421,7 +2234,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Lock type (locked by admin or locked by login policy)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2431,7 +2243,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Lock time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -2441,7 +2252,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Index field 1\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2451,7 +2261,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Index field 2\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2461,7 +2270,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Index field 3\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2471,7 +2279,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Index field 4\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -2481,7 +2288,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Index field 5\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",

@@ -509,7 +509,6 @@
       "document": "Custom application content\nUsed by actions: SetAppCustomContent.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Multiple scenarios can be set for an application.",
           "example": "abc",
@@ -520,7 +519,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Logo URL",
           "example": "abc",
@@ -531,7 +529,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Homepage URL, which can be used for redirection",
           "example": "abc",
@@ -542,7 +539,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom JS URL",
           "example": "abc",
@@ -553,7 +549,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom CSS URL",
           "example": "abc",
@@ -1037,7 +1032,6 @@
       "document": "BindDocumentToRoom request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Room ID",
           "example": "1234657",
@@ -1047,7 +1041,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Document ID",
           "example": "abc",
@@ -1057,7 +1050,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Binding type. The default value is `0`. The backend passes through this parameter to clients so that the clients can implement business logic based on this parameter.",
           "example": "0",
@@ -1085,7 +1077,6 @@
       "document": "CreateDocument request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "LCIC SdkAppId",
           "example": "123467",
@@ -1095,7 +1086,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Document URL\t",
           "example": "无",
@@ -1105,7 +1095,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Document name\t",
           "example": "abc",
@@ -1115,7 +1104,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Document owner ID\t",
           "example": "abc",
@@ -1125,7 +1113,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Transcoding type. Valid values: `0`: No transcoding required (default); `1`: Documents that need to be transcoded: ppt, pptx, pdf, doc, docx; `2`: Videos that need to be transcoded: mp4, 3pg, mpeg, avi, flv, wmv, rm, h264, etc.; `2`: Audio that needs to be transcoded: mp3, wav, wma, aac, flac, opus",
           "example": "1",
@@ -1135,7 +1122,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Permission. Valid values: `0`: Private document (default); `1`: Public document",
           "example": "1",
@@ -1145,7 +1131,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Document extension",
           "example": "doc",
@@ -1155,7 +1140,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Document size, in bytes",
           "example": "123",
@@ -1544,7 +1528,6 @@
       "document": "DeleteAppCustomContent request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The application ID.",
           "example": "1234657",
@@ -1554,7 +1537,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The custom elements (for which a scene has been configured) to delete. If this is empty, all custom elements will be deleted.",
           "example": "无",
@@ -1582,7 +1564,6 @@
       "document": "DeleteDocument request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The document ID.",
           "example": "xx",
@@ -1727,7 +1708,6 @@
       "document": "DeleteRoom request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Room ID",
           "example": "3123456789",
@@ -1943,7 +1923,6 @@
       "document": "DescribeDocument request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The (unique) document ID.",
           "example": "abc",
@@ -3029,7 +3008,6 @@
       "document": "DescribeUser request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "User ID\t",
           "example": "abc",
@@ -3805,7 +3783,6 @@
       "document": "LoginOriginId request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "LCIC SdkAppId",
           "example": "1234657",
@@ -3815,7 +3792,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User's ID in the customer system, which should be unique under the same application",
           "example": "userid",
@@ -3863,7 +3839,6 @@
       "document": "LoginUser request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "User ID obtained during registration",
           "example": "abc",
@@ -4552,7 +4527,6 @@
       "document": "RegisterUser request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "LCIC SdkAppId\t",
           "example": "123467",
@@ -4562,7 +4536,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Username\t",
           "example": "nickname",
@@ -4572,7 +4545,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User's ID in the customer system, which should be unique under the same application\t",
           "example": "id12345",
@@ -4582,7 +4554,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User's profile photo\t",
           "example": "abc",
@@ -4942,7 +4913,6 @@
       "document": "SetAppCustomContent request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Custom content",
           "example": "无",
@@ -4952,7 +4922,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Application ID",
           "example": "1234657",
@@ -5177,7 +5146,6 @@
       "document": "UnbindDocumentFromRoom request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Room ID\t",
           "example": "1234657",
@@ -5187,7 +5155,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Document ID\t",
           "example": "abc",

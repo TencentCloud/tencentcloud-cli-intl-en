@@ -207,7 +207,6 @@
       "document": "AnalyzeFace request structure.",
       "members": [
         {
-          "default": "",
           "document": "Detection mode. 0: detect all faces that appear; 1: detect the largest face. Default value: 0. The facial feature localization information (facial keypoints) of up to 10 faces can be returned.",
           "example": "0",
           "member": "uint64",
@@ -216,7 +215,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "无",
           "member": "string",
@@ -225,7 +223,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "http://test.image.myqcloud.com/testA.jpg",
           "member": "string",
@@ -234,7 +231,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Algorithm model version used by the Face Recognition service.\n\nCurrently, `2.0` and `3.0` are supported.\n\nThis parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API, `2.0` will be used by default.\n\nThe parameter can be set only to `3.0` for accounts that purchase the service after November 26, 2020.\n\nDifferent algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is recommended.",
           "example": "3.0",
           "member": "string",
@@ -243,7 +239,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "example": "0",
           "member": "uint64",
@@ -298,7 +293,6 @@
       "document": "Face attribute information",
       "members": [
         {
-          "default": "",
           "document": "Attribute value",
           "member": "int64",
           "name": "Type",
@@ -307,7 +301,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Probability of recognizing `Type`, which indicates the probability of correct recognition. Value range: [0,1].",
           "member": "float",
           "name": "Probability",
@@ -322,7 +315,6 @@
       "document": "Most matching candidate recognized",
       "members": [
         {
-          "default": "",
           "document": "Person ID",
           "example": "person1",
           "member": "string",
@@ -332,7 +324,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Face ID, which is valid only when returned by the `SearchFaces` or `SearchFacesReturnsByGroup` API. User search APIs use facial feature fusion to search for users, for which this field is meaningless.",
           "example": "3820314501007076807",
           "member": "string",
@@ -342,7 +333,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Match score of candidate. \n\nIn a face base library containing 10,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 70, 80, and 90, respectively;\nIn a face base library containing 100,000 faces, the 1%, 0.1%, and 0.01% FARs correspond to scores of 80, 90, and 100, respectively;\nIn a face base library containing 300,000 faces, the 1% and 0.1% FARs correspond to scores of 85 and 95, respectively.\n\nGenerally, the score of 80 is suitable for most scenarios. We recommend choosing an appropriate score based on the actual situation, preferably no more than 90.",
           "example": "50",
           "member": "float",
@@ -352,7 +342,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Person name\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "hello",
           "member": "string",
@@ -362,7 +351,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Person gender\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -372,7 +360,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "List of groups containing this person and their description fields\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "PersonGroupInfo",
@@ -388,7 +375,6 @@
       "document": "CompareFace request structure.",
       "members": [
         {
-          "default": "",
           "document": "Base64-encoded data of image A, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nIf there are multiple faces in the image, only the face with the largest size will be selected.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "无",
           "member": "string",
@@ -397,7 +383,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Base64-encoded data of image B, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nIf there are multiple faces in the image, only the face with the largest size will be selected.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "无",
           "member": "string",
@@ -406,7 +391,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "URL of image A. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` of image A must be provided; if both are provided, only `Url` will be used. \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nIf there are multiple faces in the image, only the face with the largest size will be selected.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "http://test.image.myqcloud.com/testA.jpg",
           "member": "string",
@@ -415,7 +399,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "URL of image B. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` of image B must be provided; if both are provided, only `Url` will be used. \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nIf there are multiple faces in the image, only the face with the largest size will be selected.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "http://test.image.myqcloud.com/testB.jpg",
           "member": "string",
@@ -424,7 +407,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Algorithm model version used by the Face Recognition service.\n\nCurrently, `2.0` and `3.0` are supported.\n\nThis parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API, `2.0` will be used by default.\n\nThe parameter can be set only to `3.0` for accounts that purchase the service after November 26, 2020.\n\nDifferent algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is recommended.",
           "example": "3.0",
           "member": "string",
@@ -433,7 +415,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image quality control. \n0: no control. \n1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. \n2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. \n3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. \n4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. \nDefault value: 0. \nIf the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.",
           "example": "0",
           "member": "uint64",
@@ -442,7 +423,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "example": "0",
           "member": "uint64",
@@ -483,7 +463,6 @@
       "document": "CopyPerson request structure.",
       "members": [
         {
-          "default": "",
           "document": "Person ID, which is the `PersonId` in the `CreatePerson` API.",
           "member": "string",
           "name": "PersonId",
@@ -491,7 +470,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of groups to join. The array element value is the `GroupId` in the `CreateGroup` API.",
           "member": "string",
           "name": "GroupIds",
@@ -531,7 +509,6 @@
       "document": "CreateFace request structure.",
       "members": [
         {
-          "default": "",
           "document": "Person ID, which is the `PersonId` in the `CreatePerson` API.",
           "member": "string",
           "name": "PersonId",
@@ -539,7 +516,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nA person can have up to 5 face images.\nIf there are multiple faces in the image, only the face with the largest size will be selected.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Images",
@@ -547,7 +523,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.\nA person can have up to 5 face images.\nIf there are multiple faces in the image, only the face with the largest size will be selected.",
           "member": "string",
           "name": "Urls",
@@ -555,7 +530,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Only faces whose similarity to an existing face of the person is above the value of `FaceMatchThreshold` can be added successfully. \nDefault value: 60. Value range: [0,100].",
           "member": "float",
           "name": "FaceMatchThreshold",
@@ -563,7 +537,6 @@
           "type": "float"
         },
         {
-          "default": "",
           "document": "Image quality control. \n0: no control. \n1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. \n2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. \n3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. \n4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. \nDefault value: 0. \nIf the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.",
           "member": "uint64",
           "name": "QualityControl",
@@ -571,7 +544,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "member": "uint64",
           "name": "NeedRotateDetection",
@@ -639,7 +611,6 @@
       "document": "CreateGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "Group name, which is modifiable, must be unique, and can contain 1 to 60 characters.",
           "example": "腾讯深圳员工库",
           "member": "string",
@@ -648,7 +619,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Group ID, which is unmodifiable, must be unique, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.",
           "example": "TencentShenZhenEmployee",
           "member": "string",
@@ -657,7 +627,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Custom group description field that describes the person attributes in the group, which will be applied to all persons in the group. \nUp to 5 ones can be created. \nEach custom description field can contain 1 to 30 characters. \nThe custom description field must be unique in the group. \nExample: if you set the \"custom description field\" of a group to [\"student ID\",\"employee ID\",\"mobile number\"], \nthen all the persons in the group will have description fields named \"student ID\", \"employee ID\", and \"mobile number\". \nYou can enter content in the corresponding field to register a person's student ID, employee ID, and mobile number.",
           "example": "[\"\\u4e8b\\u4e1a\\u7fa4\\n\",\"\\u90e8\\u95e8\\u540d\\n\",\"\\u7ec4\\u540d\\n\"]",
           "member": "string",
@@ -666,7 +635,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Group remarks, which can contain 0 to 40 characters.",
           "example": "不含实习生",
           "member": "string",
@@ -675,7 +643,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Algorithm model version used by the Face Recognition service.\n\nCurrently, `2.0` and `3.0` are supported.\n\nThis parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API, `2.0` will be used by default.\n\nThe parameter can be set only to `3.0` for accounts that purchase the service after November 26, 2020.\n\nDifferent algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is recommended.",
           "example": "3.0",
           "member": "string",
@@ -709,7 +676,6 @@
       "document": "CreatePerson request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the group to join, which is the `GroupId` in the `CreateGroup` API.",
           "member": "string",
           "name": "GroupId",
@@ -717,7 +683,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Person name, which can contain 1 to 60 characters and is modifiable and repeatable.",
           "member": "string",
           "name": "PersonName",
@@ -725,7 +690,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Person ID, which is unmodifiable, must be unique under a Tencent Cloud account, and can contain letters, digits, and special symbols (-%@#&_) of up to 64 B.",
           "member": "string",
           "name": "PersonId",
@@ -733,7 +697,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "0: empty; 1: male; 2: female.",
           "member": "int64",
           "name": "Gender",
@@ -741,7 +704,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Content of person description field, which is a `key-value` pair, can contain 0 to 60 characters, and is modifiable and repeatable.",
           "member": "PersonExDescriptionInfo",
           "name": "PersonExDescriptionInfos",
@@ -749,7 +711,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Image",
@@ -757,7 +718,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Url",
@@ -765,7 +725,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This parameter is used to control the judgment whether the face contained in the image in `Image` or `Url` corresponds to an existing person in the group. \nIf it is judged that a duplicate person exists in the group, no new person will be created, and information of the suspected duplicate person will be returned. \nOtherwise, the new person will be created. \n0: do not judge, i.e., the person will be created no matter whether a duplicate person exists in the group. \n1: low duplicate person judgment requirement (1% FAR); \n2: average duplicate person judgment requirement (0.1% FAR); \n3: high duplicate person judgment requirement (0.01% FAR); \n4: very high duplicate person judgment requirement (0.001% FAR). \nDefault value: 0.  \nNote: the higher the requirement, the lower the probability of duplicate person. The FARs corresponding to different requirements are for reference only and can be adjusted as needed.",
           "member": "uint64",
           "name": "UniquePersonControl",
@@ -773,7 +732,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Image quality control. \n0: no control. \n1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. \n2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. \n3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. \n4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. \nDefault value: 0. \nIf the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.",
           "member": "uint64",
           "name": "QualityControl",
@@ -781,7 +739,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "member": "uint64",
           "name": "NeedRotateDetection",
@@ -835,7 +792,6 @@
       "document": "DeleteFace request structure.",
       "members": [
         {
-          "default": "",
           "document": "Person ID, which is the `PersonId` in the `CreatePerson` API.",
           "member": "string",
           "name": "PersonId",
@@ -843,7 +799,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of IDs of the faces to be deleted. The array element value is the `FaceId` returned by the `CreateFace` API.",
           "member": "string",
           "name": "FaceIds",
@@ -883,7 +838,6 @@
       "document": "DeleteGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "Group ID, which is the `GroupId` in the `CreateGroup` API.",
           "member": "string",
           "name": "GroupId",
@@ -909,7 +863,6 @@
       "document": "DeletePersonFromGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "Person ID, which is the `PersonId` in the `CreatePerson` API.",
           "member": "string",
           "name": "PersonId",
@@ -917,7 +870,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Group ID, which is the `GroupId` in the `CreateGroup` API.",
           "member": "string",
           "name": "GroupId",
@@ -943,7 +895,6 @@
       "document": "DeletePerson request structure.",
       "members": [
         {
-          "default": "",
           "document": "Person ID, which is the `PersonId` in the `CreatePerson` API.",
           "member": "string",
           "name": "PersonId",
@@ -969,7 +920,6 @@
       "document": "DetectFaceAttributes request structure.",
       "members": [
         {
-          "default": "",
           "document": "Maximum number of processable faces. \nDefault value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 120. \nThis parameter is used to control the number of faces in the image to be detected. The smaller the value, the faster the processing.",
           "example": "1",
           "member": "uint64",
@@ -978,7 +928,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats. \nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "无",
           "member": "string",
@@ -987,7 +936,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image URL. \nThe image cannot exceed 5 MB in size after being Base64-encoded. \nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used. \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low. \nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "http://test.image.myqcloud.com/testA.jpg",
           "member": "string",
@@ -996,7 +944,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to return attributes such as age, gender, and emotion. \nValid values (case-insensitive): None, Age, Beauty, Emotion, Eye, Eyebrow, Gender, Hair, Hat, Headpose, Mask, Mouth, Moustache, Nose, Shape, Skin, Smile. \n  \n`None` indicates that no attributes need to be returned, which is the default value; that is, if the `FaceAttributesType` attribute is empty, the values of all attributes will be `0`.\nYou need to combine the attributes into a string and separate them by comma. The sequence of the attributes is not limited. \nFor more information on the attributes, see the output parameters as described below. \nThe face attribute information of up to 5 largest faces in the image will be returned, and `AttributesInfo` of the 6th and rest faces is meaningless.",
           "example": "eye",
           "member": "string",
@@ -1005,7 +952,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image is not rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "example": "0",
           "member": "uint64",
@@ -1014,7 +960,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Algorithm model version used by the Face Recognition service. You can enter only `3.0` for this API.",
           "example": "3.0",
           "member": "string",
@@ -1069,7 +1014,6 @@
       "document": "DetectFace request structure.",
       "members": [
         {
-          "default": "",
           "document": "Maximum number of processable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 120. \nThis parameter is used to control the number of faces in the image to be detected. The smaller the value, the faster the processing.",
           "example": "1",
           "member": "uint64",
@@ -1078,7 +1022,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Minimum height and width of face in px.\nDefault value: 34. We recommend keeping it at or above 34.\nFaces below the `MinFaceSize` value will not be detected.",
           "example": "40",
           "member": "uint64",
@@ -1087,7 +1030,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "无",
           "member": "string",
@@ -1096,7 +1038,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "http://test.image.myqcloud.com/testB.jpg",
           "member": "string",
@@ -1105,7 +1046,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether the face attribute information (FaceAttributesInfo) needs to be returned. 0: no; 1: yes. Default value: 0. \nIf the value is not 1, it will be deemed as no need to return, and `FaceAttributesInfo` is meaningless in this case.  \nThe face attribute information of up to 5 largest faces in the image will be returned, and `FaceAttributesInfo` of the 6th and rest faces is meaningless.  \nExtracting face attribute information is quite time-consuming. If face attribute information is not required, we recommend disabling this feature to speed up face detection.",
           "example": "0",
           "member": "uint64",
@@ -1114,7 +1054,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to enable quality detection. 0: no; 1: yes. Default value: 0. \nIf the value is not 1, it will be deemed not to perform quality detection.\nThe face quality score information of up to 30 largest faces in the image will be returned, and `FaceQualityInfo` of the 31st and rest faces is meaningless.  \nWe recommend enabling this feature for the face adding operation.",
           "example": "0",
           "member": "uint64",
@@ -1123,7 +1062,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Algorithm model version used by the Face Recognition service.\n\nCurrently, `2.0` and `3.0` are supported.\n\nThis parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API, `2.0` will be used by default.\n\nThe parameter can be set only to `3.0` for accounts that purchase the service after November 26, 2020.\n\nDifferent algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is recommended.",
           "example": "0",
           "member": "string",
@@ -1132,7 +1070,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "example": "0",
           "member": "uint64",
@@ -1187,7 +1124,6 @@
       "document": "DetectLiveFaceAccurate request structure.",
       "members": [
         {
-          "default": "",
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats. \nThe recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).\nThe face must be greater than 100*100 px in size.\nSupported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.",
           "example": "base64",
           "member": "string",
@@ -1196,7 +1132,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in .jpg format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used. \nThe recommended image aspect ratio is 3:4 (generally, the aspect ratio of images taken by mobile phones).\nThe face must be greater than 100*100 px in size.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.\nSupported image formats are PNG, JPG, JPEG, and BMP. GIF is currently not supported.",
           "example": "http://test.image.myqcloud.com/testA.jpg",
           "member": "string",
@@ -1205,7 +1140,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Algorithm model version used for face recognition. Valid value: `3.0`.",
           "example": "3.0",
           "member": "string",
@@ -1250,7 +1184,6 @@
       "document": "DetectLiveFace request structure.",
       "members": [
         {
-          "default": "",
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats (the aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless).\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "无",
           "member": "string",
@@ -1259,7 +1192,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used. \n(The aspect ratio of the image should be close to 3:4 (width:height); otherwise, the score returned for the image will be meaningless.) \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "http://test.image.myqcloud.com/testA.jpg",
           "member": "string",
@@ -1268,7 +1200,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Algorithm model version used by the Face Recognition service.\n\nCurrently, `2.0` and `3.0` are supported.\n\nThis parameter is `3.0` by default starting from April 2, 2020. If it is left empty for accounts that used this API, `2.0` will be used by default.\n\nThe parameter can be set only to `3.0` for accounts that purchase the service after November 26, 2020.\n\nDifferent algorithm model versions correspond to different face recognition algorithms. The 3.0 version has a better overall effect than the legacy version and is recommended.",
           "example": "3.0",
           "member": "string",
@@ -1316,7 +1247,6 @@
       "document": "Eye information",
       "members": [
         {
-          "default": "",
           "document": "Whether glasses are worn.\nThe `Type` values of the `AttributeItem` include: 0: no glasses; 1: general glasses; 2: sunglasses.",
           "member": "AttributeItem",
           "name": "Glass",
@@ -1325,7 +1255,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the eyes are open.\nThe `Type` values of the `AttributeItem` include: 0: open; 1: closed.",
           "member": "AttributeItem",
           "name": "EyeOpen",
@@ -1334,7 +1263,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the person has double eyelids.\nThe `Type` values of the `AttributeItem` include: 0: no; 1: yes.",
           "member": "AttributeItem",
           "name": "EyelidType",
@@ -1343,7 +1271,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Eye size.\nThe `Type` values of the `AttributeItem` include: 0: small eyes; 1: general eyes; 2: big eyes.",
           "member": "AttributeItem",
           "name": "EyeSize",
@@ -1358,7 +1285,6 @@
       "document": "Eyebrow information",
       "members": [
         {
-          "default": "",
           "document": "Eyebrow thickness.\nThe `Type` values of the `AttributeItem` include: 0: light; 1: thick.",
           "member": "AttributeItem",
           "name": "EyebrowDensity",
@@ -1367,7 +1293,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Eyebrow curve.\nThe `Type` values of the `AttributeItem` include: 0: flat; 1: curved.",
           "member": "AttributeItem",
           "name": "EyebrowCurve",
@@ -1376,7 +1301,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Eyebrow length.\nThe `Type` values of the `AttributeItem` include: 0: short; 1: long.",
           "member": "AttributeItem",
           "name": "EyebrowLength",
@@ -1391,7 +1315,6 @@
       "document": "Face attributes, including gender, age, expression, \nbeauty, glass, mask, hair, and pose (pitch, roll, yaw). Valid information will be returned only if `NeedFaceAttributes` is set to 1. The face attribute information of up to 5 largest faces in the image will be returned, and `FaceAttributesInfo` of the 6th and rest faces is meaningless.",
       "members": [
         {
-          "default": "",
           "document": "Gender. The gender is female for the value range [0,49] and male for the value range [50,100]. The closer the value to 0 or 100, the higher the confidence. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "int64",
           "name": "Gender",
@@ -1400,7 +1323,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Age. Value range: [0,100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "int64",
           "name": "Age",
@@ -1409,7 +1331,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Expression. Value range: [0 (normal)–50 (smile)–100 (laugh)]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "int64",
           "name": "Expression",
@@ -1418,7 +1339,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether glasses are present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "bool",
           "name": "Glass",
@@ -1427,7 +1347,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vertical offset in degrees. Value range: [-30,30]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless. \nWe recommend selecting images in the [-10,10] range for adding faces.",
           "member": "int64",
           "name": "Pitch",
@@ -1436,7 +1355,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Horizontal offset in degrees. Value range: [-30,30]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless. \nWe recommend selecting images in the [-10,10] range for adding faces.",
           "member": "int64",
           "name": "Yaw",
@@ -1445,7 +1363,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Horizontal rotation in degrees. Value range: [-180,180]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.  \nWe recommend selecting images in the [-20,20] range for adding faces.",
           "member": "int64",
           "name": "Roll",
@@ -1454,7 +1371,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Beauty. Value range: [0,100]. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "int64",
           "name": "Beauty",
@@ -1463,7 +1379,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether hat is present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "bool",
           "name": "Hat",
@@ -1472,7 +1387,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether mask is present. Valid values: true, false. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "bool",
           "name": "Mask",
@@ -1481,7 +1395,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Hair information, including length, bang, and color. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "FaceHairAttributesInfo",
           "name": "Hair",
@@ -1490,7 +1403,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the eyes are open. Valid values: true, false. As long as there is more than one eye closed, `false` will be returned. If `NeedFaceAttributes` is not 1 or more than 5 faces are detected, this parameter will still be returned but meaningless.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "bool",
           "name": "EyeOpen",
@@ -1505,7 +1417,6 @@
       "document": "Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: Age, Beauty, \nEmotion, Eye, Eyebrow, Gender, \nHair, Hat, Headpose, Mask, Mouth, Moustache, \nNose, Shape, Skin, Smile, etc.  \nIf no types are specified in `FaceAttributesType`, the details returned by `FaceDetaiAttributesInfo` will be meaningless.",
       "members": [
         {
-          "default": "",
           "document": "Age. Value range: [0,65], where 65 indicates 65 years old or above. \nIf `FaceAttributesType` does not include `Age` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "int64",
           "name": "Age",
@@ -1514,7 +1425,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Beauty score. Value range: [0,100]. \nIf `FaceAttributesType` does not include `Beauty` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "int64",
           "name": "Beauty",
@@ -1523,7 +1433,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Emotion, including relaxed, happy, surprised, angry, sad, disgusted, and scared. \nThe `Type` values of the `AttributeItem` include: 0: relaxed; 1: happy; 2: surprised; 3: angry; 4: sad; 5: disgusted; 6: scared.\nIf `FaceAttributesType` does not include `Emotion` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "AttributeItem",
           "name": "Emotion",
@@ -1532,7 +1441,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Eye information, including whether glasses are worn, whether eyes are closed, whether the person has double eyelids, and the eye size. \nIf `FaceAttributesType` does not include `Eye` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "Eye",
           "name": "Eye",
@@ -1541,7 +1449,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Eyebrow information, including whether the eyebrows are thick, curved, or long. \nIf `FaceAttributesType` does not include `Eyebrow` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "Eyebrow",
           "name": "Eyebrow",
@@ -1550,7 +1457,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Gender information. \nThe `Type` values of the `AttributeItem` include: 0: male; 1: female.\t\nIf `FaceAttributesType` does not include `Gender` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "AttributeItem",
           "name": "Gender",
@@ -1559,7 +1465,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Hair information, including length, bang, and color. \nIf `FaceAttributesType` does not include `Hair` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "Hair",
           "name": "Hair",
@@ -1568,7 +1473,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Hat information, including whether a hat is worn, hat style, and hat color. \nIf `FaceAttributesType` does not include `Hat` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "Hat",
           "name": "Hat",
@@ -1577,7 +1481,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Pose information, including the face pitch, yaw, and roll. \nIf `FaceAttributesType` does not include `Headpose` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "HeadPose",
           "name": "HeadPose",
@@ -1586,7 +1489,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Mask information. \nThe `Type` values of the `AttributeItem` include: 0: no mask; 1: the mask is worn and does not cover the face; 2: the mask is worn and covers the chin; 3: the mask is worn and covers the mouth; 4: the mask is worn properly.\nIf `FaceAttributesType` does not include `Mask` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "AttributeItem",
           "name": "Mask",
@@ -1595,7 +1497,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Mouth information, including whether the mouth is open and the lip thickness. \nIf `FaceAttributesType` does not include `Mouth` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "Mouth",
           "name": "Mouth",
@@ -1604,7 +1505,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Beard information.\nThe `Type` values of the `AttributeItem` include: 0: no beard; 1: beard detected. \nIf `FaceAttributesType` does not include `Moustache` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "AttributeItem",
           "name": "Moustache",
@@ -1613,7 +1513,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Nose information. \nThe `Type` values of the `AttributeItem` include: 0: upturned nose; 1: aquiline nose; 2: general nose; 3: bulbous nose.\nIf `FaceAttributesType` does not include `Nose` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "AttributeItem",
           "name": "Nose",
@@ -1622,7 +1521,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Face shape information. \nThe `Type` values of the `AttributeItem` include: 0: square; 1: triangular; 2: oval; 3: heart-shaped; 4: round.\nIf `FaceAttributesType` does not include `Shape` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "AttributeItem",
           "name": "Shape",
@@ -1631,7 +1529,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Skin color information. \nThe `Type` values of the `AttributeItem` include: 0: yellow; 1: brown; 2: black; 3: white.\nIf `FaceAttributesType` does not include `Skin` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "AttributeItem",
           "name": "Skin",
@@ -1640,7 +1537,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Smile level. Value range: [0,100]. \nIf `FaceAttributesType` does not include `Smile` or more than 5 faces are detected, this parameter will still be returned but meaningless.",
           "member": "int64",
           "name": "Smile",
@@ -1655,7 +1551,6 @@
       "document": "Face information list.",
       "members": [
         {
-          "default": "",
           "document": "Position of the detected face frame.",
           "member": "FaceRect",
           "name": "FaceRect",
@@ -1664,7 +1559,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Face attribute information. According to the types specified in `FaceAttributesType`, the following face attributes will be returned: age (Age), beauty score (Beauty), \nemotion (Emotion), eye information (Eye), eyebrow information (Eyebrow), gender (Gender), \nhair information (Hair), hat information (Hat), pose (Headpose), mask information (Mask), mouth information (Mouse), beard information (Moustache), \nnose information (Nose), face shape (Shape), skin color (Skin), and smile information (Smile), etc.  \nIf no types are specified in `FaceAttributesType`, the detailed items returned by `FaceDetaiAttributesInfo` will be meaningless.",
           "member": "FaceDetailAttributesInfo",
           "name": "FaceDetailAttributesInfo",
@@ -1679,7 +1573,6 @@
       "document": "Hair information in face attributes.",
       "members": [
         {
-          "default": "",
           "document": "0: shaved head, 1: short hair, 2: medium hair, 3: long hair, 4: braid\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Length",
@@ -1688,7 +1581,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "0: with bangs, 1: no bangs\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Bang",
@@ -1697,7 +1589,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "0: black, 1: golden, 2: brown, 3: gray\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Color",
@@ -1712,7 +1603,6 @@
       "document": "Face information list.",
       "members": [
         {
-          "default": "",
           "document": "Horizontal coordinate of the top-left vertex of the face frame.\nThe face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. \nIf you want to capture a complete face, you can set the negative coordinates to 0 if the `completeness` score meets the requirement.",
           "member": "int64",
           "name": "X",
@@ -1721,7 +1611,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vertical coordinate of the top-left vertex of the face frame. \nThe face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. \nIf you want to capture a complete face, you can set the negative coordinates to 0 if the `completeness` score meets the requirement.",
           "member": "int64",
           "name": "Y",
@@ -1730,7 +1619,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Face frame width.",
           "member": "int64",
           "name": "Width",
@@ -1739,7 +1627,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Face frame height.",
           "member": "int64",
           "name": "Height",
@@ -1748,7 +1635,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Face attributes, including gender, age, expression, \nbeauty, glass, mask, hair, and pose (pitch, roll, yaw). Valid information will be returned only if `NeedFaceAttributes` is set to 1.",
           "member": "FaceAttributesInfo",
           "name": "FaceAttributesInfo",
@@ -1757,7 +1643,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Face quality information, including score, sharpness, brightness, and completeness. Valid information will be returned only if `NeedFaceDetection` is set to 1.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "FaceQualityInfo",
           "name": "FaceQualityInfo",
@@ -1772,7 +1657,6 @@
       "document": "Completeness of facial features, which assesses the completeness of the eyebrows, eyes, nose, cheeks, mouth, and chin.",
       "members": [
         {
-          "default": "",
           "document": "Eyebrow completeness. Value range: [0,100]. The higher the score, the higher the completeness. \nReference range: [0,80], which means incomplete.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Eyebrow",
@@ -1781,7 +1665,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Eye completeness. Value range: [0,100]. The higher the score, the higher the completeness. \nReference range: [0,80], which means incomplete.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Eye",
@@ -1790,7 +1673,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Nose completeness. Value range: [0,100]. The higher the score, the higher the completeness. \nReference range: [0,60], which means incomplete.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Nose",
@@ -1799,7 +1681,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cheek completeness. Value range: [0,100]. The higher the score, the higher the completeness. \nReference range: [0,70], which means incomplete.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Cheek",
@@ -1808,7 +1689,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Mouth completeness. Value range: [0,100]. The higher the score, the higher the completeness. \nReference range: [0,50], which means incomplete.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Mouth",
@@ -1817,7 +1697,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Chin completeness. Value range: [0,100]. The higher the score, the higher the completeness. \nReference range: [0,70], which means incomplete.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Chin",
@@ -1832,7 +1711,6 @@
       "document": "Face quality information, including score, sharpness, brightness, and completeness. Valid information will be returned only if `NeedFaceDetection` is set to 1.",
       "members": [
         {
-          "default": "",
           "document": "Quality score. Value range: [0,100]. It comprehensively evaluates whether the image quality is suitable for face recognition; the higher the score, the higher the quality. \nIn normal cases, you only need to use `Score` as the overall quality standard score. Specific item scores such as `Sharpness`, `Brightness`, `Completeness` are for reference only.\nReference range: [0,40]: poor; [40,60]: fine; [60,80]: good; [80,100]: excellent. \nWe recommend selecting images with a score above 70 for adding faces.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Score",
@@ -1841,7 +1719,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Sharpness. Value range: [0,100]. It evaluates the sharpness of the image. The higher the score, the sharper the image. \nReference range: [0,40]: very blurry; [40,60]: blurry; [60,80]: fine; [80,100]: sharp. \nWe recommend selecting images with a score above 80 for adding faces.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Sharpness",
@@ -1850,7 +1727,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Brightness. Value range: [0,100]. The brighter the image, the higher the score. \nReference range: [0,30]: dark; [30,70]: normal; [70,100]: bright. \nWe recommend selecting images in the [30,70] range for adding faces.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Brightness",
@@ -1859,7 +1735,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Completeness of facial features, which assesses the completeness of the eyebrows, eyes, nose, cheeks, mouth, and chin.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "FaceQualityCompleteness",
           "name": "Completeness",
@@ -1874,7 +1749,6 @@
       "document": "Position of detected face frame",
       "members": [
         {
-          "default": "",
           "document": "Horizontal coordinate of the top-left vertex of face frame. \nThe face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. \nIf you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.",
           "member": "int64",
           "name": "X",
@@ -1883,7 +1757,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vertical coordinate of the top-left vertex of face frame. \nThe face frame encompasses the facial features and is extended accordingly. If it is larger than the image, the coordinates will be negative. \nIf you want to capture a complete face, you can set the negative coordinates to 0 if the completeness score meets the requirement.",
           "member": "int64",
           "name": "Y",
@@ -1892,7 +1765,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Face width",
           "member": "uint64",
           "name": "Width",
@@ -1901,7 +1773,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Face height",
           "member": "uint64",
           "name": "Height",
@@ -1916,7 +1787,6 @@
       "document": "Specific information of facial feature localization (facial keypoints).",
       "members": [
         {
-          "default": "",
           "document": "21 points that describe the face contour.",
           "member": "Point",
           "name": "FaceProfile",
@@ -1925,7 +1795,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "8 points that describe the left eye.",
           "member": "Point",
           "name": "LeftEye",
@@ -1934,7 +1803,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "8 points that describe the right eye.",
           "member": "Point",
           "name": "RightEye",
@@ -1943,7 +1811,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "8 points that describe the left eyebrow.",
           "member": "Point",
           "name": "LeftEyeBrow",
@@ -1952,7 +1819,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "8 points that describe the right eyebrow.",
           "member": "Point",
           "name": "RightEyeBrow",
@@ -1961,7 +1827,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "22 points that describe the mouth.",
           "member": "Point",
           "name": "Mouth",
@@ -1970,7 +1835,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "13 points that describe the nose.",
           "member": "Point",
           "name": "Nose",
@@ -1979,7 +1843,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "1 point that describes the left pupil.",
           "member": "Point",
           "name": "LeftPupil",
@@ -1988,7 +1851,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "1 point that describes the right pupil.",
           "member": "Point",
           "name": "RightPupil",
@@ -2003,7 +1865,6 @@
       "document": "GetGroupInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Group ID, which is the `GroupId` in the `CreateGroup` API.",
           "member": "string",
           "name": "GroupId",
@@ -2071,7 +1932,6 @@
       "document": "GetGroupList request structure.",
       "members": [
         {
-          "default": "",
           "document": "Starting number. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -2079,7 +1939,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of returned results. Default value: 10. Maximum value: 1000.",
           "member": "uint64",
           "name": "Limit",
@@ -2119,7 +1978,6 @@
       "document": "GetPersonBaseInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Person ID, which is the `PersonId` in the `CreatePerson` API.",
           "member": "string",
           "name": "PersonId",
@@ -2166,7 +2024,6 @@
       "document": "GetPersonGroupInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Person ID, which is the `PersonId` in the `CreatePerson` API.",
           "member": "string",
           "name": "PersonId",
@@ -2174,7 +2031,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Starting number. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -2182,7 +2038,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of returned results. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -2229,7 +2084,6 @@
       "document": "GetPersonListNum request structure.",
       "members": [
         {
-          "default": "",
           "document": "Group ID, which is the `GroupId` in the `CreateGroup` API.",
           "member": "string",
           "name": "GroupId",
@@ -2269,7 +2123,6 @@
       "document": "GetPersonList request structure.",
       "members": [
         {
-          "default": "",
           "document": "Group ID, which is the `GroupId` in the `CreateGroup` API.",
           "member": "string",
           "name": "GroupId",
@@ -2277,7 +2130,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Starting number. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -2285,7 +2137,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of returned results. Default value: 10. Maximum value: 1000.",
           "member": "uint64",
           "name": "Limit",
@@ -2339,7 +2190,6 @@
       "document": "Recognition result items by group",
       "members": [
         {
-          "default": "",
           "document": "Group ID.",
           "member": "string",
           "name": "GroupId",
@@ -2348,7 +2198,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Most matching candidate recognized",
           "member": "Candidate",
           "name": "Candidates",
@@ -2363,7 +2212,6 @@
       "document": "Custom description field of the group to be modified, which is a `key-value` pair.",
       "members": [
         {
-          "default": "",
           "document": "Custom group description field index, whose value starts from 0.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "GroupExDescriptionIndex",
@@ -2372,7 +2220,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Content of the custom group description field to be updated",
           "member": "string",
           "name": "GroupExDescription",
@@ -2387,7 +2234,6 @@
       "document": "Returned group information",
       "members": [
         {
-          "default": "",
           "document": "Group name",
           "member": "string",
           "name": "GroupName",
@@ -2396,7 +2242,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Group ID",
           "member": "string",
           "name": "GroupId",
@@ -2405,7 +2250,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Custom group description field\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "GroupExDescriptions",
@@ -2414,7 +2258,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Group remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Tag",
@@ -2423,7 +2266,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Algorithm model version used for face recognition.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "FaceModelVersion",
@@ -2432,7 +2274,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Group creation time and date (`CreationTimestamp`), whose value is the number of milliseconds between the UNIX epoch time and the group creation time. \nThe UNIX epoch time is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Time (UTC). For more information, please see the UNIX time document.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "CreationTimestamp",
@@ -2447,7 +2288,6 @@
       "document": "Hair information",
       "members": [
         {
-          "default": "",
           "document": "Hair length information.\nThe `Type` values of the `AttributeItem` include: 0: bald, 1: short hair, 2: medium hair, 3: long hair, 4: braid.",
           "member": "AttributeItem",
           "name": "Length",
@@ -2456,7 +2296,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Bang information.\nThe `Type` values of the `AttributeItem` include: 0: no bang; 1: bang detected.",
           "member": "AttributeItem",
           "name": "Bang",
@@ -2465,7 +2304,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Hair color information.\nThe `Type` values of the `AttributeItem` include: 0: black; 1: golden; 2: brown; 3: gray.",
           "member": "AttributeItem",
           "name": "Color",
@@ -2480,7 +2318,6 @@
       "document": "Hat information",
       "members": [
         {
-          "default": "",
           "document": "Hat wearing status information.\nThe `Type` values of the `AttributeItem` include: 0: no hat; 1: general hat; 2: helmet; 3: security guard hat.",
           "member": "AttributeItem",
           "name": "Style",
@@ -2489,7 +2326,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Hat color.\nThe `Type` values of the `AttributeItem` include: 0: no hat; 1: red; 2: yellow; 3: blue; 4: black; 5: gray; 6: mixed colors.",
           "member": "AttributeItem",
           "name": "Color",
@@ -2504,7 +2340,6 @@
       "document": "Pose information.",
       "members": [
         {
-          "default": "",
           "document": "Pitch. Value range: [-30,30].",
           "member": "int64",
           "name": "Pitch",
@@ -2513,7 +2348,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Yaw. Value range: [-30,30].",
           "member": "int64",
           "name": "Yaw",
@@ -2522,7 +2356,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Roll. Value range: [-180,180].",
           "member": "int64",
           "name": "Roll",
@@ -2537,7 +2370,6 @@
       "document": "ModifyGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "Group ID, which is the `GroupId` in the `CreateGroup` API.",
           "member": "string",
           "name": "GroupId",
@@ -2545,7 +2377,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Group name",
           "member": "string",
           "name": "GroupName",
@@ -2553,7 +2384,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Custom description field of the group to be modified, which is a `key-value` pair.",
           "member": "GroupExDescriptionInfo",
           "name": "GroupExDescriptionInfos",
@@ -2561,7 +2391,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Group remarks",
           "member": "string",
           "name": "Tag",
@@ -2587,7 +2416,6 @@
       "document": "ModifyPersonGroupInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Group ID, which is the `GroupId` in the `CreateGroup` API.",
           "member": "string",
           "name": "GroupId",
@@ -2595,7 +2423,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Person ID, which is the `PersonId` in the `CreatePerson` API.",
           "member": "string",
           "name": "PersonId",
@@ -2603,7 +2430,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Custom description field of the person to be modified, which is a `key-value` pair.",
           "member": "PersonExDescriptionInfo",
           "name": "PersonExDescriptionInfos",
@@ -2629,7 +2455,6 @@
       "document": "Mouth information",
       "members": [
         {
-          "default": "",
           "document": "Whether the mouth is open.\nThe `Type` values of the `AttributeItem` include: 0: closed; 1: open.",
           "member": "AttributeItem",
           "name": "MouthOpen",
@@ -2644,7 +2469,6 @@
       "document": "Custom description field of the person to be modified, which is a `key-value` pair.",
       "members": [
         {
-          "default": "",
           "document": "Person description field index, whose value starts from 0.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "PersonExDescriptionIndex",
@@ -2653,7 +2477,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Content of the person description field to be updated",
           "member": "string",
           "name": "PersonExDescription",
@@ -2668,7 +2491,6 @@
       "document": "List of groups containing this person and their description fields",
       "members": [
         {
-          "default": "",
           "document": "ID of the group that contains this person",
           "member": "string",
           "name": "GroupId",
@@ -2677,7 +2499,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Content of person description field",
           "member": "string",
           "name": "PersonExDescriptions",
@@ -2692,7 +2513,6 @@
       "document": "Returned person information",
       "members": [
         {
-          "default": "",
           "document": "Person name",
           "member": "string",
           "name": "PersonName",
@@ -2701,7 +2521,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Person ID",
           "member": "string",
           "name": "PersonId",
@@ -2710,7 +2529,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Person gender",
           "member": "int64",
           "name": "Gender",
@@ -2719,7 +2537,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Content of person description field",
           "member": "string",
           "name": "PersonExDescriptions",
@@ -2728,7 +2545,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List of contained face images",
           "member": "string",
           "name": "FaceIds",
@@ -2737,7 +2553,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Person creation time, measured in the number of milliseconds elapsed since the Unix epoch \nThe Unix epoch is 00:00:00, Thursday, January 1, 1970, Coordinated Universal Time (UTC). For more information, please see the Unix time document.",
           "member": "uint64",
           "name": "CreationTimestamp",
@@ -2752,7 +2567,6 @@
       "document": "Coordinates",
       "members": [
         {
-          "default": "",
           "document": "X coordinate",
           "member": "int64",
           "name": "X",
@@ -2761,7 +2575,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Y coordinate",
           "member": "int64",
           "name": "Y",
@@ -2776,7 +2589,6 @@
       "document": "Face recognition result",
       "members": [
         {
-          "default": "",
           "document": "Most matching candidate recognized",
           "member": "Candidate",
           "name": "Candidates",
@@ -2785,7 +2597,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Position of detected face frame",
           "member": "FaceRect",
           "name": "FaceRect",
@@ -2794,7 +2605,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The status return code for the face image detected. Valid values: `0` - normal; `-1601` - the image does not meet the quality requirements, in which case `Candidate` is empty; `-1604` - the face similarity is not higher than `FaceMatchThreshold`.",
           "member": "int64",
           "name": "RetCode",
@@ -2809,7 +2619,6 @@
       "document": "Recognition result.\n",
       "members": [
         {
-          "default": "",
           "document": "Position of detected face frame",
           "member": "FaceRect",
           "name": "FaceRect",
@@ -2818,7 +2627,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Recognition result.",
           "member": "GroupCandidate",
           "name": "GroupCandidates",
@@ -2827,7 +2635,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Status return code of detected face image. 0: normal. \n-1601: the image quality control requirement is not met; in this case, `Candidate` is empty.",
           "member": "int64",
           "name": "RetCode",
@@ -2842,7 +2649,6 @@
       "document": "SearchFaces request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.\nYou cannot search for groups using different algorithm model versions (`FaceModelVersion`) at a time.",
           "example": "[\"TencentShenZhenEmployee\\n\"]",
           "member": "string",
@@ -2851,7 +2657,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "无",
           "member": "string",
@@ -2860,7 +2665,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "http://test.image.myqcloud.com/testA.jpg",
           "member": "string",
@@ -2869,7 +2673,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10. \n`MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized. \nFor example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.",
           "example": "1",
           "member": "uint64",
@@ -2878,7 +2681,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Minimum height and width of face in px. Default value: 34. Face images whose value is below 34 cannot be recognized. We recommend setting this parameter to 80.",
           "example": "40",
           "member": "uint64",
@@ -2887,7 +2689,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100. \nFor example, if `MaxFaceNum` is 1 and `MaxPersonNum` is 8, information of the top 8 most similar persons will be returned.\nThe greater the value, the longer the processing time. We recommend setting a value below 10.",
           "example": "5",
           "member": "uint64",
@@ -2896,7 +2697,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.",
           "example": "0",
           "member": "int64",
@@ -2905,7 +2705,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Image quality control. \n0: no control. \n1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. \n2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. \n3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. \n4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. \nDefault value: 0. \nIf the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.",
           "example": "0",
           "member": "uint64",
@@ -2914,7 +2713,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "In the output parameter `Score`, the result will be returned only if the result value is above the `FaceMatchThreshold` value. Default value: 0.",
           "example": "0",
           "member": "float",
@@ -2923,7 +2721,6 @@
           "type": "float"
         },
         {
-          "default": "",
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "example": "0",
           "member": "uint64",
@@ -2971,7 +2768,6 @@
       "document": "SearchFacesReturnsByGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of groups to be searched in (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.\nYou cannot search for groups using different algorithm model versions (`FaceModelVersion`) at a time.",
           "example": "[\"TencentShenZhenEmployee\\n\"]",
           "member": "string",
@@ -2980,7 +2776,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "无",
           "member": "string",
@@ -2989,7 +2784,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "example": "http://test.image.myqcloud.com/testA.jpg",
           "member": "string",
@@ -2998,7 +2792,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.\n`MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.\nFor example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.",
           "example": "1",
           "member": "uint64",
@@ -3007,7 +2800,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.",
           "example": "40",
           "member": "uint64",
@@ -3016,7 +2808,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  \nFor example, if `MaxFaceNum` is 3, `MaxPersonNumPerGroup` is 5, and the `GroupIds` length is 3, up to 45 (3 * 5 * 3) persons will be returned.",
           "example": "5",
           "member": "uint64",
@@ -3025,7 +2816,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.",
           "example": "0",
           "member": "int64",
@@ -3034,7 +2824,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Image quality control. \n0: no control. \n1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. \n2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. \n3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. \n4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. \nDefault value: 0. \nIf the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.",
           "example": "0",
           "member": "uint64",
@@ -3043,7 +2832,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "In the output parameter `Score`, the result will be returned only if the result value is greater than or equal to the `FaceMatchThreshold` value.\nDefault value: 0.\nValue range: [0.0,100.0).",
           "example": "0",
           "member": "float",
@@ -3052,7 +2840,6 @@
           "type": "float"
         },
         {
-          "default": "",
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "example": "0",
           "member": "uint64",
@@ -3100,7 +2887,6 @@
       "document": "SearchPersons request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of groups to be searched in (up to 100). The array element value is the `GroupId` in the `CreateGroup` API.",
           "member": "string",
           "name": "GroupIds",
@@ -3108,7 +2894,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nIf there are multiple faces in the image, only the face with the largest size will be selected.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Image",
@@ -3116,7 +2901,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Url",
@@ -3124,7 +2908,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.\n`MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.\nFor example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.",
           "member": "uint64",
           "name": "MaxFaceNum",
@@ -3132,7 +2915,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.",
           "member": "uint64",
           "name": "MinFaceSize",
@@ -3140,7 +2922,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of the most similar persons returned for one single recognized face image. Default value: 5. Maximum value: 100.\nFor example, if `MaxFaceNum` is 1 and `MaxPersonNum` is 8, information of the top 8 most similar persons will be returned.\nThe greater the value, the longer the processing time. We recommend setting a value below 10.",
           "member": "uint64",
           "name": "MaxPersonNum",
@@ -3148,7 +2929,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Image quality control. \n0: no control. \n1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. \n2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. \n3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. \n4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. \nDefault value: 0. \nIf the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.",
           "member": "uint64",
           "name": "QualityControl",
@@ -3156,7 +2936,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "In the output parameter `Score`, the result will be returned only if the result value is greater than or equal to the `FaceMatchThreshold` value. Default value: 0. Value range: [0.0,100.0).",
           "member": "float",
           "name": "FaceMatchThreshold",
@@ -3164,7 +2943,6 @@
           "type": "float"
         },
         {
-          "default": "",
           "document": "Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.",
           "member": "int64",
           "name": "NeedPersonInfo",
@@ -3172,7 +2950,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "member": "uint64",
           "name": "NeedRotateDetection",
@@ -3219,7 +2996,6 @@
       "document": "SearchPersonsReturnsByGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of groups to be searched in (up to 60). The array element value is the `GroupId` in the `CreateGroup` API.",
           "member": "string",
           "name": "GroupIds",
@@ -3227,7 +3003,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Image",
@@ -3235,7 +3010,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.\nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Url",
@@ -3243,7 +3017,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Maximum number of recognizable faces. Default value: 1 (i.e., detecting only the face with the largest size in the image). Maximum value: 10.\n`MaxFaceNum` is used to control the number of faces to be searched for if there are multiple faces in the input image to be recognized.\nFor example, if the input image in `Image` or `Url` contains multiple faces and `MaxFaceNum` is 5, top 5 faces with the largest size in the image will be recognized.",
           "member": "uint64",
           "name": "MaxFaceNum",
@@ -3251,7 +3024,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Minimum height and width of face in px. Default value: 34. A value below 34 will affect the search accuracy. We recommend setting this parameter to 80.",
           "member": "uint64",
           "name": "MinFaceSize",
@@ -3259,7 +3031,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Detected faces, which is corresponding to the maximum number of returned most matching persons. Default value: 5. Maximum value: 10.  \nFor example, if `MaxFaceNum` is 3, `MaxPersonNumPerGroup` is 5, and the `GroupIds` length is 3, up to 45 (3 * 5 * 3) persons will be returned.",
           "member": "uint64",
           "name": "MaxPersonNumPerGroup",
@@ -3267,7 +3038,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Image quality control. \n0: no control. \n1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. \n2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. \n3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. \n4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. \nDefault value: 0. \nIf the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.",
           "member": "uint64",
           "name": "QualityControl",
@@ -3275,7 +3045,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "In the output parameter `Score`, the result will be returned only if the result value is above the `FaceMatchThreshold` value. Default value: 0.",
           "member": "float",
           "name": "FaceMatchThreshold",
@@ -3283,7 +3052,6 @@
           "type": "float"
         },
         {
-          "default": "",
           "document": "Whether to return person details. 0: no; 1: yes. Default value: 0. Other values will be considered as 0 by default.",
           "member": "int64",
           "name": "NeedPersonInfo",
@@ -3291,7 +3059,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "member": "uint64",
           "name": "NeedRotateDetection",
@@ -3338,7 +3105,6 @@
       "document": "VerifyFace request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the person to be verified. For more information on `PersonId`, please see the group management APIs.",
           "member": "string",
           "name": "PersonId",
@@ -3346,7 +3112,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Base64-encoded image data, which cannot exceed 5 MB.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nIf there are multiple faces in the image, only the face with the largest size will be selected.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Image",
@@ -3354,7 +3119,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image URL. The image cannot exceed 5 MB in size after being Base64-encoded.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nEither `Url` or `Image` must be provided; if both are provided, only `Url` will be used.  \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nIf there are multiple faces in the image, only the face with the largest size will be selected.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Url",
@@ -3362,7 +3126,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image quality control. \n0: no control. \n1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. \n2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. \n3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. \n4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. \nDefault value: 0. \nIf the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.",
           "member": "uint64",
           "name": "QualityControl",
@@ -3370,7 +3133,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "member": "uint64",
           "name": "NeedRotateDetection",
@@ -3423,7 +3185,6 @@
       "document": "VerifyPerson request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the person to be verified. For more information on `PersonId`, please see the group management APIs.",
           "member": "string",
           "name": "PersonId",
@@ -3431,7 +3192,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Base64-encoded data of the image.\nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\nIf there are multiple faces in the image, only the face with the largest size will be selected.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Image",
@@ -3439,7 +3199,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image URL \nThe long side cannot exceed 4,000 px for images in JPG format or 2,000 px for images in other formats.\n Either `Url` or `Image` must be provided; if both are provided, only `Url` will be used. \nWe recommend storing the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. \nThe download speed and stability of non-Tencent Cloud URLs may be low.\nIf there are multiple faces in the image, only the face with the largest size will be selected.\nPNG, JPG, JPEG, and BMP images are supported, while GIF images are not.",
           "member": "string",
           "name": "Url",
@@ -3447,7 +3206,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image quality control. \n0: no control. \n1: low quality requirement. The image has one or more of the following problems: extreme blurriness, covered eyes, covered nose, and covered mouth. \n2: average quality requirement. The image has at least three of the following problems: excessive brightness, excessive dimness, blurriness or average blurriness, covered eyebrows, covered cheeks, and covered chin. \n3: high-quality requirement. The image has one to two of the following problems: excessive brightness, excessive dimness, average blurriness, covered eyebrows, covered cheeks, and covered chin. \n4: very high-quality requirement. The image is optimal in all dimensions or only has a slight problem in one dimension. \nDefault value: 0. \nIf the image quality does not meet the requirement, the returned result will prompt that the detected image quality is unsatisfactory.",
           "member": "uint64",
           "name": "QualityControl",
@@ -3455,7 +3213,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to enable the support for rotated image recognition. 0: no; 1: yes. Default value: 0. When the face in the image is rotated and the image has no EXIF information, if this parameter is not enabled, the face in the image cannot be correctly detected and recognized. If you are sure that the input image contains EXIF information or the face in the image will not be rotated, do not enable this parameter, as the overall time consumption may increase by hundreds of milliseconds after it is enabled.",
           "member": "uint64",
           "name": "NeedRotateDetection",

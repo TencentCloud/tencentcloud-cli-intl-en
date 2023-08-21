@@ -81,7 +81,6 @@
       "document": "Application usage statistics",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Voice Chat statistics\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "{\"MainLandPcu\":0,\"MainLandDuration\":0,\"OverseaPcu\":0,\"OverseaDur",
@@ -92,7 +91,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voice Message statistics\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "{\"Dau\":1018}",
@@ -103,7 +101,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Phrase Filtering statistics\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "{\"Duration\" : 18000}",
@@ -114,7 +111,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Reference period",
           "example": "2022-10-01",
@@ -125,7 +121,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recording-to-Text usage statistics\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "{\"Data\":0}",
@@ -136,7 +131,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Stream-to-Text usage statistics\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "{\"Data\":0}",
@@ -147,7 +141,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Usage statistics of Voice-to-Text of outside-MLC requests\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "{\"Data\":0}",
@@ -158,7 +151,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Real-time Voice-to-Text usage statistics\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "{\"Data\":0}",
@@ -175,7 +167,6 @@
       "document": "Application statistics",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Application ID",
           "member": "uint64",
@@ -185,7 +176,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of DAU metrics",
           "member": "uint64",
@@ -195,7 +185,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DAUs in the Chinese mainland",
           "member": "StatisticsItem",
@@ -205,7 +194,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DAUs outside the Chinese mainland",
           "member": "StatisticsItem",
@@ -215,7 +203,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total DAUs",
           "member": "StatisticsItem",
@@ -225,7 +212,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of Voice Chat metrics",
           "member": "uint64",
@@ -235,7 +221,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Duration of Voice Chat in the Chinese mainland (in minutes)",
           "member": "StatisticsItem",
@@ -245,7 +230,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Duration of Voice Chat outside the Chinese mainland (in minutes)",
           "member": "StatisticsItem",
@@ -255,7 +239,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total duration of Voice Chat (in minutes)",
           "member": "StatisticsItem",
@@ -265,7 +248,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of PCU metrics",
           "member": "uint64",
@@ -275,7 +257,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PCUs in the Chinese mainland",
           "member": "StatisticsItem",
@@ -285,7 +266,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PCUs outside the Chinese mainland",
           "member": "StatisticsItem",
@@ -295,7 +275,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total PCUs",
           "member": "StatisticsItem",
@@ -327,7 +306,6 @@
       "document": "Recording-to-Text usage statistics",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Statistical value (in seconds)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1.23",
@@ -549,7 +527,6 @@
       "document": "Result of the operation to delete a room or remove members",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Status code. `0`: Succeeded. Others: Failed\\",
           "member": "int64",
@@ -559,7 +536,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Description",
           "member": "string",
@@ -575,7 +551,6 @@
       "document": "DeleteRoomMember request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the target room",
           "example": "100",
@@ -585,7 +560,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of the members to remove",
           "example": "[\"1\\r\\n\",\"2\\r\\n\"]",
@@ -595,7 +569,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Operation type. `1`: Delete a room; `2`: Remove members",
           "example": "2",
@@ -605,7 +578,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Application ID",
           "example": "140014556",
@@ -643,7 +615,6 @@
       "document": "DescribeAppStatistics request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "GME application ID",
           "example": "140000001",
@@ -653,7 +624,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data start date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13.",
           "example": "2019-08-01",
@@ -663,7 +633,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data end date (GMT+8) in the format of yyyy-mm-dd, such as 2018-07-13.",
           "example": "2019-08-03",
@@ -673,7 +642,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of services to be queried. Valid values: `RealTimeSpeech`, `VoiceMessage`, `VoiceFilter`, `SpeechToText`.",
           "example": "[\"RealTimeSpeech\\r\\n\",\"VoiceMessage\\r\\n\"]",
@@ -689,7 +657,6 @@
       "document": "Output parameters of application usage statistics",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Application usage statistics",
           "example": "[]",
@@ -728,7 +695,6 @@
       "document": "DescribeApplicationData request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Application ID",
           "example": "140000001",
@@ -738,7 +704,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data start date in the format of yyyy-mm-dd, such as 2018-07-13.",
           "example": "2018-07-13",
@@ -748,7 +713,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data end date in the format of yyyy-mm-dd, such as 2018-07-13.",
           "example": "2018-08-13",
@@ -786,7 +750,6 @@
       "document": "DescribeRecordInfo request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the ongoing task, which is returned from the `StartRecord` API.",
           "example": "446192236330927912",
@@ -796,7 +759,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Application ID.",
           "example": "3400352518",
@@ -854,7 +816,6 @@
       "document": "DescribeTaskInfo request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Application ID.",
           "example": "3400352518",
@@ -864,7 +825,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Room ID.",
           "example": "9832",
@@ -922,7 +882,6 @@
       "document": "ModifyAppStatus request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Application ID, which is generated and returned by the backend after the application creation.",
           "example": "140000001",
@@ -932,7 +891,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Application status. Valid values: `open`, `close`.",
           "example": "close",
@@ -948,7 +906,6 @@
       "document": "Output parameters of `ModifyAppStatus`",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "GME application ID",
           "example": "123456",
@@ -959,7 +916,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Application status. Valid values: `open`, `close`.",
           "example": "open",
@@ -998,7 +954,6 @@
       "document": "ModifyRecordInfo request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the ongoing task, which is returned from the `StartRecord` API.",
           "example": "446192236330927912",
@@ -1008,7 +963,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.",
           "example": "1",
@@ -1018,7 +972,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Application ID.",
           "example": "3400352518",
@@ -1028,7 +981,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Allowlist or blocklist for stream subscription.",
           "example": "无",
@@ -1056,7 +1008,6 @@
       "document": "Usage statistics of Voice-to-Text of outside-MLC requests",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Statistical value (in seconds)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1.23",
@@ -1073,7 +1024,6 @@
       "document": "Voice Chat usage statistics",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "DAUs in the Chinese mainland",
           "member": "uint64",
@@ -1083,7 +1033,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PCUs in the Chinese mainland",
           "member": "uint64",
@@ -1093,7 +1042,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total duration of use in the Chinese mainland (in minutes)",
           "member": "uint64",
@@ -1103,7 +1051,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DAUs outside the Chinese mainland",
           "member": "uint64",
@@ -1113,7 +1060,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PCUs outside the Chinese mainland",
           "member": "uint64",
@@ -1123,7 +1069,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total duration of use outside the Chinese mainland (in minutes)",
           "member": "uint64",
@@ -1165,7 +1110,6 @@
       "document": "Real-time Voice-to-Text usage statistics",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Statistical value (in seconds)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1.23",
@@ -1233,7 +1177,6 @@
       "document": "StartRecord request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Application ID.",
           "example": "3400352518",
@@ -1243,7 +1186,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Room ID.",
           "example": "1987",
@@ -1253,7 +1195,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recording mode. Valid values: `1`: single stream; `2`: mixed streams; `3`: single stream and mixed streams.",
           "example": "1",
@@ -1263,7 +1204,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Allowlist or blocklist for stream subscription. If you do not specify this parameter, the audio streams of all the users in the room are subscribed to by default.",
           "example": "无",
@@ -1301,7 +1241,6 @@
       "document": "Usage data unit",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Date in the format of yyyy-mm-dd, such as 2018-07-13",
           "member": "date",
@@ -1311,7 +1250,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Statistical value",
           "member": "uint64",
@@ -1327,7 +1265,6 @@
       "document": "StopRecord request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Task ID.",
           "example": "446192236330927912",
@@ -1337,7 +1274,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Application ID.",
           "example": "3400352518",
@@ -1365,7 +1301,6 @@
       "document": "Stream-to-Text usage statistics",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Usage of the service (in seconds)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1.23",
@@ -1382,7 +1317,6 @@
       "document": "Allowlist or blocklist for stream subscription.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Blocklist for audio subscription. For example, `[\"1\", \"2\", \"3\"]` means to not subscribe to the audio streams of users 1, 2, and 3. If this parameter is left empty, the audio streams of all users (max 20) in the room will not be subscribed to.\nNote: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` at the same time.",
           "example": "无",
@@ -1393,7 +1327,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Allowlist for audio subscription. For example, `[\"1\", \"2\", \"3\"]` means to subscribe to the audio streams of users 1, 2, and 3. If this parameter is left empty, the audio streams of all users (max 20) in the room will be subscribed to.\nNote: You cannot specify `UnSubscribeAudioUserIds` and `SubscribeAudioUserIds` at the same time.",
           "example": "无",
@@ -1410,7 +1343,6 @@
       "document": "Tag list",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Tag key\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -1420,7 +1352,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag value\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -1462,7 +1393,6 @@
       "document": "Phrase Filtering usage statistics",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Total duration of phrase filtering (in minutes)",
           "example": "100",
@@ -1479,7 +1409,6 @@
       "document": "Configuration information of Voice Message Service",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Voice Message Service status. Valid values: `open`, `close`.",
           "member": "string",
@@ -1489,7 +1418,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Language supported for Voice Message Service. Valid values: `all` (all languages), `cnen` (Chinese and English). Default value: `cnen`.",
           "member": "string",
@@ -1505,7 +1433,6 @@
       "document": "Voice Message Service usage statistics",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "DAUs of Voice Message Service",
           "member": "uint64",

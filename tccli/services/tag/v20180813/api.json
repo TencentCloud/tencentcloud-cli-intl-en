@@ -214,7 +214,6 @@
       "document": "AddResourceTag request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag key.",
           "member": "string",
           "name": "TagKey",
@@ -222,7 +221,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag value.",
           "member": "string",
           "name": "TagValue",
@@ -230,7 +228,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "[Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
           "member": "string",
           "name": "Resource",
@@ -256,7 +253,6 @@
       "document": "AttachResourcesTag request structure.",
       "members": [
         {
-          "default": "",
           "document": "Resource service name (the third segment in the six-segment resource description)",
           "member": "string",
           "name": "ServiceType",
@@ -264,7 +260,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource ID array, which can contain up to 50 resources",
           "member": "string",
           "name": "ResourceIds",
@@ -272,7 +267,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Tag key",
           "member": "string",
           "name": "TagKey",
@@ -280,7 +274,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag value",
           "member": "string",
           "name": "TagValue",
@@ -288,7 +281,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource region. If resources have the region attribute, this field is required; otherwise, it is optional.",
           "member": "string",
           "name": "ResourceRegion",
@@ -296,7 +288,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource prefix (the part before \"/\" in the last segment in the six-segment resource description), which is optional for COS buckets but required for other Tencent Cloud resources.",
           "member": "string",
           "name": "ResourcePrefix",
@@ -322,7 +313,6 @@
       "document": "CreateTag request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag key.",
           "member": "string",
           "name": "TagKey",
@@ -330,7 +320,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag value.",
           "member": "string",
           "name": "TagValue",
@@ -356,7 +345,6 @@
       "document": "CreateTags request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag list.\nValue range of N: 0–9",
           "example": "无",
           "member": "Tag",
@@ -383,7 +371,6 @@
       "document": "DeleteResourceTag request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag key.",
           "member": "string",
           "name": "TagKey",
@@ -391,7 +378,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "[Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
           "member": "string",
           "name": "Resource",
@@ -417,7 +403,6 @@
       "document": "DeleteTag request structure.",
       "members": [
         {
-          "default": "",
           "document": "The tag key to be deleted.",
           "member": "string",
           "name": "TagKey",
@@ -425,7 +410,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The tag value to be deleted.",
           "member": "string",
           "name": "TagValue",
@@ -451,7 +435,6 @@
       "document": "DeleteTags request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag list.\nValue range of N: 0–9",
           "example": "无",
           "member": "Tag",
@@ -478,7 +461,6 @@
       "document": "DescribeProjects request structure.",
       "members": [
         {
-          "default": "",
           "document": "If this parameter is 1, all projects (including hidden ones) will be queried. If it is 0, only non-hidden projects will be queried.",
           "example": "1",
           "member": "uint64",
@@ -487,7 +469,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page. Fixed value: 1,000.",
           "example": "1000",
           "member": "uint64",
@@ -496,7 +477,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Pagination offset.",
           "example": "0",
           "member": "uint64",
@@ -541,7 +521,6 @@
       "document": "DescribeResourceTagsByResourceIds request structure.",
       "members": [
         {
-          "default": "",
           "document": "Service type.",
           "member": "string",
           "name": "ServiceType",
@@ -549,7 +528,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource prefix.",
           "member": "string",
           "name": "ResourcePrefix",
@@ -557,7 +535,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Array of resource IDs (up to 50)",
           "member": "string",
           "name": "ResourceIds",
@@ -565,7 +542,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The resource's region.",
           "member": "string",
           "name": "ResourceRegion",
@@ -573,7 +549,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
           "member": "uint64",
           "name": "Offset",
@@ -581,7 +556,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Page size. The default value is 0.",
           "member": "uint64",
           "name": "Limit",
@@ -635,7 +609,6 @@
       "document": "DescribeResourceTagsByResourceIdsSeq request structure.",
       "members": [
         {
-          "default": "",
           "document": "Service type",
           "member": "string",
           "name": "ServiceType",
@@ -643,7 +616,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource prefix",
           "member": "string",
           "name": "ResourcePrefix",
@@ -651,7 +623,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Unique resource ID",
           "member": "string",
           "name": "ResourceIds",
@@ -659,7 +630,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Resource region",
           "member": "string",
           "name": "ResourceRegion",
@@ -667,7 +637,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
           "member": "uint64",
           "name": "Offset",
@@ -675,7 +644,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page. Default value: 15",
           "member": "uint64",
           "name": "Limit",
@@ -729,7 +697,6 @@
       "document": "DescribeResourceTagsByTagKeys request structure.",
       "members": [
         {
-          "default": "",
           "document": "Service type",
           "member": "string",
           "name": "ServiceType",
@@ -737,7 +704,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource prefix",
           "member": "string",
           "name": "ResourcePrefix",
@@ -745,7 +711,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource region",
           "member": "string",
           "name": "ResourceRegion",
@@ -753,7 +718,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Unique resource ID",
           "member": "string",
           "name": "ResourceIds",
@@ -761,7 +725,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Resource tag key",
           "member": "string",
           "name": "TagKeys",
@@ -769,7 +732,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Number of entries per page. Default value: 400",
           "member": "uint64",
           "name": "Limit",
@@ -777,7 +739,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
           "member": "uint64",
           "name": "Offset",
@@ -831,7 +792,6 @@
       "document": "DescribeResourceTags request structure.",
       "members": [
         {
-          "default": "",
           "document": "Creator `uin`",
           "member": "uint64",
           "name": "CreateUin",
@@ -839,7 +799,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Resource region.",
           "member": "string",
           "name": "ResourceRegion",
@@ -847,7 +806,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Service type.",
           "member": "string",
           "name": "ServiceType",
@@ -855,7 +813,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource prefix",
           "member": "string",
           "name": "ResourcePrefix",
@@ -863,7 +820,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Unique resource ID. Queries with `ResourceId` only may be slow or fail to return results. We recommend you also enter `ServiceType`, `ResourcePrefix`, and `ResourceRegion` (which can be ignored for resources that don't have the region attribute) when entering `ResourceId`.",
           "member": "string",
           "name": "ResourceId",
@@ -871,7 +827,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
           "member": "uint64",
           "name": "Offset",
@@ -879,7 +834,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page. Default value: 15",
           "member": "uint64",
           "name": "Limit",
@@ -887,7 +841,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether it is a COS resource (0 or 1). This parameter is required when the entered `ResourceId` is a COS resource.",
           "member": "uint64",
           "name": "CosResourceId",
@@ -941,7 +894,6 @@
       "document": "DescribeResourcesByTags request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag filtering arrays.",
           "member": "TagFilter",
           "name": "TagFilters",
@@ -949,7 +901,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Tag creator uin.",
           "member": "uint64",
           "name": "CreateUin",
@@ -957,7 +908,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
           "member": "uint64",
           "name": "Offset",
@@ -965,7 +915,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Page size. The default value is 15.",
           "member": "uint64",
           "name": "Limit",
@@ -973,7 +922,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Resource prefix.",
           "member": "string",
           "name": "ResourcePrefix",
@@ -981,7 +929,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Unique resource ID.",
           "member": "string",
           "name": "ResourceId",
@@ -989,7 +936,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The resource's region.",
           "member": "string",
           "name": "ResourceRegion",
@@ -997,7 +943,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Service type.",
           "member": "string",
           "name": "ServiceType",
@@ -1051,7 +996,6 @@
       "document": "DescribeResourcesByTagsUnion request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag filtering arrays.",
           "member": "TagFilter",
           "name": "TagFilters",
@@ -1059,7 +1003,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Tag creator uin.",
           "member": "uint64",
           "name": "CreateUin",
@@ -1067,7 +1010,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
           "member": "uint64",
           "name": "Offset",
@@ -1075,7 +1017,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Page size. The default value is 15.",
           "member": "uint64",
           "name": "Limit",
@@ -1083,7 +1024,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Resource prefix.",
           "member": "string",
           "name": "ResourcePrefix",
@@ -1091,7 +1031,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Unique resource ID.",
           "member": "string",
           "name": "ResourceId",
@@ -1099,7 +1038,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The resource’s region.",
           "member": "string",
           "name": "ResourceRegion",
@@ -1107,7 +1045,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Service type",
           "member": "string",
           "name": "ServiceType",
@@ -1161,7 +1098,6 @@
       "document": "DescribeTagKeys request structure.",
       "members": [
         {
-          "default": "",
           "document": "Creator `Uin`. If not specified, `Uin` is only used as the query condition.",
           "member": "uint64",
           "name": "CreateUin",
@@ -1169,7 +1105,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
           "member": "uint64",
           "name": "Offset",
@@ -1177,7 +1112,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Page size. The default value is 0.",
           "member": "uint64",
           "name": "Limit",
@@ -1185,7 +1119,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to show project",
           "member": "uint64",
           "name": "ShowProject",
@@ -1239,7 +1172,6 @@
       "document": "DescribeTagValues request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag key list.",
           "member": "string",
           "name": "TagKeys",
@@ -1247,7 +1179,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Creator `Uin`. If not specified, `Uin` is only used as the query condition.",
           "member": "uint64",
           "name": "CreateUin",
@@ -1255,7 +1186,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
           "member": "uint64",
           "name": "Offset",
@@ -1263,7 +1193,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Page size. The default value is 0.",
           "member": "uint64",
           "name": "Limit",
@@ -1317,7 +1246,6 @@
       "document": "DescribeTagValuesSeq request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag key list",
           "member": "string",
           "name": "TagKeys",
@@ -1325,7 +1253,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Creator `Uin`. If this parameter is blank or left empty, only `Uin` will be used as a condition for query",
           "member": "uint64",
           "name": "CreateUin",
@@ -1333,7 +1260,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
           "member": "uint64",
           "name": "Offset",
@@ -1341,7 +1267,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page. Default value: 15",
           "member": "uint64",
           "name": "Limit",
@@ -1395,7 +1320,6 @@
       "document": "DescribeTags request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag key. Either exists or does not exist alongside the tag value. If it does not exist, all of the user's tags will be queried.",
           "member": "string",
           "name": "TagKey",
@@ -1403,7 +1327,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag value. Either exists or does not exist alongside the tag key. If it does not exist, all of the user's tags will be queried.",
           "member": "string",
           "name": "TagValue",
@@ -1411,7 +1334,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
           "member": "uint64",
           "name": "Offset",
@@ -1419,7 +1341,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Page size. The default value is 0.",
           "member": "uint64",
           "name": "Limit",
@@ -1427,7 +1348,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Creator `Uin`. If not specified, `Uin` is only used as the query condition.",
           "member": "uint64",
           "name": "CreateUin",
@@ -1435,7 +1355,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored.",
           "member": "string",
           "name": "TagKeys",
@@ -1443,7 +1362,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to show project tag",
           "member": "uint64",
           "name": "ShowProject",
@@ -1497,7 +1415,6 @@
       "document": "DescribeTagsSeq request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag key, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried",
           "member": "string",
           "name": "TagKey",
@@ -1505,7 +1422,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag value, which either exists or does not exist with the tag key. If it does not exist, all tags of the user will be queried",
           "member": "string",
           "name": "TagValue",
@@ -1513,7 +1429,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
           "member": "uint64",
           "name": "Offset",
@@ -1521,7 +1436,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page. Default value: 15",
           "member": "uint64",
           "name": "Limit",
@@ -1529,7 +1443,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Creator `Uin`. If this parameter is blank or left empty, only `Uin` will be used as a condition for query",
           "member": "uint64",
           "name": "CreateUin",
@@ -1537,7 +1450,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored.",
           "member": "string",
           "name": "TagKeys",
@@ -1545,7 +1457,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to show project tag",
           "member": "uint64",
           "name": "ShowProject",
@@ -1599,7 +1510,6 @@
       "document": "DetachResourcesTag request structure.",
       "members": [
         {
-          "default": "",
           "document": "Resource service name (the third segment in the six-segment resource description)",
           "member": "string",
           "name": "ServiceType",
@@ -1607,7 +1517,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource ID array, which can contain up to 50 resources",
           "member": "string",
           "name": "ResourceIds",
@@ -1615,7 +1524,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Tag key to be unbound",
           "member": "string",
           "name": "TagKey",
@@ -1623,7 +1531,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource region. If resources have the region attribute, this field is required; otherwise, it is optional.",
           "member": "string",
           "name": "ResourceRegion",
@@ -1631,7 +1538,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource prefix (the part before \"/\" in the last segment in the six-segment resource description), which is optional for COS buckets but required for other Tencent Cloud resources.",
           "member": "string",
           "name": "ResourcePrefix",
@@ -1657,7 +1563,6 @@
       "document": "Information of failed resources.\nThis is returned when resource tag binding or unbinding fails.",
       "members": [
         {
-          "default": "",
           "document": "Six-segment descriptions of failed resources",
           "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
           "member": "string",
@@ -1667,7 +1572,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Error code",
           "example": "InvalidParameterValue.TagKeyDuplicate",
           "member": "string",
@@ -1677,7 +1581,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Error message",
           "example": "TagKeyDuplicate",
           "member": "string",
@@ -1693,7 +1596,6 @@
       "document": "GetResources request structure.",
       "members": [
         {
-          "default": "",
           "document": "Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource.\nFor example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.\nIf this parameter is passed in, the list of all matching resources will be returned, and the specified `MaxResults` will become invalid.\nValue range of N: 0–9",
           "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
           "member": "string",
@@ -1702,7 +1604,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Tag key and value.\nIf multiple tags are specified, resources bound to all such tags will be queried.\nValue range of N: 0–5\nThere can be up to 10 `TagValues` in each `TagFilters`.",
           "example": "无",
           "member": "TagFilter",
@@ -1711,7 +1612,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The token value of the next page obtained from the response of the previous page.\nLeave it empty for the first request.",
           "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
           "member": "string",
@@ -1720,7 +1620,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of data entries to return per page (up to 200).\nDefault value: 50.",
           "example": "50",
           "member": "uint64",
@@ -1765,7 +1664,6 @@
       "document": "GetTagKeys request structure.",
       "members": [
         {
-          "default": "",
           "document": "The token value of the next page obtained from the response of the previous page.\nLeave it empty for the first request.",
           "example": "无",
           "member": "string",
@@ -1774,7 +1672,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of data entries to return per page (up to 1,000).\nDefault value: 50.",
           "example": "50",
           "member": "uint64",
@@ -1819,7 +1716,6 @@
       "document": "GetTagValues request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag key.\nAll tag values corresponding to the list of tag keys.\nMaximum length: 20",
           "example": "无",
           "member": "string",
@@ -1828,7 +1724,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The token value of the next page obtained from the response of the previous page.\nLeave it empty for the first request.",
           "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
           "member": "string",
@@ -1837,7 +1732,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of data entries to return per page (up to 1,000).\nDefault value: 50.",
           "example": "50",
           "member": "uint64",
@@ -1882,7 +1776,6 @@
       "document": "GetTags request structure.",
       "members": [
         {
-          "default": "",
           "document": "The token value of the next page obtained from the response of the previous page.\nLeave it empty for the first request.",
           "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
           "member": "string",
@@ -1891,7 +1784,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of data entries to return per page (up to 1,000).\nDefault value: 50.",
           "example": "50",
           "member": "uint64",
@@ -1900,7 +1792,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Tag key.\nAll tags corresponding to the list of tag keys.\nMaximum length: 20",
           "example": "无",
           "member": "string",
@@ -1945,7 +1836,6 @@
       "document": "ModifyResourceTags request structure.",
       "members": [
         {
-          "default": "",
           "document": "[Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
           "member": "string",
           "name": "Resource",
@@ -1953,7 +1843,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The tags to be added or modified. If the resource described by `Resource` is not associated with the input tag keys, an association will be added. If the tag keys are already associated, the values corresponding to the associated tag keys will be modified to the input values. This API must contain either `ReplaceTags` or `DeleteTag`, and these two parameters cannot include the same tag keys. This parameter can be omitted, but it cannot be an empty array.",
           "member": "Tag",
           "name": "ReplaceTags",
@@ -1961,7 +1850,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The tags to be disassociated. This API must contain either `ReplaceTags` or `DeleteTag`, and these two parameters cannot include the same tag keys. This parameter can be omitted, but it cannot be an empty array.",
           "member": "TagKeyObject",
           "name": "DeleteTags",
@@ -1987,7 +1875,6 @@
       "document": "ModifyResourcesTagValue request structure.",
       "members": [
         {
-          "default": "",
           "document": "Resource service name (the third segment in the six-segment resource description)",
           "member": "string",
           "name": "ServiceType",
@@ -1995,7 +1882,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource ID array, which can contain up to 50 resources",
           "member": "string",
           "name": "ResourceIds",
@@ -2003,7 +1889,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Tag key",
           "member": "string",
           "name": "TagKey",
@@ -2011,7 +1896,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag value",
           "member": "string",
           "name": "TagValue",
@@ -2019,7 +1903,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource region. If resources have the region attribute, this field is required; otherwise, it is optional.",
           "member": "string",
           "name": "ResourceRegion",
@@ -2027,7 +1910,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource prefix (the part before \"/\" in the last segment in the six-segment resource description), which is optional for COS buckets but required for other Tencent Cloud resources.",
           "member": "string",
           "name": "ResourcePrefix",
@@ -2053,7 +1935,6 @@
       "document": "Project information.",
       "members": [
         {
-          "default": "",
           "document": "Project ID.",
           "example": "1",
           "member": "uint64",
@@ -2063,7 +1944,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project name.",
           "example": "project_1",
           "member": "string",
@@ -2073,7 +1953,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creator UIN.",
           "example": "1",
           "member": "uint64",
@@ -2083,7 +1962,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project description.",
           "example": "info",
           "member": "string",
@@ -2093,7 +1971,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time.",
           "example": "2022-08-03 00:00:00",
           "member": "string",
@@ -2109,7 +1986,6 @@
       "document": "Resource tag key value",
       "members": [
         {
-          "default": "",
           "document": "Unique resource ID\nNote: this field may return null, indicating that no valid values can be obtained",
           "member": "string",
           "name": "ResourceId",
@@ -2118,7 +1994,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Tag key-value pair\nNote: this field may return null, indicating that no valid values can be obtained",
           "member": "Tag",
           "name": "TagKeyValues",
@@ -2133,7 +2008,6 @@
       "document": "Resource tag.",
       "members": [
         {
-          "default": "",
           "document": "The resource's region.\nNote: This field may return null, indicating that no valid value is found.",
           "member": "string",
           "name": "ResourceRegion",
@@ -2142,7 +2016,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Service type.\nNote: This field may return null, indicating that no valid value is found.",
           "member": "string",
           "name": "ServiceType",
@@ -2151,7 +2024,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Resource prefix.\nNote: This field may return null, indicating that no valid value is found.",
           "member": "string",
           "name": "ResourcePrefix",
@@ -2160,7 +2032,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Unique resource ID.\nNote: This field may return null, indicating that no valid value is found.",
           "member": "string",
           "name": "ResourceId",
@@ -2169,7 +2040,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Resource tag.\nNote: This field may return null, indicating that no valid value is found.",
           "member": "Tag",
           "name": "Tags",
@@ -2184,7 +2054,6 @@
       "document": "Resources and their associated tags (key-value pairs).",
       "members": [
         {
-          "default": "",
           "document": "Six-segment resource description. Tencent Cloud uses a six-segment value to describe a resource.\nFor example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.",
           "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
           "member": "string",
@@ -2194,7 +2063,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List of tags associated with the resource",
           "example": "无",
           "member": "Tag",
@@ -2210,7 +2078,6 @@
       "document": "A tag key-value pair.",
       "members": [
         {
-          "default": "",
           "document": "Tag key.",
           "member": "string",
           "name": "TagKey",
@@ -2219,7 +2086,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value.",
           "member": "string",
           "name": "TagValue",
@@ -2234,7 +2100,6 @@
       "document": "Tag filtering array. '**AND**' relation if multiple arrays.",
       "members": [
         {
-          "default": "",
           "document": "Tag key.",
           "member": "string",
           "name": "TagKey",
@@ -2243,7 +2108,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value array. '**OR**' relation if multiple values.",
           "member": "string",
           "name": "TagValue",
@@ -2258,7 +2122,6 @@
       "document": "Tag key object.",
       "members": [
         {
-          "default": "",
           "document": "Tag key.",
           "member": "string",
           "name": "TagKey",
@@ -2273,7 +2136,6 @@
       "document": "Tag key-value pair and resource ID.",
       "members": [
         {
-          "default": "",
           "document": "Tag key.",
           "member": "string",
           "name": "TagKey",
@@ -2282,7 +2144,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value.",
           "member": "string",
           "name": "TagValue",
@@ -2291,7 +2152,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Resource ID.",
           "member": "string",
           "name": "ResourceId",
@@ -2300,7 +2160,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag key MD5 value.",
           "member": "string",
           "name": "TagKeyMd5",
@@ -2309,7 +2168,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value MD5 value.",
           "member": "string",
           "name": "TagValueMd5",
@@ -2318,7 +2176,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Resource type\nNote: this field may return null, indicating that no valid values found.",
           "member": "string",
           "name": "ServiceType",
@@ -2376,7 +2233,6 @@
       "document": "A tag key-value pair and if deletion is allowed.",
       "members": [
         {
-          "default": "",
           "document": "Tag key.",
           "member": "string",
           "name": "TagKey",
@@ -2385,7 +2241,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value.",
           "member": "string",
           "name": "TagValue",
@@ -2394,7 +2249,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "If deletion is allowed.",
           "member": "uint64",
           "name": "CanDelete",
@@ -2409,7 +2263,6 @@
       "document": "UnTagResources request structure.",
       "members": [
         {
-          "default": "",
           "document": "Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource. For more information, see [CAM](https://intl.cloud.tencent.com/document/product/598/67350?from_cn_redirect=1) > Overview > API List > Six-Segment Resource Information.\nFor example: ResourceList.1 = qcs::${ServiceType}:${Region}:uin/${Account}:${ResourcePrefix}/${ResourceId}.\nValue range of N: 0–9",
           "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
           "member": "string",
@@ -2418,7 +2271,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Tag key.\nValue range: 0–9",
           "example": "无",
           "member": "string",
@@ -2454,7 +2306,6 @@
       "document": "UpdateResourceTagValue request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag key associated with the resource.",
           "member": "string",
           "name": "TagKey",
@@ -2462,7 +2313,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Modified tag value.",
           "member": "string",
           "name": "TagValue",
@@ -2470,7 +2320,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "[Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
           "member": "string",
           "name": "Resource",

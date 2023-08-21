@@ -437,7 +437,6 @@
       "document": "Account list information.",
       "members": [
         {
-          "default": "",
           "document": "Unique ID.",
           "member": "uint64",
           "name": "Id",
@@ -446,7 +445,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CWP agent `Uuid`",
           "member": "string",
           "name": "Uuid",
@@ -455,7 +453,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Private IP of server.",
           "member": "string",
           "name": "MachineIp",
@@ -464,7 +461,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server name.",
           "member": "string",
           "name": "MachineName",
@@ -473,7 +469,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Account name.",
           "member": "string",
           "name": "Username",
@@ -482,7 +477,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Account group.",
           "member": "string",
           "name": "Groups",
@@ -491,7 +485,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Account type.\n<li>ORDINARY: ordinary account</li>\n<li>SUPPER: super admin account</li>",
           "member": "string",
           "name": "Privilege",
@@ -500,7 +493,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Account creation time.",
           "member": "datetime",
           "name": "AccountCreateTime",
@@ -509,7 +501,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Account last login time.",
           "member": "datetime",
           "name": "LastLoginTime",
@@ -524,7 +515,6 @@
       "document": "Account statistics.",
       "members": [
         {
-          "default": "",
           "document": "Username.",
           "member": "string",
           "name": "Username",
@@ -533,7 +523,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of servers.",
           "member": "uint64",
           "name": "MachineNum",
@@ -548,7 +537,6 @@
       "document": "AddLoginWhiteList request structure.",
       "members": [
         {
-          "default": "",
           "document": "Whitelist rule",
           "member": "LoginWhiteListsRule",
           "name": "Rules",
@@ -574,7 +562,6 @@
       "document": "AddMachineTag request structure.",
       "members": [
         {
-          "default": "",
           "document": "Server ID",
           "member": "string",
           "name": "Quuid",
@@ -582,7 +569,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag ID",
           "member": "uint64",
           "name": "TagId",
@@ -590,7 +576,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Server region",
           "member": "string",
           "name": "MRegion",
@@ -598,7 +583,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Server type (`CVM` or `BM`)",
           "member": "string",
           "name": "MArea",
@@ -624,7 +608,6 @@
       "document": "Server vulnerability information",
       "members": [
         {
-          "default": "",
           "document": "Vulnerability ID.",
           "member": "uint64",
           "name": "Id",
@@ -633,7 +616,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server IP.",
           "member": "string",
           "name": "MachineIp",
@@ -642,7 +624,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability name.",
           "member": "string",
           "name": "VulName",
@@ -651,7 +632,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability severity level.\n<li>HIGH: high</li>\n<li>MIDDLE: medium</li>\n<li>LOW: low</li>\n<li>NOTICE: notice</li>",
           "member": "string",
           "name": "VulLevel",
@@ -660,7 +640,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last scanned time.",
           "member": "datetime",
           "name": "LastScanTime",
@@ -669,7 +648,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability description.",
           "member": "string",
           "name": "Description",
@@ -678,7 +656,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability category ID.",
           "member": "uint64",
           "name": "VulId",
@@ -687,7 +664,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability status.\n<li>UN_OPERATED: to be processed</li>\n<li>FIXED: fixed</li>",
           "member": "string",
           "name": "VulStatus",
@@ -702,7 +678,6 @@
       "document": "Brute force attack list",
       "members": [
         {
-          "default": "",
           "document": "Event ID.",
           "member": "uint64",
           "name": "Id",
@@ -711,7 +686,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server IP.",
           "member": "string",
           "name": "MachineIp",
@@ -720,7 +694,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Brute force attack event status\n<li>BRUTEATTACK_FAIL_ACCOUNT: brute force attack event - failure (the account exists)</li>\n<li>BRUTEATTACK_FAIL_NOACCOUNT: brute force attack event - failure (the account does not exist)</li>\n<li>BRUTEATTACK_SUCCESS: brute force attack event - success </li>",
           "member": "string",
           "name": "Status",
@@ -729,7 +702,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Username.",
           "member": "string",
           "name": "UserName",
@@ -738,7 +710,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "City ID.",
           "member": "uint64",
           "name": "City",
@@ -747,7 +718,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Country/Region ID.",
           "member": "uint64",
           "name": "Country",
@@ -756,7 +726,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Province/State ID.",
           "member": "uint64",
           "name": "Province",
@@ -765,7 +734,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Source IP.",
           "member": "string",
           "name": "SrcIp",
@@ -774,7 +742,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of attempts.",
           "member": "uint64",
           "name": "Count",
@@ -783,7 +750,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Occurrence time.",
           "member": "datetime",
           "name": "CreateTime",
@@ -792,7 +758,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server name.",
           "member": "string",
           "name": "MachineName",
@@ -801,7 +766,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CWP agent `UUID`.",
           "member": "string",
           "name": "Uuid",
@@ -810,7 +774,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the server enables CWP Pro.",
           "member": "bool",
           "name": "IsProVersion",
@@ -819,7 +782,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the server is banned.",
           "member": "string",
           "name": "BanStatus",
@@ -828,7 +790,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server `UUID`",
           "member": "string",
           "name": "Quuid",
@@ -843,7 +804,6 @@
       "document": "CloseProVersion request structure.",
       "members": [
         {
-          "default": "",
           "document": "Server `Uuid`.\n`InstanceId` for BM or `Uuid` for CVM",
           "member": "string",
           "name": "Quuid",
@@ -869,7 +829,6 @@
       "document": "Component list data.",
       "members": [
         {
-          "default": "",
           "document": "Unique ID.",
           "member": "uint64",
           "name": "Id",
@@ -878,7 +837,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CWP agent `Uuid`.",
           "member": "string",
           "name": "Uuid",
@@ -887,7 +845,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Private IP of server.",
           "member": "string",
           "name": "MachineIp",
@@ -896,7 +853,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server name.",
           "member": "string",
           "name": "MachineName",
@@ -905,7 +861,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Component version number.",
           "member": "string",
           "name": "ComponentVersion",
@@ -914,7 +869,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Component type.\n<li>SYSTEM: system component</li>\n<li>WEB: web component</li>",
           "member": "string",
           "name": "ComponentType",
@@ -923,7 +877,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Component name.",
           "member": "string",
           "name": "ComponentName",
@@ -932,7 +885,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Component detection update time.",
           "member": "datetime",
           "name": "ModifyTime",
@@ -947,7 +899,6 @@
       "document": "Component statistics.",
       "members": [
         {
-          "default": "",
           "document": "Component ID.",
           "member": "uint64",
           "name": "Id",
@@ -956,7 +907,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of servers.",
           "member": "uint64",
           "name": "MachineNum",
@@ -965,7 +915,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Component name.",
           "member": "string",
           "name": "ComponentName",
@@ -974,7 +923,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Component type.\n<li>WEB: web component</li>\n<li>SYSTEM: system component</li>",
           "member": "string",
           "name": "ComponentType",
@@ -983,7 +931,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Component description.",
           "member": "string",
           "name": "Description",
@@ -998,7 +945,6 @@
       "document": "CreateOpenPortTask request structure.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `Uuid`.",
           "member": "string",
           "name": "Uuid",
@@ -1024,7 +970,6 @@
       "document": "CreateProcessTask request structure.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `Uuid`.",
           "member": "string",
           "name": "Uuid",
@@ -1050,7 +995,6 @@
       "document": "CreateUsualLoginPlaces request structure.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `UUID` array.",
           "member": "string",
           "name": "Uuids",
@@ -1058,7 +1002,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Login region information array.",
           "member": "Place",
           "name": "Places",
@@ -1084,7 +1027,6 @@
       "document": "DeleteBruteAttacks request structure.",
       "members": [
         {
-          "default": "",
           "document": "Brute force attack event ID array.",
           "member": "uint64",
           "name": "Ids",
@@ -1110,7 +1052,6 @@
       "document": "DeleteLoginWhiteList request structure.",
       "members": [
         {
-          "default": "",
           "document": "Whitelist ID",
           "member": "uint64",
           "name": "Ids",
@@ -1136,7 +1077,6 @@
       "document": "DeleteMachine request structure.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `Uuid`.",
           "member": "string",
           "name": "Uuid",
@@ -1162,7 +1102,6 @@
       "document": "DeleteMachineTag request structure.",
       "members": [
         {
-          "default": "",
           "document": "Associated tag ID",
           "member": "uint64",
           "name": "Rid",
@@ -1188,7 +1127,6 @@
       "document": "DeleteMaliciousRequests request structure.",
       "members": [
         {
-          "default": "",
           "document": "Malicious request record ID array. Maximum value: 100 entries.",
           "member": "uint64",
           "name": "Ids",
@@ -1214,7 +1152,6 @@
       "document": "DeleteMalwares request structure.",
       "members": [
         {
-          "default": "",
           "document": "Trojan record ID array",
           "member": "uint64",
           "name": "Ids",
@@ -1240,7 +1177,6 @@
       "document": "DeleteNonlocalLoginPlaces request structure.",
       "members": [
         {
-          "default": "",
           "document": "Unusual login location event ID array.",
           "member": "uint64",
           "name": "Ids",
@@ -1266,7 +1202,6 @@
       "document": "DeleteUsualLoginPlaces request structure.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `Uuid`",
           "member": "string",
           "name": "Uuid",
@@ -1274,7 +1209,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Added usual login city ID array",
           "member": "uint64",
           "name": "CityIds",
@@ -1300,7 +1234,6 @@
       "document": "DescribeAccountStatistics request structure.",
       "members": [
         {
-          "default": "10",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -1308,7 +1241,6 @@
           "type": "int"
         },
         {
-          "default": "0",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -1316,7 +1248,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>Username - String - Required: No - Account username</li>",
           "member": "Filter",
           "name": "Filters",
@@ -1356,7 +1287,6 @@
       "document": "DescribeAccounts request structure.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `Uuid`. Either `Username` or `Uuid` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.",
           "member": "string",
           "name": "Uuid",
@@ -1364,7 +1294,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "CWP agent `Uuid`. Either `Username` or `Uuid` must be specified. If `Username` is specified, it indicates to query the information list under the specified username.",
           "member": "string",
           "name": "Username",
@@ -1372,7 +1301,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -1380,7 +1308,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -1388,7 +1315,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>Username - String - Required: No - Account name</li>\n<li>Privilege - String - Required: No - Account name (ORDINARY: ordinary account, SUPPER: super admin account)</li>\n<li>MachineIp - String - Required: No - Private IP of server</li>",
           "member": "Filter",
           "name": "Filters",
@@ -1428,7 +1354,6 @@
       "document": "DescribeAgentVuls request structure.",
       "members": [
         {
-          "default": "",
           "document": "Vulnerability type.\n<li>WEB: web application vulnerability</li>\n<li>SYSTEM: system component vulnerability</li>\n<li>BASELINE: security baseline</li>",
           "member": "string",
           "name": "VulType",
@@ -1436,7 +1361,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Agent `UUID`.",
           "member": "string",
           "name": "Uuid",
@@ -1444,7 +1368,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -1452,7 +1375,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -1460,7 +1382,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, FIXED: fixed)",
           "member": "Filter",
           "name": "Filters",
@@ -1545,7 +1466,6 @@
       "document": "DescribeBruteAttacks request structure.",
       "members": [
         {
-          "default": "",
           "document": "Agent `Uuid`.",
           "member": "string",
           "name": "Uuid",
@@ -1553,7 +1473,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -1561,7 +1480,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>Keywords - String - Required: No - Query keywords</li>\n<li>Status - String - Required: No - Query status (FAILED: brute force attack failed, SUCCESS: brute force attack succeeded)</li>",
           "member": "Filter",
           "name": "Filters",
@@ -1569,7 +1487,6 @@
           "type": "list"
         },
         {
-          "default": "10",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -1609,7 +1526,6 @@
       "document": "DescribeComponentInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Component ID.",
           "member": "uint64",
           "name": "ComponentId",
@@ -1670,7 +1586,6 @@
       "document": "DescribeComponentStatistics request structure.",
       "members": [
         {
-          "default": "",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -1678,7 +1593,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -1686,7 +1600,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\nComponentName - String - Required: No - Component name",
           "member": "Filter",
           "name": "Filters",
@@ -1726,7 +1639,6 @@
       "document": "DescribeComponents request structure.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `Uuid`. Either `Uuid` or `ComponentId` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.",
           "member": "string",
           "name": "Uuid",
@@ -1734,7 +1646,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Component ID. Either `Uuid` or `ComponentId` must be specified. If `ComponentId` is specified, it indicates to query the information list under the specified component.",
           "member": "uint64",
           "name": "ComponentId",
@@ -1742,7 +1653,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -1750,7 +1660,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -1758,7 +1667,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>ComponentVersion - String - Required: No - Component version number</li>\n<li>MachineIp - String - Required: No - Private IP of server</li>",
           "member": "Filter",
           "name": "Filters",
@@ -1798,7 +1706,6 @@
       "document": "DescribeHistoryAccounts request structure.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `Uuid`.",
           "member": "string",
           "name": "Uuid",
@@ -1806,7 +1713,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -1814,7 +1720,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -1822,7 +1727,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>Username - String - Required: No - Account name</li>",
           "member": "Filter",
           "name": "Filters",
@@ -1862,7 +1766,6 @@
       "document": "DescribeImpactedHosts request structure.",
       "members": [
         {
-          "default": "",
           "document": "Vulnerability category ID.",
           "member": "uint64",
           "name": "VulId",
@@ -1870,7 +1773,6 @@
           "type": "int"
         },
         {
-          "default": "10",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -1878,7 +1780,6 @@
           "type": "int"
         },
         {
-          "default": "0",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -1886,7 +1787,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, FIXED: fixed)</li>",
           "member": "Filter",
           "name": "Filters",
@@ -1926,7 +1826,6 @@
       "document": "DescribeLoginWhiteList request structure.",
       "members": [
         {
-          "default": "",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -1934,7 +1833,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -1942,7 +1840,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>Keywords - String - Required: No - Query keywords</li>",
           "member": "Filter",
           "name": "Filters",
@@ -1982,7 +1879,6 @@
       "document": "DescribeMachineInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `Uuid`.",
           "member": "string",
           "name": "Uuid",
@@ -2120,7 +2016,6 @@
       "document": "DescribeMachines request structure.",
       "members": [
         {
-          "default": "",
           "document": "Server type.\n<li>CVM: CVM</li>\n<li>BM: BM</li>",
           "member": "string",
           "name": "MachineType",
@@ -2128,7 +2023,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Server region, such as ap-guangzhou or ap-shanghai",
           "member": "string",
           "name": "MachineRegion",
@@ -2136,7 +2030,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -2144,7 +2037,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -2152,7 +2044,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>Keywords - String - Required: no - Query keywords </li>\n<li>Status - String - Required: no - CWP client status (valid values: OFFLINE, ONLINE, UNINSTALLED)</li>\n<li>Version - String - Required: no - Current CWP version (valid values: PRO_VERSION, BASIC_VERSION)</li>\nEach filter can have only one value but does not support \"OR\" queries with multiple values",
           "member": "Filter",
           "name": "Filters",
@@ -2192,7 +2083,6 @@
       "document": "DescribeMaliciousRequests request structure.",
       "members": [
         {
-          "default": "10",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -2200,7 +2090,6 @@
           "type": "int"
         },
         {
-          "default": "0",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -2208,7 +2097,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, TRUSTED: trusted, UN_TRUSTED: untrusted)</li>\n<li>Domain - String - Required: No - Malicious request domain name</li>\n<li>MachineIp - String - Required: No - Private IP of server</li>",
           "member": "Filter",
           "name": "Filters",
@@ -2216,7 +2104,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "CWP agent `UUID`.",
           "member": "string",
           "name": "Uuid",
@@ -2256,7 +2143,6 @@
       "document": "DescribeMalwares request structure.",
       "members": [
         {
-          "default": "",
           "document": "Agent `Uuid`.",
           "member": "string",
           "name": "Uuid",
@@ -2264,7 +2150,6 @@
           "type": "string"
         },
         {
-          "default": "10",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -2272,7 +2157,6 @@
           "type": "int"
         },
         {
-          "default": "0",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -2280,7 +2164,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>Keywords - String - Required: No - Query keywords</li>\n<li>Status - String - Required: No - Trojan status (UN_OPERATED: not processed, SEGREGATED: isolated, TRUSTED: trusted)</li>\nEach filter supports only one value. Query with multiple values in \"OR\" relationship is not supported for the time being.",
           "member": "Filter",
           "name": "Filters",
@@ -2320,7 +2203,6 @@
       "document": "DescribeNonlocalLoginPlaces request structure.",
       "members": [
         {
-          "default": "",
           "document": "Agent `Uuid`.",
           "member": "string",
           "name": "Uuid",
@@ -2328,7 +2210,6 @@
           "type": "string"
         },
         {
-          "default": "10",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -2336,7 +2217,6 @@
           "type": "int"
         },
         {
-          "default": "0",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -2344,7 +2224,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>Keywords - String - Required: No - Query keywords</li>\n<li>Status - String - Required: No - Login status (NON_LOCAL_LOGIN: unusual login location, NORMAL_LOGIN: intended login)</li>",
           "member": "Filter",
           "name": "Filters",
@@ -2384,7 +2263,6 @@
       "document": "DescribeOpenPortStatistics request structure.",
       "members": [
         {
-          "default": "10",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -2392,7 +2270,6 @@
           "type": "int"
         },
         {
-          "default": "0",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -2400,7 +2277,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>Port - Uint64 - Required: No - Port number</li>",
           "member": "Filter",
           "name": "Filters",
@@ -2440,7 +2316,6 @@
       "document": "DescribeOpenPortTaskStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `Uuid`.",
           "member": "string",
           "name": "Uuid",
@@ -2473,7 +2348,6 @@
       "document": "DescribeOpenPorts request structure.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `Uuid`. Either `Port` or `Uuid` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.",
           "member": "string",
           "name": "Uuid",
@@ -2481,7 +2355,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Open port number. Either `Port` or `Uuid` must be specified. If `Port` is specified, it indicates to query the information list under the specified port.",
           "member": "uint64",
           "name": "Port",
@@ -2489,7 +2362,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -2497,7 +2369,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -2505,7 +2376,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>Port - Uint64 - Required: No - Port number</li>\n<li>ProcessName - String - Required: No - Process name</li>\n<li>MachineIp - String - Required: No - Private IP of server</li>",
           "member": "Filter",
           "name": "Filters",
@@ -2649,7 +2519,6 @@
       "document": "DescribeProcessStatistics request structure.",
       "members": [
         {
-          "default": "",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -2657,7 +2526,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -2665,7 +2533,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>ProcessName - String - Required: No - Process name</li>",
           "member": "Filter",
           "name": "Filters",
@@ -2705,7 +2572,6 @@
       "document": "DescribeProcessTaskStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `Uuid`.",
           "member": "string",
           "name": "Uuid",
@@ -2738,7 +2604,6 @@
       "document": "DescribeProcesses request structure.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `Uuid`. Either `Uuid` or `ProcessName` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.",
           "member": "string",
           "name": "Uuid",
@@ -2746,7 +2611,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Process name. Either `Uuid` or `ProcessName` must be specified. If `ProcessName` is specified, it indicates to query the information list under the specified process.",
           "member": "string",
           "name": "ProcessName",
@@ -2754,7 +2618,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -2762,7 +2625,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -2770,7 +2632,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>ProcessName - String - Required: No - Process name</li>\n<li>MachineIp - String - Required: No - Private IP of server</li>",
           "member": "Filter",
           "name": "Filters",
@@ -2810,7 +2671,6 @@
       "document": "DescribeSecurityDynamics request structure.",
       "members": [
         {
-          "default": "10",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -2818,7 +2678,6 @@
           "type": "int"
         },
         {
-          "default": "0",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -2858,7 +2717,6 @@
       "document": "DescribeSecurityTrends request structure.",
       "members": [
         {
-          "default": "",
           "document": "Start time.",
           "member": "date",
           "name": "BeginDate",
@@ -2866,7 +2724,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "End time.",
           "member": "date",
           "name": "EndDate",
@@ -2962,7 +2819,6 @@
       "document": "DescribeTagMachines request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag ID",
           "member": "uint64",
           "name": "Id",
@@ -2995,7 +2851,6 @@
       "document": "DescribeTags request structure.",
       "members": [
         {
-          "default": "",
           "document": "CVM instance type.\n<li>CVM: CVM</li>\n<li>BM: CPM</li>",
           "member": "string",
           "name": "MachineType",
@@ -3003,7 +2858,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Server region, such as `ap-guangzhou` and `ap-shanghai`",
           "member": "string",
           "name": "MachineRegion",
@@ -3036,7 +2890,6 @@
       "document": "DescribeUsualLoginPlaces request structure.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `UUID`",
           "member": "string",
           "name": "Uuid",
@@ -3069,7 +2922,6 @@
       "document": "DescribeVulInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Vulnerability category ID.",
           "member": "uint64",
           "name": "VulId",
@@ -3203,7 +3055,6 @@
       "document": "DescribeVuls request structure.",
       "members": [
         {
-          "default": "",
           "document": "Vulnerability type.\n<li>WEB: web application vulnerability</li>\n<li>SYSTEM: system component vulnerability</li>\n<li>BASELINE: security baseline</li>",
           "member": "string",
           "name": "VulType",
@@ -3211,7 +3062,6 @@
           "type": "string"
         },
         {
-          "default": "10",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -3219,7 +3069,6 @@
           "type": "int"
         },
         {
-          "default": "0",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -3227,7 +3076,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter.\n<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, FIXED: fixed)\n\nOnly one value is allowed for the `Status` filter, and \"OR\" logic is not supported.",
           "member": "Filter",
           "name": "Filters",
@@ -3267,7 +3115,6 @@
       "document": "DescribeWeeklyReportBruteAttacks request structure.",
       "members": [
         {
-          "default": "",
           "document": "Weekly CWP Pro report start time.",
           "member": "date",
           "name": "BeginDate",
@@ -3275,7 +3122,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -3283,7 +3129,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -3323,7 +3168,6 @@
       "document": "DescribeWeeklyReportInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Weekly CWP Pro report start time.",
           "member": "date",
           "name": "BeginDate",
@@ -3440,7 +3284,6 @@
       "document": "DescribeWeeklyReportMalwares request structure.",
       "members": [
         {
-          "default": "",
           "document": "Weekly CWP Pro report start time.",
           "member": "date",
           "name": "BeginDate",
@@ -3448,7 +3291,6 @@
           "type": "string"
         },
         {
-          "default": "10",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -3456,7 +3298,6 @@
           "type": "int"
         },
         {
-          "default": "0",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -3496,7 +3337,6 @@
       "document": "DescribeWeeklyReportNonlocalLoginPlaces request structure.",
       "members": [
         {
-          "default": "",
           "document": "Weekly CWP Pro report start time.",
           "member": "date",
           "name": "BeginDate",
@@ -3504,7 +3344,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -3512,7 +3351,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -3552,7 +3390,6 @@
       "document": "DescribeWeeklyReportVuls request structure.",
       "members": [
         {
-          "default": "",
           "document": "Weekly CWP Pro report start time.",
           "member": "date",
           "name": "BeginDate",
@@ -3560,7 +3397,6 @@
           "type": "string"
         },
         {
-          "default": "10",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -3568,7 +3404,6 @@
           "type": "int"
         },
         {
-          "default": "0",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -3608,7 +3443,6 @@
       "document": "DescribeWeeklyReports request structure.",
       "members": [
         {
-          "default": "10",
           "document": "Number of results to be returned. Default value: 10. Maximum value: 100.",
           "member": "uint64",
           "name": "Limit",
@@ -3616,7 +3450,6 @@
           "type": "int"
         },
         {
-          "default": "0",
           "document": "Offset. Default value: 0.",
           "member": "uint64",
           "name": "Offset",
@@ -3656,7 +3489,6 @@
       "document": "EditTags request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tag name",
           "member": "string",
           "name": "Name",
@@ -3664,7 +3496,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag ID",
           "member": "uint64",
           "name": "Id",
@@ -3672,7 +3503,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "CVM instance ID",
           "member": "string",
           "name": "Quuids",
@@ -3801,7 +3631,6 @@
       "document": "Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.\n\nIf more than one filter exists, the logical relationship between these filters is `AND`.\nIf multiple values exist in one filter, the logical relationship between these values is `OR`.\n\n* There can be up to 5 filters\n* There can be up to 5 `Values` in the same `Filter`.\n",
       "members": [
         {
-          "default": "",
           "document": "Filter key name.",
           "member": "string",
           "name": "Name",
@@ -3810,7 +3639,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "One or more filter values.",
           "member": "string",
           "name": "Values",
@@ -3825,7 +3653,6 @@
       "document": "Account change history data.",
       "members": [
         {
-          "default": "",
           "document": "Unique ID.",
           "member": "uint64",
           "name": "Id",
@@ -3834,7 +3661,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CWP agent `Uuid`.",
           "member": "string",
           "name": "Uuid",
@@ -3843,7 +3669,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Private IP of server.",
           "member": "string",
           "name": "MachineIp",
@@ -3852,7 +3677,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server name.",
           "member": "string",
           "name": "MachineName",
@@ -3861,7 +3685,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Account name.",
           "member": "string",
           "name": "Username",
@@ -3870,7 +3693,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Account change type.\n<li>CREATE: creates account</li>\n<li>MODIFY: modifies account</li>\n<li>DELETE: deletes account</li>",
           "member": "string",
           "name": "ModifyType",
@@ -3879,7 +3701,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Change time.",
           "member": "datetime",
           "name": "ModifyTime",
@@ -3894,7 +3715,6 @@
       "document": "IgnoreImpactedHosts request structure.",
       "members": [
         {
-          "default": "",
           "document": "Vulnerability ID array.",
           "member": "uint64",
           "name": "Ids",
@@ -3920,7 +3740,6 @@
       "document": "Affected server information",
       "members": [
         {
-          "default": "",
           "document": "Vulnerability ID.",
           "member": "uint64",
           "name": "Id",
@@ -3929,7 +3748,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server IP.",
           "member": "string",
           "name": "MachineIp",
@@ -3938,7 +3756,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server name.",
           "member": "string",
           "name": "MachineName",
@@ -3947,7 +3764,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last detection time.",
           "member": "datetime",
           "name": "LastScanTime",
@@ -3956,7 +3772,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability status.\n<li>UN_OPERATED: to be processed</li>\n<li>SCANING: scanning</li>\n<li>FIXED: fixed</li>",
           "member": "string",
           "name": "VulStatus",
@@ -3965,7 +3780,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CWP agent `UUID`.",
           "member": "string",
           "name": "Uuid",
@@ -3974,7 +3788,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability description.",
           "member": "string",
           "name": "Description",
@@ -3983,7 +3796,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability category ID.",
           "member": "uint64",
           "name": "VulId",
@@ -3992,7 +3804,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is the CWP Pro.",
           "member": "bool",
           "name": "IsProVersion",
@@ -4007,7 +3818,6 @@
       "document": "Login allowlist",
       "members": [
         {
-          "default": "",
           "document": "Record ID",
           "member": "uint64",
           "name": "Id",
@@ -4016,7 +3826,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CWP agent ID",
           "member": "string",
           "name": "Uuid",
@@ -4025,7 +3834,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whitelisted location",
           "member": "Place",
           "name": "Places",
@@ -4034,7 +3842,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whitelisted users (separated by commas)",
           "member": "string",
           "name": "UserName",
@@ -4043,7 +3850,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whitelisted IPs (separated by commas)",
           "member": "string",
           "name": "SrcIp",
@@ -4052,7 +3858,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether this rule is applied to all servers under the current account",
           "member": "bool",
           "name": "IsGlobal",
@@ -4061,7 +3866,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whitelist creation time",
           "member": "datetime",
           "name": "CreateTime",
@@ -4070,7 +3874,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whitelist modification time",
           "member": "datetime",
           "name": "ModifyTime",
@@ -4079,7 +3882,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server name",
           "member": "string",
           "name": "MachineName",
@@ -4088,7 +3890,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server IP",
           "member": "string",
           "name": "HostIp",
@@ -4097,7 +3898,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Start time",
           "member": "string",
           "name": "StartTime",
@@ -4106,7 +3906,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "End time",
           "member": "string",
           "name": "EndTime",
@@ -4121,7 +3920,6 @@
       "document": "Whitelist rule",
       "members": [
         {
-          "default": "",
           "document": "Whitelisted location",
           "member": "Place",
           "name": "Places",
@@ -4130,7 +3928,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whitelisted IPs (separated by commas). This parameter can be an IP range.",
           "member": "string",
           "name": "SrcIp",
@@ -4139,7 +3936,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whitelisted usernames (separated by commas)",
           "member": "string",
           "name": "UserName",
@@ -4148,7 +3944,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether this rule is applied to all servers under the current account",
           "member": "bool",
           "name": "IsGlobal",
@@ -4157,7 +3952,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server for which the allowlist takes effect",
           "member": "string",
           "name": "HostIp",
@@ -4166,7 +3960,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Rule ID, used for rule updating",
           "member": "uint64",
           "name": "Id",
@@ -4175,7 +3968,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Start time",
           "member": "string",
           "name": "StartTime",
@@ -4184,7 +3976,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "End time",
           "member": "string",
           "name": "EndTime",
@@ -4199,7 +3990,6 @@
       "document": "Server list",
       "members": [
         {
-          "default": "",
           "document": "Server name.",
           "member": "string",
           "name": "MachineName",
@@ -4208,7 +3998,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server OS.",
           "member": "string",
           "name": "MachineOs",
@@ -4217,7 +4006,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server status.\n<li>OFFLINE: offline</li>\n<li>ONLINE: online</li>\n<li>MACHINE_STOPPED: shut down</li>",
           "member": "string",
           "name": "MachineStatus",
@@ -4226,7 +4014,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CWP agent `Uuid`. If the agent is offline for a long time, a null character will be returned.",
           "member": "string",
           "name": "Uuid",
@@ -4235,7 +4022,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CVM or BM instance `Uuid`.",
           "member": "string",
           "name": "Quuid",
@@ -4244,7 +4030,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of vulnerabilities.",
           "member": "int64",
           "name": "VulNum",
@@ -4253,7 +4038,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server IP.",
           "member": "string",
           "name": "MachineIp",
@@ -4262,7 +4046,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the server has enabled CWP Pro.\n<li>true: yes</li>\n<li>false: no</li>",
           "member": "bool",
           "name": "IsProVersion",
@@ -4271,7 +4054,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Public IP of server.",
           "member": "string",
           "name": "MachineWanIp",
@@ -4280,7 +4062,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server status.\n<li>POSTPAY: post-paid, i.e., pay-as-you-go </li>",
           "member": "string",
           "name": "PayMode",
@@ -4289,7 +4070,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of trojans.",
           "member": "int64",
           "name": "MalwareNum",
@@ -4298,7 +4078,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag information",
           "member": "MachineTag",
           "name": "Tag",
@@ -4307,7 +4086,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of baseline risks.",
           "member": "int64",
           "name": "BaselineNum",
@@ -4316,7 +4094,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of network risks.",
           "member": "int64",
           "name": "CyberAttackNum",
@@ -4325,7 +4102,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Risk status.\n<li>SAFE: safe</li>\n<li>RISK: at risk</li>\n<li>UNKNOWN: unknown</li>",
           "member": "string",
           "name": "SecurityStatus",
@@ -4334,7 +4110,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of intrusions",
           "member": "int64",
           "name": "InvasionNum",
@@ -4343,7 +4118,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region information",
           "member": "RegionInfo",
           "name": "RegionInfo",
@@ -4358,7 +4132,6 @@
       "document": "Server tag information",
       "members": [
         {
-          "default": "",
           "document": "Associated tag ID",
           "member": "int64",
           "name": "Rid",
@@ -4367,7 +4140,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag name",
           "member": "string",
           "name": "Name",
@@ -4376,7 +4148,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag ID",
           "member": "uint64",
           "name": "TagId",
@@ -4391,7 +4162,6 @@
       "document": "Malicious request data.",
       "members": [
         {
-          "default": "",
           "document": "Record ID.",
           "member": "uint64",
           "name": "Id",
@@ -4400,7 +4170,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CWP agent `UUID`.",
           "member": "string",
           "name": "Uuid",
@@ -4409,7 +4178,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Private IP of server.",
           "member": "string",
           "name": "MachineIp",
@@ -4418,7 +4186,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server name.",
           "member": "string",
           "name": "MachineName",
@@ -4427,7 +4194,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Malicious request domain name.",
           "member": "string",
           "name": "Domain",
@@ -4436,7 +4202,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of malicious requests.",
           "member": "uint64",
           "name": "Count",
@@ -4445,7 +4210,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Process name.",
           "member": "string",
           "name": "ProcessName",
@@ -4454,7 +4218,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Record status.\n<li>UN_OPERATED: to be processed</li>\n<li>TRUSTED: trusted</li>\n<li>UN_TRUSTED: untrusted</li>",
           "member": "string",
           "name": "Status",
@@ -4463,7 +4226,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Malicious request domain name description.",
           "member": "string",
           "name": "Description",
@@ -4472,7 +4234,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Reference address.",
           "member": "string",
           "name": "Reference",
@@ -4481,7 +4242,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Discovery time.",
           "member": "datetime",
           "name": "CreateTime",
@@ -4490,7 +4250,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Record merge time.",
           "member": "datetime",
           "name": "MergeTime",
@@ -4499,7 +4258,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Process MD5\nValue.",
           "member": "string",
           "name": "ProcessMd5",
@@ -4508,7 +4266,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Executed command line.",
           "member": "string",
           "name": "CmdLine",
@@ -4517,7 +4274,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Process `PID`.",
           "member": "uint64",
           "name": "Pid",
@@ -4532,7 +4288,6 @@
       "document": "Trojan information",
       "members": [
         {
-          "default": "",
           "document": "Event ID.",
           "member": "uint64",
           "name": "Id",
@@ -4541,7 +4296,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server IP.",
           "member": "string",
           "name": "MachineIp",
@@ -4550,7 +4304,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Current trojan status.\n<li>UN_OPERATED: not processed</li><li>SEGREGATED: isolated</li><li>TRUSTED: trusted</li>\n<li>SEPARATING: isolating</li><li>RECOVERING: recovering</li>",
           "member": "string",
           "name": "Status",
@@ -4559,7 +4312,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Trojan path.",
           "member": "string",
           "name": "FilePath",
@@ -4568,7 +4320,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Trojan description.",
           "member": "string",
           "name": "Description",
@@ -4577,7 +4328,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server name.",
           "member": "string",
           "name": "MachineName",
@@ -4586,7 +4336,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Trojan file creation time.",
           "member": "datetime",
           "name": "FileCreateTime",
@@ -4595,7 +4344,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Trojan file modification time.",
           "member": "datetime_iso",
           "name": "ModifyTime",
@@ -4604,7 +4352,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CWP agent `UUID`.",
           "member": "string",
           "name": "Uuid",
@@ -4619,7 +4366,6 @@
       "document": "MisAlarmNonlocalLoginPlaces request structure.",
       "members": [
         {
-          "default": "",
           "document": "Unusual login location event ID array.",
           "member": "uint64",
           "name": "Ids",
@@ -4645,7 +4391,6 @@
       "document": "ModifyAlarmAttribute request structure.",
       "members": [
         {
-          "default": "",
           "document": "Alarm item.\n<li>Offline: CWP is offline</li>\n<li>Malware: trojan event</li>\n<li>NonlocalLogin: unusual login location discovered</li>\n<li>CrackSuccess: brute force attack succeeded</li>",
           "member": "string",
           "name": "Attribute",
@@ -4653,7 +4398,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Alarm item attributes.\n<li>CLOSE: disabled</li>\n<li>OPEN: enabled</li>",
           "member": "string",
           "name": "Value",
@@ -4679,7 +4423,6 @@
       "document": "ModifyAutoOpenProVersionConfig request structure.",
       "members": [
         {
-          "default": "",
           "document": "Auto-Activation status.\n<li>CLOSE: disabled</li>\n<li>OPEN: enabled</li>",
           "member": "string",
           "name": "Status",
@@ -4705,7 +4448,6 @@
       "document": "ModifyLoginWhiteList request structure.",
       "members": [
         {
-          "default": "",
           "document": "Whitelist rule",
           "member": "LoginWhiteListsRule",
           "name": "Rules",
@@ -4731,7 +4473,6 @@
       "document": "ModifyProVersionRenewFlag request structure.",
       "members": [
         {
-          "default": "",
           "document": "Auto-renewal flag. Valid values:\n<li>NOTIFY_AND_AUTO_RENEW: notifies of expiration and auto-renews</li>\n<li>NOTIFY_AND_MANUAL_RENEW: notifies of expiration but does not auto-renew</li>\n<li>DISABLE_NOTIFY_AND_MANUAL_RENEW: does not notify of expiration or auto-renew</li>",
           "member": "string",
           "name": "RenewFlag",
@@ -4739,7 +4480,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Unique server ID, corresponding to `uuid` for CVM or `instanceId` for BM.",
           "member": "string",
           "name": "Quuid",
@@ -4765,7 +4505,6 @@
       "document": "Unusual login location",
       "members": [
         {
-          "default": "",
           "document": "Event ID.",
           "member": "uint64",
           "name": "Id",
@@ -4774,7 +4513,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server IP.",
           "member": "string",
           "name": "MachineIp",
@@ -4783,7 +4521,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Login status\n<li>NON_LOCAL_LOGIN: unusual login location</li>\n<li>NORMAL_LOGIN: intended login</li>",
           "member": "string",
           "name": "Status",
@@ -4792,7 +4529,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Username.",
           "member": "string",
           "name": "UserName",
@@ -4801,7 +4537,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "City ID.",
           "member": "uint64",
           "name": "City",
@@ -4810,7 +4545,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Country/Region ID.",
           "member": "uint64",
           "name": "Country",
@@ -4819,7 +4553,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Province/State ID.",
           "member": "uint64",
           "name": "Province",
@@ -4828,7 +4561,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Login IP.",
           "member": "string",
           "name": "SrcIp",
@@ -4837,7 +4569,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server name.",
           "member": "string",
           "name": "MachineName",
@@ -4846,7 +4577,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Login time.",
           "member": "datetime",
           "name": "LoginTime",
@@ -4855,7 +4585,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CWP agent `Uuid`.",
           "member": "string",
           "name": "Uuid",
@@ -4870,7 +4599,6 @@
       "document": "Port list",
       "members": [
         {
-          "default": "",
           "document": "Unique ID.",
           "member": "uint64",
           "name": "Id",
@@ -4879,7 +4607,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CWP agent `UUID`.",
           "member": "string",
           "name": "Uuid",
@@ -4888,7 +4615,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Open port number.",
           "member": "uint64",
           "name": "Port",
@@ -4897,7 +4623,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server IP.",
           "member": "string",
           "name": "MachineIp",
@@ -4906,7 +4631,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server name.",
           "member": "string",
           "name": "MachineName",
@@ -4915,7 +4639,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Process name corresponding to port.",
           "member": "string",
           "name": "ProcessName",
@@ -4924,7 +4647,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Process `Pid` corresponding to port.",
           "member": "uint64",
           "name": "Pid",
@@ -4933,7 +4655,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Record creation time.",
           "member": "datetime",
           "name": "CreateTime",
@@ -4942,7 +4663,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Record update time.",
           "member": "datetime",
           "name": "ModifyTime",
@@ -4957,7 +4677,6 @@
       "document": "Port statistics list",
       "members": [
         {
-          "default": "",
           "document": "Port number",
           "member": "uint64",
           "name": "Port",
@@ -4966,7 +4685,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of servers",
           "member": "uint64",
           "name": "MachineNum",
@@ -4981,7 +4699,6 @@
       "document": "OpenProVersion request structure.",
       "members": [
         {
-          "default": "",
           "document": "Server type.\n<li>CVM: CVM</li>\n<li>BM: BM</li>",
           "member": "string",
           "name": "MachineType",
@@ -4989,7 +4706,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Server region\nExamples: ap-guangzhou, ap-shanghai",
           "member": "string",
           "name": "MachineRegion",
@@ -4997,7 +4713,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Server `Uuid` array.\n`InstanceId` for BM or `Uuid` for CVM",
           "member": "string",
           "name": "Quuids",
@@ -5005,7 +4720,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Event ID.",
           "member": "uint64",
           "name": "ActivityId",
@@ -5031,7 +4745,6 @@
       "document": "Login location information",
       "members": [
         {
-          "default": "",
           "document": "City ID.",
           "member": "uint64",
           "name": "CityId",
@@ -5040,7 +4753,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Province/State ID.",
           "member": "uint64",
           "name": "ProvinceId",
@@ -5049,7 +4761,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Country/Region ID. Currently, only `1` (Mainland China) is supported.",
           "member": "uint64",
           "name": "CountryId",
@@ -5064,7 +4775,6 @@
       "document": "Process information.",
       "members": [
         {
-          "default": "",
           "document": "Unique ID.",
           "member": "uint64",
           "name": "Id",
@@ -5073,7 +4783,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CWP agent `UUID`.",
           "member": "string",
           "name": "Uuid",
@@ -5082,7 +4791,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Private IP of server.",
           "member": "string",
           "name": "MachineIp",
@@ -5091,7 +4799,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server name.",
           "member": "string",
           "name": "MachineName",
@@ -5100,7 +4807,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Process `Pid`.",
           "member": "uint64",
           "name": "Pid",
@@ -5109,7 +4815,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Process `Ppid`.",
           "member": "uint64",
           "name": "Ppid",
@@ -5118,7 +4823,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Process name.",
           "member": "string",
           "name": "ProcessName",
@@ -5127,7 +4831,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Process username.",
           "member": "string",
           "name": "Username",
@@ -5136,7 +4839,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "OS.\n<li>WIN32: Windows 32-bit</li>\n<li>WIN64: Windows 64-bit</li>\n<li>LINUX32: Linux 32-bit</li>\n<li>LINUX64: Linux 64-bit</li>",
           "member": "string",
           "name": "Platform",
@@ -5145,7 +4847,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Process path.",
           "member": "string",
           "name": "FullPath",
@@ -5154,7 +4855,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time.",
           "member": "datetime",
           "name": "CreateTime",
@@ -5169,7 +4869,6 @@
       "document": "Process statistics.",
       "members": [
         {
-          "default": "",
           "document": "Process name.",
           "member": "string",
           "name": "ProcessName",
@@ -5178,7 +4877,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of servers.",
           "member": "uint64",
           "name": "MachineNum",
@@ -5193,7 +4891,6 @@
       "document": "RecoverMalwares request structure.",
       "members": [
         {
-          "default": "",
           "document": "Trojan ID array. Up to 200 IDs can be deleted at a time",
           "member": "uint64",
           "name": "Ids",
@@ -5233,7 +4930,6 @@
       "document": "Region information",
       "members": [
         {
-          "default": "",
           "document": "Region, such as `ap-guangzhou`, `ap-shanghai` and `ap-beijing`",
           "member": "string",
           "name": "Region",
@@ -5242,7 +4938,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region name, such as `South China (Guangzhou)`, `East China (Shanghai)`, and `North China (Beijing)`",
           "member": "string",
           "name": "RegionName",
@@ -5251,7 +4946,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region ID",
           "member": "uint64",
           "name": "RegionId",
@@ -5260,7 +4954,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region code, such as `gz`, `sh`, and `bj`",
           "member": "string",
           "name": "RegionCode",
@@ -5275,7 +4968,6 @@
       "document": "RescanImpactedHost request structure.",
       "members": [
         {
-          "default": "",
           "document": "Vulnerability ID.",
           "member": "uint64",
           "name": "Id",
@@ -5301,7 +4993,6 @@
       "document": "Security event message data.",
       "members": [
         {
-          "default": "",
           "document": "CWP agent `UUID`.",
           "member": "string",
           "name": "Uuid",
@@ -5310,7 +5001,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Security event occurrence time.",
           "member": "datetime",
           "name": "EventTime",
@@ -5319,7 +5009,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Security event type.\n<li>MALWARE: trojan event</li>\n<li>NON_LOCAL_LOGIN: unusual login location</li>\n<li>BRUTEATTACK_SUCCESS: brute force attack succeeded</li>\n<li>VUL: vulnerability</li>\n<li>BASELINE: security baseline</li>",
           "member": "string",
           "name": "EventType",
@@ -5328,7 +5017,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Security event message.",
           "member": "string",
           "name": "Message",
@@ -5337,7 +5025,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Security event level.\n<li>RISK: severe</li>\n<li>HIGH: high</li>\n<li>NORMAL: medium</li>\n<li>LOW: low</li>",
           "member": "string",
           "name": "SecurityLevel",
@@ -5352,7 +5039,6 @@
       "document": "Security trend statistics.",
       "members": [
         {
-          "default": "",
           "document": "Event time.",
           "member": "date",
           "name": "Date",
@@ -5361,7 +5047,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of events.",
           "member": "uint64",
           "name": "EventNum",
@@ -5376,7 +5061,6 @@
       "document": "SeparateMalwares request structure.",
       "members": [
         {
-          "default": "",
           "document": "Trojan event ID array.",
           "member": "uint64",
           "name": "Ids",
@@ -5416,7 +5100,6 @@
       "document": "Tag information",
       "members": [
         {
-          "default": "",
           "document": "Tag ID",
           "member": "uint64",
           "name": "Id",
@@ -5425,7 +5108,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag name",
           "member": "string",
           "name": "Name",
@@ -5434,7 +5116,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of servers",
           "member": "uint64",
           "name": "Count",
@@ -5449,7 +5130,6 @@
       "document": "Tagged server information",
       "members": [
         {
-          "default": "",
           "document": "ID",
           "member": "string",
           "name": "Id",
@@ -5458,7 +5138,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server ID",
           "member": "string",
           "name": "Quuid",
@@ -5467,7 +5146,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server name",
           "member": "string",
           "name": "MachineName",
@@ -5476,7 +5154,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Private IP of server",
           "member": "string",
           "name": "MachineIp",
@@ -5485,7 +5162,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Public IP of server",
           "member": "string",
           "name": "MachineWanIp",
@@ -5494,7 +5170,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server region",
           "member": "string",
           "name": "MachineRegion",
@@ -5503,7 +5178,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server region type",
           "member": "string",
           "name": "MachineType",
@@ -5518,7 +5192,6 @@
       "document": "TrustMaliciousRequest request structure.",
       "members": [
         {
-          "default": "",
           "document": "Malicious request record ID.",
           "member": "uint64",
           "name": "Id",
@@ -5544,7 +5217,6 @@
       "document": "TrustMalwares request structure.",
       "members": [
         {
-          "default": "",
           "document": "Trojan ID array.",
           "member": "uint64",
           "name": "Ids",
@@ -5570,7 +5242,6 @@
       "document": "UntrustMaliciousRequest request structure.",
       "members": [
         {
-          "default": "",
           "document": "Trusted record ID.",
           "member": "uint64",
           "name": "Id",
@@ -5596,7 +5267,6 @@
       "document": "UntrustMalwares request structure.",
       "members": [
         {
-          "default": "",
           "document": "Trojan event ID array. Up to 200 IDs can be processed at a time.",
           "member": "uint64",
           "name": "Ids",
@@ -5622,7 +5292,6 @@
       "document": "Usual login location",
       "members": [
         {
-          "default": "",
           "document": "ID.",
           "member": "uint64",
           "name": "Id",
@@ -5631,7 +5300,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CWP agent `UUID`.",
           "member": "string",
           "name": "Uuid",
@@ -5640,7 +5308,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Country/Region ID.",
           "member": "uint64",
           "name": "CountryId",
@@ -5649,7 +5316,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Province/State ID.",
           "member": "uint64",
           "name": "ProvinceId",
@@ -5658,7 +5324,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "City ID.",
           "member": "uint64",
           "name": "CityId",
@@ -5673,7 +5338,6 @@
       "document": "Vulnerability list data",
       "members": [
         {
-          "default": "",
           "document": "Vulnerability category ID",
           "member": "uint64",
           "name": "VulId",
@@ -5682,7 +5346,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability name",
           "member": "string",
           "name": "VulName",
@@ -5691,7 +5354,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability severity level:\nHIGH: high\nMIDDLE: medium\nLOW: low\nNOTICE: notice",
           "member": "string",
           "name": "VulLevel",
@@ -5700,7 +5362,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last scanned time",
           "member": "datetime",
           "name": "LastScanTime",
@@ -5709,7 +5370,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of affected servers",
           "member": "uint64",
           "name": "ImpactedHostNum",
@@ -5718,7 +5378,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability status\n* UN_OPERATED: to be processed\n* FIXED: fixed",
           "member": "string",
           "name": "VulStatus",
@@ -5733,7 +5392,6 @@
       "document": "Weekly report list.",
       "members": [
         {
-          "default": "",
           "document": "Weekly report start time.",
           "member": "date",
           "name": "BeginDate",
@@ -5742,7 +5400,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Weekly report end time.",
           "member": "date",
           "name": "EndDate",
@@ -5757,7 +5414,6 @@
       "document": "Brute force attack data in weekly CWP Pro report.",
       "members": [
         {
-          "default": "",
           "document": "Server IP.",
           "member": "string",
           "name": "MachineIp",
@@ -5766,7 +5422,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Hacked username.",
           "member": "string",
           "name": "Username",
@@ -5775,7 +5430,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Source IP.",
           "member": "string",
           "name": "SrcIp",
@@ -5784,7 +5438,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of attempts.",
           "member": "uint64",
           "name": "Count",
@@ -5793,7 +5446,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Attack time.",
           "member": "datetime",
           "name": "AttackTime",
@@ -5808,7 +5460,6 @@
       "document": "Trojan data in weekly CWP Pro report.",
       "members": [
         {
-          "default": "",
           "document": "Server IP.",
           "member": "string",
           "name": "MachineIp",
@@ -5817,7 +5468,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Trojan file path.",
           "member": "string",
           "name": "FilePath",
@@ -5826,7 +5476,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Trojan file MD5 value.",
           "member": "string",
           "name": "Md5",
@@ -5835,7 +5484,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Trojan discovery time.",
           "member": "datetime",
           "name": "FindTime",
@@ -5844,7 +5492,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Current trojan status.\n<li>UN_OPERATED: not processed</li>\n<li>SEGREGATED: isolated</li>\n<li>TRUSTED: trusted</li>\n<li>SEPARATING: isolating</li>\n<li>RECOVERING: recovering</li>",
           "member": "string",
           "name": "Status",
@@ -5859,7 +5506,6 @@
       "document": "Unusual login location data in weekly CWP Pro report",
       "members": [
         {
-          "default": "",
           "document": "Server IP.",
           "member": "string",
           "name": "MachineIp",
@@ -5868,7 +5514,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Username.",
           "member": "string",
           "name": "Username",
@@ -5877,7 +5522,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Source IP.",
           "member": "string",
           "name": "SrcIp",
@@ -5886,7 +5530,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Country/Region ID.",
           "member": "uint64",
           "name": "Country",
@@ -5895,7 +5538,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Province/State ID.",
           "member": "uint64",
           "name": "Province",
@@ -5904,7 +5546,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "City ID.",
           "member": "uint64",
           "name": "City",
@@ -5913,7 +5554,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Login time.",
           "member": "datetime",
           "name": "LoginTime",
@@ -5928,7 +5568,6 @@
       "document": "Vulnerability data in weekly CWP Pro report.",
       "members": [
         {
-          "default": "",
           "document": "Private IP of server.",
           "member": "string",
           "name": "MachineIp",
@@ -5937,7 +5576,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability name.",
           "member": "string",
           "name": "VulName",
@@ -5946,7 +5584,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability type.\n<li> WEB: web vulnerability</li>\n<li> SYSTEM: system component vulnerability</li>\n<li> BASELINE: security baseline</li>",
           "member": "string",
           "name": "VulType",
@@ -5955,7 +5592,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability description.",
           "member": "string",
           "name": "Description",
@@ -5964,7 +5600,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Vulnerability status.\n<li> UN_OPERATED: to be processed</li>\n<li> SCANING: scanning</li>\n<li> FIXED: fixed</li>",
           "member": "string",
           "name": "VulStatus",
@@ -5973,7 +5608,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last scanned time.",
           "member": "datetime",
           "name": "LastScanTime",

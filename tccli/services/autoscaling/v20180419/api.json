@@ -527,7 +527,6 @@
       "document": "Information of the instances related to the current scaling activity.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "member": "string",
@@ -537,7 +536,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status of the instance in the scaling activity. Value range:\n<li>INIT: initializing\n<li>RUNNING: running\n<li>SUCCESSFUL: succeeded\n<li>FAILED: failed",
           "member": "string",
@@ -599,7 +597,6 @@
       "document": "AttachInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group ID",
           "member": "string",
@@ -608,7 +605,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of CVM instance IDs",
           "member": "string",
@@ -643,7 +639,6 @@
       "document": "AttachLoadBalancers request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Scaling group ID",
           "example": "asg-12wjuh0s",
@@ -653,7 +648,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of classic CLB IDs. Up to 20 classic CLBs can be bound to a security group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
           "example": "[\"lb-crhgatrf\\n\"]",
@@ -663,7 +657,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of application CLBs. Up to 100 application CLBs can be bound to a scaling group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
           "example": "无",
@@ -701,7 +694,6 @@
       "document": "Suggestions for scaling group configurations.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Scaling group ID",
           "example": "asg-pc2oqu2z",
@@ -712,7 +704,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Scaling group warning level. Valid values:<br>\n<li>NORMAL: Normal<br>\n<li>WARNING: Warning<br>\n<li>CRITICAL: Serious warning<br>",
           "example": "NORMAL",
@@ -723,7 +714,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A collection of suggestions for scaling group configurations.",
           "example": "无",
@@ -740,7 +730,6 @@
       "document": "Auto scaling group",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group ID",
           "example": "asg-30wif85u",
@@ -751,7 +740,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group name",
           "example": "test-asg",
@@ -762,7 +750,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Current scaling group status. Valid values:<br>\n<li>NORMAL: Normal<br>\n<li>CVM_ABNORMAL: Abnormal launch configuration<br>\n<li>LB_ABNORMAL: Abnormal load balancer<br>\n<li>LB_LISTENER_ABNORMAL: Abnormal load balancer listener<br>\n<li>LB_LOCATION_ABNORMAL: Abnormal forwarding configuration of the load balancer listener<br>\n<li>VPC_ABNORMAL: VPC network error<br>\n<li>SUBNET_ABNORMAL: VPC subnet exception<br>\n<li>INSUFFICIENT_BALANCE: Insufficient account balance<br>\n<li>LB_BACKEND_REGION_NOT_MATCH: The CLB backend and the AS service are not in the same region.<br>\n<li>LB_BACKEND_VPC_NOT_MATCH: The CLB instance and the scaling group are not in the same VPC.",
           "example": "NORMAL",
@@ -773,7 +760,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time in UTC format",
           "example": "2021-05-31T12:38:35Z",
@@ -784,7 +770,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Default cooldown period in seconds",
           "example": "300",
@@ -795,7 +780,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Desired number of instances",
           "example": "0",
@@ -806,7 +790,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Enabled status. Value range: `ENABLED`, `DISABLED`",
           "example": "ENABLED",
@@ -817,7 +800,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of application load balancers",
           "example": "[]",
@@ -828,7 +810,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of instances",
           "example": "0",
@@ -839,7 +820,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of instances in `IN_SERVICE` status",
           "example": "0",
@@ -850,7 +830,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Launch configuration ID",
           "example": "asc-966b7fk2",
@@ -861,7 +840,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Launch configuration name",
           "example": "test-lc",
@@ -872,7 +850,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of Classic load balancer IDs",
           "example": "[]",
@@ -883,7 +860,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of instances",
           "example": "10",
@@ -894,7 +870,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum number of instances",
           "example": "0",
@@ -905,7 +880,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID",
           "example": "0",
@@ -916,7 +890,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of subnet IDs",
           "example": "[\"subnet-rdm629r2\"]",
@@ -927,7 +900,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Termination policy",
           "example": "OLDEST_INSTANCE",
@@ -938,7 +910,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID",
           "example": "vpc-h3cd5td5",
@@ -949,7 +920,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of availability zones",
           "example": "[]",
@@ -960,7 +930,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Retry policy",
           "example": "NO_RETRY",
@@ -971,7 +940,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the auto scaling group is performing a scaling activity. `IN_ACTIVITY` indicates yes, and `NOT_IN_ACTIVITY` indicates no.",
           "example": "IN_ACTIVITY",
@@ -982,7 +950,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of auto scaling group tags",
           "example": "[]",
@@ -993,7 +960,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service settings",
           "example": "null",
@@ -1004,7 +970,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of IPv6 addresses that an instance has.",
           "example": "0",
@@ -1015,7 +980,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The policy applied when there are multiple availability zones/subnets\n<br><li> PRIORITY: when creating instances, choose the availability zone/subnet based on the order in the list from top to bottom. If the first instance is successfully created in the availability zone/subnet of the highest priority, all instances will be created in this availability zone/subnet.\n<br><li> EQUALITY: chooses the availability zone/subnet with the least instances for scale-out. This gives each availability zone/subnet an opportunity for scale-out and disperses the instances created during multiple scale-out operations across different availability zones/subnets.",
           "example": "PRIORITY",
@@ -1026,7 +990,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Health check type of instances in a scaling group.<br><li>CVM: confirm whether an instance is healthy based on the network status. If the pinged instance is unreachable, the instance will be considered unhealthy. For more information, see [Instance Health Check](https://intl.cloud.tencent.com/document/product/377/8553?from_cn_redirect=1)<br><li>CLB: confirm whether an instance is healthy based on the CLB health check status. For more information, see [Health Check Overview](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1).",
           "example": "CLB",
@@ -1037,7 +1000,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Grace period of the CLB health check",
           "example": "300",
@@ -1048,7 +1010,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies how to assign instances. Valid values: `LAUNCH_CONFIGURATION` and `SPOT_MIXED`.\n<br><li>`LAUNCH_CONFIGURATION`: the launch configuration mode.\n<br><li>`SPOT_MIXED`: a mixed instance mode. Currently, this mode is supported only when the launch configuration takes the pay-as-you-go billing mode. With this mode, the scaling group can provision a combination of pay-as-you-go instances and spot instances to meet the configured capacity. Note that the billing mode of the associated launch configuration cannot be modified when this mode is used.",
           "example": "LAUNCH_CONFIGURATION",
@@ -1059,7 +1020,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies how to assign pay-as-you-go instances and spot instances.\nA valid value will be returned only when `InstanceAllocationPolicy` is set to `SPOT_MIXED`.",
           "example": "无",
@@ -1070,7 +1030,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Indicates whether the capacity rebalancing feature is enabled. This parameter is only valid for spot instances in the scaling group. Valid values:\n<br><li>`TRUE`: yes. Before the spot instances in the scaling group are about to be automatically repossessed, AS will terminate them. The scale-in hook (if configured) will take effect before the termination. After the termination process starts, AS will asynchronously initiate a scaling activity to meet the desired capacity.\n<br><li>`FALSE`: no. AS will add instances to meet the desired capacity only after the spot instances are terminated.",
           "example": "false",
@@ -1087,7 +1046,6 @@
       "document": "Brief information of a scaling group.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Scaling group ID",
           "member": "string",
@@ -1097,7 +1055,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group name.",
           "member": "string",
@@ -1113,7 +1070,6 @@
       "document": "AS event notification",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group ID.",
           "example": "asg-19kw47wk",
@@ -1124,7 +1080,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of user group IDs.",
           "example": "[\"12529\"]",
@@ -1135,7 +1090,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of notification events.",
           "example": "[\"SCALE_OUT_SUCCESSFUL\"]",
@@ -1146,7 +1100,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Event notification ID.",
           "example": "asn-6r4waxc4",
@@ -1157,7 +1110,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification receiver type.",
           "example": "USER_GROUP",
@@ -1168,7 +1120,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMQ queue name.",
           "example": "test-queue",
@@ -1179,7 +1130,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMQ topic name.",
           "example": "test-topic",
@@ -1259,7 +1209,6 @@
       "document": "CompleteLifecycleAction request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Lifecycle hook ID",
           "member": "string",
@@ -1268,7 +1217,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Result of the lifecycle action. Value range: \"CONTINUE\", \"ABANDON\"",
           "member": "string",
@@ -1277,7 +1225,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID. Either \"InstanceId\" or \"LifecycleActionToken\" must be specified",
           "member": "string",
@@ -1286,7 +1233,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Either \"InstanceId\" or \"LifecycleActionToken\" must be specified",
           "member": "string",
@@ -1313,7 +1259,6 @@
       "document": "CreateAutoScalingGroupFromInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The scaling group name. It must be unique under your account. The name can only contain letters, numbers, underscore, hyphen “-” and periods. It cannot exceed 55 bytes.",
           "example": "asgname",
@@ -1323,7 +1268,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The instance ID.",
           "example": "ins-aaaabbbb",
@@ -1333,7 +1277,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The minimum number of instances. Value range: 0-2000.",
           "example": "1",
@@ -1343,7 +1286,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of instances. Value range: 0-2000.",
           "example": "1",
@@ -1353,7 +1295,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The desired capacity. Its value must be greater than the minimum and smaller than the maximum.",
           "example": "1",
@@ -1363,7 +1304,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to inherit the instance tag. Default value: False",
           "example": "False",
@@ -1894,7 +1834,6 @@
       "document": "CreateLifecycleHook request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group ID",
           "example": "asg-8fbozqja",
@@ -1904,7 +1843,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Lifecycle hook name, which can contain Chinese characters, letters, numbers, underscores (_), hyphens (-), and periods (.) with a maximum length of 128 bytes.",
           "example": "one-hook-default",
@@ -1914,7 +1852,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Scenario for the lifecycle hook. Valid values: \"INSTANCE_LAUNCHING\" and \"INSTANCE_TERMINATING\"",
           "example": "INSTANCE_LAUNCHING",
@@ -1924,7 +1861,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Defined actions when lifecycle hook times out. Valid values: \"CONTINUE\" and \"ABANDON\". Default value: \"CONTINUE\"",
           "example": "CONTINUE",
@@ -1934,7 +1870,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7200. Default value: 300",
           "example": "300",
@@ -1944,7 +1879,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Additional information of a notification that Auto Scaling sends to targets. This parameter is set when you configure a notification (default value: \"\"). Up to 1024 characters are allowed.",
           "example": "\"\"",
@@ -1954,7 +1888,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification target. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.",
           "example": "无",
@@ -1964,7 +1897,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. ",
           "example": "NORMAL",
@@ -1974,7 +1906,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remote command execution object. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.",
           "example": "无",
@@ -2010,7 +1941,6 @@
       "document": "CreateNotificationConfiguration request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group ID.",
           "example": "asg-12wjuh0s",
@@ -2020,7 +1950,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification type, i.e., the set of types of notifications to be subscribed to. Value range:\n<li>SCALE_OUT_SUCCESSFUL: scale-out succeeded</li>\n<li>SCALE_OUT_FAILED: scale-out failed</li>\n<li>SCALE_IN_SUCCESSFUL: scale-in succeeded</li>\n<li>SCALE_IN_FAILED: scale-in failed</li>\n<li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>\n<li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>",
           "example": "[\"SCALE_OUT_SUCCESSFUL\\n\",\"SCALE_OUT_FAILED\\n\"]",
@@ -2030,7 +1959,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.",
           "example": "[\"1678\\n\"]",
@@ -2040,7 +1968,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification receiver type. Valid values:\n<br><li>USER_GROUP:User group\n<br><li>CMQ_QUEUE:CMQ queue\n<br><li>CMQ_TOPIC:CMQ topic\n<br><li>TDMQ_CMQ_TOPIC:TDMQ CMQ topic\n<br><li>TDMQ_CMQ_QUEUE:TDMQ CMQ queue\n\nDefault value: `USER_GROUP`.",
           "example": "USER_GROUP",
@@ -2050,7 +1977,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMQ queue name. This parameter is required when `TargetType` is `CMQ_QUEUE` or `TDMQ_CMQ_QUEUE`.",
           "example": "queue",
@@ -2060,7 +1986,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMQ topic name. This parameter is required when `TargetType` is `CMQ_TOPIC` or `TDMQ_CMQ_TOPIC`.",
           "example": "topic",
@@ -2230,7 +2155,6 @@
       "document": "CreateScheduledAction request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group ID",
           "member": "string",
@@ -2239,7 +2163,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Scheduled task name, which can only contain letters, numbers, underscores, hyphens (\"-\"), and decimal points with a maximum length of 60 bytes and must be unique in an auto scaling group.",
           "member": "string",
@@ -2248,7 +2171,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of instances set for the auto scaling group when the scheduled task is triggered.",
           "member": "uint64",
@@ -2257,7 +2179,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The minimum number of instances set for the auto scaling group when the scheduled task is triggered.",
           "member": "uint64",
@@ -2266,7 +2187,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The desired number of instances set for the auto scaling group when the scheduled task is triggered.",
           "member": "uint64",
@@ -2275,7 +2195,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Initial triggered time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard.",
           "member": "datetime_iso",
@@ -2284,7 +2203,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard. <br><br>This parameter and `Recurrence` need to be specified at the same time. After the end time, the scheduled task will no longer take effect.",
           "member": "datetime_iso",
@@ -2293,7 +2211,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Repeating mode of the scheduled task, which is in standard cron format. <br><br>This parameter and `EndTime` need to be specified at the same time.",
           "member": "string",
@@ -2328,7 +2245,6 @@
       "document": "Configuration information of data disk in launch configuration. If this parameter is not specified, no data disk will be purchased by default. You can specify only one data disk when purchasing it.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Data disk type. See [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>`LOCAL_BASIC`: Local disk<br><li>`LOCAL_SSD`: Local SSD disk<br><li>`CLOUD_BASIC`: HDD cloud disk<br><li>`CLOUD_PREMIUM`: Premium cloud storage<br><li>`CLOUD_SSD`: SSD cloud disk<br><li>`CLOUD_HSSD`: Enhanced SSD<br><li>`CLOUD_TSSD`: Tremendous SSD<br><br>The default value should be the same as the `DiskType` field under `SystemDisk`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "CLOUD_PREMIUM",
@@ -2339,7 +2255,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [CVM Instance Configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -2350,7 +2265,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data disk snapshot ID, such as `snap-l8psqwnt`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "snap-l8psqwnt",
@@ -2361,7 +2275,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies whether the data disk is terminated along with the termination of the associated CVM instance.  Values: <br><li>`TRUE` (only available for pay-as-you-go cloud disks that are billed by hour) and `FALSE`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "false",
@@ -2372,7 +2285,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data disk encryption. Valid values: <br><li>`TRUE`: Encrypted<br><li>`FALSE`: Not encrypted\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "true",
@@ -2383,7 +2295,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk performance (MB/s). This parameter is used to purchase extra performance for the cloud disk. For details on the feature and limits, see [Enhanced SSD Performance](https://intl.cloud.tencent.com/document/product/362/51896?from_cn_redirect=1#. E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96 .E6.80.A7.E8.83.BD).\nThis feature is only available to enhanced SSD (`CLOUD_HSSD`) and tremendous SSD (`CLOUD_TSSD`) disks with a capacity greater than 460 GB.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "100",
@@ -2400,7 +2311,6 @@
       "document": "DeleteAutoScalingGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group ID",
           "member": "string",
@@ -2427,7 +2337,6 @@
       "document": "DeleteLaunchConfiguration request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the launch configuration to be deleted.",
           "member": "string",
@@ -2454,7 +2363,6 @@
       "document": "DeleteLifecycleHook request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Lifecycle hook ID",
           "member": "string",
@@ -2481,7 +2389,6 @@
       "document": "DeleteNotificationConfiguration request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the notification to be deleted.",
           "member": "string",
@@ -2508,7 +2415,6 @@
       "document": "DeleteScalingPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the alarm policy to be deleted.",
           "member": "string",
@@ -2535,7 +2441,6 @@
       "document": "DeleteScheduledAction request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the scheduled task to be deleted.",
           "member": "string",
@@ -2611,7 +2516,6 @@
       "document": "DescribeAutoScalingActivities request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Queries by one or more scaling activity IDs in the format of `asa-5l2ejpfo`. The maximum quantity per request is 100. This parameter does not support specifying both `ActivityIds` and `Filters` at the same time.",
           "member": "string",
@@ -2620,7 +2524,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter.\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\n<li> activity-status-code - String - Required: No - (Filter) Filter by scaling activity status . (INIT: initializing | RUNNING: running | SUCCESSFUL: succeeded | PARTIALLY_SUCCESSFUL: partially succeeded | FAILED: failed | CANCELLED: canceled)</li>\n<li> activity-type - String - Required: No - (Filter) Filter by scaling activity type. (SCALE_OUT: scale-out | SCALE_IN: scale-in | ATTACH_INSTANCES: adding an instance | REMOVE_INSTANCES: terminating an instance | DETACH_INSTANCES: removing an instance | TERMINATE_INSTANCES_UNEXPECTEDLY: terminating an instance in the CVM console | REPLACE_UNHEALTHY_INSTANCE: replacing an unhealthy instance | UPDATE_LOAD_BALANCERS: updating a load balancer)</li>\n<li> activity-id - String - Required: No - (Filter) Filter by scaling activity ID.</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `ActivityIds` and `Filters` at the same time.",
           "member": "Filter",
@@ -2629,7 +2532,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "member": "uint64",
@@ -2638,7 +2540,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "member": "uint64",
@@ -2647,7 +2548,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The earliest start time of the scaling activity, which will be ignored if ActivityIds is specified. The value is in `UTC time` in the format of `YYYY-MM-DDThh:mm:ssZ` according to the `ISO8601` standard.",
           "member": "datetime_iso",
@@ -2656,7 +2556,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The latest end time of the scaling activity, which will be ignored if ActivityIds is specified. The value is in `UTC time` in the format of `YYYY-MM-DDThh:mm:ssZ` according to the `ISO8601` standard.",
           "member": "datetime_iso",
@@ -2699,7 +2598,6 @@
       "document": "DescribeAutoScalingAdvices request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of scaling groups to be queried. Upper limit: 100.",
           "example": "[\"asg-2pvrsyog\", \"asg-4wtj6aeq\"]",
@@ -2737,7 +2635,6 @@
       "document": "DescribeAutoScalingGroupLastActivities request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID list of an auto scaling group.",
           "member": "string",
@@ -2772,7 +2669,6 @@
       "document": "DescribeAutoScalingGroups request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Queries by one or more auto scaling group IDs in the format of `asg-nkdwoui0`. The maximum quantity per request is 100. This parameter does not support specifying both `AutoScalingGroupIds` and `Filters` at the same time.",
           "member": "string",
@@ -2781,7 +2677,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters.\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\n<li> auto-scaling-group-name - String - Required: No - (Filter) Filter by auto scaling group name.</li>\n<li> vague-auto-scaling-group-name - String - Required: No - (Filter) Fuzzy search by auto scaling group name.</li>\n<li> launch-configuration-id - String - Required: No - (Filter) Filter by launch configuration ID.</li>\n<li> tag-key - String - Required: No - (Filter) Filter by tag key.</li>\n<li> tag-value - String - Required: No - (Filter) Filter by tag value.</li>\n<li> tag:tag-key - String - Required: No - (Filter) Filter by tag key-value pair. The tag-key should be replaced with a specified tag key. For more information, see example 2.</li>\nThe maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `AutoScalingGroupIds` and `Filters` at the same time.",
           "member": "Filter",
@@ -2790,7 +2685,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "member": "uint64",
@@ -2799,7 +2693,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "member": "uint64",
@@ -2842,7 +2735,6 @@
       "document": "DescribeAutoScalingInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "IDs of the CVM instances to query. Up to 100 IDs can be queried at one time. `InstanceIds` and `Filters` can not be both specified.",
           "example": "[\"ins-1fswxz1m\\n\"]",
@@ -2852,7 +2744,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter.\n<li> instance-id - String - Required: No - (Filter) Filter by instance ID.</li>\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `InstanceIds` and `Filters` at the same time.",
           "example": "无",
@@ -2862,7 +2753,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "0",
@@ -2872,7 +2762,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of returned results. Default value: `20`. Maximum value: `100`. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "20",
@@ -2916,7 +2805,6 @@
       "document": "DescribeLaunchConfigurations request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Queries by one or more launch configuration IDs in the format of `asc-ouy1ax38`. The maximum quantity per request is 100. This parameter does not support specifying both `LaunchConfigurationIds` and `Filters` at the same time.",
           "example": "[\"asc-fa28v4in\"]",
@@ -2926,7 +2814,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters\n<li> `launch-configuration-id` - String - Required: No - Filter by launch configuration ID.</li>\n<li> `launch-configuration-name` - String - Required: No - Filter by launch configuration name.</li>\n<li> `launch-configuration-name` - String - Required: No - Fuzzy search by launch configuration name.</li>\n<li> `tag-key` - String - Required: No - Filter by the tag key.</li>\n<li> `tag-value` - String - Required: No - Filter by the tag value.</li>\n<li>tag:tag-key - String - Optional - Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 3 for the detailed usage.</li>\n</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `LaunchConfigurationIds` and `Filters` at the same time.",
           "example": "无",
@@ -2936,7 +2823,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of returned results. Default value: `20`. Maximum value: `100`. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "20",
@@ -2946,7 +2832,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The offset. Default value: `0`. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "0",
@@ -2994,7 +2879,6 @@
       "document": "DescribeLifecycleHooks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Queries by one or more lifecycle hook IDs in the format of `ash-8azjzxcl`. The maximum quantity per request is 100. This parameter does not support specifying both `LifecycleHookIds` and `Filters` at the same time.",
           "example": "无",
@@ -3004,7 +2888,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters.\n<li> `lifecycle-hook-id` - String - Required: No - (Filter) Filter by lifecycle hook ID.</li>\n<li> `lifecycle-hook-name` - String - Required: No - (Filter) Filter by lifecycle hook name.</li>\n<li> `auto-scaling-group-id` - String - Required: No - (Filter) Filter by scaling group ID.</li>\nUp to 10 filters can be included in a request and up to 5 values for each filter. It cannot be specified with `LifecycleHookIds` at the same time.",
           "example": "无",
@@ -3014,7 +2897,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "无",
@@ -3024,7 +2906,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "无",
@@ -3068,7 +2949,6 @@
       "document": "DescribeNotificationConfigurations request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Queries by one or more notification IDs in the format of asn-2sestqbr. The maximum number of instances per request is 100. This parameter does not support specifying both `AutoScalingNotificationIds` and `Filters` at the same time.",
           "member": "string",
@@ -3077,7 +2957,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter.\n<li> auto-scaling-notification-id - String - Required: No - (Filter) Filter by notification ID.</li>\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `AutoScalingNotificationIds` and `Filters` at the same time.",
           "member": "Filter",
@@ -3086,7 +2965,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "member": "uint64",
@@ -3095,7 +2973,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "member": "uint64",
@@ -3208,7 +3085,6 @@
       "document": "DescribeScheduledActions request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Queries by one or more scheduled task IDs in the format of asst-am691zxo. The maximum number of instances per request is 100. This parameter does not support specifying both ScheduledActionIds` and `Filters` at the same time.",
           "member": "string",
@@ -3217,7 +3093,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter.\n<li> scheduled-action-id - String - Required: No - (Filter) Filter by scheduled task ID.</li>\n<li> scheduled-action-name - String - Required: No - (Filter) Filter by scheduled task name.</li>\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>",
           "member": "Filter",
@@ -3226,7 +3101,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "member": "uint64",
@@ -3235,7 +3109,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "member": "uint64",
@@ -3278,7 +3151,6 @@
       "document": "DetachInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group ID",
           "member": "string",
@@ -3287,7 +3159,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of CVM instance IDs",
           "member": "string",
@@ -3322,7 +3193,6 @@
       "document": "DetachLoadBalancers request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Scaling group ID",
           "example": "asg-12wjuh0s",
@@ -3332,7 +3202,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of classic CLB IDs. Up to 20 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.",
           "example": "[\"lb-crhgatrf\\n\"]",
@@ -3342,7 +3211,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of application CLB IDs. Up to 100 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.",
           "example": "无",
@@ -3380,7 +3248,6 @@
       "document": "Detailed description of scaling activity status",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Error type",
           "example": "InvalidInstanceType",
@@ -3391,7 +3258,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ information",
           "example": "ap-guangzhou-2",
@@ -3402,7 +3268,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "ins-yy23daou",
@@ -3413,7 +3278,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance billing mode",
           "example": "POSTPAID_BY_HOUR",
@@ -3424,7 +3288,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID",
           "example": "subnet-gz7j7r3k",
@@ -3435,7 +3298,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Error message",
           "example": "无",
@@ -3446,7 +3308,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance type",
           "example": "IT5.8XLARGE128",
@@ -3463,7 +3324,6 @@
       "document": "DisableAutoScalingGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Scaling group ID",
           "example": "asg-nvnlpbb8",
@@ -3491,7 +3351,6 @@
       "document": "EnableAutoScalingGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group ID",
           "member": "string",
@@ -3518,7 +3377,6 @@
       "document": "This describes the conditions and configurations of the enhanced services of the instance, such as cloud security, cloud monitor, TencentCloud Automation Tools, and other instance agents.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Enables the Cloud Security service. If this parameter is not specified, the Cloud Security service will be enabled by default.",
           "example": "{\"Enabled\": True}",
@@ -3529,7 +3387,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Enables the Cloud Monitor service. If this parameter is not specified, the Cloud Monitor service will be enabled by default.",
           "example": "{\"Enabled\": True}",
@@ -3540,7 +3397,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Deprecated parameter.",
           "example": "{\"Enabled\": True}",
@@ -3551,7 +3407,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Enable TAT service. If this parameter is not specified, the default logic is the same as that of the CVM instance. Note: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "{\"Enabled\": True}",
@@ -3621,7 +3476,6 @@
       "document": "> Describes key-value pair filters used for conditional queries, such as filtering results by ID, name and state.\n> * If there are multiple `Filter` parameters, the relationship among them will be logical `AND`.\n> * If there are multiple `Values` for the same `Filter`, the relationship among the `Values` for the same `Filter` will be logical `OR`.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Field to be filtered.",
           "member": "string",
@@ -3631,7 +3485,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter value of the field.",
           "member": "string",
@@ -3647,7 +3500,6 @@
       "document": "Application load balancer",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Load balancer ID",
           "member": "string",
@@ -3657,7 +3509,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Application load balancer listener ID",
           "member": "string",
@@ -3667,7 +3518,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of target rule attributes",
           "member": "TargetAttribute",
@@ -3677,7 +3527,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of a forwarding rule. This parameter is required for layer-7 listeners.",
           "member": "string",
@@ -3687,7 +3536,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The region of CLB instance. It defaults to the region of AS service and is in the format of the common parameter `Region`, such as `ap-guangzhou`.",
           "member": "string",
@@ -3703,7 +3551,6 @@
       "document": "Application CLB IDs",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the CLB",
           "example": "lb-ceqnq5xk",
@@ -3714,7 +3561,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Application CLB listener ID",
           "example": "lbl-lqf523ih",
@@ -3725,7 +3571,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of a forwarding rule. This parameter is required for layer-7 listeners.",
           "example": "loc-0xbavbfi",
@@ -3742,7 +3587,6 @@
       "document": "CVM HostName settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Hostname of a CVM\n<br><li>The `HostName` cannot start or end with a period (.) or hyphen (-), and cannot contain consecutive periods and hyphens.\n<br><li>This field is unavailable to CVM instances.\n<br><li>Other types of instances (such as Linux): the name contains 2 to 40 characters, and supports multiple periods (.). The string between two periods can consist of letters (case insensitive), numbers, and hyphens (-), and cannot be all numbers.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "aaa",
@@ -3753,7 +3597,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of CVM host name. Valid values: \"ORIGINAL\" and \"UNIQUE\". Default value: \"ORIGINAL\"\n<br><li> ORIGINAL. Auto Scaling transfers the HostName set in input parameters to the CVM directly. CVM may adds serial numbers for the HostName. The HostName of instances within the auto scaling group may conflict.\n<br><li> UNIQUE. The HostName set in input parameters is the prefix of a host name. Auto Scaling and CVM expand it. The HostName of an instance in the auto scaling group is unique.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ORIGINAL",
@@ -3770,7 +3613,6 @@
       "document": "This describes the IPv6 address public network accessibility of the instance created by a launch configuration and declares the public network usage billing method of the IPv6 address and the maximum bandwidth.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Network billing mode. Valid values: TRAFFIC_POSTPAID_BY_HOUR, BANDWIDTH_PACKAGE. Default value: TRAFFIC_POSTPAID_BY_HOUR. For the current account type, see [Account Type Description](https://intl.cloud.tencent.com/document/product/1199/49090?from_cn_redirect=1#judge).\n<br><li> IPv6 supports `TRAFFIC_POSTPAID_BY_HOUR` under a bill-by-IP account.\n<br><li> IPv6 supports `BANDWIDTH_PACKAGE` under a bill-by-CVM account.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "TRAFFIC_POSTPAID_BY_HOUR",
@@ -3781,7 +3623,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Outbound bandwidth cap of the public network (in Mbps). <br>It defaults to `0`, which indicates no public network bandwidth is allocated to IPv6. The value range of bandwidth caps varies with the model, availability zone and billing mode. For more information, see [Public Network Bandwidth Cap](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
@@ -3792,7 +3633,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "bwp-jfio9i0p",
@@ -3965,7 +3805,6 @@
       "document": "This API is used to describe the billing mode of an instance.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Purchased usage period of an instance in months. Value range: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
           "member": "int64",
@@ -3975,7 +3814,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Auto-renewal flag. Value range: <br><li>NOTIFY_AND_AUTO_RENEW: Notify expiry and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: Notify expiry but not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify expiry nor renew automatically <br><br>Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis if the account balance is sufficient.",
           "member": "string",
@@ -3991,7 +3829,6 @@
       "document": "Options related to a CVM bidding request",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Bidding-related options",
           "member": "SpotMarketOptions",
@@ -4001,7 +3838,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "spot",
           "disabled": false,
           "document": "Market option type. Currently, this only supports the value \"spot\"\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -4017,7 +3853,6 @@
       "document": "Settings of CVM instance names.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "CVM instance name\n\nThe `InstanceName` cannot start or end with a dot (.) or hyphen (-), and cannot contain consecutive dots and hyphens.\nThe name contains 2 to 40 characters, and supports multiple dots (.). The string between two dots can consist of letters (case-insensitive), numbers, and hyphens (-), and cannot be all numbers.",
           "example": "test",
@@ -4028,7 +3863,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of CVM instance name. Valid values: `ORIGINAL` and `UNIQUE`. Default value: `ORIGINAL`.\n\n`ORIGINAL`: Auto Scaling sends the input parameter `InstanceName` to the CVM directly. The CVM may append a serial number to the `InstanceName`. The `InstanceName` of the instances within the scaling group may conflict.\n\n`UNIQUE`: the input parameter `InstanceName` is the prefix of an instance name. Auto Scaling and CVM expand it. The `InstanceName` of an instance in the scaling group is unique.",
           "example": "ORIGINAL",
@@ -4045,7 +3879,6 @@
       "document": "Instance tag. This parameter is used to bind tags to newly added instances.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Tag key",
           "member": "string",
@@ -4055,7 +3888,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag value",
           "member": "string",
@@ -4071,7 +3903,6 @@
       "document": "This describes the internet accessibility of the instance created by a launch configuration and declares the internet usage billing method of the instance and the maximum bandwidth",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Network billing method. Value range: <br><li>BANDWIDTH_PREPAID: Prepaid by bandwidth <br><li>TRAFFIC_POSTPAID_BY_HOUR: Postpaid by traffic on a per hour basis <br><li>BANDWIDTH_POSTPAID_BY_HOUR: Postpaid by bandwidth on a per hour basis <br><li>BANDWIDTH_PACKAGE: BWP user <br>Default value: TRAFFIC_POSTPAID_BY_HOUR.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -4081,7 +3912,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum outbound bandwidth in Mbps of the public network. The default value is 0 Mbps. The upper limit of bandwidth varies by model. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/509?from_cn_redirect=1).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
@@ -4091,7 +3921,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to assign a public IP. Value range: <br><li>TRUE: Assign a public IP <br><li>FALSE: Do not assign a public IP <br><br>If the public network bandwidth is greater than 0 Mbps, you are free to choose whether to enable the public IP (which is enabled by default). If the public network bandwidth is 0 Mbps, no public IP will be allowed to be assigned.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "bool",
@@ -4101,7 +3930,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.\nNote: this field may return null, indicating that no valid value was found.",
           "member": "string",
@@ -4117,7 +3945,6 @@
       "document": "Result of the command execution",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ins-0lizunus",
@@ -4128,7 +3955,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Execution activity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "inv-0h9q6ahv",
@@ -4139,7 +3965,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Execution task ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "invt-4mqj9ekr",
@@ -4150,7 +3975,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Command ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "cmd-5l44tu7j",
@@ -4161,7 +3985,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Execution Status\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "SUCCESS",
@@ -4172,7 +3995,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Execution exception information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -4189,7 +4011,6 @@
       "document": "Information set of eligible launch configurations.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID of the instance.",
           "example": "无",
@@ -4200,7 +4021,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Launch configuration ID",
           "example": "无",
@@ -4211,7 +4031,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Launch configuration name.",
           "example": "无",
@@ -4222,7 +4041,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance model.",
           "example": "无",
@@ -4233,7 +4051,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of the instance's system disk configuration.",
           "example": "无",
@@ -4244,7 +4061,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of the instance's data disk configuration.",
           "example": "无",
@@ -4255,7 +4071,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance login settings.",
           "example": "无",
@@ -4266,7 +4081,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of the public network bandwidth configuration.",
           "example": "无",
@@ -4277,7 +4091,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group of the instance.",
           "example": "无",
@@ -4288,7 +4101,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group associated with the launch configuration.",
           "example": "无",
@@ -4299,7 +4111,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom data.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -4310,7 +4121,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time of the launch configuration.",
           "example": "无",
@@ -4321,7 +4131,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Conditions of enhancement services for the instance and their settings.",
           "example": "无",
@@ -4332,7 +4141,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Image ID.",
           "example": "无",
@@ -4343,7 +4151,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Current status of the launch configuration. Value range: <br><li>NORMAL: normal <br><li>IMAGE_ABNORMAL: Exception with the image of the launch configuration <br><li>CBS_SNAP_ABNORMAL: Exception with the data disk snapshot of the launch configuration <br><li>SECURITY_GROUP_ABNORMAL: Exception with the security group of the launch configuration<br>",
           "example": "无",
@@ -4354,7 +4161,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance billing mode. CVM instances take `POSTPAID_BY_HOUR` by default. Valid values:\n<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly\n<br><li>SPOTPAID: spot instance",
           "example": "无",
@@ -4365,7 +4171,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -4376,7 +4181,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of instance models.",
           "example": "无",
@@ -4387,7 +4191,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of instance tags, which will be added to instances created by the scale-out activity. Up to 10 tags allowed.",
           "example": "无",
@@ -4398,7 +4201,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag list.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -4409,7 +4211,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Version",
           "example": "无",
@@ -4420,7 +4221,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Update time",
           "example": "无",
@@ -4431,7 +4231,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.",
           "example": "无",
@@ -4442,7 +4241,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value of InstanceTypesCheckPolicy upon the last operation.",
           "example": "无",
@@ -4453,7 +4251,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CVM hostname settings.",
           "example": "无",
@@ -4464,7 +4261,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Settings of CVM instance names",
           "example": "无",
@@ -4475,7 +4271,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.",
           "example": "无",
@@ -4486,7 +4281,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Selection policy of cloud disks. Default value: ORIGINAL. Valid values:\n<br><li>ORIGINAL: uses the configured cloud disk type\n<br><li>AUTOMATIC: automatically chooses an available cloud disk type in the current availability zone",
           "example": "无",
@@ -4497,7 +4291,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HPC ID<br>\nNote: This field is default to empty",
           "example": "无",
@@ -4508,7 +4301,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IPv6 public network bandwidth configuration.",
           "example": "无",
@@ -4525,7 +4317,6 @@
       "document": "Result information of the lifecycle hook action",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the lifecycle hook",
           "example": "ash-xxxxxxxx",
@@ -4536,7 +4327,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the instance",
           "example": "ins-xxxxxxxx",
@@ -4547,7 +4337,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Execution task ID. You can query the result by using the [DescribeInvocations](https://intl.cloud.tencent.com/document/api/1340/52679?from_cn_redirect=1) API of TAT. ",
           "example": "inv-xxxxxxxx",
@@ -4558,7 +4347,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Result of command invocation,\n<li>`SUCCESSFUL`: Successful command invocation. It does mean that the task is successfully. You can query the task result with the `InvocationId.</li>\n<li>`FAILED`: Failed to invoke the command</li>\n<li>`NONE`</li>",
           "example": "SUCCESSFUL",
@@ -4569,7 +4357,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification result, which indicates whether it is successful to notify CMQ/TDMQ.<br>\n<li>SUCCESSFUL: It is successful to notify CMQ/TDMQ.</li>\n<li>FAILED: It is failed to notify CMQ/TDMQ.</li>\n<li>NONE</li>",
           "example": "null",
@@ -4580,7 +4367,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Result of the lifecyle hook action. Values: CONTINUE, ABANDON",
           "example": "CONTINUE",
@@ -4591,7 +4377,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Reason of the result <br>\n<li>`HEARTBEAT_TIMEOUT`: Heartbeat timed out. The setting of `DefaultResult` is used.</li>\n<li>`NOTIFICATION_FAILURE`: Failed to send the notification. The setting of `DefaultResult` is used.</li>\n<li>`CALL_INTERFACE`: Calls the `CompleteLifecycleAction` to set the result</li>\n<li>ANOTHER_ACTION_ABANDON: It has been set to `ABANDON` by another operation.</li>\n<li>COMMAND_CALL_FAILURE: Failed to call the command. The DefaultResult is applied.</li>\n<li>COMMAND_EXEC_FINISH: Command completed</li>\n<li>COMMAND_CALL_FAILURE: Failed to execute the command. The DefaultResult is applied.</li>\n<li>COMMAND_EXEC_RESULT_CHECK_FAILURE: Failed to check the command result. The DefaultResult is applied.</li>",
           "example": "HEARTBEAT_TIMEOUT",
@@ -4608,7 +4393,6 @@
       "document": "Remote command execution object.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Remote command ID. It’s required to execute a command.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "cmd-xxxxxxxx",
@@ -4619,7 +4403,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom parameter. The field type is JSON encoded string. For example, {\"varA\": \"222\"}.\n`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.\nIf this parameter is not specified, the `DefaultParameters` of `Command` is used.\nUp to 20 customer parameters allowed. The parameter name can contain up to 64 characters, including [a-z], [A-Z], [0-9] and [-_].\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
@@ -4636,7 +4419,6 @@
       "document": "Lifecycle hook",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Lifecycle hook ID",
           "example": "ash-ck4bkcjt",
@@ -4647,7 +4429,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Lifecycle hook name",
           "example": "demo",
@@ -4658,7 +4439,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group ID",
           "example": "asg-lk5nn4xi",
@@ -4669,7 +4449,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Default result of the lifecycle hook",
           "example": "CONTINUE",
@@ -4680,7 +4459,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Wait timeout period of the lifecycle hook",
           "example": "300",
@@ -4691,7 +4469,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Applicable scenario of the lifecycle hook",
           "example": "INSTANCE_TERMINATING",
@@ -4702,7 +4479,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Additional information for the notification target",
           "example": "\"\"",
@@ -4713,7 +4489,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time",
           "example": "无",
@@ -4724,7 +4499,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification target",
           "example": "无",
@@ -4735,7 +4509,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Applicable scenario of the lifecycle hook",
           "example": "NORMAL",
@@ -4746,7 +4519,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remote command execution object.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -4763,7 +4535,6 @@
       "document": "This describes the configuration and information related to instance login. For security reasons, sensitive information is not described.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of key IDs.",
           "member": "string",
@@ -4779,7 +4550,6 @@
       "document": "Describes login settings of an instance.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance login password. <br><li>Linux: 8-16 characters. It should contain at least two sets of the following categories: [a-z], [A-Z], [0-9] and [()`~!@#$%^&*-+=|{}[]:;',.?/]. <br><li>Windows: 12-16 characters. It should contain at least three sets of the following categories: [a-z], [A-Z], [0-9] and [()`~!@#$%^&*-+={}[]:;',.?/]. <br><br>If this parameter is not specified, a random password is generated and sent to you via the Message Center.",
           "member": "string",
@@ -4789,7 +4559,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.",
           "member": "string",
@@ -4799,7 +4568,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to keep the original settings of an image. It cannot be specified together with `Password` or `KeyIds.N`. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>`TRUE`: Keep the login settings of the image <br><li>`FALSE` (Default): Do not keep the login settings of the image <br>",
           "member": "bool",
@@ -5107,7 +4875,6 @@
       "document": "ModifyDesiredCapacity request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group ID",
           "example": "asg-nvnlpbb8",
@@ -5117,7 +4884,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Desired capacity",
           "example": "2",
@@ -5127,7 +4893,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum number of instances. Value range: 0-2000.",
           "example": "0",
@@ -5137,7 +4902,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of instances. Value range: 0-2000.",
           "example": "20",
@@ -5372,7 +5136,6 @@
       "document": "ModifyLifecycleHook request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Lifecycle hook ID.",
           "example": "ash-je1esoo9",
@@ -5382,7 +5145,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Lifecycle hook name.",
           "example": "hook-test",
@@ -5392,7 +5154,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The time when the lifecycle hook is applied. Valid values:\n<li> `INSTANCE_LAUNCHING`: After the instance launch\n<li> `INSTANCE_TERMINATING`: Before the instance termination",
           "example": "INSTANCE_LAUNCHING",
@@ -5402,7 +5163,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Actions after the lifecycle hook times out. Valid values:\n<li> `CONTINUE`: Continue the scaling activity after the timeout\n<li> `ABANDON`: Terminate the scaling activity after the timeout",
           "example": "CONTINUE",
@@ -5412,7 +5172,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30 - 7,200 seconds.",
           "example": "30",
@@ -5422,7 +5181,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Additional information sent by AS to the notification target.",
           "example": "test",
@@ -5432,7 +5190,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The scenario where the lifecycle hook is applied. `EXTENSION`: The lifecycle hook will be triggered when `AttachInstances`, `DetachInstances` or `RemoveInstances` is called. `NORMAL`: The lifecycle hook is not triggered by the above APIs.",
           "example": "NORMAL",
@@ -5442,7 +5199,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of the notification target.",
           "example": "无",
@@ -5452,7 +5208,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remote command execution object.",
           "example": "无",
@@ -5480,7 +5235,6 @@
       "document": "ModifyLoadBalancerTargetAttributes request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Scaling group ID",
           "example": "asg-12wjuh0s",
@@ -5490,7 +5244,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of application CLBs to modify. Up to 100 CLBs allowed.",
           "example": "无",
@@ -5528,7 +5281,6 @@
       "document": "ModifyLoadBalancers request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group ID",
           "example": "asg-12wjuh0s",
@@ -5538,7 +5290,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of classic CLB IDs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.",
           "example": "[\"lb-crhgatrf\\n\"]",
@@ -5548,7 +5299,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of application CLBs. Up to 100 CLBs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.",
           "example": "无",
@@ -5558,7 +5308,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CLB verification policy. Valid values: \"ALL\" and \"DIFF\". Default value: \"ALL\"\n<br><li> ALL. Verification is successful only when all CLBs are valid. Otherwise, verification fails.\n<br><li> DIFF. Only the changes in the CLB parameters are verified. If valid, the verification is successful. Otherwise, verification fails.",
           "example": "无",
@@ -5594,7 +5343,6 @@
       "document": "ModifyNotificationConfiguration request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the notification to be modified.",
           "example": "asn-2sestqbr",
@@ -5604,7 +5352,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification type, i.e., the set of types of notifications to be subscribed to. Value range:\n<li>SCALE_OUT_SUCCESSFUL: scale-out succeeded</li>\n<li>SCALE_OUT_FAILED: scale-out failed</li>\n<li>SCALE_IN_SUCCESSFUL: scale-in succeeded</li>\n<li>SCALE_IN_FAILED: scale-in failed</li>\n<li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>\n<li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>",
           "example": "[\"SCALE_IN_SUCCESSFUL\\n\",\"SCALE_IN_FAILED\\n\"]",
@@ -5614,7 +5361,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.",
           "example": "[\"1678\\n\"]",
@@ -5624,7 +5370,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMQ or TDMQ CMQ queue name.",
           "example": "queue",
@@ -5634,7 +5379,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMQ or TDMQ CMQ toipc name.",
           "example": "topic",
@@ -5779,7 +5523,6 @@
       "document": "ModifyScheduledAction request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the scheduled task to be edited",
           "member": "string",
@@ -5788,7 +5531,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Scheduled task name, which can only contain letters, numbers, underscores, hyphens (\"-\"), and decimal points with a maximum length of 60 bytes and must be unique in an auto scaling group.",
           "member": "string",
@@ -5797,7 +5539,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of instances set for the auto scaling group when the scheduled task is triggered.",
           "member": "uint64",
@@ -5806,7 +5547,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The minimum number of instances set for the auto scaling group when the scheduled task is triggered.",
           "member": "uint64",
@@ -5815,7 +5555,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The desired number of instances set for the auto scaling group when the scheduled task is triggered.",
           "member": "uint64",
@@ -5824,7 +5563,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Initial triggered time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard.",
           "member": "datetime_iso",
@@ -5833,7 +5571,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard. <br>This parameter and `Recurrence` need to be specified at the same time. After the end time, the scheduled task will no longer take effect.",
           "member": "datetime_iso",
@@ -5842,7 +5579,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Repeating mode of the scheduled task, which is in standard cron format. <br>This parameter and `EndTime` need to be specified at the same time.",
           "member": "string",
@@ -5869,7 +5605,6 @@
       "document": "Notification target",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Target type. Valid values: `CMQ_QUEUE`, `CMQ_TOPIC`, `TDMQ_CMQ_QUEUE` and `TDMQ_CMQ_TOPIC`.\n<li> CMQ_QUEUE: Tencent Cloud message queue - queue model.</li>\n<li> CMQ_TOPIC: Tencent Cloud message queue - topic model.</li>\n<li> TDMQ_CMQ_QUEUE: Tencent Cloud TDMQ message queue - queue model.</li>\n<li> TDMQ_CMQ_TOPIC: Tencent Cloud TDMQ message queue - topic model.</li>",
           "example": "TDMQ_CMQ_QUEUE",
@@ -5880,7 +5615,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Queue name. This parameter is required when `TargetType` is `CMQ_QUEUE` or `TDMQ_CMQ_QUEUE`.",
           "example": "test-queue",
@@ -5891,7 +5625,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name. This parameter is required when `TargetType` is `CMQ_TOPIC` or `TDMQ_CMQ_TOPIC`.",
           "example": "test-topic",
@@ -5934,7 +5667,6 @@
       "document": "RemoveInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group ID",
           "member": "string",
@@ -5943,7 +5675,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of CVM instance IDs",
           "member": "string",
@@ -5978,7 +5709,6 @@
       "document": "Status of TAT service.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable [TencentCloud Automation Tools](https://intl.cloud.tencent.com/document/product/1340?from_cn_redirect=1). Valid values:<br><li>`TRUE`: Enable<br><li>`FALSE`: Not enable.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "True",
@@ -5995,7 +5725,6 @@
       "document": "This describes the information related to the Cloud Monitor service.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable the [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1) service. Value range: <br><li>TRUE: Cloud Monitor is enabled <br><li>FALSE: Cloud Monitor is disabled <br><br>Default value: TRUE. |\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "bool",
@@ -6011,7 +5740,6 @@
       "document": "This describes the information on the Cloud Security service",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable the [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1) service. Value range: <br><li>TRUE: Cloud Security is enabled <br><li>FALSE: Cloud Security is disabled <br><br>Default value: TRUE.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "bool",
@@ -6027,7 +5755,6 @@
       "document": "ScaleInInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Scaling group ID",
           "example": "asg-12yqet78",
@@ -6037,7 +5764,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of instances to be reduced",
           "example": "1",
@@ -6075,7 +5801,6 @@
       "document": "ScaleOutInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Scaling group ID",
           "example": "asg-12yqet78",
@@ -6085,7 +5810,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of instances to be added",
           "example": "1",
@@ -6269,7 +5993,6 @@
       "document": "This describes the information of a scheduled task.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Scheduled task ID.",
           "example": "asst-jf898dps",
@@ -6280,7 +6003,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Scheduled task name.",
           "example": "test",
@@ -6291,7 +6013,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the auto scaling group where the scheduled task is located.",
           "example": "asg-keqt9eg1",
@@ -6302,7 +6023,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard.",
           "example": "2022-02-22T16:00:00+08:00",
@@ -6313,7 +6033,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Repeating mode of the scheduled task.",
           "example": "0 23 */1 * *",
@@ -6324,7 +6043,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard.",
           "example": "2023-02-23T16:00:00+08:00",
@@ -6335,7 +6053,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of instances set by the scheduled task.",
           "example": "20",
@@ -6346,7 +6063,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Desired number of instances set by the scheduled task.",
           "example": "5",
@@ -6357,7 +6073,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum number of instances set by the scheduled task.",
           "example": "1",
@@ -6368,7 +6083,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time of the scheduled task. The value is in `UTC time` in the format of `YYYY-MM-DDThh:mm:ssZ` according to the `ISO8601` standard.",
           "example": "2022-02-21T02:19:52Z",
@@ -6379,7 +6093,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies how the scheduled action is executed. <br><li>`CRONTAB`: execute repeatedly <br><li>`ONCE`: execute only once",
           "example": "CRONTAB",
@@ -6396,7 +6109,6 @@
       "document": "Service settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Enables unhealthy instance replacement. If this feature is enabled, AS will replace instances that are flagged as unhealthy by Cloud Monitor. If this parameter is not specified, the value will be False by default.",
           "example": "False",
@@ -6407,7 +6119,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid values: \nCLASSIC_SCALING: this is the typical scaling method, which creates and terminates instances to perform scaling operations. \nWAKE_UP_STOPPED_SCALING: this scaling method first tries to start stopped instances. If the number of instances woken up is insufficient, the system creates new instances for scale-out. For scale-in, instances are terminated as in the typical method. You can use the StopAutoScalingInstances API to stop instances in the scaling group. Scale-out operations triggered by alarms will still create new instances.\nDefault value: CLASSIC_SCALING",
           "example": "CLASSIC_SCALING",
@@ -6418,7 +6129,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Enable unhealthy instance replacement. If this feature is enabled, AS will replace instances that are found unhealthy in the CLB health check. If this parameter is not specified, the default value `False` will be used.",
           "example": "False",
@@ -6435,7 +6145,6 @@
       "document": "SetInstancesProtection request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Auto scaling group ID.",
           "example": "asg-2umy3jbd",
@@ -6445,7 +6154,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "[\"ins-b2d33ywt\\n\"]",
@@ -6455,7 +6163,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable scale-in protection for this instance",
           "example": "true",
@@ -6483,7 +6190,6 @@
       "document": "Bidding-related options",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Bidding price such as \"1.05\"",
           "member": "string",
@@ -6493,7 +6199,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "one-time",
           "disabled": false,
           "document": "Bid request type. Currently, only \"one-time\" type is supported. Default value: one-time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -6509,7 +6214,6 @@
       "document": "Specifies how to assign pay-as-you-go instances and spot instances in a mixed instance mode.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The minimum number of the scaling group’s capacity that must be fulfilled by pay-as-you-go instances. It defaults to 0 if not specified. Its value cannot exceed the max capacity of the scaling group.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "0",
@@ -6520,7 +6224,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Controls the percentage of pay-as-you-go instances for the additional capacity beyond `BaseCapacity`. Valid range: 0-100. The value 0 indicates that only spot instances are provisioned, while the value 100 indicates that only pay-as-you-go instances are provisioned. It defaults to 70 if not specified. The number of pay-as-you-go instances calculated on the percentage should be rounded up.\nFor example, if the desired capacity is 3, the `BaseCapacity` is set to 1, and the `OnDemandPercentageAboveBaseCapacity` is set to 1, the scaling group will have 2 pay-as-you-go instance (one comes from the base capacity, and the other comes from the rounded up value of the proportion), and 1 spot instance.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "0",
@@ -6531,7 +6234,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies how to assign spot instances in a mixed instance mode. Valid values: `COST_OPTIMIZED` and `CAPACITY_OPTIMIZED`; default value: `COST_OPTIMIZED`.\n<br><li>`COST_OPTIMIZED`: the lowest cost policy. For each model in the launch configuration, AS tries to purchase it based on the lowest unit price per core in each availability zone. If the purchase failed, try the second-lowest unit price.\n<br><li>`CAPACITY_OPTIMIZED`: the optimal capacity policy. For each model in the launch configuration, AS tries to purchase it based on the largest stock in each availability zone, minimizing the automatic repossession probability of spot instances.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "COST_OPTIMIZED",
@@ -6542,7 +6244,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to replace with pay-as-you go instances. Valid values:\n<br><li>`TRUE`: yes. After the purchase of spot instances failed due to insufficient stock and other reasons, purchase pay-as-you-go instances.\n<br><li>`FALSE`: no. The scaling group only tries the configured model of spot instances when it needs to add spot instances.\n\nDefault value: `TRUE`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "false",
@@ -6559,7 +6260,6 @@
       "document": "StartAutoScalingInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The scaling group ID.",
           "member": "string",
@@ -6568,7 +6268,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The list of the CVM instances you want to start up.",
           "member": "string",
@@ -6603,7 +6302,6 @@
       "document": "StopAutoScalingInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The scaling group ID.",
           "member": "string",
@@ -6612,7 +6310,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The list of the CVM instances you want to shut down.",
           "member": "string",
@@ -6621,7 +6318,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the shutdown instances will be charged. Valid values:  \nKEEP_CHARGING: keep charging after shutdown.  \nSTOP_CHARGING: stop charging after shutdown.\nDefault value: KEEP_CHARGING.",
           "member": "string",
@@ -6656,7 +6352,6 @@
       "document": "System disk configuration of the launch configuration. If this parameter is not specified, the default value is assigned to it.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "System disk type. For more information on limits of system disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>`LOCAL_BASIC`: local disk <br><li>`LOCAL_SSD`: local SSD disk <br><li>`CLOUD_BASIC`: HDD cloud disk <br><li>`CLOUD_PREMIUM`: premium cloud storage<br><li>`CLOUD_SSD`: SSD cloud disk <br><br>Default value: `CLOUD_PREMIUM`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "CLOUD_PREMIUM",
@@ -6667,7 +6362,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "System disk size in GB. Default value: 50\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "50",
@@ -6684,7 +6378,6 @@
       "document": "Resource type and tag key-value pair",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Tag key",
           "member": "string",
@@ -6694,7 +6387,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag value",
           "member": "string",
@@ -6704,7 +6396,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "auto-scaling-group",
           "disabled": false,
           "document": "Type of the resource binded to the tag. Currently supported types include \"auto-scaling-group\"\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -6720,7 +6411,6 @@
       "document": "Load balancer target attribute",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Port",
           "member": "uint64",
@@ -6730,7 +6420,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Weight",
           "member": "uint64",
@@ -6746,7 +6435,6 @@
       "document": "UpgradeLaunchConfiguration request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Launch configuration ID.",
           "example": "asc-aaaabbbb",
@@ -6756,7 +6444,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>",
           "example": "img-aaaabbbb",
@@ -6766,7 +6453,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of instance models. Different instance models specify different resource specifications. Up to 5 instance models can be supported.",
           "example": "[\"S5.SMALL2\"]",
@@ -6776,7 +6462,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Display name of the launch configuration, which can contain letters, digits, underscores and hyphens (-), and dots. Up to of 60 bytes allowed..",
           "example": "myascname",
@@ -6786,7 +6471,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of the instance's data disk configuration. If this parameter is not specified, no data disk is purchased by default. Up to 11 data disks can be supported.",
           "example": "无",
@@ -6796,7 +6480,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.",
           "example": "无",
@@ -6806,7 +6489,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance billing type. CVM instances are POSTPAID_BY_HOUR by default.\n<br><li>POSTPAID_BY_HOUR: Pay-as-you-go on an hourly basis\n<br><li>SPOTPAID: Bidding",
           "example": "POSTPAID_BY_HOUR",
@@ -6816,7 +6498,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.",
           "example": "无",
@@ -6826,7 +6507,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance type verification policy. Value range: ALL, ANY. Default value: ANY.\n<br><li> ALL: The verification will success only if all instance types (InstanceType) are available; otherwise, an error will be reported.\n<br><li> ANY: The verification will success if any instance type (InstanceType) is available; otherwise, an error will be reported.\n\nCommon reasons why an instance type is unavailable include stock-out of the instance type or the corresponding cloud disk.\nIf a model in InstanceTypes does not exist or has been discontinued, a verification error will be reported regardless of the value of InstanceTypesCheckPolicy.",
           "example": "ALL",
@@ -6836,7 +6516,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.",
           "example": "无",
@@ -6846,7 +6525,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.",
           "example": "无",
@@ -6856,7 +6534,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID of the instance. Leave it blank as the default.",
           "example": "1222",
@@ -6866,7 +6543,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The security group to which the instance belongs. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). If this parameter is not specified, no security group will be bound by default.",
           "example": "[\"sg-aaaabbbb\"]",
@@ -6876,7 +6552,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "System disk configuration of the instance. If this parameter is not specified, the default value will be used.",
           "example": "无",
@@ -6886,7 +6561,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Base64-encoded custom data of up to 16 KB.",
           "example": "\"\"",
@@ -6896,7 +6570,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of tags. This parameter is used to bind up to 10 tags to newly added instances.",
           "example": "无",
@@ -6906,7 +6579,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CAM role name, which can be obtained from the roleName field in the return value of the DescribeRoleList API.",
           "example": "myrolename",
@@ -6916,7 +6588,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CVM hostname settings.",
           "example": "无",
@@ -6926,7 +6597,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Settings of CVM instance names",
           "example": "无",
@@ -6936,7 +6606,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.",
           "example": "无",
@@ -6946,7 +6615,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Selection policy of cloud disks. Default value: ORIGINAL. Valid values:\n<br><li>ORIGINAL: uses the configured cloud disk type\n<br><li>AUTOMATIC: automatically chooses an available cloud disk type",
           "example": "无",
@@ -6956,7 +6624,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.",
           "example": "无",
@@ -6984,7 +6651,6 @@
       "document": "UpgradeLifecycleHook request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Lifecycle hook ID",
           "example": "ash-8azjzxj9",
@@ -6994,7 +6660,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Lifecycle hook name",
           "example": "hook-updated",
@@ -7004,7 +6669,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Scenario for the lifecycle hook. Value range: \"INSTANCE_LAUNCHING\", \"INSTANCE_TERMINATING\"",
           "example": "INSTANCE_LAUNCHING",
@@ -7014,7 +6678,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Defines the action to be taken by the auto scaling group upon lifecycle hook timeout. Value range: \"CONTINUE\", \"ABANDON\". Default value: \"CONTINUE\"",
           "example": "CONTINUE",
@@ -7024,7 +6687,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7200. Default value: 300",
           "example": "240",
@@ -7034,7 +6696,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Additional information of a notification that Auto Scaling sends to targets. This parameter is set when you configure a notification (default value: \"\").",
           "example": "\"\"",
@@ -7044,7 +6705,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification result. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.",
           "example": "无",
@@ -7054,7 +6714,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. ",
           "example": "NORMAL",
@@ -7064,7 +6723,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remote command execution object. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.",
           "example": "无",

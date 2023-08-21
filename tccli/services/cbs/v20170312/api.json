@@ -277,7 +277,6 @@
       "document": "Retention policy for scheduled snapshots. All four parameters are required.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Retains one latest snapshot each day within `Days` days. Value range: [0, 100].\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "6",
@@ -288,7 +287,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Retains one latest snapshot each week within `Weeks` weeks. Value range: [0, 100].\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "8",
@@ -299,7 +297,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Retains one latest snapshot each month within `Months` months. Value range: [0, 100].\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "3",
@@ -310,7 +307,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Retains one latest snapshot each year within `Years` years. Value range: [0, 100].\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -327,7 +323,6 @@
       "document": "ApplyDiskBackup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the cloud disk backup point, which can be queried through the `DescribeDiskBackups` API.",
           "example": "dbp-xxxxxxxx",
@@ -337,7 +332,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the original cloud disk of the backup point, which can be queried through the `DescribeDisks` API.",
           "example": "disk-xxxxxxxx",
@@ -365,7 +359,6 @@
       "document": "ApplySnapshot request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot ID, which can be queried via [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1).",
           "example": "snap-3xvkxxmp",
@@ -375,7 +368,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the original cloud disk corresponding to the snapshot, which can be queried via the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1).",
           "example": "disk-ouxaxxt2",
@@ -385,7 +377,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies whether to shut down a CVM automatically before a rollback",
           "example": "False",
@@ -395,7 +386,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies whether to start up a CVM automatically after a rollback",
           "example": "False",
@@ -423,7 +413,6 @@
       "document": "This describes the number of mounted and mountable data disks of an instance.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -433,7 +422,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of instances mounted to data disk.",
           "member": "uint64",
@@ -443,7 +431,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of instances that can be mounted to data disk.",
           "member": "uint64",
@@ -459,7 +446,6 @@
       "document": "AttachDisks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the CVM instance on which the cloud disk will be mounted. It can be queried via the API [DescribeInstances](https://intl.cloud.tencent.com/document/product/213/15728?from_cn_redirect=1).",
           "example": "ins-9oxguxa",
@@ -469,7 +455,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the elastic cloud disk to be mounted, which can be queried through the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1). A maximum of 10 elastic cloud disks can be mounted in a single request.",
           "example": "[\"disk-l7mxexxc\"]",
@@ -479,7 +464,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Optional parameter. If this is not passed only the mount operation is executed. If `True` is passed, the cloud disk will be configured to be terminated when the server it is mounted to is terminated. This is only valid for pay-as-you-go cloud disks.",
           "example": "TRUE",
@@ -489,7 +473,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Optional) Specifies the cloud disk mounting method. It’s only valid for BM models. Valid values: <br><li>PF<br><li>VF",
           "example": "PF",
@@ -517,7 +500,6 @@
       "document": "Describes how a newly purchased cloud disk is initialized and attached to a CVM instance.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the instance to which the cloud disk is attached.",
           "example": "[\"ins-abcdefgh\"]",
@@ -528,7 +510,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Mount point in the instance.",
           "example": "[\"/mnt/datadisk0\"]",
@@ -539,7 +520,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File system type. Valid values: `ext4`, `xfs`.",
           "example": "ext4",
@@ -742,7 +722,6 @@
       "document": "BindAutoSnapshotPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of scheduled snapshot policy to be bound.",
           "member": "string",
@@ -751,7 +730,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of cloud disk IDs to be bound. Maximum of 80 cloud disks can be bound per request.",
           "member": "string",
@@ -778,7 +756,6 @@
       "document": "CopySnapshotCrossRegions request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Destination regions of the replication task. You can query the value of regions by calling [DescribeRegions](https://intl.cloud.tencent.com/document/product/213/9456?from_cn_redirect=1) API. Note that you can only specify regions that support snapshots.",
           "example": "[\"ap-beijing\\r\\n\"]",
@@ -788,7 +765,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot ID, which can be queried via the [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1) API.",
           "example": "snap-ckgjwkqh",
@@ -798,7 +774,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the snapshot replica. If it’s not specified, it defaults to “Copied [source snapshot ID from [region name]”",
           "example": "snap-hfdadhusads",
@@ -836,7 +811,6 @@
       "document": "CreateAutoSnapshotPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The policy for executing the scheduled snapshot.",
           "member": "Policy",
@@ -845,7 +819,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of the scheduled snapshot policy to be created. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes.",
           "member": "string",
@@ -854,7 +827,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether or not the scheduled snapshot policy is activated. FALSE: Not activated. TRUE: Activated. The default value is TRUE.",
           "member": "bool",
@@ -863,7 +835,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the snapshot created by this scheduled snapshot policy is retained permanently. FALSE: Not retained permanently. TRUE: Retained permanently. The default value is FALSE.",
           "member": "bool",
@@ -872,7 +843,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of days that a snapshot created by this scheduled snapshot policy is retained. The default value is 7. If this parameter is specified, the IsPermanent input parameter can not be TRUE, otherwise a conflict will occur.",
           "member": "uint64",
@@ -881,7 +851,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to create an execution policy for the scheduled snapshot. TRUE: Only the time of the initial backup needs to be obtained, and no scheduled snapshot policy is actually created. FALSE: Create. The default value is FALSE.",
           "member": "bool",
@@ -924,7 +893,6 @@
       "document": "CreateDiskBackup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the cloud disk for which to create a backup point.",
           "example": "disk-xxxxxxxx",
@@ -934,7 +902,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the cloud disk backup point, which can contain up to 100 characters.",
           "example": "未命名",
@@ -1224,7 +1191,6 @@
       "document": "DeleteAutoSnapshotPolicies request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of scheduled snapshot policy IDs to be deleted.",
           "member": "string",
@@ -1251,7 +1217,6 @@
       "document": "DeleteDiskBackups request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the cloud disk backup point to be deleted.",
           "example": "[\"dbp-xxxxxxxx\"]",
@@ -1279,7 +1244,6 @@
       "document": "DeleteSnapshots request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of IDs of snapshots to be deleted, which can be queried via [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1).",
           "example": "[\"snap-gybrif0z\\n\"]",
@@ -1289,7 +1253,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to forcibly delete the image associated with the snapshot",
           "example": "true",
@@ -1317,7 +1280,6 @@
       "document": "DescribeAutoSnapshotPolicies request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of scheduled snapshot policy IDs to be queried. The parameter does not support specifying both `SnapshotIds` and `Filters`.",
           "member": "string",
@@ -1326,7 +1288,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter conditions. Specification of both the `AutoSnapshotPolicyIds` and `Filters` parameters is not supported.<br><li>auto-snapshot-policy-id - Array of String - Required or not: No - (Filter condition) Filters according to the scheduled snapshot policy ID. The format of the scheduled snapshot policy ID is as follows: `asp-11112222`. <br><li>auto-snapshot-policy-state - Array of String - Required or not: No - (Filter condition) Filters according to the status of the scheduled snapshot policy. The format of the scheduled snapshot policy ID is as follows: `asp-11112222`. (NORMAL: normal | ISOLATED: isolated)<br><li>auto-snapshot-policy-name - Array of String - Required or not: No - (Filter condition) Filters according to the name of the scheduled snapshot policy.",
           "member": "Filter",
@@ -1335,7 +1296,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of results to be returned. Default is 20. Maximum is 100. For more information on `Limit`, please see relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).",
           "member": "uint64",
@@ -1344,7 +1304,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default is 0. For more information on `Offset`, please see relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).",
           "member": "uint64",
@@ -1353,7 +1312,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Outputs the ordering of the scheduled snapshot lists. Value range: <br><li>ASC: Ascending order <br><li>DESC: Descending order.",
           "member": "string",
@@ -1362,7 +1320,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The sorting filter applied to the scheduled snapshot list. Value range: <Sort by creation time of scheduled snapshot. By default, this is sorted by creation time.",
           "member": "string",
@@ -1405,7 +1362,6 @@
       "document": "DescribeDiskAssociatedAutoSnapshotPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the queried cloud disk.",
           "member": "string",
@@ -1448,7 +1404,6 @@
       "document": "DescribeDiskBackups request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of IDs of the backup points to be queried. `DiskBackupIds` and `Filters` cannot be specified at the same time.",
           "example": "[\"dbp-xxxxxxxx\"]",
@@ -1458,7 +1413,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter. `DiskBackupIds` and `Filters` cannot be specified at the same time. Valid values: <br><li>disk-backup-id - Array of String - Required: No - (Filter) Filter by backup point ID in the format of `dbp-11112222`.\n<br><li>disk-id - Array of String - Required: No - (Filter) Filter by ID of the cloud disk for which backup points are created.\n<br><li>disk-usage - Array of String - Required: No - (Filter) Filter by type of the cloud disk for which backup points are created. (SYSTEM_DISK: System disk | DATA_DISK: Data disk)",
           "example": "无",
@@ -1468,7 +1422,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section of the API [Overview](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).",
           "example": "0",
@@ -1478,7 +1431,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section of the API [Overview](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).",
           "example": "20",
@@ -1488,7 +1440,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting order of cloud disk backup points. Valid values:<br><li>ASC: Ascending<br><li>DESC: Descending",
           "example": "ASC",
@@ -1498,7 +1449,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The field by which cloud disk backup points are sorted. Valid values:<br><li>CREATE_TIME: Sort by creation time<br>Backup points are sorted by creation time by default.",
           "example": "CREATE_TIME",
@@ -1546,7 +1496,6 @@
       "document": "DescribeDiskConfigQuota request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Inquiry type. Value range: INQUIRY_CBS_CONFIG: query the configuration list of cloud disks <br><li>INQUIRY_CVM_CONFIG: query the configuration list of cloud disks and instances.",
           "member": "string",
@@ -1555,7 +1504,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query configuration under one or more [availability zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo).",
           "member": "string",
@@ -1564,7 +1512,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Billing mode. Value range: <br><li>POSTPAID_BY_HOUR: postpaid.",
           "member": "string",
@@ -1573,7 +1520,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_PREMIUM: Premium Cloud Storage<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD",
           "member": "string",
@@ -1582,7 +1528,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The system disk or data disk. Value range: <br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk.",
           "member": "string",
@@ -1591,7 +1536,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter by the instance model series, such as S1, I1 and M1. For more information, please see [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1)",
           "member": "string",
@@ -1600,7 +1544,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance CPU cores.",
           "member": "uint64",
@@ -1609,7 +1552,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance memory size.",
           "member": "uint64",
@@ -1644,7 +1586,6 @@
       "document": "DescribeDiskOperationLogs request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Filter conditions. The following conditions are supported:\n<li>disk-id - Array of String - Required or not: Yes - Filter by cloud disk ID, with maximum of 10 cloud disk IDs able to be specified per request.",
           "member": "Filter",
@@ -1653,7 +1594,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The start time of the operation logs to be queried, for example: '2019-11-22 00:00:00\"",
           "member": "datetime",
@@ -1662,7 +1602,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The end time of the operation logs to be queried, for example: '2019-11-22 23:59:59\"",
           "member": "datetime",
@@ -1697,7 +1636,6 @@
       "document": "DescribeDisks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Query by one or more cloud disk IDs, such as `disk-11112222`. For the format of this parameter, please see the ids.N section of the API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1). This parameter does not support specifying both `DiskIds` and `Filters`.",
           "member": "string",
@@ -1706,7 +1644,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters. You cannot specify `DiskIds` and `Filters` at the same time. <br><li>disk-usage - Array of String - Optional - Filters by cloud disk type. (SYSTEM_DISK: system disk | DATA_DISK: data disk) <br><li>disk-charge-type - Array of String - Optional - Filters by cloud disk billing method. (POSTPAID_BY_HOUR: pay-as-you-go) <br><li>portable - Array of String- Optional - Filters by whether the cloud disk is elastic or not. (TRUE: elastic | FALSE: non-elastic) <br><li>project-id - Array of Integer - Optional - Filters by the ID of the project to which a cloud disk belongs. <br><li>disk-id - Array of String - Optional - Filters by cloud disk ID, such as `disk-11112222`. <br><li>disk-name - Array of String - Optional - Filters by cloud disk name. <br><li>disk-type - Array of String - Optional - Filters by cloud disk media type (CLOUD_BASIC: HDD cloud disk | CLOUD_PREMIUM: Premium Cloud Storage | CLOUD_SSD: SSD cloud disk.) <br><li>disk-state - Array of String - Optional - Filters by cloud disk state. (UNATTACHED: not mounted | ATTACHING: being mounted | ATTACHED: mounted | DETACHING: being unmounted | EXPANDING: being expanded | ROLLBACKING: being rolled back | TORECYCLE: to be repossessed.) <br><li>instance-id - Array of String - Optional - Filters by the ID of the CVM instance on which a cloud disk is mounted. You can use this parameter to query the cloud disks mounted on specific CVMs. <br><li>zone - Array of String - Optional - Filters by [availability zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo) <br><li>instance-ip-address - Array of String - Optional - Filters by the private or public IP of the CVM on which a cloud disk is mounted. <br><li>instance-name - Array of String - Optional - Filters by the name of the instance on which a cloud disk is mounted. <br><li>tag-key - Array of String - Optional - Filters by tag key. <br><li>tag-value - Array of String - Optional - Filters by tag value. <br><li>tag:tag-key - Array of String - Optional - Filters by tag key-value pair. Please replace `tag-key` with a specific tag key.",
           "member": "Filter",
@@ -1715,7 +1652,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default is 0. For more information on `Offset`, please see relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).",
           "member": "uint64",
@@ -1724,7 +1660,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of results to be returned. Default is 20. Maximum is 100. For more information on `Limit`, please see relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).",
           "member": "uint64",
@@ -1733,7 +1668,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Outputs the ordering of the cloud disk list. Value range: <br><li>ASC: Ascending order <br><li>DESC: Descending order.",
           "member": "string",
@@ -1742,7 +1676,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The field by which the cloud disk list is sorted. Value range: <br><li>CREATE_TIME: sorted by the creation time of cloud disks <br><li>DEADLINE: sorted by the expiration time of cloud disks<br>By default, the cloud disk list is sorted by the creation time of cloud disks.",
           "member": "string",
@@ -1751,7 +1684,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the ID of the periodic snapshot policy bound to the cloud disk needs to be returned in the cloud disk details. TRUE: return; FALSE: do not return.",
           "member": "bool",
@@ -1794,7 +1726,6 @@
       "document": "DescribeInstancesDiskNum request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the CVM instance can be queried via the API [DescribeInstances](https://intl.cloud.tencent.com/document/product/213/15728?from_cn_redirect=1).",
           "member": "string",
@@ -1829,7 +1760,6 @@
       "document": "DescribeSnapshotOperationLogs request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Filter conditions. The following conditions are supported:\n<li>snapshot-id - Array of String - Required or not: Yes - Filter by snapshot ID, with maximum of 10 snapshot IDs able to be specified per request.",
           "member": "Filter",
@@ -1838,7 +1768,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The start time of the operation logs to be queried, for example: '2019-11-22 00:00:00\"",
           "member": "date",
@@ -1847,7 +1776,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The end time of the operation logs to be queried, for example: '2019-11-22 23:59:59\"",
           "member": "date",
@@ -1882,7 +1810,6 @@
       "document": "DescribeSnapshotSharePermission request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the snapshot to be queried. You can obtain this by using [DescribeSnapshots](https://intl.cloud.tencent.com/document/api/362/15647?from_cn_redirect=1).",
           "member": "string",
@@ -1917,7 +1844,6 @@
       "document": "DescribeSnapshots request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of snapshot IDs to be queried. The parameter does not support specifying both `SnapshotIds` and `Filters`.",
           "member": "string",
@@ -1926,7 +1852,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters. It cannot be specified together with `SnapshotIds`.<br><li>snapshot-id - Array of String - Optional - Filters by snapshot ID, such as `snap-11112222`.<br><li>snapshot-name - Array of String - Optional - Filters by snapshot name. <br><li>snapshot-state - Array of String - Optional - Filters by snapshot state (NORMAL: normal | CREATING: creating | ROLLBACKING: rolling back). <br><li>disk-usage - Array of String - Optional - Filters by the type of the cloud disk from which a snapshot is created (SYSTEM_DISK: system disk | DATA_DISK: data disk).<br><li>project-id - Array of String - Optional - Filters by the ID of the project to which a cloud disk belongs. <br><li>disk-id - Array of String - Optional - Filters by the ID of the cloud disk from which a snapshot is created.<br><li>zone - Array of String - Optional - Filters by [availability zone](https://intl.cloud.tencent.com/document/product/213/15753?from_cn_redirect=1#ZoneInfo).<br><li>encrypt - Array of String - Optional - Filters by whether a snapshot is created from an encrypted cloud disk. (TRUE: a snapshot of an encrypted cloud disk | FALSE: not a snapshot of an encrypted cloud disk.)\n<li>snapshot-type- Array of String - Optional - Filters by the snapshot type specified in `snapshot-type`.\n(SHARED_SNAPSHOT: a shared snapshot | PRIVATE_SNAPSHOT: a private snapshot.)",
           "member": "Filter",
@@ -1935,7 +1860,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default is 0. For more information on `Offset`, please see relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).",
           "member": "uint64",
@@ -1944,7 +1868,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of results to be returned. Default is 20. Maximum is 100. For more information on `Limit`, please see relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/product/362/15633?from_cn_redirect=1).",
           "member": "uint64",
@@ -1953,7 +1876,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Outputs the ordering of the cloud disk list. Value range: <br><li>ASC: Ascending order <br><li>DESC: Descending order.",
           "member": "string",
@@ -1962,7 +1884,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The field by which the snapshot list is sorted. Value range: <br><li>CREATE_TIME: sorted by the creation time of the snapshots <br>By default, the snapshot list is sorted by the creation time of snapshots.",
           "member": "string",
@@ -2005,7 +1926,6 @@
       "document": "DetachDisks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "IDs of the cloud disks to be unmounted, which can be queried via the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API. Up to 10 elastic cloud disks can be unmounted in a single request.",
           "example": "[\"disk-l7mxexxc\"]",
@@ -2015,7 +1935,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Indicates the CVM from which you want to unmount the disks. This parameter is only available for shared cloud disks.",
           "example": "ins-arxix3xm",
@@ -2585,7 +2504,6 @@
       "document": "Cloud disk backup point.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk backup point ID.",
           "example": "dbp-xxxxxxxx",
@@ -2596,7 +2514,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the cloud disk with which the backup point is associated.",
           "example": "disk-xxxxxxxx",
@@ -2607,7 +2524,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk size in GB.",
           "example": "50",
@@ -2618,7 +2534,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk type. Valid values:<br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk",
           "example": "DATA_DISK",
@@ -2629,7 +2544,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup point name.",
           "example": "Untitled",
@@ -2640,7 +2554,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk backup point status. Valid values:<br><li>NORMAL: Normal<br><li>CREATING: Creating<br><li>ROLLBACKING: Rolling back",
           "example": "NORMAL",
@@ -2651,7 +2564,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk creation progress in percentage.",
           "example": "100",
@@ -2662,7 +2574,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time of the cloud disk backup point.",
           "example": "2022-01-01T12:00:00+08:00",
@@ -2673,7 +2584,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the cloud disk is encrypted. Valid values: <br><li>false: Not encrypted <br><li>true: Encrypted",
           "example": "false",
@@ -2690,7 +2600,6 @@
       "document": "Billing mode of the instance",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription period of the cloud disk in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
           "example": "1",
@@ -2701,7 +2610,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Auto-renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: Notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: Notify upon expiration but do not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify upon expiration nor renew automatically <br><br>Default value: NOTIFY_AND_MANUAL_RENEW.",
           "example": "NOTIFY_AND_AUTO_RENEW",
@@ -2712,7 +2620,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "You can specify this parameter when you need to ensure that a cloud disk and the CVM instance to which it is attached have the same expiration time. This parameter represents the current expiration time of the instance. In this case, if you specify `Period`, `Period` will represent how long you want to renew the instance, and the cloud disk will be renewed based on the new expiration time of the instance. For example, the value of this parameter can be `2018-03-30 20:15:03`.",
           "example": "2018-03-30 20:15:03",
@@ -2855,7 +2762,6 @@
       "document": "The operation log of the cloud disk.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "UIN of operator.",
           "member": "string",
@@ -2865,7 +2771,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Operation type. Value range:\nCBS_OPERATION_ATTACH: Mount cloud disk\nCBS_OPERATION_DETACH: Unmount cloud disk\nCBS_OPERATION_RENEW: Renew\nCBS_OPERATION_EXPAND: Expand\nCBS_OPERATION_CREATE: Create\nCBS_OPERATION_ISOLATE: Isolate\nCBS_OPERATION_MODIFY: Modify cloud disk attributes\nASP_OPERATION_BIND: Associate scheduled snapshot policy\nASP_OPERATION_UNBIND: Cancel associated scheduled snapshot policy",
           "member": "string",
@@ -2875,7 +2780,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk ID of operation.",
           "member": "string",
@@ -2885,7 +2789,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status of operation. Value range:\nSUCCESS: Operation successful \nFAILED: Operation failed \nPROCESSING: Operation in process",
           "member": "string",
@@ -2895,7 +2798,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time",
           "member": "string",
@@ -2905,7 +2807,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time",
           "member": "string",
@@ -2921,7 +2822,6 @@
       "document": "Key-value pair filters for conditional filtering queries.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of filter key.",
           "member": "string",
@@ -2930,7 +2830,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "One or more filter values.",
           "member": "string",
@@ -2994,7 +2893,6 @@
       "document": "Image",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Image instance ID.",
           "member": "string",
@@ -3004,7 +2902,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Image name.",
           "member": "string",
@@ -3020,7 +2917,6 @@
       "document": "InitializeDisks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID list of the cloud disks to be reinitialized. Up to 20 disks can be reinitialized at a time.",
           "example": "[\"disk-12sdf234\"]",
@@ -3048,7 +2944,6 @@
       "document": "InquirePriceModifyDiskBackupQuota request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk ID, which can be queried through the `DescribeDisks` API.",
           "example": "disk-xxxxxxx",
@@ -3058,7 +2953,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk backup point quota after the modification, i.e., the number of backup points that a cloud disk can have.",
           "example": "1",
@@ -3096,7 +2990,6 @@
       "document": "InquirePriceModifyDiskExtraPerformance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk ID, which can be queried via the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API.",
           "member": "string",
@@ -3105,7 +2998,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The extra throughput to purchase, in MB/s",
           "member": "uint64",
@@ -3140,7 +3032,6 @@
       "document": "InquiryPriceCreateDisks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk billing mode. <br><li>POSTPAID_BY_HOUR: Hourly pay-as-you-go.",
           "example": "PREPAID",
@@ -3150,7 +3041,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk media type. Valid values: <br><li>CLOUD_BASIC: HDD Cloud Storage<br><li>CLOUD_PREMIUM: Premium Cloud Disk<br><li>CLOUD_SSD: SSD<br><li>CLOUD_HSSD: Enhanced SSD<br><li>CLOUD_TSSD: ulTra SSD.",
           "example": "CLOUD_TSSD",
@@ -3160,7 +3050,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk size in GB. For the value range, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).",
           "example": "500",
@@ -3170,7 +3059,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the project to which the cloud disk belongs.",
           "example": "0",
@@ -3180,7 +3068,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of cloud disks to be purchased. If it is not specified, `1` will be used by default.",
           "example": "1",
@@ -3190,7 +3077,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Extra performance in MB/s purchased for a cloud disk.<br>This parameter is only valid for Enhanced SSD (CLOUD_HSSD) and ulTra SSD (CLOUD_TSSD).",
           "example": "100",
@@ -3200,7 +3086,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Relevant parameter settings for the prepaid mode (i.e., monthly subscription). The monthly subscription cloud disk purchase attributes such as usage period and whether or not auto-renewal is set up can be specified using this parameter. <br>This parameter is required when creating a prepaid cloud disk. This parameter is not required when creating an hourly postpaid cloud disk.",
           "example": "无",
@@ -3210,7 +3095,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the cloud disk backup point quota.",
           "example": "0",
@@ -3248,7 +3132,6 @@
       "document": "InquiryPriceResizeDisk request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the cloud disk, which can be queried via the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1).",
           "member": "string",
@@ -3257,7 +3140,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk size after scale out (in GB). This cannot be smaller than the current size of the cloud disk. For the value range of the cloud disk sizes, see cloud disk [Product Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).",
           "member": "uint64",
@@ -3266,7 +3148,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of project the cloud disk belongs to. If selected, it can only be used for authentication.",
           "member": "uint64",
@@ -3301,7 +3182,6 @@
       "document": "ModifyAutoSnapshotPolicyAttribute request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Scheduled snapshot policy ID.",
           "example": "asp-nqu08k2l",
@@ -3311,7 +3191,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether or not the scheduled snapshot policy is activated. FALSE: Not activated. TRUE: Activated. The default value is TRUE.",
           "example": "1",
@@ -3321,7 +3200,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the snapshot created by this scheduled snapshot policy is retained permanently. FALSE: Not retained permanently. TRUE: Retained permanently. The default value is FALSE.",
           "example": "TRUE",
@@ -3331,7 +3209,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of the scheduled snapshot policy to be created. If it is left empty, the default is 'Not named'. The maximum length cannot exceed 60 bytes.",
           "example": "data_disk_auto_snapshot",
@@ -3341,7 +3218,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The policy for executing the scheduled snapshot.",
           "example": "无",
@@ -3351,7 +3227,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of days to retain the snapshots created according to this scheduled snapshot policy. If this parameter is specified, `IsPermanent` cannot be specified as `TRUE`; otherwise, they will conflict with each other.",
           "example": "6",
@@ -3460,7 +3335,6 @@
       "document": "ModifyDiskBackupQuota request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk ID.",
           "example": "disk-xxxxxxxx",
@@ -3470,7 +3344,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk backup point quota after the adjustment",
           "example": "1",
@@ -3498,7 +3371,6 @@
       "document": "ModifyDiskExtraPerformance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the cloud disk to create a snapshot, which can be obtained via the [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1) API.",
           "member": "string",
@@ -3507,7 +3379,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The extra throughput to purchase, in MB/s",
           "member": "uint64",
@@ -3534,7 +3405,6 @@
       "document": "ModifySnapshotAttribute request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot ID, which can be queried via [DescribeSnapshots](https://intl.cloud.tencent.com/document/product/362/15647?from_cn_redirect=1).",
           "member": "string",
@@ -3543,7 +3413,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of new snapshot. Maximum length is 60 bytes.",
           "member": "string",
@@ -3552,7 +3421,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot retention mode. Valid values: `FALSE`: non-permanent retention; `TRUE`: permanent retention.",
           "member": "bool",
@@ -3561,7 +3429,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Expiration time of the snapshot. Setting this parameter will set the snapshot retention mode to `FALSE` (non-permanent retention) and the snapshot will be automatically deleted upon expiration.",
           "member": "datetime_iso",
@@ -3588,7 +3455,6 @@
       "document": "ModifySnapshotsSharePermission request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of account IDs with which a snapshot is shared. For the format of array-type parameters, see [API Introduction](https://intl.cloud.tencent.com/document/api/213/568?from_cn_redirect=1). You can find the account ID in [Account Information](https://console.cloud.tencent.com/developer).",
           "member": "string",
@@ -3597,7 +3463,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Operations. Valid values: `SHARE`, sharing an image; `CANCEL`, cancelling the sharing of an image.",
           "member": "string",
@@ -3606,7 +3471,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the snapshot. You can obtain this by using [DescribeSnapshots](https://intl.cloud.tencent.com/document/api/362/15647?from_cn_redirect=1).",
           "member": "string",
@@ -3861,7 +3725,6 @@
       "document": "Describes the prepaid or postpaid price for the cloud disk.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Original price of a monthly-subscribed cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "float",
@@ -3871,7 +3734,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Discounted price of a monthly-subscribed cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "float",
@@ -3881,7 +3743,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Original unit price of a pay-as-you-go cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "float",
@@ -3891,7 +3752,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Billing unit of a postpaid cloud disk. Value range: <br><li>HOUR: Billed by hour.\nNote: This field may return null, indicating that no valid value was found.",
           "member": "string",
@@ -3901,7 +3761,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Discount unit price of a pay-as-you-go cloud disk, in USD.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "float",
@@ -3911,7 +3770,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Original payment of a monthly-subscribed cloud disk, in USD, with six decimal places.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -3921,7 +3779,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Discounted payment price of a monthly-subscribed cloud disk, in USD, with six decimal places.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -3931,7 +3788,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Original unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -3941,7 +3797,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Discounted unit price of a pay-as-you-go cloud disk, in USD, with six decimal places.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -3957,7 +3812,6 @@
       "document": "ResizeDisk request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the cloud disk, which can be queried via the API [DescribeDisks](https://intl.cloud.tencent.com/document/product/362/16315?from_cn_redirect=1).",
           "member": "string",
@@ -3966,7 +3820,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud disk size after scale out (in GB). This must be larger than the current size of the cloud disk. For the value range of the cloud disk sizes, see cloud disk [Product Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1).",
           "member": "uint64",
@@ -3993,7 +3846,6 @@
       "document": "Snapshot sharing information set",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot sharing time",
           "member": "datetime",
@@ -4003,7 +3855,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the shared account",
           "member": "string",
@@ -4019,7 +3870,6 @@
       "document": "The details of a snapshot",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Location of the snapshot.",
           "example": "无",
@@ -4030,7 +3880,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the snapshot is replicated across regions. Value range: <br><li>true: Indicates that the snapshot is replicated across regions. <br><li>false: Indicates that the snapshot belongs to the local region.",
           "example": "false",
@@ -4041,7 +3890,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot status. Valid values: <br><li>NORMAL: normal <br><li>CREATING: creating<br><li>ROLLBACKING: rolling back<br><li>COPYING_FROM_REMOTE: cross-region replicating<li>CHECKING_COPIED: verifying the cross-region replicated data<br><li>TORECYCLE: to be repossessed.",
           "example": "NORMAL",
@@ -4052,7 +3900,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether it is a permanent snapshot. Value range: <br><li>true: Permanent snapshot <br><li>false: Non-permanent snapshot.",
           "example": "true",
@@ -4063,7 +3910,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot name, the user-defined snapshot alias. Call [ModifySnapshotAttribute](https://intl.cloud.tencent.com/document/product/362/15650?from_cn_redirect=1) to modify this field.",
           "example": "test",
@@ -4074,7 +3920,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The expiration time of the snapshot. If the snapshot is permanently retained, this field is blank.",
           "example": "2021-11-24 16:00:00",
@@ -4085,7 +3930,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The progress percentage for snapshot creation. This field is always 100 after the snapshot is created successfully.",
           "example": "100",
@@ -4096,7 +3940,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of images associated with snapshot.",
           "example": "无",
@@ -4107,7 +3950,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of snapshots currently shared",
           "example": "0",
@@ -4118,7 +3960,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot type. This value can currently be either PRIVATE_SNAPSHOT or SHARED_SNAPSHOT.",
           "example": "PRIVATE_SNAPSHOT",
@@ -4129,7 +3970,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Size of the cloud disk used to create this snapshot (in GB).",
           "example": "10",
@@ -4140,7 +3980,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the cloud disk used to create this snapshot.",
           "example": "disk-xxxxxxxx",
@@ -4151,7 +3990,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The destination region to which the snapshot is being replicated. Default value is [ ].",
           "example": "[]",
@@ -4162,7 +4000,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the snapshot is created from an encrypted disk. Value range: <br><li>true: Yes <br><li>false: No.",
           "example": "false",
@@ -4173,7 +4010,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time of the snapshot.",
           "example": "2019-07-15 00:00:00",
@@ -4184,7 +4020,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of images associated with snapshot.",
           "example": "0",
@@ -4195,7 +4030,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The type of the cloud disk used to create the snapshot. Value range: <br><li>SYSTEM_DISK: System disk <br><li>DATA_DISK: Data disk.",
           "example": "SYSTEM_DISK",
@@ -4206,7 +4040,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot ID.",
           "example": "snap-xxxxxxx",
@@ -4217,7 +4050,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The time when the snapshot sharing starts",
           "example": "2021-07-15",
@@ -4228,7 +4060,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of tags associated with the snapshot.",
           "example": "无",
@@ -4245,7 +4076,6 @@
       "document": "Result of the cross-region replication task",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the snapshot replica",
           "example": "snap-hdbc13ad",
@@ -4256,7 +4086,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Error message. It’s null if the request succeeds.",
           "example": "\"\"",
@@ -4267,7 +4096,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Error code. It’s `Success` if the request succeeds.",
           "example": "\"Success\"",
@@ -4278,7 +4106,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Destination region of the replication task",
           "example": "\"ap-guangzhou\"",
@@ -4295,7 +4122,6 @@
       "document": "Snapshot operation log (disused).",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Status of operation. Value range:\nSUCCESS: Operation successful \nFAILED: Operation failed \nPROCESSING: Operation in process",
           "example": "SUCCESS",
@@ -4306,7 +4132,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time",
           "example": "2018-12-18 17:52:38",
@@ -4317,7 +4142,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "UIN of operator.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "546800003",
@@ -4328,7 +4152,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of snapshot being operated.",
           "example": "snap-0y61iiyj",
@@ -4339,7 +4162,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Operation type. Value range:\nSNAP_OPERATION_DELETE: Delete snapshot\nSNAP_OPERATION_ROLLBACK: Roll back snapshot\nSNAP_OPERATION_MODIFY: Modify snapshot attributes\nSNAP_OPERATION_CREATE: Create snapshot\nSNAP_OPERATION_COPY: Cross-region replication of snapshot\nASP_OPERATION_CREATE_SNAP: Create snapshot with scheduled snapshot policy\nASP_OPERATION_DELETE_SNAP: Delete snapshot from scheduled snapshot policy",
           "example": "SNAP_OPERATION_ROLLBACK",
@@ -4350,7 +4172,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time",
           "example": "2018-12-18 17:52:38",
@@ -4367,7 +4188,6 @@
       "document": "Tag.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Tag key.",
           "member": "string",
@@ -4377,7 +4197,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag value.",
           "member": "string",
@@ -4393,7 +4212,6 @@
       "document": "TerminateDisks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of cloud disk IDs required to be returned.",
           "example": "[\"disk-l7mxexxc\"]",
@@ -4403,7 +4221,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Delete the associated non-permanently reserved snapshots upon deletion of the source cloud disk. `0`: No (default). `1`: Yes. To check whether a snapshot is permanently reserved, refer to the `IsPermanent` field returned by the `DescribeSnapshots` API. ",
           "example": "0",
@@ -4431,7 +4248,6 @@
       "document": "UnbindAutoSnapshotPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of cloud disk IDs scheduled snapshot policy to be unbound from.",
           "member": "string",
@@ -4440,7 +4256,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of scheduled snapshot policy to be unbound.",
           "member": "string",

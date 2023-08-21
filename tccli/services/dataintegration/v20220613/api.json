@@ -18,7 +18,6 @@
       "document": "A batch of messages",
       "members": [
         {
-          "default": "",
           "document": "Message body",
           "example": "MessageIdContent",
           "member": "string",
@@ -28,7 +27,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Key of a message",
           "example": "Message-key-439j9hj92",
           "member": "string",
@@ -44,7 +42,6 @@
       "document": "SendMessage request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the integrated resource",
           "example": "datahub-rinibi1",
           "member": "string",
@@ -53,7 +50,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "A batch of messages",
           "example": "无",
           "member": "BatchContent",

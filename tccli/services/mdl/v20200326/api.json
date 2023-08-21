@@ -235,7 +235,6 @@
       "document": "Audio/Video transcoding template",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of an audio/video transcoding template, which can contain 1-20 case-sensitive letters and digits",
           "example": "name",
@@ -246,7 +245,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether video is needed. `0`: not needed; `1`: needed",
           "example": "1",
@@ -257,7 +255,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video codec. Valid values: `H264`, `H265`. If this parameter is left empty, the original video codec will be used.",
           "example": "H264",
@@ -268,7 +265,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video width. Value range: (0, 3000]. The value must be an integer multiple of 4. If this parameter is left empty, the original video width will be used.",
           "example": "1920",
@@ -279,7 +275,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video height. Value range: (0, 3000]. The value must be an integer multiple of 4. If this parameter is left empty, the original video height will be used.",
           "example": "1080",
@@ -290,7 +285,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video frame rate. Value range: [1, 240]. If this parameter is left empty, the original frame rate will be used.",
           "example": "30",
@@ -301,7 +295,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable top speed codec transcoding. Valid values: `CLOSE` (disable), `OPEN` (enable). Default value: `CLOSE`",
           "example": "OPEN",
@@ -312,7 +305,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Compression ratio for top speed codec transcoding. Value range: [0, 50]. The lower the compression ratio, the higher the image quality.",
           "example": "0",
@@ -323,7 +315,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether audio is needed. `0`: not needed; `1`: needed",
           "example": "1",
@@ -334,7 +325,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio codec. Valid value: `AAC` (default)",
           "example": "AAC",
@@ -345,7 +335,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio bitrate. If this parameter is left empty, the original bitrate will be used.\nValid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000`, `24000`, `28000`, `32000`, `40000`, `48000`, `56000`, `64000`, `80000`, `96000`, `112000`, `128000`, `160000`, `192000`, `224000`, `256000`, `288000`, `320000`, `384000`, `448000`, `512000`, `576000`, `640000`, `768000`, `896000`, `1024000`",
           "example": "128000",
@@ -356,7 +345,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video bitrate. Value range: [50000, 40000000]. The value must be an integer multiple of 1000. If this parameter is left empty, the original bitrate will be used.",
           "example": "1000000",
@@ -367,7 +355,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Bitrate control mode. Valid values: `CBR`, `ABR` (default)",
           "example": "ABR",
@@ -378,7 +365,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark ID",
           "example": "AB342ED131CE",
@@ -389,7 +375,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to convert audio to text. `0` (default): No; `1`: Yes.",
           "example": "0",
@@ -400,7 +385,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The subtitle settings. Currently, the following subtitles are supported:\n`eng2eng`: English speech to English text.\n`eng2chs`: English speech to Chinese text. \n`eng2chseng`: English speech to English and Chinese text. \n`chs2chs`: Chinese speech to Chinese text.   \n`chs2eng`: Chinese speech to English text. \n`chs2chseng`: Chinese speech to Chinese and English text.",
           "example": "eng2eng",
@@ -417,7 +401,6 @@
       "document": "Channel-associated input",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Input ID",
           "example": "AB342ED131CE",
@@ -428,7 +411,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio selector for the input. There can be 0 to 20 audio selectors.\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -439,7 +421,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pull mode. If the input type is `HLS_PULL` or `MP4_PULL`, you can set this parameter to `LOOP` or `ONCE`. `LOOP` is the default value.\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "LOOP",
@@ -450,7 +431,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input failover configuration\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -467,7 +447,6 @@
       "document": "Audio `Pid` selection.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Audio `Pid`. Default value: 0.",
           "member": "uint64",
@@ -483,7 +462,6 @@
       "document": "Pipeline input audio statistics.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Audio FPS.",
           "member": "uint64",
@@ -493,7 +471,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio bitrate in bps.",
           "member": "uint64",
@@ -503,7 +480,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio `Pid`, which is available only if the input is `rtp/udp`.",
           "member": "int64",
@@ -519,7 +495,6 @@
       "document": "Audio selector.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Audio name, which can contain 1-32 letters, digits, and underscores.",
           "member": "string",
@@ -529,7 +504,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio `Pid` selection.",
           "member": "AudioPidSelectionInfo",
@@ -545,7 +519,6 @@
       "document": "Audio transcoding template.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Only `AttachedInputs.AudioSelectors.Name` can be selected. This parameter is required for RTP_PUSH and UDP_PUSH.",
           "member": "string",
@@ -555,7 +528,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio transcoding template name, which can contain 1-20 letters and digits.",
           "member": "string",
@@ -565,7 +537,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio codec. Valid value: AAC. Default value: AAC.",
           "member": "string",
@@ -575,7 +546,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio bitrate. If this parameter is left empty, the original value will be used.\nValid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 288000, 320000, 384000, 448000, 512000, 576000, 640000, 768000, 896000, 1024000",
           "member": "uint64",
@@ -585,7 +555,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio language code, whose length is always 3 characters.",
           "member": "string",
@@ -601,7 +570,6 @@
       "document": "Channel alarm information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm details of pipeline 0 under this channel.",
           "member": "ChannelPipelineAlerts",
@@ -611,7 +579,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm details of pipeline 1 under this channel.",
           "member": "ChannelPipelineAlerts",
@@ -627,7 +594,6 @@
       "document": "Channel output statistics.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Input ID.",
           "member": "string",
@@ -637,7 +603,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input statistics.",
           "member": "InputStatistics",
@@ -653,7 +618,6 @@
       "document": "Channel output information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Output group name.",
           "member": "string",
@@ -663,7 +627,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Output group statistics.",
           "member": "OutputsStatistics",
@@ -679,7 +642,6 @@
       "document": "Channel alarm details.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm start time in UTC time.",
           "member": "string",
@@ -689,7 +651,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm end time in UTC time.\nThis time is available only after the alarm ends.",
           "member": "string",
@@ -699,7 +660,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm type.",
           "member": "string",
@@ -709,7 +669,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm details.",
           "member": "string",
@@ -725,7 +684,6 @@
       "document": "Watermark image settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Image file format. Valid values: png, jpg.",
           "example": "png",
@@ -736,7 +694,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Base64 encoded image content",
           "example": "base64 string",
@@ -747,7 +704,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Origin. Valid values: TOP_LEFT, BOTTOM_LEFT, TOP_RIGHT, BOTTOM_RIGHT.",
           "example": "TOP_LEFT",
@@ -758,7 +714,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.",
           "example": "10",
@@ -769,7 +724,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.",
           "example": "10",
@@ -780,7 +734,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The watermark image’s width as a percentage of the video width. Value range: 0-100. Default: 10.\n`0` means to scale the width proportionally to the height.\nYou cannot set both `Width` and `Height` to `0`.",
           "example": "10",
@@ -791,7 +744,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The watermark image’s height as a percentage of the video height. Value range: 0-100. Default: 10.\n`0` means to scale the height proportionally to the width.\nYou cannot set both `Width` and `Height` to `0`.",
           "example": "10",
@@ -808,7 +760,6 @@
       "document": "CreateStreamLiveChannel request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Channel name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level",
           "example": "channel",
@@ -818,7 +769,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Inputs to attach. You can attach 1 to 5 inputs.",
           "example": "无",
@@ -828,7 +778,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration information of the channel’s output groups. Quantity: [1, 10]",
           "example": "无",
@@ -838,7 +787,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio transcoding templates. Quantity: [1, 20]",
           "example": "无",
@@ -848,7 +796,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video transcoding templates. Quantity: [1, 10]",
           "example": "无",
@@ -858,7 +805,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio/Video transcoding templates. Quantity: [1, 10]",
           "example": "无",
@@ -868,7 +814,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Event settings",
           "example": "无",
@@ -878,7 +823,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The callback settings.",
           "example": "无",
@@ -916,7 +860,6 @@
       "document": "CreateStreamLiveInput request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Input name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level",
           "example": "sdad",
@@ -926,7 +869,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input type\nValid values: `RTMP_PUSH`, `RTP_PUSH`, `UDP_PUSH`, `RTMP_PULL`, `HLS_PULL`, `MP4_PULL`",
           "example": "RTMP_PUSH",
@@ -936,7 +878,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the input security group to attach\nYou can attach only one security group to an input.",
           "example": "[\"123\\r\\n\"]",
@@ -946,7 +887,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input settings. For the type `RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.",
           "example": "无",
@@ -984,7 +924,6 @@
       "document": "CreateStreamLiveInputSecurityGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Input security group name, which can contain case-sensitive letters, digits, and underscores and must be unique at the region level",
           "example": "xxx",
@@ -994,7 +933,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Allowlist entries. Quantity: [1, 10]",
           "example": "[\"1.1.1.1\\/1\\r\\n\"]",
@@ -1032,7 +970,6 @@
       "document": "CreateStreamLivePlan request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the channel for which you want to configure an event",
           "example": "AAAAAA",
@@ -1042,7 +979,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Event configuration",
           "example": "无",
@@ -1070,7 +1006,6 @@
       "document": "CreateStreamLiveWatermark request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark name",
           "example": "watermark_name",
@@ -1080,7 +1015,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark type. Valid values: STATIC_IMAGE, TEXT.",
           "example": "STATIC_IMAGE",
@@ -1090,7 +1024,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.",
           "example": "无",
@@ -1100,7 +1033,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark text settings. This parameter is valid if `Type` is `TEXT`.",
           "example": "无",
@@ -1138,7 +1070,6 @@
       "document": "Watermark text settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Text",
           "example": "watermark",
@@ -1149,7 +1080,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Origin. Valid values: TOP_LEFT, BOTTOM_LEFT, TOP_RIGHT, BOTTOM_RIGHT.",
           "example": "TOP_LEFT",
@@ -1160,7 +1090,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The watermark’s horizontal distance from the origin as a percentage of the video width. Value range: 0-100. Default: 10.",
           "example": "10",
@@ -1171,7 +1100,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The watermark’s vertical distance from the origin as a percentage of the video height. Value range: 0-100. Default: 10.",
           "example": "10",
@@ -1182,7 +1110,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Font size. Value range: 25-50.",
           "example": "10",
@@ -1193,7 +1120,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Font color, which is an RGB color value. Default value: 0x000000.",
           "example": "0x000000",
@@ -1210,7 +1136,6 @@
       "document": "DASH configuration information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.",
           "example": "4000",
@@ -1221,7 +1146,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of segments. Value range: [1,30]. Default value: 5.",
           "example": "5",
@@ -1232,7 +1156,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable multi-period. Valid values: CLOSE/OPEN. Default value: CLOSE.",
           "example": "CLOSE",
@@ -1243,7 +1166,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The HLS package type when the H.265 codec is used. Valid values: `hvc1`, `hev1` (default).",
           "example": "hvc1",
@@ -1260,7 +1182,6 @@
       "document": "DeleteStreamLiveChannel request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Channel ID",
           "example": "12312",
@@ -1288,7 +1209,6 @@
       "document": "DeleteStreamLiveInput request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Input ID",
           "example": "111",
@@ -1316,7 +1236,6 @@
       "document": "DeleteStreamLiveInputSecurityGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Input security group ID",
           "example": "1111",
@@ -1344,7 +1263,6 @@
       "document": "DeleteStreamLivePlan request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the channel whose event is to be deleted",
           "example": "AAAAAA",
@@ -1354,7 +1272,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the event to delete",
           "example": "EventName",
@@ -1382,7 +1299,6 @@
       "document": "DeleteStreamLiveWatermark request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark ID",
           "example": "AB342ED131CE",
@@ -1460,7 +1376,6 @@
       "document": "Watermark image settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Origin",
           "example": "TOP_LEFT",
@@ -1471,7 +1386,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The watermark image’s horizontal distance from the origin as a percentage of the video width",
           "example": "10",
@@ -1482,7 +1396,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The watermark image’s vertical distance from the origin as a percentage of the video height",
           "example": "10",
@@ -1493,7 +1406,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The watermark image’s width as a percentage of the video width",
           "example": "10",
@@ -1504,7 +1416,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The watermark image’s height as a percentage of the video height",
           "example": "10",
@@ -1521,7 +1432,6 @@
       "document": "DescribeStreamLiveChannelAlerts request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Channel ID",
           "example": "1111",
@@ -1559,7 +1469,6 @@
       "document": "DescribeStreamLiveChannelInputStatistics request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Channel ID",
           "example": "AEAE83719CE",
@@ -1569,7 +1478,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.\nUTC time, such as `2020-01-01T12:00:00Z`",
           "example": "2020-01-01T12:00:00Z",
@@ -1579,7 +1487,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time for query, which is 1 hour after `StartTime` by default\nUTC time, such as `2020-01-01T12:00:00Z`",
           "example": "2020-01-01T14:00:00Z",
@@ -1589,7 +1496,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data collection interval. Valid values: `5s`, `1min` (default), `5min`, `15min`",
           "example": "1min",
@@ -1627,7 +1533,6 @@
       "document": "DescribeStreamLiveChannelLogs request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Channel ID",
           "example": "AEAE83719CE",
@@ -1637,7 +1542,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time for query, which is 1 hour ago by default. You can query logs in the last 7 days.\nUTC time, such as `2020-01-01T12:00:00Z`",
           "example": "2020-01-01T12:00:00Z",
@@ -1647,7 +1551,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time for query, which is 1 hour after `StartTime` by default\nUTC time, such as `2020-01-01T12:00:00Z`",
           "example": "2020-01-01T14:00:00Z",
@@ -1685,7 +1588,6 @@
       "document": "DescribeStreamLiveChannelOutputStatistics request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Channel ID",
           "example": "AEAE83719CE",
@@ -1695,7 +1597,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.\nUTC time, such as `2020-01-01T12:00:00Z`",
           "example": "2020-01-01T12:00:00Z",
@@ -1705,7 +1606,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time for query, which is 1 hour after `StartTime` by default\nUTC time, such as `2020-01-01T12:00:00Z`",
           "example": "2020-01-01T14:00:00Z",
@@ -1715,7 +1615,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data collection interval. Valid values: `5s`, `1min` (default), `5min`, `15min`",
           "example": "1min",
@@ -1753,7 +1652,6 @@
       "document": "DescribeStreamLiveChannel request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Channel ID",
           "example": "AB458E",
@@ -1818,7 +1716,6 @@
       "document": "DescribeStreamLiveInput request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Input ID",
           "example": "1111",
@@ -1856,7 +1753,6 @@
       "document": "DescribeStreamLiveInputSecurityGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Input security group ID",
           "example": "1111",
@@ -1948,7 +1844,6 @@
       "document": "DescribeStreamLivePlans request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the channel whose events you want to query",
           "example": "无",
@@ -2013,7 +1908,6 @@
       "document": "DescribeStreamLiveTranscodeDetail request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The query start time (UTC+8) in the format of yyyy-MM-dd.\nYou can only query data in the last month (not including the current day).",
           "example": "2022-01-01",
@@ -2023,7 +1917,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The query end time (UTC+8) in the format of yyyy-MM-dd.\nYou can only query data in the last month (not including the current day).",
           "example": "2022-01-01",
@@ -2033,7 +1926,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The channel ID (optional).",
           "example": "AB342ED131CE",
@@ -2043,7 +1935,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of pages. Default value: 1.\nThe value cannot exceed 100.",
           "example": "1",
@@ -2053,7 +1944,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of records per page. Default value: 10.\nValue range: 1-1000.",
           "example": "10",
@@ -2131,7 +2021,6 @@
       "document": "DescribeStreamLiveWatermark request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark ID",
           "example": "AB342ED131CE",
@@ -2196,7 +2085,6 @@
       "document": "Watermark text settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Text",
           "example": "watermark",
@@ -2207,7 +2095,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Origin",
           "example": "TOP_LEFT",
@@ -2218,7 +2105,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The watermark image’s horizontal distance from the origin as a percentage of the video width",
           "example": "10",
@@ -2229,7 +2115,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The watermark image’s vertical distance from the origin as a percentage of the video height",
           "example": "10",
@@ -2240,7 +2125,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Font size",
           "example": "10",
@@ -2251,7 +2135,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Font color",
           "example": "0x000000",
@@ -2268,7 +2151,6 @@
       "document": "Transcoding details.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The channel ID.",
           "example": "AB342ED131CE",
@@ -2279,7 +2161,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The start time (UTC+8) of transcoding in the format of yyyy-MM-dd HH:mm:ss.",
           "example": "2022-01-21 00:00:00",
@@ -2290,7 +2171,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The end time (UTC+8) of transcoding in the format of yyyy-MM-dd HH:mm:ss.",
           "example": "2022-01-21 00:00:00",
@@ -2301,7 +2181,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The duration (s) of transcoding.",
           "example": "30",
@@ -2312,7 +2191,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The encoding method.\nExamples:\n`liveprocessor_H264`: Live transcoding-H264\n`liveprocessor_H265`: Live transcoding-H265\n`topspeed_H264`: Top speed codec-H264\n`topspeed_H265`: Top speed codec-H265",
           "example": "liveprocessor_H264",
@@ -2323,7 +2201,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The target bitrate (Kbps).",
           "example": "1000",
@@ -2334,7 +2211,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The transcoding type.",
           "example": "merge_stream",
@@ -2345,7 +2221,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The push domain name.",
           "example": "无",
@@ -2356,7 +2231,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The target resolution.",
           "example": "480P",
@@ -2373,7 +2247,6 @@
       "document": "Watermark information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark ID",
           "example": "AB342ED131CE",
@@ -2384,7 +2257,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark name",
           "example": "watermark",
@@ -2395,7 +2267,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark type. Valid values: STATIC_IMAGE, TEXT.",
           "example": "STATIC_IMAGE",
@@ -2406,7 +2277,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -2417,7 +2287,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark text settings. This parameter is valid if `Type` is `TEXT`.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -2428,7 +2297,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Last modified time (UTC+0) of the watermark, in the format of `2020-01-01T12:00:00Z`\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "2022-01-21T00:00:00Z",
@@ -2439,7 +2307,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of channel IDs the watermark is bound to\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -2456,7 +2323,6 @@
       "document": "Relay destination address.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Relay destination address. Length limit: [1,512].",
           "member": "string",
@@ -2466,7 +2332,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Authentication key. Length limit: [1,128].\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2476,7 +2341,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Authentication username. Length limit: [1,128].\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2486,7 +2350,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Authentication password. Length limit: [1,128].\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2502,7 +2365,6 @@
       "document": "Custom DRM key.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "DRM key, which is a 32-bit hexadecimal string.\nNote: uppercase letters in the string will be automatically converted to lowercase ones.",
           "example": "test",
@@ -2513,7 +2375,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Required for Widevine encryption. Valid values: SD, HD, UHD1, UHD2, AUDIO, ALL.\nALL refers to all tracks. If this parameter is set to ALL, no other tracks can be added.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -2524,7 +2385,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Required for Widevine encryption. It is a 32-bit hexadecimal string.\nNote: uppercase letters in the string will be automatically converted to lowercase ones.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -2535,7 +2395,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Required when FairPlay uses the AES encryption method. It is a 32-bit hexadecimal string.\nFor more information about this parameter, please see: \nhttps://tools.ietf.org/html/rfc3826\nNote: uppercase letters in the string will be automatically converted to lowercase ones.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -2546,7 +2405,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The URI of the license server when AES-128 is used. This parameter may be empty.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "uri",
@@ -2563,7 +2421,6 @@
       "document": "DRM configuration information, which takes effect only for HLS and DASH.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable DRM encryption. Valid values: `CLOSE` (disable), `OPEN` (enable). Default value: `CLOSE`\nDRM encryption is supported only for HLS, DASH, HLS_ARCHIVE, DASH_ARCHIVE, HLS_MEDIAPACKAGE, and DASH_MEDIAPACKAGE outputs.",
           "example": "OPEN",
@@ -2574,7 +2431,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid values: `CustomDRMKeys` (default value), `SDMCDRM`\n`CustomDRMKeys` means encryption keys customized by users.\n`SDMCDRM` means the DRM key management system of SDMC.",
           "example": "CustomDRMKeys",
@@ -2585,7 +2441,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "If `Scheme` is set to `CustomDRMKeys`, this parameter is required.\nIf `Scheme` is set to `SDMCDRM`, this parameter is optional. It supports digits, letters, hyphens, and underscores and must contain 1 to 36 characters. If it is not specified, the value of `ChannelId` will be used.",
           "example": "contentid",
@@ -2596,7 +2451,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The key customized by the content user, which is required when `Scheme` is set to CustomDRMKeys.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -2607,7 +2461,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SDMC key configuration. This parameter is used when `Scheme` is set to `SDMCDRM`.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -2618,7 +2471,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The DRM type. Valid values: `FAIRPLAY`, `WIDEVINE`, `AES128`. For HLS, this can be `FAIRPLAY` or `AES128`. For DASH, this can only be `WIDEVINE`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -2635,7 +2487,6 @@
       "document": "The callback settings.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The callback configuration for push events.",
           "example": "无",
@@ -2652,7 +2503,6 @@
       "document": "Destination address information in event settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "URL of the COS bucket to save recording files",
           "example": "http://cos-domain/path",
@@ -2669,7 +2519,6 @@
       "document": "Destination address information in event settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "URL of the COS bucket where recording files are saved",
           "example": "http://cos-domain/path",
@@ -2858,7 +2707,6 @@
       "document": "Input failover settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the backup input\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "AB342ED131CE",
@@ -2869,7 +2717,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The wait time (ms) for triggering failover after the primary input becomes unavailable. Value range: [1000, 86400000]. Default value: `3000`",
           "example": "1000",
@@ -2880,7 +2727,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Failover policy. Valid values: `CURRENT_PREFERRED` (default), `PRIMARY_PREFERRED`",
           "example": "CURRENT_PREFERRED",
@@ -2897,7 +2743,6 @@
       "document": "HLS protocol configuration.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.",
           "example": "4000",
@@ -2908,7 +2753,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of segments. Value range: [1,30]. Default value: 5.",
           "example": "5",
@@ -2919,7 +2763,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable PDT insertion. Valid values: CLOSE/OPEN. Default value: CLOSE.",
           "example": "CLOSE",
@@ -2930,7 +2773,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PDT duration in seconds. Value range: (0,3000]. Default value: 600.",
           "example": "600",
@@ -2941,7 +2783,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio/Video packaging scheme. Valid values: `SEPARATE`, `MERGE`",
           "example": "SEPARATE",
@@ -2952,7 +2793,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The segment type. Valid values: `ts` (default), `fmp4`.\nCurrently, fMP4 segments do not support DRM or time shifting.",
           "example": "ts",
@@ -2963,7 +2803,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The HLS package type when the H.265 codec is used. Valid values: `hvc1`, `hev1` (default).",
           "example": "fmp4",
@@ -2980,7 +2819,6 @@
       "document": "Input information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Input region.",
           "member": "string",
@@ -2990,7 +2828,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input ID.",
           "member": "string",
@@ -3000,7 +2837,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input name.",
           "member": "string",
@@ -3010,7 +2846,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input type.",
           "member": "string",
@@ -3020,7 +2855,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of security groups associated with input.",
           "member": "string",
@@ -3030,7 +2864,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of channels associated with input.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -3040,7 +2873,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input configuration array.",
           "member": "InputSettingInfo",
@@ -3056,7 +2888,6 @@
       "document": "Input security group information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Input security group ID.",
           "member": "string",
@@ -3066,7 +2897,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input security group name.",
           "member": "string",
@@ -3076,7 +2906,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of allowlist entries.",
           "member": "string",
@@ -3086,7 +2915,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of bound input streams.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -3096,7 +2924,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input security group address.",
           "member": "string",
@@ -3112,7 +2939,6 @@
       "document": "The input settings.\nThe format of an RTMP_PUSH address is ${InputAddress}/${AppName}/${StreamName}.\nThe format of an SRT_PUSH address is ${InputAddress}?streamid=${StreamName},h=${InputDomain}.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Application name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digits\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "live",
@@ -3123,7 +2949,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Stream name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digits\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "streamid",
@@ -3134,7 +2959,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Source URL, which is valid if `Type` is `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL` and can contain 1-512 characters\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "http://www.domain.com/path/source.mp4",
@@ -3145,7 +2969,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "RTP/UDP input address, which does not need to be entered for the input parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "rtp://1.1.1.1:1",
@@ -3156,7 +2979,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Source type for stream pulling and relaying. To pull content from private-read COS buckets under the current account, set this parameter to `TencentCOS`; otherwise, leave it empty.\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "TencentCOS",
@@ -3167,7 +2989,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Delayed time (ms) for playback, which is valid if `Type` is `RTMP_PUSH`\nValue range: 0 (default) or 10000-600000\nThe value must be a multiple of 1,000.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "0",
@@ -3178,7 +2999,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The domain of an SRT_PUSH address. If this is a request parameter, you don’t need to specify it.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "www.domain.com",
@@ -3189,7 +3009,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The username, which is used for authentication.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "name",
@@ -3200,7 +3019,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The password, which is used for authentication.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "passwd",
@@ -3217,7 +3035,6 @@
       "document": "Input statistics.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Input statistics of pipeline 0.",
           "member": "PipelineInputStatistics",
@@ -3227,7 +3044,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input statistics of pipeline 1.",
           "member": "PipelineInputStatistics",
@@ -3243,7 +3059,6 @@
       "document": "The input stream information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The input stream address.",
           "example": "rtmp://test.ap-tokyo-1.streamlive.myqcloud.com",
@@ -3254,7 +3069,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The input stream path.",
           "example": "path",
@@ -3265,7 +3079,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The input stream name.",
           "example": "streamname",
@@ -3276,7 +3089,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The input stream status. `1` indicates the stream is active.",
           "example": "1",
@@ -3293,7 +3105,6 @@
       "document": "Log information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log type.\nIt contains the value of `StreamStart` which refers to the push information.",
           "member": "string",
@@ -3303,7 +3114,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time when the log is printed.",
           "member": "string",
@@ -3313,7 +3123,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log details.",
           "member": "LogMessageInfo",
@@ -3329,7 +3138,6 @@
       "document": "Log details.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Push information.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "StreamInfo",
@@ -3345,7 +3153,6 @@
       "document": "ModifyStreamLiveChannel request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Channel ID",
           "example": "ESASD13437",
@@ -3355,7 +3162,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Channel name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level",
           "example": "channel",
@@ -3365,7 +3171,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Inputs to attach. You can attach 1 to 5 inputs.",
           "example": "无",
@@ -3375,7 +3180,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration information of the channel’s output groups. Quantity: [1, 10]",
           "example": "无",
@@ -3385,7 +3189,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio transcoding templates. Quantity: [1, 20]",
           "example": "无",
@@ -3395,7 +3198,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video transcoding templates. Quantity: [1, 10]",
           "example": "无",
@@ -3405,7 +3207,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio/Video transcoding templates. Quantity: [1, 10]",
           "example": "无",
@@ -3415,7 +3216,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Event settings",
           "example": "无",
@@ -3425,7 +3225,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The callback settings.",
           "example": "无",
@@ -3453,7 +3252,6 @@
       "document": "ModifyStreamLiveInput request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Input ID",
           "example": "111",
@@ -3463,7 +3261,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level",
           "example": "sddd",
@@ -3473,7 +3270,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of the IDs of the security groups to attach",
           "example": "[\"1111\\r\\n\"]",
@@ -3483,7 +3279,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input settings\nFor the type `RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.\nThis parameter can be left empty for RTP_PUSH and UDP_PUSH inputs.\nNote: If this parameter is not specified or empty, the original input settings will be used.",
           "example": "无",
@@ -3511,7 +3306,6 @@
       "document": "ModifyStreamLiveInputSecurityGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Input security group ID",
           "example": " 1111",
@@ -3521,7 +3315,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input security group name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level",
           "example": "xxxx",
@@ -3531,7 +3324,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Allowlist entries (max: 10)",
           "example": "0.0.0.0/0",
@@ -3559,7 +3351,6 @@
       "document": "ModifyStreamLiveWatermark request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark ID",
           "example": "无",
@@ -3569,7 +3360,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark name",
           "example": "watermark_name",
@@ -3579,7 +3369,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark image settings. This parameter is valid if `Type` is `STATIC_IMAGE`.",
           "example": "无",
@@ -3589,7 +3378,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark text settings. This parameter is valid if `Type` is `TEXT`.",
           "example": "无",
@@ -3617,7 +3405,6 @@
       "document": "Output information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Output name.",
           "example": "name",
@@ -3628,7 +3415,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio transcoding template name array.\nQuantity limit: [0,1] for RTMP; [0,20] for others.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -3639,7 +3425,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video transcoding template name array. Quantity limit: [0,1].\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -3650,7 +3435,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SCTE-35 information configuration.",
           "example": "无",
@@ -3661,7 +3445,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio/Video transcoding template name. If `HlsRemuxSettings.Scheme` is `MERGE`, there is 1 audio/video transcoding template. Otherwise, this parameter is empty.\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -3678,7 +3461,6 @@
       "document": "Channel output statistics.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Output information of pipeline 0.",
           "member": "PipelineOutputStatistics",
@@ -3688,7 +3470,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Output information of pipeline 1.",
           "member": "PipelineOutputStatistics",
@@ -3704,7 +3485,6 @@
       "document": "Pipeline input statistics.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Data timestamp in seconds.",
           "member": "uint64",
@@ -3714,7 +3494,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Input bandwidth in bps.",
           "member": "uint64",
@@ -3724,7 +3503,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video information array.\nFor `rtp/udp` input, the quantity is the number of `Pid` of the input video.\nFor other inputs, the quantity is 1.",
           "member": "VideoPipelineInputStatistics",
@@ -3734,7 +3512,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio information array.\nFor `rtp/udp` input, the quantity is the number of `Pid` of the input audio.\nFor other inputs, the quantity is 1.",
           "member": "AudioPipelineInputStatistics",
@@ -3750,7 +3527,6 @@
       "document": "Pipeline log information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log information of pipeline 0.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "LogInfo",
@@ -3760,7 +3536,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log information of pipeline 1.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "LogInfo",
@@ -3776,7 +3551,6 @@
       "document": "Channel output statistics.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Timestamp.\nIn seconds, indicating data time.",
           "member": "uint64",
@@ -3786,7 +3560,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Output bandwidth in bps.",
           "member": "uint64",
@@ -3802,7 +3575,6 @@
       "document": "Event configuration information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Event name",
           "example": "EventName",
@@ -3813,7 +3585,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Event trigger time settings",
           "example": "无",
@@ -3824,7 +3595,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Event configuration",
           "example": "无",
@@ -3841,7 +3611,6 @@
       "document": "Event configuration information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Event name",
           "example": "EventName",
@@ -3852,7 +3621,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Event trigger time settings",
           "example": "无",
@@ -3863,7 +3631,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Event configuration",
           "example": "无",
@@ -3880,7 +3647,6 @@
       "document": "Event settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Timed recording settings\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -3897,7 +3663,6 @@
       "document": "The callback configuration for push events.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The callback URL (required).",
           "example": "http://callback.com",
@@ -3908,7 +3673,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The callback key (optional).",
           "example": "7852921",
@@ -3925,7 +3689,6 @@
       "document": "The stream status of the queried input.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The input ID.",
           "example": "12",
@@ -3936,7 +3699,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The input name.",
           "example": "test",
@@ -3947,7 +3709,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The input protocol.",
           "example": "RTMP_PUSH",
@@ -3958,7 +3719,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The stream status of the input.",
           "example": "无",
@@ -3975,7 +3735,6 @@
       "document": "QueryInputStreamState request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The StreamLive input ID.",
           "example": "1111",
@@ -4013,7 +3772,6 @@
       "document": "Region information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Region name",
           "example": "ap-mumbai",
@@ -4030,7 +3788,6 @@
       "document": "SDMC DRM configuration information. This parameter is valid only when `Scheme` is set to `SDMCDRM`.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "User ID in the SDMC DRM system",
           "example": "01234567890123456789",
@@ -4041,7 +3798,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tracks of the SDMC DRM system. This parameter is valid for DASH output groups.\n`1`: audio\n`2`: SD\n`4`: HD\n`8`: UHD1\n`16`: UHD2\n\nDefault value: `31` (audio + SD + HD + UHD1 + UHD2)",
           "example": "31",
@@ -4052,7 +3808,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Key ID in the SDMC DRM system; required",
           "example": "ad51223edcb45b52ac54e1cb456aed12",
@@ -4063,7 +3818,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Key in the SDMC DRM system; required",
           "example": "ad51223edcb45b52ac54e1cb456aed12",
@@ -4074,7 +3828,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Key request URL of the SDMC DRM system, which is `https://uat.multidrm.tv/cpix/2.2/getcontentkey` by default",
           "example": "https://uat.multidrm.tv/cpix/2.2/getcontentkey",
@@ -4085,7 +3838,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Token name in an SDMC key request URL, which is `token` by default",
           "example": "token",
@@ -4102,7 +3854,6 @@
       "document": "SCTE-35 configuration information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to pass through SCTE-35 information. Valid values: NO_PASSTHROUGH/PASSTHROUGH. Default value: NO_PASSTHROUGH.",
           "member": "string",
@@ -4350,7 +4101,6 @@
       "document": "StartStreamLiveChannel request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Channel ID",
           "example": "AB458E",
@@ -4378,7 +4128,6 @@
       "document": "StopStreamLiveChannel request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Channel ID",
           "example": "AB458E",
@@ -4406,7 +4155,6 @@
       "document": "Audio information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Audio `Pid`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -4416,7 +4164,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio codec.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -4426,7 +4173,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio frame rate.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -4436,7 +4182,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio bitrate.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -4446,7 +4191,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio sample rate.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -4462,7 +4206,6 @@
       "document": "Push information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Client IP.",
           "member": "string",
@@ -4472,7 +4215,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video information of pushed streams.",
           "member": "StreamVideoInfo",
@@ -4482,7 +4224,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio information of pushed streams.",
           "member": "StreamAudioInfo",
@@ -4492,7 +4233,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SCTE-35 information of pushed streams.",
           "member": "StreamScte35Info",
@@ -4508,7 +4248,6 @@
       "document": "Channel information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Channel ID",
           "example": "无",
@@ -4519,7 +4258,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Channel status",
           "example": "无",
@@ -4530,7 +4268,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of attached inputs",
           "example": "无",
@@ -4541,7 +4278,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of output groups",
           "example": "无",
@@ -4552,7 +4288,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Channel name",
           "example": "无",
@@ -4563,7 +4298,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio transcoding templates\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -4574,7 +4308,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video transcoding templates\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -4585,7 +4318,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Audio/Video transcoding templates\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -4596,7 +4328,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Event settings\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -4607,7 +4338,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The callback settings.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -4624,7 +4354,6 @@
       "document": "Channel output group information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Output group name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the channel level",
           "example": "无",
@@ -4635,7 +4364,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Output protocol\nValid values: `HLS`, `DASH`, `HLS_ARCHIVE`, `HLS_STREAM_PACKAGE`, `DASH_STREAM_PACKAGE`",
           "example": "无",
@@ -4646,7 +4374,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Output information\nIf the type is RTMP or RTP, only one output is allowed; if it is HLS or DASH, 1-10 outputs are allowed.",
           "example": "无",
@@ -4657,7 +4384,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Relay destinations. Quantity: [1, 2]",
           "example": "无",
@@ -4668,7 +4394,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE outputs\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -4679,7 +4404,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DRM configuration information\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -4690,7 +4414,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DASH protocol configuration information, which takes effect only for DASH/DASH_ARCHIVE outputs\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -4701,7 +4424,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "StreamPackage configuration information, which is required if the output type is StreamPackage\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -4712,7 +4434,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time-shift configuration information\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -4729,7 +4450,6 @@
       "document": "StreamLive region information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of StreamLive regions",
           "example": "无",
@@ -4746,7 +4466,6 @@
       "document": "StreamPackage settings when the output type is StreamPackage",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Channel ID in StreamPackage",
           "example": "1",
@@ -4763,7 +4482,6 @@
       "document": "SCTE-35 information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SCTE-35 `Pid`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -4779,7 +4497,6 @@
       "document": "Video information of pushed streams.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Video `Pid`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -4789,7 +4506,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video codec.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -4799,7 +4515,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video frame rate.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -4809,7 +4524,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video bitrate.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -4819,7 +4533,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video width.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -4829,7 +4542,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video height.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -4845,7 +4557,6 @@
       "document": "Time-shift configuration. This parameter is valid only for HLS_ARCHIVE and DASH_ARCHIVE output groups.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable time shifting. Valid values: `OPEN`; `CLOSE`\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "OPEN",
@@ -4856,7 +4567,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name bound for time shifting\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "www.domain.com",
@@ -4867,7 +4577,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Allowable time-shift period (s). Value range: [600, 1209600]. Default value: 300\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "600",
@@ -4884,7 +4593,6 @@
       "document": "Timed recording settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to automatically delete finished recording events. Valid values: `CLOSE`, `OPEN`. If this parameter is left empty, `CLOSE` will be used.\nIf it is set to `OPEN`, a recording event will be deleted 7 days after it is finished.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "CLOSE",
@@ -4901,7 +4609,6 @@
       "document": "Event trigger time settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Event trigger type. Valid values: `FIXED_TIME`, `IMMEDIATE`. This parameter is required if `EventType` is `INPUT_SWITCH`.",
           "example": "FIXED_TIME",
@@ -4912,7 +4619,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter is required if `EventType` is `INPUT_SWITCH` and `StartType` is `FIXED_TIME`.\nIt must be in UTC format, e.g., `2020-01-01T12:00:00Z`.",
           "example": "2021-06-25T00:00:00Z",
@@ -4923,7 +4629,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter is required if `EventType` is `TIMED_RECORD`.\nIt specifies the recording start time in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the current time.",
           "example": "2021-06-25T00:00:00Z",
@@ -4934,7 +4639,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter is required if `EventType` is `TIMED_RECORD`.\nIt specifies the recording end time in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the recording start time.",
           "example": "2021-06-25T00:00:00Z",
@@ -4951,7 +4655,6 @@
       "document": "Event trigger time settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Event trigger type",
           "example": "FIXED_TIME",
@@ -4962,7 +4665,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Not empty if `StartType` is `FIXED_TIME`\nUTC time, such as `2020-01-01T12:00:00Z`",
           "example": "2021-06-25T00:00:00Z",
@@ -4973,7 +4675,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter cannot be empty if `EventType` is `TIMED_RECORD`.\nIt indicates the start time for recording in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the current time.",
           "example": "2021-06-25T00:00:00Z",
@@ -4984,7 +4685,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter cannot be empty if `EventType` is `TIMED_RECORD`.\nIt indicates the end time for recording in UTC format (e.g., `2020-01-01T12:00:00Z`) and must be at least 1 minute later than the start time for recording.",
           "example": "2021-06-25T00:00:00Z",
@@ -5001,7 +4701,6 @@
       "document": "Pipeline input video statistics.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Video FPS.",
           "member": "uint64",
@@ -5011,7 +4710,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video bitrate in bps.",
           "member": "uint64",
@@ -5021,7 +4719,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video `Pid`, which is available only if the input is `rtp/udp`.",
           "member": "int64",
@@ -5037,7 +4734,6 @@
       "document": "Video transcoding template.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Video transcoding template name, which can contain 1-20 letters and digits.",
           "example": "name",
@@ -5048,7 +4744,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video codec. Valid values: H264/H265. If this parameter is left empty, the original value will be used.",
           "example": "H264",
@@ -5059,7 +4754,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video bitrate. Value range: [50000,40000000]. The value can only be a multiple of 1,000. If this parameter is left empty, the original value will be used.",
           "example": "1000000",
@@ -5070,7 +4764,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video width. Value range: (0,3000]. The value can only be a multiple of 4. If this parameter is left empty, the original value will be used.",
           "example": "1920",
@@ -5081,7 +4774,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video height. Value range: (0,3000]. The value can only be a multiple of 4. If this parameter is left empty, the original value will be used.",
           "example": "1080",
@@ -5092,7 +4784,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video frame rate. Value range: [1,240]. If this parameter is left empty, the original value will be used.",
           "example": "30",
@@ -5103,7 +4794,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable top speed codec. Valid value: CLOSE/OPEN. Default value: CLOSE.",
           "example": "OPEN",
@@ -5114,7 +4804,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Top speed codec compression ratio. Value range: [0,50]. The lower the compression ratio, the higher the image quality.",
           "example": "0",
@@ -5125,7 +4814,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Bitrate control mode. Valid values: `CBR`, `ABR` (default)",
           "example": "ABR",
@@ -5136,7 +4824,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark ID\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "AB342ED131CE",

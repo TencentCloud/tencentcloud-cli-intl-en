@@ -201,7 +201,6 @@
       "document": "The products that are applicable.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Valid values: `all products` or names of the applicable products (string). Multiple names are separated by commas.",
           "example": "全产品通用",
@@ -212,7 +211,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid values: `postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all. If `GoodsName` contains multiple product names and `PayMode` is `*`, it indicates that the voucher can be used in all billing modes for each of the products.",
           "example": "*",
@@ -1167,7 +1165,6 @@
       "document": "Bill tag information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cost allocation tag key",
           "member": "string",
@@ -1177,7 +1174,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag value",
           "member": "string",
@@ -1451,7 +1447,6 @@
       "document": "Information about the data structure of the returned COS usage details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Bucket name",
           "example": "waytestssq1-1258535724",
@@ -1462,7 +1457,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The start time of the usage",
           "example": "2022-11-23 00:00:00",
@@ -1473,7 +1467,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The end time of the usage",
           "example": "2022-11-23 23:59:59",
@@ -1484,7 +1477,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subproduct name",
           "example": "cos流量",
@@ -1495,7 +1487,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Billable item name",
           "example": "cos外网下行流量",
@@ -1506,7 +1497,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Usage",
           "example": "10",
@@ -1517,7 +1507,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unit of the billable item",
           "example": "GB",
@@ -1987,7 +1976,6 @@
       "document": "DescribeBillSummaryByPayMode request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "member": "string",
@@ -1996,7 +1984,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "member": "string",
@@ -2005,7 +1992,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query bill data user's UIN",
           "member": "string",
@@ -2050,7 +2036,6 @@
       "document": "DescribeBillSummaryByProduct request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "example": "2018-11",
@@ -2060,7 +2045,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "example": "2018-11",
@@ -2070,7 +2054,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Queries bill data user's UIN",
           "example": "xxx",
@@ -2080,7 +2063,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A bill type, which corresponds to a subtotal type of L0 bills.\nThis parameter has become valid since v3.0 bills took effect in May 2021.\nValid values:\n`consume`: consumption\n`refund`: refund\n`adjustment`: bill adjustment",
           "example": "consume",
@@ -2135,7 +2117,6 @@
       "document": "DescribeBillSummaryByProject request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "member": "string",
@@ -2144,7 +2125,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "member": "string",
@@ -2153,7 +2133,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Queries bill data user's UIN",
           "member": "string",
@@ -2198,7 +2177,6 @@
       "document": "DescribeBillSummaryByRegion request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "member": "string",
@@ -2207,7 +2185,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
           "member": "string",
@@ -2216,7 +2193,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Queries bill data user's UIN",
           "member": "string",
@@ -2654,7 +2630,6 @@
       "document": "DescribeVoucherUsageDetails request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The number of records per page. The default is 20, and the maximum is 1,000.",
           "example": "10",
@@ -2664,7 +2639,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The page number the records start from. The default is 1.",
           "example": "1",
@@ -2674,7 +2648,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The voucher ID.",
           "example": "123",
@@ -2684,7 +2657,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The operator. The default is the UIN of the current.",
           "example": "aa",
@@ -2742,7 +2714,6 @@
       "document": "The products that are not applicable.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The names of non-applicable products.",
           "example": "某产品",
@@ -2753,7 +2724,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "`postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all.",
           "example": "*",
@@ -3296,7 +3266,6 @@
       "document": "The product purchased.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The name of the product.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "某产品",
@@ -3307,7 +3276,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "",
           "example": "某子产品",
@@ -3324,7 +3292,6 @@
       "document": "The usage records.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The amount used. The value of this parameter is the amount used (USD, rounded to 8 decimal places) multiplied by 100,000,000.",
           "example": "123",
@@ -3335,7 +3302,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The time when the voucher was used.",
           "example": "2020-01-01",
@@ -3346,7 +3312,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The details of the product purchased.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -3363,7 +3328,6 @@
       "document": "Voucher information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The owner of the voucher.",
           "example": "aa",
@@ -3374,7 +3338,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The status of the voucher: `unUsed`, `used`, `delivered`, `cancel`, `overdue`",
           "example": "unUsed",
@@ -3385,7 +3348,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The value of the voucher. The value of this parameter is the voucher value (USD, rounded to 8 decimal places) multiplied by 100,000,000.",
           "example": "10000",
@@ -3396,7 +3358,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The balance left. The value of this parameter is the balance left (USD, rounded to 8 decimal places) multiplied by 100,000,000.",
           "example": "10000",
@@ -3407,7 +3368,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The voucher ID.",
           "example": "aa",
@@ -3418,7 +3378,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "`postPay`: pay-as-you-go; `prePay`: prepaid; `riPay`: reserved instance; empty or `*`: all.",
           "example": "postPay",
@@ -3429,7 +3388,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "If `PayMode` is `postPay`, this parameter may be `spotpay` (spot instance) or `settle account` (regular pay-as-you-go). If `PayMode` is `prePay`, this parameter may be `purchase`, `renew`, or `modify` (downgrade/upgrade). If `PayMode` is `riPay`, this parameter may be `oneOffFee` (prepayment of reserved instance) or `hourlyFee` (hourly billing of reserved instance). `*` means to query vouchers that support all billing scenarios.",
           "example": "*",
@@ -3440,7 +3398,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The start time of the validity period.",
           "example": "2020-01-01",
@@ -3451,7 +3408,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The end time of the validity period.",
           "example": "2020-01-01",
@@ -3462,7 +3418,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The products that are applicable.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -3473,7 +3428,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The products that are not applicable.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",

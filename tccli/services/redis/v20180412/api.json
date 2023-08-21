@@ -686,7 +686,6 @@
       "document": "AllocateWanAddress request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "crs-dvchdv5",
@@ -734,7 +733,6 @@
       "document": "ApplyParamsTemplate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of instance IDs",
           "example": "无",
@@ -744,7 +742,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the parameter template to be applied",
           "example": "crs-cfg-rhlppeye",
@@ -782,7 +779,6 @@
       "document": "AssociateSecurityGroups request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Database engine name, which is `redis` for this API.",
           "example": "redis",
@@ -792,7 +788,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the security group to be associated in the format of sg-efil73jd.",
           "example": "sg-ajr1jzgj",
@@ -802,7 +797,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID(s) of the instance(s) to be associated in the format of ins-lesecurk. You can specify multiple instances.",
           "example": "crs-eb2w7dto",
@@ -830,7 +824,6 @@
       "document": "Backup download information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Backup file name",
           "example": "1.rdb",
@@ -841,7 +834,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup file size in bytes. If the parameter value is `0`, the backup file size is unknown.",
           "example": "1024",
@@ -852,7 +844,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Address (valid for six hours) used to download the backup file over the public network",
           "example": "https://redis-database-backup-1251937656.cos.ap-chengdu.myqcl",
@@ -863,7 +854,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Address (valid for six hours) used to download the backup file over the private network",
           "example": "https://redis-database-backup-1251937656.cos.ap-chengdu.myqcl",
@@ -906,7 +896,6 @@
       "document": "Big key details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Database",
           "member": "int64",
@@ -916,7 +905,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Big key",
           "member": "string",
@@ -926,7 +914,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type",
           "member": "string",
@@ -936,7 +923,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Size",
           "member": "int64",
@@ -946,7 +932,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data timestamp",
           "member": "int64",
@@ -962,7 +947,6 @@
       "document": "Big key type distribution details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Type",
           "member": "string",
@@ -972,7 +956,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Count",
           "member": "int64",
@@ -982,7 +965,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Size",
           "member": "int64",
@@ -992,7 +974,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Timestamp",
           "member": "int64",
@@ -1008,7 +989,6 @@
       "document": "ChangeInstanceRole request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Replication group ID",
           "example": "crs-rpl-267khx71",
@@ -1018,7 +998,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-deindi7de",
@@ -1028,7 +1007,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance role. Valid values: `rw` (read-write), `r`( read-only).",
           "example": "rw",
@@ -1166,7 +1144,6 @@
       "document": "CleanUpInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-5a4py64p",
@@ -1204,7 +1181,6 @@
       "document": "ClearInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-5a4py64p",
@@ -1214,7 +1190,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Redis instance password (this parameter is required for password-enabled instances but not for password-free instances)",
           "example": "zy456987",
@@ -1459,7 +1434,6 @@
       "document": "CloseSSL request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-deindi7de",
@@ -1497,7 +1471,6 @@
       "document": "Command duration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Command",
           "member": "string",
@@ -1507,7 +1480,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Duration",
           "member": "int64",
@@ -1523,7 +1495,6 @@
       "document": "CreateInstanceAccount request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-5a4py64p",
@@ -1533,7 +1504,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sub-account name",
           "example": "test",
@@ -1543,7 +1513,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "1. The password must contain 8–30 characters. A password of 12 or more characters is recommended.\n2. It cannot start with a slash (/).\n3. It must contain characters in at least two of the following types:\n    a. Lowercase letters (a–z)\n    b. Uppercase letters (A–Z)\n    c. Digits (0–9)\n    d. ()`~!@#$%^&*-+=_|{}[]:;<>,.?/",
           "example": "1234567aA",
@@ -1553,7 +1522,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Routing policy. Valid values: master (master node); replication (replica node)",
           "example": "[\"master\"]",
@@ -1563,7 +1531,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Read/Write policy. Valid values: r (read-only); rw (read/write).",
           "example": "rw",
@@ -1573,7 +1540,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sub-account description information",
           "example": "\"\"",
@@ -1872,7 +1838,6 @@
       "document": "CreateParamTemplate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter template name.",
           "example": "自定义参数模板",
@@ -1882,7 +1847,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter template description.",
           "example": "参数模板描述",
@@ -1892,7 +1856,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance type. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture). If `TempateId` is specified, this parameter can be left blank; otherwise, it is required.",
           "example": "6",
@@ -1902,7 +1865,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the source parameter template.",
           "example": "crs-cfg-rhlppeye",
@@ -1912,7 +1874,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter list.",
           "example": "无",
@@ -1986,7 +1947,6 @@
       "document": "DeleteInstanceAccount request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-5a4py64p",
@@ -1996,7 +1956,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sub-account name",
           "example": "test",
@@ -2034,7 +1993,6 @@
       "document": "DeleteParamTemplate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter template ID.",
           "example": "crs-cfg-rhlppeye",
@@ -2313,7 +2271,6 @@
       "document": "DescribeBandwidthRange request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-xxx",
@@ -2381,7 +2338,6 @@
       "document": "DescribeCommonDBInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of VPC IDs",
           "example": "crs-deindi7de",
@@ -2391,7 +2347,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of subnet IDs",
           "example": "null",
@@ -2401,7 +2356,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of billing modes. 0: monthly subscription; 1: pay-as-you-go",
           "example": "0",
@@ -2411,7 +2365,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of instance IDs",
           "example": "[\"crs-nh47ubwr\\n\"]",
@@ -2421,7 +2374,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of instance names",
           "example": "null",
@@ -2431,7 +2383,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of instance status",
           "example": "null",
@@ -2441,7 +2392,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting field",
           "example": "null",
@@ -2451,7 +2401,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting order",
           "example": "null",
@@ -2461,7 +2410,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of instance VIPs",
           "example": "null",
@@ -2471,7 +2419,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of VPC IDs",
           "example": "null",
@@ -2481,7 +2428,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of unique subnet IDs",
           "example": "null",
@@ -2491,7 +2437,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Quantity limit. Recommended default value: 100.",
           "example": "20",
@@ -2501,7 +2446,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default value: 0",
           "example": "0",
@@ -2774,7 +2718,6 @@
       "document": "DescribeInstanceDTSInfo request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-6ia1c1c3",
@@ -2882,7 +2825,6 @@
       "document": "Details of instances in the DTS task",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Region ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -2892,7 +2834,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2902,7 +2843,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Repository ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -2912,7 +2852,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -2922,7 +2861,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -2932,7 +2870,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2942,7 +2879,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance access address\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2952,7 +2888,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -2968,7 +2903,6 @@
       "document": "DescribeInstanceDealDetail request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Array of order transaction IDs, i.e., the `DealId` output parameter of the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.",
           "example": "[\"6959052\\n\"]",
@@ -3005,7 +2939,6 @@
       "document": "DescribeInstanceMonitorBigKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -3014,7 +2947,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Request type. 1: string type; 2: all types",
           "member": "int64",
@@ -3023,7 +2955,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time, such as \"20190219\"",
           "member": "string",
@@ -3058,7 +2989,6 @@
       "document": "DescribeInstanceMonitorBigKeySizeDist request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -3067,7 +2997,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time, such as \"20190219\"",
           "member": "string",
@@ -3102,7 +3031,6 @@
       "document": "DescribeInstanceMonitorBigKeyTypeDist request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -3111,7 +3039,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time, such as \"20190219\"",
           "member": "string",
@@ -3146,7 +3073,6 @@
       "document": "DescribeInstanceMonitorHotKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -3155,7 +3081,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time span. 1: real time; 2: past 30 minutes; 3: past 6 hours; 4: past 24 hours",
           "member": "int64",
@@ -3190,7 +3115,6 @@
       "document": "DescribeInstanceMonitorSIP request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -3225,7 +3149,6 @@
       "document": "DescribeInstanceMonitorTookDist request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -3234,7 +3157,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time, such as \"20190219\"",
           "member": "string",
@@ -3243,7 +3165,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours",
           "member": "int64",
@@ -3278,7 +3199,6 @@
       "document": "DescribeInstanceMonitorTopNCmd request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -3287,7 +3207,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours",
           "member": "int64",
@@ -3322,7 +3241,6 @@
       "document": "DescribeInstanceMonitorTopNCmdTook request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-r34wkc1d",
@@ -3332,7 +3250,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours",
           "example": "4",
@@ -3467,7 +3384,6 @@
       "document": "DescribeInstanceParamRecords request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-5a4py64p",
@@ -3477,7 +3393,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of results returned per page",
           "example": "100",
@@ -3487,7 +3402,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset, which is an integral multiple of `Limit`.",
           "example": "0",
@@ -4023,7 +3937,6 @@
       "document": "DescribeMaintenanceWindow request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -4147,7 +4060,6 @@
       "document": "DescribeParamTemplates request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Array of instance types. Valid values: `1` (Redis 2.8 Memory Edition in cluster architecture), `2` (Redis 2.8 Memory Edition in standard architecture), `3` (CKV 3.2 Memory Edition in standard architecture), `4` (CKV 3.2 Memory Edition in cluster architecture), `5` (Redis 2.8 Memory Edition in standalone architecture), `6` (Redis 4.0 Memory Edition in standard architecture), `7` (Redis 4.0 Memory Edition in cluster architecture), `8` (Redis 5.0 Memory Edition in standard architecture), `9` (Redis 5.0 Memory Edition in cluster architecture).",
           "example": "无",
@@ -4157,7 +4069,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of template names.",
           "example": "无",
@@ -4167,7 +4078,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of template IDs.",
           "example": "无",
@@ -4242,7 +4152,6 @@
       "document": "DescribeProjectSecurityGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "0: default project; -1: all projects; >0: specified project",
           "example": "15623",
@@ -4252,7 +4161,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group ID",
           "example": "sg-gl1egaj1",
@@ -4290,7 +4198,6 @@
       "document": "DescribeProjectSecurityGroups request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Database engine name, which is `redis` for this API.",
           "example": "redis",
@@ -4300,7 +4207,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID",
           "example": "11954",
@@ -4310,7 +4216,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset, which is an integral multiple of `Limit`.",
           "example": "0",
@@ -4320,7 +4225,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of security groups to be pulled. Default value: `20`.",
           "example": "20",
@@ -4330,7 +4234,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Search criteria. You can enter a security group ID or name.",
           "example": "无",
@@ -4931,7 +4834,6 @@
       "document": "DescribeTendisSlowLog request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of crs-ngvou0i1",
           "example": "crs-asdasdas",
@@ -4941,7 +4843,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time in the format of 2019-09-08 12:12:41",
           "example": "2019-09-08 12:12:41",
@@ -4951,7 +4852,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time in the format of 2019-09-09 12:12:41",
           "example": "2019-09-09 12:12:41",
@@ -4961,7 +4861,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Slow query threshold in ms",
           "example": "10",
@@ -4971,7 +4870,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of results returned per page. Default value: 20.",
           "example": "20",
@@ -4981,7 +4879,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset, which is an integral multiple of `Limit`.",
           "example": "0",
@@ -5029,7 +4926,6 @@
       "document": "DestroyPostpaidInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-5a4py64p",
@@ -5067,7 +4963,6 @@
       "document": "DestroyPrepaidInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-5a4py64p",
@@ -5105,7 +5000,6 @@
       "document": "DisableReplicaReadonly request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-5a4py64p",
@@ -5143,7 +5037,6 @@
       "document": "DisassociateSecurityGroups request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Database engine name, which is `redis` for this API.",
           "example": "redis",
@@ -5153,7 +5046,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group ID",
           "example": "sg-ajr1jzgj",
@@ -5163,7 +5055,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of instance IDs, which is an array of one or more instance IDs.",
           "example": "[\"crs-eb2w7dto\\n\"]",
@@ -5191,7 +5082,6 @@
       "document": "EnableReplicaReadonly request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-5a4py64p",
@@ -5201,7 +5091,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Account routing policy. If `master` or `replication` is entered, it means to route to the master or replica node; if this parameter is left empty, it means to write into the master node and read from the replica node by default.",
           "example": "[\"master\"]",
@@ -5335,7 +5224,6 @@
       "document": "Hot key details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Hot key",
           "member": "string",
@@ -5345,7 +5233,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type",
           "member": "string",
@@ -5355,7 +5242,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Count",
           "member": "int64",
@@ -5371,7 +5257,6 @@
       "document": "Security group inbound rule",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Policy. Valid values: ACCEPT, DROP.",
           "member": "string",
@@ -5381,7 +5266,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "All the addresses that the address group ID represents.",
           "member": "string",
@@ -5391,7 +5275,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Source IP or IP address range, such as 192.168.0.0/16.",
           "member": "string",
@@ -5401,7 +5284,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Description.",
           "member": "string",
@@ -5411,7 +5293,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network protocol, such as UDP and TCP.",
           "member": "string",
@@ -5421,7 +5302,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Port.",
           "member": "string",
@@ -5431,7 +5311,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "All the protocols and ports that the service group ID represents.",
           "member": "string",
@@ -5441,7 +5320,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "All the addresses that the security group ID represents.",
           "member": "string",
@@ -5457,7 +5335,6 @@
       "document": "InquiryPriceCreateInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance type. Valid values: `2` (Redis 2.8 memory edition in standard architecture), `3` (CKV 3.2 memory edition in standard architecture), `4` (CKV 3.2 memory edition in cluster architecture), `6` (Redis 4.0 memory edition in standard architecture), `7` (Redis 4.0 memory edition in cluster architecture), `8` (Redis 5.0 memory edition in standard architecture), `9` (Redis 5.0 memory edition in cluster architecture).",
           "example": "6",
@@ -5467,7 +5344,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Memory capacity in MB, which must be a multiple of 1,024. It is subject to the purchasable specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).\nIf `TypeId` indicates the standard architecture, `MemSize` indicates the total memory capacity of an instance; if `TypeId` indicates the cluster architecture, `MemSize` indicates the memory capacity per shard.",
           "example": "4096",
@@ -5477,7 +5353,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of instances. The actual quantity purchasable at a time is subject to the specifications returned by the [DescribeProductInfo API](https://intl.cloud.tencent.com/document/api/239/30600?from_cn_redirect=1).",
           "example": "1",
@@ -5487,7 +5362,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Length of purchase in months, which is required when creating a monthly-subscribed instance. Value range: [1,2,3,4,5,6,7,8,9,10,11,12,24,36]. For pay-as-you-go instances, set the parameter to `1`.",
           "example": "1",
@@ -5497,7 +5371,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Billing mode. Valid values: `0` (pay-as-you-go), `1` (monthly subscription).",
           "example": "1",
@@ -5507,7 +5380,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).",
           "example": "100002",
@@ -5517,7 +5389,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance shard quantity. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, Redis 2.8 standalone edition, and Redis 4.0 standard architecture.",
           "example": "1",
@@ -5527,7 +5398,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance replica quantity. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, and Redis 2.8 standalone edition.",
           "example": "1",
@@ -5537,7 +5407,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to support read-only replicas. This field is not required by Redis 2.8 standard architecture, CKV standard architecture, and Redis 2.8 standalone edition.",
           "example": "false",
@@ -5547,7 +5416,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the AZ where the instance resides. For more information, see [Regions and AZs](https://intl.cloud.tencent.com/document/product/239/4106?from_cn_redirect=1).",
           "example": "ap-guangzhou",
@@ -5557,7 +5425,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid values: `local` (local disk edition), `cloud` (cloud disk edition), `cdc` (dedicated cluster edition). Default value: `local` (local disk edition)",
           "example": "cloud",
@@ -5595,7 +5462,6 @@
       "document": "InquiryPriceUpgradeInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "member": "string",
@@ -5604,7 +5470,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Shard size in MB.",
           "member": "uint64",
@@ -5613,7 +5478,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of shards. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.",
           "member": "uint64",
@@ -5622,7 +5486,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of replicas. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.",
           "member": "uint64",
@@ -5975,7 +5838,6 @@
       "document": "Description of the instance parameter in Integer type",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter name",
           "member": "string",
@@ -5985,7 +5847,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter type: Integer",
           "member": "string",
@@ -5995,7 +5856,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether restart is required after a modification is made. Valid values: true, false",
           "member": "string",
@@ -6005,7 +5865,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Default value of the parameter",
           "member": "string",
@@ -6015,7 +5874,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Current value",
           "member": "string",
@@ -6025,7 +5883,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter description",
           "member": "string",
@@ -6035,7 +5892,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum value of the parameter",
           "member": "string",
@@ -6045,7 +5901,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum value of the parameter",
           "member": "string",
@@ -6055,7 +5910,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter status. 1: modifying; 2: modified",
           "member": "int64",
@@ -6065,7 +5919,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter unit\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -6193,7 +6046,6 @@
       "document": "Instance parameter",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter name, such as “timeout”. For supported custom parameters, see <a href=\"https://www.tencentcloud.com/document/product/239/39796\">Setting Instance Parameters</a>",
           "example": "timeout",
@@ -6204,7 +6056,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Current parameter value. For example, if you set the current value of “timeout” to 120 (in seconds), the client connections that remain idle longer than 120 seconds will be closed. For more information on parameter values, see <a href=\"https://www.tencentcloud.com/document/product/239/39796\">Setting Instance Parameters</a>",
           "example": "120",
@@ -6915,7 +6766,6 @@
       "document": "Slow log details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Slow log duration",
           "member": "int64",
@@ -6925,7 +6775,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Client address",
           "member": "string",
@@ -6935,7 +6784,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Command",
           "member": "string",
@@ -6945,7 +6793,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Command line details",
           "member": "string",
@@ -6955,7 +6802,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Execution duration",
           "member": "string",
@@ -6965,7 +6811,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Node ID",
           "member": "string",
@@ -7615,7 +7460,6 @@
       "document": "ModifyDBInstanceSecurityGroups request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Database engine name, which is `redis` for this API.",
           "example": "redis",
@@ -7625,7 +7469,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of IDs of security groups to be modified, which is an array of one or more security group IDs.",
           "example": "[\"sg-ajr1jzgj\\n\"]",
@@ -7635,7 +7478,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.",
           "example": "crs-eb2w7dto",
@@ -7663,7 +7505,6 @@
       "document": "ModifyInstanceAccount request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-5a4py64p",
@@ -7673,7 +7514,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sub-account name. If the root account is to be modified, enter `root`.",
           "example": "test",
@@ -7683,7 +7523,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sub-account password",
           "example": "无",
@@ -7693,7 +7532,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sub-account description information",
           "example": "无",
@@ -7703,7 +7541,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Routing policy. Valid values: master (master node); replication (replica node)",
           "example": "无",
@@ -7713,7 +7550,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sub-account read/write policy. Valid values: r (read-only); w (write-only); rw (read/write).",
           "example": "无",
@@ -7723,7 +7559,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "true: make the root account password-free. This is applicable to root accounts only. Sub-accounts cannot be made password-free.",
           "example": "无",
@@ -7761,7 +7596,6 @@
       "document": "ModifyInstanceParams request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-5a4py64p",
@@ -7771,7 +7605,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of instance parameters modified",
           "example": "无",
@@ -7819,7 +7652,6 @@
       "document": "ModifyInstanceReadOnly request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-deindi7de",
@@ -7829,7 +7661,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance input mode. Valid values: `0` (read/write), `1` (read-only)",
           "example": "1",
@@ -7867,7 +7698,6 @@
       "document": "ModifyInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance modification type. rename: rename an instance; modifyProject: modify the project of an instance; modifyAutoRenew: modify the auto-renewal flag of an instance.",
           "example": "rename",
@@ -7877,7 +7707,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "[\"crs-r3nqjq3n\",\"crs-9bvd9b8v\"]",
@@ -7887,7 +7716,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "New name of the instance",
           "example": "[\"newname1\",\"newname2\\r\\n\"]",
@@ -7897,7 +7725,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID",
           "example": "10035",
@@ -7907,7 +7734,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Auto-renewal flag. 0: default status (manual renewal); 1: auto-renewal enabled; 2: auto-renewal disabled",
           "example": "[1,0]",
@@ -7917,7 +7743,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Disused",
           "example": "crs-rhlppeye",
@@ -7927,7 +7752,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Disused",
           "example": "crs-rhlppeye",
@@ -7937,7 +7761,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Disused",
           "example": "1",
@@ -7965,7 +7788,6 @@
       "document": "ModifyMaintenanceWindow request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-5a4py64p",
@@ -7975,7 +7797,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maintenance start time, such as 17:00",
           "example": "03:00",
@@ -7985,7 +7806,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maintenance end time, such as 19:00",
           "example": "06:00",
@@ -8149,7 +7969,6 @@
       "document": "ModifyParamTemplate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the source parameter template.",
           "example": "crs-cfg-rhlppeye",
@@ -8159,7 +7978,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "New name after the parameter template is modified.",
           "example": "自定义参数模板",
@@ -8169,7 +7987,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "New description after the parameter template is modified.",
           "example": "参数模板描述",
@@ -8179,7 +7996,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "New parameter list after the parameter template is modified.",
           "example": "无",
@@ -8207,7 +8023,6 @@
       "document": "OpenSSL request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-deindi7de",
@@ -8245,7 +8060,6 @@
       "document": "Security group outbound rule",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Policy. Valid values: ACCEPT, DROP.",
           "member": "string",
@@ -8255,7 +8069,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "All the addresses that the address group ID represents.",
           "member": "string",
@@ -8265,7 +8078,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Source IP or IP address range, such as 192.168.0.0/16.",
           "member": "string",
@@ -8275,7 +8087,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Description.",
           "member": "string",
@@ -8285,7 +8096,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network protocol, such as UDP and TCP.",
           "member": "string",
@@ -8295,7 +8105,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Port.",
           "member": "string",
@@ -8305,7 +8114,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "All the protocols and ports that the service group ID represents.",
           "member": "string",
@@ -8315,7 +8123,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "All the addresses that the security group ID represents.",
           "member": "string",
@@ -8609,7 +8416,6 @@
       "document": "Proxy node information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Node ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -8620,7 +8426,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100002",
@@ -9087,7 +8892,6 @@
       "document": "Region information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Region ID",
           "member": "string",
@@ -9097,7 +8901,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region name",
           "member": "string",
@@ -9107,7 +8910,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region abbreviation",
           "member": "string",
@@ -9117,7 +8919,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the area where a region is located",
           "member": "string",
@@ -9127,7 +8928,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ information",
           "member": "ZoneCapacityConf",
@@ -9143,7 +8943,6 @@
       "document": "ReleaseWanAddress request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "crs-dvchdv5",
@@ -9191,7 +8990,6 @@
       "document": "RemoveReplicationInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Replication group ID",
           "example": "crs-rpl-",
@@ -9201,7 +8999,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-deindi7de",
@@ -9211,7 +9008,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data sync type. Valid values: `true` (strong sync is required), `false` (strong sync is not required, only the master instance can be deleted).",
           "example": "false",
@@ -9249,7 +9045,6 @@
       "document": "RenewInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Validity period in months",
           "example": "12",
@@ -9259,7 +9054,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-5a4py64p",
@@ -9269,7 +9063,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The parameter used to determine whether to modify the billing mode. <ul><li>If you want to change the billing mode from pay-as-you-go to monthly subscription, specify this parameter as <b>prepaid</b>. </li><li>If the current instance is monthly subscribed, this parameter is not required. </li></ul>",
           "example": "PREPAID",
@@ -9363,7 +9156,6 @@
       "document": "ResetPassword request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Redis instance ID",
           "example": "crs-5a4py64p",
@@ -9373,7 +9165,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Password reset (this parameter can be left blank when switching to password-free instance mode and is required in other cases)",
           "example": "zy456987",
@@ -9383,7 +9174,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to switch to password-free instance mode. false: switch to password-enabled instance mode; true: switch to password-free instance mode. Default value: false.",
           "example": "true",
@@ -9447,7 +9237,6 @@
       "document": "RestoreInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the `DescribeInstances` API.",
           "example": "crs-5a4py64p",
@@ -9457,7 +9246,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup ID, which can be obtained through the `backupId` field in the return value of the `GetRedisBackupList` API.",
           "example": "678362566696298532848117",
@@ -9467,7 +9255,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance password, which needs to be validated during instance restoration (this parameter is not required for password-free instances)",
           "example": "mypassword",
@@ -9505,7 +9292,6 @@
       "document": "Security group rules",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time in the format of yyyy-mm-dd hh:mm:ss.",
           "member": "string",
@@ -9515,7 +9301,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID.",
           "member": "uint64",
@@ -9525,7 +9310,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group ID.",
           "member": "string",
@@ -9535,7 +9319,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group name.",
           "member": "string",
@@ -9545,7 +9328,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group remarks.",
           "member": "string",
@@ -9555,7 +9337,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Outbound rule.",
           "member": "Outbound",
@@ -9565,7 +9346,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Inbound rule.",
           "member": "Inbound",
@@ -9703,7 +9483,6 @@
       "document": "Access command",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Command",
           "member": "string",
@@ -9713,7 +9492,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of executions",
           "member": "int64",
@@ -9729,7 +9507,6 @@
       "document": "Access source information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Source IP",
           "member": "string",
@@ -9739,7 +9516,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of connections",
           "member": "int64",
@@ -9749,7 +9525,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Command",
           "member": "int64",
@@ -9765,7 +9540,6 @@
       "document": "StartupInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-7ponppu3",
@@ -9803,7 +9577,6 @@
       "document": "SwitchInstanceVip request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Source instance ID",
           "example": "crs-5a4py64p",
@@ -9813,7 +9586,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Target instance ID",
           "example": "crs-1kl0iy0v",
@@ -9823,7 +9595,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The time that lapses in seconds since DTS is disconnected between the source instance and the target instance. If the DTS disconnection time period is greater than TimeDelay, the VIP will not be switched. We recommend you set an acceptable value based on the actual business conditions.",
           "example": "100",
@@ -9833,7 +9604,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to force the switch when DTS is disconnected. 1: yes; 0: no.",
           "example": "1",
@@ -9843,7 +9613,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "now: switch now; syncComplete: switch after sync is completed",
           "example": "now",
@@ -9881,7 +9650,6 @@
       "document": "SwitchProxy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-deindi7de",
@@ -9891,7 +9659,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ProxyID",
           "example": "vbjxbsucvnkcndkbk",
@@ -10015,7 +9782,6 @@
       "document": "Tendis node information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Node ID",
           "member": "string",
@@ -10025,7 +9791,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Node role",
           "member": "string",
@@ -10041,7 +9806,6 @@
       "document": "Tendis slow query details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Execution time",
           "member": "string",
@@ -10051,7 +9815,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Duration of the slow query (ms)",
           "member": "int64",
@@ -10061,7 +9824,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Command",
           "member": "string",
@@ -10071,7 +9833,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Command line details",
           "member": "string",
@@ -10081,7 +9842,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Node ID",
           "member": "string",
@@ -10097,7 +9857,6 @@
       "document": "Order transaction information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Order ID, which is used when a TencentCloud API is called.",
           "member": "string",
@@ -10107,7 +9866,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Long order ID, which is used when an order issue is submitted for assistance.",
           "member": "string",
@@ -10117,7 +9875,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ ID",
           "member": "int64",
@@ -10127,7 +9884,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of instances associated with the order",
           "member": "int64",
@@ -10137,7 +9893,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creator UIN",
           "member": "string",
@@ -10147,7 +9902,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Order creation time",
           "member": "string",
@@ -10157,7 +9911,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Order timeout period",
           "member": "string",
@@ -10167,7 +9920,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Order completion time",
           "member": "string",
@@ -10177,7 +9929,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Order status. 1: unpaid; 2: paid but not delivered; 3: In delivery; 4: successfully delivered; 5: delivery failed; 6: refunded; 7: order closed; 8: order expired; 9: order invalidated; 10: product invalidated; 11: requested payment rejected; 12: paying",
           "member": "int64",
@@ -10187,7 +9938,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Order status description",
           "member": "string",
@@ -10197,7 +9947,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Actual total price of the order in 0.01 CNY",
           "member": "int64",
@@ -10207,7 +9956,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -10223,7 +9971,6 @@
       "document": "UpgradeInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of instance to be modified.",
           "example": "crs-5qlrlhux",
@@ -10233,7 +9980,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "New memory size of an instance shard. <ul><li>Unit: MB. </li><li>You can only modify one of the three parameters at a time: `MemSize`, `RedisShardNum`, and `RedisReplicasNum`. To modify one of them, you need to enter the other two, which are consistent with the original configuration specifications of the instance. </li><li>In case of capacity reduction, the new specification must be at least 1.3 times the used capacity; otherwise, the operation will fail.</li></ul>",
           "example": "3096",
@@ -10243,7 +9989,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "New number of instance shards. <ul><li>This parameter is not required for standard architecture instances, but for cluster architecture instances. </li><li>For cluster architecture, you can only modify one of the three parameters at a time: `MemSize`, `RedisShardNum`, and `RedisReplicasNum`. To modify one of them, you need to enter the other two, which are consistent with the original configuration specifications of the instance. </li></ul>",
           "example": "3",
@@ -10253,7 +9998,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "New replica quantity. <ul><li>You can only modify one of the three parameters at a time: `MemSize`, `RedisShardNum`, and `RedisReplicasNum`. To modify one of them, you need to enter the other two, which are consistent with the original configuration specifications of the instance. </li></ul>To modify the number of replicas in a multi-AZ instance, `NodeSet` must be passed in.</li></ul>",
           "example": "2",
@@ -10263,7 +10007,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Additional information for adding replicas for multi-AZ instances, including replica AZ and type (`NodeType` is `1`). This parameter is not required for single-AZ instances.",
           "example": "无",
@@ -10356,7 +10099,6 @@
       "document": "UpgradeProxyVersion request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-dvchdv5",
@@ -10366,7 +10108,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The current proxy version",
           "example": "5.0.0",
@@ -10376,7 +10117,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Upgradeable redis version",
           "example": "5.0.1",
@@ -10386,7 +10126,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "`1` (upgrade immediately), `0` (upgrade during maintenance time)",
           "example": "1",
@@ -10424,7 +10163,6 @@
       "document": "UpgradeSmallVersion request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-dvchdv5",
@@ -10434,7 +10172,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The current redis version",
           "example": "5.0.0",
@@ -10444,7 +10181,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Upgradeable redis version",
           "example": "5.0.1",
@@ -10454,7 +10190,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "`1` (upgrade immediately), `0` (upgrade during maintenance time)",
           "example": "1",
@@ -10492,7 +10227,6 @@
       "document": "UpgradeVersionToMultiAvailabilityZones request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "crs-rhlppeye",
@@ -10502,7 +10236,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to support “Reading Local Nodes Only” feature after upgrading to multi-AZ deployment.\nul><li>`true`: The “Read Local Nodes Only” feature is supported. During the upgrade, you need to upgrade the proxy version and Redis kernel minor version simultaneously, which will involve data migration and may take hours to complete. </li><li>`false`: The “Read Local Nodes Only” feature is not supported. Upgrading to multi-AZ deployment will involve metadata migration only without affecting the service, which generally take less than three minutes to complete.</li></ul>",
           "example": "true",
@@ -10540,7 +10273,6 @@
       "document": "Product information in the availability zone",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "AZ ID, such as ap-guangzhou-3",
           "member": "string",
@@ -10550,7 +10282,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ name",
           "member": "string",
@@ -10560,7 +10291,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether a product is sold out in an AZ",
           "member": "bool",
@@ -10570,7 +10300,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether it is a default AZ",
           "member": "bool",
@@ -10580,7 +10309,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network type. basenet: basic network; vpcnet: VPC",
           "member": "string",
@@ -10590,7 +10318,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of an AZ, such as product specifications in it",
           "member": "ProductConf",
@@ -10600,7 +10327,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ ID, such as 100003",
           "member": "int64",

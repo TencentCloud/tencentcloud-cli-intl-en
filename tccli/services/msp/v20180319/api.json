@@ -53,7 +53,6 @@
       "document": "DeregisterMigrationTask request structure.",
       "members": [
         {
-          "default": "",
           "document": "Task ID",
           "member": "string",
           "name": "TaskId",
@@ -79,7 +78,6 @@
       "document": "DescribeMigrationTask request structure.",
       "members": [
         {
-          "default": "",
           "document": "Task ID, such as msp-jitoh33n",
           "member": "string",
           "name": "TaskId",
@@ -112,7 +110,6 @@
       "document": "Migration destination information",
       "members": [
         {
-          "default": "",
           "document": "Migration destination region",
           "member": "string",
           "name": "Region",
@@ -121,7 +118,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "",
           "member": "string",
           "name": "Ip",
@@ -130,7 +126,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Migration destination port",
           "member": "string",
           "name": "Port",
@@ -139,7 +134,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Migration destination instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -154,7 +148,6 @@
       "document": "ListMigrationProject request structure.",
       "members": [
         {
-          "default": "0",
           "document": "The initial number of records, default value: 0",
           "member": "uint64",
           "name": "Offset",
@@ -162,7 +155,6 @@
           "type": "int"
         },
         {
-          "default": "500",
           "document": "The number of records returned, default value: 500",
           "member": "uint64",
           "name": "Limit",
@@ -202,7 +194,6 @@
       "document": "ListMigrationTask request structure.",
       "members": [
         {
-          "default": "0",
           "document": "The initial number of records, default value: 0",
           "member": "uint64",
           "name": "Offset",
@@ -210,7 +201,6 @@
           "type": "int"
         },
         {
-          "default": "10",
           "document": "Number of records, default value: 10",
           "member": "uint64",
           "name": "Limit",
@@ -218,7 +208,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Project ID, the default value is empty.",
           "member": "uint64",
           "name": "ProjectId",
@@ -258,7 +247,6 @@
       "document": "ModifyMigrationTaskBelongToProject request structure.",
       "members": [
         {
-          "default": "",
           "document": "Task ID, such as msp-jitoh33n",
           "member": "string",
           "name": "TaskId",
@@ -266,7 +254,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Project ID, such as 10005",
           "member": "uint64",
           "name": "ProjectId",
@@ -292,7 +279,6 @@
       "document": "ModifyMigrationTaskStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "Task status, valid values include `unstart` (migration has not started), `migrating` (migration in progress), `finish` (migration completed) or `fail` (migration failed).",
           "member": "string",
           "name": "Status",
@@ -300,7 +286,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Task ID, such as msp-jitoh33n",
           "member": "string",
           "name": "TaskId",
@@ -326,7 +311,6 @@
       "document": "List type",
       "members": [
         {
-          "default": "",
           "document": "Project ID",
           "member": "uint64",
           "name": "ProjectId",
@@ -335,7 +319,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project name",
           "member": "string",
           "name": "ProjectName",
@@ -350,7 +333,6 @@
       "document": "RegisterMigrationTask request structure.",
       "members": [
         {
-          "default": "",
           "document": "Task type, valid values include `database` (database migration), `file` (file migration) or `host` (host migration).",
           "member": "string",
           "name": "TaskType",
@@ -358,7 +340,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Task name",
           "member": "string",
           "name": "TaskName",
@@ -366,7 +347,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Service supplier name",
           "member": "string",
           "name": "ServiceSupplier",
@@ -374,7 +354,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Migration task creation time",
           "member": "datetime",
           "name": "CreateTime",
@@ -382,7 +361,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Migration task update time",
           "member": "datetime",
           "name": "UpdateTime",
@@ -390,7 +368,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Migration type, for example `mysql:mysql` in database migration means migration from mysql to mysql and `oss:cos` in file migration means migration from Alibaba Cloud OSS to Tencent COS.",
           "member": "string",
           "name": "MigrateClass",
@@ -398,7 +375,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Migration task source information",
           "member": "SrcInfo",
           "name": "SrcInfo",
@@ -406,7 +382,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Migration task destination information",
           "member": "DstInfo",
           "name": "DstInfo",
@@ -414,7 +389,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Source instance access type. Valid values for database migration include `extranet` (public network), `cvm` (CVM-created instance), `dcg` (Direct Connect-enabled instance), `vpncloud` (Tencent Cloud VPN-enabled instance), `vpnselfbuild` (self-built VPN-enabled instance), `cdb` (TencentDB instance)",
           "member": "string",
           "name": "SrcAccessType",
@@ -422,7 +396,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Database type of the source instance. Valid values for database migration: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`",
           "member": "string",
           "name": "SrcDatabaseType",
@@ -430,7 +403,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Target instance access type. Valid values for database migration include `extranet` (public network), `cvm` (CVM-created instance), `dcg` (Direct Connect-enabled instance), `vpncloud` (Tencent Cloud VPN-enabled instance), `vpnselfbuild` (self-built VPN-enabled instance), `cdb` (TencentDB instance)",
           "member": "string",
           "name": "DstAccessType",
@@ -438,7 +410,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Database type of the target instance. Valid values for database migration: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`",
           "member": "string",
           "name": "DstDatabaseType",
@@ -471,7 +442,6 @@
       "document": "Migration source information",
       "members": [
         {
-          "default": "",
           "document": "Migration source region",
           "member": "string",
           "name": "Region",
@@ -480,7 +450,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "",
           "member": "string",
           "name": "Ip",
@@ -489,7 +458,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Migration source port",
           "member": "string",
           "name": "Port",
@@ -498,7 +466,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Migration source instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -513,7 +480,6 @@
       "document": "Migration task type",
       "members": [
         {
-          "default": "",
           "document": "Task ID",
           "member": "string",
           "name": "TaskId",
@@ -522,7 +488,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task name",
           "member": "string",
           "name": "TaskName",
@@ -531,7 +496,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Migration type",
           "member": "string",
           "name": "MigrationType",
@@ -540,7 +504,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Migration status",
           "member": "string",
           "name": "Status",
@@ -549,7 +512,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project ID",
           "member": "uint64",
           "name": "ProjectId",
@@ -558,7 +520,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project name",
           "member": "string",
           "name": "ProjectName",
@@ -567,7 +528,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Migration source information",
           "member": "SrcInfo",
           "name": "SrcInfo",
@@ -576,7 +536,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Migration time information",
           "member": "TimeObj",
           "name": "MigrationTimeLine",
@@ -585,7 +544,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Status update time",
           "member": "datetime",
           "name": "Updated",
@@ -594,7 +552,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Migration destination information",
           "member": "DstInfo",
           "name": "DstInfo",
@@ -609,7 +566,6 @@
       "document": "Migration details list",
       "members": [
         {
-          "default": "",
           "document": "Migration status",
           "member": "string",
           "name": "Status",
@@ -618,7 +574,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Migration progress",
           "member": "string",
           "name": "Progress",
@@ -627,7 +582,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Migration date",
           "member": "datetime",
           "name": "UpdateTime",
@@ -642,7 +596,6 @@
       "document": "Time object",
       "members": [
         {
-          "default": "",
           "document": "The creation time",
           "member": "datetime",
           "name": "CreateTime",
@@ -651,7 +604,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "End time",
           "member": "datetime",
           "name": "EndTime",

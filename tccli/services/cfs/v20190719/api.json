@@ -440,7 +440,6 @@
       "document": "Versioning - protocol details\n",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Sale status. Valid values: sale_out (sold out), saling (purchasable), no_saling (non-purchasable)",
           "member": "string",
@@ -450,7 +449,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol type. Valid values: NFS, CIFS",
           "member": "string",
@@ -466,7 +464,6 @@
       "document": "Versioning - array of regions",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Region name, such as \"ap-beijing\"",
           "member": "string",
@@ -476,7 +473,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region name, such as \"bj\"",
           "member": "string",
@@ -486,7 +482,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region availability. If a region has at least one AZ where resources are purchasable, this value will be `AVAILABLE`; otherwise, it will be `UNAVAILABLE`",
           "member": "string",
@@ -496,7 +491,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of AZs",
           "member": "AvailableZone",
@@ -506,7 +500,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region name, such as \"Guangzhou\"",
           "member": "string",
@@ -522,7 +515,6 @@
       "document": "Versioning - array of classes",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol and sale details",
           "member": "AvailableProtoStatus",
@@ -532,7 +524,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Storage class. Valid values: `SD` (standard storage) and `HP` (high-performance storage)",
           "member": "string",
@@ -542,7 +533,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Indicates whether prepaid is supported. `true`: yes; `false`: no",
           "member": "bool",
@@ -558,7 +548,6 @@
       "document": "Versioning - array of AZs",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "AZ name",
           "member": "string",
@@ -568,7 +557,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ ID",
           "member": "int64",
@@ -578,7 +566,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Chinese name of an AZ",
           "member": "string",
@@ -588,7 +575,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of classes",
           "member": "AvailableType",
@@ -598,7 +584,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Chinese and English names of an AZ",
           "member": "string",
@@ -614,7 +599,6 @@
       "document": "BindAutoSnapshotPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot policy ID",
           "example": "asp-xx",
@@ -624,7 +608,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of file systems",
           "example": "cfs-abc,cfs-bdc.",
@@ -662,7 +645,6 @@
       "document": "Bucket information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Bucket name",
           "example": "name",
@@ -673,7 +655,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Bucket region\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "region",
@@ -996,7 +977,6 @@
       "document": "CreateCfsPGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group name, which can contain 1-64 Chinese characters, letters, numbers, underscores, or dashes",
           "member": "string",
@@ -1005,7 +985,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group description, which can contain 1-255 characters",
           "member": "string",
@@ -1072,7 +1051,6 @@
       "document": "CreateCfsRule request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group ID",
           "member": "string",
@@ -1081,7 +1059,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "You can enter a single IP or IP range, such as 10.1.10.11 or 10.10.1.0/24. The default visiting address is `*`, indicating that all IPs are allowed. Please note that you need to enter the CVM instance's private IP here.",
           "member": "string",
@@ -1090,7 +1067,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest",
           "member": "int64",
@@ -1099,7 +1075,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Read/write permission. Valid values: RO (read-only), RW (read & write). Default value: RO",
           "member": "string",
@@ -1108,7 +1083,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User permission. Valid values: all_squash, no_all_squash, root_squash, no_root_squash. Specifically, all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions. Default value: root_squash.",
           "member": "string",
@@ -1183,7 +1157,6 @@
       "document": "CreateCfsSnapshot request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "File system ID",
           "example": "cfs-gagaggag",
@@ -1193,7 +1166,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot name",
           "example": "xx",
@@ -1203,7 +1175,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot tag",
           "example": "[\"TagKey\":\"a\",\"TagValue\":1]",
@@ -1404,7 +1375,6 @@
       "document": "DeleteAutoSnapshotPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot policy ID",
           "example": "asp-xx",
@@ -1442,7 +1412,6 @@
       "document": "DeleteCfsFileSystem request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "File system ID. Note: please call the `DeleteMountTarget` API to delete the mount target first before deleting a file system; otherwise, the delete operation will fail.",
           "member": "string",
@@ -1469,7 +1438,6 @@
       "document": "DeleteCfsPGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group ID",
           "member": "string",
@@ -1512,7 +1480,6 @@
       "document": "DeleteCfsRule request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group ID",
           "member": "string",
@@ -1521,7 +1488,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Rule ID",
           "member": "string",
@@ -1564,7 +1530,6 @@
       "document": "DeleteCfsSnapshot request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "File system snapshot ID",
           "example": "snapcfs-xx",
@@ -1574,7 +1539,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The list of the IDs of the file system snapshots to be deleted. At least one of `SnapshotId` and `SnapshotIds` must be specified.",
           "example": "[\"snapcfs-xx\",\"snapcfs-xx1\"]",
@@ -1639,7 +1603,6 @@
       "document": "DeleteMountTarget request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "File system ID",
           "member": "string",
@@ -1648,7 +1611,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Mount target ID",
           "member": "string",
@@ -1675,7 +1637,6 @@
       "document": "DescribeAutoSnapshotPolicies request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot policy ID",
           "example": "asp-xx",
@@ -1685,7 +1646,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Page offset",
           "example": "2",
@@ -1695,7 +1655,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Page length",
           "example": "2",
@@ -1705,7 +1664,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters",
           "example": "无",
@@ -1715,7 +1673,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Ascending or descending order",
           "example": "ASC,DESC",
@@ -1725,7 +1682,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting field",
           "example": "xx",
@@ -1861,7 +1817,6 @@
       "document": "DescribeCfsFileSystemClients request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "File system ID",
           "member": "string",
@@ -1896,7 +1851,6 @@
       "document": "DescribeCfsFileSystems request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "File system ID",
           "member": "string",
@@ -1905,7 +1859,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID",
           "member": "string",
@@ -1914,7 +1867,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID",
           "member": "string",
@@ -1982,7 +1934,6 @@
       "document": "DescribeCfsRules request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group ID",
           "member": "string",
@@ -2069,7 +2020,6 @@
       "document": "DescribeCfsSnapshots request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "File system ID",
           "example": "cfs-gagaggag",
@@ -2079,7 +2029,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Snapshot ID",
           "example": "snapcfs-xx",
@@ -2089,7 +2038,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The starting position of paging",
           "example": "10",
@@ -2099,7 +2047,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Page length",
           "example": "10",
@@ -2109,7 +2056,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters",
           "example": "无",
@@ -2119,7 +2065,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Order field",
           "example": "xx",
@@ -2129,7 +2074,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting order (ascending or descending)",
           "example": "ASC，DESC",
@@ -2250,7 +2194,6 @@
       "document": "DescribeMountTargets request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "File system ID",
           "member": "string",
@@ -2293,7 +2236,6 @@
       "document": "DescribeSnapshotOperationLogs request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "File system snapshot ID",
           "example": "snapcfs-xx",
@@ -2303,7 +2245,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time",
           "example": "2021-08-11 11:51:xx",
@@ -2313,7 +2254,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time",
           "example": "2021-08-11 11:51:xx",
@@ -2361,7 +2301,6 @@
       "document": "Information of the file system bound to the snapshot policy",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "File system name",
           "example": "xx",
@@ -2372,7 +2311,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File system ID",
           "example": "cfs-xx",
@@ -2383,7 +2321,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File system size",
           "example": "1",
@@ -2394,7 +2331,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Storage class",
           "example": "HP",
@@ -2405,7 +2341,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total snapshot size",
           "example": "1",
@@ -2416,7 +2351,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File system creation time",
           "example": "2022-08-20 11:22:33",
@@ -2427,7 +2361,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region ID of the file system",
           "example": "100001",
@@ -2444,7 +2377,6 @@
       "document": "Information on the file system client",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "IP address of the file system",
           "member": "string",
@@ -2454,7 +2386,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Client IP",
           "member": "string",
@@ -2464,7 +2395,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File system VPCID",
           "member": "string",
@@ -2474,7 +2404,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the availability zone, e.g. ap-beijing-1. For more information, see regions and availability zones in the Overview document",
           "member": "string",
@@ -2484,7 +2413,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ name",
           "member": "string",
@@ -2494,7 +2422,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Path in which the file system is mounted to the client",
           "member": "string",
@@ -2736,7 +2663,6 @@
       "document": "Conditional filter",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Value",
           "example": "xx",
@@ -2747,7 +2673,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name",
           "example": "xx",
@@ -2764,7 +2689,6 @@
       "document": "Information of a CFS data migration task",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Migration task name",
           "example": "name",
@@ -2775,7 +2699,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Migration task ID",
           "example": "migrate-001",
@@ -2786,7 +2709,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Migration type. Valid values: `0` (bucket) and `1` (list). Default value: `0`.",
           "example": "0",
@@ -2797,7 +2719,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Migration mode. Default value: `0` (full migration).",
           "example": "0",
@@ -2808,7 +2729,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data source bucket name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xx-123455",
@@ -2819,7 +2739,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data source bucket region\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ap-guangzhou",
@@ -2830,7 +2749,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data source bucket address\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "https://xx-12345.cos.ap-shanghai.myqcloud.com",
@@ -2841,7 +2759,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List address\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "https://xx-12345.cos.ap-shanghai.myqcloud.com/list.csv",
@@ -2852,7 +2769,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File system instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xx",
@@ -2863,7 +2779,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File system instance ID",
           "example": "无",
@@ -2874,7 +2789,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File system path",
           "example": "无",
@@ -2885,7 +2799,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Overwrite policy for files with the same name. Valid values: `0` (retain the file with the latest modified time), `1` (overwrite); and `2` (not overwrite). Default value: `0`.",
           "example": "无",
@@ -2896,7 +2809,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time",
           "example": "无",
@@ -2907,7 +2819,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -2918,7 +2829,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Migration status. Valid values: `0` (completed), `1` (in progress), and `2` (stopped).",
           "example": "无",
@@ -2929,7 +2839,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of files\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -2940,7 +2849,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of migrated files\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -2951,7 +2859,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of files that failed to be migrated\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -2962,7 +2869,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File size, in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -2973,7 +2879,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Size of migrated files, in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -2984,7 +2889,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Size of files that failed to be migrated, in bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -2995,7 +2899,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of all files\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -3006,7 +2909,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of migrated files\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -3017,7 +2919,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of files that failed to be migrated\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -3028,7 +2929,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Source bucket path\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -3139,7 +3039,6 @@
       "document": "Mount target information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "File system ID",
           "example": "cfs-hge16re9",
@@ -3150,7 +3049,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Mount target ID",
           "example": "mount-0ylt3o7o",
@@ -3161,7 +3059,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Mount target IP",
           "example": "10.1.0.7",
@@ -3172,7 +3069,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Mount root-directory",
           "example": "fwsuvz0l",
@@ -3183,7 +3079,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Mount target status",
           "example": "available",
@@ -3194,7 +3089,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network type",
           "example": "VPC",
@@ -3205,7 +3099,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID",
           "example": "vpc-hq13cw04",
@@ -3216,7 +3109,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC name",
           "example": "qcloudtest",
@@ -3227,7 +3119,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID",
           "example": "subnet-jdl08no5",
@@ -3238,7 +3129,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet name",
           "example": "qcloudtest",
@@ -3249,7 +3139,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CCN instance ID used by CFS Turbo",
           "example": "ccn-1xhbcp41",
@@ -3260,7 +3149,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CCN IP range used by CFS Turbo",
           "example": "10.0.0.0/24",
@@ -3277,7 +3165,6 @@
       "document": "Information of permission groups bound to a file system",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group ID",
           "member": "string",
@@ -3287,7 +3174,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group name",
           "member": "string",
@@ -3303,7 +3189,6 @@
       "document": "Array of permission groups",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group ID",
           "member": "string",
@@ -3313,7 +3198,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group name",
           "member": "string",
@@ -3323,7 +3207,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Description",
           "member": "string",
@@ -3333,7 +3216,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time",
           "member": "string",
@@ -3343,7 +3225,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of bound file system",
           "member": "int64",
@@ -3359,7 +3240,6 @@
       "document": "List of permission group rules",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Rule ID",
           "member": "string",
@@ -3369,7 +3249,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Client IP allowed for access",
           "member": "string",
@@ -3379,7 +3258,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Read/write permission. ro: read-only; rw: read & write",
           "member": "string",
@@ -3389,7 +3267,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User permission. all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions.",
           "member": "string",
@@ -3399,7 +3276,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest",
           "member": "int64",
@@ -3644,7 +3520,6 @@
       "document": "Snapshot operation log",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Operation type",
           "example": "create",
@@ -3655,7 +3530,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Operation time",
           "example": "xx",
@@ -3666,7 +3540,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Operation name",
           "example": "xx",
@@ -3677,7 +3550,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Operator",
           "example": "xx",
@@ -3688,7 +3560,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Result",
           "example": "xx",
@@ -3705,7 +3576,6 @@
       "document": "File system snapshot statistics",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Region",
           "example": "ap-guangzhou",
@@ -3716,7 +3586,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of snapshots",
           "example": "2",
@@ -3727,7 +3596,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total snapshot size",
           "example": "33",
@@ -3789,7 +3657,6 @@
       "document": "Tag information unit",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Tag key",
           "member": "string",
@@ -3799,7 +3666,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag value",
           "member": "string",
@@ -3831,7 +3697,6 @@
       "document": "UnbindAutoSnapshotPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of IDs of the file systems to be unbound, separated by comma",
           "example": "cfs-abc,cfs-dbc",
@@ -3841,7 +3706,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the snapshot to be unbound",
           "example": "asp-xx",
@@ -3979,7 +3843,6 @@
       "document": "UpdateCfsFileSystemName request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "File system ID",
           "member": "string",
@@ -3988,7 +3851,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom file system name",
           "member": "string",
@@ -4039,7 +3901,6 @@
       "document": "UpdateCfsFileSystemPGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group ID",
           "member": "string",
@@ -4048,7 +3909,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File system ID",
           "member": "string",
@@ -4091,7 +3951,6 @@
       "document": "UpdateCfsFileSystemSizeLimit request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "File system capacity limit in GB. Value range: 0-1,073,741,824. If 0 is entered, no limit will be imposed on the file system capacity.",
           "example": "1000",
@@ -4101,7 +3960,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File system ID. Currently, only Standard file systems are supported.",
           "example": "cfs-12345",
@@ -4129,7 +3987,6 @@
       "document": "UpdateCfsPGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group ID",
           "member": "string",
@@ -4138,7 +3995,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group name, which can contain 1-64 Chinese characters, letters, numbers, underscores, or dashes",
           "member": "string",
@@ -4147,7 +4003,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group description, which can contain 1-255 characters",
           "member": "string",
@@ -4198,7 +4053,6 @@
       "document": "UpdateCfsRule request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Permission group ID",
           "member": "string",
@@ -4207,7 +4061,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Rule ID",
           "member": "string",
@@ -4216,7 +4069,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "You can enter a single IP or IP range, such as 10.1.10.11 or 10.10.1.0/24. The default visiting address is `*`, indicating that all IPs are allowed. Please note that you need to enter the CVM instance's private IP here.",
           "member": "string",
@@ -4225,7 +4077,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Read/write permission. Valid values: RO (read-only), RW (read & write). Default value: RO",
           "member": "string",
@@ -4234,7 +4085,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User permission. Valid values: all_squash, no_all_squash, root_squash, no_root_squash. Specifically, all_squash: any visiting user will be mapped to an anonymous user or user group; no_all_squash: a visiting user will be first matched with a local user, and if the match fails, it will be mapped to an anonymous user or user group; root_squash: a visiting root user will be mapped to an anonymous user or user group; no_root_squash: a visiting root user will be allowed to maintain root account permissions. Default value: root_squash.",
           "member": "string",
@@ -4243,7 +4093,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Rule priority. Value range: 1-100. 1 represents the highest priority, while 100 the lowest",
           "member": "int64",
@@ -4318,7 +4167,6 @@
       "document": "UpdateCfsSnapshotAttribute request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "File system snapshot ID",
           "example": "snapcfs-xx",
@@ -4328,7 +4176,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File system snapshot name",
           "example": "xx",
@@ -4338,7 +4185,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File system snapshot retention period in days",
           "example": "xx",

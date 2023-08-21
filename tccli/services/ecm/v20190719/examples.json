@@ -174,12 +174,6 @@
         "input": "https://ecm.tencentcloudapi.com/?Action=CreateVpc\n&VpcName=VPC name\n&CidrBlock=10.10.0.0/28\n&EcmRegion=ap-hangzhou-ecm\n&Description=VPC description\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6c7eda30-1b66-4296-857e-183f6094063f\",\n        \"Vpc\": {\n            \"EnableDhcp\": true,\n            \"VpcId\": \"vpc-gynsaui3\",\n            \"Description\": \"VPC description\",\n            \"DomainName\": \"\",\n            \"Ipv6CidrBlock\": \"\",\n            \"Region\": \"ap-hangzhou-ecm\",\n            \"DhcpOptionsId\": \"\",\n            \"InstanceCount\": 0,\n            \"DnsServerSet\": [],\n            \"EnableMulticast\": false,\n            \"VpcName\": \"VPC name\",\n            \"AssistantCidrSet\": null,\n            \"TagSet\": null,\n            \"SubnetCount\": 0,\n            \"CreatedTime\": \"2020-08-14 10:58:26\",\n            \"CidrBlock\": \"10.10.0.0/28\",\n            \"IsDefault\": false,\n            \"RegionName\": \"Hangzhou Zone 1\"\n        }\n    }\n}",
         "title": "Creating VPC"
-      },
-      {
-        "document": " ",
-        "input": "https://ecm.tencentcloudapi.com/?Action=CreateVpc\n&VpcName=VPC name\n&CidrBlock=192.168.0.0/18\n&EcmRegion=ap-hangzhou-ecm\n&Tags.0.Key=Tag key\n&Tags.0.Value=Tag value\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"23b74de1-185b-4e02-9531-a4c53010e5d8\",\n        \"Vpc\": {\n            \"EnableDhcp\": true,\n            \"VpcId\": \"vpc-hqhu0suj\",\n            \"Description\": \"\",\n            \"DomainName\": \"\",\n            \"Ipv6CidrBlock\": \"\",\n            \"Region\": \"ap-hangzhou-ecm\",\n            \"DhcpOptionsId\": \"\",\n            \"InstanceCount\": 0,\n            \"DnsServerSet\": [],\n            \"EnableMulticast\": false,\n            \"VpcName\": \"VPC name\",\n            \"AssistantCidrSet\": null,\n            \"TagSet\": [\n                {\n                    \"Value\": \"Tag value\",\n                    \"Key\": \"Tag key\"\n                }\n            ],\n            \"SubnetCount\": 0,\n            \"CreatedTime\": \"2020-08-14 11:28:20\",\n            \"CidrBlock\": \"192.168.0.0/18\",\n            \"IsDefault\": false,\n            \"RegionName\": \"Hangzhou Zone 1\"\n        }\n    }\n}",
-        "title": "Creating specified tag for instance"
       }
     ],
     "DeleteHaVip": [

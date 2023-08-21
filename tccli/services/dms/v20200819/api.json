@@ -23,7 +23,6 @@
       "document": "SendEmail request structure.",
       "members": [
         {
-          "default": "",
           "document": "Sender",
           "member": "string",
           "name": "FromAddress",
@@ -31,7 +30,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Recipient",
           "member": "string",
           "name": "ToAddress",
@@ -39,7 +37,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Email summary",
           "member": "string",
           "name": "Subject",
@@ -47,7 +44,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Sender name",
           "member": "string",
           "name": "FromName",
@@ -55,7 +51,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Reply-to address",
           "member": "string",
           "name": "ReplyAddress",
@@ -63,7 +58,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The body of an HTML email",
           "member": "string",
           "name": "HtmlContent",
@@ -71,7 +65,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The body of a plain-text email",
           "member": "string",
           "name": "TextContent",
@@ -104,7 +97,6 @@
       "document": "SendTemplatedEmail request structure.",
       "members": [
         {
-          "default": "",
           "document": "Sender address.",
           "member": "string",
           "name": "FromAddress",
@@ -112,7 +104,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Recipient address. Up to 100 recipient addresses are supported. Multiple addresses should be separated by semicolons (;).",
           "member": "string",
           "name": "ToAddress",
@@ -120,7 +111,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The name of the template created in advance.",
           "member": "string",
           "name": "TemplateName",
@@ -128,7 +118,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Template variable value, which is a JSON string.",
           "member": "string",
           "name": "TemplateValue",
@@ -136,7 +125,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Sender name.",
           "member": "string",
           "name": "FromName",
@@ -144,7 +132,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Reply-to address.",
           "member": "string",
           "name": "ReplyAddress",

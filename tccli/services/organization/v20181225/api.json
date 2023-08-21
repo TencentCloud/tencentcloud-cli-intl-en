@@ -131,7 +131,6 @@
       "document": "AcceptOrganizationInvitation request structure.",
       "members": [
         {
-          "default": "",
           "document": "Invitation ID",
           "member": "uint64",
           "name": "Id",
@@ -157,7 +156,6 @@
       "document": "AddOrganizationNode request structure.",
       "members": [
         {
-          "default": "",
           "document": "Parent organizational unit ID",
           "member": "uint64",
           "name": "ParentNodeId",
@@ -165,7 +163,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Organizational unit name",
           "member": "string",
           "name": "Name",
@@ -198,7 +195,6 @@
       "document": "CancelOrganizationInvitation request structure.",
       "members": [
         {
-          "default": "",
           "document": "Invitation ID",
           "member": "uint64",
           "name": "Id",
@@ -224,7 +220,6 @@
       "document": "CreateOrganization request structure.",
       "members": [
         {
-          "default": "",
           "document": "Organization type; currently its value is fixed as `1`",
           "member": "uint64",
           "name": "OrgType",
@@ -278,7 +273,6 @@
       "document": "DeleteOrganizationMemberFromNode request structure.",
       "members": [
         {
-          "default": "",
           "document": "UIN of the member to be deleted",
           "member": "uint64",
           "name": "MemberUin",
@@ -286,7 +280,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Organizational unit ID",
           "member": "uint64",
           "name": "NodeId",
@@ -312,7 +305,6 @@
       "document": "DeleteOrganizationMembers request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of UINs of members to be deleted",
           "member": "uint64",
           "name": "Uins",
@@ -338,7 +330,6 @@
       "document": "DeleteOrganizationNodes request structure.",
       "members": [
         {
-          "default": "",
           "document": "Organizational unit ID list",
           "member": "uint64",
           "name": "NodeIds",
@@ -381,7 +372,6 @@
       "document": "DenyOrganizationInvitation request structure.",
       "members": [
         {
-          "default": "",
           "document": "Invitation ID",
           "member": "uint64",
           "name": "Id",
@@ -407,7 +397,6 @@
       "document": "GetOrganizationMember request structure.",
       "members": [
         {
-          "default": "",
           "document": "Organization member UIN",
           "member": "uint64",
           "name": "MemberUin",
@@ -541,7 +530,6 @@
       "document": "ListOrganizationInvitations request structure.",
       "members": [
         {
-          "default": "",
           "document": "Whether to list the invitations you received or the invitations you sent. `1`: list the invitations you received; `0`: list the invitations you sent.",
           "member": "uint64",
           "name": "Invited",
@@ -549,7 +537,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset",
           "member": "uint64",
           "name": "Offset",
@@ -557,7 +544,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Limit",
           "member": "uint64",
           "name": "Limit",
@@ -597,7 +583,6 @@
       "document": "ListOrganizationMembers request structure.",
       "members": [
         {
-          "default": "",
           "document": "Offset",
           "member": "uint64",
           "name": "Offset",
@@ -605,7 +590,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Limit",
           "member": "uint64",
           "name": "Limit",
@@ -645,7 +629,6 @@
       "document": "ListOrganizationNodeMembers request structure.",
       "members": [
         {
-          "default": "",
           "document": "Organizational unit ID",
           "member": "uint64",
           "name": "NodeId",
@@ -653,7 +636,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset",
           "member": "uint64",
           "name": "Offset",
@@ -661,7 +643,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Limit",
           "member": "uint64",
           "name": "Limit",
@@ -725,7 +706,6 @@
       "document": "MoveOrganizationMembersToNode request structure.",
       "members": [
         {
-          "default": "",
           "document": "Organizational unit ID",
           "member": "uint64",
           "name": "NodeId",
@@ -733,7 +713,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Member UIN list",
           "member": "uint64",
           "name": "Uins",
@@ -759,7 +738,6 @@
       "document": "Information on an invitation to an organization.",
       "members": [
         {
-          "default": "",
           "document": "Invitation ID",
           "member": "uint64",
           "name": "Id",
@@ -768,7 +746,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "UIN of the invitee",
           "member": "uint64",
           "name": "Uin",
@@ -777,7 +754,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creator UIN",
           "member": "uint64",
           "name": "HostUin",
@@ -786,7 +762,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creator's name",
           "member": "string",
           "name": "HostName",
@@ -795,7 +770,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creator's email address",
           "member": "string",
           "name": "HostMail",
@@ -804,7 +778,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Invitation status. `-1`: expired; `0`: normal; `1`: accepted; `2`: invalid; `3`: cancelled",
           "member": "uint64",
           "name": "Status",
@@ -813,7 +786,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Name",
           "member": "string",
           "name": "Name",
@@ -822,7 +794,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Notes",
           "member": "string",
           "name": "Remark",
@@ -831,7 +802,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Organization type",
           "member": "uint64",
           "name": "OrgType",
@@ -840,7 +810,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Time of invitation",
           "member": "datetime",
           "name": "InviteTime",
@@ -849,7 +818,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Expiration time",
           "member": "datetime",
           "name": "ExpireTime",
@@ -864,7 +832,6 @@
       "document": "Information on an organization member.",
       "members": [
         {
-          "default": "",
           "document": "UIN",
           "member": "uint64",
           "name": "Uin",
@@ -873,7 +840,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Name",
           "member": "string",
           "name": "Name",
@@ -882,7 +848,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Notes",
           "member": "string",
           "name": "Remark",
@@ -891,7 +856,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Joining time",
           "member": "datetime",
           "name": "JoinTime",
@@ -906,7 +870,6 @@
       "document": "Information on an organizational unit.",
       "members": [
         {
-          "default": "",
           "document": "Organizational unit ID",
           "member": "uint64",
           "name": "NodeId",
@@ -915,7 +878,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Name",
           "member": "string",
           "name": "Name",
@@ -924,7 +886,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Parent organizational unit ID",
           "member": "uint64",
           "name": "ParentNodeId",
@@ -933,7 +894,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of members",
           "member": "uint64",
           "name": "MemberCount",
@@ -948,7 +908,6 @@
       "document": "QuitOrganization request structure.",
       "members": [
         {
-          "default": "",
           "document": "Organization ID",
           "member": "uint64",
           "name": "OrgId",
@@ -974,7 +933,6 @@
       "document": "SendOrganizationInvitation request structure.",
       "members": [
         {
-          "default": "",
           "document": "UIN of the invitee",
           "member": "uint64",
           "name": "InviteUin",
@@ -982,7 +940,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Name",
           "member": "string",
           "name": "Name",
@@ -990,7 +947,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Notes",
           "member": "string",
           "name": "Remark",
@@ -1016,7 +972,6 @@
       "document": "UpdateOrganizationMember request structure.",
       "members": [
         {
-          "default": "",
           "document": "Member UIN",
           "member": "uint64",
           "name": "MemberUin",
@@ -1024,7 +979,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Name",
           "member": "string",
           "name": "Name",
@@ -1032,7 +986,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Notes",
           "member": "string",
           "name": "Remark",
@@ -1058,7 +1011,6 @@
       "document": "UpdateOrganizationNode request structure.",
       "members": [
         {
-          "default": "",
           "document": "Organizational unit ID",
           "member": "uint64",
           "name": "NodeId",
@@ -1066,7 +1018,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Name",
           "member": "string",
           "name": "Name",
@@ -1074,7 +1025,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Parent organizational unit ID",
           "member": "uint64",
           "name": "ParentNodeId",

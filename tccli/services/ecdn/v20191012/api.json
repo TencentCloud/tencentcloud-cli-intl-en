@@ -116,7 +116,6 @@
       "document": "AddEcdnDomain request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain name.",
           "member": "string",
           "name": "Domain",
@@ -124,7 +123,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Origin server configuration.",
           "member": "Origin",
           "name": "Origin",
@@ -132,7 +130,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Domain name acceleration region. Valid values: mainland (acceleration in Mainland China), overseas (acceleration outside Mainland China), global (global acceleration).",
           "member": "string",
           "name": "Area",
@@ -140,7 +137,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Project ID. Default value: 0.",
           "member": "int64",
           "name": "ProjectId",
@@ -148,7 +144,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "IP block/allowlist configuration.",
           "member": "IpFilter",
           "name": "IpFilter",
@@ -156,7 +151,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "IP access limit configuration.",
           "member": "IpFreqLimit",
           "name": "IpFreqLimit",
@@ -164,7 +158,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Origin server response header configuration.",
           "member": "ResponseHeader",
           "name": "ResponseHeader",
@@ -172,7 +165,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Node caching configuration.",
           "member": "CacheKey",
           "name": "CacheKey",
@@ -180,7 +172,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Caching rule configuration.",
           "member": "Cache",
           "name": "Cache",
@@ -188,7 +179,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "HTTPS configuration.",
           "member": "Https",
           "name": "Https",
@@ -196,7 +186,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Forced access protocol redirection configuration.",
           "member": "ForceRedirect",
           "name": "ForceRedirect",
@@ -204,7 +193,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Tag bound to a domain name.",
           "member": "Tag",
           "name": "Tag",
@@ -212,7 +200,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "WebSocket configuration.",
           "member": "WebSocket",
           "name": "WebSocket",
@@ -238,7 +225,6 @@
       "document": "Custom HTTPS configuration for origin-pull",
       "members": [
         {
-          "default": "",
           "document": "Custom TLS data switch\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "on",
           "member": "string",
@@ -248,7 +234,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "TLS version settings. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[\"TLSv1\",\"TLSv1.1\",\"TLSv1.2\",\"TLSv1.3\"]",
           "member": "string",
@@ -258,7 +243,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Custom encryption suite\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"EECDH+AES128\"",
           "member": "string",
@@ -268,7 +252,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Origin-pull verification status\n`off`: Disables origin-pull verification\n`oneWay`: Only verify the origin\n`twoWay`: Enables two-way origin-pull verification\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "off",
           "member": "string",
@@ -278,7 +261,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Configuration information of the origin-pull certificate\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ServerCert",
@@ -288,7 +270,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Configuration information of the origin server certificate\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ClientCert",
@@ -304,7 +285,6 @@
       "document": "Simple edition of cache configuration, which does not support setting a caching rule for scenarios where the `max-age` is not returned from the origin server.",
       "members": [
         {
-          "default": "",
           "document": "Caching configuration rule array.",
           "member": "CacheRule",
           "name": "CacheRules",
@@ -313,7 +293,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to follow the `Cache-Control: max-age` configuration on the origin server (this feature is only available to users on the allowlist).\non: enable\noff: disable\nIf it is enabled, resources that do not match `CacheRules` will be cached on node according to the `max-age` value returned by the origin server, while resources that match `CacheRules` will be cached on node according to the cache expiration time set in `CacheRules`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "FollowOrigin",
@@ -328,7 +307,6 @@
       "document": "Caching configuration.",
       "members": [
         {
-          "default": "",
           "document": "Whether to enable full path cache. Valid values: on, off.",
           "member": "string",
           "name": "FullUrlCache",
@@ -343,7 +321,6 @@
       "document": "Caching configuration rule.",
       "members": [
         {
-          "default": "",
           "document": "Cache type. Valid values: all (all files), file (extension type), directory (directory), path (full path), index (homepage).",
           "member": "string",
           "name": "CacheType",
@@ -352,7 +329,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cached content list.",
           "member": "string",
           "name": "CacheContents",
@@ -361,7 +337,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cache time in seconds.",
           "member": "int64",
           "name": "CacheTime",
@@ -376,7 +351,6 @@
       "document": "HTTPS client certificate configuration.",
       "members": [
         {
-          "default": "",
           "document": "Client certificate in PEM format.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Certificate",
@@ -385,7 +359,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Client certificate name.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "CertName",
@@ -394,7 +367,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Certificate expiration time.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "datetime",
           "name": "ExpireTime",
@@ -403,7 +375,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Certificate issuance time.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "datetime",
           "name": "DeployTime",
@@ -418,7 +389,6 @@
       "document": "DeleteEcdnDomain request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain name to be deleted.",
           "member": "string",
           "name": "Domain",
@@ -444,7 +414,6 @@
       "document": "DescribeDomainsConfig request structure.",
       "members": [
         {
-          "default": "",
           "document": "Pagination offset address. Default value: 0.",
           "member": "int64",
           "name": "Offset",
@@ -452,7 +421,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of domain names per page. Default value: 100.",
           "member": "int64",
           "name": "Limit",
@@ -460,7 +428,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Query filter.",
           "member": "DomainFilter",
           "name": "Filters",
@@ -468,7 +435,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Query result sorting rule.",
           "member": "Sort",
           "name": "Sort",
@@ -508,7 +474,6 @@
       "document": "DescribeDomains request structure.",
       "members": [
         {
-          "default": "",
           "document": "Pagination offset address. Default value: 0.",
           "member": "int64",
           "name": "Offset",
@@ -516,7 +481,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of domain names per page. Default value: 100. Maximum value: 1000.",
           "member": "int64",
           "name": "Limit",
@@ -524,7 +488,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Query filter.",
           "member": "DomainFilter",
           "name": "Filters",
@@ -564,7 +527,6 @@
       "document": "DescribeEcdnDomainLogs request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain name to be queried.",
           "member": "string",
           "name": "Domain",
@@ -572,7 +534,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Log start time, such as 2019-10-01 00:00:00",
           "member": "datetime",
           "name": "StartTime",
@@ -580,7 +541,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Log end time, such as 2019-10-02 00:00:00. Only logs for the last 30 days can be queried.",
           "member": "datetime",
           "name": "EndTime",
@@ -588,7 +548,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Pagination offset for log link list. Default value: 0.",
           "member": "int64",
           "name": "Offset",
@@ -596,7 +555,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of log links per page. Default value: 100. Maximum value: 1000.",
           "member": "int64",
           "name": "Limit",
@@ -636,7 +594,6 @@
       "document": "DescribeEcdnDomainStatistics request structure.",
       "members": [
         {
-          "default": "",
           "document": "Query start time, such as 2019-12-13 00:00:00.\nThe time span cannot exceed 90 days.",
           "example": "2018-09-04 00:00:00",
           "member": "datetime",
@@ -645,7 +602,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Query end time, such as 2019-12-13 23:59:59.\nThe time span cannot exceed 90 days.",
           "example": "2018-09-04 12:00:00",
           "member": "datetime",
@@ -654,7 +610,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Statistical metric names:\nflux: traffic (in bytes)\nbandwidth: bandwidth (in bps)\nrequest: number of requests",
           "example": "[\"flux\\n\",\"delay\\n\",\"request\\n\",\"bandwidth\\n\"]",
           "member": "string",
@@ -663,7 +618,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Specifies the list of domain names to be queried",
           "example": "[\"www.test.com\\n\"]",
           "member": "string",
@@ -672,7 +626,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)\nIf no domain name is entered, the specified project will be queried; otherwise, the domain name will prevail",
           "example": "[\"0\\n\"]",
           "member": "int64",
@@ -681,7 +634,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Pagination offset. Default value: 0.",
           "example": "0",
           "member": "int64",
@@ -690,7 +642,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page. Default value: 1000. Maximum value: 3,000.",
           "example": "1000",
           "member": "int64",
@@ -699,7 +650,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Statistical areas:\nmainland: Chinese mainland\noversea: outside the Chinese mainland\nglobal: global\nDefault value: global",
           "example": "global",
           "member": "string",
@@ -740,7 +690,6 @@
       "document": "DescribeEcdnStatistics request structure.",
       "members": [
         {
-          "default": "",
           "document": "Query start time, such as 2019-12-13 00:00:00",
           "example": "2018-09-04 00:00:00",
           "member": "datetime",
@@ -749,7 +698,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Query end time, such as 2019-12-13 23:59:59",
           "example": "2018-09-04 12:00:00",
           "member": "datetime",
@@ -758,7 +706,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Specifies the query metric, which can be:\nflux: traffic (in bytes)\nbandwidth: bandwidth (in bps)\nrequest: number of requests\n2xx: returns the number of 2xx status codes or details of status codes starting with 2\n3xx: returns the number of 3xx status codes or details of status codes starting with 3\n4xx: returns the number of 4xx status codes or details of status codes starting with 4\n5xx: returns the number of 5xx status codes or details of status codes starting with 5",
           "example": "[\"flux\\n\"]",
           "member": "string",
@@ -767,7 +714,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Sampling interval in minutes. The available options vary for different query period. See below: \n1 day: `1`, `5`, `15`, `30`, `60`, `120`, `240`, `1440` \n2 to 3 days: `15`, `30`, `60`, `120`, `240`, `1440`\n4 to 7 days: `30`, `60`, `120`, `240`, `1440`\n8 to 31 days: `60`, `120`, `240`, `1440`",
           "example": "60",
           "member": "int64",
@@ -776,7 +722,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Specifies the list of domain names to be queried\n\nUp to 30 acceleration domain names can be queried at a time.",
           "example": "[\"www.test.com\\n\"]",
           "member": "string",
@@ -785,7 +730,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)\nIf no domain name is entered, the specified project will be queried; otherwise, the domain name will prevail",
           "example": "[\"0\\n\"]",
           "member": "int64",
@@ -794,7 +738,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Statistical areas:\nmainland: Chinese mainland\noversea: outside the Chinese mainland\nglobal: global\nDefault value: global",
           "example": "global",
           "member": "string",
@@ -828,7 +771,6 @@
       "document": "DescribeIpStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "Acceleration domain name",
           "member": "string",
           "name": "Domain",
@@ -836,7 +778,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Target region of the query:\nmainland: nodes in Mainland China\noverseas: nodes outside Mainland China\nglobal: global nodes",
           "member": "string",
           "name": "Area",
@@ -907,7 +848,6 @@
       "document": "DescribePurgeTasks request structure.",
       "members": [
         {
-          "default": "",
           "document": "Purge type to be queried. url: query URL purge records; path: query directory purge records.",
           "member": "string",
           "name": "PurgeType",
@@ -915,7 +855,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Start time, such as 2018-08-08 00:00:00",
           "member": "datetime",
           "name": "StartTime",
@@ -923,7 +862,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "End time, such as 2018-08-08 23:59:59",
           "member": "datetime",
           "name": "EndTime",
@@ -931,7 +869,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Task ID returned during submission. Either `TaskId` or start time must be specified for a query.",
           "member": "string",
           "name": "TaskId",
@@ -939,7 +876,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Pagination offset. Default value: 0 (starting from entry 0).",
           "member": "int64",
           "name": "Offset",
@@ -947,7 +883,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Pagination limit. Default value: 20.",
           "member": "int64",
           "name": "Limit",
@@ -955,7 +890,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Query keyword. Please enter a domain name or full URL beginning with `http(s)://`.",
           "member": "string",
           "name": "Keyword",
@@ -963,7 +897,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Specified task status to be queried. fail: failed, done: succeeded, process: purging.",
           "member": "string",
           "name": "Status",
@@ -1003,7 +936,6 @@
       "document": "Data structure of sorted data",
       "members": [
         {
-          "default": "",
           "document": "Data type name",
           "member": "string",
           "name": "Name",
@@ -1012,7 +944,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data value",
           "member": "float",
           "name": "Value",
@@ -1027,7 +958,6 @@
       "document": "Basic information of a CDN domain name.",
       "members": [
         {
-          "default": "",
           "document": "Domain name ID.",
           "example": "ecdn-xxxx",
           "member": "string",
@@ -1037,7 +967,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tencent Cloud account ID.",
           "example": "1251000000",
           "member": "int64",
@@ -1047,7 +976,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CDN acceleration domain name.",
           "example": "test.com",
           "member": "string",
@@ -1057,7 +985,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name CNAME.",
           "example": "test.com.dsa.dnsv1.com",
           "member": "string",
@@ -1067,7 +994,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name status. Valid values: pending (reviewing), rejected (rejected), processing (deploying after approval), online (enabled), offline (disabled), deleted (deleted).",
           "example": "processing",
           "member": "string",
@@ -1077,7 +1003,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project ID.",
           "example": "0",
           "member": "int64",
@@ -1087,7 +1012,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name creation time.",
           "example": "2019-12-03 15:23:50",
           "member": "datetime",
@@ -1097,7 +1021,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name update time.",
           "example": "2019-12-03 15:23:50",
           "member": "datetime",
@@ -1107,7 +1030,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Origin server configuration details.",
           "example": "{\"Origins\":[\"1.1.1.1\"]}",
           "member": "Origin",
@@ -1117,7 +1039,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name blockage status. Valid values: normal (normal), overdue (service is suspended due to arrears), quota (trial traffic package is used up), malicious (malicious user), ddos (DDoS attack), idle (no traffic), unlicensed (no ICP filing), capping (bandwidth cap reached), readonly (read-only)",
           "example": "normal",
           "member": "string",
@@ -1127,7 +1048,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Acceleration region. Valid values: mainland, oversea, global.",
           "example": "mainland",
           "member": "string",
@@ -1137,7 +1057,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name lock status. normal: not locked; global: globally locked",
           "example": "normal",
           "member": "string",
@@ -1147,7 +1066,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name tag\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "null",
           "member": "Tag",
@@ -1163,7 +1081,6 @@
       "document": "Data structure of sorted data",
       "members": [
         {
-          "default": "",
           "document": "Domain name",
           "member": "string",
           "name": "Resource",
@@ -1172,7 +1089,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Result details.",
           "member": "DetailData",
           "name": "DetailData",
@@ -1187,7 +1103,6 @@
       "document": "Detailed configuration information of ECDN domain name.",
       "members": [
         {
-          "default": "",
           "document": "Domain name ID.",
           "member": "string",
           "name": "ResourceId",
@@ -1196,7 +1111,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tencent Cloud account ID.",
           "member": "int64",
           "name": "AppId",
@@ -1205,7 +1119,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Acceleration domain name.",
           "member": "string",
           "name": "Domain",
@@ -1214,7 +1127,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name CNAME.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Cname",
@@ -1223,7 +1135,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Domain name status. Valid values: pending (reviewing), rejected (rejected), processing (deploying after approval), online (enabled), offline (disabled), deleted (deleted).",
           "member": "string",
           "name": "Status",
@@ -1232,7 +1143,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Project ID.",
           "member": "int64",
           "name": "ProjectId",
@@ -1241,7 +1151,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name creation time.",
           "member": "datetime",
           "name": "CreateTime",
@@ -1250,7 +1159,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name update time.",
           "member": "datetime",
           "name": "UpdateTime",
@@ -1259,7 +1167,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Origin server configuration.",
           "member": "Origin",
           "name": "Origin",
@@ -1268,7 +1175,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IP blocklist/allowlist configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "IpFilter",
           "name": "IpFilter",
@@ -1277,7 +1183,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "IP access limit configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "IpFreqLimit",
           "name": "IpFreqLimit",
@@ -1286,7 +1191,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Origin server response header configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "ResponseHeader",
           "name": "ResponseHeader",
@@ -1295,7 +1199,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Node caching configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "CacheKey",
           "name": "CacheKey",
@@ -1304,7 +1207,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Caching rule configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "Cache",
           "name": "Cache",
@@ -1313,7 +1215,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "HTTPS configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "Https",
           "name": "Https",
@@ -1322,7 +1223,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Domain name blockage status. Valid values: normal (normal), overdue (service is suspended due to arrears), quota (trial traffic package is used up), malicious (malicious user), ddos (DDoS attack), idle (no traffic), unlicensed (no ICP filing), capping (bandwidth cap reached), readonly (read-only).\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Disable",
@@ -1331,7 +1231,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Forced access protocol redirection configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "ForceRedirect",
           "name": "ForceRedirect",
@@ -1340,7 +1239,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Acceleration region. Valid values: mainland, overseas, global.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Area",
@@ -1349,7 +1247,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Domain name lock status. normal: not locked; global: globally locked.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Readonly",
@@ -1358,7 +1255,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Domain name tag\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "member": "Tag",
           "name": "Tag",
@@ -1367,7 +1263,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "WebSocket configuration.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "WebSocket",
           "name": "WebSocket",
@@ -1382,7 +1277,6 @@
       "document": "Filter for domain name query.",
       "members": [
         {
-          "default": "",
           "document": "Filters by the field name, which includes:\n- `origin`: Primary origin server.\n- `domain`: Domain name.\n- `resourceId`: Domain name ID.\n- `status`: Domain name status. Valid values: `online`, `offline`, and `processing`.\n- `disable`: Whether the domain name is blocked. Valid values: `normal`, `unlicensed`.\n- `projectId`: Project ID.\n- `fullUrlCache`: Whether to enable full-path cache, which can be `on` or `off`.\n- `https`: Whether to configure HTTPS, which can be `on`, `off` or `processing`.\n- `originPullProtocol`: Origin-pull protocol type, which can be `http`, `follow`, or `https`.\n- `area`: Acceleration region, which can be `mainland`，`overseas` or `global`.\n- `tagKey`: Tag key.",
           "example": "origin",
           "member": "string",
@@ -1392,7 +1286,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Filter field value.",
           "example": "[‘xxxx.test.com’]",
           "member": "string",
@@ -1402,7 +1295,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to enable fuzzy query, which is supported only for filter fields `origin` and `domain`.",
           "example": "false",
           "member": "bool",
@@ -1418,7 +1310,6 @@
       "document": "Domain name log information.",
       "members": [
         {
-          "default": "",
           "document": "Log start time.",
           "member": "datetime",
           "name": "StartTime",
@@ -1427,7 +1318,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log end time.",
           "member": "datetime",
           "name": "EndTime",
@@ -1436,7 +1326,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log download path.",
           "member": "string",
           "name": "LogPath",
@@ -1451,7 +1340,6 @@
       "document": "Detailed access data type",
       "members": [
         {
-          "default": "",
           "document": "Queries the specified metric. Valid values: Bandwidth, Flux, Request, Delay, status code, LogBandwidth, LogFlux, LogRequest",
           "member": "string",
           "name": "Metrics",
@@ -1460,7 +1348,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Detailed data collection",
           "member": "TimestampData",
           "name": "DetailData",
@@ -1475,7 +1362,6 @@
       "document": "Forced access protocol redirection configuration.",
       "members": [
         {
-          "default": "",
           "document": "Forced access protocol redirection configuration switch. Valid values: on, off.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Switch",
@@ -1484,7 +1370,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Access protocol type for forced redirection. Valid values: http (forced redirection to HTTP protocol), https (forced redirection to HTTPS protocol).\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "RedirectType",
@@ -1493,7 +1378,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "HTTP status code returned when forced redirection is enabled. Valid values: 301, 302.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "RedirectStatusCode",
@@ -1508,7 +1392,6 @@
       "document": "HSTS configuration.",
       "members": [
         {
-          "default": "",
           "document": "Whether to enable. Valid values: on, off.",
           "member": "string",
           "name": "Switch",
@@ -1517,7 +1400,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "`MaxAge` value.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "MaxAge",
@@ -1526,7 +1408,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to include subdomain names. Valid values: on, off.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "IncludeSubDomains",
@@ -1541,7 +1422,6 @@
       "document": "Path-specific HTTP header setting rule.",
       "members": [
         {
-          "default": "",
           "document": "HTTP header setting method. Valid values: add (add header), set (set header), del (delete header).\nRequest header currently does not support `set`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "HeaderMode",
@@ -1550,7 +1430,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "HTTP header name.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "HeaderName",
@@ -1559,7 +1438,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "HTTP header value, which is optional when it is `del`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "HeaderValue",
@@ -1568,7 +1446,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Type of effective URL path rule. Valid values: all (all paths), file (file extension), directory (directory), path (absolute path).\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "RuleType",
@@ -1577,7 +1454,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "URL path or file type list\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "RulePaths",
@@ -1592,7 +1468,6 @@
       "document": "HTTPS configuration of domain name.",
       "members": [
         {
-          "default": "",
           "document": "HTTPS configuration switch. Valid values: on, off. If the domain name with HTTPS configuration enabled is being deployed, this switch will be `off`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Switch",
@@ -1601,7 +1476,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable HTTP2. Valid values: on, off.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Http2",
@@ -1610,7 +1484,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable the OCSP feature. Valid values: on, off.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "OcspStapling",
@@ -1619,7 +1492,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable the client certificate verification feature. Valid values: on, off. The client certificate information must be uploaded if this feature is enabled.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "VerifyClient",
@@ -1628,7 +1500,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Server certificate configuration information.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "ServerCert",
           "name": "CertInfo",
@@ -1637,7 +1508,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Client certificate configuration information.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "ClientCert",
           "name": "ClientCertInfo",
@@ -1646,7 +1516,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable SPDY. Valid values: on, off.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Spdy",
@@ -1655,7 +1524,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "HTTPS certificate deployment status. Valid values: closed (disabled), deploying (deploying), deployed (deployment succeeded), failed (deployment failed). This parameter cannot be used as an input parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "SslStatus",
@@ -1664,7 +1532,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "HSTS configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "Hsts",
           "name": "Hsts",
@@ -1679,7 +1546,6 @@
       "document": "IP blocklist/allowlist.",
       "members": [
         {
-          "default": "",
           "document": "IP blocklist/allowlist switch. Valid values: on, off.",
           "member": "string",
           "name": "Switch",
@@ -1688,7 +1554,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IP blocklist/allowlist type. Valid values: whitelist, blacklist.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "FilterType",
@@ -1697,7 +1562,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "IP blocklist/allowlist list.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Filters",
@@ -1712,7 +1576,6 @@
       "document": "IP access limit configuration.",
       "members": [
         {
-          "default": "",
           "document": "IP access limit switch. Valid values: on, off.",
           "member": "string",
           "name": "Switch",
@@ -1721,7 +1584,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of requests per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Qps",
@@ -1736,7 +1598,6 @@
       "document": "Node IP information",
       "members": [
         {
-          "default": "",
           "document": "Node IP",
           "member": "string",
           "name": "Ip",
@@ -1745,7 +1606,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node region",
           "member": "string",
           "name": "District",
@@ -1754,7 +1614,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node ISP",
           "member": "string",
           "name": "Isp",
@@ -1763,7 +1622,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node city",
           "member": "string",
           "name": "City",
@@ -1772,7 +1630,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node status\nonline: the node is online and scheduling normally\noffline: the node is offline",
           "member": "string",
           "name": "Status",
@@ -1781,7 +1638,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node IP creation time",
           "member": "datetime",
           "name": "CreateTime",
@@ -1796,7 +1652,6 @@
       "document": "Origin server configuration.",
       "members": [
         {
-          "default": "",
           "document": "Primary origin server list. IP and the domain name of the origin server cannot be entered at the same time. Configure origin server port in the format of [\"origin1:port1\", \"origin2:port2\"]. Configure origin-pull weight in the format of [\"origin1::weight1\", \"origin2::weight2\"]. Configure both port and weight in the format of [\"origin1:port1:weight1\", \"origin2:port2:weight2\"]. Valid range of weight value: 0 - 100.",
           "example": "[\"1.1.1.1:80\", \"2.2.2.2:80\"]",
           "member": "string",
@@ -1806,7 +1661,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Primary origin server type. Valid values: domain (domain name origin server), ip (IP origin server).\nThis is required when setting `Origins`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "ip",
           "member": "string",
@@ -1816,7 +1670,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Host header value during origin-pull.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "ecdn.test.com",
           "member": "string",
@@ -1826,7 +1679,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Origin-pull protocol type. Valid values: http (forced HTTP origin-pull), follow (protocol follow), https (HTTPS origin-pull).\nIf this parameter is left empty, HTTP origin-pull will be used by default.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "http",
           "member": "string",
@@ -1836,7 +1688,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Secondary origin server list.",
           "example": "[\"3.3.3.3:80\", \"4.4.4.4:80\"]",
           "member": "string",
@@ -1846,7 +1697,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Secondary origin server type, which is the same as `OriginType`.\nThis is required when setting `BackupOrigins`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "ip",
           "member": "string",
@@ -1856,7 +1706,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "HTTPS advanced origin-pull configuration\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "AdvanceHttps",
@@ -1872,7 +1721,6 @@
       "document": "PurgePathCache request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of directories to be purged. The protocol header must be included.",
           "member": "string",
           "name": "Paths",
@@ -1880,7 +1728,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Purge type. flush: purges updated resources, delete: purges all resources.",
           "member": "string",
           "name": "FlushType",
@@ -1915,7 +1762,6 @@
       "document": "Purge task log details.",
       "members": [
         {
-          "default": "",
           "document": "Purge task ID.",
           "member": "string",
           "name": "TaskId",
@@ -1924,7 +1770,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Purged URL.",
           "member": "string",
           "name": "Url",
@@ -1933,7 +1778,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Purge task status. fail: failed, done: succeeded, process: purging.",
           "member": "string",
           "name": "Status",
@@ -1942,7 +1786,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Purge type. url: URL purge; path: directory purge.",
           "member": "string",
           "name": "PurgeType",
@@ -1951,7 +1794,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Resource purge method. flush: purges updated resources, delete: purges all resources.",
           "member": "string",
           "name": "FlushType",
@@ -1960,7 +1802,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Purge task submission time",
           "member": "datetime",
           "name": "CreateTime",
@@ -1975,7 +1816,6 @@
       "document": "PurgeUrlsCache request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of URLs to be purged. The protocol header must be included.",
           "member": "string",
           "name": "Urls",
@@ -2010,7 +1850,6 @@
       "document": "Purge usage and quota",
       "members": [
         {
-          "default": "",
           "document": "Quota limit for one batch submission request.",
           "member": "int64",
           "name": "Batch",
@@ -2019,7 +1858,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Daily submission quota limit.",
           "member": "int64",
           "name": "Total",
@@ -2028,7 +1866,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Remaining daily submission quota.",
           "member": "int64",
           "name": "Available",
@@ -2043,7 +1880,6 @@
       "document": "Query object and its access details",
       "members": [
         {
-          "default": "",
           "document": "Resource name, which is categorized as follows based on different query conditions:\nSpecific domain name: indicates the details of the specific domain name\nmultiDomains: indicates aggregated details of multiple domain names\nProject ID: displays the ID of the specified project to be queried\nall: details at the account level",
           "member": "string",
           "name": "Resource",
@@ -2052,7 +1888,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data details of resource",
           "member": "EcdnData",
           "name": "EcdnData",
@@ -2067,7 +1902,6 @@
       "document": "Custom response header configuration.",
       "members": [
         {
-          "default": "",
           "document": "Custom response header switch. Valid values: on, off.",
           "member": "string",
           "name": "Switch",
@@ -2076,7 +1910,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Custom response header rule array.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "HttpHeaderPathRule",
           "name": "HeaderRules",
@@ -2091,7 +1924,6 @@
       "document": "HTTPS server certificate configuration.",
       "members": [
         {
-          "default": "",
           "document": "Server certificate ID, which is required if the certificate is a Tencent Cloud-hosted certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "CertId",
@@ -2100,7 +1932,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Server certificate name, which is required if the certificate is a Tencent Cloud-hosted certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "CertName",
@@ -2109,7 +1940,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Server certificate information, which is required when uploading your own certificate and must contain complete certificate chain information.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Certificate",
@@ -2118,7 +1948,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Server key information, which is required when uploading your own certificate.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "PrivateKey",
@@ -2127,7 +1956,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Certificate expiration time.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "datetime",
           "name": "ExpireTime",
@@ -2136,7 +1964,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Certificate issuance time.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "datetime",
           "name": "DeployTime",
@@ -2145,7 +1972,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Certificate remarks.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Message",
@@ -2160,7 +1986,6 @@
       "document": "Sorting criteria for query results.",
       "members": [
         {
-          "default": "",
           "document": "Sort by field. Valid values:\ncreateTime: domain name creation time\ncertExpireTime: certificate expiration time",
           "member": "string",
           "name": "Key",
@@ -2169,7 +1994,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "asc/desc. Default value: desc.",
           "member": "string",
           "name": "Sequence",
@@ -2184,7 +2008,6 @@
       "document": "StartEcdnDomain request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain name to be enabled.",
           "member": "string",
           "name": "Domain",
@@ -2210,7 +2033,6 @@
       "document": "StopEcdnDomain request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain name to be disabled.",
           "member": "string",
           "name": "Domain",
@@ -2236,7 +2058,6 @@
       "document": "Tag key and tag value.",
       "members": [
         {
-          "default": "",
           "document": "Tag key.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "TagKey",
@@ -2245,7 +2066,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Tag value.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "TagValue",
@@ -2260,7 +2080,6 @@
       "document": "Timestamp and its corresponding value",
       "members": [
         {
-          "default": "",
           "document": "Statistical time point in forward rounding mode\nTaking the 5-minute granularity as an example, 13:35:00 indicates that the statistical interval is between 13:35:00 and 13:39:59",
           "member": "datetime",
           "name": "Time",
@@ -2269,7 +2088,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data value",
           "member": "float",
           "name": "Value",
@@ -2284,7 +2102,6 @@
       "document": "UpdateDomainConfig request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain name.",
           "member": "string",
           "name": "Domain",
@@ -2292,7 +2109,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Origin server configuration.",
           "member": "Origin",
           "name": "Origin",
@@ -2300,7 +2116,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Project ID.",
           "member": "int64",
           "name": "ProjectId",
@@ -2308,7 +2123,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "IP blocklist/allowlist configuration.",
           "member": "IpFilter",
           "name": "IpFilter",
@@ -2316,7 +2130,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "IP access limit configuration.",
           "member": "IpFreqLimit",
           "name": "IpFreqLimit",
@@ -2324,7 +2137,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Origin server response header configuration.",
           "member": "ResponseHeader",
           "name": "ResponseHeader",
@@ -2332,7 +2144,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Node caching configuration.",
           "member": "CacheKey",
           "name": "CacheKey",
@@ -2340,7 +2151,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Caching rule configuration.",
           "member": "Cache",
           "name": "Cache",
@@ -2348,7 +2158,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "HTTPS configuration.",
           "member": "Https",
           "name": "Https",
@@ -2356,7 +2165,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Forced access protocol redirection configuration.",
           "member": "ForceRedirect",
           "name": "ForceRedirect",
@@ -2364,7 +2172,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Domain name acceleration region. Valid values: mainland (acceleration in Mainland China), overseas (acceleration outside Mainland China), global (global acceleration).",
           "member": "string",
           "name": "Area",
@@ -2372,7 +2179,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "WebSocket configuration.",
           "member": "WebSocket",
           "name": "WebSocket",
@@ -2398,7 +2204,6 @@
       "document": "WebSocket configuration.",
       "members": [
         {
-          "default": "",
           "document": "Whether to enable custom WebSocket timeout setting. When it’s `off`: WebSocket connection is supported, and the default timeout period is 15 seconds. To change the timeout period, please set it to `on`.\n\n* WebSocket is now only available for beta users. To use it, please submit a ticket.",
           "example": "off",
           "member": "string",
@@ -2408,7 +2213,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Sets timeout period in seconds. Maximum value: 65\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "30",
           "member": "int64",

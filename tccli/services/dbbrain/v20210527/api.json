@@ -270,7 +270,6 @@
       "document": "AddUserContact request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient name, which can contain up to 20 letters, digits, spaces, and symbols `!@#$%^&*()_+-=()` and cannot begin with an underscore.",
           "example": "张三",
@@ -280,7 +279,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Email address, which can contain letters, digits, underscores, and the @ symbol, cannot begin with an underscore, and must be unique.",
           "example": "test@qq.com",
@@ -290,7 +288,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type, which is fixed to `mysql`.",
           "example": "mysql",
@@ -328,7 +325,6 @@
       "document": "Recipient description.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient ID.",
           "example": "1",
@@ -339,7 +335,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient name.",
           "example": "test",
@@ -350,7 +345,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient email.",
           "example": "test@qq.com",
@@ -367,7 +361,6 @@
       "document": "CreateDBDiagReportTask request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "test",
@@ -377,7 +370,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time, such as \"2020-11-08T14:00:00+08:00\".",
           "example": "2019-01-01T00:00:00+08:00",
@@ -387,7 +379,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time, such as \"2020-11-09T14:00:00+08:00\".",
           "example": "2019-01-02T00:00:00+08:00",
@@ -397,7 +388,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to send an email. Valid values: `0` (yes), `1` (no).",
           "example": "1",
@@ -407,7 +397,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of the IDs of recipients to receive email.",
           "example": "[\"1\\n\"]",
@@ -417,7 +406,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of IDs of recipient groups to receive email.",
           "example": "[\"1\\n\"]",
@@ -427,7 +415,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -465,7 +452,6 @@
       "document": "CreateDBDiagReportUrl request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "cdb-c1nl9rpv",
@@ -475,7 +461,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Health report task ID, which can be queried through `DescribeDBDiagReportTasks`.",
           "example": "63452",
@@ -485,7 +470,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -533,7 +517,6 @@
       "document": "CreateKillTask request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the instance associated with the session killing task.",
           "example": "cdb-test1",
@@ -543,7 +526,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task duration in seconds. Pass in `-1` to stop the task manually.",
           "example": "10",
@@ -553,7 +535,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Client IP, which is a task filter.",
           "example": "127.0.0.1",
@@ -563,7 +544,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database name, which is a task filter. Multiple database names are separated by comma.",
           "example": "test,test1",
@@ -573,7 +553,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Related command, which is a task filter. Multiple commands are separated by comma.",
           "example": "Time,Table Dump",
@@ -583,7 +562,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task filter. Filtering by single filter prefix is supported.",
           "example": "select",
@@ -593,7 +571,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User type, which is a task filter.",
           "example": "root",
@@ -603,7 +580,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Session duration in seconds, which is a task filter.",
           "example": "10",
@@ -613,7 +589,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -651,7 +626,6 @@
       "document": "CreateMailProfile request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Email configuration.",
           "example": "-",
@@ -661,7 +635,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration level. Valid values: `User` (user-level), `Instance` (instance-level). For database inspection emails, it should be `User`. For scheduled task emails, it should be `Instance`.",
           "example": "Instance",
@@ -671,7 +644,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration name, which needs to be unique. For database inspection emails, this name can be customized as needed. For scheduled task emails, the name should be in the format of \"scheduler_\" + {instanceId}, such as \"schduler_cdb-test\".",
           "example": "test",
@@ -681,7 +653,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration type. Valid values: `dbScan_mail_configuration` (email configuration of the database inspection report), `scheduler_mail_configuration` (email configuration of the scheduled task report).",
           "example": "scheduler_mail_configuration",
@@ -691,7 +662,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL).",
           "example": "mysql",
@@ -701,7 +671,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID bound with the configuration, which is set when the configuration level is `Instance`. Only one instance can be bound at a time. When the configuration level is `User`, leave this parameter empty.",
           "example": "[\"cdb-test\"]",
@@ -729,7 +698,6 @@
       "document": "CreateProxySessionKillTask request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "crs-test1",
@@ -739,7 +707,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid value: `redis` (TencentDB for Redis).",
           "example": "redis",
@@ -777,7 +744,6 @@
       "document": "CreateSchedulerMailProfile request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Value range: 1-7, representing Monday to Sunday respectively.",
           "example": "[1,2,3]",
@@ -787,7 +753,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Email configuration.",
           "example": "-",
@@ -797,7 +762,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration name, which needs to be unique. For scheduled task emails, the name should be in the format of \"scheduler_\" + {instanceId}, such as \"schduler_cdb-test\".",
           "example": "scheduler_cdb-test",
@@ -807,7 +771,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the instance for which to configure subscription.",
           "example": "cdb-123456",
@@ -817,7 +780,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -845,7 +807,6 @@
       "document": "CreateSecurityAuditLogExportTask request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Security audit group ID.",
           "example": "sag-01z37k3f",
@@ -855,7 +816,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Exported log start time, such as 2020-12-28 00:00:00.",
           "example": "2020-12-28 00:00:00",
@@ -865,7 +825,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Exported log end time, such as 2020-12-28 01:00:00.",
           "example": "2020-12-28 01:00:00",
@@ -875,7 +834,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid value: `mysql` (TencentDB for MySQL).",
           "example": "mysql",
@@ -885,7 +843,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of log risk levels. Valid values: `0` (no risk), `1` (low risk), `2` (medium risk), `3` (high risk).",
           "example": "[1,2,3]",
@@ -977,7 +934,6 @@
       "document": "DeleteSecurityAuditLogExportTasks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Security audit group ID.",
           "example": "sag-01z37k3f",
@@ -987,7 +943,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of log export task IDs. This API will ignore task IDs that do not exist or have been deleted.",
           "example": "[1]",
@@ -997,7 +952,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid value: `mysql` (TencentDB for MySQL).",
           "example": "mysql",
@@ -1025,7 +979,6 @@
       "document": "DescribeAllUserContact request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Service type, which is fixed to `mysql`.",
           "example": "mysql",
@@ -1035,7 +988,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of recipient names. Fuzzy search is supported.",
           "example": "zhangsan",
@@ -1083,7 +1035,6 @@
       "document": "DescribeAllUserGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Service type, which is fixed to `mysql`.",
           "example": "mysql",
@@ -1093,7 +1044,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of recipient group names. Fuzzy search is supported.",
           "example": "group1",
@@ -1141,7 +1091,6 @@
       "document": "DescribeDBDiagEvent request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "test",
@@ -1151,7 +1100,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Event ID, which can be obtained through the `DescribeDBDiagHistory` API.",
           "example": "5",
@@ -1161,7 +1109,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -1299,7 +1246,6 @@
       "document": "DescribeDBDiagEvents request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start time in the format of “2021-05-27 00:00:00”. The earliest time that can be queried is 30 days before the current time.",
           "example": "2021-05-27 00:00:00",
@@ -1309,7 +1255,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time in the format of \"2021-05-27 01:00:00\". The interval between the end time and the start time can be up to 7 days.",
           "example": "2021-05-27 01:00:00",
@@ -1319,7 +1264,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Risk level list. Valid values in descending order of severity: `1` (critical), `2` (serious), `3` (alarm), `4` (warning), `5` (healthy).",
           "example": "[1, 2, 3, 4]",
@@ -1329,7 +1273,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID list.",
           "example": "[\"cdb-test\"]",
@@ -1339,7 +1282,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default value: 0.",
           "example": "0",
@@ -1349,7 +1291,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 50.",
           "example": "20",
@@ -1397,7 +1338,6 @@
       "document": "DescribeDBDiagHistory request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "cdb-test",
@@ -1407,7 +1347,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time, such as \"2019-09-10 12:13:14\".",
           "example": "2019-01-01 00:00:00",
@@ -1417,7 +1356,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time, such as \"2019-09-11 12:13:14\". The interval between the end time and the start time can be up to 2 days.",
           "example": "2019-01-01 01:00:00",
@@ -1427,7 +1365,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -1465,7 +1402,6 @@
       "document": "DescribeDBDiagReportTasks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the first task in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14. It is used for queries by time range.",
           "example": "2019-09-10 12:13:14",
@@ -1475,7 +1411,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time of the last task in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14. It is used for queries by time range.",
           "example": "2019-09-10 12:13:14",
@@ -1485,7 +1420,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of instance IDs, which is used to filter the task list of the specified instance.",
           "example": "[\"cdb-c1nl9rpv\"]",
@@ -1495,7 +1429,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Source that triggers the task. Valid values: `DAILY_INSPECTION` (instance inspection), `SCHEDULED` (scheduled task), and `MANUAL` (manual trigger).",
           "example": "[\"DAILY_INSPECTION\"]",
@@ -1505,7 +1438,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Health level. Valid values: `HEALTH` (healthy), `SUB_HEALTH` (suboptimal), `RISK` (risky), and `HIGH_RISK` (critical).",
           "example": "[\"HEALTH\"]",
@@ -1515,7 +1447,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task status. Valid values: `created` (created), `chosen` (to be executed), `running` (being executed), `failed` (failed), and `finished` (completed).",
           "example": "[\"finished\"]",
@@ -1525,7 +1456,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default value: `0`.",
           "example": "0",
@@ -1535,7 +1465,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned results. Default value: `20`. Maximum value: `100`.",
           "example": "20",
@@ -1545,7 +1474,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -1593,7 +1521,6 @@
       "document": "DescribeDBSpaceStatus request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "cdb-test",
@@ -1603,7 +1530,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query period in days. The end date is the current date, and the query period is 7 days by default.",
           "example": "5",
@@ -1613,7 +1539,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -1681,7 +1606,6 @@
       "document": "DescribeDiagDBInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether it is an instance supported by DBbrain. It is fixed to `true`.",
           "example": "true",
@@ -1691,7 +1615,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: mysql (TencentDB for MySQL), cynosdb (TDSQL-C for MySQL). Default value: mysql.",
           "example": "mysql",
@@ -1701,7 +1624,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pagination parameter indicating the offset.",
           "example": "0",
@@ -1711,7 +1633,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pagination parameter. Maximum value: 100.",
           "example": "50",
@@ -1721,7 +1642,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query by instance name.",
           "example": "[\"cdb-测试\"]",
@@ -1731,7 +1651,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query by instance ID.",
           "example": "[\"cdb-test\"]",
@@ -1741,7 +1660,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query by region.",
           "example": "[\"ap-guangzhou\"]",
@@ -1799,7 +1717,6 @@
       "document": "DescribeHealthScore request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID for which to get the health score.",
           "example": "cdb-test123",
@@ -1809,7 +1726,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time to get the health score in the format of `2019-09-10 12:13:14`.",
           "example": "2019-01-01T00:00:00+08:00",
@@ -1819,7 +1735,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -1857,7 +1772,6 @@
       "document": "DescribeMailProfile request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration type. Valid values: `dbScan_mail_configuration` (email configuration of the database inspection report), `scheduler_mail_configuration` (email configuration of the scheduled task report).",
           "example": "scheduler_mail_configuration",
@@ -1867,7 +1781,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -1877,7 +1790,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pagination offset.",
           "example": "0",
@@ -1887,7 +1799,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of results per page in paginated queries. Maximum value: `50`.",
           "example": "20",
@@ -1897,7 +1808,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query by email configuration name. The name of the scheduled task email configuration should be in the format of \"scheduler_\"+{instanceId}.",
           "example": "scheduler_cdb-of66x11l",
@@ -1945,7 +1855,6 @@
       "document": "DescribeMySqlProcessList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "cdb-c1nl9rpv",
@@ -1955,7 +1864,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Thread ID, which is used to filter the thread list.",
           "example": "20",
@@ -1965,7 +1873,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Thread operation account name, which is used to filter the thread list.",
           "example": "root",
@@ -1975,7 +1882,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Thread operation host address, which is used to filter the thread list.",
           "example": "127.0.0.1:41528",
@@ -1985,7 +1891,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Thread operation database, which is used to filter the thread list.",
           "example": "test",
@@ -1995,7 +1900,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Thread operation status, which is used to filter the thread list.",
           "example": "updating",
@@ -2005,7 +1909,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Thread execution type, which is used to filter the thread list.",
           "example": "Execute",
@@ -2015,7 +1918,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum operation duration of the thread in seconds, which is used to filter the list of threads whose operation duration is greater than this value.",
           "example": "10",
@@ -2025,7 +1927,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Thread operation statement, which is used to filter the thread list.",
           "example": "DELETE FROM `test` WHERE time<=1",
@@ -2035,7 +1936,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned results. Default value: 20.",
           "example": "20",
@@ -2045,7 +1945,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: mysql (TencentDB for MySQL), cynosdb (TDSQL-C for MySQL). Default value: mysql.",
           "example": "mysql",
@@ -2173,7 +2072,6 @@
       "document": "DescribeProxySessionKillTasks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "crs-test1",
@@ -2183,7 +2081,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The async session killing task ID, which is obtained after the API `CreateProxySessionKillTask` is successfully called.",
           "example": "[1234]",
@@ -2193,7 +2090,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid value: `redis` (TencentDB for Redis).",
           "example": "redis",
@@ -2241,7 +2137,6 @@
       "document": "DescribeRedisTopKeyPrefixList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "cdb-c1nl9rpv",
@@ -2251,7 +2146,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Date for query, such as `2021-05-27`. You can select a date as early as in the last 30 days for query.",
           "example": "2022-04-12",
@@ -2261,7 +2155,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid value: `redis` (TencentDB for Redis).",
           "example": "mysql",
@@ -2271,7 +2164,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of queried items. Default value: `20`. Max value: `100`.",
           "example": "20",
@@ -2319,7 +2211,6 @@
       "document": "DescribeSecurityAuditLogDownloadUrls request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Security audit group ID.",
           "example": "sag-01z37k3f",
@@ -2329,7 +2220,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Async task Id.",
           "example": "1",
@@ -2339,7 +2229,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid value: `mysql` (TencentDB for MySQL).",
           "example": "mysql",
@@ -2377,7 +2266,6 @@
       "document": "DescribeSecurityAuditLogExportTasks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Security audit group ID.",
           "example": "sag-01z37k3f",
@@ -2387,7 +2275,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid value: `mysql` (TencentDB for MySQL).",
           "example": "mysql",
@@ -2397,7 +2284,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of log export task IDs.",
           "example": "[1]",
@@ -2407,7 +2293,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default value: `0`.",
           "example": "0",
@@ -2417,7 +2302,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned results. Default value: `20`. Maximum value: `100`.",
           "example": "10",
@@ -2465,7 +2349,6 @@
       "document": "DescribeSlowLogTimeSeriesStats request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "test",
@@ -2475,7 +2358,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time, such as \"2019-09-10 12:13:14\".",
           "example": "2019-01-01 00:00:00",
@@ -2485,7 +2367,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time, such as \"2019-09-10 12:13:14\". The interval between the end time and the start time can be up to 7 days.",
           "example": "2019-01-01 01:00:00",
@@ -2495,7 +2376,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -2553,7 +2433,6 @@
       "document": "DescribeSlowLogTopSqls request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "test",
@@ -2563,7 +2442,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time, such as \"2019-09-10 12:13:14\".",
           "example": "2019-01-01 00:00:00",
@@ -2573,7 +2451,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time in the format of \"2019-09-11 10:13:14\". The interval between the end time and the start time can be up to 7 days.",
           "example": "2019-01-01 01:00:00",
@@ -2583,7 +2460,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting key. Valid values: `QueryTime`, `ExecTimes`, `RowsSent`, `LockTime`, `RowsExamined`. Default value: `QueryTime`.",
           "example": "QueryTime",
@@ -2593,7 +2469,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting order. Valid values: `ASC` (ascending), `DESC` (descending). Default value: `DESC`.",
           "example": "ASC",
@@ -2603,7 +2478,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned results. Default value: `20`. Maximum value: `100`.",
           "example": "10",
@@ -2613,7 +2487,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default value: `0`.",
           "example": "0",
@@ -2623,7 +2496,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database name array.",
           "example": "无",
@@ -2633,7 +2505,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -2681,7 +2552,6 @@
       "document": "DescribeSlowLogUserHostStats request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "cdb-c1nl9rpv",
@@ -2691,7 +2561,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.",
           "example": "2019-09-10 12:13:14",
@@ -2701,7 +2570,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time of the time range in the format of yyyy-MM-dd HH:mm:ss, such as 2019-09-10 12:13:14.",
           "example": "2019-09-10 12:13:14",
@@ -2711,7 +2579,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: mysql (TencentDB for MySQL), cynosdb (TDSQL-C for MySQL). Default value: mysql.",
           "example": "mysql",
@@ -2721,7 +2588,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "MD5 value of SOL template",
           "example": "AD7651E51E8C6FBA",
@@ -2929,7 +2795,6 @@
       "document": "DescribeTopSpaceSchemaTimeSeries request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "cdb-c1nl9rpv",
@@ -2939,7 +2804,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned top databases. Maximum value: `100`. Default value: `20`.",
           "example": "100",
@@ -2949,7 +2813,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Field used to sort top databases. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, `PhysicalFileSize` (supported only by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is `PhysicalFileSize`. For other database instances, the default value is `TotalLength`.",
           "example": "TableRows",
@@ -2959,7 +2822,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start date, such as \"2021-01-01\". It can be as early as 29 days before the current date and is 6 days before the end date by default.",
           "example": "2021-01-01",
@@ -2969,7 +2831,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End date, such as \"2021-01-01\". It can be as early as 29 days before the current date and is the current date by default.",
           "example": "2021-01-01",
@@ -2979,7 +2840,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -3017,7 +2877,6 @@
       "document": "DescribeTopSpaceSchemas request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "cdb-c1nl9rpv",
@@ -3027,7 +2886,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned top databases. Maximum value: 100. Default value: 20.",
           "example": "100",
@@ -3037,7 +2895,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Field used to sort top databases. Valid values: DataLength, IndexLength, TotalLength, DataFree, FragRatio, TableRows, PhysicalFileSize (supported only by TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is `PhysicalFileSize`. For other database instances, the default value is `TotalLength`.",
           "example": "TableRows",
@@ -3047,7 +2904,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: mysql (TencentDB for MySQL), cynosdb (TDSQL-C for MySQL). Default value: mysql.",
           "example": "mysql",
@@ -3095,7 +2951,6 @@
       "document": "DescribeTopSpaceTableTimeSeries request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "cdb-test",
@@ -3105,7 +2960,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned top tables. Maximum value: `100`. Default value: `20`.",
           "example": "2",
@@ -3115,7 +2969,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, `PhysicalFileSize`. Default value: `PhysicalFileSize`.",
           "example": "TableRows",
@@ -3125,7 +2978,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start date, such as \"2021-01-01\". It can be as early as 29 days before the current date and is 6 days before the end date by default.",
           "example": "2020-01-01",
@@ -3135,7 +2987,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End date, such as \"2021-01-01\". It can be as early as 29 days before the current date and is the current date by default.",
           "example": "2020-01-01",
@@ -3145,7 +2996,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -3183,7 +3033,6 @@
       "document": "DescribeTopSpaceTables request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "cdb-test",
@@ -3193,7 +3042,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of returned top tables. Maximum value: `100`. Default value: `20`.",
           "example": "2",
@@ -3203,7 +3051,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Field used to sort top tables. Valid values: `DataLength`, `IndexLength`, `TotalLength`, `DataFree`, `FragRatio`, `TableRows`, `PhysicalFileSize` (only supported for TencentDB for MySQL instances). For TencentDB for MySQL instances, the default value is `PhysicalFileSize`. For other database instances, the default value is `TotalLength`.",
           "example": "TableRows",
@@ -3213,7 +3060,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -3261,7 +3107,6 @@
       "document": "DescribeUserSqlAdvice request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "cdb-c1nl9rpv",
@@ -3271,7 +3116,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SQL statement.",
           "example": "select * from t1",
@@ -3281,7 +3125,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database name.",
           "example": "test",
@@ -3291,7 +3134,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL), `dbbrain-mysql` (self-built MySQL). Default value: `mysql`.",
           "example": "mysql",
@@ -3389,7 +3231,6 @@
       "document": "Instance diagnosis event",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Diagnosis type.",
           "example": "无",
@@ -3400,7 +3241,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time.",
           "example": "无",
@@ -3411,7 +3251,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time.",
           "example": "无",
@@ -3422,7 +3261,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unique event ID.",
           "example": "1",
@@ -3433,7 +3271,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Severity, which can be divided into 5 levels: 1: fatal, 2: severe, 3: warning, 4: notice, 5: healthy.",
           "example": "1",
@@ -3444,7 +3281,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Diagnosis summary.",
           "example": "无",
@@ -3455,7 +3291,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Diagnosis item description.",
           "example": "无",
@@ -3466,7 +3301,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "cdb-test",
@@ -3477,7 +3311,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Reserved field.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -3488,7 +3321,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region.",
           "example": "无",
@@ -3505,7 +3337,6 @@
       "document": "Exception information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Event ID.",
           "example": "123456",
@@ -3516,7 +3347,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Diagnosis type.",
           "example": "复制",
@@ -3527,7 +3357,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time.",
           "example": "2019-01-01T00:00:00+08:00",
@@ -3538,7 +3367,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time.",
           "example": "2019-01-01T12:00:00+08:00",
@@ -3549,7 +3377,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Summary.",
           "example": "复制IO线程中断",
@@ -3560,7 +3387,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Severity, which can be divided into 5 levels: `1` (Critical), `2` (Severe), `3` (Alarm), `4` (Reminder), `5` (Healthy).",
           "example": "1",
@@ -3571,7 +3397,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Deduction.",
           "example": "5",
@@ -3582,7 +3407,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Reserved field.",
           "example": "slave_io_running",
@@ -3593,7 +3417,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of alarms.",
           "example": "1",
@@ -3610,7 +3433,6 @@
       "document": "Describes the group information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Group ID.",
           "example": "1",
@@ -3621,7 +3443,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Group name.",
           "example": "test",
@@ -3632,7 +3453,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of group members.",
           "example": "1",
@@ -3649,7 +3469,6 @@
       "document": "Details of the health report task.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Async task request ID.",
           "example": "63452",
@@ -3660,7 +3479,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Source that triggers the task. Valid values: `DAILY_INSPECTION` (instance inspection), `SCHEDULED` (scheduled task), and `MANUAL` (manual trigger).",
           "example": "DAILY_INSPECTION",
@@ -3671,7 +3489,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task progress in %.",
           "example": "100",
@@ -3682,7 +3499,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task creation time.",
           "example": "2019-09-10 12:13:14",
@@ -3693,7 +3509,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task start time.",
           "example": "2019-09-10 12:13:14",
@@ -3704,7 +3519,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task end time.",
           "example": "2019-09-10 12:13:14",
@@ -3715,7 +3529,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Basic information of the instance to which the task belongs.",
           "example": "-",
@@ -3726,7 +3539,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Health information in health report.",
           "example": "-",
@@ -3743,7 +3555,6 @@
       "document": "Details of the obtained health score.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Exception details.",
           "example": "-",
@@ -3754,7 +3565,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of exceptions.",
           "example": "3",
@@ -3765,7 +3575,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Health score.",
           "example": "100",
@@ -3776,7 +3585,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Health level, such as `HEALTH`, `SUB_HEALTH`, `RISK`, and `HIGH_RISK`.",
           "example": "RISK",
@@ -3793,7 +3601,6 @@
       "document": "Instance health status.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Health score out of 100 points.",
           "example": "100",
@@ -3804,7 +3611,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Health level. Valid values: `HEALTH` (healthy), `SUB_HEALTH` (sub-healthy), `RISK` (dangerous), and `HIGH_RISK` (high-risk).",
           "example": "HEALTH",
@@ -3815,7 +3621,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total deducted scores.",
           "example": "0",
@@ -3826,7 +3631,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Deduction details.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "-",
@@ -3843,7 +3647,6 @@
       "document": "Basic instance information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "cdb-c1nl9rpv",
@@ -3854,7 +3657,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance name.",
           "example": "test",
@@ -3865,7 +3667,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Private IP of the instance.",
           "example": "127.0.0.1",
@@ -3876,7 +3677,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Private port of the instance.",
           "example": "3600",
@@ -3887,7 +3687,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance service.",
           "example": "MySQL",
@@ -3898,7 +3697,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance engine version.",
           "example": "5.6",
@@ -4287,7 +4085,6 @@
       "document": "Metric information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Metric categories. Valid values: `AVAILABILITY`, `MAINTAINABILITY`, `PERFORMANCE`, and `RELIABILITY`.",
           "example": "AVAILABILITY",
@@ -4298,7 +4095,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Exception.",
           "example": "-",
@@ -4309,7 +4105,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of exceptions.",
           "example": "1",
@@ -4418,7 +4213,6 @@
       "document": "Email sending configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable email sending. Valid values: `0` (no), `1` (yes).",
           "example": "1",
@@ -4429,7 +4223,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region configuration, such as \"ap-guangzhou\" and \"ap-shanghai\". For the inspection email sending template, configure the region where you need to send the inspection email. For the subscription email sending template, configure the region where the current subscribed instance resides.",
           "example": "[\"ap-guangzhou\"]",
@@ -4440,7 +4233,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sends a report with the specified health level, such as `HEALTH`, `SUB_HEALTH`, `RISK`, and `HIGH_RISK`.",
           "example": "[\"HEALTH\"]",
@@ -4451,7 +4243,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient ID. Either `ContactPerson` or `ContactGroup` should be passed in.",
           "example": "[1,2]",
@@ -4462,7 +4253,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient group ID. Either `ContactPerson` or `ContactGroup` should be passed in.",
           "example": "[1,2]",
@@ -4479,7 +4269,6 @@
       "document": "ModifyDiagDBInstanceConf request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance configuration, including inspection and overview switch.",
           "example": "无",
@@ -4489,7 +4278,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Target regions of the request. If the value is `All`, it is applied to all regions.",
           "example": "All",
@@ -4499,7 +4287,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Service type. Valid values: `mysql` (TencentDB for MySQL), `cynosdb` (TDSQL-C for MySQL).",
           "example": "mysql",
@@ -4509,7 +4296,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the instance to modify.",
           "example": "[\"cdb-fyclrp7r\\n\"]",
@@ -4537,7 +4323,6 @@
       "document": "Monitoring data in float type",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Metric name.",
           "example": "cpu_use_rate",
@@ -4548,7 +4333,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Metric unit.",
           "example": "%",
@@ -4559,7 +4343,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Metric value.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[0.2]",
@@ -4576,7 +4359,6 @@
       "document": "Monitoring metric value in float type in a unit of time interval",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Monitoring metric.",
           "example": "无",
@@ -4587,7 +4369,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Timestamp corresponding to monitoring metric.",
           "example": "1621934398",
@@ -4604,7 +4385,6 @@
       "document": "Monitoring data",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Metric name.",
           "example": "cpu_use_rate",
@@ -4615,7 +4395,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Metric unit.",
           "example": "%",
@@ -4626,7 +4405,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Metric value.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0.25",
@@ -4643,7 +4421,6 @@
       "document": "Monitoring metric value in a unit of time interval",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Monitoring metric.",
           "example": "无",
@@ -4654,7 +4431,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Timestamp corresponding to monitoring metric.",
           "example": "1622087758",
@@ -4671,7 +4447,6 @@
       "document": "Relational database thread",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Thread ID.",
           "example": "12",
@@ -4682,7 +4457,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Thread operation account name.",
           "example": "root",
@@ -4693,7 +4467,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Thread operation host address.",
           "example": "127.0.0.1:41528",
@@ -4704,7 +4477,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Thread operation database.",
           "example": "test",
@@ -4715,7 +4487,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Thread operation status.",
           "example": "updating",
@@ -4726,7 +4497,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Thread execution type.",
           "example": "Execute",
@@ -4737,7 +4507,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Thread operation duration in seconds.",
           "example": "1225",
@@ -4748,7 +4517,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Thread operation statement.",
           "example": "DELETE FROM `test` WHERE time<=1",
@@ -4801,7 +4569,6 @@
       "document": "Information configured by the user.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Email language, such as `en`.",
           "example": "zh",
@@ -4812,7 +4579,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Email template content.",
           "example": "无",
@@ -4829,7 +4595,6 @@
       "document": "Space information of Redis key prefixes",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Average element length",
           "example": "10",
@@ -4840,7 +4605,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total memory usage in bytes",
           "example": "590",
@@ -4851,7 +4615,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Key prefix",
           "example": "dbb47cd0",
@@ -4862,7 +4625,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of elements",
           "example": "14",
@@ -4873,7 +4635,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of keys",
           "example": "2",
@@ -4884,7 +4645,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The max element length",
           "example": "36",
@@ -4901,7 +4661,6 @@
       "document": "`SchemaItem` array",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Database name",
           "example": "test",
@@ -4918,7 +4677,6 @@
       "document": "Database space statistics.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Database name.",
           "example": "test",
@@ -4929,7 +4687,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data space in MB.",
           "example": "2.2",
@@ -4940,7 +4697,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Index space in MB.",
           "example": "1.0",
@@ -4951,7 +4707,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Fragmented space in MB.",
           "example": "0",
@@ -4962,7 +4717,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total space usage in MB.",
           "example": "3.2",
@@ -4973,7 +4727,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Fragmentation rate in %.",
           "example": "0",
@@ -4984,7 +4737,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of rows.",
           "example": "10",
@@ -4995,7 +4747,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total size in MB of physical files exclusive to all tables in the database.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0.2",
@@ -5012,7 +4763,6 @@
       "document": "Time series of database space data",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Database name",
           "example": "test",
@@ -5023,7 +4773,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Space metric value in a unit of time interval",
           "example": "无",
@@ -5040,7 +4789,6 @@
       "document": "Deduction details.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Deduction item type. Valid values: `Availability`, `Maintainability`, `Performance`, `Reliability`.",
           "example": "性能",
@@ -5051,7 +4799,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total deducted scores.",
           "example": "-20",
@@ -5062,7 +4809,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Upper limit of the deducted scores.",
           "example": "-30",
@@ -5073,7 +4819,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of deduction items.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "-",
@@ -5090,7 +4835,6 @@
       "document": "Diagnosis deduction item.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Exception diagnosis item name.",
           "example": "慢SQL",
@@ -5101,7 +4845,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Diagnosis item type. Valid values: `Availability`, `Maintainability`, `Performance`, `Reliability`.",
           "example": "性能",
@@ -5112,7 +4855,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Health level. Valid values: `Healthy`, `Reminder`, `Alarm`, `Severe`, `Critical`.",
           "example": "严重",
@@ -5123,7 +4865,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of occurrences of this exception diagnosis item.",
           "example": "2",
@@ -5134,7 +4875,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Deducted scores.",
           "example": "-30",
@@ -5151,7 +4891,6 @@
       "document": "Security audit log export task information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Async task Id.",
           "example": "1",
@@ -5162,7 +4901,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task start time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2019-06-06 13:00:00",
@@ -5173,7 +4911,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task end time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2019-06-06 13:00:02",
@@ -5184,7 +4921,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task creation time.",
           "example": "2019-06-06 12:50:02",
@@ -5195,7 +4931,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task status.",
           "example": "finished",
@@ -5206,7 +4941,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task progress.",
           "example": "100",
@@ -5217,7 +4951,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Exported log start time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2019-06-06 12:00:00",
@@ -5228,7 +4961,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Exported log end time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2019-06-06 13:00:00",
@@ -5239,7 +4971,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total size of log files in KB.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100",
@@ -5250,7 +4981,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of risk levels. Valid values: `0` (no risk), `1` (low risk), `2` (medium risk), `3` (high risk).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[1,2,3]",
@@ -5303,7 +5033,6 @@
       "document": "Details of slow log source addresses.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Source addresses.",
           "example": "127.0.0.1",
@@ -5314,7 +5043,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Proportion (in %) of slow logs from this source address to the total number of slow logs.",
           "example": "50.0",
@@ -5325,7 +5053,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of slow logs from this source address.",
           "example": "30",
@@ -5438,7 +5165,6 @@
       "document": "Top slow SQL statements",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Total SQL lock wait time in seconds.",
           "example": "0.00008",
@@ -5449,7 +5175,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum lock wait time in seconds",
           "example": "0.000096",
@@ -5460,7 +5185,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum lock wait time in seconds",
           "example": "0.000041",
@@ -5471,7 +5195,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of scanned rows",
           "example": "584832",
@@ -5482,7 +5205,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of scanned rows",
           "example": "101782",
@@ -5493,7 +5215,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum number of scanned rows",
           "example": "584832",
@@ -5504,7 +5225,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total duration in seconds",
           "example": "0.513363",
@@ -5515,7 +5235,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum execution time in seconds",
           "example": "0.765213",
@@ -5526,7 +5245,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum execution time in seconds",
           "example": "0.629921",
@@ -5537,7 +5255,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of returned rows",
           "example": "292416",
@@ -5548,7 +5265,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of returned rows",
           "example": "292416",
@@ -5559,7 +5275,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum number of returned rows",
           "example": "292416",
@@ -5570,7 +5285,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of executions",
           "example": "37",
@@ -5581,7 +5295,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SQL template",
           "example": "select * from t;",
@@ -5592,7 +5305,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SQL statements with parameter (random)",
           "example": "SELECT * FROM t;",
@@ -5603,7 +5315,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database name",
           "example": "test_center",
@@ -5614,7 +5325,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Ratio of the total duration in %",
           "example": "2.44",
@@ -5625,7 +5335,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Ratio of the total SQL lock wait time in %",
           "example": "1.92",
@@ -5636,7 +5345,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Ratio of total number of scanned rows in %",
           "example": "2.3",
@@ -5647,7 +5355,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Ratio of total number of returned rows in %",
           "example": "18.67",
@@ -5658,7 +5365,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Average execution time in seconds",
           "example": "0.513363",
@@ -5669,7 +5375,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Average number of returned rows",
           "example": "26518.0",
@@ -5680,7 +5385,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Average lock wait time in seconds",
           "example": "0.000096",
@@ -5691,7 +5395,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Average number of scanned rows",
           "example": "584832.0",
@@ -5702,7 +5405,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "MD5 value of the SQL template",
           "example": "AD7651E51E8C6FBA",
@@ -5755,7 +5457,6 @@
       "document": "Database tablespace statistics.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Table name.",
           "example": "test",
@@ -5766,7 +5467,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database name.",
           "example": "test",
@@ -5777,7 +5477,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database table storage engine.",
           "example": "InnoDB",
@@ -5788,7 +5487,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data space in MB.",
           "example": "2.00",
@@ -5799,7 +5497,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Index space in MB.",
           "example": "2.00",
@@ -5810,7 +5507,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Fragmented space in MB.",
           "example": "2.00",
@@ -5821,7 +5517,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total space usage in MB.",
           "example": "2.00",
@@ -5832,7 +5527,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Fragmentation rate in %.",
           "example": "2.00",
@@ -5843,7 +5537,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of rows.",
           "example": "2",
@@ -5854,7 +5547,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Size in MB of the physical file exclusive to a table.",
           "example": "2.00",
@@ -5871,7 +5563,6 @@
       "document": "Time series of database tablespace data",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Table name.",
           "example": "test",
@@ -5882,7 +5573,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database name.",
           "example": "test",
@@ -5893,7 +5583,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database table storage engine.",
           "example": "InnoDB",
@@ -5904,7 +5593,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Space metric value in a unit of time interval",
           "example": "无",
@@ -5921,7 +5609,6 @@
       "document": "Information about Redis session killing task status",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Async task ID.",
           "example": "1234",
@@ -5932,7 +5619,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of all proxies of the current instance.",
           "example": "[\"6511ec503b047be913e30c1bbf1f2c8c861e8347\"]",
@@ -5943,7 +5629,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of proxies of the current instance.",
           "example": "1",
@@ -5954,7 +5639,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task creation time.",
           "example": "\"2022-02-11 10:22:46\"",
@@ -5965,7 +5649,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task start time.",
           "example": "\"2022-02-11 10:22:46\"",
@@ -5976,7 +5659,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task status. Valid values: `created` (create), `chosen` (to be executed), `running` (being executed), `failed` (failed), and `finished` (completed).",
           "example": "\"finished\"",
@@ -5987,7 +5669,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IDs of the proxies that have completed the session killing tasks.",
           "example": "[\"6511ec503b047be913e30c1bbf1f2c8c861e8347\"]",
@@ -5998,7 +5679,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IDs of the proxies that failed to execute the session killing tasks.",
           "example": "[\"6511ec503b047be913e30c1bbf1f2c8c861e8347\"]",
@@ -6009,7 +5689,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task end time.",
           "example": "\"2022-02-11 10:22:46\"",
@@ -6020,7 +5699,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task progress.",
           "example": "100",
@@ -6031,7 +5709,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "crs-test1",
@@ -6048,7 +5725,6 @@
       "document": "Slow log statistics in the specified time range",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Total number",
           "example": "1",
@@ -6059,7 +5735,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Statistics start time",
           "example": "1622087673",
@@ -6076,7 +5751,6 @@
       "document": "Information configured by user, including email configuration.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Configured ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "123456",
@@ -6087,7 +5761,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration type. Valid values: `dbScan_mail_configuration` (email configuration of the database inspection report), `scheduler_mail_configuration` (email configuration of the scheduled task report).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "dbScan_mail_configuration",
@@ -6098,7 +5771,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration level. Valid values: `User` (user-level), `Instance` (instance-level). For database inspection emails, it should be `User`. For scheduled task emails, it should be `Instance`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "User",
@@ -6109,7 +5781,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -6120,7 +5791,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration details.",
           "example": "-",

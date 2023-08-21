@@ -613,7 +613,6 @@
       "document": "Account information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-lnp6j617",
           "member": "string",
@@ -623,7 +622,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Account",
           "member": "string",
@@ -633,7 +631,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Account remarks",
           "member": "string",
@@ -643,7 +640,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Account status. 1: creating, 2: normal, 3: modifying, 4: resetting password, -1: deleting",
           "member": "int64",
@@ -653,7 +649,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Account creation time",
           "member": "datetime",
@@ -663,7 +658,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Account last modified time",
           "member": "datetime",
@@ -679,7 +673,6 @@
       "document": "AddDBInstanceToReadOnlyGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "DBInstanceId",
@@ -689,7 +682,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "RO group ID",
           "example": "ReadOnlyGroupId",
@@ -727,7 +719,6 @@
       "document": "Detailed analysis of a slow query statement with abstract parameter values, which is returned by the `DescribeSlowQueryAnalysis` API",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The name of the database queried by the slow query statement",
           "example": "postgres",
@@ -738,7 +729,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of the user who executes the slow query statement",
           "example": "postgres",
@@ -749,7 +739,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The slow query statement whose parameter values are abstracted",
           "example": "select $1",
@@ -760,7 +749,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The address of the client that executes the slow query statement",
           "example": "::1",
@@ -771,7 +759,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of executions of the slow query statement during the specified period of time",
           "example": "1",
@@ -782,7 +769,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ratio (in decimal form) of the number of executions of the slow query statement to that of all slow query statements during the specified period of time",
           "example": "0.1",
@@ -793,7 +779,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The total execution time of the slow query statement during the specified period of time",
           "example": "1.1",
@@ -804,7 +789,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ratio (in decimal form) of the total execution time of the slow query statement to that of all slow query statements during the specified period of time",
           "example": "0.2",
@@ -815,7 +799,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The shortest execution time (in ms) of the slow query statement during the specified period of time",
           "example": "0.01",
@@ -826,7 +809,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The longest execution time (in ms) of the slow query statement during the specified period of time",
           "example": "1",
@@ -837,7 +819,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The average execution time (in ms) of the slow query statement during the specified period of time",
           "example": "0.2",
@@ -848,7 +829,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The timestamp when the slow query statement starts to execute for the first time during the specified period of time",
           "example": "2020-01-01 01:01:01",
@@ -859,7 +839,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The timestamp when the slow query statement starts to execute for the last time during the specified period of time",
           "example": "2020-01-01 01:01:01",
@@ -927,7 +906,6 @@
       "document": "Backup plan",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Backup cycle",
           "example": "[\\\"monday\\\",\\\"thursday\\\",\\\"friday\\\"]",
@@ -938,7 +916,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Retention period of basic backups",
           "example": "3",
@@ -949,7 +926,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The earliest time to start a backup",
           "example": "01:00:00",
@@ -960,7 +936,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The latest time to start a backup",
           "example": "02:00:00",
@@ -977,7 +952,6 @@
       "document": "Instance backup statistics",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "postgres-xxxxxxxx",
@@ -988,7 +962,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of log backups of an instance",
           "example": "0",
@@ -999,7 +972,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Size of log backups of an instance",
           "example": "0",
@@ -1010,7 +982,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of manually created full backups of an instance",
           "example": "0",
@@ -1021,7 +992,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Size of manually created full backups of an instance",
           "example": "0",
@@ -1032,7 +1002,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of automatically created full backups of an instance",
           "example": "0",
@@ -1043,7 +1012,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Size of automatically created full backups of an instance",
           "example": "0",
@@ -1054,7 +1022,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of backups",
           "example": "0",
@@ -1065,7 +1032,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total backup size",
           "example": "0",
@@ -1082,7 +1048,6 @@
       "document": "Full backup information of a database",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "postgres-xxxxxxxx",
@@ -1093,7 +1058,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unique ID of a backup file",
           "example": "f6adc02a-432e-536f-a5f3-3dbf40ecd683",
@@ -1104,7 +1068,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup file name.",
           "example": "0",
@@ -1115,7 +1078,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup method, including physical and logical.",
           "example": "0",
@@ -1126,7 +1088,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup mode, including automatic and manual.",
           "example": "0",
@@ -1137,7 +1098,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup task status",
           "example": "0",
@@ -1148,7 +1108,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup set size in bytes",
           "example": "0",
@@ -1159,7 +1118,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup start time",
           "example": "0",
@@ -1170,7 +1128,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup end time",
           "example": "0",
@@ -1181,7 +1138,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup expiration time",
           "example": "0",
@@ -1264,7 +1220,6 @@
       "document": "CloneDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the original instance to be cloned.",
           "example": "postgres-abcd1234",
@@ -1274,7 +1229,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.",
           "example": "无",
@@ -1284,7 +1238,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance storage capacity in GB.",
           "example": "10",
@@ -1294,7 +1247,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid period in months of the purchased instance. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.",
           "example": "1",
@@ -1304,7 +1256,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.",
           "example": "1",
@@ -1314,7 +1265,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID.",
           "example": "无",
@@ -1324,7 +1274,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of a subnet in the VPC specified by `VpcId`.",
           "example": "无",
@@ -1334,7 +1283,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the purchased instance.",
           "example": "ins-name-clone-1",
@@ -1344,7 +1292,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).",
           "example": "PREPAID",
@@ -1354,7 +1301,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group ID.",
           "example": "无",
@@ -1364,7 +1310,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID.",
           "example": "无",
@@ -1374,7 +1319,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The information of tags to be bound with the purchased instance. This parameter is left empty by default.",
           "example": "无",
@@ -1384,7 +1328,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter is required if you purchase a multi-AZ deployed instance.",
           "example": "无",
@@ -1394,7 +1337,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.",
           "example": "无",
@@ -1404,7 +1346,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher ID list.",
           "example": "无",
@@ -1414,7 +1355,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Campaign ID.",
           "example": "无",
@@ -1424,7 +1364,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Basic backup set ID.",
           "example": "无",
@@ -1434,7 +1373,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Restoration point in time.",
           "example": "无",
@@ -1492,7 +1430,6 @@
       "document": "CloseDBExtranetAccess request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-6r233v55",
           "member": "string",
@@ -1501,7 +1438,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to disable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)",
           "member": "int64",
@@ -1536,7 +1472,6 @@
       "document": "CloseServerlessDBExtranetAccess request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique ID of an instance",
           "member": "string",
@@ -1545,7 +1480,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance name",
           "member": "string",
@@ -1572,7 +1506,6 @@
       "document": "CreateBaseBackup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "postgres-xxxxxxxx",
@@ -1609,7 +1542,6 @@
       "document": "CreateDBInstanceNetworkAccess request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-6bwgamo3.",
           "example": "postgres-6bwgamo3",
@@ -1619,7 +1551,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unified VPC ID.",
           "example": "vpc-gaestjaf",
@@ -1629,7 +1560,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID.",
           "example": "subnet-4s9dejli",
@@ -1639,7 +1569,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to manually assign the VIP. Valid values: `true` (manually assign), `false` (automatically assign).",
           "example": "true",
@@ -1649,7 +1578,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Target VIP.",
           "example": "无",
@@ -1687,7 +1615,6 @@
       "document": "CreateDBInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.",
           "example": "无",
@@ -1697,7 +1624,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance capacity size in GB.",
           "example": "无",
@@ -1707,7 +1633,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of instances purchased at a time. Value range: 1-100.",
           "example": "无",
@@ -1717,7 +1642,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.",
           "example": "无",
@@ -1727,7 +1651,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.",
           "example": "无",
@@ -1737,7 +1660,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID.",
           "example": "无",
@@ -1747,7 +1669,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PostgreSQL version. If it is specified, an instance running the latest kernel of PostgreSQL `DBVersion` will be created. You must pass in at least one of the following parameters: DBVersion, DBMajorVersion, DBKernelVersion.",
           "example": "12.4",
@@ -1757,7 +1678,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance billing type.",
           "example": "无",
@@ -1767,7 +1687,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to automatically use vouchers. 1: yes, 0: no. Default value: no.",
           "example": "无",
@@ -1777,7 +1696,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher ID list (only one voucher can be specified currently).",
           "example": "无",
@@ -1787,7 +1705,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID.",
           "example": "无",
@@ -1797,7 +1714,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC subnet ID.",
           "example": "无",
@@ -1807,7 +1723,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Renewal flag. 0: normal renewal (default), 1: auto-renewal.",
           "example": "无",
@@ -1817,7 +1732,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Activity ID",
           "example": "无",
@@ -1827,7 +1741,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance name (which will be supported in the future)",
           "example": "无",
@@ -1837,7 +1750,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to support IPv6 address access. Valid values: 1 (yes), 0 (no)",
           "example": "无",
@@ -1847,7 +1759,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The information of tags to be associated with instances. This parameter is left empty by default.",
           "example": "无",
@@ -1857,7 +1768,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group ID",
           "example": "无",
@@ -1867,7 +1777,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PostgreSQL major version. If it is specified, an instance running the latest kernel of PostgreSQL `DBMajorVersion` will be created. You must pass in at least one of the following parameters: DBMajorVersion, DBVersion, DBKernelVersion.",
           "example": "12",
@@ -1877,7 +1786,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PostgreSQL kernel version. If it is specified, an instance running the latest kernel of PostgreSQL `DBKernelVersion` will be created. You must pass in one of the following parameters: DBKernelVersion, DBVersion, DBMajorVersion.",
           "example": "v12.4_r1.0",
@@ -1929,7 +1837,6 @@
       "document": "CreateInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.",
           "example": "无",
@@ -1939,7 +1846,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance storage capacity in GB",
           "example": "无",
@@ -1949,7 +1855,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of instances purchased at a time. Value range: 1-10.",
           "example": "无",
@@ -1959,7 +1864,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid period in months of purchased instances. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.",
           "example": "无",
@@ -1969,7 +1873,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Availability zone ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.",
           "example": "无",
@@ -1979,7 +1882,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance character set. Valid values: `UTF8`, `LATIN1`.",
           "example": "UTF8",
@@ -1989,7 +1891,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance root account name",
           "example": "无",
@@ -1999,7 +1900,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance root account password",
           "example": "无",
@@ -2009,7 +1909,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID",
           "example": "无",
@@ -2019,7 +1918,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PostgreSQL version. If it is specified, an instance running the latest kernel of PostgreSQL `DBVersion` will be created. You must pass in at least one of the following parameters: DBVersion, DBMajorVersion, DBKernelVersion.",
           "example": "12.4",
@@ -2029,7 +1927,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).",
           "example": "无",
@@ -2039,7 +1936,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.",
           "example": "无",
@@ -2049,7 +1945,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher ID list. Currently, you can specify only one voucher.",
           "example": "无",
@@ -2059,7 +1954,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID",
           "example": "无",
@@ -2069,7 +1963,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of a subnet in the VPC specified by `VpcId`",
           "example": "无",
@@ -2079,7 +1972,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.",
           "example": "无",
@@ -2089,7 +1981,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Campaign ID",
           "example": "无",
@@ -2099,7 +1990,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance name",
           "example": "无",
@@ -2109,7 +1999,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no). Default value: `0`",
           "example": "无",
@@ -2119,7 +2008,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The information of tags to be associated with instances. This parameter is left empty by default.",
           "example": "无",
@@ -2129,7 +2017,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group IDs",
           "example": "无",
@@ -2139,7 +2026,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PostgreSQL major version. Valid values: `10`, `11`, `12`, `13`. If it is specified, an instance running the latest kernel of PostgreSQL `DBMajorVersion` will be created. You must pass in at least one of the following parameters: DBMajorVersion, DBVersion, DBKernelVersion.",
           "example": "12",
@@ -2149,7 +2035,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PostgreSQL kernel version. If it is specified, an instance running the latest kernel of PostgreSQL `DBKernelVersion` will be created. You must pass in one of the following parameters: DBKernelVersion, DBVersion, DBMajorVersion.",
           "example": "v12.4_r1.0",
@@ -2159,7 +2044,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance node information, which is required if you purchase a multi-AZ deployed instance.",
           "example": "无",
@@ -2169,7 +2053,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to support transparent data encryption. Valid values: 1 (yes), 0 (no). Default value: 0.",
           "example": "1",
@@ -2179,7 +2062,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "KeyId of custom key, which is required if you select custom key encryption. It is also the unique CMK identifier.",
           "example": "无",
@@ -2189,7 +2071,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The region where the KMS service is enabled. When `KMSRegion` is left empty, the KMS of the current region will be enabled by default. If the current region is not supported, you need to select another region supported by KMS.",
           "example": "ap-guangzhou",
@@ -2199,7 +2080,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database engine. Valid values:\n1. `postgresql` (TencentDB for PostgreSQL)\n2. `mssql_compatible`（MSSQL compatible-TencentDB for PostgreSQL)\nDefault value: `postgresql`",
           "example": "postgresql",
@@ -2209,7 +2089,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration information of database engine in the following format:\n{\"$key1\":\"$value1\", \"$key2\":\"$value2\"}\n\nValid values:\n1. mssql_compatible engine：\n`migrationMode`: Database mode. Valid values: `single-db` (single-database mode), `multi-db` (multi-database mode). Default value: `single-db`.\n`defaultLocale`: Default locale, which can’t be modified after the initialization. Default value: `en_US`. Valid values:\n\"af_ZA\", \"sq_AL\", \"ar_DZ\", \"ar_BH\", \"ar_EG\", \"ar_IQ\", \"ar_JO\", \"ar_KW\", \"ar_LB\", \"ar_LY\", \"ar_MA\", \"ar_OM\", \"ar_QA\", \"ar_SA\", \"ar_SY\", \"ar_TN\", \"ar_AE\", \"ar_YE\", \"hy_AM\", \"az_Cyrl_AZ\", \"az_Latn_AZ\", \"eu_ES\", \"be_BY\", \"bg_BG\", \"ca_ES\", \"zh_HK\", \"zh_MO\", \"zh_CN\", \"zh_SG\", \"zh_TW\", \"hr_HR\", \"cs_CZ\", \"da_DK\", \"nl_BE\", \"nl_NL\", \"en_AU\", \"en_BZ\", \"en_CA\", \"en_IE\", \"en_JM\", \"en_NZ\", \"en_PH\", \"en_ZA\", \"en_TT\", \"en_GB\", \"en_US\", \"en_ZW\", \"et_EE\", \"fo_FO\", \"fa_IR\", \"fi_FI\", \"fr_BE\", \"fr_CA\", \"fr_FR\", \"fr_LU\", \"fr_MC\", \"fr_CH\", \"mk_MK\", \"ka_GE\", \"de_AT\", \"de_DE\", \"de_LI\", \"de_LU\", \"de_CH\", \"el_GR\", \"gu_IN\", \"he_IL\", \"hi_IN\", \"hu_HU\", \"is_IS\", \"id_ID\", \"it_IT\", \"it_CH\", \"ja_JP\", \"kn_IN\", \"kok_IN\", \"ko_KR\", \"ky_KG\", \"lv_LV\", \"lt_LT\", \"ms_BN\", \"ms_MY\", \"mr_IN\", \"mn_MN\", \"nb_NO\", \"nn_NO\", \"pl_PL\", \"pt_BR\", \"pt_PT\", \"pa_IN\", \"ro_RO\", \"ru_RU\", \"sa_IN\", \"sr_Cyrl_RS\", \"sr_Latn_RS\", \"sk_SK\", \"sl_SI\", \"es_AR\", \"es_BO\", \"es_CL\", \"es_CO\", \"es_CR\", \"es_DO\", \"es_EC\", \"es_SV\", \"es_GT\", \"es_HN\", \"es_MX\", \"es_NI\", \"es_PA\", \"es_PY\",\"es_PE\", \"es_PR\", \"es_ES\", \"es_TRADITIONAL\", \"es_UY\", \"es_VE\", \"sw_KE\", \"sv_FI\", \"sv_SE\", \"tt_RU\", \"te_IN\", \"th_TH\", \"tr_TR\", \"uk_UA\", \"ur_IN\", \"ur_PK\", \"uz_Cyrl_UZ\", \"uz_Latn_UZ\", \"vi_VN\".\n`serverCollationName`: Name of collation rule, which can’t be modified after the initialization. Default value: `sql_latin1_general_cp1_ci_as`. Valid values:\n\"bbf_unicode_general_ci_as\", \"bbf_unicode_cp1_ci_as\", \"bbf_unicode_CP1250_ci_as\", \"bbf_unicode_CP1251_ci_as\", \"bbf_unicode_cp1253_ci_as\", \"bbf_unicode_cp1254_ci_as\", \"bbf_unicode_cp1255_ci_as\", \"bbf_unicode_cp1256_ci_as\", \"bbf_unicode_cp1257_ci_as\", \"bbf_unicode_cp1258_ci_as\", \"bbf_unicode_cp874_ci_as\", \"sql_latin1_general_cp1250_ci_as\", \"sql_latin1_general_cp1251_ci_as\", \"sql_latin1_general_cp1_ci_as\", \"sql_latin1_general_cp1253_ci_as\", \"sql_latin1_general_cp1254_ci_as\", \"sql_latin1_general_cp1255_ci_as\",\"sql_latin1_general_cp1256_ci_as\", \"sql_latin1_general_cp1257_ci_as\", \"sql_latin1_general_cp1258_ci_as\", \"chinese_prc_ci_as\", \"cyrillic_general_ci_as\", \"finnish_swedish_ci_as\", \"french_ci_as\", \"japanese_ci_as\", \"korean_wansung_ci_as\", \"latin1_general_ci_as\", \"modern_spanish_ci_as\", \"polish_ci_as\", \"thai_ci_as\", \"traditional_spanish_ci_as\", \"turkish_ci_as\", \"ukrainian_ci_as\", \"vietnamese_ci_as\".",
           "example": "无",
@@ -2267,7 +2146,6 @@
       "document": "CreateParameterTemplate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Template name, which can contain 1-60 letters, digits, and symbols (-_./()[]()+=:@).",
           "example": "test_template",
@@ -2277,7 +2155,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The major database version number, such as 11, 12, 13.",
           "example": "13",
@@ -2287,7 +2164,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database engine, such as postgresql, mssql_compatible.",
           "example": "postgresql",
@@ -2297,7 +2173,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter template description, which can contain 1-60 letters, digits, and symbols (-_./()[]()+=:@).",
           "example": "test",
@@ -2335,7 +2210,6 @@
       "document": "CreateReadOnlyDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.",
           "example": "SpecCode",
@@ -2345,7 +2219,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance storage capacity in GB",
           "example": "1",
@@ -2355,7 +2228,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of instances purchased at a time. Value range: 1–100.",
           "example": "1",
@@ -2365,7 +2237,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid period in months of purchased instances. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.",
           "example": "1",
@@ -2375,7 +2246,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the primary instance to which the read-only replica belongs",
           "example": "MasterDBInstanceId",
@@ -2385,7 +2255,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Availability zone ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.",
           "example": "ap-guangzhou-1",
@@ -2395,7 +2264,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID",
           "example": "1",
@@ -2405,7 +2273,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Disused) You don’t need to specify a version, as the kernel version is as the same as that of the instance.",
           "example": "DBVersion",
@@ -2415,7 +2282,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance billing mode. Valid value: `POSTPAID_BY_HOUR` (pay-as-you-go). If the source instance is pay-as-you-go, so is the read-only instance.",
           "example": "InstanceChargeType",
@@ -2425,7 +2291,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.",
           "example": "1",
@@ -2435,7 +2300,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher ID list. Currently, you can specify only one voucher.",
           "example": "[1,2,3]",
@@ -2445,7 +2309,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.",
           "example": "1",
@@ -2455,7 +2318,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID",
           "example": "VpcId",
@@ -2465,7 +2327,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC subnet ID",
           "example": "SubnetId",
@@ -2475,7 +2336,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Special offer ID",
           "example": "1",
@@ -2485,7 +2345,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance name (which will be supported in the future)",
           "example": "Name",
@@ -2495,7 +2354,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no).",
           "example": "1",
@@ -2505,7 +2363,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "RO group ID",
           "example": "ReadOnlyGroupId",
@@ -2515,7 +2372,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The information of tags to be bound with the purchased instance, which is left empty by default (type: tag array).",
           "example": "空",
@@ -2525,7 +2381,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group ID",
           "example": "[\"sasasasd\"]",
@@ -2583,7 +2438,6 @@
       "document": "CreateReadOnlyGroupNetworkAccess request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "RO group ID in the format of pgro-4t9c6g7k.",
           "example": "pgro-4t9c6g7k",
@@ -2593,7 +2447,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unified VPC ID.",
           "example": "vpc-gaestjaf",
@@ -2603,7 +2456,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID.",
           "example": "subnet-4s9dejli",
@@ -2613,7 +2465,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to manually assign the VIP. Valid values: `true` (manually assign), `false` (automatically assign).",
           "example": "true",
@@ -2623,7 +2474,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Target VIP.",
           "example": "无",
@@ -2661,7 +2511,6 @@
       "document": "CreateReadOnlyGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Primary instance ID",
           "example": "MasterDBInstanceId",
@@ -2671,7 +2520,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "RO group name",
           "example": "Name",
@@ -2681,7 +2529,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID",
           "example": "1",
@@ -2691,7 +2538,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID",
           "example": "VpcId",
@@ -2701,7 +2547,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID",
           "example": "SubnetId",
@@ -2711,7 +2556,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to remove a read-only replica from an RO group if the delay between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).",
           "example": "1",
@@ -2721,7 +2565,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to remove a read-only replica from an RO group if the sync log size difference between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).",
           "example": "1",
@@ -2731,7 +2574,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Delay threshold in ms",
           "example": "1",
@@ -2741,7 +2583,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Delayed log size threshold in MB",
           "example": "1",
@@ -2751,7 +2592,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The minimum number of read-only replicas that must be retained in an RO group",
           "example": "1",
@@ -2761,7 +2601,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group ID",
           "example": "[\"sasasasd\"]",
@@ -2809,7 +2648,6 @@
       "document": "CreateServerlessDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Availability zone ID. Only ap-shanghai-2, ap-beijing-1, and ap-guangzhou-2 are supported during the beta test.",
           "member": "string",
@@ -2818,7 +2656,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance name. The value must be unique for the same account.",
           "member": "string",
@@ -2827,7 +2664,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Kernel version of a PostgreSQL instance. Currently, only 10.4 is supported.",
           "member": "string",
@@ -2836,7 +2672,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database character set of a PostgreSQL instance. Currently, only UTF-8 is supported.",
           "member": "string",
@@ -2845,7 +2680,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID.",
           "member": "uint64",
@@ -2854,7 +2688,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID.",
           "member": "string",
@@ -2863,7 +2696,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC subnet ID.",
           "member": "string",
@@ -2872,7 +2704,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of tags to be bound with the instance",
           "member": "Tag",
@@ -2907,7 +2738,6 @@
       "document": "Database backup information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique backup file ID",
           "example": "无",
@@ -2918,7 +2748,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File generation start time",
           "example": "无",
@@ -2929,7 +2758,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File generation end time",
           "example": "无",
@@ -2940,7 +2768,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File size in KB",
           "example": "无",
@@ -2951,7 +2778,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Policy (0: instance backup, 1: multi-database backup)",
           "example": "无",
@@ -2962,7 +2788,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type (0: scheduled)",
           "example": "无",
@@ -2973,7 +2798,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup mode (1: full)",
           "example": "无",
@@ -2984,7 +2808,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status (1: creating, 2: success, 3: failure)",
           "example": "无",
@@ -2995,7 +2818,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DB list",
           "example": "无",
@@ -3006,7 +2828,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Download address on private network",
           "example": "无",
@@ -3017,7 +2838,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Download address on public network",
           "example": "无",
@@ -3028,7 +2848,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup set ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -3441,7 +3260,6 @@
       "document": "Instance network connection information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "DNS domain name",
           "example": "cd-postgres-xxxxxxxx.sql.tencentcdb.com",
@@ -3452,7 +3270,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Ip",
           "example": "111.111.11.11",
@@ -3463,7 +3280,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Connection port address",
           "example": "5432",
@@ -3474,7 +3290,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network type. 1: inner (private network address), 2: public (public network address)",
           "example": "private",
@@ -3485,7 +3300,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network connection status. Valid values: `initing` (never enabled before), `opened` (enabled), `closed` (disabled), `opening` (enabling), `closing` (disabling)",
           "example": "opened",
@@ -3496,7 +3310,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "vpc-xxxxxxxx",
@@ -3507,7 +3320,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "subnet-xxxxxxxx",
@@ -3518,7 +3330,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database connection protocol type. Valid values: `postgresql`, `mssql` (MSSQL-compatible)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "postgresql",
@@ -3535,7 +3346,6 @@
       "document": "Instance node information including node type and AZ.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Node type. Valid values:\n`Primary`;\n`Standby`.",
           "example": "Primary, Standby",
@@ -3546,7 +3356,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ where the node resides, such as ap-guangzhou-1.",
           "example": "ap-guangzhou-1",
@@ -3563,7 +3372,6 @@
       "document": "DeleteBaseBackup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "postgres-apzvwncr",
@@ -3573,7 +3381,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Base backup ID",
           "example": "4c144959-aca8-5266-bb96-7fb7aa2ca409",
@@ -3601,7 +3408,6 @@
       "document": "DeleteDBInstanceNetworkAccess request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-6bwgamo3.",
           "example": "postgres-6bwgamo3",
@@ -3611,7 +3417,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unified VPC ID. If you want to delete the classic network, set the parameter to `0`.",
           "example": "vpc-gaestjaf",
@@ -3621,7 +3426,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID. If you want to delete the classic network, set the parameter to `0`.",
           "example": "subnet-4s9dejli",
@@ -3631,7 +3435,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Target VIP.",
           "example": "无",
@@ -3669,7 +3472,6 @@
       "document": "DeleteLogBackup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "postgres-apzvwncr",
@@ -3679,7 +3481,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log backup ID",
           "example": "4c144959-aca8-5266-bb96-7fb7aa2ca409",
@@ -3707,7 +3508,6 @@
       "document": "DeleteParameterTemplate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter template ID, which uniquely identifies the parameter template to be operated.",
           "example": "423984bb-97fe-5693-a74f-63cc8dfb6c5d",
@@ -3735,7 +3535,6 @@
       "document": "DeleteReadOnlyGroupNetworkAccess request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "RO group ID in the format of pgro-4t9c6g7k.",
           "example": "pgro-4t9c6g7k",
@@ -3745,7 +3544,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unified VPC ID. If you want to delete the classic network, set the parameter to `0`.",
           "example": "vpc-gaestjaf",
@@ -3755,7 +3553,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID. If you want to delete the classic network, set the parameter to `0`.",
           "example": "subnet-4s9dejli",
@@ -3765,7 +3562,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Target VIP.",
           "example": "无",
@@ -3803,7 +3599,6 @@
       "document": "DeleteReadOnlyGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the RO group to be deleted",
           "example": "ReadOnlyGroupId",
@@ -3841,7 +3636,6 @@
       "document": "DeleteServerlessDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance name. Either instance name or instance ID (or both) must be passed in. If both are passed in, the instance ID will prevail.",
           "member": "string",
@@ -3850,7 +3644,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID. Either instance name or instance ID (or both) must be passed in. If both are passed in, the instance ID will prevail.",
           "member": "string",
@@ -3877,7 +3670,6 @@
       "document": "DescribeAccounts request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-6fego161",
           "example": "postgres-apzvwncr",
@@ -3887,7 +3679,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of entries returned per page. Default value: 10. Value range: 1–100.",
           "example": "20",
@@ -3897,7 +3688,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data offset, which starts from 0.",
           "example": "0",
@@ -3907,7 +3697,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to sort by creation time or username. Valid values: `createTime` (sort by creation time), `name` (sort by username)",
           "example": "createTime",
@@ -3917,7 +3706,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether returns are sorted in ascending or descending order. Valid values: `desc` (descending), `asc` (ascending)",
           "example": "desc",
@@ -3961,7 +3749,6 @@
       "document": "DescribeAvailableRecoveryTime request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "postgres-abcd1234",
@@ -4251,7 +4038,6 @@
       "document": "DescribeBackupPlans request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "postgres-xxxxxxxx",
@@ -4289,7 +4075,6 @@
       "document": "DescribeBackupSummaries request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of results returned per page. Value range: 1-100. Default: `10`",
           "example": "10",
@@ -4299,7 +4084,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data offset, which starts from 0.",
           "example": "0",
@@ -4309,7 +4093,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter instances using one or more criteria. Valid filter names:\ndb-instance-id: Filter by instance ID (in string format).\ndb-instance-name: Filter by instance name (in string format).\ndb-instance-ip: Filter by instance VPC IP (in string format).",
           "example": "无",
@@ -4319,7 +4102,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting field. Valid values: `TotalBackupSize`, `LogBackupSize`, `ManualBaseBackupSize`, `AutoBaseBackupSize`.",
           "example": "TotalBackupSize",
@@ -4329,7 +4111,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting order. Valid values: `asc` (ascending), `desc` (descending).",
           "example": "asc",
@@ -4532,7 +4313,6 @@
       "document": "DescribeCloneDBInstanceSpec request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "postgres-abcd1234",
@@ -4542,7 +4322,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Basic backup set ID. Either this parameter or `RecoveryTargetTime` must be passed in. If both are passed in, only this parameter takes effect.",
           "example": "f22057d2-46c0-5808-ab8a-d0c3385afabc",
@@ -4552,7 +4331,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Restoration time (UTC+8). Either this parameter or `BackupSetId` must be passed in.",
           "example": "2022-01-01 12:00:00",
@@ -4600,7 +4378,6 @@
       "document": "DescribeDBBackups request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-4wdeb0zv.",
           "member": "string",
@@ -4609,7 +4386,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup mode (1: full). Currently, only full backup is supported. The value is 1.",
           "member": "int64",
@@ -4618,7 +4394,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query start time in the format of 2018-06-10 17:06:38, which cannot be more than 7 days ago",
           "member": "datetime",
@@ -4627,7 +4402,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query end time in the format of 2018-06-10 17:06:38",
           "member": "datetime",
@@ -4636,7 +4410,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of entries to be returned per page for backup list. Default value: 20. Minimum value: 1. Maximum value: 100. (If this parameter is left empty or 0, the default value will be used)",
           "member": "int64",
@@ -4645,7 +4418,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Page number for data return in paged query. Pagination starts from 0. Default value: 0.",
           "member": "int64",
@@ -4688,7 +4460,6 @@
       "document": "DescribeDBErrlogs request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-5bq3wfjd",
           "member": "string",
@@ -4697,7 +4468,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query start time in the format of 2018-01-01 00:00:00, which cannot be more than 7 days ago",
           "member": "datetime",
@@ -4706,7 +4476,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query end time in the format of 2018-01-01 00:00:00",
           "member": "datetime",
@@ -4715,7 +4484,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database name",
           "member": "string",
@@ -4724,7 +4492,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Search keyword",
           "member": "string",
@@ -4733,7 +4500,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of entries returned per page. Value range: 1-100",
           "member": "int64",
@@ -4742,7 +4508,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Page number for data return in paged query. Pagination starts from 0",
           "member": "int64",
@@ -4785,7 +4550,6 @@
       "document": "DescribeDBInstanceAttribute request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -4820,7 +4584,6 @@
       "document": "DescribeDBInstanceParameters request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "postgres-xxx",
@@ -4830,7 +4593,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the parameter to be queried. If `ParamName` is left empty or not passed in, the list of all parameters will be returned.",
           "example": "wal_level",
@@ -4878,7 +4640,6 @@
       "document": "DescribeDBInstanceSecurityGroups request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID. Either this parameter or `ReadOnlyGroupId` must be passed in. If both parameters are passed in, `ReadOnlyGroupId` will be ignored.",
           "example": "postgres-apzvwncr",
@@ -4888,7 +4649,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "RO group ID. Either this parameter or `DBInstanceId` must be passed in. To query the security groups associated with the RO groups, only pass in `ReadOnlyGroupId`.",
           "example": "pgrogrp-nqwpkjbu",
@@ -4926,7 +4686,6 @@
       "document": "DescribeDBInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Filter instances using one or more criteria. Valid filter names:\ndb-instance-id: filter by instance ID (in string format)\ndb-instance-name: filter by instance name (in string format)\ndb-project-id: filter by project ID (in integer format)\ndb-pay-mode: filter by billing mode (in string format)\ndb-tag-key: filter by tag key (in string format)",
           "example": "无",
@@ -4936,7 +4695,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of results returned per page. Value range: 1-100. Default: `10`",
           "example": "10",
@@ -4946,7 +4704,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data offset, which starts from 0.",
           "example": "0",
@@ -4956,7 +4713,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting metric, such as instance name or creation time. Valid values: DBInstanceId, CreateTime, Name, EndTime",
           "example": "CreateTime",
@@ -4966,7 +4722,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting order. Valid values: `asc` (ascending), `desc` (descending)",
           "example": "desc",
@@ -5010,7 +4765,6 @@
       "document": "DescribeDBSlowlogs request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-lnp6j617",
           "member": "string",
@@ -5019,7 +4773,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query start time in the format of 2018-06-10 17:06:38, which cannot be more than 7 days ago",
           "member": "datetime",
@@ -5028,7 +4781,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query end time in the format of 2018-06-10 17:06:38",
           "member": "datetime",
@@ -5037,7 +4789,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database name",
           "member": "string",
@@ -5046,7 +4797,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Metric for sorting. Valid values: `sum_calls` (total number of calls), `sum_cost_time` (total time consumed)",
           "member": "string",
@@ -5055,7 +4805,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting order. desc: descending, asc: ascending",
           "member": "string",
@@ -5064,7 +4813,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of entries returned per page. Value range: 1-100. Default value: 20.",
           "member": "int64",
@@ -5073,7 +4821,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Page number for data return in paged query. Pagination starts from 0",
           "member": "int64",
@@ -5142,7 +4889,6 @@
       "document": "DescribeDBXlogs request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-4wdeb0zv.",
           "member": "string",
@@ -5151,7 +4897,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query start time in the format of 2018-06-10 17:06:38, which cannot be more than 7 days ago",
           "member": "datetime",
@@ -5160,7 +4905,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query end time in the format of 2018-06-10 17:06:38",
           "member": "datetime",
@@ -5169,7 +4913,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Page number for data return in paged query. Pagination starts from 0",
           "member": "int64",
@@ -5178,7 +4921,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of entries returned per page in paged query. Value range: 1-100.",
           "member": "int64",
@@ -5221,7 +4963,6 @@
       "document": "DescribeDatabases request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -5256,7 +4997,6 @@
       "document": "DescribeDefaultParameters request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The major database version number, such as 11, 12, 13.",
           "example": "13",
@@ -5266,7 +5006,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database engine, such as postgresql, mssql_compatible.",
           "example": "postgresql",
@@ -5314,7 +5053,6 @@
       "document": "DescribeEncryptionKeys request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "postgres-xxxxxxxx",
@@ -5352,7 +5090,6 @@
       "document": "DescribeLogBackups request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum end time of a backup in the format of `2018-01-01 00:00:00`. It is 7 days ago by default.",
           "example": "2018-06-10 17:06:38",
@@ -5362,7 +5099,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum end time of a backup in the format of `2018-01-01 00:00:00`. It is the current time by default.",
           "example": "2018-06-10 17:06:38",
@@ -5372,7 +5108,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter instances using one or more criteria. Valid filter names:\ndb-instance-id: Filter by instance ID (in string format).\ndb-instance-name: Filter by instance name (in string format).\ndb-instance-ip: Filter by instance VPC IP (in string format).",
           "example": "无",
@@ -5382,7 +5117,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of results returned per page. Value range: 1-100. Default: `10`.",
           "example": "20",
@@ -5392,7 +5126,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data offset, which starts from 0.",
           "example": "0",
@@ -5402,7 +5135,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting field. Valid values: `StartTime`, `FinishTime`, `Size`.",
           "example": "StartTime",
@@ -5412,7 +5144,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting order. Valid values: `asc` (ascending), `desc` (descending).",
           "example": "asc",
@@ -5460,7 +5191,6 @@
       "document": "DescribeOrders request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Order name set",
           "member": "string",
@@ -5503,7 +5233,6 @@
       "document": "DescribeParameterTemplateAttributes request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter template ID",
           "example": "423984bb-97fe-5693-a74f-63cc8dfb6c5d",
@@ -5601,7 +5330,6 @@
       "document": "DescribeParameterTemplates request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Filter conditions. Valid values: `TemplateName`, `TemplateId`, `DBMajorVersion`, `DBEngine`.",
           "example": "无",
@@ -5611,7 +5339,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of results returned per page. Value range: 0-100. Default: `20`.",
           "example": "20",
@@ -5621,7 +5348,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data offset",
           "example": "10",
@@ -5631,7 +5357,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting metric. Valid values: `CreateTime`, `TemplateName`, `DBMajorVersion`.",
           "example": "CreateTime",
@@ -5641,7 +5366,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting order. Valid values: `asc` (ascending order),`desc` (descending order).",
           "example": "desc",
@@ -5689,7 +5413,6 @@
       "document": "DescribeParamsEvent request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "”postgres-xxx\"",
@@ -5737,7 +5460,6 @@
       "document": "DescribeProductConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "AZ name",
           "example": "ap-guangzhou-2",
@@ -5747,7 +5469,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database engines. Valid values:\n1. `postgresql` (TencentDB for PostgreSQL)\n2. `mssql_compatible` (MSSQL compatible-TencentDB for PostgreSQL)\nDefault value: `postgresql`",
           "example": "postgresql",
@@ -5889,7 +5610,6 @@
       "document": "DescribeServerlessDBInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Query conditions",
           "member": "Filter",
@@ -5898,7 +5618,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of queries",
           "member": "uint64",
@@ -5907,7 +5626,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The offset value",
           "member": "uint64",
@@ -5916,7 +5634,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting metric. Currently, only \"CreateTime\" (instance creation time) is supported.",
           "member": "string",
@@ -5925,7 +5642,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting order. Ascending and descending are supported.",
           "member": "string",
@@ -5968,7 +5684,6 @@
       "document": "DescribeSlowQueryAnalysis request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "postgres-xxx",
@@ -5978,7 +5693,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start timestamp of the query range in the format of \"YYYY-MM-DD HH:mm:ss\". The log is retained for seven days by default, so the start timestamp must fall within the retention period.",
           "example": "2020-02-01 01:02:03",
@@ -5988,7 +5702,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End timestamp of the query range in the format of \"YYYY-MM-DD HH:mm:ss\".",
           "example": "2020-02-01 01:02:03",
@@ -5998,7 +5711,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter by database name. This parameter is optional.",
           "example": "postgres",
@@ -6008,7 +5720,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sort by field. Valid values: `CallNum`, `CostTime`, `AvgCostTime`. Default value: `CallNum`.",
           "example": "CallNum",
@@ -6018,7 +5729,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting order. Valid values: `asc` (ascending), `desc` (descending). Default value: `desc`.",
           "example": "desc",
@@ -6028,7 +5738,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of entries per page. Value range: [1,100]. Default value: `50`.",
           "example": "20",
@@ -6038,7 +5747,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pagination offset. Value range: [0,INF). Default value: `0`.",
           "example": "0",
@@ -6086,7 +5794,6 @@
       "document": "DescribeSlowQueryList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "postgres-xx",
@@ -6096,7 +5803,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start timestamp of the query range in the format of \"YYYY-MM-DD HH:mm:ss\". The log is retained for seven days by default, so the start timestamp must fall within the retention period.",
           "example": "2020-01-01 02:03:04",
@@ -6106,7 +5812,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End timestamp of the query range in the format of \"YYYY-MM-DD HH:mm:ss\".",
           "example": "2020-01-01 02:03:04",
@@ -6116,7 +5821,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter by database name. This parameter is optional.",
           "example": "postgres",
@@ -6126,7 +5830,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting order. Valid values: `asc` (ascending), `desc` (descending). Default value: `desc`.",
           "example": "desc",
@@ -6136,7 +5839,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sort by field. Valid values: `SessionStartTime` (default), `Duration`.",
           "example": "SessionStartTime",
@@ -6146,7 +5848,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of entries per page. Value range: [1,100]. Default value: `20`.",
           "example": "10",
@@ -6156,7 +5857,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pagination offset. Value range: [0,INF). Default value: `0`.",
           "example": "0",
@@ -6247,7 +5947,6 @@
       "document": "DestroyDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the instance to be eliminated",
           "example": "postgres-19nmz2xb",
@@ -6275,7 +5974,6 @@
       "document": "Details returned by the `DescribeSlowQueryAnalysis` API",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The total execution time (in ms) of all slow query statements during the specified period of time",
           "example": "0.1",
@@ -6286,7 +5984,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The total number of all slow query statements during the specified period of time",
           "example": "0",
@@ -6297,7 +5994,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The statistical analysis list of slow queries\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6314,7 +6010,6 @@
       "document": "DisIsolateDBInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of resource IDs. Note that currently you cannot remove multiple instances from isolation at the same time. Only one instance ID can be passed in here.",
           "example": "[\"postgres-xxxxxxx\"]",
@@ -6324,7 +6019,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The valid period (in months) of the monthly-subscribed instance when removing it from isolation",
           "example": "1",
@@ -6334,7 +6028,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to use vouchers. Valid values: `true` (yes), `false` (no). Default value: `false`.",
           "example": "true",
@@ -6344,7 +6037,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher ID list",
           "example": "[\"a\"]",
@@ -6372,7 +6064,6 @@
       "document": "Analyze the execution time of slow query statements by classifying them to different time ranges",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Time range",
           "example": "“0-1s”",
@@ -6383,7 +6074,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of slow query statements whose execution time falls within the time range",
           "example": "10",
@@ -6400,7 +6090,6 @@
       "document": "KMS key information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Encrypted KeyId of KMS instance\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "空",
@@ -6411,7 +6100,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Encryption key alias of KMS instance \nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "PGSQL-KMS",
@@ -6422,7 +6110,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance DEK ciphertext\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "空",
@@ -6433,7 +6120,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the key is enabled. Valid values: `1` (yes), `0` (no)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
@@ -6444,7 +6130,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region where KMS key resides\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "ap-guangzhou",
@@ -6455,7 +6140,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DEK key creation time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "2014-08-03 12:00:00",
@@ -6472,7 +6156,6 @@
       "document": "Error log details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Username",
           "member": "string",
@@ -6482,7 +6165,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database name",
           "member": "string",
@@ -6492,7 +6174,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Error occurrence time",
           "member": "string",
@@ -6502,7 +6183,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Error message",
           "member": "string",
@@ -6518,7 +6198,6 @@
       "document": "Parameter modification event information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "wal_level",
@@ -6529,7 +6208,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Original parameter value\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "replica",
@@ -6540,7 +6218,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "New parameter value in this modification event\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "logical",
@@ -6551,7 +6228,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of parameter modification\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2021-08-01 02:03:04",
@@ -6562,7 +6238,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time when the modified parameter takes effect\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2021-08-01 02:03:34",
@@ -6573,7 +6248,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Modification status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "success",
@@ -6584,7 +6258,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Operator (generally, the value is the UIN of a sub-user)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "123344",
@@ -6595,7 +6268,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Event log\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"\"",
@@ -6612,7 +6284,6 @@
       "document": "Modification details of one parameter",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "wal_level",
@@ -6623,7 +6294,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of modification events\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -6634,7 +6304,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Modification event details\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "[]",
@@ -6651,7 +6320,6 @@
       "document": "Key-value pair filter for conditional filtering queries, such as filter ID and name\n* If more than one filter exists, the logical relationship between these filters is `AND`.\n* If multiple values exist in one filter, the logical relationship between these values is `OR`.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Filter name.",
           "member": "string",
@@ -6660,7 +6328,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "One or more filter values.",
           "member": "string",
@@ -6675,7 +6342,6 @@
       "document": "InitDBInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID set.",
           "member": "string",
@@ -6684,7 +6350,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance admin account username.",
           "member": "string",
@@ -6693,7 +6358,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Password corresponding to instance root account username.",
           "member": "string",
@@ -6702,7 +6366,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance character set. Valid values: UTF8, LATIN1.",
           "member": "string",
@@ -6737,7 +6400,6 @@
       "document": "InquiryPriceCreateDBInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.",
           "example": "ap-guangzhou-2",
@@ -6747,7 +6409,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.",
           "example": "cdb.pg.z1.2g",
@@ -6757,7 +6418,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Storage capacity size in GB.",
           "example": "100",
@@ -6767,7 +6427,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of instances. Maximum value: 100. If you need to create more instances at a time, please contact customer service.",
           "example": "1",
@@ -6777,7 +6436,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Length of purchase in months. Currently, only 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, and 36 are supported.",
           "example": "1",
@@ -6787,7 +6445,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "[Disused] Billing ID, which can be obtained through the `Pid` field in the returned value of the `DescribeProductConfig` API.",
           "example": "11004",
@@ -6797,7 +6454,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance billing type. Valid value: POSTPAID_BY_HOUR (pay-as-you-go)",
           "example": "PREPAID",
@@ -6807,7 +6463,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance type. Default value: `primary`. Valid values:\n`primary` (dual-server high-availability, one-primary-one-standby)\n`readonly` (read-only instance)",
           "example": "primary",
@@ -6817,7 +6472,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "",
           "example": "postgresql",
@@ -6875,7 +6529,6 @@
       "document": "InquiryPriceRenewDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -6884,7 +6537,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Renewal duration in months. Maximum value: 48",
           "member": "int64",
@@ -6941,7 +6593,6 @@
       "document": "InquiryPriceUpgradeDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance disk size in GB",
           "member": "int64",
@@ -6950,7 +6601,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance memory size in GB",
           "member": "int64",
@@ -6959,7 +6609,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-hez4fh0v",
           "member": "string",
@@ -6968,7 +6617,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance billing type. Valid value: `POSTPAID_BY_HOUR` (pay-as-you-go hourly)",
           "member": "string",
@@ -7025,7 +6673,6 @@
       "document": "IsolateDBInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of instance IDs. Note that currently you cannot isolate multiple instances at the same time. Only one instance ID can be passed in here.",
           "example": "[\"postgres-xxxxxxxx\"]",
@@ -7053,7 +6700,6 @@
       "document": "Log backup information of a database",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "0",
@@ -7064,7 +6710,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unique ID of a backup file",
           "example": "0",
@@ -7075,7 +6720,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup file name",
           "example": "0",
@@ -7086,7 +6730,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup method, including physical and logical.",
           "example": "0",
@@ -7097,7 +6740,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup mode, including automatic and manual.",
           "example": "0",
@@ -7108,7 +6750,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup task status",
           "example": "0",
@@ -7119,7 +6760,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup set size in bytes",
           "example": "0",
@@ -7130,7 +6770,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup start time",
           "example": "0",
@@ -7141,7 +6780,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup end time",
           "example": "0",
@@ -7152,7 +6790,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup expiration time",
           "example": "0",
@@ -7169,7 +6806,6 @@
       "document": "ModifyAccountRemark request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-4wdeb0zv",
           "member": "string",
@@ -7178,7 +6814,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance username",
           "member": "string",
@@ -7187,7 +6822,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "New remarks corresponding to user `UserName`",
           "member": "string",
@@ -7277,7 +6911,6 @@
       "document": "ModifyBackupPlan request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "postgres-xxxxxxxx",
@@ -7287,7 +6920,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The earliest time to start a backup",
           "example": "01:00:00",
@@ -7297,7 +6929,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The latest time to start a backup",
           "example": "02:00:00",
@@ -7307,7 +6938,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup retention period in days. Value range: 3-7",
           "example": "7",
@@ -7317,7 +6947,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup cycle, which means on which days each week the instance will be backed up. The parameter value should be the lowercase names of the days of the week.",
           "example": "[\"monday\", \"tuesday\", \"wednesday\"]",
@@ -7345,7 +6974,6 @@
       "document": "ModifyBaseBackupExpireTime request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "postgres-xxxxxxxx",
@@ -7355,7 +6983,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Base backup ID",
           "example": "f6adc02a-432e-536f-a5f3-3dbf40ecd683",
@@ -7365,7 +6992,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "New expiration time",
           "example": "2006-01-02 15:04:05",
@@ -7465,7 +7091,6 @@
       "document": "ModifyDBInstanceDeployment request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID.",
           "example": "postgres-abcd1234",
@@ -7475,7 +7100,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance node information.",
           "example": "无",
@@ -7485,7 +7109,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Switch time. Valid values: `0` (switch now), `1` (switch at a specified time), `2` (switch during maintenance time). Default value: `0`.",
           "example": "1",
@@ -7495,7 +7118,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Switch start time in the format of `HH:MM:SS`, such as 01:00:00. When `SwitchTag` is 0 or 2, this parameter becomes invalid.",
           "example": "12:00:00",
@@ -7505,7 +7127,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Switch end time in the format of `HH:MM:SS`, such as 01:30:00. When `SwitchTag` is 0 or 2, this parameter becomes invalid.",
           "example": "12:30:00",
@@ -7533,7 +7154,6 @@
       "document": "ModifyDBInstanceName request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Database instance ID in the format of postgres-6fego161",
           "member": "string",
@@ -7542,7 +7162,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "New name of database instance",
           "member": "string",
@@ -7569,7 +7188,6 @@
       "document": "ModifyDBInstanceParameters request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "postgres-xx",
@@ -7579,7 +7197,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameters to be modified and their new values",
           "example": "无",
@@ -7607,7 +7224,6 @@
       "document": "ModifyDBInstanceReadOnlyGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "DBInstanceId",
@@ -7617,7 +7233,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the RO group to which the read-only replica belongs",
           "example": "ReadOnlyGroupId",
@@ -7627,7 +7242,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the new RO group into which the read-only replica will move",
           "example": "NewReadOnlyGroupId",
@@ -7665,7 +7279,6 @@
       "document": "ModifyDBInstanceSecurityGroups request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The list of security groups to be associated with the instance or RO groups",
           "example": "[\"sg-91jbmkp1\"]",
@@ -7675,7 +7288,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID. Either this parameter or `ReadOnlyGroupId` must be passed in. If both parameters are passed in, `ReadOnlyGroupId` will be ignored.",
           "example": "postgres-apzvwncr",
@@ -7685,7 +7297,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "RO group ID. Either this parameter or `DBInstanceId` must be passed in. To modify  the security groups associated with the RO groups, only pass in `ReadOnlyGroupId`.",
           "example": "pgrogrp-nqwpkjbu",
@@ -7713,7 +7324,6 @@
       "document": "ModifyDBInstanceSpec request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-6bwgamo3.",
           "example": "postgres-6bwgamo3",
@@ -7723,7 +7333,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance memory size in GiB after modification.",
           "example": "1000",
@@ -7733,7 +7342,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance disk size in GiB after modification.",
           "example": "16",
@@ -7743,7 +7351,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.",
           "example": "0",
@@ -7753,7 +7360,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher ID list. Currently, you can specify only one voucher.",
           "example": "无",
@@ -7763,7 +7369,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Campaign ID.",
           "example": "0",
@@ -7773,7 +7378,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Switch time after instance configurations are modified. Valid values: `0` (switch now), `1` (switch at a specified time), `2` (switch during maintenance time). Default value: `0`.",
           "example": "1",
@@ -7783,7 +7387,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Switch start time in the format of `HH:MM:SS`, such as 01:00:00. When `SwitchTag` is 0 or 2, this parameter becomes invalid.",
           "example": "12:00:00",
@@ -7793,7 +7396,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Switch end time in the format of `HH:MM:SS`, such as 01:30:00. When `SwitchTag` is 0 or 2, this parameter becomes invalid.",
           "example": "12:30:00",
@@ -7841,7 +7443,6 @@
       "document": "ModifyDBInstancesProject request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of instance IDs. Note that currently you cannot manipulate multiple instances at the same time. Only one instance ID can be passed in here.",
           "example": "[\"postgres-6bwgamo3\\n\",\"postgres-lnp6j6172\\n\"]",
@@ -7851,7 +7452,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the new project",
           "example": "10467",
@@ -7887,7 +7487,6 @@
       "document": "ModifyParameterTemplate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter template ID, which uniquely identifies a parameter template and cannot be modified.",
           "example": "497857b4-4676-5583-8359-b697fe5968d9",
@@ -7897,7 +7496,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter template name, which can contain 1-60 letters, digits, and symbols (-_./()[]()+=:@). If this field is empty, the original parameter template name will be used.",
           "example": "test_template",
@@ -7907,7 +7505,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter template description, which can contain 1-60 letters, digits, and symbols (-_./()[]()+=:@). If this parameter is not passed in, the original parameter template description will be used.",
           "example": "test",
@@ -7917,7 +7514,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The set of parameters to be modified or added. A parameter cannot be put to `ModifyParamEntrySet` and `DeleteParamSet` at the same time, that is, it cannot be modified/added and deleted at the same time.",
           "example": "无",
@@ -7927,7 +7523,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The set of parameters to be deleted in the template. A parameter cannot be put to `ModifyParamEntrySet` and `DeleteParamSet` at the same time, that is, it cannot be modified/added and deleted at the same time.",
           "example": "[\"wal_level\"]",
@@ -7955,7 +7550,6 @@
       "document": "ModifyReadOnlyGroupConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "RO group ID",
           "example": "ReadOnlyGroupId",
@@ -7965,7 +7559,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "RO group name",
           "example": "ReadOnlyGroupName",
@@ -7975,7 +7568,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to remove a read-only replica from an RO group if the delay between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).",
           "example": "1",
@@ -7985,7 +7577,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to remove a read-only replica from an RO group if the sync log size difference between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).",
           "example": "1",
@@ -7995,7 +7586,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Delayed log size threshold in MB",
           "example": "1",
@@ -8005,7 +7595,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Delay threshold in ms",
           "example": "1",
@@ -8015,7 +7604,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable automatic load balancing. Valid values: `0` (disable), `1` (enable).",
           "example": "1",
@@ -8025,7 +7613,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The minimum number of read-only replicas that must be retained in an RO group",
           "example": "1",
@@ -8053,7 +7640,6 @@
       "document": "ModifySwitchTimePeriod request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the instance waiting for a switch",
           "example": "postgres-19nmz2xb",
@@ -8063,7 +7649,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid value: `0` (switch immediately)",
           "example": "0:立即切换",
@@ -8091,7 +7676,6 @@
       "document": "Network information. (This parameter structure has been deprecated. Please use `DBInstanceNetInfo` to query network information.)",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Network resource ID, instance ID, or RO group ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "postgres-xxxxxxxx",
@@ -8102,7 +7686,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Resource type. Valid values: `1` (instance), `2` (RO group)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -8113,7 +7696,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "vpc-xxxxxxxx",
@@ -8124,7 +7706,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IPv4 address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "11.11.1.11",
@@ -8135,7 +7716,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IPv6 address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2000:0000:0000:0000:0001:2345:6789:abcd",
@@ -8146,7 +7726,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Access port\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "5432",
@@ -8157,7 +7736,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "subnet-xxxxxxxx",
@@ -8168,7 +7746,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network status. Valid values: `1` (applying), `2` (in use), `3` (deleting), `4` (deleted)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -8185,7 +7762,6 @@
       "document": "Information of one SlowQuery",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Username",
           "member": "string",
@@ -8195,7 +7771,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of calls",
           "member": "int64",
@@ -8205,7 +7780,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Granularity",
           "member": "int64",
@@ -8215,7 +7789,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total time consumed",
           "member": "float",
@@ -8225,7 +7798,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of affected rows",
           "member": "int64",
@@ -8235,7 +7807,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum time consumed",
           "member": "float",
@@ -8245,7 +7816,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum time consumed",
           "member": "float",
@@ -8255,7 +7825,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time of the earliest slow SQL statement",
           "member": "string",
@@ -8265,7 +7834,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time of the latest slow SQL statement",
           "member": "string",
@@ -8275,7 +7843,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Shared memory blocks for reads",
           "member": "int64",
@@ -8285,7 +7852,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Shared memory blocks for writes",
           "member": "int64",
@@ -8295,7 +7861,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total IO read time",
           "member": "int64",
@@ -8305,7 +7870,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total IO write time",
           "member": "int64",
@@ -8315,7 +7879,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database name",
           "member": "string",
@@ -8325,7 +7888,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Slow SQL statement after desensitization",
           "member": "string",
@@ -8341,7 +7903,6 @@
       "document": "OpenDBExtranetAccess request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-hez4fh0v",
           "member": "string",
@@ -8350,7 +7911,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)",
           "member": "int64",
@@ -8385,7 +7945,6 @@
       "document": "OpenServerlessDBExtranetAccess request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique ID of an instance",
           "member": "string",
@@ -8394,7 +7953,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance name",
           "member": "string",
@@ -8421,7 +7979,6 @@
       "document": "Parameters to be modified in batches",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter name",
           "example": "wal_level",
@@ -8432,7 +7989,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The new value to which the parameter will be modified. When this parameter is used as an input parameter, its value must be a string, such as `0.1` (decimal), `1000` (integer), and `replica` (enum).",
           "example": "replica",
@@ -8449,7 +8005,6 @@
       "document": "Parameter details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
@@ -8460,7 +8015,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "wal_level",
@@ -8471,7 +8025,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value type of the parameter. Valid values: `integer`, `real` (floating-point), `bool`, `enum`, `mutil_enum` (this type of parameter can be set to multiple enumerated values).\nFor an `integer` or `real` parameter, the `Min` field represents the minimum value and the `Max` field the maximum value. \nFor a `bool` parameter, the valid values include `true` and `false`; \nFor an `enum` or `mutil_enum` parameter, the `EnumValue` field represents the valid values.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "integer",
@@ -8482,7 +8035,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unit of the parameter value. If the parameter has no unit, this field will return null.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ms",
@@ -8493,7 +8045,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Default value of the parameter, which is returned as a string\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "replica",
@@ -8504,7 +8055,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Current value of the parameter, which is returned as a string\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "replica",
@@ -8515,7 +8065,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum value of the `integer` or `real` parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
@@ -8526,7 +8075,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value range of the enum parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "[replica,logical]",
@@ -8537,7 +8085,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The minimum value of the `integer` or `real` parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1000",
@@ -8548,7 +8095,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter description in Chinese\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "此参数决定记录到日志的信息，不允许设置为minimal",
@@ -8559,7 +8105,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter description in English\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "Set the level of information written to the WAL.",
@@ -8570,7 +8115,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to restart the instance for the modified parameter to take effect. Valid values: `true` (yes), `false` (no)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "false",
@@ -8581,7 +8125,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter category in Chinese\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "WAL",
@@ -8592,7 +8135,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter category in English\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "Write-Ahead Log",
@@ -8603,7 +8145,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the parameter is related to specifications. Valid values: `true` (yes), `false` (no)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "false",
@@ -8614,7 +8155,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether it is a key parameter. Valid values: `true` (yes, and modifying it may affect instance performance), `false` (no)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "false",
@@ -8625,7 +8165,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The last modified time of the parameter\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2021-08-01 02:03:04",
@@ -8636,7 +8175,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Primary-standby constraint. Valid values: `0` (no constraint), `1` (The parameter value of the standby server must be greater than that of the primary server), `2` (The parameter value of the primary server must be greater than that of the standby server.)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -8647,7 +8185,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Associated parameter version information, which refers to the detailed parameter information of the kernel version.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -8658,7 +8195,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Associated parameter specification information, which refers to the detailed parameter information of the specifications.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -8675,7 +8211,6 @@
       "document": "Parameter information of each specification",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "wal_level",
@@ -8686,7 +8221,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The specification that corresponds to the parameter information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2G",
@@ -8697,7 +8231,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The default parameter value under this specification\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -8708,7 +8241,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unit of the parameter value. If the parameter has no unit, this field will return null.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "s",
@@ -8719,7 +8251,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum value of the `integer` or `real` parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "20000",
@@ -8730,7 +8261,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The minimum value of the `integer` or `real` parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -8741,7 +8271,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value range of the enum parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[on;off]",
@@ -8758,7 +8287,6 @@
       "document": "Parameter information of each version",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "wal_level",
@@ -8769,7 +8297,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The kernel version that corresponds to the parameter information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "v14.1_r1.2",
@@ -8780,7 +8307,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Default parameter value under the kernel version and specification of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -8791,7 +8317,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unit of the parameter value. If the parameter has no unit, this field will return null.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "s",
@@ -8802,7 +8327,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum value of the `integer` or `real` parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "20000",
@@ -8813,7 +8337,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The minimum value of the `integer` or `real` parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -8824,7 +8347,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value range of the enum parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[on;off]",
@@ -8841,7 +8363,6 @@
       "document": "Basic information of a parameter template",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter template ID",
           "example": "6e89c045-935f-5d5f-8512-08d7f6cf2210",
@@ -8852,7 +8373,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter template name",
           "example": "test",
@@ -8863,7 +8383,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database version applicable to a parameter template",
           "example": "13",
@@ -8874,7 +8393,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database engine applicable to a parameter template",
           "example": "postgresql",
@@ -8885,7 +8403,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter template description",
           "example": "test",
@@ -8902,7 +8419,6 @@
       "document": "Order details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Order name",
           "member": "string",
@@ -8912,7 +8428,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User",
           "member": "string",
@@ -8922,7 +8437,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of instances involved in order",
           "member": "int64",
@@ -8932,7 +8446,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Billing mode. 0: pay-as-you-go",
           "member": "int64",
@@ -8942,7 +8455,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Async task flow ID",
           "member": "int64",
@@ -8952,7 +8464,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID array",
           "member": "string",
@@ -8968,7 +8479,6 @@
       "document": "Rule information for security group",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Policy, Valid values: `ACCEPT`, `DROP`.",
           "example": "ACCEPT",
@@ -8979,7 +8489,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Source or destination IP or IP range, such as 172.16.0.0/12.",
           "example": "0.0.0.0/0",
@@ -8990,7 +8499,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Port",
           "example": "ALL",
@@ -9001,7 +8509,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network protocol. UDP and TCP are supported.",
           "example": "icmp",
@@ -9012,7 +8519,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule description",
           "example": "放通Ping服务",
@@ -9029,7 +8535,6 @@
       "document": "The list of slow query details returned by the `DescribeSlowQueryList` API",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Slow query statement",
           "example": "select 1",
@@ -9040,7 +8545,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The database queried by the slow query statement",
           "example": "postgres",
@@ -9051,7 +8555,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The execution time of the slow query statement",
           "example": "1.1",
@@ -9062,7 +8565,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The client that executes the slow query statement",
           "example": "::1",
@@ -9073,7 +8575,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of the user who executes the slow query statement",
           "example": "postgres",
@@ -9084,7 +8585,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The time when the slow query statement starts to execute",
           "example": "2020-02-01 01:02:03",
@@ -9101,7 +8601,6 @@
       "document": "RO group information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "RO group identifier\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "空",
@@ -9112,7 +8611,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "RO group name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "空",
@@ -9123,7 +8621,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "空",
@@ -9134,7 +8631,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Primary instance ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "空",
@@ -9145,7 +8641,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The minimum number of read-only replicas that must be retained in an RO group\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "空",
@@ -9156,7 +8651,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Delayed log size threshold",
           "example": "空",
@@ -9167,7 +8661,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to remove a read-only replica from an RO group if the sync log size difference between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).",
           "example": "空",
@@ -9178,7 +8671,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Delay threshold",
           "example": "空",
@@ -9189,7 +8681,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to remove a read-only replica from an RO group if the delay between the read-only replica and the primary instance exceeds the threshold. Valid values: `0` (no), `1` (yes).",
           "example": "空",
@@ -9200,7 +8691,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID",
           "example": "空",
@@ -9211,7 +8701,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "空",
@@ -9222,7 +8711,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region ID",
           "example": "空",
@@ -9233,7 +8721,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Availability zone ID",
           "example": "空",
@@ -9244,7 +8731,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status",
           "example": "空",
@@ -9255,7 +8741,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance details",
           "example": "空",
@@ -9266,7 +8751,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable automatic load balancing",
           "example": "空",
@@ -9277,7 +8761,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network information",
           "example": "空",
@@ -9288,7 +8771,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network access list of the RO group (this field has been deprecated)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "空",
@@ -9305,7 +8787,6 @@
       "document": "RebalanceReadOnlyGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "RO group ID",
           "example": "ReadOnlyGroupId",
@@ -9333,7 +8814,6 @@
       "document": "Region information such as number and status",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Region abbreviation",
           "example": "ap-guangzhou",
@@ -9344,7 +8824,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region name",
           "example": "广州",
@@ -9355,7 +8834,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region number",
           "example": "1",
@@ -9366,7 +8844,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Availability status. UNAVAILABLE: unavailable, AVAILABLE: available",
           "example": "AVAILABLE",
@@ -9377,7 +8854,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the resource can be purchased in this region. Valid values: `0` (no), `1` (yes).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
@@ -9394,7 +8870,6 @@
       "document": "RemoveDBInstanceFromReadOnlyGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "DBInstanceId",
@@ -9404,7 +8879,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "RO group ID",
           "example": "ReadOnlyGroupId",
@@ -9442,7 +8916,6 @@
       "document": "RenewInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of `postgres-6fego161`",
           "member": "string",
@@ -9451,7 +8924,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Renewal duration in months",
           "member": "int64",
@@ -9460,7 +8932,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to automatically use vouchers. 1: yes, 0: no. Default value: 0",
           "member": "int64",
@@ -9469,7 +8940,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher ID list (only one voucher can be specified currently)",
           "member": "string",
@@ -9504,7 +8974,6 @@
       "document": "ResetAccountPassword request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-4wdeb0zv",
           "member": "string",
@@ -9513,7 +8982,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance account name",
           "member": "string",
@@ -9522,7 +8990,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "New password corresponding to `UserName` account",
           "member": "string",
@@ -9549,7 +9016,6 @@
       "document": "RestartDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-6r233v55",
           "member": "string",
@@ -9584,7 +9050,6 @@
       "document": "Security group information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID",
           "example": "0",
@@ -9595,7 +9060,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time",
           "example": "2022-10-20 21:38:20",
@@ -9606,7 +9070,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Inbound rule",
           "example": "无",
@@ -9617,7 +9080,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Outbound rule",
           "example": "无",
@@ -9628,7 +9090,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group ID",
           "example": "sg-mpkb1net",
@@ -9639,7 +9100,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group name",
           "example": "securitygroup",
@@ -9650,7 +9110,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security group remarks",
           "example": "安全组",
@@ -9667,7 +9126,6 @@
       "document": "PostgreSQL for Serverless instance account description",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Username\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -9677,7 +9135,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Password\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -9687,7 +9144,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of connections\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -9703,7 +9159,6 @@
       "document": "PostgreSQL for Serverless instance description",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID, which is the unique identifier\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "postgres-1i1xmfwr",
@@ -9714,7 +9169,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "pg10",
@@ -9725,7 +9179,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "running",
@@ -9736,7 +9189,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "ap-guangzhou",
@@ -9747,7 +9199,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Availability zone\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "ap-guangzhou-3",
@@ -9758,7 +9209,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -9769,7 +9219,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -9780,7 +9229,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -9791,7 +9239,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Character set\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "UTF8",
@@ -9802,7 +9249,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database version\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "10.4",
@@ -9813,7 +9259,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2021-10-11 17:04:24",
@@ -9824,7 +9269,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance network information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -9835,7 +9279,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance account information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -9846,7 +9289,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of the databases in an instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -9857,7 +9299,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The array of tags bound to an instance\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -9868,7 +9309,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database kernel version\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "v10.4_r1.0",
@@ -9879,7 +9319,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Database major version number\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "10",
@@ -9896,7 +9335,6 @@
       "document": "PostgreSQL for Serverless instance network description",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -9906,7 +9344,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -9916,7 +9353,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Port number\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -9926,7 +9362,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -9936,7 +9371,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Network type\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -9952,7 +9386,6 @@
       "document": "SetAutoRenewFlag request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of instance IDs. Note that currently you cannot manipulate multiple instances at the same time. Only one instance ID can be passed in here.",
           "example": "[\"postgres-6fego161\\n\"]",
@@ -9962,7 +9395,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Renewal flag. 0: normal renewal, 1: auto-renewal, 2: no renewal upon expiration",
           "example": "1",
@@ -9998,7 +9430,6 @@
       "document": "Slow query details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Total time consumed",
           "member": "float",
@@ -10008,7 +9439,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of calls",
           "member": "int64",
@@ -10018,7 +9448,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of slow SQL statements after desensitization",
           "member": "NormalQueryItem",
@@ -10034,7 +9463,6 @@
       "document": "Purchasable specification details in an AZ in a region.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Region abbreviation, which corresponds to the `Region` field of `RegionSet`",
           "example": "ap-guangzhou",
@@ -10045,7 +9473,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ abbreviate, which corresponds to the `Zone` field of `ZoneSet`",
           "example": "ap-guangzhou-3",
@@ -10056,7 +9483,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specification details list",
           "example": "空",
@@ -10067,7 +9493,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Regions where KMS is supported\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "[\"ap-guangzhou\"]",
@@ -10084,7 +9509,6 @@
       "document": "Specification description",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Specification ID",
           "example": "1",
@@ -10095,7 +9519,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PostgerSQL version number",
           "example": "1",
@@ -10106,7 +9529,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Full version name corresponding to kernel number",
           "example": "1",
@@ -10117,7 +9539,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of CPU cores",
           "example": "1",
@@ -10128,7 +9549,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Memory size in MB",
           "example": "1",
@@ -10139,7 +9559,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum storage capacity in GB supported by this specification",
           "example": "1",
@@ -10150,7 +9569,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum storage capacity in GB supported by this specification",
           "example": "1",
@@ -10161,7 +9579,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Estimated QPS for this specification",
           "example": "1",
@@ -10172,7 +9589,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Disused)",
           "example": "1",
@@ -10183,7 +9599,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Machine type",
           "example": "1",
@@ -10194,7 +9609,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PostgreSQL major version number\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -10205,7 +9619,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PostgreSQL kernel version number\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -10216,7 +9629,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether TDE data encryption is supported. Valid values: 0 (no), 1 (yes)\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1",
@@ -10233,7 +9645,6 @@
       "document": "The information of tags associated with instances, including `TagKey` and `TagValue`",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Tag key",
           "member": "string",
@@ -10243,7 +9654,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag value",
           "member": "string",
@@ -10259,7 +9669,6 @@
       "document": "UpgradeDBInstanceKernelVersion request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "postgres-aser1j2o",
@@ -10269,7 +9678,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Target kernel version, which can be obtained in the `AvailableUpgradeTarget` field returned by the `DescribeDBVersions` API.",
           "example": "v12.4_r1.5",
@@ -10279,7 +9687,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Switch time after the kernel version upgrade. Valid values:\n`0` (default value): Switch now.\n`1`: Switch at the specified time.\n`2`: Switch in the maintenance time.",
           "example": "1",
@@ -10289,7 +9696,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Switch start time in the format of `HH:MM:SS`, such as 01:00:00. When `SwitchTag` is `0` or `2`, this parameter is invalid.",
           "example": "01:00:00",
@@ -10299,7 +9705,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Switch end time in the format of `HH:MM:SS`, such as 01:30:00. When `SwitchTag` is `0` or `2`, this parameter is invalid. The difference between `SwitchStartTime` and `SwitchEndTime` cannot be less than 30 minutes.",
           "example": "01:30:00",
@@ -10309,7 +9714,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to perform a precheck on the current operation of upgrading the instance kernel version. Valid values:\n`true`: Performs a precheck without upgrading the kernel version. Check items include request parameters, kernel version compatibility, and instance parameters.\n`false` (default value): Sends a normal request and upgrades the kernel version directly after the check is passed.",
           "example": "true",
@@ -10337,7 +9741,6 @@
       "document": "UpgradeDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance memory size in GB after upgrade",
           "example": "2",
@@ -10347,7 +9750,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance disk size in GB after upgrade",
           "example": "200",
@@ -10357,7 +9759,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID in the format of postgres-lnp6j617",
           "example": "postgres-6bwgamo3",
@@ -10367,7 +9768,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to automatically use vouchers. 1: yes, 0: no. Default value: no",
           "example": "0",
@@ -10377,7 +9777,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher ID list (only one voucher can be specified currently)",
           "example": "无",
@@ -10387,7 +9786,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Activity ID",
           "example": "无",
@@ -10397,7 +9795,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Switch time after instance configurations are modified. Valid values: `0` (switch immediately), `1` (switch at specified time). Default value: `0`",
           "example": "0",
@@ -10407,7 +9804,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The earliest time to start a switch",
           "example": "8:30:00",
@@ -10417,7 +9813,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The latest time to start a switch",
           "example": "8:30:00",
@@ -10537,7 +9932,6 @@
       "document": "Database Xlog information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique backup file ID",
           "member": "int64",
@@ -10547,7 +9941,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File generation start time",
           "member": "datetime",
@@ -10557,7 +9950,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File generation end time",
           "member": "datetime",
@@ -10567,7 +9959,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Download address on private network",
           "member": "string",
@@ -10577,7 +9968,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Download address on public network",
           "member": "string",
@@ -10587,7 +9977,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Backup file size",
           "member": "int64",
@@ -10603,7 +9992,6 @@
       "document": "AZ information such as number and status",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "AZ abbreviation",
           "example": "ap-guangzhou-1",
@@ -10614,7 +10002,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ name",
           "example": "广州一区",
@@ -10625,7 +10012,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ number",
           "example": "100001",
@@ -10636,7 +10022,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Availability status. Valid values:\n`UNAVAILABLE`.\n`AVAILABLE`.\n`SELLOUT`.\n`SUPPORTMODIFYONLY` (supports configuration adjustment).",
           "example": "AVAILABLE",
@@ -10647,7 +10032,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the AZ supports IPv6 address access",
           "example": "1",
@@ -10658,7 +10042,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZs that can be used as standby when this AZ is primary\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "ap-guangzhou-1,ap-guangzhou-2",

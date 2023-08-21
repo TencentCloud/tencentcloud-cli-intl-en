@@ -123,7 +123,6 @@
       "document": "Cos token",
       "members": [
         {
-          "default": "",
           "document": "Unique request ID",
           "member": "string",
           "name": "RequestId",
@@ -132,7 +131,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Bucket name",
           "member": "string",
           "name": "Bucket",
@@ -141,7 +139,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Bucket region",
           "member": "string",
           "name": "Region",
@@ -150,7 +147,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "`SecretId` of temporary key",
           "member": "string",
           "name": "TmpSecretId",
@@ -159,7 +155,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "`SecretKey` of temporary key",
           "member": "string",
           "name": "TmpSecretKey",
@@ -168,7 +163,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "`sessionToken` of temporary key",
           "member": "string",
           "name": "SessionToken",
@@ -177,7 +171,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "`StartTime` of temporary key acquisition",
           "member": "string",
           "name": "StartTime",
@@ -186,7 +179,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "`ExpiredTime` of temporary key",
           "member": "string",
           "name": "ExpiredTime",
@@ -195,7 +187,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Full package path",
           "member": "string",
           "name": "FullPath",
@@ -210,7 +201,6 @@
       "document": "CreateCosTokenV2 request structure.",
       "members": [
         {
-          "default": "",
           "document": "Service ID",
           "example": "1",
           "member": "string",
@@ -219,7 +209,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Package name",
           "example": "1",
           "member": "string",
@@ -228,7 +217,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "optType. 1: upload; 2: query",
           "example": "1",
           "member": "int64",
@@ -237,7 +225,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Source channel",
           "example": "0",
           "member": "int64",
@@ -246,7 +233,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Input parameter of `deployVersion`",
           "example": "sss",
           "member": "string",
@@ -282,7 +268,6 @@
       "document": "CreateNamespace request structure.",
       "members": [
         {
-          "default": "",
           "document": "Namespace name",
           "example": "namespace-a",
           "member": "string",
@@ -291,7 +276,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "VPC name",
           "example": "vpc-1n5javez",
           "member": "string",
@@ -300,7 +284,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Subnet list",
           "example": "{",
           "member": "string",
@@ -309,7 +292,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Namespace description",
           "example": "命名空间名",
           "member": "string",
@@ -318,7 +300,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "K8s version",
           "example": "1.16.9",
           "member": "string",
@@ -327,7 +308,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source channel",
           "example": "0",
           "member": "int64",
@@ -336,7 +316,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to enable the TSW service.",
           "example": "true",
           "member": "bool",
@@ -372,7 +351,6 @@
       "document": "CreateResource request structure.",
       "members": [
         {
-          "default": "",
           "document": "Namespace ID",
           "example": "env-xxx",
           "member": "string",
@@ -381,7 +359,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource type. Valid values: CFS (file system), CLS (log service), TSE_SRE (registry)",
           "example": "CLS",
           "member": "string",
@@ -390,7 +367,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource ID",
           "example": "cls-xxx",
           "member": "string",
@@ -399,7 +375,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source channel",
           "example": "0",
           "member": "int64",
@@ -435,7 +410,6 @@
       "document": "CreateServiceV2 request structure.",
       "members": [
         {
-          "default": "",
           "document": "Service name",
           "example": "service-a",
           "member": "string",
@@ -444,7 +418,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Description",
           "example": "服务a",
           "member": "string",
@@ -453,7 +426,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to use the default image service. 1: yes; 0: no",
           "example": "0",
           "member": "int64",
@@ -462,7 +434,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Type of the bound repository. 0: Personal Edition; 1: Enterprise Edition",
           "example": "0",
           "member": "int64",
@@ -471,7 +442,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance ID of Enterprise Edition image service",
           "example": "tr-123",
           "member": "string",
@@ -480,7 +450,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Address of the bound image server",
           "example": "tcr.tencent.com",
           "member": "string",
@@ -489,7 +458,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Name of the bound image repository",
           "example": "tem-test/repo_te",
           "member": "string",
@@ -498,7 +466,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source channel",
           "example": "0",
           "member": "int64",
@@ -507,7 +474,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Service subnet",
           "example": "['s1', 's2']",
           "member": "string",
@@ -516,7 +482,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Programming language \n- JAVA\n- OTHER",
           "example": "1",
           "member": "string",
@@ -525,7 +490,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Deployment mode \n- IMAGE\n- JAR\n- WAR",
           "example": "1",
           "member": "string",
@@ -561,7 +525,6 @@
       "document": "DeleteIngress request structure.",
       "members": [
         {
-          "default": "",
           "document": "tem NamespaceId",
           "example": "env-xxx",
           "member": "string",
@@ -570,7 +533,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "EKS namespace name",
           "example": "default",
           "member": "string",
@@ -579,7 +541,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Ingress rule name",
           "example": "xxxxx",
           "member": "string",
@@ -588,7 +549,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source channel",
           "example": "0",
           "member": "int64",
@@ -624,7 +584,6 @@
       "document": "DeployServiceV2 request structure.",
       "members": [
         {
-          "default": "",
           "document": "Service ID",
           "example": "1",
           "member": "string",
@@ -633,7 +592,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Container port",
           "example": "1",
           "member": "uint64",
@@ -642,7 +600,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of initialized pods",
           "example": "1",
           "member": "uint64",
@@ -651,7 +608,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "CPU specification",
           "example": "1",
           "member": "float",
@@ -660,7 +616,6 @@
           "type": "float"
         },
         {
-          "default": "",
           "document": "Memory specification",
           "example": "1",
           "member": "float",
@@ -669,7 +624,6 @@
           "type": "float"
         },
         {
-          "default": "",
           "document": "Environment ID",
           "example": "1",
           "member": "string",
@@ -678,7 +632,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image repository",
           "example": "1",
           "member": "string",
@@ -687,7 +640,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Version description",
           "example": "1",
           "member": "string",
@@ -696,7 +648,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Launch parameters",
           "example": "1",
           "member": "string",
@@ -705,7 +656,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Auto scaling configuration. If this parameter is left empty, auto scaling will not be enabled",
           "example": "1",
           "member": "EsInfo",
@@ -714,7 +664,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Environment variable configuration",
           "example": "1",
           "member": "Pair",
@@ -723,7 +672,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Log configuration",
           "example": "1",
           "member": "string",
@@ -732,7 +680,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Data volume configuration",
           "example": "1",
           "member": "StorageConf",
@@ -741,7 +688,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Data volume mount configuration",
           "example": "1",
           "member": "StorageMountConf",
@@ -750,7 +696,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Deployment type.\n- JAR: deployment through JAR package\n- WAR: deployment through WAR package\n- IMAGE: deployment through image",
           "example": "1",
           "member": "string",
@@ -759,7 +704,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "When the deployment type is `IMAGE`, this parameter indicates the image tag.\nWhen the deployment type is `JAR` or `WAR`, this parameter indicates the package version number.",
           "example": "1",
           "member": "string",
@@ -768,7 +712,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Package name, which is required when using JAR or WAR packages for deployment.",
           "example": "1",
           "member": "string",
@@ -777,7 +720,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "JDK version.\n- KONA: use KONA JDK.\n- OPEN: use open JDK.",
           "example": "1",
           "member": "string",
@@ -786,7 +728,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Security group IDs",
           "example": "1",
           "member": "string",
@@ -795,7 +736,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Log output configuration",
           "example": "1",
           "member": "LogOutputConf",
@@ -804,7 +744,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Source channel",
           "example": "0",
           "member": "int64",
@@ -813,7 +752,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Version description",
           "example": "1",
           "member": "string",
@@ -822,7 +760,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image command",
           "example": "cd",
           "member": "string",
@@ -831,7 +768,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image command parameters",
           "example": "/home",
           "member": "string",
@@ -840,7 +776,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Service port mapping.",
           "example": "1",
           "member": "PortMapping",
@@ -849,7 +784,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to add the registry’s default configurations.",
           "example": "true",
           "member": "bool",
@@ -858,7 +792,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Mounting configurations",
           "example": "[]",
           "member": "MountedSettingConf",
@@ -867,7 +800,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "EKS access configuration",
           "example": "1",
           "member": "EksService",
@@ -876,7 +808,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "ID of the version that you want to roll back to",
           "example": "version-123",
           "member": "string",
@@ -885,7 +816,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The script to run after startup",
           "example": "xxxxx",
           "member": "string",
@@ -894,7 +824,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The script to run before stop",
           "example": "xxxx",
           "member": "string",
@@ -903,7 +832,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Configuration of ",
           "example": "{}",
           "member": "DeployStrategyConf",
@@ -912,7 +840,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Configuration of aliveness probe",
           "example": "null",
           "member": "HealthCheckConfig",
@@ -921,7 +848,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Configuration of readiness probe",
           "example": "null",
           "member": "HealthCheckConfig",
@@ -957,7 +883,6 @@
       "document": "Configuration of batch release policies",
       "members": [
         {
-          "default": "",
           "document": "Total batches",
           "example": "10",
           "member": "int64",
@@ -967,7 +892,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of instances for the beta batch",
           "example": "5",
           "member": "int64",
@@ -977,7 +901,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Batch deploy policy. `0`: automatically; `1`: manually. If you use beta batch, the policy for beta batch must be `0`. The policy specified here only applies to the rest batches.",
           "example": "1",
           "member": "int64",
@@ -987,7 +910,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Interval between batches",
           "example": "200",
           "member": "int64",
@@ -1003,7 +925,6 @@
       "document": "DescribeIngress request structure.",
       "members": [
         {
-          "default": "",
           "document": "tem namespaceId",
           "example": "env-xxx",
           "member": "string",
@@ -1012,7 +933,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "EKS namespace name",
           "example": "default",
           "member": "string",
@@ -1021,7 +941,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Ingress rule name",
           "example": "xxxx",
           "member": "string",
@@ -1030,7 +949,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source channel",
           "example": "0",
           "member": "int64",
@@ -1066,7 +984,6 @@
       "document": "DescribeIngresses request structure.",
       "members": [
         {
-          "default": "",
           "document": "namespace id",
           "example": "111",
           "member": "string",
@@ -1075,7 +992,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "namespace",
           "example": "default",
           "member": "string",
@@ -1084,7 +1000,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source channel",
           "example": "0",
           "member": "int64",
@@ -1093,7 +1008,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Ingress rule name list.",
           "example": "[\"aa\"]",
           "member": "string",
@@ -1129,7 +1043,6 @@
       "document": "DescribeNamespaces request structure.",
       "members": [
         {
-          "default": "",
           "document": "Number of items per page",
           "example": "10",
           "member": "int64",
@@ -1138,7 +1051,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Page number",
           "example": "1",
           "member": "int64",
@@ -1147,7 +1059,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Source",
           "example": "0",
           "member": "int64",
@@ -1183,7 +1094,6 @@
       "document": "DescribeRelatedIngresses request structure.",
       "members": [
         {
-          "default": "",
           "document": "Environment ID.",
           "example": "111",
           "member": "string",
@@ -1192,7 +1102,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "EKS namespace.",
           "example": "default",
           "member": "string",
@@ -1201,7 +1110,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source channel.",
           "example": "0",
           "member": "int64",
@@ -1210,7 +1118,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Service ID.",
           "example": "svc-xxxx",
           "member": "string",
@@ -1246,7 +1153,6 @@
       "document": "Version pod list",
       "members": [
         {
-          "default": "",
           "document": "Page number",
           "example": "1",
           "member": "int64",
@@ -1256,7 +1162,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of items per page",
           "example": "11",
           "member": "int64",
@@ -1266,7 +1171,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Total number",
           "example": "111",
           "member": "int64",
@@ -1276,7 +1180,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Request ID",
           "example": "ssss",
           "member": "string",
@@ -1286,7 +1189,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of items",
           "example": "{name:key}",
           "member": "RunVersionPod",
@@ -1302,7 +1204,6 @@
       "document": "DescribeServiceRunPodListV2 request structure.",
       "members": [
         {
-          "default": "",
           "document": "Environment ID",
           "example": "namespace-a",
           "member": "string",
@@ -1311,7 +1212,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Service name ID",
           "example": "service-a",
           "member": "string",
@@ -1320,7 +1220,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of items per page. Default value: 20",
           "example": "10",
           "member": "int64",
@@ -1329,7 +1228,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Page number. Default value: 0",
           "example": "1",
           "member": "int64",
@@ -1338,7 +1236,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Pod status \n- Running \n- Pending \n- Error",
           "example": "Running",
           "member": "string",
@@ -1347,7 +1244,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Pod name",
           "example": "pod-a",
           "member": "string",
@@ -1356,7 +1252,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source channel",
           "example": "0",
           "member": "int64",
@@ -1392,7 +1287,6 @@
       "document": "EKS service information",
       "members": [
         {
-          "default": "",
           "document": "Service name",
           "example": "xxx",
           "member": "string",
@@ -1402,7 +1296,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Available ports",
           "example": "[1,2]",
           "member": "int64",
@@ -1412,7 +1305,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Yaml contents",
           "example": "1",
           "member": "string",
@@ -1422,7 +1314,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Service name\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "xxx",
           "member": "string",
@@ -1432,7 +1323,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Version name\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "xxxx",
           "member": "string",
@@ -1442,7 +1332,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Private IP\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "string",
@@ -1452,7 +1341,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Public IP\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "string",
@@ -1462,7 +1350,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The access type. Valid values:\n- EXTERNAL (internet access)\n- VPC（Intra-VPC access)\n- CLUSTER (Intra-cluster access)\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "string",
@@ -1472,7 +1359,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Subnet ID. It is filled when the access type is `VPC`.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "1",
           "member": "string",
@@ -1482,7 +1368,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Load balancer ID. It is filled when the access type is `EXTERNAL` or `CLUSTER`. It’s created automatically by default.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "1",
           "member": "string",
@@ -1492,7 +1377,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Port Mapping\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "PortMapping",
@@ -1508,7 +1392,6 @@
       "document": "Auto scaling configuration",
       "members": [
         {
-          "default": "",
           "document": "Minimum number of instances",
           "example": "1",
           "member": "int64",
@@ -1518,7 +1401,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of instances",
           "example": "5",
           "member": "int64",
@@ -1528,7 +1410,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Auto scaling policy. 1: CPU; 2: memory",
           "example": "1",
           "member": "int64",
@@ -1538,7 +1419,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Auto scaling condition value",
           "example": "50",
           "member": "uint64",
@@ -1548,7 +1428,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Version ID",
           "example": "version-test",
           "member": "string",
@@ -1564,7 +1443,6 @@
       "document": "GenerateDownloadUrl request structure.",
       "members": [
         {
-          "default": "",
           "document": "Service ID",
           "example": "1",
           "member": "string",
@@ -1573,7 +1451,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Package Name",
           "example": "1",
           "member": "string",
@@ -1582,7 +1459,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Version of the package to download",
           "example": "asss",
           "member": "string",
@@ -1591,7 +1467,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source channel",
           "example": "0",
           "member": "int64",
@@ -1627,7 +1502,6 @@
       "document": "Health Check Configuration",
       "members": [
         {
-          "default": "",
           "document": "Health check type. Valid values: `HttpGet`，`TcpSocket`，`Exec`",
           "example": "HttpGet",
           "member": "string",
@@ -1637,7 +1511,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The protocol type. It’s only valid when the health check type is `HttpGet`.",
           "example": "HTTP",
           "member": "string",
@@ -1647,7 +1520,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The request path. It’s only valid when the health check type is `HttpGet`.",
           "example": "/xxx",
           "member": "string",
@@ -1657,7 +1529,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The script to be executed. It’s only valid when the health check type is `Exec`.",
           "example": "xxxx",
           "member": "string",
@@ -1667,7 +1538,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The request port. It’s only valid when the health check type is `HttpGet` or `TcpSocket `.",
           "example": "80",
           "member": "int64",
@@ -1677,7 +1547,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The initial delay for health check in seconds. Default: `0`",
           "example": "0",
           "member": "int64",
@@ -1687,7 +1556,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Timeout period in seconds. Default: `1`",
           "example": "1",
           "member": "int64",
@@ -1697,7 +1565,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Interval period in seconds. Default: `10`",
           "example": "10",
           "member": "int64",
@@ -1713,7 +1580,6 @@
       "document": "Ingress configuration",
       "members": [
         {
-          "default": "",
           "document": "tem namespaceId\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "env-xxx",
           "member": "string",
@@ -1723,7 +1589,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "eks namespace",
           "example": "default",
           "member": "string",
@@ -1733,7 +1598,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ip version",
           "example": "IPV4",
           "member": "string",
@@ -1743,7 +1607,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ingress name",
           "example": "ingress name",
           "member": "string",
@@ -1753,7 +1616,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Rules configuration",
           "example": "rules 配置",
           "member": "IngressRule",
@@ -1763,7 +1625,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "clb ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "clb-xxx",
           "member": "string",
@@ -1773,7 +1634,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "TLS configuration\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "tls 配置",
           "member": "IngressTls",
@@ -1783,7 +1643,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "eks clusterId\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "cls-xxx",
           "member": "string",
@@ -1793,7 +1652,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "clb ip\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "10.10.10.10",
           "member": "string",
@@ -1803,7 +1661,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "2010-11-11 22:21:11",
           "member": "string",
@@ -1813,7 +1670,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to listen on both the HTTP Port 80 and HTTPS Port 443. The default value is `false`. The optional value `true` means listening on both the HTTP Port 80 and HTTPS Port 443.",
           "example": "false",
           "member": "bool",
@@ -1829,7 +1685,6 @@
       "document": "Ingress rule configuration",
       "members": [
         {
-          "default": "",
           "document": "ingress rule value",
           "example": "ingress rule value",
           "member": "IngressRuleValue",
@@ -1839,7 +1694,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Host address\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx.com",
           "member": "string",
@@ -1849,7 +1703,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Protocol. Options include HTTP and HTTPS. The default option is HTTP.",
           "example": "protocol",
           "member": "string",
@@ -1865,7 +1718,6 @@
       "document": "Ingress rule backend configuration",
       "members": [
         {
-          "default": "",
           "document": "EKS service name",
           "example": "serviceA",
           "member": "string",
@@ -1875,7 +1727,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "EKS service port",
           "example": "8080",
           "member": "int64",
@@ -1891,7 +1742,6 @@
       "document": "Ingress rule path configuration",
       "members": [
         {
-          "default": "",
           "document": "Path information",
           "example": "/xxx",
           "member": "string",
@@ -1901,7 +1751,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Backend configuration",
           "example": "{\"ServiceName\": \"serviceA\", \"ServicePort\": 8080}}",
           "member": "IngressRuleBackend",
@@ -1917,7 +1766,6 @@
       "document": "Ingress rule value configuration",
       "members": [
         {
-          "default": "",
           "document": "Overall rule configuration",
           "example": "rulePaths 数组",
           "member": "IngressRulePath",
@@ -1933,7 +1781,6 @@
       "document": "Ingress TLS configuration",
       "members": [
         {
-          "default": "",
           "document": "Host array. An empty array indicates the default certificate for all domain names.",
           "example": "[\"xx.com\", \"yyy.com\"]",
           "member": "string",
@@ -1943,7 +1790,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Secret name. If a certificate is used, this field is left empty.",
           "example": "secret",
           "member": "string",
@@ -1953,7 +1799,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "SSL Certificate Id",
           "example": "CertificateId",
           "member": "string",
@@ -1969,7 +1814,6 @@
       "document": "Log output configuration",
       "members": [
         {
-          "default": "",
           "document": "Log consumer type",
           "example": "cls、kafka",
           "member": "string",
@@ -1979,7 +1823,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CLS logset",
           "example": "1",
           "member": "string",
@@ -1989,7 +1832,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CLS log topic",
           "example": "1",
           "member": "string",
@@ -1999,7 +1841,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CLS logset ID",
           "example": "1",
           "member": "string",
@@ -2009,7 +1850,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CLS log topic name",
           "example": "1",
           "member": "string",
@@ -2025,7 +1865,6 @@
       "document": "ModifyIngress request structure.",
       "members": [
         {
-          "default": "",
           "document": "Ingress rule configuration",
           "example": "无",
           "member": "IngressInfo",
@@ -2034,7 +1873,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Source channel",
           "example": "0",
           "member": "int64",
@@ -2070,7 +1908,6 @@
       "document": "ModifyNamespace request structure.",
       "members": [
         {
-          "default": "",
           "document": "Environment ID",
           "example": "namespace-36pm4p8r",
           "member": "string",
@@ -2079,7 +1916,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Namespace name",
           "example": "namespace-a",
           "member": "string",
@@ -2088,7 +1924,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Namespace description",
           "example": "命名空间",
           "member": "string",
@@ -2097,7 +1932,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "VPC name",
           "example": "vpc-1n5javez",
           "member": "string",
@@ -2106,7 +1940,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Subnet",
           "example": "subnet-m48cb76m",
           "member": "string",
@@ -2115,7 +1948,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Source channel",
           "example": "0",
           "member": "int64",
@@ -2151,7 +1983,6 @@
       "document": "ModifyServiceInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Service ID.",
           "example": "service-a",
           "member": "string",
@@ -2160,7 +1991,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Description.",
           "example": "服务a",
           "member": "string",
@@ -2169,7 +1999,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source channel.",
           "example": "0",
           "member": "int64",
@@ -2205,7 +2034,6 @@
       "document": "Mounting configuration information ",
       "members": [
         {
-          "default": "",
           "document": "Configuration Name",
           "example": "1",
           "member": "string",
@@ -2215,7 +2043,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Mount point path",
           "example": "1",
           "member": "string",
@@ -2225,7 +2052,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Configuration Content",
           "example": "[]",
           "member": "Pair",
@@ -2241,7 +2067,6 @@
       "document": "Namespace pagination",
       "members": [
         {
-          "default": "",
           "document": "Records",
           "member": "TemNamespaceInfo",
           "name": "Records",
@@ -2250,7 +2075,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Total number",
           "member": "int64",
           "name": "Total",
@@ -2259,7 +2083,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of items",
           "member": "int64",
           "name": "Size",
@@ -2268,7 +2091,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of pages",
           "member": "int64",
           "name": "Pages",
@@ -2283,7 +2105,6 @@
       "document": "Key-Value pair",
       "members": [
         {
-          "default": "",
           "document": "Key",
           "member": "string",
           "name": "Key",
@@ -2292,7 +2113,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Value",
           "member": "string",
           "name": "Value",
@@ -2307,7 +2127,6 @@
       "document": "Service port mapping",
       "members": [
         {
-          "default": "",
           "document": "Port.",
           "example": "1",
           "member": "int64",
@@ -2317,7 +2136,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Mapped port.",
           "example": "1",
           "member": "int64",
@@ -2327,7 +2145,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "TCP/UDP protocol stack.",
           "example": "1",
           "member": "string",
@@ -2343,7 +2160,6 @@
       "document": "RestartServiceRunPod request structure.",
       "members": [
         {
-          "default": "",
           "document": "Environment ID.",
           "example": "namespace-a",
           "member": "string",
@@ -2352,7 +2168,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Service ID.",
           "example": "service-a",
           "member": "string",
@@ -2361,7 +2176,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Pod name.",
           "example": "pod-a",
           "member": "string",
@@ -2370,7 +2184,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of items per page.",
           "example": "10",
           "member": "int64",
@@ -2379,7 +2192,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Page number.",
           "example": "1",
           "member": "int64",
@@ -2388,7 +2200,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Pod status.",
           "example": "Running",
           "member": "string",
@@ -2397,7 +2208,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source channel.",
           "example": "0",
           "member": "int64",
@@ -2433,7 +2243,6 @@
       "document": "Pod",
       "members": [
         {
-          "default": "",
           "document": "Shell address",
           "example": "sss",
           "member": "string",
@@ -2443,7 +2252,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Pod ID",
           "example": "aaa",
           "member": "string",
@@ -2453,7 +2261,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Status",
           "example": "Running",
           "member": "string",
@@ -2463,7 +2270,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time",
           "example": "2010-11-11 22:21:11",
           "member": "string",
@@ -2473,7 +2279,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Pod IP.",
           "example": "127.0.0.1",
           "member": "string",
@@ -2483,7 +2288,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Availability zone.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "string",
@@ -2493,7 +2297,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Deployed version.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "string",
@@ -2503,7 +2306,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of Restarts\nNote: This is field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "int64",
@@ -2519,7 +2321,6 @@
       "document": "Storage volume configuration",
       "members": [
         {
-          "default": "",
           "document": "Storage volume name",
           "example": "1",
           "member": "string",
@@ -2529,7 +2330,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Storage volume path",
           "example": "1",
           "member": "string",
@@ -2539,7 +2339,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Storage volume IP\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -2555,7 +2354,6 @@
       "document": "Data volume mount information",
       "members": [
         {
-          "default": "",
           "document": "Data volume name",
           "member": "string",
           "name": "VolumeName",
@@ -2564,7 +2362,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data volume binding path",
           "member": "string",
           "name": "MountPath",
@@ -2579,7 +2376,6 @@
       "document": "Namespace object",
       "members": [
         {
-          "default": "",
           "document": "Namespace ID",
           "example": "1",
           "member": "string",
@@ -2589,7 +2385,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Channel",
           "example": "1",
           "member": "string",
@@ -2599,7 +2394,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Namespace name",
           "example": "1",
           "member": "string",
@@ -2609,7 +2403,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region name",
           "example": "1",
           "member": "string",
@@ -2619,7 +2412,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Namespace description\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "string",
@@ -2629,7 +2421,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Status. 1: terminated; 0: normal",
           "example": "1",
           "member": "int64",
@@ -2639,7 +2430,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VPC",
           "example": "1",
           "member": "string",
@@ -2649,7 +2439,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time",
           "example": "1",
           "member": "string",
@@ -2659,7 +2448,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Modification time",
           "example": "1",
           "member": "string",
@@ -2669,7 +2457,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Modifier",
           "example": "1",
           "member": "string",
@@ -2679,7 +2466,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creator",
           "example": "1",
           "member": "string",
@@ -2689,7 +2475,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of services",
           "example": "1",
           "member": "int64",
@@ -2699,7 +2484,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of running instances",
           "example": "1",
           "member": "int64",
@@ -2709,7 +2493,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subnet",
           "example": "1",
           "member": "string",
@@ -2719,7 +2502,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "TCB environment status",
           "example": "1",
           "member": "string",
@@ -2729,7 +2511,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "eks cluster status",
           "example": "1",
           "member": "string",
@@ -2739,7 +2520,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to enable TSW",
           "example": "true",
           "member": "bool",

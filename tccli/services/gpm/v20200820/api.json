@@ -119,7 +119,6 @@
       "document": "The map key and map value of the player attribute",
       "members": [
         {
-          "default": "",
           "document": "Map key, supporting [a-zA-Z0-9-\\.]*",
           "member": "string",
           "name": "Key",
@@ -128,7 +127,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Map value",
           "member": "int64",
           "name": "Value",
@@ -143,7 +141,6 @@
       "document": "CancelMatching request structure.",
       "members": [
         {
-          "default": "",
           "document": "MatchCode",
           "member": "string",
           "name": "MatchCode",
@@ -151,7 +148,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The MatchTicket ID of the matchmaking to cancel",
           "member": "string",
           "name": "MatchTicketId",
@@ -184,7 +180,6 @@
       "document": "CreateMatch request structure.",
       "members": [
         {
-          "default": "",
           "document": "Match name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\\.]*.",
           "member": "string",
           "name": "MatchName",
@@ -192,7 +187,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "RuleCode",
           "member": "string",
           "name": "RuleCode",
@@ -200,7 +194,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Timeout period in seconds. Value range: 1 600",
           "member": "int64",
           "name": "Timeout",
@@ -208,7 +201,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to request server resources for the matchmaking results. 0: no, 1: request GSE resources",
           "member": "int64",
           "name": "ServerType",
@@ -216,7 +208,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Matchmaking description. Up to 1024 bytes are allowed.",
           "member": "string",
           "name": "MatchDesc",
@@ -224,7 +215,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Only HTTP and HTTPS protocols are supported.",
           "member": "string",
           "name": "NotifyUrl",
@@ -232,7 +222,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Region of the game server queue",
           "member": "string",
           "name": "ServerRegion",
@@ -240,7 +229,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Game server queue",
           "member": "string",
           "name": "ServerQueue",
@@ -248,7 +236,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Custom push data",
           "member": "string",
           "name": "CustomPushData",
@@ -256,7 +243,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Game server session data",
           "member": "string",
           "name": "ServerSessionData",
@@ -264,7 +250,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Game attribute. It is an array of key-value structure.",
           "member": "StringKV",
           "name": "GameProperties",
@@ -272,7 +257,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Enable or disable the log. 0: disable, 1: enable",
           "member": "int64",
           "name": "LogSwitch",
@@ -280,7 +264,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Tag. It is an array of key-value structure.",
           "member": "StringKV",
           "name": "Tags",
@@ -313,7 +296,6 @@
       "document": "CreateRule request structure.",
       "members": [
         {
-          "default": "",
           "document": "Rule name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\\.]*.",
           "member": "string",
           "name": "RuleName",
@@ -321,7 +303,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Rule script. Up to 65535 bytes are allowed.",
           "member": "string",
           "name": "RuleScript",
@@ -329,7 +310,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Rule description. Up to 1024 bytes are allowed.",
           "member": "string",
           "name": "RuleDesc",
@@ -337,7 +317,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag. It is an array of key-value structure. Up to 50 tags can be associated.",
           "member": "StringKV",
           "name": "Tags",
@@ -370,7 +349,6 @@
       "document": "DeleteMatch request structure.",
       "members": [
         {
-          "default": "",
           "document": "MatchCode",
           "member": "string",
           "name": "MatchCode",
@@ -396,7 +374,6 @@
       "document": "DeleteRule request structure.",
       "members": [
         {
-          "default": "",
           "document": "RuleCode",
           "member": "string",
           "name": "RuleCode",
@@ -422,7 +399,6 @@
       "document": "DescribeData request structure.",
       "members": [
         {
-          "default": "",
           "document": "Start time in seconds",
           "member": "int64",
           "name": "StartTime",
@@ -430,7 +406,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "End time in seconds",
           "member": "int64",
           "name": "EndTime",
@@ -438,7 +413,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Time granularity. Valid values: 1: 1 day, 2: 1 hour, 3: 1 minute, 4: 10 minutes, 5: 30 minutes",
           "member": "int64",
           "name": "TimeType",
@@ -446,7 +420,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "MatchCode",
           "member": "string",
           "name": "MatchCode",
@@ -486,7 +459,6 @@
       "document": "DescribeMatchCodes request structure.",
       "members": [
         {
-          "default": "",
           "document": "Offset, number of pages.",
           "member": "int64",
           "name": "Offset",
@@ -494,7 +466,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The number of MatchCodes per page",
           "member": "int64",
           "name": "Limit",
@@ -502,7 +473,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Query by the MatchCode value (a string).",
           "member": "string",
           "name": "MatchCode",
@@ -542,7 +512,6 @@
       "document": "DescribeMatch request structure.",
       "members": [
         {
-          "default": "",
           "document": "MatchCode",
           "member": "string",
           "name": "MatchCode",
@@ -575,7 +544,6 @@
       "document": "DescribeMatches request structure.",
       "members": [
         {
-          "default": "",
           "document": "The current page number. If this parameter is left empty, all queried matches will be obtained.",
           "member": "int64",
           "name": "PageNumber",
@@ -583,7 +551,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of matchmaking lists per page. If this parameter is left empty, all queried matches will be obtained.",
           "member": "int64",
           "name": "PageSize",
@@ -591,7 +558,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Query type (optional). Valid values: match (query by matchCode or matchName), rule (query by ruleCode or ruleName), and other types (not filtered)",
           "member": "string",
           "name": "SearchType",
@@ -599,7 +565,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Keyword. Enter a keyword about SearchType to query.",
           "member": "string",
           "name": "Keyword",
@@ -607,7 +572,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tags. Enter a tag for querying.",
           "member": "Tag",
           "name": "Tags",
@@ -675,7 +639,6 @@
       "document": "DescribeMatchingProgress request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of MatchTicket IDs. It can contain up to 12 IDs.",
           "example": "无",
           "member": "MTicket",
@@ -720,7 +683,6 @@
       "document": "DescribeRule request structure.",
       "members": [
         {
-          "default": "",
           "document": "RuleCode",
           "member": "string",
           "name": "RuleCode",
@@ -753,7 +715,6 @@
       "document": "DescribeRules request structure.",
       "members": [
         {
-          "default": "",
           "document": "The current page number. The first page will be returned if this parameter is left empty.",
           "member": "int64",
           "name": "PageNumber",
@@ -761,7 +722,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The number of rules per page. If this parameter is left empty, 30 rules are displayed per page by default. Maximum value: 30",
           "member": "int64",
           "name": "PageSize",
@@ -769,7 +729,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Query type (optional). Valid values: match (query by matchCode or matchName), rule (query by ruleCode or ruleName), and other types (not filtered)",
           "member": "string",
           "name": "SearchType",
@@ -777,7 +736,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Keyword. Enter a keyword about SearchType to query.",
           "member": "string",
           "name": "Keyword",
@@ -785,7 +743,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tags. Enter a tag for querying.",
           "member": "Tag",
           "name": "Tags",
@@ -853,7 +810,6 @@
       "document": "DescribeToken request structure.",
       "members": [
         {
-          "default": "",
           "document": "MatchCode",
           "member": "string",
           "name": "MatchCode",
@@ -893,7 +849,6 @@
       "document": "The combination of MatchCode and MatchTicket ID.",
       "members": [
         {
-          "default": "",
           "document": "MatchCode",
           "member": "string",
           "name": "MatchCode",
@@ -902,7 +857,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "MatchTicket ID",
           "member": "string",
           "name": "MatchTicketId",
@@ -917,7 +871,6 @@
       "document": "Player attributes for matching",
       "members": [
         {
-          "default": "",
           "document": "Attribute name. It can contain up to 128 characters, supporting [a-zA-Z0-9-\\.]*.",
           "member": "string",
           "name": "Name",
@@ -926,7 +879,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Attribute type. 0: number, 1: string. Default value: 0",
           "member": "uint64",
           "name": "Type",
@@ -935,7 +887,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Numeric attribute value. Default value: 0.0",
           "member": "float",
           "name": "NumberValue",
@@ -944,7 +895,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "String attribute value. Up to 128 characters are allowed. Default value: \"\"",
           "member": "string",
           "name": "StringValue",
@@ -953,7 +903,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List attribute value",
           "member": "string",
           "name": "ListValue",
@@ -962,7 +911,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Map attribute value",
           "member": "AttributeMap",
           "name": "MapValue",
@@ -977,7 +925,6 @@
       "document": "MatchCode",
       "members": [
         {
-          "default": "",
           "document": "MatchCode\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "MatchCode",
@@ -992,7 +939,6 @@
       "document": "Matchmaking information",
       "members": [
         {
-          "default": "",
           "document": "MatchCode",
           "member": "string",
           "name": "MatchCode",
@@ -1001,7 +947,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Match name",
           "member": "string",
           "name": "MatchName",
@@ -1010,7 +955,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Matchmaking description\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "MatchDesc",
@@ -1019,7 +963,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "RuleCode",
           "member": "string",
           "name": "RuleCode",
@@ -1028,7 +971,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time",
           "member": "string",
           "name": "CreateTime",
@@ -1037,7 +979,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Timeout period",
           "member": "int64",
           "name": "Timeout",
@@ -1046,7 +987,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Receiving notification address",
           "member": "string",
           "name": "NotifyUrl",
@@ -1055,7 +995,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to request server resources for the match results. 0: no, 1: request GSE resources",
           "member": "int64",
           "name": "ServerType",
@@ -1064,7 +1003,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region of the server queue\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "ServerRegion",
@@ -1073,7 +1011,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Server queue\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "ServerQueue",
@@ -1082,7 +1019,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Custom push data\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "CustomPushData",
@@ -1091,7 +1027,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Game server session data\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "ServerSessionData",
@@ -1100,7 +1035,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Game attributes\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "StringKV",
           "name": "GameProperties",
@@ -1109,7 +1043,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Enable or disable the log. 0: disable, 1: enable",
           "member": "int64",
           "name": "LogSwitch",
@@ -1118,7 +1051,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Logset ID\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "LogsetId",
@@ -1127,7 +1059,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Logset name\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "LogsetName",
@@ -1136,7 +1067,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Log topic ID\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "LogTopicId",
@@ -1145,7 +1075,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Log topic name\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "LogTopicName",
@@ -1154,7 +1083,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Tag\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "StringKV",
           "name": "Tags",
@@ -1163,7 +1091,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Region\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "Region",
@@ -1172,7 +1099,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User AppId\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "AppId",
@@ -1181,7 +1107,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User root account UIN\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "Uin",
@@ -1190,7 +1115,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Create user account UIN\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "CreateUin",
@@ -1199,7 +1123,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Rule Name\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "RuleName",
@@ -1208,7 +1131,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Log status. 0: normal, 1: the log set does not exist, 2: the log topic does not exist, 3: neither the log set nor the log topic exists.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "int64",
           "name": "LogStatus",
@@ -1223,7 +1145,6 @@
       "document": "MatchTicket information",
       "members": [
         {
-          "default": "",
           "document": "MatchTicket ID. It can contain up to 128 characters, supporting [a-zA-Z0-9-\\.]*.",
           "member": "string",
           "name": "Id",
@@ -1232,7 +1153,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "MatchCode",
           "member": "string",
           "name": "MatchCode",
@@ -1241,7 +1161,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Different structure serialized results will be returned according to the MatchType.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "MatchResult",
@@ -1250,7 +1169,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Matchmaking type. Valid values: NORMAL, GSE\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "MatchType",
@@ -1259,7 +1177,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Player information list",
           "member": "Player",
           "name": "Players",
@@ -1268,7 +1185,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Matching status. Valid values: SEARCHING (matching), PLACING (pending match), COMPLETED (match completed), CANCELLED (match cancelled), TIMEDOUT (match timeouts), FAILED (match failed)",
           "member": "string",
           "name": "Status",
@@ -1277,7 +1193,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Matching status descriptions\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "StatusMessage",
@@ -1286,7 +1201,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Reason for the matching status\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "StatusReason",
@@ -1295,7 +1209,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The time when the GPM received the matchmaking request, for example \"2020-08-17T08:14:38.077Z\".",
           "member": "string",
           "name": "StartTime",
@@ -1304,7 +1217,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The time when the matchmaking request stopped executing due to the completion, failure, timeout, or cancellation, for example \"2020-08-17T08:14:38.077Z\".\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "EndTime",
@@ -1319,7 +1231,6 @@
       "document": "ModifyMatch request structure.",
       "members": [
         {
-          "default": "",
           "document": "Match name. It can contain up to 128 bytes, supporting [a-zA-Z0-9-\\.]*.",
           "member": "string",
           "name": "MatchName",
@@ -1327,7 +1238,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "RuleCode",
           "member": "string",
           "name": "RuleCode",
@@ -1335,7 +1245,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Timeout period in seconds. Value range: 1 600",
           "member": "int64",
           "name": "Timeout",
@@ -1343,7 +1252,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to request server resources for the matchmaking results. 0: no, 1: request GSE resources",
           "member": "int64",
           "name": "ServerType",
@@ -1351,7 +1259,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "MatchCode",
           "member": "string",
           "name": "MatchCode",
@@ -1359,7 +1266,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Matchmaking description. Up to 1024 bytes are allowed.",
           "member": "string",
           "name": "MatchDesc",
@@ -1367,7 +1273,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Only HTTP and HTTPS protocols are supported.",
           "member": "string",
           "name": "NotifyUrl",
@@ -1375,7 +1280,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Region of the game server queue",
           "member": "string",
           "name": "ServerRegion",
@@ -1383,7 +1287,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Game server queue",
           "member": "string",
           "name": "ServerQueue",
@@ -1391,7 +1294,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Custom push data",
           "member": "string",
           "name": "CustomPushData",
@@ -1399,7 +1301,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Game server session data",
           "member": "string",
           "name": "ServerSessionData",
@@ -1407,7 +1308,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Game attribute. It is an array of key-value structure.",
           "member": "StringKV",
           "name": "GameProperties",
@@ -1415,7 +1315,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Enable or disable the log. 0: disable, 1: enable",
           "member": "int64",
           "name": "LogSwitch",
@@ -1423,7 +1322,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Tag. It is an array of key-value structure.",
           "member": "StringKV",
           "name": "Tags",
@@ -1456,7 +1354,6 @@
       "document": "ModifyRule request structure.",
       "members": [
         {
-          "default": "",
           "document": "RuleCode",
           "member": "string",
           "name": "RuleCode",
@@ -1464,7 +1361,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Rule name. It can only contain numbers, letters, \".\", and \"-\".",
           "member": "string",
           "name": "RuleName",
@@ -1472,7 +1368,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Rule description. Up to 1024 bytes are allowed.",
           "member": "string",
           "name": "RuleDesc",
@@ -1480,7 +1375,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag. It is an array of key-value structure. Up to 50 tags can be associated.",
           "member": "StringKV",
           "name": "Tags",
@@ -1513,7 +1407,6 @@
       "document": "ModifyToken request structure.",
       "members": [
         {
-          "default": "",
           "document": "MatchCode",
           "member": "string",
           "name": "MatchCode",
@@ -1521,7 +1414,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The time period during which GPM will continuously push the original token in seconds to the user when the token is replaced. Value range: 0 - 1800. Within the CompatibleSpan time period, user will receive the current and original token in the event notification.",
           "member": "uint64",
           "name": "CompatibleSpan",
@@ -1529,7 +1421,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Token. It can contain 0 - 64 characters, supporting [a-zA-Z0-9-_.]. If this parameter is left empty, the token will be randomly generated by GPM.",
           "member": "string",
           "name": "MatchToken",
@@ -1569,7 +1460,6 @@
       "document": "Player information",
       "members": [
         {
-          "default": "",
           "document": "Player ID. It can contain up to 128 characters, supporting [a-zA-Z\\d-\\._]*.",
           "member": "string",
           "name": "Id",
@@ -1578,7 +1468,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Player nickname. Up to 128 characters are allowed.",
           "member": "string",
           "name": "Name",
@@ -1587,7 +1476,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Player attribute for matching. Up to 10 attributes are supported.",
           "member": "MatchAttribute",
           "name": "MatchAttributes",
@@ -1596,7 +1484,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Team name. A player can pass in a different team name, which can contain up to 128 characters, and support [a-zA-Z0-9-\\.]*.",
           "member": "string",
           "name": "Team",
@@ -1605,7 +1492,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Custom player status. This parameter will be passed through. Value range: [0, 99999]",
           "member": "uint64",
           "name": "CustomPlayerStatus",
@@ -1614,7 +1500,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Custom player information. Up to 1024 characters are allowed. This parameter will be passed through.",
           "member": "string",
           "name": "CustomProfile",
@@ -1623,7 +1508,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of delays in each area. Up to 20 delays are supported.",
           "member": "RegionLatency",
           "name": "RegionLatencies",
@@ -1638,7 +1522,6 @@
       "document": "The network delay time for players to reach different regions.",
       "members": [
         {
-          "default": "",
           "document": "Region\nap-beijing          North China (Beijing)\nap-chengdu          Southwest China (Chengdu)\nap-guangzhou           South China (Guangzhou)\nap-hongkong           Hong Kong/Macao/Taiwan (Hong Kong, China)\nap-seoul          Asia Pacific (Seoul)\nap-shanghai          East China (Shanghai)\nap-singapore          Southeast Asia (Singapore)\neu-frankfurt          Europe (Frankfurt)\nna-siliconvalley          Western US (Silicon Valley)\nna-toronto           North America (Toronto)\nap-mumbai           Asia Pacific (Mumbai)\nna-ashburn          Eastern US (Virginia)\nap-bangkok           Asia Pacific (Bangkok)\neu-moscow           Europe (Moscow)\nap-tokyo           Asia Pacific (Tokyo)",
           "member": "string",
           "name": "Region",
@@ -1647,7 +1530,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Delay time in ms. Value range: 0 - 999999",
           "member": "uint64",
           "name": "Latency",
@@ -1662,7 +1544,6 @@
       "document": "Matchmaking statistics overview",
       "members": [
         {
-          "default": "",
           "document": "Total count",
           "member": "string",
           "name": "TotalTimes",
@@ -1671,7 +1552,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Success rate",
           "member": "float",
           "name": "SuccessPercent",
@@ -1680,7 +1560,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Timeout rate",
           "member": "float",
           "name": "TimeoutPercent",
@@ -1689,7 +1568,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Failure rate",
           "member": "float",
           "name": "FailPercent",
@@ -1698,7 +1576,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Average matching time",
           "member": "float",
           "name": "AverageSec",
@@ -1713,7 +1590,6 @@
       "document": "Trend data",
       "members": [
         {
-          "default": "",
           "document": "Total count",
           "member": "string",
           "name": "TotalList",
@@ -1722,7 +1598,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of requests cancelled",
           "member": "string",
           "name": "CancelList",
@@ -1731,7 +1606,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of successes",
           "member": "string",
           "name": "SuccessList",
@@ -1740,7 +1614,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of failures",
           "member": "string",
           "name": "FailList",
@@ -1749,7 +1622,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of request timeout",
           "member": "string",
           "name": "TimeoutList",
@@ -1758,7 +1630,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Time array in seconds",
           "member": "string",
           "name": "TimeList",
@@ -1773,7 +1644,6 @@
       "document": "Brief rule information",
       "members": [
         {
-          "default": "",
           "document": "Rule name. It supports [a-zA-Z\\d-\\.]*.",
           "member": "string",
           "name": "RuleName",
@@ -1782,7 +1652,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The associated match",
           "member": "StringKV",
           "name": "MatchCodeList",
@@ -1791,7 +1660,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time",
           "member": "string",
           "name": "CreateTime",
@@ -1800,7 +1668,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "RuleCode",
           "member": "string",
           "name": "RuleCode",
@@ -1815,7 +1682,6 @@
       "document": "Rule information",
       "members": [
         {
-          "default": "",
           "document": "Rule name. It supports [a-zA-Z0-9-\\.]*.",
           "member": "string",
           "name": "RuleName",
@@ -1824,7 +1690,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time",
           "member": "string",
           "name": "CreateTime",
@@ -1833,7 +1698,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Rule description\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "RuleDesc",
@@ -1842,7 +1706,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Rule script",
           "member": "string",
           "name": "RuleScript",
@@ -1851,7 +1714,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "StringKV",
           "name": "Tags",
@@ -1860,7 +1722,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The associated match\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "StringKV",
           "name": "MatchCodeList",
@@ -1869,7 +1730,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "RuleCode",
           "member": "string",
           "name": "RuleCode",
@@ -1878,7 +1738,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "Region",
@@ -1887,7 +1746,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User AppId\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "AppId",
@@ -1896,7 +1754,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User UIN\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "Uin",
@@ -1905,7 +1762,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User OwnerUin\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "CreateUin",
@@ -1920,7 +1776,6 @@
       "document": "StartMatchingBackfill request structure.",
       "members": [
         {
-          "default": "",
           "document": "MatchCode",
           "example": "match_code",
           "member": "string",
@@ -1929,7 +1784,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Player information",
           "example": "无",
           "member": "Player",
@@ -1938,7 +1792,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Game server session ID. It should contain 1 to 256 ASCII characters.",
           "example": "game_server_session_id",
           "member": "string",
@@ -1947,7 +1800,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "MatchTicket ID, which can contain 1 to 128 characters. This parameter is left empty by default, and in this case, MatchTicket ID will be automatically generated by GPM.",
           "example": "match_ticket_id",
           "member": "string",
@@ -1983,7 +1835,6 @@
       "document": "StartMatching request structure.",
       "members": [
         {
-          "default": "",
           "document": "MatchCode",
           "member": "string",
           "name": "MatchCode",
@@ -1991,7 +1842,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Player information. Up to 200 entries can be entered.",
           "member": "Player",
           "name": "Players",
@@ -1999,7 +1849,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "MatchTicket ID, which can contain up to 128 characters and can only contain numbers, letters, “.”, and “-”. This parameter is left empty by default. When it is empty, the MatchTicket ID will be automatically generated by GPM.",
           "member": "string",
           "name": "MatchTicketId",
@@ -2039,7 +1888,6 @@
       "document": "Key-value structure. Both key and value are string types.",
       "members": [
         {
-          "default": "",
           "document": "Key",
           "member": "string",
           "name": "Key",
@@ -2048,7 +1896,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Value",
           "member": "string",
           "name": "Value",
@@ -2063,7 +1910,6 @@
       "document": "Tag key-value pair",
       "members": [
         {
-          "default": "",
           "document": "Tag key",
           "member": "string",
           "name": "TagKey",
@@ -2072,7 +1918,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value",
           "member": "string",
           "name": "TagValue",

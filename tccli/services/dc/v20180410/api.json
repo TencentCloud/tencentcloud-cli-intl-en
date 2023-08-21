@@ -137,7 +137,6 @@
       "document": "AcceptDirectConnectTunnel request structure.",
       "members": [
         {
-          "default": "",
           "document": "The connection owner accepts an application for sharing the dedicated tunnel",
           "member": "string",
           "name": "DirectConnectTunnelId",
@@ -163,7 +162,6 @@
       "document": "Access point information.",
       "members": [
         {
-          "default": "",
           "document": "Access point name.",
           "example": "成都-A-西区",
           "member": "string",
@@ -173,7 +171,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Unique access point ID.",
           "example": "ap-chengdu-a-xq",
           "member": "string",
@@ -183,7 +180,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Access point status. Valid values: available, unavailable.",
           "example": "AVAILABLE",
           "member": "string",
@@ -193,7 +189,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Access point location.",
           "example": "成都电信西区803DC",
           "member": "string",
@@ -203,7 +198,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List of ISPs supported by access point.",
           "example": "[\"ChinaTelecom\"]",
           "member": "string",
@@ -213,7 +207,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID of the region that manages the access point.",
           "example": "cd",
           "member": "string",
@@ -223,7 +216,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Available port type at the access point. Valid values: 1000BASE-T: gigabit electrical port; 1000BASE-LX: 10 km gigabit single-mode optical port; 1000BASE-ZX: 80 km gigabit single-mode optical port; 10GBASE-LR: 10 km 10-gigabit single-mode optical port; 10GBASE-ZR: 80 km 10-gigabit single-mode optical port; 10GBASE-LH: 40 km 10-gigabit single-mode optical port; 100GBASE-LR4: 10 km 100-gigabit single-mode optical portfiber optic port.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "[\"1000BASE-T\", \"1000BASE-LX\"]",
           "member": "string",
@@ -233,7 +225,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Latitude and longitude of the access point\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "{\"Lat\": \"0.0\", \"Lng\": \"0.0\"}",
           "member": "Coordinate",
@@ -243,7 +234,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "City where the access point is located\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "成都",
           "member": "string",
@@ -253,7 +243,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Access point region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "华北",
           "member": "string",
@@ -263,7 +252,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Access point type. Valid values: `VXLAN`, `QCPL`, and `QCAR`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "VXLAN",
           "member": "string",
@@ -279,7 +267,6 @@
       "document": "ApplyInternetAddress request structure.",
       "members": [
         {
-          "default": "",
           "document": "Mask length of a CIDR block",
           "member": "int64",
           "name": "MaskLen",
@@ -287,7 +274,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Address type. Valid values: 0: BGP\n1: China Telecom\n2: China Mobile\n3: China Unicom",
           "member": "int64",
           "name": "AddrType",
@@ -295,7 +281,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Address protocol. Valid values: 0: IPv4\n1: IPv6",
           "member": "int64",
           "name": "AddrProto",
@@ -328,7 +313,6 @@
       "document": "BFD configuration information",
       "members": [
         {
-          "default": "",
           "document": "Number of health checks",
           "member": "int64",
           "name": "ProbeFailedTimes",
@@ -337,7 +321,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Health check interval",
           "member": "int64",
           "name": "Interval",
@@ -352,7 +335,6 @@
       "document": "BGP parameter, including Asn and AuthKey.",
       "members": [
         {
-          "default": "",
           "document": "User-side BGP Asn.",
           "member": "int64",
           "name": "Asn",
@@ -361,7 +343,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User-side BGP key.",
           "member": "string",
           "name": "AuthKey",
@@ -376,7 +357,6 @@
       "document": "Coordinate describing the longitude and latitude.",
       "members": [
         {
-          "default": "",
           "document": "Latitude",
           "member": "float",
           "name": "Lat",
@@ -385,7 +365,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Longitude",
           "member": "float",
           "name": "Lng",
@@ -400,7 +379,6 @@
       "document": "CreateDirectConnect request structure.",
       "members": [
         {
-          "default": "",
           "document": "Connection name.",
           "member": "string",
           "name": "DirectConnectName",
@@ -408,7 +386,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Access point of connection.\nYou can call `DescribeAccessPoints` to get the region ID. The selected access point must exist and be available.",
           "member": "string",
           "name": "AccessPointId",
@@ -416,7 +393,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).",
           "member": "string",
           "name": "LineOperator",
@@ -424,7 +400,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Port type of connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface), 1000Base-LX (1-Gigabit single-module optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-module optical Ethernet interface; 10 KM). Default value: 1000Base-LX.",
           "member": "string",
           "name": "PortType",
@@ -432,7 +407,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Circuit code of a connection, which is provided by the ISP or connection provider.",
           "member": "string",
           "name": "CircuitCode",
@@ -440,7 +414,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Local IDC location.",
           "member": "string",
           "name": "Location",
@@ -448,7 +421,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Connection port bandwidth in Mbps. Value range: [2,10240]. Default value: 1000.",
           "member": "int64",
           "name": "Bandwidth",
@@ -456,7 +428,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "ID of redundant connection.",
           "member": "string",
           "name": "RedundantDirectConnectId",
@@ -464,7 +435,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "VLAN for connection debugging, which is enabled and automatically assigned by default.",
           "member": "int64",
           "name": "Vlan",
@@ -472,7 +442,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Tencent-side IP address for connection debugging, which is automatically assigned by default.",
           "member": "string",
           "name": "TencentAddress",
@@ -480,7 +449,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User-side IP address for connection debugging, which is automatically assigned by default.",
           "member": "string",
           "name": "CustomerAddress",
@@ -488,7 +456,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Name of connection applicant, which is obtained from the account system by default.",
           "member": "string",
           "name": "CustomerName",
@@ -496,7 +463,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Email address of connection applicant, which is obtained from the account system by default.",
           "member": "string",
           "name": "CustomerContactMail",
@@ -504,7 +470,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Contact number of connection applicant, which is obtained from the account system by default.",
           "member": "string",
           "name": "CustomerContactNumber",
@@ -512,7 +477,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Fault reporting contact person.",
           "member": "string",
           "name": "FaultReportContactPerson",
@@ -520,7 +484,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Fault reporting contact number.",
           "member": "string",
           "name": "FaultReportContactNumber",
@@ -528,7 +491,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether the connection applicant has signed the service agreement. Default value: true.",
           "member": "bool",
           "name": "SignLaw",
@@ -561,7 +523,6 @@
       "document": "CreateDirectConnectTunnel request structure.",
       "members": [
         {
-          "default": "",
           "document": "Direct Connect ID, such as `dc-kd7d06of`.",
           "example": "dc-abcdefgh",
           "member": "string",
@@ -570,7 +531,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Dedicated tunnel name.",
           "example": "Test",
           "member": "string",
@@ -579,7 +539,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Connection owner, who is the current customer by default.\nThe developer account ID should be entered for shared connections.",
           "example": "12325464",
           "member": "string",
@@ -588,7 +547,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Network type. Valid values: VPC, BMVPC, CCN. Default value: VPC.\nVPC: Virtual Private Cloud.\nBMVPC: BM VPC.\nCCN: Cloud Connect Network.",
           "example": "VPC",
           "member": "string",
@@ -597,7 +555,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Network region.",
           "example": "ap-guangzhou",
           "member": "string",
@@ -606,7 +563,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Unified VPC ID or BMVPC ID.",
           "example": "vpc-abcdefgh",
           "member": "string",
@@ -615,7 +571,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Direct connect gateway ID, such as `dcg-d545ddf`.",
           "example": "dcg-abcdefgh",
           "member": "string",
@@ -624,7 +579,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Direct Connect bandwidth in Mbps.\nDefault value: connection bandwidth value.",
           "example": "100",
           "member": "int64",
@@ -633,7 +587,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "BGP: BGP routing.\nSTATIC: Static routing.\nDefault value: BGP routing.",
           "example": "BGP",
           "member": "string",
@@ -642,7 +595,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "BgpPeer, which is BGP information on the user side and includes Asn and AuthKey.",
           "example": "无",
           "member": "BgpPeer",
@@ -651,7 +603,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Static routing, i.e., IP range of the user's IDC.",
           "example": "无",
           "member": "RouteFilterPrefix",
@@ -660,7 +611,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "VLAN. Value range: 0-3,000.\n0: sub-interface not enabled.\nDefault value: Non-zero.",
           "example": "100",
           "member": "int64",
@@ -669,7 +619,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "TencentAddress: Tencent-side IP address.",
           "example": "192.168.1.2/30",
           "member": "string",
@@ -678,7 +627,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "CustomerAddress: User-side IP address.",
           "example": "192.168.1.1/30",
           "member": "string",
@@ -687,7 +635,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "TencentBackupAddress, i.e., Tencent-side standby IP address",
           "example": "192.168.1.1/30",
           "member": "string",
@@ -696,7 +643,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cloud Attached Connection Service ID",
           "example": "cas-xxxxxxxx",
           "member": "string",
@@ -705,7 +651,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to enable BFD",
           "example": "0",
           "member": "int64",
@@ -714,7 +659,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to enable NQA",
           "example": "0",
           "member": "int64",
@@ -723,7 +667,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "BFD configuration information",
           "example": "无",
           "member": "BFDInfo",
@@ -732,7 +675,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "NQA configuration information",
           "example": "无",
           "member": "NQAInfo",
@@ -766,7 +708,6 @@
       "document": "DeleteDirectConnect request structure.",
       "members": [
         {
-          "default": "",
           "document": "Connection ID.",
           "member": "string",
           "name": "DirectConnectId",
@@ -792,7 +733,6 @@
       "document": "DeleteDirectConnectTunnel request structure.",
       "members": [
         {
-          "default": "",
           "document": "Dedicated tunnel ID.",
           "member": "string",
           "name": "DirectConnectTunnelId",
@@ -818,7 +758,6 @@
       "document": "DescribeAccessPoints request structure.",
       "members": [
         {
-          "default": "",
           "document": "Access point region, which can be queried through `DescribeRegions`.\n\nYou can call `DescribeRegions` to get the region ID.",
           "member": "string",
           "name": "RegionId",
@@ -826,7 +765,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "int64",
           "name": "Offset",
@@ -834,7 +772,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
           "member": "int64",
           "name": "Limit",
@@ -874,7 +811,6 @@
       "document": "DescribeDirectConnectTunnels request structure.",
       "members": [
         {
-          "default": "",
           "document": "Filter conditions:\nThis parameter does not support specifying `DirectConnectTunnelIds` and `Filters` at the same time.\n<li> direct-connect-tunnel-name: Dedicated tunnel name.</li>\n<li> direct-connect-tunnel-id: Dedicated tunnel instance ID, such as `dcx-abcdefgh`.</li>\n<li>direct-connect-id: Connection instance ID, such as `dc-abcdefgh`.</li>",
           "member": "Filter",
           "name": "Filters",
@@ -882,7 +818,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Array of dedicated tunnel IDs.",
           "member": "string",
           "name": "DirectConnectTunnelIds",
@@ -890,7 +825,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "int64",
           "name": "Offset",
@@ -898,7 +832,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "member": "int64",
           "name": "Limit",
@@ -938,7 +871,6 @@
       "document": "DescribeDirectConnects request structure.",
       "members": [
         {
-          "default": "",
           "document": "Filter conditions:",
           "member": "Filter",
           "name": "Filters",
@@ -946,7 +878,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Array of connection IDs.",
           "member": "string",
           "name": "DirectConnectIds",
@@ -954,7 +885,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "int64",
           "name": "Offset",
@@ -962,7 +892,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "member": "int64",
           "name": "Limit",
@@ -1061,7 +990,6 @@
       "document": "DescribeInternetAddress request structure.",
       "members": [
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "member": "int64",
           "name": "Offset",
@@ -1069,7 +997,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "member": "int64",
           "name": "Limit",
@@ -1077,7 +1004,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter conditions:\n<li>AddrType, address type. Valid values: 0: BGP; 1: China Telecom; 2: China Mobile; 3: China Unicom</li>\n<li>AddrProto, address protocol. Valid values: 0: IPv4; 1: IPv6</li>\n<li>Status, address status. Valid values: 0: in use; 1: disabled; 2: returned</li>\n<li>Subnet, public IP address array</li>\n<InstanceIds>Public IP address ID array</li>",
           "member": "Filter",
           "name": "Filters",
@@ -1148,7 +1074,6 @@
       "document": "Connection information list.",
       "members": [
         {
-          "default": "",
           "document": "Connection ID.",
           "example": "dc-psjiehij",
           "member": "string",
@@ -1158,7 +1083,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Connection name.",
           "example": "test",
           "member": "string",
@@ -1168,7 +1092,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Access point ID of a connection.",
           "example": "ap-beijing-c-jxq",
           "member": "string",
@@ -1178,7 +1101,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Connection status.\nPENDING: Applying. \nREJECTED: Application rejected.   \nTOPAY: Payment pending. \nPAID: Paid. \nALLOCATED: Constructing.   \nAVAILABLE: Available.  \nDELETING: Deleting.\nDELETED: Deleted.",
           "example": "PENDINGPAY",
           "member": "string",
@@ -1188,7 +1110,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Connection creation time.",
           "example": "2020-12-08 16:57:43",
           "member": "datetime_iso",
@@ -1198,7 +1119,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Connection activation time.",
           "example": "2021-01-06 10:39:41",
           "member": "datetime_iso",
@@ -1208,7 +1128,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).",
           "example": "In-houseWiring",
           "member": "string",
@@ -1218,7 +1137,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Location of a local IDC.",
           "example": "test",
           "member": "string",
@@ -1228,7 +1146,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Connection port bandwidth in Mbps.",
           "example": "1000",
           "member": "int64",
@@ -1238,7 +1155,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User-side port type of a connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface; it is the default value), 1000Base-LX (1-Gigabit single-mode optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-mode optical Ethernet interface; 10 KM).",
           "example": "1000Base-LX",
           "member": "string",
@@ -1248,7 +1164,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Circuit code of a connection, which is provided by the ISP or service provider.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1111",
           "member": "string",
@@ -1258,7 +1173,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of a redundant connection.",
           "example": "dc-1234",
           "member": "string",
@@ -1268,7 +1182,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VLAN for connection debugging, which is enabled and automatically assigned by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "100",
           "member": "int64",
@@ -1278,7 +1191,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Tencent-side IP address for connection debugging.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "192.168.1.2",
           "member": "string",
@@ -1288,7 +1200,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User-side IP address for connection debugging.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "192.168.1.1",
           "member": "string",
@@ -1298,7 +1209,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Name of the connection applicant, which is obtained from the account system by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1308,7 +1218,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Email address of the connection applicant, which is obtained from the account system by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "274907341@qq.com",
           "member": "string",
@@ -1318,7 +1227,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Contact number of the connection applicant, which is obtained from the account system by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "15802738654",
           "member": "string",
@@ -1328,7 +1236,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Connection expiration time.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2040-01-06 10:39:41",
           "member": "datetime_iso",
@@ -1338,7 +1245,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Connection billing mode. NON_RECURRING_CHARGE: One-time charge for accessing service\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "NON_RECURRING_CHARGE",
           "member": "string",
@@ -1348,7 +1254,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Fault reporting contact person.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -1358,7 +1263,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Fault reporting contact number.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "15802738654",
           "member": "string",
@@ -1368,7 +1272,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Tag key-value pair\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "Tag",
@@ -1378,7 +1281,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Access point type of a connection.",
           "example": "VXLAN",
           "member": "string",
@@ -1388,7 +1290,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IDC city.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "成都",
           "member": "string",
@@ -1398,7 +1299,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Billing status\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "NORMAL",
           "member": "string",
@@ -1408,7 +1308,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Connection activation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2020-12-08 16:57:43",
           "member": "string",
@@ -1418,7 +1317,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the connection has the service agreement signed.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "true",
           "member": "bool",
@@ -1428,7 +1326,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the connection is an edge zone.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "false",
           "member": "bool",
@@ -1438,7 +1335,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of dedicated tunnels with disabled VLAN in the connection\nNote: this field may return `null`, indicating that no valid value can be found.",
           "example": "0",
           "member": "uint64",
@@ -1448,7 +1344,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of dedicated tunnels with enabled VLAN in the connection\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -1458,7 +1353,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Minimum bandwidth of the connection\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1000",
           "member": "uint64",
@@ -1474,7 +1368,6 @@
       "document": "Dedicated tunnel information list.",
       "members": [
         {
-          "default": "",
           "document": "Dedicated tunnel ID.",
           "member": "string",
           "name": "DirectConnectTunnelId",
@@ -1483,7 +1376,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Connection ID.",
           "member": "string",
           "name": "DirectConnectId",
@@ -1492,7 +1384,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Dedicated tunnel status.\nAVAILABLE: Ready or connected.\nPENDING: Applying.\nALLOCATING: Configuring.\nALLOCATED: Configured.\nALTERING: Modifying.\nDELETING: Deleting.\nDELETED: Deleted.\nCOMFIRMING: To be accepted.\nREJECTED: Rejected.",
           "member": "string",
           "name": "State",
@@ -1501,7 +1392,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Connection owner, i.e., developer account ID.",
           "member": "string",
           "name": "DirectConnectOwnerAccount",
@@ -1510,7 +1400,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Dedicated tunnel owner, i.e., developer account ID.",
           "member": "string",
           "name": "OwnerAccount",
@@ -1519,7 +1408,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Network type. Valid values: VPC, BMVPC, CCN.\n VPC: Virtual Private Cloud; BMVPC: BM VPC; CCN: Cloud Connect Network.",
           "member": "string",
           "name": "NetworkType",
@@ -1528,7 +1416,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Network of the VPC region, such as `ap-guangzhou`.",
           "member": "string",
           "name": "NetworkRegion",
@@ -1537,7 +1424,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Unified VPC ID or BMVPC ID.",
           "member": "string",
           "name": "VpcId",
@@ -1546,7 +1432,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Direct connect gateway ID.",
           "member": "string",
           "name": "DirectConnectGatewayId",
@@ -1555,7 +1440,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "BGP: BGP routing; STATIC: Static routing. Default value: BGP routing.",
           "member": "string",
           "name": "RouteType",
@@ -1564,7 +1448,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User-side BGP, including Asn and AuthKey.",
           "member": "BgpPeer",
           "name": "BgpPeer",
@@ -1573,7 +1456,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User-side IP range.",
           "member": "RouteFilterPrefix",
           "name": "RouteFilterPrefixes",
@@ -1582,7 +1464,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VLAN of a dedicated tunnel.",
           "member": "int64",
           "name": "Vlan",
@@ -1591,7 +1472,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "TencentAddress: Tencent-side IP address.",
           "member": "string",
           "name": "TencentAddress",
@@ -1600,7 +1480,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CustomerAddress: User-side IP address.",
           "member": "string",
           "name": "CustomerAddress",
@@ -1609,7 +1488,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Dedicated tunnel name.",
           "member": "string",
           "name": "DirectConnectTunnelName",
@@ -1618,7 +1496,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time of a dedicated tunnel.",
           "member": "datetime_iso",
           "name": "CreatedTime",
@@ -1627,7 +1504,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Bandwidth value of a dedicated tunnel.",
           "member": "int64",
           "name": "Bandwidth",
@@ -1636,7 +1512,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value of a dedicated tunnel.",
           "member": "Tag",
           "name": "TagSet",
@@ -1645,7 +1520,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Associated custom network probe ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "NetDetectId",
@@ -1654,7 +1528,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "BGP community switch\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "bool",
           "name": "EnableBGPCommunity",
@@ -1663,7 +1536,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether it is a NAT tunnel\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "NatType",
@@ -1672,7 +1544,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "VPC region abbreviation, such as `gz`, `cd`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "VpcRegion",
@@ -1681,7 +1552,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable BFD\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "BfdEnable",
@@ -1690,7 +1560,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Access point type of a dedicated tunnel.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "AccessPointType",
@@ -1699,7 +1568,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Direct connect gateway name.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "DirectConnectGatewayName",
@@ -1708,7 +1576,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "VPC name.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "VpcName",
@@ -1717,7 +1584,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Backup IP address on the Tencent side.",
           "member": "string",
           "name": "TencentBackupAddress",
@@ -1726,7 +1592,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the connection associated with the dedicated tunnel has the service agreement signed.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "bool",
           "name": "SignLaw",
@@ -1735,7 +1600,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cloud Attached Connection Service ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "CloudAttachId",
@@ -1750,7 +1614,6 @@
       "document": "DisableInternetAddress request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the internet tunnel’s public IP address",
           "member": "string",
           "name": "InstanceId",
@@ -1776,7 +1639,6 @@
       "document": "EnableInternetAddress request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the internet tunnel’s public IP address",
           "member": "string",
           "name": "InstanceId",
@@ -1802,7 +1664,6 @@
       "document": "Used for conditional filtering queries.",
       "members": [
         {
-          "default": "",
           "document": "Fields to be filtered.",
           "member": "string",
           "name": "Name",
@@ -1811,7 +1672,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Filter values of the field.",
           "member": "string",
           "name": "Values",
@@ -1826,7 +1686,6 @@
       "document": "Internet tunnel’s IP address details",
       "members": [
         {
-          "default": "",
           "document": "Internet tunnel’s IP address ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "InstanceId",
@@ -1835,7 +1694,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Internet tunnel’s network address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Subnet",
@@ -1844,7 +1702,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Mask length of a network address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "MaskLen",
@@ -1853,7 +1710,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Address type. Valid values: 0: BGP\n1: China Telecom\n2: China Mobile\n3: China Unicom\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "AddrType",
@@ -1862,7 +1718,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Address status. Valid values: 0: in use\n1: disabled\n2: returned",
           "member": "int64",
           "name": "Status",
@@ -1871,7 +1726,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Applied at\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ApplyTime",
@@ -1880,7 +1734,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Disabled at\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "StopTime",
@@ -1889,7 +1742,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Returned at\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ReleaseTime",
@@ -1898,7 +1750,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Region",
@@ -1907,7 +1758,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "AppId",
@@ -1916,7 +1766,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Address protocol. Valid values: 0: IPv4; 1: IPv6\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "AddrProto",
@@ -1925,7 +1774,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Retention period of a released IP address, in days\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "ReserveTime",
@@ -1940,7 +1788,6 @@
       "document": "Public IP address statistics of internet tunnels",
       "members": [
         {
-          "default": "",
           "document": "Region\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Region",
@@ -1949,7 +1796,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of public IP addresses for internet tunnels\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "SubnetNum",
@@ -1964,7 +1810,6 @@
       "document": "ModifyDirectConnectAttribute request structure.",
       "members": [
         {
-          "default": "",
           "document": "Connection ID.",
           "example": "dcx-abcdefgh",
           "member": "string",
@@ -1973,7 +1818,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Connection name.",
           "example": "abc",
           "member": "string",
@@ -1982,7 +1826,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Circuit code of a connection, which is provided by the ISP or connection provider.",
           "example": "ABF_123",
           "member": "string",
@@ -1991,7 +1834,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "VLAN for connection debugging.",
           "example": "100",
           "member": "int64",
@@ -2000,7 +1842,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Tencent-side IP address for connection debugging.",
           "example": "172.168.1.1/30",
           "member": "string",
@@ -2009,7 +1850,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User-side IP address for connection debugging.",
           "example": "172.168.1.2/30",
           "member": "string",
@@ -2018,7 +1858,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Name of connection applicant, which is obtained from the account system by default.",
           "example": "张三",
           "member": "string",
@@ -2027,7 +1866,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Email address of connection applicant, which is obtained from the account system by default.",
           "example": "12345@qq.com",
           "member": "string",
@@ -2036,7 +1874,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Contact number of connection applicant, which is obtained from the account system by default.",
           "example": "18812345678",
           "member": "string",
@@ -2045,7 +1882,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Fault reporting contact person.",
           "example": "张三",
           "member": "string",
@@ -2054,7 +1890,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Fault reporting contact number.",
           "example": "18812345678",
           "member": "string",
@@ -2063,7 +1898,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether the connection applicant has signed the service agreement.",
           "example": "true",
           "member": "bool",
@@ -2072,7 +1906,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Connection’s bandwidth",
           "example": "1000",
           "member": "uint64",
@@ -2099,7 +1932,6 @@
       "document": "ModifyDirectConnectTunnelAttribute request structure.",
       "members": [
         {
-          "default": "",
           "document": "Dedicated tunnel ID.",
           "member": "string",
           "name": "DirectConnectTunnelId",
@@ -2107,7 +1939,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Dedicated tunnel name.",
           "member": "string",
           "name": "DirectConnectTunnelName",
@@ -2115,7 +1946,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User-side BGP, including Asn and AuthKey.",
           "member": "BgpPeer",
           "name": "BgpPeer",
@@ -2123,7 +1953,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "User-side IP range.",
           "member": "RouteFilterPrefix",
           "name": "RouteFilterPrefixes",
@@ -2131,7 +1960,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Tencent-side IP address.",
           "member": "string",
           "name": "TencentAddress",
@@ -2139,7 +1967,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User-side IP address.",
           "member": "string",
           "name": "CustomerAddress",
@@ -2147,7 +1974,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Bandwidth value of a dedicated tunnel in Mbps.",
           "member": "int64",
           "name": "Bandwidth",
@@ -2155,7 +1981,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Tencent-side standby IP address",
           "member": "string",
           "name": "TencentBackupAddress",
@@ -2181,7 +2006,6 @@
       "document": "NQA configuration information",
       "members": [
         {
-          "default": "",
           "document": "Number of health checks",
           "member": "int64",
           "name": "ProbeFailedTimes",
@@ -2190,7 +2014,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Health check interval",
           "member": "int64",
           "name": "Interval",
@@ -2199,7 +2022,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IP address for the health check",
           "member": "string",
           "name": "DestinationIp",
@@ -2214,7 +2036,6 @@
       "document": "RejectDirectConnectTunnel request structure.",
       "members": [
         {
-          "default": "",
           "document": "None.",
           "member": "string",
           "name": "DirectConnectTunnelId",
@@ -2240,7 +2061,6 @@
       "document": "ReleaseInternetAddress request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the internet tunnel’s public IP address",
           "member": "string",
           "name": "InstanceId",
@@ -2266,7 +2086,6 @@
       "document": "User-side IP range.",
       "members": [
         {
-          "default": "",
           "document": "User-side IP range.",
           "member": "string",
           "name": "Cidr",
@@ -2281,7 +2100,6 @@
       "document": "Tag key-value pair",
       "members": [
         {
-          "default": "",
           "document": "Tag key\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Key",
@@ -2290,7 +2108,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Tag value\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Value",

@@ -382,7 +382,6 @@
       "document": "Algorithm name and ID",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Algorithm ID",
           "member": "string",
@@ -392,7 +391,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Algorithm name",
           "member": "string",
@@ -408,7 +406,6 @@
       "document": "ArchiveKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique CMK ID",
           "member": "string",
@@ -435,7 +432,6 @@
       "document": "AsymmetricRsaDecrypt request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique CMK ID",
           "member": "string",
@@ -444,7 +440,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Base64-encoded ciphertext encrypted with `PublicKey`",
           "member": "string",
@@ -453,7 +448,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Corresponding algorithm when a public key is used for encryption. Valid values: RSAES_PKCS1_V1_5, RSAES_OAEP_SHA_1, RSAES_OAEP_SHA_256",
           "member": "string",
@@ -496,7 +490,6 @@
       "document": "AsymmetricSm2Decrypt request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique CMK ID",
           "member": "string",
@@ -505,7 +498,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Base64-encoded ciphertext encrypted with `PublicKey`, whose length cannot exceed 256 bytes.",
           "member": "string",
@@ -548,7 +540,6 @@
       "document": "BindCloudResource request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "CMK ID",
           "member": "string",
@@ -557,7 +548,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unique ID of a Tencent Cloud service",
           "member": "string",
@@ -566,7 +556,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features.",
           "member": "string",
@@ -593,7 +582,6 @@
       "document": "CancelKeyArchive request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique CMK ID",
           "member": "string",
@@ -620,7 +608,6 @@
       "document": "CancelKeyDeletion request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique ID of the CMK for which to cancel schedule deletion",
           "member": "string",
@@ -655,7 +642,6 @@
       "document": "CreateKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1-60 letters, digits, `-`, and `_`, and must begin with a letter or digit. The `kms-` prefix is used for Tencent Cloud products.",
           "example": "test",
@@ -665,7 +651,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMK description of up to 1,024 bytes in length",
           "example": "test",
@@ -675,7 +660,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Defines the purpose of the key. The valid values are as follows: `ENCRYPT_DECRYPT` (default): creates a symmetric encryption/decryption key; `ASYMMETRIC_DECRYPT_RSA_2048`: creates an asymmetric encryption/decryption 2048-bit RSA key; `ASYMMETRIC_DECRYPT_SM2`: creates an asymmetric encryption/decryption SM2 key; `ASYMMETRIC_SIGN_VERIFY_SM2`: creates an asymmetric SM2 key for signature verification; `ASYMMETRIC_SIGN_VERIFY_ECC`: creates an asymmetric 2048-bit RSA key for signature verification; `ASYMMETRIC_SIGN_VERIFY_ECDSA384`: creates an asymmetric ECDSA384 key for signature verification. You can get a full list of supported key purposes and algorithms using the ListAlgorithms API.",
           "example": "ASYMMETRIC_DECRYPT_SM2",
@@ -685,7 +669,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the key type. Default value: 1. Valid value: 1 - default type, indicating that the CMK is created by KMS; 2 - EXTERNAL type, indicating that you need to import key material. For more information, please see the `GetParametersForImport` and `ImportKeyMaterial` API documents.",
           "example": "1",
@@ -695,7 +678,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag list",
           "example": "tags",
@@ -705,7 +687,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.",
           "example": "cluster-123",
@@ -823,7 +804,6 @@
       "document": "CreateWhiteBoxKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique alias that makes a key more recognizable and understandable. This parameter should be 1 to 60 letters, digits, `-`, and `_`; it must begin with a letter or digit and cannot be left empty.",
           "member": "string",
@@ -832,7 +812,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "All algorithm types for creating keys. Valid values: AES_256, SM4",
           "member": "string",
@@ -841,7 +820,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Key description of up to 1024 bytes",
           "member": "string",
@@ -850,7 +828,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag list",
           "member": "Tag",
@@ -917,7 +894,6 @@
       "document": "Decrypt request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The ciphertext data to be decrypted.",
           "example": "Ade234dasdeEWdGVzdCUyMHBsYWlJJlIHL",
@@ -927,7 +903,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "JSON string of key-value pair. If this parameter is specified for `Encrypt`, the same parameter needs to be provided when the `Decrypt` API is called. The maximum length is 1,024 bytes.",
           "example": "无",
@@ -937,7 +912,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PEM-encoded public key (2048-bit RSA/SM2 key), which can be used to encrypt the `Plaintext` returned. If this field is left empty, the `Plaintext` will not be encrypted.",
           "example": "无",
@@ -947,7 +921,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Asymmetric encryption algorithm. Valid values: `SM2` (C1C3C2 ciphertext is returned), `SM2_C1C3C2_ASN1` (C1C3C2 ASN1 ciphertext is returned), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, an SM2 public key will be used by default.",
           "example": "SM2",
@@ -995,7 +968,6 @@
       "document": "DeleteImportedKeyMaterial request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the EXTERNAL CMK for which to delete the key material.",
           "member": "string",
@@ -1022,7 +994,6 @@
       "document": "DeleteWhiteBoxKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Globally unique white-box key ID",
           "member": "string",
@@ -1049,7 +1020,6 @@
       "document": "DescribeKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Globally unique CMK ID",
           "member": "string",
@@ -1084,7 +1054,6 @@
       "document": "DescribeKeys request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of IDs of the CMKs to be queried in batches. Up to 100 `KeyId` values are supported in one query.",
           "member": "string",
@@ -1119,7 +1088,6 @@
       "document": "DescribeWhiteBoxDecryptKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Globally unique white-box key ID",
           "member": "string",
@@ -1154,7 +1122,6 @@
       "document": "DescribeWhiteBoxDeviceFingerprints request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "White-box key ID",
           "member": "string",
@@ -1189,7 +1156,6 @@
       "document": "DescribeWhiteBoxKeyDetails request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Filter: key status. 0: disabled, 1: enabled",
           "member": "int64",
@@ -1198,7 +1164,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the \"No. Offset value\" element of the array arranged in a certain order. The default value is 0.",
           "member": "uint64",
@@ -1207,7 +1172,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 0, indicating not to paginate.",
           "member": "uint64",
@@ -1216,7 +1180,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag filter condition",
           "member": "TagFilter",
@@ -1263,7 +1226,6 @@
       "document": "DescribeWhiteBoxKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Globally unique white-box key ID",
           "member": "string",
@@ -1323,7 +1285,6 @@
       "document": "Device fingerprint",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Fingerprint information collected by device fingerprint collector. Its format must be in the following regular expression: ^[0-9a-f]{8}[\\-][0-9a-f]{14}[\\-][0-9a-f]{14}[\\-][0-9a-f]{14}[\\-][0-9a-f]{16}$",
           "member": "string",
@@ -1333,7 +1294,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Description, such as IP and device name. Length limit: 1,024 bytes\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -1349,7 +1309,6 @@
       "document": "DisableKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique CMK ID",
           "member": "string",
@@ -1376,7 +1335,6 @@
       "document": "DisableKeyRotation request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique CMK ID",
           "member": "string",
@@ -1403,7 +1361,6 @@
       "document": "DisableKeys request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of IDs of the CMKs to be disabled in batches. Up to 100 CMKs are supported at a time",
           "member": "string",
@@ -1430,7 +1387,6 @@
       "document": "DisableWhiteBoxKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Globally unique white-box key ID",
           "member": "string",
@@ -1457,7 +1413,6 @@
       "document": "DisableWhiteBoxKeys request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of globally unique white-box key IDs. Note: you should make sure that all provided `KeyId` values are in valid format, unique, and actually exist. Up to 50 ones are allowed.",
           "member": "string",
@@ -1484,7 +1439,6 @@
       "document": "EnableKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique CMK ID",
           "member": "string",
@@ -1511,7 +1465,6 @@
       "document": "EnableKeyRotation request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique CMK ID",
           "example": "23e80852-1e38-11e9-b129-5cb9019b4b01",
@@ -1521,7 +1474,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The interval between each key rotation in days. Value range: 7 - 365 (default).",
           "example": "365",
@@ -1549,7 +1501,6 @@
       "document": "EnableKeys request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of IDs of the CMKs to be enabled in batches. Up to 100 CMKs are supported at a time",
           "member": "string",
@@ -1576,7 +1527,6 @@
       "document": "EnableWhiteBoxKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Globally unique white-box key ID",
           "member": "string",
@@ -1603,7 +1553,6 @@
       "document": "EnableWhiteBoxKeys request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of globally unique white-box key IDs. Note: you should make sure that all provided `KeyId` values are in valid format, unique, and actually exist. Up to 50 ones are allowed.",
           "member": "string",
@@ -1630,7 +1579,6 @@
       "document": "EncryptByWhiteBox request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Globally unique white-box key ID",
           "member": "string",
@@ -1639,7 +1587,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Base64-encoded text to be encrypted. The size of the original text cannot exceed 4 KB.",
           "member": "string",
@@ -1648,7 +1595,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Base64-encoded initialization vector of 16 bytes, which will be used by the encryption algorithm. If this parameter is not passed in, the backend service will generate a random one. You should save this value as a parameter for decryption.",
           "member": "string",
@@ -1691,7 +1637,6 @@
       "document": "Encrypt request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Globally unique ID of the CMK generated by calling the `CreateKey` API",
           "member": "string",
@@ -1700,7 +1645,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Encrypted plaintext data. This field must be Base64-encoded. The maximum size of the original data is 4 KB",
           "member": "string",
@@ -1709,7 +1653,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "JSON string of key-value pair. If this parameter is specified, the same parameter needs to be provided when the `Decrypt` API is called. It is up to 1,024 characters",
           "member": "string",
@@ -1756,7 +1699,6 @@
       "document": "GenerateDataKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Globally unique CMK ID",
           "example": "23e80852-1e38-11e9-b129-5cb9019b4b01",
@@ -1766,7 +1708,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the encryption algorithm and size of the `DataKey`. Valid values: AES_128, AES_256. Either `KeySpec` or `NumberOfBytes` must be specified.",
           "example": "AES_256",
@@ -1776,7 +1717,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Length of the `DataKey`. If both `NumberOfBytes` and `KeySpec` are specified, `NumberOfBytes` will prevail. Minimum value: 1; maximum value: 1024. Either `KeySpec` or `NumberOfBytes` must be specified.",
           "example": "无",
@@ -1786,7 +1726,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "JSON string of key-value pair. If this field is used, the same string should be entered when the returned `DataKey` is decrypted.",
           "example": "无",
@@ -1796,7 +1735,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PEM-encoded public key (2048-bit RSA/SM2 key), which can be used to encrypt the `Plaintext` returned. If this field is left empty, the `Plaintext` will not be encrypted.",
           "example": "无",
@@ -1806,7 +1744,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Asymmetric encryption algorithm. Valid values: `SM2` (C1C3C2 ciphertext is returned)`, `SM2_C1C3C2_ASN1` (C1C3C2 ASN1 ciphertext is returned), `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256`. This field is used in combination with `EncryptionPublicKey` for encryption. If it is left empty, an SM2 public key will be used by default.",
           "example": "SM2",
@@ -1864,7 +1801,6 @@
       "document": "GenerateRandom request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Length of the random number. Minimum value: 1. Maximum value: 1024",
           "member": "uint64",
@@ -1899,7 +1835,6 @@
       "document": "GetKeyRotationStatus request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique CMK ID",
           "member": "string",
@@ -1934,7 +1869,6 @@
       "document": "GetParametersForImport request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique ID of a CMK. The CMK for which to get the key parameters must be of the `EXTERNAL` type, i.e., Type = 2 when the CMK is created by the `CreateKey` API.",
           "member": "string",
@@ -1943,7 +1877,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the algorithm for key material encryption. Currently, `RSAES_PKCS1_V1_5`, `RSAES_OAEP_SHA_1`, and `RSAES_OAEP_SHA_256` are supported.",
           "member": "string",
@@ -1952,7 +1885,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the type of wrapping key. Currently, only `RSA_2048` is supported.",
           "member": "string",
@@ -2011,7 +1943,6 @@
       "document": "GetPublicKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique CMK ID.",
           "member": "string",
@@ -2185,7 +2116,6 @@
       "document": "ImportKeyMaterial request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Base64-encoded key material that encrypted with the `PublicKey` returned by `GetParametersForImport`. For the KMS of SM-CRYPTO version, the length of the key material should be 128 bits, while for KMS of FIPS-compliant version, the length should be 256 bits.",
           "member": "string",
@@ -2194,7 +2124,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Import token obtained by calling `GetParametersForImport`.",
           "member": "string",
@@ -2203,7 +2132,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the CMK into which to import key material, which must be the same as the one specified by `GetParametersForImport`.",
           "member": "string",
@@ -2212,7 +2140,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unix timestamp of the key material's expiration time. If this value is empty or 0, the key material will never expire. To specify the expiration time, it should be later than the current time. Maximum value: 2147443200.",
           "member": "uint64",
@@ -2239,7 +2166,6 @@
       "document": "Returned CMK list information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Globally unique CMK ID.",
           "member": "string",
@@ -2255,7 +2181,6 @@
       "document": "CMK attribute information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Globally unique CMK ID",
           "example": "6cdf26d1-44ff-11eb-841c-5254006d0810",
@@ -2266,7 +2191,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alias that makes a key more recognizable and understandable",
           "example": "test",
@@ -2277,7 +2201,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Key creation time",
           "example": "11",
@@ -2288,7 +2211,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMK description",
           "example": "desc",
@@ -2299,7 +2221,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMK status. Valid values: Enabled, Disabled, PendingDelete, PendingImport, Archived.",
           "example": "PendingDelete",
@@ -2310,7 +2231,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMK purpose. Valid values: `ENCRYPT_DECRYPT`, `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, `ASYMMETRIC_SIGN_VERIFY_SM2`, `ASYMMETRIC_SIGN_VERIFY_RSA_2048`, and `ASYMMETRIC_SIGN_VERIFY_ECC`.",
           "example": "ASYMMETRIC_DECRYPT_RSA_2048",
@@ -2321,7 +2241,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMK type. 2: FIPS-compliant; 4: SM-CRYPTO",
           "example": "3",
@@ -2332,7 +2251,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creator",
           "example": "12345678",
@@ -2343,7 +2261,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether key rotation is enabled",
           "example": "true",
@@ -2354,7 +2271,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMK creator. The value of this parameter is `user` if the CMK is created by the user, or the corresponding service name if it is created automatically by an authorized Tencent Cloud service.",
           "example": "user",
@@ -2365,7 +2281,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time of next rotation if key rotation is enabled",
           "example": "1234567",
@@ -2376,7 +2291,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Scheduled deletion time",
           "example": "123456",
@@ -2387,7 +2301,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMK key material type. TENCENT_KMS: created by KMS; EXTERNAL: imported by user.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "EXTERNAL",
@@ -2398,7 +2311,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It's valid when `Origin` is `EXTERNAL`, indicating the expiration date of key material. 0 means valid forever.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "12345",
@@ -2409,7 +2321,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Resource ID in the format of `creatorUin/$creatorUin/$keyId`.",
           "example": "creatorUin/12345/6cdf26d1-44ff-11eb-841c-5254006d0810",
@@ -2420,7 +2331,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "cls-hsm-1a2b3c4d",
@@ -2478,7 +2388,6 @@
       "document": "ListKeyDetail request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the \"No. Offset value\" element of the array arranged in a certain order. The default value is 0.",
           "example": "0",
@@ -2488,7 +2397,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200.",
           "example": "10",
@@ -2498,7 +2406,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service.",
           "example": "0",
@@ -2508,7 +2415,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorts by CMK creation time. 0: descending; 1: ascending",
           "example": "0",
@@ -2518,7 +2424,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters by CMK status. 0: all CMKs; 1: CMKs in `Enabled` status only; 2: CMKs in `Disabled` status only; 3: CMKs in `PendingDelete` status only (i.e., keys with schedule deletion enabled); 4: CMKs in `PendingImport` status only; 5: CMKs in `Archived` status only.",
           "example": "0",
@@ -2528,7 +2433,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Performs a fuzzy query by `KeyId` or `Alias`",
           "example": "test",
@@ -2538,7 +2442,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters by CMK type. \"TENCENT_KMS\" indicates to filter CMKs whose key materials are created by KMS; \"EXTERNAL\" indicates to filter CMKs of `EXTERNAL` type whose key materials are imported by users; \"ALL\" or empty indicates to filter CMKs of both types. This value is case-sensitive.",
           "example": "ALL",
@@ -2548,7 +2451,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters by the `KeyUsage` field value. Valid values: `ALL` (all CMKs), `ENCRYPT_DECRYPT` (used when this field is left empty), `ASYMMETRIC_DECRYPT_RSA_2048`, `ASYMMETRIC_DECRYPT_SM2`, `ASYMMETRIC_SIGN_VERIFY_SM2`, `ASYMMETRIC_SIGN_VERIFY_RSA_2048`, and `ASYMMETRIC_SIGN_VERIFY_ECC`.",
           "example": "ASYMMETRIC_SIGN_VERIFY_RSA_2048",
@@ -2558,7 +2460,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag filter condition",
           "example": "test",
@@ -2568,7 +2469,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.",
           "example": "无",
@@ -2612,7 +2512,6 @@
       "document": "ListKeys request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter has the same meaning of the `Offset` in an SQL query, indicating that this acquisition starts from the \"No. Offset value\" element of the array arranged in a certain order. The default value is 0",
           "example": "0",
@@ -2622,7 +2521,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter has the same meaning of the `Limit` in an SQL query, indicating that up to `Limit` value elements can be obtained in this request. The default value is 10 and the maximum value is 200",
           "example": "2",
@@ -2632,7 +2530,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter by creator role. 0 (default value): the CMK is created by the user; 1: the CMK is created automatically by an authorized Tencent Cloud service",
           "example": "无",
@@ -2642,7 +2539,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the HSM cluster. This field is only valid for Exclusive and Managed KMS instances.",
           "example": "无",
@@ -2686,7 +2582,6 @@
       "document": "OverwriteWhiteBoxDeviceFingerprints request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "White-box key ID",
           "member": "string",
@@ -2695,7 +2590,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Device fingerprint list. If the list is empty, it means to delete all fingerprint information corresponding to the key. There can be up to 200 entries in the list.",
           "member": "DeviceFingerprint",
@@ -2938,7 +2832,6 @@
       "document": "ReEncrypt request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Ciphertext to be re-encrypted",
           "member": "string",
@@ -2947,7 +2840,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMK used for re-encryption. If this parameter is empty, the ciphertext will be re-encrypted by using the original CMK (as long as the key is not rotated, the ciphertext will not be refreshed)",
           "member": "string",
@@ -2956,7 +2848,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "JSON string of the key-value pair used during ciphertext encryption by `CiphertextBlob`. If not used during encryption, this parameter will be empty",
           "member": "string",
@@ -2965,7 +2856,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "JSON string of the key-value pair used during re-encryption. If this field is used, the same string should be entered when the returned new ciphertext is decrypted",
           "member": "string",
@@ -3024,7 +2914,6 @@
       "document": "ScheduleKeyDeletion request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique CMK ID",
           "member": "string",
@@ -3033,7 +2922,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Schedule deletion time range. Value range: [7,30]",
           "member": "uint64",
@@ -3076,7 +2964,6 @@
       "document": "SignByAsymmetricKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Signature algorithm. The valid values include `SM2DSA`, `ECC_P256_R1`, `RSA_PSS_SHA_256`, and `RSA_PKCS1_SHA_256`, etc. You can get a full list of supported algorithms using the ListAlgorithms API.",
           "example": "SM2DSA",
@@ -3086,7 +2973,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Full message or message abstract. Before Base64 encoding, an original message can contain up to 4,096 bytes while a message abstract must be 32 bytes.",
           "example": "abc",
@@ -3096,7 +2982,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unique ID of a key",
           "example": "6cdf26d1-44ff-11eb-841c-5254006d0810",
@@ -3106,7 +2991,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.",
           "example": "RAW",
@@ -3142,7 +3026,6 @@
       "document": "Tag key and tag value",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Tag key",
           "member": "string",
@@ -3152,7 +3035,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag value",
           "member": "string",
@@ -3168,7 +3050,6 @@
       "document": "Tag filter",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Tag key",
           "member": "string",
@@ -3178,7 +3059,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag value",
           "member": "string",
@@ -3194,7 +3074,6 @@
       "document": "UnbindCloudResource request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "CMK ID",
           "member": "string",
@@ -3203,7 +3082,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unique ID of a Tencent Cloud service",
           "member": "string",
@@ -3212,7 +3090,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Resource/instance ID, which is stored as a string and defined by the caller based on the Tencent Cloud service’s features.",
           "member": "string",
@@ -3239,7 +3116,6 @@
       "document": "UpdateAlias request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "New alias containing 1-60 characters or digits",
           "member": "string",
@@ -3248,7 +3124,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Globally unique CMK ID",
           "member": "string",
@@ -3275,7 +3150,6 @@
       "document": "UpdateKeyDescription request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "New description of up to 1,024 bytes in length",
           "member": "string",
@@ -3284,7 +3158,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the CMK for which to modify the description",
           "member": "string",
@@ -3311,7 +3184,6 @@
       "document": "VerifyByAsymmetricKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique ID of a key",
           "example": "6cdf26d1-44ff-11eb-841c-5254006d0810",
@@ -3321,7 +3193,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Signature value, which is generated by calling the KMS signature API.",
           "example": "MEUCICr/JCV52BqGvI0iYxdZ1eL8zzJjx39mWNv2ZWdLOMvRAiEApO6os3Wj0Tg3",
@@ -3331,7 +3202,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Full message or message abstract. Before Base64 encoding, an original message can contain up to 4,096 bytes while a message abstract must be 32 bytes.",
           "example": "abc",
@@ -3341,7 +3211,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Signature algorithm. The valid values include `SM2DSA`, `ECC_P256_R1`, `RSA_PSS_SHA_256`, and `RSA_PKCS1_SHA_256`, etc. You can get a full list of supported algorithms using the ListAlgorithms API.",
           "example": "SM2DSA",
@@ -3351,7 +3220,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message type. Valid values: `RAW` (indicating an original message; used by default if the parameter is not passed in) and `DIGEST`.",
           "example": "RAW",
@@ -3389,7 +3257,6 @@
       "document": "White-box key information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Globally unique white-box key ID",
           "member": "string",
@@ -3399,7 +3266,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unique alias that makes a key more recognizable and understandable. This parameter cannot be empty, can contain 1 to 60 letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.",
           "member": "string",
@@ -3409,7 +3275,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creator",
           "member": "uint64",
@@ -3419,7 +3284,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Key description information",
           "member": "string",
@@ -3429,7 +3293,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Key creation time in Unix timestamp",
           "member": "uint64",
@@ -3439,7 +3302,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "White-box key status. Valid values: Enabled, Disabled",
           "member": "string",
@@ -3449,7 +3311,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creator",
           "member": "uint64",
@@ -3459,7 +3320,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Key algorithm type",
           "member": "string",
@@ -3469,7 +3329,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Base64-encoded white-box encryption key",
           "member": "string",
@@ -3479,7 +3338,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Base64-encoded white-box decryption key",
           "member": "string",
@@ -3489,7 +3347,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Resource ID in the format of `creatorUin/$creatorUin/$keyId`",
           "member": "string",
@@ -3499,7 +3356,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether there is a device fingerprint bound to the current key\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "bool",

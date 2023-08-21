@@ -18,7 +18,6 @@
       "document": "Indicates the information of the business user's device",
       "members": [
         {
-          "default": "",
           "document": "This field indicates the IP address of the business user's device and supports recording both **IPv4 and IPv6** addresses. It needs to be used together with the `IpType` parameter.",
           "example": "无",
           "member": "string",
@@ -28,7 +27,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field indicates the MAC address of the business user, which makes it easier to identify and manage devices. Its format and value are the same as those of a standard MAC address.",
           "example": "无",
           "member": "string",
@@ -38,7 +36,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "*In beta test. Stay tuned.*",
           "example": "无",
           "member": "string",
@@ -48,7 +45,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "*In beta test. Stay tuned.*",
           "example": "无",
           "member": "string",
@@ -58,7 +54,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field indicates the international mobile equipment identity **(IMEI)** number of the business user's device, which can be used to identify each mobile communication device such as mobile phone for easier device identification and management.<br>Note: the format is **15–17 digits**.",
           "example": "无",
           "member": "string",
@@ -68,7 +63,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "**For iOS devices**: this field indicates the identifier for advertisers **(IDFA)** of the business user, which is provided by Apple to identify the user and contains a hexadecimal string of 32 digits and letters.<br>\nNote: as iOS 14 has been updated by Apple to allow users to manually enable or disable IDFA since 2021, the validity of this string may be reduced.",
           "example": "无",
           "member": "string",
@@ -78,7 +72,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "**For iOS devices**: this field indicates the identifier for vendors **(IDFV)** of the business user, which is provided by Apple to identify the app vendor and contains a hexadecimal string of 32 digits and letters. It can be used to uniquely identify a device.",
           "example": "无",
           "member": "string",
@@ -88,7 +81,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field indicates the type of the recorded IP address. Valid values: **0** (IPv4 address), **1** (IPv6 address). It needs to be used together with the `IpType` parameter.",
           "example": "无",
           "member": "uint64",
@@ -290,7 +282,6 @@
       "document": "Returns the details of the subtag hit by the categorization model",
       "members": [
         {
-          "default": "",
           "document": "This field is used to return the ID of the recognized object for easier recognition and distinction.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -300,7 +291,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This field is used to return the hit subtag name.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -310,7 +300,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This field is used to return the hit score of the subtag. Value range: **0–100**; for example, *Porn-SexBehavior 99* indicates that the hit score of the *Porn-SexBehavior* tag for the recognized content is 99.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -326,7 +315,6 @@
       "document": "Hit result of the categorization model",
       "members": [
         {
-          "default": "",
           "document": "This field is used to return the scenario result recognized by the model, such as advertising, pornographic, and harmful.",
           "example": "无",
           "member": "string",
@@ -336,7 +324,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the operation suggestion for the current maliciousness tag. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.",
           "example": "无",
           "member": "string",
@@ -346,7 +333,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.",
           "example": "无",
           "member": "string",
@@ -356,7 +342,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the detection result for a subtag under the maliciousness tag, such as *Porn-SexBehavior*.",
           "example": "无",
           "member": "string",
@@ -366,7 +351,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Confidence score of the under the current label. Value range: 0 (**the lowest confidence**) to 100 (**the highest confidence**). For example, *Porn 99* indicates that the image is highly likely to be pornographic, while *Porn 0* indicates that the image is not pornographic.",
           "example": "无",
           "member": "uint64",
@@ -376,7 +360,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the details of the subtag hit by the categorization model, such as number, hit tag name, and score.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "LabelDetailItem",
@@ -392,7 +375,6 @@
       "document": "Returns the details of the custom library/blocklist/allowlist",
       "members": [
         {
-          "default": "",
           "document": "This field is used to return the ID of the recognized object for easier recognition and distinction.",
           "example": "无",
           "member": "int64",
@@ -402,7 +384,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is **valid only when `Label` is `Custom` (custom keyword)**. It is used to return the ID of the custom library for easier custom library management and configuration.",
           "example": "无",
           "member": "string",
@@ -412,7 +393,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is **valid only when `Label` is `Custom` (custom keyword)**. It is used to return the name of the custom library for easier custom library management and configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -422,7 +402,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This field is used to return the ID of the recognized image object for easier file management.",
           "example": "无",
           "member": "string",
@@ -432,7 +411,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.",
           "example": "无",
           "member": "string",
@@ -442,7 +420,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return other custom tags to meet the needs in your customized scenarios. It can be skipped if you have no custom needs.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -452,7 +429,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This field is used to return the hit score of the model. Value range: **0–100**; for example, *Porn 99* indicates that the hit score of the porn tag for the recognized content is 99.",
           "example": "无",
           "member": "int64",
@@ -468,7 +444,6 @@
       "document": "Returns the detailed result of the comparison with the blocklist/allowlist",
       "members": [
         {
-          "default": "",
           "document": "This field indicates the scenario recognition result of the model. Default value: Similar.",
           "example": "无",
           "member": "string",
@@ -478,7 +453,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the operation suggestion. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.",
           "example": "无",
           "member": "string",
@@ -488,7 +462,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.",
           "example": "无",
           "member": "string",
@@ -498,7 +471,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the detection result for a subtag under the maliciousness tag, such as *Porn-SexBehavior*.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -508,7 +480,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This field is used to return the recognition score of the image search model. Value range: **0–100**. It indicates the score for the similarity between the moderated image **and the samples in the library**. A higher score indicates that the content is more likely to hit a sample in the library of similar images.",
           "example": "无",
           "member": "int64",
@@ -518,7 +489,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the detailed result of the comparison with the blocklist/allowlist, such as number, library name, and maliciousness tag. For more information on the returned value, see the description of the [LibDetail](https://intl.cloud.tencent.com/document/product/1125/53274?from_cn_redirect=1#LibDetail) data structure.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "LibDetail",
@@ -534,7 +504,6 @@
       "document": "Coordinate",
       "members": [
         {
-          "default": "",
           "document": "This parameter is used to return the pixel position of the **abscissa (X) of the top-left corner** of the detection frame. It can be combined with other parameters to uniquely determine the size and position of the detection frame.",
           "example": "无",
           "member": "float",
@@ -544,7 +513,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is used to return the pixel position of the **ordinate of the top-left corner** (Y) of the detection frame. It can be combined with other parameters to uniquely determine the size and position of the detection frame.",
           "example": "无",
           "member": "float",
@@ -554,7 +522,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is used to return the **width of the detection frame** (the length starting from the top-left corner and extending to the right on the X axis). It can be combined with other parameters to uniquely determine the size and position of the detection frame.",
           "example": "无",
           "member": "float",
@@ -564,7 +531,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is used to return the **height of the detection frame** (the length starting from the top-left corner and extending down the Y axis). It can be combined with other parameters to uniquely determine the size and position of the detection frame.",
           "example": "无",
           "member": "float",
@@ -574,7 +540,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is used to return the **rotation angle of the detection frame**. Valid values: **0–360** (**degrees**), and the direction is **counterclockwise rotation**. This parameter can be combined with the `X` and `Y` coordinate parameters to uniquely determine the specific position of the detection frame.",
           "example": "无",
           "member": "float",
@@ -590,7 +555,6 @@
       "document": "Object detection result details. When the detection scenario is an object, advertising logo, or QR code, it represents the tag name, tag value, tag score, and position information of the model detection frame.",
       "members": [
         {
-          "default": "",
           "document": "This parameter is used to return the ID of the recognized object for easier recognition and distinction.",
           "example": "无",
           "member": "uint64",
@@ -600,7 +564,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is used to return the hit object tag.",
           "example": "无",
           "member": "string",
@@ -610,7 +573,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is used to return the value or content of the object tag; for example, when the tag is *QR code (QrCode)*, this field will be the URL of the recognized QR code.",
           "example": "无",
           "member": "string",
@@ -620,7 +582,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is used to return the hit score of the object tag. Valid values: **0–100**; for example, *QrCode 99* indicates that it is highly likely that the recognized content will hit the QR code tag.",
           "example": "无",
           "member": "uint64",
@@ -630,7 +591,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the coordinate position (X and Y coordinates of the top-left corner, length, width, and rotation angle) of the object detection frame for quick location of the object information.",
           "example": "无",
           "member": "Location",
@@ -640,7 +600,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is used to return the hit object subtag.",
           "example": "无",
           "member": "string",
@@ -656,7 +615,6 @@
       "document": "Returns object detection result details",
       "members": [
         {
-          "default": "",
           "document": "This field is used to return the recognized object scenario result, such as QR code, logo, and image OCR.",
           "example": "无",
           "member": "string",
@@ -666,7 +624,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the operation suggestion for the current maliciousness tag. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.",
           "example": "无",
           "member": "string",
@@ -676,7 +633,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the maliciousness tag in the detection result, which represents the moderation result suggested by the model. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.",
           "example": "无",
           "member": "string",
@@ -686,7 +642,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the detection result for a subtag under the current maliciousness tag, such as *Porn-SexBehavior*.",
           "example": "无",
           "member": "string",
@@ -696,7 +651,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the hit score of a subtag under the current maliciousness tag. Value range: **0–100**; for example, *Porn-SexBehavior 99* indicates that the hit score of the *Porn-SexBehavior* tag for the recognized content is 99.",
           "example": "无",
           "member": "uint64",
@@ -706,7 +660,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the name of the recognized object.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -716,7 +669,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This field is used to return the details of the recognized object, such as number, hit tag name, and position coordinates. For more information on the returned value, see the description of the [ObjectDetail](https://intl.cloud.tencent.com/document/api/1125/53274?from_cn_redirect=1#ObjectDetail) data structure.\n \nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ObjectDetail",
@@ -732,7 +684,6 @@
       "document": "Returns OCR detection result details",
       "members": [
         {
-          "default": "",
           "document": "This field indicates the recognition scenario. Default value: OCR (image OCR).",
           "example": "无",
           "member": "string",
@@ -742,7 +693,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the operation suggestion for the maliciousness tag with the highest priority. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.",
           "example": "无",
           "member": "string",
@@ -752,7 +702,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the maliciousness tag with the highest priority in the OCR detection result, which represents the moderation result suggested by the model. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.",
           "example": "无",
           "member": "string",
@@ -762,7 +711,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the detection result for a subtag under the current tag (Label), such as *Porn-SexBehavior*.",
           "example": "无",
           "member": "string",
@@ -772,7 +720,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the confidence under the current tag (Label). Value range: 0 (**the lowest confidence**)–100 (**the highest confidence**), where a higher value indicates that the text is more likely to fall into the category of the current returned tag; for example, *Porn 99* indicates that the text is highly likely to be pornographic, while *Porn 0* indicates that the text is not pornographic.",
           "example": "无",
           "member": "uint64",
@@ -782,7 +729,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the details of the OCR recognition result, such as text content, tag, and recognition frame position.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OcrTextDetail",
@@ -792,7 +738,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This field is used to return the text information recognized by OCR.",
           "example": "无",
           "member": "string",
@@ -808,7 +753,6 @@
       "document": "This field is used to return the OCR text result details. More text in the image may increase the time it takes the API to return the result.",
       "members": [
         {
-          "default": "",
           "document": "This field is used to return the text content recognized by OCR.<br>Note: OCR can recognize text of **up to 5,000 bytes**.",
           "example": "无",
           "member": "string",
@@ -818,7 +762,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the maliciousness tag in the detection result.<br>Returned values: **Normal**: normal; **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.",
           "example": "无",
           "member": "string",
@@ -828,7 +771,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is **valid only when `Label` is `Custom` (custom keyword)**. It is used to return the ID of the custom library for easier custom library management and configuration.",
           "example": "无",
           "member": "string",
@@ -838,7 +780,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is **valid only when `Label` is `Custom` (custom keyword)**. It is used to return the name of the custom library for easier custom library management and configuration.",
           "example": "无",
           "member": "string",
@@ -848,7 +789,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is used to return the hit keyword under the current tag (label).",
           "example": "无",
           "member": "string",
@@ -858,7 +798,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is used to return the model hit score of the current maliciousness tag. Value range: **0–100**, where a higher value indicates that the current scenario agrees more with the scenario represented by the maliciousness tag.",
           "example": "无",
           "member": "uint64",
@@ -868,7 +807,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is used to return the position (X and Y coordinates of the top-left corner, length, width, and rotation angle) of the OCR detection frame in the image for quick location of the recognized text.",
           "example": "无",
           "member": "Location",
@@ -878,7 +816,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is used to return the confidence of the text OCR result. Valid values: **0** (**the lowest confidence**)–**100** (**the highest confidence**), where a higher value indicates that it is more likely that the image contains the recognized text; for example, *Hello 99* indicates that it is highly likely that the text in the OCR recognition frame is \"Hello\".",
           "example": "无",
           "member": "uint64",
@@ -888,7 +825,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field is used to return the maliciousness subtag that corresponds to the detection result.",
           "example": "无",
           "member": "string",
@@ -961,7 +897,6 @@
       "document": "Indicates the information of the business user's account",
       "members": [
         {
-          "default": "",
           "document": "This field indicates the business user ID. After it is specified, the system can optimize the moderation result according to the violation history to facilitate determination when a suspicious violation risk exists.",
           "example": "无",
           "member": "string",
@@ -971,7 +906,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field indicates the nickname of the business user's account.",
           "example": "无",
           "member": "string",
@@ -981,7 +915,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field indicates the account type of the business user ID.<br>\nThis field can be used together with the ID parameter (UserId) to uniquely identify the account.",
           "example": "无",
           "member": "string",
@@ -991,7 +924,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field indicates the gender of the business user's account.<br>\nValid values: **0** (default value): unknown; **1** (male); **2** (female).",
           "example": "无",
           "member": "uint64",
@@ -1001,7 +933,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field indicates the age of the business user's account.<br>\nValid values: integers between **0** (default value, which indicates unknown) and **custom age limit**.",
           "example": "无",
           "member": "uint64",
@@ -1011,7 +942,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field indicates the level of the business user's account.<br>\nValid values: **0** (default value): unknown; **1**: low level; **2**: medium level; **3**: high level. Currently, **the level is not customizable**.",
           "example": "无",
           "member": "uint64",
@@ -1021,7 +951,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field indicates the mobile number of the business user's account. It supports recording mobile numbers across the world.<br>\nNote: you need to use a consistent mobile number format, such as area code format (086/+86).",
           "example": "无",
           "member": "string",
@@ -1031,7 +960,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field indicates the profile of the business user. It can contain **up to 5,000 letters and special symbols**.",
           "example": "无",
           "member": "string",
@@ -1041,7 +969,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This field indicates the access URL of the business user's profile photo in PNG, JPG, JPEG, BMP, GIF, or WEBP format.<br>Note: the profile photo **cannot exceed 5 MB in size**. **A resolution of 256x256 or higher** is recommended. The image download time should be limited to 3 seconds; otherwise, a download timeout will be returned.",
           "example": "无",
           "member": "string",

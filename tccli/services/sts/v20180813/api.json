@@ -46,7 +46,6 @@
       "document": "AssumeRole request structure.",
       "members": [
         {
-          "default": "",
           "document": "Resource descriptions of a role, which can be obtained by clicking the role name in the [CAM console](https://console.cloud.tencent.com/cam/role).\nGeneral role:\nqcs::cam::uin/12345678:role/4611686018427397919, qcs::cam::uin/12345678:roleName/testRoleName\nService role:\nqcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920, qcs::cam::uin/12345678:role/tencentcloudServiceRoleName/testServiceRoleName",
           "example": "qcs%3A%3Acam%3A%3Auin%2F2385420691%3Arole%2F4611686018427397919",
           "member": "string",
@@ -55,7 +54,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User-defined temporary session name.\nIt can contain 2-128 letters, digits, and symbols (=,.@_-). Regex: [\\w+=,.@_-]*",
           "example": "cts",
           "member": "string",
@@ -64,7 +62,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Specifies the validity period of credentials in seconds. Default value: 7200. Maximum value: 43200",
           "example": "test",
           "member": "uint64",
@@ -73,7 +70,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Policy description\nNote:\n1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://intl.cloud.tencent.com/document/api/598/33159?from_cn_redirect=1#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).\n2. For the policy syntax, please see CAM's [Syntax Logic](https://intl.cloud.tencent.com/document/product/598/10603?from_cn_redirect=1).\n3. The policy cannot contain the `principal` element.",
           "example": "无",
           "member": "string",
@@ -82,7 +78,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "External role ID, which can be obtained by clicking the role name in the [CAM console](https://console.cloud.tencent.com/cam/role).\nIt can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\\w+=,.@:\\/-]*",
           "example": "role-1232",
           "member": "string",
@@ -91,7 +86,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of session tags. Up to 50 tags are allowed. The tag keys can not duplicate.",
           "example": "无",
           "member": "Tag",
@@ -100,7 +94,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "UIN of the initiator",
           "example": "1000001",
           "member": "string",
@@ -148,7 +141,6 @@
       "document": "AssumeRoleWithSAML request structure.",
       "members": [
         {
-          "default": "",
           "document": "Base64-encoded SAML assertion",
           "member": "string",
           "name": "SAMLAssertion",
@@ -156,7 +148,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Principal access description name",
           "member": "string",
           "name": "PrincipalArn",
@@ -164,7 +155,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Role access description name",
           "member": "string",
           "name": "RoleArn",
@@ -172,7 +162,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Session name",
           "member": "string",
           "name": "RoleSessionName",
@@ -180,7 +169,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The validity period of the temporary credentials in seconds. Default value: 7,200s. Maximum value: 43,200s.",
           "member": "uint64",
           "name": "DurationSeconds",
@@ -227,7 +215,6 @@
       "document": "AssumeRoleWithWebIdentity request structure.",
       "members": [
         {
-          "default": "",
           "document": "Identity provider name",
           "example": "OIDC",
           "member": "string",
@@ -236,7 +223,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "OIDC token issued by the IdP",
           "example": "XXXXX",
           "member": "string",
@@ -245,7 +231,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Role access description name",
           "example": "qcs::cam::uin/798950673:roleName/OneLogin-Role",
           "member": "string",
@@ -254,7 +239,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Session name",
           "example": "XXXXX",
           "member": "string",
@@ -263,7 +247,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The validity period of the temporary credential in seconds. Default value: 7,200s. Maximum value: 43,200s.",
           "example": "3600",
           "member": "int64",
@@ -317,7 +300,6 @@
       "document": "Temporary credentials",
       "members": [
         {
-          "default": "",
           "document": "Token, which contains up to 4,096 bytes depending on the associated policies.",
           "member": "string",
           "name": "Token",
@@ -326,7 +308,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Temporary credentials key ID, which contains up to 1,024 bytes.",
           "member": "string",
           "name": "TmpSecretId",
@@ -335,7 +316,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Temporary credentials key, which contains up to 1,024 bytes.",
           "member": "string",
           "name": "TmpSecretKey",
@@ -402,7 +382,6 @@
       "document": "GetFederationToken request structure.",
       "members": [
         {
-          "default": "",
           "document": "The customizable name of the caller, consisting of letters",
           "member": "string",
           "name": "Name",
@@ -410,7 +389,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Policy description\nNote:\n1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://intl.cloud.tencent.com/document/api/598/33159?from_cn_redirect=1#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).\n2. For the policy syntax, please see CAM's [Syntax Logic](https://intl.cloud.tencent.com/document/product/598/10603?from_cn_redirect=1).\n3. The policy cannot contain the `principal` element.",
           "member": "string",
           "name": "Policy",
@@ -418,7 +396,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The validity period of temporary credentials in seconds. Default value: 1,800s. Maximum value for a root account: 7,200s. Maximum value for a sub-account: 129,600s.",
           "member": "uint64",
           "name": "DurationSeconds",
@@ -465,7 +442,6 @@
       "document": "Information on tags",
       "members": [
         {
-          "default": "",
           "document": "Tag key. It’s up to 128 characters and case-sensitive.",
           "example": "department",
           "member": "string",
@@ -475,7 +451,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value. It’s up to 256 characters and case-sensitive.",
           "example": "engineering",
           "member": "string",

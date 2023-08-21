@@ -291,7 +291,6 @@
       "document": "List of queried account group information.",
       "members": [
         {
-          "default": "",
           "document": "Account group ID.",
           "example": "无",
           "member": "string",
@@ -301,7 +300,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Account group name.",
           "example": "无",
           "member": "string",
@@ -311,7 +309,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Remarks.",
           "example": "无",
           "member": "string",
@@ -321,7 +318,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time.",
           "example": "无",
           "member": "string",
@@ -337,7 +333,6 @@
       "document": "Account group query parameters",
       "members": [
         {
-          "default": "",
           "document": "Keyword",
           "example": "比赛一组",
           "member": "string",
@@ -353,7 +348,6 @@
       "document": "AddAccountToAccountGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "Account group ID",
           "example": "无",
           "member": "string",
@@ -362,7 +356,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of IDs of the accounts to be added to the account group.",
           "example": "无",
           "member": "string",
@@ -389,7 +382,6 @@
       "document": "AddUserToUserGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of IDs of the users to be added to the user group.",
           "example": "id",
           "member": "string",
@@ -398,7 +390,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "User group ID, which is globally unique.",
           "example": "id",
           "member": "string",
@@ -434,7 +425,6 @@
       "document": "List of queried account information.",
       "members": [
         {
-          "default": "",
           "document": "Account ID.",
           "example": "无",
           "member": "string",
@@ -444,7 +434,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Account name.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -454,7 +443,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User information list.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "LinkUserInfo",
@@ -464,7 +452,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Description.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -474,7 +461,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -490,7 +476,6 @@
       "document": "Account query parameters",
       "members": [
         {
-          "default": "",
           "document": "Keyword",
           "example": "张三",
           "member": "string",
@@ -506,7 +491,6 @@
       "document": "Application information list.",
       "members": [
         {
-          "default": "",
           "document": "List of the user's accounts under authorized applications\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -516,7 +500,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application ID, which is globally unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "id",
           "member": "string",
@@ -526,7 +509,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "List of IDs of the user's user groups and organization nodes that have access to the application.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "InheritedForm",
@@ -536,7 +518,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application name.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -546,7 +527,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -562,7 +542,6 @@
       "document": "Application attribute search criteria.",
       "members": [
         {
-          "default": "",
           "document": "Application search keyword, which can be application name or ID.",
           "example": "无",
           "member": "string",
@@ -572,7 +551,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Application type. Valid values: OAUTH2, JWT, CAS, SAML2, FORM, OIDC, APIGW",
           "example": "无",
           "member": "string",
@@ -588,7 +566,6 @@
       "document": "Application information list.",
       "members": [
         {
-          "default": "",
           "document": "Application ID, which is globally unique.",
           "example": "无",
           "member": "string",
@@ -598,7 +575,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Displayed application name, which can contain up to 64 characters and is the same as the application name by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -608,7 +584,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application creation time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -618,7 +593,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Last update time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -628,7 +602,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application status.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "bool",
@@ -638,7 +611,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application icon.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -648,7 +620,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application type.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -658,7 +629,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Client ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -674,7 +644,6 @@
       "document": "Returned authorization information.",
       "members": [
         {
-          "default": "",
           "document": "Unique application ID.",
           "example": "无",
           "member": "string",
@@ -684,7 +653,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Application name.",
           "example": "无",
           "member": "string",
@@ -694,7 +662,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Type name.",
           "example": "无",
           "member": "string",
@@ -704,7 +671,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Unique type ID.",
           "example": "无",
           "member": "string",
@@ -714,7 +680,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last update time in ISO 8601 format.",
           "example": "无",
           "member": "string",
@@ -724,7 +689,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Unique authorization type ID.",
           "example": "无",
           "member": "string",
@@ -740,7 +704,6 @@
       "document": "User attribute search criteria.\n",
       "members": [
         {
-          "default": "",
           "document": "Search by name. When the query type is user, the match criteria include username and application name. When the query type is user group, the match criteria include user group name and application name. When the query type is organization, the match criteria include organization name and application name.",
           "example": "无",
           "member": "string",
@@ -756,7 +719,6 @@
       "document": "Returned list of eligible user data",
       "members": [
         {
-          "default": "",
           "document": "Resource ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "8580d166-2a25-45eb-beff-3085f5464deb",
           "member": "string",
@@ -766,7 +728,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Resource type\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "resourceGroup",
           "member": "string",
@@ -776,7 +737,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Authorized resource\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "service-888:*",
           "member": "string",
@@ -786,7 +746,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Inheritance relationship\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "InheritedForm",
@@ -796,7 +755,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Application account\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -806,7 +764,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Resource name\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "用户菜单",
           "member": "string",
@@ -822,7 +779,6 @@
       "document": "CreateAccountGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "Application ID.",
           "example": "无",
           "member": "string",
@@ -831,7 +787,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Account group name.",
           "example": "无",
           "member": "string",
@@ -840,7 +795,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Description.",
           "example": "无",
           "member": "string",
@@ -876,7 +830,6 @@
       "document": "CreateAppAccount request structure.",
       "members": [
         {
-          "default": "",
           "document": "Application ID",
           "example": "无",
           "member": "string",
@@ -885,7 +838,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Account name",
           "example": "无",
           "member": "string",
@@ -894,7 +846,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Account password",
           "example": "无",
           "member": "string",
@@ -903,7 +854,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Description",
           "example": "无",
           "member": "string",
@@ -939,7 +889,6 @@
       "document": "CreateOrgNode request structure.",
       "members": [
         {
-          "default": "",
           "document": "Organization node name, which can contain up to 64 characters.",
           "example": "无",
           "member": "string",
@@ -948,7 +897,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Parent organization node ID. If this parameter is left empty, the organization will be created under the root organization node by default.",
           "example": "无",
           "member": "string",
@@ -957,7 +905,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Organization node description.",
           "example": "无",
           "member": "string",
@@ -966,7 +913,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "External ID of the organization node, which is optional and customizable. If this parameter is specified, its uniqueness will be verified.",
           "example": "无",
           "member": "string",
@@ -1002,7 +948,6 @@
       "document": "CreateUserGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "User group nickname, which is unique and can contain up to 64 characters.",
           "example": "无",
           "member": "string",
@@ -1011,7 +956,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User group remarks, which can contain up to 512 characters.",
           "example": "无",
           "member": "string",
@@ -1047,7 +991,6 @@
       "document": "CreateUser request structure.",
       "members": [
         {
-          "default": "",
           "document": "Username, which can contain up to 64 characters.",
           "example": "无",
           "member": "string",
@@ -1056,7 +999,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User password, which needs to be configured according to the password policy.",
           "example": "无",
           "member": "string",
@@ -1065,7 +1007,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Nickname, which can contain up to 64 characters and is the same as the username by default.",
           "example": "无",
           "member": "string",
@@ -1074,7 +1015,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User remarks, which can contain up to 512 characters.",
           "example": "无",
           "member": "string",
@@ -1083,7 +1023,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of IDs of the user's user groups.",
           "example": "无",
           "member": "string",
@@ -1092,7 +1031,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "User's mobile number, such as `+86-1xxxxxxxxxx`.",
           "example": "无",
           "member": "string",
@@ -1101,7 +1039,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Unique ID of the user's primary organization. If this parameter is left empty, the user will be created under the root node by default.",
           "example": "无",
           "member": "string",
@@ -1110,7 +1047,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User expiration time in ISO 8601 format.",
           "example": "无",
           "member": "string",
@@ -1119,7 +1055,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User's email address.",
           "example": "无",
           "member": "string",
@@ -1128,7 +1063,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether the password needs to be reset. Default value: false (no).",
           "example": "无",
           "member": "bool",
@@ -1137,7 +1071,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "List of IDs of the user's secondary organizations.",
           "example": "无",
           "member": "string",
@@ -1173,7 +1106,6 @@
       "document": "DeleteAccountGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "Array of account group IDs.",
           "example": "无",
           "member": "string",
@@ -1200,7 +1132,6 @@
       "document": "DeleteAppAccount request structure.",
       "members": [
         {
-          "default": "",
           "document": "Array of account IDs .",
           "example": "无",
           "member": "string",
@@ -1227,7 +1158,6 @@
       "document": "DeleteOrgNode request structure.",
       "members": [
         {
-          "default": "",
           "document": "Organization node ID, which is globally unique.",
           "example": "无",
           "member": "string",
@@ -1254,7 +1184,6 @@
       "document": "DeleteUserGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "User group ID, which is globally unique.",
           "example": "id",
           "member": "string",
@@ -1281,7 +1210,6 @@
       "document": "DeleteUser request structure.",
       "members": [
         {
-          "default": "",
           "document": "Username, which can contain up to 32 characters. You need to select either `UserName` or `UserId` as the search criterion; if both are selected, `UserName` will be used by default.",
           "example": "无",
           "member": "string",
@@ -1290,7 +1218,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User ID. You need to select either `UserName` or `UserId` as the search criterion. If both are selected, `UserName` will be used by default.",
           "example": "id",
           "member": "string",
@@ -1317,7 +1244,6 @@
       "document": "DeleteUsers request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of IDs of the users to be deleted. You need to specify at least `DeleteIdList` or `DeleteNameList`. If both are specified, `DeleteNameList` will be used first.",
           "example": "无",
           "member": "string",
@@ -1326,7 +1252,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "List of usernames of the users to be deleted. You need to specify at least `DeleteIdList` or `DeleteNameList`. If both are specified, `DeleteNameList` will be used first.",
           "example": "无",
           "member": "string",
@@ -1362,7 +1287,6 @@
       "document": "DescribeAccountGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "Application ID.",
           "example": "无",
           "member": "string",
@@ -1371,7 +1295,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.",
           "example": "无",
           "member": "AccountGroupSearchCriteria",
@@ -1380,7 +1303,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "example": "无",
           "member": "int64",
@@ -1389,7 +1311,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "无",
           "member": "int64",
@@ -1443,7 +1364,6 @@
       "document": "DescribeAppAccount request structure.",
       "members": [
         {
-          "default": "",
           "document": "Application ID.",
           "example": "无",
           "member": "string",
@@ -1452,7 +1372,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.",
           "example": "无",
           "member": "AppAccountSearchCriteria",
@@ -1461,7 +1380,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "example": "无",
           "member": "int64",
@@ -1470,7 +1388,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "无",
           "member": "int64",
@@ -1524,7 +1441,6 @@
       "document": "DescribeApplication request structure.",
       "members": [
         {
-          "default": "",
           "document": "Application ID, which is globally unique. You must specify at least this parameter or `ClientId`.",
           "example": "无",
           "member": "string",
@@ -1533,7 +1449,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Client ID. You must specify at least this parameter or `ApplicationId`.",
           "example": "无",
           "member": "string",
@@ -1695,7 +1610,6 @@
       "document": "DescribeOrgNode request structure.",
       "members": [
         {
-          "default": "",
           "document": "Organization node ID, which is globally unique and can contain up to 64 characters. If this parameter is left empty, the information of the root organization node will be read by default.",
           "example": "无",
           "member": "string",
@@ -1704,7 +1618,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to read the information of its sub-nodes. When this parameter is left empty or specified as `false`, only the information of the current organization node will be read by default. When it is specified as `true`, the information of the current organization node and its level-1 sub-nodes will be read.",
           "example": "无",
           "member": "bool",
@@ -1812,7 +1725,6 @@
       "document": "DescribePublicKey request structure.",
       "members": [
         {
-          "default": "",
           "document": "Application ID, which is globally unique.",
           "example": "id",
           "member": "string",
@@ -1866,7 +1778,6 @@
       "document": "DescribeUserGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "User group ID, which is globally unique.",
           "example": "id",
           "member": "string",
@@ -1920,7 +1831,6 @@
       "document": "DescribeUserInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Username, which can contain up to 64 characters. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.",
           "example": "无",
           "member": "string",
@@ -1929,7 +1839,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User ID, which can contain up to 64 characters. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.",
           "example": "id",
           "member": "string",
@@ -2091,7 +2000,6 @@
       "document": "DescribeUserResourcesAuthorization request structure.",
       "members": [
         {
-          "default": "",
           "document": "Application ID.",
           "example": "无",
           "member": "string",
@@ -2100,7 +2008,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User ID. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.",
           "example": "无",
           "member": "string",
@@ -2109,7 +2016,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Username. You need to specify at least `UserName` or `UserId`. If both are specified, `UserName` will be used first.",
           "example": "zhangsan",
           "member": "string",
@@ -2118,7 +2024,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether the query scope includes the application access of the user groups and organizations associated with the user. Valid values: false: no; true: yes. Default value: false.",
           "example": "true",
           "member": "bool",
@@ -2190,7 +2095,6 @@
       "document": "DescribeUserThirdPartyAccountInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Username. You need to specify at least `Username` or `UserId`. If both are specified, `Username` will be used first.",
           "example": "无",
           "member": "string",
@@ -2199,7 +2103,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User ID. You need to specify at least `Username` or `UserId`. If both are specified, `Username` will be used first.",
           "example": "无",
           "member": "string",
@@ -2253,7 +2156,6 @@
       "document": "Application information list.",
       "members": [
         {
-          "default": "",
           "document": "List of IDs of the user's user groups.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "id",
           "member": "string",
@@ -2263,7 +2165,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "List of IDs of the user's organization nodes.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "id",
           "member": "string",
@@ -2279,7 +2180,6 @@
       "document": "User information associated with the account",
       "members": [
         {
-          "default": "",
           "document": "User ID, which is globally unique and can contain up to 64 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2289,7 +2189,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Username.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2305,7 +2204,6 @@
       "document": "ListAccountInAccountGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "Account group ID.",
           "example": "无",
           "member": "string",
@@ -2314,7 +2212,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Search criterion. You can combine multiple search criteria and search in multiple data ranges.",
           "example": "无",
           "member": "AccountGroupSearchCriteria",
@@ -2323,7 +2220,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "example": "无",
           "member": "int64",
@@ -2332,7 +2228,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "无",
           "member": "int64",
@@ -2386,7 +2281,6 @@
       "document": "ListApplicationAuthorizations request structure.",
       "members": [
         {
-          "default": "",
           "document": "Query type. Valid values: User: user; UserGroup: user group; OrgNode: organization.",
           "example": "无",
           "member": "string",
@@ -2395,7 +2289,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.",
           "example": "无",
           "member": "AuthorizationInfoSearchCriteria",
@@ -2404,7 +2297,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Set of sort criteria. You can sort the results by last modification time (lastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by application name.",
           "example": "无",
           "member": "SortCondition",
@@ -2413,7 +2305,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Pagination offset. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.",
           "example": "无",
           "member": "uint64",
@@ -2422,7 +2313,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.",
           "example": "无",
           "member": "uint64",
@@ -2467,7 +2357,6 @@
       "document": "ListApplications request structure.",
       "members": [
         {
-          "default": "",
           "document": "Fuzzy match search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, and an asterisk (*) at the end of the field indicates partial match. The fuzzy match search feature and the exact match query feature will not take effect at the same time. If both `SearchCondition` and `ApplicationIdList` are specified, `ApplicationIdList` will take effect by default for exact match query; otherwise, the information of all applications will be returned by default.",
           "example": "无",
           "member": "ApplicationInfoSearchCriteria",
@@ -2476,7 +2365,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Set of sort criteria. Valid values: DisplayName: application name; CreatedDate: creation time; LastModifiedDate: last modification time. If this field is left empty, the results will be sorted in alphabetical order by application name.",
           "example": "无",
           "member": "SortCondition",
@@ -2485,7 +2373,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Set of sort criteria. Valid values: DisplayName: application name; CreatedDate: creation time; LastModifiedDate: last modification time. If this field is left empty, the results will be sorted in alphabetical order by application name.",
           "example": "无",
           "member": "uint64",
@@ -2494,7 +2381,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.",
           "example": "无",
           "member": "uint64",
@@ -2503,7 +2389,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Application ID list, through which the corresponding application information will be matched exactly. The fuzzy match search feature and the exact match query feature will not take effect at the same time. If both `SearchCondition` and `ApplicationIdList` are specified, `ApplicationIdList` will take effect by default for exact match query; otherwise, the information of all applications will be returned by default.",
           "example": "无",
           "member": "string",
@@ -2548,7 +2433,6 @@
       "document": "ListAuthorizedApplicationsToOrgNode request structure.",
       "members": [
         {
-          "default": "",
           "document": "Organization node ID.",
           "example": "id",
           "member": "string",
@@ -2584,7 +2468,6 @@
       "document": "ListAuthorizedApplicationsToUserGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "User group ID.",
           "example": "id",
           "member": "string",
@@ -2620,7 +2503,6 @@
       "document": "ListAuthorizedApplicationsToUser request structure.",
       "members": [
         {
-          "default": "",
           "document": "User ID.",
           "example": "id",
           "member": "string",
@@ -2629,7 +2511,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether the query scope includes the application access of the user groups and organizations associated with the user. Valid values: false: no; true: yes. Default value: false.",
           "example": "无",
           "member": "bool",
@@ -2665,7 +2546,6 @@
       "document": "ListUserGroupsOfUser request structure.",
       "members": [
         {
-          "default": "",
           "document": "User ID, which is globally unique.",
           "example": "id",
           "member": "string",
@@ -2674,7 +2554,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Fuzzy search criterion. You can search by user group name (DisplayName). If this field is left empty, all of the user's user groups will be displayed by default.",
           "example": "无",
           "member": "UserGroupInformationSearchCriteria",
@@ -2683,7 +2562,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Set of sort criteria. Valid values: DisplayName: user group name; UserGroupId: user group ID; CreatedDate: creation time. If this field is left empty, the results will be sorted in alphabetical order by user group name.",
           "example": "无",
           "member": "SortCondition",
@@ -2692,7 +2570,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 user groups will be returned.",
           "example": "无",
           "member": "uint64",
@@ -2701,7 +2578,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 user groups will be returned.",
           "example": "无",
           "member": "uint64",
@@ -2764,7 +2640,6 @@
       "document": "ListUserGroups request structure.",
       "members": [
         {
-          "default": "",
           "document": "Search criterion. You can combine multiple search criteria and search in multiple data ranges. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, an asterisk (*) at the end of the field indicates partial match, and an empty field indicates to query the full table by default.",
           "example": "无",
           "member": "UserGroupInfoSearchCriteria",
@@ -2773,7 +2648,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Set of sort criteria. The supported attributes for sorting include user group name (DisplayName), user group ID (UserGroupId), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by user group name.",
           "example": "无",
           "member": "SortCondition",
@@ -2782,7 +2656,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Pagination offset. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.",
           "example": "无",
           "member": "uint64",
@@ -2791,7 +2664,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of results read per page. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated.",
           "example": "无",
           "member": "uint64",
@@ -2836,7 +2708,6 @@
       "document": "ListUsersInOrgNode request structure.",
       "members": [
         {
-          "default": "",
           "document": "Organization node ID, which is globally unique and can contain up to 64 characters. If this parameter is left empty, the user information under the root organization node will be read by default.",
           "example": "id",
           "member": "string",
@@ -2845,7 +2716,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to read the information of its sub-nodes. When this parameter is left empty or specified as `false`, only the information of the current organization node will be read by default. When it is specified as `true`, the information of the current organization node and its level-1 sub-nodes will be read.",
           "example": "无",
           "member": "bool",
@@ -2854,7 +2724,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.",
           "example": "无",
           "member": "ListUsersInOrgNodeSearchCriteria",
@@ -2863,7 +2732,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Set of sort criteria. The supported attributes for sorting include username (UserName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).",
           "example": "无",
           "member": "SortCondition",
@@ -2872,7 +2740,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.",
           "example": "无",
           "member": "uint64",
@@ -2881,7 +2748,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.",
           "example": "无",
           "member": "uint64",
@@ -2962,7 +2828,6 @@
       "document": "Displays user attribute search criteria under the organization.",
       "members": [
         {
-          "default": "",
           "document": "Username, which can contain up to 64 characters.",
           "example": "无",
           "member": "string",
@@ -2972,7 +2837,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User's mobile number.",
           "example": "无",
           "member": "string",
@@ -2982,7 +2846,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User's email address.",
           "example": "无",
           "member": "string",
@@ -2992,7 +2855,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.",
           "example": "无",
           "member": "string",
@@ -3002,7 +2864,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User creation time in ISO 8601 format.",
           "example": "无",
           "member": "string",
@@ -3012,7 +2873,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last update time of the user.",
           "example": "无",
           "member": "string",
@@ -3022,7 +2882,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Search by name. The match criteria include username and user's mobile number.",
           "example": "无",
           "member": "string",
@@ -3038,7 +2897,6 @@
       "document": "ListUsersInUserGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "User group ID, which is globally unique.",
           "example": "id",
           "member": "string",
@@ -3047,7 +2905,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.",
           "example": "无",
           "member": "UserSearchCriteria",
@@ -3056,7 +2913,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Set of sort criteria. The supported attributes for sorting include username (UserName), nickname (DisplayName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), and last modification time (LastModifiedDate). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).",
           "example": "无",
           "member": "SortCondition",
@@ -3065,7 +2921,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.",
           "example": "无",
           "member": "int64",
@@ -3074,7 +2929,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 50 users will be returned.",
           "example": "无",
           "member": "int64",
@@ -3128,7 +2982,6 @@
       "document": "ListUsers request structure.",
       "members": [
         {
-          "default": "",
           "document": "User attribute search criterion. The supported search criteria include username, mobile number, email address, user locking status, user freezing status, creation time, and last modification time, which can also be combined. In addition, multiple query methods such as full match, partial match, and range match are supported. Specifically, double quotation marks (\"\") indicate full match, an asterisk (*) at the end of the field indicates partial match, brackets separated by a comma ([Min,Max]) indicate query within a closed interval, braces separated by a comma ({Min,Max}) indicate query within an open interval, and a bracket and a brace can be used together (for example, {Min,Max] indicates that the minimum value is excluded and the maximum value is included in the query). Range query supports using an asterisk (for example, {20,*] indicates an interval including all data greater than 20) and querying by time period. The supported attributes include creation time (CreationTime) and last modification time (LastUpdateTime) in ISO 8601 format, such as `2021-01-13T09:44:07.182+0000`.",
           "example": "无",
           "member": "UserSearchCriteria",
@@ -3137,7 +2990,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "User attributes expected to be returned. All built-in user attributes will be returned by default, including user UUID (UserId), nickname (DisplayName), username (UserName), mobile number (Phone), email address (Email), status (Status), user group (SubjectGroups), organization path (OrgPath), remarks (Description), creation time (CreationTime), last modification time (LastUpdateTime), and last login time (LastLoginTime).",
           "example": "无",
           "member": "string",
@@ -3146,7 +2998,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Set of sort criteria. The supported attributes for sorting include username (UserName), nickname (DisplayName), mobile number (Phone), email address (Email), user status (Status), creation time (CreatedDate), last modification time (LastUpdateTime), and last login time (LastLoginTime). If this field is left empty, the results will be sorted in alphabetical order by nickname (DisplayName).",
           "example": "无",
           "member": "SortCondition",
@@ -3155,7 +3006,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Pagination offset. Default value: 0. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 1,000 users will be returned.",
           "example": "无",
           "member": "uint64",
@@ -3164,7 +3014,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of results read per page. Default value: 50. Maximum value: 100. The `Offset` and `Limit` fields need to be used together; otherwise, the query results will not be paginated, and up to 1,000 users will be returned.",
           "example": "无",
           "member": "uint64",
@@ -3173,7 +3022,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to view the total number of search results. Default value: false (no).",
           "example": "无",
           "member": "bool",
@@ -3218,7 +3066,6 @@
       "document": "ModifyAccountGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "Account group ID.",
           "example": "无",
           "member": "string",
@@ -3227,7 +3074,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Account group name. When this parameter is not specified, the name will not be modified.",
           "example": "无",
           "member": "string",
@@ -3236,7 +3082,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Description. When this parameter is not specified, the description will not be modified.",
           "example": "无",
           "member": "string",
@@ -3263,7 +3108,6 @@
       "document": "ModifyAppAccount request structure.",
       "members": [
         {
-          "default": "",
           "document": "Account ID.",
           "example": "无",
           "member": "string",
@@ -3272,7 +3116,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Account name. When this parameter is not specified, the name will not be modified.",
           "example": "无",
           "member": "string",
@@ -3281,7 +3124,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Account password. When this parameter is not specified, the password will not be changed.",
           "example": "无",
           "member": "string",
@@ -3290,7 +3132,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Description. When this parameter is not specified, the description will not be modified.",
           "example": "无",
           "member": "string",
@@ -3317,7 +3158,6 @@
       "document": "ModifyApplication request structure.",
       "members": [
         {
-          "default": "",
           "document": "Application ID, which is globally unique.",
           "example": "id",
           "member": "string",
@@ -3326,7 +3166,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Security level.",
           "example": "无",
           "member": "string",
@@ -3335,7 +3174,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Displayed application name, which can contain up to 32 characters and is the same as the application name by default.",
           "example": "无",
           "member": "string",
@@ -3344,7 +3182,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Application status. Valid values: true: enabled; false: disabled.",
           "example": "无",
           "member": "bool",
@@ -3353,7 +3190,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Access address of the application icon image.",
           "example": "无",
           "member": "string",
@@ -3362,7 +3198,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Description, which can contain up to 128 characters.",
           "example": "无",
           "member": "string",
@@ -3389,7 +3224,6 @@
       "document": "ModifyUserInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Username, which can contain up to 32 characters. You need to select either `Username` or `UserId` as the search criterion; if both are selected, `Username` will be used by default.",
           "example": "无",
           "member": "string",
@@ -3398,7 +3232,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Nickname, which can contain up to 64 characters and is the same as the username by default.",
           "example": "无",
           "member": "string",
@@ -3407,7 +3240,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User remarks, which can contain up to 512 characters.",
           "example": "无",
           "member": "string",
@@ -3416,7 +3248,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of IDs of the user's user groups.",
           "example": "无",
           "member": "string",
@@ -3425,7 +3256,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "User ID. You need to select either `UserName` or `UserId` as the search criterion. If both are selected, `UserName` will be used by default.",
           "example": "id",
           "member": "string",
@@ -3434,7 +3264,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User's mobile number.",
           "example": "无",
           "member": "string",
@@ -3443,7 +3272,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User expiration time in ISO 8601 format.",
           "example": "无",
           "member": "string",
@@ -3452,7 +3280,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User password, which needs to be configured according to the password policy.",
           "example": "无",
           "member": "string",
@@ -3461,7 +3288,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "User's email address.",
           "example": "无",
           "member": "string",
@@ -3470,7 +3296,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether the password needs to be reset. Default value: false (no).",
           "example": "无",
           "member": "bool",
@@ -3479,7 +3304,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Unique ID of the user's primary organization. If this parameter is left empty, the user will be created under the root node by default.",
           "example": "无",
           "member": "string",
@@ -3488,7 +3312,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of IDs of the user's secondary organizations.",
           "example": "无",
           "member": "string",
@@ -3515,7 +3338,6 @@
       "document": "List of sub-nodes under the current organization node",
       "members": [
         {
-          "default": "",
           "document": "Displayed organization node name, which can contain up to 64 characters and is the same as the organization name by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "id",
           "member": "string",
@@ -3525,7 +3347,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Last modification time of the organization node in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "id",
           "member": "string",
@@ -3535,7 +3356,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "External ID of the organization node, which is optional and customizable.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "id",
           "member": "string",
@@ -3545,7 +3365,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Parent node ID of the current organization node.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "id",
           "member": "string",
@@ -3555,7 +3374,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Organization node ID, which is globally unique.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "id",
           "member": "string",
@@ -3565,7 +3383,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Data source.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "id",
           "member": "string",
@@ -3575,7 +3392,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Organization node creation time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "id",
           "member": "string",
@@ -3585,7 +3401,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Organization node description.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3601,7 +3416,6 @@
       "document": "User information list under the organization sub-node",
       "members": [
         {
-          "default": "",
           "document": "Organization node ID, which is globally unique and can contain up to 64 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "id",
           "member": "string",
@@ -3611,7 +3425,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User information list.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "UserInfo",
@@ -3621,7 +3434,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Total number of users under the current organization node.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -3631,7 +3443,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Organization ID path.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3641,7 +3452,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Organization name path.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3657,7 +3467,6 @@
       "document": "RemoveAccountFromAccountGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "Account group ID",
           "example": "无",
           "member": "string",
@@ -3666,7 +3475,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of IDs of the accounts to be removed.",
           "example": "无",
           "member": "string",
@@ -3693,7 +3501,6 @@
       "document": "RemoveUserFromUserGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of IDs of the users to be added to the user group.",
           "example": "id",
           "member": "string",
@@ -3702,7 +3509,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "User group ID, which is globally unique.",
           "example": "id",
           "member": "string",
@@ -3729,7 +3535,6 @@
       "document": "Sort criterion.",
       "members": [
         {
-          "default": "",
           "document": "Sorting attribute.",
           "example": "无",
           "member": "string",
@@ -3739,7 +3544,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Sorting order. Valid values: ASC: ascending order; DESC: descending order.",
           "example": "无",
           "member": "string",
@@ -3755,7 +3559,6 @@
       "document": "Third-Party account information.",
       "members": [
         {
-          "default": "",
           "document": "Third-Party account code. `2` indicates WeCom account.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3765,7 +3568,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Username of the account.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3781,7 +3583,6 @@
       "document": "UpdateOrgNode request structure.",
       "members": [
         {
-          "default": "",
           "document": "Organization node ID, which is globally unique.",
           "example": "id",
           "member": "string",
@@ -3790,7 +3591,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Organization node name, which can contain up to 64 characters.",
           "example": "无",
           "member": "string",
@@ -3799,7 +3599,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Organization node description.",
           "example": "无",
           "member": "string",
@@ -3808,7 +3607,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "External ID of the organization node, which is optional and customizable. If this parameter is specified, its uniqueness will be verified.",
           "example": "id",
           "member": "string",
@@ -3835,7 +3633,6 @@
       "document": "Returned user group list.",
       "members": [
         {
-          "default": "",
           "document": "Nickname, which can contain up to 64 characters and is the same as the username by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3845,7 +3642,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User group ID, which is globally unique and can contain up to 64 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "id",
           "member": "string",
@@ -3855,7 +3651,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User group remarks.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3865,7 +3660,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3881,7 +3675,6 @@
       "document": "User group attribute search criteria.",
       "members": [
         {
-          "default": "",
           "document": "Search by name. The match criteria include user group name and user group ID.",
           "example": "无",
           "member": "string",
@@ -3897,7 +3690,6 @@
       "document": "Returned user group list.",
       "members": [
         {
-          "default": "",
           "document": "User group ID.",
           "example": "无",
           "member": "string",
@@ -3907,7 +3699,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User group name.",
           "example": "无",
           "member": "string",
@@ -3917,7 +3708,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last update time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3933,7 +3723,6 @@
       "document": "User group attribute search criteria in the list of the user's user groups.",
       "members": [
         {
-          "default": "",
           "document": "Search by name. The match criteria include user group name.",
           "example": "无",
           "member": "string",
@@ -3949,7 +3738,6 @@
       "document": "User information list.",
       "members": [
         {
-          "default": "",
           "document": "User ID, which is globally unique and can contain up to 64 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "id",
           "member": "string",
@@ -3959,7 +3747,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Nickname, which can contain up to 64 characters and is the same as the username by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3969,7 +3756,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Username.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3979,7 +3765,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User's mobile number.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3989,7 +3774,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Email address.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -3999,7 +3783,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User status.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4009,7 +3792,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Data source.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4025,7 +3807,6 @@
       "document": "User information list.",
       "members": [
         {
-          "default": "",
           "document": "Username, which can contain up to 32 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4035,7 +3816,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User status.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4045,7 +3825,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Nickname, which can contain up to 64 characters and is the same as the username by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4055,7 +3834,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User remarks, which can contain up to 512 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4065,7 +3843,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Last update time of the user in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4075,7 +3852,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User creation time in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4085,7 +3861,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Path ID of the user's primary organization.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4095,7 +3870,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User's mobile number with country code, such as `+86-00000000000`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4105,7 +3879,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "List of IDs of the user's user groups.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4115,7 +3888,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User's email address.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4125,7 +3897,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Last login time of the user in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4135,7 +3906,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "User ID, which is globally unique and can contain up to 64 characters.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4151,7 +3921,6 @@
       "document": "User attribute search criteria.",
       "members": [
         {
-          "default": "",
           "document": "Username, which can contain up to 64 characters.",
           "example": "无",
           "member": "string",
@@ -4161,7 +3930,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User's mobile number.",
           "example": "无",
           "member": "string",
@@ -4171,7 +3939,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User's email address.",
           "example": "无",
           "member": "string",
@@ -4181,7 +3948,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User status. Valid values: NORMAL: normal; FREEZE: frozen; LOCKED: locked; NOT_ENABLED: disabled.",
           "example": "无",
           "member": "string",
@@ -4191,7 +3957,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User creation time in ISO 8601 format.",
           "example": "无",
           "member": "string",
@@ -4201,7 +3966,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The user's last update time.",
           "example": "无",
           "member": "string",
@@ -4211,7 +3975,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Search by name. The match criteria include username and user ID.",
           "example": "无",
           "member": "string",

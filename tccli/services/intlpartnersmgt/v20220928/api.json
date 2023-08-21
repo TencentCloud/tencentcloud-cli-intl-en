@@ -214,7 +214,6 @@
       "document": "AllocateCustomerCredit request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Specific value of the credit allocated to the customer",
           "example": "100.00",
@@ -224,7 +223,6 @@
           "type": "float"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Customer UIN",
           "example": "1234",
@@ -634,7 +632,6 @@
       "document": "Element type of the `GetCountryCodes` API",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Country/region name in English",
           "example": "Albania",
@@ -645,7 +642,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Country/region name in Chinese",
           "example": "阿尔巴尼亚",
@@ -656,7 +652,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "",
           "example": "AL",
@@ -667,7 +662,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "",
           "example": "ALB",
@@ -678,7 +672,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "International dialing code",
           "example": "355",
@@ -695,7 +688,6 @@
       "document": "CreateAccount request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Account type of a new customer. Valid values: `personal`, `company`.",
           "example": "business",
@@ -705,7 +697,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Registered email address, which should be valid and correct.\nFor example, account@qq.com.",
           "example": "account@qq.com",
@@ -715,7 +706,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Account password\nLength limit: 8-20 characters\nA password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not allowed.",
           "example": "无",
@@ -725,7 +715,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The confirmed password, which must be the same as that entered in the `Password` field.",
           "example": "无",
@@ -735,7 +724,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Customer mobile number, which should be valid and correct.\nA global mobile number within 1-32 digits is allowed, such as 18888888888.",
           "example": "18888888888",
@@ -745,7 +733,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Customer's country/region code, which can be obtained via the `GetCountryCodes` API, such as \"852\".",
           "example": "852",
@@ -755,7 +742,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Customer's ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.",
           "example": "HK",
@@ -765,7 +751,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Extension field, which is left empty by default.",
           "example": "**********",
@@ -1793,7 +1778,6 @@
       "document": "Returned information for querying the customer credit allocation records",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Allocation time",
           "example": "2021-08-18",
@@ -1804,7 +1788,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Operator",
           "example": "usernames",
@@ -1815,7 +1798,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Allocated credit value",
           "example": "123456.78",
@@ -1826,7 +1808,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The allocated total credit",
           "example": "123.45",
@@ -1843,7 +1824,6 @@
       "document": "QueryCreditAllocationHistory request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Customer UIN",
           "example": "123456",
@@ -1853,7 +1833,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Page number",
           "example": "1",
@@ -1863,7 +1842,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of data entries per page",
           "example": "10",
@@ -1911,7 +1889,6 @@
       "document": "QueryCreditByUinList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "User list",
           "example": "{10000,10001}",
@@ -1966,7 +1943,6 @@
       "document": "Complex type of output parameters for querying customer's credit",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name",
           "example": "cedarzuo",
@@ -1977,7 +1953,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type",
           "example": "1",
@@ -1988,7 +1963,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Mobile number",
           "example": "110",
@@ -1999,7 +1973,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Email",
           "example": "cedarzuo@tencent.com",
@@ -2010,7 +1983,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Overdue payment flag",
           "example": "-",
@@ -2021,7 +1993,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Binding time",
           "example": "2021-08-18",
@@ -2032,7 +2003,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Expiration time",
           "example": "2024-08-18",
@@ -2043,7 +2013,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Customer UIN",
           "example": "123456",
@@ -2054,7 +2023,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Credit allocated to a customer",
           "example": "123456.78",
@@ -2065,7 +2033,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The remaining credit of a customer",
           "example": "0.01",
@@ -2076,7 +2043,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "`0`: Identity not verified; `1`: Individual identity verified; `2`: Enterprise identity verified.",
           "example": "1",
@@ -2087,7 +2053,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Customer remarks",
           "example": "tencent",
@@ -2098,7 +2063,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Forced status",
           "example": "1",
@@ -2115,7 +2079,6 @@
       "document": "QueryCustomersCredit request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Search condition type. You can only search by customer ID, name, remarks, or email.",
           "example": "ClientUin|Name|Remark|Email",
@@ -2125,7 +2088,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Search condition",
           "example": "123456",
@@ -2135,7 +2097,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A pagination parameter that specifies the current page number, with a value starting from 1.",
           "example": "1",
@@ -2145,7 +2106,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A pagination parameter that specifies the number of entries per page.",
           "example": "10",
@@ -2155,7 +2115,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A sort parameter that specifies the sort order. Valid values: `desc` (descending order), or `asc` (ascending order) based on `AssociationTime`. The value will be `desc` if left empty.",
           "example": "desc",
@@ -2203,7 +2162,6 @@
       "document": "The credit information of direct customers",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "User UIN",
           "example": "10000",
@@ -2214,7 +2172,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total credit",
           "example": "100.01",
@@ -2225,7 +2182,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remaining credit",
           "example": "0.01",
@@ -2316,7 +2272,6 @@
       "document": "Customer voucher quota",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Customer UIN",
           "example": "123456789",
@@ -2327,7 +2282,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher quota",
           "example": "1",
@@ -2338,7 +2292,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher amount",
           "example": "1",
@@ -2355,7 +2308,6 @@
       "document": "QueryVoucherAmountByUin request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Customer UIN list",
           "example": "[123]",
@@ -2393,7 +2345,6 @@
       "document": "Voucher information of a single customer",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Customer UIN",
           "example": "123456789",
@@ -2404,7 +2355,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The total number of vouchers",
           "example": "12",
@@ -2415,7 +2365,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher details",
           "example": "1",
@@ -2432,7 +2381,6 @@
       "document": "QueryVoucherListByUin request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Customer UIN list",
           "example": "[123]",
@@ -2442,7 +2390,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher status. If this parameter is not passed in, all status will be queried by default. Valid values: `Unused`, `Used`, `Expired`.",
           "example": "Used",
@@ -2480,7 +2427,6 @@
       "document": "Customer voucher information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher ID",
           "example": "xxx",
@@ -2491,7 +2437,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher status",
           "example": "Used",
@@ -2502,7 +2447,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Voucher value",
           "example": "1",
@@ -2513,7 +2457,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Balance",
           "example": "1",

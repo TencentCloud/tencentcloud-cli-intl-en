@@ -158,7 +158,6 @@
       "document": "Backing index metadata fields",
       "members": [
         {
-          "default": "",
           "document": "Backing index name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "test",
           "member": "string",
@@ -168,7 +167,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Backing index status\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "GREEN",
           "member": "string",
@@ -178,7 +176,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Backing index size\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "30GB",
           "member": "int64",
@@ -188,7 +185,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Current lifecycle phase of backing index\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "hot",
           "member": "string",
@@ -198,7 +194,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Backing index creation time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "2021-03-01 10:00:00",
           "member": "string",
@@ -214,7 +209,6 @@
       "document": "Cluster view data",
       "members": [
         {
-          "default": "",
           "document": "Cluster health status",
           "example": "1",
           "member": "float",
@@ -224,7 +218,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the cluster is visible",
           "example": "1",
           "member": "float",
@@ -234,7 +227,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the cluster encounters circuit breaking",
           "example": "1",
           "member": "float",
@@ -244,7 +236,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Average disk usage",
           "example": "0.7",
           "member": "float",
@@ -254,7 +245,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Average memory usage",
           "example": "0.1",
           "member": "float",
@@ -264,7 +254,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Average CPU usage",
           "example": "0.1",
           "member": "float",
@@ -274,7 +263,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Total disk size of the cluster",
           "example": "0.1",
           "member": "uint64",
@@ -284,7 +272,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Types of nodes to receive client requests",
           "example": "[\"hot\"]",
           "member": "string",
@@ -294,7 +281,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of online nodes",
           "example": "10",
           "member": "int64",
@@ -304,7 +290,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Total number of nodes",
           "example": "10",
           "member": "int64",
@@ -314,7 +299,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of data nodes",
           "example": "7",
           "member": "int64",
@@ -324,7 +308,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of indices",
           "example": "100",
           "member": "int64",
@@ -334,7 +317,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of documents",
           "example": "100000",
           "member": "int64",
@@ -344,7 +326,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Used disk size (in bytes)",
           "example": "10000",
           "member": "int64",
@@ -354,7 +335,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of shards",
           "example": "10000",
           "member": "int64",
@@ -364,7 +344,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of primary shards",
           "example": "1000",
           "member": "int64",
@@ -374,7 +353,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of relocating shards",
           "example": "1",
           "member": "int64",
@@ -384,7 +362,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of initializing shards",
           "example": "1",
           "member": "int64",
@@ -394,7 +371,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of unassigned shards",
           "example": "0",
           "member": "int64",
@@ -404,7 +380,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Total COS storage of an enterprise cluster, in GB",
           "example": "1",
           "member": "int64",
@@ -414,7 +389,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Name of the COS bucket that stores searchable snapshots of an enterprise cluster\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "es-3p7lkxxx-1021",
           "member": "string",
@@ -424,7 +398,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "COS app ID of the searchable snapshots of an enterprise cluster\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "1221",
           "member": "string",
@@ -440,7 +413,6 @@
       "document": "Auto-backup to COS for ES",
       "members": [
         {
-          "default": "false",
           "document": "Whether to enable auto-backup to COS",
           "member": "bool",
           "name": "IsAutoBackup",
@@ -449,7 +421,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Auto-backup time (accurate down to the hour), such as \"22:00\"",
           "member": "string",
           "name": "BackupTime",
@@ -464,7 +435,6 @@
       "document": "CreateIndex request structure.",
       "members": [
         {
-          "default": "",
           "document": "ES cluster ID",
           "example": "es-abcdefgh",
           "member": "string",
@@ -473,7 +443,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Type of the index to create. `auto`: Automated; `normal`: General.",
           "example": "auto",
           "member": "string",
@@ -482,7 +451,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Name of the index to create",
           "example": "test",
           "member": "string",
@@ -491,7 +459,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "JSON-formatted index metadata to create, such as `mappings` and `settings`",
           "example": "{}",
           "member": "string",
@@ -500,7 +467,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Username for cluster access",
           "example": "elastic",
           "member": "string",
@@ -509,7 +475,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Password for cluster access",
           "example": "123456",
           "member": "string",
@@ -536,7 +501,6 @@
       "document": "CreateInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "Availability Zone",
           "example": "ap-guangzhou-3",
           "member": "string",
@@ -545,7 +509,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance version. Valid values: `5.6.4`, `6.4.3`, `6.8.2`, `7.5.1`, `7.10.1`",
           "example": "6.4.3",
           "member": "string",
@@ -554,7 +517,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "VPC ID",
           "example": "vpc-xxxxxx",
           "member": "string",
@@ -563,7 +525,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Subnet ID",
           "example": "subnet-xxxxxx",
           "member": "string",
@@ -572,7 +533,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Access password, which must contain 8 to 16 characters, and include at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]",
           "example": "xxxxxx",
           "member": "string",
@@ -581,7 +541,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)",
           "example": "es_test",
           "member": "string",
@@ -590,7 +549,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nNumber of nodes (2-50)",
           "example": "3",
           "member": "uint64",
@@ -599,7 +557,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Billing mode <li>POSTPAID_BY_HOUR: Pay-as-you-go hourly </li>Default value: POSTPAID_BY_HOUR",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
@@ -608,7 +565,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This parameter is not used on the global website",
           "example": "12",
           "member": "uint64",
@@ -617,7 +573,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "This parameter is not used on the global website",
           "example": "RENEW_FLAG_AUTO",
           "member": "string",
@@ -626,7 +581,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nNode specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>",
           "example": "ES.S1.4XLARGE64",
           "member": "string",
@@ -635,7 +589,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nNode storage type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: premium cloud storage </li>Default value: CLOUD_SSD",
           "example": "CLOUD_SSD",
           "member": "string",
@@ -644,7 +597,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nNode disk size in GB",
           "example": "500",
           "member": "uint64",
@@ -653,7 +605,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "This parameter is not used on the global website",
           "example": "m",
           "member": "string",
@@ -662,7 +613,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0",
           "example": "0",
           "member": "int64",
@@ -671,7 +621,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "List of voucher IDs (only one voucher can be specified at a time currently)",
           "example": "[]",
           "member": "string",
@@ -680,7 +629,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nWhether to create a dedicated primary node <li>true: yes </li><li>false: no </li>Default value: false",
           "example": "false",
           "member": "bool",
@@ -689,7 +637,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nNumber of dedicated primary nodes (only 3 and 5 are supported. This value must be passed in if `EnableDedicatedMaster` is `true`)",
           "example": "3",
           "member": "uint64",
@@ -698,7 +645,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nDedicated primary node type, which must be passed in if `EnableDedicatedMaster` is `true` <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>",
           "example": "ES.S1.4XLARGE64",
           "member": "string",
@@ -707,7 +653,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nDedicated primary node disk size in GB, which is optional. If passed in, it can only be 50 and cannot be customized currently",
           "example": "100",
           "member": "uint64",
@@ -716,7 +661,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "ClusterName in the cluster configuration file, which is the instance ID by default and currently cannot be customized",
           "example": "无",
           "member": "string",
@@ -725,7 +669,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster deployment mode <li>0: single-AZ deployment </li><li>1: multi-AZ deployment </li>Default value: 0",
           "example": "0",
           "member": "uint64",
@@ -734,7 +677,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Details of AZs in multi-AZ deployment mode (which is required when DeployMode is 1)",
           "example": "无",
           "member": "ZoneDetail",
@@ -743,7 +685,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum",
           "example": "platinum",
           "member": "string",
@@ -752,7 +693,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node information list, which is used to describe the specification information of various types of nodes in the cluster, such as node type, node quantity, node specification, disk type, and disk size",
           "example": "无",
           "member": "NodeInfo",
@@ -761,7 +701,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Node tag information list",
           "example": "无",
           "member": "TagInfo",
@@ -770,7 +709,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>",
           "example": "2",
           "member": "uint64",
@@ -779,7 +717,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Scenario template type. 0: not enabled; 1: general; 2: log; 3: search",
           "example": "0",
           "member": "int64",
@@ -788,7 +725,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Visual node configuration",
           "example": "无",
           "member": "WebNodeTypeInfo",
@@ -797,7 +733,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Valid values: `https`, `http` (default)",
           "example": "https",
           "member": "string",
@@ -806,7 +741,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The maintenance time slot",
           "example": "无",
           "member": "OperationDuration",
@@ -815,7 +749,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Whether to enable the storage-computing separation feature.",
           "example": "true",
           "member": "bool",
@@ -824,7 +757,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Whether to enable enhanced SSD",
           "example": "无",
           "member": "uint64",
@@ -833,7 +765,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to enable smart inspection.",
           "example": "false",
           "member": "bool",
@@ -878,7 +809,6 @@
       "document": "DeleteIndex request structure.",
       "members": [
         {
-          "default": "",
           "document": "ES cluster ID",
           "example": "es-abcdefgh",
           "member": "string",
@@ -887,7 +817,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Type of the index to delete. `auto`: Automated; `normal`: General.",
           "example": "auto",
           "member": "string",
@@ -896,7 +825,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Name of the index to delete",
           "example": "test",
           "member": "string",
@@ -905,7 +833,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Username for cluster access",
           "example": "elastic",
           "member": "string",
@@ -914,7 +841,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Password for cluster access",
           "example": "123456",
           "member": "string",
@@ -923,7 +849,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Backing index name",
           "example": "test",
           "member": "string",
@@ -950,7 +875,6 @@
       "document": "DeleteInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -976,7 +900,6 @@
       "document": "DescribeIndexList request structure.",
       "members": [
         {
-          "default": "",
           "document": "Index type. `auto`: Automated; `normal`: General.",
           "example": "auto",
           "member": "string",
@@ -985,7 +908,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ES cluster ID",
           "example": "es-abcdefgh",
           "member": "string",
@@ -994,7 +916,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Index name. `null` indicates that all indexes are requested.",
           "example": "test",
           "member": "string",
@@ -1003,7 +924,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Username for cluster access",
           "example": "elastic",
           "member": "string",
@@ -1012,7 +932,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Password for cluster access",
           "example": "123456",
           "member": "string",
@@ -1021,7 +940,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The starting position of paging",
           "example": "0",
           "member": "int64",
@@ -1030,7 +948,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The number of results per page",
           "example": "20",
           "member": "int64",
@@ -1039,7 +956,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Sorting condition field, which can be `IndexName`, `IndexStorage`, or `IndexCreateTime`.",
           "example": "storage",
           "member": "string",
@@ -1048,7 +964,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Filtering by index status",
           "example": "[\"GREEN\"]",
           "member": "string",
@@ -1057,7 +972,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Sorting mode, which can be `asc` and `desc`.",
           "example": "asc",
           "member": "string",
@@ -1102,7 +1016,6 @@
       "document": "DescribeIndexMeta request structure.",
       "members": [
         {
-          "default": "",
           "document": "ES cluster ID",
           "example": "es-abcdefgh",
           "member": "string",
@@ -1111,7 +1024,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Index type. `auto`: Automated; `normal`: General.",
           "example": "auto",
           "member": "string",
@@ -1120,7 +1032,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Index name. `null` indicates that all indexes are requested.",
           "example": "test",
           "member": "string",
@@ -1129,7 +1040,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Username for cluster access",
           "example": "elastic",
           "member": "string",
@@ -1138,7 +1048,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Password for cluster access",
           "example": "123456",
           "member": "string",
@@ -1174,7 +1083,6 @@
       "document": "DescribeInstanceLogs request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -1182,7 +1090,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Log type. Default value: 1\n<li>1: primary log</li>\n<li>2: search slow log</li>\n<li>3: index slow log</li>\n<li>4: GC log</li>",
           "member": "uint64",
           "name": "LogType",
@@ -1190,7 +1097,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Search keyword, which supports LUCENE syntax, such as `level:WARN`, `ip:1.1.1.1`, and `message:test-index`",
           "member": "string",
           "name": "SearchKey",
@@ -1198,7 +1104,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Log start time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53",
           "member": "string",
           "name": "StartTime",
@@ -1206,7 +1111,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Log end time in the format of YYYY-MM-DD HH:MM:SS, such as 2019-01-22 20:15:53",
           "member": "string",
           "name": "EndTime",
@@ -1214,7 +1118,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Pagination start value. Default value: 0",
           "member": "uint64",
           "name": "Offset",
@@ -1222,7 +1125,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page. Default value: 100. Maximum value: 100",
           "member": "uint64",
           "name": "Limit",
@@ -1230,7 +1132,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Time sorting order. Default value: 0\n<li>0: descending</li>\n<li>1: ascending</li>",
           "member": "uint64",
           "name": "OrderByType",
@@ -1270,7 +1171,6 @@
       "document": "DescribeInstanceOperations request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -1278,7 +1178,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Start time, such as \"2019-03-07 16:30:39\"",
           "member": "string",
           "name": "StartTime",
@@ -1286,7 +1185,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "End time, such as \"2019-03-30 20:18:03\"",
           "member": "string",
           "name": "EndTime",
@@ -1294,7 +1192,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Pagination start value",
           "member": "uint64",
           "name": "Offset",
@@ -1302,7 +1199,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page",
           "member": "uint64",
           "name": "Limit",
@@ -1342,7 +1238,6 @@
       "document": "DescribeInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "AZ of the cluster instance. If this is not passed in, all AZs are used by default",
           "example": "ap-guangzhou-3",
           "member": "string",
@@ -1351,7 +1246,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of cluster instance IDs",
           "example": "es-abcdefgh",
           "member": "string",
@@ -1360,7 +1254,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "List of cluster instance names",
           "example": "测试",
           "member": "string",
@@ -1369,7 +1262,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Pagination start value. Default value: 0",
           "example": "0",
           "member": "uint64",
@@ -1378,7 +1270,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page. Default value: 20",
           "example": "10",
           "member": "uint64",
@@ -1387,7 +1278,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The sorting field. <li>1: Instance ID </li><li>2: Instance name </li><li>3: AZ </li><li>4: Creation time </li>If `OrderByKey` is not passed in, sorting is performed by creation time in descending order.",
           "example": "1",
           "member": "uint64",
@@ -1396,7 +1286,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Sorting order <li>0: ascending </li><li>1: descending </li>If orderByKey is passed in but orderByType is not, ascending order is used by default",
           "example": "0",
           "member": "uint64",
@@ -1405,7 +1294,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Node tag information list",
           "example": "无",
           "member": "TagInfo",
@@ -1414,7 +1302,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "VPC VIP list",
           "example": "10.2.3.4",
           "member": "string",
@@ -1423,7 +1310,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "List of availability zones",
           "example": "ap-guangzhou-3",
           "member": "string",
@@ -1432,7 +1318,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The health status filter. Valid values: `0` (green), `1` (yellow), `2` (red), `-1` (unknown).",
           "example": "无",
           "member": "int64",
@@ -1441,7 +1326,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "VPC IDs",
           "example": "vpc-gz5fa86l",
           "member": "string",
@@ -1482,7 +1366,6 @@
       "document": "DescribeViews request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster instance ID",
           "example": "es-xxxxxxxx",
           "member": "string",
@@ -1536,7 +1419,6 @@
       "document": "Information of the IK plugin dictionary",
       "members": [
         {
-          "default": "",
           "document": "Dictionary key value",
           "member": "string",
           "name": "Key",
@@ -1545,7 +1427,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Dictionary name",
           "member": "string",
           "name": "Name",
@@ -1554,7 +1435,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Dictionary size in B",
           "member": "uint64",
           "name": "Size",
@@ -1569,7 +1449,6 @@
       "document": "ES cluster configuration item",
       "members": [
         {
-          "default": "",
           "document": "Kibana access blocklist",
           "member": "string",
           "name": "BlackIpList",
@@ -1578,7 +1457,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Kibana access allowlist",
           "member": "string",
           "name": "WhiteIpList",
@@ -1593,7 +1471,6 @@
       "document": "Configuration set information",
       "members": [
         {
-          "default": "",
           "document": "Configuration set type, such as `LDAP` and `AD`.",
           "example": "ldap",
           "member": "string",
@@ -1603,7 +1480,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "\"{\\\"order\\\":0,\\\"url\\\":\\\"ldap://10.0.1.72:389\\\",\\\"bind_dn\\\":\\\"cn=admin,dc=tencent,dc=com\\\",\\\"user_search.base_dn\\\":\\\"dc=tencent,dc=com\\\",\\\"user_search.filter\\\":\\\"(cn={0})\\\",\\\"group_search.base_dn\\\":\\\"dc=tencent,dc=com\\\"}\"",
           "example": "参考描述",
           "member": "string",
@@ -1619,7 +1495,6 @@
       "document": "ES dictionary information",
       "members": [
         {
-          "default": "",
           "document": "List of non-stop words",
           "member": "DictInfo",
           "name": "MainDict",
@@ -1628,7 +1503,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List of stop words",
           "member": "DictInfo",
           "name": "Stopwords",
@@ -1637,7 +1511,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "QQ dictionary list",
           "member": "DictInfo",
           "name": "QQDict",
@@ -1646,7 +1519,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Synonym dictionary list",
           "member": "DictInfo",
           "name": "Synonym",
@@ -1655,7 +1527,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Update dictionary type",
           "member": "string",
           "name": "UpdateType",
@@ -1670,7 +1541,6 @@
       "document": "Public network ACL information of ES",
       "members": [
         {
-          "default": "",
           "document": "Access blocklist",
           "member": "string",
           "name": "BlackIpList",
@@ -1679,7 +1549,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Access allowlist",
           "member": "string",
           "name": "WhiteIpList",
@@ -1694,7 +1563,6 @@
       "document": "GetRequestTargetNodeTypes request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID.",
           "member": "string",
           "name": "InstanceId",
@@ -1727,7 +1595,6 @@
       "document": "Index metadata field",
       "members": [
         {
-          "default": "",
           "document": "Index type\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "auto",
           "member": "string",
@@ -1737,7 +1604,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Index name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "test",
           "member": "string",
@@ -1747,7 +1613,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Index status\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "GREEN",
           "member": "string",
@@ -1757,7 +1622,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Index size (in byte)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "30",
           "member": "int64",
@@ -1767,7 +1631,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Index creation time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "2021-03-01 10:00:00",
           "member": "string",
@@ -1777,7 +1640,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Backing index\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "BackingIndexMetaField",
@@ -1787,7 +1649,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cluster ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "es-abcdefgh",
           "member": "string",
@@ -1797,7 +1658,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cluster name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "test",
           "member": "string",
@@ -1807,7 +1667,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cluster version\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "7.14.2",
           "member": "string",
@@ -1817,7 +1676,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Index lifecycle policy field\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "IndexPolicyField",
@@ -1827,7 +1685,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Index automation field\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "IndexOptionsField",
@@ -1837,7 +1694,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Index setting field\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "IndexSettingsField",
@@ -1847,7 +1703,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cluster APP ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "10004222",
           "member": "uint64",
@@ -1857,7 +1712,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The number of index docs.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -1873,7 +1727,6 @@
       "document": "Index automation field",
       "members": [
         {
-          "default": "",
           "document": "Max age for expiry purpose\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "3d",
           "member": "string",
@@ -1883,7 +1736,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Max size for expiry purpose\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "2GB",
           "member": "string",
@@ -1893,7 +1745,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Rollover cycle\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "1d",
           "member": "string",
@@ -1903,7 +1754,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable the dynamic rollover\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "true",
           "member": "string",
@@ -1913,7 +1763,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable dynamic sharding\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "true",
           "member": "string",
@@ -1923,7 +1772,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Timestamp field\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "@timestamp",
           "member": "string",
@@ -1933,7 +1781,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Write mode\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "append_only",
           "member": "string",
@@ -1949,7 +1796,6 @@
       "document": "Index lifecycle policy field",
       "members": [
         {
-          "default": "",
           "document": "Whether to enable the warm phase\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "false",
           "member": "string",
@@ -1959,7 +1805,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Min age before data transitions to the warm phase\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "3d",
           "member": "string",
@@ -1969,7 +1814,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable the cold phase\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "false",
           "member": "string",
@@ -1979,7 +1823,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Min age before data transitions to the cold phase\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "3d",
           "member": "string",
@@ -1989,7 +1832,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable the frozen phase\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "false",
           "member": "string",
@@ -1999,7 +1841,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Min age before data transitions to the frozen phase\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "3d",
           "member": "string",
@@ -2009,7 +1850,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "/\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "/",
           "member": "string",
@@ -2025,7 +1865,6 @@
       "document": "Index configuration fields",
       "members": [
         {
-          "default": "",
           "document": "Number of primary shards\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "5",
           "member": "string",
@@ -2035,7 +1874,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of replica shards\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "string",
@@ -2045,7 +1883,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Index refresh interval\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "20s",
           "member": "string",
@@ -2061,7 +1898,6 @@
       "document": "Instance details",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "es-xxxxxxxx",
           "member": "string",
@@ -2071,7 +1907,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance name",
           "example": "实例名称",
           "member": "string",
@@ -2081,7 +1916,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region",
           "example": "ap-guangzhou",
           "member": "string",
@@ -2091,7 +1925,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Availability Zone",
           "example": "ap-guangzhou-1",
           "member": "string",
@@ -2101,7 +1934,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User ID",
           "example": "123456789",
           "member": "uint64",
@@ -2111,7 +1943,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "User UIN",
           "example": "123456789",
           "member": "string",
@@ -2121,7 +1952,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "UID of the VPC where the instance resides",
           "example": "vpc-xxxxxxx",
           "member": "string",
@@ -2131,7 +1961,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "UID of the subnet where the instance resides",
           "example": "subnet-xxxxxxx",
           "member": "string",
@@ -2141,7 +1970,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance status. `0`: Processing; `1`: Normal; `-1`: `Stopped`; `-2`: Being terminated; `-3`: Terminated; `2`: Initializing during the cluster creation.",
           "example": "1",
           "member": "int64",
@@ -2151,7 +1979,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is not used on the global website",
           "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
@@ -2161,7 +1988,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)",
           "example": "PREPAID",
           "member": "string",
@@ -2171,7 +1997,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is not used on the global website",
           "example": "6",
           "member": "uint64",
@@ -2181,7 +2006,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>",
           "example": "ES.S1.SMALL2",
           "member": "string",
@@ -2191,7 +2015,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of nodes",
           "example": "3",
           "member": "uint64",
@@ -2201,7 +2024,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of CPU cores of the node",
           "example": "4",
           "member": "uint64",
@@ -2211,7 +2033,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node memory size in GB",
           "example": "8",
           "member": "uint64",
@@ -2221,7 +2042,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node disk type",
           "example": "CLOUD_PREMIUM",
           "member": "string",
@@ -2231,7 +2051,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node disk size in GB",
           "example": "100",
           "member": "uint64",
@@ -2241,7 +2060,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ES domain name",
           "example": "http://es-xxxxxxxx",
           "member": "string",
@@ -2251,7 +2069,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ES VIP",
           "example": "1.1.1.1",
           "member": "string",
@@ -2261,7 +2078,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ES port",
           "example": "9200",
           "member": "uint64",
@@ -2271,7 +2087,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Kibana access URL",
           "example": "http://es-xxxxxxxx",
           "member": "string",
@@ -2281,7 +2096,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ES version number",
           "example": "5.6.4",
           "member": "string",
@@ -2291,7 +2105,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ES configuration item",
           "example": "\"{}\"",
           "member": "string",
@@ -2301,7 +2114,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Kibana access control configuration",
           "example": "无",
           "member": "EsAcl",
@@ -2311,7 +2123,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance creation time",
           "example": "2021-03-01 10:00:00",
           "member": "string",
@@ -2321,7 +2132,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last modified time of the instance",
           "example": "2021-03-01 10:00:00",
           "member": "string",
@@ -2331,7 +2141,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is not used on the global website",
           "example": "2021-03-01 10:00:00",
           "member": "string",
@@ -2341,7 +2150,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance type (instance type identifier, which can be only 1 or 2 currently)",
           "example": "1",
           "member": "uint64",
@@ -2351,7 +2159,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IK analyzer configuration",
           "example": "无",
           "member": "EsDictionaryInfo",
@@ -2361,7 +2168,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Dedicated primary node configuration",
           "example": "无",
           "member": "MasterNodeInfo",
@@ -2371,7 +2177,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Auto-backup to COS configuration",
           "example": "无",
           "member": "CosBackup",
@@ -2381,7 +2186,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to allow auto-backup to COS",
           "example": "true",
           "member": "bool",
@@ -2391,7 +2195,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List of tags owned by the instance",
           "example": "无",
           "member": "TagInfo",
@@ -2401,7 +2204,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum",
           "example": "platinum",
           "member": "string",
@@ -2411,7 +2213,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is a hot/warm cluster <li>true: yes </li><li>false: no</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -2421,7 +2222,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Warm node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "ES.S1.SMALL2",
           "member": "string",
@@ -2431,7 +2231,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of warm nodes\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "3",
           "member": "uint64",
@@ -2441,7 +2240,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of warm node CPU cores\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "2",
           "member": "uint64",
@@ -2451,7 +2249,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Warm node memory size (in GB)\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "4",
           "member": "uint64",
@@ -2461,7 +2258,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Warm node disk type\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "CLOUD_PREMIUM",
           "member": "string",
@@ -2471,7 +2267,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Warm node disk size (in GB)\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "100",
           "member": "uint64",
@@ -2481,7 +2276,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cluster node information list\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NodeInfo",
@@ -2491,7 +2285,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ES public IP address\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "http://es-xxxxxxxx",
           "member": "string",
@@ -2501,7 +2294,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Multi-AZ network information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ZoneDetail",
@@ -2511,7 +2303,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Deployment mode <li>0: single-AZ </li><li>1: multi-AZ</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -2521,7 +2312,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ES public access status <li>OPEN: enabled </li><li>CLOSE: disabled\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "OPEN",
           "member": "string",
@@ -2531,7 +2321,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ES public access control configuration",
           "example": "无",
           "member": "EsAcl",
@@ -2541,7 +2330,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Kibana private IP address\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "http://es-xxxxxxxx",
           "member": "string",
@@ -2551,7 +2339,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Kibana public access status <li>OPEN: enabled </li><li>CLOSE: disabled\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "OPEN",
           "member": "string",
@@ -2561,7 +2348,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Kibana private access status <li>OPEN: enabled </li><li>CLOSE: disabled\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "OPEN",
           "member": "string",
@@ -2571,7 +2357,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -2581,7 +2366,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Scenario template type. 0: not enabled; 1: general scenario; 2: log scenario; 3: search scenario\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -2591,7 +2375,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Kibana configuration item.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"{}\"",
           "member": "string",
@@ -2601,7 +2384,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Kibana node information\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "KibanaNodeInfo",
@@ -2611,7 +2393,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Visual node configuration\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "WebNodeTypeInfo",
@@ -2621,7 +2402,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "JDK type. Valid values: `oracle`, `kona`\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "oracle",
           "member": "string",
@@ -2631,7 +2411,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cluster network communication protocol\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "https",
           "member": "string",
@@ -2641,7 +2420,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Security group ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -2651,7 +2429,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cold node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "ES.S1.SMALL2",
           "member": "string",
@@ -2661,7 +2438,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of cold nodes\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "3",
           "member": "uint64",
@@ -2671,7 +2447,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of cold node CPU cores\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "2",
           "member": "uint64",
@@ -2681,7 +2456,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cold node memory size (in GB)\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "20",
           "member": "uint64",
@@ -2691,7 +2465,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cold node disk type\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "CLOUD_PREMIUM",
           "member": "string",
@@ -2701,7 +2474,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cold node disk size (in GB)\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "100",
           "member": "uint64",
@@ -2711,7 +2483,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Frozen node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "ES.S1.SMALL2",
           "member": "string",
@@ -2721,7 +2492,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of frozen nodes\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "3",
           "member": "uint64",
@@ -2731,7 +2501,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of frozen node CPU cores\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "2",
           "member": "uint64",
@@ -2741,7 +2510,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Frozen node memory size (GB)\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "20",
           "member": "uint64",
@@ -2751,7 +2519,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Frozen node disk type\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "CLOUD_SSD",
           "member": "string",
@@ -2761,7 +2528,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Frozen node disk size (in GB)\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "100",
           "member": "uint64",
@@ -2771,7 +2537,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cluster health status. `-1`: Unknown; `0`: Green; `1`: Yellow; `2`: Red\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "-1",
           "member": "int64",
@@ -2781,7 +2546,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Private URL of the HTTPS cluster\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "https://xxx.com",
           "member": "string",
@@ -2791,7 +2555,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Private domain of the HTTPS cluster\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "xxx.com",
           "member": "string",
@@ -2801,7 +2564,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Configuration set info of the cluster.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "EsConfigSetInfo",
@@ -2811,7 +2573,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The maintenance time slot of the cluster\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OperationDuration",
@@ -2821,7 +2582,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Web node list\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OptionalWebServiceInfo",
@@ -2831,7 +2591,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Autonomous index option\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -2841,7 +2600,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the storage-computing separation feature is enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
@@ -2851,7 +2609,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The process progress\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1.0",
           "member": "float",
@@ -2861,7 +2618,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The alerting policy of Kibana over the public network. <li>`OPEN`: Enable the policy;</li><li>`CLOSE`: Disable the policy.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "OPEN",
           "member": "string",
@@ -2877,7 +2633,6 @@
       "document": "ES cluster log details",
       "members": [
         {
-          "default": "",
           "document": "Log time",
           "member": "string",
           "name": "Time",
@@ -2886,7 +2641,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log level",
           "member": "string",
           "name": "Level",
@@ -2895,7 +2649,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster node IP",
           "member": "string",
           "name": "Ip",
@@ -2904,7 +2657,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log content",
           "member": "string",
           "name": "Message",
@@ -2919,7 +2671,6 @@
       "document": "`OperationDetail` uses an array of this structure to describe the old and new configuration information",
       "members": [
         {
-          "default": "",
           "document": "Key",
           "member": "string",
           "name": "Key",
@@ -2928,7 +2679,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Value",
           "member": "string",
           "name": "Value",
@@ -2943,7 +2693,6 @@
       "document": "Kibana node information",
       "members": [
         {
-          "default": "",
           "document": "Kibana node specification",
           "example": "ES.S1.SMALL2",
           "member": "string",
@@ -2953,7 +2702,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of Kibana nodes",
           "example": "1",
           "member": "uint64",
@@ -2963,7 +2711,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of Kibana node's CPUs",
           "example": "2",
           "member": "uint64",
@@ -2973,7 +2720,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Kibana node's memory in GB",
           "example": "4",
           "member": "uint64",
@@ -2983,7 +2729,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Kibana node's disk type",
           "example": "CLOUD_PREMIUM",
           "member": "string",
@@ -2993,7 +2738,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Kibana node's disk size",
           "example": "50",
           "member": "uint64",
@@ -3009,7 +2753,6 @@
       "document": "Kibana view data",
       "members": [
         {
-          "default": "",
           "document": "Kibana node IP",
           "member": "string",
           "name": "Ip",
@@ -3018,7 +2761,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node disk size",
           "member": "int64",
           "name": "DiskSize",
@@ -3027,7 +2769,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Disk usage",
           "member": "float",
           "name": "DiskUsage",
@@ -3036,7 +2777,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node memory size",
           "member": "int64",
           "name": "MemSize",
@@ -3045,7 +2785,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Memory usage",
           "member": "float",
           "name": "MemUsage",
@@ -3054,7 +2793,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of node CPUs",
           "member": "int64",
           "name": "CpuNum",
@@ -3063,7 +2801,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CPU usage",
           "member": "float",
           "name": "CpuUsage",
@@ -3072,7 +2809,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Availability zone",
           "member": "string",
           "name": "Zone",
@@ -3087,7 +2823,6 @@
       "document": "Local disk information of node",
       "members": [
         {
-          "default": "",
           "document": "Local disk type <li>LOCAL_SATA: big data </li><li>NVME_SSD: high IO</li>",
           "member": "string",
           "name": "LocalDiskType",
@@ -3096,7 +2831,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Size of a single local disk",
           "member": "uint64",
           "name": "LocalDiskSize",
@@ -3105,7 +2839,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of local disks",
           "member": "uint64",
           "name": "LocalDiskCount",
@@ -3120,7 +2853,6 @@
       "document": "Information of the dedicated primary node in an instance",
       "members": [
         {
-          "default": "",
           "document": "Whether to enable the dedicated primary node",
           "member": "bool",
           "name": "EnableDedicatedMaster",
@@ -3129,7 +2861,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Dedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>",
           "member": "string",
           "name": "MasterNodeType",
@@ -3138,7 +2869,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of dedicated primary nodes",
           "member": "uint64",
           "name": "MasterNodeNum",
@@ -3147,7 +2877,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of CPU cores of the dedicated primary node",
           "member": "uint64",
           "name": "MasterNodeCpuNum",
@@ -3156,7 +2885,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Memory size of the dedicated primary node in GB",
           "member": "uint64",
           "name": "MasterNodeMemSize",
@@ -3165,7 +2893,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Disk size of the dedicated primary node in GB",
           "member": "uint64",
           "name": "MasterNodeDiskSize",
@@ -3174,7 +2901,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Disk type of the dedicated primary node",
           "member": "string",
           "name": "MasterNodeDiskType",
@@ -3189,7 +2915,6 @@
       "document": "Specification information of a node type in the cluster (such as hot data node, warm data node, or dedicated primary node), including node type, number of nodes, node specification, disk type, and disk size. If `Type` is not specified, it will be a hot data node by default; if the node is a primary node, then the `DiskType` and `DiskSize` parameters will be ignored (as a primary node has no data disks)",
       "members": [
         {
-          "default": "",
           "document": "Number of nodes",
           "example": "3",
           "member": "uint64",
@@ -3199,7 +2924,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>",
           "example": "ES.S1.4XLARGE64",
           "member": "string",
@@ -3209,7 +2933,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node type<li>`hotData`: hot data node</li>\n<li>`warmData`: warm data node</li>\n<li>`dedicatedMaster`: dedicated master node</li>\nDefault value: `hotData`",
           "example": "dedicatedMaster",
           "member": "string",
@@ -3219,7 +2942,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node disk type <li>CLOUD_SSD: SSD cloud storage </li><li>CLOUD_PREMIUM: Premium cloud disk </li>Default value: CLOUD_SSD",
           "example": "CLOUD_SSD",
           "member": "string",
@@ -3229,7 +2951,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node disk size in GB",
           "example": "50",
           "member": "uint64",
@@ -3239,7 +2960,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Local disk information\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "LocalDiskInfo",
@@ -3249,7 +2969,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of node disks",
           "example": "1",
           "member": "uint64",
@@ -3259,7 +2978,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to encrypt node disk. 0: no (default); 1: yes.",
           "example": "0",
           "member": "uint64",
@@ -3269,7 +2987,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CPU number\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -3279,7 +2996,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Memory size in GB\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -3289,7 +3005,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "/\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -3305,7 +3020,6 @@
       "document": "Node view data",
       "members": [
         {
-          "default": "",
           "document": "Node ID",
           "example": "NodeId",
           "member": "string",
@@ -3315,7 +3029,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node IP",
           "example": "NodeIp",
           "member": "string",
@@ -3325,7 +3038,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the node is visible",
           "example": "Visible",
           "member": "float",
@@ -3335,7 +3047,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the node encounters circuit breaking",
           "example": "Break",
           "member": "float",
@@ -3345,7 +3056,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node disk size",
           "example": "DiskSize",
           "member": "int64",
@@ -3355,7 +3065,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Disk usage",
           "example": "DiskUsage",
           "member": "float",
@@ -3365,7 +3074,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node memory size (in GB)",
           "example": "MemSize",
           "member": "int64",
@@ -3375,7 +3083,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Memory usage",
           "example": "MemUsage",
           "member": "float",
@@ -3385,7 +3092,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of node CPUs",
           "example": "CpuNum",
           "member": "int64",
@@ -3395,7 +3101,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CPU usage",
           "example": "CpuUsage",
           "member": "float",
@@ -3405,7 +3110,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Availability zone",
           "example": "Zone",
           "member": "string",
@@ -3415,7 +3119,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node role",
           "example": "NodeRole",
           "member": "string",
@@ -3425,7 +3128,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node HTTP IP",
           "example": "NodeHttpIp",
           "member": "string",
@@ -3435,7 +3137,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "JVM memory usage",
           "example": "JvmMemUsage",
           "member": "float",
@@ -3445,7 +3146,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of node shards",
           "example": "ShardNum",
           "member": "int64",
@@ -3455,7 +3155,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID list of node disks",
           "example": "DiskIds",
           "member": "string",
@@ -3465,7 +3164,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether a hidden availability zone",
           "example": "Hidden",
           "member": "bool",
@@ -3481,7 +3179,6 @@
       "document": "ES cluster operation details",
       "members": [
         {
-          "default": "",
           "document": "Unique operation ID",
           "member": "uint64",
           "name": "Id",
@@ -3490,7 +3187,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Operation start time",
           "member": "string",
           "name": "StartTime",
@@ -3499,7 +3195,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Operation type",
           "member": "string",
           "name": "Type",
@@ -3508,7 +3203,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Operation details",
           "member": "OperationDetail",
           "name": "Detail",
@@ -3517,7 +3211,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Operation result",
           "member": "string",
           "name": "Result",
@@ -3526,7 +3219,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Workflow task information",
           "member": "TaskDetail",
           "name": "Tasks",
@@ -3535,7 +3227,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Operation progress",
           "member": "float",
           "name": "Progress",
@@ -3550,7 +3241,6 @@
       "document": "Operation details",
       "members": [
         {
-          "default": "",
           "document": "Original instance configuration information",
           "member": "KeyValue",
           "name": "OldInfo",
@@ -3559,7 +3249,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Updated instance configuration information",
           "member": "KeyValue",
           "name": "NewInfo",
@@ -3574,7 +3263,6 @@
       "document": "The maintenance time slot of the cluster",
       "members": [
         {
-          "default": "",
           "document": "Maintenance period, which can be one or more days from Monday to Sunday. Valid values: [0, 6].\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[0,1,2]",
           "member": "uint64",
@@ -3584,7 +3272,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The maintenance start time",
           "example": "02:00",
           "member": "string",
@@ -3594,7 +3281,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The maintenance end time",
           "example": "06:00",
           "member": "string",
@@ -3604,7 +3290,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The time zone expressed in UTC.",
           "example": "UTC+8",
           "member": "string",
@@ -3620,7 +3305,6 @@
       "document": "The maintenance time slot of the cluster",
       "members": [
         {
-          "default": "",
           "document": "Maintenance period, which can be one or more days from Monday to Sunday. Valid values: [0, 6].",
           "example": "[0,1,2]",
           "member": "uint64",
@@ -3630,7 +3314,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The maintenance start time",
           "example": "02:00",
           "member": "string",
@@ -3640,7 +3323,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The maintenance end time",
           "example": "06:00",
           "member": "string",
@@ -3650,7 +3332,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The time zone expressed in UTC.",
           "example": "UTC+8",
           "member": "string",
@@ -3660,7 +3341,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The array of ES cluster IDs",
           "example": "[es-c3tz27ww]",
           "member": "string",
@@ -3676,7 +3356,6 @@
       "document": "The information of optional web components",
       "members": [
         {
-          "default": "",
           "document": "Type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "cerebro",
           "member": "string",
@@ -3686,7 +3365,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -3696,7 +3374,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Public URL\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "https://es-xxxxxxxx.cerebro.tencentelasticsearch.com:9000",
           "member": "string",
@@ -3706,7 +3383,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Private URL\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "http://es-xxxxxxxx.interna.cerebro.tencentelasticsearch.com:9000",
           "member": "string",
@@ -3716,7 +3392,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Public network access\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "OPEN",
           "member": "string",
@@ -3726,7 +3401,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Private network access\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "CLOSE",
           "member": "string",
@@ -3736,7 +3410,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0.9.4",
           "member": "string",
@@ -3752,7 +3425,6 @@
       "document": "RestartInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "es-xxxxxxxx",
           "member": "string",
@@ -3761,7 +3433,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to force restart <li>true: Yes </li><li>false: No </li>Default value: false",
           "example": "false",
           "member": "bool",
@@ -3770,7 +3441,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Restart mode. `0`: rolling restart; `1`: full restart",
           "example": "0",
           "member": "int64",
@@ -3797,7 +3467,6 @@
       "document": "RestartKibana request structure.",
       "members": [
         {
-          "default": "",
           "document": "ES instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -3823,7 +3492,6 @@
       "document": "RestartNodes request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster instance ID",
           "example": "es-xxxxxxxx",
           "member": "string",
@@ -3832,7 +3500,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node name list",
           "example": "[\"159229897700074xxxx\\r\\n\"]",
           "member": "string",
@@ -3841,7 +3508,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to force restart",
           "example": "true",
           "member": "bool",
@@ -3850,7 +3516,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "The restart mode. Valid values: `in-place` (default), `blue-green`.",
           "example": "\"in-place\"",
           "member": "string",
@@ -3859,7 +3524,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The node status, applicable in the blue/green mode. The blue/green restart is risky if the node is offline.",
           "example": "true",
           "member": "bool",
@@ -3886,7 +3550,6 @@
       "document": "Information of subtask in workflow task in the instance operation history (such as each check item in a upgrade check task)",
       "members": [
         {
-          "default": "",
           "document": "Subtask name",
           "member": "string",
           "name": "Name",
@@ -3895,7 +3558,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subtask result",
           "member": "bool",
           "name": "Result",
@@ -3904,7 +3566,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subtask error message",
           "member": "string",
           "name": "ErrMsg",
@@ -3913,7 +3574,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subtask type",
           "member": "string",
           "name": "Type",
@@ -3922,7 +3582,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subtask status. 0: processing, 1: succeeded, -1: failed",
           "member": "int64",
           "name": "Status",
@@ -3931,7 +3590,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Name of the index for which the check for upgrade failed",
           "member": "string",
           "name": "FailedIndices",
@@ -3940,7 +3598,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subtask end time",
           "member": "string",
           "name": "FinishTime",
@@ -3949,7 +3606,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subtask level. 1: warning, 2: failed",
           "member": "int64",
           "name": "Level",
@@ -3964,7 +3620,6 @@
       "document": "Instance tag information",
       "members": [
         {
-          "default": "",
           "document": "Tag key",
           "member": "string",
           "name": "TagKey",
@@ -3973,7 +3628,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value",
           "member": "string",
           "name": "TagValue",
@@ -3988,7 +3642,6 @@
       "document": "Information of workflow task in instance operation history",
       "members": [
         {
-          "default": "",
           "document": "Task name",
           "example": "xx",
           "member": "string",
@@ -3998,7 +3651,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task progress",
           "example": "1.2",
           "member": "float",
@@ -4008,7 +3660,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task completion time",
           "example": "xx",
           "member": "string",
@@ -4018,7 +3669,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subtask",
           "example": "xx",
           "member": "SubTaskDetail",
@@ -4028,7 +3678,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The task time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -4044,7 +3693,6 @@
       "document": "UpdateDictionaries request structure.",
       "members": [
         {
-          "default": "",
           "document": "ES instance ID",
           "example": "es-abcdefgh",
           "member": "string",
@@ -4053,7 +3701,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "COS address of the main dictionary for the IK analyzer",
           "example": "[https://cos_address/dict.txt]",
           "member": "string",
@@ -4062,7 +3709,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "COS address of the stopword dictionary for the IK analyzer",
           "example": "[https://cos_address/dict.txt]",
           "member": "string",
@@ -4071,7 +3717,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "COS address of the synonym dictionary",
           "example": "[https://cos_address/dict.txt]",
           "member": "string",
@@ -4080,7 +3725,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "COS address of the QQ dictionary",
           "example": "[https://cos_address/dict.txt]",
           "member": "string",
@@ -4089,7 +3733,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "`0` (default): Install, `1`: Delete",
           "example": "0",
           "member": "int64",
@@ -4098,7 +3741,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to force restart the cluster. The default value is `false`.",
           "example": "false",
           "member": "bool",
@@ -4125,7 +3767,6 @@
       "document": "UpdateIndex request structure.",
       "members": [
         {
-          "default": "",
           "document": "ES cluster ID",
           "example": "es-abcdefgh",
           "member": "string",
@@ -4134,7 +3775,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Type of the index to update. `auto`: Automated; `normal`: General.",
           "example": "auto",
           "member": "string",
@@ -4143,7 +3783,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Name of the index to update",
           "example": "test",
           "member": "string",
@@ -4152,7 +3791,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "JSON-formatted index metadata to update, such as `mappings` and `settings`.",
           "example": "{}",
           "member": "string",
@@ -4161,7 +3799,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Username for cluster access",
           "example": "elastic",
           "member": "string",
@@ -4170,7 +3807,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Password for cluster access",
           "example": "123456",
           "member": "string",
@@ -4179,7 +3815,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to roll over the backup index",
           "example": "false",
           "member": "bool",
@@ -4206,7 +3841,6 @@
       "document": "UpdateInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "es-xxxxxx",
           "member": "string",
@@ -4215,7 +3849,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance name, which can contain 1 to 50 English letters, Chinese characters, digits, dashes (-), or underscores (_)",
           "example": "newName",
           "member": "string",
@@ -4224,7 +3857,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nNumber of nodes (2-50)",
           "example": "3",
           "member": "uint64",
@@ -4233,7 +3865,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "ES configuration item (JSON string)",
           "example": "无",
           "member": "string",
@@ -4242,7 +3873,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Password of the default user 'elastic', which must contain 8 to 16 characters, including at least two of the following three types of characters: [a-z,A-Z], [0-9] and [-!@#$%&^*+=_:;,.?]",
           "example": "无",
           "member": "string",
@@ -4251,7 +3881,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The policy for visual component (Kibana and Cerebro) access over public network.",
           "example": "无",
           "member": "EsAcl",
@@ -4260,7 +3889,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nDisk size in GB",
           "example": "已废弃请使用NodeInfoList",
           "member": "uint64",
@@ -4269,7 +3897,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nNode specification <li>ES.S1.SMALL2: 1-core 2 GB </li><li>ES.S1.MEDIUM4: 2-core 4 GB </li><li>ES.S1.MEDIUM8: 2-core 8 GB </li><li>ES.S1.LARGE16: 4-core 16 GB </li><li>ES.S1.2XLARGE32: 8-core 32 GB </li><li>ES.S1.4XLARGE32: 16-core 32 GB </li><li>ES.S1.4XLARGE64: 16-core 64 GB </li>",
           "example": "已废弃请使用NodeInfoList",
           "member": "string",
@@ -4278,7 +3905,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nNumber of dedicated primary nodes (only 3 and 5 are supported)",
           "example": "已废弃请使用NodeInfoList",
           "member": "uint64",
@@ -4287,7 +3913,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nDedicated primary node specification <li>ES.S1.SMALL2: 1-core 2 GB</li><li>ES.S1.MEDIUM4: 2-core 4 GB</li><li>ES.S1.MEDIUM8: 2-core 8 GB</li><li>ES.S1.LARGE16: 4-core 16 GB</li><li>ES.S1.2XLARGE32: 8-core 32 GB</li><li>ES.S1.4XLARGE32: 16-core 32 GB</li><li>ES.S1.4XLARGE64: 16-core 64 GB</li>",
           "example": "已废弃请使用NodeInfoList",
           "member": "string",
@@ -4296,7 +3921,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This parameter has been disused. Please use `NodeInfoList`\nDedicated primary node disk size in GB. This is 50 GB by default and currently cannot be customized",
           "example": "已废弃请使用NodeInfoList",
           "member": "uint64",
@@ -4305,7 +3929,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to force restart during configuration update <li>true: Yes </li><li>false: No </li>This needs to be set only for EsConfig. Default value: false",
           "example": "已废弃请使用NodeInfoList",
           "member": "bool",
@@ -4314,7 +3937,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Auto-backup to COS",
           "example": "无",
           "member": "CosBackup",
@@ -4323,7 +3945,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Node information list. You can pass in only the nodes to be updated and their corresponding specification information. Supported operations include: <li>modifying the number of nodes in the same type </li><li>modifying the specification and disk size of nodes in the same type </li><li>adding a node type (you must also specify the node type, quantity, specification, disk, etc.) </li>The above operations can only be performed one at a time, and the disk type cannot be modified",
           "example": "无",
           "member": "NodeInfo",
@@ -4332,7 +3953,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The status of ES cluster access over public network.\n`OPEN`: Enabled.\n`CLOSE`: Disabled.",
           "example": "OPEN",
           "member": "string",
@@ -4341,7 +3961,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Public network ACL",
           "example": "无",
           "member": "EsPublicAcl",
@@ -4350,7 +3969,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The status of Kibana access over public network.\n`OPEN`: Enabled.\n`CLOSE`: Disabled.",
           "example": "OPEN",
           "member": "string",
@@ -4359,7 +3977,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The status of Kibana access over private network.\n`OPEN`: Enabled.\n`CLOSE`: Disabled.",
           "example": "OPEN",
           "member": "string",
@@ -4368,7 +3985,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Enables or disables user authentication for ES Basic Edition v6.8 and above",
           "example": "1",
           "member": "int64",
@@ -4377,7 +3993,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Kibana private port",
           "example": "5601",
           "member": "uint64",
@@ -4386,7 +4001,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "0: scaling in blue/green deployment mode without cluster restart (default); 1: scaling by unmounting disk with rolling cluster restart",
           "example": "0",
           "member": "int64",
@@ -4395,7 +4009,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Multi-AZ deployment",
           "example": "无",
           "member": "ZoneDetail",
@@ -4404,7 +4017,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Scenario template type. -1: not enabled; 1: general; 2: log; 3: search",
           "example": "-1",
           "member": "int64",
@@ -4413,7 +4025,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Kibana configuration item (JSON string)",
           "example": "无",
           "member": "string",
@@ -4422,7 +4033,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Visual node configuration",
           "example": "无",
           "member": "WebNodeTypeInfo",
@@ -4431,7 +4041,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Whether to switch to the new network architecture",
           "example": "无",
           "member": "string",
@@ -4440,7 +4049,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to enable Cerebro",
           "example": "无",
           "member": "bool",
@@ -4449,7 +4057,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "The status of Cerebro access over public network.\n`OPEN`: Enabled.\n`CLOSE`: Disabled.",
           "example": "无",
           "member": "string",
@@ -4458,7 +4065,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The status of Cerebro access over private network.\n`OPEN`: Enabled.\n`CLOSE`: Disabled.",
           "example": "无",
           "member": "string",
@@ -4467,7 +4073,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Added or modified configuration set information",
           "example": "无",
           "member": "EsConfigSetInfo",
@@ -4476,7 +4081,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The maintenance time slot",
           "example": "无",
           "member": "OperationDurationUpdated",
@@ -4485,7 +4089,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Whether to enable the option for sending alerting messages over the public network.\n`OPEN`: Enabled.\n`CLOSE`: Disabled.",
           "example": "OPEN",
           "member": "string",
@@ -4521,7 +4124,6 @@
       "document": "UpdatePlugins request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "es-xxxxxxxx",
           "member": "string",
@@ -4530,7 +4132,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of names of the plugins to be installed",
           "example": "[\"analysis-qq\\n\",\"sql\\n\"]",
           "member": "string",
@@ -4539,7 +4140,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "List of names of the plugins to be uninstalled",
           "example": "[\"analysis-qq\\n\",\"sql\\n\"]",
           "member": "string",
@@ -4548,7 +4148,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to force restart the cluster. The default value is `false`.",
           "example": "true",
           "member": "bool",
@@ -4557,7 +4156,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Whether to reinstall the cluster. The default value is `false`.",
           "example": "true",
           "member": "bool",
@@ -4566,7 +4164,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "0: system plugin",
           "example": "0",
           "member": "uint64",
@@ -4593,7 +4190,6 @@
       "document": "UpdateRequestTargetNodeTypes request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID.",
           "member": "string",
           "name": "InstanceId",
@@ -4601,7 +4197,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "A list of node types used to receive requests.",
           "member": "string",
           "name": "TargetNodeTypes",
@@ -4627,7 +4222,6 @@
       "document": "UpgradeInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "es-xxxxxxxx",
           "member": "string",
@@ -4636,7 +4230,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Target ES version. Valid values: 6.4.3, 6.8.2, 7.5.1",
           "example": "6.4.3",
           "member": "string",
@@ -4645,7 +4238,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to check for upgrade only. Default value: false",
           "example": "false",
           "member": "bool",
@@ -4654,7 +4246,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Target X-Pack edition: <li>OSS: Open-source Edition </li><li>basic: Basic Edition </li>Currently only used for v5.6.4 to v6.x upgrade. Default value: basic",
           "example": "basic",
           "member": "string",
@@ -4663,7 +4254,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>",
           "example": "security",
           "member": "uint64",
@@ -4672,7 +4262,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Upgrade mode. <li>scale: blue/green deployment</li><li>restart: rolling restart</li>Default value: scale",
           "example": "scale",
           "member": "string",
@@ -4681,7 +4270,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to back up the cluster before version upgrade (no backup by default)",
           "example": "false",
           "member": "bool",
@@ -4690,7 +4278,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Whether to skip the check and perform a force restart in the rolling mode. Default value: `false`.",
           "example": "false",
           "member": "bool",
@@ -4717,7 +4304,6 @@
       "document": "UpgradeLicense request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -4725,7 +4311,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "License type <li>oss: Open Source Edition </li><li>basic: Basic Edition </li><li>platinum: Platinum Edition </li>Default value: Platinum",
           "member": "string",
           "name": "LicenseType",
@@ -4733,7 +4318,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to automatically use vouchers <li>0: No </li><li>1: Yes </li>Default value: 0",
           "member": "int64",
           "name": "AutoVoucher",
@@ -4741,7 +4325,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "List of voucher IDs (only one voucher can be specified at a time currently)",
           "member": "string",
           "name": "VoucherIds",
@@ -4749,7 +4332,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to enable X-Pack security authentication in Basic Edition 6.8 (and above) <li>1: disabled </li><li>2: enabled</li>",
           "member": "uint64",
           "name": "BasicSecurityType",
@@ -4757,7 +4339,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to force restart <li>true: yes </li><li>false: no </li>Default value: false",
           "member": "bool",
           "name": "ForceRestart",
@@ -4792,7 +4373,6 @@
       "document": "Visual node configuration",
       "members": [
         {
-          "default": "",
           "document": "Number of visual nodes. The value is always `1`.",
           "example": "1",
           "member": "uint64",
@@ -4802,7 +4382,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Visual node specification",
           "example": "ES.S1.SMALL2",
           "member": "string",
@@ -4818,7 +4397,6 @@
       "document": "Details of AZs in multi-AZ deployment mode",
       "members": [
         {
-          "default": "",
           "document": "AZ",
           "member": "string",
           "name": "Zone",
@@ -4827,7 +4405,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subnet ID",
           "member": "string",
           "name": "SubnetId",

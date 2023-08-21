@@ -151,7 +151,6 @@
       "document": "Device attributes",
       "members": [
         {
-          "default": "",
           "document": "Attribute list",
           "example": "无",
           "member": "DeviceTag",
@@ -167,7 +166,6 @@
       "document": "Sub-product information",
       "members": [
         {
-          "default": "",
           "document": "Product ID",
           "example": "ABCDE12345",
           "member": "string",
@@ -177,7 +175,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Product name",
           "example": "ABCD",
           "member": "string",
@@ -193,7 +190,6 @@
       "document": "X.509 certificate information",
       "members": [
         {
-          "default": "",
           "document": "Certificate name",
           "example": "IotHub",
           "member": "string",
@@ -203,7 +199,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Hex sequence number of a certificate",
           "example": "5ff69e4c8afce5d6de8d395b34672944f5b4765a",
           "member": "string",
@@ -213,7 +208,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Certificate issuer",
           "example": "CN=AAA,O=AAA,L=shenzhen,ST=guangdong,C=CN",
           "member": "string",
@@ -223,7 +217,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Certificate subject",
           "example": "CN=AAA,O=AAA,L=shenzhen,ST=guangdong,C=CN",
           "member": "string",
@@ -233,7 +226,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Certificate creation time (timestamp in milliseconds)",
           "example": "1622619674",
           "member": "uint64",
@@ -243,7 +235,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Certificate effective time (timestamp in milliseconds)",
           "example": "1622448592",
           "member": "uint64",
@@ -253,7 +244,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Certificate expiration time (timestamp in milliseconds)",
           "example": "1653984592",
           "member": "uint64",
@@ -263,7 +253,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "X.509 certificate content",
           "example": "-----BEGIN CERTIFICATE-----\\nBz4FQdeV1+Xyf+Eg==\\n-----END CERTIF",
           "member": "string",
@@ -279,7 +268,6 @@
       "document": "CreateDevice request structure.",
       "members": [
         {
-          "default": "",
           "document": "Product ID, globally unique ID assigned by Tencent Cloud during product creation",
           "example": "ABCDE12345",
           "member": "string",
@@ -288,7 +276,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Device name. It is a string of 1 to 48 characters. Letters, digits, and :_- are allowed.",
           "example": "test_device",
           "member": "string",
@@ -297,7 +284,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Device attribute",
           "example": "无",
           "member": "Attribute",
@@ -306,7 +292,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Whether to use custom PSK, no by default",
           "example": "ABC",
           "member": "string",
@@ -315,7 +300,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ISP, required for a NB-IoT product. `1`: China Telecom; `2`: China Mobile; `3`: China Unicom",
           "example": "Isp",
           "member": "uint64",
@@ -324,7 +308,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "IMEI, required for a NB-IoT product",
           "example": "Imsi",
           "member": "string",
@@ -333,7 +316,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "DevEUI of a LoRa device, required when you create a LoRa device",
           "example": "Eui",
           "member": "string",
@@ -342,7 +324,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "MoteType of a LoRa device",
           "example": "Type",
           "member": "uint64",
@@ -351,7 +332,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Skey, required when you create a LoRa device",
           "example": "skey",
           "member": "string",
@@ -360,7 +340,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "AppKey of a LoRa device",
           "example": "key",
           "member": "string",
@@ -369,7 +348,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Private CA certificate",
           "example": "-----BEGIN CERTIFICATE----- MIIFGjCCBAKgAwIBAgIQCgRw0Ja8ihLIkKbf",
           "member": "string",
@@ -468,7 +446,6 @@
       "document": "CreatePrivateCA request structure.",
       "members": [
         {
-          "default": "",
           "document": "CA certificate name",
           "example": "Cert_dev",
           "member": "string",
@@ -477,7 +454,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "CA certificate content",
           "example": "-----BEGIN CERTIFICATE-----\\nMIID...\\n-----END CERTIFICATE-----",
           "member": "string",
@@ -486,7 +462,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Content verifying the CA certificate",
           "example": "-----BEGIN CERTIFICATE-----\\nMIID...\\n-----END CERTIFICATE-----",
           "member": "string",
@@ -513,7 +488,6 @@
       "document": "CreateProduct request structure.",
       "members": [
         {
-          "default": "",
           "document": "Product name, which cannot be same as that of an existing product. Naming rule: [a-zA-Z0-9:_-]{1,32}.",
           "example": "fruit",
           "member": "string",
@@ -522,7 +496,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Product properties",
           "example": "无",
           "member": "ProductProperties",
@@ -531,7 +504,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Skey, which is required to create a CLAA product.",
           "example": "xxx",
           "member": "string",
@@ -585,7 +557,6 @@
       "document": "DeleteDevice request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the product to which the device belongs",
           "example": "ABCDE12345",
           "member": "string",
@@ -594,7 +565,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Name of the device to delete",
           "example": "abc",
           "member": "string",
@@ -603,7 +573,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Skey, which is required to delete a LoRa device or LoRa gateway device",
           "example": "xxx",
           "member": "string",
@@ -630,7 +599,6 @@
       "document": "DeleteDeviceShadow request structure.",
       "members": [
         {
-          "default": "",
           "document": "Product ID",
           "example": "ABCDE12345",
           "member": "string",
@@ -639,7 +607,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Device name",
           "example": "abc",
           "member": "string",
@@ -666,7 +633,6 @@
       "document": "DeletePrivateCA request structure.",
       "members": [
         {
-          "default": "",
           "document": "Private CA certificate name",
           "example": "certname",
           "member": "string",
@@ -693,7 +659,6 @@
       "document": "DeleteProduct request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the product to delete",
           "example": "ABCDE12345",
           "member": "string",
@@ -702,7 +667,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Skey, which is required to delete a LoRa product",
           "example": "xxx",
           "member": "string",
@@ -729,7 +693,6 @@
       "document": "DescribeDevice request structure.",
       "members": [
         {
-          "default": "",
           "document": "Product ID",
           "example": "ABCDE12345",
           "member": "string",
@@ -738,7 +701,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Device name",
           "example": "abc",
           "member": "string",
@@ -990,7 +952,6 @@
       "document": "DescribeDevices request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the product whose devices are queried",
           "example": "ABCDE12345",
           "member": "string",
@@ -999,7 +960,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Offset, which starts from 0",
           "example": "0",
           "member": "uint64",
@@ -1008,7 +968,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Page size. Value range: 10-250",
           "example": "10",
           "member": "uint64",
@@ -1017,7 +976,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Device firmware version. If no value is passed in, devices of all firmware versions are returned. If `None-FirmwareVersion` is passed in, devices without version numbers are returned.",
           "example": "1.0.0",
           "member": "string",
@@ -1026,7 +984,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Device name to query",
           "example": "ABCD",
           "member": "string",
@@ -1035,7 +992,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to query enabled or disabled devices. `0`: disabled devices; `1`: enabled devices. By default, both enabled and disabled devices are queried.",
           "example": "1",
           "member": "uint64",
@@ -1080,7 +1036,6 @@
       "document": "DescribePrivateCABindedProducts request structure.",
       "members": [
         {
-          "default": "",
           "document": "Certificate name",
           "example": "ABCDE2345",
           "member": "string",
@@ -1089,7 +1044,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Offset for query",
           "example": "0",
           "member": "uint64",
@@ -1098,7 +1052,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Maximum number of records to return, which is 20 by default and cannot exceed 200",
           "example": "100",
           "member": "uint64",
@@ -1134,7 +1087,6 @@
       "document": "DescribePrivateCA request structure.",
       "members": [
         {
-          "default": "",
           "document": "Name of the private CA certificate to query",
           "example": "IotHub",
           "member": "string",
@@ -1196,7 +1148,6 @@
       "document": "DescribeProductCA request structure.",
       "members": [
         {
-          "default": "",
           "document": "Product ID",
           "example": "ABCDE2345",
           "member": "string",
@@ -1232,7 +1183,6 @@
       "document": "DescribeProduct request structure.",
       "members": [
         {
-          "default": "",
           "document": "Product ID",
           "example": "ABCDE12345",
           "member": "string",
@@ -1295,7 +1245,6 @@
       "document": "DescribeProducts request structure.",
       "members": [
         {
-          "default": "",
           "document": "Offset, starting from 0",
           "example": "0",
           "member": "uint64",
@@ -1304,7 +1253,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries returned per page. Valid range: 10–250.",
           "example": "10",
           "member": "uint64",
@@ -1349,7 +1297,6 @@
       "document": "Device details",
       "members": [
         {
-          "default": "",
           "document": "Device name",
           "example": "ABCD",
           "member": "string",
@@ -1359,7 +1306,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the device is online. `0`: offline; `1`: online",
           "example": "1",
           "member": "uint64",
@@ -1369,7 +1315,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Device login time",
           "example": "1617801604",
           "member": "uint64",
@@ -1379,7 +1324,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Device version",
           "example": "1.0.0",
           "member": "string",
@@ -1389,7 +1333,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Device certificate, which is returned for devices that use certificates for authentication",
           "example": "-----BEGIN CERTIFICATE----- MIIFGjCCBAKgAwIBAgIQCgRw0Ja8ihLIkKbf",
           "member": "string",
@@ -1399,7 +1342,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Device key, which is returned for devices that use keys for authentication",
           "example": "PSK",
           "member": "string",
@@ -1409,7 +1351,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Device attribute",
           "example": "无",
           "member": "DeviceTag",
@@ -1419,7 +1360,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Device type",
           "example": "5",
           "member": "uint64",
@@ -1429,7 +1369,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "International Mobile Equipment Identity (IMEI)",
           "example": "imei",
           "member": "string",
@@ -1439,7 +1378,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ISP",
           "example": "isp",
           "member": "uint64",
@@ -1449,7 +1387,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Device ID at the NB-IoT ISP",
           "example": "12345",
           "member": "string",
@@ -1459,7 +1396,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IP address",
           "example": "123124121",
           "member": "uint64",
@@ -1469,7 +1405,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last updated time of the device",
           "example": "1617801604",
           "member": "uint64",
@@ -1479,7 +1414,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "DevEUI of a LoRa device",
           "example": "eui",
           "member": "string",
@@ -1489,7 +1423,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "MoteType of a LoRa device",
           "example": "2",
           "member": "uint64",
@@ -1499,7 +1432,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The first time when the device went online\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "1617801604",
           "member": "uint64",
@@ -1509,7 +1441,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The last time when the device went offline\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "1617801604",
           "member": "uint64",
@@ -1519,7 +1450,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Device creation time\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "1617801604",
           "member": "uint64",
@@ -1529,7 +1459,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Device log level\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "1",
           "member": "uint64",
@@ -1539,7 +1468,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the device certificate has been obtained. `0`: no; `1`: yes\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "1",
           "member": "uint64",
@@ -1549,7 +1477,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the device is enabled. `0`: disabled; `1`: enabled\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "1",
           "member": "uint64",
@@ -1559,7 +1486,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Device tags\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "DeviceLabel",
@@ -1569,7 +1495,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "IP address of the MQTT client\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "127.0.0.1",
           "member": "string",
@@ -1579,7 +1504,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Time of last OTA update\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "1617801604",
           "member": "uint64",
@@ -1595,7 +1519,6 @@
       "document": "Device tags",
       "members": [
         {
-          "default": "",
           "document": "Tag key",
           "example": "key",
           "member": "string",
@@ -1605,7 +1528,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value",
           "example": "value",
           "member": "string",
@@ -1621,7 +1543,6 @@
       "document": "Device attribute",
       "members": [
         {
-          "default": "",
           "document": "Attribute name",
           "example": "tagkey",
           "member": "string",
@@ -1631,7 +1552,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Attribute value type. `1`: integer; `2`: string",
           "example": "1",
           "member": "uint64",
@@ -1641,7 +1561,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Attribute value",
           "example": "123",
           "member": "string",
@@ -1651,7 +1570,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Attribute description\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "xyz",
           "member": "string",
@@ -1667,7 +1585,6 @@
       "document": "Product details",
       "members": [
         {
-          "default": "",
           "document": "Product ID",
           "example": "ABCDE2345",
           "member": "string",
@@ -1677,7 +1594,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Product name",
           "example": "IotHub",
           "member": "string",
@@ -1687,7 +1603,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Product metadata",
           "example": "无",
           "member": "ProductMetadata",
@@ -1697,7 +1612,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Product properties",
           "example": "无",
           "member": "ProductProperties",
@@ -1713,7 +1627,6 @@
       "document": "Product metadata",
       "members": [
         {
-          "default": "",
           "document": "Product creation time",
           "example": "12345",
           "member": "uint64",
@@ -1729,7 +1642,6 @@
       "document": "Product properties",
       "members": [
         {
-          "default": "",
           "document": "Product description",
           "example": "IotHub",
           "member": "string",
@@ -1739,7 +1651,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Authentication type. `1` (default): certificate; `2`: signature",
           "example": "2",
           "member": "string",
@@ -1749,7 +1660,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Product region. Valid value: `gz` (Guangzhou)",
           "example": "gz",
           "member": "string",
@@ -1759,7 +1669,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Product type. Valid values:\n`0` (default): general; `2`: NB-IoT; `3`: LoRa gateway; `4`: LoRa; `5`: general gateway",
           "example": "5",
           "member": "uint64",
@@ -1769,7 +1678,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data format. Valid values: `json` (default), `custom`",
           "example": "json",
           "member": "string",
@@ -1779,7 +1687,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Platform of the product. Default value: `0`",
           "example": "0",
           "member": "string",
@@ -1789,7 +1696,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "AppEUI at the LoRa product operator, required only for LoRa products",
           "example": "appeui",
           "member": "string",
@@ -1799,7 +1705,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID of the Thing Specification Language (TSL) model bound to the product. `-1` means no models are bound.",
           "example": "123",
           "member": "string",
@@ -1809,7 +1714,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Name of the TSL model bound to the product",
           "example": "xxx",
           "member": "string",
@@ -1819,7 +1723,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Product key, which is specific to suite products",
           "example": "xxxxx",
           "member": "string",
@@ -1829,7 +1732,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Dynamic registration type. `0`: disable; `1`: preset device names; `2`: generate device names dynamically",
           "example": "0",
           "member": "uint64",
@@ -1839,7 +1741,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Dynamic registration product key",
           "example": "key",
           "member": "string",
@@ -1849,7 +1750,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The maximum number of devices that can be dynamically created when `RegisterType` is set to `2`",
           "example": "1000",
           "member": "uint64",
@@ -1859,7 +1759,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Original product ID of a transferred product. This parameter is empty for products that are not transferred.",
           "example": "ABCDE2345",
           "member": "string",
@@ -1869,7 +1768,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Private CA certificate name",
           "example": "caname",
           "member": "string",
@@ -1879,7 +1777,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Original user ID of a transferred product. This parameter is empty for products that are not transferred.",
           "example": "12345",
           "member": "uint64",
@@ -1895,7 +1792,6 @@
       "document": "SetProductsForbiddenStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of products to enable or disable",
           "example": "[\"productID1\",\"productID2\"]",
           "member": "string",
@@ -1904,7 +1800,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "`0`: enable; `1`: disable",
           "example": "1",
           "member": "uint64",
@@ -1931,7 +1826,6 @@
       "document": "UpdateDeviceLogLevel request structure.",
       "members": [
         {
-          "default": "",
           "document": "Product ID",
           "example": "ABCDE12345",
           "member": "string",
@@ -1940,7 +1834,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Device name",
           "example": "abc",
           "member": "string",
@@ -1949,7 +1842,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Log level. `0`: disable; `1`: error; `2`: warning; `3`: information; `4`: debugging",
           "example": "1",
           "member": "uint64",
@@ -1976,7 +1868,6 @@
       "document": "UpdateDevicesEnableState request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the product to which the device belongs",
           "example": "SB9OJFCJ1C",
           "member": "string",
@@ -1985,7 +1876,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Device names",
           "example": "[\"test123\\n\"]",
           "member": "string",
@@ -1994,7 +1884,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "New status of the devices. `0`: disabled; `1`: enabled",
           "example": "1",
           "member": "uint64",
@@ -2021,7 +1910,6 @@
       "document": "UpdatePrivateCA request structure.",
       "members": [
         {
-          "default": "",
           "document": "CA certificate name",
           "example": "Cert_dev",
           "member": "string",
@@ -2030,7 +1918,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "CA certificate content",
           "example": "-----BEGIN CERTIFICATE-----\\nMIID...\\n-----END CERTIFICATE-----",
           "member": "string",
@@ -2039,7 +1926,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Content verifying the CA certificate",
           "example": "-----BEGIN CERTIFICATE-----\\nMIID...\\n-----END CERTIFICATE-----",
           "member": "string",
@@ -2066,7 +1952,6 @@
       "document": "UpdateProductDynamicRegister request structure.",
       "members": [
         {
-          "default": "",
           "document": "Product ID",
           "example": "ABCDE12345",
           "member": "string",
@@ -2075,7 +1960,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Dynamic registration type. Valid values: 0 - disabled; 1 - pre-create device; 2 - auto-create device.",
           "example": "0",
           "member": "uint64",
@@ -2084,7 +1968,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Maximum dynamically registered devices",
           "example": "10",
           "member": "uint64",

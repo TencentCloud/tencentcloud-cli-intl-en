@@ -204,7 +204,6 @@
       "document": "CancelInvocation request structure.",
       "members": [
         {
-          "default": "",
           "document": "Execution activity ID",
           "example": "无 ",
           "member": "string",
@@ -213,7 +212,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance ID list. A maximum of 100 IDs are allowed. Supported instance types:\n<li> `CVM`\n<li> `LIGHTHOUSE`",
           "example": "无",
           "member": "string",
@@ -240,7 +238,6 @@
       "document": "Command details.",
       "members": [
         {
-          "default": "",
           "document": "Command ID.",
           "example": "cmd-aaaaaaaa",
           "member": "string",
@@ -250,7 +247,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command name.",
           "example": "cmdname",
           "member": "string",
@@ -260,7 +256,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command description.",
           "example": "the cmd",
           "member": "string",
@@ -270,7 +265,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Base64-encoded command.",
           "example": "bHMgMTIzCmVjaG8ge3tifX0ge3tjfX0=",
           "member": "string",
@@ -280,7 +274,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command type.",
           "example": "SHELL",
           "member": "string",
@@ -290,7 +283,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command execution path.",
           "example": "/",
           "member": "string",
@@ -300,7 +292,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command timeout period.",
           "example": "123",
           "member": "uint64",
@@ -310,7 +301,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command creation time.",
           "example": "无",
           "member": "datetime_iso",
@@ -320,7 +310,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command update time.",
           "example": "无",
           "member": "datetime_iso",
@@ -330,7 +319,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to enable the custom parameter feature.",
           "example": "false",
           "member": "bool",
@@ -340,7 +328,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Default custom parameter value.",
           "example": "{\\\"varA\\\": \\\"222\\\"}",
           "member": "string",
@@ -350,7 +337,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Formatted description of the command. This parameter is an empty string for user commands and contains values for public commands.",
           "example": "{\\\"cmd_description\\\":{\\\"en\\\":\\\"cmd1\\\",\\\"zh-cn\\\":\\\"cmd1\\\",\\\"name-",
           "member": "string",
@@ -360,7 +346,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command creator. `TAT` indicates a public command and `USER` indicates a personal command.",
           "example": "TAT",
           "member": "string",
@@ -370,7 +355,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The list of tags bound to the command.",
           "example": "无",
           "member": "Tag",
@@ -380,7 +364,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The user who executes the command on the instance.",
           "example": "root",
           "member": "string",
@@ -390,7 +373,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The COS bucket URL for uploading logs.",
           "example": "https://BucketName-123454321.cos.ap-beijing.myqcloud.com",
           "member": "string",
@@ -400,7 +382,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The COS bucket directory where the logs are saved.",
           "example": "aa/bb/cc",
           "member": "string",
@@ -485,7 +466,6 @@
       "document": "CreateCommand request structure.",
       "members": [
         {
-          "default": "",
           "document": "Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].",
           "example": "无",
           "member": "string",
@@ -494,7 +474,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Base64-encoded command. The maximum length is 64 KB.",
           "example": "无",
           "member": "string",
@@ -503,7 +482,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command description. The maximum length is 120 characters.",
           "example": "无",
           "member": "string",
@@ -512,7 +490,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command type. `SHELL` and `POWERSHELL` are supported. The default value is `SHELL`.",
           "example": "无",
           "member": "string",
@@ -521,7 +498,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command execution path. The default value is /root for `SHELL` commands and C:\\Program Files\\qcloud\\tat_agent\\workdir for `POWERSHELL` commands.",
           "example": "无",
           "member": "string",
@@ -530,7 +506,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command timeout period. Default value: 60 seconds. Value range: [1, 86400].",
           "example": "无",
           "member": "uint64",
@@ -539,7 +514,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to enable the custom parameter feature.\nThis cannot be modified once created.\nDefault value: `false`.",
           "example": "false",
           "member": "bool",
@@ -548,7 +522,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\\\"varA\\\": \\\"222\\\"}.\n`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.\nIf no parameter value is provided in the `InvokeCommand` API, the default value is used.\nUp to 20 custom parameters are supported.\nThe name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].",
           "example": "{\\\"varA\\\": \\\"222\\\"}",
           "member": "string",
@@ -557,7 +530,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tags bound to the command. At most 10 tags are allowed.",
           "example": "无",
           "member": "Tag",
@@ -566,7 +538,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The username used to execute the command on the CVM or Lighthouse instance.\nThe principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user. By default, the root user is used to execute commands on Linux and the System user is used on Windows.",
           "example": "root",
           "member": "string",
@@ -575,7 +546,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.",
           "example": "https://BucketName-123454321.cos.ap-beijing.myqcloud.com",
           "member": "string",
@@ -584,7 +554,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The COS bucket directory where the logs are saved. Check below for the rules of the directory name. \n1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.\n2. Use a slash (/) to create a subdirectory.\n3. Consecutive dots (.) and slashes (/) are not allowed. It can not start with a slash (/). ",
           "example": "aa/bb/cc",
           "member": "string",
@@ -620,7 +589,6 @@
       "document": "CreateInvoker request structure.",
       "members": [
         {
-          "default": "",
           "document": "Invoker name.",
           "example": "invoker-test",
           "member": "string",
@@ -629,7 +597,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Invoker type. It can only be `SCHEDULE` (recurring invokers).",
           "example": "SCHEDULE",
           "member": "string",
@@ -638,7 +605,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Remote command ID.",
           "example": "cmd-k4ypdij0",
           "member": "string",
@@ -647,7 +613,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ID of the instance bound to the trigger. Up to 100 IDs are allowed.",
           "example": "[\"ins-yx05ky8j\"]",
           "member": "string",
@@ -656,7 +621,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The user who executes the command.",
           "example": "root",
           "member": "string",
@@ -665,7 +629,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Custom parameters of the command.",
           "example": "{\"var\": \"A\"}",
           "member": "string",
@@ -674,7 +637,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Settings required for a recurring invoker.",
           "example": "无",
           "member": "ScheduleSettings",
@@ -710,7 +672,6 @@
       "document": "DeleteCommand request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the command to be deleted.",
           "example": "cmd-7efujjs6",
           "member": "string",
@@ -737,7 +698,6 @@
       "document": "DeleteInvoker request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the invoker to be deleted.",
           "example": "ivk-b7s3qa5l",
           "member": "string",
@@ -764,7 +724,6 @@
       "document": "DescribeAutomationAgentStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of instance IDs for the query.",
           "example": "[\"lhins-ar5wyn4x\"]",
           "member": "string",
@@ -773,7 +732,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Filter conditions.<br> <li>`agent-status` - String - Required: No - (Filter condition) Filter by agent status. Valid values: `Online`, `Offline`.<br> <li> `environment` - String - Required: No - (Filter condition) Filter by the agent environment. Valid value: `Linux`.<br> <li> `instance-id` - String - Required: No - (Filter condition) Filter by the instance ID. <br>Up to 10 `Filters` allowed in one request. For each filter, five `Filter.Values` can be specified. `InstanceIds` and `Filters` cannot be specified at the same time.",
           "example": "无",
           "member": "Filter",
@@ -782,7 +740,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "10",
           "member": "uint64",
@@ -791,7 +748,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "0",
           "member": "uint64",
@@ -836,7 +792,6 @@
       "document": "DescribeCommands request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of command IDs. Up to 100 IDs are allowed for each request. `CommandIds` and `Filters` cannot be specified at the same time.",
           "example": "无",
           "member": "string",
@@ -845,7 +800,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Filter conditions.\n<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID.\n<li> `command-name` - String - Required: No - (Filter condition) Filter by the command name.\n<li> `command-type` - String - Required: No - (Filter condition) Filter by the command type. Valid values: `SHELL` or `POWERSHELL`.\n<li> `created-by` - String - Required: No - (Filter condition) Filter by the creator. Valid values: `TAT` (public commands) or `USER` (custom commands).\n<li> `tag-key` - String - Required: No - (Filter condition) Filter by the tag key.</li>\n<li> `tag-value` - String - Required: No - (Filter condition) Filter by the tag value.</li>\n<li> `tag:tag-key` - String - Required: No - (Filter) Filter by the tag key-value pair. The tag-key should be replaced with a specified tag key. For detailed usage, see sample 4.</li>\n\nUp to 10 `Filters` are allowed in one request. Each filter can have up to 5 `Filter.Values`. `CommandIds` and `Filters` cannot be specified at the same time.",
           "example": "无",
           "member": "Filter",
@@ -854,7 +808,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "10",
           "member": "uint64",
@@ -863,7 +816,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "0",
           "member": "uint64",
@@ -908,7 +860,6 @@
       "document": "DescribeInvocationTasks request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of execution task IDs. Up to 100 IDs are allowed for each request. `InvocationTaskIds` and `Filters` cannot be specified at the same time.",
           "example": "无",
           "member": "string",
@@ -917,7 +868,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Filter conditions.<br> <li> `invocation-id` - String - Required: No - (Filter condition) Filter by the execution activity ID.<br> <li> `invocation-task-id` - String - Required: No - (Filter condition) Filter by the execution task ID.<br> <li> `instance-id` - String - Required: No - (Filter condition) Filter by the instance ID. <br> <li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID. <br>Up to 10 `Filters` are allowed for each request. Each filter can have up to five `Filter.Values`. `InvocationTaskIds` and `Filters` cannot be specified at the same time.",
           "example": "无",
           "member": "Filter",
@@ -926,7 +876,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "10",
           "member": "uint64",
@@ -935,7 +884,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "0",
           "member": "uint64",
@@ -944,7 +892,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to hide the output. Valid values:<br><li>`True` (default): Hide the output <br><li>`False`: Show the output <br>",
           "example": "false",
           "member": "bool",
@@ -989,7 +936,6 @@
       "document": "DescribeInvocations request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of execution activity IDs. Up to 100 IDs are allowed for each request. `InvocationIds` and `Filters` cannot be specified at the same time.",
           "example": "无",
           "member": "string",
@@ -998,7 +944,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Filter conditions.<br> <li> `invocation-id` - String - Required: No - (Filter condition) Filter by the execution activity ID.<br> \n<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID. \n<li> `command-created-by` - String - Required: No - (Filter condition) Filter by the command type. Valid values: `TAT` (public commands) or `USER` (custom commands).\n<li> `instance-kind` - String - Required: No - (Filter condition) Filter by the instance type. Valid values: `CVM` or `LIGHTHOUSE`. \n<br>Up to 10 `Filters` are allowed for each request. Each filter can have up to five `Filter.Values`. `InvocationIds` and `Filters` cannot be specified at the same time.",
           "example": "无",
           "member": "Filter",
@@ -1007,7 +952,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Number of returned results. It defaults to `20`. The maximum is 100. For more information on `Limit`, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "10",
           "member": "uint64",
@@ -1016,7 +960,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. The default value is `0`. For more information on `Offset`, see the relevant section in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "0",
           "member": "uint64",
@@ -1061,7 +1004,6 @@
       "document": "DescribeInvokerRecords request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of invoker IDs. Up to 100 IDs are allowed.",
           "example": "[\"ivk-b7s3qa5l\"]",
           "member": "string",
@@ -1070,7 +1012,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "10",
           "member": "uint64",
@@ -1079,7 +1020,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "example": "0",
           "member": "uint64",
@@ -1124,7 +1064,6 @@
       "document": "DescribeInvokers request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of invoker IDs.",
           "example": "[\"ivk-b7s3qa5l\"]",
           "member": "string",
@@ -1133,7 +1072,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Filter conditions:\n\n<li> `invoker-id` - String - Required: No - (Filter condition) Filter by the invoker ID.\n<li> `command-id` - String - Required: No - (Filter condition) Filter by the command ID.\n<li> `type` - String - Required: No - (Filter condition) Filter by the invoker type.",
           "example": "无",
           "member": "Filter",
@@ -1142,7 +1080,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
           "example": "10",
           "member": "uint64",
@@ -1151,7 +1088,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "example": "0",
           "member": "uint64",
@@ -1231,7 +1167,6 @@
       "document": "DisableInvoker request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the invoker to be disabled.",
           "example": "ivk-b7s3qa5l",
           "member": "string",
@@ -1258,7 +1193,6 @@
       "document": "EnableInvoker request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the invoker to be enabled.",
           "example": "ivk-b7s3qa5l",
           "member": "string",
@@ -1285,7 +1219,6 @@
       "document": "> Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.\n> * If there are multiple `Filter` parameters, the relationship among them is the logical `AND`.\n> * If there are multiple `Values` for the same `Filter`, the relationship among the `Values` for the same `Filter` is the logical `OR`.\n>\n> Take the [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API as an example. You can use the following filters to query the instances whose availability zone (`zone`) is Guangzhou 1 ***and*** billing method (`instance-charge-type`) is prepaid ***or*** pay-as-you-go:\n```\nFilters.0.Name=zone\n&Filters.0.Values.0=ap-guangzhou-1\n&Filters.1.Name=instance-charge-type\n&Filters.1.Values.0=PREPAID\n&Filters.1.Values.1=POSTPAID_BY_HOUR\n```",
       "members": [
         {
-          "default": "",
           "document": "Field to be filtered.",
           "member": "string",
           "name": "Name",
@@ -1294,7 +1227,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Filter values of the field.",
           "member": "string",
           "name": "Values",
@@ -1309,7 +1241,6 @@
       "document": "Execution activity details.",
       "members": [
         {
-          "default": "",
           "document": "Execution activity ID.",
           "example": "无",
           "member": "string",
@@ -1319,7 +1250,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command ID.",
           "example": "无",
           "member": "string",
@@ -1329,7 +1259,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Execution task status. Valid values:\n<li> PENDING: Pending \n<li> RUNNING: Running\n<li> SUCCESS: Success\n<li> FAILED: Failed\n<li> TIMEOUT: Command timed out\n<li> PARTIAL_FAILED: Partial failure",
           "example": "无",
           "member": "string",
@@ -1339,7 +1268,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Execution task information list.",
           "example": "无",
           "member": "InvocationTaskBasicInfo",
@@ -1349,7 +1277,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Execution activity description.",
           "example": "无",
           "member": "string",
@@ -1359,7 +1286,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Start time of the execution activity.",
           "example": "无",
           "member": "datetime_iso",
@@ -1369,7 +1295,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "End time of the execution activity.",
           "example": "无",
           "member": "datetime_iso",
@@ -1379,7 +1304,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Time when the execution activity is created.",
           "example": "无",
           "member": "datetime_iso",
@@ -1389,7 +1313,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Time when the execution activity is updated.",
           "example": "无",
           "member": "datetime_iso",
@@ -1399,7 +1322,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Values of custom parameters.",
           "example": "{\\\"varA\\\": \\\"222\\\"}",
           "member": "string",
@@ -1409,7 +1331,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Default custom parameter value.",
           "example": "{\\\"varA\\\": \\\"222\\\"}",
           "member": "string",
@@ -1419,7 +1340,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Type of the instance executing the command. Valid values: `CVM`, `LIGHTHOUSE`.",
           "example": "CVM",
           "member": "string",
@@ -1429,7 +1349,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The user who executes the command on the instance.",
           "example": "root",
           "member": "string",
@@ -1439,7 +1358,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Invocation source.",
           "example": "USER",
           "member": "string",
@@ -1449,7 +1367,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Base64-encoded command",
           "example": "cHdk",
           "member": "string",
@@ -1459,7 +1376,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command type",
           "example": "SHELL",
           "member": "string",
@@ -1469,7 +1385,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command timeout period, in seconds.",
           "example": "60",
           "member": "uint64",
@@ -1479,7 +1394,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Working directory for executing the command.",
           "example": "/root",
           "member": "string",
@@ -1489,7 +1403,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The COS bucket URL for uploading logs.",
           "example": "https://BucketName-123454321.cos.ap-beijing.myqcloud.com",
           "member": "string",
@@ -1499,7 +1412,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The COS bucket directory where the logs are saved.",
           "example": "aa/bb/cc",
           "member": "string",
@@ -1515,7 +1427,6 @@
       "document": "Execution task.",
       "members": [
         {
-          "default": "",
           "document": "Execution activity ID.",
           "example": "无",
           "member": "string",
@@ -1525,7 +1436,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Execution task ID.",
           "example": "无",
           "member": "string",
@@ -1535,7 +1445,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command ID.",
           "example": "无",
           "member": "string",
@@ -1545,7 +1454,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Execution task status. Valid values:\n<li> PENDING: Pending \n<li> DELIVERING: Delivering\n<li> DELIVER_DELAYED: Delivery delayed \n<li> DELIVER_FAILED: Delivery failed\n<li> START_FAILED: Failed to start the command\n<li> RUNNING: Running\n<li> SUCCESS: Success\n<li> FAILED: Failed to execute the command. The exit code is not 0 after execution.\n<li> TIMEOUT: Command timed out\n<li> TASK_TIMEOUT: Task timed out\n<li> CANCELLING: Canceling\n<li> CANCELLED: Canceled (canceled before execution)\n<li> TERMINATED: Terminated (canceled during execution)",
           "example": "无",
           "member": "string",
@@ -1555,7 +1463,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance ID.",
           "example": "无",
           "member": "string",
@@ -1565,7 +1472,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Execution result.",
           "example": "无",
           "member": "TaskResult",
@@ -1575,7 +1481,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Start time of the execution task.",
           "example": "无",
           "member": "datetime_iso",
@@ -1585,7 +1490,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "End time of the execution task.",
           "example": "无",
           "member": "datetime_iso",
@@ -1595,7 +1499,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time.",
           "example": "无",
           "member": "datetime_iso",
@@ -1605,7 +1508,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Update time.",
           "example": "无",
           "member": "datetime_iso",
@@ -1615,7 +1517,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command details of the execution task.",
           "example": "无",
           "member": "CommandDocument",
@@ -1625,7 +1526,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Error message displayed when the execution task fails.",
           "example": "working_directory not exists",
           "member": "string",
@@ -1635,7 +1535,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Invocation source.",
           "example": "USER",
           "member": "string",
@@ -1651,7 +1550,6 @@
       "document": "Execution task description.",
       "members": [
         {
-          "default": "",
           "document": "Execution task ID.",
           "example": "invt-aaaabbbb",
           "member": "string",
@@ -1661,7 +1559,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Execution task status. Valid values:\n<li> PENDING: Pending \n<li> DELIVERING: Delivering\n<li> DELIVER_DELAYED: Delivery delayed \n<li> DELIVER_FAILED: Delivery failed\n<li> START_FAILED: Failed to start the command\n<li> RUNNING: Running\n<li> SUCCESS: Success\n<li> FAILED: Failed to execute the command. The exit code is not 0 after execution.\n<li> TIMEOUT: Command timed out\n<li> TASK_TIMEOUT: Task timed out\n<li> CANCELLING: Canceling\n<li> CANCELLED: Canceled (canceled before execution)\n<li> TERMINATED: Terminated (canceled during execution)",
           "example": "TERMINATED",
           "member": "string",
@@ -1671,7 +1568,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance ID.",
           "example": "ins-aaaabbbb",
           "member": "string",
@@ -1687,7 +1583,6 @@
       "document": "InvokeCommand request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the command to be triggered.",
           "example": "cmd-ffxdx79i",
           "member": "string",
@@ -1696,7 +1591,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "IDs of instances about to execute commands. At most 100 IDs are allowed.",
           "example": "[\"lhins-ar5wyn40\"]",
           "member": "string",
@@ -1705,7 +1599,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Custom parameters of the command. The field type is JSON encoded string. For example, {\\\"varA\\\": \\\"222\\\"}.\n`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.\nIf no parameter value is provided, the DefaultParameters of the command is used.\nUp to 20 custom parameters are supported.\nThe name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].",
           "example": "{\\\"varA\\\": \\\"222\\\"}",
           "member": "string",
@@ -1714,7 +1607,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The username used to execute the command on the CVM or Lighthouse instance.\nThe principle of the least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user. If this is not specified, the Username of the command is used by default.",
           "example": "root",
           "member": "string",
@@ -1723,7 +1615,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Execution path of the command. The WorkingDirectory of the command is used by default.",
           "example": "/root",
           "member": "string",
@@ -1732,7 +1623,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command timeout period. Value range: [1, 86400]. The Timeout of the command is used by default.",
           "example": "60",
           "member": "uint64",
@@ -1741,7 +1631,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.",
           "example": "https://BucketName-123454321.cos.ap-beijing.myqcloud.com",
           "member": "string",
@@ -1750,7 +1639,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The COS bucket directory where the logs are saved. Check below for the rules of the directory name. \n1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.\n2. Use a slash (/) to create a subdirectory.\n3. \"..\" can not be used as the folder name. It cannot start with a slash (/), and cannot contain consecutive slashes.",
           "example": "aa/bb/cc",
           "member": "string",
@@ -1786,7 +1674,6 @@
       "document": "Invoker information.",
       "members": [
         {
-          "default": "",
           "document": "Invoker ID.",
           "example": "ivk-27yagap9",
           "member": "string",
@@ -1796,7 +1683,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Invoker name.",
           "example": "invoker-test",
           "member": "string",
@@ -1806,7 +1692,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Invoker type.",
           "example": "SCHEDULE",
           "member": "string",
@@ -1816,7 +1701,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command ID.",
           "example": "cmd-m7uma92n",
           "member": "string",
@@ -1826,7 +1710,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Username.",
           "example": "root",
           "member": "string",
@@ -1836,7 +1719,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Custom parameters.",
           "example": "{\"var\": 1}",
           "member": "string",
@@ -1846,7 +1728,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance ID list.",
           "example": "[\"ins-yx05ky8j\"]",
           "member": "string",
@@ -1856,7 +1737,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to enable the invoker.",
           "example": "true",
           "member": "bool",
@@ -1866,7 +1746,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Execution schedule of the invoker. This field is returned for recurring invokers.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ScheduleSettings",
@@ -1876,7 +1755,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time.",
           "example": "2021-08-30T06:42:02Z",
           "member": "datetime_iso",
@@ -1886,7 +1764,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Modification time.",
           "example": "2021-08-30T06:42:02Z",
           "member": "datetime_iso",
@@ -1902,7 +1779,6 @@
       "document": "Execution history of the invoker.",
       "members": [
         {
-          "default": "",
           "document": "Invoker ID.",
           "example": "ivk-b7s3qa5l",
           "member": "string",
@@ -1912,7 +1788,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Execution time.",
           "example": "2021-10-30T00:00:00Z",
           "member": "datetime_iso",
@@ -1922,7 +1797,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Execution reason.",
           "example": "start an invocation at scheduled time.",
           "member": "string",
@@ -1932,7 +1806,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Command execution ID.",
           "example": "inv-4ybg8gmj",
           "member": "string",
@@ -1942,7 +1815,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Trigger result.",
           "example": "SUCCESS",
           "member": "string",
@@ -1958,7 +1830,6 @@
       "document": "ModifyCommand request structure.",
       "members": [
         {
-          "default": "",
           "document": "Command ID.",
           "example": "cmd-7efujjs6",
           "member": "string",
@@ -1967,7 +1838,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].",
           "example": "无",
           "member": "string",
@@ -1976,7 +1846,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command description. The maximum length is 120 characters.",
           "example": "无",
           "member": "string",
@@ -1985,7 +1854,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Base64-encoded command. The maximum length is 64 KB.",
           "example": "无",
           "member": "string",
@@ -1994,7 +1862,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command type. `SHELL` and `POWERSHELL` are supported.",
           "example": "无",
           "member": "string",
@@ -2003,7 +1870,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command execution path.",
           "example": "无",
           "member": "string",
@@ -2012,7 +1878,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command timeout period. Value range: [1, 86400].",
           "example": "无",
           "member": "uint64",
@@ -2021,7 +1886,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\\\"varA\\\": \\\"222\\\"}.\nAll parameters are overwritten. All default values are required for modification.\nModification is only allowed when `EnableParameter` is `true`.\n`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.\nUp to 20 custom parameters are supported.\nThe name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].",
           "example": "{\\\"varA\\\": \\\"222\\\"}",
           "member": "string",
@@ -2030,7 +1894,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The username used to execute the command on the CVM or Lighthouse instance.\nThe principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user.",
           "example": "root",
           "member": "string",
@@ -2039,7 +1902,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.",
           "example": "https://BucketName-123454321.cos.ap-beijing.myqcloud.com",
           "member": "string",
@@ -2048,7 +1910,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The COS bucket directory where the logs are saved. Check below for the rules of the directory name. \n1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.\n2. Use a slash (/) to create a subdirectory.\n3. \"..\" can not be used as the folder name. It cannot start with a slash (/), and cannot contain consecutive slashes.",
           "example": "aa/bb/cc",
           "member": "string",
@@ -2075,7 +1936,6 @@
       "document": "ModifyInvoker request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the invoker to be modified.",
           "example": "ivk-n0t6rxtv",
           "member": "string",
@@ -2084,7 +1944,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Name of the invoker to be modified.",
           "example": "invoker-test",
           "member": "string",
@@ -2093,7 +1952,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Invoker type. It can only be `SCHEDULE` (recurring invokers).",
           "example": "SCHEDULE",
           "member": "string",
@@ -2102,7 +1960,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ID of the command to be modified.",
           "example": "cmd-m7uma92n",
           "member": "string",
@@ -2111,7 +1968,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The username to be modified.",
           "example": "root",
           "member": "string",
@@ -2120,7 +1976,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Custom parameters to be modified.",
           "example": "{\"var\": \"A\"}",
           "member": "string",
@@ -2129,7 +1984,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of instance IDs to be modified. Up to 100 IDs are allowed.",
           "example": "[\"ins-yx05ky8j\"]",
           "member": "string",
@@ -2138,7 +1992,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Scheduled invoker settings to be modified.",
           "example": "无",
           "member": "ScheduleSettings",
@@ -2165,7 +2018,6 @@
       "document": "PreviewReplacedCommandContent request structure.",
       "members": [
         {
-          "default": "",
           "document": "Custom parameters for the preview. The field type is JSON encoded string. For example, {\\\"varA\\\": \\\"222\\\"}.\n`key` is the name of the custom parameter and \"value\" is its specified value. Both \"key\" and \"value\" are strings.\nAt most 20 custom parameters are supported.\nThe name of the custom parameter cannot exceed 64 characters and can only contain [a-z], [A-Z], [0-9], [-_].\nThis parameter can be left empty if DefaultParameters is set for the previewed CommandId.",
           "example": "{\\\"varA\\\": \\\"222\\\"}",
           "member": "string",
@@ -2174,7 +2026,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The command to be previewed. If DefaultParameters is set, it is combined with Parameters and Parameters takes priority.\n`CommandId` or `Content` must be specified.",
           "example": "cmd-abcdefgh",
           "member": "string",
@@ -2183,7 +2034,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Base64-encoded command to be previewed. The maximum length is 64 KB.\nCommandId or Content must be specified.",
           "example": "bHMge3thfX0KZWNobyB7e2J9fQ==",
           "member": "string",
@@ -2219,7 +2069,6 @@
       "document": "Information of a region.",
       "members": [
         {
-          "default": "",
           "document": "Region name, such as `ap-guangzhou`",
           "example": "ap-guangzhou",
           "member": "string",
@@ -2229,7 +2078,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region description, such as `Guangzhou`",
           "example": "广州",
           "member": "string",
@@ -2239,7 +2087,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region status. `AVAILABLE` indicates the region is available.",
           "example": "AVAILABLE",
           "member": "string",
@@ -2255,7 +2102,6 @@
       "document": "RunCommand request structure.",
       "members": [
         {
-          "default": "",
           "document": "Base64-encoded command. The maximum length is 64 KB.",
           "example": "无",
           "member": "string",
@@ -2264,7 +2110,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "IDs of instances about to execute commands. Up to 100 IDs are allowed. Supported instance types:\n<li> `CVM`\n<li> `LIGHTHOUSE`",
           "example": "无",
           "member": "string",
@@ -2273,7 +2118,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Command name. The name can be up to 60 bytes, and contain [a-z], [A-Z], [0-9] and [_-.].",
           "example": "无",
           "member": "string",
@@ -2282,7 +2126,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command description. The maximum length is 120 characters.",
           "example": "无",
           "member": "string",
@@ -2291,7 +2134,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command type. `SHELL` and `POWERSHELL` are supported. The default value is `SHELL`.",
           "example": "无",
           "member": "string",
@@ -2300,7 +2142,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command execution path. The default value is /root for `SHELL` commands and C:\\Program Files\\qcloud\\tat_agent\\workdir for `POWERSHELL` commands.",
           "example": "无",
           "member": "string",
@@ -2309,7 +2150,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Command timeout period. Default value: 60 seconds. Value range: [1, 86400].",
           "example": "无",
           "member": "uint64",
@@ -2318,7 +2158,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to save the command. Valid values:\n<li> `True`: Save\n<li> `False`: Do not save\nThe default value is `False`.",
           "example": "无",
           "member": "bool",
@@ -2327,7 +2166,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Whether to enable the custom parameter feature.\nThis cannot be modified once created.\nDefault value: `false`.",
           "example": "false",
           "member": "bool",
@@ -2336,7 +2174,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "The default value of the custom parameter value when it is enabled. The field type is JSON encoded string. For example, {\\\"varA\\\": \\\"222\\\"}.\n`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.\nIf Parameters is not provided, the default values specified here are used.\nUp to 20 custom parameters are supported.\nThe name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].",
           "example": "{\\\"varA\\\": \\\"222\\\"}",
           "member": "string",
@@ -2345,7 +2182,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Custom parameters of `Command`. The field type is JSON encoded string. For example, {\\\"varA\\\": \\\"222\\\"}.\n`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.\nIf no parameter value is provided, the `DefaultParameters` is used.\nUp to 20 custom parameters are supported.\nThe name of the custom parameter cannot exceed 64 characters and can contain [a-z], [A-Z], [0-9] and [-_].",
           "example": "{\\\"varA\\\": \\\"222\\\"}",
           "member": "string",
@@ -2354,7 +2190,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The tags of the command. It is available when `SaveCommand` is `True`. A maximum of 10 tags are allowed.",
           "example": "无",
           "member": "Tag",
@@ -2363,7 +2198,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The username used to execute the command on the CVM or Lighthouse instance.\nThe principle of least privilege is the best practice for permission management. We recommend you execute TAT commands as a general user. By default, the user `root` is used to execute commands on Linux and the user `System` is used on Windows.",
           "example": "root",
           "member": "string",
@@ -2372,7 +2206,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The COS bucket URL for uploading logs. The URL must start with `https`, such as `https://BucketName-123454321.cos.ap-beijing.myqcloud.com`.",
           "example": "https://BucketName-123454321.cos.ap-beijing.myqcloud.com",
           "member": "string",
@@ -2381,7 +2214,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The COS bucket directory where the logs are saved. Check below for the rules of the directory name. \n1. It must be a combination of number, letters, and visible characters. Up to 60 characters are allowed.\n2. Use a slash (/) to create a subdirectory.\n3. \"..\" can not be used as the folder name. It cannot start with a slash (/), and cannot contain consecutive slashes.",
           "example": "aa/bb/cc",
           "member": "string",
@@ -2426,7 +2258,6 @@
       "document": "Settings of a scheduled invoker",
       "members": [
         {
-          "default": "",
           "document": "Execution policy:\n<br><li>`ONCE`: Execute once\n<br><li>`RECURRENCE`: Execute repeatedly",
           "example": "ONCE",
           "member": "string",
@@ -2436,7 +2267,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Trigger the crontab expression. This field is required if `Policy` is `RECURRENCE`. The crontab expression is parsed in UTC+8.",
           "example": "0 0 1 * *",
           "member": "string",
@@ -2446,7 +2276,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The next execution time of the invoker. This field is required if `Policy` is `ONCE`.",
           "example": "2021-09-01T00:00:00+08:00",
           "member": "datetime_iso",
@@ -2462,7 +2291,6 @@
       "document": "Information on tags",
       "members": [
         {
-          "default": "",
           "document": "Tag key.",
           "example": "tag-key",
           "member": "string",
@@ -2472,7 +2300,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value.",
           "example": "tag-value",
           "member": "string",
@@ -2488,7 +2315,6 @@
       "document": "Task result.",
       "members": [
         {
-          "default": "",
           "document": "ExitCode of the execution.",
           "example": "0",
           "member": "int64",
@@ -2498,7 +2324,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Base64-encoded command output. The maximum length is 24 KB.",
           "example": "aGVsbG8sd29ybGQ=",
           "member": "string",
@@ -2508,7 +2333,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Time when the execution is started.",
           "example": "2014-08-03 12:00:00",
           "member": "datetime_iso",
@@ -2518,7 +2342,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Time when the execution is ended.",
           "example": "2014-08-03 12:00:00",
           "member": "datetime_iso",
@@ -2528,7 +2351,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Dropped bytes of the command output.",
           "example": "100",
           "member": "uint64",
@@ -2538,7 +2360,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "COS URL of the logs.",
           "example": "https://BucketName-123454321.cos.ap-beijing.myqcloud.com",
           "member": "string",
@@ -2548,7 +2369,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Error message for uploading logs to COS.",
           "example": "无",
           "member": "string",

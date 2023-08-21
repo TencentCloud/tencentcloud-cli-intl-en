@@ -396,7 +396,6 @@
       "document": "Whiteboard application.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -406,7 +405,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Application name.",
           "member": "string",
@@ -416,7 +414,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time.",
           "member": "datetime",
@@ -426,7 +423,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag list.",
           "member": "Tag",
@@ -459,7 +455,6 @@
       "document": "Authentication parameters.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "12345678",
@@ -470,7 +465,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User ID.",
           "example": "userid",
@@ -481,7 +475,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Signature corresponding to the user ID.",
           "example": "usersig",
@@ -498,7 +491,6 @@
       "document": "Mixed stream canvas parameter",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Width and height of the mixed stream canvas",
           "member": "LayoutParams",
@@ -508,7 +500,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Background color, which is black by default. Its format is RGB. for example, \"#FF0000\" for the red color.",
           "member": "string",
@@ -524,7 +515,6 @@
       "document": "Real-time recording video splicing parameter",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable the video splicing feature\nIf the video splicing feature is enabled, the real-time recording service will splice multiple video clips resulting from the pause into one video.",
           "member": "bool",
@@ -534,7 +524,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Download address of the padding image used during video splicing. If it is not specified, a pure black image is used by default.",
           "member": "string",
@@ -550,7 +539,6 @@
       "document": "CreateApplication request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -559,7 +547,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Application name.",
           "member": "string",
@@ -568,7 +555,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SKey required for creating an IM application.",
           "member": "string",
@@ -577,7 +563,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "TinyId required for creating an IM application.",
           "member": "string",
@@ -586,7 +571,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of tags to be bound.",
           "member": "Tag",
@@ -637,7 +621,6 @@
       "document": "CreateOfflineRecord request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -646,7 +629,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Room ID corresponding to the recording task.",
           "member": "int64",
@@ -655,7 +637,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Group ID corresponding to the recording task.",
           "member": "string",
@@ -664,7 +645,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Stream mixing parameters.\nThe Custom parameter is not supported for offline recording tasks.",
           "member": "MixStream",
@@ -673,7 +653,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whiteboard parameters.",
           "member": "Whiteboard",
@@ -700,7 +679,6 @@
       "document": "CreateSnapshotTask request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whiteboard parameters.",
           "example": "无",
@@ -710,7 +688,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "`SdkAppId` of the whiteboard application.",
           "example": "1400124720",
@@ -720,7 +697,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whiteboard room ID.",
           "example": "1234",
@@ -730,7 +706,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Callback URL to which the whiteboard snapshot result is to be sent.",
           "example": "http://xxx",
@@ -740,7 +715,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "`COS` bucket in which the generated whiteboard snapshot file is to be stored. If you leave this parameter empty, the generated file will be stored in the public bucket and retained for only three days.",
           "example": "无",
@@ -750,7 +724,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whiteboard snapshot mode. Default value: `AllMarks`. Valid values:\n\n`AllMarks`: Full mode. In this mode, a snapshot image is generated based on each whiteboard snapshot mark that is added by calling the `addSnapshotMark` API on the client.\n\n`LatestMarksOnly`: Single-page deduplication mode. In this mode, a snapshot image is generated based only on the latest whiteboard snapshot mark that is added by calling the `addSnapshotMark` API on the client if the API is called multiple times for the same whiteboard snapshot.\n\n**Note: The `LatestMarksOnly` mode takes effect only when the `addSnapshotMark` API is called by using Tencent Interactive Whiteboard SDK v2.6.8 or later. Otherwise, even if this parameter is set to `LatestMarksOnly`, the default `AllMarks` mode is used.**",
           "example": "AllMarks",
@@ -788,7 +761,6 @@
       "document": "CreateTranscode request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the customer",
           "example": "1400000001",
@@ -798,7 +770,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "URL of the transcoded document after URL encoding. URL encoding converts characters into a format that can be transmitted over the Internet. For example, URL encoding can convert the document URL http://example.com/Test.pdf into http://example.com/%E6%B5%8B%E8%AF%95.pdf. To improve the success rate of URL parsing, use URL encoding.",
           "example": "https://path/to/document.ppt",
@@ -808,7 +779,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the PowerPoint file is static. The default value is False.\nIf IsStaticPPT is False, documents with the .ppt or .pptx extension will be dynamically transcoded to HTML5 pages, and documents with other extensions will be statically transcoded to images. If IsStaticPPT is True, documents with any extensions will be statically transcoded to images.",
           "example": "False",
@@ -818,7 +788,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Note: This parameter is disused. Use the MinScaleResolution parameter to pass in a resolution. For more information, see [CreateTranscode](https://intl.cloud.tencent.com/document/api/1137/40060?from_cn_redirect=1#SDK).\n\nMinimum resolution of the transcoded document. If no value or null is specified for it or the resolution format is invalid, the original document resolution is used.\n\nExample: 1280x720. Note that the character between the numbers is the letter x.",
           "example": "960x540",
@@ -828,7 +797,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Resolution of the thumbnail generated for the dynamically transcoded PowerPoint file. If no value or null is specified for it or the resolution format is invalid, no thumbnail will be generated. The resolution format is the same as that of MinResolution.\n\nFor static transcoding, this parameter does not work.",
           "example": "960x540",
@@ -838,7 +806,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Compression format of the transcoded file. If no value or null is specified for it or the specified format is invalid, no compression file will be generated. Currently, the following compression formats are supported:\n\n`zip`: generates a .zip compression package.\n`tar.gz: generates a .tar.gz compression package.",
           "example": "zip",
@@ -848,7 +815,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Internal parameter.",
           "example": "空 ",
@@ -858,7 +824,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Document transcoding priority. This parameter takes effect only for PowerPoint dynamic transcoding. Valid values:<br/>\n- low: Low transcoding priority. The task can transcode at most 500 MB of data or a 2000-page document, with a download timeout no longer than 10 minutes. Due to resource limits, these tasks may have to queue for a long period of time. Consider this before you use this feature.\n- null: Normal transcoding priority. The task can transcode at most 200 MB of data or a 500-page document, with a download timeout no longer than 2 minutes.\n<br/>\nNote: For static transcoding such as PDF transcoding, each task can transcode at most 200 MB of data regardless of the transcoding priority.",
           "example": "空",
@@ -868,7 +833,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum resolution of the transcoded document. If no value or null is specified for it or the resolution format is invalid, the original document resolution is used.\nHigher resolution brings clearer visual effect, but also means larger size of the transcoded image resources and longer loading time of the transcoded file. Set this parameter appropriately based on your actual scenario.\n\nExample: 1280x720. Note that the character between the numbers is the letter x.",
           "example": "960x540",
@@ -878,7 +842,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies whether to enable auto handling of unsupported elements. By default, this feature is disabled.\n\nIf auto handling is enabled, the following processes are performed:\n1. Inkblots: Remove unsupported inkblots, such as those drawn by using WPS.\n2. Auto page flip: Clear the auto page clip settings in the PowerPoint file and set the page flip mode to mouse click.\n3. Corrupted audio/videos: Remove the references to corrupted audio/videos in the PowerPoint file.",
           "example": "true",
@@ -914,7 +877,6 @@
       "document": "CreateVideoGenerationTask request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the recording task.",
           "member": "string",
@@ -923,7 +885,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -932,7 +893,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whiteboard parameters of the recording video generation task, such as the width and height of the whiteboard.\n\nThis parameter conflicts with the Whiteboard parameter in the API for starting a recording task. If the two Whiteboard parameters are both specified, the Whiteboard parameter in this API takes priority for recording video generation. If the Whiteboard parameter in this API is not specified, the Whiteboard parameter specified in the API for starting a recording task is used for recording video generation.",
           "member": "Whiteboard",
@@ -941,7 +901,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video splicing parameters.\n\nThis parameter conflicts with the Concat parameter in the API for starting a recording task. If the two Concat parameters are both specified, the Concat parameter in this API takes priority for video splicing. If the Concat parameter in this API is not specified, the Concat parameter specified in the API for starting a recording task is used for video splicing.",
           "member": "Concat",
@@ -950,7 +909,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video stream mixing parameters.\n\nThis parameter conflicts with the MixStream parameter in the API for starting a recording task. If the two MixStream parameters are both specified, the MixStream parameter in this API takes priority for video stream mixing. If the MixStream parameter in this API is not specified, the MixStream parameter specified in the API for starting a recording task is used for video stream mixing.",
           "member": "MixStream",
@@ -959,7 +917,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A group of video generation parameters. It specifies the streams to be generated, whether to disable audio recording for a stream, and whether to record only low-resolution videos, etc.\n\nThis parameter conflicts with the RecordControl parameter in the API for starting a recording task. If the two RecordControl parameters are both specified, the RecordControl parameter in this API takes priority for video generation control. If the RecordControl parameter in this API is not specified, the RecordControl parameter specified in the API for starting a recording task is used for video generation control.",
           "member": "RecordControl",
@@ -968,7 +925,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Internal parameter.",
           "member": "string",
@@ -1003,7 +959,6 @@
       "document": "Custom mixed stream layout parameter",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Mixed stream canvas parameter",
           "member": "Canvas",
@@ -1013,7 +968,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Stream layout. The layout of each stream cannot exceed the canvas area.",
           "member": "StreamLayout",
@@ -1029,7 +983,6 @@
       "document": "Chart data, including the time, values, and details.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Time. The following formats are supported:\nyyyy-mm\nyyyy-mm-dd\nyyyy-mm-dd HH:MM:SS",
           "member": "string",
@@ -1039,7 +992,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Values required for drawing charts.",
           "member": "int64",
@@ -1049,7 +1001,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Details of the values.",
           "member": "Detail",
@@ -1065,7 +1016,6 @@
       "document": "DescribeAPIService request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Supported services are cos:GetService and cdn:DescribeDomainsConfig.",
           "member": "string",
@@ -1074,7 +1024,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Request parameters in JSON format.",
           "member": "string",
@@ -1146,7 +1095,6 @@
       "document": "DescribeApplicationUsage request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the query period. The start time point is included in the query period.",
           "example": "2019-10-01 00:00:00",
@@ -1156,7 +1104,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time of the query period. The end time point is not included in the query period.",
           "example": "2019-12-31 00:00:00",
@@ -1166,7 +1113,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subproduct name.",
           "example": "sp_tiw_ric",
@@ -1176,7 +1122,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unit of time increment.\n- MONTHLY: month\n- DAILY: day\n- MINUTELY: minute",
           "example": "DAILY",
@@ -1186,7 +1131,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "1400000001",
@@ -1196,7 +1140,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "true: Returns the weighted sum of raw usage data.\nfalse: Returns the raw usage data.",
           "example": "1",
@@ -1234,7 +1177,6 @@
       "document": "DescribeBoardSDKLog request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "1400000001",
@@ -1244,7 +1186,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Room ID to be used to query logs.",
           "example": "10000",
@@ -1254,7 +1195,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User ID to be used to query logs.",
           "example": "tic_web",
@@ -1264,7 +1204,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query period, which consists of two Unix timestamps in milliseconds. The first indicates the start time and the second the end time.",
           "example": "[1614519034000,1614691834999]",
@@ -1274,7 +1213,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Interval for aggregating log number queries. Example values: `5m`, `1h`, `4h`",
           "example": "5m",
@@ -1284,7 +1222,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Extra query conditions.",
           "example": "action: addData",
@@ -1294,7 +1231,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies whether to sort results in ascending order of time.",
           "example": "false",
@@ -1304,7 +1240,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Context key used for recursive extraction. Obtain this parameter in the response to the last request.",
           "example": "空",
@@ -1389,7 +1324,6 @@
       "document": "DescribeOfflineRecordCallback request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -1416,7 +1350,6 @@
       "document": "DescribeOfflineRecord request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -1425,7 +1358,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the offline recording task.",
           "member": "string",
@@ -1452,7 +1384,6 @@
       "document": "DescribeOnlineRecordCallback request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the application",
           "member": "int64",
@@ -1495,7 +1426,6 @@
       "document": "DescribeOnlineRecord request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the customer",
           "member": "int64",
@@ -1504,7 +1434,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the real-time recording task",
           "member": "string",
@@ -1671,7 +1600,6 @@
       "document": "DescribePostpaidUsage request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the query period.",
           "member": "datetime",
@@ -1680,7 +1608,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time of the query period.",
           "member": "datetime",
@@ -1707,7 +1634,6 @@
       "document": "DescribeQualityMetrics request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "1400000001",
@@ -1717,7 +1643,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time, which is a Unix timestamp in seconds. The time length cannot exceed seven days.",
           "example": "1614691834",
@@ -1727,7 +1652,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time, which is a Unix timestamp in seconds. The time length cannot exceed seven days.",
           "example": "1614691834",
@@ -1737,7 +1661,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Metrics to be queried. Valid values:\n  - image_load_total_count: The number of image loads.\n  - image_load_fail_count: The number of image load failures.\n  - image_load_success_rate: The success rate of image loading, in percentage.\n  - ppt_load_total_count: The number of PowerPoint file loads.\n  - ppt_load_fail_count: The number of PowerPoint file load failures.\n  - ppt_load_success_rate: The success rate of PowerPoint file loading, in percentage.\n  - verify_sdk_total_count: The number of SDK verifications.\n  - verify_sdk_fail_count: The number of SDK verification failures.\n  - verify_sdk_success_rate: The success rate of SDK verification, in percentage.\n  - verify_sdk_in_one_second_rate: The rate of SDK verification completed within one second, in percentage.\n  - verify_sdk_cost_avg: The average time taken by each SDK verification, in milliseconds.",
           "example": "image_load_success_rate",
@@ -1747,7 +1670,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Aggregation interval. Valid value: `1h`.",
           "example": "1h",
@@ -1832,7 +1754,6 @@
       "document": "DescribeRoomList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "1400000001",
@@ -1842,7 +1763,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query period, which consists of two Unix timestamps in milliseconds. The first indicates the start time and the second the end time.",
           "example": "[1614519034000,1614691834999]",
@@ -1852,7 +1772,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Extra query conditions.",
           "example": "action: addData",
@@ -1862,7 +1781,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of data entries to be returned. Default value: 1000.",
           "example": "1000",
@@ -1900,7 +1818,6 @@
       "document": "DescribeSnapshotTask request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the query task.",
           "example": "f2e1728c-6e87-4481-abe1-cde8542a5a10",
@@ -1910,7 +1827,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the task.",
           "example": "1400124720",
@@ -1988,7 +1904,6 @@
       "document": "DescribeTIWDailyUsage request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "1400000001",
@@ -1998,7 +1913,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subproduct usage to be queried. The following parameters are supported:\n- sp_tiw_board: The duration of use of whiteboards, in minutes.\n- sp_tiw_dt: The number of pages dynamically transcoded.\n- sp_tiw_st: The number of pages statically transcoded.\n- sp_tiw_ric: The duration of real-time recording, in minutes.\n\nNote: Dynamic transcoding multiplies the number of pages of a document by eight times. Static transcoding does not change the number of pages of a document.",
           "example": "sp_tiw_board",
@@ -2008,7 +1922,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start date in the format of YYYY-MM-DD. The start date is included in the query period.",
           "example": "2021-10-01",
@@ -2018,7 +1931,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End date in the format of YYYY-MM-DD. The end date is included in the query period. The period queried per request cannot be longer than 31 days.",
           "example": "2021-10-31",
@@ -2056,7 +1968,6 @@
       "document": "DescribeTIWRoomDailyUsage request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "1400000001",
@@ -2066,7 +1977,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subproduct usage to be queried. The following parameters are supported:\n- sp_tiw_board: The duration of use of whiteboards, in minutes.\n- sp_tiw_ric: The duration of real-time recording, in minutes.",
           "example": "sp_tiw_board",
@@ -2076,7 +1986,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start date in the format of YYYY-MM-DD. The start date is included in the query period.",
           "example": "2021-10-01",
@@ -2086,7 +1995,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End date in the format of YYYY-MM-DD. The end date is included in the query period. The period queried per request cannot be longer than 31 days.",
           "example": "2021-10-31",
@@ -2096,7 +2004,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Room IDs to be queried. If you leave this parameter empty, all room IDs are queried.",
           "example": "无",
@@ -2106,7 +2013,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset for query. Default value: `0`.",
           "example": "0",
@@ -2116,7 +2022,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of entries returned per query. Default value: `20`.",
           "example": "20",
@@ -2164,7 +2069,6 @@
       "document": "DescribeTranscodeCallback request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the application",
           "member": "int64",
@@ -2207,7 +2111,6 @@
       "document": "DescribeTranscode request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the customer",
           "member": "int64",
@@ -2216,7 +2119,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unique ID of the document transcoding task",
           "member": "string",
@@ -2388,7 +2290,6 @@
       "document": "DescribeUsageSummary request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the query period.",
           "member": "datetime",
@@ -2397,7 +2298,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time of the query period.",
           "member": "datetime",
@@ -2406,7 +2306,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subproducts whose usage you want to query.",
           "member": "string",
@@ -2415,7 +2314,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "true: Returns weighted data.\nfalse: Returns raw data.",
           "member": "bool",
@@ -2442,7 +2340,6 @@
       "document": "DescribeUserList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "1400000001",
@@ -2452,7 +2349,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Room ID to be used to query users.",
           "example": "10000",
@@ -2462,7 +2358,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query period, which consists of two Unix timestamps in milliseconds. The first indicates the start time and the second the end time.",
           "example": "[1614519034000,1614691834999]",
@@ -2472,7 +2367,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Extra query conditions.",
           "example": "action: addData",
@@ -2482,7 +2376,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of data entries to be returned. Default value: `1000`.",
           "example": "1000",
@@ -2594,7 +2487,6 @@
       "document": "DescribeVideoGenerationTaskCallback request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -2637,7 +2529,6 @@
       "document": "DescribeVideoGenerationTask request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -2646,7 +2537,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the recording video generation task.",
           "member": "string",
@@ -2737,7 +2627,6 @@
       "document": "DescribeWhiteboardApplicationConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "1400000001",
@@ -2747,7 +2636,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task types to be queried.\nrecording: Real-time recording.\ntranscode: Document transcoding.",
           "example": "[\"transcode\",\"recording\"]",
@@ -2757,7 +2645,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppIds to be used to query configurations.",
           "example": "[0]",
@@ -2805,7 +2692,6 @@
       "document": "DescribeWhiteboardBucketConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -2814,7 +2700,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task type to be queried.\nrecording: Real-time recording.\ntranscode: Document transcoding.",
           "member": "string",
@@ -2841,7 +2726,6 @@
       "document": "DescribeWhiteboardPushCallback request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "1400000001",
@@ -2889,7 +2773,6 @@
       "document": "DescribeWhiteboardPush request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "1400000001",
@@ -2899,7 +2782,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the whiteboard push task.",
           "example": "ghucnligqtgtvk2624mb",
@@ -3063,7 +2945,6 @@
       "document": "Detailed metric data with different tags in billable usage data.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Usage metric.",
           "member": "string",
@@ -3073,7 +2954,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Usage weight.",
           "member": "float",
@@ -3083,7 +2963,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Usage value.",
           "member": "float",
@@ -3099,7 +2978,6 @@
       "document": "Number of video stream interruptions during real-time recording.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "User ID.\nNote: This parameter may return null, indicating that no valid values can be obtained.",
           "example": "tiw_user_634",
@@ -3110,7 +2988,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of video stream interruptions.\nNote: This parameter may return null, indicating that no valid values can be obtained.",
           "example": "2",
@@ -3127,7 +3004,6 @@
       "document": "Custom mixed stream layout parameter",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Stream image width. Value range: [2,3000]",
           "member": "int64",
@@ -3137,7 +3013,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Stream image height. Value range: [2,3000]",
           "member": "int64",
@@ -3147,7 +3022,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset of the top point in the upper-left corner of the current image to the X axis of the top point in the upper-left corner of the canvas. Default value: 0. Value range: [0,3000].",
           "member": "int64",
@@ -3157,7 +3031,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset of the top point in the upper-left corner of the current image to the Y axis of the top point in the upper-left corner of the canvas. Default value: 0. Value range: [0,3000].",
           "member": "int64",
@@ -3167,7 +3040,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Z-axis position of the image. The default value is 0.\nThe Z axis determines the overlap sequence of images. The image with the largest z-axis value is at the top layer.",
           "member": "int64",
@@ -3183,7 +3055,6 @@
       "document": "Stream mixing configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether stream mixing is enabled",
           "member": "bool",
@@ -3193,7 +3064,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether audio stream mixing is disabled",
           "member": "bool",
@@ -3203,7 +3073,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the embedded mixed stream layout template. Valid values: 1 and 2. For more information on the differences of both values, see the sample embedded mixed stream layout template.\nIf the Custom field is not specified, ModelId is required.",
           "member": "int64",
@@ -3213,7 +3082,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of a teacher account\nThis field is valid only when ModelId is specified.\nIf you specify TeacherID for a user, the user's video stream will be displayed in the first image of the embedded template.",
           "member": "string",
@@ -3223,7 +3091,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom mixed stream layout parameter\nIf this parameter is available, the ModelId and TeacherId fields will be ignored.",
           "member": "CustomLayout",
@@ -3239,7 +3106,6 @@
       "document": "ModifyApplication request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -3248,7 +3114,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Application name.",
           "member": "string",
@@ -3275,7 +3140,6 @@
       "document": "ModifyAutoRenewFlag request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Subproduct ID. To obtain this ID, call the `DescribeUserResources` API and find the subproduct ID of the monthly feature package with the level 1. Usually the value is `sp_tiw_package`.",
           "member": "string",
@@ -3284,7 +3148,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Resource ID. To obtain this ID, call the `DescribeUserResources` API and find the resource ID of the monthly feature package with the level 1.",
           "member": "string",
@@ -3293,7 +3156,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Renewal mode. Valid values: `0` (default mode, which is auto-renewal), `1` (auto-renewal), `2` (manual renewal, which is specified by users). If no renewal is required, set it to `0`.",
           "member": "int64",
@@ -3320,7 +3182,6 @@
       "document": "ModifyWhiteboardApplicationConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "1400000001",
@@ -3330,7 +3191,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task-related configurations of the whiteboard application.",
           "example": "无",
@@ -3358,7 +3218,6 @@
       "document": "ModifyWhiteboardBucketConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -3367,7 +3226,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task type to be queried.\nrecording: Real-time recording.\ntranscode: Document transcoding.",
           "member": "string",
@@ -3376,7 +3234,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the COS bucket.",
           "member": "string",
@@ -3385,7 +3242,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region of the COS bucket.",
           "member": "string",
@@ -3394,7 +3250,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Resource prefix of the bucket.",
           "member": "string",
@@ -3403,7 +3258,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name of the URL of the bucket.",
           "member": "string",
@@ -3430,7 +3284,6 @@
       "document": "Duration to be ignored in the spliced video",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Offset of the paused time in the spliced video, in milliseconds",
           "member": "int64",
@@ -3440,7 +3293,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recording pause timestamp, in milliseconds",
           "member": "int64",
@@ -3450,7 +3302,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recording resumption timestamp, in milliseconds",
           "member": "int64",
@@ -3466,7 +3317,6 @@
       "document": "PauseOnlineRecord request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the customer",
           "member": "int64",
@@ -3475,7 +3325,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the real-time recording task",
           "member": "string",
@@ -3502,7 +3351,6 @@
       "document": "It specifies the global recording parameters and the recording parameters over a specific stream. For example, you can specify the streams you want to record and whether to record low-resolution videos only.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "It specifies whether to enable RecordControl. Valid values: true (yes); false (no).",
           "member": "bool",
@@ -3512,7 +3360,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A global parameter generally used in conjunction with `StreamControls` that specifies whether to disable recording. Valid values:\n\ntrue: no stream is recorded.\nfalse: all streams are recorded. Default value: false.\n\nThe setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.",
           "member": "bool",
@@ -3522,7 +3369,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A global parameter generally used in conjunction with `StreamControls` that specifies whether to disable audio recording over all streams. Valid values:\n\ntrue: no audio recording of any streams.\nfalse: audio recording of all streams. Default value: false.\n\nThe setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.",
           "member": "bool",
@@ -3532,7 +3378,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A global parameter generally used in conjunction with `StreamControls` that specifies whether to record low-resolution videos only. Valid values:\n\ntrue: only records low-resolution videos for all streams. Please ensure that the up-streaming end pushes the low-resolution videos. Otherwise, the recorded video may be black.\nfalse: high-resolution video recording of all streams. Default value: false.\n\nThe setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.",
           "member": "bool",
@@ -3542,7 +3387,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameters over specific streams, which take priority over global configurations. If it’s empty, all streams are recorded according to the global configurations. ",
           "member": "StreamControl",
@@ -3558,7 +3402,6 @@
       "document": "Real-time recording result.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "`AUTO`: Recording automatically stops. `USER_CALL`: The API for stopping recording is called.",
           "member": "string",
@@ -3568,7 +3411,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of exceptions.",
           "member": "int64",
@@ -3578,7 +3420,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Room ID.",
           "member": "int64",
@@ -3588,7 +3429,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Group ID.",
           "member": "string",
@@ -3598,7 +3438,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Actual recording start time.",
           "member": "int64",
@@ -3608,7 +3447,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recording end time.",
           "member": "int64",
@@ -3618,7 +3456,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recording duration.",
           "member": "int64",
@@ -3628,7 +3465,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of video information.",
           "member": "VideoInfo",
@@ -3638,7 +3474,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Omitted video durations.",
           "member": "OmittedDuration",
@@ -3648,7 +3483,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Details.",
           "member": "string",
@@ -3658,7 +3492,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task execution error code.",
           "member": "int64",
@@ -3668,7 +3501,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Error message.",
           "member": "string",
@@ -3684,7 +3516,6 @@
       "document": "Real-time recording task query results.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique task ID.",
           "member": "string",
@@ -3694,7 +3525,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status of the real-time recording task.\n- PAUSED: Recording paused.\n- PREPARED: Recording in preparation.\n- RECORDING: Recording in progress.\n- STOPPED: Recording stopped.\n- FINISHED: Recording finished.",
           "member": "string",
@@ -3704,7 +3534,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Room ID of the real-time recording task.",
           "member": "int64",
@@ -3714,7 +3543,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time of the task.",
           "member": "datetime_iso",
@@ -3724,7 +3552,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -3734,7 +3561,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Real-time recording result.",
           "member": "RecordTaskResult",
@@ -3750,7 +3576,6 @@
       "document": "ResumeOnlineRecord request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the customer",
           "member": "int64",
@@ -3759,7 +3584,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the resumed real-time recording task",
           "member": "string",
@@ -3786,7 +3610,6 @@
       "document": "Whiteboard room data returned for log queries.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Room ID.",
           "example": "100000",
@@ -3797,7 +3620,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The first time when the room ID appeared during the queried period, which is a Unix timestamp in milliseconds.",
           "example": "1614519034000",
@@ -3808,7 +3630,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The last time when the room ID appeared during the queried period, which is a Unix timestamp in milliseconds.",
           "example": "1614519034000",
@@ -3819,7 +3640,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of users in the room.",
           "example": "100",
@@ -3836,7 +3656,6 @@
       "document": "Usage information of the room.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start date in the format of YYYY-MM-DD.",
           "example": "2021-10-01",
@@ -3847,7 +3666,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "1400000001",
@@ -3858,7 +3676,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subproduct usage information, which is consistent with the corresponding request parameters.\n- sp_tiw_board: The duration of use of whiteboards.\n- sp_tiw_ric: The duration of real-time recording.",
           "example": "sp_tiw_board",
@@ -3869,7 +3686,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Usage values.\n- The unit of sp_tiw_board and sp_tiw_ric is minutes.",
           "example": "100000",
@@ -3880,7 +3696,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "",
           "example": "12345",
@@ -3897,7 +3712,6 @@
       "document": "SetOfflineRecordCallback request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -3906,7 +3720,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Callback URL of the offline recording task result. If it is specified as null, the set callback URL is deleted. The callback URL only supports the HTTP or HTTPS protocol, and therefore the callback URL must start with `http://` or `https://`.",
           "member": "string",
@@ -3933,7 +3746,6 @@
       "document": "SetOnlineRecordCallbackKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the application",
           "member": "int64",
@@ -3942,7 +3754,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Authentication key for the real-time recording callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
           "member": "string",
@@ -3969,7 +3780,6 @@
       "document": "SetOnlineRecordCallback request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the customer",
           "member": "int64",
@@ -3978,7 +3788,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Callback address of the real-time recording task result. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1).",
           "member": "string",
@@ -4005,7 +3814,6 @@
       "document": "SetTranscodeCallbackKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the application",
           "member": "int64",
@@ -4014,7 +3822,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Authentication key for the document transcoding callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information about callback authentication, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
           "member": "string",
@@ -4041,7 +3848,6 @@
       "document": "SetTranscodeCallback request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the customer",
           "member": "int64",
@@ -4050,7 +3856,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Callback address for the document transcoding progress. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`.\nFor more information about the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40260?from_cn_redirect=1).",
           "member": "string",
@@ -4077,7 +3882,6 @@
       "document": "SetVideoGenerationTaskCallbackKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -4086,7 +3890,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Callback authentication key for recording video generation. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key is deleted.",
           "member": "string",
@@ -4113,7 +3916,6 @@
       "document": "SetVideoGenerationTaskCallback request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -4122,7 +3924,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Callback URL of the offline recording task result. If it is specified as null, the set callback URL is deleted. The callback URL only supports the HTTP or HTTPS protocol, and therefore the callback URL must start with `http://` or `https://`.",
           "member": "string",
@@ -4149,7 +3950,6 @@
       "document": "SetWhiteboardPushCallbackKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -4158,7 +3958,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Callback authentication key for whiteboard push. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key is deleted. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
           "member": "string",
@@ -4185,7 +3984,6 @@
       "document": "SetWhiteboardPushCallback request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "1400000001",
@@ -4195,7 +3993,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Callback URL of the whiteboard push task result. If an empty string is passed in, the existing callback URL is deleted. The callback URL only supports the HTTP or HTTPS protocol, and therefore the callback URL must start with `http://` or `https://`. For the callback format, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
           "example": "https://example.com/online/callback",
@@ -4223,7 +4020,6 @@
       "document": "COS bucket parameters for storing whiteboard snapshots.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "UIN of the Tencent Cloud account.",
           "example": "100006912345",
@@ -4234,7 +4030,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "COS region.",
           "example": "ap-guangzhou",
@@ -4245,7 +4040,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "COS bucket name.",
           "example": "examplebucket-1250000000",
@@ -4256,7 +4050,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Root directory for storing whiteboard snapshots.",
           "example": "snapshot",
@@ -4267,7 +4060,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CDN acceleration domain name.",
           "example": "xxxx.file.qcloud.com",
@@ -4284,7 +4076,6 @@
       "document": "Result of the whiteboard snapshot task.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Task execution error code.\nNote: This parameter may return null, indicating that no valid values can be obtained.",
           "example": "InternalErr",
@@ -4295,7 +4086,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task execution error message.\nNote: This parameter may return null, indicating that no valid values can be obtained.",
           "example": "redis connect failed",
@@ -4306,7 +4096,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of generated snapshot images.\nNote: This parameter may return null, indicating that no valid values can be obtained.",
           "example": "12",
@@ -4317,7 +4106,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of URLs of the snapshot images.\nNote: This parameter may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -4334,7 +4122,6 @@
       "document": "Whiteboard parameters of the whiteboard snapshot task, such as the width and height of the whiteboard.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whiteboard width. Valid range: [0,2560]. Default value: 1280.",
           "example": "1280",
@@ -4345,7 +4132,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whiteboard height. Valid range: [0,2560]. Default value: 720.",
           "example": "960",
@@ -4356,7 +4142,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Escaped JSON string of the whiteboard initial parameters, which is passed through to the Tencent Interactive Whiteboard SDK.",
           "example": "{\\\"ratio\\\":\\\"4:3\\\"}",
@@ -4373,7 +4158,6 @@
       "document": "StartOnlineRecord request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the customer",
           "example": "1400000001",
@@ -4383,7 +4167,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the room for recording. Value range: (1, 4294967295)",
           "example": "12345",
@@ -4393,7 +4176,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User ID used by the recording service for entering a room. The ID cannot exceed 60 bytes in length. Its format is `tic_record_user_${RoomId}_${Random}`, where `${RoomId}` indicates the ID of the room for recording and `${Random}` is a random string.\nThe ID must be an unused ID in the SDK. The recording service uses the user ID to enter the room for audio, video, and whiteboard recording. If this ID is already used in the SDK, the SDK and recording service will conflict, affecting the recording operation.",
           "example": "tic_record_user_880528_1258",
@@ -4403,7 +4185,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Signature corresponding to RecordUserId",
           "example": "eJwtjb0OgjAAhN*lK4a0tcVC4iDGkIg-g7K4NEiLViLUUsFgfHcRmS733eXuDY6b",
@@ -4413,7 +4194,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Disused) IM group ID of the whiteboard. By default, it is the same as the room ID.",
           "example": "12345",
@@ -4423,7 +4203,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Real-time recording video splicing parameter",
           "example": "无",
@@ -4433,7 +4212,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Real-time recording whiteboard parameter, such as the whiteboard width and height",
           "example": "无",
@@ -4443,7 +4221,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Real-time recording stream mixing parameter\nNotes:\n1. The stream mixing feature needs to be enabled separately. If you need the feature, contact TIW customer service.\n2. To use the stream mixing feature, the Extras parameter is required and must contain \"MIX_STREAM\".",
           "example": "无",
@@ -4453,7 +4230,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of advanced features used\nList of possible values:\nMIX_STREAM - Stream mixing feature",
           "example": "[\"MixStream\"]",
@@ -4463,7 +4239,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to return the audio-only recording file of different streams in the result callback. The file format is mp3.",
           "example": "false",
@@ -4473,7 +4248,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A group of real-time recording parameters. It specifies the streams to be recorded, whether to disable the audio recording, and whether to record only low-resolution videos, etc.",
           "example": "无",
@@ -4483,7 +4257,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "",
           "example": "REALTIME_MODE",
@@ -4493,7 +4266,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "",
           "example": "12345",
@@ -4503,7 +4275,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recording timeout. Unit: seconds. Valid range: [300,86400]. Default value: 300.\n\nIf no upstream audio/video exists or no operation is performed on the whiteboard for the specified period of time, the recording service automatically stops the recording task.",
           "example": "300",
@@ -4513,7 +4284,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Internal parameter. You can ignore this parameter.",
           "example": "无",
@@ -4774,7 +4544,6 @@
       "document": "StopOnlineRecord request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the customer",
           "member": "int64",
@@ -4783,7 +4552,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the recording task to stop",
           "member": "string",
@@ -4810,7 +4578,6 @@
       "document": "StopWhiteboardPush request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -4819,7 +4586,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the whiteboard push task to be stopped.",
           "member": "string",
@@ -4854,7 +4620,6 @@
       "document": "A group of parameters for recording over specified streams. It specifies whether to disable the audio recording and whether to record high-resolution or low-resolution videos.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Video stream ID\nDescription of the possible video stream ID values:\n1. `tic_record_user`: the whiteboard video stream\n2. `tic_substream`: the auxiliary video stream\n3. Specific user ID: the video stream of the specified user\n\nThe actual recording uses the prefix match of the video stream ID. The real stream becomes the specified stream once its ID prefix matches with the stream ID.",
           "member": "string",
@@ -4864,7 +4629,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to disable recording over the stream.\n\ntrue: does not record this stream. This stream will not be included in the final recording file.\nfalse: records this stream. This stream will be included in the final recording file.\n\nDefault value: false",
           "member": "bool",
@@ -4874,7 +4638,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to disable the audio recording of the stream.\n\ntrue: does not record the audio of the stream. In the final recording file, this stream will be soundless.\nfalse: the stream has both video and audio recording.\n\nDefault value: false",
           "member": "bool",
@@ -4884,7 +4647,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to only record low-resolution stream videos.\n\ntrue: records only low-resolution videos. In this case, please make sure that the client pushes low-resolution videos upstream. Otherwise, the recorded video may be black. \nfalse: records only high-resolution videos.\n\nDefault value: false",
           "member": "bool",
@@ -4900,7 +4662,6 @@
       "document": "Stream layout parameter",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Stream layout configuration",
           "member": "LayoutParams",
@@ -4910,7 +4671,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video stream ID\nDescription of the possible video stream ID values:\n1. tic_record_user: the current picture is used to display the whiteboard video stream.\n2. tic_substream: the current picture is used to display the auxiliary video stream.\n3. Specific user ID: the current picture is used to display the video stream of a specific user.\n4.Left empty: the current picture is vacant for new video stream.",
           "member": "string",
@@ -4920,7 +4680,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Background color in RGB format, such as \"#FF0000\" for red. The default color is black. ",
           "member": "string",
@@ -4930,7 +4689,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video filling mode.\n\n0: self-adaption mode. Scales the video proportionally to completely display it in the specified area. In this mode, there may be black bars.\n1: full-screen mode. Scales the video to make it fill the entire specified area. In this mode, no black bars will appear, but the video may not be displayed fully.",
           "member": "int64",
@@ -4946,7 +4704,6 @@
       "document": "Tag information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Tag key.",
           "member": "string",
@@ -4956,7 +4713,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag value.",
           "member": "string",
@@ -4972,7 +4728,6 @@
       "document": "Time series returned for the queried metric.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unix timestamp in seconds.",
           "example": "1617883200",
@@ -4983,7 +4738,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Current value of the queried metric.",
           "example": "100",
@@ -5000,7 +4754,6 @@
       "document": "Transcoding task result.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Transcoding result URL.",
           "member": "string",
@@ -5010,7 +4763,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Target resolution.",
           "member": "string",
@@ -5020,7 +4772,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Title (usually the document name).",
           "member": "string",
@@ -5030,7 +4781,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of transcoded pages.",
           "member": "int64",
@@ -5040,7 +4790,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "URL prefix of the thumbnail. If the URL prefix is `http://example.com/g0jb42ps49vtebjshilb/`, the thumbnail URL for the first page of the dynamically transcoded PowerPoint file is\n`http://example.com/g0jb42ps49vtebjshilb/1.jpg`, and so on.\n\nIf the document transcoding request carries the ThumbnailResolution parameter and the transcoding type is dynamic transcoding, this parameter is not null. In other cases, this parameter is null.",
           "member": "string",
@@ -5050,7 +4799,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Resolution of the thumbnail generated for dynamic transcoding",
           "member": "string",
@@ -5060,7 +4808,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "URL for downloading the transcoded and compressed file. If `CompressFileType` carried in the document transcoding request is null or is not a supported compression format, this parameter is null.",
           "member": "string",
@@ -5070,7 +4817,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task execution error code.",
           "member": "int64",
@@ -5080,7 +4826,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task execution error message.",
           "member": "string",
@@ -5096,7 +4841,6 @@
       "document": "Transcoding task query results.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time of the task.",
           "member": "datetime_iso",
@@ -5106,7 +4850,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unique task ID.",
           "member": "string",
@@ -5116,7 +4859,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Current task status.\n- QUEUED: Queuing for transcoding.\n- PROCESSING: Transcoding in progress.\n- FINISHED: Transcoding finished.",
           "member": "string",
@@ -5126,7 +4868,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Original name of the transcoded document.",
           "member": "string",
@@ -5136,7 +4877,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -5146,7 +4886,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Transcoding task result.",
           "member": "TranscodeTaskResult",
@@ -5156,7 +4895,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies whether the transcoding is static.",
           "member": "bool",
@@ -5172,7 +4910,6 @@
       "document": "Tencent Interactive Whiteboard usage information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start date in the format of YYYY-MM-DD.",
           "example": "2021-10-01",
@@ -5183,7 +4920,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "example": "1400000001",
@@ -5194,7 +4930,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subproduct usage information, which is consistent with the corresponding request parameters.\n- sp_tiw_board: The duration of use of whiteboards.\n- sp_tiw_dt: The number of pages dynamically transcoded.\n- sp_tiw_st: The number of pages statically transcoded.\n- sp_tiw_ric: The duration of real-time recording.",
           "example": "sp_tiw_board",
@@ -5205,7 +4940,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Usage values.\n- The unit of sp_tiw_dt and sp_tiw_st is pages.\n- The unit of sp_tiw_board and sp_tiw_ric is minutes.",
           "example": "100000",
@@ -5222,7 +4956,6 @@
       "document": "Whiteboard user data returned for log queries.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "User ID in the room.",
           "example": "100000",
@@ -5233,7 +4966,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The first time when the user ID appeared during the queried period, which is a Unix timestamp in milliseconds.",
           "example": "1614519034000",
@@ -5244,7 +4976,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The last time when the user ID appeared during the queried period, which is a Unix timestamp in milliseconds.",
           "example": "1614519034000",
@@ -5261,7 +4992,6 @@
       "document": "Video information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Video playback start time, in milliseconds",
           "member": "int64",
@@ -5271,7 +5001,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video size, in bytes",
           "member": "int64",
@@ -5281,7 +5010,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video format",
           "member": "string",
@@ -5291,7 +5019,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video playback duration, in milliseconds",
           "member": "int64",
@@ -5301,7 +5028,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video file URL",
           "member": "string",
@@ -5311,7 +5037,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video file ID",
           "member": "string",
@@ -5321,7 +5046,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Video stream type - 0: camera video - 1: screen-sharing video - 2: whiteboard video - 3: mixed stream video - 4: audio-only (mp3)",
           "member": "int64",
@@ -5331,7 +5055,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the user to which the camera video or screen-sharing video belongs (whiteboard video: null, mixed stream video: tic_mixstream_<Room ID>_<Mixed stream layout type>, auxiliary video: tic_substream_user ID)",
           "member": "string",
@@ -5341,7 +5064,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Width of the video resolution.",
           "member": "int64",
@@ -5351,7 +5073,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Height of the video resolution.",
           "member": "int64",
@@ -5367,7 +5088,6 @@
       "document": "Real-time recording whiteboard parameter, such as the whiteboard width and height",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whiteboard video width in the real-time recording result. The value must be equal to or greater than 2. Default value: 1280.",
           "example": "1280",
@@ -5378,7 +5098,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whiteboard video height in the real-time recording result. The value must be equal to or greater than 2. Default value: 960.",
           "example": "960",
@@ -5389,7 +5108,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whiteboard initialization parameter, which is passed through to the whiteboard SDK",
           "example": "无",
@@ -5406,7 +5124,6 @@
       "document": "Whiteboard application configuration, including the resource bucket, domain name, callback URL, and callback key.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Task type.\n\nrecording: Real-time recording.\ntranscode: Document transcoding.",
           "member": "string",
@@ -5416,7 +5133,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Bucket name.",
           "member": "string",
@@ -5426,7 +5142,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region of the bucket.",
           "member": "string",
@@ -5436,7 +5151,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Resource prefix of the bucket.",
           "member": "string",
@@ -5446,7 +5160,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Destination CDN domain name.",
           "member": "string",
@@ -5456,7 +5169,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Callback URL.",
           "member": "string",
@@ -5466,7 +5178,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Callback authentication key.",
           "member": "string",
@@ -5476,7 +5187,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -5486,7 +5196,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IM admin user ID.",
           "member": "string",
@@ -5496,7 +5205,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IM admin user signature.",
           "member": "string",
@@ -5512,7 +5220,6 @@
       "document": "Backup-related request parameters of the whiteboard push task.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "User ID used by the whiteboard push service for entering a room,\nThe ID must be an unused ID in the SDK. The whiteboard push service uses the user ID to enter the room for whiteboard push. If this ID is already used in the SDK, the SDK and recording service will conflict, affecting the pushing operation.",
           "member": "string",
@@ -5522,7 +5229,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Signature corresponding to the PushUserId ID.",
           "member": "string",
@@ -5538,7 +5244,6 @@
       "document": "Whiteboard push task result.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "`AUTO`: Pushing automatically stops. `USER_CALL`: The API for stopping pushing is called.",
           "member": "string",
@@ -5548,7 +5253,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of exceptions.",
           "member": "int64",
@@ -5558,7 +5262,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Room ID.",
           "member": "int64",
@@ -5568,7 +5271,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IM group ID.",
           "member": "string",
@@ -5578,7 +5280,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Actual push start time.",
           "member": "int64",
@@ -5588,7 +5289,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Push end time.",
           "member": "int64",
@@ -5598,7 +5298,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IM timestamp corresponding to the first frame of the whiteboard push video. The timestamp is used for time synchronization between IM messages and the whiteboard push video during playback.",
           "member": "int64",
@@ -5608,7 +5307,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task execution error code.",
           "member": "int64",
@@ -5618,7 +5316,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Error message.",
           "member": "string",
@@ -5634,7 +5331,6 @@
       "document": "Real-time recording task query results.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique task ID.",
           "member": "string",
@@ -5644,7 +5340,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status of the whiteboard push task.\n- PREPARED: Push in preparation.\n- PUSHING: Pushing in progress.\n- STOPPED: Pushing stopped.",
           "member": "string",
@@ -5654,7 +5349,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Room ID of the whiteboard push task.",
           "member": "int64",
@@ -5664,7 +5358,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time of the task.",
           "member": "datetime_iso",
@@ -5674,7 +5367,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
           "member": "int64",
@@ -5684,7 +5376,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whiteboard push result.",
           "member": "WhiteboardPushResult",
@@ -5694,7 +5385,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User ID of the whiteboard push task.",
           "member": "string",

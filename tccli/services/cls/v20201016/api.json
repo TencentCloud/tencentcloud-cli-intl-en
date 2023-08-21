@@ -515,7 +515,6 @@
       "document": "AddMachineGroupInfo request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Machine group ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -525,7 +524,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Machine group type\nSupported types: `ip` and `label`",
           "example": "无",
@@ -553,7 +551,6 @@
       "document": "Alarm configuration for the multidimensional analysis",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Key",
           "example": "k",
@@ -564,7 +561,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value",
           "example": "v",
@@ -581,7 +577,6 @@
       "document": "Alarm policy description",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm policy name",
           "example": "test",
@@ -592,7 +587,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Monitoring object list",
           "example": "无",
@@ -603,7 +597,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Monitoring task running time point",
           "example": "无",
@@ -614,7 +607,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Trigger condition",
           "example": "无",
@@ -625,7 +617,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm persistence cycle. An alarm will be triggered only after the corresponding trigger condition is met for the number of times specified by `TriggerCount`. Value range: 1–10.",
           "example": "1",
@@ -636,7 +627,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Repeated alarm interval in minutes. Value range: 0–1440.",
           "example": "20",
@@ -647,7 +637,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of associated alarm notification templates",
           "example": "无",
@@ -658,7 +647,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Enablement status",
           "example": "true",
@@ -669,7 +657,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm policy ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -680,7 +667,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time",
           "example": "无",
@@ -691,7 +677,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Last update time",
           "example": "无",
@@ -702,7 +687,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom notification template\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "message tpl test {{.TopicName}}, raw result: {{.RawResults}}",
@@ -713,7 +697,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom callback template\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -724,7 +707,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Multi-Dimensional analysis settings\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -741,7 +723,6 @@
       "document": "Alarm notification template type",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm notification template name",
           "member": "string",
@@ -751,7 +732,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm template type. Valid values:\n<br><li> `Trigger`: alarm triggered\n<br><li> `Recovery`: alarm cleared\n<br><li> `All`: alarm triggered and alarm cleared",
           "member": "string",
@@ -761,7 +741,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of the recipient in alarm notification template\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "NoticeReceiver",
@@ -771,7 +750,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Callback information of alarm notification template\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "WebCallback",
@@ -781,7 +759,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm notification template ID\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -791,7 +768,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -801,7 +777,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Last update time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -893,7 +868,6 @@
       "document": "Alarm object",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Logset ID",
           "example": "eff86344-6a51-479a-xxxx-779aabd40a3e",
@@ -904,7 +878,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Logset name",
           "example": "LogsetDemo",
@@ -915,7 +888,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID",
           "example": "016f6eac-4c21-4857-xxxx-4adf3be7d56c",
@@ -926,7 +898,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic name",
           "example": "TopicDemo",
@@ -937,7 +908,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query statement",
           "example": "\"jndi:ldap://\" OR \"jndi:rmi\" OR \"javax.naming.CommunicationExcep",
@@ -948,7 +918,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Monitoring object number",
           "example": "1",
@@ -959,7 +928,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset of the query start time from the alarm execution time in minutes. The value cannot be positive. Value range: -1440–0.",
           "example": "-240",
@@ -970,7 +938,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset of the query end time from the alarm execution time in minutes. The value cannot be positive and must be greater than `StartTimeOffset`. Value range: -1440–0.",
           "example": "0",
@@ -1225,7 +1192,6 @@
       "document": "ApplyConfigToMachineGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Collection configuration ID",
           "example": "xxxxxxxxxx",
@@ -1235,7 +1201,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Machine group ID",
           "example": "xxx-xxx-xxxxxx",
@@ -1263,7 +1228,6 @@
       "document": "Callback configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "`Body` during callback",
           "example": "无",
@@ -1274,7 +1238,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "`Headers` during callback\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1363,7 +1326,6 @@
       "document": "Information of the CKafka instance to ship to",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "CKafka VIP",
           "example": "“10.123.123.123”",
@@ -1374,7 +1336,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CKafka Vport",
           "example": "“8888”",
@@ -1385,7 +1346,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CKafka instance ID",
           "example": "“xxxxxx”",
@@ -1396,7 +1356,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CKafka instance name",
           "example": "\"myname\"",
@@ -1407,7 +1366,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CKafka topic ID",
           "example": "\"xxxxxxxx\"",
@@ -1418,7 +1376,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CKafka topic name",
           "example": "\"xxxxxxxx\"",
@@ -1435,7 +1392,6 @@
       "document": "CloseKafkaConsumer request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "CLS topic identifier",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -1463,7 +1419,6 @@
       "document": "Column attribute of log analysis",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Column name",
           "example": "_col0",
@@ -1474,7 +1429,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Column attribute",
           "example": "json",
@@ -1491,7 +1445,6 @@
       "document": "Compression configuration of shipped log",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Compression format. Valid values: `gzip`; `lzop`; `snappy`; `none` (no compression)",
           "example": "none",
@@ -1508,7 +1461,6 @@
       "document": "Collection rule configuration information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Collection rule configuration ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -1519,7 +1471,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the collection rule configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -1530,7 +1481,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log formatting method\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1541,7 +1491,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log collection path\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "/test/log.test",
@@ -1552,7 +1501,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of the log to be collected. Valid values: `json_log`: log in JSON format; `delimiter_log`: log in delimited format; `minimalist_log`: minimalist log; `multiline_log`: log in multi-line format; `fullregex_log`: log in full regex format. Default value: `minimalist_log`\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "json_log",
@@ -1563,7 +1511,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Extraction rule. If `ExtractRule` is set, `LogType` must be set\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1574,7 +1521,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Collection path blocklist\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1585,7 +1531,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID (TopicId) of collection configuration",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -1596,7 +1541,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Update time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1607,7 +1551,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time",
           "example": "无",
@@ -1618,7 +1561,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom parsing string\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1635,7 +1577,6 @@
       "document": "Shipping content",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to ship tag information\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "false",
@@ -1646,7 +1587,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of metadata to ship. Supported metadata types: \\_\\_SOURCE\\_\\_, \\_\\_FILENAME\\_\\_, \\_\\_TIMESTAMP\\_\\_, \\_\\_HOSTNAME\\_\\_, and \\_\\_PKGID\\_\\_.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{\"__SOURCE__\", \"__FILENAME__\", \"__TIMESTAMP__\"}",
@@ -1657,7 +1597,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter is required if `EnableTag` is `true`, and is used to specify whether the tag information is JSON tiled. Valid values: `true` (not tiled); `false` (tiled)\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "false",
@@ -1668,7 +1607,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Shipping timestamp precision in seconds (default) or milliseconds\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -1685,7 +1623,6 @@
       "document": "Format configuration of shipped log content",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Content format. Valid values: `json`, `csv`",
           "example": "json",
@@ -1696,7 +1633,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CSV format content description\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1707,7 +1643,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "JSON format content description\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1718,7 +1653,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "`Parquet` format description\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
@@ -1891,7 +1825,6 @@
       "document": "CreateAlarmNotice request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Notification group name",
           "example": "test",
@@ -1901,7 +1834,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification type. Valid values:\n<li> `Trigger`: alarm triggered\n<li> `Recovery`: alarm cleared\n<li> `All`: alarm triggered and alarm cleared",
           "example": "All",
@@ -1911,7 +1843,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification recipient",
           "example": "无",
@@ -1921,7 +1852,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "API callback information (including WeCom)",
           "example": "无",
@@ -1959,7 +1889,6 @@
       "document": "CreateAlarm request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm policy name",
           "example": "test",
@@ -1969,7 +1898,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Monitoring object list",
           "example": "无",
@@ -1979,7 +1907,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Monitoring task running time point",
           "example": "无",
@@ -1989,7 +1916,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Trigger condition",
           "example": "$1.count > 10",
@@ -1999,7 +1925,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm persistence cycle. An alarm will be triggered only after the corresponding trigger condition is met for the number of times specified by `TriggerCount`. Value range: 1–10.",
           "example": "1",
@@ -2009,7 +1934,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Repeated alarm interval in minutes. Value range: 0–1440.",
           "example": "0",
@@ -2019,7 +1943,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of associated alarm notification templates",
           "example": "[\"notice-b02af159-f67b-44c3-877c-a55343f874c3\"]",
@@ -2029,7 +1952,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable the alarm policy. Default value: true",
           "example": "true",
@@ -2039,7 +1961,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom alarm content",
           "example": "\"\"",
@@ -2049,7 +1970,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom callback",
           "example": "无",
@@ -2059,7 +1979,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Multi-Dimensional analysis",
           "example": "无",
@@ -2197,7 +2116,6 @@
       "document": "CreateConsumer request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID to bind",
           "example": "\"xxx-xxx-xxx-xxx\"",
@@ -2207,7 +2125,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to ship log metadata. Default value: `true`",
           "example": "false",
@@ -2217,7 +2134,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Metadata to ship if `NeedContent` is `true`",
           "example": "无",
@@ -2227,7 +2143,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CKafka information",
           "example": "无",
@@ -2237,7 +2152,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Compression mode. Valid values: `0` (no compression), `2` (snappy), `3` (LZ4).",
           "example": "0",
@@ -2473,7 +2387,6 @@
       "document": "CreateExport request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID",
           "example": "ee20bb16-3025-4048-b81a-dd436373062e",
@@ -2483,7 +2396,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of logs to be exported. Maximum value: 50 million",
           "example": "100",
@@ -2493,7 +2405,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Search statements for log export. <a href=\"https://intl.cloud.tencent.com/document/product/614/44061?from_cn_redirect=1\" target=\"_blank\">[SQL statements]</a> are not supported.",
           "example": "status:200",
@@ -2503,7 +2414,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the log to be exported, which is a timestamp in milliseconds",
           "example": "1607499107000",
@@ -2513,7 +2423,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time of the log to be exported, which is a timestamp in milliseconds",
           "example": "1607499207000",
@@ -2523,7 +2432,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Exported log sorting order by time. Valid values: `asc`: ascending; `desc`: descending. Default value: `desc`",
           "example": "desc",
@@ -2533,7 +2441,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Exported log data format. Valid values: `json`, `csv`. Default value: `json`",
           "example": "json",
@@ -2571,7 +2478,6 @@
       "document": "CreateIndex request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID",
           "example": "3edc8551-111b-473b-9fc4-ed66e20dfa8a",
@@ -2581,7 +2487,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Index rule",
           "example": "无",
@@ -2591,7 +2496,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to take effect. Default value: true",
           "example": "true",
@@ -2601,7 +2505,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether full-text indexing includes internal fields (`__FILENAME__`, `__HOSTNAME__`, and `__SOURCE__`). Default value: `false`. Recommended value: `true`.\n* `false`: Full-text indexing does not include internal fields.\n* `true`: Full-text indexing includes internal fields.",
           "example": "true",
@@ -2611,7 +2514,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether full-text indexing includes metadata fields (which are prefixed with `__TAG__`). Default value: `0`. Recommended value: `1`.\n* `0`: Full-text indexing includes only the metadata fields with key-value indexing enabled.\n* `1`: Full-text indexing includes all metadata fields.\n* `2`: Full-text indexing does not include metadata fields.",
           "example": "0",
@@ -2766,7 +2668,6 @@
       "document": "CreateLogset request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Logset name, which must be unique",
           "example": "testname",
@@ -2776,7 +2677,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag description list. Up to 10 tag key-value pairs are supported and must be unique.",
           "example": "无",
@@ -3185,7 +3085,6 @@
       "document": "CSV content description",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to print `key` on the first row of the CSV file",
           "example": "true",
@@ -3196,7 +3095,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Names of keys\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -3207,7 +3105,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Field delimiter",
           "example": "无",
@@ -3218,7 +3115,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Escape character used to enclose any field delimiter in field content. You can enter only a single quotation mark, double quotation mark, or an empty string.",
           "example": "无",
@@ -3229,7 +3125,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Content used to populate non-existing fields",
           "example": "无",
@@ -3246,7 +3141,6 @@
       "document": "Information about the resource for data processing",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Target topic ID",
           "example": "topic-xx",
@@ -3257,7 +3151,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alias",
           "example": "topicname",
@@ -3410,7 +3303,6 @@
       "document": "DeleteAlarmNotice request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Notification group ID",
           "example": "notice-d7286784-46d9-4be3-b7ba-2c464e6a5ad1",
@@ -3438,7 +3330,6 @@
       "document": "DeleteAlarm request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm policy ID.",
           "example": "5944e926-ae21-4fa1-8af6-e1539b577482",
@@ -3466,7 +3357,6 @@
       "document": "DeleteConfigFromMachineGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Machine group ID",
           "example": "xxx-xxx-xxxxxx",
@@ -3476,7 +3366,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Collection configuration ID",
           "example": "xxxxxxxxxx",
@@ -3504,7 +3393,6 @@
       "document": "DeleteConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Collection rule configuration ID",
           "example": "xxxxxxxxxx",
@@ -3532,7 +3420,6 @@
       "document": "DeleteConsumer request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID bound to the task",
           "example": "\"xxx-xxx-xxx-xxx\"",
@@ -3587,7 +3474,6 @@
       "document": "DeleteExport request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log export ID",
           "example": "57196a6a-7622-47be-bc92-d2ebea959a0f",
@@ -3615,7 +3501,6 @@
       "document": "DeleteIndex request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID",
           "example": "826f8b26-b054-4a0d-8c8e-f3d609f5e0ea",
@@ -3679,7 +3564,6 @@
       "document": "DeleteLogset request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Logset ID",
           "example": "eb6eafd9-1656-4d60-b3c2-0a5bf91c9b0d",
@@ -3707,7 +3591,6 @@
       "document": "DeleteMachineGroupInfo request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Machine group ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -3717,7 +3600,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Machine group type\nSupported types: `ip` and `label`",
           "example": "无",
@@ -3745,7 +3627,6 @@
       "document": "DeleteMachineGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Machine group ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -3773,7 +3654,6 @@
       "document": "DeleteShipper request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Shipping rule ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -3801,7 +3681,6 @@
       "document": "DeleteTopic request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID",
           "example": "a5ce0c9c-0690-44a5-bc79-5f2190626bd0",
@@ -3829,7 +3708,6 @@
       "document": "DescribeAlarmNotices request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "<li> name\nFilter by **notification group name**.\nType: String\nRequired: No\n<li> alarmNoticeId\nFilter by **notification group ID**.\nType: String\nRequired: No\n<li> uid\nFilter by **recipient ID**.\nType: String\nRequired: No\n<li> groupId\nFilter by **recipient ID**.\nType: String\nRequired: No\n\nEach request can have up to 10 `Filters` and 5 `Filter.Values`.",
           "example": "无",
@@ -3839,7 +3717,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Page offset. Default value: 0",
           "example": "1",
@@ -3849,7 +3726,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of entries per page. Default value: 20. Maximum value: 100.",
           "example": "1",
@@ -4043,7 +3919,6 @@
       "document": "DescribeConfigMachineGroups request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Collection configuration ID",
           "example": "xxxxxxxxxx",
@@ -4146,7 +4021,6 @@
       "document": "DescribeConsumer request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID bound to the task",
           "example": "\"xxx-xxx-xxx-xxx\"",
@@ -4359,7 +4233,6 @@
       "document": "DescribeExports request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID",
           "example": "ee20bb16-3025-4048-b81a-dd436373062e",
@@ -4369,7 +4242,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Page offset. Default value: 0",
           "example": "0",
@@ -4379,7 +4251,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of entries per page. Default value: 20. Maximum value: 100",
           "example": "5",
@@ -4427,7 +4298,6 @@
       "document": "DescribeIndex request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID",
           "example": "826f8b26-b054-4a0d-8c8e-f3d609f5e0ea",
@@ -4580,7 +4450,6 @@
       "document": "DescribeLogContext request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID to be queried",
           "example": "682d0718-07bb-4ec0-9fda-f1e9a2767e0b",
@@ -4590,7 +4459,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log time in the format of YYYY-mm-dd HH:MM:SS.FFF",
           "example": "2021-04-25 14:25:00.000",
@@ -4600,7 +4468,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log package number",
           "example": "528C1318606EFEB8-1A7",
@@ -4610,7 +4477,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log number in log package",
           "example": "65536",
@@ -4620,7 +4486,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of previous logs. Default value: 10",
           "example": "10",
@@ -4630,7 +4495,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of next logs. Default value: 10",
           "example": "10",
@@ -4855,7 +4719,6 @@
       "document": "DescribeMachineGroupConfigs request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Machine group ID",
           "example": "xxxxx-xxx-xxxxx",
@@ -4958,7 +4821,6 @@
       "document": "DescribeMachines request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the machine group to be queried",
           "example": "ae0d14a7-94e1-461e-8f5d-7d66a0d56d35  ",
@@ -5046,7 +4908,6 @@
       "document": "DescribePartitions request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID",
           "example": "cabcd0a8-4a54-11eb-b378-0242ac130002",
@@ -5084,7 +4945,6 @@
       "document": "DescribeShipperTasks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Shipping rule ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -5094,7 +4954,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query start timestamp in milliseconds, which can be within the last three days",
           "example": "978653222",
@@ -5104,7 +4963,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query end timestamp in milliseconds",
           "example": "978653222",
@@ -5307,7 +5165,6 @@
       "document": "Blocklist path information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Type. Valid values: `File`, `Path`",
           "member": "string",
@@ -5317,7 +5174,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specific content corresponding to `Type`",
           "member": "string",
@@ -5333,7 +5189,6 @@
       "document": "Log export information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID",
           "example": "ee20bb16-3025-4048-b81a-dd436373062e",
@@ -5344,7 +5199,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log export task ID",
           "example": "export-57196a6a-7622-47be-bc92-d2ebea959a0f",
@@ -5355,7 +5209,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log export query statement",
           "example": "status:200",
@@ -5366,7 +5219,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log export filename",
           "example": "log_2075178708_ee20bb16-3025-4048-b81a-dd436373062f_20210107_571",
@@ -5377,7 +5229,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log file size",
           "example": "0",
@@ -5388,7 +5239,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log export time sorting",
           "example": "desc",
@@ -5399,7 +5249,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log export format",
           "example": "json",
@@ -5410,7 +5259,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of logs to be exported",
           "example": "100",
@@ -5421,7 +5269,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log download status. Valid values: `Processing`, `Completed`, `Failed`, `Expired` (three-day validity period), and `Queuing`.",
           "example": "Expired",
@@ -5432,7 +5279,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log export start time",
           "example": "1607499207000",
@@ -5443,7 +5289,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log export end time",
           "example": "1607499208000",
@@ -5454,7 +5299,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log export path",
           "example": "\"\"",
@@ -5465,7 +5309,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log export creation time",
           "example": "2020-08-08 12:12:12",
@@ -5686,7 +5529,6 @@
       "document": "Filter",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Field to be filtered",
           "member": "string",
@@ -5696,7 +5538,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value to be filtered",
           "member": "string",
@@ -5712,7 +5553,6 @@
       "document": "Filter rule for shipped log",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Filter rule key",
           "example": "testKey",
@@ -5723,7 +5563,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter rule",
           "example": "/w",
@@ -5734,7 +5573,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter rule value",
           "example": "testValue",
@@ -5787,7 +5625,6 @@
       "document": "GetAlarmLog request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the log to be queried, which is a Unix timestamp in milliseconds",
           "example": "1608894763000",
@@ -5797,7 +5634,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time of the log to be queried, which is a Unix timestamp in milliseconds",
           "example": "1608894763",
@@ -5807,7 +5643,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query statement. Maximum length: 1024",
           "example": "ddddddddd",
@@ -5817,7 +5652,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of logs returned in a single query. Maximum value: 1000",
           "example": "100",
@@ -5827,7 +5661,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This field is used to load more logs. Pass through the last `Context` value returned to get more log content.",
           "example": "context",
@@ -5837,7 +5670,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Order of the logs sorted by time returned by the log API. Valid values: `asc`: ascending; `desc`: descending. Default value: `desc`",
           "example": "asc",
@@ -5847,7 +5679,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "If the value is `true`, the new search method will be used, and the response parameters `AnalysisRecords` and `Columns` will be valid. If the value is `false`, the old search method will be used, and `AnalysisResults` and `ColNames` will be valid.",
           "example": "false",
@@ -5981,7 +5812,6 @@
       "document": "Histogram details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The number of logs within the statistical period",
           "example": "15",
@@ -5992,7 +5822,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unix timestamp rounded by `period`, in milliseconds",
           "example": "2021-04-25 14:25:00.000",
@@ -6308,7 +6137,6 @@
       "document": "Log keys to be filtered and the corresponding regex",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log key to be filtered",
           "member": "string",
@@ -6318,7 +6146,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter rule regex corresponding to key",
           "member": "string",
@@ -6334,7 +6161,6 @@
       "document": "Field information of key value or metafield index",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the field for which you want to configure a key-value or metadata field index. The name can contain letters, digits, underscores, and symbols -./@ and cannot start with an underscore.\n\nNote:\nFor a metadata field, set its `Key` to be consistent with the one for log uploading, without prefixing it with `__TAG__.`. `__TAG__.` will be prefixed automatically for display in the console.\n2. The total number of keys in key-value indexes (`KeyValue`) and metadata field indexes (`Tag`) cannot exceed 300.\n3. The number of levels in `Key` cannot exceed 10. Example: a.b.c.d.e.f.g.h.j.k\n4. JSON parent and child fields (such as “a” and “a.b”) cannot be contained at the same time.",
           "example": "无",
@@ -6345,7 +6171,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Field index description information",
           "example": "无",
@@ -6574,7 +6399,6 @@
       "document": "Key-Value pair in log",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log key",
           "member": "string",
@@ -6584,7 +6408,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log value",
           "member": "string",
@@ -6600,7 +6423,6 @@
       "document": "`LogItem` array",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Key-Value pair returned in analysis result",
           "member": "LogItem",
@@ -6762,7 +6584,6 @@
       "document": "Logset information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Logset ID",
           "example": "4463e7b0-3ec8-41a1-ae48-5d24b22167c2",
@@ -6773,7 +6594,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Logset name",
           "example": "test",
@@ -6784,7 +6604,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time",
           "example": "2021-04-01 08:00:00",
@@ -6795,7 +6614,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud product identifier. If the logset is created by another cloud product, this field returns the name of the cloud product, such as `CDN` or `TKE`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "TCB",
@@ -6806,7 +6624,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag bound to logset\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6817,7 +6634,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of log topics in logset",
           "example": "10",
@@ -6828,7 +6644,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "If `AssumerName` is not empty, it indicates the service provider who creates the logset.",
           "example": "TCB_QcsRole",
@@ -6951,7 +6766,6 @@
       "document": "Machine group type description",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Machine group type. Valid values: `ip`: the IP addresses of collection machines are stored in `Values` of the machine group; `label`: the tags of the machines are stored in `Values` of the machine group",
           "member": "string",
@@ -6961,7 +6775,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Machine description list",
           "member": "string",
@@ -6977,7 +6790,6 @@
       "document": "Machine status information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Machine IP",
           "example": "10.0.0.1",
@@ -6988,7 +6800,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Machine status. Valid values: `0`: exceptional; `1`: normal",
           "example": "0",
@@ -6999,7 +6810,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Machine disconnection time. If the value is empty, the machine is normal. If the machine is exceptional, a specific value will be returned.",
           "example": "2021-01-12 20:14:10 ",
@@ -7010,7 +6820,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable automatic update for the machine. Valid values: `0`: no; `1`: yes",
           "example": "0",
@@ -7021,7 +6830,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Current machine version number",
           "example": "2.1.0",
@@ -7032,7 +6840,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Machine update feature status",
           "example": "0",
@@ -7043,7 +6850,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Machine update result flag",
           "example": "0",
@@ -7054,7 +6860,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Machine update result information",
           "example": "OK",
@@ -7071,7 +6876,6 @@
       "document": "MergePartition request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID",
           "example": "427bba81-e149-4a8b-bd0d-b2a412520d7b",
@@ -7081,7 +6885,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Merged `PartitionId`",
           "example": "2",
@@ -7145,7 +6948,6 @@
       "document": "ModifyAlarmNotice request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Notification group ID",
           "example": "notice-5b2ea996-4dae-47cc-bbad-5b12888b4c89",
@@ -7155,7 +6957,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification group name",
           "example": "test",
@@ -7165,7 +6966,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification type. Valid values:\n<li> `Trigger`: alarm triggered\n<li> `Recovery`: alarm cleared\n<li> `All`: alarm triggered and alarm cleared",
           "example": "All",
@@ -7175,7 +6975,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification recipient",
           "example": "无",
@@ -7185,7 +6984,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "API callback information (including WeCom)",
           "example": "无",
@@ -7213,7 +7011,6 @@
       "document": "ModifyAlarm request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm policy ID",
           "example": "alarm-bea71170-4a59-11eb-b378-0242ac130002",
@@ -7223,7 +7020,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm policy name",
           "example": "test",
@@ -7233,7 +7029,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Monitoring task running time point",
           "example": "无",
@@ -7243,7 +7038,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Trigger condition",
           "example": "$1.source='10.0.0.1'",
@@ -7253,7 +7047,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm persistence cycle. An alarm will be triggered only after the corresponding trigger condition is met for the number of times specified by `TriggerCount`. Value range: 1–10.",
           "example": "1",
@@ -7263,7 +7056,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Repeated alarm interval in minutes. Value range: 0–1440.",
           "example": "0",
@@ -7273,7 +7065,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of associated alarm notification templates",
           "example": "[\"notice-479dec34-4a59-11eb-b378-0242ac130002\"]",
@@ -7283,7 +7074,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Monitoring object list",
           "example": "无",
@@ -7293,7 +7083,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable the alarm policy",
           "example": "true",
@@ -7303,7 +7092,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom alarm content",
           "example": "\"\"",
@@ -7313,7 +7101,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom callback",
           "example": "无",
@@ -7323,7 +7110,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Multi-Dimensional analysis",
           "example": "无",
@@ -7351,7 +7137,6 @@
       "document": "ModifyConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Collection rule configuration ID",
           "example": "xxxxxx-xx-xx-xx-xxxxxxxx",
@@ -7361,7 +7146,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Collection rule configuration name",
           "example": "testname",
@@ -7371,7 +7155,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log collection path containing the filename",
           "example": "/data/nginx/log/access.log",
@@ -7381,7 +7164,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of the log to be collected. Valid values: `json_log`: log in JSON format; `delimiter_log`: log in delimited format; `minimalist_log`: minimalist log; `multiline_log`: log in multi-line format; `fullregex_log`: log in full regex format. Default value: `minimalist_log`",
           "example": "delimiter_log",
@@ -7391,7 +7173,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Extraction rule. If `ExtractRule` is set, `LogType` must be set.",
           "example": "无",
@@ -7401,7 +7182,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Collection path blocklist",
           "example": "无",
@@ -7411,7 +7191,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic (TopicId) associated with collection configuration",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -7421,7 +7200,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom parsing string, which is a serialized JSON string",
           "example": "无",
@@ -7449,7 +7227,6 @@
       "document": "ModifyConsumer request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID bound to the task",
           "example": "\"xxx-xxx-xxx-xxx\"",
@@ -7459,7 +7236,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the shipping task takes effect (default: no)",
           "example": "false",
@@ -7469,7 +7245,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to ship metadata. Default value: `false`",
           "example": "false",
@@ -7479,7 +7254,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Metadata to ship if `NeedContent` is `true`",
           "example": "无",
@@ -7489,7 +7263,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CKafka information",
           "example": "无",
@@ -7499,7 +7272,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Compression mode. Valid values: `0` (no compression), `2` (snappy), `3` (LZ4).",
           "example": "0",
@@ -7644,7 +7416,6 @@
       "document": "ModifyIndex request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID",
           "example": "826f8b26-b054-4a0d-8c8e-f3d609f5e0ea",
@@ -7654,7 +7425,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It does not take effect by default",
           "example": "true",
@@ -7664,7 +7434,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Index rule",
           "example": "无",
@@ -7674,7 +7443,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether full-text indexing includes internal fields (`__FILENAME__`, `__HOSTNAME__`, and `__SOURCE__`). Default value: `false`. Recommended value: `true`.\n* `false`: Full-text indexing does not include internal fields.\n* `true`: Full-text indexing includes internal fields.",
           "example": "false",
@@ -7684,7 +7452,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether full-text indexing includes metadata fields (which are prefixed with `__TAG__`). Default value: `0`. Recommended value: `1`.\n* `0`: Full-text indexing includes only metadata fields with key-value indexing enabled.\n* `1`: Full-text indexing includes all metadata fields.\n* `2`: Full-text indexing does not include metadata fields.",
           "example": "0",
@@ -7838,7 +7605,6 @@
       "document": "ModifyLogset request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Logset ID",
           "example": "dc01b74a-49e4-11eb-b378-0242ac130002",
@@ -7848,7 +7614,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Logset name",
           "example": "changename",
@@ -7858,7 +7623,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag key-value pair bound to logset. Up to 10 tag key-value pairs are supported, and a resource can be bound to only one tag key at any time.",
           "example": "无",
@@ -8219,7 +7983,6 @@
       "document": "Monitoring task execution time point in alarm policy",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Valid values:\n<br><li> `Period`: periodic execution\n<br><li> `Fixed`: scheduled execution",
           "member": "string",
@@ -8229,7 +7992,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Execution interval or scheduled time point in minutes. Value range: 1–1440.",
           "member": "int64",
@@ -8271,7 +8033,6 @@
       "document": "Alarm notification recipient information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient type. Valid values:\n<br><li> `Uin`: user ID\n<br><li> `Group`: user group ID\nCurrently, other recipient types are not supported.",
           "example": "Group",
@@ -8282,7 +8043,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient",
           "example": "[0]",
@@ -8293,7 +8053,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Notification method\n<br><li> `Email`: email\n<br><li> `Sms`: SMS\n<br><li> `WeChat`: WeChat\n<br><li> `Phone`: phone",
           "example": "['Sms']",
@@ -8304,7 +8063,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time for allowed message receipt",
           "example": "10:04:05",
@@ -8315,7 +8073,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time for allowed message receipt",
           "example": "20:04:05",
@@ -8326,7 +8083,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Index",
           "example": "1",
@@ -8398,7 +8154,6 @@
       "document": "`Parquet` contents",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "`ParquetKeyInfo` array",
           "example": "无",
@@ -8415,7 +8170,6 @@
       "document": "`Parquet` content description",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Key name",
           "example": "content",
@@ -8426,7 +8180,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Supported data types: string, boolean, int32, int64, float, and double",
           "example": "string",
@@ -8437,7 +8190,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Assignment information returned upon resolution failure\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "\"\"",
@@ -8454,7 +8206,6 @@
       "document": "Log topic partition information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Partition ID",
           "member": "int64",
@@ -8464,7 +8215,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Partition status. Valid values: `readwrite`, `readonly`",
           "member": "string",
@@ -8474,7 +8224,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Partition hash start key",
           "member": "string",
@@ -8484,7 +8233,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Partition hash end key",
           "member": "string",
@@ -8494,7 +8242,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Partition creation time",
           "member": "string",
@@ -8504,7 +8251,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Last modified of read-only partition\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -8714,7 +8460,6 @@
       "document": "RetryShipperTask request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Shipping rule ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -8724,7 +8469,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Shipping task ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -8802,7 +8546,6 @@
       "document": "Key-Value index configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Case sensitivity",
           "example": "false",
@@ -8813,7 +8556,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Key-value pair information of the index to be created",
           "example": "空",
@@ -8830,7 +8572,6 @@
       "document": "Metafield index configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Case sensitivity",
           "example": "无",
@@ -8841,7 +8582,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Field information in the metafield index configuration",
           "example": "无",
@@ -9252,7 +8992,6 @@
       "document": "Shipping task information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Shipping task ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -9263,7 +9002,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Shipping information ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -9274,7 +9012,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID",
           "example": "57f5808c-4a55-11eb-b378-0242ac130002",
@@ -9285,7 +9022,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start timestamp of the current batch of shipped logs in milliseconds",
           "example": "978653222",
@@ -9296,7 +9032,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End timestamp of the current batch of shipped logs in milliseconds",
           "example": "978653222",
@@ -9307,7 +9042,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start timestamp of the current shipping task in milliseconds",
           "example": "978653222",
@@ -9318,7 +9052,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End timestamp of the current shipping task in milliseconds",
           "example": "978653222",
@@ -9329,7 +9062,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Result of the current shipping task. Valid values: `success`, `running`, `failed`",
           "example": "success",
@@ -9340,7 +9072,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Result details",
           "example": "success",
@@ -9357,7 +9088,6 @@
       "document": "SplitPartition request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Log topic ID",
           "example": "427bba81-e149-4a8b-bd0d-b2a412520d7b",
@@ -9367,7 +9097,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the partition to be split",
           "example": "1",
@@ -9377,7 +9106,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Partition split hash key position, which is meaningful only if `Number=2` is set",
           "example": "key",
@@ -9387,7 +9115,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of partitions to split into, which is optional. Default value: 2",
           "example": "2",
@@ -9617,7 +9344,6 @@
       "document": "UploadLog request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Topic ID",
           "example": "f6c4fa6f-367a-4f14-8289-1ff6f77ed975",
@@ -9627,7 +9353,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic partition where data will be written into by `HashKey` ",
           "example": "0fffffffffffffffffffffffffffffff",
@@ -9637,7 +9362,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Compression type",
           "example": "lz4",
@@ -9711,7 +9435,6 @@
       "document": "Callback address",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Callback address",
           "example": "无",
@@ -9722,7 +9445,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Callback type. Valid values:\n<li> WeCom\n<li> Http",
           "example": "WeCom",
@@ -9733,7 +9455,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Callback method. Valid values:\n<li> POST\n<li> PUT\nDefault value: `POST`. This parameter is required if `CallbackType` is `Http`.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "POST",
@@ -9744,7 +9465,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Request header\nNote: This parameter is disused. To specify request headers, see `CallBack` in <a href=\"https://intl.cloud.tencent.com/document/product/614/56466?from_cn_redirect=1\">CreateAlarmNotice</a>.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -9755,7 +9475,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Request content\nNote: This parameter is disused. To specify request content, see `CallBack` in <a href=\"https://intl.cloud.tencent.com/document/product/614/56466?from_cn_redirect=1\">CreateAlarmNotice</a>.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -9766,7 +9485,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number",
           "example": "1",

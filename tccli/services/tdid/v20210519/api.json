@@ -347,7 +347,6 @@
       "document": "AddLabel request structure.",
       "members": [
         {
-          "default": "",
           "document": "The label ID.",
           "example": "1",
           "member": "uint64",
@@ -356,7 +355,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "",
           "example": "did:tdid:1:0xa75368ab6ab9cb6d01e81d22155279ee4eca3f4d",
           "member": "string",
@@ -383,7 +381,6 @@
       "document": "The information of an authority.",
       "members": [
         {
-          "default": "",
           "document": "The authority ID.",
           "example": "11",
           "member": "uint64",
@@ -393,7 +390,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The DID.",
           "example": "5587",
           "member": "uint64",
@@ -403,7 +399,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The details of the DID.",
           "example": "did:tdid:1:0x27f6403f908c7fa81006eaf71b4ae4be97c69c3d",
           "member": "string",
@@ -413,7 +408,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The authority name.",
           "example": "test",
           "member": "string",
@@ -423,7 +417,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the authority is certified. `1`: Yes; `2`: No.",
           "example": "2",
           "member": "uint64",
@@ -433,7 +426,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The DID service ID.",
           "example": "1",
           "member": "uint64",
@@ -443,7 +435,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The application ID.",
           "example": "5",
           "member": "uint64",
@@ -453,7 +444,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Remarks",
           "example": "test",
           "member": "string",
@@ -463,7 +453,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The registration time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "2021-07-13 17:02:33",
           "member": "string",
@@ -473,7 +462,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The recognition time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
@@ -483,7 +471,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The creation time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "2021-07-13T17:02:33+08:00",
           "member": "string",
@@ -493,7 +480,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The last updated time.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "2021-07-13T17:02:33+08:00",
           "member": "string",
@@ -503,7 +489,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -513,7 +498,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "uint64",
@@ -523,7 +507,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The application name.",
           "example": "test",
           "member": "string",
@@ -533,7 +516,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The on-chain label.",
           "example": "test",
           "member": "string",
@@ -549,7 +531,6 @@
       "document": "The information of a BCOS network.",
       "members": [
         {
-          "default": "",
           "document": "The network ID.",
           "example": "1",
           "member": "uint64",
@@ -559,7 +540,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The network name.",
           "example": "test",
           "member": "string",
@@ -569,7 +549,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of organizations.",
           "example": "2",
           "member": "uint64",
@@ -579,7 +558,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The consortium ID.",
           "example": "1",
           "member": "uint64",
@@ -589,7 +567,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The creation time.",
           "example": "2021-08-07 15:40:46",
           "member": "string",
@@ -599,7 +576,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The expiration time.",
           "example": "2021-09-07 15:53:55",
           "member": "string",
@@ -609,7 +585,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The network status.",
           "example": "1",
           "member": "uint64",
@@ -619,7 +594,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The resource ID.",
           "example": "tbaas-6s0ih1k0rg",
           "member": "string",
@@ -629,7 +603,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The cluster ID.",
           "example": "bcos-03z30qbg1c",
           "member": "string",
@@ -639,7 +612,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The consortium name.",
           "example": "test",
           "member": "string",
@@ -649,7 +621,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The organization ID.",
           "example": "1",
           "member": "uint64",
@@ -659,7 +630,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The renewal status.",
           "example": "1",
           "member": "uint64",
@@ -669,7 +639,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The network mode.",
           "example": "1",
           "member": "uint64",
@@ -679,7 +648,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of nodes created.",
           "example": "1",
           "member": "uint64",
@@ -689,7 +657,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The total number of groups.",
           "example": "3",
           "member": "uint64",
@@ -705,7 +672,6 @@
       "document": "CancelAuthorityIssuer request structure.",
       "members": [
         {
-          "default": "",
           "document": "The details of the DID.",
           "example": "test",
           "member": "string",
@@ -732,7 +698,6 @@
       "document": "CheckChain request structure.",
       "members": [
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "int64",
@@ -741,7 +706,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -750,7 +714,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The name of the DID organization.",
           "example": "test",
           "member": "string",
@@ -804,7 +767,6 @@
       "document": "CheckDidDeploy request structure.",
       "members": [
         {
-          "default": "",
           "document": "The task ID.",
           "example": "1",
           "member": "uint64",
@@ -840,7 +802,6 @@
       "document": "The information of a consortium.",
       "members": [
         {
-          "default": "",
           "document": "The consortium ID.",
           "example": "1",
           "member": "uint64",
@@ -850,7 +811,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The consortium name.",
           "example": "test",
           "member": "string",
@@ -866,7 +826,6 @@
       "document": "The information of a deployed contract.",
       "members": [
         {
-          "default": "",
           "document": "The application name.",
           "example": "22",
           "member": "string",
@@ -876,7 +835,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The contract status. `true`: Enabled; `false`: Not enabled.",
           "example": "true",
           "member": "bool",
@@ -886,7 +844,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The CNS address of the contract.",
           "example": "0x0dd4aef95b3801c6b7bb1cee8c214a99b2aaf31896998f614032fb5ef750df",
           "member": "string",
@@ -896,7 +853,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The desensitized CNS address.",
           "example": "0x0dd4...50dfe1",
           "member": "string",
@@ -906,7 +862,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The DID of the organization that deployed the contract.",
           "example": "0x79cd098cab63e0503f9ed87dd869cd970e88cb02",
           "member": "string",
@@ -916,7 +871,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The name of the organization that deployed the contract.",
           "example": "test",
           "member": "string",
@@ -926,7 +880,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The group.",
           "example": "group-1",
           "member": "string",
@@ -936,7 +889,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The deployment time.",
           "example": "2021-04-12 16:46:11",
           "member": "string",
@@ -952,7 +904,6 @@
       "document": "Claim protocol type (CPT) rankings by the number of credentials issued.",
       "members": [
         {
-          "default": "",
           "document": "The (claim protocol type) CPT name.",
           "example": "test",
           "member": "string",
@@ -962,7 +913,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The ranking.",
           "example": "10",
           "member": "int64",
@@ -972,7 +922,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of credentials issued.",
           "example": "10",
           "member": "int64",
@@ -982,7 +931,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The application name.",
           "example": "test",
           "member": "string",
@@ -992,7 +940,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The application ID.",
           "example": "1",
           "member": "uint64",
@@ -1008,7 +955,6 @@
       "document": "The information of claim protocol types (CPT).",
       "members": [
         {
-          "default": "",
           "document": "The CPT ID.",
           "example": "1",
           "member": "uint64",
@@ -1018,7 +964,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The name of the claim protocol type (CPT).",
           "example": "test",
           "member": "string",
@@ -1028,7 +973,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -1038,7 +982,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "uint64",
@@ -1048,7 +991,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The service ID.",
           "example": "1",
           "member": "uint64",
@@ -1058,7 +1000,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The application ID of the contract.",
           "example": "1",
           "member": "uint64",
@@ -1068,7 +1009,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The claim protocol type (CPT) ID.",
           "example": "3000009",
           "member": "uint64",
@@ -1078,7 +1018,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The type. `1`: System CPTs; `2`: Authorization CPTs; `3`: General CPTs",
           "example": "1",
           "member": "uint64",
@@ -1088,7 +1027,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The description of the claim protocol type (CPT).",
           "example": "test",
           "member": "string",
@@ -1098,7 +1036,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The JSON file of the claim protocol type (CPT).",
           "example": "test",
           "member": "string",
@@ -1108,7 +1045,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The creation time.",
           "example": "test",
           "member": "string",
@@ -1118,7 +1054,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The last updated time.",
           "example": "test",
           "member": "string",
@@ -1128,7 +1063,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The DID of the creator.",
           "example": "test",
           "member": "string",
@@ -1138,7 +1072,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The application name.",
           "example": "test",
           "member": "string",
@@ -1154,7 +1087,6 @@
       "document": "CreateCredential request structure.",
       "members": [
         {
-          "default": "",
           "document": "A parameter set. For details, see the example.",
           "example": "无",
           "member": "FunctionArg",
@@ -1163,7 +1095,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "A parameter set. For details, see the example.",
           "example": "无",
           "member": "TransactionArg",
@@ -1172,7 +1103,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The version.",
           "example": "1.0.0",
           "member": "string",
@@ -1181,7 +1111,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether the credential is unsigned.",
           "example": "true",
           "member": "bool",
@@ -1217,7 +1146,6 @@
       "document": "CreateDidService request structure.",
       "members": [
         {
-          "default": "",
           "document": "The consortium name.",
           "example": "bigbang",
           "member": "string",
@@ -1226,7 +1154,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The consortium ID.",
           "example": "1",
           "member": "int64",
@@ -1235,7 +1162,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "int64",
@@ -1244,7 +1170,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The organization name.",
           "example": "盟主",
           "member": "string",
@@ -1253,7 +1178,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The application name.",
           "example": "测试应用",
           "member": "string",
@@ -1262,7 +1186,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -1271,7 +1194,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The group name.",
           "example": "test",
           "member": "string",
@@ -1307,7 +1229,6 @@
       "document": "CreateLabel request structure.",
       "members": [
         {
-          "default": "",
           "document": "The label name.",
           "example": "test1a152",
           "member": "string",
@@ -1316,7 +1237,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -1325,7 +1245,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "uint64",
@@ -1352,7 +1271,6 @@
       "document": "CreateSelectiveCredential request structure.",
       "members": [
         {
-          "default": "",
           "document": "A parameter set.",
           "example": "1",
           "member": "VerifyFunctionArg",
@@ -1361,7 +1279,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The disclosure policy ID.",
           "example": "2000000",
           "member": "uint64",
@@ -1397,7 +1314,6 @@
       "document": "CreateTDidByPrivateKey request structure.",
       "members": [
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -1406,7 +1322,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "uint64",
@@ -1415,7 +1330,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The private key.",
           "example": "test",
           "member": "string",
@@ -1451,7 +1365,6 @@
       "document": "CreateTDidByPublicKey request structure.",
       "members": [
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -1460,7 +1373,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "uint64",
@@ -1469,7 +1381,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The public key.",
           "example": "test1",
           "member": "string",
@@ -1478,7 +1389,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The encrypted public key.",
           "example": "test",
           "member": "string",
@@ -1514,7 +1424,6 @@
       "document": "CreateTDid request structure.",
       "members": [
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "uint64",
@@ -1523,7 +1432,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -1532,7 +1440,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": " ",
           "example": "0",
           "member": "uint64",
@@ -1568,7 +1475,6 @@
       "document": "The on-chain status of the credential.",
       "members": [
         {
-          "default": "",
           "document": "The credential ID.",
           "example": "a",
           "member": "string",
@@ -1578,7 +1484,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The credential status. `0`: Invalid; `1`: Valid.",
           "example": "1",
           "member": "uint64",
@@ -1588,7 +1493,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The DID of the issuer.",
           "example": "a",
           "member": "string",
@@ -1598,7 +1502,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "A summary of the credential.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "a",
           "member": "string",
@@ -1608,7 +1511,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The credential signature.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "a",
           "member": "string",
@@ -1618,7 +1520,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The last updated timestamp.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
@@ -1634,7 +1535,6 @@
       "document": "DeployByName request structure.",
       "members": [
         {
-          "default": "",
           "document": "The application name.",
           "example": "test",
           "member": "string",
@@ -1643,7 +1543,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "test",
           "member": "string",
@@ -1652,7 +1551,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "uint64",
@@ -1688,7 +1586,6 @@
       "document": "The information of DID blockchain networks.",
       "members": [
         {
-          "default": "",
           "document": "The chain ID.",
           "example": "590",
           "member": "uint64",
@@ -1698,7 +1595,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The chain name.",
           "example": "DCDC",
           "member": "string",
@@ -1708,7 +1604,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of organizations.",
           "example": "2",
           "member": "uint64",
@@ -1718,7 +1613,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The consortium ID.",
           "example": "661",
           "member": "uint64",
@@ -1728,7 +1622,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The creation time.",
           "example": "2021-08-06 20:43:05",
           "member": "string",
@@ -1738,7 +1631,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The expiration time.",
           "example": "2021-09-06 20:57:20",
           "member": "string",
@@ -1748,7 +1640,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The network status.",
           "example": "1",
           "member": "uint64",
@@ -1758,7 +1649,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The resource ID.",
           "example": "tbaas-ijfnnzqhg6",
           "member": "string",
@@ -1768,7 +1658,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-8o0v0fpj12",
           "member": "string",
@@ -1778,7 +1667,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The consortium name.",
           "example": "test",
           "member": "string",
@@ -1788,7 +1676,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The organization ID.",
           "example": "301",
           "member": "uint64",
@@ -1798,7 +1685,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether auto-renewal is enabled.",
           "example": "1",
           "member": "uint64",
@@ -1808,7 +1694,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The total number of network nodes.",
           "example": "5",
           "member": "uint64",
@@ -1818,7 +1703,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of nodes of the current organization.",
           "example": "4",
           "member": "uint64",
@@ -1828,7 +1712,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The total number of groups.",
           "example": "1",
           "member": "uint64",
@@ -1838,7 +1721,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The total number of DIDs.",
           "example": "5",
           "member": "uint64",
@@ -1854,7 +1736,6 @@
       "document": "The information of DIDs.",
       "members": [
         {
-          "default": "",
           "document": "The service ID.",
           "example": "1",
           "member": "uint64",
@@ -1864,7 +1745,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "uint64",
@@ -1874,7 +1754,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The application name.",
           "example": "a",
           "member": "string",
@@ -1884,7 +1763,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The DID.",
           "example": "test",
           "member": "string",
@@ -1894,7 +1772,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Remarks",
           "example": "test",
           "member": "string",
@@ -1904,7 +1781,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The status of the authority. `1`: Not registered; `2`: Not certified; `3`: Certified.",
           "example": "1",
           "member": "int64",
@@ -1914,7 +1790,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The label of the DID.",
           "example": "test",
           "member": "string",
@@ -1924,7 +1799,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The DID creation time.",
           "example": "1622620908",
           "member": "string",
@@ -1934,7 +1808,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "test",
           "member": "string",
@@ -1944,7 +1817,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The consortium name.",
           "example": "test",
           "member": "string",
@@ -1954,7 +1826,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The label ID.",
           "example": "1",
           "member": "uint64",
@@ -1970,7 +1841,6 @@
       "document": "The DID service information.",
       "members": [
         {
-          "default": "",
           "document": "The DID service ID.",
           "example": "1",
           "member": "uint64",
@@ -1980,7 +1850,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The application ID.",
           "example": "251005745",
           "member": "uint64",
@@ -1990,7 +1859,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The account ID.",
           "example": "1298334110",
           "member": "string",
@@ -2000,7 +1868,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The consortium ID.",
           "example": "1",
           "member": "int64",
@@ -2010,7 +1877,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The consortium name.",
           "example": "test",
           "member": "string",
@@ -2020,7 +1886,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -2030,7 +1895,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "int64",
@@ -2040,7 +1904,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The chain ID.",
           "example": "test",
           "member": "string",
@@ -2050,7 +1913,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether you are the owner of the consortium. `1`: Yes; `0`: No.",
           "example": "1",
           "member": "uint64",
@@ -2060,7 +1922,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The organization DID.",
           "example": "test",
           "member": "string",
@@ -2070,7 +1931,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The organization name.",
           "example": "test",
           "member": "string",
@@ -2080,7 +1940,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The endpoint.",
           "example": "\"http://127.0.0.1:6001\"",
           "member": "string",
@@ -2090,7 +1949,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The creation time.",
           "example": "test",
           "member": "string",
@@ -2100,7 +1958,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The last updated time.",
           "example": "test",
           "member": "string",
@@ -2110,7 +1967,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The group name.",
           "example": "test",
           "member": "string",
@@ -2126,7 +1982,6 @@
       "document": "DownCpt request structure.",
       "members": [
         {
-          "default": "",
           "document": "The claim protocol type (CPT) index.",
           "example": "1",
           "member": "uint64",
@@ -2153,7 +2008,6 @@
       "document": "EnableHash request structure.",
       "members": [
         {
-          "default": "",
           "document": "The CNS address of the contract.",
           "example": "0x51c01ded73e0e319ae283d587a52af312e63892cd8cfaf645b7d8cf8a2b5ff",
           "member": "string",
@@ -2180,7 +2034,6 @@
       "document": "The input parameters for creating a credential.",
       "members": [
         {
-          "default": "",
           "document": "The claim protocol type (CPT) ID.",
           "example": "1",
           "member": "uint64",
@@ -2190,7 +2043,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The DID of the issuer.",
           "example": "1",
           "member": "string",
@@ -2200,7 +2052,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The expiration time.",
           "example": "1",
           "member": "string",
@@ -2210,7 +2061,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The claim.",
           "example": "1",
           "member": "string",
@@ -2226,7 +2076,6 @@
       "document": "GetAgencyTDid request structure.",
       "members": [
         {
-          "default": "",
           "document": "The network ID.",
           "example": "1",
           "member": "string",
@@ -2271,7 +2120,6 @@
       "document": "GetAuthoritiesList request structure.",
       "members": [
         {
-          "default": "",
           "document": "The page number, beginning from 1.",
           "example": "1",
           "member": "int64",
@@ -2280,7 +2128,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The number of records per page.",
           "example": "10",
           "member": "int64",
@@ -2289,7 +2136,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The DID.",
           "example": "test",
           "member": "string",
@@ -2298,7 +2144,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to query certified or uncertified authorities. `1`: Certified; `2`: Uncertified.",
           "example": "1",
           "member": "int64",
@@ -2343,7 +2188,6 @@
       "document": "GetAuthorityIssuer request structure.",
       "members": [
         {
-          "default": "",
           "document": "The DID.",
           "example": "did:tdid:1:0xa75368ab6ab9cb6d01e81d22155279ee4eca3f4d",
           "member": "string",
@@ -2433,7 +2277,6 @@
       "document": "GetConsortiumClusterList request structure.",
       "members": [
         {
-          "default": "",
           "document": "The consortium ID.",
           "example": "1",
           "member": "uint64",
@@ -2495,7 +2338,6 @@
       "document": "GetCptInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "The claim protocol type (CPT) index.",
           "example": "1",
           "member": "uint64",
@@ -2531,7 +2373,6 @@
       "document": "GetCptList request structure.",
       "members": [
         {
-          "default": "",
           "document": "The start.",
           "example": "0",
           "member": "uint64",
@@ -2540,7 +2381,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The maximum number of records to return.",
           "example": "10",
           "member": "uint64",
@@ -2549,7 +2389,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The type. `0`: All CPTs; `1`: System CPTs; `2`: Authorization CPTs; `3`: General CPTs",
           "example": "3",
           "member": "uint64",
@@ -2594,7 +2433,6 @@
       "document": "GetCredentialCptRank request structure.",
       "members": [
         {
-          "default": "",
           "document": "The start date (as early as 2021-4-23).",
           "example": "test",
           "member": "string",
@@ -2603,7 +2441,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The end date (as early as 2021-4-23).",
           "example": "test",
           "member": "string",
@@ -2612,7 +2449,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "test",
           "member": "string",
@@ -2648,7 +2484,6 @@
       "document": "GetCredentialIssueRank request structure.",
       "members": [
         {
-          "default": "",
           "document": "The start date (as early as 2021-4-23).",
           "example": "test",
           "member": "string",
@@ -2657,7 +2492,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The end date (as early as 2021-4-23).",
           "example": "test",
           "member": "string",
@@ -2666,7 +2500,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "test",
           "member": "string",
@@ -2702,7 +2535,6 @@
       "document": "GetCredentialIssueTrend request structure.",
       "members": [
         {
-          "default": "",
           "document": "The start date (as early as 2021-4-23).",
           "example": "test",
           "member": "string",
@@ -2711,7 +2543,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The end date (as early as 2021-4-23).",
           "example": "test",
           "member": "string",
@@ -2720,7 +2551,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "test",
           "member": "string",
@@ -2756,7 +2586,6 @@
       "document": "GetCredentialStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "The credential ID.",
           "example": "a",
           "member": "string",
@@ -2792,7 +2621,6 @@
       "document": "GetDataPanel request structure.",
       "members": [
         {
-          "default": "",
           "document": "The network ID.",
           "example": "1",
           "member": "string",
@@ -2927,7 +2755,6 @@
       "document": "GetDeployInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "The CNS address of the contract.",
           "example": "test",
           "member": "string",
@@ -3071,7 +2898,6 @@
       "document": "GetDeployList request structure.",
       "members": [
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -3080,7 +2906,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "uint64",
@@ -3089,7 +2914,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The start.",
           "example": "0",
           "member": "uint64",
@@ -3098,7 +2922,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The maximum number of records to return.",
           "example": "10",
           "member": "uint64",
@@ -3143,7 +2966,6 @@
       "document": "GetDidClusterDetail request structure.",
       "members": [
         {
-          "default": "",
           "document": "The DID network ID.",
           "example": "1",
           "member": "string",
@@ -3223,7 +3045,6 @@
       "document": "GetDidDetail request structure.",
       "members": [
         {
-          "default": "",
           "document": "The DID.",
           "example": "test",
           "member": "string",
@@ -3340,7 +3161,6 @@
       "document": "GetDidDocument request structure.",
       "members": [
         {
-          "default": "",
           "document": "The DID.",
           "example": "did:tdid:1:0xa75368ab6ab9cb6d01e81d22155279ee4eca3f4d",
           "member": "string",
@@ -3385,7 +3205,6 @@
       "document": "GetDidList request structure.",
       "members": [
         {
-          "default": "",
           "document": "The number of records per page.",
           "example": "10",
           "member": "int64",
@@ -3394,7 +3213,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The page number, beginning from 1.",
           "example": "1",
           "member": "int64",
@@ -3403,7 +3221,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The DID.",
           "example": "test",
           "member": "string",
@@ -3412,7 +3229,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -3421,7 +3237,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "int64",
@@ -3466,7 +3281,6 @@
       "document": "GetDidRegisterTrend request structure.",
       "members": [
         {
-          "default": "",
           "document": "The start date (as early as 2021-4-23).",
           "example": "test",
           "member": "string",
@@ -3475,7 +3289,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The end date (as early as 2021-4-23).",
           "example": "test",
           "member": "string",
@@ -3484,7 +3297,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "test",
           "member": "string",
@@ -3520,7 +3332,6 @@
       "document": "GetDidServiceDetail request structure.",
       "members": [
         {
-          "default": "",
           "document": "The DID service ID.",
           "example": "1",
           "member": "uint64",
@@ -3556,7 +3367,6 @@
       "document": "GetDidServiceList request structure.",
       "members": [
         {
-          "default": "",
           "document": "`1`: Return results at the network level; `0`: Return results at the service level.",
           "example": "1",
           "member": "uint64",
@@ -3592,7 +3402,6 @@
       "document": "GetGroupList request structure.",
       "members": [
         {
-          "default": "",
           "document": "`0`: Groups with no DID services; `1`: Groups with DID services.",
           "example": "0",
           "member": "int64",
@@ -3601,7 +3410,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -3637,7 +3445,6 @@
       "document": "GetLabelList request structure.",
       "members": [
         {
-          "default": "",
           "document": "The number of records per page.",
           "example": "10",
           "member": "int64",
@@ -3646,7 +3453,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The page number, beginning from 1.",
           "example": "1",
           "member": "int64",
@@ -3655,7 +3461,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -3664,7 +3469,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "int64",
@@ -3709,7 +3513,6 @@
       "document": "GetPolicyList request structure.",
       "members": [
         {
-          "default": "",
           "document": "The start.",
           "example": "0",
           "member": "int64",
@@ -3718,7 +3521,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The maximum number of records to return.",
           "example": "10",
           "member": "int64",
@@ -3763,7 +3565,6 @@
       "document": "GetPublicKey request structure.",
       "members": [
         {
-          "default": "",
           "document": "The DID.",
           "example": "test",
           "member": "string",
@@ -3808,7 +3609,6 @@
       "document": "The group information.",
       "members": [
         {
-          "default": "",
           "document": "The group ID.",
           "example": "2",
           "member": "uint64",
@@ -3818,7 +3618,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of nodes.",
           "example": "4",
           "member": "uint64",
@@ -3828,7 +3627,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of nodes of the organization.",
           "example": "4",
           "member": "uint64",
@@ -3838,7 +3636,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The description of the group.",
           "example": "qtadescriptionjkbdcqzgwohei",
           "member": "string",
@@ -3848,7 +3645,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether you are the owner of the consortium or not.",
           "example": "1为盟主，0为非盟主",
           "member": "uint64",
@@ -3858,7 +3654,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The chain ID.",
           "example": "bc104-1",
           "member": "string",
@@ -3874,7 +3669,6 @@
       "document": "The details of the DID.",
       "members": [
         {
-          "default": "",
           "document": "The account identifier.",
           "example": "test",
           "member": "string",
@@ -3884,7 +3678,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The chain ID.",
           "example": "1",
           "member": "string",
@@ -3894,7 +3687,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The DID.",
           "example": "test",
           "member": "string",
@@ -3904,7 +3696,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "uint64",
@@ -3914,7 +3705,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The group name.",
           "example": "1",
           "member": "string",
@@ -3930,7 +3720,6 @@
       "document": "The label information.",
       "members": [
         {
-          "default": "",
           "document": "The label ID.",
           "example": "78",
           "member": "uint64",
@@ -3940,7 +3729,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The label name.",
           "example": "test",
           "member": "string",
@@ -3950,7 +3738,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of DIDs.",
           "example": "10",
           "member": "int64",
@@ -3960,7 +3747,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The DID of the creator.",
           "example": "test",
           "member": "string",
@@ -3970,7 +3756,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "test",
           "member": "string",
@@ -3980,7 +3765,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The creation time.",
           "example": "2021-07-20 18:35:56",
           "member": "string",
@@ -3990,7 +3774,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "int64",
@@ -4006,7 +3789,6 @@
       "document": "The policy information.",
       "members": [
         {
-          "default": "",
           "document": "The policy index.",
           "example": "1",
           "member": "uint64",
@@ -4016,7 +3798,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The policy name.",
           "example": "test",
           "member": "string",
@@ -4026,7 +3807,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "test",
           "member": "string",
@@ -4036,7 +3816,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "uint64",
@@ -4046,7 +3825,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The service ID.",
           "example": "1",
           "member": "uint64",
@@ -4056,7 +3834,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The application ID of the contract.",
           "example": "1",
           "member": "uint64",
@@ -4066,7 +3843,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The policy ID.",
           "example": "100000",
           "member": "uint64",
@@ -4076,7 +3852,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The claim protocol type (CPT) ID.",
           "example": "3000005",
           "member": "uint64",
@@ -4086,7 +3861,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The JSON data.",
           "example": "test",
           "member": "string",
@@ -4096,7 +3870,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The creation time.",
           "example": "test",
           "member": "string",
@@ -4106,7 +3879,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The last updated time.",
           "example": "test",
           "member": "string",
@@ -4116,7 +3888,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The DID of the creator.",
           "example": "test",
           "member": "string",
@@ -4126,7 +3897,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The application name.",
           "example": "test",
           "member": "string",
@@ -4136,7 +3906,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The claim protocol type (CPT) index.",
           "example": "1",
           "member": "uint64",
@@ -4152,7 +3921,6 @@
       "document": "The credential signature.",
       "members": [
         {
-          "default": "",
           "document": "The creation time.",
           "example": "1",
           "member": "int64",
@@ -4162,7 +3930,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The DID of the creator.",
           "example": "1",
           "member": "string",
@@ -4172,7 +3939,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The salt value.",
           "example": "1",
           "member": "string",
@@ -4182,7 +3948,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The signature.",
           "example": "1",
           "member": "string",
@@ -4192,7 +3957,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The type.",
           "example": "1",
           "member": "string",
@@ -4208,7 +3972,6 @@
       "document": "QueryPolicy request structure.",
       "members": [
         {
-          "default": "",
           "document": "The policy index.",
           "example": "1",
           "member": "int64",
@@ -4271,7 +4034,6 @@
       "document": "RecognizeAuthorityIssuer request structure.",
       "members": [
         {
-          "default": "",
           "document": "The DID.",
           "example": "test",
           "member": "string",
@@ -4298,7 +4060,6 @@
       "document": "RegisterClaimPolicy request structure.",
       "members": [
         {
-          "default": "",
           "document": "The claim protocol type (CPT) index.",
           "example": "11",
           "member": "uint64",
@@ -4307,7 +4068,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The disclosure policy.",
           "example": "test",
           "member": "string",
@@ -4352,7 +4112,6 @@
       "document": "RegisterCpt request structure.",
       "members": [
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "uint64",
@@ -4361,7 +4120,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -4370,7 +4128,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The JSON data of the credential claim type (CPT).",
           "example": "test",
           "member": "string",
@@ -4379,7 +4136,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "If you do not specify this, the ID will auto increment.",
           "example": "1",
           "member": "uint64",
@@ -4424,7 +4180,6 @@
       "document": "RegisterIssuer request structure.",
       "members": [
         {
-          "default": "",
           "document": "The DID.",
           "example": "did:tdid:1:0xa75368ab6ab9cb6d01e81d22155279ee4eca3f4d",
           "member": "string",
@@ -4433,7 +4188,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The issuing authority name.",
           "example": "aaa",
           "member": "string",
@@ -4442,7 +4196,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Remarks",
           "example": "mark 一下",
           "member": "string",
@@ -4469,7 +4222,6 @@
       "document": "RemoveHash request structure.",
       "members": [
         {
-          "default": "",
           "document": "The CNS address of the contract.",
           "example": "0x51c01ded73e0e319ae283d587a52af312e63892cd8cfaf645b7d8cf8a2b5ff",
           "member": "string",
@@ -4496,7 +4248,6 @@
       "document": "SetCredentialStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "The credential status.",
           "example": "test1a152",
           "member": "CredentialStatus",
@@ -4523,7 +4274,6 @@
       "document": "The output parameter of `CreateDidService` and `CheckDidDeploy`.",
       "members": [
         {
-          "default": "",
           "document": "The task ID.",
           "example": "1",
           "member": "uint64",
@@ -4533,7 +4283,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The application ID.",
           "example": "1",
           "member": "uint64",
@@ -4543,7 +4292,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The network ID.",
           "example": "bcos-fmtkyt8xne",
           "member": "string",
@@ -4553,7 +4301,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The group ID.",
           "example": "1",
           "member": "uint64",
@@ -4563,7 +4310,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The service ID.",
           "example": "1",
           "member": "uint64",
@@ -4573,7 +4319,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "`0`: Under deployment; `1`: Deployed successfully; other values: Deployment failed.",
           "example": "0",
           "member": "uint64",
@@ -4583,7 +4328,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The error code.",
           "example": "200",
           "member": "string",
@@ -4593,7 +4337,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The error message.",
           "example": "test",
           "member": "string",
@@ -4603,7 +4346,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The creation time.",
           "example": "test",
           "member": "string",
@@ -4613,7 +4355,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The last updated time.",
           "example": "test",
           "member": "string",
@@ -4629,7 +4370,6 @@
       "document": "The transaction parameters.",
       "members": [
         {
-          "default": "",
           "document": "The credential ID.",
           "example": "1",
           "member": "string",
@@ -4645,7 +4385,6 @@
       "document": "The trends.",
       "members": [
         {
-          "default": "",
           "document": "The time point.",
           "example": "test",
           "member": "string",
@@ -4655,7 +4394,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The count.",
           "example": "test",
           "member": "int64",
@@ -4671,7 +4409,6 @@
       "document": "VerifyCredential request structure.",
       "members": [
         {
-          "default": "",
           "document": "A parameter set.",
           "example": "1",
           "member": "VerifyFunctionArg",
@@ -4725,7 +4462,6 @@
       "document": "The credential verification parameters.",
       "members": [
         {
-          "default": "",
           "document": "The claim protocol type (CPT) ID.",
           "example": "1",
           "member": "uint64",
@@ -4735,7 +4471,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The issuer DID.",
           "example": "1",
           "member": "string",
@@ -4745,7 +4480,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The expiration time.",
           "example": "1",
           "member": "int64",
@@ -4755,7 +4489,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The claim.",
           "example": "1",
           "member": "string",
@@ -4765,7 +4498,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The time when the credential was issued.",
           "example": "1",
           "member": "int64",
@@ -4775,7 +4507,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The context.",
           "example": "1",
           "member": "string",
@@ -4785,7 +4516,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The ID.",
           "example": "1",
           "member": "string",
@@ -4795,7 +4525,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The signature.",
           "example": "无",
           "member": "Proof",
@@ -4805,7 +4534,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The type.",
           "example": "[\"a\",\"b\"]",
           "member": "string",

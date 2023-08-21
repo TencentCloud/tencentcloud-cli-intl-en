@@ -207,7 +207,6 @@
       "document": "AssignProject request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of instance IDs in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
           "example": "[\"cmgo-eqmoa5sf\\r\\n\"]",
           "member": "string",
@@ -216,7 +215,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Unique ID of an existing project (instead of a new project).",
           "example": "12",
           "member": "uint64",
@@ -250,7 +248,6 @@
       "document": "Backup download task information",
       "members": [
         {
-          "default": "",
           "document": "Task creation time",
           "example": "2021-01-02 15:04:05",
           "member": "string",
@@ -260,7 +257,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Backup name",
           "example": "cmgo-74sjf5mt_2021-03-24 15:40",
           "member": "string",
@@ -270,7 +266,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Shard name",
           "example": "cmgo-74sjf5mt_0",
           "member": "string",
@@ -280,7 +275,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Backup size in bytes",
           "example": "102400",
           "member": "int64",
@@ -290,7 +284,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task status. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry)",
           "example": "0",
           "member": "int64",
@@ -300,7 +293,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task progress in percentage",
           "example": "20",
           "member": "int64",
@@ -310,7 +302,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task duration in seconds",
           "example": "60",
           "member": "int64",
@@ -320,7 +311,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Backup download address",
           "example": "http://a.b.c/d.tar?e",
           "member": "string",
@@ -330,7 +320,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Backup type of the backup file. Valid values: `0` (logical backup), `1` (physical backup)",
           "example": "1",
           "member": "int64",
@@ -340,7 +329,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Backup description you set when starting a backup task\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "我的备份",
           "member": "string",
@@ -356,7 +344,6 @@
       "document": "The result of the created backup download task",
       "members": [
         {
-          "default": "",
           "document": "Shard name",
           "example": "cmgo-74sjf5mt_0",
           "member": "string",
@@ -366,7 +353,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task status. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry)",
           "example": "0",
           "member": "int64",
@@ -382,7 +368,6 @@
       "document": "Backup information",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -391,7 +376,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Backup mode. 0: automatic backup; 1: manual backup",
           "member": "uint64",
           "name": "BackupType",
@@ -400,7 +384,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Backup name",
           "member": "string",
           "name": "BackupName",
@@ -409,7 +392,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Backup remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "BackupDesc",
@@ -418,7 +400,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Backup file size in KB\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "BackupSize",
@@ -427,7 +408,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Backup start time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "StartTime",
@@ -436,7 +416,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Backup end time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "EndTime",
@@ -445,7 +424,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Backup status. 1: backing up; 2: backed up successful",
           "member": "uint64",
           "name": "Status",
@@ -454,7 +432,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Backup method. 0: logical backup; 1: physical backup",
           "member": "uint64",
           "name": "BackupMethod",
@@ -469,7 +446,6 @@
       "document": "Client connection information, including client IP and number of connections",
       "members": [
         {
-          "default": "",
           "document": "Client IP of a connection",
           "example": "192.168.1.1",
           "member": "string",
@@ -479,7 +455,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of connections corresponding to a client IP",
           "example": "9",
           "member": "uint64",
@@ -489,7 +464,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is the Tencent Cloud IP for automated testing",
           "example": "true",
           "member": "bool",
@@ -505,7 +479,6 @@
       "document": "CreateBackupDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -513,7 +486,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Valid values: 0 (logical backup), 1 (physical backup)",
           "member": "int64",
           "name": "BackupMethod",
@@ -521,7 +493,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Backup remarks",
           "member": "string",
           "name": "BackupRemark",
@@ -554,7 +525,6 @@
       "document": "CreateBackupDownloadTask request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID in the format of \"cmgo-p8vnipr5\", which is the same as the instance ID displayed in the TencentDB console.",
           "example": "cmgo-f555zzzz",
           "member": "string",
@@ -563,7 +533,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The name of the backup file to be downloaded, which can be obtained by the `DescribeDBBackups` API.",
           "example": "cmgo-74sjf5mt_2021-03-24 15:40",
           "member": "string",
@@ -572,7 +541,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Specify the node name of a replica set instance or the shard name list of a sharded cluster instance. Only backups of the specified node or shards will be downloaded.\nSuppose you have a replica set instance (ID: cmgo-p8vnipr5), you can use the sample code `BackupSets.0=cmgo-p8vnipr5_0` to download the full backup. For a replica set instance, the parameter value must be in the format of \"instance ID_0\".\nSuppose you have a sharded cluster instance (ID: cmgo-p8vnipr5), you can use the sample code `BackupSets.0=cmgo-p8vnipr5_0&BackupSets.1=cmgo-p8vnipr5_1` to download the backup data of shard 0 and shard 1. To download the full backup, please specify all shard names.",
           "example": "无",
           "member": "ReplicaSetInfo",
@@ -850,7 +818,6 @@
       "document": "CreateDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "The number of nodes in each replica set. The value range is subject to the response parameter of the `DescribeSpecInfo` API.",
           "example": "3",
           "member": "uint64",
@@ -859,7 +826,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance memory size in GB.",
           "example": "4",
           "member": "uint64",
@@ -868,7 +834,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance disk size in GB.",
           "example": "250",
           "member": "uint64",
@@ -877,7 +842,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Version number. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. The correspondences between parameters and versions are as follows: MONGO_3_WT: MongoDB 3.2 WiredTiger Edition; MONGO_3_ROCKS: MongoDB 3.2 RocksDB Edition; MONGO_36_WT: MongoDB 3.6 WiredTiger Edition; MONGO_40_WT: MongoDB 4.0 WiredTiger Edition; MONGO_42_WT: MongoDB 4.2 WiredTiger Edition.",
           "example": "MONGO_3_WT",
           "member": "string",
@@ -886,7 +850,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of instances. Minimum value: 1. Maximum value: 10.",
           "example": "1",
           "member": "uint64",
@@ -895,7 +858,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "AZ in the format of ap-guangzhou-2. If multi-AZ deployment is enabled, this parameter refers to the primary AZ and must be one of the values of `AvailabilityZoneList`.",
           "example": "ap-guangzhou-2",
           "member": "string",
@@ -904,7 +866,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
           "example": "1",
           "member": "uint64",
@@ -913,7 +874,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Server type. Valid values: HIO (high IO), HIO10G (10-gigabit high IO), STDS5 (standard).",
           "example": "HIO10G",
           "member": "string",
@@ -922,7 +882,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster), STANDALONE (single-node).",
           "example": "REPLSET",
           "member": "string",
@@ -931,7 +890,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API; to create a single-node instance, set this parameter to 0.",
           "example": "1",
           "member": "uint64",
@@ -940,7 +898,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Project ID. If this parameter is not set, the default project will be used.",
           "example": "0",
           "member": "int64",
@@ -949,7 +906,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "VPC ID. If this parameter is not set, the classic network will be used. Please use the `DescribeVpcs` API to query the VPC list.",
           "example": "vpc-0akbol5v",
           "member": "string",
@@ -958,7 +914,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "VPC subnet ID. If `UniqVpcId` is set, then `UniqSubnetId` will be required. Please use the `DescribeSubnets` API to query the subnet list.",
           "example": "subnet-fyrtjbqw",
           "member": "string",
@@ -967,7 +922,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance password. If it is left empty, the password is in the default format of \"instance ID+@+root account UIN\". For example, if the instance ID is \"cmgo-higv73ed\" and the root account UIN \"100000001\", the instance password will be \"cmgo-higv73ed@100000001\". The custom password must contain 8-32 characters in at least two of the following types: letters, digits, and symbols (!@#%^*()_).",
           "example": "pwd123456",
           "member": "string",
@@ -976,7 +930,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance tag information.",
           "example": "无",
           "member": "TagInfo",
@@ -985,7 +938,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Auto-renewal flag. Valid values: 0 (auto-renewal not enabled), 1 (auto-renewal enabled). Default value: 0.",
           "example": "1",
           "member": "uint64",
@@ -994,7 +946,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to automatically use a voucher. Valid values: 1 (yes), 0 (no). Default value: 0.",
           "example": "1",
           "member": "uint64",
@@ -1003,7 +954,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance type. Valid values: `1` (primary instance), `2` (temp instance), `3` (read-only instance), `4` (disaster recovery instance), `5` (cloned instance).",
           "example": "1",
           "member": "int64",
@@ -1012,7 +962,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Primary instance ID. It is required for read-only, disaster recovery, and cloned instances.",
           "example": "无",
           "member": "string",
@@ -1021,7 +970,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Security group.",
           "example": "无",
           "member": "string",
@@ -1030,7 +978,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The point in time to which the cloned instance will be rolled back. This parameter is required for a cloned instance. The point in time in the format of 2021-08-13 16:30:00 must be within the last seven days.",
           "example": "无",
           "member": "string",
@@ -1039,7 +986,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance name, which can contain up to 60 letters, digits, or symbols (_-).",
           "example": "无",
           "member": "string",
@@ -1048,7 +994,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "AZ list when multi-AZ deployment is enabled. For the specific purchasable versions which support multi-AZ deployment, please see the return result of the `DescribeSpecInfo` API. Notes: 1. Nodes of a multi-AZ instance must be deployed across three AZs. 2. To ensure a successful cross-AZ switch, you should not deploy most of the nodes to the same AZ. (For example, a three-node sharded cluster instance does not support deploying two or more nodes in the same AZ.) 3. MongoDB 4.2 and later versions do not support multi-AZ deployment. 4. Read-Only and disaster recovery instances do not support multi-AZ deployment. 5. Instances in the classic network do not support multi-AZ deployment.",
           "example": "无",
           "member": "string",
@@ -1057,7 +1002,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The number of mongos CPUs, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API.",
           "example": "无",
           "member": "uint64",
@@ -1066,7 +1010,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The size of mongos memory, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API.",
           "example": "无",
           "member": "uint64",
@@ -1075,7 +1018,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The number of mongos routers, which is required for a sharded cluster instance of MongoDB 4.2 WiredTiger. For the specific purchasable versions supported, please see the return result of the `DescribeSpecInfo` API. Note: please purchase 3-32 mongos routers for high availability.",
           "example": "无",
           "member": "uint64",
@@ -1084,7 +1026,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of read-only nodes. Value range: 2-7.",
           "example": "无",
           "member": "uint64",
@@ -1093,7 +1034,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The AZ where the read-only node is deployed",
           "example": "无",
           "member": "string",
@@ -1102,7 +1042,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The AZ where the hidden node resides. It is required for cross-AZ instances.",
           "example": "无",
           "member": "string",
@@ -1143,7 +1082,6 @@
       "document": "Instance information",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -1152,7 +1090,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region information",
           "member": "string",
           "name": "Region",
@@ -1167,7 +1104,6 @@
       "document": "Instance price",
       "members": [
         {
-          "default": "",
           "document": "Unit price.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "float",
           "name": "UnitPrice",
@@ -1176,7 +1112,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Original price.",
           "member": "float",
           "name": "OriginalPrice",
@@ -1185,7 +1120,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Discounted price.",
           "member": "float",
           "name": "DiscountPrice",
@@ -1200,7 +1134,6 @@
       "document": "DescribeAsyncRequestInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Async task ID, which is returned by APIs related to async tasks, such as `CreateBackupDBInstance`.",
           "member": "string",
           "name": "AsyncRequestId",
@@ -1235,7 +1168,6 @@
       "document": "DescribeBackupDownloadTask request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID in the format of \"cmgo-p8vnipr5\", which is the same as the instance ID displayed in the TencentDB console",
           "example": "cmgo-74sjf5mt",
           "member": "string",
@@ -1244,7 +1176,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The name of a backup file with download tasks to be queried",
           "example": "cmgo-74sjf5mt_2021-03-24 15:40",
           "member": "string",
@@ -1253,7 +1184,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The start time of the query period. Tasks whose start time and end time fall within the query period will be queried. If it is left empty, the start time can be any time earlier than the end time.",
           "example": "2021-01-02 15:04:05",
           "member": "string",
@@ -1262,7 +1192,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The end time of the query period. Tasks will be queried if their start and end times fall within the query period. If it is left empty, the end time can be any time later than the start time.",
           "example": "2021-01-02 15:04:05",
           "member": "string",
@@ -1271,7 +1200,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The maximum number of results returned per page. Value range: 1-100. Default value: `20`.",
           "example": "10",
           "member": "int64",
@@ -1280,7 +1208,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset for pagination. Default value: `0`.",
           "example": "0",
           "member": "int64",
@@ -1289,7 +1216,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The field used to sort the results. Valid values: `createTime` (default), `finishTime`.",
           "example": "finishTime",
           "member": "string",
@@ -1298,7 +1224,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Sort order. Valid values: `asc`, `desc` (default).",
           "example": "desc",
           "member": "string",
@@ -1307,7 +1232,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The status of the tasks to be queried. Valid values: `0` (waiting for execution), `1` (downloading), `2` (downloaded), `3` (download failed), `4` (waiting for retry). If it is left empty, tasks in any status will be returned.",
           "example": "[2]",
           "member": "int64",
@@ -1352,7 +1276,6 @@
       "document": "DescribeClientConnections request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
           "example": "cmgo-eqmoaxxx",
           "member": "string",
@@ -1361,7 +1284,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of results to be returned for a single request. Value range: 1-1,000. Default value: 1,000",
           "example": "1",
           "member": "uint64",
@@ -1370,7 +1292,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0.",
           "example": "1",
           "member": "uint64",
@@ -1411,7 +1332,6 @@
       "document": "DescribeDBBackups request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
           "member": "string",
           "name": "InstanceId",
@@ -1419,7 +1339,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Backup mode. Valid values: `0` (logical backup), `1` (physical backup), `2` (both modes). Default value: `0`.",
           "member": "int64",
           "name": "BackupMethod",
@@ -1427,7 +1346,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page. Maximum value: `100`. If this parameter is left empty, all entries will be returned.",
           "member": "uint64",
           "name": "Limit",
@@ -1435,7 +1353,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Pagination offset, starting from `0`. Default value: `0`.",
           "member": "uint64",
           "name": "Offset",
@@ -1475,7 +1392,6 @@
       "document": "DescribeDBInstanceDeal request structure.",
       "members": [
         {
-          "default": "",
           "document": "Order ID. It is returned by the `CreateDBInstance` and other APIs.",
           "member": "string",
           "name": "DealId",
@@ -1529,7 +1445,6 @@
       "document": "DescribeDBInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of instance IDs in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB console page.",
           "example": "cmgo-hcscymcl",
           "member": "string",
@@ -1538,7 +1453,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Instance type. Valid values: <ul><li>`0`: All instances. </li><li>`1`: Regular instances. </li><li>`2`: Temp instances. </li><li>`3`: Read-only instances. </li><li>`-1`: Regular instances, read-only instances, disaster recovery instances.</li></ul>",
           "example": "0",
           "member": "int64",
@@ -1547,7 +1461,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Cluster type. Valid values: <ul><li>`0`: Replica set instances. </li><li>`1`: Sharded cluster instances. </li><li>`-1`: All instances.</li></ul>",
           "example": "0",
           "member": "int64",
@@ -1556,7 +1469,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance status. Valid values: <ul><li>`0`: To be initialized. </li><li>`1`: In process. </li><li>`2`: Valid. </li><li>`-2`: Isolated (for monthly subscribed instances). </li><li>`-3`: Isolated (for pay-as-you-go instances).</li></ul>",
           "example": "2",
           "member": "int64",
@@ -1565,7 +1477,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "VPC ID. This parameter can be left empty for the classic network.",
           "example": "1",
           "member": "string",
@@ -1574,7 +1485,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Subnet ID of VPC. This parameter can be left empty for the classic network. If it is passed in as an input parameter, the corresponding VpcId must be set.",
           "example": "1",
           "member": "string",
@@ -1583,7 +1493,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Billing type. Valid value: 0 (pay-as-you-go)",
           "example": "1",
           "member": "int64",
@@ -1592,7 +1501,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of results returned per request. Default value: `20`. Value range: [1,100].",
           "example": "10",
           "member": "uint64",
@@ -1601,7 +1509,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Default value: `0`.",
           "example": "1",
           "member": "uint64",
@@ -1610,7 +1517,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Sort by field of the returned result set. Valid values: `ProjectId`, `InstanceName`, `CreateTime`. The return results are sorted in ascending order by default.",
           "example": "无",
           "member": "string",
@@ -1619,7 +1525,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Sorting method of the return result set. Valid values: `ASC`, `DESC`.",
           "example": "无",
           "member": "string",
@@ -1628,7 +1533,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Project ID",
           "example": "无",
           "member": "uint64",
@@ -1637,7 +1541,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Search keyword, which can be instance ID, instance name, or complete IP.",
           "example": "无",
           "member": "string",
@@ -1646,7 +1549,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag information",
           "example": "无",
           "member": "TagInfo",
@@ -1691,7 +1593,6 @@
       "document": "DescribeInstanceParams request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "cmgo-********",
           "member": "string",
@@ -1763,7 +1664,6 @@
       "document": "DescribeSecurityGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID in the format of \"cmgo-p8vnipr5\"",
           "example": "cmgo-p8vnipr5",
           "member": "string",
@@ -1799,7 +1699,6 @@
       "document": "DescribeSlowLogPatterns request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID in the format of `cmgo-p8vnipr5`, which is the same as the instance ID displayed on the TencentDB Console page",
           "example": "cmgo-a3bm93hf",
           "member": "string",
@@ -1808,7 +1707,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Start time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-01 10:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
           "example": "2020-04-20 00:00:00",
           "member": "datetime",
@@ -1817,7 +1715,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "End time of slow log in the format of `yyyy-mm-dd hh:mm:ss`, such as 2019-06-02 12:00:00. The query time range cannot exceed 24 hours. Only slow logs for the last 7 days can be queried.",
           "example": "2020-04-20 22:00:00",
           "member": "datetime",
@@ -1826,7 +1723,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Threshold of slow log execution time in milliseconds. Minimum value: 100. Slow logs whose execution time exceeds the threshold will be returned.",
           "example": "100",
           "member": "uint64",
@@ -1835,7 +1731,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset. Minimum value: 0. Maximum value: 10000. Default value: 0.",
           "example": "0",
           "member": "uint64",
@@ -1844,7 +1739,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page. Minimum value: 1. Maximum value: 100. Default value: 20.",
           "example": "100",
           "member": "uint64",
@@ -1853,7 +1747,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Slow log format, which can be JSON. If this parameter is left empty, the slow log will be returned in its native format.",
           "example": "json",
           "member": "string",
@@ -1982,7 +1875,6 @@
       "document": "DescribeSpecInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "AZ to be queried",
           "member": "string",
           "name": "Zone",
@@ -2015,7 +1907,6 @@
       "document": "FlushInstanceRouterConfig request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -2041,7 +1932,6 @@
       "document": "InquirePriceCreateDBInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance region name in the format of ap-guangzhou-2.",
           "example": "ap-guangzhou-4",
           "member": "string",
@@ -2050,7 +1940,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of primary and secondary nodes per shard. <br>Value range: It can be queried by the <a href=\"https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1\">DescribeSpecInfo</a> API, and the `MinNodeNum` and `MaxNodeNum` parameters are the minimal and maximum value respectively.</li></ul>",
           "example": "3",
           "member": "int64",
@@ -2059,7 +1948,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance memory size in GB.",
           "example": "4",
           "member": "int64",
@@ -2068,7 +1956,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": " Instance disk size. <ul><li>Unit: GB</li><li>Value range: It can be queried by the <a href=\"https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1\">DescribeSpecInfo</a> API, and `MinStorage` and `MaxStorage` parameters are the minimal and maximum value of the disk size respectively.</br>",
           "example": "100",
           "member": "int64",
@@ -2077,7 +1964,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance version information. <ul><li>For specific supported versions, query through the <a href=\"https://intl.cloud.tencent.com/document/product/240/38567?from_cn_redirect=1\">DescribeSpecInfo</a> API, the returned parameter `MongoVersionCode` in data structure `SpecItems` is the supported version information. </li><li>The correspondences between parameters and versions are as follows <ul><li>MONGO_3_WT: MongoDB 3.2 WiredTiger storage engine version. </li><li>MONGO_3_ROCKS: MongoDB 3.2 RocksDB storage engine version. </li><li>MONGO_36_WT: MongoDB 3.6 WiredTiger storage engine version. </li><li>MONGO_40_WT: MongoDB 4.0 WiredTiger storage engine version. </li><li>MONGO_42_WT: MongoDB 4.2 WiredTiger storage engine version. </li><li>MONGO_44_WT: MongoDB 4.4 WiredTiger storage engine version. </li></ul>",
           "example": "MONGO_36_WT",
           "member": "string",
@@ -2086,7 +1972,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Server type. Valid values: `HIO` (high IO), `HIO10G` (ten-gigabit high IO)",
           "example": "HIO10G",
           "member": "string",
@@ -2095,7 +1980,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of instances. Minimum value: 1. Maximum value: 10.",
           "example": "2",
           "member": "int64",
@@ -2104,7 +1988,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance type. Valid values: REPLSET (replica set), SHARD (sharded cluster), STANDALONE (single-node).",
           "example": "REPLSET",
           "member": "string",
@@ -2113,7 +1996,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Number of replica sets. To create a replica set instance, set this parameter to 1; to create a shard instance, see the parameters returned by the `DescribeSpecInfo` API; to create a single-node instance, set this parameter to 0.",
           "example": "1",
           "member": "int64",
@@ -2122,7 +2004,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance validity period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
           "example": "1",
           "member": "int64",
@@ -2131,7 +2012,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "",
           "example": "PREPAID",
           "member": "string",
@@ -2140,7 +2020,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "",
           "example": "2",
           "member": "uint64",
@@ -2149,7 +2028,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "",
           "example": "4",
           "member": "uint64",
@@ -2158,7 +2036,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "",
           "example": "3",
           "member": "uint64",
@@ -2167,7 +2044,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "",
           "example": "1",
           "member": "uint64",
@@ -2176,7 +2052,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "",
           "example": "2",
           "member": "uint64",
@@ -2185,7 +2060,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "",
           "example": "50",
           "member": "uint64",
@@ -2284,7 +2158,6 @@
       "document": "InquirePriceRenewDBInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed in the TencentDB Console. This API supports operations on up to 5 instances at a time.",
           "member": "string",
           "name": "InstanceIds",
@@ -2292,7 +2165,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set automatic renewal, and other attributes of the monthly subscription instance.",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
@@ -2325,7 +2197,6 @@
       "document": "Description on the billing mode of an instance",
       "members": [
         {
-          "default": "",
           "document": "Purchased usage period (in month). Valid values: `1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36`. Default value: `1`.\n(This parameter is required in `InquirePriceRenewDBInstances` and `RenewDBInstances` APIs.)",
           "member": "int64",
           "name": "Period",
@@ -2334,7 +2205,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Auto-renewal flag. Valid values:\n`NOTIFY_AND_AUTO_RENEW`: notify expiration and renew automatically\n`NOTIFY_AND_MANUAL_RENEW`: notify expiration but not renew automatically\n`DISABLE_NOTIFY_AND_MANUAL_RENEW`: neither notify expiration nor renew automatically\n\nDefault value: `NOTIFY_AND_MANUAL_RENEW`. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed on a monthly basis when the account balance is sufficient.\n(This parameter is required in `InquirePriceRenewDBInstances` and `RenewDBInstances` APIs.)",
           "member": "string",
           "name": "RenewFlag",
@@ -2769,7 +2639,6 @@
       "document": "The collection of modifiable enum parameters of an instance.",
       "members": [
         {
-          "default": "",
           "document": "Current value",
           "example": "\"all\"",
           "member": "string",
@@ -2779,7 +2648,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Default value",
           "example": "\"slowOp\"",
           "member": "string",
@@ -2789,7 +2657,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Acceptable values",
           "example": "[\"off\",\"slowOp\",\"all\"]",
           "member": "string",
@@ -2799,7 +2666,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no, which means the parameter setting takes effect immediately)",
           "example": "\"0\"",
           "member": "string",
@@ -2809,7 +2675,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Parameter name",
           "example": "\"operationProfiling.mode\"",
           "member": "string",
@@ -2819,7 +2684,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Parameter description",
           "example": "[\"事务加锁超时时间\",\"max transaction lockrequest timeout millis\"]",
           "member": "string",
@@ -2829,7 +2693,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data type of the parameter",
           "example": "\"enum\"",
           "member": "string",
@@ -2839,7 +2702,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether `CurrentValue` is the parameter value actually in use. Valid values: `1` (yes), `0` (no)",
           "example": "1",
           "member": "uint64",
@@ -2855,7 +2717,6 @@
       "document": "The collection of modifiable integer parameters of an instance.",
       "members": [
         {
-          "default": "",
           "document": "Current value",
           "example": "\"100\"",
           "member": "string",
@@ -2865,7 +2726,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Default value",
           "example": "\"100\"",
           "member": "string",
@@ -2875,7 +2735,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum value",
           "example": "\"65536\"",
           "member": "string",
@@ -2885,7 +2744,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Minimum value",
           "example": "\"0\"",
           "member": "string",
@@ -2895,7 +2753,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no, which means the parameter setting takes effect immediately)",
           "example": "\"1\"",
           "member": "string",
@@ -2905,7 +2762,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Parameter name",
           "example": "\"operation.profiling.slowOpThresholdMs\"",
           "member": "string",
@@ -2915,7 +2771,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Parameter description",
           "example": "[\"数据库profiler确定慢查询的阈值，单位毫秒，默认值100\",\"The Performance Advisor re\"]",
           "member": "string",
@@ -2925,7 +2780,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data type of the parameter",
           "example": "\"integer\"",
           "member": "string",
@@ -2935,7 +2789,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether `CurrentValue` is the parameter value actually in use. Valid values: `1` (yes), `0` (no)",
           "example": "1",
           "member": "uint64",
@@ -2945,7 +2798,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Redundant field which can be ignored",
           "example": "\"\"",
           "member": "string",
@@ -2961,7 +2813,6 @@
       "document": "The collection of modifiable string parameters of an instance which are used to represent time ranges.",
       "members": [
         {
-          "default": "",
           "document": "Current value",
           "example": "\"01:00\"",
           "member": "string",
@@ -2971,7 +2822,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Default value",
           "example": "NULL",
           "member": "string",
@@ -2981,7 +2831,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Acceptable values",
           "example": "[\"00:00\",\"23:00\" ]",
           "member": "string",
@@ -2991,7 +2840,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to restart the instance for the parameter to take effect. Valid values: `1` (yes), `0` (no, which means the parameter setting takes effect immediately)",
           "example": "\"1\"",
           "member": "string",
@@ -3001,7 +2849,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Parameter name",
           "example": "\"openBalance.window\"",
           "member": "string",
@@ -3011,7 +2858,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether `CurrentValue` is the parameter value actually in use. Valid values: `1` (yes), `0` (no)",
           "example": "\"1\"",
           "member": "uint64",
@@ -3021,7 +2867,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Parameter description",
           "example": "[\"负载均衡时间窗\",\"balance.window\"]",
           "member": "string",
@@ -3031,7 +2876,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data type of the current value. Default value: `multi`",
           "example": "\"multi\"",
           "member": "string",
@@ -3047,7 +2891,6 @@
       "document": "The collection of modifiable text parameters of an instance.",
       "members": [
         {
-          "default": "",
           "document": "Current value",
           "example": "\"\"",
           "member": "string",
@@ -3057,7 +2900,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Default value",
           "example": "\"\"",
           "member": "string",
@@ -3067,7 +2909,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to restart the instance for the parameter to take effect",
           "example": "\"\"",
           "member": "string",
@@ -3077,7 +2918,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Parameter name",
           "example": "\"\"",
           "member": "string",
@@ -3087,7 +2927,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Value of a text parameter",
           "example": "\"\"",
           "member": "string",
@@ -3097,7 +2936,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Parameter description",
           "example": "\"\"",
           "member": "string",
@@ -3107,7 +2945,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Value type",
           "example": "\"\"",
           "member": "string",
@@ -3117,7 +2954,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether `CurrentValue` is the parameter value actually in use. Valid values: `1` (yes), `0` (no)",
           "example": "\"\"",
           "member": "string",
@@ -3133,7 +2969,6 @@
       "document": "IsolateDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
           "member": "string",
           "name": "InstanceId",
@@ -3166,7 +3001,6 @@
       "document": "ModifyDBInstanceNetworkAddress request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "cmgo-7pjedvz7",
           "member": "string",
@@ -3175,7 +3009,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Old IP retention period in minutes. The old IP will be released after the specified time, and both the old and new IPs can be accessed before the release. The value `0` indicates that the old IP will be reclaimed immediately.",
           "example": "1",
           "member": "uint64",
@@ -3184,7 +3017,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "ID of the VPC to which the new IP belongs after the switch. When it is classic network, this field will be empty.",
           "example": "vpc-****",
           "member": "string",
@@ -3193,7 +3025,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ID of the subnet to which the new IP belongs after the switch. When it is classic network, this field will be empty.",
           "example": "subnet-****",
           "member": "string",
@@ -3202,7 +3033,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "IP information to be modified",
           "example": "无",
           "member": "ModifyNetworkAddress",
@@ -3229,7 +3059,6 @@
       "document": "ModifyDBInstanceSecurityGroup request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "cmgo-7pjedvz7",
           "member": "string",
@@ -3238,7 +3067,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Target security group IDs",
           "example": "[\"sg-a\", \"sg-b\"]",
           "member": "string",
@@ -3265,7 +3093,6 @@
       "document": "ModifyDBInstanceSpec request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
           "example": "cmgo-p8vnipr5",
           "member": "string",
@@ -3274,7 +3101,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Memory size after instance configuration change in GB. Memory and disk must be upgraded or degraded simultaneously",
           "example": "4",
           "member": "uint64",
@@ -3283,7 +3109,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Disk size after instance configuration change in GB. Memory and disk must be upgraded or degraded simultaneously. For degradation, the new disk capacity must be greater than 1.2 times the used disk capacity",
           "example": "250",
           "member": "uint64",
@@ -3292,7 +3117,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Oplog size after instance configuration change in GB, which ranges from 10% to 90% of the disk capacity and is 10% of the disk capacity by default",
           "example": "25",
           "member": "uint64",
@@ -3301,7 +3125,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Node quantity after configuration modification. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the node quantity remains unchanged.",
           "example": "3",
           "member": "uint64",
@@ -3310,7 +3133,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Shard quantity after configuration modification, which can only be increased rather than decreased. The value range is subject to the response parameter of the `DescribeSpecInfo` API. If this parameter is left empty, the shard quantity remains unchanged.",
           "example": "3",
           "member": "uint64",
@@ -3319,7 +3141,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Switch time. Valid values: `0` (upon modification completion), `1` (during maintenance time). Default value: `0`. If the quantity of nodes or shards is modified, the value will be `0`.",
           "example": "0",
           "member": "uint64",
@@ -3353,7 +3174,6 @@
       "document": "Database IP to be modified",
       "members": [
         {
-          "default": "",
           "document": "New IP",
           "member": "string",
           "name": "NewIPAddress",
@@ -3362,7 +3182,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Old IP",
           "member": "string",
           "name": "OldIpAddress",
@@ -3377,7 +3196,6 @@
       "document": "OfflineIsolatedDBInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
           "member": "string",
           "name": "InstanceId",
@@ -3410,7 +3228,6 @@
       "document": "RenameInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID in the format of cmgo-p8vnipr5. It is the same as the instance ID displayed on the TencentDB Console page",
           "example": "cmgo-eqmoa5sf",
           "member": "string",
@@ -3419,7 +3236,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Custom name of the instance, which can contain up to 60 letters, digits, or symbols (_-)",
           "example": "test_name",
           "member": "string",
@@ -3446,7 +3262,6 @@
       "document": "RenewDBInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "IDs of one or more instances to be operated. The value can be obtained from the `InstanceId` parameter returned by the `DescribeInstances` API. Up to 100 instances can be requested at a time.",
           "member": "string",
           "name": "InstanceIds",
@@ -3454,7 +3269,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set automatic renewal, and other attributes of the monthly subscription instance. This parameter is mandatory in monthly subscription.",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
@@ -3480,7 +3294,6 @@
       "document": "Shard information",
       "members": [
         {
-          "default": "",
           "document": "Replica set ID",
           "example": "cmgo_ih8uido9_0",
           "member": "string",
@@ -3496,7 +3309,6 @@
       "document": "ResetDBInstancePassword request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "cmgo-7pjedvz7",
           "member": "string",
@@ -3505,7 +3317,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance account name",
           "example": "rwuser",
           "member": "string",
@@ -3514,7 +3325,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "New password, which must contain at least eight characters",
           "example": "111111",
           "member": "string",
@@ -3548,7 +3358,6 @@
       "document": "Security group information",
       "members": [
         {
-          "default": "",
           "document": "Project ID",
           "example": "0",
           "member": "int64",
@@ -3558,7 +3367,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time",
           "example": "2021-01-02 15:04:05",
           "member": "string",
@@ -3568,7 +3376,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Inbound rule",
           "example": "无",
           "member": "SecurityGroupBound",
@@ -3578,7 +3385,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Outbound rule",
           "example": "无",
           "member": "SecurityGroupBound",
@@ -3588,7 +3394,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Security group ID",
           "example": "sg-lxdvbitn",
           "member": "string",
@@ -3598,7 +3403,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Security group name",
           "example": "全放通",
           "member": "string",
@@ -3608,7 +3412,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Security group remarks",
           "example": "暴露全部端口到公网和内网，有一定安全风险",
           "member": "string",
@@ -3624,7 +3427,6 @@
       "document": "Security group rule",
       "members": [
         {
-          "default": "",
           "document": "Execution rule. Valid values: `ACCEPT`, `DROP`",
           "example": "ACCEPT",
           "member": "string",
@@ -3634,7 +3436,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IP range",
           "example": "0.0.0.0/0",
           "member": "string",
@@ -3644,7 +3445,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Port range",
           "example": "80,443",
           "member": "string",
@@ -3654,7 +3454,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Transport layer protocol. Valid values: `tcp`, `udp`, `ALL`",
           "example": "tcp",
           "member": "string",
@@ -3664,7 +3463,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "All the addresses that the security group ID represents",
           "example": "无",
           "member": "string",
@@ -3674,7 +3472,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "All the addresses that the address group ID represents",
           "example": "无",
           "member": "string",
@@ -3684,7 +3481,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "All the protocols and ports that the service group ID represents",
           "example": "无",
           "member": "string",
@@ -3694,7 +3490,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Description",
           "example": "无",
           "member": "string",
@@ -3710,7 +3505,6 @@
       "document": "Details of an instance shard",
       "members": [
         {
-          "default": "",
           "document": "Used shard capacity",
           "member": "float",
           "name": "UsedVolume",
@@ -3719,7 +3513,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Shard ID",
           "member": "string",
           "name": "ReplicaSetId",
@@ -3728,7 +3521,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Shard name",
           "member": "string",
           "name": "ReplicaSetName",
@@ -3737,7 +3529,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Shard memory size in MB",
           "member": "uint64",
           "name": "Memory",
@@ -3746,7 +3537,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Shard disk size in MB",
           "member": "uint64",
           "name": "Volume",
@@ -3755,7 +3545,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Shard oplog size in MB",
           "member": "uint64",
           "name": "OplogSize",
@@ -3764,7 +3553,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of secondary nodes of a shard",
           "member": "uint64",
           "name": "SecondaryNum",
@@ -3773,7 +3561,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Shard physical ID",
           "member": "string",
           "name": "RealReplicaSetId",
@@ -3788,7 +3575,6 @@
       "document": "Slow log statistics of MongoDB database",
       "members": [
         {
-          "default": "",
           "document": "Slow log pattern",
           "member": "string",
           "name": "Pattern",
@@ -3797,7 +3583,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum execution time",
           "member": "uint64",
           "name": "MaxTime",
@@ -3806,7 +3591,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Average execution time",
           "member": "uint64",
           "name": "AverageTime",
@@ -3815,7 +3599,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of slow logs in this pattern",
           "member": "uint64",
           "name": "Total",
@@ -3830,7 +3613,6 @@
       "document": "Specifications of purchasable MongoDB instances",
       "members": [
         {
-          "default": "",
           "document": "Specification information identifier",
           "example": "mongo.HIO10G.128g",
           "member": "string",
@@ -3840,7 +3622,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Specification purchasable flag. Valid values: 0 (not purchasable), 1 (purchasable)",
           "example": "1",
           "member": "uint64",
@@ -3850,7 +3631,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Computing resource specification in terms of CPU core",
           "example": "2",
           "member": "uint64",
@@ -3860,7 +3640,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Memory size in MB",
           "example": "4096",
           "member": "uint64",
@@ -3870,7 +3649,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Default disk size in MB",
           "example": "3072000",
           "member": "uint64",
@@ -3880,7 +3658,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum disk size in MB",
           "example": "5120000",
           "member": "uint64",
@@ -3890,7 +3667,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Minimum disk size in MB",
           "example": "1536000",
           "member": "uint64",
@@ -3900,7 +3676,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum QPS",
           "example": "36000",
           "member": "uint64",
@@ -3910,7 +3685,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of connections",
           "example": "20000",
           "member": "uint64",
@@ -3920,7 +3694,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "MongoDB version information of an instance",
           "example": "MONGO_36_WT",
           "member": "string",
@@ -3930,7 +3703,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "MongoDB version number of an instance",
           "example": "4",
           "member": "uint64",
@@ -3940,7 +3712,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "MongoDB version number of an instance (short)",
           "example": "3.6",
           "member": "string",
@@ -3950,7 +3721,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Storage engine",
           "example": "WiredTiger",
           "member": "string",
@@ -3960,7 +3730,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster type. Valid values: 1 (sharding cluster), 0 (replica set cluster)",
           "example": "1",
           "member": "uint64",
@@ -3970,7 +3739,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Minimum number of secondary nodes in a replica set",
           "example": "3",
           "member": "uint64",
@@ -3980,7 +3748,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of secondary nodes in a replica set",
           "example": "7",
           "member": "uint64",
@@ -3990,7 +3757,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Minimum number of shards",
           "example": "2",
           "member": "uint64",
@@ -4000,7 +3766,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of shards",
           "example": "20",
           "member": "uint64",
@@ -4010,7 +3775,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Minimum number of secondary nodes in a shard",
           "example": "3",
           "member": "uint64",
@@ -4020,7 +3784,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of secondary nodes in a shard",
           "example": "7",
           "member": "uint64",
@@ -4030,7 +3793,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server type. Valid values: 0 (HIO), 4 (HIO10G)",
           "example": "4-HIO10G",
           "member": "string",
@@ -4046,7 +3808,6 @@
       "document": "Instance specification information",
       "members": [
         {
-          "default": "",
           "document": "Region information",
           "example": "ap-guangzhou",
           "member": "string",
@@ -4056,7 +3817,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "AZ information",
           "example": "ap-guangzhou-1",
           "member": "string",
@@ -4066,7 +3826,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Purchasable specification information",
           "example": "无",
           "member": "SpecItem",
@@ -4076,7 +3835,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether cross-AZ deployment is supported. Valid values: `1` (yes), `0` (no).",
           "example": "1",
           "member": "int64",
@@ -4092,7 +3850,6 @@
       "document": "Instance tag information",
       "members": [
         {
-          "default": "",
           "document": "Tag key",
           "member": "string",
           "name": "TagKey",
@@ -4101,7 +3858,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value",
           "member": "string",
           "name": "TagValue",

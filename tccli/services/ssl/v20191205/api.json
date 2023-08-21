@@ -276,7 +276,6 @@
       "document": "CancelCertificateOrder request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate ID",
           "member": "string",
@@ -815,7 +814,6 @@
       "document": "CreateCertificate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate product ID. `3`: SecureSite EV Pro; `4`: SecureSite EV; `5`: SecureSite OV Pro; `6`: SecureSite OV; `7`: SecureSite OV wildcard; `8`: GeoTrust EV; `9`: GeoTrust OV; `10`: GeoTrust OV wildcard; `11`: TrustAsia DV multi-domain; `12`: TrustAsia DV wildcard; `13`: TrustAsia OV wildcard D3; `14`: TrustAsia OV D3; `15`: TrustAsia OV multi-domain D3; `16`: TrustAsia EV D3; `17`: TrustAsia EV multi-domain D3; `18`: GlobalSign OV; `19`: GlobalSign OV wildcard; `20`: GlobalSign EV; `21`: TrustAsia OV wildcard multi-domain D3; `22`: GlobalSign OV multi-domain; `23`: GlobalSign OV wildcard multi-domain; `24`: GlobalSign EV multi-domain; `25` WoTrus DV; `26`: WoTrus DV multi-domain; `27`: WoTrus DV wildcard; `28`: WoTrus OV; `29`: WoTrus OV multi-domain; `30`: WoTrus OV wildcard; `31`: WoTrus EV; `32`: WoTrus EV multi-domain; `33`: DNSPod SM2 DV; `34`: DNSPod SM2 DV multi-domain; `35`: DNSPod SM2 DV wildcard; `37`: DNSPod SM2 OV; `38`: DNSPod SM2 OV multi-domain; `39`: DNSPod SM2 OV wildcard: `40`: DNSPod SM2 EV; `41`: DNSPod SM2 EV multi-domain; `42`: TrustAsia DV wildcard multi-domain.",
           "example": "25",
@@ -825,7 +823,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of domains associated with the certificate",
           "example": "1",
@@ -835,7 +832,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate validity period. Currently, you can only purchase 1-year certificates.",
           "example": "1",
@@ -883,7 +879,6 @@
       "document": "DeleteCertificate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate ID",
           "member": "string",
@@ -918,7 +913,6 @@
       "document": "DescribeCertificateDetail request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate ID",
           "example": "无",
@@ -1306,7 +1300,6 @@
       "document": "DescribeCertificateOperateLogs request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. The default value is 0.",
           "member": "uint64",
@@ -1315,7 +1308,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of requested logs. The default value is 20.",
           "member": "uint64",
@@ -1324,7 +1316,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time. The default value is 15 days ago.",
           "member": "datetime",
@@ -1333,7 +1324,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time. The default value is the current time.",
           "member": "datetime",
@@ -1384,7 +1374,6 @@
       "document": "DescribeCertificate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate ID",
           "example": "无",
@@ -1727,7 +1716,6 @@
       "document": "DescribeCertificates request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Pagination offset, starting from 0",
           "example": "0",
@@ -1737,7 +1725,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of entries per page. Default value: `20`. Maximum value: `1000`.",
           "example": "11",
@@ -1747,7 +1734,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Keyword for search, which can be a certificate ID, alias, or domain name, for example, a8xHcaIs",
           "example": "string",
@@ -1757,7 +1743,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate type. `CA`: client certificate; `SVR`: server certificate",
           "example": "CA",
@@ -1767,7 +1752,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID",
           "example": "1",
@@ -1777,7 +1761,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting by expiration time. `DESC`: descending; `ASC`: ascending",
           "example": "DESC ",
@@ -1787,7 +1770,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate status. `0`: Reviewing; `1`: Approved; `2`: Unapproved; `3`: Expired; `4`: DNS record added; `5`: Enterprise-grade certificate, pending submission; `6`: Canceling order; `7`: Canceled; `8`: Information submitted, pending confirmation letter upload; `9`: Revoking certificate; `10`: Revoked; `11`: Reissuing; `12`: Pending revocation confirmation letter upload; `13`: Pending information submission for the free certificate.",
           "example": "1",
@@ -1797,7 +1779,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the certificate can be deployed. `1`: yes; `0`: no",
           "example": "1",
@@ -1807,7 +1788,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to filter uploaded hosted certificates. `1`: Yes; `0`: No.",
           "example": "1",
@@ -1817,7 +1797,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to filter renewable certificates. `1`: Yes; `0`: No.",
           "example": "1",
@@ -1827,7 +1806,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter by source. `upload`: Uploaded certificate; `buy`: Tencent Cloud certificate. If this parameter is left empty, all certificates will be queried.",
           "example": "upload",
@@ -1837,7 +1815,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to filter Chinese SM certificates. `1`: Yes; `0`: No.",
           "example": "1",
@@ -1847,7 +1824,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to filter expiring certificates. `1`: Yes; `0`: No.",
           "example": "0",
@@ -1895,7 +1871,6 @@
       "document": "DownloadCertificate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate ID",
           "member": "string",
@@ -1938,7 +1913,6 @@
       "document": "Content of the `DvAuthDetail` parameter returned by `DescribeCertificates`",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "DV authentication key\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -1948,7 +1922,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DV authentication value\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -1958,7 +1931,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name of the DV authentication value\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -1968,7 +1940,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Path of the DV authentication value\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -1978,7 +1949,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DV authentication sub-domain name\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -1988,7 +1958,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DV authentication information\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "DvAuths",
@@ -2004,7 +1973,6 @@
       "document": "Content of the `DvAuths` parameter",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "DV authentication key\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2014,7 +1982,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DV authentication value\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2024,7 +1991,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name of the DV authentication value\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2034,7 +2000,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Path of the DV authentication value\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2044,7 +2009,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DV authentication sub-domain name\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2054,7 +2018,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DV authentication type\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2070,7 +2033,6 @@
       "document": "ModifyCertificateAlias request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate ID",
           "member": "string",
@@ -2079,7 +2041,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alias",
           "member": "string",
@@ -2114,7 +2075,6 @@
       "document": "ModifyCertificateProject request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID list of certificates whose projects need to be modified. A maximum of 100 certificate IDs are supported.",
           "member": "string",
@@ -2123,7 +2083,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID",
           "member": "uint64",
@@ -2166,7 +2125,6 @@
       "document": "Certificate operation logs",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Action performed on logs",
           "member": "string",
@@ -2176,7 +2134,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time when the action is performed",
           "member": "datetime",
@@ -2192,7 +2149,6 @@
       "document": "List of prereview information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of years of the certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -2203,7 +2159,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Current year of the certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -2214,7 +2169,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate prereview manager ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -2231,7 +2185,6 @@
       "document": "Content of the `ProjectInfo` parameter. `ProjectInfo` is an element of `Certificates` array which is returned by `DescribeCertificates`.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Project name\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2241,7 +2194,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "UIN of the project creator\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
@@ -2251,7 +2203,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2261,7 +2212,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Brief project information\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2271,7 +2221,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User UIN\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
@@ -2281,7 +2230,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Project ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2297,7 +2245,6 @@
       "document": "ReplaceCertificate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate ID",
           "member": "string",
@@ -2306,7 +2253,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation",
           "member": "string",
@@ -2315,7 +2261,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type. `original`: original certificate CSR; `upload`: uploaded manually; `online`: generated online. The default value is original.",
           "member": "string",
@@ -2324,7 +2269,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CSR content",
           "member": "string",
@@ -2333,7 +2277,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Password of the key",
           "member": "string",
@@ -2342,7 +2285,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Reissue reason",
           "member": "string",
@@ -2377,7 +2319,6 @@
       "document": "Root certificate",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Chinese SM signature certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "asd",
@@ -2388,7 +2329,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Chinese SM encryption certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "asd",
@@ -2399,7 +2339,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Standard certificate\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "asc",
@@ -2416,7 +2355,6 @@
       "document": "SubmitCertificateInformation request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate ID",
           "member": "string",
@@ -2425,7 +2363,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CSR generation mode. `online`: generated online; `parse`: uploaded manually",
           "member": "string",
@@ -2434,7 +2371,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Uploaded CSR content",
           "member": "string",
@@ -2443,7 +2379,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name bound with the certificate",
           "member": "string",
@@ -2452,7 +2387,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Uploaded domain name array (can be uploaded for a multi-domain certificate)",
           "member": "string",
@@ -2461,7 +2395,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Password of the private key",
           "member": "string",
@@ -2470,7 +2403,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Organization name",
           "member": "string",
@@ -2479,7 +2411,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Division name",
           "member": "string",
@@ -2488,7 +2419,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Detailed address of the organization",
           "member": "string",
@@ -2497,7 +2427,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Country where the organization is located, for example, CN (China)",
           "member": "string",
@@ -2506,7 +2435,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "City where the organization is located",
           "member": "string",
@@ -2515,7 +2443,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Province where the organization is located",
           "member": "string",
@@ -2524,7 +2451,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Postal code of the organization",
           "member": "string",
@@ -2533,7 +2459,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Area code of the fixed-line phone number of the organization",
           "member": "string",
@@ -2542,7 +2467,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Fixed-line phone number of the organization",
           "member": "string",
@@ -2551,7 +2475,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate validation method",
           "member": "string",
@@ -2560,7 +2483,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Last name of the administrator",
           "member": "string",
@@ -2569,7 +2491,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "First name of the administrator",
           "member": "string",
@@ -2578,7 +2499,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Mobile number of the administrator",
           "member": "string",
@@ -2587,7 +2507,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Email of the administrator",
           "member": "string",
@@ -2596,7 +2515,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Position of the administrator",
           "member": "string",
@@ -2605,7 +2523,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Last name of the contact",
           "member": "string",
@@ -2614,7 +2531,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "First name of the contact",
           "member": "string",
@@ -2623,7 +2539,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Email of the contact",
           "member": "string",
@@ -2632,7 +2547,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Mobile number of the contact",
           "member": "string",
@@ -2641,7 +2555,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Position of the contact",
           "member": "string",
@@ -2676,7 +2589,6 @@
       "document": "Content of the `SubmittedData` parameter returned by `DescribeCertificates`",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "CSR type. `online`: CSR generated online; `parse`: CSR pasted\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2686,7 +2598,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CSR content\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2696,7 +2607,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name information\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2706,7 +2616,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DNS information\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2716,7 +2625,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Password of the private key\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2726,7 +2634,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Enterprise or unit name\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2736,7 +2643,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Division\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2746,7 +2652,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Address\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2756,7 +2661,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Country\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2766,7 +2670,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "City\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2776,7 +2679,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Province\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2786,7 +2688,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Postal code\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2796,7 +2697,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Area code of the fixed-line phone number\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2806,7 +2706,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Fixed-line phone number\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2816,7 +2715,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "First name of the administrator\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2826,7 +2724,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Last name of the administrator\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2836,7 +2733,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Phone number of the administrator\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2846,7 +2742,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Email of the administrator\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2856,7 +2751,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Position of the administrator\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2866,7 +2760,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "First name of the contact\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2876,7 +2769,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Last name of the contact\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2886,7 +2778,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Phone number of the contact\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2896,7 +2787,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Email of the contact\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2906,7 +2796,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Position of the contact\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2916,7 +2805,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Validation type\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2932,7 +2820,6 @@
       "document": "Tag",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Tag key",
           "member": "string",
@@ -2942,7 +2829,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag value",
           "member": "string",
@@ -3057,7 +2943,6 @@
       "document": "UploadConfirmLetter request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate ID",
           "member": "string",
@@ -3066,7 +2951,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Base64-encoded confirmation letter file, which must be a JPG, JPEG, PNG, or PDF file of 1 KB to 1.4 MB",
           "member": "string",

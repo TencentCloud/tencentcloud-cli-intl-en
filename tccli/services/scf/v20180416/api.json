@@ -305,7 +305,6 @@
       "document": "Version alias of function",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Master version pointed to by the alias",
           "member": "string",
@@ -315,7 +314,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alias name",
           "member": "string",
@@ -325,7 +323,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Routing information of alias\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "RoutingConfig",
@@ -335,7 +332,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Description\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -345,7 +341,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "datetime",
@@ -355,7 +350,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Update time\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "datetime",
@@ -371,7 +365,6 @@
       "document": "Async event",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Invocation request ID",
           "example": "xxxx-yyyy-zzzz",
@@ -382,7 +375,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Invocation type",
           "example": "TRIGGER_TIMER",
@@ -393,7 +385,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function version",
           "example": "$LATEST",
@@ -404,7 +395,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Event status. Values: `RUNNING`; `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed)",
           "example": "FINISHED ",
@@ -415,7 +405,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Invocation start time in the format of \"%Y-%m-%d %H:%M:%S.%f\"",
           "example": "2021-01-01 00:00:00.001",
@@ -426,7 +415,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Invocation end time in the format of \"%Y-%m-%d %H:%M:%S.%f\"",
           "example": "2021-01-01 00:00:00.002",
@@ -443,7 +431,6 @@
       "document": "Async event status",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Async event status. Values: `RUNNING` (running); `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed).",
           "example": "RUNNING",
@@ -454,7 +441,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Request status code",
           "example": "200",
@@ -465,7 +451,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Async execution request ID",
           "example": "ea7bb7c7-c312-4255-b7dc-b2bf0cfda10e",
@@ -482,7 +467,6 @@
       "document": "Async retry configuration details of function",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Async retry configuration of function upon user error",
           "member": "RetryConfig",
@@ -492,7 +476,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message retention period",
           "member": "int64",
@@ -508,7 +491,6 @@
       "document": "Function code",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Object bucket name (enter the custom part of the bucket name without `-appid`)",
           "example": "BucketName",
@@ -519,7 +501,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "File path of code package stored in COS, which should start with “/”",
           "example": "ObjectName",
@@ -530,7 +511,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter contains a .zip file (up to 50 MB) of the function code file and its dependencies. When this API is used, the content of the .zip file needs to be Base64-encoded",
           "example": "base64编码",
@@ -541,7 +521,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "COS region. For Beijing regions, you need to import `ap-beijing`. For Beijing Region 1, you need to input `ap-beijing-1`. For other regions, no import is required.",
           "example": "ap-chongqing",
@@ -552,7 +531,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "`DemoId` is required if Demo is used for the creation.",
           "example": "Demo的Id",
@@ -563,7 +541,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "`TempCosObjectName` is required if TempCos is used for the creation.",
           "example": "TempCosObjectName",
@@ -574,7 +551,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Disused) Git address",
           "example": "Git地址",
@@ -585,7 +561,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Disused) Git username",
           "example": "Git用户名",
@@ -596,7 +571,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Disused) Git password",
           "example": "Git密码",
@@ -607,7 +581,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Disused) Git password after encryption. It’s usually not required.",
           "example": "加密后的Git密码",
@@ -618,7 +591,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Disused) Git branch",
           "example": "Git分支",
@@ -629,7 +601,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Disused) Directory to the codes in the Git repository. ",
           "example": "代码在Git仓库中的路径",
@@ -640,7 +611,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Disused) ",
           "example": "Git拉取的版本",
@@ -651,7 +621,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Disused) Git username after encryption. It’s usually not required.",
           "example": "加密后的Git用户名",
@@ -662,7 +631,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "TCR image configurations",
           "example": "TCR镜像配置",
@@ -679,7 +647,6 @@
       "document": "CopyFunction request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the function to be replicated",
           "member": "string",
@@ -688,7 +655,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the new function",
           "member": "string",
@@ -697,7 +663,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace of the function to be replicated. The default value is `default`.",
           "member": "string",
@@ -706,7 +671,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace of the replicated function. The default value is default.",
           "member": "string",
@@ -715,7 +679,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Description of the new function",
           "member": "string",
@@ -724,7 +687,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region of the target of the function replication. If the value is not set, the current region is used by default.",
           "member": "string",
@@ -733,7 +695,6 @@
           "type": "string"
         },
         {
-          "default": "FALSE",
           "disabled": false,
           "document": "It specifies whether to replace the function with the same name in the target namespace. The default option is `FALSE`.\n(Note: The `TRUE` option results in deletion of the function in the target namespace. Please operate with caution.)\nTRUE: Replaces the function.\nFALSE: Does not replace the function.",
           "member": "bool",
@@ -742,7 +703,6 @@
           "type": "bool"
         },
         {
-          "default": "TRUE",
           "disabled": false,
           "document": "It specifies whether to replicate the function attributes, including environment variables, memory, timeout, function description, labels, and VPC. The default value is `TRUE`.\nTRUE: Replicates the function configuration.\nFALSE: Does not replicate the function configuration.",
           "member": "bool",
@@ -769,7 +729,6 @@
       "document": "CreateAlias request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Alias name, which must be unique in the function, can contain 1 to 64 letters, digits, `_`, and `-`, and must begin with a letter",
           "member": "string",
@@ -778,7 +737,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "member": "string",
@@ -787,7 +745,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Master version pointed to by the alias",
           "member": "string",
@@ -796,7 +753,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace",
           "member": "string",
@@ -805,7 +761,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Request routing configuration of alias",
           "member": "RoutingConfig",
@@ -814,7 +769,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alias description",
           "member": "string",
@@ -841,7 +795,6 @@
       "document": "CreateNamespace request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name",
           "member": "string",
@@ -850,7 +803,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace description",
           "member": "string",
@@ -984,7 +936,6 @@
       "document": "DeleteAlias request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "member": "string",
@@ -993,7 +944,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alias name",
           "member": "string",
@@ -1002,7 +952,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace",
           "member": "string",
@@ -1029,7 +978,6 @@
       "document": "DeleteFunction request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the function to be deleted",
           "example": "<FunctionName>",
@@ -1039,7 +987,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace",
           "example": "\"\"",
@@ -1049,7 +996,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the version to delete. All versions are deleted if it’s left empty.",
           "example": "\"\"",
@@ -1077,7 +1023,6 @@
       "document": "DeleteLayerVersion request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Layer name",
           "member": "string",
@@ -1086,7 +1031,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Version number",
           "member": "int64",
@@ -1113,7 +1057,6 @@
       "document": "DeleteNamespace request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name",
           "member": "string",
@@ -1140,7 +1083,6 @@
       "document": "DeleteProvisionedConcurrencyConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the function for which to delete the provisioned concurrency",
           "member": "string",
@@ -1149,7 +1091,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function version number",
           "member": "string",
@@ -1158,7 +1099,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace. Default value: `default`",
           "member": "string",
@@ -1185,7 +1125,6 @@
       "document": "DeleteReservedConcurrencyConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the function of which you want to delete the reserved quota",
           "example": "test",
@@ -1195,7 +1134,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace. Default value: `default`",
           "example": "default",
@@ -1223,7 +1161,6 @@
       "document": "DeleteTrigger request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "example": "ledDummyAPITest",
@@ -1233,7 +1170,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the trigger to be deleted",
           "example": "trigger_name",
@@ -1243,7 +1179,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of the trigger to be deleted. Currently, COS, CMQ, timer, and ckafka triggers are supported.",
           "example": "timer",
@@ -1253,7 +1188,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace",
           "example": "default",
@@ -1263,7 +1197,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This field is required if a COS trigger is to be deleted. It stores the data {\"event\":\"cos:ObjectCreated:*\"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.",
           "example": "无",
@@ -1273,7 +1206,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.",
           "example": "$DEFAULT",
@@ -1301,7 +1233,6 @@
       "document": "Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.\nIf more than one filter exists, the logical relationship between these filters is `AND`.\nIf multiple values exist in one filter, the logical relationship between these values under the same filter is `OR`.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Fields to be filtered. Up to 10 conditions allowed.\nValues of `Name`: `VpcId`, `SubnetId`, `ClsTopicId`, `ClsLogsetId`, `Role`, `CfsId`, `CfsMountInsId`, `Eip`. Values limit: 1.\nName options: Status, Runtime, FunctionType, PublicNetStatus, AsyncRunEnable, TraceEnable. Values limit: 20.\nWhen `Name` is `Runtime`, `CustomImage` refers to the image type function ",
           "example": "Status",
@@ -1312,7 +1243,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter values of the field",
           "example": "[\"Creating\", \"Updating\", \"Deleting\"]",
@@ -1495,7 +1425,6 @@
       "document": "Log information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "member": "string",
@@ -1505,7 +1434,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Return value after the function is executed",
           "member": "string",
@@ -1515,7 +1443,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "RequestId corresponding to the executed function",
           "member": "string",
@@ -1525,7 +1452,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the function execution",
           "member": "datetime",
@@ -1535,7 +1461,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function execution result. `0` indicates successful execution and other values indicate failure.",
           "member": "int64",
@@ -1545,7 +1470,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It specifies whether the function invocation is finished. `1` indicates execution completion and other values indicate that exceptions occurred during the invocation.",
           "member": "int64",
@@ -1555,7 +1479,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Duration of the function execution. The unit is millisecond (ms).",
           "member": "float",
@@ -1565,7 +1488,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function billing duration. The unit is millisecond (ms). The value is rounded up to a multiple of 100 ms.",
           "member": "int64",
@@ -1575,7 +1497,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Actual memory size used during the function execution. The unit is byte.",
           "member": "int64",
@@ -1585,7 +1506,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function execution logs",
           "member": "string",
@@ -1595,7 +1515,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log level",
           "member": "string",
@@ -1605,7 +1524,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log source",
           "member": "string",
@@ -1615,7 +1533,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of retries",
           "member": "uint64",
@@ -1631,7 +1548,6 @@
       "document": "Function version information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function version name",
           "example": "\"\"",
@@ -1642,7 +1558,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Version description\nNote: This field may return null, indicating that no valid values is found.",
           "example": "\"\"",
@@ -1653,7 +1568,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The creation time\nNote: This field may return null, indicating that no valid value was found.",
           "example": "\"\"",
@@ -1664,7 +1578,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Update time\nNote: This field may return null, indicating that no valid value was found.",
           "example": "\"\"",
@@ -1675,7 +1588,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Version status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"\"",
@@ -1729,7 +1641,6 @@
       "document": "GetAlias request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "member": "string",
@@ -1738,7 +1649,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alias name",
           "member": "string",
@@ -1747,7 +1657,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace",
           "member": "string",
@@ -1822,7 +1731,6 @@
       "document": "GetAsyncEventStatus request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the async execution request",
           "example": "5f825fd3-a59d-4879-aa28-3ac967c128885f825fd3-a59d-4879-aa28-3ac9",
@@ -1860,7 +1768,6 @@
       "document": "GetFunctionAddress request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "member": "string",
@@ -1869,7 +1776,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function version",
           "member": "string",
@@ -1878,7 +1784,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace",
           "member": "string",
@@ -1921,7 +1826,6 @@
       "document": "GetFunctionEventInvokeConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "example": "Unzip-1609933864",
@@ -1931,7 +1835,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace. Default value: default",
           "example": "default",
@@ -1941,7 +1844,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function version. Default value: $LATEST",
           "example": "$LATEST",
@@ -1979,7 +1881,6 @@
       "document": "GetFunctionLogs request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name.\n- To ensure the compatibility of the [`GetFunctionLogs`](https://intl.cloud.tencent.com/document/product/583/18583?from_cn_redirect=1) API, the input parameter `FunctionName` is optional, but we recommend you enter it; otherwise, log acquisition may fail.\n- After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875?from_cn_redirect=1) to get the best log retrieval experience.",
           "example": "helloworld-demo",
@@ -1989,7 +1890,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.",
           "example": "0",
@@ -1999,7 +1899,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Length of the return data. The addition of `Offset` and `Limit` cannot exceed 10,000.",
           "example": "20",
@@ -2009,7 +1908,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It specifies whether to sort the logs in an ascending or descending order. The value is `desc` or `asc`.",
           "example": "desc",
@@ -2019,7 +1917,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It specifies the sorting order of the logs based on a specified field, such as `function_name`, `duration`, `mem_usage`, and `start_time`.",
           "example": "function_name",
@@ -2029,7 +1926,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log filter used to identify whether to return logs of successful or failed requests. `filter.RetCode=not0` indicates that only the logs of failed requests will be returned. `filter.RetCode=is0` indicates that only the logs of successful requests will be returned. If this parameter is left blank, all logs will be returned. ",
           "example": "not0",
@@ -2039,7 +1935,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace",
           "example": "default",
@@ -2049,7 +1944,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function version",
           "example": "$LATEST",
@@ -2059,7 +1953,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "RequestId corresponding to the executed function",
           "example": "d1922633-55cf-443a-a6cc-0788ce93df06",
@@ -2069,7 +1962,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query date, for example, 2017-05-16 20:00:00. The date must be within one day of the end time.",
           "example": "2017-05-16 20:00:00",
@@ -2079,7 +1971,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query date, for example, 2017-05-16 20:59:59. The date must be within one day of the start time.",
           "example": "2017-05-16 20:59:59",
@@ -2089,7 +1980,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This field is disused.",
           "example": "无",
@@ -2141,7 +2031,6 @@
       "document": "GetLayerVersion request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Layer name",
           "member": "string",
@@ -2150,7 +2039,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Version number",
           "member": "int64",
@@ -2258,7 +2146,6 @@
       "document": "GetProvisionedConcurrencyConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the function for which to get the provisioned concurrency details.",
           "member": "string",
@@ -2267,7 +2154,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace. Default value: default.",
           "member": "string",
@@ -2276,7 +2162,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function version number. If this parameter is left empty, the provisioned concurrency information of all function versions will be returned.",
           "member": "string",
@@ -2319,7 +2204,6 @@
       "document": "GetRequestStatus request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "example": "hello",
@@ -2329,7 +2213,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the request to be queried",
           "example": "无",
@@ -2339,7 +2222,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace",
           "example": "无",
@@ -2349,7 +2231,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the query, for example `2017-05-16 20:00:00`. If it’s left empty, it defaults to 15 minutes before the current time.",
           "example": "2017-05-16 20:00:00",
@@ -2359,7 +2240,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time of the query. such as `2017-05-16 20:59:59`. If `StartTime` is not specified, `EndTime` defaults to the current time. If `StartTime` is specified, `EndTime` is required, and it need to be later than the `StartTime`.",
           "example": "2017-05-16 20:59:59",
@@ -2407,7 +2287,6 @@
       "document": "GetReservedConcurrencyConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the function of which you want to obtain the reserved quota",
           "example": "test",
@@ -2417,7 +2296,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace. Default value: default.",
           "example": "default",
@@ -2541,7 +2419,6 @@
       "document": "InvokeFunction request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "example": "helloworld",
@@ -2551,7 +2428,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Version or alias of the function. It defaults to `$DEFAULT`.",
           "example": "$LATEST",
@@ -2561,7 +2437,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function running parameter, which is in the JSON format. Maximum parameter size is 6 MB. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).",
           "example": "{\\\"key\\\":\\\"value\\\"}",
@@ -2571,7 +2446,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the response will contain the corresponding function execution log (up to 4KB).",
           "example": "Tail",
@@ -2581,7 +2455,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace. `default` is used if it’s left empty.",
           "example": "default",
@@ -2591,7 +2464,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Traffic routing config in json format, e.g., {\"k\":\"v\"}. Please note that both \"k\" and \"v\" must be strings. Up to 1024 bytes allowed.",
           "example": "{\\\"key\\\":\\\"value\\\"}",
@@ -2629,7 +2501,6 @@
       "document": "Invoke request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "example": "helloworld",
@@ -2639,7 +2510,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Fill in `RequestResponse` for synchronized invocations (default and recommended) and `Event` for asychronized invocations. Note that for synchronized invocations, the max timeout period is 300s. Choose asychronized invocations if the required timeout period is longer than 300 seconds. You can also use [InvokeFunction](https://intl.cloud.tencent.com/document/product/583/58400?from_cn_redirect=1) for synchronized invocations. ",
           "example": "RequestResponse",
@@ -2649,7 +2519,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The version or alias of the triggered function. It defaults to $LATEST",
           "example": "$LATEST",
@@ -2659,7 +2528,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function running parameter, which is in the JSON format. The maximum parameter size is 6 MB for synchronized invocations and 128KB for asynchronized invocations. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).",
           "example": "{\\\"key\\\":\\\"value\\\"}",
@@ -2669,7 +2537,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Null for async invocations",
           "example": "Tail",
@@ -2679,7 +2546,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace",
           "example": "default",
@@ -2689,7 +2555,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Traffic routing config in json format, e.g., {\"k\":\"v\"}. Please note that both \"k\" and \"v\" must be strings. Up to 1024 bytes allowed.",
           "example": "{\\\"key\\\":\\\"value\\\"}",
@@ -2811,7 +2676,6 @@
       "document": "Limit information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Limit of namespace quantity",
           "member": "int64",
@@ -2821,7 +2685,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace limit information",
           "member": "NamespaceLimit",
@@ -2837,7 +2700,6 @@
       "document": "ListAliases request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "member": "string",
@@ -2846,7 +2708,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace",
           "member": "string",
@@ -2855,7 +2716,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "If this parameter is provided, only aliases associated with this function version will be returned.",
           "member": "string",
@@ -2864,7 +2724,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data offset. Default value: 0",
           "member": "string",
@@ -2873,7 +2732,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20",
           "member": "string",
@@ -2916,7 +2774,6 @@
       "document": "ListAsyncEvents request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "example": "helloworld",
@@ -2926,7 +2783,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace",
           "example": "default",
@@ -2936,7 +2792,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter (function version)",
           "example": "$LATEST",
@@ -2946,7 +2801,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter (invocation type list)",
           "example": "[COS]",
@@ -2956,7 +2810,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter (event status list)",
           "example": "RUNNING",
@@ -2966,7 +2819,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter (left-closed-right-open range of execution start time)",
           "example": "无",
@@ -2976,7 +2828,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter (left-closed-right-open range of execution end time)",
           "example": "无",
@@ -2986,7 +2837,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid values: ASC, DESC. Default value: DESC",
           "example": "DESC",
@@ -2996,7 +2846,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid values: StartTime, EndTime. Default value: StartTime",
           "example": "StartTime",
@@ -3006,7 +2855,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data offset. Default value: 0",
           "example": "0",
@@ -3016,7 +2864,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100",
           "example": "20",
@@ -3026,7 +2873,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter (event invocation request ID)",
           "example": "5f825fd3-a59d-4879-aa28-3ac967c128885f825fd3-a59d-4879-aa28-3ac9",
@@ -3074,7 +2920,6 @@
       "document": "ListFunctions request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.",
           "member": "string",
@@ -3083,7 +2928,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`, and `FunctionName`.",
           "member": "string",
@@ -3092,7 +2936,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data offset. The default value is `0`.",
           "member": "int64",
@@ -3101,7 +2944,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Return data length. The default value is `20`.",
           "member": "int64",
@@ -3110,7 +2952,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It specifies whether to support fuzzy matching for the function name.",
           "member": "string",
@@ -3119,7 +2960,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace",
           "member": "string",
@@ -3128,7 +2968,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function description. Fuzzy search is supported.",
           "member": "string",
@@ -3137,7 +2976,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters\n- tag:tag-key - String - Required: No - Filtering criteria based on tag-key - value pairs. Replace `tag-key` with a specific tag-key.\n\nThe maximum number of `Filters` for each request is 10, and that of `Filter.Values` is 5.",
           "member": "Filter",
@@ -3180,7 +3018,6 @@
       "document": "ListLayerVersions request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Layer name",
           "member": "string",
@@ -3189,7 +3026,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Compatible runtimes",
           "member": "string",
@@ -3224,7 +3060,6 @@
       "document": "ListLayers request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Compatible runtimes",
           "member": "string",
@@ -3233,7 +3068,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset",
           "member": "int64",
@@ -3242,7 +3076,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Limit",
           "member": "int64",
@@ -3251,7 +3084,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query key, which fuzzily matches the name",
           "member": "string",
@@ -3294,7 +3126,6 @@
       "document": "ListNamespaces request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Return data length. The default value is `20`.",
           "example": "1",
@@ -3304,7 +3135,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data offset. The default value is `0`.",
           "example": "0",
@@ -3314,7 +3144,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It specifies the sorting order of the results according to a specified field, such as `Name` and `Updatetime`.",
           "example": "Name",
@@ -3324,7 +3153,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.",
           "example": "DESC",
@@ -3334,7 +3162,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the range and keyword for search. The value of `Key` can be `Namespace` or `Description`. Multiple AND conditions can be specified.",
           "example": "无",
@@ -3475,7 +3302,6 @@
       "document": "ListVersionByFunction request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function Name",
           "member": "string",
@@ -3484,7 +3310,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The namespace where the function locates",
           "member": "string",
@@ -3493,7 +3318,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data offset. The default value is `0`.",
           "member": "uint64",
@@ -3502,7 +3326,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Return data length. The default value is `20`.",
           "member": "uint64",
@@ -3511,7 +3334,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.",
           "member": "string",
@@ -3520,7 +3342,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`.",
           "member": "string",
@@ -3571,7 +3392,6 @@
       "document": "Log filtering criteria, which is for distinguishing between logs of successful and failed execution",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Values of `filter.RetCode` include:\nnot0, indicating that only logs of failed execution will be returned.\nis0, indicating that only logs of successful execution will be returned.\nTimeLimitExceeded, indicating that logs of function invocations which timed out will be returned.\nResourceLimitExceeded, indicating that logs of function invocations during which resources exceeded the upper limit will be returned.\nUserCodeException, indicating that logs of function invocations during which a user code error occurred will be returned.\nBlank, indicating that all logs will be returned.",
           "member": "string",
@@ -3587,7 +3407,6 @@
       "document": "Log search context",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Offset.",
           "member": "string",
@@ -3597,7 +3416,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log record number",
           "member": "uint64",
@@ -3607,7 +3425,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log keyword",
           "member": "string",
@@ -3617,7 +3434,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log type. The value is `Application` (default) or `Platform`.",
           "member": "string",
@@ -3633,7 +3449,6 @@
       "document": "Namespace",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time of the namespace",
           "member": "datetime",
@@ -3643,7 +3458,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Modification time of the namespace",
           "member": "datetime",
@@ -3653,7 +3467,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace description",
           "member": "string",
@@ -3663,7 +3476,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name",
           "member": "string",
@@ -3673,7 +3485,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The default value is default. TCB indicates that the namespace is developed and created through the mini-program cloud.",
           "member": "string",
@@ -3689,7 +3500,6 @@
       "document": "Namespace limit",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of functions",
           "member": "int64",
@@ -3699,7 +3509,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Trigger information",
           "member": "TriggerCount",
@@ -3709,7 +3518,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name",
           "member": "string",
@@ -3719,7 +3527,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Concurrency",
           "member": "int64",
@@ -3729,7 +3536,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Timeout limit",
           "member": "int64",
@@ -3739,7 +3545,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Test event limit\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -3749,7 +3554,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Initialization timeout limit",
           "member": "int64",
@@ -3759,7 +3563,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Limit of async retry attempt quantity",
           "member": "int64",
@@ -3769,7 +3572,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Lower limit of message retention time for async retry",
           "member": "int64",
@@ -3779,7 +3581,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Upper limit of message retention time for async retry",
           "member": "int64",
@@ -3795,7 +3596,6 @@
       "document": "Namespace usage information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function array",
           "example": "func1",
@@ -3806,7 +3606,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name",
           "example": "default",
@@ -3817,7 +3616,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of functions in namespace",
           "example": "1",
@@ -3828,7 +3626,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total memory quota of the namespace\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
@@ -3839,7 +3636,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Concurrency usage of the namespace\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "0",
@@ -3850,7 +3646,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Provisioned concurrency usage of the namespace\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "0",
@@ -3867,7 +3662,6 @@
       "document": "PublishLayerVersion request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Layer name, which can contain 1-64 English letters, digits, hyphens, and underscores, must begin with a letter, and cannot end with a hyphen or underscore",
           "member": "string",
@@ -3876,7 +3670,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Runtimes compatible with layer. Multiple choices are allowed. The valid values of this parameter correspond to the valid values of the `Runtime` of the function.",
           "member": "string",
@@ -3885,7 +3678,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Layer file source or content",
           "member": "Code",
@@ -3894,7 +3686,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Layer version description",
           "member": "string",
@@ -3903,7 +3694,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Software license of layer",
           "member": "string",
@@ -3938,7 +3728,6 @@
       "document": "PublishVersion request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the released function",
           "member": "string",
@@ -3947,7 +3736,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function description",
           "member": "string",
@@ -3956,7 +3744,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace",
           "member": "string",
@@ -4055,7 +3842,6 @@
       "document": "PutProvisionedConcurrencyConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the function for which to set the provisioned concurrency",
           "example": "test",
@@ -4065,7 +3851,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function version number. Note: the `$LATEST` version does not support provisioned concurrency",
           "example": "1",
@@ -4075,7 +3860,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Provisioned concurrency amount. Note: there is an upper limit for the sum of provisioned concurrency amounts of all versions, which currently is the function's maximum concurrency quota minus 100",
           "example": "10",
@@ -4085,7 +3869,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace. Default value: `default`",
           "example": "default",
@@ -4095,7 +3878,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Scheduled provisioned concurrency scaling action",
           "example": "无",
@@ -4105,7 +3887,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the provisioned concurrency type.\n`Default`: Static provisioned concurrency. \n`ConcurrencyUtilizationTracking`: Scales the concurrency automatically according to the concurrency utilization.\nIf `ConcurrencyUtilizationTracking` is passed in, \n\n`TrackingTarget`, `MinCapacity` and `MaxCapacity` are required, and `VersionProvisionedConcurrencyNum` must be `0`. ",
           "example": "\"\"",
@@ -4115,7 +3896,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The target concurrency utilization. Range: (0,1) (two decimal places)",
           "example": "0",
@@ -4125,7 +3905,6 @@
           "type": "float"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The minimum number of instances. It can not be smaller than `1`.",
           "example": "0",
@@ -4135,7 +3914,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of instances",
           "example": "0",
@@ -4163,7 +3941,6 @@
       "document": "PutReservedConcurrencyConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the function of which you want to configure the reserved quota",
           "example": "test",
@@ -4173,7 +3950,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Reserved memory quota of the function. Note: the upper limit for the total reserved quota of the function is the user's total concurrency memory minus 12800",
           "example": "12800",
@@ -4183,7 +3959,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace. Default value: `default`",
           "example": "default",
@@ -4211,7 +3986,6 @@
       "document": "PutTotalConcurrencyConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Account concurrency memory quota. Note: the lower limit for the account concurrency memory quota is the user's total concurrency memory used + 12800",
           "member": "uint64",
@@ -4220,7 +3994,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace. Default value: `default`",
           "member": "string",
@@ -4247,7 +4020,6 @@
       "document": "Running status of the function",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "example": "\"\"",
@@ -4258,7 +4030,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Return value after the function is executed",
           "example": "\"\"",
@@ -4269,7 +4040,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Request ID",
           "example": "\"\"",
@@ -4280,7 +4050,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Request start time",
           "example": "\"\"",
@@ -4291,7 +4060,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Result of the request. `0`: succeeded, `1`: running, `-1`: exception",
           "example": "0",
@@ -4302,7 +4070,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time consumed for the request in ms",
           "example": "0",
@@ -4313,7 +4080,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time consumed by the request in MB",
           "example": "0",
@@ -4324,7 +4090,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Retry Attempts",
           "example": "0",
@@ -4341,7 +4106,6 @@
       "document": "Response of the executed function",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "It indicates the log output during the function execution. Null is returned for asynchronous invocations.",
           "example": "\"\"",
@@ -4352,7 +4116,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It indicates the response from the executed function. Null is returned for asynchronous invocations.",
           "example": "\"hello from scf\"",
@@ -4363,7 +4126,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It indicates the error message of the executed function. Null is returned for asynchronous invocations.",
           "example": "\" \"",
@@ -4374,7 +4136,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It indicates the memory size (in bytes) when the function is running. Null is returned for asynchronous invocations.",
           "example": "32",
@@ -4385,7 +4146,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It indicates the duration (in milliseconds) required for running the function. Null is returned for asynchronous invocations.",
           "example": "100",
@@ -4396,7 +4156,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It indicates the billing duration (in milliseconds) for the function. Null is returned for asynchronous invocations.",
           "example": "100",
@@ -4407,7 +4166,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the executed function",
           "example": "c2af8a64-c922-4d55-aee0-bd86a5c2cd12",
@@ -4418,7 +4176,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The [status code](https://intl.cloud.tencent.com/document/product/583/42611?from_cn_redirect=1) of the request. It’s not available for `Invoke` API. ",
           "example": "200",
@@ -4435,7 +4192,6 @@
       "document": "Async retry configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Number of retry attempts",
           "member": "int64",
@@ -4451,7 +4207,6 @@
       "document": "Version routing configuration of alias",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Additional version with random weight-based routing",
           "member": "VersionWeight",
@@ -4461,7 +4216,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Additional version with rule-based routing",
           "member": "VersionMatch",
@@ -4477,7 +4231,6 @@
       "document": "Key-value condition for keyword search",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Search range",
           "member": "string",
@@ -4487,7 +4240,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Keyword for search",
           "member": "string",
@@ -4503,7 +4255,6 @@
       "document": "State reason description",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Error code",
           "member": "string",
@@ -4513,7 +4264,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Error message",
           "member": "string",
@@ -4529,7 +4279,6 @@
       "document": "Function tag",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Tag key",
           "member": "string",
@@ -4539,7 +4288,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag value",
           "member": "string",
@@ -4555,7 +4303,6 @@
       "document": "TerminateAsyncEvent request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "example": "helloworld",
@@ -4565,7 +4312,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Terminated invocation request ID",
           "example": "5f825fd3-a59d-4879-aa28-3ac967c128885f825fd3-a59d-4879-aa28-3ac9",
@@ -4575,7 +4321,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace",
           "example": "default",
@@ -4585,7 +4330,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable grace shutdown. If it’s `true`, a `SIGTERM` signal is sent to the specified request. See [Sending termination signal](https://intl.cloud.tencent.com/document/product/583/63969?from_cn_redirect=1#.E5.8F.91.E9.80.81.E7.BB.88.E6.AD.A2.E4.BF.A1.E5.8F.B7]. It’s set to `false` by default.",
           "example": "false",
@@ -4613,7 +4357,6 @@
       "document": "Left-closed-right-open time range between the start time and end time in the format of \"%Y-%m-%d %H:%M:%S\"",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start time (inclusive) in the format of \"%Y-%m-%d %H:%M:%S\"",
           "member": "string",
@@ -4623,7 +4366,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time (exclusive) in the format of \"%Y-%m-%d %H:%M:%S\"",
           "member": "string",
@@ -4775,7 +4517,6 @@
       "document": "Details of a scheduled provisioned concurrency scaling action",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Scheduled action name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"\"",
@@ -4786,7 +4527,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Target provisioned concurrency of the scheduled scaling action \nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
@@ -4797,7 +4537,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Trigger time of the scheduled action in Cron expression. Seven fields are required and should be separated with a space.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "\"\"",
@@ -4808,7 +4547,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The provision type. Value: `Default`\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "\"\"",
@@ -4825,7 +4563,6 @@
       "document": "`TriggerCount` describes the numbers of triggers in different types",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Number of COS triggers",
           "example": "0",
@@ -4836,7 +4573,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of timer triggers",
           "example": "0",
@@ -4847,7 +4583,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of CMQ triggers",
           "example": "0",
@@ -4858,7 +4593,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of triggers",
           "example": "0",
@@ -4869,7 +4603,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of CKafka triggers",
           "example": "0",
@@ -4880,7 +4613,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of API Gateway triggers",
           "example": "0",
@@ -4891,7 +4623,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of CLS triggers",
           "example": "0",
@@ -4902,7 +4633,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of CLB triggers",
           "example": "0",
@@ -4913,7 +4643,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of MPS triggers",
           "example": "0",
@@ -4924,7 +4653,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of CM triggers",
           "example": "0",
@@ -4935,7 +4663,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of VOD triggers",
           "example": "0",
@@ -4946,7 +4673,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of EventBridge triggers\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
@@ -5099,7 +4825,6 @@
       "document": "UpdateAlias request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "member": "string",
@@ -5108,7 +4833,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alias name",
           "member": "string",
@@ -5117,7 +4841,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Master version pointed to by the alias",
           "member": "string",
@@ -5126,7 +4849,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace",
           "member": "string",
@@ -5135,7 +4857,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Routing information of alias, which is required if you need to specify an additional version for the alias.",
           "member": "RoutingConfig",
@@ -5144,7 +4865,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alias description",
           "member": "string",
@@ -5171,7 +4891,6 @@
       "document": "UpdateFunctionCode request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the function to be modified",
           "example": "test",
@@ -5181,7 +4900,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function handler name, which is in the `file name.function name` form. Use a period (.) to separate a file name and function name. The file name and function name must start and end with letters and contain 2-60 characters, including letters, digits, underscores (_), and hyphens (-).",
           "example": "index.main",
@@ -5191,7 +4909,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "COS bucket name",
           "example": "<CosBucketName>",
@@ -5201,7 +4918,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "COS object path",
           "example": "<CosObjectName>",
@@ -5211,7 +4927,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It contains a function code file and its dependencies in the ZIP format. When you use this API, the ZIP file needs to be encoded with Base64. Up to 20 MB is supported.",
           "example": "<base64>",
@@ -5221,7 +4936,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace",
           "example": "default",
@@ -5231,7 +4945,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "COS region. Note: Beijing includes ap-beijing and ap-beijing-1.",
           "example": "ap-beijing",
@@ -5241,7 +4954,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to install dependencies automatically",
           "example": "FALSE",
@@ -5251,7 +4963,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function environment",
           "example": "<函数所属环境>",
@@ -5261,7 +4972,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It specifies whether to synchronously release a new version during the update. The default value is `FALSE`, indicating not to release a new version.",
           "example": "FALSE",
@@ -5271,7 +4981,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function code",
           "example": "无",
@@ -5281,7 +4990,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Code source. Valid values: ZipFile, Cos, Inline",
           "example": "Cos",
@@ -5309,7 +5017,6 @@
       "document": "UpdateFunctionEventInvokeConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Async retry configuration information",
           "example": "无",
@@ -5319,7 +5026,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function name",
           "example": "FunctionName",
@@ -5329,7 +5035,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace. Default value: default",
           "example": "default",
@@ -5357,7 +5062,6 @@
       "document": "UpdateNamespace request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name",
           "member": "string",
@@ -5366,7 +5070,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace description",
           "member": "string",
@@ -5393,7 +5096,6 @@
       "document": "UpdateTriggerStatus request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Initial status of the trigger. Values: `OPEN` (enabled); `CLOSE` disabled)",
           "example": "CLOSE",
@@ -5403,7 +5105,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function name.",
           "example": "funcName",
@@ -5413,7 +5114,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Trigger name",
           "example": "test",
@@ -5423,7 +5123,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Trigger Type",
           "example": "timer",
@@ -5433,7 +5132,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.",
           "example": "$DEFAULT",
@@ -5443,7 +5141,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function namespace",
           "example": "default",
@@ -5453,7 +5150,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "To update a COS trigger, this field is required. It stores the data {\"event\":\"cos:ObjectCreated:*\"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.",
           "example": "无",
@@ -5481,7 +5177,6 @@
       "document": "Usage information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Number of namespaces",
           "member": "int64",
@@ -5491,7 +5186,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace details",
           "member": "NamespaceUsage",
@@ -5501,7 +5195,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Upper limit of user concurrency memory in the current region",
           "member": "int64",
@@ -5511,7 +5204,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Quota of configured user concurrency memory in the current region",
           "member": "int64",
@@ -5521,7 +5213,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Quota of account concurrency actually configured by user",
           "member": "int64",
@@ -5537,7 +5228,6 @@
       "document": "Function version with match rule",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function version name",
           "member": "string",
@@ -5547,7 +5237,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Matching rule key. When the API is called, pass in the `key` to route the request to the specified version based on the matching rule\nHeader method:\nEnter \"invoke.headers.User\" for `key` and pass in `RoutingKey:{\"User\":\"value\"}` when invoking a function through `invoke` for invocation based on rule matching",
           "member": "string",
@@ -5557,7 +5246,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Match method. Valid values:\nrange: range match\nexact: exact string match",
           "member": "string",
@@ -5567,7 +5255,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Rule requirements for range match:\nIt should be described in an open or closed range, i.e., `(a,b)` or `[a,b]`, where both a and b are integers\nRule requirements for exact match:\nExact string match",
           "member": "string",
@@ -5583,7 +5270,6 @@
       "document": "Provisioned concurrency information of function version, including the set provisioned concurrency amount, available provisioned concurrency amount, and provisioned concurrency setting task status.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Set provisioned concurrency amount.",
           "example": "0",
@@ -5594,7 +5280,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Currently available provisioned concurrency amount.",
           "example": "0",
@@ -5605,7 +5290,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Provisioned concurrency setting task status. `Done`: completed; `InProgress`: in progress; `Failed`: partially or completely failed.",
           "example": "\"\"",
@@ -5616,7 +5300,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status description of provisioned concurrency setting task.",
           "example": "\"\"",
@@ -5627,7 +5310,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Function version number",
           "example": "\"\"",
@@ -5638,7 +5320,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of scheduled provisioned concurrency scaling actions\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -5655,7 +5336,6 @@
       "document": "Function version with weight",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Function version name",
           "member": "string",
@@ -5665,7 +5345,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Version weight",
           "member": "float",

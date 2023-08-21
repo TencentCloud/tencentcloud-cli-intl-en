@@ -508,7 +508,6 @@
       "document": "Details of the Anycast package",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Application bandwidth (in Mbps).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "200",
@@ -519,7 +518,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of forwarding rules\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "60",
@@ -530,7 +528,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Auto-renewal flag\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -541,7 +538,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Expiration date\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2022-06-18 18:36:44",
@@ -558,7 +554,6 @@
       "document": "AssociateDDoSEipAddress request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID (only Anti-DDoS Advanced). For example, `bgpip-0000011x`.",
           "example": "bgpip-0000011x",
@@ -568,7 +563,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "EIP of the Anti-DDoS instance ID",
           "example": "1.1.1.1",
@@ -578,7 +572,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID to bind. For example, `ins-11112222`. It can be queried in the console or obtained from `InstanceId` returned by `DescribeInstances`.",
           "example": "ins-11112222",
@@ -588,7 +581,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region of the CVM instance. For example, `ap-hongkong`.",
           "example": "ap-hongkong",
@@ -616,7 +608,6 @@
       "document": "AssociateDDoSEipLoadBalancer request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID (only Anti-DDoS Advanced). For example, `bgpip-0000011x`.",
           "example": "bgpip-0000011x",
@@ -626,7 +617,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "EIP of the Anti-DDoS instance ID.",
           "example": "1.1.1.1",
@@ -636,7 +626,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the CLB to bind, such as `lb-0000002i`. It can be queried in the console or obtained from `LoadBalancerId` returned by the `DescribeLoadBalancers` API.",
           "example": "lb-0000002i",
@@ -646,7 +635,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region of the CLB instance, such as `ap-hongkong`.",
           "example": "ap-hongkong",
@@ -656,7 +644,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CLB private IP",
           "example": "1.1.1.1",
@@ -684,7 +671,6 @@
       "document": "Anti-DDoS Advanced instance details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance details",
           "example": "无",
@@ -695,7 +681,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance specifications",
           "example": "无",
@@ -706,7 +691,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance usage statistics",
           "example": "无",
@@ -717,7 +701,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region of the Anti-DDoS instance",
           "example": "无",
@@ -728,7 +711,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status of the Anti-DDoS instance. Valid values:\n`idle`: running\n`attacking`: under attacks\n`blocking`: blocked\n`creating`: creating\n`deblocking`: unblocking\n`isolate`: reprocessed and isolated",
           "example": "idle",
@@ -739,7 +721,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Purchase time",
           "example": "2020-06-09 23:12:23",
@@ -750,7 +731,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Expired At",
           "example": "2020-05-09 23:12:23",
@@ -761,7 +741,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the Anti-DDoS instance",
           "example": "Test",
@@ -772,7 +751,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Package details of the Anti-DDoS instance.\nNote: This field is `null` for an Anti-DDoS instance without using a package.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
@@ -783,7 +761,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Non-BGP package details of the Anti-DDoS instance.\nNote: This field is `null` for an Anti-DDoS instance without using a non-BGP package.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
@@ -794,7 +771,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the ISP. `0`: Chinese mainland ISPs (default); `1`：Radware；`2`: Tencent; `3`: NSFOCUS. Note that `1`, `2` and `3` are used for services outside the Chinese mainland.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -805,7 +781,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Used to differentiate clusters\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
@@ -816,7 +791,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "EIP states: `CREATING`, `BINDING`, `BIND`, `UNBINDING`, `UNBIND`, `OFFLINING`, and `BIND_ENI`. The EIP must be bound to an Anti-DDoS Advanced instance.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "UNBIND",
@@ -827,7 +801,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether it is an Anti-DDoS EIP instance. `1`: Yes; `0`: No.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "1",
@@ -838,7 +811,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "EIP package details of the Anti-DDoS Advanced instance.\nNote: This field is `null` for an Anti-DDoS Advanced instance without using an EIP package.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
@@ -849,7 +821,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Details of the Anti-DDoS Advanced instance bound to the EIP.\nNote: This field is `null` if the EIP is not bound to an Anti-DDoS Advanced instance.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
@@ -860,7 +831,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recommended domain name for clients to access.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "www.8cname.com",
@@ -871,7 +841,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable Sec-MCA. Valid values: `1` (enabled) and `0` (disabled).",
           "example": "0",
@@ -882,7 +851,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether it’s an IPv6 address. `1`: Yes; `0`: No.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
@@ -893,7 +861,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether it’s an Anti-DDoS Advanced instance from Tencent Cloud channels. `1`: Yes; `0`: No.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "0",
@@ -904,7 +871,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag that the Anti-DDoS Advanced instance is associated with\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "null",
@@ -915,7 +881,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "All-out package details of the instance\nWhen an all-out package is not used by the instance, this field is `null`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
@@ -926,7 +891,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Edition of the instance\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "0",
@@ -937,7 +901,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Convoy instance ID\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
@@ -948,7 +911,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pay-as-you-go bandwidth\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "1000",
@@ -959,7 +921,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether it’s the IP broadcasted by EdgeOne. Values: `1` (yes), `0` (no)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -976,7 +937,6 @@
       "document": "Anti-DDoS Advanced instance specifications",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Base protection bandwidth (in Mbps)",
           "example": "2000",
@@ -987,7 +947,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CC protection bandwidth (in QPS)",
           "example": "2000",
@@ -998,7 +957,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Normal application bandwidth (in Mbps)",
           "example": "2000",
@@ -1009,7 +967,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of forwarding rules",
           "example": "50",
@@ -1020,7 +977,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Auto-renewal status. Valid values:\n`0`: disabled\n`1`: enabled\n]",
           "example": "1",
@@ -1031,7 +987,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS Advanced line. Valid values:\n`1`: BGP\n`2`: China Telecom\n`3`: China Unicom\n`4`: China Mobile\n`99`: third-party line\n]",
           "example": "1",
@@ -1042,7 +997,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Elastic protection bandwidth (in Mbps)",
           "example": "1000",
@@ -1059,7 +1013,6 @@
       "document": "Anti-DDoS Advanced instance usage statistics",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Number of used port rules",
           "member": "uint64",
@@ -1069,7 +1022,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of used domain name rules",
           "member": "uint64",
@@ -1079,7 +1031,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of attack times in the last 7 days",
           "member": "uint64",
@@ -1407,7 +1358,6 @@
       "document": "Anti-DDoS Pro instance usage statistics",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Number of used protection chances",
           "member": "uint64",
@@ -1417,7 +1367,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of protected IPs",
           "member": "uint64",
@@ -1427,7 +1376,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of attack times in the last 7 days",
           "member": "uint64",
@@ -1443,7 +1391,6 @@
       "document": "IP blocklist/allowlist",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "IP address",
           "example": "1.1.2.1",
@@ -1454,7 +1401,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP type. Valid values: `black` (blocklisted IP), `white`(allowlisted IP).",
           "example": "black",
@@ -1465,7 +1411,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance configured",
           "example": "无",
@@ -1476,7 +1421,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP mask. `0` indicates a 32-bit IP.",
           "example": "0",
@@ -1487,7 +1431,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Modification time",
           "example": "2021-11-23 14:56:59",
@@ -1504,7 +1447,6 @@
       "document": "IP bound to the Anti-DDoS Pro instance",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "IP address",
           "example": "1.1.1.1",
@@ -1515,7 +1457,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Category of product that can be bound. Valid values: `public` (CVM and CLB), `bm` (BM), `eni` (ENI), `vpngw` (VPN gateway), `natgw` (NAT gateway), `waf` (WAF), `fpc` (financial products), `gaap` (GAAP), and `other` (hosted IP). This field is required when you perform binding.",
           "example": "public",
@@ -1526,7 +1467,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID of the IP. This field is required only when the instance is bound to an IP. For example, this field InstanceId will be `eni-*` if the instance ID is bound to an ENI IP; `none` if there is no instance to bind to a managed IP.",
           "example": "none",
@@ -1537,7 +1477,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sub-product category. Valid values: `cvm` (CVM), `lb` (Load balancer), `eni` (ENI), `vpngw` (VPN gateway), `natgw` (NAT gateway), `waf` (WAF), `fpc` (financial products), `gaap` (GAAP), `eip` (BM EIP) and `other` (managed IP). This field is required when you perform binding.",
           "example": "cvm",
@@ -1548,7 +1487,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ISP. Valid values: `0` (China Telecom), `1` (China Unicom), `2` (China Mobile), and `5` (BGP). This field is required when you perform binding.",
           "example": "5",
@@ -1565,7 +1503,6 @@
       "document": "The level-defining policy of CC attacks",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -1575,7 +1512,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Ip",
           "member": "string",
@@ -1585,7 +1521,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol",
           "member": "string",
@@ -1595,7 +1530,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name",
           "member": "string",
@@ -1605,7 +1539,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protection level. Values: `default`, `loose` and `strict`.",
           "member": "string",
@@ -1615,7 +1548,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time",
           "member": "datetime",
@@ -1625,7 +1557,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Modification time",
           "member": "datetime",
@@ -1641,7 +1572,6 @@
       "document": "CC precise protection configuration fields",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Type of the configuration field. Only `value` is supported.",
           "example": "value",
@@ -1652,7 +1582,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration field. Valid values: `cgi`, `ua`, `cookie`, `referer`, `accept`, and `srcip`.",
           "example": "srcip",
@@ -1663,7 +1592,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value of the configuration field",
           "example": "1.2.3.4",
@@ -1674,7 +1602,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters values of configuration fields. `equal`: The value matches the configuration field. `not_equal`: The value does not match the configuration field. `include`: The value is included.",
           "example": "equal",
@@ -1691,7 +1618,6 @@
       "document": "CC precise protection policy information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Policy ID",
           "member": "string",
@@ -1701,7 +1627,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -1711,7 +1636,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP address",
           "member": "string",
@@ -1721,7 +1645,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol",
           "member": "string",
@@ -1731,7 +1654,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name",
           "member": "string",
@@ -1741,7 +1663,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Action of limiting request frequency. Valid values: `alg` (limit request frequency via verification codes) and `drop`(drop requests).",
           "member": "string",
@@ -1751,7 +1672,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of policies",
           "member": "CCPrecisionPlyRecord",
@@ -1761,7 +1681,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time",
           "member": "datetime",
@@ -1771,7 +1690,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Modification time",
           "member": "datetime",
@@ -1787,7 +1705,6 @@
       "document": "Configuration fields of CC frequency limit policies",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Sampling interval (in seconds). Valid values: `1`, `10`, `30`, and `60`.",
           "member": "uint64",
@@ -1797,7 +1714,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of requests. Value range: 1-2000.",
           "member": "uint64",
@@ -1807,7 +1723,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Action of limiting request frequency. Valid values: `alg` (limit request frequency via verification codes) and `drop`(drop requests).",
           "member": "string",
@@ -1817,7 +1732,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sets an interval of the frequency limit policy. Value range: 1-86400 (in seconds).",
           "member": "uint64",
@@ -1827,7 +1741,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters values of configuration fields. `include`: The value is included. `equal`: The value matches the configuration field.",
           "member": "string",
@@ -1837,7 +1750,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "URI, which cannot be used together with `User-Agent` and `Cookie`.",
           "member": "string",
@@ -1847,7 +1759,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User-Agent, which cannot be used together with `Uri` and `Cookie`.",
           "member": "string",
@@ -1857,7 +1768,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cookie, which cannot be used together with `Uri` and `User-Agent`.",
           "member": "string",
@@ -1873,7 +1783,6 @@
       "document": "CC cleansing threshold policy",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgp-0000000a",
@@ -1884,7 +1793,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP address",
           "example": "1.1.1.1",
@@ -1895,7 +1803,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol",
           "example": "http",
@@ -1906,7 +1813,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name",
           "example": "www.test.com",
@@ -1917,7 +1823,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cleansing threshold",
           "example": "1000",
@@ -1928,7 +1833,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time",
           "example": "2021-06-16 21:00:44",
@@ -1939,7 +1843,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Modification time",
           "example": "2021-06-17 14:38:12",
@@ -1956,7 +1859,6 @@
       "document": "Layer-4 access control list",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Policy ID",
           "example": "ccBlackWhite-0000000x",
@@ -1967,7 +1869,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -1978,7 +1879,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP address",
           "example": "1.1.1.1",
@@ -1989,7 +1889,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name",
           "example": "www.xx.com",
@@ -2000,7 +1899,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol",
           "example": "http",
@@ -2011,7 +1909,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP type. Valid values: `black` (blocklisted IP), `white`(allowlisted IP).",
           "example": "black",
@@ -2022,7 +1919,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Blocklist/Allowlist IP address",
           "example": "1.1.1.1",
@@ -2033,7 +1929,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Mask",
           "example": "24",
@@ -2044,7 +1939,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time",
           "example": "2021-10-12 00:00:00",
@@ -2055,7 +1949,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Modification time",
           "example": "2021-10-12 00:00:00",
@@ -2072,7 +1965,6 @@
       "document": "Anti-DDoS regional blocking configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Region type. Valid values:\n`oversea`: Outside the Chinese mainland.\n`china`: The Chinese mainland.\n`customized`: User-specified region.\n]",
           "example": "oversea",
@@ -2083,7 +1975,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Blocking action. Valid values:\n`drop`: Block the request.\n`alg`: Verify the request via CAPTCHA.\n]",
           "example": "drop",
@@ -2094,7 +1985,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration ID, which is generated after a configuration is added. This field is only required to modify or delete a configuration.",
           "example": "0",
@@ -2105,7 +1995,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This field is required when RegionType is `customized`; it can be left empty when RegionType is `china` or `oversea`.",
           "example": "100025",
@@ -2122,7 +2011,6 @@
       "document": "Information of the policy list",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Policy ID",
           "example": "rule-0000011x",
@@ -2133,7 +2021,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -2144,7 +2031,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP address",
           "example": "1.1.1.1",
@@ -2155,7 +2041,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "",
           "example": "www.xx.com",
@@ -2166,7 +2051,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol. Valid values: `HTTP` and `HTTPS`.",
           "example": "http",
@@ -2177,7 +2061,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Action. Valid values: `drop` and `alg`.",
           "example": "drop",
@@ -2188,7 +2071,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region type. Valid values: `china`, `oversea` and `customized`.",
           "example": "china",
@@ -2199,7 +2081,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID list of regions to be blocked",
           "example": "[0,1]",
@@ -2210,7 +2091,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time",
           "example": "2021-10-12 00:00:00",
@@ -2221,7 +2101,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Modification time",
           "example": "2021-10-12 00:00:00",
@@ -2238,7 +2117,6 @@
       "document": "Set of rules configured for certificates",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of rules configured for certificates",
           "example": "无",
@@ -2249,7 +2127,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate ID",
           "example": "无",
@@ -2266,7 +2143,6 @@
       "document": "CreateBlackWhiteIpList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-00001001",
@@ -2276,7 +2152,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of IPs",
           "example": "[\"1.1.1.1\\r\\n\"]",
@@ -2286,7 +2161,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP type. Valid values: `black` (blocklisted IP), `white`(allowlisted IP).",
           "example": "black",
@@ -2314,7 +2188,6 @@
       "document": "CreateBoundIP request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service type. `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP)",
           "example": "bgp",
@@ -2324,7 +2197,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgp-000000xe",
@@ -2334,7 +2206,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of IPs to bind to the Anti-DDoS instance. For Anti-DDoS Pro Single IP instance, the array contains only one IP. If there are no IPs to bind, it is empty; however, either `BoundDevList` or `UnBoundDevList` must not be empty.",
           "example": "无",
@@ -2344,7 +2215,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of IPs to unbind from the Anti-DDoS instance. For Anti-DDoS Pro Single IP instance, the array contains only one IP; if there are no IPs to unbind, it is empty; however, either `BoundDevList` or `UnBoundDevList` must not be empty.",
           "example": "无",
@@ -2354,7 +2224,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Disused",
           "example": "yes",
@@ -2392,7 +2261,6 @@
       "document": "CreateCCPrecisionPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -2402,7 +2270,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP address",
           "example": "1.2.1.3",
@@ -2412,7 +2279,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol. Valid values: `HTTP` and `HTTPS`.",
           "example": "HTTP",
@@ -2422,7 +2288,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name",
           "example": "1.acx.com",
@@ -2432,7 +2297,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Action of limiting request frequency. Valid values: `alg` (limit request frequency via verification codes) and `drop`(drop requests).",
           "example": "alg",
@@ -2442,7 +2306,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Policy records",
           "example": "无",
@@ -2470,7 +2333,6 @@
       "document": "CreateCCReqLimitPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-00000235",
@@ -2480,7 +2342,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP address",
           "example": "1.2.1.5",
@@ -2490,7 +2351,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol. Valid values: `HTTP` and `HTTPS`.",
           "example": "HTTP",
@@ -2500,7 +2360,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name",
           "example": "1.csq.com",
@@ -2510,7 +2369,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration field",
           "example": "无",
@@ -2520,7 +2378,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether it’s a global CC frequency limit",
           "example": "1",
@@ -2548,7 +2405,6 @@
       "document": "CreateCcBlackWhiteIpList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-00001001",
@@ -2558,7 +2414,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of IPs",
           "example": "无",
@@ -2568,7 +2423,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP permission. Valid values: `black` (blocked IP), `white` (allowed IP).",
           "example": "black",
@@ -2578,7 +2432,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP address",
           "example": "1.1.1.1",
@@ -2588,7 +2441,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name",
           "example": "www.xx.com",
@@ -2598,7 +2450,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol",
           "example": "bgp-multip",
@@ -2626,7 +2477,6 @@
       "document": "CreateCcGeoIPBlockConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -2636,7 +2486,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP address",
           "example": "1.1.1.1",
@@ -2646,7 +2495,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name",
           "example": "www.qq.com",
@@ -2656,7 +2504,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol type",
           "example": "http",
@@ -2666,7 +2513,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CC regional blocking configuration",
           "example": "无",
@@ -2694,7 +2540,6 @@
       "document": "CreateDDoSAI request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of Anti-DDoS instance IDs",
           "example": "[\"bgpip-0000011x\\r\\n\"]",
@@ -2704,7 +2549,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AI protection switch. Valid values:\n`on`: enabled\n`off`: disabled\n]",
           "example": "on",
@@ -2732,7 +2576,6 @@
       "document": "CreateDDoSGeoIPBlockConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -2742,7 +2585,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region blocking configuration. The configuration ID should be cleared when you set this parameter.",
           "example": "无",
@@ -2770,7 +2612,6 @@
       "document": "CreateDDoSSpeedLimitConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -2780,7 +2621,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Access rate limit configuration. The configuration ID should be cleared when you set this parameter.",
           "example": "无",
@@ -2808,7 +2648,6 @@
       "document": "CreateDefaultAlarmThreshold request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Default alarm threshold configuration",
           "example": "无",
@@ -2818,7 +2657,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Product category. Valid values:\n`bgp`: Anti-DDoS Pro\n`bgpip`: Anti-DDoS Advanced\n]",
           "example": "bgp",
@@ -2846,7 +2684,6 @@
       "document": "CreateIPAlarmThresholdConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of IP alarm threshold configurations",
           "example": "无",
@@ -2874,7 +2711,6 @@
       "document": "CreateL7RuleCerts request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SSL certificate ID",
           "example": "cMgC0TpV",
@@ -2884,7 +2720,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of Layer-7 domain name forwarding rules",
           "example": "无",
@@ -2922,7 +2757,6 @@
       "document": "CreateNewL7Rules request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of rules",
           "example": "无",
@@ -2932,7 +2766,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)",
           "example": "bgpip",
@@ -2942,7 +2775,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of resource IDs",
           "example": "[\"bgpip-000001\\r\\n\"]",
@@ -2952,7 +2784,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of resource IPs",
           "example": "[\"192.168.1.1\\r\\n\"]",
@@ -2990,7 +2821,6 @@
       "document": "CreatePacketFilterConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -3000,7 +2830,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Feature filtering rules",
           "example": "无",
@@ -3028,7 +2857,6 @@
       "document": "CreateProtocolBlockConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -3038,7 +2866,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol blocking configuration",
           "example": "无",
@@ -3066,7 +2893,6 @@
       "document": "CreateSchedulingDomain request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Indicates whether a hybrid cloud product is used.\n`hybrid`: Anti-DDoS Service Platform\nFor other products, leave this field empty.",
           "example": "hybrid",
@@ -3104,7 +2930,6 @@
       "document": "CreateWaterPrintConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -3114,7 +2939,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark configuration",
           "example": "无",
@@ -3142,7 +2966,6 @@
       "document": "CreateWaterPrintKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -3170,7 +2993,6 @@
       "document": "Anti-DDoS AI protection switch",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "AI protection switch. Valid values:\n`on`: enabled\n`off`: disabled\n]",
           "member": "string",
@@ -3180,7 +3002,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance configured",
           "member": "InstanceRelation",
@@ -3196,7 +3017,6 @@
       "document": "Anti-DDoS region blocking configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Region type. Valid values:\n`oversea`: Outside the Chinese mainland\n`china`: The Chinese mainland\n`customized`: User-specified region\n]",
           "example": "oversea",
@@ -3207,7 +3027,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Blocking action. Valid values:\n`drop`: the request is blocked.\n`trans`: the request is allowed.\n]",
           "example": "drop",
@@ -3218,7 +3037,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration ID, which is generated after a configuration is added. This field is only required to modify or delete a configuration.",
           "example": "0",
@@ -3229,7 +3047,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "When `RegionType = customized`, AreaList is required and contains up to 128 areas.",
           "example": "100025",
@@ -3246,7 +3063,6 @@
       "document": "Anti-DDoS region blocking configuration details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS region blocking configuration",
           "member": "DDoSGeoIPBlockConfig",
@@ -3256,7 +3072,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance configured",
           "member": "InstanceRelation",
@@ -3272,7 +3087,6 @@
       "document": "Anti-DDoS access rate limit configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Rate limit mode. Valid values:\n`1`: rate limit based on the real server IP\n`2`: rate limit based on the destination port\n]",
           "member": "uint64",
@@ -3282,7 +3096,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Rate limit value. This field contains at least one valid rate limit type. Note that only up to one value of each type is supported.",
           "member": "SpeedValue",
@@ -3292,7 +3105,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This field is replaced with a new field DstPortList.",
           "member": "PortSegment",
@@ -3302,7 +3114,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "",
           "member": "string",
@@ -3312,7 +3123,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP protocol number. Valid values:\n`ALL`: all protocols\n`TCP`: TCP protocol\n`UDP`: UDP protocol\n`SMP`: SMP protocol\n`1;2–100`: user-defined protocol with up to 8 ranges\n]\nNote: For custom protocol ranges, only protocol number is supported. Multiple ranges are separated by \";\". If the value is `ALL`, any other protocol or protocol number should be excluded.",
           "member": "string",
@@ -3322,7 +3132,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Port range list, which contains up to 8 ranges. Use \";\" to separate multiple ports and \"–\" to indicate a range of ports, as described in the following formats: `0–65535`, `80;443;1000–2000`.",
           "member": "string",
@@ -3338,7 +3147,6 @@
       "document": "DDoS access rate limit configuration details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS access rate limit configuration",
           "member": "DDoSSpeedLimitConfig",
@@ -3348,7 +3156,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance configured",
           "member": "InstanceRelation",
@@ -3364,7 +3171,6 @@
       "document": "Default alarm threshold configuration of an IP",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm threshold type. Valid values:\n`1`: alarm threshold for inbound traffic\n`2`: alarm threshold for cleansing attack traffic\n]",
           "member": "uint64",
@@ -3374,7 +3180,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm threshold (Mbps). The value should be greater than or equal to 0. Note that the alarm threshold configuration will be removed if you pass the parameter for input and set it to 0.",
           "member": "uint64",
@@ -3390,7 +3195,6 @@
       "document": "DeleteCCLevelPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -3400,7 +3204,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Target IP of the policy",
           "example": "1.1.1.3",
@@ -3410,7 +3213,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name",
           "example": "test.com",
@@ -3420,7 +3222,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value: `http`",
           "example": "http",
@@ -3448,7 +3249,6 @@
       "document": "DeleteCCPrecisionPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -3458,7 +3258,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Policy ID",
           "example": "ccPrecs-00000324",
@@ -3486,7 +3285,6 @@
       "document": "DeleteCCThresholdPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -3496,7 +3294,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Target IP of the policy",
           "example": "1.1.1.3",
@@ -3506,7 +3303,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name",
           "example": "test.com",
@@ -3516,7 +3312,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value: `http`",
           "example": "http",
@@ -3544,7 +3339,6 @@
       "document": "DeleteCcBlackWhiteIpList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -3554,7 +3348,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Policy ID",
           "example": "ccBlackWhite-00000312",
@@ -3582,7 +3375,6 @@
       "document": "DeleteCcGeoIPBlockConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -3592,7 +3384,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region blocking configuration. The configuration ID cannot be empty when you set this parameter.",
           "example": "无",
@@ -3620,7 +3411,6 @@
       "document": "DeleteDDoSGeoIPBlockConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -3630,7 +3420,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region blocking configuration. The configuration ID cannot be empty when you set this parameter.",
           "example": "无",
@@ -3658,7 +3447,6 @@
       "document": "DeleteDDoSSpeedLimitConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -3668,7 +3456,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Access rate limit configuration. The configuration ID cannot be empty when you set this parameter.",
           "example": "无",
@@ -3696,7 +3483,6 @@
       "document": "DeletePacketFilterConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -3706,7 +3492,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Feature filtering configuration",
           "example": "无",
@@ -3734,7 +3519,6 @@
       "document": "DeleteWaterPrintConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -3762,7 +3546,6 @@
       "document": "DeleteWaterPrintKey request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -3772,7 +3555,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark key ID",
           "example": "000000f8",
@@ -3800,7 +3582,6 @@
       "document": "DescribeBasicDeviceStatus request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of IP resources",
           "example": "[\"\\u20181.1.1.1\\u2019\\r\\n\"]",
@@ -3838,7 +3619,6 @@
       "document": "DescribeBgpBizTrend request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service code. `bgp-multip` indicates Anti-DDos Pro.",
           "example": "bgp-multip",
@@ -3848,7 +3628,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Beginning of the time range for the query, such as `2020-09-22 00:00:00`.",
           "example": "2020-09-22 00:00:00",
@@ -3858,7 +3637,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End of the time range for the query, such as `2020-09-22 00:00:00`.",
           "example": "2020-09-22 00:00:00",
@@ -3868,7 +3646,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Statistical metric. Values: `intraffic`, `outtraffic`, `inpkg`, and `outpkg`.",
           "example": "outtraffic",
@@ -3878,7 +3655,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgp-xxxxxxxx",
@@ -3888,7 +3664,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "`0`: Fixed time. `1`: Custom time.",
           "example": "1",
@@ -3956,7 +3731,6 @@
       "document": "DescribeBizHttpStatus request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Statistical mode. Value: `sum`.",
           "example": "sum",
@@ -3966,7 +3740,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)",
           "example": "bgpip",
@@ -3976,7 +3749,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Statistical period in seconds. Valid values: `60`, `300`, `1800`, `3600`, `21600`, and `86400`.",
           "example": "300",
@@ -3986,7 +3758,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Statistics start time, such as `2020-02-01 12:04:12`",
           "example": "2020-02-01 12:04:12",
@@ -3996,7 +3767,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Statistics end time, such as `2020-02-03 18:03:23`",
           "example": "2020-02-03 18:03:23",
@@ -4006,7 +3776,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The resource ID.",
           "example": "bgpip-000000xe",
@@ -4016,7 +3785,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specific domain name query",
           "example": "www.xx.com",
@@ -4026,7 +3794,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol and port list, which is valid when the metric is `connum`, `new_conn` or `inactive_conn`. Valid protocols: `TCP`, `UDP`, `HTTP`, `HTTPS`",
           "example": "无",
@@ -4064,7 +3831,6 @@
       "document": "DescribeBizTrend request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Statistical method. Valid values: `max`, `min`, `avg`, `sum`. It can only be `max` if the statistical dimension is traffic rate or packet rate.",
           "example": "xx",
@@ -4074,7 +3840,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)",
           "example": "xx",
@@ -4084,7 +3849,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sampling interval in seconds. Valid values: `60`, `300`, `1800`, `3600`, `21600`, `86400`",
           "example": "1",
@@ -4094,7 +3858,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Beginning of the time range for the query, such as `2020-09-22 00:00:00`.",
           "example": "2020-09-22 00:00:00",
@@ -4104,7 +3867,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End of the time range for the query, such as `2020-09-22 00:00:00`.",
           "example": "2020-09-22 00:00:00",
@@ -4114,7 +3876,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "xx",
@@ -4124,7 +3885,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Metric. Valid values: `connum`, `new_conn`, `inactive_conn`, `intraffic`, `outtraffic`, `inpkg`, `outpkg`, `qps`",
           "example": "xx",
@@ -4134,7 +3894,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "You can query data by specifying a domain name when the metric is `qps`.",
           "example": "xx",
@@ -4144,7 +3903,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol and port list, which is valid when the metric is `connum`, `new_conn` or `inactive_conn`. Valid protocols: `TCP`, `UDP`, `HTTP`, `HTTPS`",
           "example": "无",
@@ -4192,7 +3950,6 @@
       "document": "DescribeBlackWhiteIpList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-00001001",
@@ -4240,7 +3997,6 @@
       "document": "DescribeCCLevelList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service code. `bgp-multip` indicates Anti-DDos Pro.",
           "example": "bgp-multip",
@@ -4250,7 +4006,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "0",
@@ -4260,7 +4015,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of results returned in one page",
           "example": "1",
@@ -4270,7 +4024,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the specified instance",
           "example": "无",
@@ -4318,7 +4071,6 @@
       "document": "DescribeCCLevelPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -4328,7 +4080,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP",
           "example": "1.3.2.5",
@@ -4338,7 +4089,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name",
           "example": "1.sca.com",
@@ -4348,7 +4098,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol. Values: `HTTP`，`HTTPS`",
           "example": "HTTP",
@@ -4386,7 +4135,6 @@
       "document": "DescribeCCPrecisionPlyList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service type. Valid values: `bgpip-multip` (Anti-DDoS Pro) and `bgpip` (Anti-DDoS Advanced).",
           "example": "bgp-multip",
@@ -4396,7 +4144,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "1",
@@ -4406,7 +4153,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of results returned in one page",
           "example": "1",
@@ -4416,7 +4162,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "无",
@@ -4426,7 +4171,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP address, which is required when an Anti-DDoS Advanced instance is used.",
           "example": "1.1.1.1",
@@ -4436,7 +4180,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name, which is required when an Anti-DDoS Advanced instance is used.",
           "example": "www.qq.com",
@@ -4446,7 +4189,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol, which is required when an Anti-DDoS Advanced instance is used.",
           "example": "http",
@@ -4494,7 +4236,6 @@
       "document": "DescribeCCThresholdList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service code. `bgp-multip` indicates Anti-DDos Pro.",
           "example": "bgp-multip",
@@ -4504,7 +4245,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "0",
@@ -4514,7 +4254,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of results returned in one page",
           "example": "1",
@@ -4524,7 +4263,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the specified instance",
           "example": "无",
@@ -4572,7 +4310,6 @@
       "document": "DescribeCCTrend request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic",
           "example": "bgp",
@@ -4582,7 +4319,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance IP",
           "example": "3.3.3.3",
@@ -4592,7 +4328,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sampling period. Valid values: `300` (5 minutes), `3600` (one hour), `86400` (one day)",
           "example": "3600",
@@ -4602,7 +4337,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Beginning of the time range for the query",
           "example": "2018-08-2715:05:10",
@@ -4612,7 +4346,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End of the time range for the query",
           "example": "2018-08-2716:05:10",
@@ -4622,7 +4355,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Metric. Valid values: `inqps` (total QPS peaks), `dropqps` (attack QPS peaks), `incount` (total number of requests), and `dropcount` (number of attack requests).",
           "example": "inqps",
@@ -4632,7 +4364,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Optional) Domain name",
           "example": "www.xx.com",
@@ -4642,7 +4373,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID. Leave this field empty when `Business` is `basic`, as basic protection does not require an instance.",
           "example": "bgp-00000010",
@@ -4760,7 +4490,6 @@
       "document": "DescribeCcBlackWhiteIpList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service type. Valid values: `bgpip-multip` (Anti-DDoS Pro) and `bgpip` (Anti-DDoS Advanced).",
           "example": "bgp-multip",
@@ -4770,7 +4499,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -4780,7 +4508,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "1",
@@ -4790,7 +4517,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of results returned in one page",
           "example": "1",
@@ -4800,7 +4526,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP address, which is required when an Anti-DDoS Advanced instance is used.",
           "example": "1.1.1.1",
@@ -4810,7 +4535,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name, which is required when an Anti-DDoS Advanced instance is used.",
           "example": "www.xx.com",
@@ -4820,7 +4544,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol, which is required when an Anti-DDoS Advanced instance is used.",
           "example": "http",
@@ -4830,7 +4553,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies a blocklist/allowlist IP.",
           "example": "1.1.1.1",
@@ -4840,7 +4562,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies whether is an IP blocklist or IP allowlist.",
           "example": "black",
@@ -4888,7 +4609,6 @@
       "document": "DescribeCcGeoIPBlockConfigList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service type. Valid values: `bgpip-multip` (Anti-DDoS Pro) and `bgpip` (Anti-DDoS Advanced).",
           "example": "bgp-multip",
@@ -4898,7 +4618,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "1",
@@ -4908,7 +4627,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of results returned in one page",
           "example": "1",
@@ -4918,7 +4636,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -4928,7 +4645,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP address, which is required when an Anti-DDoS Advanced instance is used.",
           "example": "1.1.1.1",
@@ -4938,7 +4654,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name, which is required when an Anti-DDoS Advanced instance is used.",
           "example": "www.xx.com",
@@ -4948,7 +4663,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol, which is required when an Anti-DDoS Advanced instance is used.",
           "example": "http",
@@ -4996,7 +4710,6 @@
       "document": "DescribeDDoSTrend request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic",
           "example": "bgp",
@@ -5006,7 +4719,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance IP",
           "example": "3.3.3.3",
@@ -5016,7 +4728,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sampling period. Valid values: `300` (5 minutes), `3600` (one hour), `86400` (one day)",
           "example": "3600",
@@ -5026,7 +4737,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Beginning of the time range for the query",
           "example": "2018-08-2715:05:10",
@@ -5036,7 +4746,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End of the time range for the query",
           "example": "2018-08-2716:05:10",
@@ -5046,7 +4755,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Metric. Valid values: `bps`: attack traffic bandwidth; `pps`: attack packet rate",
           "example": "bps",
@@ -5056,7 +4764,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID. Leave this field empty when `Business` is `basic`, as basic protection does not require an instance.",
           "example": "bgp-00000010",
@@ -5174,7 +4881,6 @@
       "document": "DescribeDefaultAlarmThreshold request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Product category. Valid values:\n`bgp`: Anti-DDoS Pro\n`bgpip`: Anti-DDoS Advanced\n]",
           "example": "bgp",
@@ -5184,7 +4890,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm threshold type filter. Valid values:\n`1`: alarm threshold for inbound traffic\n`2`: alarm threshold for cleansing attack traffic\n]",
           "example": "1",
@@ -5222,7 +4927,6 @@
       "document": "DescribeL7RulesBySSLCertId request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name status. Valid values: `bindable`, `binded`, `opened`, `closed`, `all` (all states).",
           "example": "bindable",
@@ -5232,7 +4936,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of certificate IDs",
           "example": "[\"cMgC0TpV\", \"kmLKvJiD\", \"kmCL9Kv7\",\"kneSCNrZ\"]",
@@ -5270,7 +4973,6 @@
       "document": "DescribeListBGPIPInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "0",
@@ -5280,7 +4982,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.",
           "example": "25",
@@ -5290,7 +4991,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP filter",
           "example": "1.1.1.1",
@@ -5300,7 +5000,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID filter. For example, you can filter the Anti-DDoS Advanced instance ID by `bgpip-00000001`.",
           "example": "bgpip-00000001",
@@ -5310,7 +5009,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS Advanced line filter. Valid values:\n`1`: BGP line\n`2`: China Telecom\n`3`: China Unicom\n`4`: China Mobile\n`99`: third-party line\n]",
           "example": "1",
@@ -5320,7 +5018,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region filter. For example, `ap-guangzhou`.",
           "example": "ap-guangzhou",
@@ -5330,7 +5027,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name filter",
           "example": "test",
@@ -5340,7 +5036,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to obtain only Anti-DDoS EIP instances. `1`: Yes; `0`: No.",
           "example": "1",
@@ -5350,7 +5045,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS Advanced instance binding status filter. Valid values: `BINDING`, `BIND`, `UNBINDING`, `UNBIND`. This filter is only valid when `FilterEipType = 1`.",
           "example": "无",
@@ -5360,7 +5054,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to obtain only Anti-DDoS instances with Sec-MCA enabled. Valid values: `1` (only obtain Anti-DDoS instances with Sec-MCA enabled) and `0` (obtain other Anti-DDoS instances).",
           "example": "1",
@@ -5370,7 +5063,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters by the status of bound resources. Values: `idle` (normal), `attacking` (being attacked), `blocking` (being blocked), `trial` (in trial)",
           "example": "attacking",
@@ -5380,7 +5072,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters by the instance CNAME",
           "example": "abcdefg",
@@ -5390,7 +5081,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters by the instance ID",
           "example": "无",
@@ -5400,7 +5090,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Searches by tag",
           "example": "无",
@@ -5410,7 +5099,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters by package type.",
           "example": "无",
@@ -5420,7 +5108,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters out Convoy instances",
           "example": "无",
@@ -5659,7 +5346,6 @@
       "document": "DescribeListBlackWhiteIpList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "0",
@@ -5669,7 +5355,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of items per page. The default value is 20 when Limit = 0. The maximum value is 100.",
           "example": "25",
@@ -5679,7 +5364,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
           "example": "bgpip-0000011x",
@@ -5689,7 +5373,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP filter",
           "example": "1.1.1.1",
@@ -5737,7 +5420,6 @@
       "document": "DescribeListDDoSAI request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "0",
@@ -5747,7 +5429,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of items per page. The default value is 20 when Limit = 0. The maximum value is 100.",
           "example": "25",
@@ -5757,7 +5438,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
           "example": "bgpip-0000011x",
@@ -5767,7 +5447,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP filter",
           "example": "1.1.1.1",
@@ -5815,7 +5494,6 @@
       "document": "DescribeListDDoSGeoIPBlockConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "0",
@@ -5825,7 +5503,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of items per page. The default value is 20 when Limit = 0. The maximum value is 100.",
           "example": "25",
@@ -5835,7 +5512,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
           "example": "bgpip-*",
@@ -5845,7 +5521,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP filter",
           "example": "1.1.1.1",
@@ -5893,7 +5568,6 @@
       "document": "DescribeListDDoSSpeedLimitConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "0",
@@ -5903,7 +5577,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of items per page. The default value is 20 when Limit = 0. The maximum value is 100.",
           "example": "25",
@@ -5913,7 +5586,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
           "example": "bgpip-*",
@@ -5923,7 +5595,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP filter",
           "example": "1.1.1.1",
@@ -5971,7 +5642,6 @@
       "document": "DescribeListIPAlarmConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "0",
@@ -5981,7 +5651,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of items per page. The default value is 20 when Limit = 0. The maximum value is 100.",
           "example": "25",
@@ -5991,7 +5660,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
           "example": "bgpip-0000011x",
@@ -6001,7 +5669,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm threshold type filter. Valid values:\n`1`: alarm threshold for inbound traffic\n`2`: alarm threshold for cleansing attack traffic\n]",
           "example": "1",
@@ -6011,7 +5678,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP filter",
           "example": "1.1.1.1",
@@ -6021,7 +5687,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CNAME of the Anti-DDoS Advanced instance",
           "example": "abcdefg",
@@ -6106,7 +5771,6 @@
       "document": "DescribeListPacketFilterConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "0",
@@ -6116,7 +5780,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of items per page. The default value is 20 when Limit = 0. The maximum value is 100.",
           "example": "25",
@@ -6126,7 +5789,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
           "example": "bgpip-0000011x",
@@ -6136,7 +5798,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP filter",
           "example": "1.1.1.1",
@@ -6184,7 +5845,6 @@
       "document": "DescribeListProtectThresholdConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "0",
@@ -6194,7 +5854,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.",
           "example": "25",
@@ -6204,7 +5863,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
           "example": "bgpip-0000011x",
@@ -6214,7 +5872,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP filter",
           "example": "1.1.1.1",
@@ -6224,7 +5881,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name filter for querying CC protection thresholds of domain names and protocols",
           "example": "无",
@@ -6234,7 +5890,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol filter for querying CC protection thresholds of domain names and protocols",
           "example": "无",
@@ -6282,7 +5937,6 @@
       "document": "DescribeListProtocolBlockConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "0",
@@ -6292,7 +5946,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.",
           "example": "25",
@@ -6302,7 +5955,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
           "example": "bgpip-0000011x",
@@ -6312,7 +5964,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP filter",
           "example": "1.1.1.1",
@@ -6360,7 +6011,6 @@
       "document": "DescribeListSchedulingDomain request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "0",
@@ -6370,7 +6020,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.",
           "example": "25",
@@ -6380,7 +6029,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Scheduling domain name filter",
           "example": "test.com",
@@ -6428,7 +6076,6 @@
       "document": "DescribeListWaterPrintConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "0",
@@ -6438,7 +6085,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of items per page. The default value is 20 when `Limit = 0`. The maximum value is 100.",
           "example": "25",
@@ -6448,7 +6094,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID filter. Anti-DDoS instance prefix wildcard search is supported. For example, you can filter Anti-DDoS Pro instances by `bgp-*`.",
           "example": "bgpip-0000011x",
@@ -6458,7 +6103,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP filter",
           "example": "1.1.1.1",
@@ -6506,7 +6150,6 @@
       "document": "DescribeNewL7RulesErrHealth request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)",
           "example": "bgpip",
@@ -6516,7 +6159,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of rule IDs",
           "example": "无",
@@ -6564,7 +6206,6 @@
       "document": "DescribeNewL7Rules request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)",
           "example": "bgpip",
@@ -6574,7 +6215,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Optional) Searches by rule status. Valid values: `0` (Successfully configured), `1` (Being configured), `2` (Configuration failed), `3` (Being deleted), `5` (Deletion failed), `6` (awaiting configuration), `7` (awaiting deletion), and `8` (awaiting certificate configuration).",
           "example": "无",
@@ -6584,7 +6224,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Optional) Searches by domain name.",
           "example": "无",
@@ -6594,7 +6233,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Optional) Searches by IP.",
           "example": "无",
@@ -6604,7 +6242,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of items in a page. Returned results are not paged if you enter “0”.",
           "example": "无",
@@ -6614,7 +6251,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Starting offset of the page. Value: (number of pages – 1) * items per page.",
           "example": "无",
@@ -6624,7 +6260,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "(Optional) Searches by forwarding protocol. Values: [http, https, http/https]",
           "example": "无",
@@ -6634,7 +6269,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CNAME of the Anti-DDoS Advanced instance",
           "example": "abcdefg",
@@ -6692,7 +6326,6 @@
       "document": "DescribeOverviewDDoSEventList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start time",
           "example": "2021-03-17 12:32:12",
@@ -6702,7 +6335,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time",
           "example": "2021-03-17 12:32:12",
@@ -6712,7 +6344,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters by the attack status. `start`: The attack is ongoing; `end`: The attack ends.",
           "example": "start",
@@ -6722,7 +6353,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The offset value",
           "example": "0",
@@ -6732,7 +6362,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of records",
           "example": "10",
@@ -6847,7 +6476,6 @@
       "document": "DisassociateDDoSEipAddress request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID (only Anti-DDoS Advanced). For example, `bgpip-0000011x`.",
           "example": "bgpip-0000011x",
@@ -6857,7 +6485,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "EIP of the Anti-DDoS instance ID",
           "example": "1.1.1.1",
@@ -6885,7 +6512,6 @@
       "document": "Details of the Anycast package",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Number of package IPs",
           "example": "1",
@@ -6896,7 +6522,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Auto-renewal flag",
           "example": "0",
@@ -6907,7 +6532,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Current expiration time",
           "example": "2021-03-17 12:32:12",
@@ -6924,7 +6548,6 @@
       "document": "EIP association details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Region of the Anti-DDoS instance bound to the EIP. For example, hk indicates Hong Kong.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "hk",
@@ -6935,7 +6558,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the bound resource. For example, an ID may be bound to an CVM instance.\nNote: This is field may return `null`, indicating that no valid value can be obtained.",
           "example": "ins-xx",
@@ -6946,7 +6568,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the bound ENI\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "eni-xx",
@@ -6957,7 +6578,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Private IP of the bound resource\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "x.x.x.x",
@@ -6968,7 +6588,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Modification time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "2021-01-01 00:00:00",
@@ -6985,7 +6604,6 @@
       "document": "Details of the cloud product used by the EIP",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "IP address",
           "member": "string",
@@ -6995,7 +6613,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud product category. Valid values:\n`public`: CVM\n`bm`: BM\n`eni`: ENI\n`vpngw`: VPN gateway\n `natgw`: NAT gateway\n`waf`: WAF\n`fpc`: financial products\n`gaap`: GAAP \n`other`: hosted IP\n]",
           "member": "string",
@@ -7005,7 +6622,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud sub-product category. Valid values: `cvm` (CVM), `lb` (Load balancer), `eni` (ENI), `vpngw` (VPN gateway), `natgw` (NAT gateway), `waf` (WAF), `fpc` (financial products), `gaap` (GAAP), `eip` (BM EIP) and `other` (hosted IP).",
           "member": "string",
@@ -7015,7 +6631,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cloud instance ID of the IP. This field InstanceId will be `eni-*` if the instance ID is bound to an ENI IP; `none` if there is no instance ID to bind to a hosted IP.",
           "member": "string",
@@ -7031,7 +6646,6 @@
       "document": "Forwarding listener",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The starting port for listener forwarding. Value range: 1 to 65535.",
           "example": "80",
@@ -7042,7 +6656,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Forwarding protocol. Valid values:\n`TCP`\n`UDP`\n]",
           "example": "TCP",
@@ -7053,7 +6666,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ending port for listener forwarding. Value range: 1 to 65535.",
           "example": "8080",
@@ -7070,7 +6682,6 @@
       "document": "Aggregated data on the HTTP status codes of business traffic",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP 2xx Forwarding status code",
           "example": "[1,2,3]",
@@ -7081,7 +6692,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP 5xx Status code",
           "example": "[1,2,3]",
@@ -7092,7 +6702,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP 5xx Forwarding status code",
           "example": "[1,2,3]",
@@ -7103,7 +6712,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP 404 Forwarding status code",
           "example": "[1,2,3]",
@@ -7114,7 +6722,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP 4xx Status code",
           "example": "[1,2,3]",
@@ -7125,7 +6732,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP 4xx Forwarding status code",
           "example": "[1,2,3]",
@@ -7136,7 +6742,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP 2xx Status code",
           "example": "[1,2,3]",
@@ -7147,7 +6752,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP 404 Status code",
           "example": "[1,2,3]",
@@ -7158,7 +6762,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP 3xx Forwarding status code",
           "example": "[1,2,3]",
@@ -7169,7 +6772,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP 3xx Status code",
           "example": "[1,2,3]",
@@ -7186,7 +6788,6 @@
       "document": "Single IP alarm threshold configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm threshold type. Valid values:\n`1`: alarm threshold for inbound traffic\n`2`: alarm threshold for cleansing attack traffic\n]",
           "member": "uint64",
@@ -7196,7 +6797,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alarm threshold (Mbps). The value should be greater than or equal to 0. Note that the alarm threshold configuration will be removed if you pass the parameter for input and set it to 0.",
           "member": "uint64",
@@ -7206,7 +6806,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance configured",
           "member": "InstanceRelation",
@@ -7222,7 +6821,6 @@
       "document": "IP line information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "IP line type. Valid values:\n`bgp`: BGP IP\n`ctcc`: CTCC IP\n`cucc`: CUCC IP\n`cmcc`: CMCC IP\n`abroad`: IP outside the Chinese mainland\n]",
           "example": "bgp",
@@ -7233,7 +6831,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "",
           "example": "1.1.1.1",
@@ -7244,7 +6841,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CNAME of the instance",
           "example": "abcdefg",
@@ -7255,7 +6851,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Flag of the instance. `0`: Anti-DDoS Pro instance; `1`: Anti-DDoS Advanced instance; `2`: Non-Anti-DDoS Advanced instance.",
           "example": "0",
@@ -7272,7 +6867,6 @@
       "document": "Layer-7 instance rules",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Rules can only be modified when the status is `0`, `2`, or `8`.\nRule status. Values: `0` (Normal), `1` (Being configured), `2` (Configuration failed), `3` (Being deleted), `5` (Failed to be deleted), `6` (Pending add), `7` (Pending delete), `8` (Pending certificate upload), `9` (Associated resource not exist), `10` (Pending modify), `11` (Being modified).",
           "example": "8",
@@ -7283,7 +6877,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name",
           "example": "www.xxx.com",
@@ -7294,7 +6887,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol",
           "example": "https",
@@ -7305,7 +6897,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-000001eo",
@@ -7316,7 +6907,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User App ID",
           "example": "251008915",
@@ -7327,7 +6917,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "High-defense port",
           "example": "443",
@@ -7338,7 +6927,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate ID",
           "example": "kneSCNrZ",
@@ -7355,7 +6943,6 @@
       "document": "Instance IP information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance IP",
           "member": "string",
@@ -7365,7 +6952,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "member": "string",
@@ -7381,7 +6967,6 @@
       "document": "Structure of IP range",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "IP address",
           "example": "1.1.2.1",
@@ -7392,7 +6977,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP mask. For a 32-bit IP address, enter `0`.",
           "example": "0",
@@ -7409,7 +6993,6 @@
       "document": "Status of the IP",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "IP",
           "example": "无",
@@ -7420,7 +7003,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status of the IP. Values: `1` (blocked); `2` (normal); `3` (being attacked)",
           "example": "无",
@@ -7437,7 +7019,6 @@
       "document": "List of layer-4 forwarding rules",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "IP or domain name for forwarding.",
           "example": "无",
@@ -7448,7 +7029,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Weight. Value range: [0,100].",
           "example": "无",
@@ -7459,7 +7039,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "8000\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -7470,7 +7049,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Secondary origin server. `1`: secondary origin server; `0`: general origin server.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -7487,7 +7065,6 @@
       "document": "Layer-7 forwarding rule.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Session persistence duration, in seconds.",
           "example": "无",
@@ -7498,7 +7075,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Forwarding domain name.",
           "example": "无",
@@ -7509,7 +7085,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Forwarding protocol. Valid values: `http` and `https`.",
           "example": "无",
@@ -7520,7 +7095,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Forwarding method. Valid values: `1` (by domain name); `2` (by IP).",
           "example": "无",
@@ -7531,7 +7105,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Load balancing method. Valid value: `1` (weighed polling).",
           "example": "无",
@@ -7542,7 +7115,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of origins",
           "example": "无",
@@ -7553,7 +7125,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).",
           "example": "无",
@@ -7564,7 +7135,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Rule status. Valid values: `0` (the rule was successfully configured), `1` (configuring the rule), `2` (rule configuration failed), `3` (deleting the rule), `5` (failed to delete rule), `6` (rule awaiting configuration), `7` (rule awaiting deletion), and `8` (rule awaiting certificate configuration).",
           "example": "无",
@@ -7575,7 +7145,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.",
           "example": "无",
@@ -7586,7 +7155,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CC protection threshold based on HTTPS.",
           "example": "无",
@@ -7597,7 +7165,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "[Disused] When the certificate is an external certificate, the certificate key should be provided here. ",
           "example": "无",
@@ -7608,7 +7175,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CC protection status based on HTTPS. Valid values: `0` (disabled) and `1` (enabled).",
           "example": "无",
@@ -7619,7 +7185,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disable) and `1` (enable). It defaults to `0`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -7630,7 +7195,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.",
           "example": "无",
@@ -7641,7 +7205,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "[Disused] When the certificate is an external certificate, the certificate content should be provided here. ",
           "example": "无",
@@ -7652,7 +7215,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CC protection level based on HTTPS.",
           "example": "无",
@@ -7663,7 +7225,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Rule description.",
           "example": "无",
@@ -7674,7 +7235,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CC protection status. Valid values: `0` (disabled) and `1` (enabled).",
           "example": "无",
@@ -7685,7 +7245,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Access port number.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -7696,7 +7255,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "When the certificate is managed by Tencent Cloud, this field must be set to the ID of the managed certificate.",
           "example": "无",
@@ -7707,7 +7265,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the rule",
           "example": "无",
@@ -7718,7 +7275,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Intelligent CC protection status. Valid values: `0` (disabled) and `1` (enabled).",
           "example": "无",
@@ -7735,7 +7291,6 @@
       "document": "Health check parameters of layer-7 forwarding rules",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration status. Values: `0` (normal), `1` (configuration in progress) and `2` (configuration failed).",
           "example": "无",
@@ -7746,7 +7301,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Switch. Values: `1`: Enable; `0`: Disable.",
           "example": "无",
@@ -7757,7 +7311,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the rule",
           "example": "无",
@@ -7768,7 +7321,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP request path. The default value is /.",
           "example": "无",
@@ -7779,7 +7331,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Health check interval. Unit: second.",
           "example": "无",
@@ -7790,7 +7341,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Healthy threshold, which specifies the number of consecutive successful health checks.",
           "example": "无",
@@ -7801,7 +7351,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unhealthy threshold, which specifies the number of consecutive failed health checks.",
           "example": "无",
@@ -7812,7 +7361,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP request method. Values: `HEAD` and `GET`.",
           "example": "无",
@@ -7823,7 +7371,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status code that signifies a normal state. Values: `1` (1xx), `2` (2xx), `4` (3xx), `8` (4xx), and `16` (5xx).",
           "example": "无",
@@ -7834,7 +7381,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to deploy both HTTP and HTTPS health check rules",
           "example": "无",
@@ -7845,7 +7391,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Enables passive detection. Values: `1` (enable) and `0` (disable).",
           "example": "无",
@@ -7856,7 +7401,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Blocking period in the passive detection configuration",
           "example": "无",
@@ -7867,7 +7411,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time interval between passive detections",
           "example": "无",
@@ -7878,7 +7421,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Unhealthy threshold in the passive detection configuration",
           "example": "无",
@@ -7889,7 +7431,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status code that signals that the passive detection considers the status normal. Values: `1` (1xx), `2` (2xx), `4` (3xx), `8` (4xx), and `16` (5xx).",
           "example": "无",
@@ -7900,7 +7441,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Configuration status of the passive health check. Values: `0` (Normal), `1` (configuration in progress) and `2` (configuration failed).",
           "example": "无",
@@ -7917,7 +7457,6 @@
       "document": "Layer-4 forwarding rule",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Real server port. Value range: 1–65535.",
           "example": "80",
@@ -7928,7 +7467,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Forwarding port. Value range: 1–65535.",
           "example": "80",
@@ -7939,7 +7477,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Forwarding rule. Valid values:\nTCP\nUDP\n]",
           "example": "TCP",
@@ -7950,7 +7487,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of real servers",
           "example": "xxx",
@@ -7961,7 +7497,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of the Anti-DDoS instance",
           "example": "xxx",
@@ -7972,7 +7507,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information of the Anti-DDoS instance configured",
           "example": "xxx",
@@ -8065,7 +7599,6 @@
       "document": "CC protection thresholds of the domain name and protocol",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name",
           "example": "www.8cname.com",
@@ -8076,7 +7609,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol. Value: `https`.",
           "example": "https",
@@ -8087,7 +7619,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status. Valid values: `0` (disabled), `1` (enabled).",
           "example": "1",
@@ -8098,7 +7629,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CC protection threshold",
           "example": "1",
@@ -8115,7 +7645,6 @@
       "document": "ModifyCCPrecisionPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -8125,7 +7654,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Policy ID",
           "example": "ccPrecs-00000326",
@@ -8135,7 +7663,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the action. `alg`: Verify the access request via CAPTCHA; `drop`: Drop the access request.",
           "example": "alg",
@@ -8145,7 +7672,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Policy records",
           "example": "无",
@@ -8173,7 +7699,6 @@
       "document": "ModifyCcBlackWhiteIpList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -8183,7 +7708,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of IPs",
           "example": "无",
@@ -8193,7 +7717,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP type. Valid values: `black` (blocklisted IP), `white`(allowlisted IP).",
           "example": "black",
@@ -8203,7 +7726,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Policy ID",
           "example": "ccBlackWhite-00000312",
@@ -8231,7 +7753,6 @@
       "document": "ModifyDDoSGeoIPBlockConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -8241,7 +7762,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Region blocking configuration. The configuration ID cannot be empty when you set this parameter.",
           "example": "无",
@@ -8269,7 +7789,6 @@
       "document": "ModifyDDoSSpeedLimitConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -8279,7 +7798,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Access rate limit configuration. The configuration ID cannot be empty when you set this parameter.",
           "example": "无",
@@ -8307,7 +7825,6 @@
       "document": "ModifyDomainUsrName request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "User CNAME",
           "example": "test.com",
@@ -8317,7 +7834,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name",
           "example": "test",
@@ -8345,7 +7861,6 @@
       "document": "ModifyNewDomainRules request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).",
           "example": "bgpip",
@@ -8355,7 +7870,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID.",
           "example": "bgpip-000000xe",
@@ -8365,7 +7879,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name forwarding rule.",
           "example": "无",
@@ -8403,7 +7916,6 @@
       "document": "ModifyPacketFilterConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -8413,7 +7925,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Feature filtering configuration",
           "example": "无",
@@ -8717,7 +8228,6 @@
       "document": "DDoS events recorded",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Event ID",
           "example": "ddosev-00000424",
@@ -8728,7 +8238,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IP",
           "example": "10.24.145.26",
@@ -8739,7 +8248,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time",
           "example": "2021-03-17 12:32:12",
@@ -8750,7 +8258,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time",
           "example": "2021-03-17 12:32:12",
@@ -8761,7 +8268,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Attack type",
           "example": "SYNFLOOD",
@@ -8772,7 +8278,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Attack status. `0`: The attack is ongoing; `1`: The attack ends.",
           "example": "0",
@@ -8783,7 +8288,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Attack traffic, in Mbps",
           "example": "23526",
@@ -8794,7 +8298,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Attack packets, in PPS",
           "example": "235623",
@@ -8805,7 +8308,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS service type. `bgp-multip`: Anti-DDoS Pro; `bgpip`: Anti-DDoS Advanced; `basic`: Anti-DDoS Basic.",
           "example": "bgpip",
@@ -8816,7 +8318,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-00001001",
@@ -8827,7 +8328,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance name",
           "example": "无",
@@ -8844,7 +8344,6 @@
       "document": "Package information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Package type. Valid values:\n`staticpack`: non-BGP package\n`insurance`: guarantee package\n]",
           "member": "string",
@@ -8854,7 +8353,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Package ID",
           "member": "string",
@@ -8870,7 +8368,6 @@
       "document": "Feature filtering configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol. Valid values: `tcp`, `udp`, `icmp`, `all`.",
           "example": "tcp",
@@ -8881,7 +8378,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start source port. Value range: 0–65535.",
           "example": "1000",
@@ -8892,7 +8388,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End source port. Value range: 0–65535. The value also should be greater than or equal to that of the start source port.",
           "example": "1001",
@@ -8903,7 +8398,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start destination port",
           "example": "1000",
@@ -8914,7 +8408,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End destination port. Value range: 1–65535. The value also should be greater than or equal to that of the start source port.",
           "example": "1001",
@@ -8925,7 +8418,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum message length. Value range: 1–1500.",
           "example": "300",
@@ -8936,7 +8428,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum message length. Value range: 1–1500. The value also should be greater than or equal to that of the minimum message length.",
           "example": "500",
@@ -8947,7 +8438,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Action. Valid values:\n`drop`: discards the request.\n`transmit`: allows the request.\n`drop_black`: discards the request and adds the IP to blocklist.\n`drop_rst`: blocks the request.\n`drop_black_rst`: blocks the request and adds the IP to blocklist.\n`forward`: continues protection.\n]",
           "example": "drop",
@@ -8958,7 +8448,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Detection location:\n`begin_l3`: IP header\n`begin_l4`: TCP/UDP header\n`begin_l5`: T load\n`no_match`: no match\n]",
           "example": "begin_l5",
@@ -8969,7 +8458,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Detection type:\n`sunday`: keyword\n`pcre`: regular expression\n]",
           "example": "sunday",
@@ -8980,7 +8468,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Detection value. Should be in key string or regular expression. \nWhen the `MatchType` is `sunday`, enter a string or a string in hexadecimal byte code representation. For example, a string \"123\" corresponds to the hexadecimal byte code \"\\x313233\".\nWhen the `MatchType` is `pcre`, enter a regular expression.\n]",
           "example": "\\x313233",
@@ -8991,7 +8478,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Detection depth starting from the detection position. Value range: [0, 1500].",
           "example": "500",
@@ -9002,7 +8488,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset starting from the detection position. Value range: [0, Depth].",
           "example": "100",
@@ -9013,7 +8498,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the detection value is included:\n`0`: included\n`1`: excluded\n]",
           "example": "0",
@@ -9024,7 +8508,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Relationship between the first and second detection conditions:\n`and`: under both the first and second detection conditions\n`none`: under only the first detection condition\n]",
           "example": "none",
@@ -9035,7 +8518,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The second detection position:\n`begin_l5`: load\n`no_match`: no match\n]",
           "example": "begin_l5",
@@ -9046,7 +8528,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The second detection type:\n`sunday`: keyword\n`pcre`: regular expression\n]",
           "example": "sunday",
@@ -9057,7 +8538,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The second detection value. Should be in key string or regular expression.\nWhen the `MatchType` is `sunday`, enter a string or a string in hexadecimal byte code representation. For example, a string \"123\" corresponds to the hexadecimal byte code \"\\x313233\".\nWhen the `MatchType` is `pcre`, enter a regular expression.\n]",
           "example": "\\x313233",
@@ -9068,7 +8548,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Detection depth starting from the second detection position. Value range: [0, 1500].",
           "example": "500",
@@ -9079,7 +8558,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset starting from the second detection position. Value range: [0, Depth2].",
           "example": "200",
@@ -9090,7 +8568,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the second detection value is included:\n`0`: included\n`1`: excluded\n]",
           "example": "0",
@@ -9101,7 +8578,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A rule ID is generated after a feature filtering configuration is added successfully. Leave this field empty when adding a new feature filtering configuration.",
           "example": "无",
@@ -9112,7 +8588,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Byte threshold of the packet. Packets larger than the specified size are not returned. It must be an integer larger than 1.",
           "example": "50",
@@ -9129,7 +8604,6 @@
       "document": "Feature filtering information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Feature filtering configuration",
           "example": "无",
@@ -9140,7 +8614,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance configured",
           "example": "无",
@@ -9151,7 +8624,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Modification time",
           "example": "2021-11-23 14:56:59",
@@ -9168,7 +8640,6 @@
       "document": "Port range information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start port. Value range: 1–65535.",
           "member": "uint64",
@@ -9178,7 +8649,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End port. The value should be in the range 1–65535 and cannot be less than that of the start port.",
           "member": "uint64",
@@ -9194,7 +8664,6 @@
       "document": "Protection threshold configuration information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "DDoS protection level:\n`low`: loose protection\n`middle`: medium protection\n`high`: strict protection\n]",
           "example": "无",
@@ -9205,7 +8674,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DDoS cleansing threshold (in Mbps)",
           "example": "无",
@@ -9216,7 +8684,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DDoS AI protection switch:\n`on`: enabled\n`off`: disabled\n]",
           "example": "无",
@@ -9227,7 +8694,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CC cleansing switch\n`0`: disabled\n`1`: enabled\n]",
           "example": "无",
@@ -9238,7 +8704,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CC cleansing threshold (in QPS)",
           "example": "无",
@@ -9249,7 +8714,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance configured",
           "example": "无",
@@ -9260,7 +8724,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name and protocol protection thresholds",
           "example": "无",
@@ -9271,7 +8734,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SYN traffic threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
@@ -9282,7 +8744,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SYN packet threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
@@ -9293,7 +8754,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "UDP traffic threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
@@ -9304,7 +8764,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "UDP packet threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
@@ -9315,7 +8774,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ACK traffic threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
@@ -9326,7 +8784,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ACK packet threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
@@ -9337,7 +8794,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SYNACK traffic threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
@@ -9348,7 +8804,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "SYNACK packet threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
@@ -9359,7 +8814,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "RST traffic threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
@@ -9370,7 +8824,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "RST packet threshold\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
@@ -9387,7 +8840,6 @@
       "document": "Protocol blocking configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "TCP blocking. Valid values: `0` (disabled), `1`(enabled).",
           "example": "1",
@@ -9398,7 +8850,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "UDP blocking. Valid values: `0` (disabled), `1`(enabled).",
           "example": "1",
@@ -9409,7 +8860,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ICMP blocking. Valid values: `0` (disabled), `1`(enabled).",
           "example": "1",
@@ -9420,7 +8870,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Other protocol blocking. Valid values: `0` (disabled), `1`(enabled).",
           "example": "1",
@@ -9431,7 +8880,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Null connection protection. Valid values: `0` (disabled), `1` (enabled).",
           "example": "1",
@@ -9442,7 +8890,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "PoD protection. Values: `0` (disable), `1` (enable).",
           "example": "1",
@@ -9453,7 +8900,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Teardrop protection. Values: `0` (disable), `1` (enable).",
           "example": "1",
@@ -9470,7 +8916,6 @@
       "document": "Protocol blocking information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol blocking configuration",
           "member": "ProtocolBlockConfig",
@@ -9480,7 +8925,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance configured",
           "member": "InstanceRelation",
@@ -9496,7 +8940,6 @@
       "document": "\"Protocol\" and \"Port\" parameters",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Protocol. Valid values: `tcp`, `udp`",
           "example": "无",
@@ -9507,7 +8950,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Port",
           "example": "无",
@@ -9524,7 +8966,6 @@
       "document": "Forwarding type",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of forwarding listening ports. Value range: 1–65535.",
           "member": "int64",
@@ -9534,7 +8975,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Forwarding protocol:\n`http`: HTTP protocol\n`https`: HTTPS protocol\n]",
           "member": "string",
@@ -9550,7 +8990,6 @@
       "document": "Region information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Region name, such as `ap-guangzhou`",
           "member": "string",
@@ -9566,7 +9005,6 @@
       "document": "Information of the Anti-DDoS instance using layer-4/7 forwarding rules",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance IP",
           "example": "[1.1.1.1]",
@@ -9577,7 +9015,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "bgpip-0000011x",
@@ -9588,7 +9025,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance CNAME",
           "example": "abcdefg",
@@ -9605,7 +9041,6 @@
       "document": "Scheduling domain name details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Scheduling domain name",
           "member": "string",
@@ -9615,7 +9050,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of line IPs",
           "member": "IPLineInfo",
@@ -9625,7 +9059,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Scheduling mode. Valid value: `priority` (priority scheduling).",
           "member": "string",
@@ -9635,7 +9068,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "TTL value recorded from the scheduling domain name resolution",
           "member": "uint64",
@@ -9645,7 +9077,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Running status. Valid values:\n`0`: not running\n`1`: running\n`2`: abnormal\n]",
           "member": "uint64",
@@ -9655,7 +9086,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time",
           "member": "datetime",
@@ -9665,7 +9095,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Last modification time",
           "member": "datetime",
@@ -9675,7 +9104,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "member": "string",
@@ -9737,7 +9165,6 @@
       "document": "Rate limit value types, such as pps and bps.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Rate limit value types:\n`1`: packets per second (pps)\n`2`: bits per second (bps)\n]",
           "member": "uint64",
@@ -9747,7 +9174,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value",
           "member": "uint64",
@@ -9763,7 +9189,6 @@
       "document": "Non-BGP package details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Base protection bandwidth\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "member": "uint64",
@@ -9773,7 +9198,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Application bandwidth\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "member": "uint64",
@@ -9783,7 +9207,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Forwarding rules\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "member": "uint64",
@@ -9793,7 +9216,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Auto-renewal flag\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "member": "uint64",
@@ -9803,7 +9225,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Expiration time\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "member": "string",
@@ -9819,7 +9240,6 @@
       "document": "Return code, only used to report success.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Description",
           "example": "无",
@@ -9830,7 +9250,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Success/Error code",
           "example": "无",
@@ -9847,7 +9266,6 @@
       "document": "SwitchWaterPrintConfig request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance ID",
           "example": "bgpip-0000011x",
@@ -9857,7 +9275,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark status. `1`: enabled; `0`: disabled.",
           "example": "1",
@@ -9867,7 +9284,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable proxy. Values: `1` (Enable proxy and ignore IP+port verification), `0` (Do not enable proxy and IP+port verification is required)",
           "example": "1",
@@ -9895,7 +9311,6 @@
       "document": "Tag type",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Tag key",
           "example": "232",
@@ -9906,7 +9321,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag value",
           "example": "无",
@@ -9923,7 +9337,6 @@
       "document": "Tag information, which is used to return the tag of the associated instance",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Tag key",
           "example": "sdf",
@@ -9934,7 +9347,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag value",
           "example": "sdfss",
@@ -9951,7 +9363,6 @@
       "document": "Watermark configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark offset. Value range: [0, 100).",
           "example": "0",
@@ -9962,7 +9373,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start status. Valid values:\n`0`: manual start\n`1`: instant start\n]",
           "example": "0",
@@ -9973,7 +9383,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of forwarding listeners configured",
           "example": "[{80,TCP}]",
@@ -9984,7 +9393,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A list of watermark keys is generated after a watermark is added successfully. Each watermark can have up to 2 keys. When there is only one valid key, it cannot be deleted.",
           "example": "[]",
@@ -9995,7 +9403,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark checking mode, which can be:\n`checkall`: normal mode\n`shortfpcheckall`: compact mode\n]",
           "example": "checkall",
@@ -10006,7 +9413,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable proxy. Values: `1` (Enable proxy and ignore IP+port verification), `0` (Do not enable proxy and IP+port verification is required)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -10023,7 +9429,6 @@
       "document": "Created watermark key",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Key version",
           "example": "无",
@@ -10034,7 +9439,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Key content",
           "example": "无",
@@ -10045,7 +9449,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Key ID",
           "example": "无",
@@ -10056,7 +9459,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Key status. Valid value: `1` (enabled).",
           "example": "无",
@@ -10067,7 +9469,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Key creation time",
           "example": "无",
@@ -10084,7 +9485,6 @@
       "document": "Watermark configuration details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Watermark configuration",
           "member": "WaterPrintConfig",
@@ -10094,7 +9494,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Anti-DDoS instance configured",
           "member": "InstanceRelation",

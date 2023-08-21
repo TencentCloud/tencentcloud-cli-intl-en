@@ -739,7 +739,6 @@
       "document": "AcquireClusterAdminRole request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -899,7 +898,6 @@
       "document": "AddNodeToNodePool request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -907,7 +905,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node pool ID",
           "member": "string",
           "name": "NodePoolId",
@@ -915,7 +912,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node ID",
           "member": "string",
           "name": "InstanceIds",
@@ -991,7 +987,6 @@
       "document": "Maximum and minimum number of pods in cluster-associated scaling groups",
       "members": [
         {
-          "default": "",
           "document": "Minimum number of pods in a scaling group",
           "member": "int64",
           "name": "MinSize",
@@ -1000,7 +995,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of pods in a scaling group",
           "member": "int64",
           "name": "MaxSize",
@@ -1015,7 +1009,6 @@
       "document": "Auto-upgrades cluster specification",
       "members": [
         {
-          "default": "",
           "document": "Whether to enable Auto Cluster Upgrade",
           "example": "true",
           "member": "bool",
@@ -1031,7 +1024,6 @@
       "document": "Nodes that are added in scale-out",
       "members": [
         {
-          "default": "",
           "document": "Number of nodes that are being added",
           "member": "int64",
           "name": "Joining",
@@ -1040,7 +1032,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of nodes that are being initialized",
           "member": "int64",
           "name": "Initializing",
@@ -1049,7 +1040,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of normal nodes",
           "member": "int64",
           "name": "Normal",
@@ -1058,7 +1048,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Total number of nodes",
           "member": "int64",
           "name": "Total",
@@ -1151,7 +1140,6 @@
       "document": "cuDNN version information",
       "members": [
         {
-          "default": "",
           "document": "cuDNN version",
           "example": "7.5.0",
           "member": "string",
@@ -1161,7 +1149,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "cuDNN name",
           "example": "libcudnn7_7.5.0.56-1+cuda10.1_amd64.deb",
           "member": "string",
@@ -1171,7 +1158,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Doc name of cuDNN",
           "example": "libcudnn7-doc_7.5.0.56-1+cuda10.1_amd64.deb",
           "member": "string",
@@ -1181,7 +1167,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Dev name of cuDNN",
           "example": "libcudnn7-dev_7.5.0.56-1+cuda10.1_amd64.deb",
           "member": "string",
@@ -1197,7 +1182,6 @@
       "document": "CheckEdgeClusterCIDR request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster VPC ID",
           "member": "string",
           "name": "VpcId",
@@ -1205,7 +1189,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster Pod CIDR block",
           "member": "string",
           "name": "PodCIDR",
@@ -1213,7 +1196,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster service CIDR block",
           "member": "string",
           "name": "ServiceCIDR",
@@ -1253,7 +1235,6 @@
       "document": "CheckInstancesUpgradeAble request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -1261,7 +1242,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Specify the node list to check. If it’s not passed in, all nodes of the cluster will be checked.",
           "member": "string",
           "name": "InstanceIds",
@@ -1269,7 +1249,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Upgrade type",
           "member": "string",
           "name": "UpgradeType",
@@ -1277,7 +1256,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Pagination offset",
           "member": "int64",
           "name": "Offset",
@@ -1285,7 +1263,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Pagination limit",
           "member": "int64",
           "name": "Limit",
@@ -1293,7 +1270,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filtering",
           "member": "Filter",
           "name": "Filter",
@@ -1581,7 +1557,6 @@
       "document": "Cluster advanced configurations",
       "members": [
         {
-          "default": "",
           "document": "Whether IPVS is enabled",
           "example": "false",
           "member": "bool",
@@ -1591,7 +1566,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether auto-scaling is enabled for nodes in the cluster (Enabling this function is not supported when you create a cluster)",
           "example": "false",
           "member": "bool",
@@ -1601,7 +1575,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Type of runtime component used by the cluster. The types include \"docker\" and \"containerd\". Default value: docker",
           "example": "docker",
           "member": "string",
@@ -1611,7 +1584,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "NodeName type for a node in a cluster (This includes the two forms of **hostname** and **lan-ip**, with the default as **lan-ip**. If **hostname** is used, you need to set the HostName parameter when creating a node, and the InstanceName needs to be the same as the HostName.)",
           "example": "lan-ip",
           "member": "string",
@@ -1621,7 +1593,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster custom parameter",
           "example": "无",
           "member": "ClusterExtraArgs",
@@ -1631,7 +1602,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster network type, which can be GR (Global Router) or VPC-CNI. The default value is GR.",
           "example": "GR",
           "member": "string",
@@ -1641,7 +1611,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether a cluster in VPC-CNI mode uses dynamic IP addresses. The default value is FALSE, which indicates that static IP addresses are used.",
           "example": "false",
           "member": "bool",
@@ -1651,7 +1620,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Indicates whether to enable cluster deletion protection.",
           "example": "false",
           "member": "bool",
@@ -1661,7 +1629,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster network proxy model, which is only used when ipvs-bpf mode is used. At present, TKE cluster supports three network proxy modes including `iptables`, `ipvs` and `ipvs-bpf` and their parameter setting relationships are as follows:\n`iptables`: do not set IPVS and KubeProxyMode.\n`ipvs`: set IPVS to `true` and do not set KubeProxyMode.\n`ipvs-bpf`: set KubeProxyMode to `kube-proxy-bpf`.\nThe following conditions are required to use ipvs-bpf network mode:\n1. The cluster version must be v1.14 or later.\n2. The system image must be Tencent Linux 2.4.",
           "example": "kube-proxy-eni",
           "member": "string",
@@ -1671,7 +1638,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Indicates whether to enable auditing",
           "example": "false",
           "member": "bool",
@@ -1681,7 +1647,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Specifies the ID of logset to which the audit logs are uploaded.",
           "example": "无",
           "member": "string",
@@ -1691,7 +1656,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Specifies the ID of topic to which the audit logs are uploaded.",
           "example": "无",
           "member": "string",
@@ -1701,7 +1665,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Specifies the ENI type. Values: `tke-route-eni` (multi-IP shared ENI); `tke-direct-eni` (independent ENI). It defaults to `tke-route-eni`.",
           "example": "tke-direct-eni",
           "member": "string",
@@ -1711,7 +1674,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Runtime version",
           "example": "1.16.3",
           "member": "string",
@@ -1721,7 +1683,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Indicates whether to enable the custom mode for the node’s pod CIDR range",
           "example": "false",
           "member": "bool",
@@ -1731,7 +1692,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The basic number of Pods in custom mode",
           "example": "16",
           "member": "int64",
@@ -1741,7 +1701,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Specifies whether to enable Cilium. If it’s left empty, Cilium is not enabled. If `clusterIP` is passed in, it means to enable Cilium to support the clusterIP service type.",
           "example": "clusterIP",
           "member": "string",
@@ -1751,7 +1710,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is a dual-stack cluster in VPC-CNI mode. Default value: `false`, which indicates it is not a dual-stack cluster.",
           "example": "false",
           "member": "bool",
@@ -1761,7 +1719,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to enable qGPU Sharing",
           "example": "false",
           "member": "bool",
@@ -1777,7 +1734,6 @@
       "document": "Cluster-associated scaling group information",
       "members": [
         {
-          "default": "",
           "document": "Scaling group ID",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -1786,7 +1742,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Scaling group status (`enabled`, `enabling`, `disabled`, `disabling`, `updating`, `deleting`, `scaleDownEnabling`, `scaleDownDisabling`)",
           "member": "string",
           "name": "Status",
@@ -1795,7 +1750,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the node is set to unschedulable\nNote: this field may return null, indicating that no valid value was found.",
           "member": "bool",
           "name": "IsUnschedulable",
@@ -1804,7 +1758,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Scaling group label list\nNote: this field may return null, indicating that no valid value was found.",
           "member": "Label",
           "name": "Labels",
@@ -1813,7 +1766,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time",
           "member": "string",
           "name": "CreatedTime",
@@ -1828,7 +1780,6 @@
       "document": "Cluster scaling group attributes",
       "members": [
         {
-          "default": "",
           "document": "Scaling group ID",
           "member": "string",
           "name": "AutoScalingGroupId",
@@ -1837,7 +1788,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is enabled",
           "member": "bool",
           "name": "AutoScalingGroupEnabled",
@@ -1846,7 +1796,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum and minimum number of pods in a scaling group",
           "member": "AutoScalingGroupRange",
           "name": "AutoScalingGroupRange",
@@ -1861,7 +1810,6 @@
       "document": "Cluster auto scaling configuration",
       "members": [
         {
-          "default": "",
           "document": "Whether to enable scale-in\nNote: this field may return null, indicating that no valid value was found.",
           "member": "bool",
           "name": "IsScaleDownEnabled",
@@ -1870,7 +1818,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The scale-out method when there are multiple scaling groups. `random`: select a random scaling group. `most-pods`: choose the scaling group that can schedule the most pods. `least-waste`: select the scaling group that can ensure the fewest remaining resources after Pod scheduling.. The default value is `random`.)\nNote: this field may return null, indicating that no valid value was found.",
           "member": "string",
           "name": "Expander",
@@ -1879,7 +1826,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Max concurrent scale-in volume\nNote: this field may return null, indicating that no valid value was found.",
           "member": "int64",
           "name": "MaxEmptyBulkDelete",
@@ -1888,7 +1834,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of minutes after cluster scale-out when the system starts judging whether to perform scale-in\nNote: this field may return null, indicating that no valid value was found.",
           "member": "int64",
           "name": "ScaleDownDelay",
@@ -1897,7 +1842,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of consecutive minutes of idleness after which the node is subject to scale-in (default value: 10)\nNote: this field may return null, indicating that no valid value was found.",
           "member": "int64",
           "name": "ScaleDownUnneededTime",
@@ -1906,7 +1850,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Percentage of node resource usage below which the node is considered to be idle (default value: 50)\nNote: this field may return null, indicating that no valid value was found.",
           "member": "int64",
           "name": "ScaleDownUtilizationThreshold",
@@ -1915,7 +1858,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "During scale-in, ignore nodes with local storage pods (default value: False)\nNote: this field may return null, indicating that no valid value was found.",
           "member": "bool",
           "name": "SkipNodesWithLocalStorage",
@@ -1924,7 +1866,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "During scale-in, ignore nodes with pods in the kube-system namespace that are not managed by DaemonSet (default value: False)\nNote: this field may return null, indicating that no valid value was found.",
           "member": "bool",
           "name": "SkipNodesWithSystemPods",
@@ -1933,7 +1874,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to ignore DaemonSet pods by default when calculating resource usage (default value: False: do not ignore)\nNote: this field may return null, indicating that no valid value was found.",
           "member": "bool",
           "name": "IgnoreDaemonSetsUtilization",
@@ -1942,7 +1882,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number at which CA health detection is triggered (default value: 3). After the number specified in OkTotalUnreadyCount is exceeded, CA will perform health detection.\nNote: this field may return null, indicating that no valid value was found.",
           "member": "int64",
           "name": "OkTotalUnreadyCount",
@@ -1951,7 +1890,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Max percentage of unready nodes. After the max percentage is exceeded, CA will stop operation.\nNote: this field may return null, indicating that no valid value was found.",
           "member": "int64",
           "name": "MaxTotalUnreadyPercentage",
@@ -1960,7 +1898,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Amount of time before unready nodes become eligible for scale-in\nNote: this field may return null, indicating that no valid value was found.",
           "member": "int64",
           "name": "ScaleDownUnreadyTime",
@@ -1969,7 +1906,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Waiting time before CA deletes nodes that are not registered in Kubernetes\nNote: this field may return null, indicating that no valid value was found.",
           "member": "int64",
           "name": "UnregisteredNodeRemovalTime",
@@ -1984,7 +1920,6 @@
       "document": "Describes the basic configuration information of a cluster",
       "members": [
         {
-          "default": "",
           "document": "Cluster operating system. Public image (enter the image name) and custom image (enter the image ID) are supported. For details, see https://intl.cloud.tencent.com/document/product/457/68289?from_cn_redirect=1",
           "example": "tlinux2.4x86_64",
           "member": "string",
@@ -1994,7 +1929,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster version. The default value is 1.10.5.",
           "example": "v1.18.4",
           "member": "string",
@@ -2004,7 +1938,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster name",
           "example": "clstest",
           "member": "string",
@@ -2014,7 +1947,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster description",
           "example": "test cluster",
           "member": "string",
@@ -2024,7 +1956,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VPC ID, in the format of vpc-xxx, which is required when you create an empty managed cluster.",
           "example": "vpc-xxx",
           "member": "string",
@@ -2034,7 +1965,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID of the project to which the new resources in the cluster belong.",
           "example": "0",
           "member": "int64",
@@ -2044,7 +1974,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag description list. This parameter is used to bind a tag to a resource instance. Currently, a tag can only be bound to cluster instances.",
           "example": "无",
           "member": "TagSpecification",
@@ -2054,7 +1983,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)",
           "example": "GENERAL",
           "member": "string",
@@ -2064,7 +1992,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to enable the node’s default security group (default: `No`, Alpha feature)",
           "example": "false",
           "member": "bool",
@@ -2074,7 +2001,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "When the Cilium Overlay add-on is selected, TKE will take two IPs from the subnet to create the private network CLB.",
           "example": "subnet-xx",
           "member": "string",
@@ -2084,7 +2010,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster specifications available for managed clusters",
           "example": "L5",
           "member": "string",
@@ -2094,7 +2019,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Auto cluster upgrade for managed clusters",
           "example": "无",
           "member": "AutoUpgradeClusterLevel",
@@ -2110,7 +2034,6 @@
       "document": "Container networking parameters for the cluster",
       "members": [
         {
-          "default": "",
           "document": "CIDR used to assign container and service IPs for the cluster. It cannot conflict with the VPC's CIDR or the CIDRs of other clusters in the same VPC",
           "example": "10.0.0.0/16",
           "member": "string",
@@ -2120,7 +2043,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to ignore ClusterCIDR conflict errors, which are not ignored by default",
           "example": "false",
           "member": "bool",
@@ -2130,7 +2052,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of Pods on each node. Value range: 16 to 256. When its power is not 2, it will round upward to the closest power of 2.",
           "example": "256",
           "member": "uint64",
@@ -2140,7 +2061,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The maximum number of services in a cluster. The range is from 32 to 32768. When its power is not 2, it will round upward to the closest power of 2. Default value is 256.",
           "example": "256",
           "member": "uint64",
@@ -2150,7 +2070,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The CIDR block used to assign cluster service IP addresses. It must conflict with neither the VPC CIDR block nor with CIDR blocks of other clusters in the same VPC instance. The IP range must be within the private network IP range, such as 10.1.0.0/14, 192.168.0.1/18, and 172.16.0.0/16.",
           "example": "10.0.255.0/24",
           "member": "string",
@@ -2160,7 +2079,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subnet ID of the ENI in VPC-CNI network mode",
           "example": "[\"subnet-aaa\"]",
           "member": "string",
@@ -2170,7 +2088,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Repossession time of ENI IP addresses in VPC-CNI network mode, whose range is [300,15768000)",
           "example": "120",
           "member": "int64",
@@ -2180,7 +2097,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to ignore ServiceCIDR conflict errors. It is only valid in VPC-CNI mode. Default value: `false`.",
           "example": "false",
           "member": "bool",
@@ -2196,7 +2112,6 @@
       "document": "Cluster creation process",
       "members": [
         {
-          "default": "",
           "document": "Process type",
           "member": "string",
           "name": "Type",
@@ -2205,7 +2120,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Process status",
           "member": "string",
           "name": "Status",
@@ -2214,7 +2128,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last time when the status is probed\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "datetime",
           "name": "LastProbeTime",
@@ -2223,7 +2136,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Last time when transiting to the process\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "datetime",
           "name": "LastTransitionTime",
@@ -2232,7 +2144,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Reasons for transiting to the process\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Reason",
@@ -2241,7 +2152,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "More information on transition\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Message",
@@ -2256,7 +2166,6 @@
       "document": "Authentication information for accessing K8s",
       "members": [
         {
-          "default": "",
           "document": "CA root certificate",
           "member": "string",
           "name": "CACert",
@@ -2265,7 +2174,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Token for authentication",
           "member": "string",
           "name": "Token",
@@ -2280,7 +2188,6 @@
       "document": "Cluster master custom parameter",
       "members": [
         {
-          "default": "",
           "document": "kube-apiserver custom parameter, in the format of [\"k1=v1\", \"k1=v2\"], for example: [\"max-requests-inflight=500\",\"feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true\"].\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "[\"max-requests-inflight=200\"]",
           "member": "string",
@@ -2290,7 +2197,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "kube-controller-manager custom parameter\nNote: this field may return null, indicating that no valid value is obtained.",
           "example": "[\"kube-api-burst=500\"]",
           "member": "string",
@@ -2300,7 +2206,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "kube-scheduler custom parameter\nNote: this field may return null, indicating that no valid value is obtained.",
           "example": "[\"kube-api-burst=500\"]",
           "member": "string",
@@ -2310,7 +2215,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "etcd custom parameter, which is only effective for self-deployed cluster.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "[\"node-data-dir=/data\"]",
           "member": "string",
@@ -2326,7 +2230,6 @@
       "document": "Information of the managed cluster model",
       "members": [
         {
-          "default": "",
           "document": "Cluster model",
           "example": "L500",
           "member": "string",
@@ -2336,7 +2239,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Model name",
           "example": "500节点",
           "member": "string",
@@ -2346,7 +2248,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of nodes",
           "example": "20",
           "member": "uint64",
@@ -2356,7 +2257,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of Pods",
           "example": "100",
           "member": "uint64",
@@ -2366,7 +2266,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of ConfigMap",
           "example": "200",
           "member": "uint64",
@@ -2376,7 +2275,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of CRDs",
           "example": "500",
           "member": "uint64",
@@ -2386,7 +2284,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is enabled",
           "example": "true",
           "member": "bool",
@@ -2396,7 +2293,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of other resources\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "500",
           "member": "uint64",
@@ -2412,7 +2308,6 @@
       "document": "Cluster model adjustment history",
       "members": [
         {
-          "default": "",
           "document": "Record ID",
           "example": "xxxx-xxxx-xxxx-xxxx",
           "member": "string",
@@ -2422,7 +2317,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxx",
           "member": "string",
@@ -2432,7 +2326,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Status (valid values: `trading`, `upgrading`, `success`, `failed`)",
           "example": "success",
           "member": "string",
@@ -2442,7 +2335,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Status description",
           "example": "余额不足",
           "member": "string",
@@ -2452,7 +2344,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Original model",
           "example": "L5",
           "member": "string",
@@ -2462,7 +2353,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "New model",
           "example": "L20",
           "member": "string",
@@ -2472,7 +2362,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Trigger type (valid values: `manual`, `auto`)",
           "example": "manual",
           "member": "string",
@@ -2482,7 +2371,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Start time",
           "example": "2022-02-01 00:00:00",
           "member": "string",
@@ -2492,7 +2380,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "End time",
           "example": "2022-02-01 00:00:00",
           "member": "string",
@@ -2508,7 +2395,6 @@
       "document": "Cluster network-related parameters",
       "members": [
         {
-          "default": "",
           "document": "CIDR used to assign container and service IPs for the cluster. It cannot conflict with the VPC's CIDR or the CIDRs of other clusters in the same VPC.",
           "example": "10.0.0.0/24",
           "member": "string",
@@ -2518,7 +2404,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to ignore ClusterCIDR conflict errors. It defaults to not ignore.",
           "example": "false",
           "member": "bool",
@@ -2528,7 +2413,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of pods on each node in the cluster. Default value: 256",
           "example": "256",
           "member": "uint64",
@@ -2538,7 +2422,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of cluster services. Default value: 256",
           "example": "256",
           "member": "uint64",
@@ -2548,7 +2431,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether IPVS is enabled. Default value: disabled",
           "example": "false",
           "member": "bool",
@@ -2558,7 +2440,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster VPC ID, which is required when you create an empty cluster; otherwise, it is automatically set to be consistent with that of the nodes in the cluster",
           "example": "vpc-aaa",
           "member": "string",
@@ -2568,7 +2449,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether CNI is enabled for network plugin(s). Default value: enabled",
           "example": "false",
           "member": "bool",
@@ -2578,7 +2458,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The network mode of service. This parameter is only applicable to ipvs+bpf mode.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "ipvs-bpf",
           "member": "string",
@@ -2588,7 +2467,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The IP range for service assignment. It cannot conflict with the VPC’s CIDR block nor the CIDR blocks of other clusters in the same VPC.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "10.0.0.0/25",
           "member": "string",
@@ -2598,7 +2476,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The container subnet associated with the cluster\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "[\"subnet-aa\",\"subnet-bb\"]",
           "member": "string",
@@ -2608,7 +2485,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to ignore ServiceCIDR conflict errors. It is only valid in VPC-CNI mode. Default value: `false`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "false",
           "member": "bool",
@@ -2618,7 +2494,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether it is a dual-stack cluster in VPC-CNI mode. Default value: `false`, which indicates it is not a dual-stack cluster.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "false",
           "member": "bool",
@@ -2628,7 +2503,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "It is used to automatically assign the IP ranges for the service.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "10.0.0.0/24",
           "member": "string",
@@ -2638,7 +2512,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Cluster Cilium Mode configuration\n- clusterIP\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "\"clusterIP\"",
           "member": "string",
@@ -2654,7 +2527,6 @@
       "document": "Cluster status information",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "\"cls-xxxx\"",
           "member": "string",
@@ -2664,7 +2536,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster status",
           "example": "\"Running\"",
           "member": "string",
@@ -2674,7 +2545,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Status of nodes in the cluster",
           "example": " \"AllNormal\"",
           "member": "string",
@@ -2684,7 +2554,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Indicates whether the monitoring service is enabled for the cluster",
           "example": "false",
           "member": "bool",
@@ -2694,7 +2563,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of cluster nodes being created. \"-1\" indicates that the request to obtain the node status timed out. \"-2\" indicates that the request failed.",
           "example": "1",
           "member": "int64",
@@ -2704,7 +2572,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of running nodes in the cluster. \"-1\" indicates that the request to obtain the node status timed out. \"-2\" indicates that the request failed.",
           "example": "3",
           "member": "int64",
@@ -2714,7 +2581,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of abnormal nodes in the cluster.  \"-1\" indicates that the request to obtain the node status timed out. \"-2\" indicates that the request failed.",
           "example": "0",
           "member": "int64",
@@ -2724,7 +2590,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of shutdown nodes in the cluster.  \"-1\" indicates that the request to obtain the node status timed out. \"-2\" indicates that the request failed.\nNote: this field may return `null`, indicating that no valid value can be found.",
           "example": "0",
           "member": "int64",
@@ -2734,7 +2599,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of nodes being shut down in the cluster.  \"-1\" indicates that the request to obtain the node status timed out. \"-2\" indicates that the request failed.\nNote: this field may return `null`, indicating that no valid value can be found.",
           "example": "0",
           "member": "int64",
@@ -2744,7 +2608,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Indicates whether to enable cluster deletion protection\nNote: this field may return `null`, indicating that no valid value can be found.",
           "example": "false",
           "member": "bool",
@@ -2754,7 +2617,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Indicates whether the cluster is auditable\nNote: this field may return `null`, indicating that no valid value can be found.",
           "example": "false",
           "member": "bool",
@@ -2770,7 +2632,6 @@
       "document": "Cluster version information",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -2779,7 +2640,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The list of cluster major version, such as 1.18.4",
           "member": "string",
           "name": "Versions",
@@ -2794,7 +2654,6 @@
       "document": "The CommonName in the certificate of the client corresponding to the user UIN",
       "members": [
         {
-          "default": "",
           "document": "User UIN",
           "member": "string",
           "name": "SubaccountUin",
@@ -2803,7 +2662,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The CommonName in the certificate of the client corresponding to the sub-account",
           "member": "string",
           "name": "CN",
@@ -2942,7 +2800,6 @@
       "document": "CreateClusterEndpointVip request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -2950,7 +2807,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Security policy opens single IP or CIDR to the Internet (for example: '192.168.1.0/24', with 'reject all' as the default).",
           "member": "string",
           "name": "SecurityPolicies",
@@ -2983,7 +2839,6 @@
       "document": "CreateClusterInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID. Enter the ClusterId field returned by the DescribeClusters API",
           "example": "cls-berpx5vg",
           "member": "string",
@@ -2992,7 +2847,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Pass-through parameter for CVM creation in the format of a JSON string. To ensure the idempotence of requests for adding cluster nodes, you need to add the ClientToken field in this parameter. For more information, see the documentation for [RunInstances](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API.",
           "example": "{}",
           "member": "string",
@@ -3001,7 +2855,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Additional parameter to be set for the instance",
           "example": "{}",
           "member": "InstanceAdvancedSettings",
@@ -3010,7 +2863,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Skips the specified verification. Valid values: GlobalRouteCIDRCheck, VpcCniCIDRCheck",
           "example": "[",
           "member": "string",
@@ -3044,7 +2896,6 @@
       "document": "CreateClusterNodePool request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxx",
           "member": "string",
@@ -3053,7 +2904,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "AS group parameters. For details, see https://intl.cloud.tencent.com/document/product/377/20440?from_cn_redirect=1",
           "example": "{\\\"AutoScalingGroupName\\\":\\\"\\\",\\\"MaxSize\\\":1,\\\"MinSize\\\":0,\\\"Des",
           "member": "string",
@@ -3062,7 +2912,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Running parameters. For details, see https://intl.cloud.tencent.com/document/product/377/20447?from_cn_redirect=1",
           "example": "{\\\"LaunchConfigurationName\\\":\\\"\\\",\\\"InstanceType\\\":\\\"S3.SMALL1\\\"",
           "member": "string",
@@ -3071,7 +2920,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Sample parameters",
           "example": "无",
           "member": "InstanceAdvancedSettings",
@@ -3080,7 +2928,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Indicates whether to enable auto scaling",
           "example": "true",
           "member": "bool",
@@ -3089,7 +2936,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Node pool name",
           "example": "测试集群",
           "member": "string",
@@ -3098,7 +2944,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Labels",
           "example": "无",
           "member": "Label",
@@ -3107,7 +2952,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Taints",
           "example": "无",
           "member": "Taint",
@@ -3116,7 +2960,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Node pool runtime type and version",
           "example": "docker",
           "member": "string",
@@ -3125,7 +2968,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Runtime version",
           "example": "18.06",
           "member": "string",
@@ -3134,7 +2976,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node pool operating system (enter the image ID for a custom image, and enter the OS name for a public image)",
           "example": "ubuntu18.04.1x86_64",
           "member": "string",
@@ -3143,7 +2984,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)",
           "example": "GENERAL",
           "member": "string",
@@ -3152,7 +2992,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Resource tag",
           "example": "无",
           "member": "Tag",
@@ -3161,7 +3000,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether Deletion Protection is enabled",
           "example": "false",
           "member": "bool",
@@ -3195,7 +3033,6 @@
       "document": "CreateCluster request structure.",
       "members": [
         {
-          "default": "",
           "document": "Container networking configuration information for the cluster",
           "example": "无",
           "member": "ClusterCIDRSettings",
@@ -3204,7 +3041,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Cluster type. Managed cluster: MANAGED_CLUSTER; self-deployed cluster: INDEPENDENT_CLUSTER.",
           "example": "MANAGED_CLUSTER",
           "member": "string",
@@ -3213,7 +3049,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1).",
           "example": "无",
           "member": "RunInstancesForNode",
@@ -3222,7 +3057,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Basic configuration information of the cluster",
           "example": "无",
           "member": "ClusterBasicSettings",
@@ -3231,7 +3065,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Advanced configuration information of the cluster",
           "example": "无",
           "member": "ClusterAdvancedSettings",
@@ -3240,7 +3073,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Advanced configuration information of the node",
           "example": "无",
           "member": "InstanceAdvancedSettings",
@@ -3249,7 +3081,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The configuration information for existing instances. All instances must be in the same VPC. Up to 100 instances are allowed in one VPC. Spot instances are not supported.",
           "example": "无",
           "member": "ExistedInstancesForNode",
@@ -3258,7 +3089,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "CVM type and the corresponding data disk mounting configuration information.",
           "example": "无",
           "member": "InstanceDataDiskMountSetting",
@@ -3267,7 +3097,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Information of the add-on to be installed",
           "example": "无",
           "member": "ExtensionAddon",
@@ -3301,7 +3130,6 @@
       "document": "CreateClusterRouteTable request structure.",
       "members": [
         {
-          "default": "",
           "document": "Route table name",
           "member": "string",
           "name": "RouteTableName",
@@ -3309,7 +3137,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Route table CIDR",
           "member": "string",
           "name": "RouteTableCidrBlock",
@@ -3317,7 +3144,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "VPC bound to the route table",
           "member": "string",
           "name": "VpcId",
@@ -3325,7 +3151,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to ignore CIDR conflicts",
           "member": "int64",
           "name": "IgnoreClusterCidrConflict",
@@ -3449,7 +3274,6 @@
       "document": "CreateClusterVirtualNode request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-abcd1234",
           "member": "string",
@@ -3458,7 +3282,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node pool",
           "example": "np-abcd1234",
           "member": "string",
@@ -3467,7 +3290,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Subnet",
           "example": "subnet-abcd1234",
           "member": "string",
@@ -3476,7 +3298,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of subnet IDs (this parameter and `SubnetId` are mutually exclusive)",
           "example": "[\"subnet-abcd1234\"]",
           "member": "string",
@@ -3485,7 +3306,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "List of virtual nodes",
           "example": "无",
           "member": "VirtualNodeSpec",
@@ -3521,7 +3341,6 @@
       "document": "CreateECMInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterID",
@@ -3529,7 +3348,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Module ID",
           "member": "string",
           "name": "ModuleId",
@@ -3537,7 +3355,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance AZ, number of instances and ISP",
           "member": "ECMZoneInstanceCountISP",
           "name": "ZoneInstanceCountISPSet",
@@ -3545,7 +3362,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Password",
           "member": "string",
           "name": "Password",
@@ -3553,7 +3369,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Public network bandwidth",
           "member": "int64",
           "name": "InternetMaxBandwidthOut",
@@ -3561,7 +3376,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Image ID",
           "member": "string",
           "name": "ImageId",
@@ -3569,7 +3383,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance name",
           "member": "string",
           "name": "InstanceName",
@@ -3577,7 +3390,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Host name",
           "member": "string",
           "name": "HostName",
@@ -3585,7 +3397,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Enhanced service (including CWP and Cloud Monitoring)",
           "member": "ECMEnhancedService",
           "name": "EnhancedService",
@@ -3593,7 +3404,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Custom script",
           "member": "string",
           "name": "UserData",
@@ -3601,7 +3411,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance extension information",
           "member": "string",
           "name": "External",
@@ -3609,7 +3418,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Security group of the instance",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -3642,7 +3450,6 @@
       "document": "CreateEdgeCVMInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxx",
           "member": "string",
@@ -3651,7 +3458,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Pass-through parameter for CVM creation in the format of a JSON string. To ensure the idempotency of requests for adding cluster nodes, you need to add the `ClientToken` field in this parameter. For more information, see the documentation for [RunInstances](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API.",
           "example": "{}",
           "member": "string",
@@ -3660,7 +3466,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Region of the CVM instances to create",
           "example": "ap-guangzhou",
           "member": "string",
@@ -3669,7 +3474,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Quantity of CVM instances to create",
           "example": "3",
           "member": "int64",
@@ -3678,7 +3482,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance extension information",
           "example": "{}",
           "member": "string",
@@ -3687,7 +3490,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Custom script",
           "example": "whoami",
           "member": "string",
@@ -3696,7 +3498,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to enable ENI",
           "example": "true",
           "member": "bool",
@@ -3732,7 +3533,6 @@
       "document": "CreateEdgeLogConfig request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -3740,7 +3540,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Log collection configuration in json form",
           "member": "string",
           "name": "LogConfig",
@@ -3748,7 +3547,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "CLS logset ID",
           "member": "string",
           "name": "LogsetId",
@@ -3774,7 +3572,6 @@
       "document": "CreatePrometheusAlertRule request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "prom-xxx",
           "member": "string",
@@ -3783,7 +3580,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Alarm configurations",
           "example": "参考复杂类型",
           "member": "PrometheusAlertRuleDetail",
@@ -3819,7 +3615,6 @@
       "document": "CreateTKEEdgeCluster request structure.",
       "members": [
         {
-          "default": "",
           "document": "",
           "example": "1.12.4",
           "member": "string",
@@ -3828,7 +3623,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "VPC ID",
           "example": "vpc-xxx",
           "member": "string",
@@ -3837,7 +3631,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster name",
           "example": "for_test",
           "member": "string",
@@ -3846,7 +3639,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster Pod CIDR block",
           "example": "172.16.0.0/20",
           "member": "string",
@@ -3855,7 +3647,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster service CIDR block",
           "example": "192.168.0.0/18",
           "member": "string",
@@ -3864,7 +3655,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster description",
           "example": "无",
           "member": "string",
@@ -3873,7 +3663,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster advanced settings",
           "example": "无",
           "member": "EdgeClusterAdvancedSettings",
@@ -3882,7 +3671,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Maximum number of Pods on the node",
           "example": "64",
           "member": "int64",
@@ -3891,7 +3679,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Public LB of the TKE Edge cluster",
           "example": "无",
           "member": "EdgeClusterPublicLB",
@@ -3900,7 +3687,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Cluster specification level",
           "example": "L5",
           "member": "string",
@@ -3909,7 +3695,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether auto upgrade is supported",
           "example": "flase",
           "member": "bool",
@@ -3918,7 +3703,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Cluster billing mode",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
@@ -3927,7 +3711,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Edge cluster version. It is the set of versions of all cluster components.",
           "example": "1.0.1",
           "member": "string",
@@ -3936,7 +3719,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Prefix of the image registry of an edge component",
           "example": "reg.test.com/myedge",
           "member": "string",
@@ -3972,7 +3754,6 @@
       "document": "Custom driver information",
       "members": [
         {
-          "default": "",
           "document": "URL of custom GPU driver address\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "https://abc.com/NVIDIA-Linux-x86_64-460.32.03.run",
           "member": "string",
@@ -3988,7 +3769,6 @@
       "document": "Described the configuration and information of k8s node data disk.",
       "members": [
         {
-          "default": "",
           "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "CLOUD_PREMIUM",
           "member": "string",
@@ -3998,7 +3778,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "File system (ext3/ext4/xfs)\nNote: This field may return null, indicating that no valid value was found.",
           "example": "ext4",
           "member": "string",
@@ -4008,7 +3787,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Disk size (G)\nNote: This field may return null, indicating that no valid value was found.",
           "example": "50",
           "member": "int64",
@@ -4018,7 +3796,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether the disk is auto-formatted and mounted\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "true",
           "member": "bool",
@@ -4028,7 +3805,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Mounting directory\nNote: This field may return null, indicating that no valid value was found.",
           "example": "/var/lib/docker",
           "member": "string",
@@ -4038,7 +3814,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Mounted device name or partition name (only required when adding an existing node)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "/dev/vdb",
           "member": "string",
@@ -4080,7 +3855,6 @@
       "document": "DeleteClusterAsGroups request structure.",
       "members": [
         {
-          "default": "",
           "document": "The cluster ID, obtained through the [DescribeClusters](https://intl.cloud.tencent.com/document/api/457/31862?from_cn_redirect=1) API.",
           "member": "string",
           "name": "ClusterId",
@@ -4088,7 +3862,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster scaling group ID list",
           "member": "string",
           "name": "AutoScalingGroupIds",
@@ -4096,7 +3869,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to keep nodes in the scaling group. Default to **false** (not keep)",
           "member": "bool",
           "name": "KeepInstance",
@@ -4122,7 +3894,6 @@
       "document": "DeleteClusterEndpoint request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -4130,7 +3901,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).",
           "member": "bool",
           "name": "IsExtranet",
@@ -4156,7 +3926,6 @@
       "document": "DeleteClusterEndpointVip request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -4182,7 +3951,6 @@
       "document": "DeleteClusterInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -4190,7 +3958,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of Instance IDs",
           "member": "string",
           "name": "InstanceIds",
@@ -4198,7 +3965,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Policy used to delete an instance in the cluster: `terminate` (terminates the instance. Only available for pay-as-you-go CVMs); `retain` (only removes it from the cluster. The instance will be retained.)",
           "member": "string",
           "name": "InstanceDeleteMode",
@@ -4206,7 +3972,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether or not there is forced deletion (when a node is initialized, the parameters can be specified as TRUE)",
           "member": "bool",
           "name": "ForceDelete",
@@ -4253,7 +4018,6 @@
       "document": "DeleteClusterNodePool request structure.",
       "members": [
         {
-          "default": "",
           "document": "ClusterId of a node pool",
           "member": "string",
           "name": "ClusterId",
@@ -4261,7 +4025,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "IDs of node pools to delete",
           "member": "string",
           "name": "NodePoolIds",
@@ -4269,7 +4032,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Indicates whether nodes in a node pool are retained when the node pool is deleted. (The nodes are removed from the cluster. However, the corresponding instances will not be terminated.)",
           "member": "bool",
           "name": "KeepInstance",
@@ -4295,7 +4057,6 @@
       "document": "DeleteCluster request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -4303,7 +4064,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Policy used to delete an instance in the cluster: terminate (terminates the instance. Only available for instances on pay-as-you-go CVMs); retain (only removes it from the cluster. The instance will be retained.)",
           "member": "string",
           "name": "InstanceDeleteMode",
@@ -4311,7 +4071,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Specifies the policy to deal with resources in the cluster when the cluster is deleted. It only supports CBS now. The default policy is to retain CBS disks.",
           "member": "ResourceDeleteOption",
           "name": "ResourceDeleteOptions",
@@ -4337,7 +4096,6 @@
       "document": "DeleteClusterRoute request structure.",
       "members": [
         {
-          "default": "",
           "document": "Route table name.",
           "member": "string",
           "name": "RouteTableName",
@@ -4345,7 +4103,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Next hop address.",
           "member": "string",
           "name": "GatewayIp",
@@ -4353,7 +4110,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Destination CIDR.",
           "member": "string",
           "name": "DestinationCidrBlock",
@@ -4379,7 +4135,6 @@
       "document": "DeleteClusterRouteTable request structure.",
       "members": [
         {
-          "default": "",
           "document": "Route table name",
           "member": "string",
           "name": "RouteTableName",
@@ -4405,7 +4160,6 @@
       "document": "DeleteClusterVirtualNodePool request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -4413,7 +4167,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of virtual node pool IDs",
           "member": "string",
           "name": "NodePoolIds",
@@ -4421,7 +4174,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to forcibly delete the nodes with pods. Values: `true`, `false`.",
           "member": "bool",
           "name": "Force",
@@ -4447,7 +4199,6 @@
       "document": "DeleteClusterVirtualNode request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -4455,7 +4206,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of virtual nodes",
           "member": "string",
           "name": "NodeNames",
@@ -4463,7 +4213,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to forcibly delete running pods in the virtual node. Values: `true`, `false`.",
           "member": "bool",
           "name": "Force",
@@ -4489,7 +4238,6 @@
       "document": "DeleteECMInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterID",
@@ -4497,7 +4245,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "IDs of ECMs to be deleted",
           "member": "string",
           "name": "EcmIdSet",
@@ -4523,7 +4270,6 @@
       "document": "DeleteEdgeCVMInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterID",
@@ -4531,7 +4277,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "IDs of CVMs to be deleted",
           "member": "string",
           "name": "CvmIdSet",
@@ -4557,7 +4302,6 @@
       "document": "DeleteEdgeClusterInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -4565,7 +4309,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Array of instance IDs to be deleted",
           "member": "string",
           "name": "InstanceIds",
@@ -4591,7 +4334,6 @@
       "document": "DeletePrometheusAlertRule request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "prom-xxx",
           "member": "string",
@@ -4600,7 +4342,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The ID list of alarm rules",
           "example": "[\"alert-xx\"]",
           "member": "string",
@@ -4627,7 +4368,6 @@
       "document": "DeleteTKEEdgeCluster request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -4653,7 +4393,6 @@
       "document": "DescribeAvailableClusterVersion request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -4661,7 +4400,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of cluster IDs",
           "member": "string",
           "name": "ClusterIds",
@@ -4701,7 +4439,6 @@
       "document": "DescribeAvailableTKEEdgeVersion request structure.",
       "members": [
         {
-          "default": "",
           "document": "You can enter the `ClusterId` to query the current and latest versions of all cluster components.",
           "example": "cls-xxxxxxxx",
           "member": "string",
@@ -4789,7 +4526,6 @@
       "document": "DescribeClusterAsGroupOption request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -4822,7 +4558,6 @@
       "document": "DescribeClusterAsGroups request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -4830,7 +4565,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Scaling group ID list. If this value is null, it indicates that all cluster-associated scaling groups are pulled.",
           "member": "string",
           "name": "AutoScalingGroupIds",
@@ -4838,7 +4572,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Offset. This value defaults to 0. For more information on Offset, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "member": "int64",
           "name": "Offset",
@@ -4846,7 +4579,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of returned results. This value defaults to 20. The maximum is 100. For more information on Limit, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "member": "int64",
           "name": "Limit",
@@ -4886,7 +4618,6 @@
       "document": "DescribeClusterAuthenticationOptions request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxxxx",
           "member": "string",
@@ -4940,7 +4671,6 @@
       "document": "DescribeClusterCommonNames request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-65r1c5nu",
           "member": "string",
@@ -4949,7 +4679,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Sub-account. Up to 50 sub-accounts can be passed in at a time.",
           "example": "[\"123457\"]",
           "member": "string",
@@ -4958,7 +4687,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Role ID. Up to 50 role IDs can be passed in at a time.",
           "example": "[\"4611686231212124138\"]",
           "member": "string",
@@ -4994,7 +4722,6 @@
       "document": "DescribeClusterEndpointStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -5002,7 +4729,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether public network access is enabled or not (True = public network access, FALSE = private network access, with the default value as FALSE).",
           "member": "bool",
           "name": "IsExtranet",
@@ -5046,7 +4772,6 @@
       "document": "DescribeClusterEndpointVipStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -5086,7 +4811,6 @@
       "document": "DescribeClusterEndpoints request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-65r1c5nu",
           "member": "string",
@@ -5185,7 +4909,6 @@
       "document": "DescribeClusterInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -5193,7 +4916,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0",
           "member": "int64",
           "name": "Offset",
@@ -5201,7 +4923,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Maximum number of output entries. Default value: 20",
           "member": "int64",
           "name": "Limit",
@@ -5209,7 +4930,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "List of instance IDs to be obtained. This parameter is empty by default, which indicates that all instances in the cluster will be pulled.",
           "member": "string",
           "name": "InstanceIds",
@@ -5217,7 +4937,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Node role. Valid values are MASTER, WORKER, ETCD, MASTER_ETCD, and ALL. Default value: WORKER.",
           "member": "string",
           "name": "InstanceRole",
@@ -5225,7 +4944,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Filters include `nodepool-id` and `nodepool-instance-type` (how the instance is added to the pool). For `nodepool-instance-type`, the values can be `MANUALLY_ADDED`, `AUTOSCALING_ADDED` and `ALL`.",
           "member": "Filter",
           "name": "Filters",
@@ -5265,7 +4983,6 @@
       "document": "DescribeClusterKubeconfig request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-65r1c5nu",
           "member": "string",
@@ -5274,7 +4991,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Defaults to `false`, which means to obtain the kubeconfig of private network",
           "example": "true",
           "member": "bool",
@@ -5308,7 +5024,6 @@
       "document": "DescribeClusterLevelAttribute request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID (available for cluster model adjustment)",
           "example": "cls-xxxxxx",
           "member": "string",
@@ -5353,7 +5068,6 @@
       "document": "DescribeClusterLevelChangeRecords request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxx",
           "member": "string",
@@ -5362,7 +5076,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Start time",
           "example": "2022-02-01 00:00:00",
           "member": "string",
@@ -5371,7 +5084,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "End time",
           "example": "2022-02-01 23:00:00",
           "member": "string",
@@ -5380,7 +5092,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Offset. Default value: `0`",
           "example": "1",
           "member": "uint64",
@@ -5389,7 +5100,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Maximum number of output entries. Default value: `20`",
           "example": "20",
           "member": "uint64",
@@ -5434,7 +5144,6 @@
       "document": "DescribeClusterNodePoolDetail request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -5442,7 +5151,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node pool ID",
           "member": "string",
           "name": "NodePoolId",
@@ -5475,7 +5183,6 @@
       "document": "DescribeClusterNodePools request structure.",
       "members": [
         {
-          "default": "",
           "document": "ClusterId (cluster ID)",
           "example": "cls-xxxxxx",
           "member": "string",
@@ -5484,7 +5191,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "·  NodePoolsName\n    Filters by the node pool name\n    Type: String\n    Required: No\n\n·  NodePoolsId\n    Filters by the node pool ID\n    Type: String\n    Required: No\n\n·  tags\n    Filters by key-value pairs of tags\n    Type: String\n    Required: No\n\n·  tag:tag-key\n    Filters by key-value pairs of tags\n    Type: String\n    Required: No",
           "example": "无",
           "member": "Filter",
@@ -5556,7 +5262,6 @@
       "document": "DescribeClusterRoutes request structure.",
       "members": [
         {
-          "default": "",
           "document": "Route table name.",
           "member": "string",
           "name": "RouteTableName",
@@ -5564,7 +5269,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Filtering conditions, which are optional. Currently, only filtering by GatewayIP is supported.",
           "member": "Filter",
           "name": "Filters",
@@ -5604,7 +5308,6 @@
       "document": "DescribeClusterSecurity request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID. Enter the ClusterId field returned by the DescribeClusters API",
           "member": "string",
           "name": "ClusterId",
@@ -5693,7 +5396,6 @@
       "document": "DescribeClusterStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID list. All clusters are pulled if it is left empty.",
           "example": "[\"cls-xxxxxxx\"]",
           "member": "string",
@@ -5738,7 +5440,6 @@
       "document": "DescribeClusterVirtualNodePools request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -5778,7 +5479,6 @@
       "document": "DescribeClusterVirtualNode request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -5786,7 +5486,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node pool ID",
           "member": "string",
           "name": "NodePoolId",
@@ -5794,7 +5493,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node name",
           "member": "string",
           "name": "NodeNames",
@@ -5834,7 +5532,6 @@
       "document": "DescribeClusters request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID list (When it is empty,\nall clusters under the account will be obtained)",
           "example": "无",
           "member": "string",
@@ -5843,7 +5540,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0",
           "example": "无",
           "member": "int64",
@@ -5852,7 +5548,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Maximum number of output entries. Default value: 20",
           "example": "无",
           "member": "int64",
@@ -5861,7 +5556,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "·  ClusterName\n    Filters by the cluster name\n    Type: String\n    Required: No\n\n·  ClusterType\n    Filters by the cluster type\n    Type: String\n    Required: No\n\n·  ClusterStatus\n    Filters by the cluster status\n    Type: String\n    Required: No\n\n·  Tags\n    Filters by key-value pairs of tags\n    Type: String\n    Required: No\n\n·  vpc-id\n    Filters by the VPC ID\n    Type: String\n    Required: No\n\n·  tag-key\n    Filters by the tag key\n    Type: String\n    Required: No\n\n·  tag-value\n    Filters by the tag value\n    Type: String\n    Required: No\n\n·  tag:tag-key\n    Filters by key-value pairs of tags\n    Type: String\n    Required: No",
           "example": "无",
           "member": "Filter",
@@ -5870,7 +5564,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Cluster type, such as `MANAGED_CLUSTER`",
           "example": "MANAGED_CLUSTER",
           "member": "string",
@@ -5911,7 +5604,6 @@
       "document": "DescribeECMInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterID",
@@ -5919,7 +5611,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Filter condition\nOnly filtering by an ECM ID is supported",
           "member": "Filter",
           "name": "Filters",
@@ -5959,7 +5650,6 @@
       "document": "DescribeEdgeAvailableExtraArgs request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster version",
           "member": "string",
           "name": "ClusterVersion",
@@ -5999,7 +5689,6 @@
       "document": "DescribeEdgeCVMInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterID",
@@ -6007,7 +5696,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Filter condition\nOnly `cvm-id` is supported.",
           "member": "Filter",
           "name": "Filters",
@@ -6047,7 +5735,6 @@
       "document": "DescribeEdgeClusterExtraArgs request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-abc123",
           "member": "string",
@@ -6083,7 +5770,6 @@
       "document": "DescribeEdgeClusterInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterID",
@@ -6091,7 +5777,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Max number of returned entries",
           "member": "int64",
           "name": "Limit",
@@ -6099,7 +5784,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Offset",
           "member": "int64",
           "name": "Offset",
@@ -6107,7 +5791,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter condition. Only `NodeName` is supported.",
           "member": "Filter",
           "name": "Filters",
@@ -6147,7 +5830,6 @@
       "document": "DescribeEdgeClusterUpgradeInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxxxxx",
           "member": "string",
@@ -6156,7 +5838,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Target TKEEdge version",
           "example": "1.0.1",
           "member": "string",
@@ -6228,7 +5909,6 @@
       "document": "DescribeEdgeLogSwitches request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of cluster IDs",
           "example": "[\"cls-xxx1\",\"cls-xxx2\"]",
           "member": "string",
@@ -6264,7 +5944,6 @@
       "document": "DescribeEnableVpcCniProgress request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the cluster for which you want to enable the VPC-CNI mode",
           "example": "\"cls-xxx\"",
           "member": "string",
@@ -6309,7 +5988,6 @@
       "document": "DescribeExistedInstances request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID. Enter the `ClusterId` field returned when you call the DescribeClusters API (Only VPC ID obtained through `ClusterId` need filtering conditions. When comparing statuses, the nodes on all clusters in this region will be used for comparison. You cannot specify `InstanceIds` and `ClusterId` at the same time.)",
           "example": "cls-xxxxxxxx",
           "member": "string",
@@ -6318,7 +5996,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Query by one or more instance ID(s). Instance ID format: ins-xxxxxxxx. (Refer to section ID.N of the API overview for this parameter's specific format.) Up to 100 instances are allowed for each request. You cannot specify InstanceIds and Filters at the same time.",
           "example": "[\"ins-xxxxxxxx\",\"ins-yyyyyyyy\"]",
           "member": "string",
@@ -6327,7 +6004,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Filter condition. For fields and other information, see [the DescribeInstances API](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1). If a ClusterId has been set, then the cluster's VPC ID will be attached as a query field. In this situation, if a \"vpc-id\" is specified in Filter, then the specified VPC ID must be consistent with the cluster's VPC ID.",
           "example": "无",
           "member": "Filter",
@@ -6336,7 +6012,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Filter by instance IP (Supports both private and public IPs)",
           "example": "10.0.0.1",
           "member": "string",
@@ -6345,7 +6020,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Filter by instance name",
           "example": "worker",
           "member": "string",
@@ -6354,7 +6028,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0. For more information on Offset, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "0",
           "member": "uint64",
@@ -6363,7 +6036,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on Limit, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
           "example": "100",
           "member": "uint64",
@@ -6372,7 +6044,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter by multiple instance IPs",
           "example": "[\"10.0.0.1\",\"10.0.0.2\"]",
           "member": "string",
@@ -6444,7 +6115,6 @@
       "document": "DescribePrometheusInstance request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "prom-xxx",
           "member": "string",
@@ -6574,7 +6244,6 @@
       "document": "DescribeResourceUsage request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxx",
           "member": "string",
@@ -6637,7 +6306,6 @@
       "document": "DescribeRouteTableConflicts request structure.",
       "members": [
         {
-          "default": "",
           "document": "Route table CIDR",
           "member": "string",
           "name": "RouteTableCidrBlock",
@@ -6645,7 +6313,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "VPC bound to the route table",
           "member": "string",
           "name": "VpcId",
@@ -6685,7 +6352,6 @@
       "document": "DescribeTKEEdgeClusterCredential request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxx",
           "member": "string",
@@ -6784,7 +6450,6 @@
       "document": "DescribeTKEEdgeClusterStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "Edge compute cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -6824,7 +6489,6 @@
       "document": "DescribeTKEEdgeClusters request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID list (when it is empty,\nall clusters under the account are obtained)",
           "member": "string",
           "name": "ClusterIds",
@@ -6832,7 +6496,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Offset. Default value: `0`",
           "member": "uint64",
           "name": "Offset",
@@ -6840,7 +6503,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Maximum number of output entries. Default value: `20`",
           "member": "uint64",
           "name": "Limit",
@@ -6848,7 +6510,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter condition (only filtering by a single ClusterName is supported)",
           "member": "Filter",
           "name": "Filters",
@@ -6888,7 +6549,6 @@
       "document": "DescribeTKEEdgeExternalKubeconfig request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -6921,7 +6581,6 @@
       "document": "DescribeTKEEdgeScript request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls123",
           "member": "string",
@@ -6930,7 +6589,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ENI",
           "example": "eth0",
           "member": "string",
@@ -6939,7 +6597,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Name of the name",
           "example": "node",
           "member": "string",
@@ -6948,7 +6605,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node configuration in JSON format ",
           "example": "{}",
           "member": "string",
@@ -6957,7 +6613,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "A legacy version of edgectl script can be downloaded. The latest version is downloaded by default. The version information can be checked in the script.",
           "example": "v_20220725193138",
           "member": "string",
@@ -7055,7 +6710,6 @@
       "document": "DescribeVpcCniPodLimits request structure.",
       "members": [
         {
-          "default": "",
           "document": "The availability zone of the model to query, for example, `ap-guangzhou-3`. This field is left empty by default, that is, do not filter by the availability zone.",
           "example": "ap-guangzhou-3",
           "member": "string",
@@ -7064,7 +6718,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The instance family to query, for example, `S5`. This field is left empty by default, that is, do not filter by the instance family.",
           "example": "S5",
           "member": "string",
@@ -7073,7 +6726,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The instance model to query, for example, `S5.LARGE8`. This field is empty by default, that is, do not filter by instance type.",
           "example": "S5.LARGE8",
           "member": "string",
@@ -7118,7 +6770,6 @@
       "document": "DisableClusterDeletionProtection request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -7144,7 +6795,6 @@
       "document": "DrainClusterVirtualNode request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -7152,7 +6802,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node name",
           "member": "string",
           "name": "NodeName",
@@ -7178,7 +6827,6 @@
       "document": "Version information of GPU driver and CUDA",
       "members": [
         {
-          "default": "",
           "document": "Version of GPU driver or CUDA",
           "example": "418.126.02",
           "member": "string",
@@ -7188,7 +6836,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Name of GPU driver or CUDA",
           "example": "NVIDIA-Linux-x86_64-418.126.02.run",
           "member": "string",
@@ -7204,7 +6851,6 @@
       "document": "ECM enhanced services",
       "members": [
         {
-          "default": "",
           "document": "Whether Cloud Monitoring is enabled",
           "member": "ECMRunMonitorServiceEnabled",
           "name": "SecurityService",
@@ -7213,7 +6859,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether Cloud Workload Protection is enabled",
           "member": "ECMRunSecurityServiceEnabled",
           "name": "MonitorService",
@@ -7228,7 +6873,6 @@
       "document": "ECM Cloud Monitoring",
       "members": [
         {
-          "default": "",
           "document": "Whether it is enabled",
           "member": "bool",
           "name": "Enabled",
@@ -7243,7 +6887,6 @@
       "document": "ECM Cloud Workload Protection",
       "members": [
         {
-          "default": "",
           "document": "Whether it is enabled",
           "member": "bool",
           "name": "Enabled",
@@ -7252,7 +6895,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CWP version. Valid values: `0` (CWP Pro), `1` (CWP Pro)",
           "member": "int64",
           "name": "Version",
@@ -7267,7 +6909,6 @@
       "document": "Combination of the ECM instance AZ, number of instances, and ISP",
       "members": [
         {
-          "default": "",
           "document": "Instance AZ",
           "member": "string",
           "name": "Zone",
@@ -7276,7 +6917,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of instances to be created in the current AZ",
           "member": "int64",
           "name": "InstanceCount",
@@ -7285,7 +6925,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ISP",
           "member": "string",
           "name": "ISP",
@@ -7300,7 +6939,6 @@
       "document": "Edge cluster parameters",
       "members": [
         {
-          "default": "",
           "document": "Parameter name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Name",
@@ -7309,7 +6947,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Parameter type\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Type",
@@ -7318,7 +6955,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Parameter description\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Usage",
@@ -7327,7 +6963,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Default value of the parameter\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Default",
@@ -7336,7 +6971,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Valid value or range. Options: `[]` (it indicates a range, for example, “[1, 5]” indicates the parameter must be equal or larger than 1, and be equal or smaller than 5), and `()` (it indicates a valid value, for example, “('aa', 'bb')” indicates the parameter must be “aa” or “bb”. If it is left empty, the verification can be skipped.)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Constraint",
@@ -7351,7 +6985,6 @@
       "document": "Custom parameters available for the edge cluster",
       "members": [
         {
-          "default": "",
           "document": "kube-apiserver custom parameter\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "EdgeArgsFlag",
           "name": "KubeAPIServer",
@@ -7360,7 +6993,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "kube-controller-manager custom parameter\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "EdgeArgsFlag",
           "name": "KubeControllerManager",
@@ -7369,7 +7001,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "kube-scheduler custom parameter\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "EdgeArgsFlag",
           "name": "KubeScheduler",
@@ -7378,7 +7009,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "kubelet custom parameter\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "EdgeArgsFlag",
           "name": "Kubelet",
@@ -7552,7 +7182,6 @@
       "document": "Edge cluster advanced settings",
       "members": [
         {
-          "default": "",
           "document": "Custom parameters of the cluster\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "EdgeClusterExtraArgs",
           "member": "EdgeClusterExtraArgs",
@@ -7562,7 +7191,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Runtime type. Valid values: \"docker\" (default), \"containerd\".\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "docker",
           "member": "string",
@@ -7572,7 +7200,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Forwarding mode of kube-proxy. Valid values: \"iptables\" (default), \"ipvs\".\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "iptables",
           "member": "string",
@@ -7588,7 +7215,6 @@
       "document": "Edge cluster master custom parameters",
       "members": [
         {
-          "default": "",
           "document": "kube-apiserver custom parameter, in the format of [\"k1=v1\", \"k1=v2\"], for example: [\"max-requests-inflight=500\",\"feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true\"]\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "KubeAPIServer",
@@ -7597,7 +7223,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "kube-controller-manager custom parameter\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "KubeControllerManager",
@@ -7606,7 +7231,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "kube-scheduler custom parameter\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "KubeScheduler",
@@ -7621,7 +7245,6 @@
       "document": "Edge compute cluster private LB information",
       "members": [
         {
-          "default": "",
           "document": "Whether the private LB is enabled\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "bool",
           "name": "Enabled",
@@ -7630,7 +7253,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of the subnet associated with the private LB\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "SubnetId",
@@ -7645,7 +7267,6 @@
       "document": "Edge compute cluster public LB information",
       "members": [
         {
-          "default": "",
           "document": "Whether the public LB is enabled\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "bool",
           "name": "Enabled",
@@ -7654,7 +7275,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Public network CIDR block allowed to access\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "AllowFromCidrs",
@@ -7669,7 +7289,6 @@
       "document": "EnableClusterDeletionProtection request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -7761,7 +7380,6 @@
       "document": "Describes the configuration of enhanced services, such as Cloud Security and Cloud Monitor.",
       "members": [
         {
-          "default": "",
           "document": "Enables cloud security service. If this parameter is not specified, the cloud security service will be enabled by default.",
           "example": "TRUE",
           "member": "RunSecurityServiceEnabled",
@@ -7771,7 +7389,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Enables cloud monitor service. If this parameter is not specified, the cloud monitor service will be enabled by default.",
           "example": "TRUE",
           "member": "RunMonitorServiceEnabled",
@@ -7781,7 +7398,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to enable the TAT service. If this parameter is not specified, the TAT service is enabled for public images and disabled for other images by default.",
           "example": "TRUE",
           "member": "RunAutomationServiceEnabled",
@@ -7797,7 +7413,6 @@
       "document": "Information of existing instances",
       "members": [
         {
-          "default": "",
           "document": "Whether the instance supports being added to the cluster (TRUE: support; FALSE: not support).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -7807,7 +7422,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Reason that the instance does not support being added.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -7817,7 +7431,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of the cluster in which the instance currently resides.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -7827,7 +7440,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance ID, in the format of ins-xxxxxxxx.",
           "example": "ins-xxxx",
           "member": "string",
@@ -7837,7 +7449,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxxx",
           "member": "string",
@@ -7847,7 +7458,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "List of private IPs of the instance's primary ENI.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -7857,7 +7467,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "List of public IPs of the instance's primary ENI.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -7867,7 +7476,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time, which follows the ISO8601 standard and uses UTC time. Format: YYYY-MM-DDThh:mm:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -7877,7 +7485,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance's number of CPU cores. Unit: cores.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -7887,7 +7494,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance's memory capacity. Unit: GB.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -7897,7 +7503,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Operating system name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -7907,7 +7512,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance model.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -7917,7 +7521,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Auto scaling group ID\nNote: This field may return null, indicating that no valid value was found.",
           "example": "无",
           "member": "string",
@@ -7927,7 +7530,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance billing method. Valid values: POSTPAID_BY_HOUR (pay-as-you-go hourly); CDHPAID (billed based on CDH, i.e., only CDH is billed but not the instances on CDH)\nNote: This field may return null, indicating that no valid value was found.",
           "example": "无",
           "member": "string",
@@ -7937,7 +7539,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "IPv6 address of the instance\nNote: This field may return `null`, indicating that no valid values can be obtained.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -7953,7 +7554,6 @@
       "document": "Configuration parameters of existing nodes in different roles",
       "members": [
         {
-          "default": "",
           "document": "Node role. Values: MASTER_ETCD, WORKER. You only need to specify MASTER_ETCD when creating a self-deployed cluster (INDEPENDENT_CLUSTER).",
           "example": "worker",
           "member": "string",
@@ -7963,7 +7563,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Reinstallation parameter of existing instances",
           "example": "无",
           "member": "ExistedInstancesPara",
@@ -7973,7 +7572,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Advanced node setting, which overrides the InstanceAdvancedSettings item set at the cluster level (currently valid for the ExtraArgs node custom parameter only)",
           "example": "无",
           "member": "InstanceAdvancedSettings",
@@ -7983,7 +7581,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.",
           "example": "[16,32]",
           "member": "int64",
@@ -7999,7 +7596,6 @@
       "document": "Reinstallation parameter of existing instances",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "InstanceIds",
@@ -8008,7 +7604,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Additional parameter to be set for the instance",
           "member": "InstanceAdvancedSettings",
           "name": "InstanceAdvancedSettings",
@@ -8017,7 +7612,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Enhanced services. This parameter is used to specify whether to enable Cloud Security, Cloud Monitor and other services. If this parameter is not specified, Cloud Monitor and Cloud Security are enabled by default.",
           "member": "EnhancedService",
           "name": "EnhancedService",
@@ -8026,7 +7620,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node login information (currently only supports using Password or single KeyIds)",
           "member": "LoginSettings",
           "name": "LoginSettings",
@@ -8035,7 +7628,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Security group to which the instance belongs. This parameter can be obtained from the sgId field in the returned values of DescribeSecurityGroups. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId)",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -8044,7 +7636,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "When reinstalling the system, you can specify the HostName of the modified instance (when the cluster is in HostName mode, this parameter is required, and the rule name is the same as the [Create CVM Instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1) API HostName except for uppercase letters not being supported.",
           "member": "string",
           "name": "HostName",
@@ -8059,7 +7650,6 @@
       "document": "Information of the add-on selected for installation during cluster creation",
       "members": [
         {
-          "default": "",
           "document": "Add-on name",
           "member": "string",
           "name": "AddonName",
@@ -8068,7 +7658,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Add-on information (description of the add-on resource object in JSON string format)",
           "member": "string",
           "name": "AddonParam",
@@ -8083,7 +7672,6 @@
       "document": "> Key-value pair filters used for conditional queries, such as filtering results by ID, name, and state.\n> * If there are multiple `Filter` parameters, they are evaluated using the logical `AND` operator.\n> * If a `Filter` contains multiple `Values`, they are evaluated using the logical `OR` operator.\n>\n> Take [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) as an example. You can use the following filters to query the instances in availability zone (`zone`) Guangzhou Zone 1 ***and*** whose billing plan (`instance-charge-type`) is pay-as-you-go:\n```\nFilters.0.Name=zone\n&Filters.0.Values.0=ap-guangzhou-1\n&Filters.1.Name=instance-charge-type\n&Filters.1.Values.0=POSTPAID_BY_HOUR\n```",
       "members": [
         {
-          "default": "无",
           "document": "Filters.",
           "member": "string",
           "name": "Name",
@@ -8092,7 +7680,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "无",
           "document": "Filter values.",
           "member": "string",
           "name": "Values",
@@ -8107,7 +7694,6 @@
       "document": "ForwardTKEEdgeApplicationRequestV3 request structure.",
       "members": [
         {
-          "default": "",
           "document": "Access to request the cluster add-on",
           "example": "GET",
           "member": "string",
@@ -8116,7 +7702,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Path to request the cluster add-on",
           "example": "/api/v1/namespaces",
           "member": "string",
@@ -8125,7 +7710,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data format allowed to receive the requested cluster add-on",
           "example": "无",
           "member": "string",
@@ -8134,7 +7718,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data format for requesting the cluster add-on",
           "example": "无",
           "member": "string",
@@ -8143,7 +7726,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data sent to request the cluster add-on",
           "example": "无",
           "member": "string",
@@ -8152,7 +7734,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster name (for example, `cls-1234abcd`)",
           "example": "cls-xxxxxxxx",
           "member": "string",
@@ -8161,7 +7742,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to encode the request content",
           "example": "无",
           "member": "string",
@@ -8197,7 +7777,6 @@
       "document": "GPU parameters, including GPU driver version, CDUA version, cuDNN version and whether to enable MIG.",
       "members": [
         {
-          "default": "",
           "document": "Whether to enable MIG\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -8207,7 +7786,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "GPU driver version",
           "example": "无",
           "member": "DriverVersion",
@@ -8217,7 +7795,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CUDA version\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DriverVersion",
@@ -8227,7 +7804,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "cuDNN version\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CUDNN",
@@ -8237,7 +7813,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Custom GPU driver\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CustomDriver",
@@ -8253,7 +7828,6 @@
       "document": "GetClusterLevelPrice request structure.",
       "members": [
         {
-          "default": "",
           "document": "The cluster model. It’s used for price query.",
           "example": "L5",
           "member": "string",
@@ -8298,7 +7872,6 @@
       "document": "GetUpgradeInstanceProgress request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -8306,7 +7879,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Maximum number of nodes to be queried",
           "member": "int64",
           "name": "Limit",
@@ -8314,7 +7886,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The starting node for the query",
           "member": "int64",
           "name": "Offset",
@@ -8375,7 +7946,6 @@
       "document": "IP Address",
       "members": [
         {
-          "default": "",
           "document": "Type. Valid values: `advertise`, `public`, and others",
           "member": "string",
           "name": "Type",
@@ -8384,7 +7954,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IP Address",
           "member": "string",
           "name": "Ip",
@@ -8393,7 +7962,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Network port",
           "member": "uint64",
           "name": "Port",
@@ -8408,7 +7976,6 @@
       "document": "Image details",
       "members": [
         {
-          "default": "",
           "document": "Image alias\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Alias",
@@ -8417,7 +7984,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Operating system name\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "OsName",
@@ -8426,7 +7992,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Image ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ImageId",
@@ -8435,7 +8000,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Container image tag, **DOCKER_CUSTOMIZE** (container customized tag), **GENERAL** (general tag, default value)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "OsCustomizeType",
@@ -8450,7 +8014,6 @@
       "document": "InstallEdgeLogAgent request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -8476,7 +8039,6 @@
       "document": "Cluster's instance information",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -8485,7 +8047,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node role: MASTER, WORKER, ETCD, MASTER_ETCD, and ALL. Default value: WORKER",
           "member": "string",
           "name": "InstanceRole",
@@ -8494,7 +8055,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Reason for instance exception (or initialization)",
           "member": "string",
           "name": "FailedReason",
@@ -8503,7 +8063,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance status (running, initializing, or failed)",
           "member": "string",
           "name": "InstanceState",
@@ -8512,7 +8071,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the instance is drained\nNote: this field may return null, indicating that no valid value is obtained.",
           "member": "string",
           "name": "DrainStatus",
@@ -8521,7 +8079,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Node settings\nNote: this field may return null, indicating that no valid value is obtained.",
           "member": "InstanceAdvancedSettings",
           "name": "InstanceAdvancedSettings",
@@ -8530,7 +8087,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creation time",
           "member": "string",
           "name": "CreatedTime",
@@ -8539,7 +8095,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node private IP\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "LanIP",
@@ -8548,7 +8103,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Resource pool ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "NodePoolId",
@@ -8557,7 +8111,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of the auto-scaling group\nNote: this field may return null, indicating that no valid value is obtained.",
           "member": "string",
           "name": "AutoscalingGroupId",
@@ -8572,7 +8125,6 @@
       "document": "Describes K8s cluster configuration and related information.",
       "members": [
         {
-          "default": "",
           "document": "When the custom PodCIDR mode is enabled for the cluster, you can specify the maximum number of pods per node.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "16",
           "member": "int64",
@@ -8582,7 +8134,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "GPU driver parameters\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "GPUArgs",
@@ -8592,7 +8143,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Specifies the base64-encoded custom script to be executed before initialization of the node. It’s only valid for adding existing nodes for now.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "#!/bin/sh echo \"hello world\"",
           "member": "string",
@@ -8602,7 +8152,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Node taint\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "Taint",
@@ -8612,7 +8161,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Data disk mount point. By default, no data disk is mounted. Data disks in ext3, ext4, or XFS file system formats will be mounted directly, while data disks in other file systems and unformatted data disks will automatically be formatted as ext4 (xfs for tlinux system) and then mounted. Please back up your data in advance. This setting is only applicable to CVMs with a single data disk.\nNote: in multi-disk scenarios, use the DataDisks data structure below to set the corresponding information, such as cloud disk type, cloud disk size, mount path, and whether to perform formatting.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "/tmp",
           "member": "string",
@@ -8622,7 +8170,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Specified value of dockerd --graph. Default value: /var/lib/docker\nNote: This field may return null, indicating that no valid value was found.",
           "example": "/var/lib/docker",
           "member": "string",
@@ -8632,7 +8179,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Base64-encoded user script, which will be executed after the K8s component starts running. You need to ensure the reentrant and retry logic of the script. The script and its log files can be viewed at the node path: /data/ccs_userscript/. If you want to initialize nodes before adding them to the scheduling list, you can use this parameter together with the unschedulable parameter. After the final initialization of userScript is completed, add the kubectl uncordon nodename --kubeconfig=/root/.kube/config command to enable the node for scheduling.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "#!/bin/sh echo \"hello world\"",
           "member": "string",
@@ -8642,7 +8188,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Sets whether the added node is schedulable. 0 (default): schedulable; other values: unschedulable. After node initialization is completed, you can run kubectl uncordon nodename to enable this node for scheduling.",
           "example": "false",
           "member": "int64",
@@ -8652,7 +8197,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node label array\nNote: This field may return null, indicating that no valid value was found.",
           "example": "无",
           "member": "Label",
@@ -8662,7 +8206,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Mounting information of multiple data disks. When you create a node, ensure that the CVM purchase parameter specifies the information required for the purchase of multiple data disks. For example, the `DataDisks` under `RunInstancesPara` of the `CreateClusterInstances` API should be configured accordingly (Referto document of CreateClusterInstances API). When you add an existing node, ensure that the specified partition exists in the node.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DataDisk",
@@ -8672,7 +8215,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Information about node custom parameters\nNote: This field may return null, indicating that no valid value was found.",
           "example": "无",
           "member": "InstanceExtraArgs",
@@ -8688,7 +8230,6 @@
       "document": "Mounting configuration of the CVM instance data disk",
       "members": [
         {
-          "default": "",
           "document": "CVM instance type",
           "member": "string",
           "name": "InstanceType",
@@ -8697,7 +8238,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data disk mounting information",
           "member": "DataDisk",
           "name": "DataDisks",
@@ -8706,7 +8246,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Availability zone where the CVM instance is located",
           "member": "string",
           "name": "Zone",
@@ -8721,7 +8260,6 @@
       "document": "Node custom parameter",
       "members": [
         {
-          "default": "",
           "document": "Kubelet custom parameter, in the format of [\"k1=v1\", \"k1=v2\"], for example: [\"root-dir=/var/lib/kubelet\",\"feature-gates=PodShareProcessNamespace=true,DynamicKubeletConfig=true\"].\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "Kubelet",
@@ -8736,7 +8274,6 @@
       "document": "Current status of the cluster during node upgrade",
       "members": [
         {
-          "default": "",
           "document": "Total Pods",
           "member": "int64",
           "name": "PodTotal",
@@ -8745,7 +8282,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Total number of NotReady Pods",
           "member": "int64",
           "name": "NotReadyPod",
@@ -8760,7 +8296,6 @@
       "document": "Pre-upgrade check result of a node",
       "members": [
         {
-          "default": "",
           "document": "Whether the check is passed",
           "member": "bool",
           "name": "CheckPass",
@@ -8769,7 +8304,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Array of check items",
           "member": "InstanceUpgradePreCheckResultItem",
           "name": "Items",
@@ -8778,7 +8312,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List of independent pods on this node",
           "member": "string",
           "name": "SinglePods",
@@ -8793,7 +8326,6 @@
       "document": "Check result for node upgrade",
       "members": [
         {
-          "default": "",
           "document": "The namespace of the workload",
           "member": "string",
           "name": "Namespace",
@@ -8802,7 +8334,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Workload type",
           "member": "string",
           "name": "WorkLoadKind",
@@ -8811,7 +8342,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Workload name",
           "member": "string",
           "name": "WorkLoadName",
@@ -8820,7 +8350,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of running pods in the workload before draining the node",
           "member": "uint64",
           "name": "Before",
@@ -8829,7 +8358,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of running pods in the workload after draining the node",
           "member": "uint64",
           "name": "After",
@@ -8838,7 +8366,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The pod list of the workload on this node",
           "member": "string",
           "name": "Pods",
@@ -8853,7 +8380,6 @@
       "document": "Upgrade progress of a node",
       "members": [
         {
-          "default": "",
           "document": "Node instance ID",
           "member": "string",
           "name": "InstanceID",
@@ -8862,7 +8388,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task lifecycle\nprocess: running\npaused: stopped\npausing: stopping\ndone: completed\ntimeout: timed out\naborted: canceled\npending: not started",
           "member": "string",
           "name": "LifeState",
@@ -8871,7 +8396,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Upgrade start time\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "StartAt",
@@ -8880,7 +8404,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Upgrade end time\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "EndAt",
@@ -8889,7 +8412,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Check result before upgrading",
           "member": "InstanceUpgradePreCheckResult",
           "name": "CheckResult",
@@ -8898,7 +8420,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Upgrade steps details",
           "member": "TaskStepInfo",
           "name": "Detail",
@@ -8913,7 +8434,6 @@
       "document": "k8s tags, generally exist as an array",
       "members": [
         {
-          "default": "",
           "document": "Name in map list",
           "member": "string",
           "name": "Name",
@@ -8922,7 +8442,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Value in map list",
           "member": "string",
           "name": "Value",
@@ -8937,7 +8456,6 @@
       "document": "Describes login settings of an instance.",
       "members": [
         {
-          "default": "",
           "document": "Login password of the instance. <br><li>For Linux instances, the password must include 8-30 characters, and contain at least two of the following character sets: [a-z], [A-Z], [0-9] and [()\\`~!@#$%^&*-+=|{}[]:;',.?/]. <br><li>For Windows instances, the password must include 12-30 characters, and contain at least three of the following character sets: [a-z], [A-Z], [0-9] and [()\\`~!@#$%^&*-+=|{}[]:;',.?/]. <br><br>If it's not specified, the user needs to set the login password using the **Reset password** option in the CVM console or calling the API `ResetInstancesPassword` to complete the creation of the CVM instance(s).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "abc",
           "member": "string",
@@ -8947,7 +8465,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call [`DescribeKeyPairs`](https://intl.cloud.tencent.com/document/api/213/15699?from_cn_redirect=1) to obtain `KeyId`. You cannot specify a key and a password at the same time. Windows instances do not support keys.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "['abc']",
           "member": "string",
@@ -8957,7 +8474,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether to keep the original settings of an image. You cannot specify this parameter and `Password` or `KeyIds.N` at the same time. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>TRUE: keep the login settings of the image <br><li>FALSE: do not keep the login settings of the image <br><br>Default value: FALSE.\nNote: This field may return null, indicating that no valid value is found.",
           "example": "abc",
           "member": "string",
@@ -8973,7 +8489,6 @@
       "document": "Nodes that are manually added",
       "members": [
         {
-          "default": "",
           "document": "Number of nodes that are being added",
           "example": "0",
           "member": "int64",
@@ -8983,7 +8498,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of nodes that are being initialized",
           "example": "0",
           "member": "int64",
@@ -8993,7 +8507,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of normal nodes",
           "example": "1",
           "member": "int64",
@@ -9003,7 +8516,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Total number of nodes",
           "example": "1",
           "member": "int64",
@@ -9019,7 +8531,6 @@
       "document": "ModifyClusterAsGroupAttribute request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -9027,7 +8538,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster-associated scaling group attributes",
           "member": "ClusterAsGroupAttribute",
           "name": "ClusterAsGroupAttribute",
@@ -9053,7 +8563,6 @@
       "document": "ModifyClusterAsGroupOptionAttribute request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -9061,7 +8570,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster auto scaling attributes",
           "member": "ClusterAsGroupOption",
           "name": "ClusterAsGroupOption",
@@ -9087,7 +8595,6 @@
       "document": "ModifyClusterAttribute request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxxx",
           "member": "string",
@@ -9096,7 +8603,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Project of the Cluster",
           "example": "0",
           "member": "int64",
@@ -9105,7 +8611,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Cluster name",
           "example": "cls-xxxxx",
           "member": "string",
@@ -9114,7 +8619,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster description",
           "example": "测试集群",
           "member": "string",
@@ -9123,7 +8627,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster specification",
           "example": "L5",
           "member": "string",
@@ -9132,7 +8635,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Auto-upgrades cluster specification",
           "example": "无",
           "member": "AutoUpgradeClusterLevel",
@@ -9141,7 +8643,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Whether to enable qGPU Sharing",
           "example": "false",
           "member": "bool",
@@ -9222,7 +8723,6 @@
       "document": "ModifyClusterAuthenticationOptions request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxxxx",
           "member": "string",
@@ -9231,7 +8731,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ServiceAccount authentication configuration",
           "example": "无",
           "member": "ServiceAccountAuthenticationOptions",
@@ -9240,7 +8739,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "OIDC authentication configurations",
           "example": "无",
           "member": "OIDCConfigAuthenticationOptions",
@@ -9267,7 +8765,6 @@
       "document": "ModifyClusterEndpointSP request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxxxx",
           "member": "string",
@@ -9276,7 +8773,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Security policy opens single IP or CIDR block to the Internet (for example: '192.168.1.0/24', with 'reject all' as the default).",
           "example": "[\"192.168.1.0\\/24\\r\\n\"]",
           "member": "string",
@@ -9285,7 +8781,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Modify public network security group",
           "example": "sg-xxx",
           "member": "string",
@@ -9312,7 +8807,6 @@
       "document": "ModifyClusterNodePool request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxx",
           "member": "string",
@@ -9321,7 +8815,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node pool ID",
           "example": "np-xxx",
           "member": "string",
@@ -9330,7 +8823,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Name",
           "example": "node-pool",
           "member": "string",
@@ -9339,7 +8831,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Maximum number of nodes",
           "example": "100",
           "member": "int64",
@@ -9348,7 +8839,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Minimum number of nodes",
           "example": "1",
           "member": "int64",
@@ -9357,7 +8847,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Labels",
           "example": "无",
           "member": "Label",
@@ -9366,7 +8855,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Taints",
           "example": "无",
           "member": "Taint",
@@ -9375,7 +8863,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Indicates whether auto scaling is enabled.",
           "example": "false",
           "member": "bool",
@@ -9384,7 +8871,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Operating system name",
           "example": "ubuntu18.04.1x86_64",
           "member": "string",
@@ -9393,7 +8879,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)",
           "example": "GENERAL",
           "member": "string",
@@ -9402,7 +8887,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "GPU driver version, CUDA version, cuDNN version and wether to enable MIG",
           "example": "无",
           "member": "GPUArgs",
@@ -9411,7 +8895,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Base64-encoded custom script",
           "example": "dG91Y2ggL3RtcC9oZWxsbwo=",
           "member": "string",
@@ -9420,7 +8903,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Ignore existing nodes when update `Label` and `Taint`",
           "example": "true",
           "member": "bool",
@@ -9429,7 +8911,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Node custom parameter",
           "example": "无",
           "member": "InstanceExtraArgs",
@@ -9438,7 +8919,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Resource tag",
           "example": "无",
           "member": "Tag",
@@ -9447,7 +8927,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Sets whether the added node is schedulable. 0 (default): schedulable; other values: unschedulable. After node initialization is completed, you can run `kubectl uncordon nodename` to enable this node for scheduling.",
           "example": "0",
           "member": "int64",
@@ -9456,7 +8935,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether Deletion Protection is enabled",
           "example": "false",
           "member": "bool",
@@ -9465,7 +8943,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Specified value of dockerd --graph. Default value: /var/lib/docker",
           "example": "/var/lib/docker",
           "member": "string",
@@ -9492,7 +8969,6 @@
       "document": "ModifyClusterVirtualNodePool request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-abcd1234",
           "member": "string",
@@ -9501,7 +8977,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node pool ID",
           "example": "np-abcd1234",
           "member": "string",
@@ -9510,7 +8985,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node pool name",
           "example": "virtual-node-prod",
           "member": "string",
@@ -9519,7 +8993,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Virtual node labels",
           "example": "无",
           "member": "Label",
@@ -9528,7 +9001,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Virtual node taint",
           "example": "无",
           "member": "Taint",
@@ -9537,7 +9009,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Setting of deletion protection",
           "example": "false",
           "member": "bool",
@@ -9564,7 +9035,6 @@
       "document": "ModifyNodePoolInstanceTypes request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxx",
           "member": "string",
@@ -9573,7 +9043,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node pool ID",
           "example": "np-xxx",
           "member": "string",
@@ -9582,7 +9051,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of instance types",
           "example": "[\"ins-xxx\\n\"]",
           "member": "string",
@@ -9609,7 +9077,6 @@
       "document": "ModifyPrometheusAlertRule request structure.",
       "members": [
         {
-          "default": "",
           "document": "Instance ID",
           "example": "prom-xxx",
           "member": "string",
@@ -9618,7 +9085,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Alarm configurations",
           "example": "无",
           "member": "PrometheusAlertRuleDetail",
@@ -9645,7 +9111,6 @@
       "document": "Node statistics list",
       "members": [
         {
-          "default": "",
           "document": "Nodes that are manually managed\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "ManuallyAdded",
           "name": "ManuallyAdded",
@@ -9654,7 +9119,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Nodes that are automatically managed\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "AutoscalingAdded",
           "name": "AutoscalingAdded",
@@ -9669,7 +9133,6 @@
       "document": "Node pool description",
       "members": [
         {
-          "default": "",
           "document": "Node pool ID",
           "example": "np-xxx",
           "member": "string",
@@ -9679,7 +9142,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node pool name",
           "example": "xxx",
           "member": "string",
@@ -9689,7 +9151,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cluster instance ID",
           "example": "cls-xxx",
           "member": "string",
@@ -9699,7 +9160,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The lifecycle state of the current node pool. Valid values: `creating`, `normal`, `updating`, `deleting`, and `deleted`.",
           "example": "normal",
           "member": "string",
@@ -9709,7 +9169,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Launch configuration ID",
           "example": "asc-xxx",
           "member": "string",
@@ -9719,7 +9178,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Auto-scaling group ID",
           "example": "asg-xxx",
           "member": "string",
@@ -9729,7 +9187,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Labels",
           "example": "无",
           "member": "Label",
@@ -9739,7 +9196,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Array of taint",
           "example": "无",
           "member": "Taint",
@@ -9749,7 +9205,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node list",
           "example": "{\"AutoscalingAdded\":{\"Initializing\":0,\"Joining\":0,\"Normal\":1,\"Sh",
           "member": "NodeCountSummary",
@@ -9759,7 +9214,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "",
           "example": "enabled",
           "member": "string",
@@ -9769,7 +9223,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Maximum number of nodes\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "5",
           "member": "int64",
@@ -9779,7 +9232,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Minimum number of nodes\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "1",
           "member": "int64",
@@ -9789,7 +9241,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Desired number of nodes\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "3",
           "member": "int64",
@@ -9799,7 +9250,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The operating system of the node pool\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "tlinux2.4x86_64",
           "member": "string",
@@ -9809,7 +9259,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Container image tag, `DOCKER_CUSTOMIZE` (container customized tag), `GENERAL` (general tag, default value)\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "GENERAL",
           "member": "string",
@@ -9819,7 +9268,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Image ID\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "img-xxx",
           "member": "string",
@@ -9829,7 +9277,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This parameter is required when the custom PodCIDR mode is enabled for the cluster.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "16",
           "member": "int64",
@@ -9839,7 +9286,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Custom script\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "string",
@@ -9849,7 +9295,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Resource tag\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Tag",
@@ -9859,7 +9304,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether Deletion Protection is enabled\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
@@ -9875,7 +9319,6 @@
       "document": "The options for adding the existing node to the node pool",
       "members": [
         {
-          "default": "",
           "document": "Whether to add to the node pool.",
           "member": "bool",
           "name": "AddToNodePool",
@@ -9884,7 +9327,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node pool ID",
           "member": "string",
           "name": "NodePoolId",
@@ -9893,7 +9335,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to inherit the node pool configuration.",
           "member": "bool",
           "name": "InheritConfigurationFromNodePool",
@@ -9908,7 +9349,6 @@
       "document": "OIDC authentication related configurations",
       "members": [
         {
-          "default": "",
           "document": "Creating an identity provider\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "false",
           "member": "bool",
@@ -9918,7 +9358,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creating ClientId of the identity provider\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "[\"xxxx\",\"yyyy\"]",
           "member": "string",
@@ -9928,7 +9367,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Creating the PodIdentityWebhook component\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "false",
           "member": "bool",
@@ -9944,7 +9382,6 @@
       "document": "The maximum number of Pods in VPC-CNI mode supported by a model",
       "members": [
         {
-          "default": "",
           "document": "The number of Pods supported by a TKE shared ENI in non-static IP address mode\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "int64",
           "name": "TKERouteENINonStaticIP",
@@ -9953,7 +9390,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The number of Pods supported by a TKE shared ENI in static IP address mode\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "int64",
           "name": "TKERouteENIStaticIP",
@@ -9962,7 +9398,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The number of Pods supported by TKE independent ENI mode\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "int64",
           "name": "TKEDirectENI",
@@ -9977,7 +9412,6 @@
       "document": "The model information and the maximum supported number of Pods in the VPC-CNI mode",
       "members": [
         {
-          "default": "",
           "document": "The availability zone where the model is located\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "string",
           "name": "Zone",
@@ -9986,7 +9420,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The instance family to which the model belongs\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "string",
           "name": "InstanceFamily",
@@ -9995,7 +9428,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance type\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "string",
           "name": "InstanceType",
@@ -10004,7 +9436,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The maximum number of Pods in the VPC-CNI mode supported by the model\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "PodLimitsByType",
           "name": "PodLimits",
@@ -10019,7 +9450,6 @@
       "document": "PROM instance alarm rule",
       "members": [
         {
-          "default": "",
           "document": "Rule name",
           "example": "example",
           "member": "string",
@@ -10029,7 +9459,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "PromQL contents",
           "example": "example",
           "member": "string",
@@ -10039,7 +9468,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Additional labels",
           "example": "Name=a,Value=b",
           "member": "Label",
@@ -10049,7 +9477,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Alarm delivery template",
           "example": "temp-xxx",
           "member": "string",
@@ -10059,7 +9486,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Duration",
           "example": "1s",
           "member": "string",
@@ -10069,7 +9495,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Rule description\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "example-describe",
           "member": "string",
@@ -10079,7 +9504,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Refer to annotations in prometheus rule\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "Name=a,Value=b",
           "member": "Label",
@@ -10089,7 +9513,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Alarm rule status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -10105,7 +9528,6 @@
       "document": "The alarm configuration",
       "members": [
         {
-          "default": "",
           "document": "Rule name",
           "example": "实例告警",
           "member": "string",
@@ -10115,7 +9537,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Rule list",
           "example": "无",
           "member": "PrometheusAlertRule",
@@ -10125,7 +9546,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last modification time",
           "example": "无",
           "member": "string",
@@ -10135,7 +9555,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Alarm delivery methods",
           "example": "无",
           "member": "PrometheusNotification",
@@ -10145,7 +9564,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Alarm rule ID",
           "example": "alert-xxx",
           "member": "string",
@@ -10155,7 +9573,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "If the alarm is delivered via a template, the TemplateId is the template ID.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "temp-xxx",
           "member": "string",
@@ -10165,7 +9582,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Alarm interval\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "30s",
           "member": "string",
@@ -10181,7 +9597,6 @@
       "document": "The grafana information in the managed PROM instance",
       "members": [
         {
-          "default": "",
           "document": "Whether it is enabled",
           "example": "true",
           "member": "bool",
@@ -10191,7 +9606,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain name. It will be effective only when the public network access is enabled.",
           "example": "http://grafana.com",
           "member": "string",
@@ -10201,7 +9615,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The private network or public network address",
           "example": "http://1.1.1.1",
           "member": "string",
@@ -10211,7 +9624,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the public network access is enabled.\n`close`: the public network access is not enabled\n`opening`: the public network access is being enabled\n`open`: the public network access is enabled",
           "example": "open",
           "member": "string",
@@ -10221,7 +9633,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The user name of the grafana admin",
           "example": "admin",
           "member": "string",
@@ -10237,7 +9648,6 @@
       "document": "amp alarm channel configuration",
       "members": [
         {
-          "default": "",
           "document": "Whether it is enabled",
           "member": "bool",
           "name": "Enabled",
@@ -10246,7 +9656,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Convergence time",
           "member": "string",
           "name": "RepeatInterval",
@@ -10255,7 +9664,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Start time",
           "member": "string",
           "name": "TimeRangeStart",
@@ -10264,7 +9672,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "End time",
           "member": "string",
           "name": "TimeRangeEnd",
@@ -10273,7 +9680,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Alarm delivery method. Valid values: `SMS`, `EMAIL`, `CALL`, and `WECHAT`\nIt respectively represents SMS, email, phone calls, and WeChat.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "string",
           "name": "NotifyWay",
@@ -10282,7 +9688,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The alarm recipient group (user group)\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "uint64",
           "name": "ReceiverGroups",
@@ -10291,7 +9696,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The alarm sequence of phone calls\nThis parameter is used when you specify `CALL` for `NotifyWay`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "uint64",
           "name": "PhoneNotifyOrder",
@@ -10300,7 +9704,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The number of phone call alarms\nThis parameter is used when you specify `CALL` for `NotifyWay`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "int64",
           "name": "PhoneCircleTimes",
@@ -10309,7 +9712,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Dialing interval in seconds within one polling\nThis parameter is used when you specify `CALL` for `NotifyWay`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "int64",
           "name": "PhoneInnerInterval",
@@ -10318,7 +9720,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Polling interval in seconds\nThis parameter is used when you specify `CALL` for `NotifyWay`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "int64",
           "name": "PhoneCircleInterval",
@@ -10327,7 +9728,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Phone call alarm arrival notification\nThis parameter is used when you specify `CALL` for `NotifyWay`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "bool",
           "name": "PhoneArriveNotice",
@@ -10336,7 +9736,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Channel type. Default value: `amp`. The following channels are supported:\namp\nwebhook\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "string",
           "name": "Type",
@@ -10345,7 +9744,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This parameter is required if `Type` is `webhook`.\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "member": "string",
           "name": "WebHook",
@@ -10360,7 +9758,6 @@
       "document": "Region information",
       "members": [
         {
-          "default": "",
           "document": "Region name\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "RegionName",
@@ -10369,7 +9766,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Region ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "RegionId",
@@ -10378,7 +9774,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Region status\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Status",
@@ -10387,7 +9782,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Status of region-related features (return all attributes in JSON format)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "FeatureGates",
@@ -10396,7 +9790,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Region abbreviation\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Alias",
@@ -10405,7 +9798,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whitelisted location\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Remark",
@@ -10420,7 +9812,6 @@
       "document": "RemoveNodeFromNodePool request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxx",
           "member": "string",
@@ -10429,7 +9820,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node pool ID",
           "example": "np-xxxxxxxx",
           "member": "string",
@@ -10438,7 +9828,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The node ID list. Up to 100 nodes can be removed at a time.",
           "example": "[\"ins-xxxxxxxx\\n\"]",
           "member": "string",
@@ -10465,7 +9854,6 @@
       "document": "The policy to deal with resources in the cluster when the cluster is deleted.",
       "members": [
         {
-          "default": "",
           "document": "Resource type, for example `CBS`",
           "member": "string",
           "name": "ResourceType",
@@ -10474,7 +9862,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Specifies the policy to deal with resources in the cluster when the cluster is deleted. It can be `terminate` or `retain`.",
           "member": "string",
           "name": "DeleteMode",
@@ -10489,7 +9876,6 @@
       "document": "Cluster resource usage",
       "members": [
         {
-          "default": "",
           "document": "Resource type",
           "example": "Pod",
           "member": "string",
@@ -10499,7 +9885,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Resource usage",
           "example": "100",
           "member": "uint64",
@@ -10509,7 +9894,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Resource usage details",
           "example": "无",
           "member": "ResourceUsageDetail",
@@ -10525,7 +9909,6 @@
       "document": "Resource usage details",
       "members": [
         {
-          "default": "",
           "document": "Resource name",
           "example": "clusterrolebindings",
           "member": "string",
@@ -10535,7 +9918,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Resource usage",
           "example": "100",
           "member": "uint64",
@@ -10551,7 +9933,6 @@
       "document": "Object of cluster route",
       "members": [
         {
-          "default": "",
           "document": "Route table name.",
           "member": "string",
           "name": "RouteTableName",
@@ -10560,7 +9941,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Destination CIDR.",
           "member": "string",
           "name": "DestinationCidrBlock",
@@ -10569,7 +9949,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Next hop address.",
           "member": "string",
           "name": "GatewayIp",
@@ -10584,7 +9963,6 @@
       "document": "Object of route table conflict",
       "members": [
         {
-          "default": "",
           "document": "Route table type.",
           "member": "string",
           "name": "RouteTableType",
@@ -10593,7 +9971,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Route table CIDR.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "RouteTableCidrBlock",
@@ -10602,7 +9979,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Route table name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "RouteTableName",
@@ -10611,7 +9987,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Route table ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "RouteTableId",
@@ -10626,7 +10001,6 @@
       "document": "Object of cluster route table",
       "members": [
         {
-          "default": "",
           "document": "Route table name.",
           "member": "string",
           "name": "RouteTableName",
@@ -10635,7 +10009,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Route table CIDR.",
           "member": "string",
           "name": "RouteTableCidrBlock",
@@ -10644,7 +10017,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VPC instance ID.",
           "member": "string",
           "name": "VpcId",
@@ -10659,7 +10031,6 @@
       "document": "Describes the TAT service information.",
       "members": [
         {
-          "default": "",
           "document": "Whether to enable the TAT service. Valid values: <br><li>`TRUE`: yes;<br><li>`FALSE`: no<br><br>Default: `FALSE`.",
           "example": "TRUE",
           "member": "bool",
@@ -10675,7 +10046,6 @@
       "document": "Node configuration parameters of different roles",
       "members": [
         {
-          "default": "",
           "document": "Node role. Values: MASTER_ETCD, WORKER. You only need to specify MASTER_ETCD when creating a self-deployed cluster (INDEPENDENT_CLUSTER).",
           "member": "string",
           "name": "NodeRole",
@@ -10684,7 +10054,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Pass-through parameter for CVM creation in the format of a JSON string. For more information, see the API for [creating a CVM instance](https://intl.cloud.tencent.com/document/product/213/15730?from_cn_redirect=1). Pass any parameter other than common parameters. ImageId will be replaced with the image corresponding to the TKE cluster operating system.",
           "member": "string",
           "name": "RunInstancesPara",
@@ -10693,7 +10062,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "An advanced node setting. This parameter overrides the InstanceAdvancedSettings item set at the cluster level and corresponds to RunInstancesPara in a one-to-one sequential manner (currently valid for the ExtraArgs node custom parameter only).",
           "member": "InstanceAdvancedSettings",
           "name": "InstanceAdvancedSettingsOverrides",
@@ -10708,7 +10076,6 @@
       "document": "Describes information related to the Cloud Monitor service.",
       "members": [
         {
-          "default": "",
           "document": "Whether to enable [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Monitor <br><li>FALSE: do not enable Cloud Monitor <br><br>Default value: TRUE.",
           "member": "bool",
           "name": "Enabled",
@@ -10722,7 +10089,6 @@
       "document": "Describes information related to the Cloud Security service.",
       "members": [
         {
-          "default": "",
           "document": "Whether to enable [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1). Valid values: <br><li>TRUE: enable Cloud Security <br><li>FALSE: do not enable Cloud Security <br><br>Default value: TRUE.",
           "member": "bool",
           "name": "Enabled",
@@ -10779,7 +10145,6 @@
       "document": "SetNodePoolNodeProtection request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxx",
           "member": "string",
@@ -10788,7 +10153,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node pool ID",
           "example": "np-xxx",
           "member": "string",
@@ -10797,7 +10161,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Node ID",
           "example": "[\"ins-xxx\\n\"]",
           "member": "string",
@@ -10806,7 +10169,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether the node needs removal protection",
           "example": "true",
           "member": "bool",
@@ -10851,7 +10213,6 @@
       "document": "The type of resource the label is bound to. Type currently supported is **cluster**.",
       "members": [
         {
-          "default": "",
           "document": "Tag key.",
           "member": "string",
           "name": "Key",
@@ -10860,7 +10221,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value.",
           "member": "string",
           "name": "Value",
@@ -10875,7 +10235,6 @@
       "document": "List of tag descriptions. By specifying this parameter, you can bind tags to corresponding resource instances at the same time. Currently, only tags are bound to cloud host instances.",
       "members": [
         {
-          "default": "",
           "document": "The type of resource that the tag is bound to. The type currently supported is `cluster`.",
           "member": "string",
           "name": "ResourceType",
@@ -10884,7 +10243,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "List of tag pairs",
           "member": "Tag",
           "name": "Tags",
@@ -10899,7 +10257,6 @@
       "document": "Kubernetes Taint",
       "members": [
         {
-          "default": "",
           "document": "Key of the taint",
           "member": "string",
           "name": "Key",
@@ -10908,7 +10265,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Value of the taint",
           "member": "string",
           "name": "Value",
@@ -10917,7 +10273,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Effect of the taint",
           "member": "string",
           "name": "Effect",
@@ -10932,7 +10287,6 @@
       "document": "Task step information",
       "members": [
         {
-          "default": "",
           "document": "Step name",
           "member": "string",
           "name": "Step",
@@ -10941,7 +10295,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Lifecycle\npending: the step is not started\nrunning: the step is in progress\nsuccess: the step is completed\nfailed: the step failed",
           "member": "string",
           "name": "LifeState",
@@ -10950,7 +10303,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Step start time\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "StartAt",
@@ -10959,7 +10311,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Step end time\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "EndAt",
@@ -10968,7 +10319,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "If the lifecycle of the step is failed, this field will display the error information.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "FailedMsg",
@@ -11007,7 +10357,6 @@
       "document": "UninstallEdgeLogAgent request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "member": "string",
           "name": "ClusterId",
@@ -11075,7 +10424,6 @@
       "document": "UpdateClusterVersion request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxxxx",
           "member": "string",
@@ -11084,7 +10432,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The version that needs to upgrade to",
           "example": "1.18.4",
           "member": "string",
@@ -11093,7 +10440,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cluster custom parameter",
           "example": "无",
           "member": "ClusterExtraArgs",
@@ -11102,7 +10448,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "The maximum tolerable number of unavailable pods",
           "example": "100",
           "member": "float",
@@ -11111,7 +10456,6 @@
           "type": "float"
         },
         {
-          "default": "",
           "document": "Whether to skip the precheck",
           "example": "false",
           "member": "bool",
@@ -11138,7 +10482,6 @@
       "document": "UpdateEdgeClusterVersion request structure.",
       "members": [
         {
-          "default": "",
           "document": "Cluster ID",
           "example": "cls-xxxxxxxx",
           "member": "string",
@@ -11147,7 +10490,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Target version",
           "example": "1.0.2",
           "member": "string",
@@ -11156,7 +10498,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Prefix of the image repository of a custom edge component",
           "example": "reg.test.com/myedge",
           "member": "string",
@@ -11165,7 +10506,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to skip precheck",
           "example": "false",
           "member": "bool",
@@ -11325,7 +10665,6 @@
       "document": "Node upgrade and reinstallation parameters",
       "members": [
         {
-          "default": "",
           "document": "Additional parameters set for the instance",
           "member": "InstanceAdvancedSettings",
           "name": "InstanceAdvancedSettings",
@@ -11334,7 +10673,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.",
           "member": "EnhancedService",
           "name": "EnhancedService",
@@ -11343,7 +10681,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node login information. For now, it only supports Password or a single KeyIds",
           "member": "LoginSettings",
           "name": "LoginSettings",
@@ -11352,7 +10689,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Security group to which the instance belongs. This parameter can be obtained from the `sgId` field in the response of `DescribeSecurityGroups`. If this parameter is not specified, the default security group is bound. (Currently, you can only set a single sgId.)",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -11367,7 +10703,6 @@
       "document": "Version Info",
       "members": [
         {
-          "default": "",
           "document": "Version name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Name",
@@ -11376,7 +10711,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Version Info\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Version",
@@ -11385,7 +10719,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Remark\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Remark",
@@ -11400,7 +10733,6 @@
       "document": "Virtual node",
       "members": [
         {
-          "default": "",
           "document": "Virtual node name",
           "member": "string",
           "name": "Name",
@@ -11409,7 +10741,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subnet of the virtual node",
           "member": "string",
           "name": "SubnetId",
@@ -11418,7 +10749,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Virtual node status",
           "member": "string",
           "name": "Phase",
@@ -11427,7 +10757,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "CreatedTime",
@@ -11442,7 +10771,6 @@
       "document": "Virtual node pool",
       "members": [
         {
-          "default": "",
           "document": "Node pool ID",
           "example": "无",
           "member": "string",
@@ -11452,7 +10780,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List of subnets\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -11462,7 +10789,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Node pool name",
           "example": "无",
           "member": "string",
@@ -11472,7 +10798,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Node pool lifecycle status",
           "example": "无",
           "member": "string",
@@ -11482,7 +10807,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Virtual node labels\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Label",
@@ -11492,7 +10816,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Virtual node taint\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Taint",

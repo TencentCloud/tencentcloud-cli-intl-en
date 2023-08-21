@@ -53,7 +53,6 @@
       "document": "AllocateCustomerCredit request structure.",
       "members": [
         {
-          "default": "",
           "document": "Specific value of the credit allocated to the customer",
           "example": "100.00",
           "member": "float",
@@ -62,7 +61,6 @@
           "type": "float"
         },
         {
-          "default": "",
           "document": "Customer UIN",
           "example": "1234",
           "member": "uint64",
@@ -107,7 +105,6 @@
       "document": "Country/region code list",
       "members": [
         {
-          "default": "",
           "document": "Country/region name in English",
           "example": "Albania",
           "member": "string",
@@ -117,7 +114,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Country/region name in Chinese",
           "example": "阿尔巴尼亚",
           "member": "string",
@@ -127,7 +123,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IOS2 standard country/region code",
           "example": "AL",
           "member": "string",
@@ -137,7 +132,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IOS3 standard country/region code",
           "example": "ALB",
           "member": "string",
@@ -147,7 +141,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Phone code",
           "example": "355",
           "member": "string",
@@ -163,7 +156,6 @@
       "document": "CreateAccount request structure.",
       "members": [
         {
-          "default": "",
           "document": "Account type of a new customer. Valid values: `personal`, `company`.",
           "example": "business",
           "member": "string",
@@ -172,7 +164,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Registered email address, which should be valid and correct.\nFor example, account@qq.com.",
           "example": "account@qq.com",
           "member": "string",
@@ -181,7 +172,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Account password\nLength limit: 8-20 characters\nA password must contain numbers, letters, and special symbols [!@#$%^&*()]. Spaces are not allowed.",
           "example": "无",
           "member": "string",
@@ -190,7 +180,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Confirm the password. It must be the same as the `Password` field.",
           "example": "无",
           "member": "string",
@@ -199,7 +188,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Customer mobile number, which should be valid and correct.\nA global mobile number within 1-32 digits is allowed, such as 18888888888.",
           "example": "18888888888",
           "member": "string",
@@ -208,7 +196,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Customer’s country/region code, which can be obtained via the `GetCountryCodes` API, such as “852”.",
           "example": "852",
           "member": "string",
@@ -217,7 +204,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Customer’s ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.",
           "example": "HK",
           "member": "string",
@@ -226,7 +212,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Expanded field, which is left empty by default.",
           "example": "**********",
           "member": "string",
@@ -288,7 +273,6 @@
       "document": "Returned information for querying the credit allocation records of reseller’s customer",
       "members": [
         {
-          "default": "",
           "document": "Allocation time",
           "example": "2021-08-18",
           "member": "string",
@@ -298,7 +282,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Operator",
           "example": "usernames",
           "member": "string",
@@ -308,7 +291,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Allocated credit value",
           "example": "123456.78",
           "member": "float",
@@ -318,7 +300,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The allocated total credit",
           "example": "123.45",
           "member": "float",
@@ -334,7 +315,6 @@
       "document": "QueryCreditAllocationHistory request structure.",
       "members": [
         {
-          "default": "",
           "document": "Customer UIN",
           "example": "123456",
           "member": "uint64",
@@ -343,7 +323,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Page number",
           "example": "1",
           "member": "uint64",
@@ -352,7 +331,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of data entries per page",
           "example": "10",
           "member": "uint64",
@@ -397,7 +375,6 @@
       "document": "Complex type of output parameters for querying customer's credit",
       "members": [
         {
-          "default": "",
           "document": "Name",
           "example": "cedarzuo",
           "member": "string",
@@ -407,7 +384,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Type",
           "example": "1",
           "member": "string",
@@ -417,7 +393,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Phone",
           "example": "110",
           "member": "string",
@@ -427,7 +402,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Email",
           "example": "cedarzuo@tencent.com",
           "member": "string",
@@ -437,7 +411,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Overdue payment flag",
           "example": "-",
           "member": "string",
@@ -447,7 +420,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Binding time",
           "example": "2021-08-18",
           "member": "string",
@@ -457,7 +429,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Expiration time",
           "example": "2024-08-18",
           "member": "string",
@@ -467,7 +438,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The UIN of reseller’s customer",
           "example": "123456",
           "member": "uint64",
@@ -477,7 +447,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Credit granted to reseller’s customer",
           "example": "123456.78",
           "member": "float",
@@ -487,7 +456,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The remaining credit of reseller’s customer",
           "example": "0.01",
           "member": "float",
@@ -497,7 +465,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "0: Identity not verified; 1: Individual identity verified; 2: Enterprise identity verified.",
           "example": "1",
           "member": "uint64",
@@ -507,7 +474,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Customer remarks",
           "example": "tencent",
           "member": "string",
@@ -517,7 +483,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Forced status",
           "example": "1",
           "member": "int64",
@@ -533,7 +498,6 @@
       "document": "QueryCustomersCredit request structure.",
       "members": [
         {
-          "default": "",
           "document": "Search condition type. You can only search by UIN, name, or remarks.",
           "example": "Uin|Name|Remark",
           "member": "string",
@@ -542,7 +506,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Search condition",
           "example": "123456",
           "member": "string",
@@ -551,7 +514,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "A pagination parameter that specifies the current page number, with a value starting from 1.",
           "example": "1",
           "member": "int64",
@@ -560,7 +522,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "A pagination parameter that specifies the number of entries per page.",
           "example": "10",
           "member": "int64",
@@ -569,7 +530,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "A sort parameter that specifies the sort order. Valid values: `desc` (descending order), or `asc` (ascending order) based on `AssociationTime`. The value will be `desc` if left empty.",
           "example": "desc",
           "member": "string",

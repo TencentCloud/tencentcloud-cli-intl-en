@@ -186,7 +186,6 @@
       "document": "Attachment structure, including attachment name and Base64-encoded attachment content",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Attachment name, which cannot exceed 255 characters. Some attachment types are not supported. For details, see [Attachment Types](https://intl.cloud.tencent.com/document/product/1288/51951?from_cn_redirect=1).",
           "example": "example.txt",
@@ -197,7 +196,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Base64-encoded attachment content. You can send attachments of up to 4 MB in the total size. Note: The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.",
           "example": "dGhpcyBpcyBhIGV4YW1wbGU=",
@@ -349,7 +347,6 @@
       "document": "Email address blocklist structure, including the blocklisted address and the time when it is blocklisted.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Time when the email address is blocklisted.",
           "member": "datetime",
@@ -359,7 +356,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Blocklisted email address.",
           "member": "string",
@@ -375,7 +371,6 @@
       "document": "CreateEmailAddress request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Your sender address. (You can create up to 10 sender addresses for each domain.)",
           "member": "string",
@@ -384,7 +379,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sender name.",
           "member": "string",
@@ -411,7 +405,6 @@
       "document": "CreateEmailIdentity request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Your sender domain. You are advised to use a third-level domain, for example, mail.qcloud.com.",
           "member": "string",
@@ -462,7 +455,6 @@
       "document": "CreateEmailTemplate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Template name.",
           "member": "string",
@@ -471,7 +463,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Template content.",
           "member": "TemplateContent",
@@ -508,7 +499,6 @@
       "document": "CreateReceiverDetail request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient group ID",
           "example": "123",
@@ -518,7 +508,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Email address",
           "example": "[\"xxx@abc.com\"]",
@@ -546,7 +535,6 @@
       "document": "CreateReceiver request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient group name",
           "example": "收件人列表",
@@ -556,7 +544,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient group description",
           "example": "收件人列表描述",
@@ -594,7 +581,6 @@
       "document": "Parameter required to create a recurring sending task",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the task",
           "example": "2021-09-11 09:10:11",
@@ -605,7 +591,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task recurrence in hours",
           "example": "1",
@@ -616,7 +601,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies whether to end the cycle. This parameter is used to update the task. Valid values: 0: No; 1: Yes.",
           "example": "0",
@@ -633,7 +617,6 @@
       "document": "Describes the domain name, record type, expected value, and currently configured value of DNS records.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Record types: CNAME, A, TXT, and MX.",
           "member": "string",
@@ -643,7 +626,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name.",
           "member": "string",
@@ -653,7 +635,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Expected value.",
           "member": "string",
@@ -663,7 +644,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Currently configured value.",
           "member": "string",
@@ -673,7 +653,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Approved or not. The default value is `false`.",
           "member": "bool",
@@ -689,7 +668,6 @@
       "document": "DeleteBlackList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of email addresses to be unblocklisted. Enter at least one address.",
           "member": "string",
@@ -716,7 +694,6 @@
       "document": "DeleteEmailAddress request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Sender address.",
           "member": "string",
@@ -743,7 +720,6 @@
       "document": "DeleteEmailIdentity request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Sender domain.",
           "member": "string",
@@ -770,7 +746,6 @@
       "document": "DeleteEmailTemplate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Template ID",
           "example": "10086",
@@ -798,7 +773,6 @@
       "document": "DeleteReceiver request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient group ID, which is returned when a recipient group is created.",
           "example": "1",
@@ -826,7 +800,6 @@
       "document": "Sender domain verification list structure",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Sender domain.",
           "example": "mail.qcloud.com",
@@ -837,7 +810,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Verification type. The value is fixed to `DOMAIN`.",
           "example": "DOMAIN",
@@ -848,7 +820,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Verification passed or not.",
           "example": "false",
@@ -859,7 +830,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Current reputation level",
           "example": "10",
@@ -870,7 +840,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of messages sent per day",
           "example": "10000",
@@ -887,7 +856,6 @@
       "document": "Describes sender information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Sender address.",
           "member": "string",
@@ -897,7 +865,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sender name.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
@@ -907,7 +874,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "uint64",
@@ -923,7 +889,6 @@
       "document": "GetEmailIdentity request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Sender domain.",
           "member": "string",
@@ -974,7 +939,6 @@
       "document": "GetEmailTemplate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Template ID.",
           "member": "uint64",
@@ -1031,7 +995,6 @@
       "document": "GetSendEmailStatus request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Date sent. This parameter is required. You can only query the sending status for a single date at a time.",
           "example": "2020-09-22",
@@ -1041,7 +1004,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. Default value: `0`.",
           "example": "0",
@@ -1051,7 +1013,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of pulled entries. Maximum value: `100`.",
           "example": "10",
@@ -1061,7 +1022,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The `MessageId` field returned by the `SendMail` API.",
           "example": "qcloudses-30-4123414323-date-20210101094334-syNARhMTbKI1",
@@ -1071,7 +1031,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient email address.",
           "example": "abc@ef.com",
@@ -1109,7 +1068,6 @@
       "document": "GetStatisticsReport request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start date.",
           "member": "date",
@@ -1118,7 +1076,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End date.",
           "member": "date",
@@ -1127,7 +1084,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sender domain.",
           "member": "string",
@@ -1136,7 +1092,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient address type, for example, gmail.com.",
           "member": "string",
@@ -1179,7 +1134,6 @@
       "document": "ListBlackEmailAddress request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start date in the format of `YYYY-MM-DD`",
           "member": "date",
@@ -1188,7 +1142,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End date in the format of `YYYY-MM-DD`",
           "member": "date",
@@ -1197,7 +1150,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Common parameter. It must be used with `Offset`.",
           "member": "uint64",
@@ -1206,7 +1158,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Common parameter. It must be used with `Limit`. Maximum value of `Limit`: `100`.",
           "member": "uint64",
@@ -1215,7 +1166,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "You can specify an email address to query.",
           "member": "string",
@@ -1224,7 +1174,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "You can specify a task ID to query.",
           "member": "string",
@@ -1339,7 +1288,6 @@
       "document": "ListEmailTemplates request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Number of templates to get. This parameter is used for pagination.",
           "example": "0",
@@ -1349,7 +1297,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Template offset to get. This parameter is used for pagination.",
           "example": "10",
@@ -1397,7 +1344,6 @@
       "document": "ListReceivers request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Offset, starting from 0. The value is an integer.",
           "example": "1",
@@ -1407,7 +1353,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of records to query. The value is an integer not exceeding 100.",
           "example": "10",
@@ -1417,7 +1362,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Group status (`1`: to be uploaded; `2` uploading; `3` uploaded). To query groups in all states, do not pass in this parameter.",
           "example": "1",
@@ -1427,7 +1371,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Group name keyword for fuzzy query",
           "example": "列表名关键字",
@@ -1475,7 +1418,6 @@
       "document": "ListSendTasks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Offset, starting from 0. The value is an integer. `0` means to skip 0 entries.",
           "example": "1",
@@ -1485,7 +1427,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of records to query. The value is an integer not exceeding 100.",
           "example": "10",
@@ -1495,7 +1436,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task status. `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending error; `10`: sent. To query tasks in all states, do not pass in this parameter.",
           "example": "1",
@@ -1505,7 +1445,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient group ID",
           "example": "123",
@@ -1515,7 +1454,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task type. `1`: immediate; `2`: scheduled; `3`: recurring. To query tasks of all types, do not pass in this parameter.",
           "example": "1",
@@ -1563,7 +1501,6 @@
       "document": "Recipient group data type",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient group ID",
           "example": "123",
@@ -1574,7 +1511,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient group name",
           "example": "收件人列表",
@@ -1585,7 +1521,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of recipient email addresses",
           "example": "1",
@@ -1596,7 +1531,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient group description\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "收件人列表描述",
@@ -1607,7 +1541,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Group status (`1`: to be uploaded; `2` uploading; `3` uploaded)\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "1",
@@ -1618,7 +1551,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time, such as 2021-09-28 16:40:35",
           "example": "2021-09-28 16:40:35",
@@ -1761,7 +1693,6 @@
       "document": "Describes the email sending status",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The `MessageId` field returned by the `SendEmail` API",
           "example": "qcloudses-30-4123414323-date-20210101094334-syNARhMTbKI1",
@@ -1772,7 +1703,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient email address",
           "example": "abc@ef.com",
@@ -1783,7 +1713,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sender email address",
           "example": "abc@ef.com",
@@ -1794,7 +1723,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tencent Cloud processing status\n0: Successful.\n1001: Internal system exception.\n1002: Internal system exception.\n1003: Internal system exception.\n1003: Internal system exception.\n1004: Email sending timed out.\n1005: Internal system exception.\n1006: You have sent too many emails to the same address in a short period.\n1007: The email address is in the blocklist.\n1008: The sender domain is rejected by the recipient.\n1009: Internal system exception.\n1010: The daily email sending limit is exceeded.\n1011: You have no permission to send custom content. Use a template.\n1013: The sender domain is unsubscribed from by the recipient.\n2001: No results were found.\n3007: The template ID is invalid or the template is unavailable.\n3008: The sender domain is temporarily blocked by the recipient domain.\n3009: You have no permission to use this template.\n3010: The format of the `TemplateData` field is incorrect. \n3014: The email cannot be sent because the sender domain is not verified.\n3020: The recipient email address is in the blocklist.\n3024: Failed to precheck the email address format.\n3030: Email sending is restricted temporarily due to a high bounce rate.\n3033: The account has insufficient balance or overdue payment.",
           "example": "0",
@@ -1805,7 +1733,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient processing status\n0: Tencent Cloud has accepted the request and added it to the send queue.\n1: The email is delivered successfully. `DeliverTime` indicates the time when the email is delivered successfully.\n2: The email is discarded. `DeliverMessage` indicates the reason for discarding.\n3: The recipient's ESP rejects the email, probably because the email address does not exist or due to other reasons.\n8: The email is delayed by the ESP. `DeliverMessage` indicates the reason for delay.",
           "example": "0",
@@ -1816,7 +1743,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Description of the recipient processing status",
           "example": "无",
@@ -1827,7 +1753,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Timestamp when the request arrives at Tencent Cloud",
           "example": "1609831698",
@@ -1838,7 +1763,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Timestamp when Tencent Cloud delivers the email",
           "example": "1609831698",
@@ -1849,7 +1773,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the recipient has opened the email",
           "example": "true",
@@ -1860,7 +1783,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the recipient has clicked the links in the email",
           "example": "true",
@@ -1871,7 +1793,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the recipient has unsubscribed from the email sent by the sender",
           "example": "true",
@@ -1882,7 +1803,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the recipient has reported the sender",
           "example": "true",
@@ -1899,7 +1819,6 @@
       "document": "Email sending task data",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Task ID",
           "example": "1",
@@ -1910,7 +1829,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sender address",
           "example": "123@abc.com",
@@ -1921,7 +1839,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient group ID",
           "example": "123",
@@ -1932,7 +1849,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task status. `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending error; `10`: sent",
           "example": "1",
@@ -1943,7 +1859,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task type. `1`: immediate; `2`: scheduled; `3`: recurring",
           "example": "1",
@@ -1954,7 +1869,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of emails requested to be sent",
           "example": "1",
@@ -1965,7 +1879,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of emails sent",
           "example": "1",
@@ -1976,7 +1889,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of emails cached",
           "example": "1",
@@ -1987,7 +1899,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task creation time",
           "example": "2021-09-09 12:12:13",
@@ -1998,7 +1909,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task update time",
           "example": "2021-09-09 12:12:13",
@@ -2009,7 +1919,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Email subject",
           "example": "邮件主题",
@@ -2020,7 +1929,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Template and template data\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "无",
@@ -2031,7 +1939,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameters of a recurring task\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "无",
@@ -2042,7 +1949,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameters of a scheduled task\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "无",
@@ -2053,7 +1959,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Task exception information\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "余额不足",
@@ -2064,7 +1969,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Recipient group name",
           "example": "收件人列表名称",
@@ -2081,7 +1985,6 @@
       "document": "Email content, which can be plain text (TEXT), pure code (HTML), or a combination of TEXT and HTML (recommended).",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "HTML code after base64 encoding. To ensure correct display, this parameter should include all code information and cannot contain external CSS.",
           "member": "string",
@@ -2091,7 +1994,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Plain text content after base64 encoding. If HTML is not involved, the plain text will be displayed in the email. Otherwise, this parameter represents the plain text style of the email.",
           "member": "string",
@@ -2107,7 +2009,6 @@
       "document": "Template information, including template ID, template variable parameters, etc.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Template ID. If you don’t have any template, please create one.",
           "example": "123",
@@ -2118,7 +2019,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Variable parameters in the template. Please use `json.dump` to format the JSON object into a string type. The object is a set of key-value pairs. Each key denotes a variable, which is represented by {{key}}. The key will be replaced with the corresponding value (represented by {{value}}) when sending the email.\nNote: The parameter value cannot be data of a complex type such as HTML.\nExample: {\"name\":\"xxx\",\"age\":\"xx\"}",
           "example": "{\"name\":\"xxx\",\"age\":\"xx\"}",
@@ -2135,7 +2035,6 @@
       "document": "Template content, which must include at least one of TEXT and HTML. A combination of TEXT and HTML is recommended.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "HTML code after base64 encoding.",
           "member": "string",
@@ -2145,7 +2044,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Text content after base64 encoding.",
           "member": "string",
@@ -2161,7 +2059,6 @@
       "document": "Template list structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time.",
           "member": "uint64",
@@ -2171,7 +2068,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Template name.",
           "member": "string",
@@ -2181,7 +2077,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Template status. 1: under review; 0: approved; 2: rejected; other values: unavailable.",
           "member": "int64",
@@ -2191,7 +2086,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Template ID.",
           "member": "uint64",
@@ -2201,7 +2095,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Review reply",
           "member": "string",
@@ -2217,7 +2110,6 @@
       "document": "Time parameter required to create a scheduled sending task, such as the start time",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of a scheduled sending task",
           "example": "2021-09-11 09:10:11",
@@ -2234,7 +2126,6 @@
       "document": "UpdateEmailIdentity request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Domain to be verified.",
           "member": "string",
@@ -2285,7 +2176,6 @@
       "document": "UpdateEmailSmtpPassWord request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "SMTP password. Length limit: 64.",
           "example": "123",
@@ -2295,7 +2185,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Email address. Length limit: 128.",
           "example": "123@abc.com",
@@ -2323,7 +2212,6 @@
       "document": "UpdateEmailTemplate request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Template content.",
           "example": "无",
@@ -2333,7 +2221,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Template ID.",
           "example": "10091",
@@ -2343,7 +2230,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Template name",
           "example": "xx",
@@ -2371,7 +2257,6 @@
       "document": "Statistics structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Date\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "date",
@@ -2381,7 +2266,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of email requests.",
           "member": "uint64",
@@ -2391,7 +2275,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of email requests accepted by Tencent Cloud.",
           "member": "uint64",
@@ -2401,7 +2284,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of delivered emails.",
           "member": "uint64",
@@ -2411,7 +2293,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of users (deduplicated) who opened emails.",
           "member": "uint64",
@@ -2421,7 +2302,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of recipients who clicked on links in emails.",
           "member": "uint64",
@@ -2431,7 +2311,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of bounced emails.",
           "member": "uint64",
@@ -2441,7 +2320,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of users who canceled subscriptions.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "uint64",

@@ -179,7 +179,6 @@
       "document": "CreateProductSecret request structure.",
       "members": [
         {
-          "default": "",
           "document": "Credential name, which must be unique in the same region. It can contain 128 bytes of letters, digits, hyphens, and underscores and must begin with a letter or digit.",
           "example": "test_name",
           "member": "string",
@@ -188,7 +187,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Prefix of the user account name, which is specified by you and can contain up to 8 characters.\nSupported character sets include:\nDigits: [0, 9].\nLowercase letters: [a, z].\nUppercase letters: [A, Z].\nSpecial symbols: underscore.\nThe prefix must begin with a letter.",
           "example": "test_prefix",
           "member": "string",
@@ -197,7 +195,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Name of the Tencent Cloud service bound to the credential, such as `Mysql`. The `DescribeSupportedProducts` API can be used to get the names of the supported Tencent Cloud services.",
           "example": "Mysql",
           "member": "string",
@@ -206,7 +203,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tencent Cloud service instance ID.",
           "example": "cdb-xxxxxxxx",
           "member": "string",
@@ -215,7 +211,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Domain name of the account in the form of IP. You can enter `%`.",
           "example": "[\"%\",\"192.168.0.%\"]",
           "member": "string",
@@ -224,7 +219,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "List of permissions that need to be granted when the credential is bound to a Tencent Cloud service.",
           "example": "无",
           "member": "ProductPrivilegeUnit",
@@ -233,7 +227,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Description, which is used to describe the purpose in detail and can contain up to 2,048 bytes.",
           "example": "无",
           "member": "string",
@@ -242,7 +235,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Specifies the KMS CMK that encrypts the credential.\nIf this parameter is left empty, the CMK created by Secrets Manager by default will be used for encryption.\nYou can also specify a custom KMS CMK created in the same region for encryption.",
           "example": "无",
           "member": "string",
@@ -251,7 +243,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of tags.",
           "example": "无",
           "member": "Tag",
@@ -260,7 +251,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "User-Defined rotation start time in the format of 2006-01-02 15:04:05.\nWhen `EnableRotation` is `True`, this parameter is required.",
           "example": "2006-01-02 15:04:05",
           "member": "string",
@@ -269,7 +259,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Specifies whether to enable rotation\nTrue - enable\nFalse - do not enable\nIf this parameter is not specified, `False` will be used by default.",
           "example": "True",
           "member": "bool",
@@ -278,7 +267,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Rotation frequency in days. Default value: 1 day.",
           "example": "1",
           "member": "int64",
@@ -341,7 +329,6 @@
       "document": "CreateSSHKeyPairSecret request structure.",
       "members": [
         {
-          "default": "",
           "document": "Secret name, which must be unique in the same region. It can contain 128 bytes of letters, digits, hyphens and underscores and must begin with a letter or digit.",
           "example": "无",
           "member": "string",
@@ -350,7 +337,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ID of the project to which the created SSH key belongs.",
           "example": "无",
           "member": "int64",
@@ -359,7 +345,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Description, such as what it is used for. It contains up to 2,048 bytes.",
           "example": "无",
           "member": "string",
@@ -368,7 +353,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Specifies a KMS CMK to encrypt the secret.\nIf this parameter is left empty, the CMK created by Secrets Manager by default will be used for encryption.\nYou can also specify a custom KMS CMK created in the same region for encryption.",
           "example": "无",
           "member": "string",
@@ -377,7 +361,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of tags.",
           "example": "无",
           "member": "Tag",
@@ -386,7 +369,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Name of the SSH key pair, which only contains digits, letters and underscores and must start with a digit or letter. The maximum length is 25 characters.",
           "example": "无",
           "member": "string",
@@ -458,7 +440,6 @@
       "document": "CreateSecret request structure.",
       "members": [
         {
-          "default": "",
           "document": "Secret name, which must be unique within a region. The name can be up to 128 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.",
           "member": "string",
           "name": "SecretName",
@@ -466,7 +447,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Secret version. It can be up to 64 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit. `SecretName` and `VersionId` are used to query the Secret information.",
           "member": "string",
           "name": "VersionId",
@@ -474,7 +454,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Description information, such as the detailed use cases. It can be up to 2048 bytes.",
           "member": "string",
           "name": "Description",
@@ -482,7 +461,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "KMS CMK used for Secret encryption. If this parameter is left empty, SecretsManager will create a CMK by default. You can also specify a KMS CMK that is created in the same region.",
           "member": "string",
           "name": "KmsKeyId",
@@ -490,7 +468,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Base64-encoded plaintext of a binary Secret. Either `SecretBinary` or `SecretString` must be set. A maximum of 4096 bytes is supported.",
           "member": "string",
           "name": "SecretBinary",
@@ -498,7 +475,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Plaintext of a Secret, in text format. Base64 encoding is not required. Either `SecretBinary` or `SecretString` must be set. A maximum of 4096 bytes is supported.",
           "member": "string",
           "name": "SecretString",
@@ -506,7 +482,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of tags.",
           "member": "Tag",
           "name": "Tags",
@@ -560,7 +535,6 @@
       "document": "DeleteSecret request structure.",
       "members": [
         {
-          "default": "",
           "document": "Name of the Secret to be deleted.",
           "example": "testName",
           "member": "string",
@@ -569,7 +543,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Scheduled deletion time (in days), indicating the number of retention days for the secret. Value range: 0-30. If it is `0`, the secret is deleted immediately.\nFor an SSH key secret, this field can only be `0`.",
           "example": "1",
           "member": "uint64",
@@ -578,7 +551,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Specifies whether to delete the SSH key from both the secret and the SSH key list in the CVM console. This field is only valid for SSH key secrets. Valid values:\n`True`: deletes SSH key from both the secret and SSH key list in the CVM console. Note that the deletion will fail if the SSH key is already bound to a CVM instance.\n`False`: only deletes the SSH key information in the secret.",
           "example": "False",
           "member": "bool",
@@ -619,7 +591,6 @@
       "document": "DeleteSecretVersion request structure.",
       "members": [
         {
-          "default": "",
           "document": "Name of the Secret.",
           "member": "string",
           "name": "SecretName",
@@ -627,7 +598,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ID of the Secret version to be deleted.",
           "member": "string",
           "name": "VersionId",
@@ -667,7 +637,6 @@
       "document": "DescribeAsyncRequestInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Async task ID.",
           "example": "1",
           "member": "int64",
@@ -712,7 +681,6 @@
       "document": "DescribeRotationDetail request structure.",
       "members": [
         {
-          "default": "",
           "document": "Specifies the name of the credential for which to get the credential rotation details.",
           "example": "无",
           "member": "string",
@@ -775,7 +743,6 @@
       "document": "DescribeRotationHistory request structure.",
       "members": [
         {
-          "default": "",
           "document": "Specifies the name of the credential for which to get the credential rotation records.",
           "example": "无",
           "member": "string",
@@ -820,7 +787,6 @@
       "document": "DescribeSecret request structure.",
       "members": [
         {
-          "default": "",
           "document": "Name of a Secret whose detailed information is to be obtained.",
           "member": "string",
           "name": "SecretName",
@@ -1025,7 +991,6 @@
       "document": "DisableSecret request structure.",
       "members": [
         {
-          "default": "",
           "document": "Name of the Secret to be disabled.",
           "member": "string",
           "name": "SecretName",
@@ -1058,7 +1023,6 @@
       "document": "EnableSecret request structure.",
       "members": [
         {
-          "default": "",
           "document": "Name of the Secret to be enabled.",
           "member": "string",
           "name": "SecretName",
@@ -1115,7 +1079,6 @@
       "document": "GetSSHKeyPairValue request structure.",
       "members": [
         {
-          "default": "",
           "document": "Secret name. This field is only valid for SSH key secrets.",
           "example": "无",
           "member": "string",
@@ -1124,7 +1087,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ID of the key pair, which is the unique identifier of the key pair in the CVM.",
           "example": "无",
           "member": "string",
@@ -1205,7 +1167,6 @@
       "document": "GetSecretValue request structure.",
       "members": [
         {
-          "default": "",
           "document": "Name of a Secret.",
           "example": "test_secret",
           "member": "string",
@@ -1214,7 +1175,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Specifies the version number of the corresponding credential.\nFor Tencent Cloud service credentials such as MySQL credentials, this API is used to get the plaintext information of a previously rotated credential by specifying the credential name and historical version number. If you want to get the plaintext of the credential version currently in use, you need to specify the version number as `SSM_Current`.",
           "example": "v1.0",
           "member": "string",
@@ -1321,7 +1281,6 @@
       "document": "ListSecretVersionIds request structure.",
       "members": [
         {
-          "default": "",
           "document": "Name of the Secret.",
           "member": "string",
           "name": "SecretName",
@@ -1361,7 +1320,6 @@
       "document": "ListSecrets request structure.",
       "members": [
         {
-          "default": "",
           "document": "Starting position of the list, starting at 0. If not specified, 0 is used by default.",
           "example": "0",
           "member": "uint64",
@@ -1370,7 +1328,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Maximum number of returned Secrets in a query. If not set or set to 0, 20 is used by default.",
           "example": "2",
           "member": "uint64",
@@ -1379,7 +1336,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Sorting order according to the creation time. If not set or set to 0, descending order is used; if set to 1, ascending order is used.",
           "example": "0",
           "member": "uint64",
@@ -1388,7 +1344,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter based on credential status.\nThe default value is 0, indicating to query all.\n1: query the list of credentials in `Enabled` status.\n2: query the list of credentials in `Disabled` status.\n3: query the list of credentials in `PendingDelete` status.\n4: query the list of credentials in `PendingCreate` status.\n5: query the list of credentials in `CreateFailed` status.\nThe `PendingCreate` and `CreateFailed` status only take effect when `SecretType` is Tencent Cloud service credential",
           "example": "0",
           "member": "uint64",
@@ -1397,7 +1352,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Filter according to Secret names. If left empty, this filter is not applied.",
           "example": "testName",
           "member": "string",
@@ -1406,7 +1360,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag filter.",
           "example": "无",
           "member": "TagFilter",
@@ -1415,7 +1368,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "`0` (default): user-defined secret.\n`1`: Tencent Cloud services secret.\n`2`: SSH key secret.\n`3`: Tencent Cloud API key secret.",
           "example": "1",
           "member": "uint64",
@@ -1424,7 +1376,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "This parameter is valid only when SecretType is `1`.\n \nAn empty value indicates querying all types of Tencent Cloud service secrets.\n`Mysql`: queries MySQL database credentials.\n`Tdsql-mysql`: queries TDSQL MySQL database credentials.",
           "example": "Mysql",
           "member": "string",
@@ -1465,7 +1416,6 @@
       "document": "Permission granted when the credential is associated with the service",
       "members": [
         {
-          "default": "",
           "document": "Permission name. Valid values:\nGlobalPrivileges\nDatabasePrivileges\nTablePrivileges\nColumnPrivileges\n\nWhen the permission is `DatabasePrivileges`, the database name must be specified by the `Database` parameter;\n\nWhen the permission is `TablePrivileges`, the database name and the table name in the database must be specified by the `Database` and `TableName` parameters;\n\nWhen the permission is `ColumnPrivileges`, the database name, table name in the database, and column name in the table must be specified by the `Database`, `TableName`, and `ColumnName` parameters.",
           "example": "GlobalPrivileges",
           "member": "string",
@@ -1475,7 +1425,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Permission list.\nFor the `Mysql` service, optional permission values are:\n\n1. Valid values of `GlobalPrivileges`: \"SELECT\",\"INSERT\",\"UPDATE\",\"DELETE\",\"CREATE\", \"PROCESS\", \"DROP\",\"REFERENCES\",\"INDEX\",\"ALTER\",\"SHOW DATABASES\",\"CREATE TEMPORARY TABLES\",\"LOCK TABLES\",\"EXECUTE\",\"CREATE VIEW\",\"SHOW VIEW\",\"CREATE ROUTINE\",\"ALTER ROUTINE\",\"EVENT\",\"TRIGGER\".\nNote: if this parameter is not passed in, it means to clear the permission.\n\n2. Valid values of `DatabasePrivileges`: \"SELECT\",\"INSERT\",\"UPDATE\",\"DELETE\",\"CREATE\", \"DROP\",\"REFERENCES\",\"INDEX\",\"ALTER\",\"CREATE TEMPORARY TABLES\",\"LOCK TABLES\",\"EXECUTE\",\"CREATE VIEW\",\"SHOW VIEW\",\"CREATE ROUTINE\",\"ALTER ROUTINE\",\"EVENT\",\"TRIGGER\".\nNote: if this parameter is not passed in, it means to clear the permission.\n\n3. Valid values of `TablePrivileges`: \"SELECT\",\"INSERT\",\"UPDATE\",\"DELETE\",\"CREATE\", \"DROP\",\"REFERENCES\",\"INDEX\",\"ALTER\",\"CREATE VIEW\",\"SHOW VIEW\", \"TRIGGER\".\nNote: if this parameter is not passed in, it means to clear the permission.\n\n4. Valid values of `ColumnPrivileges`: \"SELECT\",\"INSERT\",\"UPDATE\",\"REFERENCES\".\nNote: if this parameter is not passed in, it means to clear the permission.",
           "example": "无",
           "member": "string",
@@ -1485,7 +1434,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This value takes effect only when `PrivilegeName` is `DatabasePrivileges`.",
           "example": "无",
           "member": "string",
@@ -1495,7 +1443,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This value takes effect only when `PrivilegeName` is `TablePrivileges`, and the `Database` parameter is required in this case to explicitly indicate the database instance.",
           "example": "无",
           "member": "string",
@@ -1505,7 +1452,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This value takes effect only when `PrivilegeName` is `ColumnPrivileges`, and the following parameters are required in this case:\nDatabase: explicitly indicate the database instance.\nTableName: explicitly indicate the table",
           "example": "无",
           "member": "string",
@@ -1521,7 +1467,6 @@
       "document": "PutSecretValue request structure.",
       "members": [
         {
-          "default": "",
           "document": "Name of a Secret where the version is added to.",
           "example": "test",
           "member": "string",
@@ -1530,7 +1475,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ID of the new Secret version. It can be up to 64 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.",
           "example": "v2.0",
           "member": "string",
@@ -1539,7 +1483,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Base64-encoded binary credential information.\nEither `SecretBinary` or `SecretString` must be set.",
           "example": "test",
           "member": "string",
@@ -1548,7 +1491,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Secret information plaintext in text format, base64 encoding is not needed. Either `SecretBinary` or `SecretString` must be set.",
           "example": "test v2",
           "member": "string",
@@ -1589,7 +1531,6 @@
       "document": "RestoreSecret request structure.",
       "members": [
         {
-          "default": "",
           "document": "Name of the Secret to be restored.",
           "member": "string",
           "name": "SecretName",
@@ -1622,7 +1563,6 @@
       "document": "RotateProductSecret request structure.",
       "members": [
         {
-          "default": "",
           "document": "Name of the credential to be rotated.",
           "example": "无",
           "member": "string",
@@ -1658,7 +1598,6 @@
       "document": "Basic information of the Secret.",
       "members": [
         {
-          "default": "",
           "document": "Credential name",
           "example": "testName",
           "member": "string",
@@ -1668,7 +1607,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Credential description",
           "example": "test",
           "member": "string",
@@ -1678,7 +1616,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "KMS `KeyId` used to encrypt the credential",
           "example": "6cdf26d1-44ff-11eb-841c-5254006d0810",
           "member": "string",
@@ -1688,7 +1625,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creator UIN",
           "example": "12345",
           "member": "uint64",
@@ -1698,7 +1634,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Credential status: Enabled, Disabled, PendingDelete, Creating, Failed.",
           "example": "Initializing",
           "member": "string",
@@ -1708,7 +1643,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Credential deletion date, which takes effect for credentials in `PendingDelete` status and is in UNIX timestamp format",
           "example": "1234",
           "member": "uint64",
@@ -1718,7 +1652,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Credential creation time in UNIX timestamp format",
           "example": "1234",
           "member": "uint64",
@@ -1728,7 +1661,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Type of the KMS CMK used to encrypt the credential. `DEFAULT` represents the default key created by Secrets Manager, and `CUSTOMER` represents the user-specified key",
           "example": "DEFAULT",
           "member": "string",
@@ -1738,7 +1670,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "1: enable rotation; 0: disable rotation\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "Enabled",
           "member": "int64",
@@ -1748,7 +1679,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Start time of the next rotation in UNIX timestamp format\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1574160561",
           "member": "uint64",
@@ -1758,7 +1688,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "`0`: user-defined secret.\n`1`: Tencent Cloud services secret.\n`2`: SSH key secret.\n`3`: Tencent Cloud API key secret.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "CloudProduct",
           "member": "int64",
@@ -1768,7 +1697,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Tencent Cloud service name, which takes effect only when `SecretType` is 1 (Tencent Cloud service credential)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "MYSQL",
           "member": "string",
@@ -1778,7 +1706,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Secret name. This field is only valid when the `SecretType` is set to `2` (SSH key secret).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -1788,7 +1715,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Project ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -1798,7 +1724,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of the CVM instance associated with the SSH key. ID. This field is only valid when the `SecretType` is set to `2` (SSH key secret).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -1808,7 +1733,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "UIN of the Tencent Cloud API key. This field is valid when the secret type is Tencent Cloud API key secret.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
@@ -1824,7 +1748,6 @@
       "document": "Tag key and tag value.",
       "members": [
         {
-          "default": "",
           "document": "Tag key",
           "member": "string",
           "name": "TagKey",
@@ -1833,7 +1756,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value",
           "member": "string",
           "name": "TagValue",
@@ -1848,7 +1770,6 @@
       "document": "Tag filter.",
       "members": [
         {
-          "default": "",
           "document": "Tag key",
           "member": "string",
           "name": "TagKey",
@@ -1857,7 +1778,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value",
           "member": "string",
           "name": "TagValue",
@@ -1872,7 +1792,6 @@
       "document": "UpdateDescription request structure.",
       "members": [
         {
-          "default": "",
           "document": "Name of a Secret whose description is to be updated.",
           "member": "string",
           "name": "SecretName",
@@ -1880,7 +1799,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "New description information, which can be up to 2048 bytes.",
           "member": "string",
           "name": "Description",
@@ -1913,7 +1831,6 @@
       "document": "UpdateRotationStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tencent Cloud service credential name.",
           "example": "无",
           "member": "string",
@@ -1922,7 +1839,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Specifies whether to enable rotation.\n`true`: enables rotation.\n`false`: disables rotation.",
           "example": "True",
           "member": "bool",
@@ -1931,7 +1847,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "document": "Rotation frequency in days. Value range: 30–365.",
           "example": "30",
           "member": "int64",
@@ -1940,7 +1855,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "User-defined rotation start time in the format of 2006-01-02 15:04:05.\nWhen `EnableRotation` is `true` and `RotationBeginTime` is left empty, the current time will be entered by default.",
           "example": "2006-01-02 15:04:05",
           "member": "string",
@@ -1967,7 +1881,6 @@
       "document": "UpdateSecret request structure.",
       "members": [
         {
-          "default": "",
           "document": "Name of a Secret whose content is to be updated.",
           "example": "test",
           "member": "string",
@@ -1976,7 +1889,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ID of the Secret version whose content is to be updated.",
           "example": "v1.0",
           "member": "string",
@@ -1985,7 +1897,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This field should be used and Base64-encoded if the content of the new credential is binary.\nEither `SecretBinary` or `SecretString` cannot be empty.",
           "example": "test",
           "member": "string",
@@ -1994,7 +1905,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "This field should be used without being Base64-encoded if the content of the new credential is text. Either `SecretBinary` or `SecretString` cannot be empty.",
           "example": "new value",
           "member": "string",
@@ -2035,7 +1945,6 @@
       "document": "List of version ID information.",
       "members": [
         {
-          "default": "",
           "document": "Version ID.",
           "member": "string",
           "name": "VersionId",
@@ -2044,7 +1953,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time, formatted as a Unix timestamp.",
           "member": "uint64",
           "name": "CreateTime",

@@ -165,7 +165,6 @@
       "document": "ActivateSubscribe request structure.",
       "members": [
         {
-          "default": "",
           "document": "Subscription instance ID.",
           "member": "string",
           "name": "SubscribeId",
@@ -173,7 +172,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Database Instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -181,7 +179,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data subscription type. 0: full instance subscription, 1: data subscription, 2: structure subscription, 3: data subscription and structure subscription",
           "member": "int64",
           "name": "SubscribeObjectType",
@@ -189,7 +186,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Subscription object",
           "member": "SubscribeObject",
           "name": "Objects",
@@ -197,7 +193,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Subnet of data subscription service, which is the subnet of the database instance by default.",
           "member": "string",
           "name": "UniqSubnetId",
@@ -205,7 +200,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Subscription service port. Default value: 7507",
           "member": "int64",
           "name": "Vport",
@@ -238,7 +232,6 @@
       "document": "CompleteMigrateJob request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data migration task ID",
           "example": "dts-1kl0iy0v",
           "member": "string",
@@ -247,7 +240,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The way to complete the task, which is supported only for legacy MySQL migration task. waitForSync: wait for the source-replica lag to become 0 before stopping; immediately: complete immediately without waiting for source-replica sync. Default value: waitForSync",
           "example": "waitForSync",
           "member": "string",
@@ -274,7 +266,6 @@
       "document": "Sampling parameter for spot check",
       "members": [
         {
-          "default": "",
           "document": "Data content check parameter, which refers to the proportion of the rows selected for data comparison in all the rows of the table. Value: an integer between 1 and 100.",
           "member": "int64",
           "name": "SelectRowsPerTable",
@@ -283,7 +274,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data content check parameter, which refers to the proportion of the tables selected for data detection in all the tables. Value: an integer between 1 and 100.",
           "member": "int64",
           "name": "TablesSelectAll",
@@ -292,7 +282,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data quantity check parameter, which checks whether the numbers of rows are identical. It refers to the proportion of the tables selected for quantity check in all the tables. Value: an integer between 1 and 100.",
           "member": "int64",
           "name": "TablesSelectCount",
@@ -307,7 +296,6 @@
       "document": "CreateMigrateCheckJob request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data migration task ID",
           "member": "string",
           "name": "JobId",
@@ -333,7 +321,6 @@
       "document": "CreateMigrateJob request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data migration task name",
           "example": "usertest                               // DTS任务名称",
           "member": "string",
@@ -342,7 +329,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Migration task configuration options",
           "example": "无",
           "member": "MigrateOption",
@@ -351,7 +337,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Source instance database type, which currently supports MySQL, Redis, MongoDB, PostgreSQL, MariaDB, Percona, and SQL Server. For more information on the supported types in a specific region, see the migration task creation page in the console.",
           "example": "mysql                          // 源实例是mysql",
           "member": "string",
@@ -360,7 +345,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance), ccn (CCN instance)",
           "example": "extranet                         // 公网迁移",
           "member": "string",
@@ -369,7 +353,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source instance information, which is correlated with the migration task type",
           "example": "无",
           "member": "SrcInfo",
@@ -378,7 +361,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Target instance access type, which currently supports MySQL, Redis, MongoDB, PostgreSQL, MariaDB, and Percona, SQL Server, and TDSQL-C for MySQL. For more information on the supported types in a specific region, see the migration task creation page in the console.",
           "example": "mysql                          // 目标实例mysql",
           "member": "string",
@@ -387,7 +369,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Target instance access type, which currently only supports cdb (TencentDB instance)",
           "example": "cdb                              // 目标实例是腾讯云mysql",
           "member": "string",
@@ -396,7 +377,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Destination instance information",
           "example": "无",
           "member": "DstInfo",
@@ -405,7 +385,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Information of the source table to be migrated, which is described in JSON string format. It is required if MigrateOption.MigrateObject is 2 (migrating the specified table).\nFor databases with a database-table structure:\n[{\"Database\":\"db1\",\"Table\":[\"table1\",\"table2\"]},{\"Database\":\"db2\"}]\nFor databases with a database-schema-table structure:\n[{\"Database\":\"db1\",\"Schema\":\"s1\",\"Table\":[\"table1\",\"table2\"]},{\"Database\":\"db1\",\"Schema\":\"s2\",\"Table\":[\"table1\",\"table2\"]},{\"Database\":\"db2\",\"Schema\":\"s1\",\"Table\":[\"table1\",\"table2\"]},{\"Database\":\"db3\"},{\"Database\":\"db4\",\"Schema\":\"s1\"}]",
           "example": "无",
           "member": "string",
@@ -414,7 +393,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag of the instance to be migrated.",
           "example": "无",
           "member": "TagItem",
@@ -423,7 +401,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Source instance type. `simple`: Primary/Secondary node; `cluster`: Cluster node. If this field is left empty, the value defaults to primary/secondary node.",
           "example": "cluster",
           "member": "string",
@@ -432,7 +409,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source instance information, which is correlated with the migration task type.",
           "example": "无",
           "member": "SrcInfo",
@@ -466,7 +442,6 @@
       "document": "CreateSubscribe request structure.",
       "members": [
         {
-          "default": "",
           "document": "Subscribed database type. Currently, MySQL is supported",
           "example": "mysql",
           "member": "string",
@@ -475,7 +450,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance billing mode, which is always 1 (hourly billing),",
           "example": "1",
           "member": "int64",
@@ -484,7 +458,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Purchase duration in months, which is required if `PayType` is 0. Maximum value: 120 (this field is not required of global site users and is better to be hidden)",
           "example": "120",
           "member": "int64",
@@ -493,7 +466,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Quantity. Default value: 1. Maximum value: 10",
           "example": "1",
           "member": "int64",
@@ -502,7 +474,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to auto-renew. Default value: 0. This flag does not take effect for hourly billed instances (this field should be hidden from global site users)",
           "example": "1",
           "member": "int64",
@@ -511,7 +482,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Instance resource tags",
           "example": "无",
           "member": "TagItem",
@@ -520,7 +490,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "A custom instance name.",
           "example": "user-defined-name",
           "member": "string",
@@ -554,7 +523,6 @@
       "document": "DeleteMigrateJob request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data migration task ID",
           "member": "string",
           "name": "JobId",
@@ -580,7 +548,6 @@
       "document": "DescribeAsyncRequestInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Task ID",
           "member": "string",
           "name": "AsyncRequestId",
@@ -620,7 +587,6 @@
       "document": "DescribeMigrateCheckJob request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data migration task ID",
           "member": "string",
           "name": "JobId",
@@ -676,7 +642,6 @@
       "document": "DescribeMigrateJobs request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data migration task ID",
           "example": "dts-83i2usk2",
           "member": "string",
@@ -685,7 +650,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data migration task name",
           "example": "无",
           "member": "string",
@@ -694,7 +658,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Sort by field. Value range: JobId, Status, JobName, MigrateType, RunMode, CreateTime",
           "example": "CreateTime",
           "member": "string",
@@ -703,7 +666,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Sorting order. Value range: ASC (ascending), DESC (descending)",
           "example": "DESC",
           "member": "string",
@@ -712,7 +674,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Offset. Default value: 0",
           "example": "0",
           "member": "uint64",
@@ -721,7 +682,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of the returned instances. Value range: [1, 100]. Default value: 20",
           "example": "2",
           "member": "uint64",
@@ -730,7 +690,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Tag filter.",
           "example": "无",
           "member": "TagFilter",
@@ -800,7 +759,6 @@
       "document": "DescribeSubscribeConf request structure.",
       "members": [
         {
-          "default": "",
           "document": "Subscription instance ID",
           "member": "string",
           "name": "SubscribeId",
@@ -1078,7 +1036,6 @@
       "document": "DescribeSubscribes request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data subscription instance ID",
           "member": "string",
           "name": "SubscribeId",
@@ -1086,7 +1043,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data subscription instance name",
           "member": "string",
           "name": "SubscribeName",
@@ -1094,7 +1050,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ID of bound database instance",
           "member": "string",
           "name": "InstanceId",
@@ -1102,7 +1057,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data subscription instance channel ID",
           "member": "string",
           "name": "ChannelId",
@@ -1110,7 +1064,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Billing mode filter. Default value: 1 (pay-as-you-go)",
           "member": "string",
           "name": "PayType",
@@ -1118,7 +1071,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Subscribed database product, such as MySQL",
           "member": "string",
           "name": "Product",
@@ -1126,7 +1078,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data subscription instance status. Valid values: creating, normal, isolating, isolated, offlining",
           "member": "string",
           "name": "Status",
@@ -1134,7 +1085,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Data subscription instance configuration status. Valid values: unconfigure, configuring, configured",
           "member": "string",
           "name": "SubsStatus",
@@ -1142,7 +1092,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Starting offset of returned results",
           "member": "int64",
           "name": "Offset",
@@ -1150,7 +1099,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of results to be returned at a time",
           "member": "int64",
           "name": "Limit",
@@ -1158,7 +1106,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Sorting order. Valid values: DESC, ASC. Default value: DESC, indicating descending by creation time",
           "member": "string",
           "name": "OrderDirection",
@@ -1166,7 +1113,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag filtering condition",
           "member": "TagFilter",
           "name": "TagFilters",
@@ -1174,7 +1120,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Subscription instance edition. `txdts`: legacy data subscription; `kafka`: data subscription in Kafka edition",
           "member": "string",
           "name": "SubscribeVersion",
@@ -1214,7 +1159,6 @@
       "document": "Target instance information, which is correlated with the migration task type",
       "members": [
         {
-          "default": "",
           "document": "Target instance ID, such as cdb-jd92ijd8",
           "member": "string",
           "name": "InstanceId",
@@ -1223,7 +1167,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Target instance region, such as ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -1232,7 +1175,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Target instance VIP, which has been disused and does not need to be entered",
           "member": "string",
           "name": "Ip",
@@ -1241,7 +1183,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Target instance Vport, which has been disused and does not need to be entered",
           "member": "int64",
           "name": "Port",
@@ -1250,7 +1191,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Only valid for MySQL currently. For instance-level migration, the value range is: 1 (read-only), 0 (read/write)",
           "member": "int64",
           "name": "ReadOnly",
@@ -1259,7 +1199,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Target database account",
           "member": "string",
           "name": "User",
@@ -1268,7 +1207,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Target database password",
           "member": "string",
           "name": "Password",
@@ -1283,7 +1221,6 @@
       "document": "Message and prompt for migration task error",
       "members": [
         {
-          "default": "",
           "document": "Specific error log, including error code and error message",
           "member": "string",
           "name": "ErrorLog",
@@ -1292,7 +1229,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Help document URL corresponding to error",
           "member": "string",
           "name": "HelpDoc",
@@ -1307,7 +1243,6 @@
       "document": "IsolateSubscribe request structure.",
       "members": [
         {
-          "default": "",
           "document": "Subscription instance ID",
           "member": "string",
           "name": "SubscribeId",
@@ -1333,7 +1268,6 @@
       "document": "Describes the specific migration process",
       "members": [
         {
-          "default": "",
           "document": "Total number of steps",
           "member": "int64",
           "name": "StepAll",
@@ -1342,7 +1276,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Current step",
           "member": "int64",
           "name": "StepNow",
@@ -1351,7 +1284,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Overall progress, such as \"10\"",
           "member": "string",
           "name": "Progress",
@@ -1360,7 +1292,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Progress of current step, such as \"1\"",
           "member": "string",
           "name": "CurrentStepProgress",
@@ -1369,7 +1300,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Master/slave lag in MB, which is valid during incremental sync and currently supported by TencentDB for Redis and MySQL",
           "member": "int64",
           "name": "MasterSlaveDistance",
@@ -1378,7 +1308,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Master/slave lag in seconds, which is valid during incremental sync and currently supported by TencentDB for MySQL",
           "member": "int64",
           "name": "SecondsBehindMaster",
@@ -1387,7 +1316,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Step information",
           "member": "MigrateStepDetailInfo",
           "name": "StepInfo",
@@ -1402,7 +1330,6 @@
       "document": "Migration task details",
       "members": [
         {
-          "default": "",
           "document": "Data migration task ID",
           "example": "dts-75sekyal",
           "member": "string",
@@ -1412,7 +1339,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data migration task name",
           "example": "test",
           "member": "string",
@@ -1422,7 +1348,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Migration task configuration options",
           "example": "{\"ConsistencyParams\":{\"SelectRowsPerTable\":0,\"TablesSelectAll\":0",
           "member": "MigrateOption",
@@ -1432,7 +1357,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Source instance database type: MySQL, Redis, MongoDB, PostgreSQL, MariaDB, Percona",
           "example": "mysql",
           "member": "string",
@@ -1442,7 +1366,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Source instance access type. Value range: extranet (public network), cvm (CVM-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance), ccn (CCN instances)",
           "example": "cdb",
           "member": "string",
@@ -1452,7 +1375,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Source instance information, which is correlated with the migration task type",
           "example": "{\"AccessKey\":\"\",\"CcnId\":\"\",\"CvmInstanceId\":\"\",\"EngineVersion\":\"\"",
           "member": "SrcInfo",
@@ -1462,7 +1384,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Target instance access type: MySQL, Redis, MongoDB, PostgreSQL, MariaDB, Percona",
           "example": "mysql",
           "member": "string",
@@ -1472,7 +1393,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Target instance access type, which currently only supports cdb (TencentDB instance)",
           "example": "cdb",
           "member": "string",
@@ -1482,7 +1402,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Target instance information",
           "example": "{\"CcnId\":\"\",\"CvmInstanceId\":\"\",\"InstanceId\":\"crs-eciqrvyo\",\"Ip\":",
           "member": "DstInfo",
@@ -1492,7 +1411,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Information of the source table to be migrated. If the entire instance is to be migrated, this field should be []",
           "example": "\"\"",
           "member": "string",
@@ -1502,7 +1420,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task creation/submission time",
           "example": "2022-04-14 16:35:23",
           "member": "datetime",
@@ -1512,7 +1429,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task start time",
           "example": "2022-04-14 16:48:33",
           "member": "datetime",
@@ -1522,7 +1438,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task end time",
           "example": "2022-04-14 16:48:33",
           "member": "datetime",
@@ -1532,7 +1447,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task status. Value range: 1 (Creating), 3 (Checking), 4 (CheckPass), 5 (CheckNotPass), 7 (Running), 8 (ReadyComplete), 9 (Success), 10 (Failed), 11 (Stopping), 12 (Completing)",
           "example": "6",
           "member": "int64",
@@ -1542,7 +1456,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Task details",
           "example": "{\"CurrentStepProgress\":\"0\",\"MasterSlaveDistance\":-1,\"Progress\":\"",
           "member": "MigrateDetailInfo",
@@ -1552,7 +1465,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Prompt message for task error, which is not null or empty when an error occurs with the task",
           "example": " []",
           "member": "ErrorInfo",
@@ -1562,7 +1474,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "TagItem",
@@ -1572,7 +1483,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Information of the source instance, a cluster edition instance whose access type is not `cdb`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[{\"AccessKey\":\"\",\"CcnId\":\"\",\"CvmInstanceId\":\"\",\"EngineVersion\":\"",
           "member": "SrcInfo",
@@ -1588,7 +1498,6 @@
       "document": "Migration task configuration options",
       "members": [
         {
-          "default": "",
           "document": "Task operation mode. Value range: 1 (immediate execution), 2 (scheduled execution)",
           "member": "int64",
           "name": "RunMode",
@@ -1597,7 +1506,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Expected execution time in the format of yyyy-mm-dd hh:mm:ss. If runMode=2, this field is required",
           "member": "datetime",
           "name": "ExpectTime",
@@ -1606,7 +1514,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data migration type. Value range: 1 (structural migration), 2 (full migration), 3 (full + incremental migration)",
           "member": "int64",
           "name": "MigrateType",
@@ -1615,7 +1522,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Migration subject. 1: entire instance; 2: specified table",
           "member": "int64",
           "name": "MigrateObject",
@@ -1624,7 +1530,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Parameter of spot data consistency check. 1: not configured; 2: full check; 3: spot check; 4: check inconsistent tables only; 5: no check",
           "member": "int64",
           "name": "ConsistencyType",
@@ -1633,7 +1538,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to overwrite the target database with the root account of the source database. Value range: 0 (no), 1 (yes). This value should be 0 for table or structural migration",
           "member": "int64",
           "name": "IsOverrideRoot",
@@ -1642,7 +1546,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Additional parameters for different databases, which are described in JSON format. \nThe following parameters can be defined for Redis: \n{ \n\t\"ClientOutputBufferHardLimit\":512, \tHard capacity limit of slave buffer (MB) \n\t\"ClientOutputBufferSoftLimit\":512, \tSoft capacity limit of slave buffer (MB) \n\t\"ClientOutputBufferPersistTime\":60, Soft limit duration of slave buffer (s) \n\t\"ReplBacklogSize\":512, \tCircular buffer capacity limit (MB) \n\t\"ReplTimeout\":120, \t\tReplication timeout period (s) \n}\nThe following parameters can be defined for MongoDB: \n{\n\t'SrcAuthDatabase':'admin', \n\t'SrcAuthFlag': \"1\", \n\t'SrcAuthMechanism':\"SCRAM-SHA-1\"\n}\nMySQL currently does not support configuring additional parameters.",
           "member": "string",
           "name": "ExternParams",
@@ -1651,7 +1554,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Only used for \"spot data consistency check\". It is required if ConsistencyType is spot check",
           "member": "ConsistencyParams",
           "name": "ConsistencyParams",
@@ -1666,7 +1568,6 @@
       "document": "Information of steps in migration",
       "members": [
         {
-          "default": "",
           "document": "Step number",
           "member": "int64",
           "name": "StepNo",
@@ -1675,7 +1576,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Step name",
           "member": "string",
           "name": "StepName",
@@ -1684,7 +1584,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Step ID",
           "member": "string",
           "name": "StepId",
@@ -1693,7 +1592,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Step status. Value range: 0 (default), 1 (succeeded), 2 (failed), 3 (in progress), 4 (not started)",
           "member": "int64",
           "name": "Status",
@@ -1702,7 +1600,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Start time of current step in the format of `yyyy-mm-dd hh:mm:ss`. This field is meaningless if it does not exist or is empty\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "StartTime",
@@ -1717,7 +1614,6 @@
       "document": "ModifyMigrateJob request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the data migration task to be modified",
           "example": "dts-75sekyal",
           "member": "string",
@@ -1726,7 +1622,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data migration task name",
           "example": "test",
           "member": "string",
@@ -1735,7 +1630,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Migration task configuration options",
           "example": "无",
           "member": "MigrateOption",
@@ -1744,7 +1638,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Source instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance)",
           "example": "cvm",
           "member": "string",
@@ -1753,7 +1646,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source instance information, which is correlated with the migration task type",
           "example": "无",
           "member": "SrcInfo",
@@ -1762,7 +1654,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Target instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance). Currently, only `cdb` is supported",
           "example": "cdb",
           "member": "string",
@@ -1771,7 +1662,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Target instance information. The region where the target instance is located cannot be modified.",
           "example": "无",
           "member": "DstInfo",
@@ -1780,7 +1670,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "When migrating the specified table, you need to set the information of the source database table to be migrated, which should be described in JSON string format. Below are examples.\n\nFor databases with a database-table structure:\n[{\"Database\":\"db1\",\"Table\":[\"table1\",\"table2\"]},{\"Database\":\"db2\"}]\nFor databases with a database-schema-table structure:\n[{\"Database\":\"db1\",\"Schema\":\"s1\",\"Table\":[\"table1\",\"table2\"]},{\"Database\":\"db1\",\"Schema\":\"s2\",\"Table\":[\"table1\",\"table2\"]},{\"Database\":\"db2\",\"Schema\":\"s1\",\"Table\":[\"table1\",\"table2\"]},{\"Database\":\"db3\"},{\"Database\":\"db4\",\"Schema\":\"s1\"}]\n\nThis field does not need to be set when the entire instance is to be migrated",
           "example": "无",
           "member": "string",
@@ -1789,7 +1678,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source instance type. `simple`: Primary/Secondary node; `cluster`: Cluster node. If this field is left empty, the value defaults to primary/secondary node.",
           "example": "cluster",
           "member": "string",
@@ -1798,7 +1686,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Source instance information, which is correlated with the migration task type.",
           "example": "无",
           "member": "SrcInfo",
@@ -1825,7 +1712,6 @@
       "document": "ModifySubscribeConsumeTime request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data subscription instance ID",
           "member": "string",
           "name": "SubscribeId",
@@ -1833,7 +1719,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Consumption starting time point in the format of `Y-m-d h:m:s`, i.e., the starting time point for data subscription. Value range: within the last 24 hours",
           "member": "string",
           "name": "ConsumeStartTime",
@@ -1859,7 +1744,6 @@
       "document": "ModifySubscribeName request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data subscription instance ID",
           "member": "string",
           "name": "SubscribeId",
@@ -1867,7 +1751,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data subscription instance name. Length limit: [1,60]",
           "member": "string",
           "name": "SubscribeName",
@@ -1893,7 +1776,6 @@
       "document": "ModifySubscribeObjects request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data subscription instance ID",
           "member": "string",
           "name": "SubscribeId",
@@ -1901,7 +1783,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Data subscription type. Valid values: 0 (full instance subscription), 1 (data subscription), 2 (structure subscription), 3 (data subscription + structure subscription)",
           "member": "int64",
           "name": "SubscribeObjectType",
@@ -1909,7 +1790,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Information of subscribed table",
           "member": "SubscribeObject",
           "name": "Objects",
@@ -1942,7 +1822,6 @@
       "document": "ModifySubscribeVipVport request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data subscription instance ID",
           "member": "string",
           "name": "SubscribeId",
@@ -1950,7 +1829,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Specified destination subnet. If this parameter is passed in, `DstIp` must be in the destination subnet",
           "member": "string",
           "name": "DstUniqSubnetId",
@@ -1958,7 +1836,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Target IP. Either this field or `DstPort` must be passed in",
           "member": "string",
           "name": "DstIp",
@@ -1966,7 +1843,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Target port. Value range: [1025-65535]",
           "member": "int64",
           "name": "DstPort",
@@ -1992,7 +1868,6 @@
       "document": "OfflineIsolatedSubscribe request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data subscription instance ID",
           "member": "string",
           "name": "SubscribeId",
@@ -2018,7 +1893,6 @@
       "document": "ResetSubscribe request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data subscription instance ID",
           "member": "string",
           "name": "SubscribeId",
@@ -2044,7 +1918,6 @@
       "document": "Source instance information",
       "members": [
         {
-          "default": "",
           "document": "Alibaba Cloud AccessKey, which is applicable if the source database is an Alibaba Cloud ApsaraDB for RDS 5.6 instance",
           "member": "string",
           "name": "AccessKey",
@@ -2053,7 +1926,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance IP address",
           "member": "string",
           "name": "Ip",
@@ -2062,7 +1934,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance port",
           "member": "int64",
           "name": "Port",
@@ -2071,7 +1942,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance username",
           "member": "string",
           "name": "User",
@@ -2080,7 +1950,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance password",
           "member": "string",
           "name": "Password",
@@ -2089,7 +1958,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Alibaba Cloud ApsaraDB for RDS instance ID, which is applicable if the source database is an Alibaba Cloud ApsaraDB for RDS 5.6/5.7 instance",
           "member": "string",
           "name": "RdsInstanceId",
@@ -2098,7 +1966,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Short CVM instance ID in the format of `ins-olgl39y8`. It is the same as the instance ID displayed on the CVM Console page. For CVM-based self-created instances, this field needs to be passed in",
           "member": "string",
           "name": "CvmInstanceId",
@@ -2107,7 +1974,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Direct Connect gateway ID in the format of dcg-0rxtqqxb",
           "member": "string",
           "name": "UniqDcgId",
@@ -2116,7 +1982,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VPC ID in the format of vpc-92jblxto",
           "member": "string",
           "name": "VpcId",
@@ -2125,7 +1990,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VPC Subnet ID in the format of subnet-3paxmkdz",
           "member": "string",
           "name": "SubnetId",
@@ -2134,7 +1998,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "VPN gateway ID in the format of vpngw-9ghexg7q",
           "member": "string",
           "name": "UniqVpnGwId",
@@ -2143,7 +2006,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Database instance ID in the format of cdb-powiqx8q",
           "member": "string",
           "name": "InstanceId",
@@ -2152,7 +2014,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region name, such as ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -2161,7 +2022,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "For Alibaba Cloud ApsaraDB for RDS instances, enter \"aliyun\"; otherwise, enter \"others\"",
           "member": "string",
           "name": "Supplier",
@@ -2170,7 +2030,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CCN instance ID, such as ccn-afp6kltc\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "CcnId",
@@ -2179,7 +2038,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Database version. This parameter is valid only when the instance is an RDS instance. Value: 5.6 or 5.7. Default value: 5.6",
           "member": "string",
           "name": "EngineVersion",
@@ -2194,7 +2052,6 @@
       "document": "StartMigrateJob request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data migration task ID",
           "member": "string",
           "name": "JobId",
@@ -2220,7 +2077,6 @@
       "document": "StopMigrateJob request structure.",
       "members": [
         {
-          "default": "",
           "document": "Data migration task ID",
           "member": "string",
           "name": "JobId",
@@ -2246,7 +2102,6 @@
       "document": "Error message displayed when the subscription configuration was queried.",
       "members": [
         {
-          "default": "",
           "document": "Error message.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "error",
           "member": "string",
@@ -2262,7 +2117,6 @@
       "document": "Subscription instance information",
       "members": [
         {
-          "default": "",
           "document": "Data subscription instance ID",
           "member": "string",
           "name": "SubscribeId",
@@ -2271,7 +2125,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data subscription instance name",
           "member": "string",
           "name": "SubscribeName",
@@ -2280,7 +2133,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID of channel bound to data subscription instance",
           "member": "string",
           "name": "ChannelId",
@@ -2289,7 +2141,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Name of product bound to data subscription instance",
           "member": "string",
           "name": "Product",
@@ -2298,7 +2149,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID of database instance bound to data subscription instance",
           "member": "string",
           "name": "InstanceId",
@@ -2307,7 +2157,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Status of database instance bound to data subscription instance",
           "member": "string",
           "name": "InstanceStatus",
@@ -2316,7 +2165,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data subscription instance configuration status. Valid values: unconfigure, configuring, configured",
           "member": "string",
           "name": "SubsStatus",
@@ -2325,7 +2173,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last modified time",
           "member": "string",
           "name": "ModifyTime",
@@ -2334,7 +2181,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time",
           "member": "string",
           "name": "CreateTime",
@@ -2343,7 +2189,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Isolation time",
           "member": "string",
           "name": "IsolateTime",
@@ -2352,7 +2197,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Expiration time",
           "member": "string",
           "name": "ExpireTime",
@@ -2361,7 +2205,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Deactivation time",
           "member": "string",
           "name": "OfflineTime",
@@ -2370,7 +2213,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last modified consumption starting time point. If it has never been modified, this field is 0",
           "member": "string",
           "name": "ConsumeStartTime",
@@ -2379,7 +2221,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data subscription instance region",
           "member": "string",
           "name": "Region",
@@ -2388,7 +2229,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Billing mode. 1: pay-as-you-go",
           "member": "int64",
           "name": "PayType",
@@ -2397,7 +2237,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data subscription instance VIP",
           "member": "string",
           "name": "Vip",
@@ -2406,7 +2245,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data subscription instance Vport",
           "member": "int64",
           "name": "Vport",
@@ -2415,7 +2253,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Unique ID of the VPC where the data subscription instance VIP resides",
           "member": "string",
           "name": "UniqVpcId",
@@ -2424,7 +2261,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Unique ID of the subnet where the data subscription instance VIP resides",
           "member": "string",
           "name": "UniqSubnetId",
@@ -2433,7 +2269,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Data subscription instance status. Valid values: creating, normal, isolating, isolated, offlining, offline",
           "member": "string",
           "name": "Status",
@@ -2442,7 +2277,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Timestamp of the last message confirmed by the SDK. If the SDK keeps consuming, this field can also be used as the current consumption time point of the SDK",
           "member": "string",
           "name": "SdkConsumedTime",
@@ -2451,7 +2285,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "TagItem",
           "name": "Tags",
@@ -2460,7 +2293,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether auto-renewal is enabled. 0: do not enable; 1: enable\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -2469,7 +2301,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Subscription instance edition. ·`txdts`: legacy data subscription; `kafka`: data subscription in Kafka edition\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "SubscribeVersion",
@@ -2484,7 +2315,6 @@
       "document": "Data subscription object",
       "members": [
         {
-          "default": "",
           "document": "Data subscription object type. 0: database, 1: database table\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "ObjectsType",
@@ -2493,7 +2323,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Name of subscribed database\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "DatabaseName",
@@ -2502,7 +2331,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Array of table names in subscribed database\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "TableNames",
@@ -2517,7 +2345,6 @@
       "document": "Sale information of data subscription region",
       "members": [
         {
-          "default": "",
           "document": "Region name, such as Guangzhou\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "RegionName",
@@ -2526,7 +2353,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Region ID, such as ap-guangzhou\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Region",
@@ -2535,7 +2361,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Region name, such as South China\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Area",
@@ -2544,7 +2369,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether it is the default region. 0: no, 1: yes\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "IsDefaultRegion",
@@ -2553,7 +2377,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Purchasable status of current region. 1: normal, 2: beta test, 3: not purchasable\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Status",
@@ -2568,7 +2391,6 @@
       "document": "Tag filtering",
       "members": [
         {
-          "default": "",
           "document": "Tag key value",
           "member": "string",
           "name": "TagKey",
@@ -2577,7 +2399,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value",
           "member": "string",
           "name": "TagValue",
@@ -2592,7 +2413,6 @@
       "document": "Tag",
       "members": [
         {
-          "default": "",
           "document": "Tag key value",
           "member": "string",
           "name": "TagKey",
@@ -2601,7 +2421,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "TagValue",

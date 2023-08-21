@@ -137,7 +137,6 @@
       "document": "`AttributeKey` value details",
       "members": [
         {
-          "default": "",
           "document": "Input box type",
           "example": "xx",
           "member": "string",
@@ -147,7 +146,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Initial display",
           "example": "xx",
           "member": "string",
@@ -157,7 +155,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Display sort order",
           "example": "1",
           "member": "int64",
@@ -167,7 +164,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "`AttributeKey` value",
           "example": "xx",
           "member": "string",
@@ -177,7 +173,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag",
           "example": "xx",
           "member": "string",
@@ -193,7 +188,6 @@
       "document": "Tracking set overview",
       "members": [
         {
-          "default": "",
           "document": "Tracking set status. 1: enabled, 0: disabled",
           "example": "1",
           "member": "int64",
@@ -203,7 +197,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "COS bucket name",
           "example": "xx",
           "member": "string",
@@ -213,7 +206,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tracking set name",
           "example": "xx",
           "member": "string",
@@ -223,7 +215,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log prefix",
           "example": "xx",
           "member": "string",
@@ -239,7 +230,6 @@
       "document": "CMQ region information",
       "members": [
         {
-          "default": "",
           "document": "Region description",
           "example": "xx",
           "member": "string",
@@ -249,7 +239,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CMQ region",
           "example": "xx",
           "member": "string",
@@ -265,7 +254,6 @@
       "document": "COS region information",
       "members": [
         {
-          "default": "",
           "document": "COS region",
           "example": "xx",
           "member": "string",
@@ -275,7 +263,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Region description",
           "example": "xx",
           "member": "string",
@@ -291,7 +278,6 @@
       "document": "CreateAudit request structure.",
       "members": [
         {
-          "default": "",
           "document": "Whether to enable CMQ message notification. 1: Yes; 0: No. Only CMQ queue service is currently supported. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.",
           "example": "1",
           "member": "int64",
@@ -300,7 +286,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write).",
           "example": "1",
           "member": "int64",
@@ -309,7 +294,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Tracking set name, which can contain 3–128 ASCII letters (a–z; A–Z), digits (0–9), and underscores (_).",
           "example": "xx",
           "member": "string",
@@ -318,7 +302,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "COS region. Supported regions can be queried through the `ListCosEnableRegion` API.",
           "example": "xx",
           "member": "string",
@@ -327,7 +310,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to create a COS bucket. 1: Yes; 0: No.",
           "example": "1",
           "member": "int64",
@@ -336,7 +318,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with \"-\". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.",
           "example": "xx",
           "member": "string",
@@ -345,7 +326,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Globally unique ID of the CMK. This value is required if it is not a newly created KMS element. It can be obtained through `ListKeyAliasByRegion`. CloudAudit will not verify the validity of the `KeyId`. Enter it carefully to avoid data loss.",
           "example": "xx",
           "member": "string",
@@ -354,7 +334,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of `IsEnableCmqNotify` is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.",
           "example": "xx",
           "member": "string",
@@ -363,7 +342,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "KMS region. Currently supported regions can be obtained through `ListKmsEnableRegion`. This must be the same as the COS region.",
           "example": "1",
           "member": "string",
@@ -372,7 +350,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to enable KMS encryption. 1: Yes, 0: No. If KMS encryption is enabled, the data will be encrypted when delivered to COS.",
           "example": "1",
           "member": "int64",
@@ -381,7 +358,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.",
           "example": "xx",
           "member": "string",
@@ -390,7 +366,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9). It can be left empty and is the account ID by default.",
           "example": "xx",
           "member": "string",
@@ -399,7 +374,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to create a queue. 1: Yes; 0: No. This field is required if the value of `IsEnableCmqNotify` is 1.",
           "example": "1",
           "member": "int64",
@@ -435,7 +409,6 @@
       "document": "CreateAuditTrack request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tracking set name, which can only contain 3-48 letters, digits, hyphens, and underscores.",
           "example": "云审计",
           "member": "string",
@@ -444,7 +417,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)",
           "example": "Read",
           "member": "string",
@@ -453,7 +425,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The product to which the tracking set event belongs. The value can be a single product such as `cos`, or `*` that indicates all products.",
           "example": "*",
           "member": "string",
@@ -462,7 +433,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tracking set status (0: Not enabled; 1: Enabled)",
           "example": "1",
           "member": "uint64",
@@ -471,7 +441,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The list of API names of tracking set events. When `ResourceType` is `*`, the value of `EventNames` must be `*`. When `ResourceType` is a specified product, the value of `EventNames` can be `*`. When `ResourceType` is `cos` or `cls`, up to 10 APIs are supported.",
           "example": "[*]",
           "member": "string",
@@ -480,7 +449,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Storage type of shipped data. Valid values: `cos`, `cls`.",
           "example": "cos",
           "member": "Storage",
@@ -489,7 +457,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)",
           "example": "1",
           "member": "uint64",
@@ -525,7 +492,6 @@
       "document": "DeleteAudit request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tracking set name",
           "example": "xx",
           "member": "string",
@@ -561,7 +527,6 @@
       "document": "DeleteAuditTrack request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tracking set ID",
           "example": "1",
           "member": "uint64",
@@ -588,7 +553,6 @@
       "document": "DescribeAudit request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tracking set name",
           "example": "xx",
           "member": "string",
@@ -732,7 +696,6 @@
       "document": "DescribeAuditTrack request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tracking set ID",
           "example": "1",
           "member": "uint64",
@@ -831,7 +794,6 @@
       "document": "DescribeAuditTracks request structure.",
       "members": [
         {
-          "default": "",
           "document": "Page number",
           "example": "1",
           "member": "uint64",
@@ -840,7 +802,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The number of tracking sets per page",
           "example": "10",
           "member": "uint64",
@@ -885,7 +846,6 @@
       "document": "DescribeEvents request structure.",
       "members": [
         {
-          "default": "",
           "document": "Start timestamp in seconds (cannot be 90 days after the current time).",
           "example": "1612171581",
           "member": "uint64",
@@ -894,7 +854,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "End timestamp in seconds (the time range for query is less than 30 days).",
           "example": "1612173581",
           "member": "uint64",
@@ -903,7 +862,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Credential for viewing more logs.",
           "example": "123213213312313",
           "member": "uint64",
@@ -912,7 +870,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Max number of returned logs (up to 50).",
           "example": "10",
           "member": "uint64",
@@ -921,7 +878,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Search condition. Valid values: `RequestId`, `EventName`, `ActionType` (write/read), `PrincipalId` (sub-account), `ResourceType`, `ResourceName`, `AccessKeyId`, `SensitiveAction`, `ApiErrorCode`, `CamErrorCode`, and `Tags` (Format of AttributeValue: [{\"key\":\"*\",\"value\":\"*\"}])",
           "example": "[{\"AttributeKey:XX,\"AttributeValue\":xx}]",
           "member": "LookupAttribute",
@@ -930,7 +886,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to return the IP location. `1`: yes, `0`: no.",
           "example": "1",
           "member": "uint64",
@@ -993,7 +948,6 @@
       "document": "Log details",
       "members": [
         {
-          "default": "",
           "document": "Log ID",
           "example": "xx",
           "member": "string",
@@ -1003,7 +957,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Username",
           "example": "xx",
           "member": "string",
@@ -1013,7 +966,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Event Time",
           "example": "xx",
           "member": "string",
@@ -1023,7 +975,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Log details",
           "example": "xx",
           "member": "string",
@@ -1033,7 +984,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Description of resource type in Chinese (please use this field as required; if you are using other languages, ignore this field)",
           "example": "xx",
           "member": "string",
@@ -1043,7 +993,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Authentication error code",
           "example": "1",
           "member": "int64",
@@ -1053,7 +1002,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Event name",
           "example": "xx",
           "member": "string",
@@ -1063,7 +1011,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Certificate ID\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
           "example": "xx",
           "member": "string",
@@ -1073,7 +1020,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Request source",
           "example": "xx",
           "member": "string",
@@ -1083,7 +1029,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Request ID",
           "example": "xx",
           "member": "string",
@@ -1093,7 +1038,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Resource region",
           "example": "xx",
           "member": "string",
@@ -1103,7 +1047,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Root account ID",
           "example": "1",
           "member": "int64",
@@ -1113,7 +1056,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Source IP\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
           "example": "xx",
           "member": "string",
@@ -1123,7 +1065,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Description of event name in Chinese (please use this field as required; if you are using other languages, ignore this field)",
           "example": "xx",
           "member": "string",
@@ -1133,7 +1074,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Resource pair",
           "example": "xx",
           "member": "Resource",
@@ -1143,7 +1083,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Event region",
           "example": "xx",
           "member": "string",
@@ -1153,7 +1092,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IP location",
           "example": "中国 江苏省 南京市 腾讯网络",
           "member": "string",
@@ -1169,7 +1107,6 @@
       "document": "GetAttributeKey request structure.",
       "members": [
         {
-          "default": "",
           "document": "Website type. Valid values: zh, en. If this parameter is left empty, `zh` will be used by default",
           "example": "xx",
           "member": "string",
@@ -1257,7 +1194,6 @@
       "document": "ListCmqEnableRegion request structure.",
       "members": [
         {
-          "default": "",
           "document": "Website type. zh: Chinese mainland (default); en: outside Chinese mainland.",
           "example": "xx",
           "member": "string",
@@ -1293,7 +1229,6 @@
       "document": "ListCosEnableRegion request structure.",
       "members": [
         {
-          "default": "",
           "document": "Website type. zh: Chinese mainland (default); en: outside Chinese mainland.",
           "example": "xx",
           "member": "string",
@@ -1329,7 +1264,6 @@
       "document": "LookUpEvents request structure.",
       "members": [
         {
-          "default": "",
           "document": "Start time",
           "example": "1553056487",
           "member": "int64",
@@ -1338,7 +1272,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "End time",
           "example": "1553056687",
           "member": "int64",
@@ -1347,7 +1280,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Search criteria",
           "example": "无",
           "member": "LookupAttribute",
@@ -1356,7 +1288,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Credential for viewing more logs",
           "example": "xxx",
           "member": "string",
@@ -1365,7 +1296,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Maximum number of logs to be returned",
           "example": "10",
           "member": "int64",
@@ -1374,7 +1304,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "CloudAudit mode. Valid values: standard, quick. Default value: standard",
           "example": "standard ",
           "member": "string",
@@ -1428,7 +1357,6 @@
       "document": "Search criterion",
       "members": [
         {
-          "default": "",
           "document": "Valid values: RequestId, EventName, ReadOnly, Username, ResourceType, ResourceName, AccessKeyId, and EventId\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
           "example": "xx",
           "member": "string",
@@ -1438,7 +1366,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Value of `AttributeValue`\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
           "example": "xx",
           "member": "string",
@@ -1454,7 +1381,6 @@
       "document": "ModifyAuditTrack request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tracking set ID",
           "example": "1",
           "member": "uint64",
@@ -1463,7 +1389,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Tracking set name, which can only contain 3-48 letters, digits, hyphens, and underscores.",
           "example": "云审计",
           "member": "string",
@@ -1472,7 +1397,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)",
           "example": "Read",
           "member": "string",
@@ -1481,7 +1405,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The product to which the tracking set event belongs. The value can be a single product such as `cos`, or `*` that indicates all products.",
           "example": "*",
           "member": "string",
@@ -1490,7 +1413,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tracking set status (0: Not enabled; 1: Enabled)",
           "example": "1",
           "member": "uint64",
@@ -1499,7 +1421,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The list of API names of tracking set events. When `ResourceType` is `*`, the value of `EventNames` must be `*`. When `ResourceType` is a specified product, the value of `EventNames` can be `*`. When `ResourceType` is `cos` or `cls`, up to 10 APIs are supported.",
           "example": "1",
           "member": "string",
@@ -1508,7 +1429,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Storage type of shipped data. Valid values: `cos`, `cls`.",
           "example": "cos",
           "member": "Storage",
@@ -1517,7 +1437,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)",
           "example": "1",
           "member": "uint64",
@@ -1544,7 +1463,6 @@
       "document": "Resource type",
       "members": [
         {
-          "default": "",
           "document": "Resource type",
           "example": "xx",
           "member": "string",
@@ -1554,7 +1472,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Resource name\nNote: `null` may be returned for this field, indicating that no valid values can be obtained.",
           "example": "xx",
           "member": "string",
@@ -1570,7 +1487,6 @@
       "document": "StartLogging request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tracking set name",
           "example": "xx",
           "member": "string",
@@ -1606,7 +1522,6 @@
       "document": "StopLogging request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tracking set name",
           "example": "xx",
           "member": "string",
@@ -1642,7 +1557,6 @@
       "document": "Tracking set storage information",
       "members": [
         {
-          "default": "",
           "document": "Storage type (Valid values: cos, cls)",
           "example": "cos",
           "member": "string",
@@ -1652,7 +1566,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Storage region",
           "example": "ap-shanghai",
           "member": "string",
@@ -1662,7 +1575,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Storage name. For COS, the storage name is the custom bucket name, which can contain up to 50 lowercase letters, digits, and hyphens. It cannot contain \"-APPID\" and cannot start or end with a hyphen. For CLS, the storage name is the log topic ID, which can contain 1-50 characters.",
           "example": "audit",
           "member": "string",
@@ -1672,7 +1584,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Storage directory prefix. The COS log file prefix can only contain 3-40 letters and digits.",
           "example": "audit",
           "member": "string",
@@ -1688,7 +1599,6 @@
       "document": "Tracking set list",
       "members": [
         {
-          "default": "",
           "document": "Tracking set name",
           "example": "cloudaudit",
           "member": "string",
@@ -1698,7 +1608,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)",
           "example": "Read",
           "member": "string",
@@ -1708,7 +1617,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The product to which the tracking set event belongs, such as `cos`, or `*` that indicates all products",
           "example": "cloudaudit",
           "member": "string",
@@ -1718,7 +1626,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tracking set status (0: Not enabled; 1: Enabled)",
           "example": "1",
           "member": "uint64",
@@ -1728,7 +1635,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The list of API names of tracking set events (`*`: All)",
           "example": "[*]",
           "member": "string",
@@ -1738,7 +1644,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Storage type of shipped data. Valid values: `cos`, `cls`.",
           "example": "cos",
           "member": "Storage",
@@ -1748,7 +1653,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creation time of the tracking set",
           "example": "2021-01-20 11:06:00",
           "member": "string",
@@ -1758,7 +1662,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tracking set ID",
           "example": "1",
           "member": "uint64",
@@ -1774,7 +1677,6 @@
       "document": "UpdateAudit request structure.",
       "members": [
         {
-          "default": "",
           "document": "Tracking set name",
           "example": "xx",
           "member": "string",
@@ -1783,7 +1685,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to enable CMQ message notification. 1: Yes; 0: No. Only CMQ queue service is currently supported. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.",
           "example": "1",
           "member": "int64",
@@ -1792,7 +1693,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write).",
           "example": "1",
           "member": "int64",
@@ -1801,7 +1701,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Globally unique ID of the CMK. This value is required if it is not a newly created KMS element. It can be obtained through `ListKeyAliasByRegion`. CloudAudit will not verify the validity of the `KeyId`. Enter it carefully to avoid data loss.",
           "example": "xx",
           "member": "string",
@@ -1810,7 +1709,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "COS region. Supported regions can be queried through the `ListCosEnableRegion` API.",
           "example": "xx",
           "member": "string",
@@ -1819,7 +1717,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of `IsEnableCmqNotify` is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.",
           "example": "xx",
           "member": "string",
@@ -1828,7 +1725,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to create a COS bucket. 1: Yes; 0: No.",
           "example": "1",
           "member": "int64",
@@ -1837,7 +1733,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "KMS region. Currently supported regions can be obtained through `ListKmsEnableRegion`. This must be the same as the COS region.",
           "example": "xx",
           "member": "string",
@@ -1846,7 +1741,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to enable KMS encryption. 1: Yes, 0: No. If KMS encryption is enabled, the data will be encrypted when delivered to COS.",
           "example": "1",
           "member": "int64",
@@ -1855,7 +1749,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with \"-\". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.",
           "example": "xx",
           "member": "string",
@@ -1864,7 +1757,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.",
           "example": "xx",
           "member": "string",
@@ -1873,7 +1765,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9).",
           "example": "xx",
           "member": "string",
@@ -1882,7 +1773,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to create a queue. 1: Yes; 0: No. This field is required if the value of `IsEnableCmqNotify` is 1.",
           "example": "1",
           "member": "int64",

@@ -669,7 +669,6 @@
       "document": "AcknowledgeMessage request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Unique ID used to identify the message, which can be obtained from the returned value of `receiveMessage`.",
           "example": "5:7:-1",
@@ -679,7 +678,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name, which can be obtained from the returned value of `receiveMessage` and is better to be the full path of the topic, such as `tenant/namespace/topic`. If it is not specified, `public/default` will be used by default.",
           "example": "persistent://tenant/namespace/my-topic",
@@ -689,7 +687,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscriber name, which can be obtained from the returned value of `receiveMessage`. Make sure that it is the same as the subscriber name identified in `receiveMessage`; otherwise, the received message cannot be correctly acknowledged.",
           "example": "my-sub",
@@ -727,7 +724,6 @@
       "document": "Information of dedicated clusters",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of a physical cluster.",
           "member": "string",
@@ -743,7 +739,6 @@
       "document": "ClearCmqQueue request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Queue name, which must be unique under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "test-queue",
@@ -771,7 +766,6 @@
       "document": "ClearCmqSubscriptionFilterTags request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name, which must be unique in the same topic under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "test-topic",
@@ -781,7 +775,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription name, which must be unique in the same topic under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "test-queue",
@@ -809,7 +802,6 @@
       "document": "Set of cluster information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID.",
           "example": "1000",
@@ -820,7 +812,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster name.",
           "example": "pulsar-xxxx",
@@ -831,7 +822,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks.",
           "example": "test",
@@ -842,7 +832,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "\bNumber of access points",
           "example": "0",
@@ -853,7 +842,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time",
           "example": "2021-04-21 19:00:00",
@@ -864,7 +852,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the cluster is healthy. 1: healthy; 0: exceptional",
           "example": "1",
@@ -875,7 +862,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster health information\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -886,7 +872,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster status. 0: creating; 1: normal; 2: terminating; 3: deleted; 4. isolated; 5. creation failed; 6: deletion failed",
           "example": "1",
@@ -897,7 +882,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of namespaces",
           "example": "100",
@@ -908,7 +892,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of topics",
           "example": "8000",
@@ -919,7 +902,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum QPS",
           "example": "1000",
@@ -930,7 +912,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum message retention period in seconds",
           "example": "100000000",
@@ -941,7 +922,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum storage capacity",
           "example": "1024",
@@ -952,7 +932,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster version\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2.5.1",
@@ -963,7 +942,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Public network access point\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -974,7 +952,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC access point\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -985,7 +962,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of namespaces\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2",
@@ -996,7 +972,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Limit of used storage in MB\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1007,7 +982,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum message production rate in messages\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -1018,7 +992,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum message push rate in messages\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -1029,7 +1002,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum message production rate in bytes\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -1040,7 +1012,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum message push rate in bytes\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -1051,7 +1022,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of created topics\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -1062,7 +1032,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum message delay in seconds\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -1073,7 +1042,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable public network access. If this parameter is left empty, the feature will be enabled by default\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "true",
@@ -1084,7 +1052,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1095,7 +1062,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Billing mode:\n`0`: Pay-as-you-go\n`1`: Monthly subscription\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1112,7 +1078,6 @@
       "document": "cmq DeadLetterPolicy",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Dead letter queue.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
@@ -1123,7 +1088,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Dead letter queue policy.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1134,7 +1098,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum period in seconds before an unconsumed message expires, which is required if `Policy` is 1. Value range: 300–43200. This value should be smaller than `MsgRetentionSeconds` (maximum message retention period)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1145,7 +1108,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of receipts.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1162,7 +1124,6 @@
       "document": "Cmq DeadLetterSource",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Message queue ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
@@ -1173,7 +1134,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message queue name.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
@@ -1190,7 +1150,6 @@
       "document": "Batch queue attribute information of CMQ",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Message queue ID.",
           "example": "xxx",
@@ -1201,7 +1160,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message queue name.",
           "example": "xxxx",
@@ -1212,7 +1170,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Limit of the number of messages produced per second. The value for consumed messages is 1.1 times this value.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1223,7 +1180,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Bandwidth limit.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1234,7 +1190,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum retention period for inflight messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1245,7 +1200,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of heaped messages. The value range is 1,000,000–10,000,000 during the beta test and can be 1,000,000–1,000,000,000 after the product is officially released. The default value is 10,000,000 during the beta test and will be 100,000,000 after the product is officially released.",
           "example": "0",
@@ -1256,7 +1210,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Long polling wait time for message reception. Value range: 0–30 seconds. Default value: 0.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1267,7 +1220,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message retention period. Value range: 60–1296000 seconds (i.e., 1 minute–15 days). Default value: 345600 (i.e., 4 days).\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1278,7 +1230,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message visibility timeout period. Value range: 1–43200 seconds (i.e., 12 hours). Default value: 30.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1289,7 +1240,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum message length. Value range: 1024–1048576 bytes (i.e., 1–1024 KB). Default value: 65536.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1300,7 +1250,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum time range during which a message can be rewound in the queue, which ranges from 0 to 43,200 seconds. 0 indicates that message rewind is disabled.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1311,7 +1260,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Queue creation time. A Unix timestamp accurate down to the millisecond will be returned.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1322,7 +1270,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time when the queue attribute is last modified. A Unix timestamp accurate down to the millisecond will be returned.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1333,7 +1280,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of messages in `Active` status (i.e., unconsumed) in the queue, which is an approximate value.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1344,7 +1290,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total number of messages in `Inactive` status (i.e., being consumed) in the queue, which is an approximate value.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1355,7 +1300,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of delayed messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1366,7 +1310,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of retained messages which have been deleted by the `DelMsg` API but are still within their rewind time range.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1377,7 +1320,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum unconsumed time of message in seconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1388,7 +1330,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Transaction message queue. true: transaction message type; false: other message types.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "false",
@@ -1399,7 +1340,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Dead letter queue.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1410,7 +1350,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Dead letter queue policy.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1421,7 +1360,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Transaction message policy.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1432,7 +1370,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creator `Uin`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1443,7 +1380,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Associated tag.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1454,7 +1390,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message trace. true: enabled; false: not enabled\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "false",
@@ -1465,7 +1400,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tenant ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1476,7 +1410,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1487,7 +1420,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster status. 0: creating; 1: normal; 2: terminating; 3: deleted; 4. isolated; 5. creation failed; 6: deletion failed\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1498,7 +1430,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of unacknowledged messages.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "100000",
@@ -1509,7 +1440,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum size of heaped messages in bytes.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "104857600",
@@ -1520,7 +1450,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Queue storage space configured for message rewind. Value range: 1,024-10,240 MB (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1537,7 +1466,6 @@
       "document": "Subscription response parameter in CMQ",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription name, which must be unique in the same topic under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
@@ -1548,7 +1476,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription ID, which will be used during monitoring data pull.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
@@ -1559,7 +1486,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription owner `APPID`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1570,7 +1496,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of messages to be delivered in the subscription.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1581,7 +1506,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time when the subscription attribute is last modified. A Unix timestamp accurate down to the millisecond will be returned.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1592,7 +1516,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription creation time. A Unix timestamp accurate down to the millisecond will be returned.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1603,7 +1526,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filtering policy for subscribing to and receiving messages.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1614,7 +1536,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Endpoint that receives notifications, which varies by `protocol`: for HTTP, the endpoint must start with `http://`, and the `host` can be a domain or IP; for `queue`, `queueName` should be entered.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
@@ -1625,7 +1546,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filtering policy selected when a subscription is created:\nIf `filterType` is 1, `filterTag` will be used for filtering.\nIf `filterType` is 2, `bindingKey` will be used for filtering.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1636,7 +1556,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription protocol. Currently, two protocols are supported: HTTP and queue. To use the HTTP protocol, you need to build your own web server to receive messages. With the queue protocol, messages are automatically pushed to a CMQ queue and you can pull them concurrently.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
@@ -1647,7 +1566,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMQ push server retry policy in case an error occurs while pushing a message to the endpoint. Valid values:\n(1) BACKOFF_RETRY: backoff retry, which is to retry at a fixed interval, discard the message after a certain number of retries, and continue to push the next message.\n(2) EXPONENTIAL_DECAY_RETRY: exponential decay retry, which is to retry at an exponentially increasing interval, such as 1s, 2s, 4s, 8s, and so on. As a message can be retained in a topic for one day, failed messages will be discarded at most after one day of retry. Default value: EXPONENTIAL_DECAY_RETRY.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
@@ -1658,7 +1576,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Push content format. Valid values: 1. JSON; 2. SIMPLIFIED, i.e., the raw format. If `protocol` is `queue`, this value must be `SIMPLIFIED`. If `protocol` is `HTTP`, both values are acceptable, and the default value is `JSON`.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
@@ -1675,7 +1592,6 @@
       "document": "Display field of the returned CMQ topic information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Topic ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
@@ -1686,7 +1602,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
@@ -1697,7 +1612,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum lifecycle of message in topic. After the period specified by this parameter has elapsed since a message is sent to the topic, the message will be deleted no matter whether it has been successfully pushed to the user. This parameter is measured in seconds and defaulted to one day (86,400 seconds), which cannot be modified.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1708,7 +1622,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum message size, which ranges from 1,024 to 1,048,576 bytes (i.e., 1–1,024 KB). The default value is 65,536.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1719,7 +1632,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of messages published per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1730,7 +1642,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filtering policy selected when a subscription is created:\nIf `filterType` is 1, `FilterTag` will be used for filtering.\nIf `filterType` is 2, `BindingKey` will be used for filtering.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1741,7 +1652,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic creation time. A Unix timestamp accurate down to the millisecond will be returned.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1752,7 +1662,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time when the topic attribute is last modified. A Unix timestamp accurate down to the millisecond will be returned.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1763,7 +1672,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of current messages in the topic (number of retained messages).\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1774,7 +1682,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creator `Uin`. The `resource` field for CAM authentication is composed of this field.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1785,7 +1692,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Associated tag.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1796,7 +1702,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message trace. true: enabled; false: not enabled\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "false",
@@ -1807,7 +1712,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tenant ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1818,7 +1722,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1829,7 +1732,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster status. 0: creating; 1: normal; 2: terminating; 3: deleted; 4. isolated; 5. creation failed; 6: deletion failed\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -1840,7 +1742,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid values: `0` (Pulsar), `1` (RocketMQ).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1857,7 +1758,6 @@
       "document": "cmq TransactionPolicy",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "First lookback time.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1868,7 +1768,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of queries.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1885,7 +1784,6 @@
       "document": " Consumer",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The time when the consumer started connecting.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -1896,7 +1794,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Consumer address.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -1907,7 +1804,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Consumer name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -1918,7 +1814,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Consumer version.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -1929,7 +1824,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Serial number of the topic partition connected to the consumer.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -1946,7 +1840,6 @@
       "document": "Consumption progress details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the current partition.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
@@ -1956,7 +1849,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
@@ -1966,7 +1858,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of heaped messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
@@ -1976,7 +1867,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The total number of messages delivered by the consumer per second.",
           "member": "string",
@@ -1986,7 +1876,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The size (in bytes) of messages consumed by the consumer per second.",
           "member": "string",
@@ -1996,7 +1885,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Percentage of messages discarded due to timeout.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -2012,7 +1900,6 @@
       "document": "CreateCluster request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster name, which can contain up to 16 letters, digits, hyphens, and underscores.",
           "example": "default",
@@ -2022,7 +1909,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of your dedicated physical cluster. If it is not passed in, cluster resources will be created in a public cluster by default.",
           "example": "NULL",
@@ -2032,7 +1918,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks (up to 128 characters).",
           "example": "demo",
@@ -2042,7 +1927,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster tag list (deprecated).",
           "example": "NULL",
@@ -2052,7 +1936,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable public network access. If this parameter is left empty, the feature will be enabled by default",
           "example": "true",
@@ -2271,7 +2154,6 @@
       "document": "CreateCmqSubscribe request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name, which must be unique in the same topic under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "ConnTopic",
@@ -2281,7 +2163,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription name, which must be unique in the same topic under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "ConnSubQueue",
@@ -2291,7 +2172,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription protocol. Currently, two protocols are supported: HTTP and queue. To use the HTTP protocol, you need to build your own web server to receive messages. With the queue protocol, messages are automatically pushed to a CMQ queue and you can pull them concurrently.",
           "example": "queue",
@@ -2301,7 +2181,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "`Endpoint` for notification receipt, which is distinguished by `Protocol`. For `http`, `Endpoint` must begin with `http://` and `host` can be a domain name or IP. For `Queue`, enter `QueueName`. Note that currently the push service cannot push messages to a VPC; therefore, if a VPC domain name or address is entered for `Endpoint`, pushed messages will not be received. Currently, messages can be pushed only to the public network and classic network.",
           "example": "queue_sub",
@@ -2311,7 +2190,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMQ push server retry policy in case an error occurs while pushing a message to `Endpoint`. Valid values: 1. BACKOFF_RETRY: backoff retry, which is to retry at a fixed interval, discard the message after a certain number of retries, and continue to push the next message; 2. EXPONENTIAL_DECAY_RETRY: exponential decay retry, which is to retry at an exponentially increasing interval, such as 1s, 2s, 4s, 8s, and so on. As a message can be retained in a topic for one day, failed messages will be discarded at most after one day of retry. Default value: EXPONENTIAL_DECAY_RETRY.",
           "example": "xxx",
@@ -2321,7 +2199,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message body tag (used for message filtering). The number of tags cannot exceed 5, and each tag can contain up to 16 characters. It is used in conjunction with the `MsgTag` parameter of `(Batch)PublishMessage`. Rules: 1. If `FilterTag` is not configured, no matter whether `MsgTag` is configured, the subscription will receive all messages published to the topic; 2. If the array of `FilterTag` values has a value, only when at least one of the values in the array also exists in the array of `MsgTag` values (i.e., `FilterTag` and `MsgTag` have an intersection) can the subscription receive messages published to the topic; 3. If the array of `FilterTag` values has a value, but `MsgTag` is not configured, then no message published to the topic will be received, which can be considered as a special case of rule 2 as `FilterTag` and `MsgTag` do not intersect in this case. The overall design idea of rules is based on the intention of the subscriber.",
           "example": "无",
@@ -2331,7 +2208,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of `BindingKey` cannot exceed 5, and the length of each `BindingKey` cannot exceed 64 bytes. This field indicates the filtering policy for subscribing to and receiving messages. Each `BindingKey` includes up to 15 dots (namely up to 16 segments).",
           "example": "无",
@@ -2341,7 +2217,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Push content format. Valid values: 1. JSON; 2. SIMPLIFIED, i.e., the raw format. If `Protocol` is `queue`, this value must be `SIMPLIFIED`. If `Protocol` is `http`, both options are acceptable, and the default value is `JSON`.",
           "example": "xxx",
@@ -2379,7 +2254,6 @@
       "document": "CreateCmqTopic request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name, which must be unique in the same topic under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "xxx",
@@ -2389,7 +2263,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.",
           "example": "0",
@@ -2399,7 +2272,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Used to specify the message match policy for the topic. 1: tag match policy (default value); 2: routing match policy.",
           "example": "0",
@@ -2409,7 +2281,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message retention period. Value range: 60–86400 seconds (i.e., 1 minute–1 day). Default value: 86400.",
           "example": "0",
@@ -2419,7 +2290,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable message trace. true: yes; false: no. If this field is left empty, the feature will not be enabled.",
           "example": "false",
@@ -2429,7 +2299,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag array.",
           "example": "无",
@@ -2579,7 +2448,6 @@
       "document": "CreateEnvironmentRole request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "example": "default",
@@ -2589,7 +2457,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Role name.",
           "example": "test_role_1",
@@ -2599,7 +2466,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Permissions, which is a non-empty string array of `produce` and `consume` at the most.",
           "example": "无",
@@ -2609,7 +2475,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID (required)",
           "example": "xxx",
@@ -2853,7 +2718,6 @@
       "document": "CreateRabbitMQVirtualHost request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster instance ID",
           "example": "amqp-xxx",
@@ -2863,7 +2727,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Vhost name",
           "example": "testVhost",
@@ -2873,7 +2736,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Description",
           "example": "hello",
@@ -2883,7 +2745,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message trace flag. Valid values: `true` (Enabled), `false` (Disabled, which is the default value).",
           "example": "true",
@@ -2921,7 +2782,6 @@
       "document": "CreateRocketMQCluster request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster name, which can contain 3–64 letters, digits, hyphens, and underscores",
           "example": "test",
@@ -2931,7 +2791,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster description (up to 128 characters)",
           "example": "备注",
@@ -2969,7 +2828,6 @@
       "document": "CreateRocketMQGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Group name (8–64 characters)",
           "example": "test",
@@ -2979,7 +2837,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace. Currently, only one namespace is supported",
           "example": "无",
@@ -2989,7 +2846,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable consumption",
           "example": "true",
@@ -2999,7 +2855,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable broadcast consumption",
           "example": "true",
@@ -3009,7 +2864,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID",
           "example": "rocketmq-xxxxx",
@@ -3019,7 +2873,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks (up to 128 characters)",
           "example": "备注",
@@ -3029,7 +2882,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Group type (`TCP`, `HTTP`)",
           "example": "TCP",
@@ -3039,7 +2891,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of retries for a group",
           "example": "16",
@@ -3202,7 +3053,6 @@
       "document": "CreateRole request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Role name, which can contain up to 32 letters, digits, hyphens, and underscores.",
           "example": "test_role_123",
@@ -3212,7 +3062,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks (up to 128 characters).",
           "example": "创建角色",
@@ -3222,7 +3071,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID (required)",
           "example": "pulsar-xxxx",
@@ -3290,7 +3138,6 @@
       "document": "CreateSubscription request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "example": "default",
@@ -3300,7 +3147,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name.",
           "example": "cloud_test",
@@ -3310,7 +3156,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscriber name, which can contain up to 128 characters.",
           "example": "cloud_sub",
@@ -3320,7 +3165,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the creation is idempotent; if not, you cannot create subscriptions with the same name.",
           "example": "true",
@@ -3330,7 +3174,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks (up to 128 characters).",
           "example": "创建订阅关系",
@@ -3340,7 +3183,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar cluster ID",
           "example": "pulsar-xxx",
@@ -3350,7 +3192,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to automatically create a dead letter topic and a retry letter topic. true: yes (default value); false: no.",
           "example": "true",
@@ -3360,7 +3201,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Naming convention for dead letter and retry letter topics. `LEGACY` indicates to use the legacy naming convention, and `COMMUNITY` indicates to use the naming convention in the Pulsar community.",
           "example": "LEGACY",
@@ -3398,7 +3238,6 @@
       "document": "CreateTopic request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "example": "default",
@@ -3408,7 +3247,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name, which can contain up to 64 letters, digits, hyphens, and underscores.",
           "example": "test_topic",
@@ -3418,7 +3256,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The value “1” indicates a non-partitioned topic (a topic with no partitions) will be created. A value between 1 (exclusive) and 128 (inclusive) indicates the partition count of a partitioned topic.",
           "example": "2",
@@ -3428,7 +3265,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks (up to 128 characters).",
           "example": "2个分区的普通消息队列",
@@ -3438,7 +3274,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This input parameter will be disused soon. You can use `PulsarTopicType` instead.\n0: General message;\n1: Globally sequential message;\n2: Partitionally sequential message;\n3: Retry letter topic;\n4: Dead letter topic.",
           "example": "0",
@@ -3448,7 +3283,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar cluster ID",
           "example": "pulsar-xxx",
@@ -3458,7 +3292,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar topic type.\n`0`: Non-persistent and non-partitioned\n`1`: Non-persistent and partitioned\n`2`: Persistent and non-partitioned\n`3`: Persistent and partitioned",
           "example": "0",
@@ -3536,7 +3369,6 @@
       "document": "DeleteCluster request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the cluster to be deleted.",
           "example": "pulsar-ge3n43v3wj",
@@ -3574,7 +3406,6 @@
       "document": "DeleteCmqQueue request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Queue name, which must be unique under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "test",
@@ -3602,7 +3433,6 @@
       "document": "DeleteCmqSubscribe request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name, which must be unique under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "test-topic",
@@ -3612,7 +3442,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription name, which must be unique in the same topic under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "test-sub",
@@ -3640,7 +3469,6 @@
       "document": "DeleteCmqTopic request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name, which must be unique under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "test-topic",
@@ -3668,7 +3496,6 @@
       "document": "DeleteEnvironmentRoles request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "example": "default",
@@ -3678,7 +3505,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of role names.",
           "example": "[\"test_role\\n\"]",
@@ -3688,7 +3514,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID (required)",
           "example": "rocketmq-xxxxx",
@@ -3716,7 +3541,6 @@
       "document": "DeleteEnvironments request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Array of environments (namespaces). Up to 20 environments can be deleted at a time.",
           "example": "[test1,test2]",
@@ -3726,7 +3550,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar cluster ID",
           "example": "pulsar-ge3n43v3wj",
@@ -3883,7 +3706,6 @@
       "document": "DeleteRocketMQCluster request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the cluster to be deleted.",
           "example": "rocketmq-xxxxx",
@@ -3911,7 +3733,6 @@
       "document": "DeleteRocketMQGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID",
           "example": "rocketmq-xxxxx",
@@ -3921,7 +3742,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name",
           "example": "prod",
@@ -3931,7 +3751,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Consumer group name",
           "example": "test",
@@ -3959,7 +3778,6 @@
       "document": "DeleteRocketMQNamespace request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID",
           "example": "rocketmq-xxxxx",
@@ -3969,7 +3787,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name",
           "example": "prod",
@@ -3997,7 +3814,6 @@
       "document": "DeleteRocketMQTopic request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID",
           "example": "rocketmq-xxxxx",
@@ -4007,7 +3823,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name",
           "example": "prod",
@@ -4017,7 +3832,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name",
           "example": "test",
@@ -4045,7 +3859,6 @@
       "document": "DeleteRoles request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Array of role names.",
           "example": "[\"test_role_1\\n\",\"test_role_2\\n\"]",
@@ -4055,7 +3868,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID (required)",
           "example": "pulsar-xxxx",
@@ -4093,7 +3905,6 @@
       "document": "DeleteSubscriptions request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription set. Up to 20 subscriptions can be deleted at a time.",
           "example": "无",
@@ -4103,7 +3914,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar cluster ID.",
           "example": "test",
@@ -4113,7 +3923,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "example": "test",
@@ -4123,7 +3932,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to forcibly delete a subscription. Default value: `false`.",
           "example": "false",
@@ -4161,7 +3969,6 @@
       "document": "DeleteTopics request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Topic set. Up to 20 topics can be deleted at a time.",
           "example": "无",
@@ -4171,7 +3978,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar cluster ID.",
           "example": "test",
@@ -4181,7 +3987,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "example": "test",
@@ -4191,7 +3996,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to forcibly delete a topic. Default value: `false`.",
           "example": "false",
@@ -4266,7 +4070,6 @@
       "document": "DescribeBindVpcs request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. If this parameter is left empty, 0 will be used by default.",
           "member": "uint64",
@@ -4275,7 +4078,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.",
           "member": "uint64",
@@ -4284,7 +4086,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar cluster ID",
           "member": "string",
@@ -4327,7 +4128,6 @@
       "document": "DescribeClusterDetail request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID",
           "example": "pulsar-ge3n43v3wj",
@@ -4365,7 +4165,6 @@
       "document": "DescribeClusters request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start offset, which defaults to 0 if left empty.",
           "example": "0",
@@ -4375,7 +4174,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.",
           "example": "0",
@@ -4385,7 +4183,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter by cluster ID.",
           "example": "无",
@@ -4395,7 +4192,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to filter by tag.",
           "example": "true",
@@ -4405,7 +4201,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter. Currently, you can filter by tag.",
           "example": "无",
@@ -4453,7 +4248,6 @@
       "document": "DescribeCmqDeadLetterSourceQueues request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Dead letter queue name",
           "example": "test",
@@ -4463,7 +4257,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Starting position of the list of topics to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default.",
           "example": "10",
@@ -4473,7 +4266,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of topics to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
           "example": "0",
@@ -4483,7 +4275,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter by `SourceQueueName`",
           "example": "test",
@@ -4531,7 +4322,6 @@
       "document": "DescribeCmqQueueDetail request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Exact match by `QueueName`",
           "example": "xxx",
@@ -4569,7 +4359,6 @@
       "document": "DescribeCmqQueues request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Starting position of a queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` must be specified. If this parameter is left empty, 0 will be used by default.",
           "example": "0",
@@ -4579,7 +4368,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
           "example": "1",
@@ -4589,7 +4377,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter by `QueueName`",
           "example": "无",
@@ -4599,7 +4386,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter by CMQ queue name.",
           "example": "test",
@@ -4609,7 +4395,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "For filtering by tag, this parameter must be set to `true`.",
           "example": "true",
@@ -4619,7 +4404,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter. Currently, you can filter by tag. The tag name must be prefixed with “tag:”, such as “tag: owner”, “tag: environment”, or “tag: business”.",
           "example": "无",
@@ -4667,7 +4451,6 @@
       "document": "DescribeCmqSubscriptionDetail request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name, which must be unique in the same topic under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "Conn",
@@ -4677,7 +4460,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Starting position of the list of topics to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default",
           "example": "0",
@@ -4687,7 +4469,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of topics to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
           "example": "0",
@@ -4697,7 +4478,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Fuzzy search by `SubscriptionName`",
           "example": "无",
@@ -4745,7 +4525,6 @@
       "document": "DescribeCmqTopicDetail request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Exact match by `TopicName`.",
           "example": "xxx",
@@ -4783,7 +4562,6 @@
       "document": "DescribeCmqTopics request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Starting position of a queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` must be specified. If this parameter is left empty, 0 will be used by default.",
           "example": "0",
@@ -4793,7 +4571,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.",
           "example": "1",
@@ -4803,7 +4580,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Fuzzy search by `TopicName`",
           "example": "无",
@@ -4813,7 +4589,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter by CMQ topic name.",
           "example": "test",
@@ -4823,7 +4598,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "For filtering by tag, this parameter must be set to `true`.",
           "example": "true",
@@ -4833,7 +4607,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter. Currently, you can filter by tag. The tag name must be prefixed with “tag:”, such as “tag: owner”, “tag: environment”, or “tag: business”.",
           "example": "无",
@@ -4881,7 +4654,6 @@
       "document": "DescribeEnvironmentAttributes request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "example": "default",
@@ -4891,7 +4663,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar cluster ID",
           "example": "pulsar-ge3n43v3wj",
@@ -4999,7 +4770,6 @@
       "document": "DescribeEnvironmentRoles request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Environment/namespace name (required).",
           "example": "default",
@@ -5009,7 +4779,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset, which defaults to 0 if left empty.",
           "example": "0",
@@ -5019,7 +4788,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.",
           "example": "10",
@@ -5029,7 +4797,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar cluster ID (required).",
           "example": "pulsar-ge3n43v3wj",
@@ -5039,7 +4806,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Role name.",
           "example": "role",
@@ -5049,7 +4815,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "* RoleName\nFilter by role name for exact query.\nType: String\nRequired: No",
           "example": "无",
@@ -5097,7 +4862,6 @@
       "document": "DescribeEnvironments request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Fuzzy search by namespace name.",
           "example": "default",
@@ -5107,7 +4871,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset, which defaults to 0 if left empty.",
           "example": "0",
@@ -5117,7 +4880,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.",
           "example": "5",
@@ -5127,7 +4889,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar cluster ID",
           "example": "pulsar-ge3n43v3wj",
@@ -5137,7 +4898,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "* EnvironmentId\nFilter by namespace for exact query.\nType: String\nRequired: No",
           "example": "无",
@@ -5185,7 +4945,6 @@
       "document": "DescribePublisherSummary request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID.",
           "example": "pulsar-xxxx",
@@ -5195,7 +4954,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name.",
           "example": "test",
@@ -5205,7 +4963,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name.",
           "example": "test",
@@ -5273,7 +5030,6 @@
       "document": "DescribePublishers request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID.",
           "example": "pulsar-xxxxx",
@@ -5283,7 +5039,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name.",
           "example": "test",
@@ -5293,7 +5048,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name.",
           "example": "test",
@@ -5303,7 +5057,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter filter. The `ProducerName` and `Address` fields are supported.",
           "example": "无",
@@ -5313,7 +5066,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset for query. Default value: `0`.",
           "example": "0",
@@ -5323,7 +5075,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of query results displayed per page. Default value: `20`.",
           "example": "10",
@@ -5333,7 +5084,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sort by field.",
           "example": "无",
@@ -5381,7 +5131,6 @@
       "document": "DescribePulsarProInstanceDetail request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID",
           "example": "pulsar-xxxxx",
@@ -5439,7 +5188,6 @@
       "document": "DescribePulsarProInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Query condition filter",
           "example": "无",
@@ -5449,7 +5197,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of queried items, which defaults to `20`.",
           "example": "20",
@@ -5459,7 +5206,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start offset for query",
           "example": "1",
@@ -5608,7 +5354,6 @@
       "document": "DescribeRabbitMQUser request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster instance ID",
           "example": "amqp-xxx",
@@ -5618,7 +5363,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Username search by prefix or suffix",
           "example": "test_user",
@@ -5628,7 +5372,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pagination offset",
           "example": "0",
@@ -5638,7 +5381,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pagination limit",
           "example": "20",
@@ -5648,7 +5390,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Username, which is queried by exact match.",
           "example": "test_user",
@@ -5658,7 +5399,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "User tag, which is used to filter users.",
           "example": "[\"tag1\",\"tag2\"]",
@@ -5706,7 +5446,6 @@
       "document": "DescribeRabbitMQVipInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Query condition filter",
           "example": "无",
@@ -5716,7 +5455,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of queried items, which defaults to 20.",
           "example": "20",
@@ -5726,7 +5464,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start offset for query",
           "example": "1",
@@ -5774,7 +5511,6 @@
       "document": "DescribeRabbitMQVirtualHostList request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "A default parameter that won’t be used",
           "example": "amqp-xxx",
@@ -5784,7 +5520,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset",
           "example": "1",
@@ -5794,7 +5529,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of entries per page",
           "example": "20",
@@ -5845,7 +5579,6 @@
           "disabled": false,
           "document": "Cluster instance ID",
           "example": "amqp-xxx",
-          "is_base64": false,
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5855,7 +5588,6 @@
           "disabled": false,
           "document": "Vhost name. If this parameter is not specified, all will be queried by default.",
           "example": "testVhost",
-          "is_base64": false,
           "member": "string",
           "name": "VirtualHost",
           "required": false,
@@ -5865,7 +5597,6 @@
           "disabled": false,
           "document": "Pagination offset",
           "example": "0",
-          "is_base64": false,
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -5875,7 +5606,6 @@
           "disabled": false,
           "document": "Pagination limit",
           "example": "20",
-          "is_base64": false,
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -5885,7 +5615,6 @@
           "disabled": false,
           "document": "Fuzzy query by vhost name",
           "example": "查询条件",
-          "is_base64": false,
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -5895,7 +5624,6 @@
           "disabled": false,
           "document": "",
           "example": "MessageHeapCount",
-          "is_base64": false,
           "member": "string",
           "name": "SortElement",
           "required": false,
@@ -5905,7 +5633,6 @@
           "disabled": false,
           "document": "",
           "example": "ascend",
-          "is_base64": false,
           "member": "string",
           "name": "SortOrder",
           "required": false,
@@ -5950,7 +5677,6 @@
       "document": "DescribeRocketMQCluster request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID",
           "example": "rocketmq-xxxxx",
@@ -6008,7 +5734,6 @@
       "document": "DescribeRocketMQClusters request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Offset.",
           "example": "0",
@@ -6018,7 +5743,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The max number of returned results.",
           "example": "10",
@@ -6028,7 +5752,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Search by cluster ID.",
           "example": "xxxx",
@@ -6038,7 +5761,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Search by cluster name.",
           "example": "xxxx",
@@ -6048,7 +5770,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter by cluster ID.",
           "example": "无",
@@ -6058,7 +5779,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "For filtering by tag, this parameter must be set to `true`.",
           "example": "无",
@@ -6068,7 +5788,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter. Currently, you can filter only by tag.",
           "example": "无",
@@ -6379,7 +6098,6 @@
       "document": "DescribeRocketMQNamespaces request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID.",
           "example": "rocketmq-xxxxx",
@@ -6389,7 +6107,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset.",
           "example": "0",
@@ -6399,7 +6116,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The max number of returned results.",
           "example": "10",
@@ -6409,7 +6125,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Search by name.",
           "example": "xxxx",
@@ -6457,7 +6172,6 @@
       "document": "DescribeRocketMQTopics request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Offset for query.",
           "example": "0",
@@ -6467,7 +6181,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Query limit.",
           "example": "10",
@@ -6477,7 +6190,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID.",
           "example": "rocketmq-xxxxx",
@@ -6487,7 +6199,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace.",
           "example": "prod",
@@ -6497,7 +6208,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter by topic type. Valid values: `Normal`, `GlobalOrder`, `PartitionedOrder`, `Transaction`.",
           "example": "无",
@@ -6507,7 +6217,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Search by topic name. Fuzzy query is supported.",
           "example": "test",
@@ -6555,7 +6264,6 @@
       "document": "DescribeRocketMQVipInstanceDetail request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID",
           "example": "rocketmq-xxxxx",
@@ -6603,7 +6311,6 @@
       "document": "DescribeRocketMQVipInstances request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Query condition filter",
           "example": "无",
@@ -6613,7 +6320,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of queried items, which defaults to 20.",
           "example": "20",
@@ -6623,7 +6329,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start offset for query",
           "example": "0",
@@ -6671,7 +6376,6 @@
       "document": "DescribeRoles request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Fuzzy query by role name",
           "example": "test",
@@ -6681,7 +6385,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset. If this parameter is left empty, 0 will be used by default.",
           "example": "0",
@@ -6691,7 +6394,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.",
           "example": "10",
@@ -6701,7 +6403,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID (required)",
           "example": "test",
@@ -6711,7 +6412,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "* RoleName\nFilter by role name for exact query.\nType: String\nRequired: no",
           "example": "无",
@@ -6759,7 +6459,6 @@
       "document": "DescribeSubscriptions request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "example": "test1",
@@ -6769,7 +6468,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name.",
           "example": "test",
@@ -6779,7 +6477,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset, which defaults to 0 if left empty.",
           "example": "0",
@@ -6789,7 +6486,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.",
           "example": "10",
@@ -6799,7 +6495,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Fuzzy match by subscriber name.",
           "example": "test",
@@ -6809,7 +6504,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data filter.",
           "example": "无",
@@ -6819,7 +6513,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar cluster ID",
           "example": "pulsar-xxxx",
@@ -6867,7 +6560,6 @@
       "document": "DescribeTopics request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "example": "test1",
@@ -6877,7 +6569,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Fuzzy match by topic name.",
           "example": "topic1",
@@ -6887,7 +6578,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset, which defaults to 0 if left empty.",
           "example": "0",
@@ -6897,7 +6587,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of results to be returned, which defaults to 10 if left empty. The maximum value is 20.",
           "example": "20",
@@ -6907,7 +6596,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic type description:\n0: Non-persistent and non-partitioned topic;\n1: Non-persistent and partitioned topic;\n2: Persistent and non-partitioned topic;\n3: Persistent and partitioned topic.",
           "example": "1",
@@ -6917,7 +6605,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar cluster ID.",
           "example": "cluster1",
@@ -6927,7 +6614,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "* TopicName\nQuery by topic name for exact search.\nType: String\nRequired: No",
           "example": "无",
@@ -6937,7 +6623,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic creator:\n1: User\n2: System",
           "example": "1",
@@ -7091,7 +6776,6 @@
       "document": "Set of environment roles",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace).",
           "member": "string",
@@ -7101,7 +6785,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Role name.",
           "member": "string",
@@ -7111,7 +6794,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Permissions, which is a non-empty string array of `produce` and `consume` at the most.",
           "member": "string",
@@ -7121,7 +6803,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Role description.",
           "member": "string",
@@ -7131,7 +6812,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time.",
           "member": "datetime",
@@ -7141,7 +6821,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Update time.",
           "member": "datetime",
@@ -7183,7 +6862,6 @@
       "document": "Filter parameter",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Filter parameter name",
           "example": "xxx",
@@ -7194,7 +6872,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value",
           "example": "无",
@@ -7211,7 +6888,6 @@
       "document": "Filter subscriptions",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to only display subscriptions that include real consumers.",
           "example": "false",
@@ -7222,7 +6898,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to only display subscriptions with heaped messages.",
           "example": "false",
@@ -7233,7 +6908,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to only display subscriptions with messages discarded after expiration.",
           "example": "false",
@@ -7244,7 +6918,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter by subscription name for exact query.",
           "example": "false",
@@ -7261,7 +6934,6 @@
       "document": "Information of instance node distribution",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "AZ",
           "example": "ap-guangzhou-1",
@@ -7272,7 +6944,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "AZ ID",
           "example": "100001",
@@ -7283,7 +6954,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of nodes",
           "example": "2",
@@ -7300,7 +6970,6 @@
       "document": "ModifyCluster request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the Pulsar cluster to be updated.",
           "example": "pulsar-ge3n43v3wj",
@@ -7310,7 +6979,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Updated cluster name.",
           "example": "test",
@@ -7320,7 +6988,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks.",
           "example": "demo",
@@ -7330,7 +6997,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Enables public network access, which can only be `true`.",
           "example": "true",
@@ -7368,7 +7034,6 @@
       "document": "ModifyCmqQueueAttribute request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Queue name, which must be unique under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "xxx",
@@ -7378,7 +7043,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of heaped messages. The value range is 1,000,000–10,000,000 during the beta test and can be 1,000,000–1,000,000,000 after the product is officially released. The default value is 10,000,000 during the beta test and will be 100,000,000 after the product is officially released.",
           "example": "0",
@@ -7388,7 +7052,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Long polling wait time for message reception. Value range: 0–30 seconds. Default value: 0.",
           "example": "0",
@@ -7398,7 +7061,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message visibility timeout period. Value range: 1–43200 seconds (i.e., 12 hours). Default value: 30.",
           "example": "0",
@@ -7408,7 +7070,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Max message size, which defaults to 1,024 KB for the queue of TDMQ for CMQ and cannot be modified.",
           "example": "1024",
@@ -7418,7 +7079,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The max period during which a message is retained before it is automatically acknowledged. Value range: 30-43,200 seconds (30 seconds to 12 hours). Default value: 3600 seconds (1 hour).",
           "example": "0",
@@ -7428,7 +7088,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Rewindable time of messages in the queue. Value range: 0-1,296,000s (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.",
           "example": "0",
@@ -7438,7 +7097,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "First query time",
           "example": "0",
@@ -7448,7 +7106,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of queries",
           "example": "0",
@@ -7458,7 +7115,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Dead letter queue name",
           "example": "xxx",
@@ -7468,7 +7124,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum period in seconds before an unconsumed message expires, which is required if `MaxTimeToLivepolicy` is 1. Value range: 300–43200. This value should be smaller than `MsgRetentionSeconds` (maximum message retention period)",
           "example": "0",
@@ -7478,7 +7133,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of receipts",
           "example": "0",
@@ -7488,7 +7142,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Dead letter queue policy",
           "example": "0",
@@ -7498,7 +7151,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable message trace. true: yes; false: no. If this field is left empty, the feature will not be enabled.",
           "example": "false",
@@ -7508,7 +7160,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable transaction. 1: yes; 0: no",
           "example": "0",
@@ -7518,7 +7169,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Queue storage space configured for message rewind. Value range: 10,240-512,000 MB (if message rewind is enabled). The value “0” indicates that message rewind is not enabled.",
           "example": "0",
@@ -7546,7 +7196,6 @@
       "document": "ModifyCmqSubscriptionAttribute request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name, which must be unique in the same topic under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "test-topic",
@@ -7556,7 +7205,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription name, which must be unique in the same topic under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "tese-sub",
@@ -7566,7 +7214,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "CMQ push server retry policy in case an error occurs while pushing a message to the endpoint. Valid values:\n(1) BACKOFF_RETRY: backoff retry, which is to retry at a fixed interval, discard the message after a certain number of retries, and continue to push the next message.\n(2) EXPONENTIAL_DECAY_RETRY: exponential decay retry, which is to retry at an exponentially increasing interval, such as 1s, 2s, 4s, 8s, and so on. As a message can be retained in a topic for one day, failed messages will be discarded at most after one day of retry. Default value: EXPONENTIAL_DECAY_RETRY.",
           "example": "xxx",
@@ -7576,7 +7223,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Push content format. Valid values: 1. JSON; 2. SIMPLIFIED, i.e., the raw format. If `Protocol` is `queue`, this value must be `SIMPLIFIED`. If `Protocol` is `HTTP`, both values are acceptable, and the default value is `JSON`.",
           "example": "xxx",
@@ -7586,7 +7232,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message body tag (used for message filtering). The number of tags cannot exceed 5, and each tag can contain up to 16 characters. It is used in conjunction with the `MsgTag` parameter of `(Batch)PublishMessage`. Rules: 1. If `FilterTag` is not configured, no matter whether `MsgTag` is configured, the subscription will receive all messages published to the topic; 2. If the array of `FilterTag` values has a value, only when at least one of the values in the array also exists in the array of `MsgTag` values (i.e., `FilterTag` and `MsgTag` have an intersection) can the subscription receive messages published to the topic; 3. If the array of `FilterTag` values has a value, but `MsgTag` is not configured, then no message published to the topic will be received, which can be considered as a special case of rule 2 as `FilterTag` and `MsgTag` do not intersect in this case. The overall design idea of rules is based on the intention of the subscriber.",
           "example": "无",
@@ -7596,7 +7241,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of `BindingKey` cannot exceed 5, and the length of each `BindingKey` cannot exceed 64 bytes. This field indicates the filtering policy for subscribing to and receiving messages. Each `BindingKey` includes up to 15 dots (namely up to 16 segments).",
           "example": "无",
@@ -7624,7 +7268,6 @@
       "document": "ModifyCmqTopicAttribute request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name, which must be unique under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "test-topic",
@@ -7634,7 +7277,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.",
           "example": "1",
@@ -7644,7 +7286,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message retention period. Value range: 60–86400 seconds (i.e., 1 minute–1 day). Default value: 86400.",
           "example": "1",
@@ -7654,7 +7295,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable message trace. true: yes; false: no. If this field is left empty, the feature will not be enabled.",
           "example": "false",
@@ -7794,7 +7434,6 @@
       "document": "ModifyEnvironmentRole request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "example": "default",
@@ -7804,7 +7443,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Role name.",
           "example": "test_role",
@@ -7814,7 +7452,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Permissions, which is a non-empty string array of `produce` and `consume` at the most.",
           "example": "无",
@@ -7824,7 +7461,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID (required)",
           "example": "pulsar-xxxx",
@@ -7933,7 +7569,6 @@
       "document": "ModifyRabbitMQVirtualHost request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster instance ID",
           "example": "amqp-xxx",
@@ -7943,7 +7578,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Vhost name",
           "example": "testVhost",
@@ -7953,7 +7587,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Description",
           "example": "hello",
@@ -7963,7 +7596,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message trace flag. Valid values: `true` (Enabled), `false` (Disabled).",
           "example": "false",
@@ -8045,7 +7677,6 @@
       "document": "ModifyRocketMQGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID",
           "example": "rocketmq-xxxxx",
@@ -8055,7 +7686,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace",
           "example": "prod",
@@ -8065,7 +7695,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Consumer group name",
           "example": "test",
@@ -8075,7 +7704,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks (up to 128 characters)",
           "example": "备注",
@@ -8085,7 +7713,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable consumption",
           "example": "true",
@@ -8095,7 +7722,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable broadcast consumption",
           "example": "true",
@@ -8105,7 +7731,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of retries",
           "example": "16",
@@ -8268,7 +7893,6 @@
       "document": "ModifyRocketMQTopic request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID",
           "example": "rocketmq-xxxxx",
@@ -8278,7 +7902,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name",
           "example": "prod",
@@ -8288,7 +7911,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name",
           "example": "test",
@@ -8298,7 +7920,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks (up to 128 characters)",
           "example": "备注",
@@ -8308,7 +7929,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of partitions, which is invalid for globally sequential messages and cannot be less than the current number of partitions.",
           "example": "1",
@@ -8336,7 +7956,6 @@
       "document": "ModifyRole request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Role name, which can contain up to 32 letters, digits, hyphens, and underscores.",
           "example": "test_role",
@@ -8346,7 +7965,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks (up to 128 characters).",
           "example": "更新角色",
@@ -8356,7 +7974,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID (required)",
           "example": "pulsar-xxxx",
@@ -8404,7 +8021,6 @@
       "document": "ModifyTopic request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "example": "default",
@@ -8414,7 +8030,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name.",
           "example": "test_topic",
@@ -8424,7 +8039,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of partitions, which must be equal to or greater than the original number of partitions. To maintain the original number of partitions, enter the original number. Modifying the number of partitions will take effect only for non-globally sequential messages. There can be up to 128 partitions.",
           "example": "3",
@@ -8434,7 +8048,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks (up to 128 characters).",
           "example": "修改分区为3",
@@ -8444,7 +8057,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar cluster ID",
           "example": "pulsar-xxxxx",
@@ -8492,7 +8104,6 @@
       "document": "Partitioned topic",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Average size of the messages published in the last interval in bytes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -8502,7 +8113,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of consumers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -8512,7 +8122,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The total number of recorded messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -8522,7 +8131,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time when the last ledger was created.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -8532,7 +8140,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of messages published by local and replicated publishers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -8542,7 +8149,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The total number of messages delivered by local and replicated consumers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -8552,7 +8158,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The size (in bytes) of messages published by local and replicated publishers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -8562,7 +8167,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The size (in bytes) of messages delivered by local and replicated consumers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -8572,7 +8176,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The total number of recorded messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -8582,7 +8185,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subpartition ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
@@ -8592,7 +8194,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of producers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -8602,7 +8203,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Total size of all stored messages in bytes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -8612,7 +8212,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic type description.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
@@ -8628,7 +8227,6 @@
       "document": "PublishCmqMsg request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name",
           "example": "xxx",
@@ -8638,7 +8236,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message content. The total message size is up to 1,024 KB.",
           "example": "xxx",
@@ -8648,7 +8245,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message tag. You can pass in multiple tags or a single route. Each tag or route can contain up to 64 characters.",
           "example": "无",
@@ -8696,7 +8292,6 @@
       "document": "Producer information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Producer ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
@@ -8707,7 +8302,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Producer name.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "test",
@@ -8718,7 +8312,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Producer address.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "10.0.0.1:1234",
@@ -8729,7 +8322,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Client version.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2.7.2",
@@ -8740,7 +8332,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message production rate (message/sec).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "21.233",
@@ -8751,7 +8342,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message production throughput rate (byte/sec).\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "21.3655",
@@ -8762,7 +8352,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Average message size in bytes.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1233",
@@ -8773,7 +8362,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Connection time.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
@@ -8784,7 +8372,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Serial number of the topic partition connected to the producer.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
@@ -8801,7 +8388,6 @@
       "document": "TDMQ for Pulsar network access point information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID. This field is left empty for supporting network and public network access points.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "vpc-xxxx",
@@ -8812,7 +8398,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID. This field is left empty for supporting network and public network access points.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "subnet-xxx",
@@ -8823,7 +8408,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Access address",
           "example": "ip:port",
@@ -8834,7 +8418,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "pulsar-xxxx",
@@ -8845,7 +8428,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Access point type: \n`0`: Supporting network access point \n`1`: VPC access point \n`2`: Public network access point",
           "example": "1",
@@ -8958,7 +8540,6 @@
       "document": "TDMQ for Pulsar pro cluster specification information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster specification name",
           "example": "标准型",
@@ -8969,7 +8550,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Peak TPS",
           "example": "5000",
@@ -8980,7 +8560,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Peak bandwidth in Mbps",
           "example": "50",
@@ -8991,7 +8570,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of namespaces",
           "example": "50",
@@ -9002,7 +8580,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of topic partitions",
           "example": "4000",
@@ -9013,7 +8590,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Elastic TPS beyond the specification\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2000",
@@ -9030,7 +8606,6 @@
       "document": "TDMQ for Pulsar pro instance information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Instance ID",
           "example": "pulsar-xxxx",
@@ -9041,7 +8616,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance name",
           "example": "cluster-test",
@@ -9052,7 +8626,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance version",
           "example": "2.7.2",
@@ -9063,7 +8636,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance status. Valid values: `0` (Creating), `1` (Normal), `2` (Isolated), `3` (Terminated), `4` (Abnormal), `5` (Delivery failed), `6` (Adjusting configuration), `7` (Configuration adjustment failed).",
           "example": "0",
@@ -9074,7 +8646,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance specification name",
           "example": "基础型",
@@ -9085,7 +8656,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Peak TPS",
           "example": "10000",
@@ -9096,7 +8666,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Storage capacity in GB",
           "example": "100",
@@ -9107,7 +8676,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance expiration time in milliseconds",
           "example": "100000",
@@ -9118,7 +8686,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Renewal mode. Valid values: `0` (Manual renewal, which is the default mode), `1` (Auto-renewal), `2` (Manual renewal, which is specified by users).",
           "example": "0",
@@ -9129,7 +8696,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Payment mode. Valid values: `0` (Pay-as-you-go), `1` (Monthly subscription).",
           "example": "0",
@@ -9140,7 +8706,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "备注",
@@ -9151,7 +8716,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Instance specification ID",
           "example": "vip-basic-1",
@@ -9162,7 +8726,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Elastic TPS beyond the specification\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
@@ -9173,7 +8736,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "vpc-xxxx",
@@ -9184,7 +8746,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "subnet-xxx",
@@ -9195,7 +8756,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Peak bandwidth in Mbps",
           "example": "100",
@@ -9728,7 +9288,6 @@
       "document": "ReceiveMessage request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the topic which receives the message. It is better to be the full path of the topic, such as `tenant/namespace/topic`. If it is not specified, `public/default` will be used by default.",
           "example": "persistent://tenant/namespace/my-topic",
@@ -9738,7 +9297,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscriber name",
           "example": "my-sub",
@@ -9748,7 +9306,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Default value: 1000. Messages received by the consumer will first be stored in the `receiverQueueSize` queue to tune the message receiving rate.",
           "example": "1000",
@@ -9758,7 +9315,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A parameter used to determine the position where the consumer initially receives messages. Valid values: `Earliest` (default), `Latest`.",
           "example": "Latest",
@@ -9768,7 +9324,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter is used to specify the maximum number of received messages in a batch for `BatchReceivePolicy`. The default value is 0, indicating that `BatchReceivePolicy` is disabled.",
           "example": "100",
@@ -9778,7 +9333,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter is used to specify the maximum body size (in bytes) of received messages in a batch for `BatchReceivePolicy`. The default value is 0, indicating that `BatchReceivePolicy` is disabled.",
           "example": "100000",
@@ -9788,7 +9342,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "This parameter is used to specify the maximum wait timeout (in milliseconds) for receiving a batch of messages for `BatchReceivePolicy`. The default value is 0, indicating that `BatchReceivePolicy` is disabled.",
           "example": "100",
@@ -9886,7 +9439,6 @@
       "document": "ResetMsgSubOffsetByTimestamp request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name.",
           "example": "default",
@@ -9896,7 +9448,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name.",
           "example": "topic",
@@ -9906,7 +9457,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscriber name.",
           "example": "subscription",
@@ -9916,7 +9466,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Timestamp, accurate down to the millisecond.",
           "example": "1611050113 ",
@@ -9926,7 +9475,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar cluster ID",
           "example": "pulsar-ge3n43v3wj",
@@ -9964,7 +9512,6 @@
       "document": "ResetRocketMQConsumerOffSet request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID.",
           "example": "rocketmq-xxxxx",
@@ -9974,7 +9521,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace name.",
           "example": "prod",
@@ -9984,7 +9530,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Consumer group name.",
           "example": "test",
@@ -9994,7 +9539,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name.",
           "example": "test",
@@ -10004,7 +9548,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Reset method. 0: Start from the latest offset; 1: Start from specified time point.",
           "example": "0",
@@ -10014,7 +9557,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The specified timestamp that has been reset, in milliseconds. This parameter only takes effect when the value of `Type` is `1`.",
           "example": "1000000",
@@ -10042,7 +9584,6 @@
       "document": "Message retention policy",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Message retention period",
           "example": "0",
@@ -10053,7 +9594,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message retention size",
           "example": "0",
@@ -10070,7 +9610,6 @@
       "document": "RewindCmqQueue request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Queue name, which must be unique under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.",
           "example": "test",
@@ -10080,7 +9619,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "After this time is configured, the `(Batch)receiveMessage` API will consume the messages received after this timestamp in the order in which they are produced.",
           "example": "1582108595000",
@@ -10214,7 +9752,6 @@
       "document": "Details of the tenant’s RocketMQ cluster",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Basic cluster information.",
           "example": "无",
@@ -10225,7 +9762,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster configuration information.",
           "example": "无",
@@ -10236,7 +9772,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster status. 0: Creating; 1: Normal; 2: Terminating; 3: Deleted; 4. Isolated; 5. Creation failed; 6: Deletion failed.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
@@ -10429,7 +9964,6 @@
       "document": "Recent RocketMQ usage",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Number of topics",
           "example": "20",
@@ -10440,7 +9974,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of produced messages",
           "example": "11000",
@@ -10451,7 +9984,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of consumed messages",
           "example": "11200",
@@ -10462,7 +9994,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of retained messages",
           "example": "22000",
@@ -10761,7 +10292,6 @@
       "document": "TDMQ for RocketMQ message trace information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Consumer group",
           "example": "group",
@@ -10772,7 +10302,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Consumption status",
           "example": "CONSUMED",
@@ -10783,7 +10312,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message trace type",
           "example": "CONSUMED",
@@ -10794,7 +10322,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Exception information\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "xx",
@@ -10963,7 +10490,6 @@
       "document": "TDMQ for RocketMQ topic distribution",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Topic type",
           "example": "Normal",
@@ -10974,7 +10500,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of topics",
           "example": "10",
@@ -11167,7 +10692,6 @@
       "document": "Role instance",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Role name.",
           "member": "string",
@@ -11177,7 +10701,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value of the role token.",
           "member": "string",
@@ -11187,7 +10710,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks.",
           "member": "string",
@@ -11197,7 +10719,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time.",
           "member": "datetime",
@@ -11207,7 +10728,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Update time.",
           "member": "datetime",
@@ -11223,7 +10743,6 @@
       "document": "SendBatchMessages request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the topic to which to send the message. It is better to be the full path of the topic, such as `tenant/namespace/topic`. If it is not specified, `public/default` will be used by default.",
           "example": "persistent://tenant/namespace/my-topic",
@@ -11233,7 +10752,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Content of the message to be sent",
           "example": "hello tdmq",
@@ -11243,7 +10761,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "String-Type token, which is optional and will be automatically obtained by the system.",
           "example": "abcdefghijklmnopqrstovwxyz",
@@ -11253,7 +10770,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Producer name, which must be globally unique. If it is not configured, the system will automatically generate one.",
           "example": "producer1",
@@ -11263,7 +10779,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message sending timeout period in seconds. Default value: 30s",
           "example": "30",
@@ -11273,7 +10788,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of produced messages which can be cached in the memory. Default value: 1000",
           "example": "1000",
@@ -11283,7 +10797,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of messages in each batch. Default value: 1000 messages/batch",
           "example": "1000",
@@ -11293,7 +10806,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum wait time for each batch, after which the batch will be sent no matter whether the specified number or size of messages in the batch is reached. Default value: 10 ms",
           "example": "10L",
@@ -11303,7 +10815,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum allowed size of messages in each batch. Default value: 128 KB",
           "example": "128*1024",
@@ -11351,7 +10862,6 @@
       "document": "SendCmqMsg request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Queue name",
           "example": "xxx",
@@ -11361,7 +10871,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message content",
           "example": "xxx",
@@ -11371,7 +10880,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Delay time",
           "example": "100",
@@ -11419,7 +10927,6 @@
       "document": "SendMessages request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the topic to which to send the message. It is better to be the full path of the topic, such as `tenant/namespace/topic`. If it is not specified, `public/default` will be used by default.",
           "example": "persistent://tenant/namespaces/my-topic",
@@ -11429,7 +10936,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Content of the message to be sent",
           "example": "hello tdmq",
@@ -11439,7 +10945,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Token used for authentication, which is optional and will be automatically obtained by the system.",
           "example": "abcdefghijklmnopqrstovwxyz",
@@ -11449,7 +10954,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Producer name, which is randomly generated and must be globally unique. If you set the producer name manually, the producer may fail to be created, causing message sending failure.\nThis parameter is used only when a specific producer is allowed to produce messages. It won’t be used in most cases.",
           "example": "producer",
@@ -11459,7 +10963,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message sending timeout period, which is 30s by default.",
           "example": "30",
@@ -11469,7 +10972,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum number of produced messages which can be cached in the memory. Default value: 1000",
           "example": "1000",
@@ -11517,7 +11019,6 @@
       "document": "SendMsg request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "example": "default",
@@ -11527,7 +11028,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name. If the topic is a partitioned topic, you need to specify the partition; otherwise, messages will be sent to partition 0 by default, such as `my_topic-partition-0`.",
           "example": "cloud_test",
@@ -11537,7 +11037,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message content, which cannot be empty and can contain up to 5,242,880 bytes.",
           "example": "one_msg",
@@ -11547,7 +11046,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pulsar cluster ID",
           "example": "test",
@@ -11575,7 +11073,6 @@
       "document": "SendRocketMQMessage request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cluster ID",
           "example": "rocketmq-xxx",
@@ -11585,7 +11082,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Namespace ID",
           "example": "xxx",
@@ -11595,7 +11091,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name",
           "example": "xxx",
@@ -11605,7 +11100,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message content",
           "example": "message",
@@ -11615,7 +11109,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message key",
           "example": "key",
@@ -11625,7 +11118,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Message tag",
           "example": "tag",
@@ -11673,7 +11165,6 @@
       "document": "Sort by field",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Sorting field.",
           "example": "test",
@@ -11684,7 +11175,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Ascending order: `ASC`; descending order: `DESC`.",
           "example": "ASC",
@@ -11701,7 +11191,6 @@
       "document": "Subscriber",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name.",
           "example": "test",
@@ -11712,7 +11201,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "example": "test",
@@ -11723,7 +11211,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The time when the consumer started connecting.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "test",
@@ -11734,7 +11221,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Consumer address.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -11745,7 +11231,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of consumers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "11",
@@ -11756,7 +11241,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Consumer name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -11767,7 +11251,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of heaped messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -11778,7 +11261,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Percentage of messages under this subscription that were discarded but not sent after TTL.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -11789,7 +11271,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The total number of messages delivered by the consumer per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -11800,7 +11281,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The size (in bytes) of messages consumed by the consumer per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -11811,7 +11291,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -11822,7 +11301,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Set of consumers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -11833,7 +11311,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the consumer is online.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
@@ -11844,7 +11321,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Set of consumption progress information.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -11855,7 +11331,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -11866,7 +11341,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -11877,7 +11351,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Last modified.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -11888,7 +11361,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription type. Valid values: `Exclusive`, `Shared`, `Failover`, and `Key_Shared`. An empty string or `NULL`: Unknown.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Shared",
@@ -11899,7 +11371,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether messages are blocked as the limit of unacknowledged messages has been reached.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
@@ -11910,7 +11381,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of unacknowledged messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "5000",
@@ -11927,7 +11397,6 @@
       "document": "Subscription",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "member": "string",
@@ -11937,7 +11406,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name.",
           "member": "string",
@@ -11947,7 +11415,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subscription name.",
           "member": "string",
@@ -11963,7 +11430,6 @@
       "document": "Type of the tag key/value",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Value of the tag key",
           "member": "string",
@@ -11973,7 +11439,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value of the tag value",
           "member": "string",
@@ -11989,7 +11454,6 @@
       "document": "Topic instance",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Average size of the messages published in the last interval in bytes.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12000,7 +11464,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of consumers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12011,7 +11474,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The total number of recorded messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12022,7 +11484,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time when the last ledger was created.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12033,7 +11494,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of messages published by local and replicated publishers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12044,7 +11504,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The total number of messages delivered by local and replicated consumers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12055,7 +11514,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The size (in bytes) of messages published by local and replicated publishers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12066,7 +11524,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The size (in bytes) of messages delivered by local and replicated consumers per second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12077,7 +11534,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The total number of recorded messages.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12088,7 +11544,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Partition count ≤ 0: there are no subpartitions in the topic.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12099,7 +11554,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of producers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12110,7 +11564,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The size of all stored messages in bytes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12121,7 +11574,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subpartitions in a partitioned topic.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12132,7 +11584,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic type description:\n0: General message;\n1: Globally sequential message;\n2: Partitionally sequential message;\n3: Retry letter topic;\n4: Dead letter topic;\n5: Transaction message.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12143,7 +11594,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12154,7 +11604,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12165,7 +11614,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks (up to 128 characters).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12176,7 +11624,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12187,7 +11634,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Last modified.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test",
@@ -12198,7 +11644,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of producers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "5000",
@@ -12209,7 +11654,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum number of consumers.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "5000",
@@ -12220,7 +11664,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "`0`: Non-persistent and non-partitioned\n`1`: Non-persistent and partitioned\n`2`: Persistent and non-partitioned\n`3`: Persistent and partitioned\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -12237,7 +11680,6 @@
       "document": "Topic's key information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Environment (namespace) name.",
           "member": "string",
@@ -12247,7 +11689,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Topic name.",
           "member": "string",
@@ -12263,7 +11704,6 @@
       "document": "UnbindCmqDeadLetter request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Source queue name of dead letter policy. Calling this API will clear the dead letter queue policy of this queue.",
           "example": "test",
@@ -12291,7 +11731,6 @@
       "document": "VPC binding record",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Tenant VPC ID",
           "member": "string",
@@ -12301,7 +11740,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tenant VPC subnet ID",
           "member": "string",
@@ -12311,7 +11749,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Route ID",
           "member": "string",
@@ -12321,7 +11758,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID",
           "member": "string",
@@ -12331,7 +11767,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "VPC port",
           "member": "uint64",
@@ -12341,7 +11776,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remarks (up to 128 characters)\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
@@ -12357,7 +11791,6 @@
       "document": "VPC configuration information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "VPC ID",
           "example": "vpc-xxxx",
@@ -12368,7 +11801,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Subnet ID",
           "example": "subnet-xxx",

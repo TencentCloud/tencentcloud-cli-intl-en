@@ -88,7 +88,6 @@
       "document": "BindNewLVBDomainWithChannel request structure.",
       "members": [
         {
-          "default": "",
           "document": "Channel ID",
           "example": "5F61C341B92D6BE9225E",
           "member": "string",
@@ -97,7 +96,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The LVB domain name to bind",
           "example": "www.domain.com",
           "member": "string",
@@ -133,7 +131,6 @@
       "document": "Cache configuration",
       "members": [
         {
-          "default": "",
           "document": "List of timeout parameter configuration\nNote: this field may return `null`, indicating that no valid value was found.",
           "member": "CacheInfoInfo",
           "name": "Info",
@@ -148,7 +145,6 @@
       "document": "Timeout information for cache configuration",
       "members": [
         {
-          "default": "",
           "document": "Timeout period (ms), which must be an integer multiple of 1000\n.m3u8/.mpd: [1000, 60000]\n.ts/.m4s/.mp4: [10000, 1800000]",
           "member": "int64",
           "name": "Timeout",
@@ -157,7 +153,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "File extension. Valid values: .m3u8, .ts, .mpd, .m4s, .mp4\nNote: this field may return `null`, indicating that no valid value was found.",
           "member": "string",
           "name": "Ext",
@@ -172,7 +167,6 @@
       "document": "Channel information.",
       "members": [
         {
-          "default": "",
           "document": "Channel ID.",
           "member": "string",
           "name": "Id",
@@ -181,7 +175,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Channel name.",
           "member": "string",
           "name": "Name",
@@ -190,7 +183,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Channel protocol.",
           "member": "string",
           "name": "Protocol",
@@ -199,7 +191,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Channel input and output.",
           "member": "PointInfo",
           "name": "Points",
@@ -208,7 +199,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Cache configuration\nNote: this field may return `null`, indicating that no valid value was found.",
           "member": "CacheInfo",
           "name": "CacheInfo",
@@ -223,7 +213,6 @@
       "document": "CreateStreamPackageChannelEndpoint request structure.",
       "members": [
         {
-          "default": "",
           "document": "Channel ID",
           "example": "XXX",
           "member": "string",
@@ -232,7 +221,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Endpoint name, which must contain 1 to 32 characters and supports digits, letters, and underscores",
           "example": "XXX",
           "member": "string",
@@ -241,7 +229,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Authentication information",
           "example": "无",
           "member": "EndpointAuthInfo",
@@ -277,7 +264,6 @@
       "document": "CreateStreamPackageChannel request structure.",
       "members": [
         {
-          "default": "",
           "document": "Channel name",
           "example": "xxx",
           "member": "string",
@@ -286,7 +272,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Channel protocol. Valid values: HLS, DASH",
           "example": "HLS",
           "member": "string",
@@ -295,7 +280,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cache configuration",
           "example": "无",
           "member": "CacheInfo",
@@ -331,7 +315,6 @@
       "document": "DeleteStreamPackageChannelEndpoints request structure.",
       "members": [
         {
-          "default": "",
           "document": "Channel ID",
           "example": "xxx",
           "member": "string",
@@ -340,7 +323,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "List of the URLs of the endpoints to delete",
           "example": "[\"xxx\\r\\n\"]",
           "member": "string",
@@ -367,7 +349,6 @@
       "document": "DeleteStreamPackageChannels request structure.",
       "members": [
         {
-          "default": "",
           "document": "List of the IDs of the channels to delete",
           "example": "[\"xxx\\r\\n\"]",
           "member": "string",
@@ -412,7 +393,6 @@
       "document": "DescribeStreamPackageChannel request structure.",
       "members": [
         {
-          "default": "",
           "document": "Channel ID",
           "example": "xxx",
           "member": "string",
@@ -448,7 +428,6 @@
       "document": "DescribeStreamPackageChannels request structure.",
       "members": [
         {
-          "default": "",
           "document": "Page number. Value range: [1, 1000]",
           "example": "1",
           "member": "uint64",
@@ -457,7 +436,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page. Value range: [1, 1000]",
           "example": "10",
           "member": "uint64",
@@ -529,7 +507,6 @@
       "document": "The authentication information of channel endpoints.",
       "members": [
         {
-          "default": "",
           "document": "The security group allowlist in CIDR format.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "WhiteIpList",
@@ -538,7 +515,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The security group blocklist in CIDR format.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "BlackIpList",
@@ -547,7 +523,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The authentication key. Its value is same as `X-TENCENT-PACKAGE` set in the HTTP request header.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "AuthKey",
@@ -562,7 +537,6 @@
       "document": "Channel endpoint information.",
       "members": [
         {
-          "default": "",
           "document": "Endpoint name.",
           "member": "string",
           "name": "Name",
@@ -571,7 +545,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Endpoint URL.",
           "member": "string",
           "name": "Url",
@@ -580,7 +553,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Endpoint authentication information.",
           "member": "EndpointAuthInfo",
           "name": "AuthInfo",
@@ -595,7 +567,6 @@
       "document": "Channel input authentication information.",
       "members": [
         {
-          "default": "",
           "document": "Username.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Username",
@@ -604,7 +575,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Password.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Password",
@@ -619,7 +589,6 @@
       "document": "Channel input.",
       "members": [
         {
-          "default": "",
           "document": "Channel input URL.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "Url",
@@ -628,7 +597,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Channel input authentication information.",
           "member": "InputAuthInfo",
           "name": "AuthInfo",
@@ -643,7 +611,6 @@
       "document": "ModifyStreamPackageChannelEndpoint request structure.",
       "members": [
         {
-          "default": "",
           "document": "Channel ID",
           "example": "XXX",
           "member": "string",
@@ -652,7 +619,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Channel endpoint URL",
           "example": "XXX",
           "member": "string",
@@ -661,7 +627,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "New endpoint name",
           "example": "XXX",
           "member": "string",
@@ -670,7 +635,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "New channel authentication information",
           "example": "无",
           "member": "EndpointAuthInfo",
@@ -697,7 +661,6 @@
       "document": "ModifyStreamPackageChannelInputAuthInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "Channel ID",
           "example": "xxx",
           "member": "string",
@@ -706,7 +669,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Channel input URL",
           "example": "xxx",
           "member": "string",
@@ -715,7 +677,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Authentication configuration. Valid values: `CLOSE`, `UPDATE`\n`CLOSE`: disable authentication\n`UPDATE`: update authentication information",
           "example": "UPDATE",
           "member": "string",
@@ -751,7 +712,6 @@
       "document": "ModifyStreamPackageChannel request structure.",
       "members": [
         {
-          "default": "",
           "document": "Channel ID",
           "example": "xxx",
           "member": "string",
@@ -760,7 +720,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "New channel name",
           "example": "xxx",
           "member": "string",
@@ -769,7 +728,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "New channel protocol. Valid values: HLS, DASH",
           "example": "HLS",
           "member": "string",
@@ -778,7 +736,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Cache configuration",
           "example": "无",
           "member": "CacheInfo",
@@ -805,7 +762,6 @@
       "document": "Channel input and output.",
       "members": [
         {
-          "default": "",
           "document": "Channel input list.",
           "member": "InputInfo",
           "name": "Inputs",
@@ -814,7 +770,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Channel output list.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "EndpointInfo",
           "name": "Endpoints",
@@ -829,7 +784,6 @@
       "document": "UnbindCdnDomainWithChannel request structure.",
       "members": [
         {
-          "default": "",
           "document": "Channel ID",
           "member": "string",
           "name": "ChannelId",
@@ -837,7 +791,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "CDN playback domain name",
           "member": "string",
           "name": "CdnDomain",

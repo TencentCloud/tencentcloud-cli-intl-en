@@ -270,7 +270,6 @@
       "document": "Records to be bulk added",
       "members": [
         {
-          "default": "",
           "document": "Record type. For more information, see the `DescribeRecordType` API.",
           "example": "A",
           "member": "string",
@@ -280,7 +279,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Record value.",
           "example": "129.23.32.32",
           "member": "string",
@@ -290,7 +288,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subdomain (host record), which is `@` by default.",
           "example": "www",
           "member": "string",
@@ -300,7 +297,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API. If neither `RecordLine` nor `RecordLineId` is specified, the default split zone will be used.",
           "example": "百度",
           "member": "string",
@@ -310,7 +306,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Split zone ID of the DNS record. If both `RecordLine` and `RecordLineId` are specified, `RecordLineId` will be used.",
           "example": "90=0",
           "member": "string",
@@ -320,7 +315,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The record weight (not supported).",
           "example": "10",
           "member": "uint64",
@@ -330,7 +324,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "MX record value. It is `0` by default for non-MX records and required for MX records.",
           "example": "20",
           "member": "uint64",
@@ -340,7 +333,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "TTL value of the record, which is `600` by default.",
           "example": "600",
           "member": "uint64",
@@ -350,7 +342,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Record status (not supported). Valid values: `0` (disabled); `1` (enabled). Default value: `1`.",
           "example": "1",
           "member": "uint64",
@@ -360,7 +351,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Record remarks (not supported).",
           "example": "test",
           "member": "string",
@@ -549,7 +539,6 @@
       "document": "Response structure for bulk adding domains",
       "members": [
         {
-          "default": "",
           "document": "See `RecordInfoBatch`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CreateDomainBatchRecord",
@@ -559,7 +548,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Task ID",
           "example": "1",
           "member": "uint64",
@@ -569,7 +557,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test.com",
           "member": "string",
@@ -579,7 +566,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Domain level\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "DP_FREE",
           "member": "string",
@@ -589,7 +575,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "string",
@@ -599,7 +584,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Task running status\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "waiting",
           "member": "string",
@@ -609,7 +593,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Operation type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "plus",
           "member": "string",
@@ -625,7 +608,6 @@
       "document": "Record information in the task of bulk adding domains",
       "members": [
         {
-          "default": "",
           "document": "Subdomain (host record).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "www",
           "member": "string",
@@ -635,7 +617,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Record type. For more information, see the `DescribeRecordType` API.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "A",
           "member": "string",
@@ -645,7 +626,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "百度",
           "member": "string",
@@ -655,7 +635,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Record value\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "129.23.32.32",
           "member": "string",
@@ -665,7 +644,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "TTL value of the record\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "600",
           "member": "uint64",
@@ -675,7 +653,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Record adding status\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "waiting",
           "member": "string",
@@ -685,7 +662,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Operation type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "plus",
           "member": "string",
@@ -695,7 +671,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "string",
@@ -705,7 +680,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "ID of the record in the list",
           "example": "1",
           "member": "uint64",
@@ -805,7 +779,6 @@
       "document": "CreateDomain request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain",
           "example": "dnspod.cn",
           "member": "string",
@@ -814,7 +787,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The group ID of the domain. You can view the group information of this domain via the `DescribeDomainGroupList` API.",
           "example": "2",
           "member": "uint64",
@@ -823,7 +795,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether the domain is starred. Valid values: yes, no.",
           "example": "no",
           "member": "string",
@@ -859,7 +830,6 @@
       "document": "Response structure for bulk adding records",
       "members": [
         {
-          "default": "",
           "document": "See `RecordInfoBatch`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CreateRecordBatchRecord",
@@ -869,7 +839,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Task ID",
           "example": "1",
           "member": "uint64",
@@ -879,7 +848,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test.com",
           "member": "string",
@@ -889,7 +857,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Domain level\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "DP_FREE",
           "member": "string",
@@ -899,7 +866,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "string",
@@ -909,7 +875,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Task running status\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "waiting",
           "member": "string",
@@ -919,7 +884,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Operation type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "plus",
           "member": "string",
@@ -929,7 +893,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Domain ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "142123",
           "member": "uint64",
@@ -1150,7 +1113,6 @@
       "document": "CreateRecord request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain",
           "example": "dnspod.cn",
           "member": "string",
@@ -1159,7 +1121,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Record type, which is obtained through the record type API. The value contains uppercase letters, such as `A`.",
           "example": "A",
           "member": "string",
@@ -1168,7 +1129,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Record split zone, which is obtained through the record split zone API.",
           "example": "默认",
           "member": "string",
@@ -1177,7 +1137,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Record value, such as `IP : 200.200.200.200`, `CNAME : cname.dnspod.com`, and `MX : mail.dnspod.com`.",
           "example": "200.200.200.200",
           "member": "string",
@@ -1186,7 +1145,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Domain ID. The `DomainId` parameter has a higher priority than `Domain`. If `DomainId` is passed in, `Domain` will be ignored.",
           "example": "1923",
           "member": "uint64",
@@ -1195,7 +1153,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Host record such as `www`. If it is not passed in, it will be `@` by default.",
           "example": "www",
           "member": "string",
@@ -1204,7 +1161,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Split zone ID, which is obtained through the record split zone API. The value is a string such as `10=1`. The `RecordLineId` parameter has a higher priority than `RecordLine`. If both of them are passed in, `RecordLineId` will be used first.",
           "example": "10=1",
           "member": "string",
@@ -1213,7 +1169,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "MX priority, which is required for an MX record and will take effect if the record type is MX. Value range: 1–20.",
           "example": "10",
           "member": "uint64",
@@ -1222,7 +1177,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "TTL. Value range: 1–604800. The minimum value varies by domain level.",
           "example": "600",
           "member": "uint64",
@@ -1231,7 +1185,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Weight information, which is an integer between 0 and 100. It is supported only for enterprise VIP domains. `0` indicates not to pass in this parameter, i.e., not to set the weight.",
           "example": "20",
           "member": "uint64",
@@ -1240,7 +1193,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Initial status of the record. Valid values: ENABLE, DISABLE. Default value: ENABLE. If `DISABLE` is passed in, the DNS record won't take effect, and the limit on round-robin DNS won't be verified.",
           "example": "ENABLE",
           "member": "string",
@@ -1318,7 +1270,6 @@
       "document": "Details of batch deleting domains",
       "members": [
         {
-          "default": "",
           "document": "The domain ID.",
           "example": "12124",
           "member": "uint64",
@@ -1328,7 +1279,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The domain name.",
           "example": "domain.com",
           "member": "string",
@@ -1338,7 +1288,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The error message.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "error",
           "member": "string",
@@ -1348,7 +1297,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The domain deletion status.",
           "example": "waiting",
           "member": "string",
@@ -1358,7 +1306,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The operation.",
           "example": "remove",
           "member": "string",
@@ -1416,7 +1363,6 @@
       "document": "DeleteDomain request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain",
           "example": "dnspod.cn",
           "member": "string",
@@ -1425,7 +1371,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "254142",
           "member": "uint64",
@@ -1494,7 +1439,6 @@
       "document": "DeleteRecord request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain",
           "example": "dnspod.cn",
           "member": "string",
@@ -1503,7 +1447,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.",
           "example": "162",
           "member": "uint64",
@@ -1512,7 +1455,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "1923",
           "member": "uint64",
@@ -1838,7 +1780,6 @@
       "document": "DescribeDomain request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain",
           "example": "dnspod.cn",
           "member": "string",
@@ -1847,7 +1788,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "61",
           "member": "uint64",
@@ -2049,7 +1989,6 @@
       "document": "DescribeRecordList request structure.",
       "members": [
         {
-          "default": "",
           "document": "The domain for which DNS records are to be obtained.",
           "example": "shenjianing.com",
           "member": "string",
@@ -2058,7 +1997,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The ID of the domain whose DNS records are requested. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "81345824",
           "member": "uint64",
@@ -2067,7 +2005,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The host header of a DNS record. If this parameter is passed in, only the DNS record corresponding to this host header will be returned.",
           "example": "www",
           "member": "string",
@@ -2076,7 +2013,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The type of DNS record, such as A, CNAME, NS, AAAA, explicit URL, implicit URL, CAA, or SPF record.",
           "example": "A",
           "member": "string",
@@ -2085,7 +2021,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The name of the split zone for which DNS records are requested. You can view split zones allowed by this domain via the `DescribeRecordLineList` API.",
           "example": "默认",
           "member": "string",
@@ -2094,7 +2029,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The ID of the split zone for which DNS records are requested. If `RecordLineId` is passed in, `RecordLine` is ignored. You can view split zones allowed by this domain via the `DescribeRecordLineList` API.",
           "example": "0",
           "member": "string",
@@ -2103,7 +2037,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The group ID passed in to get DNS records in the group.",
           "example": "23",
           "member": "uint64",
@@ -2112,7 +2045,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The keyword for searching for DNS records. Host headers and record values are supported.",
           "example": "book",
           "member": "string",
@@ -2121,7 +2053,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The sorting field. Available values: `name`, `line`, `type`, `value`, `weight`, `mx`, and `ttl,updated_on`.",
           "example": "type",
           "member": "string",
@@ -2130,7 +2061,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The sorting type. Valid values: `ASC` (ascending, default), `DESC` (descending).",
           "example": "asc",
           "member": "string",
@@ -2139,7 +2069,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The offset. Default value: `0`.",
           "example": "0",
           "member": "uint64",
@@ -2148,7 +2077,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The limit. It defaults to 100 and can be up to 3,000.",
           "example": "100",
           "member": "uint64",
@@ -2193,7 +2121,6 @@
       "document": "DescribeRecord request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain",
           "example": "dnspod.cn",
           "member": "string",
@@ -2202,7 +2129,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.",
           "example": "162",
           "member": "uint64",
@@ -2211,7 +2137,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "1923",
           "member": "uint64",
@@ -2371,7 +2296,6 @@
       "document": "Information of a domain alias",
       "members": [
         {
-          "default": "",
           "document": "Domain alias ID",
           "example": "1",
           "member": "int64",
@@ -2381,7 +2305,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain alias",
           "example": "mm.com",
           "member": "string",
@@ -2397,7 +2320,6 @@
       "document": "DNS query volume in the current statistical dimension",
       "members": [
         {
-          "default": "",
           "document": "DNS query volume in the current statistical dimension",
           "example": "1000",
           "member": "uint64",
@@ -2407,7 +2329,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Collection date for daily collection",
           "example": "2022-05-16",
           "member": "string",
@@ -2417,7 +2338,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The last hour (0–23) for hourly collection. For example, if `HourKey` is `23`, the DNS query volume in the statistical period of 22:00–23:00 will be collected.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
@@ -2433,7 +2353,6 @@
       "document": "List statistics by page",
       "members": [
         {
-          "default": "",
           "document": "Number of eligible domains",
           "example": "1",
           "member": "uint64",
@@ -2443,7 +2362,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of all domains that can be viewed by the user",
           "example": "1",
           "member": "uint64",
@@ -2453,7 +2371,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of domains added under the user account",
           "example": "1",
           "member": "uint64",
@@ -2463,7 +2380,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of domains shared with the user",
           "example": "1",
           "member": "uint64",
@@ -2473,7 +2389,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of paid domains",
           "example": "1",
           "member": "uint64",
@@ -2483,7 +2398,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of suspended domains",
           "example": "1",
           "member": "uint64",
@@ -2493,7 +2407,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of domains with a DNS configuration error",
           "example": "1",
           "member": "uint64",
@@ -2503,7 +2416,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of locked domains",
           "example": "1",
           "member": "uint64",
@@ -2513,7 +2425,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of blocked domains",
           "example": "1",
           "member": "uint64",
@@ -2523,7 +2434,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of domains that will expire within 30 days",
           "example": "1",
           "member": "uint64",
@@ -2533,7 +2443,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of domains shared with others",
           "example": "1",
           "member": "uint64",
@@ -2543,7 +2452,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of domains in the specified group",
           "example": "1",
           "member": "uint64",
@@ -2559,7 +2467,6 @@
       "document": "Domain information returned during domain creation",
       "members": [
         {
-          "default": "",
           "document": "Domain ID",
           "example": "61",
           "member": "uint64",
@@ -2569,7 +2476,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain",
           "example": "dnspod.cn",
           "member": "string",
@@ -2579,7 +2485,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain Punycode",
           "example": "dnspod.cn",
           "member": "string",
@@ -2589,7 +2494,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "NS list of the domain",
           "example": "[\"source.dnspod.net\",\"low.dnspod.net\"]",
           "member": "string",
@@ -2605,7 +2509,6 @@
       "document": "Domain details",
       "members": [
         {
-          "default": "",
           "document": "Domain ID",
           "example": "123456",
           "member": "uint64",
@@ -2615,7 +2518,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain status",
           "example": "enable",
           "member": "string",
@@ -2625,7 +2527,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "DNS plan level",
           "example": "DP_EXTRA",
           "member": "string",
@@ -2635,7 +2536,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain group ID",
           "example": "1",
           "member": "uint64",
@@ -2645,7 +2545,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the domain is starred",
           "example": "no",
           "member": "string",
@@ -2655,7 +2554,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "TTL (DNS record cache time)",
           "example": "600",
           "member": "uint64",
@@ -2665,7 +2563,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether CNAME flattening is enabled",
           "example": "disable",
           "member": "string",
@@ -2675,7 +2572,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "firstdomain",
           "member": "string",
@@ -2685,7 +2581,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Domain Punycode",
           "example": "dnspod.cn",
           "member": "string",
@@ -2695,7 +2590,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "DNS status of the domain",
           "example": "dnserror",
           "member": "string",
@@ -2705,7 +2599,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "NS list of the domain",
           "example": "[ns3.dnsv3.com]",
           "member": "string",
@@ -2715,7 +2608,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain",
           "example": "dnspod.cn",
           "member": "string",
@@ -2725,7 +2617,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain level ID",
           "example": "2",
           "member": "uint64",
@@ -2735,7 +2626,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain user ID",
           "example": "12342",
           "member": "uint64",
@@ -2745,7 +2635,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether the domain is a VIP domain",
           "example": "yes",
           "member": "string",
@@ -2755,7 +2644,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain owner account",
           "example": "dnspod@dnspod.cn",
           "member": "string",
@@ -2765,7 +2653,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain level description",
           "example": "免费版",
           "member": "string",
@@ -2775,7 +2662,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain creation time",
           "example": "2020-03-24 15:43:35",
           "member": "datetime",
@@ -2785,7 +2671,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Last update time",
           "example": "2020-03-24 15:43:35",
           "member": "datetime",
@@ -2795,7 +2680,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tencent Cloud account `Uin`",
           "example": "100000014226",
           "member": "string",
@@ -2805,7 +2689,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "NS list actually used by the domain\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[ns3.dnsv3.com]",
           "member": "string",
@@ -2815,7 +2698,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Number of domain records",
           "example": "1",
           "member": "uint64",
@@ -2825,7 +2707,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Alias of the domain account owner\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "lili",
           "member": "string",
@@ -2841,7 +2722,6 @@
       "document": "Element in the domain list",
       "members": [
         {
-          "default": "",
           "document": "Unique ID assigned to the domain by the system",
           "example": "12",
           "member": "uint64",
@@ -2851,7 +2731,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Original format of the domain",
           "example": "qq.com",
           "member": "string",
@@ -2861,7 +2740,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain status. Valid values: `ENABLE` (normal), `PAUSE` (suspended), `SPAM` (blocked).",
           "example": "ENABLE",
           "member": "string",
@@ -2871,7 +2749,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Default TTL of the default DNS record of the domain",
           "example": "600",
           "member": "uint64",
@@ -2881,7 +2758,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether CNAME flattening is enabled. Valid values: `ENABLE` (enabled); `DISABLE` (disabled).",
           "example": "DISABLE",
           "member": "string",
@@ -2891,7 +2767,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "DNS configuration status. Valid values: `DNSERROR` (error), an empty string (normal).",
           "example": "DNSERROR",
           "member": "string",
@@ -2901,7 +2776,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Plan level code of the domain",
           "example": "DP_FREE",
           "member": "string",
@@ -2911,7 +2785,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Group ID of the domain",
           "example": "1",
           "member": "uint64",
@@ -2921,7 +2794,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether search engine push optimization is enabled. Valid values: `YES` (yes), `NO` (no).",
           "example": "NO",
           "member": "string",
@@ -2931,7 +2803,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain remarks",
           "example": "重要域名",
           "member": "string",
@@ -2941,7 +2812,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Punycode-encoded domain format",
           "example": "xn--a9.com",
           "member": "string",
@@ -2951,7 +2821,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Effective DNS assigned to the domain by the system",
           "example": "[\"f1g1ns1.dnspod.net\",\"f1g1ns2.dnspod.net\"]",
           "member": "string",
@@ -2961,7 +2830,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number corresponding to the plan level of the domain",
           "example": "5",
           "member": "uint64",
@@ -2971,7 +2839,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Plan name",
           "example": "免费版",
           "member": "string",
@@ -2981,7 +2848,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is a paid plan",
           "example": "YES",
           "member": "string",
@@ -2991,7 +2857,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Activation time of the paid plan",
           "example": "2021-04-07 13:34:20",
           "member": "datetime",
@@ -3001,7 +2866,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Expiry time of the paid plan",
           "example": "2022-04-07 13:34:20",
           "member": "datetime",
@@ -3011,7 +2875,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether VIP automatic renewal is enabled for the domain. Valid values: `YES` (yes); `NO` (no). Default value: `DEFAULT`.",
           "example": "YES",
           "member": "string",
@@ -3021,7 +2884,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of records under the domain",
           "example": "20",
           "member": "uint64",
@@ -3031,7 +2893,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain adding time",
           "example": "2020-05-21 16:08:29",
           "member": "datetime",
@@ -3041,7 +2902,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain update time",
           "example": "2021-04-01 18:09:58",
           "member": "datetime",
@@ -3051,7 +2911,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Account of the domain",
           "example": "abc@tencent.com",
           "member": "string",
@@ -3067,7 +2926,6 @@
       "document": "Domain sharing information",
       "members": [
         {
-          "default": "",
           "document": "Account with which the domain is shared",
           "example": "qcloud_uin_100000014227@qcloud.com",
           "member": "string",
@@ -3077,7 +2935,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Sharing mode. Valid values: `rw` (read/write), `r` (read-only).",
           "example": "r",
           "member": "string",
@@ -3087,7 +2944,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Sharing status. Valid values: `enabled` (shared successfully); `pending` (the account shared to does not exist and is pending registration).",
           "example": "enabled",
           "member": "string",
@@ -3103,7 +2959,6 @@
       "document": "List of domain groups",
       "members": [
         {
-          "default": "",
           "document": "Group ID",
           "example": "1",
           "member": "int64",
@@ -3113,7 +2968,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Group name",
           "example": "很少修改",
           "member": "string",
@@ -3123,7 +2977,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Group type",
           "example": "system",
           "member": "string",
@@ -3133,7 +2986,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Number of domains in the group",
           "example": "1",
           "member": "int64",
@@ -3149,7 +3001,6 @@
       "document": "Information of a split zone group",
       "members": [
         {
-          "default": "",
           "document": "Split zone group ID",
           "example": "15=0",
           "member": "string",
@@ -3159,7 +3010,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Split zone group name",
           "example": "华北",
           "member": "string",
@@ -3169,7 +3019,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Group type",
           "example": "system",
           "member": "string",
@@ -3179,7 +3028,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "List of split zones in the split zone group",
           "example": "无",
           "member": "string",
@@ -3195,7 +3043,6 @@
       "document": "Information of a split zone",
       "members": [
         {
-          "default": "",
           "document": "Split zone name",
           "example": "电信",
           "member": "string",
@@ -3205,7 +3052,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Split zone ID",
           "example": "10=0",
           "member": "string",
@@ -3221,7 +3067,6 @@
       "document": "Domain lock information",
       "members": [
         {
-          "default": "",
           "document": "Domain ID",
           "example": "62",
           "member": "uint64",
@@ -3231,7 +3076,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain unlock code",
           "example": "M3xkbnNwb2Quc2l0ZXwxNjE3MzMwODMwfDhlMTkyODZlOGJjMjU4MDBlNjVlZDA1",
           "member": "string",
@@ -3241,7 +3085,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Automatic unlock date of the domain",
           "example": "2021-05-02",
           "member": "date",
@@ -3349,7 +3192,6 @@
       "document": "ModifyDomainRemark request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain",
           "example": "dnspod.cn",
           "member": "string",
@@ -3358,7 +3200,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "1923",
           "member": "uint64",
@@ -3367,7 +3208,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Domain remarks. To delete the remarks, submit empty content.",
           "example": "这是XXX专用域名",
           "member": "string",
@@ -3394,7 +3234,6 @@
       "document": "ModifyDomainStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain",
           "example": "dnspod.cn",
           "member": "string",
@@ -3403,7 +3242,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Domain status. Valid values: enable; disable.",
           "example": "enable",
           "member": "string",
@@ -3412,7 +3250,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "61",
           "member": "uint64",
@@ -3481,7 +3318,6 @@
       "document": "Response structure for bulk adding records",
       "members": [
         {
-          "default": "",
           "document": "See `RecordInfoBatchModify`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "BatchRecordInfo",
@@ -3491,7 +3327,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Task ID",
           "example": "1",
           "member": "uint64",
@@ -3501,7 +3336,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test.com",
           "member": "string",
@@ -3511,7 +3345,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Domain level\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "DP_FREE",
           "member": "string",
@@ -3521,7 +3354,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "string",
@@ -3531,7 +3363,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Task running status\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "waiting",
           "member": "string",
@@ -3541,7 +3372,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Operation type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "plus",
           "member": "string",
@@ -3551,7 +3381,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Domain ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "142123",
           "member": "uint64",
@@ -3749,7 +3578,6 @@
       "document": "ModifyRecord request structure.",
       "members": [
         {
-          "default": "",
           "document": "Domain",
           "example": "dnspod.cn",
           "member": "string",
@@ -3758,7 +3586,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Record type, which is obtained through the record type API. The value contains uppercase letters, such as `A`.",
           "example": "A",
           "member": "string",
@@ -3767,7 +3594,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Record split zone, which is obtained through the record split zone API.",
           "example": "默认",
           "member": "string",
@@ -3776,7 +3602,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Record value, such as `IP : 200.200.200.200`, `CNAME : cname.dnspod.com`, and `MX : mail.dnspod.com`.",
           "example": "200.200.200.200",
           "member": "string",
@@ -3785,7 +3610,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The record ID. You can view all DNS records and their IDs via the `DescribeRecordList` API.",
           "example": "162",
           "member": "uint64",
@@ -3794,7 +3618,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "The domain ID. `DomainId` takes priority over `Domain`. If `DomainId` is passed in, `Domain` is ignored. You can view all `Domain` and `DomainId` values via the `DescribeDomainList` API.",
           "example": "1923",
           "member": "uint64",
@@ -3803,7 +3626,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Host record such as `www`. If it is not passed in, it will be `@` by default.",
           "example": "www",
           "member": "string",
@@ -3812,7 +3634,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Split zone ID, which is obtained through the record split zone API. The value is a string such as `10=1`. The `RecordLineId` parameter has a higher priority than `RecordLine`. If both of them are passed in, `RecordLineId` will be used first.",
           "example": "10=1",
           "member": "string",
@@ -3821,7 +3642,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "MX priority, which is required for an MX record and will take effect if the record type is MX. Value range: 1–20.",
           "example": "10",
           "member": "uint64",
@@ -3830,7 +3650,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "TTL. Value range: 1–604800. The minimum value varies by domain level.",
           "example": "600",
           "member": "uint64",
@@ -3839,7 +3658,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Weight information, which is an integer between 0 and 100. It is supported only for enterprise VIP domains. `0` indicates not to pass in this parameter, i.e., not to set the weight.",
           "example": "20",
           "member": "uint64",
@@ -3848,7 +3666,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Initial status of the record. Valid values: ENABLE, DISABLE. Default value: ENABLE. If `DISABLE` is passed in, the DNS record won't take effect, and the limit on round-robin DNS won't be verified.",
           "example": "ENABLE",
           "member": "string",
@@ -3992,7 +3809,6 @@
       "document": "Domain permission",
       "members": [
         {
-          "default": "",
           "document": "Permission name",
           "example": "分省线路类型",
           "member": "string",
@@ -4002,7 +3818,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Permission value",
           "example": "yes",
           "member": "string",
@@ -4018,7 +3833,6 @@
       "document": "Count info of the queried record list",
       "members": [
         {
-          "default": "",
           "document": "The subdomain count.",
           "example": "2",
           "member": "uint64",
@@ -4028,7 +3842,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The count of records returned in the list.",
           "example": "2",
           "member": "uint64",
@@ -4038,7 +3851,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The total record count.",
           "example": "10",
           "member": "uint64",
@@ -4054,7 +3866,6 @@
       "document": "Information of a DNS record group",
       "members": [
         {
-          "default": "",
           "document": "Group ID",
           "example": "1344",
           "member": "uint64",
@@ -4064,7 +3875,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Group name",
           "example": "分组1",
           "member": "string",
@@ -4074,7 +3884,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Group type. Valid values: `system`, `user`.",
           "example": "user",
           "member": "string",
@@ -4090,7 +3899,6 @@
       "document": "Record information",
       "members": [
         {
-          "default": "",
           "document": "Record ID.",
           "example": "158",
           "member": "uint64",
@@ -4100,7 +3908,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subdomain (host record).",
           "example": "www",
           "member": "string",
@@ -4110,7 +3917,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Record type. For more information, see the `DescribeRecordType` API.",
           "example": "A",
           "member": "string",
@@ -4120,7 +3926,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Split zone of the DNS record. For more information, see the `DescribeRecordLineList` API.",
           "example": "百度",
           "member": "string",
@@ -4130,7 +3935,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Split zone ID of the DNS record. For more information, see the `DescribeRecordLineList` API.",
           "example": "90=0",
           "member": "string",
@@ -4140,7 +3944,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Record value.",
           "example": "129.23.32.32",
           "member": "string",
@@ -4150,7 +3953,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Record weight.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "uint64",
@@ -4160,7 +3962,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "MX record value. It is 0 by default for non-MX records.",
           "example": "20",
           "member": "uint64",
@@ -4170,7 +3971,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "TTL value of the record.",
           "example": "600",
           "member": "uint64",
@@ -4180,7 +3980,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Record status. Valid values: 0 (disabled); 1 (enabled).",
           "example": "1",
           "member": "uint64",
@@ -4190,7 +3989,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "D-Monitor status of the record.\n\"Ok\" : The server is normal.\n\"Warn\" : There is an alarm on this record, and the server returns 4XX.\n\"Down\" : The server is down.\n\"\" : D-Monitor is disabled for this record.",
           "example": "Ok",
           "member": "string",
@@ -4200,7 +3998,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Record remarks.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "这是解析记录的备注",
           "member": "string",
@@ -4210,7 +4007,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Last update time of the record.",
           "example": "2021-03-31 11:38:02",
           "member": "datetime",
@@ -4220,7 +4016,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Domain ID.",
           "example": "62",
           "member": "uint64",
@@ -4368,7 +4163,6 @@
       "document": "DNS query volume of the subdomain alias",
       "members": [
         {
-          "default": "",
           "document": "Statistics on the DNS query volume of a subdomain",
           "example": "无",
           "member": "SubdomainAnalyticsInfo",
@@ -4378,7 +4172,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "DNS query volume in the current statistical dimension",
           "example": "无",
           "member": "DomainAnalyticsDetail",
@@ -4394,7 +4187,6 @@
       "document": "Statistics on the DNS query volume of a subdomain",
       "members": [
         {
-          "default": "",
           "document": "`DATE`: Daily; `HOUR`: Hourly",
           "example": "DATE",
           "member": "string",
@@ -4404,7 +4196,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Total DNS query volume for the current statistical period",
           "example": "10000",
           "member": "uint64",
@@ -4414,7 +4205,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The queried domain",
           "example": "example.com",
           "member": "string",
@@ -4424,7 +4214,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Start date of the current statistical period",
           "example": "2022-06-08",
           "member": "string",
@@ -4434,7 +4223,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "End date of the current statistical period",
           "example": "2022-06-14",
           "member": "string",
@@ -4444,7 +4232,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Subdomain",
           "example": "www",
           "member": "string",

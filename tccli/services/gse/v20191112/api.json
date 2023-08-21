@@ -143,7 +143,6 @@
       "document": "CCN information",
       "members": [
         {
-          "default": "",
           "document": "Account of the CCN instance owner",
           "example": "13734*",
           "member": "string",
@@ -153,7 +152,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CCN ID",
           "example": "ccn-f0jyb*",
           "member": "string",
@@ -169,7 +167,6 @@
       "document": "CopyFleet request structure.",
       "members": [
         {
-          "default": "",
           "document": "Server fleet ID",
           "example": "fleet-qp3g3caa-2m6pzf4g",
           "member": "string",
@@ -178,7 +175,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Replica number. It should a value between 1 to the number of the remaining quota. It can be obtained through [Obtaining User Quota](https://intl.cloud.tencent.com/document/product/1165/48732?from_cn_redirect=1).",
           "example": "2",
           "member": "int64",
@@ -187,7 +183,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Asset package ID",
           "example": "asset-qrdiw1a9",
           "member": "string",
@@ -196,7 +191,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Description. The length is 0-100 characters.",
           "example": "Human description",
           "member": "string",
@@ -205,7 +199,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Network configuration",
           "example": "无",
           "member": "InboundPermission",
@@ -214,7 +207,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Server type. It can be obtained through [Obtaining Server Instance Type List](https://intl.cloud.tencent.com/document/product/1165/48732?from_cn_redirect=1).",
           "example": "S5.LARGE8",
           "member": "string",
@@ -223,7 +215,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Server fleet type, which only supports “ON_DEMAND” type now.",
           "example": "ON_DEMAND",
           "member": "string",
@@ -232,7 +223,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Server fleet name. The length is 1-50 characters.",
           "example": "testfleet",
           "member": "string",
@@ -241,7 +231,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Protection policy. Valid values: NoProtection·(no protection), FullProtection (full protection), TimeLimitProtection (time-limited protection)",
           "example": "NoProtection",
           "member": "string",
@@ -250,7 +239,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Limit policy of resource creation",
           "example": "无",
           "member": "ResourceCreationLimitPolicy",
@@ -259,7 +247,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Progress configuration",
           "example": "无",
           "member": "RuntimeConfiguration",
@@ -268,7 +255,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Timeout period of time-limited protection. Value range: 5-1440 minutes. Default value: 60 minutes. This parameter is valid only when NewGameSessionProtectionPolicy is set as TimeLimitProtection.",
           "example": "61",
           "member": "int64",
@@ -277,7 +263,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to select scaling. Valid values: SCALING_SELECTED, SCALING_UNSELECTED. Default value: SCALING_UNSELECTED.",
           "example": "SCALING_SELECTED",
           "member": "string",
@@ -286,7 +271,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to associate the fleet with a CCN instance: CCN_SELECTED_BEFORE_CREATE (associate before creation), CCN_SELECTED_AFTER_CREATE (associated after creation), or CCN_UNSELECTED (do not associate); CCN_UNSELECTED by default",
           "example": "CCN_UNSELECTED",
           "member": "string",
@@ -295,7 +279,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Tag list. Up to 50 tags.",
           "example": "无",
           "member": "Tag",
@@ -304,7 +287,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "System disk. It can be a SSD (CLOUD_SSD) with 100-500 GB capacity or a Premium Cloud Storage disk (CLOUD_PREMIUM) with 50-500 GB capacity. The increment is 1.",
           "example": "无",
           "member": "DiskInfo",
@@ -313,7 +295,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "document": "Data disk. It can be SSD disks (CLOUD_SSD) with 100-32000 GB capacity or Premium Cloud Storage disks (CLOUD_PREMIUM) with 10-32000 GB capacity. The increment is 10. ",
           "example": "无",
           "member": "DiskInfo",
@@ -322,7 +303,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to select to replicate the timer policy: TIMER_SELECTED or TIMER_UNSELECTED. The default value is TIMER_UNSELECTED.",
           "example": "TIMER_UNSELECTED",
           "member": "string",
@@ -331,7 +311,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Information of the CCN instance, including the owner account and the instance ID.",
           "example": "无",
           "member": "CcnInfo",
@@ -340,7 +319,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Maximum outbound public network bandwidth of the server fleet. Value range: 1 - 200 Mbps. Default value: 100 Mbps.",
           "example": "无",
           "member": "int64",
@@ -385,7 +363,6 @@
       "document": "CreateGameServerSession request structure.",
       "members": [
         {
-          "default": "",
           "document": "The maximum number of players, which cannot be less than 0.",
           "member": "uint64",
           "name": "MaximumPlayerSessionCount",
@@ -393,7 +370,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Alias ID. You need to specify an alias ID or fleet ID for each request. If both of them are specified, the fleet ID shall prevail.",
           "member": "string",
           "name": "AliasId",
@@ -401,7 +377,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Creator ID. Up to 1024 ASCII characters are allowed.",
           "member": "string",
           "name": "CreatorId",
@@ -409,7 +384,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Fleet ID. You need to specify an alias ID or fleet ID for each request. If both of them are specified, the fleet ID shall prevail.",
           "member": "string",
           "name": "FleetId",
@@ -417,7 +391,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Game attributes. Up to 16 groups of attributes are allowed.",
           "member": "GameProperty",
           "name": "GameProperties",
@@ -425,7 +398,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The attribute details of game server session. Up to 4096 ASCII characters are allowed.",
           "member": "string",
           "name": "GameServerSessionData",
@@ -433,7 +405,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The custom ID of game server session. Up to 4096 ASCII characters are allowed.",
           "member": "string",
           "name": "GameServerSessionId",
@@ -441,7 +412,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Idempotency token. Up to 48 ASCII characters are allowed.",
           "member": "string",
           "name": "IdempotencyToken",
@@ -449,7 +419,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The name of game server session. Up to 1024 ASCII characters are allowed.",
           "member": "string",
           "name": "Name",
@@ -482,7 +451,6 @@
       "document": "Credentials required for instance access",
       "members": [
         {
-          "default": "",
           "document": "SSH private key",
           "member": "string",
           "name": "Secret",
@@ -491,7 +459,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Username",
           "member": "string",
           "name": "UserName",
@@ -506,7 +473,6 @@
       "document": "DeleteTimerScalingPolicy request structure.",
       "members": [
         {
-          "default": "",
           "document": "Unique ID of the policy",
           "example": "timerId-oc80v5zp",
           "member": "string",
@@ -515,7 +481,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "ID of the fleet to be bound with the policy",
           "example": "fleet-qp3g3caa-mg4w88ho",
           "member": "string",
@@ -524,7 +489,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Scheduled scaling policy name",
           "example": "testDay",
           "member": "string",
@@ -551,7 +515,6 @@
       "document": "DescribeGameServerSessionDetails request structure.",
       "members": [
         {
-          "default": "",
           "document": "Alias ID",
           "member": "string",
           "name": "AliasId",
@@ -559,7 +522,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Fleet ID",
           "member": "string",
           "name": "FleetId",
@@ -567,7 +529,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Game server session ID. It should contain 1 to 48 ASCII characters.",
           "member": "string",
           "name": "GameServerSessionId",
@@ -575,7 +536,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Maximum number of entries in a single query",
           "member": "uint64",
           "name": "Limit",
@@ -583,7 +543,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.",
           "member": "string",
           "name": "NextToken",
@@ -591,7 +550,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Game server session status. Valid values: ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR",
           "member": "string",
           "name": "StatusFilter",
@@ -631,7 +589,6 @@
       "document": "DescribeGameServerSessionPlacement request structure.",
       "members": [
         {
-          "default": "",
           "document": "Unique ID of game server session placement",
           "member": "string",
           "name": "PlacementId",
@@ -664,7 +621,6 @@
       "document": "DescribeGameServerSessions request structure.",
       "members": [
         {
-          "default": "",
           "document": "Alias ID",
           "member": "string",
           "name": "AliasId",
@@ -672,7 +628,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Fleet ID",
           "member": "string",
           "name": "FleetId",
@@ -680,7 +635,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Game server session ID. It should contain 1 to 48 ASCII characters.",
           "member": "string",
           "name": "GameServerSessionId",
@@ -688,7 +642,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Maximum number of entries in a single query",
           "member": "uint64",
           "name": "Limit",
@@ -696,7 +649,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.",
           "member": "string",
           "name": "NextToken",
@@ -704,7 +656,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Game server session status. Valid values: ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR",
           "member": "string",
           "name": "StatusFilter",
@@ -768,7 +719,6 @@
       "document": "DescribePlayerSessions request structure.",
       "members": [
         {
-          "default": "",
           "document": "Game server session ID. It should contain 1 to 48 ASCII characters.",
           "member": "string",
           "name": "GameServerSessionId",
@@ -776,7 +726,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Maximum number of entries in a single query",
           "member": "uint64",
           "name": "Limit",
@@ -784,7 +733,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.",
           "member": "string",
           "name": "NextToken",
@@ -792,7 +740,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Player ID. It should contain 1 to 1024 ASCII characters.",
           "member": "string",
           "name": "PlayerId",
@@ -800,7 +747,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Player session ID. It should contain 1 to 1024 ASCII characters.",
           "member": "string",
           "name": "PlayerSessionId",
@@ -808,7 +754,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Player session status. Valid values: RESERVED, ACTIVE, COMPLETED, TIMEDOUT",
           "member": "string",
           "name": "PlayerSessionStatusFilter",
@@ -848,7 +793,6 @@
       "document": "DescribeTimerScalingPolicies request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the fleet to be bound with the policy",
           "example": "fleet-qp3g3caa-mg4w88ho",
           "member": "string",
@@ -857,7 +801,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Scheduled scaling policy name",
           "example": "timer01",
           "member": "string",
@@ -866,7 +809,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Start time of the scheduled scaling policy",
           "example": "2021-01-14T14:04:29.496Z",
           "member": "string",
@@ -875,7 +817,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "End time of the scheduled scaling policy",
           "example": "2021-01-15T14:09:29.496Z",
           "member": "string",
@@ -884,7 +825,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Pagination offset",
           "example": "0",
           "member": "int64",
@@ -893,7 +833,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page",
           "example": "10",
           "member": "int64",
@@ -938,7 +877,6 @@
       "document": "Player game session information",
       "members": [
         {
-          "default": "",
           "document": "Unique player ID associated with player session",
           "member": "string",
           "name": "PlayerId",
@@ -947,7 +885,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Developer-defined player data",
           "member": "string",
           "name": "PlayerData",
@@ -962,7 +899,6 @@
       "document": "Disk storage information",
       "members": [
         {
-          "default": "",
           "document": "Disk type: Premium Cloud Storage (CLOUD_PREMIUM) or SSD (CLOUD_SSD)",
           "example": "CLOUD_PREMIUM",
           "member": "string",
@@ -972,7 +908,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "System disk: the available disk capacity is 50-500 GB. Data disk: the available disk capacity is 100-32000 GB, and the value is a multiple of 10. When the disk type is SSD (CLOUD_SSD), the minimum capacity is 100 GB.",
           "example": "300",
           "member": "uint64",
@@ -988,7 +923,6 @@
       "document": "EndGameServerSessionAndProcess request structure.",
       "members": [
         {
-          "default": "",
           "document": "Game server session ID. If a game server session ID is passed in, its corresponding processes, game server sessions, and player sessions will be terminated.",
           "example": "qcs::gse:ap-shanghai:uin/1112222:gameserversession/fleet-qp3ga-p",
           "member": "string",
@@ -997,7 +931,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The public IP of the CVM. You need to pass in `IpAddress` and `Port` at the same time to terminate the matched processes, game server sessions and player sessions (if any exists). It does not take effect in case only the `IpAddress` passed in.",
           "example": "0.0.0.0",
           "member": "string",
@@ -1006,7 +939,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Port number. Value range: 1025 - 60000. You need to pass in `IpAddress` and `Port` at the same time to terminate the matched processes, game server sessions (if any exists) and player sessions (if any exists). It does not take effect in case only the `IpAddress` passed in.",
           "example": "8888",
           "member": "int64",
@@ -1033,7 +965,6 @@
       "document": "Service deployment attributes",
       "members": [
         {
-          "default": "",
           "document": "Asset package ID",
           "example": "无",
           "member": "string",
@@ -1043,7 +974,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Server fleet creation time",
           "example": "无",
           "member": "string",
@@ -1053,7 +983,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Description\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "string",
@@ -1063,7 +992,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Description of server fleet resource\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "string",
@@ -1073,7 +1001,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Server fleet ID\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "string",
@@ -1083,7 +1010,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Server fleet type, which only supports ON_DEMAND now.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "string",
@@ -1093,7 +1019,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Server type, such as S5.LARGE8\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "string",
@@ -1103,7 +1028,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Server fleet name",
           "example": "无",
           "member": "string",
@@ -1113,7 +1037,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Game session protection policy\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "string",
@@ -1123,7 +1046,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Operating system type\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "string",
@@ -1133,7 +1055,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Limit policy of resource creation\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "ResourceCreationLimitPolicy",
@@ -1143,7 +1064,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Statuses: “Create”, “Downloading”, “Verifying”, “Generating”, “Activating”, “Active”, “Exception”, “Deleting”, and “End”.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "string",
@@ -1153,7 +1073,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The status of server fleet when it stopped. If this field is left empty, it means automatic scaling.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "string",
@@ -1163,7 +1082,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Server fleet termination time\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "string",
@@ -1173,7 +1091,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Timeout period of time-limited protection. Value range: 5-1440 minutes. Default value: 60 minutes.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "uint64",
@@ -1183,7 +1100,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Billing status: Unactivated, Activated, Exception, Isolated due to arrears, Terminated, and Unfrozen.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "string",
@@ -1193,7 +1109,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Tag list. Up to 50 tags.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "Tag",
@@ -1203,7 +1118,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Data disk. It can be SSD disks (CLOUD_SSD) with 100-32000 GB capacity or Premium Cloud Storage disks (CLOUD_PREMIUM) with 10-32000 GB capacity. The increment is 10. \nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "DiskInfo",
@@ -1213,7 +1127,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "System disk. It can be a SSD (CLOUD_SSD) with 100-500 GB capacity or a Premium Cloud Storage disk (CLOUD_PREMIUM) with 50-500 GB capacity. The increment is 1.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "DiskInfo",
@@ -1223,7 +1136,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "CCN instance information\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "example": "无",
           "member": "RelatedCcnInfo",
@@ -1233,7 +1145,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Maximum outbound public network bandwidth of the server fleet. Value range: 1 - 200 Mbps. Default value: 100 Mbps.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
@@ -1249,7 +1160,6 @@
       "document": "Game attribute details",
       "members": [
         {
-          "default": "",
           "document": "Attribute name. Up to 32 ASCII characters are allowed.",
           "member": "string",
           "name": "Key",
@@ -1258,7 +1168,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Attribute value. Up to 96 ASCII characters are allowed.",
           "member": "string",
           "name": "Value",
@@ -1273,7 +1182,6 @@
       "document": "Game session details",
       "members": [
         {
-          "default": "",
           "document": "Game server session creation time",
           "member": "string",
           "name": "CreationTime",
@@ -1282,7 +1190,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Creator ID. Up to 1024 ASCII characters are allowed.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "CreatorId",
@@ -1291,7 +1198,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The current number of players, which cannot be less than 0.",
           "member": "uint64",
           "name": "CurrentPlayerSessionCount",
@@ -1300,7 +1206,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CVM DNS ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "DnsName",
@@ -1309,7 +1214,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Fleet ID",
           "member": "string",
           "name": "FleetId",
@@ -1318,7 +1222,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Game attributes. Up to 16 groups of attributes are allowed.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "GameProperty",
           "name": "GameProperties",
@@ -1327,7 +1230,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The attribute details of game server session. Up to 4096 ASCII characters are allowed.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "GameServerSessionData",
@@ -1336,7 +1238,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Game server session ID. It should contain 1 to 48 ASCII characters.",
           "member": "string",
           "name": "GameServerSessionId",
@@ -1345,7 +1246,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CVM IP address",
           "member": "string",
           "name": "IpAddress",
@@ -1354,7 +1254,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Battle progress details. Up to 400,000 ASCII characters are allowed.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "MatchmakerData",
@@ -1363,7 +1262,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The maximum number of players, which cannot be less than 0.",
           "member": "uint64",
           "name": "MaximumPlayerSessionCount",
@@ -1372,7 +1270,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The name of game server session. Up to 1024 ASCII characters are allowed.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "Name",
@@ -1381,7 +1278,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Player session creation policy. Valid values: ACCEPT_ALL, DENY_ALL\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "PlayerSessionCreationPolicy",
@@ -1390,7 +1286,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Port number. It should be a value between 1 to 60000.",
           "member": "uint64",
           "name": "Port",
@@ -1399,7 +1294,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Game server session status. Valid values: ACTIVE, ACTIVATING, TERMINATED, TERMINATING, ERROR",
           "member": "string",
           "name": "Status",
@@ -1408,7 +1302,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Additional information of game server session status\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "StatusReason",
@@ -1417,7 +1310,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Termination time\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "TerminationTime",
@@ -1426,7 +1318,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Instance type. Up to 128 ASCII characters are allowed.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "InstanceType",
@@ -1435,7 +1326,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Current custom count\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "CurrentCustomCount",
@@ -1444,7 +1334,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Maximum custom count\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "MaxCustomCount",
@@ -1453,7 +1342,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Weight\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Weight",
@@ -1462,7 +1350,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Session availability status, i.e., whether it is blocked. Valid value: Enable, Disable\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "AvailabilityStatus",
@@ -1477,7 +1364,6 @@
       "document": "Game server session details (GameServerSessionDetail)",
       "members": [
         {
-          "default": "",
           "document": "Game server session",
           "member": "GameServerSession",
           "name": "GameServerSession",
@@ -1486,7 +1372,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Protection policy. Valid values: NoProtection, FullProtection\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "ProtectionPolicy",
@@ -1501,7 +1386,6 @@
       "document": "Game session deployment object",
       "members": [
         {
-          "default": "",
           "document": "Deployment ID",
           "member": "string",
           "name": "PlacementId",
@@ -1510,7 +1394,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Service deployment group name",
           "member": "string",
           "name": "GameServerSessionQueueName",
@@ -1519,7 +1402,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Player latency\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "PlayerLatency",
           "name": "PlayerLatencies",
@@ -1528,7 +1410,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Service deployment status",
           "member": "string",
           "name": "Status",
@@ -1537,7 +1418,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "DNS ID assigned to the instance where the game session is running\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "DnsName",
@@ -1546,7 +1426,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Game session ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "GameServerSessionId",
@@ -1555,7 +1434,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Game session name\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "GameServerSessionName",
@@ -1564,7 +1442,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Service deployment region\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "GameServerSessionRegion",
@@ -1573,7 +1450,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Game attributes\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "GameProperty",
           "name": "GameProperties",
@@ -1582,7 +1458,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The maximum number of players that can be connected simultaneously to the game session. It should a value between 1 to the maximum number of player sessions.",
           "member": "uint64",
           "name": "MaximumPlayerSessionCount",
@@ -1591,7 +1466,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Game session data\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "GameServerSessionData",
@@ -1600,7 +1474,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "IP address of the instance where the game session is running\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "IpAddress",
@@ -1609,7 +1482,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Port number of the instance where the game session is running\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "Port",
@@ -1618,7 +1490,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Game match data\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "MatchmakerData",
@@ -1627,7 +1498,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Deployed player game data\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "PlacedPlayerSession",
           "name": "PlacedPlayerSessions",
@@ -1636,7 +1506,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Start time",
           "member": "string",
           "name": "StartTime",
@@ -1645,7 +1514,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "End time\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "EndTime",
@@ -1660,7 +1528,6 @@
       "document": "GetGameServerSessionLogUrl request structure.",
       "members": [
         {
-          "default": "",
           "document": "Game server session ID. It should contain 1 to 48 ASCII characters.",
           "member": "string",
           "name": "GameServerSessionId",
@@ -1693,7 +1560,6 @@
       "document": "GetInstanceAccess request structure.",
       "members": [
         {
-          "default": "",
           "document": "Server fleet ID",
           "member": "string",
           "name": "FleetId",
@@ -1701,7 +1567,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -1734,7 +1599,6 @@
       "document": "Allowed network range.",
       "members": [
         {
-          "default": "",
           "document": "Start port number. Minimum value: 1025.",
           "example": "1026",
           "member": "uint64",
@@ -1744,7 +1608,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "IP range. Valid range of the input IPv4 addresses in CIDR format; for example, 0.0.0.0.0/0.",
           "example": "0.0.0.0/0",
           "member": "string",
@@ -1754,7 +1617,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Protocol type: TCP or UDP.",
           "example": "TCP",
           "member": "string",
@@ -1764,7 +1626,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "End port number. Maximum value: 60000.",
           "example": "60000",
           "member": "uint64",
@@ -1780,7 +1641,6 @@
       "document": "Identity credentials for instance access",
       "members": [
         {
-          "default": "",
           "document": "Credentials required for instance access",
           "member": "Credentials",
           "name": "Credentials",
@@ -1789,7 +1649,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Service deployment ID",
           "member": "string",
           "name": "FleetId",
@@ -1798,7 +1657,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Instance ID",
           "member": "string",
           "name": "InstanceId",
@@ -1807,7 +1665,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Public IP of instance",
           "member": "string",
           "name": "IpAddress",
@@ -1816,7 +1673,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "OS",
           "member": "string",
           "name": "OperatingSystem",
@@ -1831,7 +1687,6 @@
       "document": "The server instance type information",
       "members": [
         {
-          "default": "",
           "document": "Name of the server type, such as `Standard SA1`",
           "member": "string",
           "name": "TypeName",
@@ -1840,7 +1695,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Specification of the server type, such as `SA1.SMALL1`",
           "member": "string",
           "name": "InstanceType",
@@ -1849,7 +1703,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CPU, in core",
           "member": "uint64",
           "name": "Cpu",
@@ -1858,7 +1711,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Memory, in GB",
           "member": "uint64",
           "name": "Memory",
@@ -1867,7 +1719,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The packet sending and receiving capability, in 10k PPS. ",
           "member": "uint64",
           "name": "NetworkCard",
@@ -1882,7 +1733,6 @@
       "document": "JoinGameServerSessionBatch request structure.",
       "members": [
         {
-          "default": "",
           "document": "Game server session ID. It should contain 1 to 256 ASCII characters.",
           "member": "string",
           "name": "GameServerSessionId",
@@ -1890,7 +1740,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Player ID list. At least 1 ID and up to 25 IDs.",
           "member": "string",
           "name": "PlayerIds",
@@ -1898,7 +1747,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Player custom data",
           "member": "PlayerDataMap",
           "name": "PlayerDataMap",
@@ -1931,7 +1779,6 @@
       "document": "JoinGameServerSession request structure.",
       "members": [
         {
-          "default": "",
           "document": "Game server session ID. It should contain 1 to 256 ASCII characters.",
           "member": "string",
           "name": "GameServerSessionId",
@@ -1939,7 +1786,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Player ID. Up to 1024 ASCII characters are allowed.",
           "member": "string",
           "name": "PlayerId",
@@ -1947,7 +1793,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Player custom data. Up to 2048 ASCII characters are allowed.",
           "member": "string",
           "name": "PlayerData",
@@ -1980,7 +1825,6 @@
       "document": "Deployed player game session",
       "members": [
         {
-          "default": "",
           "document": "Player ID",
           "member": "string",
           "name": "PlayerId",
@@ -1989,7 +1833,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Player session ID",
           "member": "string",
           "name": "PlayerSessionId",
@@ -2004,7 +1847,6 @@
       "document": "Player custom data",
       "members": [
         {
-          "default": "",
           "document": "The key of player custom data. It should contain 1 to 1024 ASCII characters.",
           "member": "string",
           "name": "Key",
@@ -2013,7 +1855,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The value of player custom data. It should contain 1 to 2048 ASCII characters.",
           "member": "string",
           "name": "Value",
@@ -2028,7 +1869,6 @@
       "document": "Player latency information",
       "members": [
         {
-          "default": "",
           "document": "Player ID\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "PlayerId",
@@ -2037,7 +1877,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Name of region corresponding to latency\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "RegionIdentifier",
@@ -2046,7 +1885,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Latency in milliseconds",
           "member": "uint64",
           "name": "LatencyInMilliseconds",
@@ -2061,7 +1899,6 @@
       "document": "Player session details",
       "members": [
         {
-          "default": "",
           "document": "Player session creation time",
           "member": "string",
           "name": "CreationTime",
@@ -2070,7 +1907,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "ID of the DNS where the game server session is running\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "DnsName",
@@ -2079,7 +1915,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Fleet ID",
           "member": "string",
           "name": "FleetId",
@@ -2088,7 +1923,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Game server session ID. It should contain 1 to 256 ASCII characters.",
           "member": "string",
           "name": "GameServerSessionId",
@@ -2097,7 +1931,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Address of the CVM instance where the game server session is running",
           "member": "string",
           "name": "IpAddress",
@@ -2106,7 +1939,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Player custom data. Up to 2048 ASCII characters are allowed.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "PlayerData",
@@ -2115,7 +1947,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Player ID. Up to 1024 ASCII characters are allowed.\nNote: this field may return `null`, indicating that no valid value is obtained.",
           "member": "string",
           "name": "PlayerId",
@@ -2124,7 +1955,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Player session ID",
           "member": "string",
           "name": "PlayerSessionId",
@@ -2133,7 +1963,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Port number. It should be a value between 1 to 60000.",
           "member": "uint64",
           "name": "Port",
@@ -2142,7 +1971,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Player session status. Valid values: RESERVED = 1, ACTIVE = 2, COMPLETED =3, TIMEDOUT = 4",
           "member": "string",
           "name": "Status",
@@ -2151,7 +1979,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Player session termination time\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "TerminationTime",
@@ -2166,7 +1993,6 @@
       "document": "PutTimerScalingPolicy request structure.",
       "members": [
         {
-          "default": "",
           "document": "Configuration of the scheduled scaling policy",
           "example": "无",
           "member": "TimerScalingPolicy",
@@ -2193,7 +2019,6 @@
       "document": "Information of the associated CCN instance",
       "members": [
         {
-          "default": "",
           "document": "Account of the CCN instance owner",
           "example": "13734*",
           "member": "string",
@@ -2203,7 +2028,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "CCN instance ID",
           "example": "ccn-f0jyb*",
           "member": "string",
@@ -2213,7 +2037,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Status of associated CCN instance",
           "example": "CCN_SELECTED_BEFORE_CREATE",
           "member": "string",
@@ -2229,7 +2052,6 @@
       "document": "Resource creation policy",
       "members": [
         {
-          "default": "",
           "document": "Creation quantity. Minimum value: 1. Default value: 2.",
           "example": "2",
           "member": "uint64",
@@ -2239,7 +2061,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Unit time. Minimum value: 1. Default value: 3. Unit: minute.",
           "example": "3",
           "member": "uint64",
@@ -2255,7 +2076,6 @@
       "document": "Runtime configuration",
       "members": [
         {
-          "default": "",
           "document": "Game session timeout. Value range: 1-600. Unit: second.",
           "example": "500",
           "member": "uint64",
@@ -2265,7 +2085,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum number of game sessions. Value range: 1-2,147,483,647.",
           "example": "210",
           "member": "uint64",
@@ -2275,7 +2094,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Service process configuration. There must be at least one service configuration.",
           "example": "无",
           "member": "ServerProcesse",
@@ -2291,7 +2109,6 @@
       "document": "SearchGameServerSessions request structure.",
       "members": [
         {
-          "default": "",
           "document": "Alias ID",
           "member": "string",
           "name": "AliasId",
@@ -2299,7 +2116,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Fleet ID",
           "member": "string",
           "name": "FleetId",
@@ -2307,7 +2123,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Maximum number of entries in a single query",
           "member": "uint64",
           "name": "Limit",
@@ -2315,7 +2130,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Pagination offset, which is used for querying the next page. It should contain 1 to 1024 ASCII characters.",
           "member": "string",
           "name": "NextToken",
@@ -2323,7 +2137,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Search filter expression. Valid values:\ngameServerSessionName: game session name in `String` type\ngameServerSessionId: game session ID in `String` type\nmaximumSessions: maximum number of player sessions in `Number` type\ncreationTimeMillis: creation time in milliseconds in `Number` type\nplayerSessionCount: current number of player sessions in `Number` type\nhasAvailablePlayerSessions: whether there is available player session in `String` type. Valid values: true, false\ngameServerSessionProperties: game session attributes in `String` type\n\nExpressions in `String` type support = and <> for judgment\nExpressions in `Number` type support =, <>, >, >=, <, and <= for judgment\n\nExample:\nIf FilterExpression takes the value:\nplayerSessionCount>=2 AND hasAvailablePlayerSessions=true\"\nIt means searching for game sessions that have at least two players and have player sessions available.\nIf FilterExpression takes the value:\ngameServerSessionProperties.K1 = 'V1' AND gameServerSessionProperties.K2 = 'V2' OR gameServerSessionProperties.K3 = 'V3'\n\nit means\nsearching for game sessions that meets the following game server session attributes\n{\n    \"GameProperties\":[\n        {\n            \"Key\":\"K1\",\n            \"Value\":\"V1\"\n        },\n        {\n            \"Key\":\"K2\",\n            \"Value\":\"V2\"\n        },\n        {\n            \"Key\":\"K3\",\n            \"Value\":\"V3\"\n        }\n    ]\n}",
           "member": "string",
           "name": "FilterExpression",
@@ -2331,7 +2144,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Sorting keyword\nValid values:\ngameServerSessionName: game session name in `String` type\ngameServerSessionId: game session ID in `String` type\nmaximumSessions: maximum number of player sessions in `Number` type\ncreationTimeMillis: creation time in milliseconds in `Number` type\nplayerSessionCount: current number of player sessions in `Number` type",
           "member": "string",
           "name": "SortExpression",
@@ -2371,7 +2183,6 @@
       "document": "Game service process",
       "members": [
         {
-          "default": "",
           "document": "Number of concurrent processes. Value range of total concurrent processes: 1-50.",
           "example": "2",
           "member": "uint64",
@@ -2381,7 +2192,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Launch Path. Linux: /local/game/ or Windows: C:\\game\\. The path length is 1-1024.",
           "example": "105",
           "member": "string",
@@ -2391,7 +2201,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Launch parameter. The length is 0-1024.",
           "example": "30",
           "member": "string",
@@ -2407,7 +2216,6 @@
       "document": "SetServerReserved request structure.",
       "members": [
         {
-          "default": "",
           "document": "ID of the fleet to be bound with the policy",
           "example": "fleet-qp3g3caa-mg4w88ho",
           "member": "string",
@@ -2416,7 +2224,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Instance ID",
           "example": "ins-3g57621x",
           "member": "string",
@@ -2425,7 +2232,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether the instance is retained. Valid values: 1 (retained), 0 (not retained). Default value: 0.",
           "example": "1",
           "member": "int64",
@@ -2452,7 +2258,6 @@
       "document": "StartGameServerSessionPlacement request structure.",
       "members": [
         {
-          "default": "",
           "document": "The unique ID of the game server session placement. It should contain up to 48 ASCII characters, supporting [a-zA-Z0-9-]+.",
           "member": "string",
           "name": "PlacementId",
@@ -2460,7 +2265,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Game server session queue name",
           "member": "string",
           "name": "GameServerSessionQueueName",
@@ -2468,7 +2272,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The maximum number of players that can be connected simultaneously to the game session. It should a value between 1 to the maximum number of player sessions.",
           "member": "uint64",
           "name": "MaximumPlayerSessionCount",
@@ -2476,7 +2279,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Player game session information",
           "member": "DesiredPlayerSession",
           "name": "DesiredPlayerSessions",
@@ -2484,7 +2286,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Player game session attributes",
           "member": "GameProperty",
           "name": "GameProperties",
@@ -2492,7 +2293,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Data of game server sessions. Up to 4096 ASCII characters are allowed.",
           "member": "string",
           "name": "GameServerSessionData",
@@ -2500,7 +2300,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Name of game server sessions. Up to 4096 ASCII characters are allowed.",
           "member": "string",
           "name": "GameServerSessionName",
@@ -2508,7 +2307,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Player latency",
           "member": "PlayerLatency",
           "name": "PlayerLatencies",
@@ -2541,7 +2339,6 @@
       "document": "StopGameServerSessionPlacement request structure.",
       "members": [
         {
-          "default": "",
           "document": "Unique ID of game server session placement",
           "member": "string",
           "name": "PlacementId",
@@ -2574,7 +2371,6 @@
       "document": "Tag structure",
       "members": [
         {
-          "default": "",
           "document": "Tag key. Up to 127 bytes are allowed.",
           "example": "tag1",
           "member": "string",
@@ -2584,7 +2380,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Tag value. Up to 255 bytes are allowed.",
           "example": "tagvalue",
           "member": "string",
@@ -2600,7 +2395,6 @@
       "document": "Configuration of target tracking scaling",
       "members": [
         {
-          "default": "",
           "document": "Ratio of reserved server session resource \nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "uint64",
           "name": "TargetValue",
@@ -2615,7 +2409,6 @@
       "document": "The recurrence pattern of auto-scaling",
       "members": [
         {
-          "default": "",
           "document": "The recurrence pattern of auto-scaling. `0`: undefined, `1`: once, `2`: daily, `3`: monthly, `4`: weekly\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -2625,7 +2418,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Details of the recurrence pattern of auto-scaling\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TimerValue",
@@ -2635,7 +2427,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Start time of the scheduled scaling policy\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2021-01-14T03:36:35Z",
           "member": "string",
@@ -2645,7 +2436,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "End time of the scheduled scaling policy\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2021-01-15T03:36:35Z",
           "member": "string",
@@ -2661,7 +2451,6 @@
       "document": "The capacity configurations of the scheduled scaling policy",
       "members": [
         {
-          "default": "",
           "document": "ID of the fleet to be bound with the policy\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "fleet-qp3g3caa-mg4w88ho",
           "member": "string",
@@ -2671,7 +2460,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Desired number of instances\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "int64",
@@ -2681,7 +2469,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Minimum number of instances\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -2691,7 +2478,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Maximum number of instances\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "int64",
@@ -2701,7 +2487,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Scaling cooldown period, in minutes\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "int64",
@@ -2711,7 +2496,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Scaling type. `1`: manual, `2`: automatic, `0`: undefined\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -2721,7 +2505,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Configuration of target tracking scaling\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TargetConfiguration",
@@ -2737,7 +2520,6 @@
       "document": "Configurations of a scheduled scaling policy",
       "members": [
         {
-          "default": "",
           "document": "Unique ID of the policy. When it’s filled in, the policy will be updated.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "timerId-oc80v5zp",
           "member": "string",
@@ -2747,7 +2529,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Scheduled scaling policy name\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "testonce1",
           "member": "string",
@@ -2757,7 +2538,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Scheduled scaling policy status. `0`: Undefined, `1`: Not started, 2: Activated, `3`: Stopped, `4`: Expired\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
@@ -2767,7 +2547,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The capacity configurations of the scheduled scaling policy\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TimerFleetCapacity",
@@ -2777,7 +2556,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The recurrence pattern of auto-scaling\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TimerConfiguration",
@@ -2793,7 +2571,6 @@
       "document": "Details of the recurrence pattern of the scheduled scaling policy",
       "members": [
         {
-          "default": "",
           "document": "Execute once every X day(s)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "Day",
@@ -2802,7 +2579,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Specify the first day to execute the scaling action in a month (execute once per day)\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "FromDay",
@@ -2811,7 +2587,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Specify the last day to execute the scaling action in a month\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "ToDay",
@@ -2820,7 +2595,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Specify the week days to repeat the scaling action. Multiple values are supported. Valid values: `1` (Monday), `2` (Tuesday), `3` (Wednesday), `4` (Thursday), `5` (Friday), `6` (Saturday), `7` (Sunday). \nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "WeekDays",
@@ -2835,7 +2609,6 @@
       "document": "UpdateBucketAccelerateOpt request structure.",
       "members": [
         {
-          "default": "",
           "document": "`true`: enable global acceleration; `false`: disable global acceleration",
           "member": "bool",
           "name": "Allowed",
@@ -2861,7 +2634,6 @@
       "document": "UpdateBucketCORSOpt request structure.",
       "members": [
         {
-          "default": "",
           "document": "Allowed access source. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).",
           "member": "string",
           "name": "AllowedOrigins",
@@ -2869,7 +2641,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Allowed HTTP method(s). Multiple methods are allowed, including PUT, GET, POST, and HEAD. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).",
           "member": "string",
           "name": "AllowedMethods",
@@ -2877,7 +2648,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Specifies the custom HTTP request headers that the browser is allowed to include in a CORS request. Wildcard (*) is supported, indicating allowing all headers (recommended). For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).",
           "member": "string",
           "name": "AllowedHeaders",
@@ -2885,7 +2655,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Sets the validity duration for the CORS configuration (in second). For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).",
           "member": "int64",
           "name": "MaxAgeSeconds",
@@ -2893,7 +2662,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "CORS response header(s) that can be exposed to the browser, case-insensitive. If this parameter is not specified, the browser can access only simple response headers Cache-Control, Content-Type, Expires, and Last-Modified by default. For details, see [COS Documentation](https://intl.cloud.tencent.com/document/product/436/8279?from_cn_redirect=1).",
           "member": "string",
           "name": "ExposeHeaders",
@@ -2919,7 +2687,6 @@
       "document": "UpdateGameServerSession request structure.",
       "members": [
         {
-          "default": "",
           "document": "Game server session ID. It should contain 1 to 256 ASCII characters.",
           "member": "string",
           "name": "GameServerSessionId",
@@ -2927,7 +2694,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The maximum number of players, which cannot be less than 0.",
           "member": "uint64",
           "name": "MaximumPlayerSessionCount",
@@ -2935,7 +2701,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Name of the game server session. It should contain 1 to 1024 ASCII characters.",
           "member": "string",
           "name": "Name",
@@ -2943,7 +2708,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Player session creation policy, which includes `ACCEPT_ALL` (allow all players) and `DENY_ALL` (reject all players).",
           "member": "string",
           "name": "PlayerSessionCreationPolicy",
@@ -2951,7 +2715,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Protection policy, which includes `NoProtection`·(no protection), `TimeLimitProtection` (time-limited protection) and `FullProtection` (full protection)",
           "member": "string",
           "name": "ProtectionPolicy",

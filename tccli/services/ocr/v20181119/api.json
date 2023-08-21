@@ -439,7 +439,6 @@
       "document": "BankCardOCR request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Base64-encoded value of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
           "example": "无",
@@ -449,7 +448,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
           "example": "https://xx/a.jpg",
@@ -459,7 +457,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to return the bank card image data after preprocessing (precise cropping and alignment). Default value: `false`",
           "example": "false",
@@ -469,7 +466,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to return the card number image data after slicing. Default value: `false`",
           "example": "false",
@@ -479,7 +475,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable photocopy check. If the input image is a bank card photocopy, an alarm will be returned. Default value: `false`",
           "example": "false",
@@ -489,7 +484,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable photograph check. If the input image is a bank card photograph, an alarm will be returned. Default value: `false`",
           "example": "false",
@@ -499,7 +493,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable obscured border check. If the input image is a bank card with obscured border, an alarm will be returned. Default value: `false`",
           "example": "false",
@@ -509,7 +502,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to return the image quality value, which measures how clear an image is. Default value: `false`",
           "example": "false",
@@ -843,7 +835,6 @@
       "document": "Coordinates",
       "members": [
         {
-          "default": "0",
           "disabled": false,
           "document": "Horizontal coordinate",
           "member": "int64",
@@ -853,7 +844,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "0",
           "disabled": false,
           "document": "Vertical coordinate",
           "member": "int64",
@@ -869,7 +859,6 @@
       "document": "Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Coordinates of a word’s four corners in a clockwise order on the input image, starting from the upper-left corner",
           "example": "无",
@@ -886,7 +875,6 @@
       "document": "Information about a character detected, including the character itself and its confidence",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Confidence. Value range: 0–100",
           "example": "无",
@@ -897,7 +885,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "A possible character",
           "example": "无",
@@ -1030,7 +1017,6 @@
       "document": "GeneralAccurateOCR request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Base64-encoded value of image.\nThe image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.",
           "example": "无",
@@ -1040,7 +1026,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nThe image cannot exceed 7 MB after being Base64-encoded. A resolution above 600x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability. The download speed and stability of non-Tencent Cloud URLs may be low.",
           "example": "https://xx/a.jpg",
@@ -1050,7 +1035,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to return the character information. Default value: `false`",
           "example": "false",
@@ -1060,7 +1044,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to slice the input image to enhance the recognition effects for scenarios where the whole image is big, but the size of a single character is small (e.g., test papers). This feature is disabled by default.",
           "example": "false",
@@ -1070,7 +1053,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable PDF recognition. Default value: `false`. If you enable this feature, both images and PDF files can be recognized.",
           "example": "false",
@@ -1080,7 +1062,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of a PDF page that needs to be recognized. Currently, only one single page can be recognized. This parameter takes effect only if a PDF file is uploaded and `IsPdf` is set to `true`. Default value: `1`",
           "example": "1",
@@ -1347,7 +1328,6 @@
       "document": "HKIDCardOCR request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to check for authenticity.",
           "example": "true",
@@ -1357,7 +1337,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to return identity photo.",
           "example": "false",
@@ -1367,7 +1346,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Base64 string of the image\nSupported image formats: PNG, JPG, JPEG. GIF is not supported yet.\nSupported image size: The downloaded image cannot exceed 7 MB after being Base64-encoded, and it cannot take longer than 3 seconds to download the image.",
           "example": "无",
@@ -1377,7 +1355,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
           "example": "https://xx/a.jpg",
@@ -1911,7 +1888,6 @@
       "document": "Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "X-coordinate of top-left point.",
           "member": "int64",
@@ -1921,7 +1897,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Y-coordinate of top-left point.",
           "member": "int64",
@@ -1931,7 +1906,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Width",
           "member": "int64",
@@ -1941,7 +1915,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Height",
           "member": "int64",
@@ -2009,7 +1982,6 @@
       "document": "Vehicle license plate information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The recognized license plate number.",
           "example": "无",
@@ -2020,7 +1992,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The confidence score (0–100).",
           "example": "无",
@@ -2031,7 +2002,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The bounding box coordinates of the text line in the original image.",
           "example": "无",
@@ -2042,7 +2012,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The recognized license plate color, which currently includes \"white\", \"black\", \"blue\", \"green\", \"yellow\", \"yellow-green\", and \"temporary plate\".",
           "example": "无",
@@ -2156,7 +2125,6 @@
       "document": "MLIDCardOCR request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.",
           "example": "无",
@@ -2166,7 +2134,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The URL of an image. (This field is not available outside the Chinese mainland.)\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be low.",
           "example": "https://xx/a.jpg",
@@ -2176,7 +2143,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to return an image. Default value: `false`.",
           "example": "无",
@@ -2294,7 +2260,6 @@
       "document": "MLIDPassportOCR request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.",
           "member": "string",
@@ -2303,7 +2268,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to return an image. Default value: false.",
           "member": "bool",
@@ -4006,7 +3970,6 @@
       "document": "The coordinates of the four vertices of the text\nNote: This field may return null, indicating that no valid values can be obtained.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The coordinates of the upper-left vertex.",
           "member": "Coord",
@@ -4016,7 +3979,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The coordinates of the upper-right vertex.",
           "member": "Coord",
@@ -4026,7 +3988,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The coordinates of the lower-left vertex.",
           "member": "Coord",
@@ -4036,7 +3997,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The coordinates of the lower-right vertex.",
           "member": "Coord",
@@ -4736,7 +4696,6 @@
       "document": "RecognizePhilippinesDrivingLicenseOCR request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
           "example": "image",
@@ -4746,7 +4705,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
           "example": "https://xx/a.jpg",
@@ -4756,7 +4714,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to return the identity photo.",
           "example": "true",
@@ -4904,7 +4861,6 @@
       "document": "RecognizePhilippinesSssIDOCR request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to return the identity photo.",
           "example": "true",
@@ -4914,7 +4870,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
           "example": "image",
@@ -4924,7 +4879,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
           "example": "https://xx/a.jpg",
@@ -4992,7 +4946,6 @@
       "document": "RecognizePhilippinesTinIDOCR request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to return the identity photo.",
           "example": "true",
@@ -5002,7 +4955,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The Base64-encoded value of an image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither the `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` will be used.",
           "example": "image",
@@ -5012,7 +4964,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nFor a non-Tencent Cloud URL, the download speed and stability may be affected.",
           "example": "https://xx/a.jpg",
@@ -5550,7 +5501,6 @@
       "document": "Coordinates",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "X-coordinate of top-left point",
           "member": "int64",
@@ -5560,7 +5510,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Y-coordinate of top-left point",
           "member": "int64",
@@ -5570,7 +5519,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Width",
           "member": "int64",
@@ -5580,7 +5528,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Height",
           "member": "int64",
@@ -5596,7 +5543,6 @@
       "document": "Seal information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Seal body information",
           "example": "无",
@@ -5607,7 +5553,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Seal coordinates",
           "example": "无",
@@ -5618,7 +5563,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Other text content",
           "example": "无",
@@ -5629,7 +5573,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Seal shape. Valid values:\n0: Round\n1: Oval\n2: Rectangle\n3: Diamond\n4: Triangle",
           "example": "0",
@@ -6340,7 +6283,6 @@
       "document": "TableOCR request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Base64-encoded value of image.\nSupported image formats: PNG, JPG, JPEG. GIF is not supported at present.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.",
           "member": "string",
@@ -6349,7 +6291,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
           "member": "string",
@@ -6578,7 +6519,6 @@
       "document": "OCR result.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Recognized text line content.",
           "example": "无",
@@ -6589,7 +6529,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Confidence. Value range: 0–100.",
           "example": "无",
@@ -6600,7 +6539,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Text line coordinates, which are represented as 4 vertex coordinates.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6611,7 +6549,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Extended field.\nThe paragraph information `Parag` returned by the `GeneralBasicOcr` API contains `ParagNo`.",
           "example": "无",
@@ -6622,7 +6559,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Pixel coordinates of the text line in the image after rotation correction, which is in the format of `(X-coordinate of top-left point, Y-coordinate of top-left point, width, height)`.",
           "example": "无",
@@ -6633,7 +6569,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Information about a character, including the character itself and its confidence. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`",
           "example": "无",
@@ -6644,7 +6579,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Coordinates of a word’s four corners on the input image. Supported APIs: `GeneralBasicOCR`, `GeneralAccurateOCR`",
           "example": "无",
@@ -6661,7 +6595,6 @@
       "document": "Recognition result",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The recognized text line content.",
           "example": "无",
@@ -6672,7 +6605,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The coordinates, represented in the coordinates of the four points.",
           "example": "无",
@@ -6689,7 +6621,6 @@
       "document": "Form recognition result.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Column index of the top-left corner of the cell.",
           "member": "int64",
@@ -6699,7 +6630,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Row index of the top-left corner of the cell.",
           "member": "int64",
@@ -6709,7 +6639,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Column index of the bottom-right corner of the cell.",
           "member": "int64",
@@ -6719,7 +6648,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Row index of the bottom-right corner of the cell.",
           "member": "int64",
@@ -6729,7 +6657,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cell text",
           "member": "string",
@@ -6739,7 +6666,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Cell type. Valid values: body, header, footer",
           "member": "string",
@@ -6749,7 +6675,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Confidence. Value range: 0–100",
           "member": "int64",
@@ -6759,7 +6684,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Text line coordinates, which are represented as 4 vertex coordinates.",
           "member": "Coord",
@@ -6769,7 +6693,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Extended field",
           "member": "string",
@@ -8675,7 +8598,6 @@
       "document": "VinOCR request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The Base64-encoded value of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.",
           "example": "无",
@@ -8685,7 +8607,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
           "example": "https://xx/a.jpg ",

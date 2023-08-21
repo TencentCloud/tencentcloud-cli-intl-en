@@ -130,7 +130,6 @@
       "document": "Configuration information of the created input.",
       "members": [
         {
-          "default": "",
           "document": "Input name, which can contain 1 to 32 letters, digits, and underscores.",
           "example": "input",
           "member": "string",
@@ -140,7 +139,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Input protocol. Valid values: `SRT`, `RTP`, `RTMP`",
           "example": "SRT",
           "member": "string",
@@ -150,7 +148,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Input description. Length: [0, 255].",
           "example": "input description",
           "member": "string",
@@ -160,7 +157,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Allowlist of input IPs in CIDR format.",
           "example": "0.0.0.0/0",
           "member": "string",
@@ -170,7 +166,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "SRT configuration information of input.",
           "example": "0",
           "member": "CreateInputSRTSettings",
@@ -180,7 +175,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "RTP configuration information of input.",
           "example": "0",
           "member": "CreateInputRTPSettings",
@@ -190,7 +184,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Input failover. Valid values: `OPEN`, `CLOSE` (default)",
           "example": "CLOSE",
           "member": "string",
@@ -206,7 +199,6 @@
       "document": "RTP configuration information of the created input.",
       "members": [
         {
-          "default": "",
           "document": "Default value: none. Valid values: ['none'].",
           "member": "string",
           "name": "FEC",
@@ -215,7 +207,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Idle timeout period in ms. Default value: 5000. Value range: [1000, 10000].",
           "member": "int64",
           "name": "IdleTimeout",
@@ -230,7 +221,6 @@
       "document": "SRT configuration information of the created input.",
       "members": [
         {
-          "default": "",
           "document": "The SRT mode. Valid values: LISTENER (default), CALLER.",
           "example": "LISTENER",
           "member": "string",
@@ -240,7 +230,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Stream ID, which can contain 0 to 512 letters, digits, and special characters (.#!:&,=_-).",
           "example": "streamId",
           "member": "string",
@@ -250,7 +239,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Latency in ms. Default value: 0. Value range: [0, 3000].",
           "example": "0",
           "member": "int64",
@@ -260,7 +248,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Receive latency in ms. Default value: 120. Value range: [0, 3000].",
           "example": "120",
           "member": "int64",
@@ -270,7 +257,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Peer latency in ms. Default value: 0. Value range: [0, 3000].",
           "example": "0",
           "member": "int64",
@@ -280,7 +266,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Peer timeout period in ms. Default value: 5000. Value range: [1000, 10000].",
           "example": "5000",
           "member": "int64",
@@ -290,7 +275,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Decryption key, which is empty by default, indicating not to encrypt. Only ASCII codes can be filled. Length: [10, 79].",
           "example": "无",
           "member": "string",
@@ -300,7 +284,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Key length. Default value: 0. Valid values: 0, 16, 24, 32.",
           "example": "0",
           "member": "int64",
@@ -310,7 +293,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The SRT peer address, which is required if `Mode` is `CALLER`. Only one address is allowed.",
           "example": "无",
           "member": "SRTSourceAddressReq",
@@ -326,7 +308,6 @@
       "document": "The information of the output to create.",
       "members": [
         {
-          "default": "",
           "document": "The output name.",
           "example": "OutputName",
           "member": "string",
@@ -336,7 +317,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Description of the output.",
           "example": "OutputName",
           "member": "string",
@@ -346,7 +326,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The output protocol. Valid values: SRT, RTP, RTMP, RTMP_PULL.",
           "example": "SRT",
           "member": "string",
@@ -356,7 +335,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The output region.",
           "example": "ap-hongkong",
           "member": "string",
@@ -366,7 +344,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The SRT configuration.",
           "example": "0",
           "member": "CreateOutputSrtSettings",
@@ -376,7 +353,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The RTMP configuration.",
           "example": "0",
           "member": "CreateOutputRTMPSettings",
@@ -386,7 +362,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The RTP configuration.",
           "example": "0",
           "member": "CreateOutputInfoRTPSettings",
@@ -396,7 +371,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The IP allowlist. The address must be in CIDR format, such as `0.0.0.0/0`.\nThis parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty, there is no restriction on clients’ IP addresses.",
           "example": "0",
           "member": "string",
@@ -412,7 +386,6 @@
       "document": "The RTP configuration of the output to create.",
       "members": [
         {
-          "default": "",
           "document": "The relay destination addresses. One or two addresses are allowed.",
           "example": "0",
           "member": "CreateOutputRTPSettingsDestinations",
@@ -422,7 +395,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter must be set to `none`.",
           "example": "none",
           "member": "string",
@@ -432,7 +404,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The timeout period (ms).",
           "example": "1000",
           "member": "int64",
@@ -448,7 +419,6 @@
       "document": "The RTMP configuration of the output to create.",
       "members": [
         {
-          "default": "",
           "document": "The relay destination addresses. One or two addresses are allowed.",
           "member": "CreateOutputRtmpSettingsDestinations",
           "name": "Destinations",
@@ -457,7 +427,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The RTMP chunk size. Value range: [4096, 40960].",
           "member": "int64",
           "name": "ChunkSize",
@@ -472,7 +441,6 @@
       "document": "The RTP destination address of the output to create.",
       "members": [
         {
-          "default": "",
           "document": "The relay destination IP.",
           "member": "string",
           "name": "Ip",
@@ -481,7 +449,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The relay destination port.",
           "member": "int64",
           "name": "Port",
@@ -496,7 +463,6 @@
       "document": "The RTMP destination address of the output to create.",
       "members": [
         {
-          "default": "",
           "document": "The relay URL. Format: `rtmp://domain/live`.",
           "member": "string",
           "name": "Url",
@@ -505,7 +471,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The `StreamKey` for relay. Format: `stream?key=value`.",
           "member": "string",
           "name": "StreamKey",
@@ -520,7 +485,6 @@
       "document": "The SRT configuration of the output to create.",
       "members": [
         {
-          "default": "",
           "document": "The relay destination address, which is required if `Mode` is `CALLER`. Only one address is allowed.",
           "example": "无",
           "member": "CreateOutputSrtSettingsDestinations",
@@ -530,7 +494,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The stream ID for relay, which can contain 0 to 512 letters, digits, and special characters (.#!:&,=_-).",
           "example": "StreamId",
           "member": "string",
@@ -540,7 +503,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The total latency (ms) of SRT relay. Value range: [0, 3000]. Default: 0.",
           "example": "0",
           "member": "int64",
@@ -550,7 +512,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The receive latency (ms) of SRT relay. Value range: [0, 3000]. Default: 120.",
           "example": "120",
           "member": "int64",
@@ -560,7 +521,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The peer-to-peer latency (ms) of SRT relay. Value range: [0, 3000]. Default: 0.",
           "example": "0",
           "member": "int64",
@@ -570,7 +530,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The timeout period (ms) for the SRT relay peer. Value range: [1000, 10000]. Default: 5000.",
           "example": "5000",
           "member": "int64",
@@ -580,7 +539,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The encryption key for SRT relay, which is empty by default, indicating not to encrypt. Only ASCII codes are allowed. Length: [10, 79].",
           "example": "无",
           "member": "string",
@@ -590,7 +548,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The key length for SRT relay. Valid values: 0 (default), 16, 24, 32.",
           "example": "0",
           "member": "int64",
@@ -600,7 +557,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The SRT mode. Valid values: LISTENER, CALLER (default).",
           "example": "CALLER",
           "member": "string",
@@ -616,7 +572,6 @@
       "document": "The SRT destination address of the output to create.",
       "members": [
         {
-          "default": "",
           "document": "The output IP.",
           "member": "string",
           "name": "Ip",
@@ -625,7 +580,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The output port.",
           "member": "int64",
           "name": "Port",
@@ -640,7 +594,6 @@
       "document": "CreateStreamLinkFlow request structure.",
       "members": [
         {
-          "default": "",
           "document": "Flow name",
           "example": "aaa",
           "member": "string",
@@ -649,7 +602,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Maximum bandwidth in bps. Valid values: `10000000`, `20000000`, `50000000`",
           "example": "20000000",
           "member": "int64",
@@ -658,7 +610,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Flow input group",
           "example": "无",
           "member": "CreateInput",
@@ -694,7 +645,6 @@
       "document": "CreateStreamLinkOutputInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "The flow ID.",
           "example": "01746cfeda560956b92d34d30445",
           "member": "string",
@@ -703,7 +653,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The output configuration of the flow.",
           "example": "无",
           "member": "CreateOutputInfo",
@@ -739,7 +688,6 @@
       "document": "DeleteStreamLinkFlow request structure.",
       "members": [
         {
-          "default": "",
           "document": "Flow ID",
           "example": "aaa",
           "member": "string",
@@ -766,7 +714,6 @@
       "document": "DeleteStreamLinkOutput request structure.",
       "members": [
         {
-          "default": "",
           "document": "Flow ID",
           "example": "aaa",
           "member": "string",
@@ -775,7 +722,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Output ID",
           "example": "asd21dsa",
           "member": "string",
@@ -802,7 +748,6 @@
       "document": "Configuration information of the queried flow.",
       "members": [
         {
-          "default": "",
           "document": "Flow ID.",
           "member": "string",
           "name": "FlowId",
@@ -811,7 +756,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Flow name.",
           "member": "string",
           "name": "FlowName",
@@ -820,7 +764,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Flow status. Valid values: `IDLE`, `RUNNING`",
           "member": "string",
           "name": "State",
@@ -829,7 +772,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Maximum bandwidth value.",
           "member": "int64",
           "name": "MaxBandwidth",
@@ -838,7 +780,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Input group.",
           "member": "DescribeInput",
           "name": "InputGroup",
@@ -847,7 +788,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Output group.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "DescribeOutput",
           "name": "OutputGroup",
@@ -862,7 +802,6 @@
       "document": "Configuration information of the queried input.",
       "members": [
         {
-          "default": "",
           "document": "Input ID.",
           "example": "id",
           "member": "string",
@@ -872,7 +811,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Input name.",
           "example": "inputName",
           "member": "string",
@@ -882,7 +820,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Input description.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "description",
           "member": "string",
@@ -892,7 +829,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Input protocol.",
           "example": "SRT",
           "member": "string",
@@ -902,7 +838,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Input address list.",
           "example": "0",
           "member": "InputAddress",
@@ -912,7 +847,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Input IP allowlist.",
           "example": "0",
           "member": "string",
@@ -922,7 +856,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "SRT configuration information of input.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "DescribeInputSRTSettings",
@@ -932,7 +865,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "RTP configuration information of input.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "DescribeInputRTPSettings",
@@ -942,7 +874,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Input region.",
           "example": "ap-hongkong",
           "member": "string",
@@ -952,7 +883,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "RTMP configuration information of an input",
           "example": "0",
           "member": "DescribeInputRTMPSettings",
@@ -962,7 +892,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Input failover\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "CLOSE",
           "member": "string",
@@ -978,7 +907,6 @@
       "document": "RTMP configuration information of the queried input",
       "members": [
         {
-          "default": "",
           "document": "Path for RTMP stream pushing\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "live_appid",
           "member": "string",
@@ -988,7 +916,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "StreamKey for RTMP stream pushing\nFormat of an RTMP stream pushing URL: rtmp://IP address:1935/AppName/StreamKey",
           "example": "inputid_index",
           "member": "string",
@@ -1004,7 +931,6 @@
       "document": "RTP configuration information of the queried input.",
       "members": [
         {
-          "default": "",
           "document": "Whether it is FEC.",
           "member": "string",
           "name": "FEC",
@@ -1013,7 +939,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Idle timeout period.",
           "member": "int64",
           "name": "IdleTimeout",
@@ -1028,7 +953,6 @@
       "document": "SRT configuration information of the queried input.",
       "members": [
         {
-          "default": "",
           "document": "The SRT mode.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "LISTENER",
           "member": "string",
@@ -1038,7 +962,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Stream ID.",
           "example": "StreamId",
           "member": "string",
@@ -1048,7 +971,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Latency.",
           "example": "0",
           "member": "int64",
@@ -1058,7 +980,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Receive latency.",
           "example": "120",
           "member": "int64",
@@ -1068,7 +989,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Peer latency.",
           "example": "0",
           "member": "int64",
@@ -1078,7 +998,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Peer idle timeout period.",
           "example": "5000",
           "member": "int64",
@@ -1088,7 +1007,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Decryption key.",
           "example": "无",
           "member": "string",
@@ -1098,7 +1016,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Key length.",
           "example": "0",
           "member": "int64",
@@ -1108,7 +1025,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The SRT peer address.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "SRTSourceAddressResp",
@@ -1124,7 +1040,6 @@
       "document": "Configuration information of the queried output.",
       "members": [
         {
-          "default": "",
           "document": "Output ID.",
           "example": "AB342ED131CE",
           "member": "string",
@@ -1134,7 +1049,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Output name.",
           "example": "OutputName",
           "member": "string",
@@ -1144,7 +1058,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Output type.",
           "example": "Internet",
           "member": "string",
@@ -1154,7 +1067,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Output description.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "Description",
           "member": "string",
@@ -1164,7 +1076,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Output protocol.",
           "example": "RTMP",
           "member": "string",
@@ -1174,7 +1085,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Output destination address information list.",
           "example": "无",
           "member": "OutputAddress",
@@ -1184,7 +1094,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Output region.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "ap-shanghai",
           "member": "string",
@@ -1194,7 +1103,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "SRT configuration information of output.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DescribeOutputSRTSettings",
@@ -1204,7 +1112,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "RTP configuration information of output.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DescribeOutputRTPSettings",
@@ -1214,7 +1121,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "RTMP configuration information of output.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DescribeOutputRTMPSettings",
@@ -1224,7 +1130,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "RTMP pull configuration of the output\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "DescribeOutputRTMPPullSettings",
@@ -1234,7 +1139,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "CIDR allowlist\nThis parameter is valid if `Protocol` is set to `RTMP_PULL`. If this parameter is left empty, there is no restriction on clients’ IP addresses.\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "string",
@@ -1250,7 +1154,6 @@
       "document": "RTMP pull URL of the output",
       "members": [
         {
-          "default": "",
           "document": "`tcUrl` of the RTMP pull URL",
           "example": "rtmp://1.1.1.1:1/live",
           "member": "string",
@@ -1260,7 +1163,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Stream key of the RTMP pull URL",
           "example": "AB342ED131CE",
           "member": "string",
@@ -1276,7 +1178,6 @@
       "document": "RTMP pull configuration of the output",
       "members": [
         {
-          "default": "",
           "document": "List of pull URLs\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "DescribeOutputRTMPPullServerUrl",
@@ -1292,7 +1193,6 @@
       "document": "RTMP configuration information of the queried output.",
       "members": [
         {
-          "default": "",
           "document": "Idle timeout period.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "IdleTimeout",
@@ -1301,7 +1201,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Chunk size.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "ChunkSize",
@@ -1310,7 +1209,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Destination address information list of RTMP push.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "RTMPAddressDestination",
           "name": "Destinations",
@@ -1325,7 +1223,6 @@
       "document": "RTP configuration information of the queried output.",
       "members": [
         {
-          "default": "",
           "document": "Destination address information list of RTP push.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "RTPAddressDestination",
           "name": "Destinations",
@@ -1334,7 +1231,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Whether it is FEC.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "string",
           "name": "FEC",
@@ -1343,7 +1239,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Idle timeout period.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "member": "int64",
           "name": "IdleTimeout",
@@ -1358,7 +1253,6 @@
       "document": "SRT configuration information of the queried output.",
       "members": [
         {
-          "default": "",
           "document": "A list of the destination addresses for relay. This parameter is valid if `Mode` is `CALLER`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "SRTAddressDestination",
@@ -1368,7 +1262,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Stream ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "StreamId",
           "member": "string",
@@ -1378,7 +1271,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Latency.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -1388,7 +1280,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Receive latency.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "120",
           "member": "int64",
@@ -1398,7 +1289,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Peer latency.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -1408,7 +1298,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Peer idle timeout period.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "5000",
           "member": "int64",
@@ -1418,7 +1307,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Encryption key.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -1428,7 +1316,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "Encryption key length.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
@@ -1438,7 +1325,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The SRT mode.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "CALLER",
           "member": "string",
@@ -1448,7 +1334,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The server’s listen address, which is valid if `Mode` is `LISTENER`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "OutputSRTSourceAddressResp",
@@ -1464,7 +1349,6 @@
       "document": "DescribeStreamLinkFlowLogs request structure.",
       "members": [
         {
-          "default": "",
           "document": "The flow ID.",
           "example": "0175723949ba0956b92d0bf40cfe",
           "member": "string",
@@ -1473,7 +1357,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.\nIt must be in UTC format, such as `2020-01-01T12:00:00Z`.",
           "example": "2020-12-10T13:00:00Z",
           "member": "string",
@@ -1482,7 +1365,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.\nIt must be in UTC format, such as `2020-01-01T12:00:00Z`.",
           "example": "2020-12-10T13:27:00Z",
           "member": "string",
@@ -1491,7 +1373,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to query the inputs or outputs. Valid values: input, output.",
           "example": "[\"Input\",\"Output\"]",
           "member": "string",
@@ -1500,7 +1381,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "Whether to query the primary or backup pipeline. Valid values: 0, 1.",
           "example": "[\"0\",\"1\"]",
           "member": "string",
@@ -1509,7 +1389,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The page size. Value range: [1, 1000]. Default: 100.",
           "example": "100",
           "member": "int64",
@@ -1518,7 +1397,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Whether to sort the records by timestamp in descending or ascending order. Valid values: desc (default), asc.",
           "example": "desc",
           "member": "string",
@@ -1527,7 +1405,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The page number. Value range: [1, 1000]. Default: 1.",
           "example": "1",
           "member": "int64",
@@ -1599,7 +1476,6 @@
       "document": "DescribeStreamLinkFlowMediaStatistics request structure.",
       "members": [
         {
-          "default": "",
           "document": "The flow ID.",
           "example": "0175723949ba0956b92d0bf40cfe",
           "member": "string",
@@ -1608,7 +1484,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to query the inputs or outputs. Valid values: input, output.",
           "example": "input",
           "member": "string",
@@ -1617,7 +1492,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The input or output ID.",
           "example": "0175723949bb0956b92d0bf40cff",
           "member": "string",
@@ -1626,7 +1500,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to query the primary or backup pipeline. Valid values: 0, 1.",
           "example": "0",
           "member": "string",
@@ -1635,7 +1508,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The query interval. Valid values: 5s, 1min, 5min, 15min.",
           "example": "1min",
           "member": "string",
@@ -1644,7 +1516,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.\nIt must be in UTC format, such as `2020-01-01T12:00:00Z`.",
           "example": "2020-12-10T11:00:00Z",
           "member": "string",
@@ -1653,7 +1524,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.\nIt must be in UTC format, such as `2020-01-01T12:00:00Z`.",
           "example": "2020-12-10T12:00:00Z",
           "member": "string",
@@ -1689,7 +1559,6 @@
       "document": "DescribeStreamLinkFlowRealtimeStatus request structure.",
       "members": [
         {
-          "default": "",
           "document": "The flow ID.",
           "example": "0176ac7f1af20956b92d2aad1e6d",
           "member": "string",
@@ -1698,7 +1567,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The IDs of the inputs to query. If this parameter and `OutputIds` are both empty, all inputs and outputs are queried.",
           "example": "[\"0176ac7f1af3\",\"0956b92d2aad1e6e\"]",
           "member": "string",
@@ -1707,7 +1575,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "document": "The IDs of the outputs to query. If this parameter and `OutputIds` are both empty, all inputs and outputs are queried.",
           "example": "[\"0178c3f4bceb09\",\"56b92d149e1b5d\"]",
           "member": "string",
@@ -1752,7 +1619,6 @@
       "document": "DescribeStreamLinkFlow request structure.",
       "members": [
         {
-          "default": "",
           "document": "Flow ID",
           "example": "aaa",
           "member": "string",
@@ -1788,7 +1654,6 @@
       "document": "DescribeStreamLinkFlowSRTStatistics request structure.",
       "members": [
         {
-          "default": "",
           "document": "The flow ID.",
           "example": "0175723949ba0956b92d0bf40cfe",
           "member": "string",
@@ -1797,7 +1662,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to query the inputs or outputs. Valid values: input, output.",
           "example": "input",
           "member": "string",
@@ -1806,7 +1670,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The input or output ID.",
           "example": "0175723949bb0956b92d0bf40cff",
           "member": "string",
@@ -1815,7 +1678,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to query the primary or backup pipeline. Valid values: 0, 1.",
           "example": "0",
           "member": "string",
@@ -1824,7 +1686,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.\nIt must be in UTC format, such as `2020-01-01T12:00:00Z`.",
           "example": "2020-12-10T11:00:00Z",
           "member": "string",
@@ -1833,7 +1694,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.\nIt must be in UTC format, such as `2020-01-01T12:00:00Z`.",
           "example": "2020-12-10T12:00:00Z",
           "member": "string",
@@ -1842,7 +1702,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The query interval. Valid values: 5s, 1min, 5min, 15min.",
           "example": "1min",
           "member": "string",
@@ -1878,7 +1737,6 @@
       "document": "DescribeStreamLinkFlowStatistics request structure.",
       "members": [
         {
-          "default": "",
           "document": "The flow ID.",
           "example": "AB342ED131CE",
           "member": "string",
@@ -1887,7 +1745,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to query the inputs or outputs. Valid values: input, output.",
           "example": "input",
           "member": "string",
@@ -1896,7 +1753,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The input or output ID.",
           "example": "CD342ED131CE",
           "member": "string",
@@ -1905,7 +1761,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Whether to query the primary or backup pipeline. Valid values: 0, 1.",
           "example": "0",
           "member": "string",
@@ -1914,7 +1769,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The query interval. Valid values: 5s, 1min, 5min, 15min.",
           "example": "1min",
           "member": "string",
@@ -1923,7 +1777,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The start time for query, which is 1 hour ago by default. You can query statistics in the last 7 days.\nIt must be in UTC format, such as `2020-01-01T12:00:00Z`.",
           "example": "2020-01-01T12:00:00Z",
           "member": "string",
@@ -1932,7 +1785,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The end time for query, which is 1 hour after the start time by default. The longest time range allowed for query is 24 hours.\nIt must be in UTC format, such as `2020-01-01T12:00:00Z`.",
           "example": "2020-01-01T12:00:00Z",
           "member": "string",
@@ -1968,7 +1820,6 @@
       "document": "DescribeStreamLinkFlows request structure.",
       "members": [
         {
-          "default": "",
           "document": "Number of the current page. Default value: `1`",
           "example": "1",
           "member": "int64",
@@ -1977,7 +1828,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "document": "Number of entries per page. Default value: `10`",
           "example": "10",
           "member": "int64",
@@ -2075,7 +1925,6 @@
       "document": "The audio data of the flow.",
       "members": [
         {
-          "default": "",
           "document": "The frame rate.",
           "example": "30",
           "member": "int64",
@@ -2085,7 +1934,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The bitrate (bps).",
           "example": "1000",
           "member": "int64",
@@ -2095,7 +1943,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The audio PID.",
           "example": "256",
           "member": "int64",
@@ -2111,7 +1958,6 @@
       "document": "The logs of a flow.",
       "members": [
         {
-          "default": "",
           "document": "The timestamp (seconds).",
           "member": "int64",
           "name": "Timestamp",
@@ -2120,7 +1966,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is an input or output.",
           "member": "string",
           "name": "Type",
@@ -2129,7 +1974,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The input or output ID.",
           "member": "string",
           "name": "InputOutputId",
@@ -2138,7 +1982,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The protocol.",
           "member": "string",
           "name": "Protocol",
@@ -2147,7 +1990,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The event code.",
           "member": "string",
           "name": "EventCode",
@@ -2156,7 +1998,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The event information.",
           "member": "string",
           "name": "EventMessage",
@@ -2165,7 +2006,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The peer IP.",
           "member": "string",
           "name": "RemoteIp",
@@ -2174,7 +2014,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The peer port.",
           "member": "string",
           "name": "RemotePort",
@@ -2183,7 +2022,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether it is a primary or backup pipeline. Valid values: 0 (primary), 1 (backup).",
           "member": "string",
           "name": "Pipeline",
@@ -2192,7 +2030,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The input or output name.",
           "member": "string",
           "name": "InputOutputName",
@@ -2207,7 +2044,6 @@
       "document": "The audio data of a flow.",
       "members": [
         {
-          "default": "",
           "document": "The frame rate.",
           "member": "int64",
           "name": "Fps",
@@ -2216,7 +2052,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The bitrate (bps).",
           "member": "int64",
           "name": "Rate",
@@ -2225,7 +2060,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The audio PID.",
           "member": "int64",
           "name": "Pid",
@@ -2234,7 +2068,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The ID of a push session.",
           "member": "string",
           "name": "SessionId",
@@ -2249,7 +2082,6 @@
       "document": "The media data of a flow.",
       "members": [
         {
-          "default": "",
           "document": "The timestamp (seconds).",
           "example": "1610954100",
           "member": "int64",
@@ -2259,7 +2091,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The total bandwidth.",
           "example": "2824932",
           "member": "int64",
@@ -2269,7 +2100,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The video data of the flow.",
           "example": "0",
           "member": "FlowMediaVideo",
@@ -2279,7 +2109,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The audio data of the flow.",
           "example": "0",
           "member": "FlowMediaAudio",
@@ -2289,7 +2118,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The ID of a push session.",
           "example": "412573995",
           "member": "string",
@@ -2299,7 +2127,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The client IP.",
           "example": "1.1.1.1",
           "member": "string",
@@ -2315,7 +2142,6 @@
       "document": "The video data of a flow.",
       "members": [
         {
-          "default": "",
           "document": "The frame rate.",
           "member": "int64",
           "name": "Fps",
@@ -2324,7 +2150,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The bitrate (bps).",
           "member": "int64",
           "name": "Rate",
@@ -2333,7 +2158,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The video PID.",
           "member": "int64",
           "name": "Pid",
@@ -2342,7 +2166,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The ID of a push session.",
           "member": "string",
           "name": "SessionId",
@@ -2357,7 +2180,6 @@
       "document": "The common real-time status information of a flow.",
       "members": [
         {
-          "default": "",
           "document": "The connection status. Valid values: Connected, Waiting, Idle.",
           "example": "Connected",
           "member": "string",
@@ -2367,7 +2189,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The connection mode. Valid values: Listener, Caller.",
           "example": "Listener",
           "member": "string",
@@ -2377,7 +2198,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The connected time.",
           "example": "1",
           "member": "int64",
@@ -2387,7 +2207,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The real-time bitrate (bps).",
           "example": "1",
           "member": "int64",
@@ -2397,7 +2216,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of retries.",
           "example": "1",
           "member": "int64",
@@ -2413,7 +2231,6 @@
       "document": "The real-time status information of a flow.",
       "members": [
         {
-          "default": "",
           "document": "Whether it is an input or output. Valid values: Input, Output.",
           "example": "Input",
           "member": "string",
@@ -2423,7 +2240,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The input ID, which is not empty if `Type` is `Input`.",
           "example": "0176ac7f1af30956b92d2aad1e6e",
           "member": "string",
@@ -2433,7 +2249,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The output ID, which is not empty if `Type` is `Output`.",
           "example": "2176ac7f1af20956b92d2aad1234",
           "member": "string",
@@ -2443,7 +2258,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The flow ID.",
           "example": "asd5ac7f1af20956b92d2aadq231",
           "member": "string",
@@ -2453,7 +2267,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The protocol used. Valid values: SRT, RTP, RTMP.",
           "example": "SRT",
           "member": "string",
@@ -2463,7 +2276,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The common status information.",
           "example": "无",
           "member": "FlowRealtimeStatusCommon",
@@ -2473,7 +2285,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is returned if `Protocol` is `SRT`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "FlowRealtimeStatusSRT",
@@ -2483,7 +2294,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "This parameter is returned if `Protocol` is `RTMP`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "FlowRealtimeStatusRTMP",
@@ -2493,7 +2303,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "document": "The server IP.",
           "example": "121.23.56.99",
           "member": "string",
@@ -2503,7 +2312,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "This parameter is returned if the RTP protocol is used.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "FlowRealtimeStatusRTP",
@@ -2519,7 +2327,6 @@
       "document": "The real-time RTMP streaming information of a flow.",
       "members": [
         {
-          "default": "",
           "document": "The video frame rate.",
           "example": "25",
           "member": "int64",
@@ -2529,7 +2336,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The audio frame rate.",
           "example": "48",
           "member": "int64",
@@ -2545,7 +2351,6 @@
       "document": "The real-time RTP streaming information of a flow.",
       "members": [
         {
-          "default": "",
           "document": "The number of packets transmitted.",
           "example": "30",
           "member": "int64",
@@ -2561,7 +2366,6 @@
       "document": "The real-time SRT streaming information of a flow.",
       "members": [
         {
-          "default": "",
           "document": "The latency (ms).",
           "example": "1",
           "member": "int64",
@@ -2571,7 +2375,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "RTT (ms).",
           "example": "1",
           "member": "int64",
@@ -2581,7 +2384,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of packets sent or received.",
           "example": "1",
           "member": "int64",
@@ -2591,7 +2393,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The packet loss rate.",
           "example": "0.01",
           "member": "float",
@@ -2601,7 +2402,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The retransmission rate.",
           "example": "0.01",
           "member": "float",
@@ -2611,7 +2411,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of packets dropped.",
           "example": "1",
           "member": "int64",
@@ -2621,7 +2420,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to encrypt the stream. Valid values: On, Off.",
           "example": "On",
           "member": "string",
@@ -2637,7 +2435,6 @@
       "document": "The SRT streaming performance data.",
       "members": [
         {
-          "default": "",
           "document": "The timestamp (seconds).",
           "example": "1611288000",
           "member": "int64",
@@ -2647,7 +2444,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The packet loss rate for sending.",
           "example": "0",
           "member": "int64",
@@ -2657,7 +2453,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The retry rate for sending.",
           "example": "0",
           "member": "int64",
@@ -2667,7 +2462,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The packet loss rate for receiving.",
           "example": "0",
           "member": "int64",
@@ -2677,7 +2471,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The retry rate for receiving.",
           "example": "0",
           "member": "int64",
@@ -2687,7 +2480,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The peer RTT.",
           "example": "100",
           "member": "int64",
@@ -2697,7 +2489,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The ID of a push session.",
           "example": "15346848",
           "member": "string",
@@ -2707,7 +2498,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of dropped packets for sending.",
           "example": "0",
           "member": "int64",
@@ -2717,7 +2507,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The number of dropped packets for receiving.",
           "example": "0",
           "member": "int64",
@@ -2733,7 +2522,6 @@
       "document": "The flow statistics.",
       "members": [
         {
-          "default": "",
           "document": "The session ID.",
           "example": "1564865",
           "member": "string",
@@ -2743,7 +2531,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The peer IP.",
           "example": "1.1.1.1",
           "member": "string",
@@ -2753,7 +2540,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The total bandwidth.",
           "example": "2000",
           "member": "int64",
@@ -2763,7 +2549,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The video data.",
           "example": "0",
           "member": "FlowVideo",
@@ -2773,7 +2558,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The audio data.",
           "example": "0",
           "member": "FlowAudio",
@@ -2789,7 +2573,6 @@
       "document": "A list of the flow statistics.",
       "members": [
         {
-          "default": "",
           "document": "The timestamp.",
           "example": "1611288000",
           "member": "int64",
@@ -2799,7 +2582,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The statistics of all the sessions.",
           "example": "0",
           "member": "FlowStatistics",
@@ -2815,7 +2597,6 @@
       "document": "The video data of a flow.",
       "members": [
         {
-          "default": "",
           "document": "The frame rate.",
           "example": "30",
           "member": "int64",
@@ -2825,7 +2606,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The bitrate (bps).",
           "example": "1000",
           "member": "int64",
@@ -2835,7 +2615,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The audio PID.",
           "example": "257",
           "member": "int64",
@@ -2851,7 +2630,6 @@
       "document": "Input address information.",
       "members": [
         {
-          "default": "",
           "document": "Input address IP.",
           "member": "string",
           "name": "Ip",
@@ -2860,7 +2638,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Input address port.",
           "member": "int64",
           "name": "Port",
@@ -2875,7 +2652,6 @@
       "document": "The new input configuration.",
       "members": [
         {
-          "default": "",
           "document": "The input ID.",
           "example": "InputId",
           "member": "string",
@@ -2885,7 +2661,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The input name.",
           "example": "InputName",
           "member": "string",
@@ -2895,7 +2670,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The description of the input.",
           "example": "Description",
           "member": "string",
@@ -2905,7 +2679,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The IP addresses (CIDR) allowed to push streams.",
           "example": "[\"0.0.0.0/0\"]",
           "member": "string",
@@ -2915,7 +2688,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The SRT configuration information.",
           "example": "0",
           "member": "CreateInputSRTSettings",
@@ -2925,7 +2697,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The RTP configuration information.",
           "example": "0",
           "member": "CreateInputRTPSettings",
@@ -2935,7 +2706,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The input protocol. Valid values: SRT, RTP, RTMP.\nIf there is an RTP input, the output must be RTP.\nIf there is an RTMP input, the output must be SRT or RTMP.\nIf there is an SRT input, the output must be SRT.",
           "example": "SRT",
           "member": "string",
@@ -2945,7 +2715,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Whether to enable input failover. Valid values: OPEN, CLOSE.",
           "example": "CLOSE",
           "member": "string",
@@ -2961,7 +2730,6 @@
       "document": "The new output configuration.",
       "members": [
         {
-          "default": "",
           "document": "The ID of the output to modify.",
           "example": "AB342ED131CE",
           "member": "string",
@@ -2971,7 +2739,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The output name.",
           "example": "OutputName",
           "member": "string",
@@ -2981,7 +2748,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The description of the output.",
           "example": "Description",
           "member": "string",
@@ -2991,7 +2757,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The output protocol. Valid values: SRT, RTP, RTMP.",
           "example": "SRT",
           "member": "string",
@@ -3001,7 +2766,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The SRT relay configuration.",
           "example": "无",
           "member": "CreateOutputSrtSettings",
@@ -3011,7 +2775,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The RTP relay configuration.",
           "example": "无",
           "member": "CreateOutputInfoRTPSettings",
@@ -3021,7 +2784,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The RTMP relay configuration.",
           "example": "无",
           "member": "CreateOutputRTMPSettings",
@@ -3031,7 +2793,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The IP allowlist. The address must be in CIDR format, such as `0.0.0.0/0`.\nThis parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty, there is no restriction on clients’ IP addresses.",
           "example": "无",
           "member": "string",
@@ -3047,7 +2808,6 @@
       "document": "ModifyStreamLinkFlow request structure.",
       "members": [
         {
-          "default": "",
           "document": "Flow ID",
           "example": "aaa",
           "member": "string",
@@ -3056,7 +2816,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "Name of the flow to modify",
           "example": "aaa",
           "member": "string",
@@ -3083,7 +2842,6 @@
       "document": "ModifyStreamLinkInput request structure.",
       "members": [
         {
-          "default": "",
           "document": "The flow ID.",
           "example": "01746cfeda560956b92d34d30445",
           "member": "string",
@@ -3092,7 +2850,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The input information to modify.",
           "example": "无",
           "member": "ModifyInput",
@@ -3128,7 +2885,6 @@
       "document": "ModifyStreamLinkOutputInfo request structure.",
       "members": [
         {
-          "default": "",
           "document": "The flow ID.",
           "example": "无",
           "member": "string",
@@ -3137,7 +2893,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "document": "The output configuration to modify.",
           "example": "无",
           "member": "ModifyOutputInfo",
@@ -3173,7 +2928,6 @@
       "document": "Output destination address.",
       "members": [
         {
-          "default": "",
           "document": "Output destination IP.",
           "member": "string",
           "name": "Ip",
@@ -3188,7 +2942,6 @@
       "document": "The listen address for an SRT output.",
       "members": [
         {
-          "default": "",
           "document": "The listen IP.",
           "example": "1.1.1.1",
           "member": "string",
@@ -3198,7 +2951,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The listen port.",
           "example": "65535",
           "member": "int64",
@@ -3214,7 +2966,6 @@
       "document": "Destination address information of RTMP push.",
       "members": [
         {
-          "default": "",
           "document": "Destination URL of RTMP push in the format of 'rtmp://domain/live'.",
           "member": "string",
           "name": "Url",
@@ -3223,7 +2974,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Destination `StreamKey` of RTMP push in the format of 'streamid?key=value'.",
           "member": "string",
           "name": "StreamKey",
@@ -3238,7 +2988,6 @@
       "document": "Destination address information of RTP push.",
       "members": [
         {
-          "default": "",
           "document": "Push destination address IP.",
           "member": "string",
           "name": "Ip",
@@ -3247,7 +2996,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Push destination address port.",
           "member": "int64",
           "name": "Port",
@@ -3262,7 +3010,6 @@
       "document": "Region information",
       "members": [
         {
-          "default": "",
           "document": "Region name",
           "example": "ap-mumbai",
           "member": "string",
@@ -3278,7 +3025,6 @@
       "document": "Push destination address information.",
       "members": [
         {
-          "default": "",
           "document": "Destination address IP.",
           "member": "string",
           "name": "Ip",
@@ -3287,7 +3033,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "Destination address port.",
           "member": "int64",
           "name": "Port",
@@ -3302,7 +3047,6 @@
       "document": "The SRT input address.",
       "members": [
         {
-          "default": "",
           "document": "The peer IP.",
           "example": "1.1.1.1",
           "member": "string",
@@ -3312,7 +3056,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The peer port.",
           "example": "65535",
           "member": "int64",
@@ -3328,7 +3071,6 @@
       "document": "The SRT input address.",
       "members": [
         {
-          "default": "",
           "document": "The peer IP.",
           "example": "1.1.1.1",
           "member": "string",
@@ -3338,7 +3080,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "document": "The peer port.",
           "example": "65535",
           "member": "int64",
@@ -3354,7 +3095,6 @@
       "document": "StartStreamLinkFlow request structure.",
       "members": [
         {
-          "default": "",
           "document": "Flow ID",
           "example": "aaa",
           "member": "string",
@@ -3381,7 +3121,6 @@
       "document": "StopStreamLinkFlow request structure.",
       "members": [
         {
-          "default": "",
           "document": "Flow ID",
           "example": "aaa",
           "member": "string",
@@ -3408,7 +3147,6 @@
       "document": "StreamLink region information",
       "members": [
         {
-          "default": "",
           "document": "List of StreamLink regions",
           "example": "无",
           "member": "RegionInfo",

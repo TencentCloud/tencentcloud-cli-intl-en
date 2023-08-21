@@ -482,7 +482,6 @@
       "document": "Acceleration type",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Acceleration switch. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on",
@@ -631,7 +630,6 @@
       "document": "ACL configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Switch. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on",
@@ -642,7 +640,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The custom rule.",
           "example": "无",
@@ -653,7 +650,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Custom managed rules\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
@@ -670,7 +666,6 @@
       "document": "The custom rule",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The rule name.",
           "example": "rule1",
@@ -681,7 +676,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule action. Values:\n<li>`trans`: Allow the request.</li>\n<li>`drop`: Block the request.</li>\n<li>`monitor`: Observe the request.</li>\n<li>`ban`: Block the IP.</li>\n<li>`redirect`: Redirect the request.</li>\n<li>`page`: Return the specified page.</li>\n<li>`alg`: Verify the request by Javascript challenge.</li>",
           "example": "drop",
@@ -692,7 +686,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule status. Values:\n<li>`on`: Enabled</li>\n<li>`off`: Disabled</li>",
           "example": "on",
@@ -703,7 +696,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The custom rule.",
           "example": "无",
@@ -714,7 +706,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule priority. Value range: 0-100.",
           "example": "50",
@@ -725,7 +716,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule ID, which is only used as an output parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -736,7 +726,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The update time, which is only used as an output parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
@@ -747,7 +736,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The IP blocking duration. Value range: 0 seconds - 2 days. Default value: 0 seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
@@ -758,7 +746,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The unit of the IP blocking duration. Values:\n<li>`second`: Second</li>\n<li>`minutes`: Minute</li>\n<li>`hour`: Hour</li>Default value: second.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "min",
@@ -769,7 +756,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of the custom page, which defaults to an empty string.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "error.html",
@@ -780,7 +766,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the custom page, which defaults to 0.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1111",
@@ -791,7 +776,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The redirection URL, which must be a subdomain name of the site. It defaults to an empty string.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "http%3A%2F%2Fexample.com%2Fpath%2Ferror.html",
@@ -802,7 +786,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The response code returned after redirection, which defaults to 0.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "566",
@@ -855,7 +838,6 @@
       "document": "Key-value pair filters for conditional filtering queries and fuzzy queries, such as filtering ID, name, and status.\nIf more than one filter exists, the logical relationship between these filters is `AND`.\nIf one filter has multiple values, the logical relationship between these values is `OR`.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Field to be filtered.",
           "example": "zone-name",
@@ -866,7 +848,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value of the filtered field.",
           "example": "[\"www.qq.com\",\"www.baidu.com\"]",
@@ -877,7 +858,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable fuzzy query.",
           "example": "false",
@@ -894,7 +874,6 @@
       "document": "AI rule engine",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The status of the AI rule engine. Values:\n<li>`smart_status_close`: Disabled</li>\n<li>`smart_status_open`: Block</li>\n<li>`smart_status_observe`: Observe</li>",
           "example": "smart_status_close",
@@ -1155,7 +1134,6 @@
       "document": "Information of the alias domain name",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The alias domain name.",
           "example": "eo.tencent.com",
@@ -1166,7 +1144,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-xxx",
@@ -1177,7 +1154,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The target domain name.",
           "example": "a.example.com",
@@ -1188,7 +1164,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status of the alias domain name. Values:\n<li>`active`: Activated</li>\n<li>`pending`: Deploying</li>\n<li>`conflict`: Reclaimed</li>\n<li>`stop`: Stopped</li>",
           "example": "active",
@@ -1199,7 +1174,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The blocking mode. Values:\n<li>`0`: Not blocked</li>\n<li>`11`: Blocked due to regulatory compliance</li>\n<li>`14`: Blocked due to ICP filing not obtained</li>",
           "example": "0",
@@ -1210,7 +1184,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time of the alias domain name.",
           "example": "无",
@@ -1221,7 +1194,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Modification time of the alias domain name.",
           "example": "无",
@@ -1530,7 +1502,6 @@
       "document": "The site ownership information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "",
           "example": "reclaim",
@@ -1541,7 +1512,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The record type.",
           "example": "TXT",
@@ -1552,7 +1522,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The record value.",
           "example": "无",
@@ -1569,7 +1538,6 @@
       "document": "BindZoneToPlan request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the site to be bound.",
           "example": "zone-xxxyyyzzz",
@@ -1579,7 +1547,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the target plan.",
           "example": "edgeone-qqqwwweee",
@@ -1709,7 +1676,6 @@
       "document": "Bot managed rules. The rule IDs can be obtained from the output of DescribeBotManagedRules.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The rule action. Values:\n<li>`drop`: Block</li>\n<li>`trans`: Allow</li>\n<li>`alg`: JavaScript challenge</li>\n<li>`monitor`: Observe</li>",
           "example": "drop",
@@ -1720,7 +1686,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule ID, which is only used as an output parameter.",
           "example": "1",
@@ -1731,7 +1696,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the rule that applies the \"Allow\" action.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[1,2]",
@@ -1742,7 +1706,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the rule that applies the \"JavaScript challenge\" action.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[1,2]",
@@ -1753,7 +1716,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the rule that applies the \"Managed challenge\" action.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[1,2]",
@@ -1764,7 +1726,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the rule that applies the \"Observe\" action.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[1,2]",
@@ -1775,7 +1736,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the rule that applies the \"Block\" action.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[1,2]",
@@ -1792,7 +1752,6 @@
       "document": "Bot user portrait rules",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Switch. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "off",
@@ -1803,7 +1762,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule ID, which is only used as an output parameter.",
           "example": "1",
@@ -1814,7 +1772,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the rule that applies the \"JavaScript challenge\" action.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[1,2]",
@@ -1825,7 +1782,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the rule that applies the \"Managed challenge\" action.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[1,2]",
@@ -1836,7 +1792,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the rule that applies the \"Observe\" action.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[1,2]",
@@ -1847,7 +1802,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the rule that applies the \"Block\" action.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[1,2]",
@@ -1970,7 +1924,6 @@
       "document": "CC configuration item.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "WAF switch. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on",
@@ -1981,7 +1934,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the policy",
           "example": "10",
@@ -2034,7 +1986,6 @@
       "document": "Cache rule configuration.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Cache configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -2045,7 +1996,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "No-cache configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -2056,7 +2006,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Follows the origin server configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -2109,7 +2058,6 @@
       "document": "Cache prefresh",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable cache prefresh. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on/off",
@@ -2120,7 +2068,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The cache prefresh percentage. Values: 1-99\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "10",
@@ -2140,7 +2087,6 @@
           "disabled": false,
           "document": "ID of the site.",
           "example": "zone-20hyebgyfsko",
-          "is_base64": false,
           "member": "string",
           "name": "ZoneId",
           "required": true,
@@ -2150,7 +2096,6 @@
           "disabled": false,
           "document": "List of domain names.",
           "example": "[\"example.qq.com\"]",
-          "is_base64": false,
           "member": "string",
           "name": "RecordNames",
           "required": true,
@@ -2237,7 +2182,6 @@
       "document": "CNAME status",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The domain name.",
           "example": "test.qq.com",
@@ -2248,7 +2192,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The CNAME address.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "test.qq.com.acc.tyxcdn.com",
@@ -2259,7 +2202,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The CNAME status. Values:\n<li>`active`: Activated</li>\n<li>`moved`: Not activated </li>\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "active",
@@ -2276,7 +2218,6 @@
       "document": "Rule engine action with a status code",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
           "example": "StatusCodeCache",
@@ -2287,7 +2228,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Operation parameter.",
           "example": "[]",
@@ -2304,7 +2244,6 @@
       "document": "Smart compression configuration.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable smart compression. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on/off",
@@ -2315,7 +2254,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Compression algorithm. Values:\n<li>`brotli`: Brotli algorithm</li>\n<li>`gzip`: Gzip algorithm</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"brotli\",\"gzip\"]",
@@ -2332,7 +2270,6 @@
       "document": "CreateAccelerationDomain request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the site related with the accelerated domain name.",
           "example": "zone-225qgrnvbi9w",
@@ -2342,7 +2279,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Accelerated domain name",
           "example": "qq.com",
@@ -2352,7 +2288,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Details of the origin.",
           "example": "无",
@@ -2380,7 +2315,6 @@
       "document": "CreateAliasDomain request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-xxx",
@@ -2390,7 +2324,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The alias domain name.",
           "example": "eo.tencent.com",
@@ -2400,7 +2333,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The target domain name.",
           "example": "a.example.com",
@@ -2410,7 +2342,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate configuration. Values:\n<li>`none`: (Default) Do not configure</li>\n<li>`hosting`: Managed SSL certificate</li>",
           "example": "none",
@@ -2420,7 +2351,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The certificate ID. This field is required when `CertType=hosting`.",
           "example": "xxxx",
@@ -2684,7 +2614,6 @@
       "document": "CreateOriginGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-27q0p0bali16",
@@ -2694,7 +2623,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin type. Values:\n<li>`self`: Customer origin</li>\n<li>`third_party`: Third-party origin</li>\n<li>`cos`: Tencent Cloud COS origin</li>",
           "example": "self",
@@ -2704,7 +2632,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of the origin group.",
           "example": "name",
@@ -2714,7 +2641,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin configuration type when `OriginType=self`. Values:\n<li>`area`: Configure by region.</li>\n<li>`weight`: Configure by weight.</li>\n<li>`proto`: Configure by HTTP protocol.</li>When `OriginType=third_party/cos`, leave this field empty.",
           "example": "area",
@@ -2724,7 +2650,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Details of the origin record.",
           "example": "无",
@@ -2734,7 +2659,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin domain. This field can be specified only when `OriginType=self`.",
           "example": "www.tencent.com",
@@ -2772,7 +2696,6 @@
       "document": "CreatePlanForZone request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the site.",
           "example": "zone-25z65bfb4414",
@@ -2782,7 +2705,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The plan option. Values:\n<li>`sta`: Standard plan that supports content delivery network outside the Chinese mainland.</li>\n<li>`sta_with_bot`: Standard plan that supports content delivery network outside the Chinese mainland and bot management.</li>\n<li>`sta_cm`: Standard plan that supports content delivery network inside the Chinese mainland.</li>\n<li>`sta_cm_with_bot`: Standard plan that supports content delivery network inside the Chinese mainland and bot management.</li>\n<li>`sta_global`: Standard plan that supports content delivery network over the globe.</li>\n<li>`sta_global_with_bot`: Standard plan that supports content delivery network over the globe and bot management.</li>\n<li>`ent`: Enterprise plan that supports content delivery network outside the Chinese mainland.</li>\n<li>`ent_with_bot`: Enterprise plan that supports content delivery network outside the Chinese mainland and bot management.</li>\n<li>`ent_cm`: Enterprise plan that supports content delivery network inside the Chinese mainland.</li>\n<li>`ent_cm_with_bot`: Enterprise plan that supports content delivery network inside the Chinese mainland and bot management.</li>\n<li>`ent_global`: Enterprise plan that supports content delivery network over the globe.</li>\n<li>`ent_global_with_bot`: Enterprise plan that supports content delivery network over the globe and bot management.</li>To get the available plan options for your account, view the output from <a href=\"https://intl.cloud.tencent.com/document/product/1552/80606?from_cn_redirect=1\">DescribeAvailablePlans</a>.",
           "example": "sta",
@@ -2985,7 +2907,6 @@
       "document": "CreateRule request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the site",
           "example": "zone-27q0p0bali16",
@@ -2995,7 +2916,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule name (1 to 255 characters)",
           "example": "rule test",
@@ -3005,7 +2925,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Rule status. Values:\n<li>`enable`: Enabled</li>\n<li>`disable`: Disabled</li>",
           "example": "enable",
@@ -3015,7 +2934,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule content.",
           "example": "无",
@@ -3025,7 +2943,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag of the rule.",
           "example": "[]",
@@ -3190,7 +3107,6 @@
       "document": "DDoS mitigation configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Switch. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on",
@@ -3207,7 +3123,6 @@
       "document": "Information of the DDoS attacker",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The event ID.",
           "example": "123",
@@ -3218,7 +3133,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The attack type.",
           "example": "ddos攻击",
@@ -3229,7 +3143,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The attack status.",
           "example": "1",
@@ -3240,7 +3153,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum attack bandwidth.",
           "example": "4930",
@@ -3251,7 +3163,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The peak attack packet rate.",
           "example": "4930",
@@ -3262,7 +3173,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The attack start time recorded in seconds.",
           "example": "4930",
@@ -3273,7 +3183,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The attack end time recorded in seconds.",
           "example": "4930",
@@ -3284,7 +3193,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The DDoS policy ID. \nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "4930",
@@ -3295,7 +3203,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID. \nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "\"zone-xx\"",
@@ -3306,7 +3213,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Geolocation scope. Values: \n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "mainland",
@@ -3317,7 +3223,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The blocking time of a DDoS attack. \nNote: This field may return `null`, indicating that no valid value was found.",
           "example": "无",
@@ -3334,7 +3239,6 @@
       "document": "DDoS blocking details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The start time recorded in UNIX timestamp.",
           "example": "1653481476",
@@ -3345,7 +3249,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The end time recorded in UNIX timestamp. `0` indicates the blocking is ongoing.",
           "example": "1653481476",
@@ -3356,7 +3259,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The regions blocked.",
           "example": "beijing",
@@ -3373,7 +3275,6 @@
       "document": "HTTPS server certificate configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the server certificate.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "EO-dsfdsf",
@@ -3384,7 +3285,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alias of the certificate.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "默认证书",
@@ -3395,7 +3295,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of the certificate. Values:\n<li>`default`: Default certificate;</li>\n<li>`upload`: Custom certificate;</li>\n<li>`managed`: Tencent Cloud-managed certificate.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "default",
@@ -3406,7 +3305,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time when the certificate expires.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2014-08-03T12:00:00+08:00",
@@ -3417,7 +3315,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time when the certificate takes effect.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2014-08-03T12:00:00+08:00",
@@ -3428,7 +3325,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Common name of the certificate.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test.com",
@@ -3439,7 +3335,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain names added to the SAN certificate.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test.com",
@@ -3450,7 +3345,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Deployment status. Values:\n<li>`processing`: Deployment in progress</li>\n<li>`deployed`: Deployed</li>\n<li>`failed`: Deployment failed</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "deployed",
@@ -3461,7 +3355,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Failure description\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "失败",
@@ -3472,7 +3365,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate algorithm.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "RSA",
@@ -3489,7 +3381,6 @@
       "document": "DeleteAccelerationDomains request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the site related with the accelerated domain name.",
           "example": "zone-225qgrnvbi9w",
@@ -3499,7 +3390,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of accelerated domain names to be deleted.",
           "example": "[\"qq.com\"]",
@@ -3509,7 +3399,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to forcibly delete a domain name if it is associated with resources (such as alias domain names and traffic scheduling policies). \n<li>`true`: Delete the domain name and all associated resources.</li>\n<li>`false`: Do not delete the domain name and all associated resources.</li>If it’s not specified, the default value `false` is used.",
           "example": "true",
@@ -3537,7 +3426,6 @@
       "document": "DeleteAliasDomain request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-xxx",
@@ -3547,7 +3435,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The alias domain name to be deleted. If it is left empty, the delete operation is not performed.",
           "example": "无",
@@ -3575,7 +3462,6 @@
       "document": "DeleteApplicationProxy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-67e6b1962",
@@ -3585,7 +3471,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The proxy ID.",
           "example": "proxy-19389e5dwwxfs",
@@ -3613,7 +3498,6 @@
       "document": "DeleteApplicationProxyRule request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-67e6b1962",
@@ -3623,7 +3507,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The proxy ID.",
           "example": "proxy-19389e5dwwxfs",
@@ -3633,7 +3516,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule ID.",
           "example": "rule-sdacd",
@@ -3661,7 +3543,6 @@
       "document": "DeleteOriginGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-27q0p0bali16",
@@ -3671,7 +3552,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the origin group.",
           "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
@@ -3699,7 +3579,6 @@
       "document": "DeleteRules request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the site",
           "example": "zone-26r78x31ny86",
@@ -3709,7 +3588,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IDs of the rules to be deleted.",
           "example": "[\"rule-bx3zke8q\"]",
@@ -3773,7 +3651,6 @@
       "document": "DeleteZone request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-xxxxx",
@@ -3900,7 +3777,6 @@
       "document": "DescribeAliasDomains request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-xxx",
@@ -3910,7 +3786,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The page offset. Default value: 0",
           "example": "0",
@@ -3920,7 +3795,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The paginated query limit. Default value: 20. Maximum value: 1000.",
           "example": "1000",
@@ -3930,7 +3804,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`target-name`:<br>   Filter by <strong>target domain name</strong><br>   Type: String<br>   Required: No</li><li>`alias-name`:<br>   Filter by <strong>alias domain name</strong><br>   Type: String<br>   Required: No</li>Only `alias-name` supports fuzzy query.",
           "example": "无",
@@ -3978,7 +3851,6 @@
       "document": "DescribeApplicationProxies request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The paginated query offset. Default value: 0",
           "example": "0",
@@ -3988,7 +3860,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The paginated query limit. Default value: 20. Maximum value: 1000.",
           "example": "10",
@@ -3998,7 +3869,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter criteria. Each filter criteria can have up to 20 entries. <li>`proxy-id`:<br>   Filter by <strong>proxy ID</strong>, such as proxy-ev2sawbwfd<br>   Type: String<br>   Required: No</li><li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-vawer2vadg<br>   Type: String<br>   Required: No</li>",
           "example": "[{\"Name\": \"proxy-id\", [\"proxy-124521xfqlh4qjee\"]}]",
@@ -4073,7 +3943,6 @@
       "document": "DescribeContentQuota request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the site.",
           "example": "8afj24jzg9",
@@ -4121,7 +3990,6 @@
       "document": "DescribeDDoSAttackData request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the query period.",
           "example": "2020-04-29T00:00:00Z",
@@ -4131,7 +3999,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time of the query period.",
           "example": "2020-04-30T00:00:00Z",
@@ -4141,7 +4008,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Statistical metrics.\n<li>`ddos_attackMaxBandwidth`: Peak attack bandwidth;</li>\n<li>`ddos_attackMaxPackageRate`: Peak attack packet rate;</li>\n<li>`ddos_attackBandwidth`: Time-series data of attack bandwidth;</li>\n<li>`ddos_attackPackageRate`: Time-series data of attack packet rate.</li>",
           "example": "[\"ddos_attackFlowBandwidth\"]",
@@ -4151,7 +4017,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
           "example": "[\"zoneId1\",\"zoneId2\"]",
@@ -4161,7 +4026,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IDs of DDoS policies to be queried. All policies will be selected if this field is not specified.",
           "example": "[123,456]",
@@ -4171,7 +4035,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The query granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minutes;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: 1 day</li>If this field is not specified, the granularity is determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < Period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.",
           "example": "“min”",
@@ -4181,7 +4044,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global </li>If this field is not specified, the default value `global` is used.",
           "example": "\"overseas\"",
@@ -4355,7 +4217,6 @@
       "document": "DescribeDDoSAttackTopData request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The start time.",
           "example": "2020-04-29T00:00:00Z",
@@ -4365,7 +4226,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The end time.",
           "example": "2020-04-30T00:00:00Z",
@@ -4375,7 +4235,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The statistical metric. Values:\n<li>`ddos_attackFlux_protocol`: Rank protocols by the attack traffic.</li>\n<li>`ddos_attackPackageNum_protocol`: Rank protocols by the number of attack packets.</li>\n<li>`ddos_attackNum_attackType`: Rank attack types by the number of attacks.</li>\n<li>`ddos_attackNum_sregion`: Rank attacker regions by the number of attacks.</li>\n<li>`ddos_attackFlux_sip`: Rank attacker IPs by the number of attacks.</li>\n<li>`ddos_attackFlux_sregion`: Rank attacker regions by the number of attacks.</li>",
           "example": "ddos_attackSource_region",
@@ -4385,7 +4244,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of site IDs to be queried. All sites will be selected if this field is not specified.",
           "example": "[\"zoneId1\",\"zoneId2\"]",
@@ -4395,7 +4253,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The list of DDoS policy IDs to be specified. All policies will be selected if this field is not specified.",
           "example": "[123,456]",
@@ -4405,7 +4262,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The attack type. Values:\n<li>`flood`: Flood;</li>\n<li>`icmpFlood`: ICMP flood;</li>\n<li>`all`: All attack types.</li>This field will be set to the default value `all` if not specified.",
           "example": "icmp",
@@ -4415,7 +4271,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The protocol type. Values:\n<li>`tcp`: TCP protocol;</li>\n<li>`udp`: UDP protocol;</li>\n<li>`all`: All protocol types.</li>This field will be set to the default value `all` if not specified.",
           "example": "udp",
@@ -4425,7 +4280,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The port number.",
           "example": "8080",
@@ -4435,7 +4289,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Queries the top n rows of data. Top 10 rows of data will be queried if this field is not specified.",
           "example": "100",
@@ -4445,7 +4298,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Data storage region. Values:\n<li>`overseas`: Global (outside the Chinese mainland);</li>\n<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.",
           "example": "overseas",
@@ -4493,7 +4345,6 @@
       "document": "DescribeDefaultCertificates request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Filter criteria. Each filter criteria can have up to 5 entries.\n<li>`zone-id`: <br>Filter by <strong>site ID</strong>, such as zone-xxx<br>   Type: String<br>   Required: No</li>",
           "example": "无",
@@ -4503,7 +4354,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset for paginated queries. Default value: `0`",
           "example": "0",
@@ -4513,7 +4363,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Limit on paginated queries. Default value: `20`. Maximum value: `100`.",
           "example": "20",
@@ -4561,7 +4410,6 @@
       "document": "DescribeHostsSetting request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-27q0p0bali16",
@@ -4571,7 +4419,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset for paginated queries. Default value: 0. Minimum value: 0.",
           "example": "100",
@@ -4581,7 +4428,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Limit on paginated queries. Default value: 100. Maximum value: 1000.",
           "example": "10",
@@ -4591,7 +4437,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`host`:<br>   Filter by <strong>domain name </strong><br>   Type: String<br>   Required: No</li>",
           "example": "无",
@@ -4639,7 +4484,6 @@
       "document": "DescribeIdentifications request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone-name`: <br>Filter by <strong>site name</strong><br>   Type: String<br>   Required: No</li>",
           "example": "无",
@@ -4649,7 +4493,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The page offset. Default value: 0",
           "example": "0",
@@ -4659,7 +4502,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The paginated query limit. Default value: 20. Maximum value: 1000.",
           "example": "1000",
@@ -4707,7 +4549,6 @@
       "document": "DescribeOriginGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Offset for paginated queries. Default value: 0.",
           "example": "0",
@@ -4717,7 +4558,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Limit on paginated queries. Value range: 1-1000. Default value: 10.",
           "example": "10",
@@ -4727,7 +4567,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters. Each filter can have up to 20 entries. See below for details:\n<li>`zone-id`<br>   Filter by the specified <strong>site ID</strong>, such as zone-20hzkd4rdmy0<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`origin-group-id`:<br>   Filter by the specified <strong>origin group ID</strong>, such as origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`origin-group-name`:<br>   Filter by the specified <strong>origin group name</strong><br>   Type: String<br>   Required: No<br>   Fuzzy query: Supported (only one origin group name allowed in a query)</li>",
           "example": "无",
@@ -4957,7 +4796,6 @@
       "document": "DescribePrefetchTasks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the query.",
           "example": "2022-02-09T02:35:00Z",
@@ -4967,7 +4805,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time of the query.",
           "example": "2022-02-09T02:35:00Z",
@@ -4977,7 +4814,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset for paginated queries. Default value: `0`.",
           "example": "7",
@@ -4987,7 +4823,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Limit on paginated queries. Default value: `20`. Maximum value: `1000`.",
           "example": "100",
@@ -4997,7 +4832,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-1379afjk91u32h (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`job-id`:<br>   Filter by <strong>task ID</strong>, such as 1379afjk91u32h (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`target`:<br>   Filter by <strong>target resource</strong>, such as http://www.qq.com/1.txt (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`domains`:<br>   Filter by <strong>domain name</strong>, such as www.qq.com<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`statuses`:<br>   Filter by <strong>task status</strong><br>   Required: No<br>   Fuzzy query: Not supported<br>   Values:<br>   `processing`: The task is in progress.<br>   `success`: The task succeeded.<br>   `failed`: The task failed.<br>   `timeout`: The task timed out.</li>",
           "example": "无",
@@ -5045,7 +4879,6 @@
       "document": "DescribePurgeTasks request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Disused. Use \"zone-id\" in \"Filters\" instead.",
           "example": "jalfj2n42",
@@ -5055,7 +4888,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the query.",
           "example": "2022-02-09T02:35:00Z",
@@ -5065,7 +4897,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "End time of the query.",
           "example": "2022-02-09T02:35:00Z",
@@ -5075,7 +4906,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Offset for paginated queries. Default value: `0`.",
           "example": "7",
@@ -5085,7 +4915,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Limit on paginated queries. Default value: `20`. Maximum value: `1000`.",
           "example": "100",
@@ -5095,7 +4924,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter criteria. Each filter criteria can have up to 20 entries. <li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-xxx (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`job-id`:<br>   Filter by <strong>task ID</strong>, such as 1379afjk91u32h (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`target`:<br>   Filter by <strong>target resource</strong>, such as http://www.qq.com/1.txt and tag1<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`domains`:<br>   Filter by <strong>domain name</strong>, such as www.qq.com<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`statuses`:<br>   Filter by <strong>task status</strong><br>   Required: No<br>   Fuzzy query: Not supported<br>   Values:<br>   `processing`: The task is in progress.<br>   `success`: The task succeeded.<br>   `failed`: The task failed.<br>   `timeout`: The task timed out.<li>`type`:<br>   Filter by <strong>purging mode</strong> (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported<br>   Values:<br>   `purge_url`: Purge by URL.<br>   `purge_prefix`: Purge by prefix.<br>   `purge_all`: Purge all caches.<br>   `purge_host`: Purge by hostname.<br>   `purge_cache_tag`: Purge by cache tag.</li>",
           "example": "无",
@@ -5143,7 +4971,6 @@
       "document": "DescribeRules request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the site",
           "example": "zone-qbjifysd",
@@ -5153,7 +4980,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter conditions. Each filter condition can have up to 20 entries. See below for details:\n<li>`rule-id`:<br>   Filter by the <strong>rule ID</strong><br>   Type: String<br>   Required: No</li>",
           "example": "无",
@@ -5228,7 +5054,6 @@
       "document": "DescribeTimingL4Data request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The start time.",
           "example": "2020-04-29T00:00:00Z",
@@ -5238,7 +5063,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The end time.",
           "example": "2020-04-30T00:00:00Z",
@@ -5248,7 +5072,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Metric to query. Values:\n<li>`l4Flow_connections`: Access connections;</li>\n<li>`l4Flow_flux`: Access traffic;</li>\n<li>`l4Flow_inFlux`: Inbound traffic;</li>\n<li>`l4Flow_outFlux`: Outbound traffic;</li>\n<li>`l4Flow_outPkt`: Outbound packets.</li>",
           "example": "[\"l4Flow_connections\"]",
@@ -5258,7 +5081,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of sites\nIf it’s not specified, all sites are selected by default, and the query period must be within the last 30 days. \nEnter the IDs of sites to query. The maximum query period is determined by the <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> of the bound plan. ",
           "example": "[\"zoneId1\",\"zoneId2\"]",
@@ -5268,7 +5090,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of L4 proxy IDs. All L4 proxies will be selected if this field is not specified.",
           "example": "无",
@@ -5278,7 +5099,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The query granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minutes;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.",
           "example": "hour",
@@ -5288,7 +5108,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filters\n<li>ruleId<br>   Filter by the specified <strong>forwarding rule ID</strong></li>\n<li>proxyId<br>   Filter by the specified <strong>L4 agent ID</strong></li>",
           "example": "无",
@@ -5298,7 +5117,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
           "example": "mainland",
@@ -5447,7 +5265,6 @@
       "document": "DescribeTimingL7CacheData request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The start time.",
           "example": "2020-04-29T00:00:00Z",
@@ -5457,7 +5274,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The end time.",
           "example": "2020-04-30T00:00:00Z",
@@ -5467,7 +5283,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The query metric. Values:\n<li>`l7Cache_outFlux`: Response traffic.</li>\n<li>`l7Cache_request`: Response requests.</li>\n<li>`l7Cache_outBandwidth`: Response bandwidth.</li>",
           "example": "l7Flow_flow",
@@ -5477,7 +5292,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
           "example": "[\"zoneId1\",\"zoneId2\"]",
@@ -5487,7 +5301,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter conditions. See below for details: \n<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>\n<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>\n<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>\n<li>cacheType<br>  Filter by the <strong>cache hit result</strong>.<br> Type: String<br>   Required: No<br>   Values: <br>   `hit`: Cache hit; <br>   `dynamic`: Resource non-cacheable; <br>   `miss`: Cache miss</li>\n<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>   `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>\n<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>\n<li>`tagValue`<br>   Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>",
           "example": "无",
@@ -5497,7 +5310,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The query time granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minutes;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.",
           "example": "hour",
@@ -5507,7 +5319,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
           "example": "mainland",
@@ -5665,7 +5476,6 @@
       "document": "DescribeTopL7CacheData request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The start time.",
           "example": "2020-04-20T00:00:00Z",
@@ -5675,7 +5485,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The end time.",
           "example": "2020-04-30T00:00:00Z",
@@ -5685,7 +5494,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The query metric. Values:\n<li>`l7Cache_outFlux_domain`: Host/Domain name;</li>\n<li>`l7Cache_outFlux_url`: URL address;</li>\n<li>`l7Cache_outFlux_resourceType`: Resource type;</li>\n<li>`l7Cache_outFlux_statusCode`: Status code.</li>",
           "example": "l7Cache_outFlux_domain",
@@ -5695,7 +5503,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies sites by ID. All sites will be selected if this field is not specified.",
           "example": "[\"qq.com\", \"baidu.com\"]",
@@ -5705,7 +5512,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Top rows of data to query. Maximum value: 1000. Top 10 rows of data are queried if this field is not specified.",
           "example": "10",
@@ -5715,7 +5521,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter conditions. See below for details: \n<li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>\n<li>`url`<br>   Filter by the <strong>URL</strong>, such as `/content`. The query period cannot exceed 30 days. <br>   Type: String<br>   Required: No</li>\n<li>`resourceType`<br>   Filter by the <strong>resource file type</strong>, such as `jpg`, `png`. The query period cannot exceed 30 days.<br>  Type: String<br>   Required: No</li>\n<li>cacheType<br>  Filter by the <strong>cache hit result</strong>.<br> Type: String<br>   Required: No<br>   Values: <br>   `hit`: Cache hit; <br>   `dynamic`: Resource non-cacheable; <br>   `miss`: Cache miss</li>\n<li>`statusCode`<br>   Filter by the <strong> status code</strong>. The query period  cannot exceed 30 days. <br>   Type: String<br>   Required: No<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>   `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>\n<li>`tagKey`:<br>   Filter by the <strong>tag key</strong><br>   Type: String<br>   Required: No</li>\n<li>`tagValue`<br>   Filter by the <strong>tag value</strong><br>   Type: String<br>   Required: No</li>",
           "example": "无",
@@ -5725,7 +5530,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The query time granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minutes;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.",
           "example": "min",
@@ -5735,7 +5539,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
           "example": "\"mainland\"",
@@ -5783,7 +5586,6 @@
       "document": "DescribeZoneSetting request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-21xfqlh4qjee",
@@ -5821,7 +5623,6 @@
       "document": "DescribeZones request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The page offset. Default value: 0",
           "example": "0",
@@ -5831,7 +5632,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The paginated query limit. Default value: 20. Maximum value: 1000.",
           "example": "1000",
@@ -5841,7 +5641,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone-name`:<br>   Filter by <strong>site name</strong><br>   Type: String<br>   Required: No</li><li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-xxx<br>   Type: String<br>   Required: No</li><li>`status`:<br>   Filter by <strong>site status</strong><br>   Type: String<br>   Required: No</li><li>`tag-key`:<br>   Filter by <strong>tag key</strong><br>   Type: String<br>   Required: No</li><li>`tag-value`:<br>   Filter by <strong>tag value</strong><br>   Type: String<br>   Required: No</li>Only `zone-name` supports fuzzy query.",
           "example": "无",
@@ -5851,7 +5650,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The sorting field. Values:\n<li>`type`: Access mode</li>\n<li>`area`: Acceleration region</li>\n<li>`create-time`: Creation date</li>\n<li>`zone-name`: Site name</li>\n<li>`use-time`: Last used date</li>\n<li>`active-status`: Activation status</li>If it is left empty, the default value `create-time` is used.",
           "example": "\"status\"",
@@ -5861,7 +5659,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The sorting direction. Values:\n<li>`asc`: From smallest to largest</li>\n<li>`desc`: From largest to smallest</li>If it is left empty, the default value `desc` is used.",
           "example": "\"desc\"",
@@ -5909,7 +5706,6 @@
       "document": "Domain name configuration information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-27q0p0bali16",
@@ -5920,7 +5716,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The acceleration status. Values:\n<li>`process`: In progress</li>\n<li>`online`: Enabled</li>\n<li>`offline`: Disabled</li>",
           "example": "online",
@@ -5931,7 +5726,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The domain name.",
           "example": "www.example.com",
@@ -5942,7 +5736,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Name of the site",
           "example": "example.com",
@@ -5953,7 +5746,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The assigned CNAME",
           "example": "example.com.acc.edgeonedy1.com",
@@ -5964,7 +5756,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The resource ID.",
           "example": "edge-ow8tdjb9",
@@ -5975,7 +5766,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The instance ID.",
           "example": "edge-ow8tdjb9",
@@ -5986,7 +5776,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The lock status.",
           "example": "无",
@@ -5997,7 +5786,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The domain name status.",
           "example": "无",
@@ -6008,7 +5796,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The acceleration area of the domain name. Values:\n<li>`global`: Global.</li>\n<li>`mainland`: Chinese mainland.</li>\n<li>`overseas`: Outside the Chinese mainland.</li>",
           "example": "无",
@@ -6019,7 +5806,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The acceleration type configuration item.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6030,7 +5816,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The HTTPS configuration item.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6041,7 +5826,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The cache configuration item.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6052,7 +5836,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin configuration item.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6063,7 +5846,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The security type.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6074,7 +5856,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The cache key configuration item.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6085,7 +5866,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The smart compression configuration item.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6096,7 +5876,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The WAF protection configuration item.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6107,7 +5886,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The CC protection configuration item.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6118,7 +5896,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "DDoS mitigation configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6129,7 +5906,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The smart routing configuration item.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6140,7 +5916,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The IPv6 access configuration item.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -6151,7 +5926,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to carry the location information of the client IP during origin-pull.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
@@ -6168,7 +5942,6 @@
       "document": "Differences between the newest and existing intermediate IPs",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The latest intermediate IPs.",
           "example": "无",
@@ -6179,7 +5952,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The intermediate IPs added to the existing list.",
           "example": "无",
@@ -6190,7 +5962,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The intermediate IPs removed from the existing list.",
           "example": "无",
@@ -6201,7 +5972,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The intermediate IPs that remain unchanged.",
           "example": "无",
@@ -6218,7 +5988,6 @@
       "document": "DownloadL4Logs request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The start time.",
           "example": "2022-05-04T03:27:00+08:00",
@@ -6228,7 +5997,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The end time.",
           "example": "2022-05-10T23:59:00+08:00",
@@ -6238,7 +6006,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
           "example": "[\"zone1\",\"zone2\"]",
@@ -6248,7 +6015,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of L4 proxy IDs.",
           "example": "[\"proxy-xx\"]",
@@ -6258,7 +6024,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Limit on paginated queries. Default value: 20. Maximum value: 1000.",
           "example": "10",
@@ -6268,7 +6033,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The page offset. Default value: 0.",
           "example": "1",
@@ -6316,7 +6080,6 @@
       "document": "DownloadL7Logs request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The start time.",
           "example": "2022-05-04T03:27:00+08:00",
@@ -6326,7 +6089,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The end time.",
           "example": "2022-05-10T23:59:00+08:00",
@@ -6336,7 +6098,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
           "example": "[\"zone1\",\"zone2\"]",
@@ -6346,7 +6107,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.",
           "example": "[\"www.baidu.com\"]",
@@ -6356,7 +6116,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Limit on paginated queries. Default value: 20. Maximum value: 1000.",
           "example": "10",
@@ -6366,7 +6125,6 @@
           "type": "int"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The page offset. Default value: 0.",
           "example": "0",
@@ -6414,7 +6172,6 @@
       "document": "Block page configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable configuration. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on",
@@ -6425,7 +6182,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The settings of the block page that applies managed rules. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{}",
@@ -6436,7 +6192,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The settings of the block page that applies custom rules. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{}",
@@ -6453,7 +6208,6 @@
       "document": "The configuration details of the block page",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the block page, which can be obtained from the CreateSecurityDropPage API.\nIf 0 is passed, the default block page will be used.",
           "example": "0",
@@ -6464,7 +6218,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The HTTP status code of the block page. Value range: 100-600.",
           "example": "566",
@@ -6475,7 +6228,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The block page file or URL.",
           "example": "error.html",
@@ -6486,7 +6238,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of the block page. Values:\n<li>`file`: Block page file</li>\n<li>`url`: Block page URL</li>",
           "example": "url",
@@ -6503,7 +6254,6 @@
       "document": "Exception rules, which are used to bypass specific rules",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable configuration. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on",
@@ -6514,7 +6264,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The settings of the exception rule. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[]",
@@ -6531,7 +6280,6 @@
       "document": "The settings of the exception rule",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The rule name.",
           "example": "rule1",
@@ -6542,7 +6290,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule action. It only supports the value `skip`, which indicates skipping all managed rules.",
           "example": "skip",
@@ -6553,7 +6300,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule status. Values:\n<li>`on`: Enabled</li>\n<li>`off`: Disabled</li>",
           "example": "on",
@@ -6564,7 +6310,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule ID, which is automatically created and only used as an output parameter.",
           "example": "1",
@@ -6575,7 +6320,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The update time. If it is null, the current date and time is recorded.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "xxxx",
@@ -6586,7 +6330,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The matching condition.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[]",
@@ -6597,7 +6340,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The scope to which the exception rule applies.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "x",
@@ -6608,7 +6350,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule priority. Value range: 0-100. If it is null, it defaults to 0.",
           "example": "0",
@@ -6625,7 +6366,6 @@
       "document": "The condition of the exception rule",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The field to match. Values:\n<li>`host`: Request domain name</li>\n<li>`sip`: Client IP</li>\n<li>`ua`: User-Agent</li>\n<li>`cookie`: Cookie</li>\n<li>`cgi`: CGI script</li>\n<li>`xff`: XFF header</li>\n<li>`url`: Request URL</li>\n<li>`accept`: Request content type</li>\n<li>`method`: Request method</li>\n<li>`header`: Request header</li>\n<li>`sip_proto`: Network layer protocol</li>",
           "example": "host",
@@ -6636,7 +6376,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The parameter of the field. Only when `MatchFrom = header`, the key contained in the header can be passed.",
           "example": "Accept-Encoding",
@@ -6647,7 +6386,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The logical operator. Values:\n<li>`equal`: String equals</li>\n<li>`not_equal`: Value not equals</li>\n<li>`include`: String contains</li>\n<li>`not_include`: String not contains</li>\n<li>`match`: IP matches</li>\n<li>`not_match`: IP not matches</li>\n<li>`include_area`: Regions contain</li>\n<li>`is_empty`: Value left empty</li>\n<li>`not_exists`: Key fields not exist</li>\n<li>`regexp`: Regex matches</li>\n<li>`len_gt`: Value greater than</li>\n<li>`len_lt`: Value smaller than</li>\n<li>`len_eq`: Value equals</li>\n<li>`match_prefix`: Prefix matches</li>\n<li>`match_suffix`: Suffix matches</li>\n<li>`wildcard`: Wildcard</li>",
           "example": "match",
@@ -6658,7 +6396,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The value of the parameter.",
           "example": "www.example.com",
@@ -6721,7 +6458,6 @@
       "document": "Failure reason",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Failure reason.",
           "example": "domain not valid",
@@ -6732,7 +6468,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of resources failed to be processed. ",
           "example": "[\"http://www.qq.com/1.txt\"]",
@@ -6749,7 +6484,6 @@
       "document": "Verification file, used to verify site ownership",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Directory of the verification file.",
           "example": "/.well-known/teo-verification/vd4ewuqa9n.txt",
@@ -6760,7 +6494,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Content of the verification file.",
           "example": "88v24mnnljwbhaohrpfx80f63duhdnjx",
@@ -6777,7 +6510,6 @@
       "document": "Key-value pair filters for conditional filtering queries, such as filtering ID, name, and status.\nIf more than one filter exists, the logical relationship between these filters is `AND`.\nIf multiple values exist in one filter, the logical relationship between these values under the same filter is `OR`.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Fields to be filtered.",
           "example": "zone-name",
@@ -6788,7 +6520,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Value of the filtered field.",
           "example": "[\"qq.com\",\"baidu.com\"]",
@@ -6831,7 +6562,6 @@
       "document": "The origin cache configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable the configuration of following the origin server. Valid values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on/off",
@@ -6842,7 +6572,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sets the default cache time when the origin server does not return the Cache-Control header.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "0",
@@ -6853,7 +6582,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies whether to enable cache when the origin server does not return the Cache-Control header.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "on/off",
@@ -6864,7 +6592,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies whether to use the default caching policy when Cache-Control is not returned from the origin\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "on/off",
@@ -6881,7 +6608,6 @@
       "document": "Force HTTPS redirect configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable force HTTPS redirect. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on/off",
@@ -6892,7 +6618,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Redirect status code. Values:\n<li>`301`: 301 redirect</li>\n<li>`302`: 302 redirect</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "302",
@@ -6925,7 +6650,6 @@
       "document": "HTTP header, used as input for the CreatePrefetchTask API",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP header name.",
           "example": "User-Agent",
@@ -6936,7 +6660,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "HTTP header value",
           "example": "TencentEdgeOne",
@@ -7111,7 +6834,6 @@
       "document": "Intermediate IPs",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "List of IPv4 addresses",
           "example": "[\"11.11.11.0/24\",\"22.22.22.0/24\"]",
@@ -7122,7 +6844,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of IPv6 addresses",
           "example": "[\"2001:980:7002:6::/64\"]",
@@ -7261,7 +6982,6 @@
       "document": "Image optimization configuration.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable configuration. Values: \n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on",
@@ -7278,7 +6998,6 @@
       "document": "Bot intelligence rules",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Switch. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "off",
@@ -7289,7 +7008,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Items in a bot intelligence rule\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[]",
@@ -7306,7 +7024,6 @@
       "document": "Bot intelligence rule items",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The tag to categorize bots. Values:\n<li>`evil_bot`: Malicious bot</li>\n<li>`suspect_bot`: Suspected bot</li>\n<li>`good_bot`: Good bot</li>\n<li>`normal`: Normal request</li>",
           "example": "evil_bot",
@@ -7317,7 +7034,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The action taken on bots. Values\n<li>`drop`: Block</li>\n<li>`trans`: Allow</li>\n<li>`alg`: JavaScript challenge</li>\n<li>`captcha`: Managed challenge</li>\n<li>`monitor`: Observe</li>",
           "example": "drop",
@@ -7334,7 +7050,6 @@
       "document": "IP/Region blocklist/allowlist configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Switch. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "off",
@@ -7345,7 +7060,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The settings of the basic access control rule. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[]",
@@ -7362,7 +7076,6 @@
       "document": "IP blocklist/allowlist rule details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The action. Values:\n<li>`drop`: Block</li>\n<li>`trans`: Allow</li>\n<li>`monitor`: Observe</li>",
           "example": "drop",
@@ -7373,7 +7086,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The matching dimension. Values:\n<li>`ip`: Match by IP.</li>\n<li>`area`: Match by IP region.</li>",
           "example": "ip",
@@ -7384,7 +7096,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Matching method. It defaults to `equal` if it’s left empty.\nValues: \n<li>`is_empty`: The field is empty.</li>\n<li>`not_exists`: The configuration item does not exist.</li>\n<li>`include`: Include</li>\n<li>`not_include`: Do not include</li>\n<li>`equal`: Equal to</li>\n<li>`not_equal`: Not equal to</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "equal",
@@ -7395,7 +7106,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule ID, which is only used as an output parameter.",
           "example": "0",
@@ -7406,7 +7116,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The update time, which is only used as an output parameter.",
           "example": "无",
@@ -7417,7 +7126,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule status. A null value indicates that the rule is enabled. Values:\n<li>`on`: Enabled</li>\n<li>`off`: Disabled</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "on",
@@ -7428,7 +7136,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "rule1",
@@ -7439,7 +7146,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Matching content. It’s not required when `Operator` is `is_emty` or `not_exists`. ",
           "example": "1.1.1.1",
@@ -7472,7 +7178,6 @@
       "document": "The L7 log details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The start time of the log packaging.",
           "example": "\"\"",
@@ -7483,7 +7188,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The L4 proxy ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"proxy-xx\"",
@@ -7494,7 +7198,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The log size, in bytes.",
           "example": "12",
@@ -7505,7 +7208,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The download address.",
           "example": "\"\"",
@@ -7516,7 +7218,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The log package name.",
           "example": "\"\"",
@@ -7527,7 +7228,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The acceleration region. Values:\n<li>`mainland`: Chinese mainland;</li>\n<li>`overseas`: Global (outside the Chinese mainland);</li>",
           "example": "mainland",
@@ -7544,7 +7244,6 @@
       "document": "Layer-7 offline log details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Start time of the log packaging",
           "example": "\"\"",
@@ -7555,7 +7254,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The subdomain name.",
           "example": "\"baidu.com\"",
@@ -7566,7 +7264,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log size, in bytes.",
           "example": "12",
@@ -7577,7 +7274,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Download address",
           "example": "\"\"",
@@ -7588,7 +7284,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Log package name",
           "example": "\"\"",
@@ -7599,7 +7294,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Acceleration region. Values:\n<li>`mainland`: Chinese mainland;</li>\n<li>`overseas`: Global (outside the Chinese mainland);</li>",
           "example": "\"mainland\"",
@@ -7616,7 +7310,6 @@
       "document": "Browser cache rule configuration, which is used to set the default value of `MaxAge` and is disabled by default.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to follow the origin server. Values:\n<li>`on`: Follow the origin server and ignore the field MaxAgeTime;</li>\n<li>`off`: Do not follow the origin server and apply the field MaxAgeTime.</li>",
           "example": "on/off",
@@ -7627,7 +7320,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies the maximum amount of time (in seconds). The maximum value is 365 days.\nNote: The value `0` means not to cache.",
           "example": "600",
@@ -7644,7 +7336,6 @@
       "document": "ModifyAccelerationDomain request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the site related with the accelerated domain name.",
           "example": "zone-225qgrnvbi9w",
@@ -7654,7 +7345,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Accelerated domain name",
           "example": "qq.com",
@@ -7664,7 +7354,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Details of the origin.",
           "example": "无",
@@ -7746,7 +7435,6 @@
       "document": "ModifyAliasDomain request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-xxx",
@@ -7756,7 +7444,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The alias domain name.",
           "example": "eo.tencent.com",
@@ -7766,7 +7453,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The target domain name.",
           "example": "a.example.com",
@@ -7776,7 +7462,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Certificate configuration. Values:\n<li>`none`: Off</li>\n<li>`hosting`: Managed SSL certificate</li>\n<li>`apply`: Free certificate</li>The original configuration will apply if this field is not specified.",
           "example": "none",
@@ -7786,7 +7471,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The certificate ID. This field is required when `CertType=hosting`.",
           "example": "xxx",
@@ -7814,7 +7498,6 @@
       "document": "ModifyAliasDomainStatus request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-xxx",
@@ -7824,7 +7507,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status of the alias domain name. Values:\n<li>`false`: Enable the alias domain name.</li>\n<li>`true`: Disable the alias domain name.</li>",
           "example": "true",
@@ -7834,7 +7516,6 @@
           "type": "bool"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The alias domain name you want to modify its status. If it is left empty, the modify operation is not performed.",
           "example": "无",
@@ -8060,7 +7741,6 @@
       "document": "ModifyApplicationProxyRuleStatus request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-21xfqlh4qjee",
@@ -8070,7 +7750,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The proxy ID.",
           "example": "proxy-00dde483-9a2b-11ec-bcb0",
@@ -8080,7 +7759,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule ID.",
           "example": "rule-xxx",
@@ -8090,7 +7768,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule status. Values:\n<li>`offline`: Disabled</li>\n<li>`online`: Enabled</li>",
           "example": "online",
@@ -8118,7 +7795,6 @@
       "document": "ModifyApplicationProxyStatus request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-67e6b19620",
@@ -8128,7 +7804,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The proxy ID.",
           "example": "proxy-00dde41vdfs214",
@@ -8138,7 +7813,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The proxy status. Values:\n<li>`offline`: The proxy is disabled.</li>\n<li>`online`: The proxy is enabled.</li>",
           "example": "online",
@@ -8220,7 +7894,6 @@
       "document": "ModifyOriginGroup request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-27q0p0bali16",
@@ -8230,7 +7903,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the origin group.",
           "example": "origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
@@ -8240,7 +7912,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin type. Values:\n<li>`self`: Customer origin</li>\n<li>`third_party`: Third-party origin</li>\n<li>`cos`: Tencent Cloud COS origin</li>",
           "example": "self",
@@ -8250,7 +7921,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of the origin group.",
           "example": "name",
@@ -8260,7 +7930,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin configuration type when `OriginType=self`. Values:\n<li>`area`: Configure by region.</li>\n<li>`weight`: Configure by weight.</li>\n<li>`proto`: Configure by HTTP protocol.</li> When `OriginType=third_party/cos`, leave this field empty.",
           "example": "area",
@@ -8270,7 +7939,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Details of the origin record.",
           "example": "[]",
@@ -8280,7 +7948,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin domain. This field can be specified only when `OriginType=self`.\nIf it is left empty, the existing configuration is used.",
           "example": "www.tencent.com",
@@ -8308,7 +7975,6 @@
       "document": "ModifyRule request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the site",
           "example": "zone-djuqmq",
@@ -8318,7 +7984,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule name. It is a string that can contain 1–255 characters.",
           "example": "rule test",
@@ -8328,7 +7993,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule content.",
           "example": "无",
@@ -8338,7 +8002,6 @@
           "type": "list"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule ID.",
           "example": "rule-duxamq",
@@ -8348,7 +8011,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Rule status. Values:\n<li>`enable`: Enabled</li>\n<li>`disable`: Disabled</li>",
           "example": "enable",
@@ -8358,7 +8020,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag of the rule.",
           "example": "[]",
@@ -8441,7 +8102,6 @@
       "document": "ModifySecurityPolicy request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "test.com",
@@ -8451,7 +8111,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Security configuration.",
           "example": "无",
@@ -8461,7 +8120,6 @@
           "type": "object"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The subdomain name/L4 proxy. You must specify either \"Entity\" or \"TemplateId\".",
           "example": "a.test.com",
@@ -8471,7 +8129,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The template ID. You must specify either this field or \"Entity\".",
           "example": "1",
@@ -8778,7 +8435,6 @@
       "document": "ModifyZoneStatus request structure.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-xxxx",
@@ -8788,7 +8444,6 @@
           "type": "string"
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The site status. Values:\n<li>`false`: Disabled</li>\n<li>`true`: Enabled</li>",
           "example": "false",
@@ -8816,7 +8471,6 @@
       "document": "No-cache configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable no-cache configuration. Valid values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on/off",
@@ -8833,7 +8487,6 @@
       "document": "Common action of the rule engine",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
           "example": "AccessUrlRedirect",
@@ -8844,7 +8497,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter",
           "example": "[]",
@@ -8861,7 +8513,6 @@
       "document": "Offline cache feature status switch.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether offline cache is enabled. Valid values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on/off",
@@ -9000,7 +8651,6 @@
       "document": "Origin group information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The site ID.",
           "example": "zone-xxx",
@@ -9011,7 +8661,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The site name.",
           "example": "123.com",
@@ -9022,7 +8671,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The ID of the origin group.",
           "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
@@ -9033,7 +8681,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin type. Values:\n<li>`self`: Customer origin</li>\n<li>`third_party`: Third-party origin</li>\n<li>`cos`: Tencent Cloud COS origin</li>",
           "example": "self",
@@ -9044,7 +8691,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The name of the origin group.",
           "example": "name",
@@ -9055,7 +8701,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin configuration type when `OriginType=self`. Values:\n<li>`area`: Configure by region.</li>\n<li>`weight`: Configure by weight.</li>\n<li>`proto`: Configure by HTTP protocol.</li>When `OriginType=third_party/cos`, leave this field empty.",
           "example": "area",
@@ -9066,7 +8711,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin record information.",
           "example": "[]",
@@ -9077,7 +8721,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The update time of the origin group.",
           "example": "2014-08-03T12:00:00+08:00",
@@ -9088,7 +8731,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin domain when `OriginType=self`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "www.tencent.com",
@@ -9242,7 +8884,6 @@
       "document": "Origin group record",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The origin record value, which can be an IPv4/IPv6 address or a domain name.",
           "example": "8.8.8.8",
@@ -9253,7 +8894,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin record ID.",
           "example": "record-27q0p0bali16",
@@ -9264,7 +8904,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin port. Value rang: 1-65535.",
           "example": "80",
@@ -9275,7 +8914,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The weight when `ConfigurationType=weight`.\nIf 0 or no value is passed, the weight of each origin in a group will be 0 or left empty, indicating that origin-pull is performed by round-robin.\nIf a value between 1-100 is passed, the total weight of multiple origins in a group should be 100, indicating that origin-pull is performed by weight.\nThe weight when `ConfigurationType=proto`.\nIf 0 or no value is passed, the weight of each origin in a group will be 0 or left empty, indicating that origin-pull is performed by round-robin.\nIf a value between 1-100 is passed, the total weight of multiple origins with the same protocol in a group should be 100, indicating that origin-pull is performed by weight.",
           "example": "100",
@@ -9286,7 +8924,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The origin protocol when `ConfigurationType=proto`, indicating that origin-pull is performed by protocol.\n<li>`http`: HTTP protocol</li>\n<li>`https`: HTTPS protocol</li>",
           "example": "http",
@@ -9297,7 +8934,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The region when `ConfigurationType=area`, which is specified by country code (ISO 3166 alpha-2) or continent code. If not specified, it indicates all regions. Supported continent codes:\n<li>`Asia`</li>\n<li>`Europe`</li>\n<li>`Africa`</li>\n<li>`Oceania`</li>\n<li>`Americas`</li>An origin group must have at least one origin configured with all regions.",
           "example": "[]",
@@ -9308,7 +8944,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "It is valid only when `OriginType=third_part`.\nWhether the origin group is private. Values:\n<li>`true`: Yes.</li>\n<li>`false`: No.</li>If not specified, it defaults to false.",
           "example": "false",
@@ -9319,7 +8954,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The authentication parameter, which is used when `Private=true`.",
           "example": "无",
@@ -9336,7 +8970,6 @@
       "document": "Module settings of the exception rule",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The module. Values:\n<li>`waf`: Managed rules</li>",
           "example": "waf",
@@ -9347,7 +8980,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of managed rule IDs to be skipped.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "[1,2,3]",
@@ -9364,7 +8996,6 @@
       "document": "EdgeOne plan information",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Settlement currency. Values:\n<li>`CNY`: Settled by Chinese RMB;</li>\n<li>`USD`: Settled by US dollars.</li>",
           "example": "CNY",
@@ -9375,7 +9006,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Traffic quota of the plan. It includes the traffic for security acceleration, content acceleration and smart acceleration. Unit: byte.",
           "example": "347000000000000",
@@ -9386,7 +9016,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Settlement cycle. Values:\n<li>`y`: Settled by year;</li>\n<li>`m`: Settled by month;</li>\n<li>`h`: Settled by hour;</li>\n<li>`M`: Settled by minute;</li>\n<li>`s`: Settled by second.</li>",
           "example": "month",
@@ -9397,7 +9026,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The plan option. Values:\n<li>`sta`: Standard plan that supports content delivery network outside the Chinese mainland.</li>\n<li>`sta_with_bot`: Standard plan that supports content delivery network outside the Chinese mainland and bot management.</li>\n<li>`sta_cm`: Standard plan that supports content delivery network inside the Chinese mainland.</li>\n<li>`sta_cm_with_bot`: Standard plan that supports content delivery network inside the Chinese mainland and bot management.</li>\n<li>`sta`: Standard plan that supports content delivery network over the globe.</li>\n<li>`sta_global_with_bot`: Standard plan that supports content delivery network over the globe and bot management.</li>\n<li>`ent`: Enterprise plan that supports content delivery network outside the Chinese mainland.</li>\n<li>`ent_with_bot`: Enterprise plan that supports content delivery network outside the Chinese mainland and bot management.</li>\n<li>`ent_cm`: Enterprise plan that supports content delivery network inside the Chinese mainland.</li>\n<li>`ent_cm_with_bot`: Enterprise plan that supports content delivery network inside the Chinese mainland and bot management.</li>\n<li>`ent_global`: Enterprise plan that supports content delivery network over the globe.</li>\n<li>`ent_global_with_bot`: Enterprise plan that supports content delivery network over the globe and bot management.</li>",
           "example": "sta_with_bot",
@@ -9408,7 +9036,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Plan price (in CNY fen/US cent). The price unit depends on the settlement currency.",
           "example": "450000",
@@ -9419,7 +9046,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Quota on security acceleration requests",
           "example": "1270000000",
@@ -9430,7 +9056,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Number of sites to be bound to the plan",
           "example": "1",
@@ -9441,7 +9066,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The acceleration region. Values:\n<li>`mainland`: Chinese mainland</li>\n<li>`overseas`: Global (Chinese mainland not included)</li>\n<li>`global`: Global (Chinese mainland included)</li>",
           "example": "mainland",
@@ -9484,7 +9108,6 @@
       "document": "Origin authentication parameter",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The parameter name. Values\n<li>`AccessKeyId`: Access Key ID</li>\n<li>`SecretAccessKey`: Secret Access Key</li>",
           "example": "AccessKeyId",
@@ -9495,7 +9118,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The parameter value.",
           "example": "无",
@@ -9512,7 +9134,6 @@
       "document": "The query condition",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The key of QueryCondition.",
           "example": "查询键",
@@ -9523,7 +9144,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The conditional operator. Values:\n<li>`equals`: Equals</li>\n<li>`notEquals`: Does not equal</li>\n<li>`include`: Contains</li>\n<li>`notInclude`: Does not contain</li>\n<li>`startWith`: Starts with</li>\n<li>`notStartWith`: Does not start with</li>\n<li>`endWith`: Ends with</li>\n<li>`notEndWith`: Does not end with</li>",
           "example": "equals",
@@ -9534,7 +9154,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The value of QueryCondition.",
           "example": "查询值",
@@ -9551,7 +9170,6 @@
       "document": "Request parameter contained in `CacheKey`",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to use `QueryString` as part of `CacheKey`. Values:\n<li>`on`: Yes</li>\n<li>`off`: No</li>",
           "example": "on/off",
@@ -9562,7 +9180,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Specifies how to use query strings in the cache key. Values:\n<li>`includeCustom`: `Include partial query strings.</li>\n<li>`excludeCustom`: Exclude partial query strings.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "includeCustom",
@@ -9573,7 +9190,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Array of query strings used/excluded\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "key1;key2",
@@ -9606,7 +9222,6 @@
       "document": "Purging/Pre-warming available usage and quota",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "",
           "example": "1",
@@ -9617,7 +9232,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Daily submission quota limit.",
           "example": "100",
@@ -9628,7 +9242,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Remaining daily submission quota.",
           "example": "100",
@@ -9639,7 +9252,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of cache purging/pre-warming. Values:\n<li>`purge_prefix`: Purge by prefix</li>\n<li>`purge_url`: Purge by URL</li>\n<li>`purge_host`: Purge by hostname</li>\n<li>`purge_all`: Purge all caches</li>\n<li>`purge_cache_tag`: Purge by cache tag</li><li>`prefetch_url`: Pre-warm by URL</li>",
           "example": "purge_url",
@@ -9712,7 +9324,6 @@
       "document": "Client filtering",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable configuration. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "off",
@@ -9723,7 +9334,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Action to be executed. Values:\n<li>`monitor`: Observe</li>\n<li>`alg`: Challenge</li>",
           "example": "monitor",
@@ -9734,7 +9344,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule ID, which is only used as a response parameter.",
           "example": "1",
@@ -9751,7 +9360,6 @@
       "document": "Rate limit template",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The mode. Values:\n<li>`sup_loose`: Super loose</li>\n<li>`loose`: Loose</li>\n<li>`emergency`: Emergency</li>\n<li>`normal`: Moderate</li>\n<li>`strict`: Strict</li>\n<li>`close`: Off</li>",
           "example": "loose",
@@ -9762,7 +9370,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The action. Values:\n<li>`alg`: JavaScript challenge</li>\n<li>`monitor`: Observe</li>If it is left empty, the default value `alg` is used.",
           "example": "alg",
@@ -9773,7 +9380,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The settings of the rate limiting template. It is only used as an output parameter.",
           "example": "无",
@@ -9790,7 +9396,6 @@
       "document": "The settings of the rate limiting template",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The mode. Values:\n<li>`sup_loose`: Super loose</li>\n<li>`loose`: Loose</li>\n<li>`emergency`: Emergency</li>\n<li>`normal`: Moderate</li>\n<li>`strict`: Strict</li>\n<li>`close`: Off</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "loose",
@@ -9801,7 +9406,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The unique ID.",
           "example": "xxx",
@@ -9812,7 +9416,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The action. Values:\n<li>`alg`: JavaScript challenge</li>\n<li>`monitor`: Observe</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "alg",
@@ -9823,7 +9426,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The blocking duration, in seconds. Value range: 0-172800.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "10",
@@ -9834,7 +9436,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The request threshold. Value range: 0-4294967294.",
           "example": "100",
@@ -9845,7 +9446,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The statistical period. Value range: 0-120 seconds.",
           "example": "10",
@@ -9862,7 +9462,6 @@
       "document": "Rate limit rule",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The request threshold. Value range: 0-4294967294.",
           "example": "1",
@@ -9873,7 +9472,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The statistical period. The value can be 10, 20, 30, 40, 50, or 60 seconds.",
           "example": "1",
@@ -9884,7 +9482,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule name, which consists of only letters, digits, and underscores and cannot start with an underscore.",
           "example": "rule",
@@ -9895,7 +9492,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The action. Values:\n<li>`monitor`: Observe</li>\n<li>`drop`: Block</li>\n<li>`alg`: JavaScript challenge</li>",
           "example": "drop",
@@ -9906,7 +9502,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The amount of time taken to perform the action. Value range: 0 seconds - 2 days.",
           "example": "11",
@@ -9917,7 +9512,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The time unit. Values:\n<li>`second`: Second</li>\n<li>`minutes`: Minute</li>\n<li>`hour`: Hour</li>",
           "example": "second",
@@ -9928,7 +9522,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule status. Values:\n<li>`on`: Enabled</li>\n<li>`off`: Disabled</li>Default value: on",
           "example": "on",
@@ -9939,7 +9532,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule details.",
           "example": "无",
@@ -9950,7 +9542,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule weight. Value range: 0-100.",
           "example": "1",
@@ -9961,7 +9552,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule ID, which is only used as an output parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
@@ -9972,7 +9562,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The filter. Values:\n<li>`sip`: Client IP</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"sip\"",
@@ -9983,7 +9572,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
@@ -9994,7 +9582,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The statistical dimension. Values:\n<li>`source_to_eo`: Responses from the origin server to EdgeOne</li>\n<li>`client_to_eo`: Requests from the client to EdgeOne</li>\nNote: A null value indicates responses from the origin server to EdgeOne are recorded.",
           "example": "source_to_eo",
@@ -10137,7 +9724,6 @@
       "document": "Rule engine action for the HTTP request/response header",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
           "example": "ResponseHeader",
@@ -10148,7 +9734,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter",
           "example": "[]",
@@ -10165,7 +9750,6 @@
       "document": "Rule item of the rule engine. The items in the `Conditions` array are in `OR` relationship, and the items in the inner `Conditions` list are in `AND` relationship.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Feature to be executed.",
           "example": "[]",
@@ -10176,7 +9760,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Feature execution conditions.\nNote: If any condition in the array is met, the feature will run.",
           "example": "[]",
@@ -10187,7 +9770,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The nested rule.",
           "example": "[]",
@@ -10204,7 +9786,6 @@
       "document": "List of rule engine conditions in `AND` relationship",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Rule engine condition. This condition will be considered met if all items in the array are met.",
           "example": "[]",
@@ -10221,7 +9802,6 @@
       "document": "Detailed settings of the rule engine that can be used for request match, which are optional parameter configuration items.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The parameter name.",
           "example": "name",
@@ -10232,7 +9812,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The parameter value type.\n<li>CHOICE: The parameter value can be selected only from `Values`.</li>\n<li>TOGGLE: The parameter value is of switch type and can be selected from `ChoicesValue`.</li>\n<li>CUSTOM_NUM: The parameter value is a custom integer.</li>\n<li>CUSTOM_STRING: The parameter value is a custom string.</li>",
           "example": "CHOICE",
@@ -10243,7 +9822,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid parameter values.\nNote: If `Type` is `CUSTOM_NUM` or `CUSTOM_STRING`, this parameter will be an empty array.",
           "example": "[\"TypeD\",\"TypeA\"]",
@@ -10254,7 +9832,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum value. If both `Min` and `Max` are set to `0`, this parameter does not take effect.",
           "example": "0",
@@ -10265,7 +9842,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum value. If both `Min` and `Max` are set to `0`, this parameter does not take effect.",
           "example": "100000000",
@@ -10276,7 +9852,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether multiple values can be selected or entered.",
           "example": "true",
@@ -10287,7 +9862,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the parameter can be left empty.",
           "example": "false",
@@ -10298,7 +9872,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Special parameter.\n<li>NULL: Select `NormalAction` for `RuleAction`. </li>\n<li>If the member parameter `Id` is `Action`, select `RewirteAction` for `RuleAction`.</li>\n<li>If the member parameter `Id` is `StatusCode`, select `CodeAction` for `RuleAction`.</li>",
           "example": "Action",
@@ -10315,7 +9888,6 @@
       "document": "Parameters of the action with the `StatusCode` field as the rule engine condition",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The status code.",
           "example": "200",
@@ -10326,7 +9898,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name.",
           "example": "RedirectUrl",
@@ -10337,7 +9908,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The parameter value.",
           "example": "[\"on\"]",
@@ -10354,7 +9924,6 @@
       "document": "Rule engine condition parameters",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Operator. Valid values:\n<li>`equals`: Equals</li>\n<li>`notEquals`: Does not equal</li>\n<li>`exist`: Exists</li>\n<li>`notexist`: Does not exist</li>",
           "example": "equal",
@@ -10365,7 +9934,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The match type. Values:\n<li>`filename`: File name</li>\n<li>`extension`: File extension</li>\n<li>`host`: Host</li>\n<li>`full_url`: Full URL, which indicates the complete URL path under the current site and must contain the HTTP protocol, host, and path.</li>\n<li>`url`: Partial URL under the current site</li><li>`client_country`: Country/Region of the client</li>\n<li>`query_string`: Query string in the request URL</li>\n<li>`request_header`: HTTP request header</li>",
           "example": "url",
@@ -10376,7 +9944,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The parameter value of the match type. It can be an empty string only when `Target=query string/request header` and `Operator=exist/notexist`.\n<li>When `Target=extension`, enter the file extension, such as \"jpg\" and \"txt\".</li>\n<li>When `Target=filename`, enter the file name, such as \"foo\" in \"foo.jpg\".</li>\n<li>When `Target=all`, it indicates any site request.</li>\n<li>When `Target=host`, enter the host under the current site, such as \"www.maxx55.com\".</li>\n<li>When `Target=url`, enter the partial URL path under the current site, such as \"/example\".</li>\n<li>When `Target=full_url`, enter the complete URL under the current site. It must contain the HTTP protocol, host, and path, such as \"https://www.maxx55.cn/example\".</li>\n<li>When `Target=client_country`, enter the ISO-3166 country/region code.</li>\n<li>When `Target=query_string`, enter the value of the query string, such as \"cn\" and \"1\" in \"lang=cn&version=1\".</li>\n<li>When `Target=request_header`, enter the HTTP request header value, such as \"zh-CN,zh;q=0.9\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.</li>",
           "example": "[\"www.maxx55.com\"]",
@@ -10387,7 +9954,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the parameter value is case insensitive. Default value: false.",
           "example": "true",
@@ -10398,7 +9964,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The parameter name of the match type. This field is required only when `Target=query_string/request_header`.\n<li>`query_string`: Name of the query string, such as \"lang\" and \"version\" in \"lang=cn&version=1\".</li>\n<li>`request_header`: Name of the HTTP request header, such as \"Accept-Language\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.</li>",
           "example": "Accept-Language",
@@ -10409,7 +9974,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the parameter name is case insensitive. Default value: `false`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
@@ -10426,7 +9990,6 @@
       "document": "Rule engine parameter details and special parameter types.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter name. Valid values:\n<li>`Action`: Required parameter for HTTP header modification when `RewirteAction` is selected for `RuleAction`.</li>\n<li>`StatusCode`: Required parameter for the status code feature when `CodeAction` is selected for `RuleAction`.</li>",
           "example": "Action",
@@ -10437,7 +10000,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter value type.\n<li>`CHOICE`: The parameter value can be selected only from `Values`.</li>\n<li>`CUSTOM_NUM`: The parameter value is a custom integer.</li>\n<li>`CUSTOM_STRING`: The parameter value is a custom string.</li>",
           "example": "CHOICE",
@@ -10448,7 +10010,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid values.\nNote: If the value of `Id` is `StatusCode`, values in the array are all integer values. When entering a parameter value, enter the integer value of the string.",
           "example": "[\"401\"]",
@@ -10465,7 +10026,6 @@
       "document": "Rule details of the rule engine",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The rule ID.",
           "example": "rule-xxx",
@@ -10476,7 +10036,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule name. It is a string that can contain 1–255 characters.",
           "example": "rule test",
@@ -10487,7 +10046,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Rule status. Values:\n<li>`enable`: Enabled</li>\n<li>`disable`: Disabled</li>",
           "example": "enable",
@@ -10498,7 +10056,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule content.",
           "example": "无",
@@ -10509,7 +10066,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The rule priority. The greater the value, the higher the priority. The minimum value is `1`.",
           "example": "1",
@@ -10520,7 +10076,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag of the rule.",
           "example": "[]",
@@ -10537,7 +10092,6 @@
       "document": "Common action parameter of a rule engine condition",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name.",
           "example": "ParamName",
@@ -10548,7 +10102,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The parameter value.",
           "example": "[\"on\"]",
@@ -10565,7 +10118,6 @@
       "document": "Parameter of the action for the HTTP request/response header of a rule engine condition.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Feature parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name, which has three values:\n<li>add: Add the HTTP header.</li>\n<li>set: Rewrite the HTTP header.</li>\n<li>del: Delete the HTTP header.</li>",
           "example": "set",
@@ -10576,7 +10128,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter name",
           "example": "token",
@@ -10587,7 +10138,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter value",
           "example": "[\"Bar\"]",
@@ -10604,7 +10154,6 @@
       "document": "Detailed settings of the rule engine that can be used for request match.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter name.",
           "example": "Cache",
@@ -10615,7 +10164,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Minimum value. If both `Min` and `Max` are set to `0`, this parameter does not take effect.",
           "example": "0",
@@ -10626,7 +10174,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Valid parameter values.\nNote: If `Type` is `CUSTOM_NUM` or `CUSTOM_STRING`, this parameter will be an empty array.",
           "example": "[\"TypeD\",\"TypeA\"]",
@@ -10637,7 +10184,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter value type.\n<li>`CHOICE`: The parameter value can be selected only from `ChoicesValue`.</li>\n<li>`TOGGLE`: The parameter value is of switch type and can be selected from `ChoicesValue`.</li>\n<li>`OBJECT`: The parameter value is of object type, and `ChoiceProperties` indicates the attributes associated with the object type.</li>\n<li>`CUSTOM_NUM`: Custom integer</li>\n<li>`CUSTOM_STRING`: Custom string.</li>Note: If `OBJECT` is selected, refer to [Example 2. Create a rule with parameters of OBJECT type](https://tcloud4api.woa.com/document/product/1657/79382?!preview&!document=1).",
           "example": "CHOICE",
@@ -10648,7 +10194,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Maximum value. If both `Min` and `Max` are set to `0`, this parameter does not take effect.",
           "example": "100000000",
@@ -10659,7 +10204,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether multiple values can be selected or entered.",
           "example": "true",
@@ -10670,7 +10214,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Whether the parameter can be left empty.",
           "example": "false",
@@ -10681,7 +10224,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Associated configuration parameters of this parameter, which are required for API call.\nNote: This parameter will be an empty array if no special parameters are added as optional parameters.",
           "example": "无",
@@ -10692,7 +10234,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "<li>NULL: No special parameters when `NormalAction` is selected for `RuleAction`.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -10709,7 +10250,6 @@
       "document": "List of the settings of the rule engine that can be used for request match and their detailed information.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Feature name. Valid values:\n<li>Access URL rewrite (`AccessUrlRedirect`).</li>\n<li>Origin-pull URL rewrite (`UpstreamUrlRedirect`).</li>\n<li>Custom error page\n(`ErrorPage`).</li>\n<li>QUIC (`QUIC`).</li>\n<li>WebSocket (`WebSocket`).</li>\n<li>Video dragging (`VideoSeek`).</li>\n<li>Token authentication (`Authentication`).</li>\n<li>`CacheKey`: Custom cache key.</li>\n<li>`Cache`: Node cache TTL.</li>\n<li>`MaxAge`: Browser cache TTL.</li>\n<li>`OfflineCache`: Offline cache.</li>\n<li>`SmartRouting`: Smart acceleration.</li>\n<li>`RangeOriginPull`: Range GETs.</li>\n<li>`UpstreamHttp2`: HTTP/2 forwarding.</li>\n<li>`HostHeader`: Host header rewrite.</li>\n<li>`ForceRedirect`: Force HTTPS.</li>\n<li>`OriginPullProtocol`: Origin-pull HTTPS.</li>\n<li>`CachePrefresh`: Cache prefresh.</li>\n<li>`Compression`: Smart compression.</li>\n<li>`RequestHeader`: HTTP request header modification.</li>\n<li>HTTP response header modification (`ResponseHeader`).</li>\n<li>Status code cache TTL (`StatusCodeCache`).</li>\n<li>`Hsts`.</li>\n<li>`ClientIpHeader`.</li>\n<li>`TlsVersion`.</li>\n<li>`OcspStapling`.</li>",
           "example": "Cache",
@@ -10720,7 +10260,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Parameter information",
           "example": "[]",
@@ -10737,7 +10276,6 @@
       "document": "Returned value of security data entry",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The query dimension value.",
           "example": "ddos_attackFlowBandwidth",
@@ -10748,7 +10286,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The details.",
           "example": "[{\"Metric\":\"cc_interceptNum\",\"Detail\":[1,2,3,4],\"Max\":123,\"Avg\":",
@@ -10765,7 +10302,6 @@
       "document": "The security data queried by metric",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The metric name.",
           "example": "ddos_attackFlowBandwidth",
@@ -10776,7 +10312,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The time-series data details.",
           "example": "无",
@@ -10787,7 +10322,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum value.",
           "example": "6",
@@ -10798,7 +10332,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The average value.",
           "example": "3.52",
@@ -10809,7 +10342,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Sum",
           "example": "20",
@@ -10932,7 +10464,6 @@
       "document": "The security type setting item.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable the security type setting. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on",
@@ -10949,7 +10480,6 @@
       "document": "HTTPS server certificate configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the server certificate.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "EO-dsfdsf",
@@ -10960,7 +10490,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Alias of the certificate.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "默认证书",
@@ -10971,7 +10500,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of the certificate. Values:\n<li>`default`: Default certificate</lil>\n<li>`upload`: Specified certificate</li>\n<li>`managed`: Tencent Cloud-managed certificate</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "default",
@@ -10982,7 +10510,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time when the certificate expires.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2014-08-03T12:00:00+08:00",
@@ -10993,7 +10520,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Time when the certificate is deployed.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2014-08-03T12:00:00+08:00",
@@ -11004,7 +10530,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Signature algorithm.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "RSA",
@@ -11015,7 +10540,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Domain name of the certificate.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "tencent.cloud",
@@ -11032,7 +10556,6 @@
       "document": "Exception rule conditions, used to filter requests by specific fields",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The field type. Values:\n<li>`header_fields`: HTTP request header</li>\n<li>`cookie`: HTTP request cookie</li>\n<li>`query_string`: Query string in the HTTP request URL</li>\n<li>`uri`: HTTP request URI</li>\n<li>`body_raw`: HTTP request body</li>\n<li>`body_json`: JSON HTTP request body</li>",
           "example": "body_json",
@@ -11043,7 +10566,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The specific field. Values:\n<li>`args`: Query parameter in the URI, such as \"?name1=jack&age=12\"</li>\n<li>`path`: Partial path in the URI, such as \"/path/to/resource.jpg\"</li>\n<li>`full`: Full path in the URI, such as \"example.com/path/to/resource.jpg?name1=jack&age=12\"</li>\n<li>`upload_filename`: File path segment</li>\n<li>`keys`: All keys</li>\n<li>`values`: Values of all keys</li>\n<li>`key_value`: Key and its value</li>",
           "example": "keys",
@@ -11054,7 +10576,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The match method used to match the key. Values:\n<li>`equal`: Exact match</li>\n<li>`wildcard`: Wildcard match (only asterisks)</li>",
           "example": "equal",
@@ -11065,7 +10586,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The value that matches the key.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "key",
@@ -11076,7 +10596,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The match method used to match the content.\n<li>`equal`: Exact match</li>\n<li>`wildcard`: Wildcard match (only asterisks)</li>",
           "example": "equal",
@@ -11087,7 +10606,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The value that matches the content.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
           "example": "value",
@@ -11196,7 +10714,6 @@
       "document": "Smart acceleration configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable smart acceleration. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on/off",
@@ -11252,7 +10769,6 @@
       "document": "Nested rule settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The condition that determines if a feature should run.\nNote: If any condition in the array is met, the feature will run.",
           "example": "[]",
@@ -11263,7 +10779,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The feature to be executed.",
           "example": "[]",
@@ -11280,7 +10795,6 @@
       "document": "Rule engine nested rule",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Nested rule settings",
           "example": "[]",
@@ -11291,7 +10805,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Tag of the rule.",
           "example": "[]",
@@ -11364,7 +10877,6 @@
       "document": "Web security configuration switch",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable web protection. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>It does not affect DDoS and bot configuration.",
           "example": "on",
@@ -11381,7 +10893,6 @@
       "document": "Tag configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The tag key.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -11392,7 +10903,6 @@
           "value_allowed_null": true
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The tag value.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -11409,7 +10919,6 @@
       "document": "Content management task result",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the task.",
           "example": "20g9wz8m9mgx",
@@ -11420,7 +10929,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Status of the task.",
           "example": "状态",
@@ -11431,7 +10939,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Resource.",
           "example": "http://www.qq.com",
@@ -11442,7 +10949,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Type of the task.",
           "example": "purge_url",
@@ -11453,7 +10959,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Creation time of the task.",
           "example": "2022-02-09T02:28:43Z",
@@ -11464,7 +10969,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Completion time of the task.",
           "example": "2022-02-09T02:28:43Z",
@@ -11481,7 +10985,6 @@
       "document": "Security template settings",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The template ID.",
           "example": "1",
@@ -11492,7 +10995,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The template name.",
           "example": "1",
@@ -11509,7 +11011,6 @@
       "document": "Data items of the statistical curve",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The query time recorded in seconds using UNIX timestamp.",
           "example": "1652659200",
@@ -11520,7 +11021,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The value.",
           "example": "100",
@@ -11537,7 +11037,6 @@
       "document": "The time-series data",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The query dimension value.",
           "example": "l7Flow_flux",
@@ -11548,7 +11047,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Detailed time series data",
           "example": "[1,2,3]",
@@ -11565,7 +11063,6 @@
       "document": "Detailed data of time series type",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Sum.",
           "example": "321",
@@ -11576,7 +11073,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The maximum value.",
           "example": "23",
@@ -11587,7 +11083,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The average value.",
           "example": "231",
@@ -11598,7 +11093,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Metric name.",
           "example": "flow_flux",
@@ -11609,7 +11103,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Details.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
@@ -11626,7 +11119,6 @@
       "document": "The top-ranked data record",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The query dimension value.",
           "example": "\"1234\"",
@@ -11637,7 +11129,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "Top data rankings",
           "example": "无",
@@ -11654,7 +11145,6 @@
       "document": "The top-ranked data details",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The field name.",
           "example": "china",
@@ -11665,7 +11155,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The field value.",
           "example": "500",
@@ -11682,7 +11171,6 @@
       "document": "The Top-ranked data",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The query dimension value.",
           "example": "subzoneId1",
@@ -11693,7 +11181,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The details.",
           "example": "[{}]",
@@ -11710,7 +11197,6 @@
       "document": "The top-ranked data",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "The item name.",
           "example": "subzoneId2",
@@ -11721,7 +11207,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The number of items.",
           "example": "23",
@@ -11754,7 +11239,6 @@
       "document": "Custom name servers",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable custom name servers. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on",
@@ -11765,7 +11249,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "List of custom name servers",
           "example": "[\"ns1.test.com\",\"ns2.test.com\"]",
@@ -11782,7 +11265,6 @@
       "document": "IP information of the custom name server",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Custom name of the name server",
           "example": "example1.com",
@@ -11793,7 +11275,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "IPv4 address of the custom name server",
           "example": "1.1.1.1",
@@ -11810,7 +11291,6 @@
       "document": "N/A",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable WAF. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>",
           "example": "on",
@@ -11821,7 +11301,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "ID of the policy",
           "example": "10",
@@ -11838,7 +11317,6 @@
       "document": "WAF configuration.",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable WAF configuration. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>The configuration can be modified even when it is disabled.",
           "example": "off",
@@ -11849,7 +11327,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The protection level. Values:\n<li>`loose`: Loose</li>\n<li>`normal`: Moderate</li>\n<li>`strict`: Strict</li>\n<li>`stricter`: Super strict</li>\n<li>`custom`: Custom</li>",
           "example": "strict",
@@ -11860,7 +11337,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The WAF global mode. Values:\n<li>`block`: Block globally</li>\n<li>`observe`: Observe globally</li>",
           "example": "block",
@@ -11871,7 +11347,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The settings of the managed rule. If it is null, the settings that were last configured will be used.",
           "example": "无",
@@ -11882,7 +11357,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The setting of the AI rule engine. If it is null, the setting that was last configured will be used.",
           "example": "无",
@@ -11935,7 +11409,6 @@
       "document": "WebSocket configuration",
       "members": [
         {
-          "default": "",
           "disabled": false,
           "document": "Whether to enable WebSocket connection timeout. Values:\n<li>`on`: The field \"Timeout\" can be configured.</li>\n<li>`off`: The field \"Timeout\" is fixed to 15 seconds.</li>",
           "example": "off",
@@ -11946,7 +11419,6 @@
           "value_allowed_null": false
         },
         {
-          "default": "",
           "disabled": false,
           "document": "The timeout period in seconds. Maximum value: 120.",
           "example": "10",
