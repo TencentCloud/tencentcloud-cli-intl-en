@@ -449,6 +449,7 @@
         {
           "disabled": false,
           "document": "Audio `Pid`. Default value: 0.",
+          "example": "",
           "member": "uint64",
           "name": "Pid",
           "required": false,
@@ -464,6 +465,7 @@
         {
           "disabled": false,
           "document": "Audio FPS.",
+          "example": "",
           "member": "uint64",
           "name": "Fps",
           "required": true,
@@ -473,6 +475,7 @@
         {
           "disabled": false,
           "document": "Audio bitrate in bps.",
+          "example": "",
           "member": "uint64",
           "name": "Rate",
           "required": true,
@@ -482,6 +485,7 @@
         {
           "disabled": false,
           "document": "Audio `Pid`, which is available only if the input is `rtp/udp`.",
+          "example": "",
           "member": "int64",
           "name": "Pid",
           "required": true,
@@ -497,6 +501,7 @@
         {
           "disabled": false,
           "document": "Audio name, which can contain 1-32 letters, digits, and underscores.",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -506,6 +511,7 @@
         {
           "disabled": false,
           "document": "Audio `Pid` selection.",
+          "example": "",
           "member": "AudioPidSelectionInfo",
           "name": "AudioPidSelection",
           "required": false,
@@ -521,6 +527,7 @@
         {
           "disabled": false,
           "document": "Only `AttachedInputs.AudioSelectors.Name` can be selected. This parameter is required for RTP_PUSH and UDP_PUSH.",
+          "example": "",
           "member": "string",
           "name": "AudioSelectorName",
           "required": true,
@@ -530,6 +537,7 @@
         {
           "disabled": false,
           "document": "Audio transcoding template name, which can contain 1-20 letters and digits.",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -539,6 +547,7 @@
         {
           "disabled": false,
           "document": "Audio codec. Valid value: AAC. Default value: AAC.",
+          "example": "",
           "member": "string",
           "name": "Acodec",
           "required": false,
@@ -548,6 +557,7 @@
         {
           "disabled": false,
           "document": "Audio bitrate. If this parameter is left empty, the original value will be used.\nValid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 288000, 320000, 384000, 448000, 512000, 576000, 640000, 768000, 896000, 1024000",
+          "example": "",
           "member": "uint64",
           "name": "AudioBitrate",
           "required": false,
@@ -557,6 +567,7 @@
         {
           "disabled": false,
           "document": "Audio language code, whose length is always 3 characters.",
+          "example": "",
           "member": "string",
           "name": "LanguageCode",
           "required": false,
@@ -572,6 +583,7 @@
         {
           "disabled": false,
           "document": "Alarm details of pipeline 0 under this channel.",
+          "example": "",
           "member": "ChannelPipelineAlerts",
           "name": "Pipeline0",
           "required": true,
@@ -581,6 +593,7 @@
         {
           "disabled": false,
           "document": "Alarm details of pipeline 1 under this channel.",
+          "example": "",
           "member": "ChannelPipelineAlerts",
           "name": "Pipeline1",
           "required": true,
@@ -596,6 +609,7 @@
         {
           "disabled": false,
           "document": "Input ID.",
+          "example": "",
           "member": "string",
           "name": "InputId",
           "required": true,
@@ -605,6 +619,7 @@
         {
           "disabled": false,
           "document": "Input statistics.",
+          "example": "",
           "member": "InputStatistics",
           "name": "Statistics",
           "required": true,
@@ -620,6 +635,7 @@
         {
           "disabled": false,
           "document": "Output group name.",
+          "example": "",
           "member": "string",
           "name": "OutputGroupName",
           "required": true,
@@ -629,6 +645,7 @@
         {
           "disabled": false,
           "document": "Output group statistics.",
+          "example": "",
           "member": "OutputsStatistics",
           "name": "Statistics",
           "required": true,
@@ -644,6 +661,7 @@
         {
           "disabled": false,
           "document": "Alarm start time in UTC time.",
+          "example": "",
           "member": "string",
           "name": "SetTime",
           "required": true,
@@ -653,6 +671,7 @@
         {
           "disabled": false,
           "document": "Alarm end time in UTC time.\nThis time is available only after the alarm ends.",
+          "example": "",
           "member": "string",
           "name": "ClearTime",
           "required": true,
@@ -662,6 +681,7 @@
         {
           "disabled": false,
           "document": "Alarm type.",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -671,6 +691,7 @@
         {
           "disabled": false,
           "document": "Alarm details.",
+          "example": "",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -2325,6 +2346,7 @@
         {
           "disabled": false,
           "document": "Relay destination address. Length limit: [1,512].",
+          "example": "",
           "member": "string",
           "name": "OutputUrl",
           "required": true,
@@ -2334,6 +2356,7 @@
         {
           "disabled": false,
           "document": "Authentication key. Length limit: [1,128].\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "AuthKey",
           "required": false,
@@ -2343,6 +2366,7 @@
         {
           "disabled": false,
           "document": "Authentication username. Length limit: [1,128].\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Username",
           "required": false,
@@ -2352,6 +2376,7 @@
         {
           "disabled": false,
           "document": "Authentication password. Length limit: [1,128].\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -2784,7 +2809,7 @@
         },
         {
           "disabled": false,
-          "document": "Audio/Video packaging scheme. Valid values: `SEPARATE`, `MERGE`",
+          "document": "Audio/Video packaging scheme. Valid values: `SEPARATE`, `MERGE`. Default value is: SEPARATE.",
           "example": "SEPARATE",
           "member": "string",
           "name": "Scheme",
@@ -2811,6 +2836,36 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "LowLatency",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "500",
+          "member": "uint64",
+          "name": "PartialSegmentDuration",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1500",
+          "member": "uint64",
+          "name": "PartialSegmentPlaySite",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -2821,6 +2876,7 @@
         {
           "disabled": false,
           "document": "Input region.",
+          "example": "",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -2830,6 +2886,7 @@
         {
           "disabled": false,
           "document": "Input ID.",
+          "example": "",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -2839,6 +2896,7 @@
         {
           "disabled": false,
           "document": "Input name.",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -2848,6 +2906,7 @@
         {
           "disabled": false,
           "document": "Input type.",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -2857,6 +2916,7 @@
         {
           "disabled": false,
           "document": "Array of security groups associated with input.",
+          "example": "",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": true,
@@ -2866,6 +2926,7 @@
         {
           "disabled": false,
           "document": "Array of channels associated with input.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "AttachedChannels",
           "required": true,
@@ -2875,6 +2936,7 @@
         {
           "disabled": false,
           "document": "Input configuration array.",
+          "example": "",
           "member": "InputSettingInfo",
           "name": "InputSettings",
           "required": true,
@@ -2890,6 +2952,7 @@
         {
           "disabled": false,
           "document": "Input security group ID.",
+          "example": "",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -2899,6 +2962,7 @@
         {
           "disabled": false,
           "document": "Input security group name.",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -2908,6 +2972,7 @@
         {
           "disabled": false,
           "document": "List of allowlist entries.",
+          "example": "",
           "member": "string",
           "name": "Whitelist",
           "required": true,
@@ -2917,6 +2982,7 @@
         {
           "disabled": false,
           "document": "List of bound input streams.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "OccupiedInputs",
           "required": true,
@@ -2926,6 +2992,7 @@
         {
           "disabled": false,
           "document": "Input security group address.",
+          "example": "",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -3037,6 +3104,7 @@
         {
           "disabled": false,
           "document": "Input statistics of pipeline 0.",
+          "example": "",
           "member": "PipelineInputStatistics",
           "name": "Pipeline0",
           "required": true,
@@ -3046,6 +3114,7 @@
         {
           "disabled": false,
           "document": "Input statistics of pipeline 1.",
+          "example": "",
           "member": "PipelineInputStatistics",
           "name": "Pipeline1",
           "required": true,
@@ -3107,6 +3176,7 @@
         {
           "disabled": false,
           "document": "Log type.\nIt contains the value of `StreamStart` which refers to the push information.",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -3116,6 +3186,7 @@
         {
           "disabled": false,
           "document": "Time when the log is printed.",
+          "example": "",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -3125,6 +3196,7 @@
         {
           "disabled": false,
           "document": "Log details.",
+          "example": "",
           "member": "LogMessageInfo",
           "name": "Message",
           "required": true,
@@ -3140,6 +3212,7 @@
         {
           "disabled": false,
           "document": "Push information.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "StreamInfo",
           "name": "StreamInfo",
           "required": true,
@@ -3463,6 +3536,7 @@
         {
           "disabled": false,
           "document": "Output information of pipeline 0.",
+          "example": "",
           "member": "PipelineOutputStatistics",
           "name": "Pipeline0",
           "required": true,
@@ -3472,6 +3546,7 @@
         {
           "disabled": false,
           "document": "Output information of pipeline 1.",
+          "example": "",
           "member": "PipelineOutputStatistics",
           "name": "Pipeline1",
           "required": true,
@@ -3487,6 +3562,7 @@
         {
           "disabled": false,
           "document": "Data timestamp in seconds.",
+          "example": "",
           "member": "uint64",
           "name": "Timestamp",
           "required": true,
@@ -3496,6 +3572,7 @@
         {
           "disabled": false,
           "document": "Input bandwidth in bps.",
+          "example": "",
           "member": "uint64",
           "name": "NetworkIn",
           "required": true,
@@ -3505,6 +3582,7 @@
         {
           "disabled": false,
           "document": "Video information array.\nFor `rtp/udp` input, the quantity is the number of `Pid` of the input video.\nFor other inputs, the quantity is 1.",
+          "example": "",
           "member": "VideoPipelineInputStatistics",
           "name": "Video",
           "required": true,
@@ -3514,6 +3592,7 @@
         {
           "disabled": false,
           "document": "Audio information array.\nFor `rtp/udp` input, the quantity is the number of `Pid` of the input audio.\nFor other inputs, the quantity is 1.",
+          "example": "",
           "member": "AudioPipelineInputStatistics",
           "name": "Audio",
           "required": true,
@@ -3529,6 +3608,7 @@
         {
           "disabled": false,
           "document": "Log information of pipeline 0.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "LogInfo",
           "name": "Pipeline0",
           "required": true,
@@ -3538,6 +3618,7 @@
         {
           "disabled": false,
           "document": "Log information of pipeline 1.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "LogInfo",
           "name": "Pipeline1",
           "required": true,
@@ -3553,6 +3634,7 @@
         {
           "disabled": false,
           "document": "Timestamp.\nIn seconds, indicating data time.",
+          "example": "",
           "member": "uint64",
           "name": "Timestamp",
           "required": true,
@@ -3562,6 +3644,7 @@
         {
           "disabled": false,
           "document": "Output bandwidth in bps.",
+          "example": "",
           "member": "uint64",
           "name": "NetworkOut",
           "required": true,
@@ -3856,6 +3939,7 @@
         {
           "disabled": false,
           "document": "Whether to pass through SCTE-35 information. Valid values: NO_PASSTHROUGH/PASSTHROUGH. Default value: NO_PASSTHROUGH.",
+          "example": "",
           "member": "string",
           "name": "Behavior",
           "required": false,
@@ -4157,6 +4241,7 @@
         {
           "disabled": false,
           "document": "Audio `Pid`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Pid",
           "required": true,
@@ -4166,6 +4251,7 @@
         {
           "disabled": false,
           "document": "Audio codec.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Codec",
           "required": true,
@@ -4175,6 +4261,7 @@
         {
           "disabled": false,
           "document": "Audio frame rate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Fps",
           "required": true,
@@ -4184,6 +4271,7 @@
         {
           "disabled": false,
           "document": "Audio bitrate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Rate",
           "required": true,
@@ -4193,6 +4281,7 @@
         {
           "disabled": false,
           "document": "Audio sample rate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "SampleRate",
           "required": true,
@@ -4208,6 +4297,7 @@
         {
           "disabled": false,
           "document": "Client IP.",
+          "example": "",
           "member": "string",
           "name": "ClientIp",
           "required": true,
@@ -4217,6 +4307,7 @@
         {
           "disabled": false,
           "document": "Video information of pushed streams.",
+          "example": "",
           "member": "StreamVideoInfo",
           "name": "Video",
           "required": true,
@@ -4226,6 +4317,7 @@
         {
           "disabled": false,
           "document": "Audio information of pushed streams.",
+          "example": "",
           "member": "StreamAudioInfo",
           "name": "Audio",
           "required": true,
@@ -4235,6 +4327,7 @@
         {
           "disabled": false,
           "document": "SCTE-35 information of pushed streams.",
+          "example": "",
           "member": "StreamScte35Info",
           "name": "Scte35",
           "required": true,
@@ -4484,6 +4577,7 @@
         {
           "disabled": false,
           "document": "SCTE-35 `Pid`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Pid",
           "required": true,
@@ -4499,6 +4593,7 @@
         {
           "disabled": false,
           "document": "Video `Pid`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Pid",
           "required": true,
@@ -4508,6 +4603,7 @@
         {
           "disabled": false,
           "document": "Video codec.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Codec",
           "required": true,
@@ -4517,6 +4613,7 @@
         {
           "disabled": false,
           "document": "Video frame rate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Fps",
           "required": true,
@@ -4526,6 +4623,7 @@
         {
           "disabled": false,
           "document": "Video bitrate.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Rate",
           "required": true,
@@ -4535,6 +4633,7 @@
         {
           "disabled": false,
           "document": "Video width.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Width",
           "required": true,
@@ -4544,6 +4643,7 @@
         {
           "disabled": false,
           "document": "Video height.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Height",
           "required": true,
@@ -4703,6 +4803,7 @@
         {
           "disabled": false,
           "document": "Video FPS.",
+          "example": "",
           "member": "uint64",
           "name": "Fps",
           "required": true,
@@ -4712,6 +4813,7 @@
         {
           "disabled": false,
           "document": "Video bitrate in bps.",
+          "example": "",
           "member": "uint64",
           "name": "Rate",
           "required": true,
@@ -4721,6 +4823,7 @@
         {
           "disabled": false,
           "document": "Video `Pid`, which is available only if the input is `rtp/udp`.",
+          "example": "",
           "member": "int64",
           "name": "Pid",
           "required": true,
