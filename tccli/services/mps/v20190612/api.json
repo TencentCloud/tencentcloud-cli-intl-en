@@ -1090,7 +1090,7 @@
         },
         {
           "disabled": false,
-          "document": "The subtitle file to add.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The subtitle file to add.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AddOnSubtitle",
           "name": "AddOnSubtitles",
@@ -1259,7 +1259,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The mode. Valid values:\n<li>`subtitle-stream`: Add a subtitle track.</li>\n<li>`close-caption-708`: u200dEmbed EA-708 subtitles in SEI frames.</li>\n<li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The mode. Valid values:\n<li>`subtitle-stream`: Add a subtitle track.</li>\n<li>`close-caption-708`: Embed EA-708 subtitles in SEI frames.</li>\n<li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Type",
@@ -1270,7 +1270,7 @@
         },
         {
           "disabled": false,
-          "document": "The subtitle file.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The subtitle file.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MediaInputInfo",
           "name": "Subtitle",
@@ -14064,7 +14064,7 @@
         },
         {
           "disabled": false,
-          "document": "The subtitle settings.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The subtitle settings.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "NULL",
           "member": "SubtitleTemplate",
           "name": "SubtitleTemplate",
@@ -14086,7 +14086,7 @@
         },
         {
           "disabled": false,
-          "document": "An extended field for transcoding.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "An extended field for transcoding.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "StdExtInfo",
@@ -14097,7 +14097,7 @@
         },
         {
           "disabled": false,
-          "document": "The subtitle file to add.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The subtitle file to add.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AddOnSubtitle",
           "name": "AddOnSubtitles",
@@ -16742,7 +16742,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The URL of the subtitles to add to the video.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The URL of the subtitles to add to the video.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
           "name": "Path",
@@ -16753,7 +16753,7 @@
         },
         {
           "disabled": false,
-          "document": "The subtitle track to add to the video. If both `Path` and `StreamIndex` are specified, `Path` will be used. You need to specify at least one of the two parameters.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The subtitle track to add to the video. If both `Path` and `StreamIndex` are specified, `Path` will be used. You need to specify at least one of the two parameters.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "3",
           "member": "int64",
           "name": "StreamIndex",
@@ -16764,7 +16764,7 @@
         },
         {
           "disabled": false,
-          "document": "The font. Valid values:\n<li>`hei.ttf`: Heiti.</li>\n<li>`song.ttf`: Songti.</li>\n<li>`simkai.ttf`: Kaiti.</li>\n<li>`arial.ttf`: Arial.</li>\nThe default is `hei.ttf`.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The font. Valid values:\n<li>`hei.ttf`: Heiti.</li>\n<li>`song.ttf`: Songti.</li>\n<li>`simkai.ttf`: Kaiti.</li>\n<li>`arial.ttf`: Arial.</li>\nThe default is `hei.ttf`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "simhei.ttf",
           "member": "string",
           "name": "FontType",
@@ -16775,7 +16775,7 @@
         },
         {
           "disabled": false,
-          "document": "The font size (pixels). If this is not specified, the font size in the subtitle file will be used.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The font size (pixels). If this is not specified, the font size in the subtitle file will be used.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "5px",
           "member": "string",
           "name": "FontSize",
@@ -16786,7 +16786,7 @@
         },
         {
           "disabled": false,
-          "document": "The font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "0xRRGGBB",
           "member": "string",
           "name": "FontColor",
@@ -16797,7 +16797,7 @@
         },
         {
           "disabled": false,
-          "document": "The text transparency. Value range: 0-1.\n<li>`0`: Fully transparent.</li>\n<li>`1`: u200dFully opaque.</li>\nDefault value: 1.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The text transparency. Value range: 0-1.\n<li>`0`: Fully transparent.</li>\n<li>`1`: Fully opaque.</li>\nDefault value: 1.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "float",
           "name": "FontAlpha",
@@ -16928,7 +16928,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The TSC type. Valid values:\n<li>`TEHD-100`: TSC-100 (video TSC). </li>\n<li>`TEHD-200`: TSC-200 (audio TSC). </li>\nIf this parameter is left blank, no modification will be made.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The TSC type. Valid values:\n<li>`TEHD-100`: TSC-100 (video TSC). </li>\n<li>`TEHD-200`: TSC-200 (audio TSC). </li>\nIf this parameter is left blank, no modification will be made.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "TEHD-100",
           "member": "string",
           "name": "Type",
@@ -16939,7 +16939,7 @@
         },
         {
           "disabled": false,
-          "document": "u200dThe maximum video bitrate. If this parameter is not specified, no modifications will be made.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The maximum video bitrate. If this parameter is not specified, no modifications will be made.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "MaxVideoBitrate",

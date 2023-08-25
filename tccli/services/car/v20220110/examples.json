@@ -23,6 +23,22 @@
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"fcf4146f-64d3-496c-88dc-d12f832de313\"\n    }\n}",
         "title": "Terminating a session"
       }
+    ],
+    "StartPublishStream": [
+      {
+        "document": "This example shows you how to start stream push.",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartPublishStream\n<Common request parameters>\n\n{\n    \"UserId\": \"abc123\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4eb17e58-68da-4e9a-b298-0894723c9022\"\n    }\n}",
+        "title": "Starting stream push"
+      }
+    ],
+    "StopPublishStream": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopPublishStream\n<Common request parameters>\n\n{\n    \"UserId\": \"abc123\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4eb17e58-68da-4e9a-b298-0894723c9022\"\n    }\n}",
+        "title": "Stopping stream push"
+      }
     ]
   },
   "version": "1.0"
