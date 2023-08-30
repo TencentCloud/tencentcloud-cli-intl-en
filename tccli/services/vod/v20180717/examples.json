@@ -914,6 +914,56 @@
         "title": "Querying keyword samples - filters specified"
       }
     ],
+    "EditMedia": [
+      {
+        "document": "This example shows you how to clip the 60th to 120th seconds of video `5285485487985271487` to generate a new VOD video.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=File\n&FileInfos.0.FileId=5285485487985271487\n&FileInfos.0.StartTimeOffset=60.0\n&FileInfos.0.EndTimeOffset=120.0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-EditMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Clipping one VOD file to generate a new video"
+      },
+      {
+        "document": "This example shows you how to splice three LVB recording streams whose IDs are 99873, 99874, and 99875 to generate a new VOD video.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=Stream\n&StreamInfos.0.StreamId=99873\n&StreamInfos.1.StreamId=99874\n&StreamInfos.2.StreamId=99875\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-clipMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Splicing multiple VOD streams to generate a new video"
+      },
+      {
+        "document": "This example shows you how to clip the segment between 10:00:00 and 11:00:00 on September 20, 2018 of the LVB recording stream whose ID is 99873 to generate a new VOD video.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=Stream\n&StreamInfos.0.StreamId=99873\n&StreamInfos.0.StartTime=2018-09-20T10:00:00Z\n&StreamInfos.0.StartTime=2018-09-20T11:00:00Z\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-clipMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Clipping one VOD stream to generate a new video"
+      },
+      {
+        "document": "This example shows you how to generate a new VOD video from LVB recording stream whose ID is 99873.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=Stream\n&StreamInfos.0.StreamId=99873\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-EditMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Directly generating a new video from VOD stream"
+      },
+      {
+        "document": "This example shows you how to clip the 60th to 120th seconds of videos `5285485487985271487`, `5285485487985271488`, and `5285485487985271489` respectively and splice the clips to generate a new VOD video.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=File\n&FileInfos.0.FileId=5285485487985271487\n&FileInfos.0.StartTimeOffset=60.0\n&FileInfos.0.EndTimeOffset=120.0\n&FileInfos.1.FileId=5285485487985271488\n&FileInfos.1.StartTimeOffset=60.0\n&FileInfos.1.EndTimeOffset=120.0\n&FileInfos.2.FileId=5285485487985271489\n&FileInfos.2.StartTimeOffset=60.0\n&FileInfos.2.EndTimeOffset=120.0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-EditMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Clipping multiple VOD files and then splicing clips to generate a new video"
+      },
+      {
+        "document": "This example shows you how to clip the 60th to 120th seconds of video `5285485487985271487` to generate a new VOD video and run task flow `TranscodeAndSnapshot`.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=File\n&FileInfos.0.FileId=5285485487985271487\n&FileInfos.0.StartTimeOffset=60.0\n&FileInfos.0.EndTimeOffset=120.0\n&ProcedureName=TranscodeAndSnapshot\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-clipMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Clipping one VOD file to generate a new video and run a task flow"
+      },
+      {
+        "document": "This example shows you how to clip the segments between 10:00:00 and 11:00:00 on September 20, 2018 of three LVB recording streams whose IDs are 99873, 99874, and 99875 and splice them to generate a new VOD video.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=Stream\n&StreamInfos.0.StreamId=99873\n&StreamInfos.0.StartTime=2018-09-20T10:00:00Z\n&StreamInfos.0.StartTime=2018-09-20T11:00:00Z\n&StreamInfos.1.StreamId=99874\n&StreamInfos.1.StartTime=2018-09-20T10:00:00Z\n&StreamInfos.1.StartTime=2018-09-20T11:00:00Z\n&StreamInfos.2.StreamId=99875\n&StreamInfos.2.StartTime=2018-09-20T10:00:00Z\n&StreamInfos.2.StartTime=2018-09-20T11:00:00Z\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-clipMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Clipping multiple VOD streams and then splicing clips to generate a new video"
+      },
+      {
+        "document": "This example shows you how to splice videos `5285485487985271487`, `5285485487985271488`, and `5285485487985271489` to generate a new VOD video.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=File\n&FileInfos.0.FileId=5285485487985271487\n&FileInfos.1.FileId=5285485487985271488\n&FileInfos.2.FileId=5285485487985271489\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-EditMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Splicing multiple VOD files to generate a new video"
+      }
+    ],
     "ExecuteFunction": [
       {
         "document": " ",
@@ -942,13 +992,13 @@
       {
         "document": "This example shows you how to cut out a video clip from a live stream (live stream code: record-stream; domain name: example.com) from `2018-09-20T10:00:00Z` to `2018-09-20T11:00:00Z` for temporary sharing. The live stream was interrupted for 10 minutes from `2018-09-20T10:30:00Z` to `2018-09-20T10:40:00Z`, so the output parameter `SegmentSet` contains the information of two segments, and the actual duration of the video clip is 50 minutes.",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: LiveRealTimeClip\n<Common request parameters>\n\n{\n    \"Host\": \"example.com\",\n    \"EndTime\": \"2018-09-20T11:00:00Z\",\n    \"StartTime\": \"2018-09-20T10:00:00Z\",\n    \"StreamId\": \"record-stream\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Url\": \"http://example.com/playlist.m3u8\",\n        \"FileId\": \"\",\n        \"VodTaskId\": \"\",\n        \"MetaData\": null,\n        \"RequestId\": \"6ca31e3a-6b8e-xxxx-9256-fdc700064ef3\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Url\": \"http://example.com/playlist.m3u8\",\n        \"FileId\": \"\",\n        \"VodTaskId\": \"\",\n        \"MetaData\": null,\n        \"SegmentSet\": [\n            {\n                \"StartTime\": \"2018-09-20T10:00:00Z\",\n                \"EndTime\": \"2018-09-20T10:30:00Z\"\n            },\n            {\n                \"StartTime\": \"2018-09-20T10:40:00Z\",\n                \"EndTime\": \"2018-09-20T11:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"6ca31e3a-6b8e-xxxx-9256-fdc700064ef3\"\n    }\n}",
         "title": "Clipping a live video for temporary sharing"
       },
       {
         "document": "This example shows you how to cut out a video clip from a live stream (live stream code: record-stream; domain name: example.com) from `2018-09-20T12:00:00Z` to `2018-09-20T13:00:00Z` for persistent storage, and initiate a task flow on the video.",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: LiveRealTimeClip\n<Common request parameters>\n\n{\n    \"IsPersistence\": \"1\",\n    \"Host\": \"example.com\",\n    \"StartTime\": \"2018-09-20T12:00:00Z\",\n    \"StreamId\": \"record-stream\",\n    \"EndTime\": \"2018-09-20T13:00:00Z\",\n    \"Procedure\": \"SomeProcedure\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Url\": \"http://example.com/playlist.m3u8\",\n        \"FileId\": \"5285890xxxxxx199336\",\n        \"VodTaskId\": \"125xxxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\",\n        \"MetaData\": null,\n        \"RequestId\": \"6ca31e3a-6b8e-xxxx-9256-fdc700064ef3\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Url\": \"http://example.com/playlist.m3u8\",\n        \"FileId\": \"5285890xxxxxx199336\",\n        \"VodTaskId\": \"125xxxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\",\n        \"MetaData\": null,\n        \"SegmentSet\": [\n            {\n                \"StartTime\": \"2018-09-20T12:00:00Z\",\n                \"EndTime\": \"2018-09-20T13:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"6ca31e3a-6b8e-xxxx-9256-fdc700064ef3\"\n    }\n}",
         "title": "Clipping a live video for persistent storage"
       }
     ],
