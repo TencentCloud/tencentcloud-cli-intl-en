@@ -818,6 +818,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -826,6 +827,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -834,6 +836,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -842,6 +845,7 @@
         {
           "disabled": false,
           "document": "Delay time in seconds, up to 600s.",
+          "example": "",
           "member": "uint64",
           "name": "DelayTime",
           "required": true,
@@ -850,6 +854,7 @@
         {
           "disabled": false,
           "document": "Expiration time of the configured delayed playback in UTC format, such as 2018-11-29T19:00:00Z.\nNotes:\n1. The configuration will expire after 7 days by default and can last up to 7 days.\n2. The Beijing time is in UTC+8. This value should be in the format as required by ISO 8601. For more information, please see [ISO Date and Time Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
+          "example": "",
           "member": "string",
           "name": "ExpireTime",
           "required": false,
@@ -948,6 +953,7 @@
         {
           "disabled": false,
           "document": "Watermark image URL.\nUnallowed characters in the URL:\n ;(){}$>`#\"\\'|",
+          "example": "",
           "member": "string",
           "name": "PictureUrl",
           "required": true,
@@ -956,6 +962,7 @@
         {
           "disabled": false,
           "document": "Watermark name.\nUp to 16 bytes.",
+          "example": "",
           "member": "string",
           "name": "WatermarkName",
           "required": true,
@@ -964,6 +971,7 @@
         {
           "disabled": false,
           "document": "Display position: X-axis offset in %. Default value: 0.",
+          "example": "",
           "member": "int64",
           "name": "XPosition",
           "required": false,
@@ -972,6 +980,7 @@
         {
           "disabled": false,
           "document": "Display position: Y-axis offset in %. Default value: 0.",
+          "example": "",
           "member": "int64",
           "name": "YPosition",
           "required": false,
@@ -980,6 +989,7 @@
         {
           "disabled": false,
           "document": "Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.",
+          "example": "",
           "member": "int64",
           "name": "Width",
           "required": false,
@@ -988,6 +998,7 @@
         {
           "disabled": false,
           "document": "Watermark height, which is set by entering a percentage of the live stream image’s original height. You are advised to set either the height or width as the other will be scaled proportionally to avoid distortions. Default value: original height.",
+          "example": "",
           "member": "int64",
           "name": "Height",
           "required": false,
@@ -1002,6 +1013,7 @@
         {
           "disabled": false,
           "document": "Watermark ID.",
+          "example": "",
           "member": "uint64",
           "name": "WatermarkId",
           "type": "int",
@@ -1088,6 +1100,7 @@
         {
           "disabled": false,
           "document": "Format of return value:\nyyyy-mm-dd HH:MM:SS\nThe time accuracy matches with the query granularity.",
+          "example": "",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -1097,6 +1110,7 @@
         {
           "disabled": false,
           "document": "Bandwidth.",
+          "example": "",
           "member": "float",
           "name": "Bandwidth",
           "required": true,
@@ -1112,6 +1126,7 @@
         {
           "disabled": false,
           "document": "The domain that the API failed to operate.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -1121,6 +1136,7 @@
         {
           "disabled": false,
           "document": "The API 3.0 error code.",
+          "example": "",
           "member": "string",
           "name": "Code",
           "required": true,
@@ -1130,6 +1146,7 @@
         {
           "disabled": false,
           "document": "The API 3.0 error message.",
+          "example": "",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -1145,6 +1162,7 @@
         {
           "disabled": false,
           "document": "Time point in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -1154,6 +1172,7 @@
         {
           "disabled": false,
           "document": "Bandwidth in Mbps.",
+          "example": "",
           "member": "float",
           "name": "Bandwidth",
           "required": true,
@@ -1163,6 +1182,7 @@
         {
           "disabled": false,
           "document": "Traffic in MB.",
+          "example": "",
           "member": "float",
           "name": "Flux",
           "required": true,
@@ -1172,6 +1192,7 @@
         {
           "disabled": false,
           "document": "Time point of peak value in the format of `yyyy-mm-dd HH:MM:SS`. As raw data is at a 5-minute granularity, if data at a 1-hour or 1-day granularity is queried, the time point of peak bandwidth value at the corresponding granularity will be returned.",
+          "example": "",
           "member": "string",
           "name": "PeakTime",
           "required": true,
@@ -1369,6 +1390,7 @@
         {
           "disabled": false,
           "document": "ID of stream mix session (from applying for stream mix to canceling stream mix).\nThis value is the same as the `MixStreamSessionId` in `CreateCommonMixStream`.",
+          "example": "",
           "member": "string",
           "name": "MixStreamSessionId",
           "required": true,
@@ -1395,6 +1417,7 @@
         {
           "disabled": false,
           "document": "Time point in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -1404,6 +1427,7 @@
         {
           "disabled": false,
           "document": "Bandwidth in Mbps.",
+          "example": "",
           "member": "float",
           "name": "Bandwidth",
           "required": true,
@@ -1413,6 +1437,7 @@
         {
           "disabled": false,
           "document": "Traffic in MB.",
+          "example": "",
           "member": "float",
           "name": "Flux",
           "required": true,
@@ -1422,6 +1447,7 @@
         {
           "disabled": false,
           "document": "Number of new requests.",
+          "example": "",
           "member": "uint64",
           "name": "Request",
           "required": true,
@@ -1431,6 +1457,7 @@
         {
           "disabled": false,
           "document": "Number of concurrent connections.",
+          "example": "",
           "member": "uint64",
           "name": "Online",
           "required": true,
@@ -1532,6 +1559,7 @@
         {
           "disabled": false,
           "document": "Client IP in dotted-decimal notation.",
+          "example": "",
           "member": "string",
           "name": "ClientIp",
           "required": true,
@@ -1541,6 +1569,7 @@
         {
           "disabled": false,
           "document": "District where the client is located.",
+          "example": "",
           "member": "string",
           "name": "Province",
           "required": true,
@@ -1550,6 +1579,7 @@
         {
           "disabled": false,
           "document": "Total traffic.",
+          "example": "",
           "member": "float",
           "name": "TotalFlux",
           "required": true,
@@ -1559,6 +1589,7 @@
         {
           "disabled": false,
           "document": "Total number of requests.",
+          "example": "",
           "member": "uint64",
           "name": "TotalRequest",
           "required": true,
@@ -1568,6 +1599,7 @@
         {
           "disabled": false,
           "document": "Total number of failed requests.",
+          "example": "",
           "member": "uint64",
           "name": "TotalFailedRequest",
           "required": true,
@@ -1577,6 +1609,7 @@
         {
           "disabled": false,
           "document": "Country/region where the client is located.",
+          "example": "",
           "member": "string",
           "name": "CountryArea",
           "required": true,
@@ -1628,6 +1661,7 @@
         {
           "disabled": false,
           "document": "Crop width. Value range: [0,2000].",
+          "example": "",
           "member": "float",
           "name": "CropWidth",
           "required": false,
@@ -1637,6 +1671,7 @@
         {
           "disabled": false,
           "document": "Crop height. Value range: [0,2000].",
+          "example": "",
           "member": "float",
           "name": "CropHeight",
           "required": false,
@@ -1646,6 +1681,7 @@
         {
           "disabled": false,
           "document": "Starting crop X coordinate. Value range: [0,2000].",
+          "example": "",
           "member": "float",
           "name": "CropStartLocationX",
           "required": false,
@@ -1655,6 +1691,7 @@
         {
           "disabled": false,
           "document": "Starting crop Y coordinate. Value range: [0,2000].",
+          "example": "",
           "member": "float",
           "name": "CropStartLocationY",
           "required": false,
@@ -1888,6 +1925,7 @@
         {
           "disabled": false,
           "document": "Time point.",
+          "example": "",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -1897,6 +1935,7 @@
         {
           "disabled": false,
           "document": "Number of channels.",
+          "example": "",
           "member": "uint64",
           "name": "Num",
           "required": true,
@@ -1975,6 +2014,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -1983,6 +2023,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -1991,6 +2032,7 @@
         {
           "disabled": false,
           "document": "Template ID.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -2113,6 +2155,7 @@
         {
           "disabled": false,
           "document": "Template ID.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "type": "int",
@@ -2341,6 +2384,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -2349,6 +2393,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": false,
@@ -2357,6 +2402,7 @@
         {
           "disabled": false,
           "document": "Push domain name. This parameter must be set for multi-domain name push.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": false,
@@ -2365,6 +2411,7 @@
         {
           "disabled": false,
           "document": "Recording start time, which is China standard time and should be URL-encoded (RFC3986). For example, the encoding of 2017-01-01 10:10:01 is 2017-01-01+10%3a10%3a01.\nIn scheduled recording mode, this field must be set; in real-time video recording mode, this field is ignored.",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "required": false,
@@ -2373,6 +2420,7 @@
         {
           "disabled": false,
           "document": "Recording end time, which is China standard time and should be URL-encoded (RFC3986). For example, the encoding of 2017-01-01 10:30:01 is 2017-01-01+10%3a30%3a01.\nIn scheduled recording mode, this field must be set; in real-time video recording mode, this field is optional. If the recording is set to real-time video recording mode through the `Highlight` parameter, the set end time should not be more than 30 minutes after the current time. If the set end time is more than 30 minutes after the current time, earlier than the current time, or left empty, the actual end time will be 30 minutes after the current time.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": false,
@@ -2381,6 +2429,7 @@
         {
           "disabled": false,
           "document": "Recording type.\n\"video\": Audio-video recording **(default)**.\n\"audio\": audio recording.\nIn both scheduled and real-time video recording modes, this parameter is valid and is not case sensitive.",
+          "example": "",
           "member": "string",
           "name": "RecordType",
           "required": false,
@@ -2389,6 +2438,7 @@
         {
           "disabled": false,
           "document": "Recording file format. Valid values:\n\"flv\" **(default)**, \"hls\", \"mp4\", \"aac\", \"mp3\".\nIn both scheduled and real-time video recording modes, this parameter is valid and is not case sensitive.",
+          "example": "",
           "member": "string",
           "name": "FileFormat",
           "required": false,
@@ -2397,6 +2447,7 @@
         {
           "disabled": false,
           "document": "Mark for enabling real-time video recording mode.\n0: Real-time video recording mode is not enabled, i.e., the scheduled recording mode is used **(default)**. See [Sample 1](#.E7.A4.BA.E4.BE.8B1-.E5.88.9B.E5.BB.BA.E5.AE.9A.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1).\n1: Real-time video recording mode is enabled. See [Sample 2](#.E7.A4.BA.E4.BE.8B2-.E5.88.9B.E5.BB.BA.E5.AE.9E.E6.97.B6.E5.BD.95.E5.88.B6.E4.BB.BB.E5.8A.A1).",
+          "example": "",
           "member": "int64",
           "name": "Highlight",
           "required": false,
@@ -2405,6 +2456,7 @@
         {
           "disabled": false,
           "document": "Flag for enabling A+B=C mixed stream recording.\n0: A+B=C mixed stream recording is not enabled **(default)**.\n1: A+B=C mixed stream recording is enabled.\nIn both scheduled and real-time video recording modes, this parameter is valid.",
+          "example": "",
           "member": "int64",
           "name": "MixStream",
           "required": false,
@@ -2413,6 +2465,7 @@
         {
           "disabled": false,
           "document": "Recording stream parameter. The following parameters are supported currently:\nrecord_interval: recording interval in seconds. Value range: 1800-7200.\nstorage_time: recording file storage duration in seconds.\nExample: record_interval=3600&storage_time=2592000.\nNote: the parameter needs to be URL-encoded.\nIn both scheduled and real-time video recording modes, this parameter is valid.",
+          "example": "",
           "member": "string",
           "name": "StreamParam",
           "required": false,
@@ -2427,6 +2480,7 @@
         {
           "disabled": false,
           "document": "Task ID, which uniquely identifies a recording task globally.",
+          "example": "",
           "member": "uint64",
           "name": "TaskId",
           "type": "int",
@@ -2447,6 +2501,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -2455,6 +2510,7 @@
         {
           "disabled": false,
           "document": "Template ID.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -2463,6 +2519,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": false,
@@ -2471,6 +2528,7 @@
         {
           "disabled": false,
           "document": "Stream name.\nNote: If the parameter is a non-empty string, the rule will be only applicable to the particular stream.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": false,
@@ -2602,6 +2660,7 @@
         {
           "disabled": false,
           "document": "Template ID.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "type": "int",
@@ -2622,6 +2681,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -2630,6 +2690,7 @@
         {
           "disabled": false,
           "document": "Template ID.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -2638,6 +2699,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": false,
@@ -2646,6 +2708,7 @@
         {
           "disabled": false,
           "document": "Stream name.\nNote: if this parameter is a non-empty string, the rule will take effect only for the particular stream.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": false,
@@ -2777,6 +2840,7 @@
         {
           "disabled": false,
           "document": "Template ID.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "type": "int",
@@ -3200,6 +3264,7 @@
         {
           "disabled": false,
           "document": "Template ID.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "type": "int",
@@ -3220,6 +3285,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -3228,6 +3294,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -3236,6 +3303,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -3244,6 +3312,7 @@
         {
           "disabled": false,
           "document": "Watermark ID, which is the `WatermarkId` returned by the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -3348,6 +3417,7 @@
         {
           "disabled": false,
           "document": "A globally unique task ID. If `TaskId` is returned, the recording task has been successfully created.",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "type": "string",
@@ -3468,6 +3538,7 @@
         {
           "disabled": false,
           "document": "Data point in time in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -3477,6 +3548,7 @@
         {
           "disabled": false,
           "document": "Bandwidth in Mbps.",
+          "example": "",
           "member": "float",
           "name": "Bandwidth",
           "required": true,
@@ -3486,6 +3558,7 @@
         {
           "disabled": false,
           "document": "Traffic in MB.",
+          "example": "",
           "member": "float",
           "name": "Flux",
           "required": true,
@@ -3495,6 +3568,7 @@
         {
           "disabled": false,
           "document": "Number of requests.",
+          "example": "",
           "member": "uint64",
           "name": "Request",
           "required": true,
@@ -3504,6 +3578,7 @@
         {
           "disabled": false,
           "document": "Number of online viewers.",
+          "example": "",
           "member": "uint64",
           "name": "Online",
           "required": true,
@@ -3519,6 +3594,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -3528,6 +3604,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the \n `AppName` in push and playback addresses and is `live` by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -3537,6 +3614,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -3546,6 +3624,7 @@
         {
           "disabled": false,
           "document": "Delay time in seconds.",
+          "example": "",
           "member": "uint64",
           "name": "DelayInterval",
           "required": true,
@@ -3555,6 +3634,7 @@
         {
           "disabled": false,
           "document": "Creation time in UTC time.\nNote: the difference between UTC time and Beijing time is 8 hours.\nExample: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).",
+          "example": "",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -3564,6 +3644,7 @@
         {
           "disabled": false,
           "document": "Expiration time in UTC time.\nNote: the difference between UTC time and Beijing time is 8 hours.\nExample: 2019-06-18T12:00:00Z (i.e., June 18, 2019 20:00:00 Beijing time).",
+          "example": "",
           "member": "string",
           "name": "ExpireTime",
           "required": true,
@@ -3573,6 +3654,7 @@
         {
           "disabled": false,
           "document": "Current status:\n-1: expired.\n1: in effect.",
+          "example": "",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -3588,6 +3670,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -3596,6 +3679,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -3622,6 +3706,7 @@
         {
           "disabled": false,
           "document": "Template ID.\n1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API call.\n2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](https://intl.cloud.tencent.com/document/product/267/32632?from_cn_redirect=1) API.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -3648,6 +3733,7 @@
         {
           "disabled": false,
           "document": "Domain name to be deleted.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -3656,6 +3742,7 @@
         {
           "disabled": false,
           "document": "Type. 0: push, 1: playback.",
+          "example": "",
           "member": "uint64",
           "name": "DomainType",
           "required": true,
@@ -3718,6 +3805,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -3726,6 +3814,7 @@
         {
           "disabled": false,
           "document": "Task ID returned by the `CreateLiveRecord` API.",
+          "example": "",
           "member": "int64",
           "name": "TaskId",
           "required": true,
@@ -3752,6 +3841,7 @@
         {
           "disabled": false,
           "document": "Push domain name.\nDomain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -3760,6 +3850,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default.\nDomain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": false,
@@ -3768,6 +3859,7 @@
         {
           "disabled": false,
           "document": "Stream name.\nDomain name+AppName+StreamName uniquely identifies a single transcoding rule. If you need to delete it, strong match is required. For example, even if AppName is blank, you need to pass in a blank string to make a strong match.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": false,
@@ -3794,6 +3886,7 @@
         {
           "disabled": false,
           "document": "Template ID obtained through the `DescribeRecordTemplates` API.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -3820,6 +3913,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -3828,6 +3922,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": false,
@@ -3836,6 +3931,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": false,
@@ -3862,6 +3958,7 @@
         {
           "disabled": false,
           "document": "Template ID.\n1. Get from the returned value of the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API call.\n2. You can query the list of created screencapturing templates through the [DescribeLiveSnapshotTemplates](https://intl.cloud.tencent.com/document/product/267/32619?from_cn_redirect=1) API.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -3960,6 +4057,7 @@
         {
           "disabled": false,
           "document": "Playback domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -3968,6 +4066,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -3976,6 +4075,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -3984,6 +4084,7 @@
         {
           "disabled": false,
           "document": "Template ID.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -4010,6 +4111,7 @@
         {
           "disabled": false,
           "document": "Template ID.\n1. Get the template ID in the returned value of the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API call.\n2. You can query the list of created templates through the [DescribeLiveTranscodeTemplates](https://intl.cloud.tencent.com/document/product/267/32641?from_cn_redirect=1) API.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -4036,6 +4138,7 @@
         {
           "disabled": false,
           "document": "Watermark ID.\nWatermark ID obtained in the returned value of the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API call.\nWatermark ID returned by the `DescribeLiveWatermarks` API.",
+          "example": "",
           "member": "int64",
           "name": "WatermarkId",
           "required": true,
@@ -4062,6 +4165,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -4070,6 +4174,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -4078,6 +4183,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -4104,6 +4210,7 @@
         {
           "disabled": false,
           "document": "Task ID returned by `CreateRecordTask`. The recording task specified by `TaskId` will be deleted.",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -4255,6 +4362,7 @@
         {
           "disabled": false,
           "document": "Time point of peak bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "",
           "member": "string",
           "name": "PeakBandwidthTime",
           "type": "string",
@@ -4263,6 +4371,7 @@
         {
           "disabled": false,
           "document": "Peak bandwidth in Mbps.",
+          "example": "",
           "member": "float",
           "name": "PeakBandwidth",
           "type": "float",
@@ -4271,6 +4380,7 @@
         {
           "disabled": false,
           "document": "Time point of 95th percentile bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "",
           "member": "string",
           "name": "P95PeakBandwidthTime",
           "type": "string",
@@ -4279,6 +4389,7 @@
         {
           "disabled": false,
           "document": "95th percentile bandwidth in Mbps.",
+          "example": "",
           "member": "float",
           "name": "P95PeakBandwidth",
           "type": "float",
@@ -4287,6 +4398,7 @@
         {
           "disabled": false,
           "document": "Total traffic in MB.",
+          "example": "",
           "member": "float",
           "name": "SumFlux",
           "type": "float",
@@ -4295,6 +4407,7 @@
         {
           "disabled": false,
           "document": "Detailed data information.",
+          "example": "",
           "member": "BillDataInfo",
           "name": "DataInfoList",
           "type": "list",
@@ -4315,6 +4428,7 @@
         {
           "disabled": false,
           "document": "Live streaming type. SlowLive: LCB.\nNormalLive: LVB.",
+          "example": "",
           "member": "string",
           "name": "LiveType",
           "required": true,
@@ -4323,6 +4437,7 @@
         {
           "disabled": false,
           "document": "Start time in the format of `yyyy-mm-dd HH:MM:SS`.\nData for the last 180 days can be queried.",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -4331,6 +4446,7 @@
         {
           "disabled": false,
           "document": "End time in the format of `yyyy-mm-dd HH:MM:SS`.\nThe maximum time span supported is 31 days.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -4339,6 +4455,7 @@
         {
           "disabled": false,
           "document": "Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.",
+          "example": "",
           "member": "string",
           "name": "MainlandOrOversea",
           "required": false,
@@ -4347,6 +4464,7 @@
         {
           "disabled": false,
           "document": "Playback domain name list. If this parameter is left empty, full data will be queried.",
+          "example": "",
           "member": "string",
           "name": "PushDomains",
           "required": false,
@@ -4361,6 +4479,7 @@
         {
           "disabled": false,
           "document": "Statistics list.",
+          "example": "",
           "member": "ConcurrentRecordStreamNum",
           "name": "DataInfoList",
           "type": "list",
@@ -4381,6 +4500,7 @@
         {
           "disabled": false,
           "document": "Start time in the format of \"%Y-%m-%d %H:%M:%S\".",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -4389,6 +4509,7 @@
         {
           "disabled": false,
           "document": "End time in the format of \"%Y-%m-%d %H:%M:%S\". Data in the last 3 months can be queried, and the query period is up to 1 month.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -4403,6 +4524,7 @@
         {
           "disabled": false,
           "document": "Billable bandwidth of live stream relaying.",
+          "example": "",
           "member": "BandwidthInfo",
           "name": "DataInfoList",
           "type": "list",
@@ -4423,6 +4545,7 @@
         {
           "disabled": false,
           "document": "Start time point in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -4431,6 +4554,7 @@
         {
           "disabled": false,
           "document": "End time point in the format of `yyyy-mm-dd HH:MM:SS`\nThe time span is (0,3 hours]. Data for the last month can be queried.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -4439,6 +4563,7 @@
         {
           "disabled": false,
           "document": "Playback domain name. If this parameter is left empty, full data will be queried.",
+          "example": "",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -4447,6 +4572,7 @@
         {
           "disabled": false,
           "document": "District list. If this parameter is left empty, data for all districts will be returned.",
+          "example": "",
           "member": "string",
           "name": "ProvinceNames",
           "required": false,
@@ -4455,6 +4581,7 @@
         {
           "disabled": false,
           "document": "ISP list. If this parameter is left empty, data of all ISPs will be returned.",
+          "example": "",
           "member": "string",
           "name": "IspNames",
           "required": false,
@@ -4463,6 +4590,7 @@
         {
           "disabled": false,
           "document": "Within or outside Mainland China. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.",
+          "example": "",
           "member": "string",
           "name": "MainlandOrOversea",
           "required": false,
@@ -4477,6 +4605,7 @@
         {
           "disabled": false,
           "document": "Data content.",
+          "example": "",
           "member": "GroupProIspDataInfo",
           "name": "DataInfoList",
           "type": "list",
@@ -4497,6 +4626,7 @@
         {
           "disabled": false,
           "document": "Start time (Beijing time).\nFormat: yyyy-mm-dd HH:MM:SS.",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -4505,6 +4635,7 @@
         {
           "disabled": false,
           "document": "End time (Beijing time).\nFormat: yyyy-mm-dd HH:MM:SS.\nNote: data in the last 3 months can be queried and the query period is up to 1 day.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -4513,6 +4644,7 @@
         {
           "disabled": false,
           "document": "Playback domain name list.",
+          "example": "",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -4527,6 +4659,7 @@
         {
           "disabled": false,
           "document": "Playback status code list.",
+          "example": "",
           "member": "HttpStatusData",
           "name": "DataInfoList",
           "type": "list",
@@ -4552,6 +4685,7 @@
         {
           "disabled": false,
           "document": "Rule information list.",
+          "example": "",
           "member": "CallBackRuleInfo",
           "name": "Rules",
           "type": "list",
@@ -4572,6 +4706,7 @@
         {
           "disabled": false,
           "document": "Template ID.\n1. Get the template ID in the returned value of the [CreateLiveCallbackTemplate](https://intl.cloud.tencent.com/document/product/267/32637?from_cn_redirect=1) API call.\n2. You can query the list of created templates through the [DescribeLiveCallbackTemplates](https://intl.cloud.tencent.com/document/product/267/32632?from_cn_redirect=1) API.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -4586,6 +4721,7 @@
         {
           "disabled": false,
           "document": "Callback template information.",
+          "example": "",
           "member": "CallBackTemplateInfo",
           "name": "Template",
           "type": "object",
@@ -4611,6 +4747,7 @@
         {
           "disabled": false,
           "document": "Template information list.",
+          "example": "",
           "member": "CallBackTemplateInfo",
           "name": "Templates",
           "type": "list",
@@ -4631,6 +4768,7 @@
         {
           "disabled": false,
           "document": "Certificate ID obtained through the `DescribeLiveCerts` API.",
+          "example": "",
           "member": "int64",
           "name": "CertId",
           "required": true,
@@ -4645,6 +4783,7 @@
         {
           "disabled": false,
           "document": "Certificate information.",
+          "example": "",
           "member": "CertInfo",
           "name": "CertInfo",
           "type": "object",
@@ -4670,6 +4809,7 @@
         {
           "disabled": false,
           "document": "Certificate information list.",
+          "example": "",
           "member": "CertInfo",
           "name": "CertInfoSet",
           "type": "list",
@@ -4695,6 +4835,7 @@
         {
           "disabled": false,
           "document": "Delayed playback information list.",
+          "example": "",
           "member": "DelayInfo",
           "name": "DelayInfoList",
           "type": "list",
@@ -4798,6 +4939,7 @@
         {
           "disabled": false,
           "document": "Playback domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -4812,6 +4954,7 @@
         {
           "disabled": false,
           "document": "Certificate information.",
+          "example": "",
           "member": "DomainCertInfo",
           "name": "DomainCertInfo",
           "type": "object",
@@ -4869,6 +5012,7 @@
         {
           "disabled": false,
           "document": "Domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": false,
@@ -4883,6 +5027,7 @@
         {
           "disabled": false,
           "document": "Domain name information.\nNote: this field may return `null`, indicating that no valid value is obtained.",
+          "example": "",
           "member": "DomainInfo",
           "name": "DomainInfo",
           "type": "object",
@@ -5057,6 +5202,7 @@
         {
           "disabled": false,
           "document": "Total number of eligible ones.",
+          "example": "",
           "member": "int64",
           "name": "TotalNum",
           "type": "int",
@@ -5065,6 +5211,7 @@
         {
           "disabled": false,
           "document": "Total number of pages.",
+          "example": "",
           "member": "int64",
           "name": "TotalPage",
           "type": "int",
@@ -5073,6 +5220,7 @@
         {
           "disabled": false,
           "document": "Page number.",
+          "example": "",
           "member": "int64",
           "name": "PageNum",
           "type": "int",
@@ -5081,6 +5229,7 @@
         {
           "disabled": false,
           "document": "Number of entries displayed per page.",
+          "example": "",
           "member": "int64",
           "name": "PageSize",
           "type": "int",
@@ -5089,6 +5238,7 @@
         {
           "disabled": false,
           "document": "List of forbidden streams.",
+          "example": "",
           "member": "ForbidStreamInfo",
           "name": "ForbidStreamList",
           "type": "list",
@@ -5109,6 +5259,7 @@
         {
           "disabled": false,
           "document": "Domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -5123,6 +5274,7 @@
         {
           "disabled": false,
           "document": "Playback authentication key information.",
+          "example": "",
           "member": "PlayAuthKeyInfo",
           "name": "PlayAuthKeyInfo",
           "type": "object",
@@ -5248,6 +5400,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -5262,6 +5415,7 @@
         {
           "disabled": false,
           "document": "Push authentication key information.",
+          "example": "",
           "member": "PushAuthKeyInfo",
           "name": "PushAuthKeyInfo",
           "type": "object",
@@ -5287,6 +5441,7 @@
         {
           "disabled": false,
           "document": "List of rules.",
+          "example": "",
           "member": "RuleInfo",
           "name": "Rules",
           "type": "list",
@@ -5307,6 +5462,7 @@
         {
           "disabled": false,
           "document": "Template ID obtained by [DescribeLiveRecordTemplates](https://intl.cloud.tencent.com/document/product/267/32609?from_cn_redirect=1).",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -5321,6 +5477,7 @@
         {
           "disabled": false,
           "document": "Recording template information.",
+          "example": "",
           "member": "RecordTemplateInfo",
           "name": "Template",
           "type": "object",
@@ -5341,6 +5498,7 @@
         {
           "disabled": false,
           "document": "Whether it is an LCB template. Default value: 0.\n0: LVB.\n1: LCB.",
+          "example": "",
           "member": "int64",
           "name": "IsDelayLive",
           "required": false,
@@ -5355,6 +5513,7 @@
         {
           "disabled": false,
           "document": "Recording template information list.",
+          "example": "",
           "member": "RecordTemplateInfo",
           "name": "Templates",
           "type": "list",
@@ -5380,6 +5539,7 @@
         {
           "disabled": false,
           "document": "Rule list.",
+          "example": "",
           "member": "RuleInfo",
           "name": "Rules",
           "type": "list",
@@ -5400,6 +5560,7 @@
         {
           "disabled": false,
           "document": "Template ID.\nTemplate ID returned by the [CreateLiveSnapshotTemplate](https://intl.cloud.tencent.com/document/product/267/32624?from_cn_redirect=1) API call.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -5414,6 +5575,7 @@
         {
           "disabled": false,
           "document": "Screencapturing template information.",
+          "example": "",
           "member": "SnapshotTemplateInfo",
           "name": "Template",
           "type": "object",
@@ -5439,6 +5601,7 @@
         {
           "disabled": false,
           "document": "Screencapturing template list.",
+          "example": "",
           "member": "SnapshotTemplateInfo",
           "name": "Templates",
           "type": "list",
@@ -5459,6 +5622,7 @@
         {
           "disabled": false,
           "document": "Start time. \nIn UTC format, such as 2018-12-29T19:00:00Z.\nThis supports querying the history of 60 days.",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -5467,6 +5631,7 @@
         {
           "disabled": false,
           "document": "End time.\nIn UTC format, such as 2018-12-29T20:00:00Z.\nThis cannot be after the current time and cannot be more than 30 days after the start time.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -5475,6 +5640,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": false,
@@ -5483,6 +5649,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": false,
@@ -5491,6 +5658,7 @@
         {
           "disabled": false,
           "document": "Stream name; query with wildcard (*) is not supported; fuzzy match by default.\nThe IsStrict field can be used to change to exact query.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": false,
@@ -5499,6 +5667,7 @@
         {
           "disabled": false,
           "document": "Page number to get.\nDefault value: 1.\nNote: Currently, query for up to 10,000 entries is supported.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "required": false,
@@ -5507,6 +5676,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page.\nMaximum value: 100.\nValue range: any integer between 1 and 100.\nDefault value: 10.\nNote: currently, query for up to 10,000 entries is supported.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -5515,6 +5685,7 @@
         {
           "disabled": false,
           "document": "Whether to filter. No filtering by default.\n0: No filtering at all.\n1: Filter out the failing streams and return only the successful ones.",
+          "example": "",
           "member": "int64",
           "name": "IsFilter",
           "required": false,
@@ -5523,6 +5694,7 @@
         {
           "disabled": false,
           "document": "Whether to query exactly. Fuzzy match by default.\n0: Fuzzy match.\n1: Exact query.\nNote: This parameter takes effect when StreamName is used.",
+          "example": "",
           "member": "int64",
           "name": "IsStrict",
           "required": false,
@@ -5531,6 +5703,7 @@
         {
           "disabled": false,
           "document": "Whether to display in ascending order by end time. Descending order by default.\n0: Descending.\n1: Ascending.",
+          "example": "",
           "member": "int64",
           "name": "IsAsc",
           "required": false,
@@ -5545,6 +5718,7 @@
         {
           "disabled": false,
           "document": "List of streaming events.",
+          "example": "",
           "member": "StreamEventInfo",
           "name": "EventList",
           "type": "list",
@@ -5553,6 +5727,7 @@
         {
           "disabled": false,
           "document": "Page number.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "type": "int",
@@ -5561,6 +5736,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "type": "int",
@@ -5569,6 +5745,7 @@
         {
           "disabled": false,
           "document": "Total number of eligible ones.",
+          "example": "",
           "member": "uint64",
           "name": "TotalNum",
           "type": "int",
@@ -5577,6 +5754,7 @@
         {
           "disabled": false,
           "document": "Total number of pages.",
+          "example": "",
           "member": "uint64",
           "name": "TotalPage",
           "type": "int",
@@ -5597,6 +5775,7 @@
         {
           "disabled": false,
           "document": "Push domain name. If you use multiple paths, enter the `DomainName`.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": false,
@@ -5605,6 +5784,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. If you use multiple paths, enter the `AppName`.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": false,
@@ -5613,6 +5793,7 @@
         {
           "disabled": false,
           "document": "Page number to get. Default value: 1.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "required": false,
@@ -5621,6 +5802,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page. Maximum value: 100. \nValue: any integer between 10 and 100.\nDefault value: 10.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -5629,6 +5811,7 @@
         {
           "disabled": false,
           "document": "Stream name, which is used for exact query.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": false,
@@ -5643,6 +5826,7 @@
         {
           "disabled": false,
           "document": "Total number of eligible ones.",
+          "example": "",
           "member": "uint64",
           "name": "TotalNum",
           "type": "int",
@@ -5651,6 +5835,7 @@
         {
           "disabled": false,
           "document": "Total number of pages.",
+          "example": "",
           "member": "uint64",
           "name": "TotalPage",
           "type": "int",
@@ -5659,6 +5844,7 @@
         {
           "disabled": false,
           "document": "Page number.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "type": "int",
@@ -5667,6 +5853,7 @@
         {
           "disabled": false,
           "document": "Number of entries displayed per page.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "type": "int",
@@ -5675,6 +5862,7 @@
         {
           "disabled": false,
           "document": "Active push information list.",
+          "example": "",
           "member": "StreamOnlineInfo",
           "name": "OnlineInfo",
           "type": "list",
@@ -5695,6 +5883,7 @@
         {
           "disabled": false,
           "document": "Your push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -5703,6 +5892,7 @@
         {
           "disabled": false,
           "document": "End time.\nIn UTC format, such as 2016-06-30T19:00:00Z.\nThis cannot be after the current time.\nNote: The difference between EndTime and StartTime cannot be greater than 30 days.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -5711,6 +5901,7 @@
         {
           "disabled": false,
           "document": "Start time. \nIn UTC format, such as 2016-06-29T19:00:00Z.\nThis supports querying data in the past 60 days.",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -5719,6 +5910,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default. Fuzzy match is not supported.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": false,
@@ -5727,6 +5919,7 @@
         {
           "disabled": false,
           "document": "Page number to get.\nDefault value: 1.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "required": false,
@@ -5735,6 +5928,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page.\nMaximum value: 100\nValid values: integers between 10 and 100\nDefault value: 10",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -5743,6 +5937,7 @@
         {
           "disabled": false,
           "document": "Stream name, which supports fuzzy match.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": false,
@@ -5757,6 +5952,7 @@
         {
           "disabled": false,
           "document": "Push record information.",
+          "example": "",
           "member": "StreamName",
           "name": "PublishInfo",
           "type": "list",
@@ -5765,6 +5961,7 @@
         {
           "disabled": false,
           "document": "Page number.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "type": "int",
@@ -5773,6 +5970,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "type": "int",
@@ -5781,6 +5979,7 @@
         {
           "disabled": false,
           "document": "Total number of eligible ones.",
+          "example": "",
           "member": "uint64",
           "name": "TotalNum",
           "type": "int",
@@ -5789,6 +5988,7 @@
         {
           "disabled": false,
           "document": "Total number of pages.",
+          "example": "",
           "member": "uint64",
           "name": "TotalPage",
           "type": "int",
@@ -5809,6 +6009,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "PushDomain",
           "required": false,
@@ -5817,6 +6018,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the `AppName` in push and playback addresses and is `live` by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": false,
@@ -5825,6 +6027,7 @@
         {
           "disabled": false,
           "document": "Number of pages,\nValue range: [1,10000],\nDefault value: 1.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "required": false,
@@ -5833,6 +6036,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page,\nValue range: [1,1000],\nDefault value: 200.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -5847,6 +6051,7 @@
         {
           "disabled": false,
           "document": "Live stream statistics list.",
+          "example": "",
           "member": "PushDataInfo",
           "name": "DataInfoList",
           "type": "list",
@@ -5855,6 +6060,7 @@
         {
           "disabled": false,
           "document": "Total number of live streams.",
+          "example": "",
           "member": "uint64",
           "name": "TotalNum",
           "type": "int",
@@ -5863,6 +6069,7 @@
         {
           "disabled": false,
           "document": "Total number of pages.",
+          "example": "",
           "member": "uint64",
           "name": "TotalPage",
           "type": "int",
@@ -5871,6 +6078,7 @@
         {
           "disabled": false,
           "document": "Page number where the current data resides.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "type": "int",
@@ -5879,6 +6087,7 @@
         {
           "disabled": false,
           "document": "Number of live streams per page.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "type": "int",
@@ -5899,6 +6108,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -5907,6 +6117,7 @@
         {
           "disabled": false,
           "document": "Your push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -5915,6 +6126,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -5929,6 +6141,7 @@
         {
           "disabled": false,
           "document": "Stream status,\nactive: active\ninactive: Inactive\nforbid: forbidden.",
+          "example": "",
           "member": "string",
           "name": "StreamState",
           "type": "string",
@@ -6127,6 +6340,7 @@
         {
           "disabled": false,
           "document": "Statistics list.",
+          "example": "",
           "member": "TranscodeDetailInfo",
           "name": "DataInfoList",
           "type": "list",
@@ -6135,6 +6349,7 @@
         {
           "disabled": false,
           "document": "Page number.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "type": "int",
@@ -6143,6 +6358,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "type": "int",
@@ -6151,6 +6367,7 @@
         {
           "disabled": false,
           "document": "Total number.",
+          "example": "",
           "member": "uint64",
           "name": "TotalNum",
           "type": "int",
@@ -6159,6 +6376,7 @@
         {
           "disabled": false,
           "document": "Total number of pages.",
+          "example": "",
           "member": "uint64",
           "name": "TotalPage",
           "type": "int",
@@ -6179,6 +6397,7 @@
         {
           "disabled": false,
           "document": "An array of template IDs to be filtered.",
+          "example": "",
           "member": "int64",
           "name": "TemplateIds",
           "required": false,
@@ -6187,6 +6406,7 @@
         {
           "disabled": false,
           "document": "An array of domain names to be filtered.",
+          "example": "",
           "member": "string",
           "name": "DomainNames",
           "required": false,
@@ -6201,6 +6421,7 @@
         {
           "disabled": false,
           "document": "List of transcoding rules.",
+          "example": "",
           "member": "RuleInfo",
           "name": "Rules",
           "type": "list",
@@ -6221,6 +6442,7 @@
         {
           "disabled": false,
           "document": "Template ID.\nNote: get the template ID in the returned value of the [CreateLiveTranscodeTemplate](https://intl.cloud.tencent.com/document/product/267/32646?from_cn_redirect=1) API call.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -6235,6 +6457,7 @@
         {
           "disabled": false,
           "document": "Template information.",
+          "example": "",
           "member": "TemplateInfo",
           "name": "Template",
           "type": "object",
@@ -6260,6 +6483,7 @@
         {
           "disabled": false,
           "document": "List of transcoding templates.",
+          "example": "",
           "member": "TemplateInfo",
           "name": "Templates",
           "type": "list",
@@ -6344,6 +6568,7 @@
         {
           "disabled": false,
           "document": "Watermark ID returned by the `DescribeLiveWatermarks` API.",
+          "example": "",
           "member": "uint64",
           "name": "WatermarkId",
           "required": true,
@@ -6358,6 +6583,7 @@
         {
           "disabled": false,
           "document": "Watermark information.",
+          "example": "",
           "member": "WatermarkInfo",
           "name": "Watermark",
           "type": "object",
@@ -6383,6 +6609,7 @@
         {
           "disabled": false,
           "document": "Watermarking rule list.",
+          "example": "",
           "member": "RuleInfo",
           "name": "Rules",
           "type": "list",
@@ -6408,6 +6635,7 @@
         {
           "disabled": false,
           "document": "Total number of watermarks.",
+          "example": "",
           "member": "uint64",
           "name": "TotalNum",
           "type": "int",
@@ -6416,6 +6644,7 @@
         {
           "disabled": false,
           "document": "Watermark information list.",
+          "example": "",
           "member": "WatermarkInfo",
           "name": "WatermarkList",
           "type": "list",
@@ -6436,6 +6665,7 @@
         {
           "disabled": false,
           "document": "Start time (Beijing time),\nIn the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -6444,6 +6674,7 @@
         {
           "disabled": false,
           "document": "End time (Beijing time),\nIn the format of `yyyy-mm-dd HH:MM:SS`.\nNote: `EndTime` and `StartTime` only support querying data for the last day.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -6452,6 +6683,7 @@
         {
           "disabled": false,
           "document": "Query granularity:\n1: 1-minute granularity.",
+          "example": "",
           "member": "uint64",
           "name": "Granularity",
           "required": true,
@@ -6460,6 +6692,7 @@
         {
           "disabled": false,
           "document": "Yes. Valid values: \"4xx\", \"5xx\". Mixed codes in the format of `4xx,5xx` are also supported.",
+          "example": "",
           "member": "string",
           "name": "StatType",
           "required": true,
@@ -6468,6 +6701,7 @@
         {
           "disabled": false,
           "document": "Playback domain name list.",
+          "example": "",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -6476,6 +6710,7 @@
         {
           "disabled": false,
           "document": "Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.",
+          "example": "",
           "member": "string",
           "name": "MainlandOrOversea",
           "required": false,
@@ -6490,6 +6725,7 @@
         {
           "disabled": false,
           "document": "Statistics list.",
+          "example": "",
           "member": "HttpCodeInfo",
           "name": "HttpCodeList",
           "type": "list",
@@ -6498,6 +6734,7 @@
         {
           "disabled": false,
           "document": "Statistics type.",
+          "example": "",
           "member": "string",
           "name": "StatType",
           "type": "string",
@@ -6518,6 +6755,7 @@
         {
           "disabled": false,
           "document": "Start point in time (Beijing time).\nIn the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -6526,6 +6764,7 @@
         {
           "disabled": false,
           "document": "End point in time (Beijing time).\nIn the format of `yyyy-mm-dd HH:MM:SS`.\nNote: `EndTime` and `StartTime` only support querying data for the last day.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -6534,6 +6773,7 @@
         {
           "disabled": false,
           "document": "Playback domain name list. If this parameter is left empty, full data will be queried.",
+          "example": "",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -6542,6 +6782,7 @@
         {
           "disabled": false,
           "document": "Number of pages. Value range: [1,1000]. Default value: 1.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "required": false,
@@ -6550,6 +6791,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page. Value range: [1,1000]. Default value: 20.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -6558,6 +6800,7 @@
         {
           "disabled": false,
           "document": "Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.",
+          "example": "",
           "member": "string",
           "name": "MainlandOrOversea",
           "required": false,
@@ -6566,6 +6809,7 @@
         {
           "disabled": false,
           "document": "Grouping parameter. Valid values: CountryProIsp (default value), Country (country/region). Grouping is made by country/region + district + ISP by default. Currently, districts and ISPs outside Mainland China cannot be recognized.",
+          "example": "",
           "member": "string",
           "name": "GroupType",
           "required": false,
@@ -6574,6 +6818,7 @@
         {
           "disabled": false,
           "document": "Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.",
+          "example": "",
           "member": "string",
           "name": "OutLanguage",
           "required": false,
@@ -6588,6 +6833,7 @@
         {
           "disabled": false,
           "document": "Information of error codes starting with 2, 3, 4, or 5 by district and ISP.",
+          "example": "",
           "member": "ProIspPlayCodeDataInfo",
           "name": "ProIspInfoList",
           "type": "list",
@@ -6596,6 +6842,7 @@
         {
           "disabled": false,
           "document": "Total occurrences of all status codes.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCodeAll",
           "type": "int",
@@ -6604,6 +6851,7 @@
         {
           "disabled": false,
           "document": "Occurrences of 4xx status codes.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCode4xx",
           "type": "int",
@@ -6612,6 +6860,7 @@
         {
           "disabled": false,
           "document": "Occurrences of 5xx status codes.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCode5xx",
           "type": "int",
@@ -6620,6 +6869,7 @@
         {
           "disabled": false,
           "document": "Total occurrences of each status code.",
+          "example": "",
           "member": "PlayCodeTotalInfo",
           "name": "TotalCodeList",
           "type": "list",
@@ -6628,6 +6878,7 @@
         {
           "disabled": false,
           "document": "Page number.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "type": "int",
@@ -6636,6 +6887,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "type": "int",
@@ -6644,6 +6896,7 @@
         {
           "disabled": false,
           "document": "Total number of pages.",
+          "example": "",
           "member": "uint64",
           "name": "TotalPage",
           "type": "int",
@@ -6652,6 +6905,7 @@
         {
           "disabled": false,
           "document": "Total number of results.",
+          "example": "",
           "member": "uint64",
           "name": "TotalNum",
           "type": "int",
@@ -6660,6 +6914,7 @@
         {
           "disabled": false,
           "document": "Occurrences of 2xx status codes.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCode2xx",
           "type": "int",
@@ -6668,6 +6923,7 @@
         {
           "disabled": false,
           "document": "Occurrences of 3xx status codes.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCode3xx",
           "type": "int",
@@ -6688,6 +6944,7 @@
         {
           "disabled": false,
           "document": "Start point in time (Beijing time).\nExample: 2019-02-21 10:00:00.",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -6696,6 +6953,7 @@
         {
           "disabled": false,
           "document": "End point in time (Beijing time).\nExample: 2019-02-21 12:00:00.\nNote: `EndTime` and `StartTime` only support querying data for the last day.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -6704,6 +6962,7 @@
         {
           "disabled": false,
           "document": "Supported granularities:\n1: 1-minute granularity (the query interval should be within 1 day)",
+          "example": "",
           "member": "uint64",
           "name": "Granularity",
           "required": true,
@@ -6712,6 +6971,7 @@
         {
           "disabled": false,
           "document": "Statistical metric type:\n\"Bandwidth\": bandwidth\n\"FluxPerSecond\": average traffic\n\"Flux\": traffic\n\"Request\": number of requests\n\"Online\": number of concurrent connections",
+          "example": "",
           "member": "string",
           "name": "StatType",
           "required": true,
@@ -6720,6 +6980,7 @@
         {
           "disabled": false,
           "document": "Playback domain name list.",
+          "example": "",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -6728,6 +6989,7 @@
         {
           "disabled": false,
           "document": "List of the districts to be queried, such as Beijing.",
+          "example": "",
           "member": "string",
           "name": "ProvinceNames",
           "required": false,
@@ -6736,6 +6998,7 @@
         {
           "disabled": false,
           "document": "List of the ISPs to be queried, such as China Mobile. If this parameter is left empty, the data of all ISPs will be queried.",
+          "example": "",
           "member": "string",
           "name": "IspNames",
           "required": false,
@@ -6744,6 +7007,7 @@
         {
           "disabled": false,
           "document": "Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.",
+          "example": "",
           "member": "string",
           "name": "MainlandOrOversea",
           "required": false,
@@ -6752,6 +7016,7 @@
         {
           "disabled": false,
           "document": "IP type:\n\"Ipv6\": IPv6 data\nData of all IPs will be returned if this parameter is left empty.",
+          "example": "",
           "member": "string",
           "name": "IpType",
           "required": false,
@@ -6766,6 +7031,7 @@
         {
           "disabled": false,
           "document": "Playback information list.",
+          "example": "",
           "member": "PlayStatInfo",
           "name": "DataInfoList",
           "type": "list",
@@ -6774,6 +7040,7 @@
         {
           "disabled": false,
           "document": "Statistics type, which is the same as the input parameter.",
+          "example": "",
           "member": "string",
           "name": "StatType",
           "type": "string",
@@ -6937,6 +7204,7 @@
         {
           "disabled": false,
           "document": "Data information list.",
+          "example": "",
           "member": "TimeValue",
           "name": "DataInfoList",
           "type": "list",
@@ -6957,6 +7225,7 @@
         {
           "disabled": false,
           "document": "Date in the format of YYYY-mm-dd\nData is available at 3am Beijing Time the next day. You are recommended to query the latest data after this time point. Data in the last 3 months can be queried.",
+          "example": "",
           "member": "string",
           "name": "DayTime",
           "required": true,
@@ -6965,6 +7234,7 @@
         {
           "disabled": false,
           "document": "Playback domain name.",
+          "example": "",
           "member": "string",
           "name": "PlayDomain",
           "required": false,
@@ -6973,6 +7243,7 @@
         {
           "disabled": false,
           "document": "Page number. Value range: [1,1000]. Default value: 1.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "required": false,
@@ -6981,6 +7252,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page. Value range: [100,1000]. Default value: 1,000.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -6989,6 +7261,7 @@
         {
           "disabled": false,
           "document": "Valid values:\nMainland: query data for Mainland China,\nOversea: query data for regions outside Mainland China,\nDefault: query data for all regions.",
+          "example": "",
           "member": "string",
           "name": "MainlandOrOversea",
           "required": false,
@@ -6997,6 +7270,7 @@
         {
           "disabled": false,
           "document": "Service name. Valid values: LVB, LEB. If this parameter is left empty, all data of LVB and LEB will be queried.",
+          "example": "",
           "member": "string",
           "name": "ServiceName",
           "required": false,
@@ -7011,6 +7285,7 @@
         {
           "disabled": false,
           "document": "Playback data information list.",
+          "example": "",
           "member": "PlayDataInfoByStream",
           "name": "DataInfoList",
           "type": "list",
@@ -7019,6 +7294,7 @@
         {
           "disabled": false,
           "document": "Total number.",
+          "example": "",
           "member": "uint64",
           "name": "TotalNum",
           "type": "int",
@@ -7027,6 +7303,7 @@
         {
           "disabled": false,
           "document": "Total number of pages.",
+          "example": "",
           "member": "uint64",
           "name": "TotalPage",
           "type": "int",
@@ -7035,6 +7312,7 @@
         {
           "disabled": false,
           "document": "Page number where the current data resides.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "type": "int",
@@ -7043,6 +7321,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "type": "int",
@@ -7062,8 +7341,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS",
-          "example": "2019-03-01 00:00:00",
+          "document": "The start time of the query,supports data query for the last ont months,the gap between the start time and the end time cannot exceed twenty-four hours. Interface query supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-01T00:00:00+08:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -7071,8 +7350,8 @@
         },
         {
           "disabled": false,
-          "document": "The end time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS.\nThe start time and end time cannot be more than 24 hours apart and must be within the past month.",
-          "example": "2019-03-01 00:03:00",
+          "document": "The end time of the query,supports data query for the last ont months,the gap between the start time and the end time cannot exceed twenty-four hours. Interface query supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-01T00:00:00+08:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -7123,8 +7402,10 @@
         {
           "disabled": false,
           "document": "Statistics list at a 1-minute granularity.",
+          "example": "无",
           "member": "DayStreamPlayInfo",
           "name": "DataInfoList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -7405,6 +7686,7 @@
         {
           "disabled": false,
           "document": "Start point in time in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -7413,6 +7695,7 @@
         {
           "disabled": false,
           "document": "End point in time in the format of `yyyy-mm-dd HH:MM:SS`\nThe time span is [0,4 hours]. Data for the last day can be queried.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -7421,6 +7704,7 @@
         {
           "disabled": false,
           "document": "Playback domain name. If this parameter is left empty, full data will be queried by default.",
+          "example": "",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -7429,6 +7713,7 @@
         {
           "disabled": false,
           "document": "Page number. Value range: [1,1000]. Default value: 1.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "required": false,
@@ -7437,6 +7722,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page. Value range: [1,1000]. Default value: 20.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -7445,6 +7731,7 @@
         {
           "disabled": false,
           "document": "Sorting metric. Valid values: TotalRequest (default value), FailedRequest, TotalFlux.",
+          "example": "",
           "member": "string",
           "name": "OrderParam",
           "required": false,
@@ -7453,6 +7740,7 @@
         {
           "disabled": false,
           "document": "Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.",
+          "example": "",
           "member": "string",
           "name": "MainlandOrOversea",
           "required": false,
@@ -7461,6 +7749,7 @@
         {
           "disabled": false,
           "document": "Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.",
+          "example": "",
           "member": "string",
           "name": "OutLanguage",
           "required": false,
@@ -7475,6 +7764,7 @@
         {
           "disabled": false,
           "document": "Page number. Value range: [1,1000]. Default value: 1.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "type": "int",
@@ -7483,6 +7773,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page. Value range: [1,1000]. Default value: 20.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "type": "int",
@@ -7491,6 +7782,7 @@
         {
           "disabled": false,
           "document": "Sorting metric. Valid values: \"TotalRequest\", \"FailedRequest\", \"TotalFlux\".",
+          "example": "",
           "member": "string",
           "name": "OrderParam",
           "type": "string",
@@ -7499,6 +7791,7 @@
         {
           "disabled": false,
           "document": "Total number of results.",
+          "example": "",
           "member": "uint64",
           "name": "TotalNum",
           "type": "int",
@@ -7507,6 +7800,7 @@
         {
           "disabled": false,
           "document": "Total number of result pages.",
+          "example": "",
           "member": "uint64",
           "name": "TotalPage",
           "type": "int",
@@ -7515,6 +7809,7 @@
         {
           "disabled": false,
           "document": "Data content.",
+          "example": "",
           "member": "ClientIpPlaySumInfo",
           "name": "DataInfoList",
           "type": "list",
@@ -7590,6 +7885,7 @@
         {
           "disabled": false,
           "document": "Start time point in the format of yyyy-mm-dd HH:MM:SS.",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -7598,6 +7894,7 @@
         {
           "disabled": false,
           "document": "End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 31 days can be queried.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -7606,6 +7903,7 @@
         {
           "disabled": false,
           "document": "LVB domain names. If this parameter is left empty, data of all domain names will be queried.",
+          "example": "",
           "member": "string",
           "name": "Domains",
           "required": false,
@@ -7614,6 +7912,7 @@
         {
           "disabled": false,
           "document": "Time granularity of the data. Valid values:\n5: 5-minute granularity (the query period is up to 1 day)\n1440: 1-day granularity (the query period is up to 1 month)\nDefault value: 5",
+          "example": "",
           "member": "uint64",
           "name": "Granularity",
           "required": false,
@@ -7628,6 +7927,7 @@
         {
           "disabled": false,
           "document": "Detailed data.",
+          "example": "",
           "member": "ConcurrentRecordStreamNum",
           "name": "DataInfoList",
           "type": "list",
@@ -7648,6 +7948,7 @@
         {
           "disabled": false,
           "document": "Start point in time in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -7656,6 +7957,7 @@
         {
           "disabled": false,
           "document": "End point in time in the format of `yyyy-mm-dd HH:MM:SS`\nThe time span is (0,4 hours]. Data for the last day can be queried.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -7664,6 +7966,7 @@
         {
           "disabled": false,
           "document": "Bandwidth metric. Valid values: \"Domain\", \"StreamId\".",
+          "example": "",
           "member": "string",
           "name": "TopIndex",
           "required": true,
@@ -7672,6 +7975,7 @@
         {
           "disabled": false,
           "document": "Playback domain name. If this parameter is left empty, full data will be queried by default.",
+          "example": "",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -7680,6 +7984,7 @@
         {
           "disabled": false,
           "document": "Page number,\nValue range: [1,1000],\nDefault value: 1.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "required": false,
@@ -7688,6 +7993,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page. Value range: [1,1000].\nDefault value: 20.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -7696,6 +8002,7 @@
         {
           "disabled": false,
           "document": "Sorting metric. Valid values: \"AvgFluxPerSecond\", \"TotalRequest\" (default), \"TotalFlux\".",
+          "example": "",
           "member": "string",
           "name": "OrderParam",
           "required": false,
@@ -7710,6 +8017,7 @@
         {
           "disabled": false,
           "document": "Page number,\nValue range: [1,1000],\nDefault value: 1.",
+          "example": "",
           "member": "uint64",
           "name": "PageNum",
           "type": "int",
@@ -7718,6 +8026,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page. Value range: [1,1000].\nDefault value: 20.",
+          "example": "",
           "member": "uint64",
           "name": "PageSize",
           "type": "int",
@@ -7726,6 +8035,7 @@
         {
           "disabled": false,
           "document": "Bandwidth metric. Valid values: \"Domain\", \"StreamId\".",
+          "example": "",
           "member": "string",
           "name": "TopIndex",
           "type": "string",
@@ -7734,6 +8044,7 @@
         {
           "disabled": false,
           "document": "Sorting metric. Valid values: AvgFluxPerSecond (sort by average traffic per second), TotalRequest (sort by total requests), TotalFlux (sort by total traffic). Default value: TotalRequest.",
+          "example": "",
           "member": "string",
           "name": "OrderParam",
           "type": "string",
@@ -7742,6 +8053,7 @@
         {
           "disabled": false,
           "document": "Total number of results.",
+          "example": "",
           "member": "uint64",
           "name": "TotalNum",
           "type": "int",
@@ -7750,6 +8062,7 @@
         {
           "disabled": false,
           "document": "Total number of result pages.",
+          "example": "",
           "member": "uint64",
           "name": "TotalPage",
           "type": "int",
@@ -7758,6 +8071,7 @@
         {
           "disabled": false,
           "document": "Data content.",
+          "example": "",
           "member": "PlaySumStatInfo",
           "name": "DataInfoList",
           "type": "list",
@@ -8065,6 +8379,7 @@
         {
           "disabled": false,
           "document": "LVB domain name to be enabled.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -8107,6 +8422,7 @@
         {
           "disabled": false,
           "document": "LVB domain name to be disabled.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -8252,6 +8568,7 @@
         {
           "disabled": false,
           "document": "District.",
+          "example": "",
           "member": "string",
           "name": "ProvinceName",
           "required": true,
@@ -8261,6 +8578,7 @@
         {
           "disabled": false,
           "document": "ISP.",
+          "example": "",
           "member": "string",
           "name": "IspName",
           "required": true,
@@ -8270,6 +8588,7 @@
         {
           "disabled": false,
           "document": "Detailed data at the minute level.",
+          "example": "",
           "member": "CdnPlayStatData",
           "name": "DetailInfoList",
           "required": true,
@@ -8285,6 +8604,7 @@
         {
           "disabled": false,
           "document": "Timeout period for restarting an interrupted HLS push.\nValue range: [0, 1,800].",
+          "example": "",
           "member": "uint64",
           "name": "FlowContinueDuration",
           "required": false,
@@ -8300,6 +8620,7 @@
         {
           "disabled": false,
           "document": "HTTP return code.\nExample: \"2xx\", \"3xx\", \"4xx\", \"5xx\".",
+          "example": "",
           "member": "string",
           "name": "HttpCode",
           "required": true,
@@ -8309,6 +8630,7 @@
         {
           "disabled": false,
           "document": "Statistics. 0 will be added for points in time when there is no data.",
+          "example": "",
           "member": "HttpCodeValue",
           "name": "ValueList",
           "required": true,
@@ -8324,6 +8646,7 @@
         {
           "disabled": false,
           "document": "Time in the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -8333,6 +8656,7 @@
         {
           "disabled": false,
           "document": "Occurrences.",
+          "example": "",
           "member": "uint64",
           "name": "Numbers",
           "required": true,
@@ -8342,6 +8666,7 @@
         {
           "disabled": false,
           "document": "Proportion.",
+          "example": "",
           "member": "float",
           "name": "Percentage",
           "required": true,
@@ -8357,6 +8682,7 @@
         {
           "disabled": false,
           "document": "Data point in time,\nIn the format of `yyyy-mm-dd HH:MM:SS`.",
+          "example": "",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -8366,6 +8692,7 @@
         {
           "disabled": false,
           "document": "Playback status code details.",
+          "example": "",
           "member": "HttpStatusInfo",
           "name": "HttpStatusInfoList",
           "required": true,
@@ -8381,6 +8708,7 @@
         {
           "disabled": false,
           "document": "Playback HTTP status code.",
+          "example": "",
           "member": "string",
           "name": "HttpStatus",
           "required": true,
@@ -8390,6 +8718,7 @@
         {
           "disabled": false,
           "document": "Quantity.",
+          "example": "",
           "member": "uint64",
           "name": "Num",
           "required": true,
@@ -8405,6 +8734,7 @@
         {
           "disabled": false,
           "document": "The domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -8414,6 +8744,7 @@
         {
           "disabled": false,
           "document": "Whether to enable HTTPS for the domain.\n1: Enable\n0: Disable\n-1: Keep the current configuration",
+          "example": "",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -8769,6 +9100,7 @@
         {
           "disabled": false,
           "document": "Playback domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -8777,6 +9109,7 @@
         {
           "disabled": false,
           "document": "Whether to enable. 0: disabled; 1: enabled.\nIf this parameter is left empty, the current value will not be modified.",
+          "example": "",
           "member": "int64",
           "name": "Enable",
           "required": false,
@@ -8785,6 +9118,7 @@
         {
           "disabled": false,
           "document": "Authentication key.\nIf this parameter is left empty, the current value will not be modified.",
+          "example": "",
           "member": "string",
           "name": "AuthKey",
           "required": false,
@@ -8793,6 +9127,7 @@
         {
           "disabled": false,
           "document": "Validity period in seconds.\nIf this parameter is left empty, the current value will not be modified.",
+          "example": "",
           "member": "uint64",
           "name": "AuthDelta",
           "required": false,
@@ -8801,6 +9136,7 @@
         {
           "disabled": false,
           "document": "Backup authentication key.\nIf this parameter is left empty, the current value will not be modified.",
+          "example": "",
           "member": "string",
           "name": "AuthBackKey",
           "required": false,
@@ -8827,6 +9163,7 @@
         {
           "disabled": false,
           "document": "Playback domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -8835,6 +9172,7 @@
         {
           "disabled": false,
           "document": "Pull domain name type. 1: Mainland China. 2: global, 3: outside Mainland China",
+          "example": "",
           "member": "int64",
           "name": "PlayType",
           "required": true,
@@ -9032,6 +9370,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -9040,6 +9379,7 @@
         {
           "disabled": false,
           "document": "Whether to enable. 0: disabled; 1: enabled.\nIf this parameter is left empty, the current value will not be modified.",
+          "example": "",
           "member": "int64",
           "name": "Enable",
           "required": false,
@@ -9048,6 +9388,7 @@
         {
           "disabled": false,
           "document": "Master authentication key.\nIf this parameter is left empty, the current value will not be modified.",
+          "example": "",
           "member": "string",
           "name": "MasterAuthKey",
           "required": false,
@@ -9056,6 +9397,7 @@
         {
           "disabled": false,
           "document": "Backup authentication key.\nIf this parameter is left empty, the current value will not be modified.",
+          "example": "",
           "member": "string",
           "name": "BackupAuthKey",
           "required": false,
@@ -9064,6 +9406,7 @@
         {
           "disabled": false,
           "document": "Validity period in seconds.",
+          "example": "",
           "member": "uint64",
           "name": "AuthDelta",
           "required": false,
@@ -9630,6 +9973,7 @@
         {
           "disabled": false,
           "document": "The playback domain.",
+          "example": "",
           "member": "string",
           "name": "PlayDomain",
           "required": true,
@@ -9639,6 +9983,7 @@
         {
           "disabled": false,
           "document": "The stream ID.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -9648,6 +9993,7 @@
         {
           "disabled": false,
           "document": "The playback bitrate. `0` indicates the original bitrate.",
+          "example": "",
           "member": "uint64",
           "name": "Rate",
           "required": true,
@@ -9657,6 +10003,7 @@
         {
           "disabled": false,
           "document": "The playback protocol. Valid values: `Unknown`, `Flv`, `Hls`, `Rtmp`, `Huyap2p`.",
+          "example": "",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -9666,6 +10013,7 @@
         {
           "disabled": false,
           "document": "The bandwidth (Mbps).",
+          "example": "",
           "member": "float",
           "name": "Bandwidth",
           "required": true,
@@ -9675,6 +10023,7 @@
         {
           "disabled": false,
           "document": "The number of online users, which is represented by the number of TCP connections (data collected every minute).",
+          "example": "",
           "member": "uint64",
           "name": "Online",
           "required": true,
@@ -9684,6 +10033,7 @@
         {
           "disabled": false,
           "document": "The number of requests.",
+          "example": "",
           "member": "uint64",
           "name": "Request",
           "required": true,
@@ -9699,6 +10049,7 @@
         {
           "disabled": false,
           "document": "Domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -9708,6 +10059,7 @@
         {
           "disabled": false,
           "document": "Whether to enable:\n0: disable.\n1: enable.",
+          "example": "",
           "member": "int64",
           "name": "Enable",
           "required": true,
@@ -9717,6 +10069,7 @@
         {
           "disabled": false,
           "document": "Authentication key.",
+          "example": "",
           "member": "string",
           "name": "AuthKey",
           "required": true,
@@ -9726,6 +10079,7 @@
         {
           "disabled": false,
           "document": "Validity period in seconds.",
+          "example": "",
           "member": "uint64",
           "name": "AuthDelta",
           "required": true,
@@ -9735,6 +10089,7 @@
         {
           "disabled": false,
           "document": "Authentication `BackKey`.",
+          "example": "",
           "member": "string",
           "name": "AuthBackKey",
           "required": true,
@@ -9750,6 +10105,7 @@
         {
           "disabled": false,
           "document": "HTTP code. Valid values:\n400, 403, 404, 500, 502, 503, 504.",
+          "example": "",
           "member": "string",
           "name": "Code",
           "required": true,
@@ -9759,6 +10115,7 @@
         {
           "disabled": false,
           "document": "Total occurrences.",
+          "example": "",
           "member": "uint64",
           "name": "Num",
           "required": true,
@@ -9774,6 +10131,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -9783,6 +10141,7 @@
         {
           "disabled": false,
           "document": "Total traffic in MB.",
+          "example": "",
           "member": "float",
           "name": "TotalFlux",
           "required": true,
@@ -9798,6 +10157,7 @@
         {
           "disabled": false,
           "document": "Data point in time.",
+          "example": "",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -9807,6 +10167,7 @@
         {
           "disabled": false,
           "document": "Value of bandwidth/traffic/number of requests/number of concurrent connections/download speed. If there is no data returned, the value is 0.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "float",
           "name": "Value",
           "required": true,
@@ -9822,6 +10183,7 @@
         {
           "disabled": false,
           "document": "Domain name or stream ID.",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -9831,6 +10193,7 @@
         {
           "disabled": false,
           "document": "Average download speed,\nIn MB/s.\nCalculation formula: average download speed per minute.",
+          "example": "",
           "member": "float",
           "name": "AvgFluxPerSecond",
           "required": true,
@@ -9840,6 +10203,7 @@
         {
           "disabled": false,
           "document": "Total traffic in MB.",
+          "example": "",
           "member": "float",
           "name": "TotalFlux",
           "required": true,
@@ -9849,6 +10213,7 @@
         {
           "disabled": false,
           "document": "Total number of requests.",
+          "example": "",
           "member": "uint64",
           "name": "TotalRequest",
           "required": true,
@@ -9864,6 +10229,7 @@
         {
           "disabled": false,
           "document": "Country or region.",
+          "example": "",
           "member": "string",
           "name": "CountryAreaName",
           "required": true,
@@ -9873,6 +10239,7 @@
         {
           "disabled": false,
           "document": "District.",
+          "example": "",
           "member": "string",
           "name": "ProvinceName",
           "required": true,
@@ -9882,6 +10249,7 @@
         {
           "disabled": false,
           "document": "ISP.",
+          "example": "",
           "member": "string",
           "name": "IspName",
           "required": true,
@@ -9891,6 +10259,7 @@
         {
           "disabled": false,
           "document": "Occurrences of 2xx error codes.",
+          "example": "",
           "member": "uint64",
           "name": "Code2xx",
           "required": true,
@@ -9900,6 +10269,7 @@
         {
           "disabled": false,
           "document": "Occurrences of 3xx error codes.",
+          "example": "",
           "member": "uint64",
           "name": "Code3xx",
           "required": true,
@@ -9909,6 +10279,7 @@
         {
           "disabled": false,
           "document": "Occurrences of 4xx error codes.",
+          "example": "",
           "member": "uint64",
           "name": "Code4xx",
           "required": true,
@@ -9918,6 +10289,7 @@
         {
           "disabled": false,
           "document": "Occurrences of 5xx error codes.",
+          "example": "",
           "member": "uint64",
           "name": "Code5xx",
           "required": true,
@@ -9933,6 +10305,7 @@
         {
           "disabled": false,
           "document": "Push time.\nIn UTC format, such as 2018-06-29T19:00:00Z.",
+          "example": "",
           "member": "string",
           "name": "PublishTime",
           "required": true,
@@ -10290,6 +10663,7 @@
         {
           "disabled": false,
           "document": "Domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -10299,6 +10673,7 @@
         {
           "disabled": false,
           "document": "Whether to enable. 0: disabled; 1: enabled.",
+          "example": "",
           "member": "int64",
           "name": "Enable",
           "required": true,
@@ -10308,6 +10683,7 @@
         {
           "disabled": false,
           "document": "Master authentication key.",
+          "example": "",
           "member": "string",
           "name": "MasterAuthKey",
           "required": true,
@@ -10317,6 +10693,7 @@
         {
           "disabled": false,
           "document": "Standby authentication key.",
+          "example": "",
           "member": "string",
           "name": "BackupAuthKey",
           "required": true,
@@ -10326,6 +10703,7 @@
         {
           "disabled": false,
           "document": "Validity period in seconds.",
+          "example": "",
           "member": "uint64",
           "name": "AuthDelta",
           "required": true,
@@ -10753,6 +11131,7 @@
         {
           "disabled": false,
           "document": "The URL of the file currently pulled.",
+          "example": "",
           "member": "string",
           "name": "FileUrl",
           "required": true,
@@ -10762,6 +11141,7 @@
         {
           "disabled": false,
           "document": "The offset of the file currently pulled.",
+          "example": "",
           "member": "uint64",
           "name": "OffsetTime",
           "required": true,
@@ -10771,6 +11151,7 @@
         {
           "disabled": false,
           "document": "The time when the offset is reported, in UTC format.\nExample: 2020-07-23T03:20:39Z\nNote: Beijing time is 8 hours ahead of UTC.",
+          "example": "",
           "member": "string",
           "name": "ReportTime",
           "required": true,
@@ -10780,6 +11161,7 @@
         {
           "disabled": false,
           "document": "The number of times looped.",
+          "example": "",
           "member": "int64",
           "name": "LoopedTimes",
           "required": true,
@@ -10881,6 +11263,7 @@
         {
           "disabled": false,
           "document": "Recording task ID.",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -10890,6 +11273,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -10899,6 +11283,7 @@
         {
           "disabled": false,
           "document": "Push path.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -10908,6 +11293,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -10917,6 +11303,7 @@
         {
           "disabled": false,
           "document": "The start time of the recording task in Unix timestamp. ",
+          "example": "",
           "member": "uint64",
           "name": "StartTime",
           "required": true,
@@ -10926,6 +11313,7 @@
         {
           "disabled": false,
           "document": "The end time of the recording task in Unix timestamp. ",
+          "example": "",
           "member": "uint64",
           "name": "EndTime",
           "required": true,
@@ -10935,6 +11323,7 @@
         {
           "disabled": false,
           "document": "Recording template ID.",
+          "example": "",
           "member": "uint64",
           "name": "TemplateId",
           "required": true,
@@ -10944,6 +11333,7 @@
         {
           "disabled": false,
           "document": "The StopRecordTask API call stops the task at the Unix timestamp. A value of 0 indicates that the API has not been called to stop the task.",
+          "example": "",
           "member": "uint64",
           "name": "Stopped",
           "required": true,
@@ -11085,6 +11475,7 @@
         {
           "disabled": false,
           "document": "Domain name",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -11094,6 +11485,7 @@
         {
           "disabled": false,
           "document": "Whether to enable referer. Valid values: `0` (no), `1` (yes)",
+          "example": "",
           "member": "int64",
           "name": "Enable",
           "required": true,
@@ -11103,6 +11495,7 @@
         {
           "disabled": false,
           "document": "List type. Valid values: `0` (blocklist), `1` (allowlist)",
+          "example": "",
           "member": "int64",
           "name": "Type",
           "required": true,
@@ -11112,6 +11505,7 @@
         {
           "disabled": false,
           "document": "Whether to allow empty referer. Valid values: `0` (no), `1` (yes)",
+          "example": "",
           "member": "int64",
           "name": "AllowEmpty",
           "required": true,
@@ -11121,6 +11515,7 @@
         {
           "disabled": false,
           "document": "Referer list. Separate items in it with semicolons (;).",
+          "example": "",
           "member": "string",
           "name": "Rules",
           "required": true,
@@ -11136,6 +11531,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -11144,6 +11540,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -11152,6 +11549,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -11178,6 +11576,7 @@
         {
           "disabled": false,
           "document": "Push path, which is the same as the AppName in push and playback addresses and is \"live\" by default.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -11186,6 +11585,7 @@
         {
           "disabled": false,
           "document": "Your push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -11194,6 +11594,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -11286,6 +11687,7 @@
         {
           "disabled": false,
           "document": "Template ID.",
+          "example": "",
           "member": "int64",
           "name": "TemplateId",
           "required": true,
@@ -11295,6 +11697,7 @@
         {
           "disabled": false,
           "document": "Template name.",
+          "example": "",
           "member": "string",
           "name": "TemplateName",
           "required": true,
@@ -11304,6 +11707,7 @@
         {
           "disabled": false,
           "document": "Screencapturing interval. Value range: 5-300s.",
+          "example": "",
           "member": "int64",
           "name": "SnapshotInterval",
           "required": true,
@@ -11313,6 +11717,7 @@
         {
           "disabled": false,
           "document": "Screenshot width. Value range: 0-3000. \n0: original width and fit to the original ratio.",
+          "example": "",
           "member": "int64",
           "name": "Width",
           "required": true,
@@ -11322,6 +11727,7 @@
         {
           "disabled": false,
           "document": "Screenshot height. Value range: 0-2000.\n0: original height and fit to the original ratio.",
+          "example": "",
           "member": "int64",
           "name": "Height",
           "required": true,
@@ -11331,6 +11737,7 @@
         {
           "disabled": false,
           "document": "Whether to enable porn detection. 0: no, 1: yes.",
+          "example": "",
           "member": "int64",
           "name": "PornFlag",
           "required": true,
@@ -11340,6 +11747,7 @@
         {
           "disabled": false,
           "document": "COS application ID.",
+          "example": "",
           "member": "int64",
           "name": "CosAppId",
           "required": true,
@@ -11349,6 +11757,7 @@
         {
           "disabled": false,
           "document": "COS bucket name.",
+          "example": "",
           "member": "string",
           "name": "CosBucket",
           "required": true,
@@ -11358,6 +11767,7 @@
         {
           "disabled": false,
           "document": "COS region.",
+          "example": "",
           "member": "string",
           "name": "CosRegion",
           "required": true,
@@ -11367,6 +11777,7 @@
         {
           "disabled": false,
           "document": "Template description.",
+          "example": "",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -11376,6 +11787,7 @@
         {
           "disabled": false,
           "document": "COS bucket folder prefix.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "CosPrefix",
           "required": true,
@@ -11385,6 +11797,7 @@
         {
           "disabled": false,
           "document": "COS filename.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "CosFileName",
           "required": true,
@@ -11400,6 +11813,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -11408,6 +11822,7 @@
         {
           "disabled": false,
           "document": "Task ID returned by the `CreateLiveRecord` API.",
+          "example": "",
           "member": "int64",
           "name": "TaskId",
           "required": true,
@@ -11434,6 +11849,7 @@
         {
           "disabled": false,
           "document": "Recording task ID.",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -11556,6 +11972,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -11565,6 +11982,7 @@
         {
           "disabled": false,
           "document": "Application name.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -11574,6 +11992,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -11583,6 +12002,7 @@
         {
           "disabled": false,
           "document": "Push start time.\nIn UTC format, such as 2019-01-07T12:00:00Z.",
+          "example": "",
           "member": "string",
           "name": "StreamStartTime",
           "required": true,
@@ -11592,6 +12012,7 @@
         {
           "disabled": false,
           "document": "Push end time.\nIn UTC format, such as 2019-01-07T15:00:00Z.",
+          "example": "",
           "member": "string",
           "name": "StreamEndTime",
           "required": true,
@@ -11601,6 +12022,7 @@
         {
           "disabled": false,
           "document": "Stop reason.",
+          "example": "",
           "member": "string",
           "name": "StopReason",
           "required": true,
@@ -11610,6 +12032,7 @@
         {
           "disabled": false,
           "document": "Push duration in seconds.",
+          "example": "",
           "member": "uint64",
           "name": "Duration",
           "required": true,
@@ -11619,6 +12042,7 @@
         {
           "disabled": false,
           "document": "Host IP.",
+          "example": "",
           "member": "string",
           "name": "ClientIp",
           "required": true,
@@ -11628,6 +12052,7 @@
         {
           "disabled": false,
           "document": "Resolution.",
+          "example": "",
           "member": "string",
           "name": "Resolution",
           "required": true,
@@ -11643,6 +12068,7 @@
         {
           "disabled": false,
           "document": "Stream name.",
+          "example": "",
           "member": "string",
           "name": "StreamName",
           "required": true,
@@ -11652,6 +12078,7 @@
         {
           "disabled": false,
           "document": "Push time list",
+          "example": "",
           "member": "PublishTime",
           "name": "PublishTimeList",
           "required": true,
@@ -11661,6 +12088,7 @@
         {
           "disabled": false,
           "document": "Application name.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -11670,6 +12098,7 @@
         {
           "disabled": false,
           "document": "Push domain name.",
+          "example": "",
           "member": "string",
           "name": "DomainName",
           "required": true,
@@ -12195,6 +12624,7 @@
         {
           "disabled": false,
           "document": "UTC time in the format of `yyyy-mm-ddTHH:MM:SSZ`.",
+          "example": "",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -12204,6 +12634,7 @@
         {
           "disabled": false,
           "document": "Value.",
+          "example": "",
           "member": "uint64",
           "name": "Num",
           "required": true,
@@ -12361,6 +12792,7 @@
         {
           "disabled": false,
           "document": "Usage time (Beijing time)\nExample: 2019-03-01 00:00:00",
+          "example": "",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -12370,6 +12802,7 @@
         {
           "disabled": false,
           "document": "Transcoding duration in minutes",
+          "example": "",
           "member": "uint64",
           "name": "Duration",
           "required": true,
@@ -12379,6 +12812,7 @@
         {
           "disabled": false,
           "document": "Codec, with modules\nExamples:\n`liveprocessor_H264`: live transcoding-H264\n`liveprocessor_H265`: live transcoding-H265\n`topspeed_H264`: top speed codec-H264\n`topspeed_H265`: top speed codec-H265",
+          "example": "",
           "member": "string",
           "name": "ModuleCodec",
           "required": true,
@@ -12388,6 +12822,7 @@
         {
           "disabled": false,
           "document": "Resolution\nExample: 540*480",
+          "example": "",
           "member": "string",
           "name": "Resolution",
           "required": true,
@@ -12439,6 +12874,7 @@
         {
           "disabled": false,
           "document": "Watermark ID.\nGet the watermark ID in the returned value of the [AddLiveWatermark](https://intl.cloud.tencent.com/document/product/267/30154?from_cn_redirect=1) API call.",
+          "example": "",
           "member": "int64",
           "name": "WatermarkId",
           "required": true,
@@ -12447,6 +12883,7 @@
         {
           "disabled": false,
           "document": "Watermark image URL.\nUnallowed characters in the URL:\n ;(){}$>`#\"\\'|",
+          "example": "",
           "member": "string",
           "name": "PictureUrl",
           "required": true,
@@ -12455,6 +12892,7 @@
         {
           "disabled": false,
           "document": "Display position: X-axis offset in %. Default value: 0.",
+          "example": "",
           "member": "int64",
           "name": "XPosition",
           "required": true,
@@ -12463,6 +12901,7 @@
         {
           "disabled": false,
           "document": "Display position: Y-axis offset in %. Default value: 0.",
+          "example": "",
           "member": "int64",
           "name": "YPosition",
           "required": true,
@@ -12471,6 +12910,7 @@
         {
           "disabled": false,
           "document": "Watermark name.\nUp to 16 bytes.",
+          "example": "",
           "member": "string",
           "name": "WatermarkName",
           "required": false,
@@ -12479,6 +12919,7 @@
         {
           "disabled": false,
           "document": "Watermark width or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original width is used by default.",
+          "example": "",
           "member": "int64",
           "name": "Width",
           "required": false,
@@ -12487,6 +12928,7 @@
         {
           "disabled": false,
           "document": "Watermark height or its percentage of the live streaming video width. It is recommended to just specify either height or width as the other will be scaled proportionally to avoid distortions. The original height is used by default.",
+          "example": "",
           "member": "int64",
           "name": "Height",
           "required": false,
