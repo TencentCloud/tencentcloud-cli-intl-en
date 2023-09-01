@@ -561,7 +561,7 @@
       "status": "online"
     },
     "DescribePlayErrorCodeDetailInfoList": {
-      "document": "This API is used to query the information of downstream playback error codes, i.e., the occurrences of each HTTP error code (4xx and 5xx) at a 1-minute granularity in a certain period of time.\n\n",
+      "document": "This API is used to query the information of downstream playback error codes, i.e., the occurrences of each HTTP error code (4xx and 5xx) at a 1-minute granularity in a certain period of time.",
       "input": "DescribePlayErrorCodeDetailInfoListRequest",
       "name": "Queries the real-time data of each playback HTTP error code",
       "output": "DescribePlayErrorCodeDetailInfoListResponse",
@@ -4236,7 +4236,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The time point to query in the format of “yyyy-mm-dd HH:MM:00”(accurate to the minute). You can query data from the last month. Because there is a five-minute delay in the data, if you want to get the latest data, we recommend you pass in a time point five minutes earlier than the current time.",
+          "document": "The query time of the request, supports data query for the last one month. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
           "example": "2019-12-12 10:00:00",
           "member": "string",
           "name": "QueryTime",
@@ -4260,11 +4260,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "The time point queried, whose value is the same as that of the corresponding request parameter.",
+          "document": "The time point queried, whose format is the same as that of the corresponding request parameter.",
           "example": "2019-12-12 10:00:00",
           "member": "string",
           "name": "QueryTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4274,7 +4274,7 @@
           "example": "无",
           "member": "MonitorStreamPlayInfo",
           "name": "DataInfoList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4292,8 +4292,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time point in the format of `yyyy-mm-dd HH:MM:SS`.",
-          "example": "2019-02-0100:00:00",
+          "document": "The start time of the request, supports data query for the last three years, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-02-01T00:00:00+08:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -4301,8 +4301,8 @@
         },
         {
           "disabled": false,
-          "document": "End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 3 years can be queried.",
-          "example": "2019-02-0100:10:00",
+          "document": "The end time of the request, supports data query for the last three years, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-02-01T00:10:00+08:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -4362,7 +4362,7 @@
         {
           "disabled": false,
           "document": "Time point of peak bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.",
-          "example": "",
+          "example": "2019-02-01T00:00:00+08:00",
           "member": "string",
           "name": "PeakBandwidthTime",
           "type": "string",
@@ -4371,7 +4371,7 @@
         {
           "disabled": false,
           "document": "Peak bandwidth in Mbps.",
-          "example": "",
+          "example": "117042.495",
           "member": "float",
           "name": "PeakBandwidth",
           "type": "float",
@@ -4380,7 +4380,7 @@
         {
           "disabled": false,
           "document": "Time point of 95th percentile bandwidth value in the format of `yyyy-mm-dd HH:MM:SS`.",
-          "example": "",
+          "example": "2019-02-01T00:00:00+08:00",
           "member": "string",
           "name": "P95PeakBandwidthTime",
           "type": "string",
@@ -4389,7 +4389,7 @@
         {
           "disabled": false,
           "document": "95th percentile bandwidth in Mbps.",
-          "example": "",
+          "example": "117042.495",
           "member": "float",
           "name": "P95PeakBandwidth",
           "type": "float",
@@ -4398,7 +4398,7 @@
         {
           "disabled": false,
           "document": "Total traffic in MB.",
-          "example": "",
+          "example": "12254567.55",
           "member": "float",
           "name": "SumFlux",
           "type": "float",
@@ -4407,7 +4407,7 @@
         {
           "disabled": false,
           "document": "Detailed data information.",
-          "example": "",
+          "example": "无",
           "member": "BillDataInfo",
           "name": "DataInfoList",
           "type": "list",
@@ -4428,7 +4428,7 @@
         {
           "disabled": false,
           "document": "Live streaming type. SlowLive: LCB.\nNormalLive: LVB.",
-          "example": "",
+          "example": "NormalLive",
           "member": "string",
           "name": "LiveType",
           "required": true,
@@ -4436,8 +4436,8 @@
         },
         {
           "disabled": false,
-          "document": "Start time in the format of `yyyy-mm-dd HH:MM:SS`.\nData for the last 180 days can be queried.",
-          "example": "",
+          "document": "The start time of the request, supports data query for the last six months, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-01T00:00:00+08:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -4445,8 +4445,8 @@
         },
         {
           "disabled": false,
-          "document": "End time in the format of `yyyy-mm-dd HH:MM:SS`.\nThe maximum time span supported is 31 days.",
-          "example": "",
+          "document": "The end time of the request, supports data query for the last six months, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-01T00:00:00+08:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -4455,7 +4455,7 @@
         {
           "disabled": false,
           "document": "Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.",
-          "example": "",
+          "example": "Mainland",
           "member": "string",
           "name": "MainlandOrOversea",
           "required": false,
@@ -4464,7 +4464,7 @@
         {
           "disabled": false,
           "document": "Playback domain name list. If this parameter is left empty, full data will be queried.",
-          "example": "",
+          "example": "[\"5000.livepush.com\\r\\n\"]",
           "member": "string",
           "name": "PushDomains",
           "required": false,
@@ -4479,7 +4479,7 @@
         {
           "disabled": false,
           "document": "Statistics list.",
-          "example": "",
+          "example": "无",
           "member": "ConcurrentRecordStreamNum",
           "name": "DataInfoList",
           "type": "list",
@@ -4499,8 +4499,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time in the format of \"%Y-%m-%d %H:%M:%S\".",
-          "example": "",
+          "document": "The start time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed a month. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2020-01-07 21:10:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -4508,8 +4508,8 @@
         },
         {
           "disabled": false,
-          "document": "End time in the format of \"%Y-%m-%d %H:%M:%S\". Data in the last 3 months can be queried, and the query period is up to 1 month.",
-          "example": "",
+          "document": "The end time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed a month. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2020-01-07 21:15:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -4524,7 +4524,7 @@
         {
           "disabled": false,
           "document": "Billable bandwidth of live stream relaying.",
-          "example": "",
+          "example": "无",
           "member": "BandwidthInfo",
           "name": "DataInfoList",
           "type": "list",
@@ -4544,8 +4544,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time point in the format of `yyyy-mm-dd HH:MM:SS`.",
-          "example": "",
+          "document": "The start time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-29 09:00:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -4553,8 +4553,8 @@
         },
         {
           "disabled": false,
-          "document": "End time point in the format of `yyyy-mm-dd HH:MM:SS`\nThe time span is (0,3 hours]. Data for the last month can be queried.",
-          "example": "",
+          "document": "The end time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-29 09:10:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -4563,7 +4563,7 @@
         {
           "disabled": false,
           "document": "Playback domain name. If this parameter is left empty, full data will be queried.",
-          "example": "",
+          "example": "[\"live.com\"]",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -4572,7 +4572,7 @@
         {
           "disabled": false,
           "document": "District list. If this parameter is left empty, data for all districts will be returned.",
-          "example": "",
+          "example": "[\"Beijing\"]",
           "member": "string",
           "name": "ProvinceNames",
           "required": false,
@@ -4581,7 +4581,7 @@
         {
           "disabled": false,
           "document": "ISP list. If this parameter is left empty, data of all ISPs will be returned.",
-          "example": "",
+          "example": "[\"China Mobile\"]",
           "member": "string",
           "name": "IspNames",
           "required": false,
@@ -4590,7 +4590,7 @@
         {
           "disabled": false,
           "document": "Within or outside Mainland China. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.",
-          "example": "",
+          "example": "Mainland",
           "member": "string",
           "name": "MainlandOrOversea",
           "required": false,
@@ -4605,9 +4605,10 @@
         {
           "disabled": false,
           "document": "Data content.",
-          "example": "",
+          "example": "无",
           "member": "GroupProIspDataInfo",
           "name": "DataInfoList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4625,8 +4626,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time (Beijing time).\nFormat: yyyy-mm-dd HH:MM:SS.",
-          "example": "",
+          "document": "The start time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-01T00:00:00+08:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -4634,8 +4635,8 @@
         },
         {
           "disabled": false,
-          "document": "End time (Beijing time).\nFormat: yyyy-mm-dd HH:MM:SS.\nNote: data in the last 3 months can be queried and the query period is up to 1 day.",
-          "example": "",
+          "document": "The end time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-01T00:00:00+08:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -4644,7 +4645,7 @@
         {
           "disabled": false,
           "document": "Playback domain name list.",
-          "example": "",
+          "example": "[\"5000.liveplay.com\\n\"]",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -4659,9 +4660,10 @@
         {
           "disabled": false,
           "document": "Playback status code list.",
-          "example": "",
+          "example": "无",
           "member": "HttpStatusData",
           "name": "DataInfoList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6288,7 +6290,7 @@
         },
         {
           "disabled": false,
-          "document": "Query date (UTC+8)\nFormat: yyyymmdd\nNote: you can query the statistics for a day in the past month, with yesterday as the latest date allowed.",
+          "document": "Query date (UTC+8)\nFormat: yyyymmdd\nNote: you can query the statistics for a day in the past three months, with yesterday as the latest date allowed.",
           "example": "20190307",
           "member": "string",
           "name": "DayTime",
@@ -6315,7 +6317,7 @@
         },
         {
           "disabled": false,
-          "document": "Start day time (Beijing time),\nIn the format of `yyyymmdd`.\nNote: details for the last month can be queried.",
+          "document": "Start date (UTC+8)\nFormat: yyyymmdd\nNote: details for the last three months can be queried.",
           "example": "20190307",
           "member": "string",
           "name": "StartDayTime",
@@ -6324,7 +6326,7 @@
         },
         {
           "disabled": false,
-          "document": "End date (UTC+8)\nFormat: yyyymmdd\nNote: you can query the statistics for a period in the past month, with yesterday as the latest date allowed. You must specify either `DayTime`, or `StartDayTime` and `EndDayTime`. If you specify all three parameters, only `DayTime` will be applied.",
+          "document": "End date (UTC+8)\nFormat: yyyymmdd\nNote: you can query the statistics for a period in the past three months, with yesterday as the latest date allowed. You must specify either `DayTime`, or `StartDayTime` and `EndDayTime`. If you specify all three parameters, only `DayTime` will be applied.",
           "example": "20190307",
           "member": "string",
           "name": "EndDayTime",
@@ -6340,45 +6342,50 @@
         {
           "disabled": false,
           "document": "Statistics list.",
-          "example": "",
+          "example": "无",
           "member": "TranscodeDetailInfo",
           "name": "DataInfoList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Page number.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "PageNum",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of entries per page.",
-          "example": "",
+          "example": "20",
           "member": "uint64",
           "name": "PageSize",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total number.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalNum",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total number of pages.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalPage",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6503,7 +6510,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time (Beijing time)\nFormat: yyyy-mm-dd HH:MM:SS",
+          "document": "The start time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed three months. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
           "example": "2019-03-01 00:00:00",
           "member": "string",
           "name": "StartTime",
@@ -6512,7 +6519,7 @@
         },
         {
           "disabled": false,
-          "document": "End time (Beijing time)\nFormat: yyyy-mm-dd HH:MM:SS",
+          "document": "The end time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed three months. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
           "example": "2019-03-01 12:00:00",
           "member": "string",
           "name": "EndTime",
@@ -6549,7 +6556,7 @@
           "example": "无",
           "member": "TranscodeTotalInfo",
           "name": "DataInfoList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6664,8 +6671,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time (Beijing time),\nIn the format of `yyyy-mm-dd HH:MM:SS`.",
-          "example": "",
+          "document": "The start time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-01 00:00:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -6673,8 +6680,8 @@
         },
         {
           "disabled": false,
-          "document": "End time (Beijing time),\nIn the format of `yyyy-mm-dd HH:MM:SS`.\nNote: `EndTime` and `StartTime` only support querying data for the last day.",
-          "example": "",
+          "document": "The end time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-01 00:01:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -6683,7 +6690,7 @@
         {
           "disabled": false,
           "document": "Query granularity:\n1: 1-minute granularity.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Granularity",
           "required": true,
@@ -6692,7 +6699,7 @@
         {
           "disabled": false,
           "document": "Yes. Valid values: \"4xx\", \"5xx\". Mixed codes in the format of `4xx,5xx` are also supported.",
-          "example": "",
+          "example": "4xx",
           "member": "string",
           "name": "StatType",
           "required": true,
@@ -6701,7 +6708,7 @@
         {
           "disabled": false,
           "document": "Playback domain name list.",
-          "example": "",
+          "example": "[\"5000.playdomain.com\\n\"]",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -6710,7 +6717,7 @@
         {
           "disabled": false,
           "document": "Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.",
-          "example": "",
+          "example": "Mainland",
           "member": "string",
           "name": "MainlandOrOversea",
           "required": false,
@@ -6725,18 +6732,20 @@
         {
           "disabled": false,
           "document": "Statistics list.",
-          "example": "",
+          "example": "无",
           "member": "HttpCodeInfo",
           "name": "HttpCodeList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Statistics type.",
-          "example": "",
+          "example": "4xx",
           "member": "string",
           "name": "StatType",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6754,8 +6763,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start point in time (Beijing time).\nIn the format of `yyyy-mm-dd HH:MM:SS`.",
-          "example": "",
+          "document": "The start time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-01 00:00:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -6763,8 +6772,8 @@
         },
         {
           "disabled": false,
-          "document": "End point in time (Beijing time).\nIn the format of `yyyy-mm-dd HH:MM:SS`.\nNote: `EndTime` and `StartTime` only support querying data for the last day.",
-          "example": "",
+          "document": "The end time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-01 12:00:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -6773,7 +6782,7 @@
         {
           "disabled": false,
           "document": "Playback domain name list. If this parameter is left empty, full data will be queried.",
-          "example": "",
+          "example": "[\"5000.playdomain.com\\n\"]",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -6782,7 +6791,7 @@
         {
           "disabled": false,
           "document": "Number of pages. Value range: [1,1000]. Default value: 1.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "PageNum",
           "required": false,
@@ -6791,7 +6800,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page. Value range: [1,1000]. Default value: 20.",
-          "example": "",
+          "example": "100",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -6800,7 +6809,7 @@
         {
           "disabled": false,
           "document": "Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.",
-          "example": "",
+          "example": "Mainland",
           "member": "string",
           "name": "MainlandOrOversea",
           "required": false,
@@ -6809,7 +6818,7 @@
         {
           "disabled": false,
           "document": "Grouping parameter. Valid values: CountryProIsp (default value), Country (country/region). Grouping is made by country/region + district + ISP by default. Currently, districts and ISPs outside Mainland China cannot be recognized.",
-          "example": "",
+          "example": "CountryProIsp",
           "member": "string",
           "name": "GroupType",
           "required": false,
@@ -6818,7 +6827,7 @@
         {
           "disabled": false,
           "document": "Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.",
-          "example": "",
+          "example": "Chinese",
           "member": "string",
           "name": "OutLanguage",
           "required": false,
@@ -6833,99 +6842,110 @@
         {
           "disabled": false,
           "document": "Information of error codes starting with 2, 3, 4, or 5 by district and ISP.",
-          "example": "",
+          "example": "无",
           "member": "ProIspPlayCodeDataInfo",
           "name": "ProIspInfoList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total occurrences of all status codes.",
-          "example": "",
+          "example": "100",
           "member": "uint64",
           "name": "TotalCodeAll",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Occurrences of 4xx status codes.",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "TotalCode4xx",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Occurrences of 5xx status codes.",
-          "example": "",
+          "example": "29",
           "member": "uint64",
           "name": "TotalCode5xx",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total occurrences of each status code.",
-          "example": "",
+          "example": "无",
           "member": "PlayCodeTotalInfo",
           "name": "TotalCodeList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Page number.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "PageNum",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of entries per page.",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "PageSize",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total number of pages.",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "TotalPage",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total number of results.",
-          "example": "",
+          "example": "100",
           "member": "uint64",
           "name": "TotalNum",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Occurrences of 2xx status codes.",
-          "example": "",
+          "example": "11",
           "member": "uint64",
           "name": "TotalCode2xx",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Occurrences of 3xx status codes.",
-          "example": "",
+          "example": "12",
           "member": "uint64",
           "name": "TotalCode3xx",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6943,8 +6963,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start point in time (Beijing time).\nExample: 2019-02-21 10:00:00.",
-          "example": "",
+          "document": "The start time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-02-01 00:00:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -6952,8 +6972,8 @@
         },
         {
           "disabled": false,
-          "document": "End point in time (Beijing time).\nExample: 2019-02-21 12:00:00.\nNote: `EndTime` and `StartTime` only support querying data for the last day.",
-          "example": "",
+          "document": "The end time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-02-02 00:00:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -6962,7 +6982,7 @@
         {
           "disabled": false,
           "document": "Supported granularities:\n1: 1-minute granularity (the query interval should be within 1 day)",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "Granularity",
           "required": true,
@@ -6971,7 +6991,7 @@
         {
           "disabled": false,
           "document": "Statistical metric type:\n\"Bandwidth\": bandwidth\n\"FluxPerSecond\": average traffic\n\"Flux\": traffic\n\"Request\": number of requests\n\"Online\": number of concurrent connections",
-          "example": "",
+          "example": "Bandwidth",
           "member": "string",
           "name": "StatType",
           "required": true,
@@ -6980,7 +7000,7 @@
         {
           "disabled": false,
           "document": "Playback domain name list.",
-          "example": "",
+          "example": "[\"5000.playdomain.com\\n\"]",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -6989,7 +7009,7 @@
         {
           "disabled": false,
           "document": "List of the districts to be queried, such as Beijing.",
-          "example": "",
+          "example": "[\"Beijing\"]",
           "member": "string",
           "name": "ProvinceNames",
           "required": false,
@@ -6998,7 +7018,7 @@
         {
           "disabled": false,
           "document": "List of the ISPs to be queried, such as China Mobile. If this parameter is left empty, the data of all ISPs will be queried.",
-          "example": "",
+          "example": "[\"China Mobile\"]",
           "member": "string",
           "name": "IspNames",
           "required": false,
@@ -7007,7 +7027,7 @@
         {
           "disabled": false,
           "document": "Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.",
-          "example": "",
+          "example": "Mainland",
           "member": "string",
           "name": "MainlandOrOversea",
           "required": false,
@@ -7016,7 +7036,7 @@
         {
           "disabled": false,
           "document": "IP type:\n\"Ipv6\": IPv6 data\nData of all IPs will be returned if this parameter is left empty.",
-          "example": "",
+          "example": "Ipv6",
           "member": "string",
           "name": "IpType",
           "required": false,
@@ -7031,18 +7051,20 @@
         {
           "disabled": false,
           "document": "Playback information list.",
-          "example": "",
+          "example": "无",
           "member": "PlayStatInfo",
           "name": "DataInfoList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Statistics type, which is the same as the input parameter.",
-          "example": "",
+          "example": "Bandwidth",
           "member": "string",
           "name": "StatType",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7341,7 +7363,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The start time of the query,supports data query for the last ont months,the gap between the start time and the end time cannot exceed twenty-four hours. Interface query supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "document": "The start time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed twenty-four hours. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
           "example": "2019-03-01T00:00:00+08:00",
           "member": "string",
           "name": "StartTime",
@@ -7350,7 +7372,7 @@
         },
         {
           "disabled": false,
-          "document": "The end time of the query,supports data query for the last ont months,the gap between the start time and the end time cannot exceed twenty-four hours. Interface query supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "document": "The end time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed twenty-four hours. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
           "example": "2019-03-01T00:00:00+08:00",
           "member": "string",
           "name": "EndTime",
@@ -7685,8 +7707,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start point in time in the format of `yyyy-mm-dd HH:MM:SS`.",
-          "example": "",
+          "document": "The start time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed four hours. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-01T00:00:00+08:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -7694,8 +7716,8 @@
         },
         {
           "disabled": false,
-          "document": "End point in time in the format of `yyyy-mm-dd HH:MM:SS`\nThe time span is [0,4 hours]. Data for the last day can be queried.",
-          "example": "",
+          "document": "The end time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed four hours. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-01T04:00:00+08:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -7704,7 +7726,7 @@
         {
           "disabled": false,
           "document": "Playback domain name. If this parameter is left empty, full data will be queried by default.",
-          "example": "",
+          "example": "[\"live.com\"]",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -7713,7 +7735,7 @@
         {
           "disabled": false,
           "document": "Page number. Value range: [1,1000]. Default value: 1.",
-          "example": "",
+          "example": "2",
           "member": "uint64",
           "name": "PageNum",
           "required": false,
@@ -7722,7 +7744,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page. Value range: [1,1000]. Default value: 20.",
-          "example": "",
+          "example": "2",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -7731,7 +7753,7 @@
         {
           "disabled": false,
           "document": "Sorting metric. Valid values: TotalRequest (default value), FailedRequest, TotalFlux.",
-          "example": "",
+          "example": "TotalFlux",
           "member": "string",
           "name": "OrderParam",
           "required": false,
@@ -7740,7 +7762,7 @@
         {
           "disabled": false,
           "document": "Region. Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China), China (data for China, including Hong Kong, Macao, and Taiwan), Foreign (data for regions outside China, excluding Hong Kong, Macao, and Taiwan), Global (default). If this parameter is left empty, data for all regions will be queried.",
-          "example": "",
+          "example": "Mainland",
           "member": "string",
           "name": "MainlandOrOversea",
           "required": false,
@@ -7749,7 +7771,7 @@
         {
           "disabled": false,
           "document": "Language used in the output field. Valid values: Chinese (default), English. Currently, country/region, district, and ISP parameters support multiple languages.",
-          "example": "",
+          "example": "Chinese",
           "member": "string",
           "name": "OutLanguage",
           "required": false,
@@ -7764,54 +7786,60 @@
         {
           "disabled": false,
           "document": "Page number. Value range: [1,1000]. Default value: 1.",
-          "example": "",
+          "example": "2",
           "member": "uint64",
           "name": "PageNum",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of entries per page. Value range: [1,1000]. Default value: 20.",
-          "example": "",
+          "example": "2",
           "member": "uint64",
           "name": "PageSize",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Sorting metric. Valid values: \"TotalRequest\", \"FailedRequest\", \"TotalFlux\".",
-          "example": "",
+          "example": "TotalFlux",
           "member": "string",
           "name": "OrderParam",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total number of results.",
-          "example": "",
+          "example": "1000",
           "member": "uint64",
           "name": "TotalNum",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total number of result pages.",
-          "example": "",
+          "example": "500",
           "member": "uint64",
           "name": "TotalPage",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Data content.",
-          "example": "",
+          "example": "无",
           "member": "ClientIpPlaySumInfo",
           "name": "DataInfoList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -7829,7 +7857,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The start time in the format of yyyy-mm-dd HH:MM:SS.",
+          "document": "The start time of the request, supports data query for the last forty days, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
           "example": "2022-01-09 00:00:00",
           "member": "string",
           "name": "StartTime",
@@ -7838,7 +7866,7 @@
         },
         {
           "disabled": false,
-          "document": "The end time in the format of yyyy-mm-dd HH:MM:SS.",
+          "document": "The end time of the request, supports data query for the last forty days, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
           "example": "2022-01-09 23:00:0",
           "member": "string",
           "name": "EndTime",
@@ -7884,8 +7912,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time point in the format of yyyy-mm-dd HH:MM:SS.",
-          "example": "",
+          "document": "The start time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2020-10-12T00:00:00+08:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -7893,8 +7921,8 @@
         },
         {
           "disabled": false,
-          "document": "End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 31 days can be queried.",
-          "example": "",
+          "document": "The end time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2020-10-12T01:01:05+08:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -7903,7 +7931,7 @@
         {
           "disabled": false,
           "document": "LVB domain names. If this parameter is left empty, data of all domain names will be queried.",
-          "example": "",
+          "example": "[\"test.com\"]",
           "member": "string",
           "name": "Domains",
           "required": false,
@@ -7912,7 +7940,7 @@
         {
           "disabled": false,
           "document": "Time granularity of the data. Valid values:\n5: 5-minute granularity (the query period is up to 1 day)\n1440: 1-day granularity (the query period is up to 1 month)\nDefault value: 5",
-          "example": "",
+          "example": "5",
           "member": "uint64",
           "name": "Granularity",
           "required": false,
@@ -7927,7 +7955,7 @@
         {
           "disabled": false,
           "document": "Detailed data.",
-          "example": "",
+          "example": "无",
           "member": "ConcurrentRecordStreamNum",
           "name": "DataInfoList",
           "type": "list",
