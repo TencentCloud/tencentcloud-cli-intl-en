@@ -2,7 +2,7 @@
   "actions": {
     "CheckInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=CheckInstance\n&RegistryId=tcr-test\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"IsValidated\": true,\n        \"RegionId\": 1,\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Checking whether the instance ID exists"
@@ -10,15 +10,23 @@
     ],
     "CheckInstanceName": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=CheckInstanceName\n&RegistryName=registryName123\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"IsValidated\": true,\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Checking whether the name of the instance to be created meets the specifications"
       }
     ],
+    "CreateCustomAccount": [
+      {
+        "document": "This example shows you how to create a custom account.",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCustomAccount\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-12345\",\n    \"Name\": \"robot\",\n    \"Description\": \"desc\",\n    \"ExpiresAt\": 1676897989,\n    \"Disable\": false,\n    \"Permissions\": [\n        {\n            \"Resource\": \"library\",\n            \"Actions\": [\n                \"tcr:PushRepository\",\n                \"tcr:PullRepository\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Name\": \"tcr$robot\",\n        \"Password\": \"kiHUaTAmF6a94mNzhZWDans3dYahHQNE\",\n        \"ExpiresAt\": 1676897989,\n        \"CreateTime\": \"2023-02-20T21:00:00+00:00\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
+        "title": "Creating a custom account"
+      }
+    ],
     "CreateImageAccelerationService": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=CreateImageAccelerationService\n&RegistryId=xxx\n&VpcId=xxx\n&SubnetId=xxx\n&StorageType=xxx\n&PGroupId=xxx\n&Zone=xxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RegistryId\": \"XXXX\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Creating an image acceleration service"
@@ -26,7 +34,7 @@
     ],
     "CreateImmutableTagRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateImmutableTagRules\n<Common request parameters>\n\n{\n    \"NamespaceName\": \"kofj\",\n    \"RegistryId\": \"tcr-mfoeec7x\",\n    \"Rule\": {\n        \"RepositoryDecoration\": \"repoMatches\",\n        \"RepositoryPattern\": \"**\",\n        \"TagPattern\": \"**\",\n        \"TagDecoration\": \"matches\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e60d9467-ceb5-4da3-9956-4a9f2d63d37e\"\n    }\n}",
         "title": "Creating a rule"
@@ -42,7 +50,7 @@
     ],
     "CreateInstanceCustomizedDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=CreateInstanceCustomizedDomain\n&RegistryId=tcr-12345\n&DomainName=test.com\n&CertificateId=kWGTVuU3\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c8bf292d-38c7-49d9-8da3-737d08160cfc\"\n    }\n}",
         "title": "Creating a custom domain name"
@@ -64,7 +72,7 @@
     ],
     "CreateMultipleSecurityPolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=CreateMultipleSecurityPolicy\n&RegistryId=tcr-12345\n&SecurityGroupPolicySet.0.CidrBlock=192.168.0.0/24\n&SecurityGroupPolicySet.0.Description=test\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RegistryId\": \"tcr-test123\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Batch adding addresses to the access allowlist "
@@ -72,7 +80,7 @@
     ],
     "CreateNamespace": [
       {
-        "document": "在企业版中创建命名空间",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateNamespace\n<Common request parameters>\n\n{\n    \"NamespaceName\": \"mytest\",\n    \"IsPublic\": \"true\",\n    \"RegistryId\": \"tcr-okmj78\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Creating a namespace"
@@ -80,7 +88,7 @@
     ],
     "CreateReplicationInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=CreateReplicationInstance\n&RegistryId=tcr-12345\n&ReplicationRegionId=5\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c8bf292d-38c7-49d9-8da3-737d08160cfc\",\n        \"ReplicationRegistryId\": \"tcr-06d62e1r-5\"\n    }\n}",
         "title": "Creating a replication instance"
@@ -88,7 +96,7 @@
     ],
     "CreateRepository": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=CreateRepository\n&RegistryId=tcr-okmju7\n&NamespaceName=team-01\n&RepositoryName=nginx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Creating an image repository"
@@ -96,15 +104,29 @@
     ],
     "CreateSecurityPolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=CreateSecurityPolicy\n&RegistryId=tcr-test123\n&CidrBlock=192.168.0.0/24\n&Description=test\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RegistryId\": \"tcr-test123\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Creating a public network access allowlist policy for an instance"
       }
     ],
+    "CreateServiceAccount": [
+      {
+        "document": "This example shows you how to create a service account with the specified `Duration`.",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateServiceAccount\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-45uu7ras\",\n    \"Name\": \"test\",\n    \"Description\": \"for test\",\n    \"Duration\": 10,\n    \"Permissions\": [\n        {\n            \"Resource\": \"test\",\n            \"Actions\": [\n                \"tcr:PullRepository\",\n                \"tcr:PushRepository\",\n                \"tcr:CreateRepository\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"CreateTime\": \"2023-03-28T15:48:31+08:00\",\n        \"ExpiresAt\": 1680853711137,\n        \"Name\": \"tcr$test\",\n        \"Password\": \"oNKUtqrB5Eb68JufkVanSwuhmC4Ergn7\",\n        \"RequestId\": \"20b67612-28a0-4c51-8efb-0fe14bc23a64\"\n    }\n}",
+        "title": "Creating a service account with specified `Duration`"
+      },
+      {
+        "document": "This example shows you how to create a service account.",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateServiceAccount\n<Common request parameters>\n\n{\n    \"RegistryId\": \"abc\",\n    \"Name\": \"abc\",\n    \"Description\": \"abc\",\n    \"Duration\": 0,\n    \"ExpiresAt\": 0,\n    \"Disable\": true,\n    \"Permissions\": [\n        {\n            \"Resource\": \"abc\",\n            \"Actions\": [\n                \"abc\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Name\": \"tcr$abc\",\n        \"Password\": \"abc\",\n        \"ExpiresAt\": 0,\n        \"CreateTime\": \"2020-09-22T00:00:00+00:00\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Creating a service account"
+      }
+    ],
     "CreateSignature": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSignature\n<Common request parameters>\n\n{\n    \"NamespaceName\": \"library\",\n    \"RepositoryName\": \"nginx\",\n    \"RegistryId\": \"tcr-okmju7\",\n    \"ImageVersion\": \"v1.2.0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Creating an image signature"
@@ -112,7 +134,7 @@
     ],
     "CreateSignaturePolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSignaturePolicy\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-f7g1ir99\",\n    \"Name\": \"library signing\",\n    \"NamespaceName\": \"library\",\n    \"KmsId\": \"08408a30-0416-11ed-abdc-52540036b432\",\n    \"KmsRegion\": \"\",\n    \"Disabled\": false\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"866bda78-ed75-4b10-8876-e82de555f69b\"\n    }\n}",
         "title": "Creating an image signing policy"
@@ -120,7 +142,7 @@
     ],
     "CreateTagRetentionExecution": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=CreateTagRetentionExecution\n&RegistryId=tcr-12345\n&RetentionId=1\n&DryRun=false\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c8bf292d-38c7-49d9-8da3-737d08160cfc\"\n    }\n}",
         "title": "Executing tag retention manually"
@@ -128,7 +150,7 @@
     ],
     "CreateTagRetentionRule": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=CreateTagRetentionRule\n&RegistryId=tcr-12345\n&NamespaceId=1\n&CronSetting=weekly\n&RetentionRule.Key=latestPushedK\n&RetentionRule.Value=20\n&Disabled=true\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c8bf292d-38c7-49d9-8da3-737d08160cfc\"\n    }\n}",
         "title": "Creating a tag retention rule"
@@ -142,9 +164,17 @@
         "title": "Creating a trigger"
       }
     ],
+    "DeleteCustomAccount": [
+      {
+        "document": "This example shows you how to delete a custom account.",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCustomAccount\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-xxx\",\n    \"Name\": \"tcr$robot\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Deleting a custom account"
+      }
+    ],
     "DeleteImage": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DeleteImage\r\n&RegistryId=tcr-okmj78\r\n&NamespaceName=mytest\r\n&RepositoryName=test\r\n&ImageVersion=1.0\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Deleting the specified image"
@@ -152,7 +182,7 @@
     ],
     "DeleteImageAccelerateService": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DeleteImageAccelerateService\n&RegistryId=xxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Deleting an image acceleration service"
@@ -160,7 +190,7 @@
     ],
     "DeleteImmutableTagRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteImmutableTagRules\n<Common request parameters>\n\n{\n    \"NamespaceName\": \"kofj\",\n    \"RegistryId\": \"tcr-mfoeec7x\",\n    \"RuleId\": 15\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e60d9467-ceb5-4da3-9956-4a9f2d63d37e\"\n    }\n}",
         "title": "Deleting a rule"
@@ -168,7 +198,7 @@
     ],
     "DeleteInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DeleteInstance\n&RegistryId=tcr-abc123\n&DeleteBucket=true\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Deleting an Enterprise Edition instance"
@@ -176,7 +206,7 @@
     ],
     "DeleteInstanceCustomizedDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DeleteInstanceCustomizedDomain\n&RegistryId=tcr-12345\n&DomainName=test.com\n&CertificateId=kWGTVuU3\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c8bf292d-38c7-49d9-8da3-737d08160cfc\"\n    }\n}",
         "title": "Deleting a custom domain name"
@@ -184,7 +214,7 @@
     ],
     "DeleteInstanceToken": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DeleteInstanceToken\r\n&<Common request parameters>\r\n&RegistryId=tcr-12345\r\n&TokenId=b671eee3-a58d-4704-b4d2-a84b6361ff0c",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Deleting a long-term access credential"
@@ -192,7 +222,7 @@
     ],
     "DeleteMultipleSecurityPolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DeleteMultipleSecurityPolicy\n&RegistryId=tcr-test123\n&SecurityGroupPolicySet.0.PolicyIndex=1\n&SecurityGroupPolicySet.0.PolicyVersion=1\n&SecurityGroupPolicySet.0.CidrBlock=127.0.0.1/24\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RegistryId\": \"tcr-test123\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Deleting the public network access allowlist policies of the instance"
@@ -200,7 +230,7 @@
     ],
     "DeleteNamespace": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteNamespace\n<Common request parameters>\n\n{\n    \"NamespaceName\": \"mytest\",\n    \"RegistryId\": \"tcr-okmj78\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Deleting a namespace"
@@ -208,7 +238,7 @@
     ],
     "DeleteReplicationInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DeleteReplicationInstance\n&RegistryId=tcr-12345\n&ReplicationRegistryId=tcr-12345-5\n&ReplicationRegionId=5\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"85d75c18-d98f-4dac-9425-73ea883d2bac\"\n    }\n}",
         "title": "Deleting a replica instance"
@@ -216,7 +246,7 @@
     ],
     "DeleteRepository": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DeleteRepository\n&RegistryId=tcr-okmj78\n&NamespaceName=test\n&RepositoryName=mytest\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Deleting an image repository"
@@ -224,7 +254,7 @@
     ],
     "DeleteRepositoryTags": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DeleteRepositoryTags\n&RegistryId=tcr-xxx\n&NamespaceName=test\n&RepositoryName=demo\n&Tags.0=tag0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Batch deleting image repository tags"
@@ -232,15 +262,23 @@
     ],
     "DeleteSecurityPolicy": [
       {
-        "document": "",
-        "input": "https://tcr.tencentcloudapi.com/?Action=DeleteSecurityPolicy\n&RegistryId=tcr-test123\n&PolicyIndex=1\n&PolicyVersion=1\n&<Common request parameters>",
+        "document": "This example shows you how to delete a public network access allow policy of an instance.",
+        "input": "https://tcr.tencentcloudapi.com/?Action=DeleteSecurityPolicy\n&RegistryId=tcr-test123\n&PolicyIndex=1\n&PolicyVersion=1\n&CidrBlock=0.0.0.0/20\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RegistryId\": \"tcr-test123\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Deleting a public network access allowlist policy of an instance"
+        "title": "Deleting a public network access allow policy"
+      }
+    ],
+    "DeleteServiceAccount": [
+      {
+        "document": "This example shows you how to delete a service account.",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteServiceAccount\n<Common request parameters>\n\n{\n    \"RegistryId\": \"abc\",\n    \"Name\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Deleting a service account"
       }
     ],
     "DeleteSignaturePolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteSignaturePolicy\n<Common request parameters>\n\n{\n    \"NamespaceName\": \"library\",\n    \"RegistryId\": \"tcr-okmj78\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Deleting a namespace signing policy"
@@ -248,7 +286,7 @@
     ],
     "DeleteTagRetentionRule": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DeleteTagRetentionRule\n&RegistryId=tcr-12345\n&RetentionId=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c8bf292d-38c7-49d9-8da3-737d08160cfc\"\n    }\n}",
         "title": "Deleting a tag retention rule"
@@ -256,7 +294,7 @@
     ],
     "DeleteWebhookTrigger": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DeleteWebhookTrigger\r\n&<Common request parameters>\r\n&RegistryId=tcr-ak9876\r\n&Namespace=someNs\r\n&Id=11",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"7c978e73-b752-422c-880d-c074a45b4b58\"\n    }\n}",
         "title": "Deleting a trigger"
@@ -264,15 +302,23 @@
     ],
     "DescribeChartDownloadInfo": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeChartDownloadInfo\n&RegistryId=tcr-test123\n&NamespaceName=mytest\n&ChartName=mytest\n&ChartVersion=1.0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"PreSignedDownloadURL\": \"http://tcr-mfoeec7x-1251707795.cos.ap-beijing.myqcloud.com/mytest%2Faaa-1.0.tgz?x-cos-security-token=crYJrPad4qVUuF1wM7B6ydE6fHmfC2Aa029f573e37399315f36f138a35d76483CzO4vdVHQC37m42wwxGV25f9eYVEMC1mwypgp3oLANGncOsZiRLHRQT39V32-eO7uK5V1AyROprYScr7zhVl-y9HgVX8b1Q-48X0y_CebL2pLchYzWMBnn86lS9vQGBYAZYyKnK8yHc20GuqbXjHuPeJUU6o7E9GIxmqQnN2otJeVqkJRqAvl_7dlE-z3SoxKoXAc3mtv5_2LRJKzGelfW7T3kA6D9etVFa4WYlc-qEHCRwKY4V5Qcz6nLklYJTcHAWod-Z5jl1YD7OvTV_Tcs45myCHz_LufpxwXErAdvXcFHfNIP5NNWVTGHX0xXYFlTa6O7XrivSy9Y7sHyKlD2_GFXIVfqJ_ngfW9NBjWf0&sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDwgeCmMrZak-ZNXGoGgRm04pnzUHahzQPZvSqc1o7F1cMQ53q0RfOCImKR3McEgfD%26q-sign-time%3D1620704774%3B1620708374%26q-key-time%3D1620704774%3B1620708374%26q-header-list%3Dhost%26q-url-param-list%3Dx-cos-security-token%26q-signature%3D6a17a10308b9ead591bee149665b469756dd6711\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Querying the download information of a chart"
       }
     ],
+    "DescribeCustomAccounts": [
+      {
+        "document": "This example shows you how to query custom accounts.",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomAccounts\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-xxx\",\n    \"EmbedPermission\": true,\n    \"All\": false,\n    \"Filters\": [],\n    \"Offset\": 0,\n    \"Limit\": 20\n}",
+        "output": "{\n    \"Response\": {\n        \"CustomAccounts\": [\n            {\n                \"Name\": \"tcr$robot\",\n                \"Disable\": false,\n                \"UpdateTime\": \"2022-09-22T00:00:00+00:00\",\n                \"Permissions\": [\n                    {\n                        \"Resource\": \"library\",\n                        \"Actions\": [\n                            \"tcr:PushRepository\",\n                            \"tcr:PullRepository\"\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying custom accounts"
+      }
+    ],
     "DescribeExternalEndpointStatus": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeExternalEndpointStatus\n&RegistryId=tcr-12345\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"55d06f7c-c488-4910-8f67-8d7f77f0fe0f\",\n        \"Status\": \"Opened\",\n        \"Reason\": \"\"\n    }\n}",
         "title": "Querying the public network access entry status of an instance"
@@ -280,7 +326,7 @@
     ],
     "DescribeGCJobs": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeGCJobs\n&RegistryId=tcr-test123\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Jobs\": [\n            {\n                \"UpdateTime\": \"2021-06-01T08:10:42.713895Z\",\n                \"CreationTime\": \"2021-06-01T08:10:42Z\",\n                \"ID\": 65,\n                \"JobStatus\": \"pending\"\n            },\n            {\n                \"UpdateTime\": \"2021-05-28T09:01:36.772412Z\",\n                \"CreationTime\": \"2021-05-28T09:01:36Z\",\n                \"ID\": 56,\n                \"JobStatus\": \"finished\"\n            }\n        ],\n        \"RequestId\": \"c3fca04b-76c4-4165-8fad-824ce73dd0f8\"\n    }\n}",
         "title": "Querying the last ten GC records"
@@ -288,7 +334,7 @@
     ],
     "DescribeImageAccelerateService": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeImageAccelerateService\n&RegistryId=xxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Status\": \"Completed\",\n        \"CFSVIP\": \"10.1.1.1\",\n        \"IsEnable\": \"true\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Querying the status of an image acceleration service"
@@ -296,7 +342,7 @@
     ],
     "DescribeImageManifests": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeImageManifests\r\n&<Common request parameters>\r\n&RegistryId=tcr-7s2d14fn\r\n&NamespaceName=test\r\n&RepositoryName=mytest\r\n&ImageVersion=1.0",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef83620-c92e-496c-b206-25b0b638f409\",\n        \"Manifest\": \"{\\\"config\\\":{\\\"digest\\\":\\\"sha256:72f6114b119f1423a2713aca1e15cb9aeadf835a714d36f7a2cf88d10e4bb6be\\\",\\\"mediaType\\\":\\\"application/vnd.docker.container.image.v1+json\\\",\\\"size\\\":2396},\\\"layers\\\":[{\\\"digest\\\":\\\"sha256:9123ac7c32f74759e6283f04dbf571f18246abe5bb2c779efcb32cd50f3ff13c\\\",\\\"mediaType\\\":\\\"application/vnd.docker.image.rootfs.diff.tar.gzip\\\",\\\"size\\\":2764173},{\\\"digest\\\":\\\"sha256:8673ef3ff8fc5ede7363cbe74d295b013ef7959ba002af607314d8ee77b58a5a\\\",\\\"mediaType\\\":\\\"application/vnd.docker.image.rootfs.diff.tar.gzip\\\",\\\"size\\\":1616975},{\\\"digest\\\":\\\"sha256:a8e22d4a83517ee59537183a2f7ca35fa7b81d36176a9d5d42ca2ab0486af779\\\",\\\"mediaType\\\":\\\"application/vnd.docker.image.rootfs.diff.tar.gzip\\\",\\\"size\\\":8446306}],\\\"mediaType\\\":\\\"application/vnd.docker.distribution.manifest.v2+json\\\",\\\"schemaVersion\\\":2}\",\n        \"Config\": \"\"\n    }\n}",
         "title": "Querying the manifest information of a container image"
@@ -312,7 +358,7 @@
     ],
     "DescribeImmutableTagRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeImmutableTagRules\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-mfoeec7x\"\n}",
         "output": "{\n    \"Response\": {\n        \"Rules\": [\n            {\n                \"TagDecoration\": \"matches\",\n                \"RuleId\": 19,\n                \"Disabled\": false,\n                \"RepositoryDecoration\": \"repoMatches\",\n                \"RepositoryPattern\": \"**\",\n                \"TagPattern\": \"**\",\n                \"NsName\": \"kofj\"\n            }\n        ],\n        \"EmptyNs\": [\n            \"library\"\n        ],\n        \"Total\": 3,\n        \"RequestId\": \"17eacd5a-b943-4e39-8a7a-3fb7b171c995\"\n    }\n}",
         "title": "Listing a rule"
@@ -328,7 +374,7 @@
     ],
     "DescribeInstanceCustomizedDomain": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeInstanceCustomizedDomain\n&RegistryId=tcr-12345\n&Limit=10\n&Offset=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"DomainInfoList\": [\n            {\n                \"Status\": \"xx\",\n                \"CertId\": \"xx\",\n                \"RegistryId\": \"xx\",\n                \"DomainName\": \"xx\"\n            }\n        ],\n        \"TotalCount\": 10\n    }\n}",
         "title": "Querying the list of custom domain names of an instance"
@@ -336,7 +382,7 @@
     ],
     "DescribeInstanceStatus": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeInstanceStatus\r\n&RegistryIds.0=tcr-ak9876\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RegistryStatusSet\": [\n            {\n                \"Status\": \"Runing\",\n                \"RegistryId\": \"tcr-ak9876\"\n            }\n        ],\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\n    }\n}",
         "title": "Querying the instance status"
@@ -344,7 +390,7 @@
     ],
     "DescribeInstanceToken": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeInstanceToken\r\n&<Common request parameters>\r\n&RegistryId=tcr-ak9876",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6cd302c6-c4c9-425a-8d07-8c59b7f4cf3f\",\n        \"TotalCount\": 0,\n        \"Tokens\": []\n    }\n}",
         "title": "Querying the information of long-term access credentials"
@@ -352,7 +398,7 @@
     ],
     "DescribeInstances": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeInstances\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Registries\": [\n            {\n                \"RegistryId\": \"cls-xxxxxxx\",\n                \"RegistryName\": \"aaa\",\n                \"Status\": \"Running\",\n                \"RegistryType\": \"standard\",\n                \"PublicDomain\": \"mytest.tencentcloudcr.com\",\n                \"InternalEndpoint\": \"8.9.10.9\",\n                \"ExpiredAt\": \"2020-09-10\",\n                \"PayMod\": 1,\n                \"RenewFlag\": 1\n            }\n        ],\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\n    }\n}",
         "title": "Viewing the list of instances"
@@ -360,7 +406,7 @@
     ],
     "DescribeInternalEndpoints": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeInternalEndpoints\n&RegistryId=tcr-xxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"AccessVpcSet\": [],\n        \"TotalCount\": 0,\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Getting the list of private network access information"
@@ -376,7 +422,7 @@
     ],
     "DescribeRegions": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeRegions\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Regions\": [\n            {\n                \"RegionId\": \"1\",\n                \"RegionName\": \"ap-guangzhou\",\n                \"Status\": \"alluser\",\n                \"Remark\": \"aaa\",\n                \"Alias\": \"gz\",\n                \"CreatedAt\": \"2019-08-09\",\n                \"UpdatedAt\": \"2019-08-09\"\n            }\n        ],\n        \"RequestId\": \"a1be36f0-1aa4-4af2-a289-da021bcef89f\"\n    }\n}",
         "title": "Listing the regions where TCR is available"
@@ -384,7 +430,7 @@
     ],
     "DescribeReplicationInstanceCreateTasks": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeReplicationInstanceCreateTasks\n&ReplicationRegistryId=tcr-ak9876-5\n&ReplicationRegionId=5\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TaskDetail\": [\n            {\n                \"TaskName\": \"SyncMasterDBTask\",\n                \"TaskUUID\": \"tcr-task-3765025c-b063-4d38-be45-52e47b2c5795\",\n                \"TaskStatus\": \"SUCCESS\",\n                \"TaskMessage\": \"\",\n                \"CreatedTime\": \"xx\",\n                \"FinishedTime\": \"xx\"\n            },\n            {\n                \"TaskName\": \"SyncMasterBucketTask\",\n                \"TaskUUID\": \"tcr-task-d008eec3-c6a0-41b1-b171-409e06fff024\",\n                \"TaskStatus\": \"SUCCESS\",\n                \"TaskMessage\": \"\",\n                \"CreatedTime\": \"xx\",\n                \"FinishedTime\": \"xx\"\n            },\n            {\n                \"TaskName\": \"CreateTcrCrdTask\",\n                \"TaskUUID\": \"tcr-task-335e5a7b-b3e4-49ff-b4c3-9f81a6afac0d\",\n                \"TaskStatus\": \"SUCCESS\",\n                \"TaskMessage\": \"\",\n                \"CreatedTime\": \"xx\",\n                \"FinishedTime\": \"xx\"\n            }\n        ],\n        \"Status\": \"SUCCESS\",\n        \"RequestId\": \"5c497866-b88c-48c8-895d-0aba37109640\"\n    }\n}",
         "title": "Querying the task status of creating a replication instance"
@@ -392,7 +438,7 @@
     ],
     "DescribeReplicationInstanceSyncStatus": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeReplicationInstanceSyncStatus\n&RegistryId=tcr-12345\n&ReplicationRegistryId=tcr-12345-5\n&ShowReplicationLog=true\n&Offset=1\n&Limit=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ReplicationStatus\": \"Succeed\",\n        \"ReplicationTime\": \"2021-09-28T08:00:15Z\",\n        \"RequestId\": \"88b91f6a-2fbe-4d5d-9b2e-a9a4a273758d\",\n        \"ReplicationLog\": [\n            {\n                \"ResourceType\": \"image\",\n                \"Source\": \"test/test:[1]\",\n                \"Destination\": \"test/test:[1]\",\n                \"Status\": \"Succeed\",\n                \"StartTime\": \"2021-09-28T07:47:44.302804Z\",\n                \"EndTime\": \"2021-09-28T07:47:53Z\"\n            }\n        ]\n    }\n}",
         "title": "Querying the synchronization status of a replication instance"
@@ -400,7 +446,7 @@
     ],
     "DescribeReplicationInstances": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeReplicationInstances\n&RegistryId=tcr-12345\n&Offset=0\n&Limit=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"76e69894-670f-4440-8773-075763fbdb80\",\n        \"TotalCount\": 1,\n        \"ReplicationRegistries\": [\n            {\n                \"RegistryId\": \"tcr-06d62e1r\",\n                \"ReplicationRegistryId\": \"tcr-06d62e1r-5\",\n                \"ReplicationRegionId\": 5,\n                \"ReplicationRegionName\": \"ap-hongkong\",\n                \"Status\": \"Running\",\n                \"CreatedAt\": \"2020-09-28T15:34:59+08:00\"\n            }\n        ]\n    }\n}",
         "title": "Querying the list of replication instances"
@@ -416,15 +462,23 @@
     ],
     "DescribeSecurityPolicies": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeSecurityPolicies\n&RegistryId=tcr-test123\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"SecurityPolicySet\": [\n            {\n                \"PolicyIndex\": 0,\n                \"CidrBlock\": \"127.0.0.1/24\",\n                \"Description\": \"test\",\n                \"PolicyVersion\": \"1\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Viewing instance security policies"
       }
     ],
+    "DescribeServiceAccounts": [
+      {
+        "document": "This example shows you how to query service accounts.",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeServiceAccounts\n<Common request parameters>\n\n{\n    \"RegistryId\": \"abc\",\n    \"All\": true,\n    \"EmbedPermission\": true,\n    \"Filters\": [\n        {\n            \"Name\": \"abc\",\n            \"Values\": [\n                \"abc\"\n            ]\n        }\n    ],\n    \"Offset\": 0,\n    \"Limit\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"ServiceAccounts\": [\n            {\n                \"Name\": \"abc\",\n                \"Description\": \"abc\",\n                \"Disable\": true,\n                \"ExpiresAt\": 0,\n                \"CreateTime\": \"2020-09-22T00:00:00+00:00\",\n                \"UpdateTime\": \"2020-09-22T00:00:00+00:00\",\n                \"Permissions\": [\n                    {\n                        \"Resource\": \"abc\",\n                        \"Actions\": [\n                            \"abc\"\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 0,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying a custom account"
+      }
+    ],
     "DescribeTagRetentionExecution": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeTagRetentionExecution\n&RegistryId=tcr-12345\n&RetentionId=1\n&Limit=20\n&Offset=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"023eef7f-cf03-4e4a-b7bb-de7d66aa6fbc\",\n        \"RetentionExecutionList\": [\n            {\n                \"ExecutionId\": 1,\n                \"RetentionId\": 1,\n                \"StartTime\": \"2021-04-12T10:49:20Z\",\n                \"EndTime\": \"2021-04-12T10:49:20Z\",\n                \"Status\": \"Succeed\"\n            }\n        ],\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying tag retention execution records"
@@ -432,7 +486,7 @@
     ],
     "DescribeTagRetentionExecutionTask": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeTagRetentionExecutionTask\n&RegistryId=tcr-12345\n&RetentionId=1\n&ExecutionId=1\n&Limit=20\n&Offset=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RetentionTaskList\": [\n            {\n                \"Status\": \"xx\",\n                \"Total\": 0,\n                \"Retained\": 0,\n                \"TaskId\": 0,\n                \"Repository\": \"xx\",\n                \"ExecutionId\": 0,\n                \"StartTime\": \"xx\",\n                \"EndTime\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying tag retention execution tasks"
@@ -440,7 +494,7 @@
     ],
     "DescribeTagRetentionRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeTagRetentionRules\n&RegistryId=tcr-12345\n&NamespaceName=test\n&Limit=20\n&Offset=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7abb9f2-9440-43ea-a12f-ae58875acf3d\",\n        \"RetentionPolicyList\": [\n            {\n                \"NextExecutionTime\": \"xx\",\n                \"RetentionId\": 1,\n                \"NamespaceName\": \"aaaa\",\n                \"RetentionRuleList\": [\n                    {\n                        \"Key\": \"latestPushedK\",\n                        \"Value\": 10\n                    }\n                ],\n                \"CronSetting\": \"weekly\",\n                \"Disabled\": false\n            }\n        ],\n        \"TotalCount\": 0\n    }\n}",
         "title": "Querying tag retention rules"
@@ -448,7 +502,7 @@
     ],
     "DescribeWebhookTrigger": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWebhookTrigger\n<Common request parameters>\n\n{\n    \"Limit\": \"1\",\n    \"Namespace\": \"someNs\",\n    \"RegistryId\": \"tcr-7s2d14fn\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d7549286-ffb6-486c-98b6-30a4001da260\",\n        \"TotalCount\": 130,\n        \"Triggers\": [\n            {\n                \"Id\": 152,\n                \"Name\": \"someTrigger\",\n                \"Description\": \"Trigger description\",\n                \"Targets\": [\n                    {\n                        \"Address\": \"http://httpbin.org/post\",\n                        \"Headers\": [\n                            {\n                                \"Key\": \"X-Header1\",\n                                \"Values\": [\n                                    \"abc\"\n                                ]\n                            }\n                        ]\n                    }\n                ],\n                \"EventTypes\": [\n                    \"pullImage\"\n                ],\n                \"Enabled\": true,\n                \"Condition\": \".*\"\n            }\n        ]\n    }\n}",
         "title": "Querying triggers"
@@ -456,7 +510,7 @@
     ],
     "DescribeWebhookTriggerLog": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeWebhookTriggerLog\r\n&<Common request parameters>\r\n&RegistryId=tcr-ak9876\r\n&Namespace=someNs\r\n&Id=9",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"be17f554-32fd-451c-a1cd-64f9bd164e3f\",\n        \"TotalCount\": 3,\n        \"Logs\": [\n            {\n                \"Id\": 2,\n                \"TriggerId\": 25,\n                \"EventType\": \"pushImage\",\n                \"NotifyType\": \"http\",\n                \"Status\": \"finished\",\n                \"Detail\": \"{\\\"type\\\":\\\"pushImage\\\",\\\"occur_at\\\":1586774843,\\\"event_data\\\":{\\\"resources\\\":[{\\\"digest\\\":\\\"sha256:7ac7819e1523911399b798309025935a9968b277d86d50e5255465d6592c0266\\\",\\\"tag\\\":\\\"v1\\\",\\\"resource_url\\\":\\\"wcctest.tencentcloudcr.com/nginx/nginx:v1\\\"}],\\\"repository\\\":{\\\"date_created\\\":1586777885,\\\"name\\\":\\\"nginx\\\",\\\"namespace\\\":\\\"nginx\\\",\\\"repo_full_name\\\":\\\"nginx/nginx\\\",\\\"repo_type\\\":\\\"public\\\"}},\\\"operator\\\":\\\"3211064422\\\"}\",\n                \"CreationTime\": \"2020-04-14T02:47:23.177329+08:00\",\n                \"UpdateTime\": \"2020-04-14T02:47:24.244664+08:00\"\n            }\n        ]\n    }\n}",
         "title": "Querying trigger logs"
@@ -464,7 +518,7 @@
     ],
     "DownloadHelmChart": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=DownloadHelmChart\n&RegistryId=tcr-xxx\n&NamespaceName=tcr-test\n&ChartName=test\n&ChartVersion=1.0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TmpToken\": \"XXXX\",\n        \"TmpSecretId\": \"XXXX\",\n        \"TmpSecretKey\": \"XXXX\",\n        \"Bucket\": \"XXXX\",\n        \"Region\": \"XXXX\",\n        \"Path\": \"tcr-test/test-1.0.tgz\",\n        \"StartTime\": \"12345\",\n        \"ExpiredTime\": \"123456\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Downloading a Helm chart"
@@ -472,7 +526,7 @@
     ],
     "ManageExternalEndpoint": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=ManageExternalEndpoint\n&RegistryId=xxx\n&Operation=Create\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RegistryId\": \"XXXX\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Managing the public network access of an instance"
@@ -480,7 +534,7 @@
     ],
     "ManageInternalEndpoint": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=ManageInternalEndpoint\n&RegistryId=tcr-xxx\n&RegionName=ap-beijing\n&Operation=Create\n&VpcId=xxx\n&SubnetId=xxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RegistryId\": \"XXXX\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Managing private network access"
@@ -488,7 +542,7 @@
     ],
     "ManageReplication": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=ManageReplication\n&SourceRegistryId=tcr-xxx\n&DestinationRegistryId=tcr-yyy\n&DestinationRegionId=9\n&Rule.Override=true\n&Rule.DestNamespace=test\n&Rule.Name=test\n&Rule.Filters.0.Type=tag\n&Rule.Filters.0.Value=test\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Creating an instance synchronization rule"
@@ -500,9 +554,17 @@
         "title": "Creating a synchronization rule for instances under different Tencent Cloud root accounts"
       }
     ],
+    "ModifyCustomAccount": [
+      {
+        "document": "This example shows you how to update a custom account.",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCustomAccount\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-12345\",\n    \"Name\": \"robot\",\n    \"Description\": \"desc\",\n    \"ExpiresAt\": 1676897989,\n    \"Disable\": false,\n    \"Permissions\": [\n        {\n            \"Resource\": \"library\",\n            \"Actions\": [\n                \"tcr:PushRepository\",\n                \"tcr:PullRepository\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"reqId\"\n    }\n}",
+        "title": "Updating a custom account"
+      }
+    ],
     "ModifyImmutableTagRules": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyImmutableTagRules\n<Common request parameters>\n\n{\n    \"NamespaceName\": \"kofj\",\n    \"RegistryId\": \"tcr-mfoeec7x\",\n    \"Rule\": {\n        \"RepositoryDecoration\": \"repoMatches\",\n        \"RepositoryPattern\": \"**\",\n        \"TagPattern\": \"**\",\n        \"TagDecoration\": \"matches\"\n    },\n    \"RuleId\": 19\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e60d9467-ceb5-4da3-9956-4a9f2d63d37e\"\n    }\n}",
         "title": "Updating a rule"
@@ -510,27 +572,27 @@
     ],
     "ModifyInstance": [
       {
-        "document": "",
+        "document": "This example shows you how to adjust instance specification.",
         "input": "https://tcr.tencentcloudapi.com/?Action=ModifyInstance\n&RegistryId=tcr-abc123\n&RegistryType=premium\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
-        "title": "Updating Instance Information"
+        "title": "Updating instance information"
       }
     ],
     "ModifyInstanceToken": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=ModifyInstanceToken\n&RegistryId=tcr-12345\n&TokenId=2ab3af0d-893d-423f-91b1-27713566f95f\n&Enable=true\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6cd302c6-c4c9-425a-8d07-8c59b7f4cf3f\"\n    }\n}",
         "title": "Enabling a long-term access credential of an instance"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=ModifyInstanceToken\n&RegistryId=tcr-12345\n&TokenId=2ab3af0d-893d-423f-91b1-27713566f95f\n&Enable=false\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6cd302c6-c4c9-425a-8d07-8c59b7f4cf3f\"\n    }\n}",
         "title": "Disabling a long-term access credential of an instance"
       },
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=ModifyInstanceToken\n&RegistryId=tcr-12345\n&TokenId=2ab3af0d-893d-423f-91b1-27713566f95f\n&Desc=aaa\n&ModifyFlag=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6cd302c6-c4c9-425a-8d07-8c59b7f4cf3f\"\n    }\n}",
         "title": "Updating the description"
@@ -538,7 +600,7 @@
     ],
     "ModifyNamespace": [
       {
-        "document": "用于更新命名空间信息",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=ModifyNamespace\r\n&RegistryId=tcr-okmj78\r\n&NamespaceName=mytest\r\n&IsPublic=true\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Updating the namespace information"
@@ -546,7 +608,7 @@
     ],
     "ModifyRepository": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=ModifyRepository\r\n&RegistryId=tcr-okmj78\r\n&NamespaceName=mytest\r\n&RepositoryName=test\r\n&Description=mytest\r\n&BriefDescription=BriefDescription\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Updating the image repository information"
@@ -554,15 +616,23 @@
     ],
     "ModifySecurityPolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=ModifySecurityPolicy\n&RegistryId=tcr-test123\n&CidrBlock=192.168.0.0/24\n&Description=test\n&PolicyIndex=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RegistryId\": \"tcr-test123\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Updating the public network access allowlist of an instance"
       }
     ],
+    "ModifyServiceAccount": [
+      {
+        "document": "This example shows you how to update a service account.",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyServiceAccount\n<Common request parameters>\n\n{\n    \"RegistryId\": \"abc\",\n    \"Name\": \"abc\",\n    \"Description\": \"abc\",\n    \"Duration\": 0,\n    \"ExpiresAt\": 0,\n    \"Disable\": true,\n    \"Permissions\": [\n        {\n            \"Resource\": \"abc\",\n            \"Actions\": [\n                \"abc\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Updating a service account"
+      }
+    ],
     "ModifyTagRetentionRule": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=ModifyTagRetentionRule\n&RegistryId=tcr-12345\n&RetentionId=1\n&NamespaceId=1\n&CronSetting=weekly\n&RetentionRule.Key=latestPushedK\n&RetentionRule.Value=20\n&Disabled=true\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c8bf292d-38c7-49d9-8da3-737d08160cfc\"\n    }\n}",
         "title": "Updating a tag retention rule"
@@ -570,7 +640,7 @@
     ],
     "ModifyWebhookTrigger": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=ModifyWebhookTrigger\r\n&<Common request parameters>\r\n&RegistryId=tcr-7s2d14fn\r\n&Namespace=someNs\r\n&Trigger.Id=9\r\n&Trigger.Enabled=false\r\n&Trigger.Targets.0.Address=abc.local\r\n&Trigger.EventTypes.0=pullImage",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c33da0e-5a85-4fdc-841c-5ca47454a117\"\n    }\n}",
         "title": "Updating a trigger"
@@ -578,7 +648,7 @@
     ],
     "RenewInstance": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=RenewInstance\n&RegistryId=tcr-12345\n&RegistryChargePrepaid.Period=1\n&RegistryChargePrepaid.RenewFlag=1\n&Flag=0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RegistryId\": \"tcr-12345\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Renewing a prepaid Enterprise Edition instance"

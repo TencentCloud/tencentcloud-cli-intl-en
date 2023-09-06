@@ -64,6 +64,14 @@
         "title": "Creating a monthly subscribed TDSQL instance"
       }
     ],
+    "CreateDedicatedClusterDCDBInstance": [
+      {
+        "document": "This example shows you how to create a dedicated TDSQL cluster instance.",
+        "input": "POST / HTTP/1.1\nHost: dcdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDedicatedClusterDCDBInstance\n<Common request parameters>\n\n{\n    \"Zone\": \"ap-guangzhou-2\",\n    \"ClusterId\": \"cage-shjr-2-15\",\n    \"GoodsNum\": 1,\n    \"ShardNum\": 2,\n    \"ShardMemory\": 2,\n    \"ShardStorage\": 10,\n    \"Pid\": 100\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14f6980a-7fe1-11ea-b896-525400542aa6\",\n        \"InstanceIds\": [\n            \"tdsql-xxxxxx\"\n        ],\n        \"FlowId\": 1122\n    }\n}",
+        "title": "Creating a dedicated TDSQL cluster instance"
+      }
+    ],
     "CreateHourDCDBInstance": [
       {
         "document": "This example shows you how to create a monthly subscribed TDSQL instance.",
@@ -152,11 +160,19 @@
         "title": "Querying the sync mode of a TencentDB instance"
       }
     ],
+    "DescribeDBTmpInstances": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dcdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBTmpInstances\n<Common request parameters>\n\n{\n    \"InstanceId\": \"dcdbt-21dfpcv1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0cf21c76-0382-491d-b634-f3d1ae1a4547\",\n        \"TmpInstances\": []\n    }\n}",
+        "title": "Nu200done"
+      }
+    ],
     "DescribeDCDBInstanceDetail": [
       {
         "document": "This example shows you how to query the details of the TDSQL instance `dcdbt-21dfpcv1`.",
-        "input": "POST / HTTP/1.1Host: dcdb.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeDCDBInstanceDetail<common request parameters>{    \"InstanceId\": \"dcdbt-21dfpcv1\"}",
-        "output": "{\n    \"Response\": {\n        \"AutoRenewFlag\": 0,\n        \"Cpu\": 3,\n        \"CreateTime\": \"2016-07-13 11:08:38\",\n        \"DbEngine\": \"MariaDB\",\n        \"DbVersion\": \"10.0.10\",\n        \"DcnDstNum\": 0,\n        \"DcnFlag\": 0,\n        \"DcnStatus\": 0,\n        \"ExclusterId\": \"\",\n        \"InstanceId\": \"dcdbt-21dfpcv1\",\n        \"InstanceName\": \"dcdbt-21dfpcv1\",\n        \"InstanceType\": 2,\n        \"Ipv6Flag\": 0,\n        \"IsAuditSupported\": 1,\n        \"IsEncryptSupported\": 0,\n        \"LogStorage\": 16,\n        \"Machine\": \"TS85\",\n        \"MasterZone\": \"ap-guangzhou-1\",\n        \"Memory\": 6,\n        \"NodeCount\": 2,\n        \"PayMode\": \"prepaid\",\n        \"PeriodEndTime\": \"2023-01-01 11:12:24\",\n        \"Pid\": 1001670,\n        \"ProjectId\": 0,\n        \"Qps\": 4000,\n        \"Region\": \"ap-guangzhou\",\n        \"RequestId\": \"e1828feb-9a21-409a-8964-309215615d84\",\n        \"ResourceTags\": [],\n        \"Shards\": [\n            {\n                \"Cpu\": 2,\n                \"CreateTime\": \"2021-12-01 11:49:54\",\n                \"LogDisk\": 8,\n                \"Memory\": 4,\n                \"NodeCount\": 2,\n                \"NodesInfo\": [\n                    {\n                        \"NodeId\": \"85409b834943\",\n                        \"Role\": \"master\"\n                    },\n                    {\n                        \"NodeId\": \"9de9c0321ccd\",\n                        \"Role\": \"slave\"\n                    }\n                ],\n                \"ProxyVersion\": \"\\\"1.17.6-M-V2.0R723D002\\\"\",\n                \"ShardInstanceId\": \"shard-ngbrea6b\",\n                \"ShardMasterZone\": \"ap-guangzhou-1\",\n                \"ShardSerialId\": \"set_1643096858_1\",\n                \"ShardSlaveZones\": [\n                    \"ap-guangzhou-1\"\n                ],\n                \"Status\": 2,\n                \"StatusDesc\": \"Running\",\n                \"Storage\": 10,\n                \"StorageUsage\": 0.01\n            },\n            {\n                \"Cpu\": 1,\n                \"CreateTime\": \"2021-12-01 11:49:54\",\n                \"LogDisk\": 8,\n                \"Memory\": 2,\n                \"NodeCount\": 2,\n                \"NodesInfo\": [\n                    {\n                        \"NodeId\": \"1e2025d21782\",\n                        \"Role\": \"master\"\n                    },\n                    {\n                        \"NodeId\": \"b228c46e9b63\",\n                        \"Role\": \"slave\"\n                    }\n                ],\n                \"ProxyVersion\": \"\\\"1.17.6-M-V2.0R723D002\\\"\",\n                \"ShardInstanceId\": \"shard-5zf65smf\",\n                \"ShardMasterZone\": \"ap-guangzhou-1\",\n                \"ShardSerialId\": \"set_1643096949_3\",\n                \"ShardSlaveZones\": [\n                    \"ap-guangzhou-1\"\n                ],\n                \"Status\": 2,\n                \"StatusDesc\": \"Running\",\n                \"Storage\": 10,\n                \"StorageUsage\": 0.011\n            }\n        ],\n        \"SlaveZones\": [\n            \"ap-guangzhou-1\"\n        ],\n        \"Status\": 2,\n        \"StatusDesc\": \"Running\",\n        \"Storage\": 20,\n        \"StorageUsage\": 0.0105,\n        \"SubnetId\": \"subnet-ovkcc9x6\",\n        \"Vip\": \"10.1.0.5\",\n        \"Vip6\": \"\",\n        \"VpcId\": \"vpc-j97vcvb5\",\n        \"Vport\": 3306,\n        \"WanDomain\": \"\",\n        \"WanPort\": 0,\n        \"WanPortIpv6\": 0,\n        \"WanStatus\": 0,\n        \"WanStatusIpv6\": 0,\n        \"WanVip\": \"\",\n        \"WanVipv6\": \"\",\n        \"IsMaxUserConnectionsSupported\": true,\n        \"DbVersionId\": \"5.7\",\n        \"EncryptStatus\": 0,\n        \"ExclusterType\": 0,\n        \"RsAccessStrategy\": 0,\n        \"ReservedNetResources\": [\n            {\n                \"VpcId\": \"vpc-p6alckzx\",\n                \"SubnetId\": \"subnet-3pz073lq\",\n                \"Vip\": \"172.16.0.40\",\n                \"Vports\": [\n                    3306\n                ],\n                \"RecycleTime\": \"2023-05-19 16:12:32\"\n            }\n        ]\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: dcdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDCDBInstanceDetail\n<Common request parameters>\n\n{\n    \"InstanceId\": \"dcdbt-21dfpcv1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AutoRenewFlag\": 0,\n        \"Cpu\": 3,\n        \"CreateTime\": \"2016-07-13 11:08:38\",\n        \"DbEngine\": \"MariaDB\",\n        \"DbVersion\": \"10.0.10\",\n        \"DcnDstNum\": 0,\n        \"DcnFlag\": 0,\n        \"DcnStatus\": 0,\n        \"ExclusterId\": \"\",\n        \"InstanceId\": \"dcdbt-21dfpcv1\",\n        \"InstanceName\": \"dcdbt-21dfpcv1\",\n        \"InstanceType\": 2,\n        \"Ipv6Flag\": 0,\n        \"IsAuditSupported\": 1,\n        \"IsEncryptSupported\": 0,\n        \"LogStorage\": 16,\n        \"Machine\": \"TS85\",\n        \"MasterZone\": \"ap-guangzhou-1\",\n        \"Memory\": 6,\n        \"NodeCount\": 2,\n        \"PayMode\": \"prepaid\",\n        \"PeriodEndTime\": \"2023-01-01 11:12:24\",\n        \"Pid\": 1001670,\n        \"ProjectId\": 0,\n        \"Qps\": 4000,\n        \"Region\": \"ap-guangzhou\",\n        \"RequestId\": \"e1828feb-9a21-409a-8964-309215615d84\",\n        \"ResourceTags\": [],\n        \"Shards\": [\n            {\n                \"Cpu\": 2,\n                \"CreateTime\": \"2021-12-01 11:49:54\",\n                \"LogDisk\": 8,\n                \"Memory\": 4,\n                \"NodeCount\": 2,\n                \"NodesInfo\": [\n                    {\n                        \"NodeId\": \"85409b834943\",\n                        \"Role\": \"master\"\n                    },\n                    {\n                        \"NodeId\": \"9de9c0321ccd\",\n                        \"Role\": \"slave\"\n                    }\n                ],\n                \"ProxyVersion\": \"\\\"1.17.6-M-V2.0R723D002\\\"\",\n                \"ShardInstanceId\": \"shard-ngbrea6b\",\n                \"ShardMasterZone\": \"ap-guangzhou-1\",\n                \"ShardSerialId\": \"set_1643096858_1\",\n                \"ShardSlaveZones\": [\n                    \"ap-guangzhou-1\"\n                ],\n                \"Status\": 2,\n                \"StatusDesc\": \"Running\",\n                \"Storage\": 10,\n                \"StorageUsage\": 0.01\n            },\n            {\n                \"Cpu\": 1,\n                \"CreateTime\": \"2021-12-01 11:49:54\",\n                \"LogDisk\": 8,\n                \"Memory\": 2,\n                \"NodeCount\": 2,\n                \"NodesInfo\": [\n                    {\n                        \"NodeId\": \"1e2025d21782\",\n                        \"Role\": \"master\"\n                    },\n                    {\n                        \"NodeId\": \"b228c46e9b63\",\n                        \"Role\": \"slave\"\n                    }\n                ],\n                \"ProxyVersion\": \"\\\"1.17.6-M-V2.0R723D002\\\"\",\n                \"ShardInstanceId\": \"shard-5zf65smf\",\n                \"ShardMasterZone\": \"ap-guangzhou-1\",\n                \"ShardSerialId\": \"set_1643096949_3\",\n                \"ShardSlaveZones\": [\n                    \"ap-guangzhou-1\"\n                ],\n                \"Status\": 2,\n                \"StatusDesc\": \"Running\",\n                \"Storage\": 10,\n                \"StorageUsage\": 0.011\n            }\n        ],\n        \"SlaveZones\": [\n            \"ap-guangzhou-1\"\n        ],\n        \"Status\": 2,\n        \"StatusDesc\": \"Running\",\n        \"Storage\": 20,\n        \"StorageUsage\": 0.0105,\n        \"SubnetId\": \"subnet-ovkcc9x6\",\n        \"Vip\": \"10.1.0.5\",\n        \"Vip6\": \"\",\n        \"VpcId\": \"vpc-j97vcvb5\",\n        \"Vport\": 3306,\n        \"WanDomain\": \"\",\n        \"WanPort\": 0,\n        \"WanPortIpv6\": 0,\n        \"WanStatus\": 0,\n        \"WanStatusIpv6\": 0,\n        \"WanVip\": \"\",\n        \"WanVipv6\": \"\",\n        \"IsMaxUserConnectionsSupported\": true,\n        \"DbVersionId\": \"5.7\",\n        \"EncryptStatus\": 0,\n        \"ExclusterType\": 0,\n        \"RsAccessStrategy\": 0,\n        \"ReservedNetResources\": [\n            {\n                \"VpcId\": \"vpc-p6alckzx\",\n                \"SubnetId\": \"subnet-3pz073lq\",\n                \"Vip\": \"172.16.0.40\",\n                \"Vports\": [\n                    3306\n                ],\n                \"RecycleTime\": \"2023-05-19 16:12:32\"\n            }\n        ],\n        \"IsPhysicalReplicationSupported\": true\n    }\n}",
         "title": "Querying the details of an instance"
       }
     ],
@@ -238,6 +254,14 @@
         "input": "https://dcdb.tencentcloudapi.com/?Action=DescribeFlow\n&FlowId=3340\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"f63a9e3a-cfe9-4fa3-a690-9671ebdf6bd8\",\n        \"Status\": 1\n    }\n}",
         "title": "Querying task status"
+      }
+    ],
+    "DescribeLogFileRetentionPeriod": [
+      {
+        "document": " ",
+        "input": "https://dcdb.tencentcloudapi.com/?Action=DescribeLogFileRetentionPeriod\n&InstanceId=dcdbt-ak4b3m9l\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Days\": 30,\n        \"InstanceId\": \"dcdbt-ak4b3m9l\",\n        \"RequestId\": \"a6e96bd9-ec89-4c02-9738-d33e783a4bae\"\n    }\n}",
+        "title": "Viewing u200dthe backup log retention days"
       }
     ],
     "DescribeOrders": [
@@ -446,6 +470,14 @@
         "input": "POST / HTTP/1.1\nHost: dcdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TerminateDedicatedDBInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"dcdbt-lyzax5rb\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5d6581df-7914-46e5-9693-0663617c756e\",\n        \"FlowId\": 1\n    }\n}",
         "title": "None"
+      }
+    ],
+    "UpgradeDedicatedDCDBInstance": [
+      {
+        "document": "This example shows you how to upgrade a dedicated TDSQL cluster instance.",
+        "input": "POST / HTTP/1.1\nHost: dcdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeDedicatedDCDBInstance\n<Common request parameters>\n\n{\n    \"UpgradeType\": \"EXPAND\",\n    \"InstanceId\": \"tdsqlshard-jv8z8fhl\",\n    \"ExpandShardConfig\": {\n        \"ShardInstanceIds\": [\n            \"shard-xxx1\",\n            \"shard-xxx2\"\n        ],\n        \"ShardMemory\": 2,\n        \"ShardStorage\": 20\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14f6980a-7fe1-11ea-b896-525400542aa6\",\n        \"FlowId\": 1122\n    }\n}",
+        "title": "Upgrading a dedicated TDSQL cluster instance"
       }
     ],
     "UpgradeHourDCDBInstance": [

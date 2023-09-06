@@ -14,6 +14,13 @@
       "output": "CheckInstanceNameResponse",
       "status": "online"
     },
+    "CreateCustomAccount": {
+      "document": "This API is used to create a custom account.",
+      "input": "CreateCustomAccountRequest",
+      "name": "Creates a custom account",
+      "output": "CreateCustomAccountResponse",
+      "status": "online"
+    },
     "CreateImageAccelerationService": {
       "document": "This API is used to create an image acceleration service.",
       "input": "CreateImageAccelerationServiceRequest",
@@ -84,6 +91,13 @@
       "output": "CreateSecurityPolicyResponse",
       "status": "online"
     },
+    "CreateServiceAccount": {
+      "document": "This API is used to create a service account.",
+      "input": "CreateServiceAccountRequest",
+      "name": "Creates a service account",
+      "output": "CreateServiceAccountResponse",
+      "status": "online"
+    },
     "CreateSignature": {
       "document": "This API is used to create a signature for an image tag.",
       "input": "CreateSignatureRequest",
@@ -117,6 +131,13 @@
       "input": "CreateWebhookTriggerRequest",
       "name": "Creates a trigger",
       "output": "CreateWebhookTriggerResponse",
+      "status": "online"
+    },
+    "DeleteCustomAccount": {
+      "document": "This API is used to delete a custom account.",
+      "input": "DeleteCustomAccountRequest",
+      "name": "Deletes a custom account",
+      "output": "DeleteCustomAccountResponse",
       "status": "online"
     },
     "DeleteImage": {
@@ -197,10 +218,17 @@
       "status": "online"
     },
     "DeleteSecurityPolicy": {
-      "document": "This API is used to delete a public network access allowlist policy of an instance.",
+      "document": "This API is used to delete a public network access allow policy.\n\nNote: When both `PolicyIndex` and `CidrBlock` are specified, `CidrBlock` takes the higher priority",
       "input": "DeleteSecurityPolicyRequest",
       "name": "Deletes a public network access allowlist policy of an instance",
       "output": "DeleteSecurityPolicyResponse",
+      "status": "online"
+    },
+    "DeleteServiceAccount": {
+      "document": "This API is used to delete a service account.",
+      "input": "DeleteServiceAccountRequest",
+      "name": "Deletes a service account",
+      "output": "DeleteServiceAccountResponse",
       "status": "online"
     },
     "DeleteSignaturePolicy": {
@@ -229,6 +257,13 @@
       "input": "DescribeChartDownloadInfoRequest",
       "name": "Queries the download information of a chart",
       "output": "DescribeChartDownloadInfoResponse",
+      "status": "online"
+    },
+    "DescribeCustomAccounts": {
+      "document": "This API is used to query custom accounts.",
+      "input": "DescribeCustomAccountsRequest",
+      "name": "Queries custom accounts",
+      "output": "DescribeCustomAccountsResponse",
       "status": "online"
     },
     "DescribeExternalEndpointStatus": {
@@ -364,6 +399,13 @@
       "output": "DescribeSecurityPoliciesResponse",
       "status": "online"
     },
+    "DescribeServiceAccounts": {
+      "document": "This API is used to query service accounts.",
+      "input": "DescribeServiceAccountsRequest",
+      "name": "Queries service accounts",
+      "output": "DescribeServiceAccountsResponse",
+      "status": "online"
+    },
     "DescribeTagRetentionExecution": {
       "document": "This API is used to query tag retention execution records.",
       "input": "DescribeTagRetentionExecutionRequest",
@@ -427,6 +469,13 @@
       "output": "ManageReplicationResponse",
       "status": "online"
     },
+    "ModifyCustomAccount": {
+      "document": "This API is used to update a custom account.",
+      "input": "ModifyCustomAccountRequest",
+      "name": "Updates a custom account",
+      "output": "ModifyCustomAccountResponse",
+      "status": "online"
+    },
     "ModifyImmutableTagRules": {
       "document": "This API is used to update the tag immutability rule.",
       "input": "ModifyImmutableTagRulesRequest",
@@ -469,6 +518,13 @@
       "output": "ModifySecurityPolicyResponse",
       "status": "online"
     },
+    "ModifyServiceAccount": {
+      "document": "This API is used to update a service account.",
+      "input": "ModifyServiceAccountRequest",
+      "name": "Updates a service account",
+      "output": "ModifyServiceAccountResponse",
+      "status": "online"
+    },
     "ModifyTagRetentionRule": {
       "document": "This API is used to update a tag retention rule.",
       "input": "ModifyTagRetentionRuleRequest",
@@ -501,7 +557,9 @@
       "document": "Private network access information",
       "members": [
         {
+          "disabled": false,
           "document": "VPC ID",
+          "example": "",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -509,7 +567,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Subnet ID",
+          "example": "",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -517,7 +577,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Private network access status",
+          "example": "",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -525,7 +587,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Private network access IP",
+          "example": "",
           "member": "string",
           "name": "AccessIp",
           "required": true,
@@ -539,7 +603,9 @@
       "document": "CheckInstanceName request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Name of the instance to be created",
+          "example": "",
           "member": "string",
           "name": "RegistryName",
           "required": true,
@@ -552,7 +618,9 @@
       "document": "CheckInstanceName response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Verification result. Valid values: true: Valid; false: Invalid.",
+          "example": "",
           "member": "bool",
           "name": "IsValidated",
           "type": "bool",
@@ -571,6 +639,7 @@
       "document": "CheckInstance request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "ID of the instance to be verified.",
           "example": "test123",
           "member": "string",
@@ -585,6 +654,7 @@
       "document": "CheckInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Verification result. true: valid, false: invalid",
           "example": "true",
           "member": "bool",
@@ -594,6 +664,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "ID of the region where the instance is located.",
           "example": "1",
           "member": "uint64",
@@ -611,53 +682,184 @@
       ],
       "type": "object"
     },
-    "CreateImageAccelerationServiceRequest": {
-      "document": "CreateImageAccelerationService request structure.",
+    "CreateCustomAccountRequest": {
+      "document": "CreateCustomAccount request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "tcr-xxx",
           "member": "string",
           "name": "RegistryId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
+          "document": "Custom account name",
+          "example": "robot",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy list",
+          "example": "{   \"Resource\": \"library\",   \"Actions\": [\"tcr:PushRepository\", \"tcr:PullRepository\"] }",
+          "member": "Permission",
+          "name": "Permissions",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Custom account description",
+          "example": "for namespace library",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Validity in days starting from the current day. It takes a higher priority than `ExpiresAt`.",
+          "example": "10",
+          "member": "int64",
+          "name": "Duration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Expiry time of the custom account (timestamp, in milliseconds)",
+          "example": "1676897989000",
+          "member": "int64",
+          "name": "ExpiresAt",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to disable the custom account",
+          "example": "false",
+          "member": "bool",
+          "name": "Disable",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCustomAccountResponse": {
+      "document": "CreateCustomAccount response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom username (the prefix `tcr$` is automatically added)",
+          "example": "tcr$robot",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom password, which is displayed only once",
+          "example": "kiHUaTAmF6a94mNzhZWDans3dYahHQNE",
+          "member": "string",
+          "name": "Password",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom expiry time (timestamp)",
+          "example": "1676897989",
+          "member": "int64",
+          "name": "ExpiresAt",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom account creation time",
+          "example": "2023-02-20T17:30:00+8:00",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateImageAccelerationServiceRequest": {
+      "document": "CreateImageAccelerationService request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "ID of the VPC where the CFS file system to be created resides",
+          "example": "",
           "member": "string",
           "name": "VpcId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "ID of the subnet where the CFS file system to be created resides",
+          "example": "",
           "member": "string",
           "name": "SubnetId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Storage class of the CFS file system to be created. Valid values: SD: Standard; HP: High-Performance.",
+          "example": "",
           "member": "string",
           "name": "StorageType",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Permission group ID",
+          "example": "",
           "member": "string",
           "name": "PGroupId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "AZ name, such as `ap-beijing-1`. For more information, see the list of regions and AZs in Overview.",
+          "example": "",
           "member": "string",
           "name": "Zone",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Cloud tag description",
+          "example": "",
           "member": "TagSpecification",
           "name": "TagSpecification",
           "required": false,
@@ -670,7 +872,9 @@
       "document": "CreateImageAccelerationService response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "type": "string",
@@ -689,6 +893,7 @@
       "document": "CreateImmutableTagRules request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -697,6 +902,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace",
           "example": "library",
           "member": "string",
@@ -705,6 +911,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Rule",
           "example": "无",
           "member": "ImmutableTagRule",
@@ -731,6 +938,7 @@
       "document": "CreateInstanceCustomizedDomain request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Primary instance ID",
           "example": "tcr-test123",
           "member": "string",
@@ -739,6 +947,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Custom domain name",
           "example": "test.com",
           "member": "string",
@@ -747,6 +956,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Certificate ID",
           "example": "kWGTVuU3",
           "member": "string",
@@ -773,6 +983,7 @@
       "document": "CreateInstance request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Enterprise Edition instance name",
           "example": "tcr-test",
           "member": "string",
@@ -781,6 +992,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Enterprise Edition instance type. Valid values: basic: Basic; standard: Standard; premium: Premium.",
           "example": "basic",
           "member": "string",
@@ -789,6 +1001,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Cloud tag description",
           "example": "test",
           "member": "TagSpecification",
@@ -797,6 +1010,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "Instance billing mode. Valid values: 0: Pay-as-you-go billing; 1: Prepaid. Default value: 0.",
           "example": "1",
           "member": "int64",
@@ -805,6 +1019,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Auto-renewal setting and purchase period",
           "example": "1 ",
           "member": "RegistryChargePrepaid",
@@ -813,6 +1028,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "Whether to sync TCR cloud tags to the COS bucket",
           "example": "false",
           "member": "bool",
@@ -821,10 +1037,20 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "Whether to enable the COS Multi-AZ feature",
           "example": "true",
           "member": "bool",
           "name": "EnableCosMAZ",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable deletion protection",
+          "example": "true",
+          "member": "bool",
+          "name": "DeletionProtection",
           "required": false,
           "type": "bool"
         }
@@ -835,6 +1061,7 @@
       "document": "CreateInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Enterprise Edition instance ID",
           "example": "tcr-123456",
           "member": "string",
@@ -856,6 +1083,7 @@
       "document": "CreateInstanceToken request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-ak9876",
           "member": "string",
@@ -864,6 +1092,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Access credential type. Values: `longterm` and `temp` (default, valid for one hour)",
           "example": "temp",
           "member": "string",
@@ -872,6 +1101,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Description of the long-term access credential",
           "example": "test",
           "member": "string",
@@ -886,6 +1116,7 @@
       "document": "CreateInstanceToken response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Username\nNote: this field may return `null`, indicating that no valid value can be found.",
           "example": "12345678",
           "member": "string",
@@ -895,6 +1126,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Access credential",
           "example": "XXXX",
           "member": "string",
@@ -904,6 +1136,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Expiration timestamp of access credential. It is a string of numbers without unit.",
           "example": "33987631",
           "member": "int64",
@@ -913,6 +1146,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Token ID of long-term access credential. It is not available to temporary access credential.\nNote: this field may return `null`, indicating that no valid value can be found.",
           "example": "xx",
           "member": "string",
@@ -934,6 +1168,7 @@
       "document": "CreateMultipleSecurityPolicy request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -942,6 +1177,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Security group policy",
           "example": "192.168.0.0/24",
           "member": "SecurityPolicy",
@@ -956,6 +1192,7 @@
       "document": "CreateMultipleSecurityPolicy response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -977,6 +1214,7 @@
       "document": "CreateNamespace request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-okmj78",
           "member": "string",
@@ -985,6 +1223,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name, which can contain 2–30 lowercase letters, digits, and separators (\".\", \"_\", and \"-\") but can neither start or end with a separator nor contain consecutive separators.",
           "example": "mytest",
           "member": "string",
@@ -993,6 +1232,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to make public. Valid values: true: Yes; false: No.",
           "example": "true",
           "member": "bool",
@@ -1001,6 +1241,7 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "Cloud tag description",
           "example": "无",
           "member": "TagSpecification",
@@ -1027,6 +1268,7 @@
       "document": "CreateReplicationInstance request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Master instance ID",
           "example": "tcr-12345",
           "member": "string",
@@ -1035,6 +1277,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Region ID of the replication instance",
           "example": "5",
           "member": "uint64",
@@ -1043,6 +1286,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Region name of the replication instance",
           "example": "ap-beijing",
           "member": "string",
@@ -1051,6 +1295,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to sync TCR cloud tags to the COS Bucket",
           "example": "false",
           "member": "bool",
@@ -1065,6 +1310,7 @@
       "document": "CreateReplicationInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Enterprise Registry Instance ID",
           "example": "tcr-06d62e1r-5",
           "member": "string",
@@ -1086,6 +1332,7 @@
       "document": "CreateRepository request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-okmju7",
           "member": "string",
@@ -1094,6 +1341,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name",
           "example": "team-01",
           "member": "string",
@@ -1102,6 +1350,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Repository name",
           "example": "nginx",
           "member": "string",
@@ -1110,6 +1359,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Brief repository description",
           "example": "this is brief description",
           "member": "string",
@@ -1118,6 +1368,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Detailed repository description",
           "example": "this is description",
           "member": "string",
@@ -1144,6 +1395,7 @@
       "document": "CreateSecurityPolicy request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -1152,6 +1404,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "192.168.0.0/24",
           "example": "192.168.0.0/24",
           "member": "string",
@@ -1160,6 +1413,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Remarks",
           "example": "test",
           "member": "string",
@@ -1174,6 +1428,7 @@
       "document": "CreateSecurityPolicy response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -1191,10 +1446,128 @@
       ],
       "type": "object"
     },
+    "CreateServiceAccountRequest": {
+      "document": "CreateServiceAccount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "tcr-xxx",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Service account name",
+          "example": "robot",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy list",
+          "example": "{   \"Resource\": \"library\",   \"Actions\": [\"tcr:PushRepository\", \"tcr:PullRepository\"] }",
+          "member": "Permission",
+          "name": "Permissions",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Service account description",
+          "example": "for namespace library",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Validity in days starting from the current day. It takes a higher priority than `ExpiresAt`.",
+          "example": "10",
+          "member": "int64",
+          "name": "Duration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Expiry time (timestamp, in milliseconds)",
+          "example": "1676897989000",
+          "member": "int64",
+          "name": "ExpiresAt",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to disable the service account",
+          "example": "false",
+          "member": "bool",
+          "name": "Disable",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateServiceAccountResponse": {
+      "document": "CreateServiceAccount response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Service account name (the prefix `tcr$` is automatically added)",
+          "example": "tcr$robot",
+          "member": "string",
+          "name": "Name",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Service account password, which is displayed only once",
+          "example": "kiHUaTAmF6a94mNzhZWDans3dYahHQNE",
+          "member": "string",
+          "name": "Password",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiry time of the service account (timestamp)",
+          "example": "1676897989",
+          "member": "int64",
+          "name": "ExpiresAt",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time of the service account",
+          "example": "2023-02-20T17:30:00+8:00",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateSignaturePolicyRequest": {
       "document": "CreateSignaturePolicy request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -1203,6 +1576,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Policy name",
           "example": "library加签",
           "member": "string",
@@ -1211,6 +1585,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name",
           "example": "library",
           "member": "string",
@@ -1219,6 +1594,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "KMS key",
           "example": "08408a30-0416-11ed-abdc-52540036b432",
           "member": "string",
@@ -1227,6 +1603,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Region of the KMS key",
           "example": "ap-guangzhou",
           "member": "string",
@@ -1235,6 +1612,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Custom domain name. If this parameter is left empty, the default domain name of the TCR instance will be used to generate the signature.",
           "example": "tcr.tencentcloudcr.com",
           "member": "string",
@@ -1243,6 +1621,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to disable the signing policy. Default value: false.",
           "example": "false",
           "member": "bool",
@@ -1269,6 +1648,7 @@
       "document": "CreateSignature request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-okmju7",
           "member": "string",
@@ -1277,6 +1657,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name",
           "example": "library",
           "member": "string",
@@ -1285,6 +1666,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Repository name",
           "example": "nginx",
           "member": "string",
@@ -1293,6 +1675,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Tag name",
           "example": "v1.2.0",
           "member": "string",
@@ -1319,6 +1702,7 @@
       "document": "CreateTagRetentionExecution request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Primary instance ID",
           "example": "tcr-test123",
           "member": "string",
@@ -1327,6 +1711,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Tag retention rule ID",
           "example": "1",
           "member": "int64",
@@ -1335,6 +1720,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Whether the execution is simulated. Default value: false (not simulated)",
           "example": "false",
           "member": "bool",
@@ -1361,6 +1747,7 @@
       "document": "CreateTagRetentionRule request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Primary instance ID",
           "example": "tcr-test123",
           "member": "string",
@@ -1369,6 +1756,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace ID",
           "example": "1",
           "member": "int64",
@@ -1377,6 +1765,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Retention policy",
           "example": "无",
           "member": "RetentionRule",
@@ -1385,6 +1774,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "Execution cycle. Valid values: manual, daily, weekly, monthly.",
           "example": "manual",
           "member": "string",
@@ -1393,6 +1783,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to disable the rule. Default value: false.",
           "example": "false",
           "member": "bool",
@@ -1419,6 +1810,7 @@
       "document": "CreateWebhookTrigger request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-7s2d14fn",
           "member": "string",
@@ -1427,6 +1819,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Trigger parameter",
           "example": "无",
           "member": "WebhookTrigger",
@@ -1435,6 +1828,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "Namespace",
           "example": "someNs",
           "member": "string",
@@ -1449,6 +1843,7 @@
       "document": "CreateWebhookTrigger response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Newly created trigger",
           "example": "无",
           "member": "WebhookTrigger",
@@ -1466,10 +1861,87 @@
       ],
       "type": "object"
     },
+    "CustomAccount": {
+      "document": "Custom account",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom account name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "tcr$robot",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Description\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "Disable",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expiry time\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1676897989",
+          "member": "int64",
+          "name": "ExpiresAt",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2023-02-14T07:14:43+08:00",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-02-14T07:14:43+08:00",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Policy\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[     {       \"Resource\": \"library\",       \"Actions\": [         \"tcr:PushRepository\",          \"tcr:PullRepository\"       ]     }   ]",
+          "member": "Permission",
+          "name": "Permissions",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "CustomizedDomainInfo": {
       "document": "Custom domain name information",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -1479,6 +1951,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Certificate ID",
           "example": "46Gddd",
           "member": "string",
@@ -1488,6 +1961,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Domain name",
           "example": "test.com",
           "member": "string",
@@ -1497,6 +1971,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Domain name creation status. Valid values: SUCCESS, FAILURE, CREATING, DELETING.",
           "example": "Success",
           "member": "string",
@@ -1508,11 +1983,49 @@
       ],
       "usage": "out"
     },
+    "DeleteCustomAccountRequest": {
+      "document": "DeleteCustomAccount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID\t",
+          "example": "tcr-xxx",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom account name",
+          "example": "robot",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCustomAccountResponse": {
+      "document": "DeleteCustomAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteImageAccelerateServiceRequest": {
       "document": "DeleteImageAccelerateService request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
@@ -1537,28 +2050,36 @@
       "document": "DeleteImage request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Image repository name",
+          "example": "",
           "member": "string",
           "name": "RepositoryName",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Image tag",
+          "example": "",
           "member": "string",
           "name": "ImageVersion",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name",
+          "example": "",
           "member": "string",
           "name": "NamespaceName",
           "required": true,
@@ -1583,6 +2104,7 @@
       "document": "DeleteImmutableTagRules request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -1591,6 +2113,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace",
           "example": "library",
           "member": "string",
@@ -1599,6 +2122,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Rule ID",
           "example": "123",
           "member": "int64",
@@ -1625,6 +2149,7 @@
       "document": "DeleteInstanceCustomizedDomain request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Primary instance ID",
           "example": "tcr-test123",
           "member": "string",
@@ -1633,6 +2158,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Custom domain name",
           "example": "test.com",
           "member": "string",
@@ -1641,6 +2167,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Certificate ID",
           "example": "kWGTVuU3",
           "member": "string",
@@ -1667,6 +2194,7 @@
       "document": "DeleteInstance request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-abc123",
           "member": "string",
@@ -1675,6 +2203,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to delete the bucket. Default value: false.",
           "example": "true",
           "member": "bool",
@@ -1683,6 +2212,7 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "Whether to enable the `dryRun` mode. Default value: false.",
           "example": "false",
           "member": "bool",
@@ -1709,14 +2239,18 @@
       "document": "DeleteInstanceToken request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Access credential ID",
+          "example": "",
           "member": "string",
           "name": "TokenId",
           "required": true,
@@ -1741,6 +2275,7 @@
       "document": "DeleteMultipleSecurityPolicy request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -1749,6 +2284,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Security group policy",
           "example": "无",
           "member": "SecurityPolicy",
@@ -1763,6 +2299,7 @@
       "document": "DeleteMultipleSecurityPolicy response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -1784,6 +2321,7 @@
       "document": "DeleteNamespace request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-okmj78",
           "member": "string",
@@ -1792,6 +2330,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name",
           "example": "mytest",
           "member": "string",
@@ -1818,6 +2357,7 @@
       "document": "DeleteReplicationInstance request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-12345",
           "member": "string",
@@ -1826,6 +2366,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Replica instance ID",
           "example": "tcr-12345-5",
           "member": "string",
@@ -1834,6 +2375,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Region ID of the replica instance",
           "example": "5",
           "member": "uint64",
@@ -1860,6 +2402,7 @@
       "document": "DeleteRepository request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-okmj78",
           "member": "string",
@@ -1868,6 +2411,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name",
           "example": "test",
           "member": "string",
@@ -1876,6 +2420,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Image repository name",
           "example": "mytest",
           "member": "string",
@@ -1902,6 +2447,7 @@
       "document": "DeleteRepositoryTags request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-xxx",
           "member": "string",
@@ -1910,6 +2456,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name",
           "example": "demo",
           "member": "string",
@@ -1918,6 +2465,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Repository name",
           "example": "Nginx",
           "member": "string",
@@ -1926,6 +2474,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "List of tags. Up to 20 tags can be returned for a request.",
           "example": "[\"tag1\", \"tag2\"]",
           "member": "string",
@@ -1952,6 +2501,7 @@
       "document": "DeleteSecurityPolicy request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -1960,19 +2510,30 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Allowlist ID",
           "example": "1",
           "member": "int64",
           "name": "PolicyIndex",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Allowlist version",
           "example": "10",
           "member": "string",
           "name": "PolicyVersion",
-          "required": true,
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IP range or IP address (mutually exclusive).",
+          "example": "1.1.1.1/20",
+          "member": "string",
+          "name": "CidrBlock",
+          "required": false,
           "type": "string"
         }
       ],
@@ -1982,6 +2543,7 @@
       "document": "DeleteSecurityPolicy response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -1999,10 +2561,47 @@
       ],
       "type": "object"
     },
+    "DeleteServiceAccountRequest": {
+      "document": "DeleteServiceAccount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID\t",
+          "example": "tcr-xxx",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Service account name",
+          "example": "robot",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteServiceAccountResponse": {
+      "document": "DeleteServiceAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteSignaturePolicyRequest": {
       "document": "DeleteSignaturePolicy request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-okmj78",
           "member": "string",
@@ -2011,6 +2610,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name",
           "example": "library",
           "member": "string",
@@ -2037,6 +2637,7 @@
       "document": "DeleteTagRetentionRule request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Primary instance ID",
           "example": "tcr-test123",
           "member": "string",
@@ -2045,6 +2646,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Tag retention rule ID",
           "example": "1",
           "member": "int64",
@@ -2071,21 +2673,27 @@
       "document": "DeleteWebhookTrigger request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace",
+          "example": "",
           "member": "string",
           "name": "Namespace",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Trigger ID",
+          "example": "",
           "member": "int64",
           "name": "Id",
           "required": true,
@@ -2110,6 +2718,7 @@
       "document": "DescribeChartDownloadInfo request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -2118,6 +2727,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace",
           "example": "testgroup",
           "member": "string",
@@ -2126,6 +2736,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Chart name",
           "example": "mychart",
           "member": "string",
@@ -2134,6 +2745,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Chart version",
           "example": "1.0",
           "member": "string",
@@ -2148,6 +2760,7 @@
       "document": "DescribeChartDownloadInfo response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Presigned URL for download",
           "example": "https://cos.com",
           "member": "string",
@@ -2165,10 +2778,101 @@
       ],
       "type": "object"
     },
+    "DescribeCustomAccountsRequest": {
+      "document": "DescribeCustomAccounts request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "tcr-xxx",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "All custom accounts",
+          "example": "无",
+          "member": "bool",
+          "name": "All",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enter the policy",
+          "example": "false",
+          "member": "bool",
+          "name": "EmbedPermission",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Filters",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Default value: `0`",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of output entries. Default value: `20`. Maximum value: 100`.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomAccountsResponse": {
+      "document": "DescribeCustomAccounts response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of custom accounts\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CustomAccount",
+          "name": "CustomAccounts",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of custom accounts",
+          "example": "20",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeExternalEndpointStatusRequest": {
       "document": "DescribeExternalEndpointStatus request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test123",
           "member": "string",
@@ -2183,6 +2887,7 @@
       "document": "DescribeExternalEndpointStatus response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Public network access status. Valid values: Opening, Opened, Closed.",
           "example": "Opened",
           "member": "string",
@@ -2192,6 +2897,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Reason\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "error",
           "member": "string",
@@ -2213,6 +2919,7 @@
       "document": "DescribeGCJobs request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -2227,6 +2934,7 @@
       "document": "DescribeGCJobs response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of GC jobs",
           "example": "无",
           "member": "GCJobInfo",
@@ -2248,7 +2956,9 @@
       "document": "DescribeImageAccelerateService request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
@@ -2261,21 +2971,27 @@
       "document": "DescribeImageAccelerateService response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Image acceleration status",
+          "example": "",
           "member": "string",
           "name": "Status",
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "CFS VIP",
+          "example": "",
           "member": "string",
           "name": "CFSVIP",
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether to enable",
+          "example": "",
           "member": "bool",
           "name": "IsEnable",
           "type": "bool",
@@ -2294,28 +3010,36 @@
       "document": "DescribeImageManifests request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name",
+          "example": "",
           "member": "string",
           "name": "NamespaceName",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Image repository name",
+          "example": "",
           "member": "string",
           "name": "RepositoryName",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Image tag",
+          "example": "",
           "member": "string",
           "name": "ImageVersion",
           "required": true,
@@ -2328,14 +3052,18 @@
       "document": "DescribeImageManifests response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Image manifest information",
+          "example": "",
           "member": "string",
           "name": "Manifest",
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Image configuration information",
+          "example": "",
           "member": "string",
           "name": "Config",
           "type": "string",
@@ -2354,6 +3082,7 @@
       "document": "DescribeImages request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-okmj78",
           "member": "string",
@@ -2362,6 +3091,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name",
           "example": "team-01",
           "member": "string",
@@ -2370,6 +3100,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Image repository name",
           "example": "nginx",
           "member": "string",
@@ -2378,6 +3109,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Image tag specified for fuzzy search",
           "example": "1.0",
           "member": "string",
@@ -2386,6 +3118,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page, which is used for pagination. Default value: 20.",
           "example": "20",
           "member": "int64",
@@ -2394,6 +3127,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Page number. Default value: 1.",
           "example": "0",
           "member": "int64",
@@ -2402,6 +3136,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Image digest specified for search",
           "example": "sha256:a1801b843b1bfaf77c501e7a6d3f709401a1e0c83863037fa3aab063a",
           "member": "string",
@@ -2410,6 +3145,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to use exact matching. Valid values: `true` (exact matching), `null` (fuzzy matching).",
           "example": "false",
           "member": "bool",
@@ -2424,6 +3160,7 @@
       "document": "DescribeImages response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of container images",
           "example": "无",
           "member": "TcrImageInfo",
@@ -2433,6 +3170,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of container images",
           "example": "2",
           "member": "int64",
@@ -2454,6 +3192,7 @@
       "document": "DescribeImmutableTagRules request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -2468,6 +3207,7 @@
       "document": "DescribeImmutableTagRules response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Rule list\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "ImmutableTagRule",
@@ -2477,6 +3217,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Namespace with no rules created\nNote: this field may return `null`, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "string",
@@ -2486,6 +3227,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Total rules",
           "example": "1",
           "member": "int64",
@@ -2507,6 +3249,7 @@
       "document": "DescribeInstanceAllNamespaces request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of entries per page",
           "example": "20",
           "member": "int64",
@@ -2515,6 +3258,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Start position offset",
           "example": "0",
           "member": "int64",
@@ -2541,6 +3285,7 @@
       "document": "DescribeInstanceCustomizedDomain request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Primary instance ID",
           "example": "tcr-test123",
           "member": "string",
@@ -2549,6 +3294,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Pagination limit",
           "example": "10",
           "member": "int64",
@@ -2557,6 +3303,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Pagination offset",
           "example": "0",
           "member": "int64",
@@ -2571,6 +3318,7 @@
       "document": "DescribeInstanceCustomizedDomain response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of domain names\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CustomizedDomainInfo",
@@ -2580,6 +3328,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Total number",
           "example": "10",
           "member": "int64",
@@ -2601,7 +3350,9 @@
       "document": "DescribeInstanceStatus request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Array of instance IDs",
+          "example": "",
           "member": "string",
           "name": "RegistryIds",
           "required": true,
@@ -2614,7 +3365,9 @@
       "document": "DescribeInstanceStatus response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of instance statuses\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "RegistryStatus",
           "name": "RegistryStatusSet",
           "type": "list",
@@ -2633,21 +3386,27 @@
       "document": "DescribeInstanceToken request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page",
+          "example": "",
           "member": "int64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Pagination offset",
+          "example": "",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2660,14 +3419,18 @@
       "document": "DescribeInstanceToken response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of long-term access credentials",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of long-term access credentials",
+          "example": "",
           "member": "TcrInstanceToken",
           "name": "Tokens",
           "type": "list",
@@ -2686,35 +3449,45 @@
       "document": "DescribeInstances request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of instance IDs (if it is empty,\nit indicates to get all instances under the current account)",
+          "example": "",
           "member": "string",
           "name": "Registryids",
           "required": false,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Offset. Default value: 0.",
+          "example": "",
           "member": "int64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Maximum number of output entries. Default value: 20. Maximum value: 100.",
+          "example": "",
           "member": "int64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Filters",
+          "example": "",
           "member": "Filter",
           "name": "Filters",
           "required": false,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Whether to get the instances in all regions. Default value: False.",
+          "example": "",
           "member": "bool",
           "name": "AllRegion",
           "required": false,
@@ -2727,14 +3500,18 @@
       "document": "DescribeInstances response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of instances",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of instances\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "Registry",
           "name": "Registries",
           "type": "list",
@@ -2753,6 +3530,7 @@
       "document": "DescribeInternalEndpoints request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-xxxx",
           "member": "string",
@@ -2767,6 +3545,7 @@
       "document": "DescribeInternalEndpoints response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of private network access addresses\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AccessVpc",
@@ -2776,6 +3555,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Total number of private network access addresses",
           "example": "0",
           "member": "int64",
@@ -2797,6 +3577,7 @@
       "document": "DescribeNamespaces request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-f7g1ir99",
           "member": "string",
@@ -2805,6 +3586,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Specified namespace. If this parameter is left empty, all namespaces will be queried.",
           "example": "project1",
           "member": "string",
@@ -2813,6 +3595,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page",
           "example": "20",
           "member": "int64",
@@ -2821,6 +3604,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Page offset (page number from which to return the results)",
           "example": "0",
           "member": "int64",
@@ -2829,6 +3613,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Whether to list all namespaces",
           "example": "0",
           "member": "bool",
@@ -2837,6 +3622,7 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "Filters",
           "example": "无",
           "member": "Filter",
@@ -2845,6 +3631,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Whether to query only namespaces for which the KMS image signature is enabled",
           "example": "false",
           "member": "bool",
@@ -2859,6 +3646,7 @@
       "document": "DescribeNamespaces response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of namespaces",
           "example": "无",
           "member": "TcrNamespaceInfo",
@@ -2868,6 +3656,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number",
           "example": "2",
           "member": "int64",
@@ -2894,14 +3683,18 @@
       "document": "DescribeRegions response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of returned results",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of regions",
+          "example": "",
           "member": "Region",
           "name": "Regions",
           "type": "list",
@@ -2920,6 +3713,7 @@
       "document": "DescribeReplicationInstanceCreateTasks request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Replication instance ID",
           "example": "tcr-ak9876-5",
           "member": "string",
@@ -2928,6 +3722,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Region ID of the replication instance",
           "example": "5",
           "member": "uint64",
@@ -2942,6 +3737,7 @@
       "document": "DescribeReplicationInstanceCreateTasks response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Task details",
           "example": "无",
           "member": "TaskDetail",
@@ -2951,6 +3747,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Overall task status",
           "example": "SUCCESS",
           "member": "string",
@@ -2972,6 +3769,7 @@
       "document": "DescribeReplicationInstanceSyncStatus request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Master instance ID",
           "example": "tcr-12345",
           "member": "string",
@@ -2980,6 +3778,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Replication instance ID",
           "example": "tcr-12345-5",
           "member": "string",
@@ -2988,6 +3787,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Region ID of the replication instance",
           "example": "5",
           "member": "uint64",
@@ -2996,6 +3796,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Whether to show the synchronization log",
           "example": "false",
           "member": "bool",
@@ -3004,6 +3805,7 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "Page offset for log display. Default value: 0",
           "example": "1",
           "member": "int64",
@@ -3012,6 +3814,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Maximum number of output entries. Default value: 5, maximum value: 20.",
           "example": "5",
           "member": "int64",
@@ -3026,6 +3829,7 @@
       "document": "DescribeReplicationInstanceSyncStatus response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Synchronization status",
           "example": "StatusUnKnow",
           "member": "string",
@@ -3035,6 +3839,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Synchronization completion time",
           "example": "0001-01-01T00:00:00Z",
           "member": "string",
@@ -3044,6 +3849,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Synchronization log\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ReplicationLog",
@@ -3065,6 +3871,7 @@
       "document": "DescribeReplicationInstances request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-12345",
           "member": "string",
@@ -3073,6 +3880,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Offset. Default value: 0",
           "example": "0",
           "member": "int64",
@@ -3081,6 +3889,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Maximum number of output entries. Default value: 20, maximum value: 100.",
           "example": "10",
           "member": "int64",
@@ -3095,6 +3904,7 @@
       "document": "DescribeReplicationInstances response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of instances",
           "example": "1",
           "member": "int64",
@@ -3104,6 +3914,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Replication instance list\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "ReplicationRegistry",
@@ -3125,42 +3936,54 @@
       "document": "DescribeRepositories request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Specified namespace. If this parameter is left empty, image repositories in all namespaces will be queried.",
+          "example": "",
           "member": "string",
           "name": "NamespaceName",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Specified image repository. If this parameter is left empty, all image repositories in the specified namespace will be queried.",
+          "example": "",
           "member": "string",
           "name": "RepositoryName",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Page number, which is used for pagination",
+          "example": "",
           "member": "int64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page, which is used for pagination",
+          "example": "",
           "member": "int64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Sort field. Valid values: -creation_time, -name, -update_time.",
+          "example": "",
           "member": "string",
           "name": "SortBy",
           "required": false,
@@ -3173,14 +3996,18 @@
       "document": "DescribeRepositories response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Repository information list",
+          "example": "",
           "member": "TcrRepositoryInfo",
           "name": "RepositoryList",
           "type": "list",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -3199,6 +4026,7 @@
       "document": "DescribeSecurityPolicies request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -3213,6 +4041,7 @@
       "document": "DescribeSecurityPolicies response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance security policy group\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SecurityPolicy",
@@ -3230,10 +4059,101 @@
       ],
       "type": "object"
     },
+    "DescribeServiceAccountsRequest": {
+      "document": "DescribeServiceAccounts request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "tcr-xxx",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "All service accounts",
+          "example": "无",
+          "member": "bool",
+          "name": "All",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to fill in permission information",
+          "example": "false",
+          "member": "bool",
+          "name": "EmbedPermission",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Filters",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Default value: `0`",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of output entries. Default value: `20`. Maximum value: `100`. The maximum value is automatically applied when a value exceeding it is entered.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeServiceAccountsResponse": {
+      "document": "DescribeServiceAccounts response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of service accounts\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ServiceAccount",
+          "name": "ServiceAccounts",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of service accounts",
+          "example": "20",
+          "member": "int64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTagRetentionExecutionRequest": {
       "document": "DescribeTagRetentionExecution request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Primary instance ID",
           "example": "tcr-test123",
           "member": "string",
@@ -3242,6 +4162,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Rule ID",
           "example": "1",
           "member": "int64",
@@ -3250,6 +4171,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "`PageSize` for pagination",
           "example": "20",
           "member": "int64",
@@ -3258,6 +4180,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Page offset",
           "example": "1",
           "member": "int64",
@@ -3272,6 +4195,7 @@
       "document": "DescribeTagRetentionExecution response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of tag retention execution records",
           "example": "无",
           "member": "RetentionExecution",
@@ -3281,6 +4205,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of tag retention execution records",
           "example": "1",
           "member": "int64",
@@ -3302,6 +4227,7 @@
       "document": "DescribeTagRetentionExecutionTask request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Primary instance ID",
           "example": "tcr-test123",
           "member": "string",
@@ -3310,6 +4236,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Rule ID",
           "example": "1",
           "member": "int64",
@@ -3318,6 +4245,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Rule execution ID",
           "example": "1",
           "member": "int64",
@@ -3326,6 +4254,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Page offset",
           "example": "1",
           "member": "int64",
@@ -3334,6 +4263,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "`PageSize` for pagination",
           "example": "1",
           "member": "int64",
@@ -3348,6 +4278,7 @@
       "document": "DescribeTagRetentionExecutionTask response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of tag retention execution tasks",
           "example": "无",
           "member": "RetentionTask",
@@ -3357,6 +4288,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of tag retention execution tasks",
           "example": "1",
           "member": "int64",
@@ -3378,6 +4310,7 @@
       "document": "DescribeTagRetentionRules request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Primary instance ID",
           "example": "tcr-test123",
           "member": "string",
@@ -3386,6 +4319,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name",
           "example": "mytest",
           "member": "string",
@@ -3394,6 +4328,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "`PageSize` for pagination",
           "example": "20",
           "member": "int64",
@@ -3402,6 +4337,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Page offset",
           "example": "1",
           "member": "int64",
@@ -3416,6 +4352,7 @@
       "document": "DescribeTagRetentionRules response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of tag retention policies",
           "example": "无",
           "member": "RetentionPolicy",
@@ -3425,6 +4362,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of tag retention policies",
           "example": "1",
           "member": "int64",
@@ -3446,35 +4384,45 @@
       "document": "DescribeWebhookTriggerLog request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace",
+          "example": "",
           "member": "string",
           "name": "Namespace",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Trigger ID",
+          "example": "",
           "member": "int64",
           "name": "Id",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page",
+          "example": "",
           "member": "int64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Pagination offset",
+          "example": "",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -3487,14 +4435,18 @@
       "document": "DescribeWebhookTriggerLog response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of logs",
+          "example": "",
           "member": "WebhookTriggerLog",
           "name": "Logs",
           "type": "list",
@@ -3513,6 +4465,7 @@
       "document": "DescribeWebhookTrigger request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-7s2d14fn",
           "member": "string",
@@ -3521,6 +4474,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page",
           "example": "无",
           "member": "int64",
@@ -3529,6 +4483,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Pagination offset",
           "example": "无",
           "member": "int64",
@@ -3537,6 +4492,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Namespace",
           "example": "someNs",
           "member": "string",
@@ -3551,6 +4507,7 @@
       "document": "DescribeWebhookTrigger response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of triggers",
           "example": "130",
           "member": "int64",
@@ -3560,6 +4517,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of triggers",
           "example": "无",
           "member": "WebhookTrigger",
@@ -3581,6 +4539,7 @@
       "document": "DownloadHelmChart request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-xxx",
           "member": "string",
@@ -3589,6 +4548,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name",
           "example": "mytest",
           "member": "string",
@@ -3597,6 +4557,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Helm chart name",
           "example": "test",
           "member": "string",
@@ -3605,6 +4566,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Helm chart version",
           "example": "1.0",
           "member": "string",
@@ -3619,6 +4581,7 @@
       "document": "DownloadHelmChart response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Temporary token",
           "example": "yyy",
           "member": "string",
@@ -3628,6 +4591,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Temporary `secretId`",
           "example": "ddd",
           "member": "string",
@@ -3637,6 +4601,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Temporary `secretKey`",
           "example": "eeee",
           "member": "string",
@@ -3646,6 +4611,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Bucket information",
           "example": "tcr-test134",
           "member": "string",
@@ -3655,6 +4621,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "ap-guangzhou",
           "member": "string",
@@ -3664,6 +4631,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Chart information",
           "example": "tcr-test/test-1.0.tgz",
           "member": "string",
@@ -3673,6 +4641,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Start timestamp",
           "example": "12345",
           "member": "int64",
@@ -3682,6 +4651,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Token expiration timestamp",
           "example": "123456",
           "member": "int64",
@@ -3703,7 +4673,9 @@
       "document": "Filter",
       "members": [
         {
+          "disabled": false,
           "document": "Attribute name. If more than one filter exists, the logical relationship between these filters is `AND`.",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -3711,7 +4683,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Attribute value. If multiple values exist in one filter, the logical relationship between these values is `OR`.",
+          "example": "",
           "member": "string",
           "name": "Values",
           "required": true,
@@ -3725,6 +4699,7 @@
       "document": "GC execution information",
       "members": [
         {
+          "disabled": false,
           "document": "Job ID",
           "example": "123",
           "member": "int64",
@@ -3734,6 +4709,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Job status",
           "example": "finished",
           "member": "string",
@@ -3743,6 +4719,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time",
           "example": "2021-05-14T08:20:01Z",
           "member": "string",
@@ -3752,6 +4729,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Update time",
           "example": "2021-05-14T08:20:02.387203Z",
           "member": "string",
@@ -3761,6 +4739,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Scheduling information",
           "example": "无",
           "member": "Schedule",
@@ -3776,7 +4755,9 @@
       "document": "Header KV",
       "members": [
         {
+          "disabled": false,
           "document": "Header Key",
+          "example": "",
           "member": "string",
           "name": "Key",
           "required": true,
@@ -3784,7 +4765,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Header Values",
+          "example": "",
           "member": "string",
           "name": "Values",
           "required": true,
@@ -3798,6 +4781,7 @@
       "document": "Tag immutability rule",
       "members": [
         {
+          "disabled": false,
           "document": "Repository matching rule",
           "example": "**",
           "member": "string",
@@ -3807,6 +4791,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag matching rule",
           "example": "**",
           "member": "string",
@@ -3816,6 +4801,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "repoMatches or repoExcludes",
           "example": "repoMatches",
           "member": "string",
@@ -3825,6 +4811,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "matches or excludes",
           "example": "matches",
           "member": "string",
@@ -3834,6 +4821,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Disabling rule",
           "example": "false",
           "member": "bool",
@@ -3843,6 +4831,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Rule ID",
           "example": "123",
           "member": "int64",
@@ -3852,6 +4841,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Namespace",
           "example": "library",
           "member": "string",
@@ -3867,6 +4857,7 @@
       "document": "String key-value pair of a common parameter",
       "members": [
         {
+          "disabled": false,
           "document": "Key",
           "example": "foo",
           "member": "string",
@@ -3876,6 +4867,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Value",
           "example": "bar",
           "member": "string",
@@ -3891,6 +4883,7 @@
       "document": "ManageExternalEndpoint request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -3899,6 +4892,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Operation. Valid values: Create, Delete.",
           "example": "Create",
           "member": "string",
@@ -3913,6 +4907,7 @@
       "document": "ManageExternalEndpoint response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -3934,6 +4929,7 @@
       "document": "ManageInternalEndpoint request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-xxx",
           "member": "string",
@@ -3942,6 +4938,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Create/Delete",
           "example": "Create",
           "member": "string",
@@ -3950,6 +4947,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "ID of the VPC to be connected to",
           "example": "xxx",
           "member": "string",
@@ -3958,6 +4956,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "ID of the subnet to be connected to",
           "example": "xxx",
           "member": "string",
@@ -3966,6 +4965,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "ID of the requested region, which is used as the region of the replica instance",
           "example": "5",
           "member": "uint64",
@@ -3974,6 +4974,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Name of the requested region, which is used as the region of the replica instance",
           "example": "ap-beijing",
           "member": "string",
@@ -3988,6 +4989,7 @@
       "document": "ManageInternalEndpoint response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "XXXX",
           "member": "string",
@@ -4009,6 +5011,7 @@
       "document": "ManageReplication request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Source instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -4017,6 +5020,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Destination instance ID",
           "example": "tcr-test456",
           "member": "string",
@@ -4025,6 +5029,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Synchronization rule",
           "example": "无",
           "member": "ReplicationRule",
@@ -4033,6 +5038,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "Rule description",
           "example": "test",
           "member": "string",
@@ -4041,6 +5047,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Region ID of the destination instance. For example, `1` represents Guangzhou",
           "example": "33",
           "member": "uint64",
@@ -4049,6 +5056,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Configuration of the synchronization rule",
           "example": "无",
           "member": "PeerReplicationOption",
@@ -4071,10 +5079,92 @@
       ],
       "type": "object"
     },
+    "ModifyCustomAccountRequest": {
+      "document": "ModifyCustomAccount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "tcr-xxx",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom account name",
+          "example": "tcr$robot",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom account description",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Validity in days starting from the current day. It takes a higher priority than `ExpiresAt`.",
+          "example": "无",
+          "member": "int64",
+          "name": "Duration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Expiry time of the custom account (timestamp)",
+          "example": "1676897989",
+          "member": "int64",
+          "name": "ExpiresAt",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to disable the custom account",
+          "example": "true",
+          "member": "bool",
+          "name": "Disable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Policy list",
+          "example": "{   \"Resource\": \"library\",   \"Actions\": [\"tcr:PushRepository\", \"tcr:PullRepository\"] }",
+          "member": "Permission",
+          "name": "Permissions",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCustomAccountResponse": {
+      "document": "ModifyCustomAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyImmutableTagRulesRequest": {
       "document": "ModifyImmutableTagRules request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -4083,6 +5173,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace",
           "example": "library",
           "member": "string",
@@ -4091,6 +5182,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Rule ID",
           "example": "123",
           "member": "int64",
@@ -4099,6 +5191,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Rule",
           "example": "无",
           "member": "ImmutableTagRule",
@@ -4125,6 +5218,7 @@
       "document": "ModifyInstance request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-abc123",
           "member": "string",
@@ -4133,12 +5227,22 @@
           "type": "string"
         },
         {
-          "document": "Instance specification",
+          "disabled": false,
+          "document": "Instance edition\nBasic: `basic`\nStandard: `standard`\nPremium: `premium`",
           "example": "premium",
           "member": "string",
           "name": "RegistryType",
-          "required": true,
+          "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable deletion protection. It defaults to `false`. ",
+          "example": "false",
+          "member": "bool",
+          "name": "DeletionProtection",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -4159,6 +5263,7 @@
       "document": "ModifyInstanceToken request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "ID of the long-term access credential of the instance",
           "example": "2ab3af0d-893d-423f-91b1-27713566f95f",
           "member": "string",
@@ -4167,6 +5272,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-12345",
           "member": "string",
@@ -4175,6 +5281,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to enable the long-term access credential of the instance",
           "example": "false",
           "member": "bool",
@@ -4183,6 +5290,7 @@
           "type": "bool"
         },
         {
+          "disabled": false,
           "document": "Access credential description",
           "example": "test",
           "member": "string",
@@ -4191,6 +5299,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Valid values: 1: Modify the description; 2: Enable/Disable. Default value: 2.",
           "example": "1",
           "member": "int64",
@@ -4217,21 +5326,27 @@
       "document": "ModifyNamespace request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name",
+          "example": "",
           "member": "string",
           "name": "NamespaceName",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Access level. Valid values: True: Public; False: Private.",
+          "example": "",
           "member": "bool",
           "name": "IsPublic",
           "required": true,
@@ -4256,35 +5371,45 @@
       "document": "ModifyRepository request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Namespace name",
+          "example": "",
           "member": "string",
           "name": "NamespaceName",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Image repository name",
+          "example": "",
           "member": "string",
           "name": "RepositoryName",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Brief repository description",
+          "example": "",
           "member": "string",
           "name": "BriefDescription",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Detailed repository description",
+          "example": "",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -4309,6 +5434,7 @@
       "document": "ModifySecurityPolicy request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -4317,6 +5443,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "PolicyId",
           "example": "1",
           "member": "int64",
@@ -4325,6 +5452,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Allowed IP, such as `192.168.0.0/24`",
           "example": "192.168.0.0/24",
           "member": "string",
@@ -4333,6 +5461,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Remarks",
           "example": "test",
           "member": "string",
@@ -4347,6 +5476,7 @@
       "document": "ModifySecurityPolicy response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-test134",
           "member": "string",
@@ -4364,10 +5494,92 @@
       ],
       "type": "object"
     },
+    "ModifyServiceAccountRequest": {
+      "document": "ModifyServiceAccount request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "tcr-xxx",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Service account name",
+          "example": "tcr$robot",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Service account description",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Validity in days starting from the current day, It takes a higher priority than `ExpiresAt`.",
+          "example": "无",
+          "member": "int64",
+          "name": "Duration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Expiry time (timestamp, in milliseconds)",
+          "example": "1676897989",
+          "member": "int64",
+          "name": "ExpiresAt",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to disable the service account",
+          "example": "true",
+          "member": "bool",
+          "name": "Disable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Policy list",
+          "example": "{   \"Resource\": \"library\",   \"Actions\": [\"tcr:PushRepository\", \"tcr:PullRepository\"] }",
+          "member": "Permission",
+          "name": "Permissions",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyServiceAccountResponse": {
+      "document": "ModifyServiceAccount response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyTagRetentionRuleRequest": {
       "document": "ModifyTagRetentionRule request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Primary instance ID",
           "example": "tcr-test123",
           "member": "string",
@@ -4376,6 +5588,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "ID of the original namespace",
           "example": "1",
           "member": "int64",
@@ -4384,6 +5597,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Retention policy",
           "example": "无",
           "member": "RetentionRule",
@@ -4392,6 +5606,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "Original execution cycle",
           "example": "manual",
           "member": "string",
@@ -4400,6 +5615,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Rule ID",
           "example": "1",
           "member": "int64",
@@ -4408,6 +5624,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Whether to disable the rule",
           "example": "false",
           "member": "bool",
@@ -4434,21 +5651,27 @@
       "document": "ModifyWebhookTrigger request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Trigger parameter",
+          "example": "",
           "member": "WebhookTrigger",
           "name": "Trigger",
           "required": true,
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "Namespace",
+          "example": "",
           "member": "string",
           "name": "Namespace",
           "required": true,
@@ -4473,6 +5696,7 @@
       "document": "Parameters for cross-account synchronization",
       "members": [
         {
+          "disabled": false,
           "document": "UIN of the destination instance",
           "example": "156789",
           "member": "string",
@@ -4482,6 +5706,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Permanent access Token for the destination instance",
           "example": "123",
           "member": "string",
@@ -4491,6 +5716,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether to enable cross-account synchronization",
           "example": "true",
           "member": "bool",
@@ -4502,11 +5728,39 @@
       ],
       "usage": "in"
     },
+    "Permission": {
+      "document": "Policy",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource path. Valid value: `Namespace`\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "library",
+          "member": "string",
+          "name": "Resource",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Action. Valid values: `tcr:PushRepository`, `tcr:PullRepository`\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"tcr:PushRepository\", \"tcr:PullRepository\"]",
+          "member": "string",
+          "name": "Actions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "Region": {
       "document": "Region information",
       "members": [
         {
+          "disabled": false,
           "document": "gz",
+          "example": "",
           "member": "string",
           "name": "Alias",
           "required": true,
@@ -4514,7 +5768,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "1",
+          "example": "",
           "member": "uint64",
           "name": "RegionId",
           "required": true,
@@ -4522,7 +5778,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "ap-guangzhou",
+          "example": "",
           "member": "string",
           "name": "RegionName",
           "required": true,
@@ -4530,7 +5788,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "alluser",
+          "example": "",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4538,7 +5798,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "remark",
+          "example": "",
           "member": "string",
           "name": "Remark",
           "required": true,
@@ -4546,7 +5808,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time",
+          "example": "",
           "member": "datetime_iso",
           "name": "CreatedAt",
           "required": true,
@@ -4554,7 +5818,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Update time",
+          "example": "",
           "member": "datetime_iso",
           "name": "UpdatedAt",
           "required": true,
@@ -4562,7 +5828,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "id",
+          "example": "",
           "member": "int64",
           "name": "Id",
           "required": true,
@@ -4576,7 +5844,9 @@
       "document": "Instance information structure",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
@@ -4584,7 +5854,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance name",
+          "example": "",
           "member": "string",
           "name": "RegistryName",
           "required": true,
@@ -4592,7 +5864,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance specification",
+          "example": "",
           "member": "string",
           "name": "RegistryType",
           "required": true,
@@ -4600,7 +5874,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance status",
+          "example": "",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4608,7 +5884,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Public access URL of the instance",
+          "example": "",
           "member": "string",
           "name": "PublicDomain",
           "required": true,
@@ -4616,7 +5894,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance creation time",
+          "example": "",
           "member": "datetime_iso",
           "name": "CreatedAt",
           "required": true,
@@ -4624,7 +5904,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Region name",
+          "example": "",
           "member": "string",
           "name": "RegionName",
           "required": true,
@@ -4632,7 +5914,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Region ID",
+          "example": "",
           "member": "uint64",
           "name": "RegionId",
           "required": true,
@@ -4640,7 +5924,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether to enable anonymity",
+          "example": "",
           "member": "bool",
           "name": "EnableAnonymous",
           "required": true,
@@ -4648,7 +5934,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Token validity period",
+          "example": "",
           "member": "uint64",
           "name": "TokenValidTime",
           "required": true,
@@ -4656,7 +5944,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Internal access address of the instance",
+          "example": "",
           "member": "string",
           "name": "InternalEndpoint",
           "required": true,
@@ -4664,7 +5954,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Cloud tag of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "TagSpecification",
           "name": "TagSpecification",
           "required": true,
@@ -4672,7 +5964,9 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Instance expiration time (for prepayment)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ExpiredAt",
           "required": true,
@@ -4680,7 +5974,9 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Instance billing mode. Valid values: 0: Postpayment; 1: Prepayment.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "PayMod",
           "required": true,
@@ -4688,7 +5984,9 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Prepayment renewal flag. Valid values: 0: Manual renewal; 1: Auto-renewal; 2: No renewal and no notification.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "RenewFlag",
           "required": true,
@@ -4702,7 +6000,9 @@
       "document": "Instance prepayment mode",
       "members": [
         {
+          "disabled": false,
           "document": "Instance purchase duration in months",
+          "example": "",
           "member": "int64",
           "name": "Period",
           "required": true,
@@ -4710,7 +6010,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Auto-renewal flag. Valid values: 0: Manual renewal; 1: Auto-renewal; 2: No renewal and no notification.",
+          "example": "",
           "member": "int64",
           "name": "RenewFlag",
           "required": true,
@@ -4724,7 +6026,9 @@
       "document": "Instance creation process",
       "members": [
         {
+          "disabled": false,
           "document": "Instance creation process type",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -4732,7 +6036,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance creation process status",
+          "example": "",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4740,7 +6046,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Reasons for transiting to the process\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Reason",
           "required": true,
@@ -4754,7 +6062,9 @@
       "document": "Instance status",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
@@ -4762,7 +6072,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Instance status",
+          "example": "",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4770,7 +6082,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Additional status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "RegistryCondition",
           "name": "Conditions",
           "required": true,
@@ -4784,6 +6098,7 @@
       "document": "RenewInstance request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Instance ID",
           "example": "tcr-12345",
           "member": "string",
@@ -4792,6 +6107,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Auto-renewal flag and purchase duration in months for prepayment. Valid values: 0: Manual renewal; 1: Auto-renewal; 2: No renewal and no notification.",
           "example": "无",
           "member": "RegistryChargePrepaid",
@@ -4800,6 +6116,7 @@
           "type": "object"
         },
         {
+          "disabled": false,
           "document": "Valid values: 0: renewal; 1: change from pay-as-you-go to monthly subscription billing",
           "example": "0",
           "member": "int64",
@@ -4814,6 +6131,7 @@
       "document": "RenewInstance response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Enterprise Edition instance ID",
           "example": "tcr-12345",
           "member": "string",
@@ -4835,7 +6153,9 @@
       "document": "Synchronization rule filter",
       "members": [
         {
+          "disabled": false,
           "document": "Type (`name`, `tag` and `resource`)",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -4843,7 +6163,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "It is left blank by default",
+          "example": "",
           "member": "string",
           "name": "Value",
           "required": false,
@@ -4857,6 +6179,7 @@
       "document": "Synchronization log",
       "members": [
         {
+          "disabled": false,
           "document": "Resource type\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "image",
           "member": "string",
@@ -4866,6 +6189,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Path of the source resource\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "test/test:[1]",
           "member": "string",
@@ -4875,6 +6199,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Path of the destination resource\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "test/test:[1]",
           "member": "string",
@@ -4884,6 +6209,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Synchronization status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "Succeed",
           "member": "string",
@@ -4893,6 +6219,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Start time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2021-09-28T08:00:08.186015Z",
           "member": "string",
@@ -4902,6 +6229,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "End time\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "2021-09-28T08:00:15Z",
           "member": "string",
@@ -4917,7 +6245,9 @@
       "document": "ID of Enterprise Registry replication instance",
       "members": [
         {
+          "disabled": false,
           "document": "Master instance ID",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
@@ -4925,7 +6255,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Replication instance ID",
+          "example": "",
           "member": "string",
           "name": "ReplicationRegistryId",
           "required": true,
@@ -4933,7 +6265,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Region ID of the replication instance",
+          "example": "",
           "member": "uint64",
           "name": "ReplicationRegionId",
           "required": true,
@@ -4941,7 +6275,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Region name of the replication instance",
+          "example": "",
           "member": "string",
           "name": "ReplicationRegionName",
           "required": true,
@@ -4949,7 +6285,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Status of the replication instance",
+          "example": "",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4957,7 +6295,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time",
+          "example": "",
           "member": "string",
           "name": "CreatedAt",
           "required": true,
@@ -4971,7 +6311,9 @@
       "document": "Synchronization rule",
       "members": [
         {
+          "disabled": false,
           "document": "Name of synchronization rule",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -4979,7 +6321,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Destination namespace",
+          "example": "",
           "member": "string",
           "name": "DestNamespace",
           "required": true,
@@ -4987,7 +6331,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether to override",
+          "example": "",
           "member": "bool",
           "name": "Override",
           "required": true,
@@ -4995,7 +6341,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Synchronization filters",
+          "example": "",
           "member": "ReplicationFilter",
           "name": "Filters",
           "required": true,
@@ -5009,6 +6357,7 @@
       "document": "Tag retention rule execution",
       "members": [
         {
+          "disabled": false,
           "document": "Execution ID",
           "example": "1",
           "member": "int64",
@@ -5018,6 +6367,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Rule ID",
           "example": "1",
           "member": "int64",
@@ -5027,6 +6377,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Execution start time",
           "example": "“2021-12-02”",
           "member": "string",
@@ -5036,6 +6387,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Execution end time",
           "example": "“2021-12-02”",
           "member": "string",
@@ -5045,6 +6397,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Execution status. Valid values: Failed, Succeed, Stopped, InProgress.",
           "example": "Successed",
           "member": "string",
@@ -5060,6 +6413,7 @@
       "document": "Tag retention policy",
       "members": [
         {
+          "disabled": false,
           "document": "Tag retention policy ID",
           "example": "1",
           "member": "int64",
@@ -5069,6 +6423,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Namespace name",
           "example": "mytest",
           "member": "string",
@@ -5078,6 +6433,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of rules",
           "example": "无",
           "member": "RetentionRule",
@@ -5087,6 +6443,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Regular execution mode",
           "example": "manual",
           "member": "string",
@@ -5096,6 +6453,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether to enable the rule",
           "example": "false",
           "member": "bool",
@@ -5105,6 +6463,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The execution time of the next task based on the current time and `cronSetting`, which is for reference only",
           "example": "2021-02-03",
           "member": "string",
@@ -5120,6 +6479,7 @@
       "document": "Tag retention rule",
       "members": [
         {
+          "disabled": false,
           "document": "Supported policy. Valid values: latestPushedK: Retain the latest specified number of pushed tags; nDaysSinceLastPush: Retain the tags pushed in the past specified number of days.",
           "example": "latestPushedK",
           "member": "string",
@@ -5129,6 +6489,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Rule value",
           "example": "0",
           "member": "int64",
@@ -5144,6 +6505,7 @@
       "document": "Rule of tag retention task execution",
       "members": [
         {
+          "disabled": false,
           "document": "Task ID",
           "example": "1",
           "member": "int64",
@@ -5153,6 +6515,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Rule execution ID",
           "example": "1",
           "member": "int64",
@@ -5162,6 +6525,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Task start time",
           "example": "“2021-01-22”",
           "member": "string",
@@ -5171,6 +6535,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Task end time",
           "example": "\"2021-01-22\"",
           "member": "string",
@@ -5180,6 +6545,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Task execution status. Valid values: Failed, Succeed, Stopped, InProgress.",
           "example": "Succeed",
           "member": "string",
@@ -5189,6 +6555,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of tags",
           "example": "64",
           "member": "int64",
@@ -5198,6 +6565,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of retained tags",
           "example": "1",
           "member": "int64",
@@ -5207,6 +6575,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Application repository",
           "example": "mytest",
           "member": "string",
@@ -5222,6 +6591,7 @@
       "document": " Job scheduling information",
       "members": [
         {
+          "disabled": false,
           "document": "Type. Valid values: Hourly, Daily, Weekly, Custom, Manual, Dryrun, None.",
           "example": "Manual",
           "member": "string",
@@ -5237,6 +6607,7 @@
       "document": "Security policy",
       "members": [
         {
+          "disabled": false,
           "document": "Policy index",
           "example": "0",
           "member": "int64",
@@ -5246,6 +6617,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Remarks",
           "example": "mytest",
           "member": "string",
@@ -5255,6 +6627,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The public network IP address of the access source",
           "example": "192.168.1.0/24",
           "member": "string",
@@ -5264,6 +6637,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The version of the security policy",
           "example": "0",
           "member": "string",
@@ -5275,11 +6649,89 @@
       ],
       "usage": "both"
     },
+    "ServiceAccount": {
+      "document": "Service account",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Service account name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "tcr$robot",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Description\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "Disable",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expiry time\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "1676897989",
+          "member": "int64",
+          "name": "ExpiresAt",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2023-02-14T07:14:43+08:00",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-02-14T07:14:43+08:00",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Policy\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[     {       \"Resource\": \"library\",       \"Actions\": [         \"tcr:PushRepository\",          \"tcr:PullRepository\"       ]     }   ]",
+          "member": "Permission",
+          "name": "Permissions",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "Tag": {
       "document": "Cloud tag",
       "members": [
         {
+          "disabled": false,
           "document": "Cloud tag key",
+          "example": "",
           "member": "string",
           "name": "Key",
           "required": true,
@@ -5287,7 +6739,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Cloud tag value",
+          "example": "",
           "member": "string",
           "name": "Value",
           "required": true,
@@ -5301,7 +6755,9 @@
       "document": "Cloud tag",
       "members": [
         {
+          "disabled": false,
           "document": "Default value: instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ResourceType",
           "required": true,
@@ -5309,7 +6765,9 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Cloud tag array\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "Tag",
           "name": "Tags",
           "required": true,
@@ -5323,7 +6781,9 @@
       "document": "Task details",
       "members": [
         {
+          "disabled": false,
           "document": "Task",
+          "example": "",
           "member": "string",
           "name": "TaskName",
           "required": true,
@@ -5331,7 +6791,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Task UUID",
+          "example": "",
           "member": "string",
           "name": "TaskUUID",
           "required": true,
@@ -5339,7 +6801,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Task status",
+          "example": "",
           "member": "string",
           "name": "TaskStatus",
           "required": true,
@@ -5347,7 +6811,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Task details\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "TaskMessage",
           "required": true,
@@ -5355,7 +6821,9 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Start time of the task",
+          "example": "",
           "member": "string",
           "name": "CreatedTime",
           "required": true,
@@ -5363,7 +6831,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "End time of the task\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "FinishedTime",
           "required": true,
@@ -5377,6 +6847,7 @@
       "document": "Image information",
       "members": [
         {
+          "disabled": false,
           "document": "Hash value",
           "example": "sha256:c8a612b2a2e52cedd86d6df10d4e796942023d443a0e7f79b14cb478f",
           "member": "string",
@@ -5386,6 +6857,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Image size in bytes",
           "example": "1050748",
           "member": "int64",
@@ -5395,6 +6867,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag name",
           "example": "v1.2.0",
           "member": "string",
@@ -5404,6 +6877,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Update time",
           "example": "2022-07-19 15:16:17",
           "member": "string",
@@ -5413,6 +6887,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Artifact type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Artifact::application/vnd.docker.distribution.manifest.v2+json",
           "member": "string",
@@ -5422,6 +6897,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "KMS signature information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "wMRjrFQbuKLY3D95E9HkGzqhr/bJ4P2ahDlkWzy1nxDxSwqUKR4kxGby+wxMwtcp",
           "member": "string",
@@ -5437,7 +6913,9 @@
       "document": "Instance login token",
       "members": [
         {
+          "disabled": false,
           "document": "Token ID",
+          "example": "",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -5445,7 +6923,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Token description",
+          "example": "",
           "member": "string",
           "name": "Desc",
           "required": true,
@@ -5453,7 +6933,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "ID of the instance of the token",
+          "example": "",
           "member": "string",
           "name": "RegistryId",
           "required": true,
@@ -5461,7 +6943,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Token status",
+          "example": "",
           "member": "bool",
           "name": "Enabled",
           "required": true,
@@ -5469,7 +6953,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Token creation time",
+          "example": "",
           "member": "datetime_iso",
           "name": "CreatedAt",
           "required": true,
@@ -5477,7 +6963,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Token expiration timestamp",
+          "example": "",
           "member": "int64",
           "name": "ExpiredAt",
           "required": true,
@@ -5491,6 +6979,7 @@
       "document": "TCR namespace description",
       "members": [
         {
+          "disabled": false,
           "document": "Namespace name",
           "example": "ns1",
           "member": "string",
@@ -5500,6 +6989,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time",
           "example": "2022-07-06 14:20:38",
           "member": "datetime_iso",
@@ -5509,6 +6999,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Access level",
           "example": "true",
           "member": "bool",
@@ -5518,6 +7009,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Namespace ID",
           "example": "1",
           "member": "int64",
@@ -5527,6 +7019,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Cloud tag of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TagSpecification",
@@ -5536,6 +7029,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Namespace metadata\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "KeyValueString",
@@ -5551,6 +7045,7 @@
       "document": "TCR image repository information",
       "members": [
         {
+          "disabled": false,
           "document": "Repository name",
           "example": "ns/repoName",
           "member": "string",
@@ -5560,6 +7055,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Namespace name",
           "example": "ns",
           "member": "string",
@@ -5569,6 +7065,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time, such as `2006-01-02 15:04:05.999999999 -0700 MST`",
           "example": "2022-07-16 10:34:42.697947 +0000 UTC",
           "member": "string",
@@ -5578,6 +7075,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether to make public",
           "example": "false",
           "member": "bool",
@@ -5587,6 +7085,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Detailed repository description\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "this is a description",
           "member": "string",
@@ -5596,6 +7095,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Brief description\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "this is a brief description",
           "member": "string",
@@ -5605,6 +7105,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Update time, such as `2006-01-02 15:04:05.999999999 -0700 MST`",
           "example": "2022-07-16 10:34:42.697947 +0000 UTC",
           "member": "string",
@@ -5620,7 +7121,9 @@
       "document": "Trigger target",
       "members": [
         {
+          "disabled": false,
           "document": "Target address",
+          "example": "",
           "member": "string",
           "name": "Address",
           "required": true,
@@ -5628,7 +7131,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Custom headers",
+          "example": "",
           "member": "Header",
           "name": "Headers",
           "required": false,
@@ -5642,7 +7147,9 @@
       "document": "Webhook trigger",
       "members": [
         {
+          "disabled": false,
           "document": "Trigger name",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -5650,7 +7157,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Trigger target",
+          "example": "",
           "member": "WebhookTarget",
           "name": "Targets",
           "required": true,
@@ -5658,7 +7167,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Action to be triggered",
+          "example": "",
           "member": "string",
           "name": "EventTypes",
           "required": true,
@@ -5666,7 +7177,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Trigger rule",
+          "example": "",
           "member": "string",
           "name": "Condition",
           "required": true,
@@ -5674,7 +7187,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Whether to enable the trigger",
+          "example": "",
           "member": "bool",
           "name": "Enabled",
           "required": true,
@@ -5682,7 +7197,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Trigger ID",
+          "example": "",
           "member": "int64",
           "name": "Id",
           "required": false,
@@ -5690,7 +7207,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Trigger description",
+          "example": "",
           "member": "string",
           "name": "Description",
           "required": false,
@@ -5698,7 +7217,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "ID of the namespace of the trigger",
+          "example": "",
           "member": "int64",
           "name": "NamespaceId",
           "required": false,
@@ -5712,7 +7233,9 @@
       "document": "Trigger log",
       "members": [
         {
+          "disabled": false,
           "document": "Log ID",
+          "example": "",
           "member": "int64",
           "name": "Id",
           "required": true,
@@ -5720,7 +7243,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Trigger ID",
+          "example": "",
           "member": "int64",
           "name": "TriggerId",
           "required": true,
@@ -5728,7 +7253,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Event type",
+          "example": "",
           "member": "string",
           "name": "EventType",
           "required": true,
@@ -5736,7 +7263,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Notification type",
+          "example": "",
           "member": "string",
           "name": "NotifyType",
           "required": true,
@@ -5744,7 +7273,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Details",
+          "example": "",
           "member": "string",
           "name": "Detail",
           "required": true,
@@ -5752,7 +7283,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time",
+          "example": "",
           "member": "string",
           "name": "CreationTime",
           "required": true,
@@ -5760,7 +7293,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Update time",
+          "example": "",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -5768,7 +7303,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Status",
+          "example": "",
           "member": "string",
           "name": "Status",
           "required": true,

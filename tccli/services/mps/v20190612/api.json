@@ -1098,6 +1098,17 @@
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Information of Drm.   Note: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DrmInfo",
+          "name": "DrmInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -8703,6 +8714,34 @@
         }
       ],
       "type": "object"
+    },
+    "DrmInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "SimpleAesDrm",
+          "name": "SimpleAesDrm",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "EditMediaFileInfo": {
       "document": "VOD video file editing information",
@@ -16540,6 +16579,45 @@
           "name": "Intensity",
           "required": false,
           "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "SimpleAesDrm": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "http://test.qq.com?vid=xxx",
+          "member": "string",
+          "name": "Uri",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "14367588ab31370e32ae000544bd007d",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "452ac1553f19b846e2f2c4cffd8f4a9b",
+          "member": "string",
+          "name": "Vector",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],

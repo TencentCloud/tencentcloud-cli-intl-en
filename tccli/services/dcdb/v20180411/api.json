@@ -56,6 +56,13 @@
       "output": "CreateDCDBInstanceResponse",
       "status": "online"
     },
+    "CreateDedicatedClusterDCDBInstance": {
+      "document": "This API is used to create a dedicated TDSQL cluster instance.",
+      "input": "CreateDedicatedClusterDCDBInstanceRequest",
+      "name": "Creates a dedicated TDSQL cluster instance",
+      "output": "CreateDedicatedClusterDCDBInstanceResponse",
+      "status": "online"
+    },
     "CreateHourDCDBInstance": {
       "document": "This API is used to create a pay-as-you-go TDSQL instance.",
       "input": "CreateHourDCDBInstanceRequest",
@@ -133,6 +140,13 @@
       "output": "DescribeDBSyncModeResponse",
       "status": "online"
     },
+    "DescribeDBTmpInstances": {
+      "document": "This API is used to obtain u200da temp rollback instance.",
+      "input": "DescribeDBTmpInstancesRequest",
+      "name": "Obtains a temp u200drollback instance",
+      "output": "DescribeDBTmpInstancesResponse",
+      "status": "online"
+    },
     "DescribeDCDBInstanceDetail": {
       "document": "This API is used to get the details of a TDSQL instance.",
       "input": "DescribeDCDBInstanceDetailRequest",
@@ -208,6 +222,13 @@
       "input": "DescribeFlowRequest",
       "name": "Queries task status",
       "output": "DescribeFlowResponse",
+      "status": "online"
+    },
+    "DescribeLogFileRetentionPeriod": {
+      "document": "This API is used to view the backup log retention days.",
+      "input": "DescribeLogFileRetentionPeriodRequest",
+      "name": "Views the backup log retention days",
+      "output": "DescribeLogFileRetentionPeriodResponse",
       "status": "online"
     },
     "DescribeOrders": {
@@ -392,6 +413,13 @@
       "output": "TerminateDedicatedDBInstanceResponse",
       "status": "online"
     },
+    "UpgradeDedicatedDCDBInstance": {
+      "document": "This API is used to u200dupgrade a dedicated TDSQL cluster instance.",
+      "input": "UpgradeDedicatedDCDBInstanceRequest",
+      "name": "Upgrades a dedicated TDSQL cluster instance",
+      "output": "UpgradeDedicatedDCDBInstanceResponse",
+      "status": "online"
+    },
     "UpgradeHourDCDBInstance": {
       "document": "This API is used to upgrade a pay-as-you-go TDSQL instance.",
       "input": "UpgradeHourDCDBInstanceRequest",
@@ -521,6 +549,7 @@
         {
           "disabled": false,
           "document": "Database engine name. Valid value: `dcdb`.",
+          "example": "",
           "member": "string",
           "name": "Product",
           "required": true,
@@ -529,6 +558,7 @@
         {
           "disabled": false,
           "document": "ID of the security group to be associated in the format of sg-efil73jd.",
+          "example": "",
           "member": "string",
           "name": "SecurityGroupId",
           "required": true,
@@ -537,6 +567,7 @@
         {
           "disabled": false,
           "document": "ID(s) of the instance(s) to be associated in the format of tdsqlshard-lesecurk. You can specify multiple instances.",
+          "example": "",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -563,6 +594,7 @@
         {
           "disabled": false,
           "document": "Node ID",
+          "example": "",
           "member": "string",
           "name": "NodeId",
           "required": true,
@@ -572,6 +604,7 @@
         {
           "disabled": false,
           "document": "Node role. Valid values: `master`, `slave`",
+          "example": "",
           "member": "string",
           "name": "Role",
           "required": true,
@@ -581,6 +614,7 @@
         {
           "disabled": false,
           "document": "The ID of the shard where the node resides",
+          "example": "",
           "member": "string",
           "name": "ShardId",
           "required": true,
@@ -715,6 +749,7 @@
         {
           "disabled": false,
           "document": "ID of an instance for which to disable public network access. The ID is in the format of dcdbt-ow728lmc and can be obtained through the `DescribeDCDBInstances` API.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -723,6 +758,7 @@
         {
           "disabled": false,
           "document": "Whether IPv6 is used. Default value: 0",
+          "example": "",
           "member": "int64",
           "name": "Ipv6Flag",
           "required": false,
@@ -737,6 +773,7 @@
         {
           "disabled": false,
           "document": "Async task ID. The task status can be queried through the `DescribeFlow` API.",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -829,6 +866,7 @@
         {
           "disabled": false,
           "document": "Minimum value when the constraint type is `section`",
+          "example": "",
           "member": "string",
           "name": "Min",
           "required": true,
@@ -838,6 +876,7 @@
         {
           "disabled": false,
           "document": "Maximum value when the constraint type is `section`",
+          "example": "",
           "member": "string",
           "name": "Max",
           "required": true,
@@ -853,6 +892,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -861,6 +901,7 @@
         {
           "disabled": false,
           "document": "Source username",
+          "example": "",
           "member": "string",
           "name": "SrcUserName",
           "required": true,
@@ -869,6 +910,7 @@
         {
           "disabled": false,
           "document": "Access host allowed for a source user",
+          "example": "",
           "member": "string",
           "name": "SrcHost",
           "required": true,
@@ -877,6 +919,7 @@
         {
           "disabled": false,
           "document": "Target username",
+          "example": "",
           "member": "string",
           "name": "DstUserName",
           "required": true,
@@ -885,6 +928,7 @@
         {
           "disabled": false,
           "document": "Access host allowed for a target user",
+          "example": "",
           "member": "string",
           "name": "DstHost",
           "required": true,
@@ -893,6 +937,7 @@
         {
           "disabled": false,
           "document": "`ReadOnly` attribute of a source account",
+          "example": "",
           "member": "string",
           "name": "SrcReadOnly",
           "required": false,
@@ -901,6 +946,7 @@
         {
           "disabled": false,
           "document": "`ReadOnly` attribute of a target account",
+          "example": "",
           "member": "string",
           "name": "DstReadOnly",
           "required": false,
@@ -1014,6 +1060,7 @@
         {
           "disabled": false,
           "document": "Instance ID, which is passed through from the input parameters.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "type": "string",
@@ -1022,6 +1069,7 @@
         {
           "disabled": false,
           "document": "Username, which is passed through from the input parameters.",
+          "example": "",
           "member": "string",
           "name": "UserName",
           "type": "string",
@@ -1030,6 +1078,7 @@
         {
           "disabled": false,
           "document": "Host allowed for access, which is passed through from the input parameters.",
+          "example": "",
           "member": "string",
           "name": "Host",
           "type": "string",
@@ -1038,6 +1087,7 @@
         {
           "disabled": false,
           "document": "Passed through from the input parameters.",
+          "example": "",
           "member": "int64",
           "name": "ReadOnly",
           "type": "int",
@@ -1278,6 +1328,305 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDedicatedClusterDCDBInstanceRequest": {
+      "document": "CreateDedicatedClusterDCDBInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of created instances",
+          "example": "1",
+          "member": "int64",
+          "name": "GoodsNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Shard u200dcount",
+          "example": "0",
+          "member": "int64",
+          "name": "ShardNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Shard memory size in GB",
+          "example": "2",
+          "member": "int64",
+          "name": "ShardMemory",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Shard disk size in GB",
+          "example": "10",
+          "member": "int64",
+          "name": "ShardStorage",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "UUID of the dedicated cluster",
+          "example": "dbdc-xxxx",
+          "member": "string",
+          "name": "ClusterId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "(Disused) AZ",
+          "example": "\"ap-guangzhou-1\"",
+          "member": "string",
+          "name": "Zone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "1",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "(Disused) u200dNumber of CPU u200dcores",
+          "example": "0",
+          "member": "int64",
+          "name": "Cpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "VPC ID",
+          "example": "vpc-xxxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subnet ID",
+          "example": "subnet-xxxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "(Disused) Shard model",
+          "example": "TS85",
+          "member": "string",
+          "name": "ShardMachine",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of shard nodes",
+          "example": "2",
+          "member": "int64",
+          "name": "ShardNodeNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "(Disused) Number of node CPU cores. Value range: 1-100.",
+          "example": "0",
+          "member": "int64",
+          "name": "ShardNodeCpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "(Disused) Node memory size in GB",
+          "example": "0",
+          "member": "int64",
+          "name": "ShardNodeMemory",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "(Disused) Node disk size in GB",
+          "example": "0",
+          "member": "int64",
+          "name": "ShardNodeStorage",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Database version",
+          "example": "5.7.17",
+          "member": "string",
+          "name": "DbVersionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Security group ID",
+          "example": "sg-xxxx",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of security group IDs",
+          "example": "[\"sg-xxxx\",\"sg-xxxx\"]",
+          "member": "string",
+          "name": "SecurityGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "DCN source instance ID",
+          "example": "tdsqlshard-xxxx",
+          "member": "string",
+          "name": "DcnInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Region of DCN source instance",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "DcnRegion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom instance name",
+          "example": "xx",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag",
+          "example": "无",
+          "member": "ResourceTag",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether IPv6 flag is supported. Valid values: `1` (yes), `0` (no).",
+          "example": "无",
+          "member": "int64",
+          "name": "Ipv6Flag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "(Disused) Pid, which can be queried by the u200d`DescribeSpecInfo` API.",
+          "example": "100",
+          "member": "int64",
+          "name": "Pid",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "List of parameters. Valid values: `character_set_server` (character set; required), `lower_case_table_names` (table name case sensitivity; required; `0`: case-sensitive; `1`: case-insensitive), `innodb_page_size` (InnoDB data page; default size: 16 KB), `sync_mode` (sync mode; `0`: async; `1`: strong sync; `2`: downgradable strong sync. Default value: u200d`2`).",
+          "example": "无",
+          "member": "DBParamValue",
+          "name": "InitParams",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specified UUID for the source node. If left empty, it will be assigned by the system randomly.",
+          "example": "svr-xxxx",
+          "member": "string",
+          "name": "MasterHostId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specified UUID for the u200dreplica node. If left empty, it will be assigned by the system randomly.",
+          "example": "[\"svr-xxx\",\"svr-xxx\"]",
+          "member": "string",
+          "name": "SlaveHostIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the u200dsource instance to be rolled back",
+          "example": "tdsqlshard-xxx",
+          "member": "string",
+          "name": "RollbackInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rollback time",
+          "example": "2022-05-10 12:00:00",
+          "member": "string",
+          "name": "RollbackTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDedicatedClusterDCDBInstanceResponse": {
+      "document": "CreateDedicatedClusterDCDBInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Array of assigned resource IDs",
+          "example": "[\"tdsql-xxxxxx\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Flow ID",
+          "example": "1122",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1627,6 +1976,7 @@
         {
           "disabled": false,
           "document": "Parameter name",
+          "example": "",
           "member": "string",
           "name": "Param",
           "required": true,
@@ -1636,6 +1986,7 @@
         {
           "disabled": false,
           "document": "Parameter value",
+          "example": "",
           "member": "string",
           "name": "Value",
           "required": true,
@@ -2157,6 +2508,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2166,6 +2518,7 @@
         {
           "disabled": false,
           "document": "Shard SQL passthrough ID, which is used to pass through SQL statements to the specified shard for execution.",
+          "example": "",
           "member": "string",
           "name": "ShardSerialId",
           "required": true,
@@ -2175,6 +2528,7 @@
         {
           "disabled": false,
           "document": "Globally unique shard ID",
+          "example": "",
           "member": "string",
           "name": "ShardInstanceId",
           "required": true,
@@ -2184,6 +2538,7 @@
         {
           "disabled": false,
           "document": "Status. 0: creating; 1: processing; 2: running; 3: shard not initialized.",
+          "example": "",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -2193,6 +2548,7 @@
         {
           "disabled": false,
           "document": "Status description",
+          "example": "",
           "member": "string",
           "name": "StatusDesc",
           "required": true,
@@ -2202,6 +2558,7 @@
         {
           "disabled": false,
           "document": "Creation time",
+          "example": "",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -2211,6 +2568,7 @@
         {
           "disabled": false,
           "document": "VPC ID in string format",
+          "example": "",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -2220,6 +2578,7 @@
         {
           "disabled": false,
           "document": "VPC subnet ID in string format",
+          "example": "",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -2229,6 +2588,7 @@
         {
           "disabled": false,
           "document": "Project ID",
+          "example": "",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -2238,6 +2598,7 @@
         {
           "disabled": false,
           "document": "Region",
+          "example": "",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -2247,6 +2608,7 @@
         {
           "disabled": false,
           "document": "AZ",
+          "example": "",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -2256,6 +2618,7 @@
         {
           "disabled": false,
           "document": "Memory size in GB",
+          "example": "",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -2265,6 +2628,7 @@
         {
           "disabled": false,
           "document": "Storage capacity in GB",
+          "example": "",
           "member": "int64",
           "name": "Storage",
           "required": true,
@@ -2274,6 +2638,7 @@
         {
           "disabled": false,
           "document": "Expiration time",
+          "example": "",
           "member": "datetime",
           "name": "PeriodEndTime",
           "required": true,
@@ -2283,6 +2648,7 @@
         {
           "disabled": false,
           "document": "Number of nodes. 2: one source and one replica; 3: one source and two replicas",
+          "example": "",
           "member": "int64",
           "name": "NodeCount",
           "required": true,
@@ -2292,6 +2658,7 @@
         {
           "disabled": false,
           "document": "Storage utilization in %",
+          "example": "",
           "member": "float",
           "name": "StorageUsage",
           "required": true,
@@ -2301,6 +2668,7 @@
         {
           "disabled": false,
           "document": "Memory utilization in %",
+          "example": "",
           "member": "float",
           "name": "MemoryUsage",
           "required": true,
@@ -2310,6 +2678,7 @@
         {
           "disabled": false,
           "document": "Numeric shard ID (this field is obsolete and should not be depended on)",
+          "example": "",
           "member": "int64",
           "name": "ShardId",
           "required": true,
@@ -2319,6 +2688,7 @@
         {
           "disabled": false,
           "document": "Product ID",
+          "example": "",
           "member": "int64",
           "name": "Pid",
           "required": true,
@@ -2328,6 +2698,7 @@
         {
           "disabled": false,
           "document": "Proxy version",
+          "example": "",
           "member": "string",
           "name": "ProxyVersion",
           "required": true,
@@ -2337,6 +2708,7 @@
         {
           "disabled": false,
           "document": "Billing mode\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Paymode",
           "required": true,
@@ -2346,6 +2718,7 @@
         {
           "disabled": false,
           "document": "Source AZ of the shard\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ShardMasterZone",
           "required": true,
@@ -2355,6 +2728,7 @@
         {
           "disabled": false,
           "document": "List of replica AZs of the shard\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ShardSlaveZones",
           "required": true,
@@ -2364,6 +2738,7 @@
         {
           "disabled": false,
           "document": "Number of CPU cores",
+          "example": "",
           "member": "int64",
           "name": "Cpu",
           "required": true,
@@ -2373,6 +2748,7 @@
         {
           "disabled": false,
           "document": "The value range of shardkey, which includes 64 hash values, such as 0-31 or 32-63.",
+          "example": "",
           "member": "string",
           "name": "Range",
           "required": true,
@@ -2388,6 +2764,7 @@
         {
           "disabled": false,
           "document": "Database name",
+          "example": "",
           "member": "string",
           "name": "DbName",
           "required": true,
@@ -2403,6 +2780,7 @@
         {
           "disabled": false,
           "document": "Function name",
+          "example": "",
           "member": "string",
           "name": "Func",
           "required": true,
@@ -2444,6 +2822,7 @@
         {
           "disabled": false,
           "document": "Stored procedure name",
+          "example": "",
           "member": "string",
           "name": "Proc",
           "required": true,
@@ -2459,6 +2838,7 @@
         {
           "disabled": false,
           "document": "Table name",
+          "example": "",
           "member": "string",
           "name": "Table",
           "required": true,
@@ -2474,6 +2854,7 @@
         {
           "disabled": false,
           "document": "View name",
+          "example": "",
           "member": "string",
           "name": "View",
           "required": true,
@@ -2751,6 +3132,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc, which can be obtained through the `DescribeDCDBInstances` API.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2759,6 +3141,7 @@
         {
           "disabled": false,
           "document": "Username",
+          "example": "",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -2767,6 +3150,7 @@
         {
           "disabled": false,
           "document": "Access host allowed for a user",
+          "example": "",
           "member": "string",
           "name": "Host",
           "required": true,
@@ -3137,6 +3521,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow7t8lmc.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3145,6 +3530,7 @@
         {
           "disabled": false,
           "document": "Shard ID in the format of shard-7noic7tv",
+          "example": "",
           "member": "string",
           "name": "ShardId",
           "required": true,
@@ -3153,6 +3539,7 @@
         {
           "disabled": false,
           "document": "Requested log type. Valid values: 1 (binlog); 2 (cold backup); 3 (errlog); 4 (slowlog).",
+          "example": "",
           "member": "int64",
           "name": "Type",
           "required": true,
@@ -3167,6 +3554,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "type": "string",
@@ -3175,6 +3563,7 @@
         {
           "disabled": false,
           "document": "Requested log type. Valid values: 1 (binlog); 2 (cold backup); 3 (errlog); 4 (slowlog).",
+          "example": "",
           "member": "uint64",
           "name": "Type",
           "type": "int",
@@ -3183,6 +3572,7 @@
         {
           "disabled": false,
           "document": "Total number of requested logs",
+          "example": "",
           "member": "uint64",
           "name": "Total",
           "type": "int",
@@ -3191,6 +3581,7 @@
         {
           "disabled": false,
           "document": "List of log files",
+          "example": "",
           "member": "LogFileInfo",
           "name": "Files",
           "type": "list",
@@ -3199,6 +3590,7 @@
         {
           "disabled": false,
           "document": "For an instance in a VPC, this prefix plus URI can be used as the download address",
+          "example": "",
           "member": "string",
           "name": "VpcPrefix",
           "type": "string",
@@ -3207,6 +3599,7 @@
         {
           "disabled": false,
           "document": "For an instance in a common network, this prefix plus URI can be used as the download address",
+          "example": "",
           "member": "string",
           "name": "NormalPrefix",
           "type": "string",
@@ -3215,6 +3608,7 @@
         {
           "disabled": false,
           "document": "Shard ID in the format of shard-7noic7tv",
+          "example": "",
           "member": "string",
           "name": "ShardId",
           "type": "string",
@@ -3506,6 +3900,7 @@
         {
           "disabled": false,
           "document": "ID of an instance for which to modify the sync mode. The ID is in the format of dcdbt-ow728lmc.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3545,6 +3940,43 @@
           "name": "CurrentSyncMode",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBTmpInstancesRequest": {
+      "document": "DescribeDBTmpInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The instance ID",
+          "example": "tdsql-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBTmpInstancesResponse": {
+      "document": "DescribeDBTmpInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of temp instances",
+          "example": "无",
+          "member": "TmpInstance",
+          "name": "TmpInstances",
+          "required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -4035,7 +4467,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether physical replication is supported.",
           "example": "true",
           "member": "bool",
           "name": "IsPhysicalReplicationSupported",
@@ -4290,6 +4722,7 @@
         {
           "disabled": false,
           "document": "Number of eligible instances",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -4298,6 +4731,7 @@
         {
           "disabled": false,
           "document": "List of instance details",
+          "example": "",
           "member": "DCDBInstanceInfo",
           "name": "Instances",
           "type": "list",
@@ -4890,6 +5324,53 @@
       ],
       "type": "object"
     },
+    "DescribeLogFileRetentionPeriodRequest": {
+      "document": "DescribeLogFileRetentionPeriod request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID in the format of `tdsql-ow728lmc`",
+          "example": "dcdbt-ak4b3m9l",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLogFileRetentionPeriodResponse": {
+      "document": "DescribeLogFileRetentionPeriod response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID in the format of `tdsql-ow728lmc`",
+          "example": "dcdbt-ak4b3m9l",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backup log retention days",
+          "example": "30",
+          "member": "uint64",
+          "name": "Days",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeOrdersRequest": {
       "document": "DescribeOrders request structure.",
       "members": [
@@ -4943,6 +5424,7 @@
         {
           "disabled": false,
           "document": "Database engine name. Valid value: `dcdb`.",
+          "example": "",
           "member": "string",
           "name": "Product",
           "required": true,
@@ -4951,6 +5433,7 @@
         {
           "disabled": false,
           "document": "Project ID",
+          "example": "",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -5091,6 +5574,7 @@
         {
           "disabled": false,
           "document": "Database engine name. Valid value: `dcdb`.",
+          "example": "",
           "member": "string",
           "name": "Product",
           "required": true,
@@ -5099,6 +5583,7 @@
         {
           "disabled": false,
           "document": "Security group ID",
+          "example": "",
           "member": "string",
           "name": "SecurityGroupId",
           "required": true,
@@ -5107,6 +5592,7 @@
         {
           "disabled": false,
           "document": "Instance ID list, which is an array of one or more instance IDs.",
+          "example": "",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -5624,6 +6110,7 @@
         {
           "disabled": false,
           "document": "Last modified time of a log",
+          "example": "",
           "member": "uint64",
           "name": "Mtime",
           "required": true,
@@ -5633,6 +6120,7 @@
         {
           "disabled": false,
           "document": "File length",
+          "example": "",
           "member": "uint64",
           "name": "Length",
           "required": true,
@@ -5642,6 +6130,7 @@
         {
           "disabled": false,
           "document": "Uniform resource identifier (URI) used during log download",
+          "example": "",
           "member": "string",
           "name": "Uri",
           "required": true,
@@ -5651,6 +6140,7 @@
         {
           "disabled": false,
           "document": "Filename",
+          "example": "",
           "member": "string",
           "name": "FileName",
           "required": true,
@@ -5720,6 +6210,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5728,6 +6219,7 @@
         {
           "disabled": false,
           "document": "Login username.",
+          "example": "",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -5736,6 +6228,7 @@
         {
           "disabled": false,
           "document": "Access host allowed for a user. An account is uniquely identified by username and host.",
+          "example": "",
           "member": "string",
           "name": "Host",
           "required": true,
@@ -5744,6 +6237,7 @@
         {
           "disabled": false,
           "document": "New account remarks, which can contain 0-256 characters.",
+          "example": "",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -5943,6 +6437,7 @@
         {
           "disabled": false,
           "document": "Database engine name. Valid value: `dcdb`.",
+          "example": "",
           "member": "string",
           "name": "Product",
           "required": true,
@@ -5951,6 +6446,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5959,6 +6455,7 @@
         {
           "disabled": false,
           "document": "List of IDs of security groups to be modified, which is an array of one or more security group IDs.",
+          "example": "",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": true,
@@ -5985,6 +6482,7 @@
         {
           "disabled": false,
           "document": "List of IDs of instances to be modified. Instance ID is in the format of dcdbt-ow728lmc.",
+          "example": "",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -5993,6 +6491,7 @@
         {
           "disabled": false,
           "document": "ID of the project to be assigned, which can be obtained through the `DescribeProjects` API.",
+          "example": "",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -6303,6 +6802,7 @@
         {
           "disabled": false,
           "document": "Node ID",
+          "example": "",
           "member": "string",
           "name": "NodeId",
           "required": true,
@@ -6312,6 +6812,7 @@
         {
           "disabled": false,
           "document": "Node role. Valid values: `master`, `slave`.",
+          "example": "",
           "member": "string",
           "name": "Role",
           "required": true,
@@ -6327,6 +6828,7 @@
         {
           "disabled": false,
           "document": "Constraint type, such as `enum` and `section`",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -6336,6 +6838,7 @@
         {
           "disabled": false,
           "document": "List of valid values when constraint type is `enum`",
+          "example": "",
           "member": "string",
           "name": "Enum",
           "required": true,
@@ -6345,6 +6848,7 @@
         {
           "disabled": false,
           "document": "Range when constraint type is `section`\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "ConstraintRange",
           "name": "Range",
           "required": true,
@@ -6354,6 +6858,7 @@
         {
           "disabled": false,
           "document": "List of valid values when constraint type is `string`",
+          "example": "",
           "member": "string",
           "name": "String",
           "required": true,
@@ -6445,6 +6950,7 @@
         {
           "disabled": false,
           "document": "Renames parameter",
+          "example": "",
           "member": "string",
           "name": "Param",
           "required": true,
@@ -6454,6 +6960,7 @@
         {
           "disabled": false,
           "document": "Result of parameter modification. 0: success; -1: failure; -2: invalid parameter value",
+          "example": "",
           "member": "int64",
           "name": "Code",
           "required": true,
@@ -6525,6 +7032,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of dcdbt-ow728lmc.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6533,6 +7041,7 @@
         {
           "disabled": false,
           "document": "Login username.",
+          "example": "",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -6541,6 +7050,7 @@
         {
           "disabled": false,
           "document": "Access host allowed for a user. An account is uniquely identified by username and host.",
+          "example": "",
           "member": "string",
           "name": "Host",
           "required": true,
@@ -6549,6 +7059,7 @@
         {
           "disabled": false,
           "document": "New password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.",
+          "example": "",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -6575,6 +7086,7 @@
         {
           "disabled": false,
           "document": "Tag key",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
@@ -6584,6 +7096,7 @@
         {
           "disabled": false,
           "document": "Tag value",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": true,
@@ -6599,6 +7112,7 @@
         {
           "disabled": false,
           "document": "Project ID",
+          "example": "",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -6608,6 +7122,7 @@
         {
           "disabled": false,
           "document": "Creation time in the format of yyyy-mm-dd hh:mm:ss",
+          "example": "",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -6617,6 +7132,7 @@
         {
           "disabled": false,
           "document": "Security group ID",
+          "example": "",
           "member": "string",
           "name": "SecurityGroupId",
           "required": true,
@@ -6626,6 +7142,7 @@
         {
           "disabled": false,
           "document": "Security group name",
+          "example": "",
           "member": "string",
           "name": "SecurityGroupName",
           "required": true,
@@ -6635,6 +7152,7 @@
         {
           "disabled": false,
           "document": "Security group remarks",
+          "example": "",
           "member": "string",
           "name": "SecurityGroupRemark",
           "required": true,
@@ -6644,6 +7162,7 @@
         {
           "disabled": false,
           "document": "Inbound rule",
+          "example": "",
           "member": "SecurityGroupBound",
           "name": "Inbound",
           "required": true,
@@ -6653,6 +7172,7 @@
         {
           "disabled": false,
           "document": "Outbound rule",
+          "example": "",
           "member": "SecurityGroupBound",
           "name": "Outbound",
           "required": true,
@@ -6668,6 +7188,7 @@
         {
           "disabled": false,
           "document": "Policy, which can be `ACCEPT` or `DROP`",
+          "example": "",
           "member": "string",
           "name": "Action",
           "required": true,
@@ -6677,6 +7198,7 @@
         {
           "disabled": false,
           "document": "Source IP or source IP range, such as 192.168.0.0/16",
+          "example": "",
           "member": "string",
           "name": "CidrIp",
           "required": true,
@@ -6686,6 +7208,7 @@
         {
           "disabled": false,
           "document": "Port",
+          "example": "",
           "member": "string",
           "name": "PortRange",
           "required": true,
@@ -6695,6 +7218,7 @@
         {
           "disabled": false,
           "document": "Network protocol. UDP and TCP are supported.",
+          "example": "",
           "member": "string",
           "name": "IpProtocol",
           "required": true,
@@ -6866,6 +7390,7 @@
         {
           "disabled": false,
           "document": "Shard ID",
+          "example": "",
           "member": "string",
           "name": "ShardInstanceId",
           "required": true,
@@ -6875,6 +7400,7 @@
         {
           "disabled": false,
           "document": "Shard set ID",
+          "example": "",
           "member": "string",
           "name": "ShardSerialId",
           "required": true,
@@ -6884,6 +7410,7 @@
         {
           "disabled": false,
           "document": "Status. 0: creating; 1: processing; 2: running; 3: shard not initialized; -2: shard deleted",
+          "example": "",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -6893,6 +7420,7 @@
         {
           "disabled": false,
           "document": "Creation time",
+          "example": "",
           "member": "string",
           "name": "Createtime",
           "required": true,
@@ -6902,6 +7430,7 @@
         {
           "disabled": false,
           "document": "Memory size in GB",
+          "example": "",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -6911,6 +7440,7 @@
         {
           "disabled": false,
           "document": "Storage capacity in GB",
+          "example": "",
           "member": "int64",
           "name": "Storage",
           "required": true,
@@ -6920,6 +7450,7 @@
         {
           "disabled": false,
           "document": "Numeric ID of a shard",
+          "example": "",
           "member": "int64",
           "name": "ShardId",
           "required": true,
@@ -6929,6 +7460,7 @@
         {
           "disabled": false,
           "document": "Number of nodes. 2: one primary and one secondary; 3: one primary and two secondaries",
+          "example": "",
           "member": "int64",
           "name": "NodeCount",
           "required": true,
@@ -6938,6 +7470,7 @@
         {
           "disabled": false,
           "document": "Product type ID (this field is obsolete and should not be depended on)",
+          "example": "",
           "member": "int64",
           "name": "Pid",
           "required": true,
@@ -6947,6 +7480,7 @@
         {
           "disabled": false,
           "document": "Number of CPU cores",
+          "example": "",
           "member": "uint64",
           "name": "Cpu",
           "required": true,
@@ -7250,6 +7784,7 @@
         {
           "disabled": false,
           "document": "Column name",
+          "example": "",
           "member": "string",
           "name": "Col",
           "required": true,
@@ -7259,6 +7794,7 @@
         {
           "disabled": false,
           "document": "Column type",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -7329,6 +7865,261 @@
           "member": "int64",
           "name": "FlowId",
           "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TmpInstance": {
+      "document": "Temp instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "AppId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "datetime",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "InstanceRemark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Type of temp instance. Valid values: `0` (non-temp instance), `1` (invalid temp instance), `2` (valid rollback temp instance).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "TempType",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance status. Valid values: `0` (to be initialized), `1` (in process), `2` (running), `-1` (isolated), `-2` (eliminated).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID in the format of `tdsql-ow728lmc`\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Virtual instance IP\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "Vip",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Virtual instance port\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "Vport",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Validity end time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "datetime",
+          "name": "PeriodEndTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Source instance ID in the format of `tdsql-ow728lmc`\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "SrcInstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance status description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "StatusDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance region\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "Region",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "AZ of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Virtual IPv6 of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "Vipv6",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance IPv6 flag\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "uint64",
+          "name": "Ipv6Flag",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UpgradeDedicatedDCDBInstanceRequest": {
+      "document": "UpgradeDedicatedDCDBInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Upgrade type. Valid values: `ADD` (add a shard), `SPLIT` (split a shard), and `EXPAND` (Vertically expand a shard).",
+          "example": "EXPAND",
+          "member": "string",
+          "name": "UpgradeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID, such as dcdbt-mlfjm74h.",
+          "example": "dcdbt-mlfjm74h",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "A parameter for adding shards when `UpgradeType` is `ADD`.",
+          "example": "无",
+          "member": "AddShardConfig",
+          "name": "AddShardConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "A parameter for vertically expand a shard when `UpgradeType` is `EXPAND`.",
+          "example": "无",
+          "member": "ExpandShardConfig",
+          "name": "ExpandShardConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "A parameter for splitting a shard when `UpgradeType` is `SPLIT`.",
+          "example": "无",
+          "member": "SplitShardConfig",
+          "name": "SplitShardConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to automatically retry u200donce when missing the switch time window. Valid values: `0` (No), `1` (Yes).",
+          "example": "1",
+          "member": "int64",
+          "name": "SwitchAutoRetry",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Switch u200dstart u200dtime",
+          "example": "2020-12-01 00:30:00",
+          "member": "string",
+          "name": "SwitchStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Switch end time",
+          "example": "2020-12-01 00:45:00",
+          "member": "string",
+          "name": "SwitchEndTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradeDedicatedDCDBInstanceResponse": {
+      "document": "UpgradeDedicatedDCDBInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Async task flow ID",
+          "example": "11",
+          "member": "int64",
+          "name": "FlowId",
           "type": "int",
           "value_allowed_null": false
         },
