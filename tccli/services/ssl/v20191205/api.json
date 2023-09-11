@@ -7,6 +7,13 @@
       "output": "ApplyCertificateResponse",
       "status": "online"
     },
+    "BatchDeleteCSR": {
+      "document": "This API is used to batch delete CSRs.",
+      "input": "BatchDeleteCSRRequest",
+      "name": "Batch deletes CSRs",
+      "output": "BatchDeleteCSRResponse",
+      "status": "online"
+    },
     "CancelCertificateOrder": {
       "document": "This API is used to cancel a certificate order.",
       "input": "CancelCertificateOrderRequest",
@@ -21,11 +28,25 @@
       "output": "CommitCertificateInformationResponse",
       "status": "online"
     },
+    "CreateCSR": {
+      "document": "This API is used to create a CSR.",
+      "input": "CreateCSRRequest",
+      "name": "Creates a CSR",
+      "output": "CreateCSRResponse",
+      "status": "online"
+    },
     "CreateCertificate": {
       "document": "This API is used to purchase a certificate.",
       "input": "CreateCertificateRequest",
       "name": "Purchases a certificate",
       "output": "CreateCertificateResponse",
+      "status": "online"
+    },
+    "CreateCertificateBindResourceSyncTask": {
+      "document": "This API is used to create an async task for querying the cloud resources associated with a certificate. If such a task already exists under the certificate ID, the ID of this task is returned as the result. The following types of cloud resources are supported: CLB, CDN, WAF, LIVE, VOD, DDOS, TKE, APIGATEWAY, TCB, and TEO (EDGEONE). You can query the result of this task using the `DescribeCertificateBindResourceTaskResult` API.",
+      "input": "CreateCertificateBindResourceSyncTaskRequest",
+      "name": "Creates an async task for querying cloud resources associated with a certificate",
+      "output": "CreateCertificateBindResourceSyncTaskResponse",
       "status": "online"
     },
     "DeleteCertificate": {
@@ -35,11 +56,39 @@
       "output": "DeleteCertificateResponse",
       "status": "online"
     },
+    "DescribeCSR": {
+      "document": "This API is used to query the details of a CSR.",
+      "input": "DescribeCSRRequest",
+      "name": "Queries the details of a CSR",
+      "output": "DescribeCSRResponse",
+      "status": "online"
+    },
+    "DescribeCSRSet": {
+      "document": "This API is used to query the CSR list.",
+      "input": "DescribeCSRSetRequest",
+      "name": "Queries the CSR list",
+      "output": "DescribeCSRSetResponse",
+      "status": "online"
+    },
     "DescribeCertificate": {
       "document": "This API is used to get certificate information.",
       "input": "DescribeCertificateRequest",
       "name": "Gets certificate information",
       "output": "DescribeCertificateResponse",
+      "status": "online"
+    },
+    "DescribeCertificateBindResourceTaskDetail": {
+      "document": "This API is used to query the result of an async task created with `CreateCertificateBindResourceSyncTask` to query cloud resources associated with a certificate. The following types of cloud resources are supported: CLB, CDN, WAF, LIVE, VOD, DDOS, TKE, APIGATEWAY, TCB, and TEO (EDGEONE).",
+      "input": "DescribeCertificateBindResourceTaskDetailRequest",
+      "name": "Queries the result of a task querying cloud resources associated with a certificate (details of associated cloud resources are returned)",
+      "output": "DescribeCertificateBindResourceTaskDetailResponse",
+      "status": "online"
+    },
+    "DescribeCertificateBindResourceTaskResult": {
+      "document": "This API is used to query the result of an async task created with `CreateCertificateBindResourceSyncTask` to query cloud resources associated with a certificate. The following types of cloud resources are supported: CLB, CDN, WAF, LIVE, VOD, DDOS, TKE, APIGATEWAY, TCB, and TEO (EDGEONE).",
+      "input": "DescribeCertificateBindResourceTaskResultRequest",
+      "name": "Queries the result of a task querying cloud resources associated with a certificate (only the total number of associated cloud resources is returned)",
+      "output": "DescribeCertificateBindResourceTaskResultResponse",
       "status": "online"
     },
     "DescribeCertificateDetail": {
@@ -68,6 +117,13 @@
       "input": "DownloadCertificateRequest",
       "name": "Downloads a certificate",
       "output": "DownloadCertificateResponse",
+      "status": "online"
+    },
+    "ModifyCSR": {
+      "document": "This API is used to modify the information of a CSR.",
+      "input": "ModifyCSRRequest",
+      "name": "Modifies the information of a CSR",
+      "output": "ModifyCSRResponse",
       "status": "online"
     },
     "ModifyCertificateAlias": {
@@ -119,6 +175,98 @@
     "serviceShortName": "ssl"
   },
   "objects": {
+    "ApiGatewayInstanceDetail": {
+      "document": "Details of an APIGATEWAY instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The instance ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The instance name.",
+          "example": "无",
+          "member": "string",
+          "name": "ServiceName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The domain.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The certificate ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CertId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The protocol.",
+          "example": "无",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ApiGatewayInstanceList": {
+      "document": "Details of APIGATEWAY instances - data structure of an async task for querying associated cloud resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The region.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of APIGATEWAY instances.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ApiGatewayInstanceDetail",
+          "name": "InstanceList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The total number of APIGATEWAY instances in this region.\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ApplyCertificateRequest": {
       "document": "ApplyCertificate request structure.",
       "members": [
@@ -272,12 +420,248 @@
       ],
       "type": "object"
     },
+    "BatchDeleteCSRRequest": {
+      "document": "BatchDeleteCSR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The IDs of the CSRs to be deleted, 100 IDs at most.",
+          "example": "无",
+          "member": "int64",
+          "name": "CSRIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchDeleteCSRResponse": {
+      "document": "BatchDeleteCSR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The IDs of the CSRs successfully deleted.",
+          "example": "无",
+          "member": "int64",
+          "name": "Success",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BindResourceRegionResult": {
+      "document": "Region of associated cloud resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The region.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The total number of associated cloud resources.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BindResourceResult": {
+      "document": "Associated cloud resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Supported types: CLB, CDN, WAF, LIVE, VOD, DDOS, TKE, APIGATEWAY, TCB, and TEO (EDGEONE).",
+          "example": "无",
+          "member": "string",
+          "name": "ResourceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The region of associated cloud resources.",
+          "example": "无",
+          "member": "BindResourceRegionResult",
+          "name": "BindResourceRegionResult",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CSRItem": {
+      "document": "Details of a CSR",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The CSR ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Id",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The account.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OwnerUin",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The domain.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The organization name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Organization",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The department.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Department",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The email address.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Email",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The province.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Province",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The city.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "City",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The country or region.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Country",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The remarks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Remarks",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The creation time.\nNote: u200dThis field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The encryption algorithm.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "EncryptAlgo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The algorithm parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "KeyParameter",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "CancelCertificateOrderRequest": {
       "document": "CancelCertificateOrder request structure.",
       "members": [
         {
           "disabled": false,
           "document": "Certificate ID",
+          "example": "",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -292,6 +676,7 @@
         {
           "disabled": false,
           "document": "ID of the certificate whose order has been successfully cancelled",
+          "example": "",
           "member": "string",
           "name": "CertificateId",
           "type": "string",
@@ -305,6 +690,152 @@
         }
       ],
       "type": "object"
+    },
+    "CdnInstanceDetail": {
+      "document": "Details of a CDN instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The domain.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The ID of the deployed certificate.",
+          "example": "无",
+          "member": "string",
+          "name": "CertId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The status of the domain.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The billing status of the domain.",
+          "example": "无",
+          "member": "string",
+          "name": "HttpsBillingSwitch",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CdnInstanceList": {
+      "document": "Details of CDN instances - data structure of an async task for querying associated cloud resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The total number of CDN domains in this region.\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of CDN domains.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CdnInstanceDetail",
+          "name": "InstanceList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CertTaskId": {
+      "document": "Certificate and async task IDs",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The certificate ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CertId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The async task ID.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Certificate": {
+      "document": "Details of a CLB certificate",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The certificate ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CertId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of domains bound to the certificate.",
+          "example": "无",
+          "member": "string",
+          "name": "DnsNames",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The root certificate ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CertCaId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The authentication type. Valid values: `UNIDIRECTIONAL` (one-way authentication) and `MUTUAL` (two-way authentication).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SSLMode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "CertificateExtra": {
       "document": "Content of the `CertificateExtra` parameter. `CertificateExtra` is an element of `Certificates` array which is returned by `DescribeCertificates`.",
@@ -758,6 +1289,210 @@
       ],
       "usage": "out"
     },
+    "ClbInstanceDetail": {
+      "document": "Details of a CLB instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The CLB instance ID.",
+          "example": "无",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The CLB instance name.",
+          "example": "无",
+          "member": "string",
+          "name": "LoadBalancerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of CLB listeners.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ClbListener",
+          "name": "Listeners",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ClbInstanceList": {
+      "document": "Details of CLB instances - data structure of an async task for querying associated cloud resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The region.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of CLB instances.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ClbInstanceDetail",
+          "name": "InstanceList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The total number of CLB instances in this region.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ClbListener": {
+      "document": "Details of a CLB instance listener",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The listener ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The listener name.",
+          "example": "无",
+          "member": "string",
+          "name": "ListenerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable SNI. Valid values: `1` (enable) and `0` (disable).",
+          "example": "无",
+          "member": "uint64",
+          "name": "SniSwitch",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The listener protocol type. Valid values: `HTTPS` and `TCP_SSL`.",
+          "example": "无",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The information of the certificate bound to the listener.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Certificate",
+          "name": "Certificate",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The list of the listener rules.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ClbListenerRule",
+          "name": "Rules",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The list of non-matching domains.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "NoMatchDomains",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ClbListenerRule": {
+      "document": "Details of a CLB listener rule",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The rule ID.",
+          "example": "无",
+          "member": "string",
+          "name": "LocationId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The domains bound.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the rule matches the domains to be associated with a certificate.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsMatch",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The certificates associated with the rule.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Certificate",
+          "name": "Certificate",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The list of non-matching domains.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "NoMatchDomains",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "CommitCertificateInformationRequest": {
       "document": "CommitCertificateInformation request structure.",
       "members": [
@@ -788,6 +1523,7 @@
         {
           "disabled": false,
           "document": "TrustAsia order ID",
+          "example": "",
           "member": "string",
           "name": "OrderId",
           "type": "string",
@@ -796,9 +1532,192 @@
         {
           "disabled": false,
           "document": "Certificate status. `0`: reviewing; `1`: approved; `2`: unapproved; `3`: expired; `4`: DNS record added; `5`: enterprise-grade certificate, pending submission; `6`: canceling order; `7`: canceled; `8`: information submitted, pending confirmation letter upload; `9`: revoking certificate; `10`: revoked; `11`: reissuing; `12`: pending revocation confirmation letter upload",
+          "example": "",
           "member": "uint64",
           "name": "Status",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCSRRequest": {
+      "document": "CreateCSR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The domain.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The organization name.",
+          "example": "无",
+          "member": "string",
+          "name": "Organization",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The department.",
+          "example": "无",
+          "member": "string",
+          "name": "Department",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The email address.",
+          "example": "无",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The province.",
+          "example": "无",
+          "member": "string",
+          "name": "Province",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The city.",
+          "example": "无",
+          "member": "string",
+          "name": "City",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The country or region code that complies with ISO 3166, such as CN and US.",
+          "example": "无",
+          "member": "string",
+          "name": "Country",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The encryption algorithm. RSA and ECC are supported.\t",
+          "example": "无",
+          "member": "string",
+          "name": "EncryptAlgo",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The key pair parameter. For RSA, only the 2048-bit and 4096-bit key pairs are supported. For ECC, only prime256v1 is supported.",
+          "example": "无",
+          "member": "string",
+          "name": "KeyParameter",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to generate the CSR content. Once the CSR content is generated, the CSR record cannot be modified.",
+          "example": "无",
+          "member": "bool",
+          "name": "Generate",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "The password of the private key.",
+          "example": "无",
+          "member": "string",
+          "name": "KeyPassword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The remarks.",
+          "example": "无",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCSRResponse": {
+      "document": "CreateCSR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The CSR ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCertificateBindResourceSyncTaskRequest": {
+      "document": "CreateCertificateBindResourceSyncTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The list of certificate IDs, 100 IDs at most.",
+          "example": "无",
+          "member": "string",
+          "name": "CertificateIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to use the cached results. Valid values: `1` (default) for yes and `0` for no. If any task completed within last 30 minutes exists under the current certificate ID, and the cache is used, the query result of the last task completed within 30 minutes will be read.",
+          "example": "无",
+          "member": "uint64",
+          "name": "IsCache",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCertificateBindResourceSyncTaskResponse": {
+      "document": "CreateCertificateBindResourceSyncTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The IDs of async tasks for querying cloud resources associated with a certificate.",
+          "example": "无",
+          "member": "CertTaskId",
+          "name": "CertTaskIds",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -875,12 +1794,95 @@
       ],
       "type": "object"
     },
+    "DdosInstanceDetail": {
+      "document": "Details of a DDOS instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The domain.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The instance ID.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The protocol type.",
+          "example": "无",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The certificate ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CertId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The forwarding port.",
+          "example": "无",
+          "member": "string",
+          "name": "VirtualPort",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DdosInstanceList": {
+      "document": "Details of DDOS instances - data structure of an async task for querying associated cloud resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The total number of DDOS instances in this region.\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of DDOS instances.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DdosInstanceDetail",
+          "name": "InstanceList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "DeleteCertificateRequest": {
       "document": "DeleteCertificate request structure.",
       "members": [
         {
           "disabled": false,
           "document": "Certificate ID",
+          "example": "",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -895,10 +1897,502 @@
         {
           "disabled": false,
           "document": "Deletion result",
+          "example": "",
           "member": "bool",
           "name": "DeleteResult",
           "type": "bool",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCSRRequest": {
+      "document": "DescribeCSR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The CSR ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "CSRId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCSRResponse": {
+      "document": "DescribeCSR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The CSR ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "Id",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The account.",
+          "example": "无",
+          "member": "string",
+          "name": "OwnerUin",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The domain.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The organization name.",
+          "example": "无",
+          "member": "string",
+          "name": "Organization",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The department.",
+          "example": "无",
+          "member": "string",
+          "name": "Department",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The email address.",
+          "example": "无",
+          "member": "string",
+          "name": "Email",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The province.",
+          "example": "无",
+          "member": "string",
+          "name": "Province",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The city.",
+          "example": "无",
+          "member": "string",
+          "name": "City",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The country or region.",
+          "example": "无",
+          "member": "string",
+          "name": "Country",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The key algorithm.",
+          "example": "无",
+          "member": "string",
+          "name": "EncryptAlgo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The algorithm parameter.",
+          "example": "无",
+          "member": "string",
+          "name": "KeyParameter",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The remarks.",
+          "example": "无",
+          "member": "string",
+          "name": "Remarks",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The status.",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The password of the private key.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "KeyPassword",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The creation time.",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The CSR content.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CSR",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The content of the private key.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PrivateKey",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCSRSetRequest": {
+      "document": "DescribeCSRSet request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The number of CSRs on each page. The default value is 10, and the maximum value is 100.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The pagination offset, starting from 0.\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The domain for CSR filtering.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The encryption algorithm for CSR filtering.",
+          "example": "无",
+          "member": "string",
+          "name": "EncryptAlgo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCSRSetResponse": {
+      "document": "DescribeCSRSet response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The total number of CSRs.\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of CSRs.",
+          "example": "无",
+          "member": "CSRItem",
+          "name": "Set",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCertificateBindResourceTaskDetailRequest": {
+      "document": "DescribeCertificateBindResourceTaskDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The task ID, which is required to query the result of associated cloud resources.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The number of cloud resources displayed on each page. The default value is 10, and the maximum value is 100.",
+          "example": "无",
+          "member": "string",
+          "name": "Limit",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The current offset.",
+          "example": "无",
+          "member": "string",
+          "name": "Offset",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The types of the resources to be queried. If no value is passed in, all types of resources will be queried.",
+          "example": "无",
+          "member": "string",
+          "name": "ResourceTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The regions of the resources to be queried. Only CLB, TKE, WAF, APIGATEWAY, and TCB resources support the query by region.",
+          "example": "无",
+          "member": "string",
+          "name": "Regions",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCertificateBindResourceTaskDetailResponse": {
+      "document": "DescribeCertificateBindResourceTaskDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The details of associated CLB resources.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ClbInstanceList",
+          "name": "CLB",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The details of associated CDN resources.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CdnInstanceList",
+          "name": "CDN",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The details of associated WAF resources.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "WafInstanceList",
+          "name": "WAF",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The details of associated Anti-DDS resources.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DdosInstanceList",
+          "name": "DDOS",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The details of associated LIVE resources.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LiveInstanceList",
+          "name": "LIVE",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The details of associated VOD resources.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VODInstanceList",
+          "name": "VOD",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The details of associated TKE resources.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TkeInstanceList",
+          "name": "TKE",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The details of associated APIGATEWAY resources.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ApiGatewayInstanceList",
+          "name": "APIGATEWAY",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The details of associated TCB resources.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TCBInstanceList",
+          "name": "TCB",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The details of associated TEO resources.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TeoInstanceList",
+          "name": "TEO",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The status of the async task. Valid values: `0` for querying, `1` for successful, and `2` for abnormal. If the status is `1`, the result of `BindResourceResult` will be displayed; if the status is `2`, the error causes will be displayed.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The cache time of the current result.",
+          "example": "无",
+          "member": "string",
+          "name": "CacheTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCertificateBindResourceTaskResultRequest": {
+      "document": "DescribeCertificateBindResourceTaskResult request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The task IDs, which are used to query the results of associated cloud resources, 100 IDs at most.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCertificateBindResourceTaskResultResponse": {
+      "document": "DescribeCertificateBindResourceTaskResult response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The results of the async tasks for querying associated cloud resources.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SyncTaskBindResourceResult",
+          "name": "SyncTaskBindResourceResult",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -933,6 +2427,7 @@
           "example": "无",
           "member": "string",
           "name": "OwnerUin",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -942,6 +2437,7 @@
           "example": "无",
           "member": "string",
           "name": "ProjectId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -951,6 +2447,7 @@
           "example": "无",
           "member": "string",
           "name": "From",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -960,6 +2457,7 @@
           "example": "无",
           "member": "string",
           "name": "CertificateType",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -969,6 +2467,7 @@
           "example": "无",
           "member": "string",
           "name": "PackageType",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -978,6 +2477,7 @@
           "example": "无",
           "member": "string",
           "name": "ProductZhName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -987,6 +2487,7 @@
           "example": "无",
           "member": "string",
           "name": "Domain",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -996,6 +2497,7 @@
           "example": "无",
           "member": "string",
           "name": "Alias",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1005,6 +2507,7 @@
           "example": "无",
           "member": "uint64",
           "name": "Status",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -1014,6 +2517,7 @@
           "example": "无",
           "member": "string",
           "name": "StatusMsg",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1023,6 +2527,7 @@
           "example": "无",
           "member": "string",
           "name": "VerifyType",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1032,6 +2537,7 @@
           "example": "无",
           "member": "string",
           "name": "VulnerabilityStatus",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1041,6 +2547,7 @@
           "example": "无",
           "member": "datetime",
           "name": "CertBeginTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1050,6 +2557,7 @@
           "example": "无",
           "member": "datetime",
           "name": "CertEndTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1059,6 +2567,7 @@
           "example": "无",
           "member": "string",
           "name": "ValidityPeriod",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1068,6 +2577,7 @@
           "example": "无",
           "member": "datetime",
           "name": "InsertTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1077,6 +2587,7 @@
           "example": "无",
           "member": "string",
           "name": "OrderId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1086,6 +2597,7 @@
           "example": "无",
           "member": "CertificateExtra",
           "name": "CertificateExtra",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -1095,6 +2607,7 @@
           "example": "无",
           "member": "string",
           "name": "CertificatePrivateKey",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1104,6 +2617,7 @@
           "example": "无",
           "member": "string",
           "name": "CertificatePublicKey",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1113,6 +2627,7 @@
           "example": "无",
           "member": "DvAuthDetail",
           "name": "DvAuthDetail",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -1122,6 +2637,7 @@
           "example": "无",
           "member": "string",
           "name": "VulnerabilityReport",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1131,6 +2647,7 @@
           "example": "无",
           "member": "string",
           "name": "CertificateId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1140,6 +2657,7 @@
           "example": "无",
           "member": "string",
           "name": "TypeName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1149,6 +2667,7 @@
           "example": "无",
           "member": "string",
           "name": "StatusName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1158,6 +2677,7 @@
           "example": "无",
           "member": "string",
           "name": "SubjectAltName",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1167,6 +2687,7 @@
           "example": "无",
           "member": "bool",
           "name": "IsVip",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1176,6 +2697,7 @@
           "example": "无",
           "member": "bool",
           "name": "IsWildcard",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1185,6 +2707,7 @@
           "example": "无",
           "member": "bool",
           "name": "IsDv",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1194,6 +2717,7 @@
           "example": "无",
           "member": "bool",
           "name": "IsVulnerability",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1203,6 +2727,7 @@
           "example": "无",
           "member": "SubmittedData",
           "name": "SubmittedData",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -1212,6 +2737,7 @@
           "example": "无",
           "member": "bool",
           "name": "RenewAble",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1221,6 +2747,7 @@
           "example": "无",
           "member": "bool",
           "name": "Deployable",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1230,6 +2757,7 @@
           "example": "无",
           "member": "Tags",
           "name": "Tags",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1239,6 +2767,7 @@
           "example": "无",
           "member": "RootCertificates",
           "name": "RootCert",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -1248,6 +2777,7 @@
           "example": "无",
           "member": "string",
           "name": "EncryptCert",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1257,6 +2787,7 @@
           "example": "无",
           "member": "string",
           "name": "EncryptPrivateKey",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1266,6 +2797,7 @@
           "example": "无",
           "member": "string",
           "name": "CertFingerprint",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1275,6 +2807,7 @@
           "example": "无",
           "member": "string",
           "name": "EncryptCertFingerprint",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1284,7 +2817,18 @@
           "example": "无",
           "member": "string",
           "name": "EncryptAlgorithm",
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The authentication value for DV certificate revocation.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DvAuths",
+          "name": "DvRevokeAuthDetail",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
@@ -1302,6 +2846,7 @@
         {
           "disabled": false,
           "document": "Offset. The default value is 0.",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -1310,6 +2855,7 @@
         {
           "disabled": false,
           "document": "Number of requested logs. The default value is 20.",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -1318,6 +2864,7 @@
         {
           "disabled": false,
           "document": "Start time. The default value is 15 days ago.",
+          "example": "",
           "member": "datetime",
           "name": "StartTime",
           "required": false,
@@ -1326,6 +2873,7 @@
         {
           "disabled": false,
           "document": "End time. The default value is the current time.",
+          "example": "",
           "member": "datetime",
           "name": "EndTime",
           "required": false,
@@ -1340,6 +2888,7 @@
         {
           "disabled": false,
           "document": "Total number of logs that meet query conditions",
+          "example": "",
           "member": "uint64",
           "name": "AllTotal",
           "type": "int",
@@ -1348,6 +2897,7 @@
         {
           "disabled": false,
           "document": "Number of logs returned for this request",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -1356,6 +2906,7 @@
         {
           "disabled": false,
           "document": "Certificate operation log list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "OperationLog",
           "name": "OperateLogs",
           "type": "list",
@@ -1394,6 +2945,7 @@
           "example": "无",
           "member": "string",
           "name": "OwnerUin",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1403,6 +2955,7 @@
           "example": "无",
           "member": "string",
           "name": "ProjectId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1412,6 +2965,7 @@
           "example": "无",
           "member": "string",
           "name": "From",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1421,6 +2975,7 @@
           "example": "无",
           "member": "string",
           "name": "CertificateType",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1430,6 +2985,7 @@
           "example": "无",
           "member": "string",
           "name": "PackageType",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1439,6 +2995,7 @@
           "example": "无",
           "member": "string",
           "name": "ProductZhName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1448,6 +3005,7 @@
           "example": "无",
           "member": "string",
           "name": "Domain",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1457,6 +3015,7 @@
           "example": "无",
           "member": "string",
           "name": "Alias",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1466,6 +3025,7 @@
           "example": "无",
           "member": "uint64",
           "name": "Status",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -1475,6 +3035,7 @@
           "example": "无",
           "member": "string",
           "name": "StatusMsg",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1484,6 +3045,7 @@
           "example": "无",
           "member": "string",
           "name": "VerifyType",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1493,6 +3055,7 @@
           "example": "无",
           "member": "string",
           "name": "VulnerabilityStatus",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1502,6 +3065,7 @@
           "example": "无",
           "member": "string",
           "name": "CertBeginTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1511,6 +3075,7 @@
           "example": "无",
           "member": "string",
           "name": "CertEndTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1520,6 +3085,7 @@
           "example": "无",
           "member": "string",
           "name": "ValidityPeriod",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1529,6 +3095,7 @@
           "example": "无",
           "member": "string",
           "name": "InsertTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1538,6 +3105,7 @@
           "example": "无",
           "member": "string",
           "name": "OrderId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1547,6 +3115,7 @@
           "example": "无",
           "member": "CertificateExtra",
           "name": "CertificateExtra",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -1556,6 +3125,7 @@
           "example": "无",
           "member": "DvAuthDetail",
           "name": "DvAuthDetail",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -1565,6 +3135,7 @@
           "example": "无",
           "member": "string",
           "name": "VulnerabilityReport",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1574,6 +3145,7 @@
           "example": "无",
           "member": "string",
           "name": "CertificateId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1583,6 +3155,7 @@
           "example": "无",
           "member": "string",
           "name": "PackageTypeName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1592,6 +3165,7 @@
           "example": "无",
           "member": "string",
           "name": "StatusName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1601,6 +3175,7 @@
           "example": "无",
           "member": "string",
           "name": "SubjectAltName",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1610,6 +3185,7 @@
           "example": "无",
           "member": "bool",
           "name": "IsVip",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1619,6 +3195,7 @@
           "example": "无",
           "member": "bool",
           "name": "IsWildcard",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1628,6 +3205,7 @@
           "example": "无",
           "member": "bool",
           "name": "IsDv",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1637,6 +3215,7 @@
           "example": "无",
           "member": "bool",
           "name": "IsVulnerability",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1646,6 +3225,7 @@
           "example": "无",
           "member": "bool",
           "name": "RenewAble",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1655,6 +3235,7 @@
           "example": "无",
           "member": "SubmittedData",
           "name": "SubmittedData",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -1664,6 +3245,7 @@
           "example": "无",
           "member": "bool",
           "name": "Deployable",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1673,6 +3255,7 @@
           "example": "无",
           "member": "Tags",
           "name": "Tags",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1682,6 +3265,7 @@
           "example": "无",
           "member": "string",
           "name": "CAEncryptAlgorithms",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1691,6 +3275,7 @@
           "example": "无",
           "member": "string",
           "name": "CACommonNames",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1700,6 +3285,17 @@
           "example": "无",
           "member": "string",
           "name": "CAEndTimes",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The authentication value for DV certificate revocation.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DvAuths",
+          "name": "DvRevokeAuthDetail",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1831,6 +3427,15 @@
           "name": "FilterExpiring",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the certificate can be hosted. Valid values: `1` for yes and `0` for no.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Hostable",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1873,6 +3478,7 @@
         {
           "disabled": false,
           "document": "Certificate ID",
+          "example": "",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -1887,6 +3493,7 @@
         {
           "disabled": false,
           "document": "ZIP content encoded by using Base64. After the content is decoded by using Base64, it can be saved as a ZIP file.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Content",
           "type": "string",
@@ -1895,6 +3502,7 @@
         {
           "disabled": false,
           "document": "MIME type. `application/zip`: ZIP file\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ContentType",
           "type": "string",
@@ -1915,6 +3523,7 @@
         {
           "disabled": false,
           "document": "DV authentication key\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DvAuthKey",
           "required": false,
@@ -1924,6 +3533,7 @@
         {
           "disabled": false,
           "document": "DV authentication value\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DvAuthValue",
           "required": false,
@@ -1933,6 +3543,7 @@
         {
           "disabled": false,
           "document": "Domain name of the DV authentication value\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DvAuthDomain",
           "required": true,
@@ -1942,6 +3553,7 @@
         {
           "disabled": false,
           "document": "Path of the DV authentication value\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DvAuthPath",
           "required": true,
@@ -1951,6 +3563,7 @@
         {
           "disabled": false,
           "document": "DV authentication sub-domain name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DvAuthKeySubDomain",
           "required": true,
@@ -1960,6 +3573,7 @@
         {
           "disabled": false,
           "document": "DV authentication information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "DvAuths",
           "name": "DvAuths",
           "required": true,
@@ -1975,6 +3589,7 @@
         {
           "disabled": false,
           "document": "DV authentication key\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DvAuthKey",
           "required": true,
@@ -1984,6 +3599,7 @@
         {
           "disabled": false,
           "document": "DV authentication value\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DvAuthValue",
           "required": true,
@@ -1993,6 +3609,7 @@
         {
           "disabled": false,
           "document": "Domain name of the DV authentication value\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DvAuthDomain",
           "required": true,
@@ -2002,6 +3619,7 @@
         {
           "disabled": false,
           "document": "Path of the DV authentication value\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DvAuthPath",
           "required": true,
@@ -2011,6 +3629,7 @@
         {
           "disabled": false,
           "document": "DV authentication sub-domain name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DvAuthSubDomain",
           "required": true,
@@ -2020,6 +3639,7 @@
         {
           "disabled": false,
           "document": "DV authentication type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DvAuthVerifyType",
           "required": true,
@@ -2029,12 +3649,246 @@
       ],
       "usage": "out"
     },
+    "Error": {
+      "document": "Errors",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The error code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Code",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The error message.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LiveInstanceDetail": {
+      "document": "Details of a LIVE instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The domain.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The ID of the associated certificate.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CertId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The status. Valid values: `-1`: No certificate is associated with the domain.\n`1`: HTTPS is enabled for the domain.\n`0`: HTTPS is disabled for the domain.",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LiveInstanceList": {
+      "document": "Details of LIVE instances - data structure of an async task for querying associated cloud resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The total number of LIVE instances in this region.\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of LIVE instances.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LiveInstanceDetail",
+          "name": "InstanceList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyCSRRequest": {
+      "document": "ModifyCSR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The CSR ID.\t",
+          "example": "无",
+          "member": "int64",
+          "name": "CSRId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to generate the CSR content. Once the CSR content is generated, the CSR record cannot be modified.",
+          "example": "无",
+          "member": "bool",
+          "name": "Generate",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "The domain.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The organization name.",
+          "example": "无",
+          "member": "string",
+          "name": "Organization",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The department.",
+          "example": "无",
+          "member": "string",
+          "name": "Department",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The email address.",
+          "example": "无",
+          "member": "string",
+          "name": "Email",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The province.",
+          "example": "无",
+          "member": "string",
+          "name": "Province",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The city.",
+          "example": "无",
+          "member": "string",
+          "name": "City",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The country or region.",
+          "example": "无",
+          "member": "string",
+          "name": "Country",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The encryption algorithm. RSA and ECC are supported.\t",
+          "example": "无",
+          "member": "string",
+          "name": "EncryptAlgo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The key pair parameter. For RSA, only the 2048-bit and 4096-bit key pairs are supported. For ECC, only prime256v1 is supported.",
+          "example": "无",
+          "member": "string",
+          "name": "KeyParameter",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The remarks.",
+          "example": "无",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The password of the private key.",
+          "example": "无",
+          "member": "string",
+          "name": "KeyPassword",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCSRResponse": {
+      "document": "ModifyCSR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The CSR ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyCertificateAliasRequest": {
       "document": "ModifyCertificateAlias request structure.",
       "members": [
         {
           "disabled": false,
           "document": "Certificate ID",
+          "example": "",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -2043,6 +3897,7 @@
         {
           "disabled": false,
           "document": "Alias",
+          "example": "",
           "member": "string",
           "name": "Alias",
           "required": false,
@@ -2057,6 +3912,7 @@
         {
           "disabled": false,
           "document": "ID of the successfully modified certificate",
+          "example": "",
           "member": "string",
           "name": "CertificateId",
           "type": "string",
@@ -2077,6 +3933,7 @@
         {
           "disabled": false,
           "document": "ID list of certificates whose projects need to be modified. A maximum of 100 certificate IDs are supported.",
+          "example": "",
           "member": "string",
           "name": "CertificateIdList",
           "required": true,
@@ -2085,6 +3942,7 @@
         {
           "disabled": false,
           "document": "Project ID",
+          "example": "",
           "member": "uint64",
           "name": "ProjectId",
           "required": true,
@@ -2099,6 +3957,7 @@
         {
           "disabled": false,
           "document": "List of certificates whose projects were modified successfully\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "SuccessCertificates",
           "type": "list",
@@ -2107,6 +3966,7 @@
         {
           "disabled": false,
           "document": "List of certificates whose projects failed to be modified\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "FailCertificates",
           "type": "list",
@@ -2127,6 +3987,7 @@
         {
           "disabled": false,
           "document": "Action performed on logs",
+          "example": "",
           "member": "string",
           "name": "Action",
           "required": true,
@@ -2136,6 +3997,7 @@
         {
           "disabled": false,
           "document": "Time when the action is performed",
+          "example": "",
           "member": "datetime",
           "name": "CreatedOn",
           "required": true,
@@ -2187,6 +4049,7 @@
         {
           "disabled": false,
           "document": "Project name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ProjectName",
           "required": true,
@@ -2196,6 +4059,7 @@
         {
           "disabled": false,
           "document": "UIN of the project creator\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "uint64",
           "name": "ProjectCreatorUin",
           "required": true,
@@ -2205,6 +4069,7 @@
         {
           "disabled": false,
           "document": "Project creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ProjectCreateTime",
           "required": true,
@@ -2214,6 +4079,7 @@
         {
           "disabled": false,
           "document": "Brief project information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ProjectResume",
           "required": true,
@@ -2223,6 +4089,7 @@
         {
           "disabled": false,
           "document": "User UIN\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "uint64",
           "name": "OwnerUin",
           "required": true,
@@ -2232,6 +4099,7 @@
         {
           "disabled": false,
           "document": "Project ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ProjectId",
           "required": true,
@@ -2247,6 +4115,7 @@
         {
           "disabled": false,
           "document": "Certificate ID",
+          "example": "无",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -2255,6 +4124,7 @@
         {
           "disabled": false,
           "document": "Validation type. `DNS_AUTO`: automatic DNS validation; `DNS`: manual DNS validation; `FILE`: file validation",
+          "example": "无",
           "member": "string",
           "name": "ValidType",
           "required": true,
@@ -2263,6 +4133,7 @@
         {
           "disabled": false,
           "document": "Type. `original`: original certificate CSR; `upload`: uploaded manually; `online`: generated online. The default value is original.",
+          "example": "无",
           "member": "string",
           "name": "CsrType",
           "required": false,
@@ -2271,6 +4142,7 @@
         {
           "disabled": false,
           "document": "CSR content",
+          "example": "无",
           "member": "string",
           "name": "CsrContent",
           "required": false,
@@ -2279,6 +4151,7 @@
         {
           "disabled": false,
           "document": "Password of the key",
+          "example": "无",
           "member": "string",
           "name": "CsrkeyPassword",
           "required": false,
@@ -2287,8 +4160,27 @@
         {
           "disabled": false,
           "document": "Reissue reason",
+          "example": "无",
           "member": "string",
           "name": "Reason",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The CSR encryption algorithm. Valid values: `RSA` (default), `ECC1`, and `SM2`.\nThis parameter is available for selection only when the value of `CsrType` is `Online`.",
+          "example": "无",
+          "member": "string",
+          "name": "CertCSREncryptAlgo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The CSR encryption parameters. When `CsrEncryptAlgo` is set to `RSA`, `2048` (default) and `4096` are available for selection; and when`CsrEncryptAlgo` is set to `ECC`, `prime256v1` (default) and `secp384r1` are available for selection. ",
+          "example": "无",
+          "member": "string",
+          "name": "CertCSRKeyParameter",
           "required": false,
           "type": "string"
         }
@@ -2301,6 +4193,7 @@
         {
           "disabled": false,
           "document": "Certificate ID",
+          "example": "",
           "member": "string",
           "name": "CertificateId",
           "type": "string",
@@ -2357,6 +4250,7 @@
         {
           "disabled": false,
           "document": "Certificate ID",
+          "example": "",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -2365,6 +4259,7 @@
         {
           "disabled": false,
           "document": "CSR generation mode. `online`: generated online; `parse`: uploaded manually",
+          "example": "",
           "member": "string",
           "name": "CsrType",
           "required": false,
@@ -2373,6 +4268,7 @@
         {
           "disabled": false,
           "document": "Uploaded CSR content",
+          "example": "",
           "member": "string",
           "name": "CsrContent",
           "required": false,
@@ -2381,6 +4277,7 @@
         {
           "disabled": false,
           "document": "Domain name bound with the certificate",
+          "example": "",
           "member": "string",
           "name": "CertificateDomain",
           "required": false,
@@ -2389,6 +4286,7 @@
         {
           "disabled": false,
           "document": "Uploaded domain name array (can be uploaded for a multi-domain certificate)",
+          "example": "",
           "member": "string",
           "name": "DomainList",
           "required": false,
@@ -2397,6 +4295,7 @@
         {
           "disabled": false,
           "document": "Password of the private key",
+          "example": "",
           "member": "string",
           "name": "KeyPassword",
           "required": false,
@@ -2405,6 +4304,7 @@
         {
           "disabled": false,
           "document": "Organization name",
+          "example": "",
           "member": "string",
           "name": "OrganizationName",
           "required": false,
@@ -2413,6 +4313,7 @@
         {
           "disabled": false,
           "document": "Division name",
+          "example": "",
           "member": "string",
           "name": "OrganizationDivision",
           "required": false,
@@ -2421,6 +4322,7 @@
         {
           "disabled": false,
           "document": "Detailed address of the organization",
+          "example": "",
           "member": "string",
           "name": "OrganizationAddress",
           "required": false,
@@ -2429,6 +4331,7 @@
         {
           "disabled": false,
           "document": "Country where the organization is located, for example, CN (China)",
+          "example": "",
           "member": "string",
           "name": "OrganizationCountry",
           "required": false,
@@ -2437,6 +4340,7 @@
         {
           "disabled": false,
           "document": "City where the organization is located",
+          "example": "",
           "member": "string",
           "name": "OrganizationCity",
           "required": false,
@@ -2445,6 +4349,7 @@
         {
           "disabled": false,
           "document": "Province where the organization is located",
+          "example": "",
           "member": "string",
           "name": "OrganizationRegion",
           "required": false,
@@ -2453,6 +4358,7 @@
         {
           "disabled": false,
           "document": "Postal code of the organization",
+          "example": "",
           "member": "string",
           "name": "PostalCode",
           "required": false,
@@ -2461,6 +4367,7 @@
         {
           "disabled": false,
           "document": "Area code of the fixed-line phone number of the organization",
+          "example": "",
           "member": "string",
           "name": "PhoneAreaCode",
           "required": false,
@@ -2469,6 +4376,7 @@
         {
           "disabled": false,
           "document": "Fixed-line phone number of the organization",
+          "example": "",
           "member": "string",
           "name": "PhoneNumber",
           "required": false,
@@ -2477,6 +4385,7 @@
         {
           "disabled": false,
           "document": "Certificate validation method",
+          "example": "",
           "member": "string",
           "name": "VerifyType",
           "required": false,
@@ -2485,6 +4394,7 @@
         {
           "disabled": false,
           "document": "Last name of the administrator",
+          "example": "",
           "member": "string",
           "name": "AdminFirstName",
           "required": false,
@@ -2493,6 +4403,7 @@
         {
           "disabled": false,
           "document": "First name of the administrator",
+          "example": "",
           "member": "string",
           "name": "AdminLastName",
           "required": false,
@@ -2501,6 +4412,7 @@
         {
           "disabled": false,
           "document": "Mobile number of the administrator",
+          "example": "",
           "member": "string",
           "name": "AdminPhoneNum",
           "required": false,
@@ -2509,6 +4421,7 @@
         {
           "disabled": false,
           "document": "Email of the administrator",
+          "example": "",
           "member": "string",
           "name": "AdminEmail",
           "required": false,
@@ -2517,6 +4430,7 @@
         {
           "disabled": false,
           "document": "Position of the administrator",
+          "example": "",
           "member": "string",
           "name": "AdminPosition",
           "required": false,
@@ -2525,6 +4439,7 @@
         {
           "disabled": false,
           "document": "Last name of the contact",
+          "example": "",
           "member": "string",
           "name": "ContactFirstName",
           "required": false,
@@ -2533,6 +4448,7 @@
         {
           "disabled": false,
           "document": "First name of the contact",
+          "example": "",
           "member": "string",
           "name": "ContactLastName",
           "required": false,
@@ -2541,6 +4457,7 @@
         {
           "disabled": false,
           "document": "Email of the contact",
+          "example": "",
           "member": "string",
           "name": "ContactEmail",
           "required": false,
@@ -2549,6 +4466,7 @@
         {
           "disabled": false,
           "document": "Mobile number of the contact",
+          "example": "",
           "member": "string",
           "name": "ContactNumber",
           "required": false,
@@ -2557,6 +4475,7 @@
         {
           "disabled": false,
           "document": "Position of the contact",
+          "example": "",
           "member": "string",
           "name": "ContactPosition",
           "required": false,
@@ -2571,6 +4490,7 @@
         {
           "disabled": false,
           "document": "Certificate ID",
+          "example": "",
           "member": "string",
           "name": "CertificateId",
           "type": "string",
@@ -2591,6 +4511,7 @@
         {
           "disabled": false,
           "document": "CSR type. `online`: CSR generated online; `parse`: CSR pasted\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "CsrType",
           "required": false,
@@ -2600,6 +4521,7 @@
         {
           "disabled": false,
           "document": "CSR content\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "CsrContent",
           "required": false,
@@ -2609,6 +4531,7 @@
         {
           "disabled": false,
           "document": "Domain name information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "CertificateDomain",
           "required": false,
@@ -2618,6 +4541,7 @@
         {
           "disabled": false,
           "document": "DNS information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DomainList",
           "required": false,
@@ -2627,6 +4551,7 @@
         {
           "disabled": false,
           "document": "Password of the private key\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "KeyPassword",
           "required": false,
@@ -2636,6 +4561,7 @@
         {
           "disabled": false,
           "document": "Enterprise or unit name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "OrganizationName",
           "required": false,
@@ -2645,6 +4571,7 @@
         {
           "disabled": false,
           "document": "Division\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "OrganizationDivision",
           "required": false,
@@ -2654,6 +4581,7 @@
         {
           "disabled": false,
           "document": "Address\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "OrganizationAddress",
           "required": false,
@@ -2663,6 +4591,7 @@
         {
           "disabled": false,
           "document": "Country\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "OrganizationCountry",
           "required": false,
@@ -2672,6 +4601,7 @@
         {
           "disabled": false,
           "document": "City\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "OrganizationCity",
           "required": false,
@@ -2681,6 +4611,7 @@
         {
           "disabled": false,
           "document": "Province\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "OrganizationRegion",
           "required": false,
@@ -2690,6 +4621,7 @@
         {
           "disabled": false,
           "document": "Postal code\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "PostalCode",
           "required": false,
@@ -2699,6 +4631,7 @@
         {
           "disabled": false,
           "document": "Area code of the fixed-line phone number\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "PhoneAreaCode",
           "required": false,
@@ -2708,6 +4641,7 @@
         {
           "disabled": false,
           "document": "Fixed-line phone number\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "PhoneNumber",
           "required": false,
@@ -2717,6 +4651,7 @@
         {
           "disabled": false,
           "document": "First name of the administrator\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "AdminFirstName",
           "required": false,
@@ -2726,6 +4661,7 @@
         {
           "disabled": false,
           "document": "Last name of the administrator\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "AdminLastName",
           "required": false,
@@ -2735,6 +4671,7 @@
         {
           "disabled": false,
           "document": "Phone number of the administrator\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "AdminPhoneNum",
           "required": false,
@@ -2744,6 +4681,7 @@
         {
           "disabled": false,
           "document": "Email of the administrator\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "AdminEmail",
           "required": false,
@@ -2753,6 +4691,7 @@
         {
           "disabled": false,
           "document": "Position of the administrator\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "AdminPosition",
           "required": false,
@@ -2762,6 +4701,7 @@
         {
           "disabled": false,
           "document": "First name of the contact\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ContactFirstName",
           "required": false,
@@ -2771,6 +4711,7 @@
         {
           "disabled": false,
           "document": "Last name of the contact\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ContactLastName",
           "required": false,
@@ -2780,6 +4721,7 @@
         {
           "disabled": false,
           "document": "Phone number of the contact\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ContactNumber",
           "required": false,
@@ -2789,6 +4731,7 @@
         {
           "disabled": false,
           "document": "Email of the contact\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ContactEmail",
           "required": false,
@@ -2798,6 +4741,7 @@
         {
           "disabled": false,
           "document": "Position of the contact\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ContactPosition",
           "required": false,
@@ -2807,6 +4751,7 @@
         {
           "disabled": false,
           "document": "Validation type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "VerifyType",
           "required": false,
@@ -2816,12 +4761,341 @@
       ],
       "usage": "both"
     },
+    "SyncTaskBindResourceResult": {
+      "document": "Result of an async task for querying associated cloud resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The task ID.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The associated cloud resources.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BindResourceResult",
+          "name": "BindResourceResult",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The status of the async task. Valid values: `0` for querying, `1` for successful, and `2` for abnormal. If the status is `1`, the result of `BindResourceResult` will be displayed; if the status is `2`, the error causes will be displayed.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The error occurred when querying the associated cloud resources.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Error",
+          "name": "Error",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The cache time of the current result.",
+          "example": "无",
+          "member": "string",
+          "name": "CacheTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TCBAccessInstance": {
+      "document": "TCB access instances",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The domain.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The unified domain status.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "UnionStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the domain is preempted. A preempted domain is one that is already associated with another environment. It must be disassociated or re-associated first.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsPreempted",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the domain is added to the ICP blocklist. Valid values: `0` for no and `1` for yes.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "ICPStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The ID of the associated certificate.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OldCertificateId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TCBAccessService": {
+      "document": "Details of TCB access instances",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The list of instances.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TCBAccessInstance",
+          "name": "InstanceList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The instance count.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TCBEnvironment": {
+      "document": "Details of TCB environment instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The unique ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ID",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The source.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Source",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TCBEnvironments": {
+      "document": "Details of TCB instances by environment - data structure of an async task for querying associated cloud resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The TCB environment.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TCBEnvironment",
+          "name": "Environment",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The access service.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TCBAccessService",
+          "name": "AccessService",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether static hosting is used.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TCBHostService",
+          "name": "HostService",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TCBHostInstance": {
+      "document": "Details of TCB service instances subject to static hosting",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The domain.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The resolution status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DNSStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The ID of the associated certificate.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OldCertificateId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TCBHostService": {
+      "document": "List of TCB services subject to static hosting",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The list of instances.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TCBHostInstance",
+          "name": "InstanceList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The instance count.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TCBInstanceList": {
+      "document": "Details of TCB instances by region - data structure of an async task for querying associated cloud resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The region.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of TCB environments.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TCBEnvironments",
+          "name": "Environments",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "Tags": {
       "document": "Tag",
       "members": [
         {
           "disabled": false,
           "document": "Tag key",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
@@ -2831,6 +5105,7 @@
         {
           "disabled": false,
           "document": "Tag value",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": true,
@@ -2839,6 +5114,278 @@
         }
       ],
       "usage": "both"
+    },
+    "TeoInstanceDetail": {
+      "document": "Details of TEO instances",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The domain.",
+          "example": "无",
+          "member": "string",
+          "name": "Host",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The certificate ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CertId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The AZ ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The status of the domain.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TeoInstanceList": {
+      "document": "Details of the EDGEONE instances - data structure of an async task for querying associated cloud resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The list of EDGEONE instances.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TeoInstanceDetail",
+          "name": "InstanceList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The total number of EDGEONE instances.\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TkeIngressDetail": {
+      "document": "Details of a TKE Ingress instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The Ingress name.",
+          "example": "无",
+          "member": "string",
+          "name": "IngressName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of TLS domains.",
+          "example": "无",
+          "member": "string",
+          "name": "TlsDomains",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of Ingress domains.",
+          "example": "无",
+          "member": "string",
+          "name": "Domains",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TkeInstanceDetail": {
+      "document": "Details of a TKE instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The cluster ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The cluster name.",
+          "example": "无",
+          "member": "string",
+          "name": "ClusterName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of cluster namespaces.",
+          "example": "无",
+          "member": "TkeNameSpaceDetail",
+          "name": "NamespaceList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The cluster type.",
+          "example": "无",
+          "member": "string",
+          "name": "ClusterType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The cluster version.",
+          "example": "无",
+          "member": "string",
+          "name": "ClusterVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TkeInstanceList": {
+      "document": "Details of TKE instances - data structure of an async task for querying associated cloud resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The region.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of TKE instances.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TkeInstanceDetail",
+          "name": "InstanceList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The total number of TKE instances in this region.\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TkeNameSpaceDetail": {
+      "document": "Details of a TKE namespace",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The namespace name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The secret list.",
+          "example": "无",
+          "member": "TkeSecretDetail",
+          "name": "SecretList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "TkeSecretDetail": {
+      "document": "Details of a TKE secret",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The secret name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The certificate ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CertId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The Ingress list.",
+          "example": "无",
+          "member": "TkeIngressDetail",
+          "name": "IngressList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of domains that do not match the new certificate.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "NoMatchDomains",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "UploadCertificateRequest": {
       "document": "UploadCertificate request structure.",
@@ -2899,6 +5446,15 @@
         },
         {
           "disabled": false,
+          "document": "The list of tags.",
+          "example": "无",
+          "member": "Tags",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
           "document": "Whether a certificate can be repeatedly uploaded.",
           "example": "true",
           "member": "bool",
@@ -2945,6 +5501,7 @@
         {
           "disabled": false,
           "document": "Certificate ID",
+          "example": "",
           "member": "string",
           "name": "CertificateId",
           "required": true,
@@ -2953,6 +5510,7 @@
         {
           "disabled": false,
           "document": "Base64-encoded confirmation letter file, which must be a JPG, JPEG, PNG, or PDF file of 1 KB to 1.4 MB",
+          "example": "",
           "member": "string",
           "name": "ConfirmLetter",
           "required": true,
@@ -2967,6 +5525,7 @@
         {
           "disabled": false,
           "document": "Certificate ID",
+          "example": "",
           "member": "string",
           "name": "CertificateId",
           "type": "string",
@@ -2975,6 +5534,7 @@
         {
           "disabled": false,
           "document": "Whether the operation is successful",
+          "example": "",
           "member": "bool",
           "name": "IsSuccess",
           "type": "bool",
@@ -2988,6 +5548,130 @@
         }
       ],
       "type": "object"
+    },
+    "VODInstanceList": {
+      "document": "Details of VOD instances - data structure of an async task for querying associated cloud resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The list of VOD instances.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VodInstanceDetail",
+          "name": "InstanceList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The total number of VOD instances in this region.\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "VodInstanceDetail": {
+      "document": "Details of a VOD instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The domain.",
+          "example": "qq.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The certificate ID.",
+          "example": "asdasd",
+          "member": "string",
+          "name": "CertId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "WafInstanceDetail": {
+      "document": "Details of a WAF instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The domain.",
+          "example": "无",
+          "member": "string",
+          "name": "Domain",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The certificate ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CertId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to keep the persistent connection.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Keepalive",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "WafInstanceList": {
+      "document": "Details of WAF instances - data structure of an async task for querying associated cloud resources",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The region.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of WAF instances.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "WafInstanceDetail",
+          "name": "InstanceList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The total number of WAF instances in this region.\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     }
   },
   "version": "1.0"
