@@ -851,6 +851,15 @@
           "name": "EventNotifySettings",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Complement the last video frame settings.",
+          "example": "无",
+          "member": "InputLossBehaviorInfo",
+          "name": "InputLossBehavior",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2946,6 +2955,52 @@
       ],
       "usage": "out"
     },
+    "InputLossBehaviorInfo": {
+      "document": "Complement the last video frame related settings.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The time to fill in the last video frame, unit ms, range 0-1000000, 1000000 means always inserting, default 0 means filling in black screen frame.",
+          "example": "300",
+          "member": "uint64",
+          "name": "RepeatLastFrameMs",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Fill frame type, COLOR means solid color filling, IMAGE means picture filling, the default is COLOR.",
+          "example": "COLOR",
+          "member": "string",
+          "name": "InputLossImageType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "When the type is COLOR, the corresponding rgb value",
+          "example": "123FFF",
+          "member": "string",
+          "name": "ColorRGB",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "When the type is IMAGE, the corresponding image url value",
+          "example": "http://image.png",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "InputSecurityGroupInfo": {
       "document": "Input security group information.",
       "members": [
@@ -3303,6 +3358,15 @@
           "example": "无",
           "member": "EventNotifySetting",
           "name": "EventNotifySettings",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Complement the last video frame settings.",
+          "example": "无",
+          "member": "InputLossBehaviorInfo",
+          "name": "InputLossBehavior",
           "required": false,
           "type": "object"
         }
@@ -4436,6 +4500,16 @@
           "example": "无",
           "member": "EventNotifySetting",
           "name": "EventNotifySettings",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Supplement the last video frame configuration settings.",
+          "example": "无",
+          "member": "InputLossBehaviorInfo",
+          "name": "InputLossBehavior",
           "required": true,
           "type": "object",
           "value_allowed_null": true
