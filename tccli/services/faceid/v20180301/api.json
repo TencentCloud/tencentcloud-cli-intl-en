@@ -278,6 +278,15 @@
           "name": "Extra",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The parameter control the page configuration.",
+          "example": "无",
+          "member": "WebVerificationConfigIntl",
+          "name": "Config",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -286,7 +295,7 @@
       "document": "ApplyWebVerificationBizTokenIntl response structure.",
       "members": [
         {
-          "disabled": false,
+          "disabled": true,
           "document": "The URL of this verification process, which will be returned to the frontend of the browser for starting the process.",
           "example": "https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442",
           "member": "string",
@@ -302,6 +311,16 @@
           "member": "string",
           "name": "BizToken",
           "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442",
+          "member": "string",
+          "name": "VerificationURL",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1384,6 +1403,7 @@
         {
           "disabled": false,
           "document": "The best screenshot of the video after successful verification. The photo is Base64-encoded and in JPG format.",
+          "example": "",
           "member": "string",
           "name": "BestFrameBase64",
           "type": "string",
@@ -1392,6 +1412,7 @@
         {
           "disabled": false,
           "document": "Similarity. Value range: [0.00, 100.00]. As a recommendation, when the similarity is greater than or equal to 70, it can be determined that the two faces are of the same person. You can adjust the threshold according to your specific scenario (the FAR at the threshold of 70 is 0.1%, and FAR at the threshold of 80 is 0.01%).",
+          "example": "",
           "member": "float",
           "name": "Sim",
           "type": "float",
@@ -1400,6 +1421,7 @@
         {
           "disabled": false,
           "document": "Service error code. `Success` will be returned for success. For error information, please see the `FailedOperation` section in the error code list below.",
+          "example": "",
           "member": "string",
           "name": "Result",
           "type": "string",
@@ -1408,6 +1430,7 @@
         {
           "disabled": false,
           "document": "Service result description.",
+          "example": "",
           "member": "string",
           "name": "Description",
           "type": "string",
@@ -1416,6 +1439,7 @@
         {
           "disabled": false,
           "document": "",
+          "example": "",
           "member": "string",
           "name": "BestFrameList",
           "type": "list",
@@ -1637,6 +1661,21 @@
         }
       ],
       "type": "object"
+    },
+    "WebVerificationConfigIntl": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to automatically redirect to `RedirectUrl` after successful verification. Default value: `false`.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoSkip",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "usage": "in"
     }
   },
   "version": "1.0"
