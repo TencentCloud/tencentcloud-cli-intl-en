@@ -7454,8 +7454,8 @@
         },
         {
           "disabled": false,
-          "document": "The start time (UTC+8) in the format of “yyyy-mm-dd HH:MM:SS”.",
-          "example": "2019-06-21 12:00:00",
+          "document": "The start time of the request, supports data query for the last seven days, the gap between the start time and the end time cannot exceed three hours. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-06-21T12:00:00+08:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -7463,8 +7463,8 @@
         },
         {
           "disabled": false,
-          "document": "The end time (UTC+8) in the format of “yyyy-mm-dd HH:MM:SS”. You can query data from the past seven days for a period of preferably not longer than three hours.",
-          "example": "2019-06-21 12:01:02",
+          "document": "The end time of the request, supports data query for the last seven days, the gap between the start time and the end time cannot exceed three hours. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-06-21T12:01:02+08:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -7500,7 +7500,7 @@
           "example": "无",
           "member": "PushQualityData",
           "name": "DataInfoList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -7975,8 +7975,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start point in time in the format of `yyyy-mm-dd HH:MM:SS`.",
-          "example": "",
+          "document": "The start time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed four hours. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-01 00:00:00",
           "member": "string",
           "name": "StartTime",
           "required": true,
@@ -7984,8 +7984,8 @@
         },
         {
           "disabled": false,
-          "document": "End point in time in the format of `yyyy-mm-dd HH:MM:SS`\nThe time span is (0,4 hours]. Data for the last day can be queried.",
-          "example": "",
+          "document": "The end time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed four hours. Interface request supports two time formats:\n1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)\n2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.",
+          "example": "2019-03-01 04:00:00",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -7994,7 +7994,7 @@
         {
           "disabled": false,
           "document": "Bandwidth metric. Valid values: \"Domain\", \"StreamId\".",
-          "example": "",
+          "example": "StreamId",
           "member": "string",
           "name": "TopIndex",
           "required": true,
@@ -8003,7 +8003,7 @@
         {
           "disabled": false,
           "document": "Playback domain name. If this parameter is left empty, full data will be queried by default.",
-          "example": "",
+          "example": "[\"live.com\"]",
           "member": "string",
           "name": "PlayDomains",
           "required": false,
@@ -8012,7 +8012,7 @@
         {
           "disabled": false,
           "document": "Page number,\nValue range: [1,1000],\nDefault value: 1.",
-          "example": "",
+          "example": "2",
           "member": "uint64",
           "name": "PageNum",
           "required": false,
@@ -8021,7 +8021,7 @@
         {
           "disabled": false,
           "document": "Number of entries per page. Value range: [1,1000].\nDefault value: 20.",
-          "example": "",
+          "example": "2",
           "member": "uint64",
           "name": "PageSize",
           "required": false,
@@ -8030,7 +8030,7 @@
         {
           "disabled": false,
           "document": "Sorting metric. Valid values: \"AvgFluxPerSecond\", \"TotalRequest\" (default), \"TotalFlux\".",
-          "example": "",
+          "example": "TotalFlux",
           "member": "string",
           "name": "OrderParam",
           "required": false,
@@ -8045,63 +8045,70 @@
         {
           "disabled": false,
           "document": "Page number,\nValue range: [1,1000],\nDefault value: 1.",
-          "example": "",
+          "example": "2",
           "member": "uint64",
           "name": "PageNum",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of entries per page. Value range: [1,1000].\nDefault value: 20.",
-          "example": "",
+          "example": "2",
           "member": "uint64",
           "name": "PageSize",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Bandwidth metric. Valid values: \"Domain\", \"StreamId\".",
-          "example": "",
+          "example": "StreamId",
           "member": "string",
           "name": "TopIndex",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Sorting metric. Valid values: AvgFluxPerSecond (sort by average traffic per second), TotalRequest (sort by total requests), TotalFlux (sort by total traffic). Default value: TotalRequest.",
-          "example": "",
+          "example": "TotalFlux",
           "member": "string",
           "name": "OrderParam",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total number of results.",
-          "example": "",
+          "example": "1000",
           "member": "uint64",
           "name": "TotalNum",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total number of result pages.",
-          "example": "",
+          "example": "500",
           "member": "uint64",
           "name": "TotalPage",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Data content.",
-          "example": "",
+          "example": "无",
           "member": "PlaySumStatInfo",
           "name": "DataInfoList",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
