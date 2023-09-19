@@ -16,6 +16,14 @@
         "title": "Batch deleting CSRs"
       }
     ],
+    "CancelAuditCertificate": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CancelAuditCertificate\n<Common request parameters>\n\n{\n    \"CertificateId\": \"abcdefg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx-xxx-xxx-xxx\",\n        \"Result\": true\n    }\n}",
+        "title": "Canceling certificate review"
+      }
+    ],
     "CancelCertificateOrder": [
       {
         "document": " ",
@@ -164,6 +172,14 @@
         "input": "https://ssl.tencentcloudapi.com/?Action=ModifyCertificateProject\r\n&CertificateIdList.0=ABCD1234&CertificateIdList.1=ABCD1235&CertificateIdList.2=ABCD1236\r\n&ProjectId=12345\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FailCertificates\": [],\n        \"SuccessCertificates\": [\n            \"ABCD1234\",\n            \"ABCD1235\",\n            \"ABCD1236\"\n        ],\n        \"RequestId\": \"95adbcc1-a0bb-4b9c-acf6-5c4e514b945f\"\n    }\n}",
         "title": "Modifying the project of a certificate"
+      }
+    ],
+    "ModifyCertificateResubmit": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCertificateResubmit\n<Common request parameters>\n\n{\n    \"CertificateId\": \"xxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"CertificateId\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Re-submitting a review application for a certificate whose review failed"
       }
     ],
     "ReplaceCertificate": [

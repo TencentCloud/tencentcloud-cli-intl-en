@@ -36,44 +36,44 @@
       "status": "online"
     },
     "CreateSparkApp": {
-      "document": "This API is used to create a Spark application.",
+      "document": "This API is used to create a Spark job.",
       "input": "CreateSparkAppRequest",
-      "name": "Creates a Spark application",
+      "name": "Creates a Spark job",
       "output": "CreateSparkAppResponse",
       "status": "online"
     },
     "CreateSparkAppTask": {
-      "document": "This API is used to create a Spark task.",
+      "document": "This API is used to start a Spark job.",
       "input": "CreateSparkAppTaskRequest",
-      "name": "Creates a Spark task",
+      "name": "Starts a Spark job",
       "output": "CreateSparkAppTaskResponse",
       "status": "online"
     },
     "CreateSparkSessionBatchSQL": {
-      "document": "This API is used to submit a Spark SQL batch task.",
+      "document": "This API is used to submit a Spark SQL batch task to the job engine.",
       "input": "CreateSparkSessionBatchSQLRequest",
-      "name": "Submits a Spark SQL batch task",
+      "name": "Creates and executes a Spark SQL batch task",
       "output": "CreateSparkSessionBatchSQLResponse",
       "status": "online"
     },
     "CreateTask": {
-      "document": "This API is used to create a SQL query task. (We recommend you use the `CreateTasks` API instead.)",
+      "document": "This API is used to create and execute a SQL task. (`CreateTasks` is recommended.)",
       "input": "CreateTaskRequest",
-      "name": "Creates a task",
+      "name": "Creates and executes a Spark SQL task",
       "output": "CreateTaskResponse",
       "status": "online"
     },
     "CreateTasks": {
-      "document": "This API is used to create tasks in batches.",
+      "document": "This API is used to create and execute SQL tasks in batches.",
       "input": "CreateTasksRequest",
-      "name": "Creates tasks in batches",
+      "name": "Creates and executes SQL tasks in batches",
       "output": "CreateTasksResponse",
       "status": "online"
     },
     "DeleteSparkApp": {
-      "document": "This API is used to delete a Spark application.",
+      "document": "This API is used to delete a Spark job.",
       "input": "DeleteSparkAppRequest",
-      "name": "Deletes a Spark application",
+      "name": "Deletes a Spark job",
       "output": "DeleteSparkAppResponse",
       "status": "online"
     },
@@ -85,7 +85,7 @@
       "status": "online"
     },
     "DescribeForbiddenTablePro": {
-      "document": "This API is used to get the list of disabled table attributes.",
+      "document": "This API is used to get the list of disabled table attributes (new).",
       "input": "DescribeForbiddenTableProRequest",
       "name": "Gets the list of disabled table attributes (new)",
       "output": "DescribeForbiddenTableProResponse",
@@ -113,21 +113,21 @@
       "status": "online"
     },
     "DescribeSparkAppJob": {
-      "document": "This API is used to query a specific Spark application.",
+      "document": "u200cThis API is used to query the information of a Spark job.",
       "input": "DescribeSparkAppJobRequest",
-      "name": "Queries a specific Spark application",
+      "name": "Queries the information of a Spark job",
       "output": "DescribeSparkAppJobResponse",
       "status": "online"
     },
     "DescribeSparkAppJobs": {
-      "document": "This API is used to get the list of Spark applications.",
+      "document": "This API is used to query the list of Spark jobs.",
       "input": "DescribeSparkAppJobsRequest",
-      "name": "Gets the list of Spark applications",
+      "name": "Queries the list of Spark jobs",
       "output": "DescribeSparkAppJobsResponse",
       "status": "online"
     },
     "DescribeSparkAppTasks": {
-      "document": "This API is used to query the list of running task instances of a Spark application.",
+      "document": "This API is used to query the list of running task instances of a Spark job.",
       "input": "DescribeSparkAppTasksRequest",
       "name": "Queries the list of running task instances of a Spark application",
       "output": "DescribeSparkAppTasksResponse",
@@ -154,6 +154,13 @@
       "output": "DescribeTasksResponse",
       "status": "online"
     },
+    "DescribeUserRoles": {
+      "document": "This API is used to enumerate user roles.",
+      "input": "DescribeUserRolesRequest",
+      "name": "Enumerates user roles",
+      "output": "DescribeUserRolesResponse",
+      "status": "online"
+    },
     "GenerateCreateMangedTableSql": {
       "document": "This API is used to generate SQL statements for creating a managed table.",
       "input": "GenerateCreateMangedTableSqlRequest",
@@ -169,9 +176,9 @@
       "status": "online"
     },
     "ModifySparkApp": {
-      "document": "This API is used to update a Spark application.",
+      "document": "This API is used to update a Spark job.",
       "input": "ModifySparkAppRequest",
-      "name": "Updates a Spark application",
+      "name": "Updates a Spark job",
       "output": "ModifySparkAppResponse",
       "status": "online"
     },
@@ -183,9 +190,9 @@
       "status": "online"
     },
     "SuspendResumeDataEngine": {
-      "document": "This API is used to suspend or resume a data engine.",
+      "document": "This API is used to suspend or start a data engine.",
       "input": "SuspendResumeDataEngineRequest",
-      "name": "Suspends or resumes a data engine",
+      "name": "Suspends or starts a data engine",
       "output": "SuspendResumeDataEngineResponse",
       "status": "online"
     },
@@ -371,120 +378,148 @@
       "usage": "both"
     },
     "CommonMetrics": {
-      "document": "",
+      "document": "Common task metrics",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The task creation time in ms.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "CreateTaskTime",
-          "required": false,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The processing time in ms.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "ProcessTime",
-          "required": false,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The queue time in ms.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "QueueTime",
-          "required": false,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The execution duration in ms.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "ExecutionTime",
-          "required": false,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether the result cache is hit.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "bool",
           "name": "IsResultCacheHit",
-          "required": false,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The volume of matched materialized views, in bytes.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "MatchedMVBytes",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The list of matched materialized views.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "MatchedMVs",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The result data in bytes.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "AffectedBytes",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "\tThe number of rows in the result.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "AffectedRows",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The volume of the data scanned, in bytes.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "ProcessedBytes",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "\tThe number of scanned rows.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "ProcessedRows",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         }
       ],
       "usage": "out"
+    },
+    "CosPermission": {
+      "document": "COS permissions",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The COS path.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "cosn://***",
+          "member": "string",
+          "name": "CosPath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The permissions. Valid values: `read` and `write`.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "[\"read\",\"write\"]",
+          "member": "string",
+          "name": "Permissions",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "CreateDataEngineRequest": {
       "document": "CreateDataEngine request structure.",
@@ -510,7 +545,7 @@
         {
           "disabled": false,
           "document": "The cluster type. Valid values: `spark_private`, `presto_private`, `presto_cu`, and `spark_cu`.",
-          "example": "presto_private",
+          "example": "presto_cu/spark_cu",
           "member": "string",
           "name": "ClusterType",
           "required": true,
@@ -553,7 +588,7 @@
           "type": "int"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Whether the cluster is the default one.",
           "example": "true",
           "member": "bool",
@@ -582,7 +617,7 @@
         {
           "disabled": false,
           "document": "The cluster size.",
-          "example": "1",
+          "example": "64",
           "member": "int64",
           "name": "Size",
           "required": false,
@@ -662,7 +697,7 @@
         },
         {
           "disabled": false,
-          "document": "The type of tasks to be executed by the engine, which defaults to SQL.",
+          "document": "The type of tasks to be executed by the engine, which defaults to SQL. Valid values: `SQL` and `BATCH`.",
           "example": "SQL/BATCH",
           "member": "string",
           "name": "EngineExecType",
@@ -725,7 +760,7 @@
         },
         {
           "disabled": false,
-          "document": "The name of the primary cluster.",
+          "document": "The primary cluster, which is specified when a failover cluster is created.",
           "example": "test",
           "member": "string",
           "name": "MainClusterName",
@@ -907,7 +942,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Spark application name",
+          "document": "The Spark job name.",
           "example": "app-test",
           "member": "string",
           "name": "AppName",
@@ -916,7 +951,7 @@
         },
         {
           "disabled": false,
-          "document": "1: Spark JAR application; 2: Spark streaming application",
+          "document": "The Spark job type. Valid values: `1` for Spark JAR job and `2` for Spark streaming job.",
           "example": "1,2",
           "member": "int64",
           "name": "AppType",
@@ -925,7 +960,7 @@
         },
         {
           "disabled": false,
-          "document": "The data engine executing the Spark job",
+          "document": "The data engine executing the Spark job.",
           "example": "spark-engine",
           "member": "string",
           "name": "DataEngine",
@@ -934,7 +969,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution entry of the Spark application",
+          "document": "The path of the Spark job package.",
           "example": "test.jar",
           "member": "string",
           "name": "AppFile",
@@ -943,7 +978,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution role ID of the Spark job",
+          "document": "The data access policy (CAM role arn).",
           "example": "12",
           "member": "int64",
           "name": "RoleArn",
@@ -952,7 +987,7 @@
         },
         {
           "disabled": false,
-          "document": "Driver resource specification of the Spark job. Valid values: `small`, `medium`, `large`, `xlarge`.",
+          "document": "The driver size. Valid values: `small` (default, 1 CU), `medium` (2 CUs), `large` (4 CUs), and `xlarge` (8 CUs).",
           "example": "small",
           "member": "string",
           "name": "AppDriverSize",
@@ -961,7 +996,7 @@
         },
         {
           "disabled": false,
-          "document": "Executor resource specification of the Spark job. Valid values: `small`, `medium`, `large`, `xlarge`.",
+          "document": "The executor size. Valid values: `small` (default, 1 CU), `medium` (2 CUs), `large` (4 CUs), and `xlarge` (8 CUs).",
           "example": "small",
           "member": "string",
           "name": "AppExecutorSize",
@@ -988,7 +1023,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether it is upload locally. Valid values: `cos`, `lakefs`.",
+          "document": "The source of the Spark job package. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).",
           "example": "cos",
           "member": "string",
           "name": "IsLocal",
@@ -997,7 +1032,7 @@
         },
         {
           "disabled": false,
-          "document": "Main class of the Spark JAR job during execution",
+          "document": "The main class of the Spark job.",
           "example": "org.test.WordCount",
           "member": "string",
           "name": "MainClass",
@@ -1015,7 +1050,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether it is upload locally. Valid values: `cos`, `lakefs`.",
+          "document": "The source of the dependency JAR packages of the Spark job. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).",
           "example": "cos",
           "member": "string",
           "name": "IsLocalJars",
@@ -1024,7 +1059,7 @@
         },
         {
           "disabled": false,
-          "document": "Dependency JAR packages of the Spark JAR job separated by comma",
+          "document": "The dependency JAR packages of the Spark JAR job (JAR packages), separated by comma.",
           "example": "com.test.jar",
           "member": "string",
           "name": "AppJars",
@@ -1033,7 +1068,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether it is upload locally. Valid values: `cos`, `lakefs`.",
+          "document": "The source of the dependency files of the Spark job. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).",
           "example": "cos",
           "member": "string",
           "name": "IsLocalFiles",
@@ -1042,7 +1077,7 @@
         },
         {
           "disabled": false,
-          "document": "Dependency resources of the Spark job separated by comma",
+          "document": "The dependency files of the Spark job (files other than JAR and ZIP packages) separated by comma.",
           "example": "spark-default.properties",
           "member": "string",
           "name": "AppFiles",
@@ -1051,7 +1086,7 @@
         },
         {
           "disabled": false,
-          "document": "Command line parameters of the Spark job",
+          "document": "The input parameters of the Spark job, separated by comma.",
           "example": "10",
           "member": "string",
           "name": "CmdArgs",
@@ -1060,7 +1095,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter takes effect only for Spark flow tasks.",
+          "document": "The maximum number of retries, valid for Spark streaming tasks only.",
           "example": "1",
           "member": "int64",
           "name": "MaxRetries",
@@ -1069,7 +1104,7 @@
         },
         {
           "disabled": false,
-          "document": "Data source name",
+          "document": "The data source name.",
           "example": "kafka-datasource",
           "member": "string",
           "name": "DataSource",
@@ -1078,7 +1113,7 @@
         },
         {
           "disabled": false,
-          "document": "PySpark: Dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).",
+          "document": "The source of the PySpark dependencies. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).",
           "example": "cos",
           "member": "string",
           "name": "IsLocalPythonFiles",
@@ -1087,7 +1122,7 @@
         },
         {
           "disabled": false,
-          "document": "PySpark: Python dependency, which can be in .py, .zip, or .egg format. Multiple files should be separated by comma.",
+          "document": "The PySpark dependencies (Python files), separated by comma, with .py, .zip, and .egg formats supported.",
           "example": "test.py",
           "member": "string",
           "name": "AppPythonFiles",
@@ -1096,7 +1131,7 @@
         },
         {
           "disabled": false,
-          "document": "Archives: Dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).",
+          "document": "The source of the dependency archives of the Spark job. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).",
           "example": "cos",
           "member": "string",
           "name": "IsLocalArchives",
@@ -1105,7 +1140,7 @@
         },
         {
           "disabled": false,
-          "document": "Archives: Dependency resources",
+          "document": "The dependency archives of the Spark job, separated by comma, with tar.gz, .tgz, and .tar formats supported.",
           "example": "file1.tar.gz#abc",
           "member": "string",
           "name": "AppArchives",
@@ -1156,6 +1191,15 @@
           "name": "IsInherit",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to run the task with the session SQLs. Valid values: `false` for no and `true` for yes.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsSessionStarted",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -1195,7 +1239,7 @@
         },
         {
           "disabled": false,
-          "document": "Command line parameters of the Spark job separated by space. They are generally used for periodic calls.",
+          "document": "The input parameters of the Spark job, separated by space. They are generally used for periodic calls.",
           "example": "10",
           "member": "string",
           "name": "CmdArgs",
@@ -1323,12 +1367,21 @@
         },
         {
           "disabled": false,
-          "document": "Session configurations. `dlc.eni`, `dlc.role.arn`, `dlc.sql.set.config`, and user-defined configurations are supported.",
+          "document": "The session configurations. Valid values: `1.dlc.eni` for user-defined ENI gateway information;\n`2.dlc.role.arn` for user-defined roleArn configurations;\nand `3.dlc.sql.set.config` for user-defined cluster configurations.",
           "example": "[\"eni\":\"test_eni\"]",
           "member": "KVPair",
           "name": "Arguments",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to inherit the resource configurations from the cluster. Valid values: `0` for no (default) and `1` for yes.",
+          "example": "0",
+          "member": "int64",
+          "name": "IsInherit",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1564,7 +1617,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Spark application name",
+          "document": "The Spark job name.",
           "example": "spark-app",
           "member": "string",
           "name": "AppName",
@@ -1591,7 +1644,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The house ID.",
+          "document": "The data engine ID.",
           "example": "无",
           "member": "string",
           "name": "DataEngineId",
@@ -1786,7 +1839,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Spark job ID. If it co-exists with `JobName`, `JobName` will become invalid.",
+          "document": "The Spark job ID. If it co-exists with `JobName`, `JobName` is invalid. At least `JobId` or `JobName` must be used.",
           "example": "batch_133e005d-6486-4517-8ea7-b6b97b183a6b",
           "member": "string",
           "name": "JobId",
@@ -1860,7 +1913,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter by this parameter, which can be `spark-job-name`.",
+          "document": "The filters. The following types are supported, and `Name` of the parameter passed in must be one of them: `spark-job-name` (job name), `spark-job-id` (job ID), `spark-app-type` (job type: `1` for batch, `2` for streaming, and `4` for SQL), `user-name` (creator), and `key-word` (job name or ID keywords for fuzzy search).",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -1979,7 +2032,7 @@
         },
         {
           "disabled": false,
-          "document": "Update start time",
+          "document": "The update start time in the format of yyyy-MM-dd HH:mm:ss.",
           "example": "2022-01-01 00:00:00",
           "member": "string",
           "name": "StartTime",
@@ -1988,7 +2041,7 @@
         },
         {
           "disabled": false,
-          "document": "Update end time",
+          "document": "The update end time in the format of yyyy-MM-dd HH:mm:ss.",
           "example": "2022-01-02 00:00:00",
           "member": "string",
           "name": "EndTime",
@@ -2217,7 +2270,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter by compute resource name",
+          "document": "The data engine name for filtering.",
           "example": "shared_presto",
           "member": "string",
           "name": "DataEngineName",
@@ -2259,6 +2312,89 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserRolesRequest": {
+      "document": "DescribeUserRoles request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The number limit of enumerated user roles.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The offset for starting enumeration. ",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Fuzzy enumeration by arn.",
+          "example": "无",
+          "member": "string",
+          "name": "Fuzzy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The field for sorting the returned results.",
+          "example": "modify-time",
+          "member": "string",
+          "name": "SortBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The sorting order, descending or ascending, such as `desc`.",
+          "example": "无",
+          "member": "string",
+          "name": "Sorting",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserRolesResponse": {
+      "document": "DescribeUserRoles response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The total number of user roles meeting the enumeration conditions.",
+          "example": "无",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The user roles.",
+          "example": "无",
+          "member": "UserRole",
+          "name": "UserRoles",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2513,7 +2649,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Spark application name",
+          "document": "The Spark job name.",
           "example": "app-test",
           "member": "string",
           "name": "AppName",
@@ -2522,7 +2658,7 @@
         },
         {
           "disabled": false,
-          "document": "1: Spark JAR application; 2: Spark streaming application",
+          "document": "The Spark job type. Valid values: `1` for Spark JAR job and `2` for Spark streaming job.",
           "example": "1,2",
           "member": "int64",
           "name": "AppType",
@@ -2531,7 +2667,7 @@
         },
         {
           "disabled": false,
-          "document": "The data engine executing the Spark job",
+          "document": "The data engine executing the Spark job.",
           "example": "spark-engine",
           "member": "string",
           "name": "DataEngine",
@@ -2540,7 +2676,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution entry of the Spark application",
+          "document": "The path of the Spark job package.",
           "example": "test.jar",
           "member": "string",
           "name": "AppFile",
@@ -2549,7 +2685,7 @@
         },
         {
           "disabled": false,
-          "document": "Execution role ID of the Spark job",
+          "document": "The data access policy (CAM role arn).",
           "example": "12",
           "member": "int64",
           "name": "RoleArn",
@@ -2558,7 +2694,7 @@
         },
         {
           "disabled": false,
-          "document": "Driver resource specification of the Spark job. Valid values: `small`, `medium`, `large`, `xlarge`.",
+          "document": "The driver size. Valid values: `small` (default, 1 CU), `medium` (2 CUs), `large` (4 CUs), and `xlarge` (8 CUs).",
           "example": "small",
           "member": "string",
           "name": "AppDriverSize",
@@ -2567,7 +2703,7 @@
         },
         {
           "disabled": false,
-          "document": "Executor resource specification of the Spark job. Valid values: `small`, `medium`, `large`, `xlarge`.",
+          "document": "The executor size. Valid values: `small` (default, 1 CU), `medium` (2 CUs), `large` (4 CUs), and `xlarge` (8 CUs).",
           "example": "small",
           "member": "string",
           "name": "AppExecutorSize",
@@ -2585,7 +2721,7 @@
         },
         {
           "disabled": false,
-          "document": "Spark application ID",
+          "document": "The Spark job ID.",
           "example": "batch_ssta",
           "member": "string",
           "name": "SparkAppId",
@@ -2603,7 +2739,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether it is uploaded locally. Valid values: `cos`, `lakefs`.",
+          "document": "The source of the Spark job package. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).",
           "example": "cos",
           "member": "string",
           "name": "IsLocal",
@@ -2612,7 +2748,7 @@
         },
         {
           "disabled": false,
-          "document": "Main class of the Spark JAR job during execution",
+          "document": "The main class of the Spark job.",
           "example": "org.test.WordCount",
           "member": "string",
           "name": "MainClass",
@@ -2630,7 +2766,7 @@
         },
         {
           "disabled": false,
-          "document": "JAR resource dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).",
+          "document": "The source of the dependency JAR packages of the Spark job. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).",
           "example": "cos",
           "member": "string",
           "name": "IsLocalJars",
@@ -2639,7 +2775,7 @@
         },
         {
           "disabled": false,
-          "document": "Dependency JAR packages of the Spark JAR job separated by comma",
+          "document": "The dependency JAR packages of the Spark JAR job (JAR packages), separated by comma.",
           "example": "com.test.jar",
           "member": "string",
           "name": "AppJars",
@@ -2648,7 +2784,7 @@
         },
         {
           "disabled": false,
-          "document": "File resource dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).",
+          "document": "The source of the dependency files of the Spark job. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).",
           "example": "cos",
           "member": "string",
           "name": "IsLocalFiles",
@@ -2657,7 +2793,7 @@
         },
         {
           "disabled": false,
-          "document": "Dependency resources of the Spark job separated by comma",
+          "document": "The dependency files of the Spark job (files other than JAR and ZIP packages), separated by comma.",
           "example": "spark-default.properties",
           "member": "string",
           "name": "AppFiles",
@@ -2666,7 +2802,7 @@
         },
         {
           "disabled": false,
-          "document": "PySpark: Dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).",
+          "document": "The source of the PySpark dependencies. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).",
           "example": "cos",
           "member": "string",
           "name": "IsLocalPythonFiles",
@@ -2675,7 +2811,7 @@
         },
         {
           "disabled": false,
-          "document": "PySpark: Python dependency, which can be in .py, .zip, or .egg format. Multiple files should be separated by comma.",
+          "document": "The PySpark dependencies (Python files), separated by comma, with .py, .zip, and .egg formats supported.",
           "example": "test.py",
           "member": "string",
           "name": "AppPythonFiles",
@@ -2684,7 +2820,7 @@
         },
         {
           "disabled": false,
-          "document": "Command line parameters of the Spark job",
+          "document": "The input parameters of the Spark job, separated by comma.",
           "example": "10",
           "member": "string",
           "name": "CmdArgs",
@@ -2693,7 +2829,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter takes effect only for Spark flow tasks.",
+          "document": "The maximum number of retries, valid for Spark streaming tasks only.",
           "example": "1",
           "member": "int64",
           "name": "MaxRetries",
@@ -2711,7 +2847,7 @@
         },
         {
           "disabled": false,
-          "document": "Archives: Dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).",
+          "document": "The source of the dependency archives of the Spark job. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).",
           "example": "cos",
           "member": "string",
           "name": "IsLocalArchives",
@@ -2720,7 +2856,7 @@
         },
         {
           "disabled": false,
-          "document": "Archives: Dependency resources",
+          "document": "The dependency archives of the Spark job, separated by comma, with tar.gz, .tgz, and .tar formats supported.",
           "example": "file1.tar.gz#abc",
           "member": "string",
           "name": "AppArchives",
@@ -2771,6 +2907,15 @@
           "name": "IsInherit",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to run the task with the session SQLs. Valid values: `false` for no and `true` for yes.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsSessionStarted",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -2964,11 +3109,11 @@
       "usage": "both"
     },
     "PrestoMonitorMetrics": {
-      "document": "",
+      "document": "Presto monitoring metrics",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "\tThe Alluxio cache hit rate.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "LocalCacheHitRate",
@@ -2978,7 +3123,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The Fragment cache hit rate.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "FragmentCacheHitRate",
@@ -3096,7 +3241,7 @@
           "example": "4a7cad6bb86211ec9c616e6f30623d72",
           "member": "string",
           "name": "JobId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3106,7 +3251,7 @@
           "example": "test-app",
           "member": "string",
           "name": "JobName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3116,7 +3261,7 @@
           "example": "1",
           "member": "int64",
           "name": "JobType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3126,7 +3271,7 @@
           "example": "spark-engine",
           "member": "string",
           "name": "DataEngine",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3136,7 +3281,7 @@
           "example": "kafka",
           "member": "string",
           "name": "Eni",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3146,7 +3291,7 @@
           "example": "cos",
           "member": "string",
           "name": "IsLocal",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3156,7 +3301,7 @@
           "example": "cosn://bucket/example.jar",
           "member": "string",
           "name": "JobFile",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3166,7 +3311,7 @@
           "example": "1",
           "member": "int64",
           "name": "RoleArn",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3176,7 +3321,7 @@
           "example": "org.tencent.Example",
           "member": "string",
           "name": "MainClass",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3186,7 +3331,7 @@
           "example": "1 2",
           "member": "string",
           "name": "CmdArgs",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3196,7 +3341,7 @@
           "example": "spark.network.timeout=120s",
           "member": "string",
           "name": "JobConf",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3206,7 +3351,7 @@
           "example": "cos",
           "member": "string",
           "name": "IsLocalJars",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3216,7 +3361,7 @@
           "example": "example.jar",
           "member": "string",
           "name": "JobJars",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3226,7 +3371,7 @@
           "example": "cos",
           "member": "string",
           "name": "IsLocalFiles",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3236,7 +3381,7 @@
           "example": "cos",
           "member": "string",
           "name": "JobFiles",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3246,7 +3391,7 @@
           "example": "small",
           "member": "string",
           "name": "JobDriverSize",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3256,7 +3401,7 @@
           "example": "small",
           "member": "string",
           "name": "JobExecutorSize",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3266,7 +3411,7 @@
           "example": "1",
           "member": "int64",
           "name": "JobExecutorNums",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3276,7 +3421,7 @@
           "example": "3",
           "member": "int64",
           "name": "JobMaxAttempts",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3286,7 +3431,7 @@
           "example": "test",
           "member": "string",
           "name": "JobCreator",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3296,7 +3441,7 @@
           "example": "1",
           "member": "int64",
           "name": "JobCreateTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3306,7 +3451,7 @@
           "example": "1",
           "member": "uint64",
           "name": "JobUpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3316,7 +3461,7 @@
           "example": "4a7cad6bb86211ec9c616e6f30623d72",
           "member": "string",
           "name": "CurrentTaskId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3326,7 +3471,7 @@
           "example": "0",
           "member": "int64",
           "name": "JobStatus",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3336,7 +3481,7 @@
           "example": "无",
           "member": "StreamingStatistics",
           "name": "StreamingStat",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -3346,7 +3491,7 @@
           "example": "kafka-datasource",
           "member": "string",
           "name": "DataSource",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3356,7 +3501,7 @@
           "example": "cos",
           "member": "string",
           "name": "IsLocalPythonFiles",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3366,7 +3511,7 @@
           "example": "test.py",
           "member": "string",
           "name": "AppPythonFiles",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3376,7 +3521,7 @@
           "example": "cos",
           "member": "string",
           "name": "IsLocalArchives",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3386,7 +3531,7 @@
           "example": "file1.tar.gz#abc",
           "member": "string",
           "name": "JobArchives",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3396,7 +3541,7 @@
           "example": "1.0",
           "member": "string",
           "name": "SparkImage",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3406,7 +3551,7 @@
           "example": "test.py",
           "member": "string",
           "name": "JobPythonFiles",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3416,7 +3561,7 @@
           "example": "5",
           "member": "int64",
           "name": "TaskNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -3426,7 +3571,7 @@
           "example": "0",
           "member": "int64",
           "name": "DataEngineStatus",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -3436,7 +3581,7 @@
           "example": "1",
           "member": "int64",
           "name": "JobExecutorMaxNumbers",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -3446,7 +3591,7 @@
           "example": "pyspark3.2",
           "member": "string",
           "name": "SparkImageVersion",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3456,7 +3601,7 @@
           "example": "931a72aa-4f83-4d6a-adf1-2sdda0234a655",
           "member": "string",
           "name": "SessionId",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3466,7 +3611,7 @@
           "example": "引擎类型",
           "member": "string",
           "name": "DataEngineClusterType",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3476,7 +3621,7 @@
           "example": "引擎镜像版本",
           "member": "string",
           "name": "DataEngineImageVersion",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3486,19 +3631,29 @@
           "example": "0",
           "member": "uint64",
           "name": "IsInherit",
-          "required": false,
+          "output_required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the task runs with the session SQLs. Valid values: `false` for no and `true` for yes.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsSessionStarted",
+          "output_required": false,
+          "type": "bool",
           "value_allowed_null": true
         }
       ],
       "usage": "out"
     },
     "SparkMonitorMetrics": {
-      "document": "",
+      "document": "Spark monitoring metrics",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The shuffle data (in bytes) that overflows to COS.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "ShuffleWriteBytesCos",
@@ -3508,7 +3663,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The total shuffle data (in bytes).\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "ShuffleWriteBytesTotal",
@@ -4108,7 +4263,7 @@
           "example": "database1",
           "member": "string",
           "name": "DatabaseName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4118,7 +4273,7 @@
           "example": "1024",
           "member": "int64",
           "name": "DataAmount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4128,7 +4283,7 @@
           "example": "89570c65-49de-4bbd-ac0a-a67c724fc80f",
           "member": "string",
           "name": "Id",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4138,7 +4293,7 @@
           "example": "60000",
           "member": "int64",
           "name": "UsedTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4148,7 +4303,7 @@
           "example": "cosn://test-bucket-123434324234/result/",
           "member": "string",
           "name": "OutputPath",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4158,17 +4313,17 @@
           "example": "1611646962000",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Task status. Valid values: `0` (initial), `1` (executing), `2` (executed successfully), `-1` (failed to execute), `-3` (canceled).",
+          "document": "The task status. Valid values: `0` (initializing), `1` (executing), `2` (executed), `3` (writing data), `4` (queuing), `-1` (failed), and `-3` (canceled).",
           "example": "2",
           "member": "int64",
           "name": "State",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4178,7 +4333,7 @@
           "example": "DDL",
           "member": "string",
           "name": "SQLType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4188,7 +4343,7 @@
           "example": "U0VMRUNUICogRlJPTSBgdGVzdGA7",
           "member": "string",
           "name": "SQL",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4198,7 +4353,7 @@
           "example": "false",
           "member": "bool",
           "name": "ResultExpired",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -4208,7 +4363,7 @@
           "example": "500 rows selected (0.077 seconds)",
           "member": "string",
           "name": "RowAffectInfo",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4218,7 +4373,7 @@
           "example": "{\"Schema\":[\"name\",\"age\"],\"Data\":[{\"name\":\"29\",\"age\":\"Michael\"}]}",
           "member": "string",
           "name": "DataSet",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4228,7 +4383,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Error",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4238,7 +4393,7 @@
           "example": "100",
           "member": "int64",
           "name": "Percentage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4248,7 +4403,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "OutputMessage",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4258,7 +4413,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "TaskType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4268,7 +4423,7 @@
           "example": "[{\"jobId\":1,\"stages\":[{\"stageId\":1,\"numTasks\":3,\"numActiveTasks\"",
           "member": "string",
           "name": "ProgressDetail",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4278,7 +4433,7 @@
           "example": "1611646962000",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4288,7 +4443,7 @@
           "example": "resource-1gghpd1t",
           "member": "string",
           "name": "DataEngineId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4298,7 +4453,7 @@
           "example": "****",
           "member": "string",
           "name": "OperateUin",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4308,7 +4463,7 @@
           "example": "shared_presto",
           "member": "string",
           "name": "DataEngineName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4318,7 +4473,7 @@
           "example": "local",
           "member": "string",
           "name": "InputType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4328,7 +4483,7 @@
           "example": "[{\"Key\":\"paths\",\"Value\":\"lakefs://20000003366d155f79a522c8349496",
           "member": "string",
           "name": "InputConf",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4338,7 +4493,7 @@
           "example": "111",
           "member": "int64",
           "name": "DataNumber",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4348,7 +4503,7 @@
           "example": "false",
           "member": "bool",
           "name": "CanDownload",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -4358,7 +4513,7 @@
           "example": "testname",
           "member": "string",
           "name": "UserAlias",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4368,7 +4523,7 @@
           "example": "spark_app",
           "member": "string",
           "name": "SparkJobName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4378,7 +4533,7 @@
           "example": "batch_sdafa",
           "member": "string",
           "name": "SparkJobId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4388,7 +4543,7 @@
           "example": "example.jar",
           "member": "string",
           "name": "SparkJobFile",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4398,7 +4553,7 @@
           "example": "https://dlc-spark-ui.cloud.tencent.com/history/spark-893c606226b",
           "member": "string",
           "name": "UiUrl",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4408,7 +4563,7 @@
           "example": "80000",
           "member": "int64",
           "name": "TotalTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4418,7 +4573,7 @@
           "example": "spark.sql.shuffle.partitions",
           "member": "string",
           "name": "CmdArgs",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4428,7 +4583,7 @@
           "example": "SuperSQL P 1.0",
           "member": "string",
           "name": "ImageVersion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4438,7 +4593,7 @@
           "example": "small",
           "member": "string",
           "name": "DriverSize",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4448,7 +4603,7 @@
           "example": "small",
           "member": "string",
           "name": "ExecutorSize",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4458,7 +4613,7 @@
           "example": "1",
           "member": "uint64",
           "name": "ExecutorNums",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4468,37 +4623,37 @@
           "example": "1",
           "member": "uint64",
           "name": "ExecutorMaxNumbers",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Common task metrics\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CommonMetrics",
           "name": "CommonMetrics",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The Spark task metrics.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SparkMonitorMetrics",
           "name": "SparkMonitorMetrics",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The Presto task metrics.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "PrestoMonitorMetrics",
           "name": "PrestoMonitorMetrics",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -4560,7 +4715,7 @@
         },
         {
           "disabled": false,
-          "document": "Current status of the task. `0`: initial; `1`: task running; `2`: task execution succeeded; `-1`: task execution failed; `-3`: task terminated manually by the user. The task execution result will be returned only if task execution succeeds.",
+          "document": "u200cThe current task status. Valid values: `0` (initializing), `1` (executing), `2` (executed), `3` (writing data), `4` (queuing), u200c`-1` (failed), and `-3` (canceled). Only when the task is successfully executed, a task execution result will be returned.",
           "example": "2",
           "member": "int64",
           "name": "State",
@@ -4838,6 +4993,112 @@
         }
       ],
       "type": "object"
+    },
+    "UserRole": {
+      "document": "User role",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The role ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "RoleId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The user's app ID.",
+          "example": "无",
+          "member": "string",
+          "name": "AppId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The user ID.",
+          "example": "无",
+          "member": "string",
+          "name": "Uin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The role permission.",
+          "example": "无",
+          "member": "string",
+          "name": "Arn",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The last modified timestamp.",
+          "example": "无",
+          "member": "int64",
+          "name": "ModifyTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The role description.",
+          "example": "无",
+          "member": "string",
+          "name": "Desc",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The role name.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RoleName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The creator UIN.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Creator",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The COS permission list.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CosPermission",
+          "name": "CosPermissionList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The CAM policy in JSON.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PermissionJson",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     }
   },
   "version": "1.0"

@@ -316,7 +316,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The verification URL to be opened with a browser to start the verification process.",
           "example": "https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442",
           "member": "string",
           "name": "VerificationURL",

@@ -14,6 +14,13 @@
       "output": "BatchDeleteCSRResponse",
       "status": "online"
     },
+    "CancelAuditCertificate": {
+      "document": "This API is used to cancel certificate review.",
+      "input": "CancelAuditCertificateRequest",
+      "name": "Cancels certificate review",
+      "output": "CancelAuditCertificateResponse",
+      "status": "online"
+    },
     "CancelCertificateOrder": {
       "document": "This API is used to cancel a certificate order.",
       "input": "CancelCertificateOrderRequest",
@@ -138,6 +145,13 @@
       "input": "ModifyCertificateProjectRequest",
       "name": "Modifies the projects of multiple certificates",
       "output": "ModifyCertificateProjectResponse",
+      "status": "online"
+    },
+    "ModifyCertificateResubmit": {
+      "document": "This API is used to re-submit a review application for a paid certificate whose review failed or was canceled.",
+      "input": "ModifyCertificateResubmitRequest",
+      "name": "Re-submits a certificate review application",
+      "output": "ModifyCertificateResubmitResponse",
       "status": "online"
     },
     "ReplaceCertificate": {
@@ -655,6 +669,43 @@
       ],
       "usage": "out"
     },
+    "CancelAuditCertificateRequest": {
+      "document": "CancelAuditCertificate request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The certificate ID.",
+          "example": "abcdefg",
+          "member": "string",
+          "name": "CertificateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelAuditCertificateResponse": {
+      "document": "CancelAuditCertificate response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether the operation succeeded.",
+          "example": "true",
+          "member": "bool",
+          "name": "Result",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CancelCertificateOrderRequest": {
       "document": "CancelCertificateOrder request structure.",
       "members": [
@@ -912,7 +963,7 @@
           "example": "无",
           "member": "string",
           "name": "OwnerUin",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -922,7 +973,7 @@
           "example": "无",
           "member": "string",
           "name": "ProjectId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -932,7 +983,7 @@
           "example": "无",
           "member": "string",
           "name": "From",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -942,7 +993,7 @@
           "example": "无",
           "member": "string",
           "name": "PackageType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -952,7 +1003,7 @@
           "example": "无",
           "member": "string",
           "name": "CertificateType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -962,7 +1013,7 @@
           "example": "无",
           "member": "string",
           "name": "ProductZhName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -972,7 +1023,7 @@
           "example": "无",
           "member": "string",
           "name": "Domain",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -982,7 +1033,7 @@
           "example": "无",
           "member": "string",
           "name": "Alias",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -992,7 +1043,7 @@
           "example": "无",
           "member": "uint64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -1002,7 +1053,7 @@
           "example": "无",
           "member": "CertificateExtra",
           "name": "CertificateExtra",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -1012,7 +1063,7 @@
           "example": "无",
           "member": "string",
           "name": "VulnerabilityStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1022,7 +1073,7 @@
           "example": "无",
           "member": "string",
           "name": "StatusMsg",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1032,7 +1083,7 @@
           "example": "无",
           "member": "string",
           "name": "VerifyType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1042,7 +1093,7 @@
           "example": "无",
           "member": "string",
           "name": "CertBeginTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1052,7 +1103,7 @@
           "example": "无",
           "member": "string",
           "name": "CertEndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1062,7 +1113,7 @@
           "example": "无",
           "member": "string",
           "name": "ValidityPeriod",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1072,7 +1123,7 @@
           "example": "无",
           "member": "string",
           "name": "InsertTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1082,7 +1133,7 @@
           "example": "无",
           "member": "string",
           "name": "CertificateId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1092,7 +1143,7 @@
           "example": "无",
           "member": "string",
           "name": "SubjectAltName",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1102,7 +1153,7 @@
           "example": "无",
           "member": "string",
           "name": "PackageTypeName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1112,7 +1163,7 @@
           "example": "无",
           "member": "string",
           "name": "StatusName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1122,7 +1173,7 @@
           "example": "无",
           "member": "bool",
           "name": "IsVip",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1132,7 +1183,7 @@
           "example": "无",
           "member": "bool",
           "name": "IsDv",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1142,7 +1193,7 @@
           "example": "无",
           "member": "bool",
           "name": "IsWildcard",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1152,7 +1203,7 @@
           "example": "无",
           "member": "bool",
           "name": "IsVulnerability",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1162,7 +1213,7 @@
           "example": "无",
           "member": "bool",
           "name": "RenewAble",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1172,7 +1223,7 @@
           "example": "无",
           "member": "ProjectInfo",
           "name": "ProjectInfo",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -1182,7 +1233,7 @@
           "example": "无",
           "member": "string",
           "name": "BoundResource",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1192,7 +1243,7 @@
           "example": "无",
           "member": "bool",
           "name": "Deployable",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1202,7 +1253,7 @@
           "example": "无",
           "member": "Tags",
           "name": "Tags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1212,7 +1263,7 @@
           "example": "无",
           "member": "bool",
           "name": "IsIgnore",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1222,7 +1273,7 @@
           "example": "无",
           "member": "bool",
           "name": "IsSM",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -1232,7 +1283,7 @@
           "example": "无",
           "member": "string",
           "name": "EncryptAlgorithm",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1242,7 +1293,7 @@
           "example": "无",
           "member": "string",
           "name": "CAEncryptAlgorithms",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1252,7 +1303,7 @@
           "example": "无",
           "member": "string",
           "name": "CAEndTimes",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1262,7 +1313,7 @@
           "example": "无",
           "member": "string",
           "name": "CACommonNames",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1272,7 +1323,7 @@
           "example": "无",
           "member": "PreAuditInfo",
           "name": "PreAuditInfo",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -1282,8 +1333,38 @@
           "example": "无",
           "member": "int64",
           "name": "AutoRenewFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The hosting status. Valid values: `0` (hosting), `5` (replacing resources), `10` (hosting completed), and `-1` (not hosted). \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "HostingStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The hosting completion time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "HostingCompleteTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The hosted new certificate ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "HostingRenewCertId",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -3971,6 +4052,43 @@
           "name": "FailCertificates",
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCertificateResubmitRequest": {
+      "document": "ModifyCertificateResubmit request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The certificate ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CertificateId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCertificateResubmitResponse": {
+      "document": "ModifyCertificateResubmit response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The certificate ID.",
+          "example": "无",
+          "member": "string",
+          "name": "CertificateId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",

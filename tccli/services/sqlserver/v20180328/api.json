@@ -148,9 +148,9 @@
       "status": "online"
     },
     "DescribeBackupFiles": {
-      "document": "This API is used to query the list of unarchived database backup files.",
+      "document": "This API is used to query the details of an unarchived backup.",
       "input": "DescribeBackupFilesRequest",
-      "name": "Queries the list of backup files",
+      "name": "Queries the details of an unarchived backup",
       "output": "DescribeBackupFilesResponse",
       "status": "online"
     },
@@ -236,6 +236,13 @@
       "input": "DescribeIncrementalMigrationRequest",
       "name": "Queries incremental backup import tasks",
       "output": "DescribeIncrementalMigrationResponse",
+      "status": "online"
+    },
+    "DescribeInstanceByOrders": {
+      "document": "This API is used to query the instance ID by the order number.",
+      "input": "DescribeInstanceByOrdersRequest",
+      "name": "Queries the instance ID by the order number",
+      "output": "DescribeInstanceByOrdersResponse",
       "status": "online"
     },
     "DescribeInstanceParamRecords": {
@@ -330,7 +337,7 @@
       "status": "online"
     },
     "InquiryPriceUpgradeDBInstance": {
-      "document": "This API is used to query the upgrade price of an instance.",
+      "document": "This API is used to query the upgrade prices of a monthly subscribed instance\n.",
       "input": "InquiryPriceUpgradeDBInstanceRequest",
       "name": "Queries upgrade price of instance",
       "output": "InquiryPriceUpgradeDBInstanceResponse",
@@ -362,6 +369,13 @@
       "input": "ModifyBackupStrategyRequest",
       "name": "Modifies backup policy",
       "output": "ModifyBackupStrategyResponse",
+      "status": "online"
+    },
+    "ModifyDBEncryptAttributes": {
+      "document": "This API is used to u200denable or disable TDE of a database.",
+      "input": "ModifyDBEncryptAttributesRequest",
+      "name": "Enables or disables TDE of a database",
+      "output": "ModifyDBEncryptAttributesResponse",
       "status": "online"
     },
     "ModifyDBInstanceName": {
@@ -425,6 +439,13 @@
       "input": "ModifyIncrementalMigrationRequest",
       "name": "Modifies incremental backup import tasks.",
       "output": "ModifyIncrementalMigrationResponse",
+      "status": "online"
+    },
+    "ModifyInstanceEncryptAttributes": {
+      "document": "This API is used to enable TDE of an instance.",
+      "input": "ModifyInstanceEncryptAttributesRequest",
+      "name": "Enables TDE of an instance",
+      "output": "ModifyInstanceEncryptAttributesResponse",
       "status": "online"
     },
     "ModifyInstanceParam": {
@@ -740,6 +761,7 @@
         {
           "disabled": false,
           "document": "Username",
+          "example": "",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -749,6 +771,7 @@
         {
           "disabled": false,
           "document": "Password",
+          "example": "",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -819,7 +842,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the account has the admin permission. Valid values: `true` (Yes. It is an admin account when the instance is a basic edition type and `AccountType` is `L0`; it is a privileged account when the instance is a dual-server high availability edition type and `AccountType` is `L1`.), `false` (No. The admin permission is disabled by default).",
+          "document": "Whether it is an instance admin account. Valid values: `true` (Yes. When the instance is single-node and `AccountType` is `L0`, it's an admin account; when the instance is two-node and `AccountType` is `L1`, it's a privileged account), `false` (No. It's a standard account and `AccountType` is `L3`).",
           "example": "true",
           "member": "bool",
           "name": "IsAdmin",
@@ -846,6 +869,7 @@
         {
           "disabled": false,
           "document": "Account name",
+          "example": "",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -855,6 +879,7 @@
         {
           "disabled": false,
           "document": "New remarks of account",
+          "example": "",
           "member": "string",
           "name": "Remark",
           "required": true,
@@ -1351,6 +1376,7 @@
         {
           "disabled": false,
           "document": "Backup name",
+          "example": "",
           "member": "string",
           "name": "FileName",
           "required": true,
@@ -1360,6 +1386,7 @@
         {
           "disabled": false,
           "document": "Backup size",
+          "example": "",
           "member": "int64",
           "name": "Size",
           "required": true,
@@ -1375,6 +1402,7 @@
         {
           "disabled": false,
           "document": "Database instance ID in the format of mssql-njj2mtpl",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1383,6 +1411,7 @@
         {
           "disabled": false,
           "document": "Database instance account information",
+          "example": "",
           "member": "AccountCreateInfo",
           "name": "Accounts",
           "required": true,
@@ -1397,6 +1426,7 @@
         {
           "disabled": false,
           "document": "Task flow ID",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -1417,6 +1447,7 @@
         {
           "disabled": false,
           "document": "ID of imported target instance",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1425,6 +1456,7 @@
         {
           "disabled": false,
           "document": "Migration task restoration type. FULL: full backup restoration, FULL_LOG: full backup and transaction log restoration, FULL_DIFF: full backup and differential backup restoration",
+          "example": "",
           "member": "string",
           "name": "RecoveryType",
           "required": true,
@@ -1433,6 +1465,7 @@
         {
           "disabled": false,
           "document": "Backup upload type. COS_URL: the backup is stored in user’s Cloud Object Storage, with URL provided. COS_UPLOAD: the backup is stored in the application’s Cloud Object Storage and needs to be uploaded by the user.",
+          "example": "",
           "member": "string",
           "name": "UploadType",
           "required": true,
@@ -1441,6 +1474,7 @@
         {
           "disabled": false,
           "document": "Task name",
+          "example": "",
           "member": "string",
           "name": "MigrationName",
           "required": true,
@@ -1449,6 +1483,7 @@
         {
           "disabled": false,
           "document": "If the UploadType is COS_URL, fill in the URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.",
+          "example": "",
           "member": "string",
           "name": "BackupFiles",
           "required": false,
@@ -1463,6 +1498,7 @@
         {
           "disabled": false,
           "document": "Backup import task ID",
+          "example": "",
           "member": "string",
           "name": "BackupMigrationId",
           "type": "string",
@@ -1483,6 +1519,7 @@
         {
           "disabled": false,
           "document": "Backup policy (0: instance backup, 1: multi-database backup)",
+          "example": "1",
           "member": "int64",
           "name": "Strategy",
           "required": false,
@@ -1491,6 +1528,7 @@
         {
           "disabled": false,
           "document": "List of names of databases to be backed up (required only for multi-database backup)",
+          "example": "[\"db1\\r\\n\",\"db2\\r\\n\"]",
           "member": "string",
           "name": "DBNames",
           "required": false,
@@ -1498,7 +1536,8 @@
         },
         {
           "disabled": false,
-          "document": "Instance ID in the format of mssql-i1z41iwd",
+          "document": "(Required) Instance ID in the format of mssql-i1z41iwd",
+          "example": "mssql-njj2mtpl",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -1507,10 +1546,20 @@
         {
           "disabled": false,
           "document": "Backup name. If this parameter is left empty, a backup name in the format of \"[Instance ID]_[Backup start timestamp]\" will be automatically generated.",
+          "example": "BackupName",
           "member": "string",
           "name": "BackupName",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "StorageStrategy",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -1521,6 +1570,7 @@
         {
           "disabled": false,
           "document": "The async job ID",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -2144,8 +2194,8 @@
         },
         {
           "disabled": false,
-          "document": "Number of instances purchased this time. Default value: `1`.",
-          "example": "1",
+          "document": "Number of read-only instances to be purchased this time. Default value: `2`.",
+          "example": "2",
           "member": "int64",
           "name": "GoodsNum",
           "required": false,
@@ -2466,6 +2516,7 @@
         {
           "disabled": false,
           "document": "Order name",
+          "example": "",
           "member": "string",
           "name": "DealName",
           "type": "string",
@@ -2474,6 +2525,7 @@
         {
           "disabled": false,
           "document": "Order name array",
+          "example": "",
           "member": "string",
           "name": "DealNames",
           "type": "list",
@@ -2494,6 +2546,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2502,6 +2555,7 @@
         {
           "disabled": false,
           "document": "Database creation information",
+          "example": "",
           "member": "DBCreateInfo",
           "name": "DBs",
           "required": true,
@@ -2516,6 +2570,7 @@
         {
           "disabled": false,
           "document": "Task flow ID",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -2536,6 +2591,7 @@
         {
           "disabled": false,
           "document": "ID of imported target instance",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2544,6 +2600,7 @@
         {
           "disabled": false,
           "document": "Backup import task ID, which is returned through the API CreateBackupMigration.",
+          "example": "",
           "member": "string",
           "name": "BackupMigrationId",
           "required": true,
@@ -2552,6 +2609,7 @@
         {
           "disabled": false,
           "document": "Incremental backup file. If the UploadType of a full backup file is COS_URL, fill in URL here. If the UploadType is COS_UPLOAD, fill in the name of the backup file here. Only 1 backup file is supported, but a backup file can involve multiple databases.",
+          "example": "",
           "member": "string",
           "name": "BackupFiles",
           "required": false,
@@ -2560,6 +2618,7 @@
         {
           "disabled": false,
           "document": "Whether restoration is required. No: not required. Yes: required. Not required by default.",
+          "example": "",
           "member": "string",
           "name": "IsRecovery",
           "required": false,
@@ -2574,6 +2633,7 @@
         {
           "disabled": false,
           "document": "ID of an incremental backup import task",
+          "example": "",
           "member": "string",
           "name": "IncrementalMigrationId",
           "type": "string",
@@ -2594,6 +2654,7 @@
         {
           "disabled": false,
           "document": "Migration task name",
+          "example": "",
           "member": "string",
           "name": "MigrateName",
           "required": true,
@@ -2602,6 +2663,7 @@
         {
           "disabled": false,
           "document": "Migration type (1: structure migration, 2: data migration, 3: incremental sync)",
+          "example": "",
           "member": "uint64",
           "name": "MigrateType",
           "required": true,
@@ -2610,6 +2672,7 @@
         {
           "disabled": false,
           "document": "Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)",
+          "example": "",
           "member": "uint64",
           "name": "SourceType",
           "required": true,
@@ -2618,6 +2681,7 @@
         {
           "disabled": false,
           "document": "Migration source",
+          "example": "",
           "member": "MigrateSource",
           "name": "Source",
           "required": true,
@@ -2626,6 +2690,7 @@
         {
           "disabled": false,
           "document": "Migration target",
+          "example": "",
           "member": "MigrateTarget",
           "name": "Target",
           "required": true,
@@ -2634,6 +2699,7 @@
         {
           "disabled": false,
           "document": "Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)",
+          "example": "",
           "member": "MigrateDB",
           "name": "MigrateDBSet",
           "required": false,
@@ -2642,6 +2708,7 @@
         {
           "disabled": false,
           "document": "Restore and rename the databases listed in `ReNameRestoreDatabase`. If this parameter is left empty, all restored databases will be renamed in the default format. This parameter takes effect only when `SourceType=5`.",
+          "example": "",
           "member": "RenameRestoreDatabase",
           "name": "RenameRestore",
           "required": false,
@@ -2656,6 +2723,7 @@
         {
           "disabled": false,
           "document": "Migration task ID",
+          "example": "",
           "member": "int64",
           "name": "MigrateId",
           "type": "int",
@@ -2784,6 +2852,7 @@
         {
           "disabled": false,
           "document": "Database name",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -2793,6 +2862,7 @@
         {
           "disabled": false,
           "document": "Character set",
+          "example": "无",
           "member": "string",
           "name": "Charset",
           "required": true,
@@ -2802,6 +2872,7 @@
         {
           "disabled": false,
           "document": "Remarks",
+          "example": "无",
           "member": "string",
           "name": "Remark",
           "required": true,
@@ -2811,6 +2882,7 @@
         {
           "disabled": false,
           "document": "Database creation time",
+          "example": "无",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -2820,6 +2892,7 @@
         {
           "disabled": false,
           "document": "Database status. 1: creating, 2: running, 3: modifying, -1: dropping",
+          "example": "无",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -2829,6 +2902,7 @@
         {
           "disabled": false,
           "document": "Database account permission information",
+          "example": "无",
           "member": "AccountPrivilege",
           "name": "Accounts",
           "required": true,
@@ -2838,9 +2912,20 @@
         {
           "disabled": false,
           "document": "Internal status. ONLINE: running",
+          "example": "无",
           "member": "string",
           "name": "InternalStatus",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "TDE status. Valid values: `enable` (enabled), `disable` (disabled).",
+          "example": "disable",
+          "member": "string",
+          "name": "Encryption",
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -2856,7 +2941,7 @@
           "example": "mssql-dj5i29c5n",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2866,7 +2951,7 @@
           "example": "Name",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2876,7 +2961,7 @@
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2886,7 +2971,7 @@
           "example": "1",
           "member": "int64",
           "name": "RegionId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2896,7 +2981,7 @@
           "example": "100004",
           "member": "int64",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2906,7 +2991,7 @@
           "example": "12345",
           "member": "int64",
           "name": "VpcId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2916,7 +3001,7 @@
           "example": "67890",
           "member": "int64",
           "name": "SubnetId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2926,7 +3011,7 @@
           "example": "2",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2936,7 +3021,7 @@
           "example": "192.168.0.16",
           "member": "string",
           "name": "Vip",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2946,7 +3031,7 @@
           "example": "1433",
           "member": "int64",
           "name": "Vport",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2956,7 +3041,7 @@
           "example": "2020-04-09 00:00:00",
           "member": "datetime",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2966,7 +3051,7 @@
           "example": "2020-04-09 00:00:00",
           "member": "datetime",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2976,7 +3061,7 @@
           "example": "2020-04-09 00:00:00",
           "member": "datetime",
           "name": "StartTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2986,7 +3071,7 @@
           "example": "2020-04-09 00:00:00",
           "member": "datetime",
           "name": "EndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2996,7 +3081,7 @@
           "example": "2020-04-09 00:00:00",
           "member": "datetime",
           "name": "IsolateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3006,7 +3091,7 @@
           "example": "64",
           "member": "int64",
           "name": "Memory",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3016,7 +3101,7 @@
           "example": "500",
           "member": "int64",
           "name": "UsedStorage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3026,7 +3111,7 @@
           "example": "500",
           "member": "int64",
           "name": "Storage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3036,7 +3121,7 @@
           "example": "SQL Server 2008 Enterprise",
           "member": "string",
           "name": "VersionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3046,7 +3131,7 @@
           "example": "0",
           "member": "int64",
           "name": "RenewFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3056,7 +3141,7 @@
           "example": "1",
           "member": "int64",
           "name": "Model",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3066,7 +3151,7 @@
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3076,7 +3161,7 @@
           "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3086,7 +3171,7 @@
           "example": "00:00",
           "member": "string",
           "name": "BackupTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3096,7 +3181,7 @@
           "example": "1",
           "member": "int64",
           "name": "PayMode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3106,7 +3191,7 @@
           "example": "gamedb.gz000.cdb.db",
           "member": "string",
           "name": "Uid",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3116,7 +3201,7 @@
           "example": "4",
           "member": "int64",
           "name": "Cpu",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3126,17 +3211,17 @@
           "example": "2008R2",
           "member": "string",
           "name": "Version",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Physical server code",
+          "document": "Instance type. Valid values: `TS85` (physical machine, local SSD), `Z3` (early version of physical machine, local SSD), `CLOUD_BASIC` (virtual machine, HDD cloud disk), `CLOUD_PREMIUM` (virtual machine, premium cloud disk), `CLOUD_SSD` (virtual machine, SSD), `CLOUD_HSSD` (virtual machine, enhanced SSD), `CLOUD_TSSD` (virtual machine, ulTra SSD), `CLOUD_BSSD` virtual machine, balanced SSD).",
           "example": "TS85",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3146,7 +3231,7 @@
           "example": "1",
           "member": "int64",
           "name": "Pid",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3156,7 +3241,7 @@
           "example": "vpc-xxxxx",
           "member": "string",
           "name": "UniqVpcId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3166,7 +3251,7 @@
           "example": "subnet-xxxxx",
           "member": "string",
           "name": "UniqSubnetId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3176,7 +3261,7 @@
           "example": "User",
           "member": "string",
           "name": "IsolateOperator",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3186,7 +3271,7 @@
           "example": "SUB",
           "member": "string",
           "name": "SubFlag",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3196,7 +3281,7 @@
           "example": "MASTER",
           "member": "string",
           "name": "ROFlag",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3206,7 +3291,7 @@
           "example": "MIRROR",
           "member": "string",
           "name": "HAFlag",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3216,7 +3301,7 @@
           "example": "0",
           "member": "ResourceTag",
           "name": "ResourceTags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -3226,7 +3311,7 @@
           "example": "master_pkg",
           "member": "string",
           "name": "BackupModel",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3236,7 +3321,7 @@
           "example": "test",
           "member": "string",
           "name": "InstanceNote",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3246,7 +3331,7 @@
           "example": "1",
           "member": "int64",
           "name": "BackupCycle",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3256,7 +3341,7 @@
           "example": "daily",
           "member": "string",
           "name": "BackupCycleType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3266,7 +3351,7 @@
           "example": "7",
           "member": "int64",
           "name": "BackupSaveDays",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3276,7 +3361,7 @@
           "example": "HA",
           "member": "string",
           "name": "InstanceType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3286,7 +3371,7 @@
           "example": "[ap-guangzhou]",
           "member": "string",
           "name": "CrossRegions",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3296,7 +3381,7 @@
           "example": "enable",
           "member": "string",
           "name": "CrossBackupEnabled",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3306,7 +3391,7 @@
           "example": "7",
           "member": "uint64",
           "name": "CrossBackupSaveDays",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3316,7 +3401,7 @@
           "example": "gz.xxx.sqlserver.tencent.com",
           "member": "string",
           "name": "DnsPodDomain",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3326,7 +3411,7 @@
           "example": "2032",
           "member": "int64",
           "name": "TgwWanVPort",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3336,7 +3421,7 @@
           "example": "Chinese_PRC_CI_AS",
           "member": "string",
           "name": "Collation",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3346,7 +3431,7 @@
           "example": "China Standard Time",
           "member": "string",
           "name": "TimeZone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3356,7 +3441,7 @@
           "example": "false",
           "member": "bool",
           "name": "IsDrZone",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -3366,17 +3451,17 @@
           "example": "{}",
           "member": "SlaveZones",
           "name": "SlaveZones",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Architecture type. Valid values: `SINGLE` (single-node), `DOUBLE` (two-node), `TRIPLE` (three-node).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Architecture type. Valid values: `SINGLE` (single-node), `DOUBLE` (two-node).\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "DOUBLE",
           "member": "string",
           "name": "Architecture",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3386,7 +3471,7 @@
           "example": "EXCLUSIVE",
           "member": "string",
           "name": "Style",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -3451,6 +3536,7 @@
         {
           "disabled": false,
           "document": "Database name",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -3460,6 +3546,7 @@
         {
           "disabled": false,
           "document": "Remarks",
+          "example": "",
           "member": "string",
           "name": "Remark",
           "required": true,
@@ -3494,6 +3581,30 @@
         }
       ],
       "usage": "out"
+    },
+    "DBTDEEncrypt": {
+      "document": "This example shows you how to enable or disable TDE of a database.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "test_db",
+          "member": "string",
+          "name": "DBName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "TDE u200dstatus. Valid values: `enable` (enabled), `disable` (disabled).",
+          "example": "enable",
+          "member": "string",
+          "name": "Encryption",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
     },
     "DbNormalDetail": {
       "document": "Database configurations",
@@ -3697,6 +3808,7 @@
         {
           "disabled": false,
           "document": "Database name",
+          "example": "",
           "member": "string",
           "name": "DBName",
           "required": true,
@@ -3706,6 +3818,7 @@
         {
           "disabled": false,
           "document": "Start time of time range available for rollback",
+          "example": "",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -3715,6 +3828,7 @@
         {
           "disabled": false,
           "document": "End time of time range available for rollback",
+          "example": "",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -3730,6 +3844,7 @@
         {
           "disabled": false,
           "document": "Order name",
+          "example": "",
           "member": "string",
           "name": "DealName",
           "required": true,
@@ -3739,6 +3854,7 @@
         {
           "disabled": false,
           "document": "Number of items",
+          "example": "",
           "member": "uint64",
           "name": "Count",
           "required": true,
@@ -3748,6 +3864,7 @@
         {
           "disabled": false,
           "document": "ID of associated flow, which can be used to query the flow execution status",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "required": true,
@@ -3757,6 +3874,7 @@
         {
           "disabled": false,
           "document": "This field is required only for an order that creates an instance, indicating the ID of the instance created by the order",
+          "example": "",
           "member": "string",
           "name": "InstanceIdSet",
           "required": true,
@@ -3766,6 +3884,7 @@
         {
           "disabled": false,
           "document": "Account",
+          "example": "",
           "member": "string",
           "name": "OwnerUin",
           "required": true,
@@ -3775,9 +3894,36 @@
         {
           "disabled": false,
           "document": "Instance billing type",
+          "example": "",
           "member": "string",
           "name": "InstanceChargeType",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "DealInstance": {
+      "document": "List of the resource IDs corresponding to order number",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "[mssql-i9auaja]",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Order ID",
+          "example": "20230101872736",
+          "member": "string",
+          "name": "DealName",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -3790,6 +3936,7 @@
         {
           "disabled": false,
           "document": "Database instance ID in the format of mssql-njj2mtpl",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3798,6 +3945,7 @@
         {
           "disabled": false,
           "document": "Array of instance usernames",
+          "example": "",
           "member": "string",
           "name": "UserNames",
           "required": true,
@@ -3812,6 +3960,7 @@
         {
           "disabled": false,
           "document": "Task flow ID",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -3832,6 +3981,7 @@
         {
           "disabled": false,
           "document": "Target instance ID, which is returned through the API DescribeBackupMigration.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3840,6 +3990,7 @@
         {
           "disabled": false,
           "document": "Backup import task ID, which is returned through the API DescribeBackupMigration.",
+          "example": "",
           "member": "string",
           "name": "BackupMigrationId",
           "required": true,
@@ -3902,6 +4053,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of mssql-rljoi3bf",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3910,6 +4062,7 @@
         {
           "disabled": false,
           "document": "Array of database names",
+          "example": "",
           "member": "string",
           "name": "Names",
           "required": true,
@@ -3924,6 +4077,7 @@
         {
           "disabled": false,
           "document": "Task flow ID",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -3989,6 +4143,7 @@
         {
           "disabled": false,
           "document": "Migration task ID",
+          "example": "",
           "member": "uint64",
           "name": "MigrateId",
           "required": true,
@@ -4075,6 +4230,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "type": "string",
@@ -4083,6 +4239,7 @@
         {
           "disabled": false,
           "document": "Account information list",
+          "example": "",
           "member": "AccountDetail",
           "name": "Accounts",
           "type": "list",
@@ -4091,6 +4248,7 @@
         {
           "disabled": false,
           "document": "Total number",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -4111,6 +4269,7 @@
         {
           "disabled": false,
           "document": "Backup file type. Full: full backup. FULL_LOG: full backup which needs log increments. FULL_DIFF: full backup which needs differential increments. LOG: log backup. DIFF: differential backup.",
+          "example": "",
           "member": "string",
           "name": "BackupFileType",
           "required": true,
@@ -4119,6 +4278,7 @@
         {
           "disabled": false,
           "document": "Database name",
+          "example": "",
           "member": "string",
           "name": "DataBaseName",
           "required": true,
@@ -4127,6 +4287,7 @@
         {
           "disabled": false,
           "document": "Whether restoration is required. No: not required. Yes: required.",
+          "example": "",
           "member": "string",
           "name": "IsRecovery",
           "required": true,
@@ -4135,6 +4296,7 @@
         {
           "disabled": false,
           "document": "Storage path of backup files. If this parameter is left empty, the default storage path will be D:\\\\.",
+          "example": "",
           "member": "string",
           "name": "LocalPath",
           "required": false,
@@ -4149,6 +4311,7 @@
         {
           "disabled": false,
           "document": "Create a backup command",
+          "example": "",
           "member": "string",
           "name": "Command",
           "type": "string",
@@ -4177,7 +4340,7 @@
         },
         {
           "disabled": false,
-          "document": "Group ID of unarchived backup files, which can be obtained by the `DescribeBackups` API",
+          "document": "Group ID of unarchived backup files, which can be obtained by the `DescribeBackups` API (Querying archived backup record is not supported).",
           "example": "123456789",
           "member": "string",
           "name": "GroupId",
@@ -4366,6 +4529,7 @@
         {
           "disabled": false,
           "document": "Total number of tasks",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -4374,6 +4538,7 @@
         {
           "disabled": false,
           "document": "Migration task set",
+          "example": "",
           "member": "Migration",
           "name": "BackupMigrationSet",
           "type": "list",
@@ -4394,6 +4559,7 @@
         {
           "disabled": false,
           "document": "ID of imported target instance",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -4402,6 +4568,7 @@
         {
           "disabled": false,
           "document": "Backup import task ID, which is returned through the API CreateBackupMigration",
+          "example": "",
           "member": "string",
           "name": "BackupMigrationId",
           "required": true,
@@ -4410,6 +4577,7 @@
         {
           "disabled": false,
           "document": "Incremental import task ID",
+          "example": "",
           "member": "string",
           "name": "IncrementalMigrationId",
           "required": false,
@@ -4424,6 +4592,7 @@
         {
           "disabled": false,
           "document": "Information of uploaded backups",
+          "example": "",
           "member": "CosUploadBackupFile",
           "name": "CosUploadBackupFileSet",
           "type": "list",
@@ -4567,6 +4736,7 @@
         {
           "disabled": false,
           "document": "Total number of backups",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -4575,6 +4745,7 @@
         {
           "disabled": false,
           "document": "Backup list details",
+          "example": "",
           "member": "Backup",
           "name": "Backups",
           "type": "list",
@@ -4919,6 +5090,15 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
+          "document": "TDE u200dconfiguration",
+          "example": "无",
+          "member": "TDEConfigAttribute",
+          "name": "TDEConfig",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -5083,6 +5263,7 @@
         {
           "disabled": false,
           "document": "Total number of eligible instances. If the results are returned in multiple pages, this value will be the number of all eligible instances but not the number of instances returned according to the current values of `Limit` and `Offset`",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -5091,6 +5272,7 @@
         {
           "disabled": false,
           "document": "Instance list",
+          "example": "",
           "member": "DBInstance",
           "name": "DBInstances",
           "type": "list",
@@ -5199,6 +5381,15 @@
           "name": "OrderByType",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "TDE status. Valid values: `enable` (enabled), `disable` (disabled).",
+          "example": "disable",
+          "member": "string",
+          "name": "Encryption",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -5209,6 +5400,7 @@
         {
           "disabled": false,
           "document": "Number of databases",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -5217,6 +5409,7 @@
         {
           "disabled": false,
           "document": "List of instance databases",
+          "example": "",
           "member": "InstanceDBDetail",
           "name": "DBInstances",
           "type": "list",
@@ -5237,6 +5430,7 @@
         {
           "disabled": false,
           "document": "Flow ID",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "required": true,
@@ -5251,6 +5445,7 @@
         {
           "disabled": false,
           "document": "Flow status. 0: succeeded, 1: failed, 2: running",
+          "example": "",
           "member": "int64",
           "name": "Status",
           "type": "int",
@@ -5358,6 +5553,7 @@
         {
           "disabled": false,
           "document": "Total number of import tasks",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -5366,8 +5562,46 @@
         {
           "disabled": false,
           "document": "Incremental import task set",
+          "example": "",
           "member": "Migration",
           "name": "IncrementalMigrationSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceByOrdersRequest": {
+      "document": "DescribeInstanceByOrders request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Order ID set",
+          "example": "[2023010191871]",
+          "member": "string",
+          "name": "DealNames",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceByOrdersResponse": {
+      "document": "DescribeInstanceByOrders response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[]",
+          "member": "DealInstance",
+          "name": "DealInstance",
+          "output_required": false,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5498,6 +5732,7 @@
         {
           "disabled": false,
           "document": "Migration task ID",
+          "example": "",
           "member": "uint64",
           "name": "MigrateId",
           "required": true,
@@ -5512,6 +5747,7 @@
         {
           "disabled": false,
           "document": "Migration task ID",
+          "example": "",
           "member": "uint64",
           "name": "MigrateId",
           "type": "int",
@@ -5520,6 +5756,7 @@
         {
           "disabled": false,
           "document": "Migration task name",
+          "example": "",
           "member": "string",
           "name": "MigrateName",
           "type": "string",
@@ -5528,6 +5765,7 @@
         {
           "disabled": false,
           "document": "User ID of migration task",
+          "example": "",
           "member": "uint64",
           "name": "AppId",
           "type": "int",
@@ -5536,6 +5774,7 @@
         {
           "disabled": false,
           "document": "Migration task region",
+          "example": "",
           "member": "string",
           "name": "Region",
           "type": "string",
@@ -5544,6 +5783,7 @@
         {
           "disabled": false,
           "document": "Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)",
+          "example": "",
           "member": "int64",
           "name": "SourceType",
           "type": "int",
@@ -5552,6 +5792,7 @@
         {
           "disabled": false,
           "document": "Migration task creation time",
+          "example": "",
           "member": "datetime",
           "name": "CreateTime",
           "type": "string",
@@ -5560,6 +5801,7 @@
         {
           "disabled": false,
           "document": "Migration task start time",
+          "example": "",
           "member": "datetime",
           "name": "StartTime",
           "type": "string",
@@ -5568,6 +5810,7 @@
         {
           "disabled": false,
           "document": "Migration task end time",
+          "example": "",
           "member": "datetime",
           "name": "EndTime",
           "type": "string",
@@ -5576,6 +5819,7 @@
         {
           "disabled": false,
           "document": "Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded)",
+          "example": "",
           "member": "uint64",
           "name": "Status",
           "type": "int",
@@ -5584,6 +5828,7 @@
         {
           "disabled": false,
           "document": "Migration task progress",
+          "example": "",
           "member": "int64",
           "name": "Progress",
           "type": "int",
@@ -5592,6 +5837,7 @@
         {
           "disabled": false,
           "document": "Migration type (1: structure migration, 2: data migration, 3: incremental sync)",
+          "example": "",
           "member": "int64",
           "name": "MigrateType",
           "type": "int",
@@ -5600,6 +5846,7 @@
         {
           "disabled": false,
           "document": "Migration source",
+          "example": "",
           "member": "MigrateSource",
           "name": "Source",
           "type": "object",
@@ -5608,6 +5855,7 @@
         {
           "disabled": false,
           "document": "Migration target",
+          "example": "",
           "member": "MigrateTarget",
           "name": "Target",
           "type": "object",
@@ -5616,6 +5864,7 @@
         {
           "disabled": false,
           "document": "Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5)",
+          "example": "",
           "member": "MigrateDB",
           "name": "MigrateDBSet",
           "type": "list",
@@ -5636,6 +5885,7 @@
         {
           "disabled": false,
           "document": "Status set. As long as a migration task is in a status therein, it will be listed",
+          "example": "",
           "member": "int64",
           "name": "StatusSet",
           "required": false,
@@ -5644,6 +5894,7 @@
         {
           "disabled": false,
           "document": "Migration task name (fuzzy match)",
+          "example": "",
           "member": "string",
           "name": "MigrateName",
           "required": false,
@@ -5652,6 +5903,7 @@
         {
           "disabled": false,
           "document": "Number of results per page. Value range: 1-100. Default value: 100",
+          "example": "",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -5660,6 +5912,7 @@
         {
           "disabled": false,
           "document": "Page number. Default value: 0",
+          "example": "",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -5668,6 +5921,7 @@
         {
           "disabled": false,
           "document": "The query results are sorted by keyword. Valid values: name, createTime, startTime, endTime, status",
+          "example": "",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -5676,6 +5930,7 @@
         {
           "disabled": false,
           "document": "Sorting order. Valid values: desc, asc",
+          "example": "",
           "member": "string",
           "name": "OrderByType",
           "required": false,
@@ -5690,6 +5945,7 @@
         {
           "disabled": false,
           "document": "Total number of query results",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -5698,6 +5954,7 @@
         {
           "disabled": false,
           "document": "List of query results",
+          "example": "",
           "member": "MigrateTask",
           "name": "MigrateTaskSet",
           "type": "list",
@@ -5718,6 +5975,7 @@
         {
           "disabled": false,
           "document": "Order array. The order name will be returned upon shipping, which can be used to call the `DescribeOrders` API to query shipment status",
+          "example": "",
           "member": "string",
           "name": "DealNames",
           "required": true,
@@ -5732,6 +5990,7 @@
         {
           "disabled": false,
           "document": "Order information array",
+          "example": "",
           "member": "DealInfo",
           "name": "Deals",
           "type": "list",
@@ -5740,6 +5999,7 @@
         {
           "disabled": false,
           "document": "Number of orders returned",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -5760,6 +6020,7 @@
         {
           "disabled": false,
           "document": "AZ ID in the format of ap-guangzhou-1",
+          "example": "",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -5768,6 +6029,7 @@
         {
           "disabled": false,
           "document": "The type of instances to be purchased. Valid values: HA (High-Availability Edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (Basic Edition)",
+          "example": "",
           "member": "string",
           "name": "InstanceType",
           "required": false,
@@ -5782,6 +6044,7 @@
         {
           "disabled": false,
           "document": "Specification information array",
+          "example": "",
           "member": "SpecInfo",
           "name": "SpecInfoList",
           "type": "list",
@@ -5790,6 +6053,7 @@
         {
           "disabled": false,
           "document": "Number of date entries returned",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -5815,6 +6079,7 @@
         {
           "disabled": false,
           "document": "Total number of regions returned",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -5823,6 +6088,7 @@
         {
           "disabled": false,
           "document": "Region information array",
+          "example": "",
           "member": "RegionInfo",
           "name": "RegionSet",
           "type": "list",
@@ -5843,6 +6109,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5851,6 +6118,7 @@
         {
           "disabled": false,
           "document": "List of databases to be queried",
+          "example": "",
           "member": "string",
           "name": "DBs",
           "required": true,
@@ -5865,6 +6133,7 @@
         {
           "disabled": false,
           "document": "Information of time range available for database rollback",
+          "example": "",
           "member": "DbRollbackTimeInfo",
           "name": "Details",
           "type": "list",
@@ -5885,6 +6154,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of mssql-k8voqdlz",
+          "example": "mssql-9aajrcn7",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5892,7 +6162,8 @@
         },
         {
           "disabled": false,
-          "document": "Query start time",
+          "document": "Start time in the format of `yyyy-MM-dd HH:mm:ss`",
+          "example": "2018-03-28 00:00:00",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -5900,7 +6171,8 @@
         },
         {
           "disabled": false,
-          "document": "Query end time",
+          "document": "End time in the format of `yyyy-MM-dd HH:mm:ss`",
+          "example": "2020-11-20 00:00:00",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -5909,6 +6181,7 @@
         {
           "disabled": false,
           "document": "Number of results per page. Value range: 1-100. Default value: 20",
+          "example": "20",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -5917,6 +6190,7 @@
         {
           "disabled": false,
           "document": "Page number. Default value: 0",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -5931,6 +6205,7 @@
         {
           "disabled": false,
           "document": "Total number of queries",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -5939,6 +6214,7 @@
         {
           "disabled": false,
           "document": "Information list of slow query logs",
+          "example": "",
           "member": "SlowlogInfo",
           "name": "Slowlogs",
           "type": "list",
@@ -5959,6 +6235,7 @@
         {
           "disabled": false,
           "document": "ID of imported target instance",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5967,6 +6244,7 @@
         {
           "disabled": false,
           "document": "Backup import task ID, which is returned through the API CreateBackupMigration",
+          "example": "",
           "member": "string",
           "name": "BackupMigrationId",
           "required": true,
@@ -5981,6 +6259,7 @@
         {
           "disabled": false,
           "document": "Bucket name",
+          "example": "",
           "member": "string",
           "name": "BucketName",
           "type": "string",
@@ -5989,6 +6268,7 @@
         {
           "disabled": false,
           "document": "Bucket location information",
+          "example": "",
           "member": "string",
           "name": "Region",
           "type": "string",
@@ -5997,6 +6277,7 @@
         {
           "disabled": false,
           "document": "Storage path",
+          "example": "",
           "member": "string",
           "name": "Path",
           "type": "string",
@@ -6005,6 +6286,7 @@
         {
           "disabled": false,
           "document": "Temporary key ID",
+          "example": "",
           "member": "string",
           "name": "TmpSecretId",
           "type": "string",
@@ -6013,6 +6295,7 @@
         {
           "disabled": false,
           "document": "Temporary key (Key)",
+          "example": "",
           "member": "string",
           "name": "TmpSecretKey",
           "type": "string",
@@ -6021,6 +6304,7 @@
         {
           "disabled": false,
           "document": "Temporary key (Token)",
+          "example": "",
           "member": "string",
           "name": "XCosSecurityToken",
           "type": "string",
@@ -6029,6 +6313,7 @@
         {
           "disabled": false,
           "document": "Temporary key start time",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "type": "string",
@@ -6037,6 +6322,7 @@
         {
           "disabled": false,
           "document": "Temporary key expiration time",
+          "example": "",
           "member": "string",
           "name": "ExpiredTime",
           "type": "string",
@@ -6074,7 +6360,7 @@
         },
         {
           "disabled": false,
-          "document": "Generation start time of an extended file",
+          "document": "Generation start time of an extended file in the format of yyyy-MM-dd HH:mm:ss.",
           "example": "2023-01-01 12:00:00",
           "member": "string",
           "name": "StartTime",
@@ -6083,7 +6369,7 @@
         },
         {
           "disabled": false,
-          "document": "Generation end time of an extended file",
+          "document": "Generation end time of an extended file in the format of yyyy-MM-dd HH:mm:ss.",
           "example": "2023-01-01 12:05:00",
           "member": "string",
           "name": "EndTime",
@@ -6152,6 +6438,7 @@
         {
           "disabled": false,
           "document": "Number of AZs returned",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -6160,6 +6447,7 @@
         {
           "disabled": false,
           "document": "Array of AZs",
+          "example": "",
           "member": "ZoneInfo",
           "name": "ZoneSet",
           "type": "list",
@@ -6328,6 +6616,7 @@
         {
           "disabled": false,
           "document": "AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API",
+          "example": "ap-guangzhou-2",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -6336,6 +6625,7 @@
         {
           "disabled": false,
           "document": "Memory size in GB",
+          "example": "2",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -6344,6 +6634,7 @@
         {
           "disabled": false,
           "document": "Instance capacity in GB",
+          "example": "300",
           "member": "int64",
           "name": "Storage",
           "required": true,
@@ -6352,6 +6643,7 @@
         {
           "disabled": false,
           "document": "Billing type. Valid value: POSTPAID.",
+          "example": "POSTPAID",
           "member": "string",
           "name": "InstanceChargeType",
           "required": false,
@@ -6360,6 +6652,7 @@
         {
           "disabled": false,
           "document": "Length of purchase in months. Value range: 1-48. Default value: 1",
+          "example": "1",
           "member": "int64",
           "name": "Period",
           "required": false,
@@ -6368,6 +6661,7 @@
         {
           "disabled": false,
           "document": "Number of instances purchased at a time. Value range: 1-100. Default value: 1",
+          "example": "1",
           "member": "int64",
           "name": "GoodsNum",
           "required": false,
@@ -6375,7 +6669,8 @@
         },
         {
           "disabled": false,
-          "document": "SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). Default value: 2008R2.",
+          "document": "SQL version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), `201402` (SQL Server 2014 Standard)`, `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The purchasable version varies by region. It can be queried by the `DescribeProductConfig` API.",
+          "example": "2008R2",
           "member": "string",
           "name": "DBVersion",
           "required": false,
@@ -6384,6 +6679,7 @@
         {
           "disabled": false,
           "document": "The number of CPU cores of the instance you want to purchase.",
+          "example": "2",
           "member": "int64",
           "name": "Cpu",
           "required": false,
@@ -6391,7 +6687,8 @@
         },
         {
           "disabled": false,
-          "document": "The type of purchased instance. Valid values: HA (high-availability edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (basic edition). Default value: HA.",
+          "document": "The type of instance to be purchased. Valid values: `HA` (high-availability edition, including dual-server high-availability and AlwaysOn cluster u200deditionu200d), `RO` (read-only replica edition), `SI` (single-node edition), `cvmHA` (dual-server high-availability edition u200dfor CVM), `cvmRO` (read-only edition u200dfor CVM).",
+          "example": "HA",
           "member": "string",
           "name": "InstanceType",
           "required": false,
@@ -6399,7 +6696,8 @@
         },
         {
           "disabled": false,
-          "document": "The host type of purchased instance. Valid values: PM (physical machine), CLOUD_PREMIUM (physical machine with premium cloud disk), CLOUD_SSD (physical machine with SSD). Default value: PM.",
+          "document": "The host type of the instance to be purchased. Valid values: `PM` (physical machine), `CLOUD_PREMIUM` (virtual machine with premium cloud disk), `CLOUD_SSD` (virtual machine with SSD), \n`CLOUD_HSSD` (virtual machine with enhanced SSD), `CLOUD_TSSD` (virtual machine with ulTra SSD), `CLOUD_BSSD` (virtual machine with balanced SSD).",
+          "example": "PM",
           "member": "string",
           "name": "MachineType",
           "required": false,
@@ -6414,6 +6712,7 @@
         {
           "disabled": false,
           "document": "Price before discount. This value divided by 100 indicates the price; for example, 10010 means 100.10 USD",
+          "example": "",
           "member": "int64",
           "name": "OriginalPrice",
           "type": "int",
@@ -6422,6 +6721,7 @@
         {
           "disabled": false,
           "document": "The actual price to be paid. This value divided by 100 indicates the price; for example, 10010 means 100.10 USD",
+          "example": "",
           "member": "int64",
           "name": "Price",
           "type": "int",
@@ -6442,6 +6742,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of mssql-njj2mtpl",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6450,6 +6751,7 @@
         {
           "disabled": false,
           "document": "Memory size after instance upgrade in GB, which cannot be smaller than the current instance memory size",
+          "example": "",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -6458,6 +6760,7 @@
         {
           "disabled": false,
           "document": "Storage capacity after instance upgrade in GB, which cannot be smaller than the current instance storage capacity",
+          "example": "",
           "member": "int64",
           "name": "Storage",
           "required": true,
@@ -6466,6 +6769,7 @@
         {
           "disabled": false,
           "document": "The number of CUP cores after the instance is upgraded, which cannot be smaller than that of the current cores.",
+          "example": "",
           "member": "int64",
           "name": "Cpu",
           "required": false,
@@ -6480,6 +6784,7 @@
         {
           "disabled": false,
           "document": "Price before discount. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD",
+          "example": "",
           "member": "int64",
           "name": "OriginalPrice",
           "type": "int",
@@ -6488,6 +6793,7 @@
         {
           "disabled": false,
           "document": "The actual price to be paid. This value divided by 100 indicates the price; for example, 10094 means 100.94 USD",
+          "example": "",
           "member": "int64",
           "name": "Price",
           "type": "int",
@@ -6508,6 +6814,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6517,6 +6824,7 @@
         {
           "disabled": false,
           "document": "Database information list",
+          "example": "",
           "member": "DBDetail",
           "name": "DBDetails",
           "required": true,
@@ -6674,6 +6982,7 @@
         {
           "disabled": false,
           "document": "Name of migrated database",
+          "example": "",
           "member": "string",
           "name": "DBName",
           "required": false,
@@ -6689,6 +6998,7 @@
         {
           "disabled": false,
           "document": "Name of current step",
+          "example": "",
           "member": "string",
           "name": "StepName",
           "required": true,
@@ -6698,6 +7008,7 @@
         {
           "disabled": false,
           "document": "Progress of current step in %",
+          "example": "",
           "member": "int64",
           "name": "Progress",
           "required": true,
@@ -6713,6 +7024,7 @@
         {
           "disabled": false,
           "document": "Source instance ID in the format of `mssql-si2823jyl`, which is used when `MigrateType` is 1 (TencentDB for SQL Server)",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -6722,6 +7034,7 @@
         {
           "disabled": false,
           "document": "ID of source CVM instance, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
+          "example": "",
           "member": "string",
           "name": "CvmId",
           "required": false,
@@ -6731,6 +7044,7 @@
         {
           "disabled": false,
           "document": "VPC ID of source CVM instance in the format of vpc-6ys9ont9, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
+          "example": "",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -6740,6 +7054,7 @@
         {
           "disabled": false,
           "document": "VPC subnet ID of source CVM instance in the format of subnet-h9extioi, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
+          "example": "",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -6749,6 +7064,7 @@
         {
           "disabled": false,
           "document": "Username, which is used when `MigrateType` is 1 or 2",
+          "example": "",
           "member": "string",
           "name": "UserName",
           "required": false,
@@ -6758,6 +7074,7 @@
         {
           "disabled": false,
           "document": "Password, which is used when `MigrateType` is 1 or 2",
+          "example": "",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -6767,6 +7084,7 @@
         {
           "disabled": false,
           "document": "Private IP of source CVM database, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
+          "example": "",
           "member": "string",
           "name": "Ip",
           "required": false,
@@ -6776,6 +7094,7 @@
         {
           "disabled": false,
           "document": "Port number of source CVM database, which is used when `MigrateType` is 2 (CVM-based self-created SQL Server database)",
+          "example": "",
           "member": "uint64",
           "name": "Port",
           "required": false,
@@ -6785,6 +7104,7 @@
         {
           "disabled": false,
           "document": "Source backup address for offline migration, which is used when `MigrateType` is 4 or 5",
+          "example": "",
           "member": "string",
           "name": "Url",
           "required": false,
@@ -6794,6 +7114,7 @@
         {
           "disabled": false,
           "document": "Source backup password for offline migration, which is used when `MigrateType` is 4 or 5",
+          "example": "",
           "member": "string",
           "name": "UrlPassword",
           "required": false,
@@ -6809,6 +7130,7 @@
         {
           "disabled": false,
           "document": "ID of target instance in the format of mssql-si2823jyl",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -6818,6 +7140,7 @@
         {
           "disabled": false,
           "document": "Username of migration target instance",
+          "example": "",
           "member": "string",
           "name": "UserName",
           "required": false,
@@ -6827,6 +7150,7 @@
         {
           "disabled": false,
           "document": "Password of migration target instance",
+          "example": "",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -6842,6 +7166,7 @@
         {
           "disabled": false,
           "document": "Migration task ID",
+          "example": "",
           "member": "uint64",
           "name": "MigrateId",
           "required": true,
@@ -6851,6 +7176,7 @@
         {
           "disabled": false,
           "document": "Migration task name",
+          "example": "",
           "member": "string",
           "name": "MigrateName",
           "required": true,
@@ -6860,6 +7186,7 @@
         {
           "disabled": false,
           "document": "User ID of migration task",
+          "example": "",
           "member": "uint64",
           "name": "AppId",
           "required": true,
@@ -6869,6 +7196,7 @@
         {
           "disabled": false,
           "document": "Migration task region",
+          "example": "",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -6878,6 +7206,7 @@
         {
           "disabled": false,
           "document": "Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode)",
+          "example": "",
           "member": "int64",
           "name": "SourceType",
           "required": true,
@@ -6887,6 +7216,7 @@
         {
           "disabled": false,
           "document": "Migration task creation time",
+          "example": "",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -6896,6 +7226,7 @@
         {
           "disabled": false,
           "document": "Migration task start time",
+          "example": "",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -6905,6 +7236,7 @@
         {
           "disabled": false,
           "document": "Migration task end time",
+          "example": "",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -6914,6 +7246,7 @@
         {
           "disabled": false,
           "document": "Migration task status (1: initializing, 4: migrating, 5: migration failed, 6: migration succeeded, 7: suspended, 8: deleted, 9: suspending, 10: completing, 11: suspension failed, 12: completion failed)",
+          "example": "",
           "member": "uint64",
           "name": "Status",
           "required": true,
@@ -6923,6 +7256,7 @@
         {
           "disabled": false,
           "document": "Information",
+          "example": "",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -6932,6 +7266,7 @@
         {
           "disabled": false,
           "document": "Whether migration task has been checked (0: not checked, 1: check succeeded, 2: check failed, 3: checking)",
+          "example": "",
           "member": "uint64",
           "name": "CheckFlag",
           "required": true,
@@ -6941,6 +7276,7 @@
         {
           "disabled": false,
           "document": "Migration task progress in %",
+          "example": "",
           "member": "int64",
           "name": "Progress",
           "required": true,
@@ -6950,6 +7286,7 @@
         {
           "disabled": false,
           "document": "Migration task progress details",
+          "example": "",
           "member": "MigrateDetail",
           "name": "MigrateDetail",
           "required": true,
@@ -7141,6 +7478,7 @@
         {
           "disabled": false,
           "document": "All the allowed operations. Values include: view (viewing a task), modify (modifying a task), start (starting a task), incremental (creating an incremental task), delete (deleting a task), and upload (obtaining the upload permission).",
+          "example": "",
           "member": "string",
           "name": "AllAction",
           "required": true,
@@ -7150,6 +7488,7 @@
         {
           "disabled": false,
           "document": "Operation allowed in the current status. If the subset of AllAction is left empty, no operations will be allowed.",
+          "example": "",
           "member": "string",
           "name": "AllowedAction",
           "required": true,
@@ -7165,6 +7504,7 @@
         {
           "disabled": false,
           "document": "Total number of steps",
+          "example": "",
           "member": "int64",
           "name": "StepAll",
           "required": true,
@@ -7174,6 +7514,7 @@
         {
           "disabled": false,
           "document": "Current step",
+          "example": "",
           "member": "int64",
           "name": "StepNow",
           "required": true,
@@ -7183,6 +7524,7 @@
         {
           "disabled": false,
           "document": "Overall progress. For example, “30” means 30%.",
+          "example": "",
           "member": "int64",
           "name": "Progress",
           "required": true,
@@ -7192,6 +7534,7 @@
         {
           "disabled": false,
           "document": "Step information. ‘null’ means the migration has not started\nNote: this field may return ‘null’, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "MigrationStep",
           "name": "StepInfo",
           "required": true,
@@ -7207,6 +7550,7 @@
         {
           "disabled": false,
           "document": "Step sequence",
+          "example": "",
           "member": "int64",
           "name": "StepNo",
           "required": true,
@@ -7216,6 +7560,7 @@
         {
           "disabled": false,
           "document": "Step name",
+          "example": "",
           "member": "string",
           "name": "StepName",
           "required": true,
@@ -7225,6 +7570,7 @@
         {
           "disabled": false,
           "document": "Step ID in English",
+          "example": "",
           "member": "string",
           "name": "StepId",
           "required": true,
@@ -7234,6 +7580,7 @@
         {
           "disabled": false,
           "document": "Step status: 0 (default value), 1 (succeeded), 2 (failed), 3 (in progress), 4 (not started)",
+          "example": "",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -7249,6 +7596,7 @@
         {
           "disabled": false,
           "document": "Database instance ID in the format of mssql-njj2mtpl",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -7257,6 +7605,7 @@
         {
           "disabled": false,
           "document": "Account permission change information",
+          "example": "",
           "member": "AccountPrivilegeModifyInfo",
           "name": "Accounts",
           "required": true,
@@ -7271,6 +7620,7 @@
         {
           "disabled": false,
           "document": "Async task flow ID",
+          "example": "",
           "member": "uint64",
           "name": "FlowId",
           "type": "int",
@@ -7291,6 +7641,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of mssql-j8kv137v",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -7299,6 +7650,7 @@
         {
           "disabled": false,
           "document": "Information of account for which to modify remarks",
+          "example": "",
           "member": "AccountRemark",
           "name": "Accounts",
           "required": true,
@@ -7394,6 +7746,7 @@
         {
           "disabled": false,
           "document": "Backup import task ID",
+          "example": "",
           "member": "string",
           "name": "BackupMigrationId",
           "type": "string",
@@ -7528,6 +7881,7 @@
         {
           "disabled": false,
           "document": "Returned error code.",
+          "example": "",
           "member": "int64",
           "name": "Errno",
           "type": "int",
@@ -7536,9 +7890,55 @@
         {
           "disabled": false,
           "document": "Returned error message.",
+          "example": "",
           "member": "string",
           "name": "Msg",
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBEncryptAttributesRequest": {
+      "document": "ModifyDBEncryptAttributes request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "mssql-182jha8a",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "A parameter used to enable or disable TDE of the database",
+          "example": "无",
+          "member": "DBTDEEncrypt",
+          "name": "DBTDEEncrypt",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBEncryptAttributesResponse": {
+      "document": "ModifyDBEncryptAttributes response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task flow ID",
+          "example": "0",
+          "member": "int64",
+          "name": "FlowId",
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -7556,6 +7956,7 @@
         {
           "disabled": false,
           "document": "Database instance ID in the format of mssql-njj2mtpl",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -7564,6 +7965,7 @@
         {
           "disabled": false,
           "document": "New name of database instance",
+          "example": "",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -7641,6 +8043,7 @@
         {
           "disabled": false,
           "document": "ID of the instance network changing task. You can use the [DescribeFlowStatus](https://intl.cloud.tencent.com/document/product/238/19967?from_cn_redirect=1) API to query the task status.",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -7661,6 +8064,7 @@
         {
           "disabled": false,
           "document": "Array of instance IDs in the format of mssql-j8kv137v",
+          "example": "",
           "member": "string",
           "name": "InstanceIdSet",
           "required": true,
@@ -7669,6 +8073,7 @@
         {
           "disabled": false,
           "document": "Project ID. If this parameter is 0, the default project will be used",
+          "example": "",
           "member": "int64",
           "name": "ProjectId",
           "required": true,
@@ -7683,6 +8088,7 @@
         {
           "disabled": false,
           "document": "Number of successfully modified instances",
+          "example": "",
           "member": "int64",
           "name": "Count",
           "type": "int",
@@ -7703,6 +8109,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -7711,6 +8118,7 @@
         {
           "disabled": false,
           "document": "Old database name",
+          "example": "",
           "member": "string",
           "name": "OldDBName",
           "required": true,
@@ -7719,6 +8127,7 @@
         {
           "disabled": false,
           "document": "New name of database",
+          "example": "",
           "member": "string",
           "name": "NewDBName",
           "required": true,
@@ -7733,6 +8142,7 @@
         {
           "disabled": false,
           "document": "Task flow ID",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -7753,6 +8163,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of mssql-rljoi3bf",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -7761,6 +8172,7 @@
         {
           "disabled": false,
           "document": "Array of database names and remarks, where each element contains a database name and the corresponding remarks",
+          "example": "",
           "member": "DBRemark",
           "name": "DBRemarks",
           "required": true,
@@ -8003,9 +8415,65 @@
         {
           "disabled": false,
           "document": "ID of an incremental backup import task",
+          "example": "",
           "member": "string",
           "name": "IncrementalMigrationId",
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceEncryptAttributesRequest": {
+      "document": "ModifyInstanceEncryptAttributes request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "mssql-182jha8a",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Certificate u200downership. Valid values: `self` (certificate of this account), `others` (certificate of the other account). Default value: `self`.",
+          "example": "self",
+          "member": "string",
+          "name": "CertificateAttribution",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the other referenced root account, which is required when `CertificateAttribution` is `others`.",
+          "example": "无",
+          "member": "string",
+          "name": "QuoteUin",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceEncryptAttributesResponse": {
+      "document": "ModifyInstanceEncryptAttributes response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task flow ID",
+          "example": "0",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -8068,6 +8536,7 @@
         {
           "disabled": false,
           "document": "Migration task ID",
+          "example": "",
           "member": "uint64",
           "name": "MigrateId",
           "required": true,
@@ -8076,6 +8545,7 @@
         {
           "disabled": false,
           "document": "New name of migration task. If this parameter is left empty, no modification will be made",
+          "example": "",
           "member": "string",
           "name": "MigrateName",
           "required": false,
@@ -8084,6 +8554,7 @@
         {
           "disabled": false,
           "document": "New migration type (1: structure migration, 2: data migration, 3: incremental sync). If this parameter is left empty, no modification will be made",
+          "example": "",
           "member": "uint64",
           "name": "MigrateType",
           "required": false,
@@ -8092,6 +8563,7 @@
         {
           "disabled": false,
           "document": "Migration source type. 1: TencentDB for SQL Server, 2: CVM-based self-created SQL Server database; 3: SQL Server backup restoration, 4: SQL Server backup restoration (in COS mode). If this parameter is left empty, no modification will be made",
+          "example": "",
           "member": "uint64",
           "name": "SourceType",
           "required": false,
@@ -8100,6 +8572,7 @@
         {
           "disabled": false,
           "document": "Migration source. If this parameter is left empty, no modification will be made",
+          "example": "",
           "member": "MigrateSource",
           "name": "Source",
           "required": false,
@@ -8108,6 +8581,7 @@
         {
           "disabled": false,
           "document": "Migration target. If this parameter is left empty, no modification will be made",
+          "example": "",
           "member": "MigrateTarget",
           "name": "Target",
           "required": false,
@@ -8116,6 +8590,7 @@
         {
           "disabled": false,
           "document": "Database objects to be migrated. This parameter is not used for offline migration (SourceType=4 or SourceType=5). If it left empty, no modification will be made",
+          "example": "",
           "member": "MigrateDB",
           "name": "MigrateDBSet",
           "required": false,
@@ -8130,6 +8605,7 @@
         {
           "disabled": false,
           "document": "Migration task ID",
+          "example": "",
           "member": "uint64",
           "name": "MigrateId",
           "type": "int",
@@ -8385,6 +8861,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -8399,6 +8876,7 @@
         {
           "disabled": false,
           "document": "Task ID",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -8419,6 +8897,7 @@
         {
           "disabled": false,
           "document": "Region ID in the format of ap-guangzhou",
+          "example": "",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -8428,6 +8907,7 @@
         {
           "disabled": false,
           "document": "Region name",
+          "example": "",
           "member": "string",
           "name": "RegionName",
           "required": true,
@@ -8437,6 +8917,7 @@
         {
           "disabled": false,
           "document": "Numeric ID of region",
+          "example": "",
           "member": "int64",
           "name": "RegionId",
           "required": true,
@@ -8446,6 +8927,7 @@
         {
           "disabled": false,
           "document": "Current purchasability of this region. UNAVAILABLE: not purchasable, AVAILABLE: purchasable",
+          "example": "",
           "member": "string",
           "name": "RegionState",
           "required": true,
@@ -8487,6 +8969,7 @@
         {
           "disabled": false,
           "document": "Database instance ID in the format of mssql-njj2mtpl",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -8495,6 +8978,7 @@
         {
           "disabled": false,
           "document": "Updated account password information array",
+          "example": "",
           "member": "AccountPassword",
           "name": "Accounts",
           "required": true,
@@ -8509,6 +8993,7 @@
         {
           "disabled": false,
           "document": "ID of async task flow for account password change",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -8529,6 +9014,7 @@
         {
           "disabled": false,
           "document": "Tag key",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
@@ -8538,6 +9024,7 @@
         {
           "disabled": false,
           "document": "Tag value",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": true,
@@ -8553,6 +9040,7 @@
         {
           "disabled": false,
           "document": "Database instance ID in the format of mssql-njj2mtpl",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -8567,6 +9055,7 @@
         {
           "disabled": false,
           "document": "Async task flow ID",
+          "example": "",
           "member": "uint64",
           "name": "FlowId",
           "type": "int",
@@ -8656,6 +9145,7 @@
         {
           "disabled": false,
           "document": "Async flow task ID, which can be used to call the `DescribeFlowStatus` API to get the task execution status",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -8676,6 +9166,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -8684,6 +9175,7 @@
         {
           "disabled": false,
           "document": "Rollback type. 0: the database rolled back overwrites the original database; 1: the database rolled back is renamed and does not overwrite the original database",
+          "example": "",
           "member": "uint64",
           "name": "Type",
           "required": true,
@@ -8692,6 +9184,7 @@
         {
           "disabled": false,
           "document": "Database to be rolled back",
+          "example": "",
           "member": "string",
           "name": "DBs",
           "required": true,
@@ -8700,6 +9193,7 @@
         {
           "disabled": false,
           "document": "Target time point for rollback",
+          "example": "",
           "member": "datetime",
           "name": "Time",
           "required": true,
@@ -8708,6 +9202,7 @@
         {
           "disabled": false,
           "document": "ID of the target instance to which the backup is restored. The target instance should be under the same `APPID`. If this parameter is left empty, ID of the source instance will be used.",
+          "example": "",
           "member": "string",
           "name": "TargetInstanceId",
           "required": false,
@@ -8716,6 +9211,7 @@
         {
           "disabled": false,
           "document": "Rename the databases listed in `ReNameRestoreDatabase`. This parameter takes effect only when `Type = 1` which indicates that backup rollback supports renaming databases. If it is left empty, databases will be renamed in the default format and the `DBs` parameter specifies the databases to be restored.",
+          "example": "",
           "member": "RenameRestoreDatabase",
           "name": "RenameRestore",
           "required": false,
@@ -8730,6 +9226,7 @@
         {
           "disabled": false,
           "document": "The async job ID",
+          "example": "",
           "member": "uint64",
           "name": "FlowId",
           "type": "int",
@@ -8750,6 +9247,7 @@
         {
           "disabled": false,
           "document": "Migration task ID",
+          "example": "",
           "member": "uint64",
           "name": "MigrateId",
           "required": true,
@@ -8764,6 +9262,7 @@
         {
           "disabled": false,
           "document": "After the migration task starts, the flow ID will be returned",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -8810,6 +9309,7 @@
         {
           "disabled": false,
           "document": "Unique ID of slow query log file",
+          "example": "",
           "member": "int64",
           "name": "Id",
           "required": true,
@@ -8819,6 +9319,7 @@
         {
           "disabled": false,
           "document": "File generation start time",
+          "example": "",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -8828,6 +9329,7 @@
         {
           "disabled": false,
           "document": "File generation end time",
+          "example": "",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -8837,6 +9339,7 @@
         {
           "disabled": false,
           "document": "File size in KB",
+          "example": "",
           "member": "int64",
           "name": "Size",
           "required": true,
@@ -8846,6 +9349,7 @@
         {
           "disabled": false,
           "document": "Number of logs in file",
+          "example": "",
           "member": "int64",
           "name": "Count",
           "required": true,
@@ -8855,6 +9359,7 @@
         {
           "disabled": false,
           "document": "Download address for private network",
+          "example": "",
           "member": "string",
           "name": "InternalAddr",
           "required": true,
@@ -8864,6 +9369,7 @@
         {
           "disabled": false,
           "document": "Download address for public network",
+          "example": "",
           "member": "string",
           "name": "ExternalAddr",
           "required": true,
@@ -8873,6 +9379,7 @@
         {
           "disabled": false,
           "document": "Status (1: success, 2: failure)\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -8888,6 +9395,7 @@
         {
           "disabled": false,
           "document": "Instance specification ID. The `SpecId` returned by `DescribeZones` together with the purchasable specification information returned by `DescribeProductConfig` can be used to find out what specifications can be purchased in a specified AZ",
+          "example": "",
           "member": "int64",
           "name": "SpecId",
           "required": true,
@@ -8897,6 +9405,7 @@
         {
           "disabled": false,
           "document": "Model ID",
+          "example": "",
           "member": "string",
           "name": "MachineType",
           "required": true,
@@ -8906,6 +9415,7 @@
         {
           "disabled": false,
           "document": "Model name",
+          "example": "",
           "member": "string",
           "name": "MachineTypeName",
           "required": true,
@@ -8915,6 +9425,7 @@
         {
           "disabled": false,
           "document": "Database version information. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise)",
+          "example": "",
           "member": "string",
           "name": "Version",
           "required": true,
@@ -8924,6 +9435,7 @@
         {
           "disabled": false,
           "document": "Version name corresponding to the `Version` field",
+          "example": "",
           "member": "string",
           "name": "VersionName",
           "required": true,
@@ -8933,6 +9445,7 @@
         {
           "disabled": false,
           "document": "Memory size in GB",
+          "example": "",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -8942,6 +9455,7 @@
         {
           "disabled": false,
           "document": "Number of CPU cores",
+          "example": "",
           "member": "int64",
           "name": "CPU",
           "required": true,
@@ -8951,6 +9465,7 @@
         {
           "disabled": false,
           "document": "Minimum disk size under this specification in GB",
+          "example": "",
           "member": "int64",
           "name": "MinStorage",
           "required": true,
@@ -8960,6 +9475,7 @@
         {
           "disabled": false,
           "document": "Maximum disk size under this specification in GB",
+          "example": "",
           "member": "int64",
           "name": "MaxStorage",
           "required": true,
@@ -8969,6 +9485,7 @@
         {
           "disabled": false,
           "document": "QPS of this specification",
+          "example": "",
           "member": "int64",
           "name": "QPS",
           "required": true,
@@ -8978,6 +9495,7 @@
         {
           "disabled": false,
           "document": "Description of this specification",
+          "example": "",
           "member": "string",
           "name": "SuitInfo",
           "required": true,
@@ -8987,6 +9505,7 @@
         {
           "disabled": false,
           "document": "Pid of this specification",
+          "example": "",
           "member": "int64",
           "name": "Pid",
           "required": true,
@@ -8996,6 +9515,7 @@
         {
           "disabled": false,
           "document": "Pay-as-you-go Pid list corresponding to this specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "PostPid",
           "required": true,
@@ -9005,6 +9525,7 @@
         {
           "disabled": false,
           "document": "Billing mode under this specification. POST: pay-as-you-go",
+          "example": "",
           "member": "string",
           "name": "PayModeStatus",
           "required": true,
@@ -9014,6 +9535,7 @@
         {
           "disabled": false,
           "document": "Instance type. Valid values: HA (High-Availability Edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (Basic Edition)",
+          "example": "",
           "member": "string",
           "name": "InstanceType",
           "required": true,
@@ -9023,6 +9545,7 @@
         {
           "disabled": false,
           "document": "Whether multi-AZ deployment is supported. Valid values: MultiZones (only multi-AZ deployment is supported), SameZones (only single-AZ deployment is supported), ALL (both deployments are supported)",
+          "example": "",
           "member": "string",
           "name": "MultiZonesStatus",
           "required": true,
@@ -9038,6 +9561,7 @@
         {
           "disabled": false,
           "document": "ID of imported target instance",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -9046,6 +9570,7 @@
         {
           "disabled": false,
           "document": "Backup import task ID, which is returned through the API CreateBackupMigration",
+          "example": "",
           "member": "string",
           "name": "BackupMigrationId",
           "required": true,
@@ -9060,6 +9585,7 @@
         {
           "disabled": false,
           "document": "Task ID",
+          "example": "",
           "member": "uint64",
           "name": "FlowId",
           "type": "int",
@@ -9080,6 +9606,7 @@
         {
           "disabled": false,
           "document": "ID of imported target instance",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -9088,6 +9615,7 @@
         {
           "disabled": false,
           "document": "Backup import task ID, which is returned through the API CreateBackupMigration",
+          "example": "",
           "member": "string",
           "name": "BackupMigrationId",
           "required": true,
@@ -9096,6 +9624,7 @@
         {
           "disabled": false,
           "document": "ID of an incremental backup import task",
+          "example": "",
           "member": "string",
           "name": "IncrementalMigrationId",
           "required": true,
@@ -9110,6 +9639,7 @@
         {
           "disabled": false,
           "document": "Task ID",
+          "example": "",
           "member": "uint64",
           "name": "FlowId",
           "type": "int",
@@ -9160,12 +9690,49 @@
       ],
       "type": "object"
     },
+    "TDEConfigAttribute": {
+      "document": "TDE u200dconfiguration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "TDE status. Valid values: `enable` (enabled), `disable` (disabled).",
+          "example": "disable",
+          "member": "string",
+          "name": "Encryption",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Certificate u200downership. Valid values: `self` (u200dcertificate of the this account), `others` (u200dcertificate of the other account), `none` (no certificate).",
+          "example": "self",
+          "member": "string",
+          "name": "CertificateAttribution",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID of the u200dother referenced root account when enabling TDE\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "QuoteUin",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "TerminateDBInstanceRequest": {
       "document": "TerminateDBInstance request structure.",
       "members": [
         {
           "disabled": false,
           "document": "List of instance IDs manually terminated in the format of [mssql-3l3fgqn7], which are the same as the instance IDs displayed on the TencentDB Console page",
+          "example": "",
           "member": "string",
           "name": "InstanceIdSet",
           "required": true,
@@ -9288,6 +9855,7 @@
         {
           "disabled": false,
           "document": "Order name",
+          "example": "",
           "member": "string",
           "name": "DealName",
           "type": "string",
@@ -9308,6 +9876,7 @@
         {
           "disabled": false,
           "document": "AZ ID in the format of ap-guangzhou-1 (i.e., Guangzhou Zone 1)",
+          "example": "",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -9317,6 +9886,7 @@
         {
           "disabled": false,
           "document": "AZ name",
+          "example": "",
           "member": "string",
           "name": "ZoneName",
           "required": true,
@@ -9326,6 +9896,7 @@
         {
           "disabled": false,
           "document": "Numeric ID of AZ",
+          "example": "",
           "member": "int64",
           "name": "ZoneId",
           "required": true,
@@ -9335,6 +9906,7 @@
         {
           "disabled": false,
           "document": "ID of specification purchasable in this AZ, which, together with the returned value of the `DescribeProductConfig` API, can be used to find out the specifications currently purchasable in the AZ",
+          "example": "",
           "member": "int64",
           "name": "SpecId",
           "required": true,
@@ -9344,6 +9916,7 @@
         {
           "disabled": false,
           "document": "Information of database versions purchasable under the current AZ and specification. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise)",
+          "example": "",
           "member": "string",
           "name": "Version",
           "required": true,

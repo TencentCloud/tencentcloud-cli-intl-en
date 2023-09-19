@@ -585,7 +585,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The field to match. Values:\n<li>`host`: Request domain name</li>\n<li>`sip`: Client IP</li>\n<li>`ua`: User-Agent</li>\n<li>`cookie`: Cookie</li>\n<li>`cgi`: CGI script</li>\n<li>`xff`: XFF header</li>\n<li>`url`: Request URL</li>\n<li>`accept`: Request content type</li>\n<li>`method`: Request method</li>\n<li>`header`: Request header</li>\n<li>`app_proto`: Application layer protocol</li>\n<li>`sip_proto`: Network layer protocol</li>\n<li>`uabot`: UA rules (only available in custom bot rules)</li>\n<li>`idcid`: IDC rules (only available in custom bot rules)</li>\n<li>`sipbot`: Search engine rules (only available in custom bot rules)</li>\n<li>`portrait`: Client reputation (only available in custom bot rules)</li>\n<li>`header_seq`: Header sequence (only available in custom bot rules)</li>",
+          "document": "Filters: \n<li>`host`: Request domain name;</li>\n<li>`sip`: Client IP;</li>\n<li>`ua`: User-Agent;</li>\n<li>`cookie`: Cookie;</li>\n<li>`cgi`: CGI script;</li>\n<li>`xff`: XFF header;</li></li>\n<li>`url`: Request URL;<li></li>\n<li>`accept`: Request content type;</li>\n<li>`method`: Request method<;/li>\n<li>`header`: Request header;</li>\n<li>`app_proto`: Application layer protocol;</li>\n<li>`sip_proto`: Network layer protocol;</li>\n<li>`uabot`: UA rules (only available in custom bot rules);</li>\n<li>`idcid`: IDC rules (only available in custom bot rules);</li>\n<li>`sipbot`: Search engine rules (only available in custom bot rules);</li>\n<li>`portrait`: Client reputation (only available in custom bot rules);</li>\n<li>`header_seq`: Header sequence (only available in custom bot rules);</li>\n<li>`hdr`: Request body (only available in custom Web protection rules). </li>",
           "example": "host",
           "member": "string",
           "name": "MatchFrom",
@@ -1401,6 +1401,7 @@
           "example": "TCP",
           "member": "string",
           "name": "Proto",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1411,6 +1412,7 @@
           "example": "80",
           "member": "string",
           "name": "Port",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -1421,6 +1423,7 @@
           "example": "custom",
           "member": "string",
           "name": "OriginType",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1431,6 +1434,7 @@
           "example": "[\"1.1.1.1\",\"2.2.2.2\"]",
           "member": "string",
           "name": "OriginValue",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -1441,6 +1445,7 @@
           "example": "rule-xxx",
           "member": "string",
           "name": "RuleId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1451,6 +1456,7 @@
           "example": "online",
           "member": "string",
           "name": "Status",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1461,6 +1467,7 @@
           "example": "TOA",
           "member": "string",
           "name": "ForwardClientIp",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1471,6 +1478,7 @@
           "example": "false",
           "member": "bool",
           "name": "SessionPersist",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": false
@@ -1481,6 +1489,7 @@
           "example": "3600",
           "member": "uint64",
           "name": "SessionPersistTime",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -1491,9 +1500,21 @@
           "example": "80-90",
           "member": "string",
           "name": "OriginPort",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule tag.\nNote: u200dThis field may returnu200d·`nullu200d`, indicating that no valid values can be obtained.",
+          "example": "rule-service1",
+          "member": "string",
+          "name": "RuleTag",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -2085,7 +2106,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the site.",
+          "document": "Site ID.",
           "example": "zone-20hyebgyfsko",
           "member": "string",
           "name": "ZoneId",
@@ -2094,7 +2115,7 @@
         },
         {
           "disabled": false,
-          "document": "List of domain names.",
+          "document": "List of accelerated domain names.",
           "example": "[\"example.qq.com\"]",
           "member": "string",
           "name": "RecordNames",
@@ -2109,7 +2130,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of CNAME statuses.",
+          "document": "CNAME status of accelerated domain names.",
           "example": "无",
           "member": "CnameStatus",
           "name": "CnameStatus",
@@ -2582,6 +2603,15 @@
           "example": "80-90",
           "member": "string",
           "name": "OriginPort",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule tag. This parameter is left empty by default.",
+          "example": "rule-service-1",
+          "member": "string",
+          "name": "RuleTag",
           "required": false,
           "type": "string"
         }
@@ -3870,7 +3900,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries. <li>`proxy-id`:<br>   Filter by <strong>proxy ID</strong>, such as proxy-ev2sawbwfd<br>   Type: String<br>   Required: No</li><li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-vawer2vadg<br>   Type: String<br>   Required: No</li>",
+          "document": "Filters. Each filter can have up to 20 entries. Details: <li>proxy-id<br>   Filter by the <strong>Proxy ID</strong>u200d, such as: `proxy-ev2sawbwfd`. <br>   Type: String<br>   Required: No</li><li>zone-id<br>   Filter by the <strong>Site ID</strong>, such as `zone-vawer2vadg`. <br>   Type: String<br>   Required: No</li><li>rule-tag<br>   Filter by the <strong>Rule tag</strong>, such as `rule-service-1`. <br>   Type: String<br>   Required: No</li>",
           "example": "[{\"Name\": \"proxy-id\", [\"proxy-124521xfqlh4qjee\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -6007,7 +6037,7 @@
         },
         {
           "disabled": false,
-          "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
+          "document": "List of sites. This parameter is required. A `null` will be returned if it is left empty.",
           "example": "[\"zone1\",\"zone2\"]",
           "member": "string",
           "name": "ZoneIds",
@@ -6016,7 +6046,7 @@
         },
         {
           "disabled": false,
-          "document": "List of L4 proxy IDs.",
+          "document": "List of L4 proxy instance IDs.",
           "example": "[\"proxy-xx\"]",
           "member": "string",
           "name": "ProxyIds",
@@ -6049,22 +6079,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "The list of L4 log data.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "L4OfflineLog",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
           "document": "Total number of query results.",
           "example": "10",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of L4 logs.",
+          "example": "无",
+          "member": "L4OfflineLog",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -6099,7 +6129,7 @@
         },
         {
           "disabled": false,
-          "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
+          "document": "List of sites. This parameter is required. A `null` will be returned if it is left empty.",
           "example": "[\"zone1\",\"zone2\"]",
           "member": "string",
           "name": "ZoneIds",
@@ -6141,22 +6171,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "The list of L7 log data.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "L7OfflineLog",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
           "document": "Total number of query results.",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of L7 logs.",
+          "example": "无",
+          "member": "L7OfflineLog",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -7179,128 +7209,168 @@
       "members": [
         {
           "disabled": false,
-          "document": "The start time of the log packaging.",
-          "example": "\"\"",
-          "member": "int64",
-          "name": "LogTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The L4 proxy ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "\"proxy-xx\"",
+          "document": "L4 proxy instance ID.",
+          "example": "sid-xs82kshs",
           "member": "string",
           "name": "ProxyId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "The log size, in bytes.",
-          "example": "12",
-          "member": "int64",
-          "name": "Size",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The download address.",
-          "example": "\"\"",
-          "member": "string",
-          "name": "Url",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The log package name.",
-          "example": "\"\"",
-          "member": "string",
-          "name": "LogPacketName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The acceleration region. Values:\n<li>`mainland`: Chinese mainland;</li>\n<li>`overseas`: Global (outside the Chinese mainland);</li>",
+          "document": "Log query area. Valid values:\n<li>`mainland`: Chinese mainland;</li>\n<li>`overseas`: Global (outside the Chinese mainland). </li>",
           "example": "mainland",
           "member": "string",
           "name": "Area",
-          "required": true,
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log packet name.",
+          "example": "test",
+          "member": "string",
+          "name": "LogPacketName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log download address.",
+          "example": "https://www.tencent.com",
+          "member": "string",
+          "name": "Url",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "(Disused) Log packaging time. ",
+          "example": "1689237072",
+          "member": "int64",
+          "name": "LogTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start time of log packaging.",
+          "example": "2022-12-12T14:12:12Z",
+          "member": "datetime_iso",
+          "name": "LogStartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End time of the log package.",
+          "example": "2022-12-12T14:12:12Z",
+          "member": "datetime_iso",
+          "name": "LogEndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log size (in bytes).",
+          "example": "12",
+          "member": "int64",
+          "name": "Size",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
       "usage": "out"
     },
     "L7OfflineLog": {
-      "document": "Layer-7 offline log details",
+      "document": "Details of L7 logs.",
       "members": [
         {
           "disabled": false,
-          "document": "Start time of the log packaging",
-          "example": "\"\"",
-          "member": "int64",
-          "name": "LogTime",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The subdomain name.",
-          "example": "\"baidu.com\"",
+          "document": "Log domain name.",
+          "example": "baidu.com",
           "member": "string",
           "name": "Domain",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Log size, in bytes.",
+          "document": "Log query area. Valid values:\n<li>`mainland`: Chinese mainland;</li>\n<li>`overseas`: Global (outside the Chinese mainland). </li>",
+          "example": "mainland",
+          "member": "string",
+          "name": "Area",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log packet name.\t",
+          "example": "test",
+          "member": "string",
+          "name": "LogPacketName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log download address.\t",
+          "example": "http://www.tencent.com",
+          "member": "string",
+          "name": "Url",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "(Disused) Log packaging time. ",
+          "example": "3000",
+          "member": "int64",
+          "name": "LogTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start time of log packaging.",
+          "example": "2022-12-12T14:12:12Z",
+          "member": "datetime_iso",
+          "name": "LogStartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End time of the log package.",
+          "example": "2022-12-12T14:12:12Z",
+          "member": "datetime_iso",
+          "name": "LogEndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Original log size (in bytes).",
           "example": "12",
           "member": "int64",
           "name": "Size",
-          "required": true,
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Download address",
-          "example": "\"\"",
-          "member": "string",
-          "name": "Url",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Log package name",
-          "example": "\"\"",
-          "member": "string",
-          "name": "LogPacketName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Acceleration region. Values:\n<li>`mainland`: Chinese mainland;</li>\n<li>`overseas`: Global (outside the Chinese mainland);</li>",
-          "example": "\"mainland\"",
-          "member": "string",
-          "name": "Area",
-          "required": true,
-          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -7719,6 +7789,15 @@
           "example": "80-90",
           "member": "string",
           "name": "OriginPort",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule tag. The original configuration will apply if it is not specified.",
+          "example": "rule-service-1",
+          "member": "string",
+          "name": "RuleTag",
           "required": false,
           "type": "string"
         }
@@ -9467,6 +9546,7 @@
           "example": "1",
           "member": "int64",
           "name": "Threshold",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -9477,6 +9557,7 @@
           "example": "1",
           "member": "int64",
           "name": "Period",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -9487,16 +9568,18 @@
           "example": "rule",
           "member": "string",
           "name": "RuleName",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The action. Values:\n<li>`monitor`: Observe</li>\n<li>`drop`: Block</li>\n<li>`alg`: JavaScript challenge</li>",
+          "document": "Action. Valid values: <li>`monitor`: Observe;</li>`<li>drop`: Block;</li> <li>`alg`: JavaScript challenge. </li>\t",
           "example": "drop",
           "member": "string",
           "name": "Action",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9507,6 +9590,7 @@
           "example": "11",
           "member": "int64",
           "name": "PunishTime",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -9517,6 +9601,7 @@
           "example": "second",
           "member": "string",
           "name": "PunishTimeUnit",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9527,6 +9612,7 @@
           "example": "on",
           "member": "string",
           "name": "RuleStatus",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9537,6 +9623,7 @@
           "example": "无",
           "member": "AclCondition",
           "name": "AclConditions",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -9547,16 +9634,18 @@
           "example": "1",
           "member": "int64",
           "name": "RulePriority",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The rule ID, which is only used as an output parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Rule ID, which is only used as an output parameter.\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "RuleID",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -9567,6 +9656,7 @@
           "example": "\"sip\"",
           "member": "string",
           "name": "FreqFields",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -9577,16 +9667,18 @@
           "example": "xxx",
           "member": "string",
           "name": "UpdateTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The statistical dimension. Values:\n<li>`source_to_eo`: Responses from the origin server to EdgeOne</li>\n<li>`client_to_eo`: Requests from the client to EdgeOne</li>\nNote: A null value indicates responses from the origin server to EdgeOne are recorded.",
+          "document": "Statistical dimension. `source_to_eo` is entered by default when this parameter is not specified. Valid values:\n<li>`source_to_eo`: (Response) Traffic going from the origin to EdgeOne. </li>\n<li>`client_to_eo`: (Request) Traffic going from the client to EdgeOne.</li>\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
           "example": "source_to_eo",
           "member": "string",
           "name": "FreqScope",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
