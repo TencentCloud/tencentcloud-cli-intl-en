@@ -896,6 +896,14 @@
         "title": "Modifying a transcoding template"
       }
     ],
+    "RestartLivePullStreamTask": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: live.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestartLivePullStreamTask\n<common request parameters>\n\n{\n    \"TaskId\": \"123\",\n    \"Operator\": \"admin\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1047d0dc-6dc8-4898-a7f3-03726a822b0e\"\n    }\n}",
+        "title": " "
+      }
+    ],
     "ResumeDelayLiveStream": [
       {
         "document": " ",
