@@ -119,6 +119,13 @@
       "output": "DescribeCertificatesResponse",
       "status": "online"
     },
+    "DescribeHostTeoInstanceList": {
+      "document": "This API is used to query the list of EDGEONE instances to which a certificate can be deployed.",
+      "input": "DescribeHostTeoInstanceListRequest",
+      "name": "Queries the list of EDGEONE instances to which a certificate can be deployed",
+      "output": "DescribeHostTeoInstanceListResponse",
+      "status": "online"
+    },
     "DownloadCertificate": {
       "document": "This API is used to download a certificate.",
       "input": "DownloadCertificateRequest",
@@ -3553,6 +3560,116 @@
       ],
       "type": "object"
     },
+    "DescribeHostTeoInstanceListRequest": {
+      "document": "DescribeHostTeoInstanceList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The ID of the certificate to be deployed.",
+          "example": "无",
+          "member": "string",
+          "name": "CertificateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The type of resource for certificate deployment.",
+          "example": "无",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to query the cached results. Valid values: `1` (yes) and `0` (no). By default, the cached results within 30 minutes are queried.",
+          "example": "无",
+          "member": "uint64",
+          "name": "IsCache",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The list of filter parameters. FilterKey: domainMatch (query the list of instances with matching or non-matching domains). FilterValue: `1` (default; query the list of instances with matching domains) or `0` (query the list of instances with non-matching domains).",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The ID of the deployed certificate.",
+          "example": "无",
+          "member": "string",
+          "name": "OldCertificateId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The pagination offset, starting from 0.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The number of instances on each page. Default value: 10.\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the query is asynchronous.",
+          "example": "无",
+          "member": "int64",
+          "name": "AsyncCache",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHostTeoInstanceListResponse": {
+      "document": "DescribeHostTeoInstanceList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The list of EDGEONE instances.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TeoInstanceDetail",
+          "name": "InstanceList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The total count.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DownloadCertificateRequest": {
       "document": "DownloadCertificate request structure.",
       "members": [
@@ -3755,6 +3872,32 @@
         }
       ],
       "usage": "out"
+    },
+    "Filter": {
+      "document": "List of filter parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The key of the filter parameter.",
+          "example": "DomainMatch",
+          "member": "string",
+          "name": "FilterKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "u200cThe value of the filter parameter.",
+          "example": "1",
+          "member": "string",
+          "name": "FilterValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
     },
     "LiveInstanceDetail": {
       "document": "Details of a LIVE instance",

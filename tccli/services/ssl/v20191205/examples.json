@@ -142,6 +142,14 @@
         "title": "Querying the certificate list"
       }
     ],
+    "DescribeHostTeoInstanceList": [
+      {
+        "document": "This example shows you how to query the list of EDGEONE instances to which a certificate can be deployed.",
+        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeHostTeoInstanceList\n<Common request parameters>\n\n{\n    \"CertificateId\": \"abc\",\n    \"IsCache\": 1,\n    \"Filters\": [\n        {\n            \"FilterKey\": \"abc\",\n            \"FilterValue\": \"abc\"\n        }\n    ],\n    \"ResourceType\": \"abc\",\n    \"OldCertificateId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"InstanceList\": [\n            {\n                \"Host\": \"abc\",\n                \"CertId\": \"abc\",\n                \"ZoneId\": \"abc\",\n                \"Status\": \"abc\"\n            }\n        ],\n        \"TotalCount\": 0,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "u200cQuerying the list of EDGEONE instances"
+      }
+    ],
     "DownloadCertificate": [
       {
         "document": " ",
