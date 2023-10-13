@@ -22,7 +22,7 @@
       "status": "online"
     },
     "HKIDCardOCR": {
-      "document": "This API is used to recognize key fields on the photo side of a Hong Kong (China) identity card, including name in Chinese, name in English, telecode for name, date of birth, gender, document symbol, date of the first issue, date of the last receipt, identity card number, and permanent residency attribute. It can check for card authenticity and crop the identity photo.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).\n",
+      "document": "This API is used to recognize key fields on the photo side of a Hong Kong (China) identity card, including name in Chinese, name in English, telecode for name, date of birth, gender, document symbol, date of the first issue, date of the last receipt, identity card number, and permanent residency attribute. \n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "HKIDCardOCRRequest",
       "name": "Recognizes Hong Kong (China) identity card",
       "output": "HKIDCardOCRResponse",
@@ -837,6 +837,7 @@
         {
           "disabled": false,
           "document": "Horizontal coordinate",
+          "example": "",
           "member": "int64",
           "name": "X",
           "required": true,
@@ -846,6 +847,7 @@
         {
           "disabled": false,
           "document": "Vertical coordinate",
+          "example": "",
           "member": "int64",
           "name": "Y",
           "required": true,
@@ -1375,7 +1377,7 @@
           "example": "申能",
           "member": "string",
           "name": "CnName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1385,7 +1387,7 @@
           "example": "SAN, Nan",
           "member": "string",
           "name": "EnName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1395,7 +1397,7 @@
           "example": "300000000000",
           "member": "string",
           "name": "TelexCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1405,7 +1407,7 @@
           "example": "女F",
           "member": "string",
           "name": "Sex",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1415,7 +1417,7 @@
           "example": "01-01-2001",
           "member": "string",
           "name": "Birthday",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1425,7 +1427,7 @@
           "example": "1",
           "member": "int64",
           "name": "Permanent",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1435,7 +1437,7 @@
           "example": "C000000(E)",
           "member": "string",
           "name": "IdNum",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1445,7 +1447,7 @@
           "example": "***AZ",
           "member": "string",
           "name": "Symbol",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1455,7 +1457,7 @@
           "example": "(09-99)",
           "member": "string",
           "name": "FirstIssueDate",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1465,7 +1467,7 @@
           "example": "23-09-10",
           "member": "string",
           "name": "CurrentIssueDate",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1475,7 +1477,7 @@
           "example": "1",
           "member": "int64",
           "name": "FakeDetectResult",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -1485,17 +1487,17 @@
           "example": "xx",
           "member": "string",
           "name": "HeadImage",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Multiple alarm codes. If the ID card is spoofed, photocopied, or photoshopped, the corresponding alarm code will be returned.\n-9102: Alarm for photocopied document\n-9103: Alarm for spoofed document\n-9104: Alarm for photoshopped document",
+          "document": "Multiple alarm codes. If the ID card is spoofed, photocopied, or photoshopped, the corresponding alarm code will be returned.\n-9102: Alarm for photocopied document\n-9103: Alarm for spoofed document",
           "example": "[-9102,-9103]",
           "member": "int64",
           "name": "WarningCode",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1890,6 +1892,7 @@
         {
           "disabled": false,
           "document": "X-coordinate of top-left point.",
+          "example": "",
           "member": "int64",
           "name": "X",
           "required": true,
@@ -1899,6 +1902,7 @@
         {
           "disabled": false,
           "document": "Y-coordinate of top-left point.",
+          "example": "",
           "member": "int64",
           "name": "Y",
           "required": true,
@@ -1908,6 +1912,7 @@
         {
           "disabled": false,
           "document": "Width",
+          "example": "",
           "member": "int64",
           "name": "Width",
           "required": true,
@@ -1917,6 +1922,7 @@
         {
           "disabled": false,
           "document": "Height",
+          "example": "",
           "member": "int64",
           "name": "Height",
           "required": true,
@@ -2262,6 +2268,7 @@
         {
           "disabled": false,
           "document": "Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.",
+          "example": "",
           "member": "string",
           "name": "ImageBase64",
           "required": true,
@@ -2270,6 +2277,7 @@
         {
           "disabled": false,
           "document": "Whether to return an image. Default value: false.",
+          "example": "",
           "member": "bool",
           "name": "RetImage",
           "required": false,
@@ -3972,6 +3980,7 @@
         {
           "disabled": false,
           "document": "The coordinates of the upper-left vertex.",
+          "example": "",
           "member": "Coord",
           "name": "LeftTop",
           "required": true,
@@ -3981,6 +3990,7 @@
         {
           "disabled": false,
           "document": "The coordinates of the upper-right vertex.",
+          "example": "",
           "member": "Coord",
           "name": "RightTop",
           "required": true,
@@ -3990,6 +4000,7 @@
         {
           "disabled": false,
           "document": "The coordinates of the lower-left vertex.",
+          "example": "",
           "member": "Coord",
           "name": "RightBottom",
           "required": true,
@@ -3999,6 +4010,7 @@
         {
           "disabled": false,
           "document": "The coordinates of the lower-right vertex.",
+          "example": "",
           "member": "Coord",
           "name": "LeftBottom",
           "required": true,
@@ -5503,6 +5515,7 @@
         {
           "disabled": false,
           "document": "X-coordinate of top-left point",
+          "example": "",
           "member": "int64",
           "name": "X",
           "required": true,
@@ -5512,6 +5525,7 @@
         {
           "disabled": false,
           "document": "Y-coordinate of top-left point",
+          "example": "",
           "member": "int64",
           "name": "Y",
           "required": true,
@@ -5521,6 +5535,7 @@
         {
           "disabled": false,
           "document": "Width",
+          "example": "",
           "member": "int64",
           "name": "Width",
           "required": true,
@@ -5530,6 +5545,7 @@
         {
           "disabled": false,
           "document": "Height",
+          "example": "",
           "member": "int64",
           "name": "Height",
           "required": true,
@@ -6285,6 +6301,7 @@
         {
           "disabled": false,
           "document": "Base64-encoded value of image.\nSupported image formats: PNG, JPG, JPEG. GIF is not supported at present.\nSupported image size: the downloaded image cannot exceed 3 MB in size after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nEither `ImageUrl` or `ImageBase64` of the image must be provided; if both are provided, only `ImageUrl` will be used.",
+          "example": "",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -6293,6 +6310,7 @@
         {
           "disabled": false,
           "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 3 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -6307,6 +6325,7 @@
         {
           "disabled": false,
           "document": "Recognized text. For more information, please click the link on the left",
+          "example": "",
           "member": "TextTable",
           "name": "TextDetections",
           "type": "list",
@@ -6315,6 +6334,7 @@
         {
           "disabled": false,
           "document": "Base64-encoded Excel data.",
+          "example": "",
           "member": "string",
           "name": "Data",
           "type": "string",
@@ -6623,6 +6643,7 @@
         {
           "disabled": false,
           "document": "Column index of the top-left corner of the cell.",
+          "example": "",
           "member": "int64",
           "name": "ColTl",
           "required": true,
@@ -6632,6 +6653,7 @@
         {
           "disabled": false,
           "document": "Row index of the top-left corner of the cell.",
+          "example": "",
           "member": "int64",
           "name": "RowTl",
           "required": true,
@@ -6641,6 +6663,7 @@
         {
           "disabled": false,
           "document": "Column index of the bottom-right corner of the cell.",
+          "example": "",
           "member": "int64",
           "name": "ColBr",
           "required": true,
@@ -6650,6 +6673,7 @@
         {
           "disabled": false,
           "document": "Row index of the bottom-right corner of the cell.",
+          "example": "",
           "member": "int64",
           "name": "RowBr",
           "required": true,
@@ -6659,6 +6683,7 @@
         {
           "disabled": false,
           "document": "Cell text",
+          "example": "",
           "member": "string",
           "name": "Text",
           "required": true,
@@ -6668,6 +6693,7 @@
         {
           "disabled": false,
           "document": "Cell type. Valid values: body, header, footer",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -6677,6 +6703,7 @@
         {
           "disabled": false,
           "document": "Confidence. Value range: 0–100",
+          "example": "",
           "member": "int64",
           "name": "Confidence",
           "required": true,
@@ -6686,6 +6713,7 @@
         {
           "disabled": false,
           "document": "Text line coordinates, which are represented as 4 vertex coordinates.",
+          "example": "",
           "member": "Coord",
           "name": "Polygon",
           "required": true,
@@ -6695,6 +6723,7 @@
         {
           "disabled": false,
           "document": "Extended field",
+          "example": "",
           "member": "string",
           "name": "AdvancedInfo",
           "required": true,

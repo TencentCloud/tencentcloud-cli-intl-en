@@ -330,7 +330,7 @@
       "status": "online"
     },
     "EditMedia": {
-      "document": "This API is used to edit a video (by clipping, splicing, etc.) to generate a new VOD video. Editing features include:\n\n1. Clipping a file to generate a new video;\n2. Splicing multiple files to generate a new video;\n3. Clipping multiple files and then splicing the clips to generate a new video.",
+      "document": "This API is used to edit a video to generate a new video. Editing actions may include:\n  \n\n1. **Simple editing**: Simple video editing such as clipping and splicing\n1.1 Clipping a file to generate a new video\n1.2 Splicing multiple files to generate a new video\n1.3 Clipping multiple files and then splicing the clips to generate a new video\n\n2. **Compositing**: Composing a new video as required\n2.1 Adding different tracks (video, audio, subtitles) or elements (video, image, audio, text, empty)\n2.2 Image: Adding, scaling, rotating, or mirroring an image\n2.3 Audio: Adjusting volume and adding audio effects such as fade and reverb\n2.4 Video: Adding transition effects, changing playback speed, splicing and clipping videos, adding subtitles, playing videos picture-in-picture, separating audio from videos, adding animation effects, etc.",
       "input": "EditMediaRequest",
       "name": "Edits video",
       "output": "EditMediaResponse",
@@ -470,7 +470,7 @@
       "status": "online"
     },
     "ProcessLiveStream": {
-      "document": "This API is used to initiate live stream processing tasks. Such tasks may include the following:\n\n* Intelligent content moderation (detection of pornographic content in images and audio, detection of sensitive information)\n* Intelligent content recognition (face, full text, text keyword, and speech keyword recognition; real-time speech translation)\n\nLive stream processing notifications are written into the specified CMQ queue in real time. You need to obtain the processing results from the CMQ queue. The output files of processing tasks are saved to the specified bucket.",
+      "document": "This API is used to initiate live stream processing tasks. Such tasks may include the following:\n\n* Intelligent content moderation (detection of pornographic content in images and audio, detection of sensitive information)\n* Intelligent content recognition (face, full text, text keyword, full speech, speech keyword, real-time speech translation, object recognition, game event tracking)\n* Intelligent content analysis (real-time news splitting)\n* Quality control, including recognizing live stream format, checking audio/video content for flickering, blur, low light, overexposure, black bars, white bars, black screen, white screen, noise, pixelation, QR code, etc., and no-reference scoring.\n* Recording\n\nHTTP callbacks are supported for live stream processing events. Notifications can also be written in real time to and read from a CMQ queue. The output files of processing tasks are saved to the storage you specify.",
       "input": "ProcessLiveStreamRequest",
       "name": "Initiates a live stream processing task",
       "output": "ProcessLiveStreamResponse",
@@ -1046,7 +1046,7 @@
         },
         {
           "disabled": false,
-          "document": "Target bucket of an output file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
@@ -1090,7 +1090,7 @@
         },
         {
           "disabled": false,
-          "document": "The subtitle file to add.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AddOnSubtitle",
           "name": "AddOnSubtitles",
@@ -1101,7 +1101,7 @@
         },
         {
           "disabled": false,
-          "document": "Information of Drm.   Note: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DrmInfo",
           "name": "DrmInfo",
@@ -1685,22 +1685,22 @@
         {
           "disabled": false,
           "document": "A list of the highlight segments generated.",
-          "example": "",
+          "example": "无",
           "member": "MediaAiAnalysisHighlightItem",
           "name": "HighlightSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The storage location of the highlight segments.",
-          "example": "",
+          "document": "The storage location of the highlight segments.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
-          "required": true,
+          "output_required": false,
           "type": "object",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3548,16 +3548,17 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of a porn information detection template.",
-          "example": "",
+          "document": "The ID of a porn detection template.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "10",
           "member": "uint64",
           "name": "Definition",
+          "output_required": false,
           "required": true,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "AiReviewPornTaskOutput": {
       "document": "Porn information detection result",
@@ -5087,6 +5088,140 @@
       ],
       "usage": "in"
     },
+    "AudioBeautifyConfig": {
+      "document": "The audio improvement configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable the feature. Valid values:\n<li>`ON`</li>\n<li>`OFF` </li>\nDefault value: `ON`.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The audio improvement options. You can specify multiple options. Valid values:\n<li>`declick`: Noise removal.</li>\n<li>`deesser`: De-essing.</li>\nDefault: `declick`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "Types",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AudioDenoiseConfig": {
+      "document": "The noise reduction configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable the feature. Valid values:\n<li>`ON`</li>\n<li>`OFF` </li>\nDefault value: `ON`.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AudioEnhanceConfig": {
+      "document": "The audio enhancement configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The audio noise reduction configuration.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AudioDenoiseConfig",
+          "name": "Denoise",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The audio separation configuration.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AudioSeparateConfig",
+          "name": "Separate",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The volume equalization configuration.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VolumeBalanceConfig",
+          "name": "VolumeBalance",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The audio improvement configuration.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AudioBeautifyConfig",
+          "name": "Beautify",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AudioSeparateConfig": {
+      "document": "The audio separation configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable the feature. Valid values:\n<li>`ON`</li>\n<li>`OFF` </li>\nDefault value: `ON`.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The scenario. Valid values:\n<li>`normal`: Separate voice and background audio.</li>\n<li>`music`: Separate vocals and instrumentals.</li>\nDefault value: `normal`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The output audio track. Valid values:\n<li>`vocal`: Voice.</li>\n<li>`background`: Output background audio if the scenario is `normal`, and output instrumentals if the scenario is `music`.</li>\nDefault value: `vocal`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "Track",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "AudioTemplateInfo": {
       "document": "Audio stream configuration parameter",
       "members": [
@@ -5270,46 +5405,50 @@
       "members": [
         {
           "disabled": false,
-          "document": "The region of the SQS queue.",
+          "document": "The region of the SQS queue.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "ap-southeast-1",
           "member": "string",
           "name": "SQSRegion",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The name of the SQS queue.",
+          "document": "The name of the SQS queue.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "test",
           "member": "string",
           "name": "SQSQueueName",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The key ID required to read from/write to the SQS queue.",
+          "document": "The key ID required to read from/write to the SQS queue.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "xx",
           "member": "string",
           "name": "S3SecretId",
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The key required to read from/write to the SQS queue.",
+          "document": "The key required to read from/write to the SQS queue.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
           "name": "S3SecretKey",
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "ClassificationConfigureInfo": {
       "document": "Control parameter of intelligent categorization task",
@@ -5368,6 +5507,810 @@
         }
       ],
       "usage": "both"
+    },
+    "ComposeAudioItem": {
+      "document": "The audio element information of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The media information of the element.",
+          "example": "无",
+          "member": "ComposeSourceMedia",
+          "name": "SourceMedia",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The time of the element in the timeline. If this is not specified, the element will follow the previous element.",
+          "example": "无",
+          "member": "ComposeTrackTime",
+          "name": "TrackTime",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The operations performed, such as muting.",
+          "example": "无",
+          "member": "ComposeAudioOperation",
+          "name": "AudioOperations",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeAudioOperation": {
+      "document": "The audio operations of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The operation type. Valid values:\n<li>`Volume`: Volume adjustment. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": " The volume level. This parameter is valid if `Type` is `Volume`. Value range: 0–5. \n<li>If the parameter value is `0`, the video will be muted. </li>\n<li>If the parameter value is smaller than 1, the volume will be reduced. </li>\n<li>If the parameter value is `1`, the original volume will be kept. </li>\n<li>If the parameter value is greater than 1, the volume will be increased. </li>",
+          "example": "无",
+          "member": "float",
+          "name": "Volume",
+          "required": false,
+          "type": "float"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeAudioStream": {
+      "document": "The audio stream information of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The codec of the audio stream. Valid values:\n<li>`AAC`: AAC (default), which is used for the MP4 container. </li>\n<li>`MP3`: MP3 codec, which is used for the MP3 container. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Codec",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The sample rate (Hz) of the audio stream.\n<li>16000 (default)</li>\n<li>32000</li>\n<li>44100</li>\n<li>48000</li>",
+          "example": "无",
+          "member": "int64",
+          "name": "SampleRate",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The number of sound channels. Valid values:\nu200c<li>`1`: Mono. </li>\n<li>`2`: Dual (default). </li>",
+          "example": "无",
+          "member": "int64",
+          "name": "AudioChannel",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeCanvas": {
+      "document": "The canvas information of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The RGB value of the background color. The format is #RRGGBB, such as `#F0F0F0`. \nDefault value: `#000000` (black).",
+          "example": "无",
+          "member": "string",
+          "name": "Color",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The canvas width (px), which is the width of the output video. Value range: 0–3840.  \nThe default value is `0`, which means that the canvas is as wide as the first video.",
+          "example": "无",
+          "member": "int64",
+          "name": "Width",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The canvas height (px), which is the height of the output video. Value range: 0–3840.  \nThe default value is `0`, which means that the canvas is as high as the first video.",
+          "example": "无",
+          "member": "int64",
+          "name": "Height",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeEmptyItem": {
+      "document": "The placeholder element information of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The element duration.\n<li>The value of this parameter ends with `s`, which means seconds. For example, `3.5s` indicates 3.5 seconds. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Duration",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeImageItem": {
+      "document": "The image element information of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The media information of the element.",
+          "example": "无",
+          "member": "ComposeSourceMedia",
+          "name": "SourceMedia",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The time of the element in the timeline. If this is not specified, the element will follow the previous element.",
+          "example": "无",
+          "member": "ComposeTrackTime",
+          "name": "TrackTime",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The horizontal distance of the element's center from the canvas origin. Two formats are supported:\n<li>If the value ends with %, it specifies the distance as a percentage of the canvas width. For example, `10%` means that the distance is 10% of the canvas width. </li>\nu200c<li>If the value ends with px, it specifies the distance in pixels. For example, `100px` means that the distance is 100 pixels. </li>\nDefault value: `50%`.",
+          "example": "无",
+          "member": "string",
+          "name": "XPos",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The vertical distance of the element's center from the canvas origin. Two formats are supported:\nu200c<li>If the value ends with %, it specifies the distance as a percentage of the canvas height. For example, `10%` means that the distance is 10% of the canvas height. </li>\nu200c<li>If the value ends with px, it specifies the distance in pixels. For example, `100px` means that the distance is 100 pixels. </li>\nDefault value: `50%`.",
+          "example": "无",
+          "member": "string",
+          "name": "YPos",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The width of the video segment. Two formats are supported:\nu200c<li>If the value ends with %, it specifies the width as a percentage of the canvas width. For example, `10%` means that the video width is 10% of the canvas width. </li>\nu200c<li>If the value ends with px, it specifies the width in pixels. For example, `100px` means that the video width is 100 pixels. </li>\nIf one or both parameters are empty or set to `0`:\n<li>If both `Width` and `Height` are empty, the original width and height of the element will be kept. </li>\n<li>If `Width` is empty and `Height` is not, the width will be auto scaled. </li>\n<li>If `Width` is not empty and `Height` is, the height will be auto scaled. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Width",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The height of the element. Two formats are supported:\nu200c<li>If the value ends with %, it specifies the height as a percentage of the canvas height. For example, `10%` means that the height is 10% of the canvas height. </li>\nu200c<li>If the value ends with px, it specifies the height in pixels. For example, `100px` means that the height is 100 pixels. </li>\nIf one or both parameters are empty or set to `0`:\n<li>If both `Width` and `Height` are empty, the original width and height of the video will be kept. </li>\n<li>If `Width` is empty and `Height` is not, the width will be auto scaled. </li>\n<li>If `Width` is not empty and `Height` is, the height will be auto scaled. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Height",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The image operations, such as image rotation.",
+          "example": "无",
+          "member": "ComposeImageOperation",
+          "name": "ImageOperations",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeImageOperation": {
+      "document": "The image operations of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The type. Valid values:\nu200c<li>`Rotate`: Image rotation. </li>\n<li>`Flip`: Image flipping. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "This is valid if `Type` is `Rotate`. The angle of rotation around the image center. Value range: 0–360.",
+          "example": "无",
+          "member": "float",
+          "name": "RotateAngle",
+          "required": false,
+          "type": "float"
+        },
+        {
+          "disabled": false,
+          "document": "This is valid if `Type` is `Flip`. How to flip the image. Valid values:xa0\nu200c<li>`Horizental`: Flip horizontally. </li>\n<li>`Vertical`: Flip vertically. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "FlipType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeMediaConfig": {
+      "document": "The information of a video editing/compositing task.\n\nThe figure below outlines the relationships among tracks, elements, and the timeline.\n\n![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/EditMedia-Compose-Track-Item.png)",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The information of the output video.",
+          "example": "无",
+          "member": "ComposeTargetInfo",
+          "name": "TargetInfo",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The canvas information of the output video.",
+          "example": "无",
+          "member": "ComposeCanvas",
+          "name": "Canvas",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The global styles. This parameter is used together with `Tracks` to specify styles, such as the subtitle style.",
+          "example": "无",
+          "member": "ComposeStyles",
+          "name": "Styles",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The information of media tracks (consisting of video, audio, image, and text elements) used to composite the video. About tracks and the timeline:\n<ul><li>The timeline of a track is the same as the timeline of the output video. </li><li>The elements of different tracks are overlaid at the same time point in the timeline.</li><ul><li>Video, image, and text elements are overlaid according to their track number, with the first track on top. </li><li>Audio elements are mixed. </li></ul></ul>Note: The different elements of the same track cannot be overlaid (except subtitles).",
+          "example": "无",
+          "member": "ComposeMediaTrack",
+          "name": "Tracks",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeMediaItem": {
+      "document": "The element information of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The element type. Valid values:\n<li>`Video` </li>\n<li>`Audio` </li>\n<li>`Image` </li>\n<li>`Transition` </li>\n<li>`Subtitle` </li>\n<li>`Empty` </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The information of the video element, which is valid if `Type` is `Video`.",
+          "example": "无",
+          "member": "ComposeVideoItem",
+          "name": "Video",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The information of the audio element, which is valid if `Type` is `Audio`.",
+          "example": "无",
+          "member": "ComposeAudioItem",
+          "name": "Audio",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The information of the image element, which is valid if `Type` is `Image`.",
+          "example": "无",
+          "member": "ComposeImageItem",
+          "name": "Image",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The information of the transition element, which is valid if `Type` is `Transition`.",
+          "example": "无",
+          "member": "ComposeTransitionItem",
+          "name": "Transition",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The information of the subtitle element, which is valid if `Type` is `Subtitle`.",
+          "example": "无",
+          "member": "ComposeSubtitleItem",
+          "name": "Subtitle",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The information of the empty element, which is valid if `Type` is `Empty`. An empty element is used as a placeholder in the timeline.",
+          "example": "无",
+          "member": "ComposeEmptyItem",
+          "name": "Empty",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeMediaTrack": {
+      "document": "The track information of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The track type. Valid values:<ul><li>`Video`: Video track. A video track can consist of the following elements:</li><ul><li>Video</li><li>Image</li><li>Transition</li><li>Empty</li></ul><li>`Audio`: Audio track. An audio track can consist of the following elements:</li><ul><li>Audio</li><li>Transition</li><li>Empty</li></ul><li>`Title`: Text track. A text track can consist of the following elements: </li><ul><li>Subtitle</li></ul>",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The elements of a track.",
+          "example": "无",
+          "member": "ComposeMediaItem",
+          "name": "Items",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeSourceMedia": {
+      "document": "The material source of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The material ID, which can be found in `FileInfos`.",
+          "example": "无",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The start time of the material. The following two formats are supported.\n<li>If the value of this parameter ends with `s`, it specifies the time in seconds. For example, `3.5s` indicates the time when 3.5 seconds of the material elapses.</li>\nu200c<li>If the value of this parameter ends with `%`, it specifies the time as a percentage of the material's duration. For example, `10%` indicates the time when 10% of the material's duration elapses. </li>\nDefault value: `0s`.",
+          "example": "无",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The end time of the material. This parameter and `StartTime` determine which time segment of the material is used. The following two formats are supported:\n<li>If the value of this parameter ends with `s`, it specifies the time in seconds. For example, `3.5s` indicates the time when 3.5 seconds of the material elapses.</li>\nu200c<li>If the value of this parameter ends with `%`, it specifies the time as a percentage of the material's duration. For example, `10%` indicates the time when 10% of the material's duration elapses. </li>\nIf the track duration is set, the default value is `StartTime` plus the track duration. If not, the default value is `StartTime` plus 1 second.\nNote: `EndTime` must be at least 0.02 seconds later than `StartTime`.\n",
+          "example": "无",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeStyles": {
+      "document": "The style information of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The style ID, which identifies an element style.\nNote: The style ID can be up to 32 characters long and can contain letters, digits, and special characters -_",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The type. Valid values:\n<li>`Subtitle`: The subtitle style. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The subtitle style details. This parameter is valid if `Type` is `Subtitle`.",
+          "example": "无",
+          "member": "ComposeSubtitleStyle",
+          "name": "Subtitle",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeSubtitleItem": {
+      "document": "The subtitle element information of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The subtitle style ID, which corresponds to the `Id` field of `ComposeStyles`.",
+          "example": "无",
+          "member": "string",
+          "name": "StyleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The subtitle text.",
+          "example": "无",
+          "member": "string",
+          "name": "Text",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The time of the element in the timeline. If this is not specified, the element will follow the previous element.\t",
+          "example": "无",
+          "member": "ComposeTrackTime",
+          "name": "TrackTime",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeSubtitleStyle": {
+      "document": "The subtitle style of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The subtitle height. Two formats are supported:\nu200c<li>If the value ends with %, it specifies the height as a percentage of the canvas height. For example, `10%` means that the height is 10% of the canvas height. </li>\nu200c<li>If the value ends with px, it specifies the height in pixels. For example, `100px` means that the height is 100 pixels. </li>\nThe default value is the value of `FontSize`.",
+          "example": "无",
+          "member": "string",
+          "name": "Height",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The bottom margin. Two formats are supported:\nu200c<li>If the value ends with %, it specifies the margin as a percentage of the canvas height. For example, `10%` means that the margin is 10% of the canvas height. </li>\nu200c<li>If the value ends with px, it specifies the margin in pixels. For example, `100px` means that the margin is 100 pixels. </li>\nDefault value: `0px`.",
+          "example": "无",
+          "member": "string",
+          "name": "MarginBottom",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The font type. Valid values:\n<li>`SimHei`(default): Chinese font Heiti. </li>\n<Li>`SimSun`: Chinese font Songti. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "FontType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The font size. Two formats are supported:\nu200c<li>If the value ends with %, it specifies the size as a percentage of the canvas height. For example, `10%` means that the size is 10% of the canvas height. </li>\nu200c<li>If the value ends with px, it specifies the size in pixels. For example, `100px` means that the size is 100 pixels. </li>\nDefault value: `2%`.",
+          "example": "无",
+          "member": "string",
+          "name": "FontSize",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to bold the text (some fonts may not support bold). Valid values:\n<li>`0` (default): No. </li>\n<li>`1`: Yes. </li>",
+          "example": "无",
+          "member": "int64",
+          "name": "FontBold",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to italicize the text (some fonts may not support italics). Valid values:\n<li>`0` (default): No. </li>\n<li>`1`: Yes. </li>",
+          "example": "无",
+          "member": "int64",
+          "name": "FontItalic",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The font color (#RRGGBBAA).  \nDefault value: `0x000000FF` (black).  \nNote: `AA` in the color notation defines the opacity of the color. It's optional.\n",
+          "example": "无",
+          "member": "string",
+          "name": "FontColor",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The text alignment. Valid values:\n<li>`Center`(default) </li>\n<li>`Left` </li>\n<li>`Right` </li>",
+          "example": "无",
+          "member": "string",
+          "name": "FontAlign",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The margin for left/right align.\n<li>If `FontAlign` is `Left`, this parameter specifies the left margin of the subtitles. </li>\n<li>If `FontAlign` is `Right`, this parameter specifies the right margin of the subtitles. </li>\nTwo formats are supported:\nu200c<li>If the value ends with %, it specifies the margin as a percentage of the canvas width. For example, `10%` means that the margin is 10% of the canvas width. </li>\nu200c<li>If the value ends with px, it specifies the margin in pixels. For example, `100px` means that the margin is 100 pixels. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "FontAlignMargin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The subtitle border width. Two formats are supported:\nu200c<li>If the value ends with %, it specifies the width as a percentage of the canvas height. For example, `10%` means that the width is 10% of the canvas height. </li>\nu200c<li>If the value ends with px, it specifies the width in pixels. For example, `100px` means that the width is 100 pixels. </li>\nThe default value is `0`, which means the subtitles will have no borders.",
+          "example": "无",
+          "member": "string",
+          "name": "BorderWidth",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The border color, whose format is the same as that for `FontColor`. This parameter is valid if `BorderWidth` is not `0`.",
+          "example": "无",
+          "member": "string",
+          "name": "BorderColor",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The text background color, whose format is the same as that for `FontColor`.  \nThe default value is an empty string, which means the subtitles will not have a background color.",
+          "example": "无",
+          "member": "string",
+          "name": "BottomColor",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeTargetInfo": {
+      "document": "The output video information of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The container. Valid values:\n<li>`mp4` (default), for video files. </li>\n<li>`mp3`, for audio files. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Container",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to remove video data. Valid values:\n<li>`0` (default): No. </li>\n<li>`1`: Yes. </li>",
+          "example": "无",
+          "member": "int64",
+          "name": "RemoveVideo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to remove audio data. Valid values:\n<li>`0` (default): No. </li>\n<li>`1`: Yes. </li>",
+          "example": "无",
+          "member": "int64",
+          "name": "RemoveAudio",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The information of the output video stream.",
+          "example": "无",
+          "member": "ComposeVideoStream",
+          "name": "VideoStream",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The information of the output audio stream.",
+          "example": "无",
+          "member": "ComposeAudioStream",
+          "name": "AudioStream",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeTrackTime": {
+      "document": "The time information of an element on the output video track of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The time when the element starts on the track.\n<li>The value of this parameter ends with `s`, which means seconds. For example, `3.5s` indicates the time when 3.5 seconds of the video elapses.</li>\nNote: If this parameter is not specified, the start time will be the end time of the previous element. Therefore, you can also use the placeholder parameter `ComposeEmptyItem` to configure the start time.",
+          "example": "无",
+          "member": "string",
+          "name": "Start",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The element duration.\n<li>The value of this parameter ends with `s`, which means seconds. For example, `3.5s` means 3.5 seconds.</li>\nThe default value is the material duration, which is determined by `EndTime` and `StartTime` of `ComposeSourceMedia`. If `ComposeSourceMedia` is not specified, the duration will be 1 second.",
+          "example": "无",
+          "member": "string",
+          "name": "Duration",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeTransitionItem": {
+      "document": "The transition element information of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The element duration. <li>The value of this parameter ends with `s`, which means seconds. For example, `3s` indicates 3 seconds. </li>\nDefault value: `1s`.\nNote\n<li>The number before `s` must be an integer. Non-integers will be rounded down to the nearest integer. </li>\n<li>The transition element must be between two non-empty elements. </li>\n<li>The duration of the transition element must be shorter than that of the preceding element and the following element. </li>\nu200c<li>The start time of the following element on the track will be automatically changed to the end time of the preceding element minus the duration of the transition element. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Duration",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The transition effects.\nThe default transition effect is fade.\nNote: You can add at most one image transition and one audio transition.",
+          "example": "无",
+          "member": "ComposeTransitionOperation",
+          "name": "Transitions",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeTransitionOperation": {
+      "document": "The transition information of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The transition type.\n\nThe image transition, which connects two video segments.\n<li>`ImageFadeInFadeOut` </li>\nu200c<li>`BowTieHorizontal` </li>\nu200c<li>`BowTieVertical` </li>\nu200c<li>`ButterflyWaveScrawler` </li>\n<li>`Cannabisleaf` </li>\n<li>`Circle` </li>\n<li>`CircleCrop` </li>\nu200c<li>`Circleopen` </li>\n<li>`Crosswarp` </li>\n<li>`Cube` </li>\n<li>`DoomScreenTransition` </li>\n<li>`Doorway` </li>\n<li>`Dreamy` </li>\n<li>`DreamyZoom` </li>\n<li>`FilmBurn` </li>\n<li>`GlitchMemories` </li>\n<li>`Heart` </li>\n<li>`InvertedPageCurl` </li>\n<li>`Luma` </li>\n<li>`Mosaic` </li>\n<li>`Pinwheel` </li>\n<li>`PolarFunction` </li>\n<li>`PolkaDotsCurtain` </li>\n<li>`Radial` </li>\n<li>`RotateScaleFade` </li>\n<li>`Squeeze` </li>\n<li>`Swap` </li>\n<li>`Swirl` </li>\n<li>`UndulatingBurnOutSwirl` </li>\n<li>`Windowblinds` </li>\n<li>`WipeDown` </li>\n<li>`WipeLeft` </li>\n<li>`WipeRight` </li>\n<li>`WipeUp` </li>\n<li>`ZoomInCircles` </li> \nThe audio transition, which connects two audio segments.\n<li>`AudioFadeInFadeOut` </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeVideoItem": {
+      "document": "The video element information of a video editing/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The media information of the element.",
+          "example": "无",
+          "member": "ComposeSourceMedia",
+          "name": "SourceMedia",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The time of the element in the timeline. If this is not specified, the element will follow the previous element.",
+          "example": "无",
+          "member": "ComposeTrackTime",
+          "name": "TrackTime",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The horizontal distance of the element's center from the canvas origin. Two formats are supported:\n<li>If the value ends with %, it specifies the distance as a percentage of the canvas width. For example, `10%` means that the distance is 10% of the canvas width. </li>\nu200c<li>If the value ends with px, it specifies the distance in pixels. For example, `100px` means that the distance is 100 pixels. </li>\nDefault value: `50%`.",
+          "example": "无",
+          "member": "string",
+          "name": "XPos",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The vertical distance of the element's center from the canvas origin. Two formats are supported:\nu200c<li>If the value ends with %, it specifies the distance as a percentage of the canvas height. For example, `10%` means that the distance is 10% of the canvas height. </li>\nu200c<li>If the value ends with px, it specifies the distance in pixels. For example, `100px` means that the distance is 100 pixels. </li>\nDefault value: `50%`.",
+          "example": "无",
+          "member": "string",
+          "name": "YPos",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The width of the video segment. Two formats are supported:\nu200c<li>If the value ends with %, it specifies the width as a percentage of the canvas width. For example, `10%` means that the video width is 10% of the canvas width. </li>\nu200c<li>If the value ends with px, it specifies the width in pixels. For example, `100px` means that the video width is 100 pixels. </li>\nIf one or both parameters are empty or set to `0`:\n<li>If both `Width` and `Height` are empty, the original width and height of the element will be kept. </li>\n<li>If `Width` is empty and `Height` is not, the width will be auto scaled. </li>\n<li>If `Width` is not empty and `Height` is, the height will be auto scaled. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Width",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The height of the element. Two formats are supported:\nu200c<li>If the value ends with %, it specifies the height as a percentage of the canvas height. For example, `10%` means that the height is 10% of the canvas height. </li>\nu200c<li>If the value ends with px, it specifies the height in pixels. For example, `100px` means that the height is 100 pixels. </li>\nIf one or both parameters are empty or set to `0`:\n<li>If both `Width` and `Height` are empty, the original width and height of the element will be kept. </li>\n<li>If `Width` is empty and `Height` is not, the width will be auto scaled. </li>\n<li>If `Width` is not empty and `Height` is, the height will be auto scaled. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Height",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The image operations, such as image rotation.",
+          "example": "无",
+          "member": "ComposeImageOperation",
+          "name": "ImageOperations",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The audio operations, such as muting.",
+          "example": "无",
+          "member": "ComposeAudioOperation",
+          "name": "AudioOperations",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "ComposeVideoStream": {
+      "document": "The video stream information of a video edit/compositing task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The codec. Valid values:\n<li>`H.264` (default) </li>",
+          "example": "无",
+          "member": "string",
+          "name": "Codec",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The video frame rate (Hz). Value range: 0–60.  \nThe default value is `0`, which means that the frame rate will be the same as that of the first video.",
+          "example": "无",
+          "member": "int64",
+          "name": "Fps",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
     },
     "ContentReviewTemplateItem": {
       "document": "Details of a content audit template",
@@ -8119,7 +9062,7 @@
           "example": "WorkflowTask",
           "member": "string",
           "name": "TaskType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8129,7 +9072,7 @@
           "example": "FINISH",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8139,7 +9082,7 @@
           "example": "2019-07-16T06:21:27Z",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8149,7 +9092,7 @@
           "example": "2019-07-16T06:21:28Z",
           "member": "string",
           "name": "BeginProcessTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8159,7 +9102,7 @@
           "example": "2019-07-16T06:21:46Z",
           "member": "string",
           "name": "FinishTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8169,7 +9112,7 @@
           "example": "无",
           "member": "EditMediaTask",
           "name": "EditMediaTask",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -8179,7 +9122,7 @@
           "example": "无",
           "member": "WorkflowTask",
           "name": "WorkflowTask",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -8189,7 +9132,7 @@
           "example": "无",
           "member": "LiveStreamProcessTask",
           "name": "LiveStreamProcessTask",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -8199,7 +9142,7 @@
           "example": "无",
           "member": "TaskNotifyConfig",
           "name": "TaskNotifyConfig",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -8209,7 +9152,7 @@
           "example": "0",
           "member": "int64",
           "name": "TasksPriority",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -8219,7 +9162,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "SessionId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8229,7 +9172,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "SessionContext",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8239,7 +9182,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "ExtInfo",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -8249,7 +9192,17 @@
           "example": "无",
           "member": "ScheduleTask",
           "name": "ScheduleTask",
-          "required": true,
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The information of a live scheme. This parameter is valid only if `TaskType` is `LiveScheduleTask`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LiveScheduleTask",
+          "name": "LiveScheduleTask",
+          "output_required": false,
           "type": "object",
           "value_allowed_null": true
         },
@@ -8716,11 +9669,11 @@
       "type": "object"
     },
     "DrmInfo": {
-      "document": "",
+      "document": "The DRM encryption details.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The encryption type.\n<li>`simpleaes`: AES-128 encryption.</li>\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Type",
@@ -8731,7 +9684,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The AES-128 encryption details.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SimpleAesDrm",
           "name": "SimpleAesDrm",
@@ -8749,32 +9702,46 @@
         {
           "disabled": false,
           "document": "Video input information.",
-          "example": "",
+          "example": "无",
           "member": "MediaInputInfo",
           "name": "InputInfo",
+          "output_required": true,
           "required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Start time offset of video clipping in seconds.",
-          "example": "",
+          "document": "The start offset (seconds) for video clipping. This parameter is valid for video clipping tasks.",
+          "example": "无",
           "member": "float",
           "name": "StartTimeOffset",
+          "output_required": true,
           "required": false,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "End time offset of video clipping in seconds.",
-          "example": "",
+          "document": "The end offset (seconds) for video clipping. This parameter is valid for video clipping tasks.",
+          "example": "无",
           "member": "float",
           "name": "EndTimeOffset",
+          "output_required": true,
           "required": false,
           "type": "float",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The ID of the material associated with an element. This parameter is required for video compositing tasks.\n\nNote: The ID can be up to 32 characters long and can contain letters, digits, and special characters -_\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -8784,26 +9751,28 @@
       "members": [
         {
           "disabled": false,
-          "document": "Format. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`",
+          "document": "The container. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Container",
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The editing mode. Valid values are `normal` and `fast`. The default is `normal`, which indicates precise editing.",
+          "document": "The clip mode. Valid values: `normal` (default), `fast`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "fast",
           "member": "string",
           "name": "Type",
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "EditMediaRequest": {
       "document": "EditMedia request structure.",
@@ -8828,7 +9797,7 @@
         },
         {
           "disabled": false,
-          "document": "The path to save the media processing output file.",
+          "document": "The path to save the media processing output file.\n\nNote: For complex compositing tasks, the filename can be up to 64 characters long and can only contain digits, letters, and special characters -_\n",
           "example": "/clip_result/clip_WildAnimal.{format}",
           "member": "string",
           "name": "OutputObjectPath",
@@ -8837,10 +9806,19 @@
         },
         {
           "disabled": false,
-          "document": "Configuration for output files of video editing",
+          "document": "The output settings for a video clipping task.",
           "example": "无",
           "member": "EditMediaOutputConfig",
           "name": "OutputConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The settings for a video compositing task.\n\nNote: If this parameter is not empty, the task is a video compositing task. Otherwise, the task is a video clipping task.",
+          "example": "无",
+          "member": "ComposeMediaConfig",
+          "name": "ComposeConfig",
           "required": false,
           "type": "object"
         },
@@ -9075,6 +10053,18 @@
           "example": "无",
           "member": "VideoEnhanceConfig",
           "name": "VideoEnhance",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The audio enhancement configuration.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AudioEnhanceConfig",
+          "name": "AudioEnhance",
+          "output_required": false,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -9354,26 +10344,28 @@
       "members": [
         {
           "disabled": false,
-          "document": "Opening credits list",
+          "document": "The opening segments.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "[   {     \"Type\": \"URL\",     \"UrlInputInfo\": {       \"Url\": \"htt",
           "member": "MediaInputInfo",
           "name": "HeadSet",
+          "output_required": false,
           "required": false,
           "type": "list",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Closing credits list",
+          "document": "The closing segments.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "[   {     \"Type\": \"URL\",     \"UrlInputInfo\": {       \"Url\": \"htt",
           "member": "MediaInputInfo",
           "name": "TailSet",
+          "output_required": false,
           "required": false,
           "type": "list",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "HighlightSegmentItem": {
       "document": "The information of a highlight segment.",
@@ -9783,6 +10775,321 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LiveActivityResItem": {
+      "document": "The output of a live scheme subtask.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The output of a live recording task.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LiveScheduleLiveRecordTaskResult",
+          "name": "LiveRecordTask",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LiveActivityResult": {
+      "document": "The output of a live scheme subtask.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The task type.\n<li>`LiveRecord`: Live recording. </li>\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ActivityType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The task output.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LiveActivityResItem",
+          "name": "LiveActivityResItem",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LiveRecordFile": {
+      "document": "The information of a live recording file.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The URL of the recording file.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Url",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The size of the recording file.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Size",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The duration of the recording file.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Duration",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The recording start time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The recording end time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LiveRecordResult": {
+      "document": "The live recording result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The storage of the recording file.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The recording segments.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LiveRecordFile",
+          "name": "FileList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LiveRecordTaskInput": {
+      "document": "The input parameters of a live recording task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The live recording template ID.",
+          "example": "10",
+          "member": "int64",
+          "name": "Definition",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The storage of the recording file. If this parameter is left empty, the `OutputStorage` value of the parent folder will be inherited.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The output path of the recording file.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "OutputObjectPath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "LiveScheduleLiveRecordTaskResult": {
+      "document": "The result of a live scheme's live recording task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The task status. Valid values: `PROCESSING`, `SUCCESS`, `FAIL`.",
+          "example": "PROCESSING",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The error code. An empty string indicates the task is successful; any other value indicates the task has failed. For details, see [Error Codes](https://www.tencentcloud.com/document/product/1041/40249).\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The error code. `0` indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The error message.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The input of a live recording task.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LiveRecordTaskInput",
+          "name": "Input",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The output of a live recording task.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LiveRecordResult",
+          "name": "Output",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The time when the task was started, in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The time when the task was completed, in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FinishTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LiveScheduleTask": {
+      "document": "The information of a live scheme subtask.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The ID of a live scheme subtask.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The task status. Valid values:\n<li>`PROCESSING`</li>\n<li>`FINISH` </li>\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "If the value returned is not `0`, there was a source error. If `0` is returned, refer to the error codes of the corresponding task type.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "If there was a source error, this parameter is the error message. For other errors, refer to the error messages of the corresponding task type.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The URL of the live stream.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Url",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The task output.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "LiveActivityResult",
+          "name": "LiveActivityResultSet",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -14262,7 +15569,7 @@
           "example": "WorkflowTask",
           "member": "string",
           "name": "EventType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14272,7 +15579,7 @@
           "example": "无",
           "member": "WorkflowTask",
           "name": "WorkflowTaskEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -14282,7 +15589,7 @@
           "example": "无",
           "member": "EditMediaTask",
           "name": "EditMediaTaskEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -14292,7 +15599,7 @@
           "example": "\"xxxx\"",
           "member": "string",
           "name": "SessionId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14302,7 +15609,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "SessionContext",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14312,9 +15619,29 @@
           "example": "无",
           "member": "ScheduleTask",
           "name": "ScheduleTaskEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "- The expiration time (Unix timestamp) of the notification's signature.\n- By default, notifications sent by MPS expire after 10 minutes. If the expiration time specified has elapsed, a notification will be considered invalid. This can prevent replay attacks.\n- The format of this parameter is a decimal Unix timestamp, i.e., the number of seconds that have elapsed since 00:00 (UTC/GMT time) on January 1, 1970.\n",
+          "example": "无",
+          "member": "int64",
+          "name": "Timestamp",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The notification signature. Sign = MD5 (Timestamp + NotifyKey) MPS concatenates `Timestamp` and `NotifyKey` in `TaskNotifyConfig` and calculates a signature using the MD5 algorithm. This signature is included in the notification sent to your backend server. If the signature in the notification matches your own calculation result, it indicates that the notification is from MPS.",
+          "example": "无",
+          "member": "string",
+          "name": "Sign",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -14947,7 +16274,7 @@
         {
           "disabled": false,
           "document": "Live stream URL, which must be a live stream file address. RTMP, HLS, and FLV are supported.",
-          "example": "",
+          "example": "http://www.abc.com/abc.m3u8",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -14956,7 +16283,7 @@
         {
           "disabled": false,
           "document": "Event notification information of a task, which is used to specify the live stream processing result.",
-          "example": "",
+          "example": "无",
           "member": "LiveStreamTaskNotifyConfig",
           "name": "TaskNotifyConfig",
           "required": true,
@@ -14965,7 +16292,7 @@
         {
           "disabled": false,
           "document": "Target bucket of a live stream processing output file. This parameter is required if a file will be output.",
-          "example": "",
+          "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
           "required": false,
@@ -14974,7 +16301,7 @@
         {
           "disabled": false,
           "document": "Target directory of a live stream processing output file, such as `/movie/201909/`. If this parameter is left empty, the `/` directory will be used.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "OutputDir",
           "required": false,
@@ -14983,7 +16310,7 @@
         {
           "disabled": false,
           "document": "Type parameter of a video content audit task.",
-          "example": "",
+          "example": "无",
           "member": "AiContentReviewTaskInput",
           "name": "AiContentReviewTask",
           "required": false,
@@ -14992,7 +16319,7 @@
         {
           "disabled": false,
           "document": "Type parameter of video content recognition task.",
-          "example": "",
+          "example": "无",
           "member": "AiRecognitionTaskInput",
           "name": "AiRecognitionTask",
           "required": false,
@@ -15000,8 +16327,26 @@
         },
         {
           "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "AiAnalysisTaskInput",
+          "name": "AiAnalysisTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "AiQualityControlTaskInput",
+          "name": "AiQualityControlTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
           "document": "The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "SessionId",
           "required": false,
@@ -15010,11 +16355,20 @@
         {
           "disabled": false,
           "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "SessionContext",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The live scheme ID.\nNote 1:\n<li>If an output storage (`OutputStorage`) and directory (`OutputDir`) are specified for a subtask of the scheme, those output settings will be applied. </li>\nu200c<li>If an output storage (`OutputStorage`) and directory (`OutputDir`) are not specified for a subtask of the scheme, the output parameters specified for `ProcessLiveStream` (if any) will be applied. </li>\nNote 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, the specified settings will be applied instead of the default callback settings of the scheme.",
+          "example": "无",
+          "member": "int64",
+          "name": "ScheduleId",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -16435,7 +17789,7 @@
           "example": "0",
           "member": "int64",
           "name": "ScheduleId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -16445,7 +17799,17 @@
           "example": "“”",
           "member": "string",
           "name": "ScheduleName",
-          "required": true,
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The scheme type. Valid values:\n <li>`Preset`</li>\n<li>`Custom` </li>\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": true
         },
@@ -16455,8 +17819,8 @@
           "example": "“”",
           "member": "string",
           "name": "Status",
-          "required": true,
-          "type": "list",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": true
         },
         {
@@ -16465,7 +17829,7 @@
           "example": "无",
           "member": "WorkflowTrigger",
           "name": "Trigger",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -16475,7 +17839,7 @@
           "example": "无",
           "member": "Activity",
           "name": "Activities",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -16485,7 +17849,7 @@
           "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -16495,7 +17859,7 @@
           "example": "“”",
           "member": "string",
           "name": "OutputDir",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -16505,7 +17869,7 @@
           "example": "无",
           "member": "TaskNotifyConfig",
           "name": "TaskNotifyConfig",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -16515,7 +17879,7 @@
           "example": "“”",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -16525,7 +17889,7 @@
           "example": "“”",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -16585,11 +17949,11 @@
       "usage": "both"
     },
     "SimpleAesDrm": {
-      "document": "",
+      "document": "The AES-128 encryption details.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The URI of decryption key.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "http://test.qq.com?vid=xxx",
           "member": "string",
           "name": "Uri",
@@ -16600,7 +17964,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The encryption key (a 32-byte string).\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "14367588ab31370e32ae000544bd007d",
           "member": "string",
           "name": "Key",
@@ -16611,7 +17975,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The initialization vector for encryption (a 32-byte string).\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "452ac1553f19b846e2f2c4cffd8f4a9b",
           "member": "string",
           "name": "Vector",
@@ -17066,40 +18430,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "The CMQ or TDMQ-CMQ model. Valid values: Queue, Topic.",
-          "example": "Queue ",
+          "document": "The notification type. Valid values:\n<li>`CMQ`: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>\n<li>`TDMQ-CMQ`: Message queue</li>\n<li>`URL`: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>\n<li>`SCF`: This notification type is not recommended. You need to configure it in the SCF console.</li>\n<li>`AWS-SQS`: AWS queue. This type is only supported for AWS tasks, and the queue must be in the same region as the AWS bucket.</li>\n<font color=\"red\">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>",
+          "example": "URL",
           "member": "string",
-          "name": "CmqModel",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The CMQ or TDMQ-CMQ region, such as `sh` (Shanghai) or `bj` (Beijing).",
-          "example": "sh",
-          "member": "string",
-          "name": "CmqRegion",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The CMQ or TDMQ-CMQ topic to receive notifications. This parameter is valid when `CmqModel` is `Topic`.",
-          "example": "test",
-          "member": "string",
-          "name": "TopicName",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The CMQ or TDMQ-CMQ queue to receive notifications. This parameter is valid when `CmqModel` is `Queue`.",
-          "example": "\"\"",
-          "member": "string",
-          "name": "QueueName",
+          "name": "NotifyType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -17110,16 +18445,7 @@
           "example": "Finish ",
           "member": "string",
           "name": "NotifyMode",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The notification type. Valid values:\n<li>`CMQ`: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>\n<li>`TDMQ-CMQ`: Message queue</li>\n<li>`URL`: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>\n<li>`SCF`: This notification type is not recommended. You need to configure it in the SCF console.</li>\n<li>`AWS-SQS`: AWS queue. This type is only supported for AWS tasks, and the queue must be in the same region as the AWS bucket.</li>\n<font color=\"red\">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>",
-          "example": "URL",
-          "member": "string",
-          "name": "NotifyType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -17130,6 +18456,51 @@
           "example": "http://www.qq.com/callback",
           "member": "string",
           "name": "NotifyUrl",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The CMQ or TDMQ-CMQ model. Valid values: Queue, Topic.",
+          "example": "Queue ",
+          "member": "string",
+          "name": "CmqModel",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The CMQ or TDMQ-CMQ region, such as `sh` (Shanghai) or `bj` (Beijing).",
+          "example": "sh",
+          "member": "string",
+          "name": "CmqRegion",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The CMQ or TDMQ-CMQ topic to receive notifications. This parameter is valid when `CmqModel` is `Topic`.",
+          "example": "test",
+          "member": "string",
+          "name": "TopicName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The CMQ or TDMQ-CMQ queue to receive notifications. This parameter is valid when `CmqModel` is `Queue`.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "QueueName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -17140,8 +18511,20 @@
           "example": "NULL",
           "member": "AwsSQS",
           "name": "AwsSQS",
+          "output_required": true,
           "required": false,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The key used to generate the callback signature.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "NotifyKey",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -18533,6 +19916,34 @@
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "VolumeBalanceConfig": {
+      "document": "The volume equalization configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable the feature. Valid values:\n<li>`ON`</li>\n<li>`OFF` </li>\nDefault value: `ON`.",
+          "example": "“”",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The type. Valid values:\n<li>`loudNorm`: Loudness normalization.</li>\n<li>`gainControl`: Volume leveling.</li>\nDefault value: `loudNorm`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
