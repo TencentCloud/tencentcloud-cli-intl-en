@@ -15,16 +15,16 @@
       "status": "online"
     },
     "CloseDBExtranetAccess": {
-      "document": "This API is used to disable the public network link to an instance.",
+      "document": "This API is used to disable the public network address of an instance.",
       "input": "CloseDBExtranetAccessRequest",
-      "name": "Disables public network link to instance",
+      "name": "Disables the public network address of an instance",
       "output": "CloseDBExtranetAccessResponse",
       "status": "online"
     },
     "CloseServerlessDBExtranetAccess": {
-      "document": "This API is used to disable public network access for a PostgreSQL for Serverless instance.",
+      "document": "This API is used to disable the public network address of a PostgreSQL for Serverless instance.",
       "input": "CloseServerlessDBExtranetAccessRequest",
-      "name": "Disables public network access for a PostgreSQL for Serverless instance",
+      "name": "Disables the public network address of a PostgreSQL for Serverless instance",
       "output": "CloseServerlessDBExtranetAccessResponse",
       "status": "online"
     },
@@ -36,23 +36,23 @@
       "status": "online"
     },
     "CreateDBInstanceNetworkAccess": {
-      "document": "This API is used to add a network for an instance.",
+      "document": "This API is used to create a network for an instance.",
       "input": "CreateDBInstanceNetworkAccessRequest",
-      "name": "Adds a network for an instance",
+      "name": "Creates a network for an instance",
       "output": "CreateDBInstanceNetworkAccessResponse",
       "status": "online"
     },
     "CreateDBInstances": {
-      "document": "This API is used to create (but not initialize) one or more TencentDB for PostgreSQL instances.",
+      "document": "This API is used to create (but not initialize) one or more TencentDB for PostgreSQL instances. This API is disused and replaced by the [CreateInstances](https://intl.cloud.tencent.com/document/api/409/56107?from_cn_redirect=1) API.",
       "input": "CreateDBInstancesRequest",
-      "name": "Creates instances (deprecated soon)",
+      "name": "(Disused) Creates an instance",
       "output": "CreateDBInstancesResponse",
       "status": "online"
     },
     "CreateInstances": {
-      "document": "This API is used to create and initialize one or more TencentDB for PostgreSQL instances.",
+      "document": "This API is used to create and initialize one or more TencentDB for PostgreSQL instances.\n<li>After an instance is created successfully, it will start up automatically and enter the \"Running\" status.\n<li>If you create a monthly subscribed instance, you will be billed for the instance before the creation; if you create a pay-as-you-go instance billed on an hourly basis, the amount equivalent to the hourly rate will be frozen before the creation. Make sure your account balance is sufficient before calling this API.",
       "input": "CreateInstancesRequest",
-      "name": "Creates instances (recommended)",
+      "name": "Creates an instance",
       "output": "CreateInstancesResponse",
       "status": "online"
     },
@@ -78,9 +78,9 @@
       "status": "online"
     },
     "CreateReadOnlyGroupNetworkAccess": {
-      "document": "This API is used to add a network for an RO group.",
+      "document": "This API is used to create a network for an RO group.",
       "input": "CreateReadOnlyGroupNetworkAccessRequest",
-      "name": "Adds a network for an RO group",
+      "name": "Creates a network for an RO group",
       "output": "CreateReadOnlyGroupNetworkAccessResponse",
       "status": "online"
     },
@@ -141,9 +141,9 @@
       "status": "online"
     },
     "DescribeAccounts": {
-      "document": "This API is used to get the instance user list.",
+      "document": "This API is used to query the list of the database accounts for an instance.",
       "input": "DescribeAccountsRequest",
-      "name": "Gets instance user list",
+      "name": "Queries the list of the database accounts for an instance",
       "output": "DescribeAccountsResponse",
       "status": "online"
     },
@@ -162,9 +162,9 @@
       "status": "online"
     },
     "DescribeBackupDownloadURL": {
-      "document": "This API is used to get the download URL of a backup.",
+      "document": "u200cThis API is used to query the download address of a specified backup set, including full backup sets and incremental log backup sets.",
       "input": "DescribeBackupDownloadURLRequest",
-      "name": "Gets the download URL of a backup",
+      "name": "Queries the download address of a backup set",
       "output": "DescribeBackupDownloadURLResponse",
       "status": "online"
     },
@@ -206,21 +206,21 @@
     "DescribeCloneDBInstanceSpec": {
       "document": "This API is used to query the minimum specification required by a cloned instance, including `SpecCode` and disk specification.",
       "input": "DescribeCloneDBInstanceSpecRequest",
-      "name": "Queries the purchasable specification of a cloned instance",
+      "name": "Queries the purchasable specification of a clone instance",
       "output": "DescribeCloneDBInstanceSpecResponse",
       "status": "online"
     },
     "DescribeDBBackups": {
-      "document": "This API is used to query the instance backup list.",
+      "document": "This API is used to query the backup list of an instance. This API is disused and replaced by the [DescribeBaseBackups](https://intl.cloud.tencent.com/document/api/409/89022?from_cn_redirect=1) API.",
       "input": "DescribeDBBackupsRequest",
-      "name": "Queries instance backup list",
+      "name": "(Disused) Queries u200cthe backup list of an instance",
       "output": "DescribeDBBackupsResponse",
       "status": "online"
     },
     "DescribeDBErrlogs": {
-      "document": "This API is used to get error logs.",
+      "document": "This API is used to query an error log.",
       "input": "DescribeDBErrlogsRequest",
-      "name": "Gets error logs",
+      "name": "Queries an error log",
       "output": "DescribeDBErrlogsResponse",
       "status": "online"
     },
@@ -231,17 +231,24 @@
       "output": "DescribeDBInstanceAttributeResponse",
       "status": "online"
     },
+    "DescribeDBInstanceHAConfig": {
+      "document": "This API is used to query the HA configuration of an instance, u200cwhich includes:\n<li>Allow a standby node to promote to a primary node.\n<li>Allow a semi-sync instance to adopt sync or async replication.",
+      "input": "DescribeDBInstanceHAConfigRequest",
+      "name": "Queries the HA configuration of an instance",
+      "output": "DescribeDBInstanceHAConfigResponse",
+      "status": "online"
+    },
     "DescribeDBInstanceParameters": {
-      "document": "This API is used to get the list of modifiable parameters of an instance.",
+      "document": "This API is used to query the parameters of an instance.",
       "input": "DescribeDBInstanceParametersRequest",
-      "name": "Gets the list of modifiable parameters of an instance",
+      "name": "Queries the parameters of an instance",
       "output": "DescribeDBInstanceParametersResponse",
       "status": "online"
     },
     "DescribeDBInstanceSecurityGroups": {
-      "document": "This API is used to query the security group information of an instance.",
+      "document": "This API is used to query the security group of an instance.",
       "input": "DescribeDBInstanceSecurityGroupsRequest",
-      "name": "Queries the security group information of an instance",
+      "name": "Queries the security group of an instance",
       "output": "DescribeDBInstanceSecurityGroupsResponse",
       "status": "online"
     },
@@ -253,7 +260,7 @@
       "status": "online"
     },
     "DescribeDBSlowlogs": {
-      "document": "This API was used to get slow query logs. Since it was deprecated on September 1, 2021, it has no longer returned data. Please use the [DescribeSlowQueryList](https://intl.cloud.tencent.com/document/product/409/60540?from_cn_redirect=1) API instead to get slow query logs.",
+      "document": "This API is used to get a slow query log. Since it was deprecated on September 1, 2021, it has no longer returned data. You need to use the [DescribeSlowQueryList](https://intl.cloud.tencent.com/document/product/409/60540?from_cn_redirect=1) API instead to get slow query logs.",
       "input": "DescribeDBSlowlogsRequest",
       "name": "Gets slow query logs (deprecated)",
       "output": "DescribeDBSlowlogsResponse",
@@ -267,16 +274,16 @@
       "status": "online"
     },
     "DescribeDBXlogs": {
-      "document": "This API is used to get the instance Xlog list.",
+      "document": "This API is used to get the instance Xlog list. This API is disused and replaced by the [DescribeBaseBackups](https://intl.cloud.tencent.com/document/api/409/89022?from_cn_redirect=1) API.",
       "input": "DescribeDBXlogsRequest",
-      "name": "Gets instance Xlog list",
+      "name": "(Disused) Gets the instance Xlog list",
       "output": "DescribeDBXlogsResponse",
       "status": "online"
     },
     "DescribeDatabases": {
-      "document": "This API is used to pull the list of databases.",
+      "document": "This API is used to query the database list of an instance.",
       "input": "DescribeDatabasesRequest",
-      "name": "Pulls database list",
+      "name": "Queries the database list of an instance",
       "output": "DescribeDatabasesResponse",
       "status": "online"
     },
@@ -288,9 +295,9 @@
       "status": "online"
     },
     "DescribeEncryptionKeys": {
-      "document": "This API is used to get instance key list.",
+      "document": "This API is used to query the instance key list.",
       "input": "DescribeEncryptionKeysRequest",
-      "name": "Gets instance key list",
+      "name": "Queries the instance key list",
       "output": "DescribeEncryptionKeysResponse",
       "status": "online"
     },
@@ -302,9 +309,9 @@
       "status": "online"
     },
     "DescribeOrders": {
-      "document": "This API is used to get order information.",
+      "document": "This API is used to query the order information.",
       "input": "DescribeOrdersRequest",
-      "name": "Gets order information",
+      "name": "Queries the order information",
       "output": "DescribeOrdersResponse",
       "status": "online"
     },
@@ -323,23 +330,23 @@
       "status": "online"
     },
     "DescribeParamsEvent": {
-      "document": "This API is used to get the details of parameter modification events.",
+      "document": "This API is used to query the parameter modification event.",
       "input": "DescribeParamsEventRequest",
-      "name": "Gets the details of parameter modification events",
+      "name": "Queries the parameter modification event",
       "output": "DescribeParamsEventResponse",
       "status": "online"
     },
     "DescribeProductConfig": {
-      "document": "This API is used to query the purchasable specification configuration.",
+      "document": "This API is used to query the purchasable specification configuration. u200cThis API is disused and replaced by the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.",
       "input": "DescribeProductConfigRequest",
-      "name": "Queries purchasable specification configuration",
+      "name": "(Disused) Queries purchasable specification configuration",
       "output": "DescribeProductConfigResponse",
       "status": "online"
     },
     "DescribeReadOnlyGroups": {
-      "document": "This API is used to query RO group information by specifying the primary instance IDs.",
+      "document": "This API is used to query the list of RO groups.",
       "input": "DescribeReadOnlyGroupsRequest",
-      "name": "Queries RO group information",
+      "name": "Queries the list of RO groups",
       "output": "DescribeReadOnlyGroupsResponse",
       "status": "online"
     },
@@ -379,7 +386,7 @@
       "status": "online"
     },
     "DestroyDBInstance": {
-      "document": "This API is used to terminate an isolated instance by specifying the `DBInstanceId` parameter. The data of an terminated instance will be deleted and cannot be recovered.",
+      "document": "This API is used to terminate an isolated instance by specifying the `DBInstanceId` parameter. The data of a terminated instance will be deleted and cannot be recovered. Be cautious with this API calling. Only the instance in isolation can be terminated.",
       "input": "DestroyDBInstanceRequest",
       "name": "Terminates an instance",
       "output": "DestroyDBInstanceResponse",
@@ -393,16 +400,16 @@
       "status": "online"
     },
     "InitDBInstances": {
-      "document": "This API is used to initialize a TencentDB for PostgreSQL instance.",
+      "document": "This API is used to initialize a TencentDB for PostgreSQL instance. This API is disused and replaced by the [CreateInstances](https://intl.cloud.tencent.com/document/api/409/56107?from_cn_redirect=1) API.",
       "input": "InitDBInstancesRequest",
-      "name": "Initializes instance",
+      "name": "(Disused) Initializes an instance",
       "output": "InitDBInstancesResponse",
       "status": "online"
     },
     "InquiryPriceCreateDBInstances": {
-      "document": "This API is used to query the purchase price of one or multiple instances.",
+      "document": "This API is used to query the purchase price of an instance.",
       "input": "InquiryPriceCreateDBInstancesRequest",
-      "name": "Queries purchase price",
+      "name": "Queries the purchase price of an instance",
       "output": "InquiryPriceCreateDBInstancesResponse",
       "status": "online"
     },
@@ -421,7 +428,7 @@
       "status": "online"
     },
     "IsolateDBInstances": {
-      "document": "This API is used to isolate one or more instances.",
+      "document": "This API is used to isolate an instance.",
       "input": "IsolateDBInstancesRequest",
       "name": "Isolates instances",
       "output": "IsolateDBInstancesResponse",
@@ -449,7 +456,7 @@
       "status": "online"
     },
     "ModifyBaseBackupExpireTime": {
-      "document": "This API is used to modify the expiration time of the specified full backup of an instance.",
+      "document": "This API is used to modify the specified expiration time of a full backup for an instance.",
       "input": "ModifyBaseBackupExpireTimeRequest",
       "name": "Modifies the expiration time of a full backup",
       "output": "ModifyBaseBackupExpireTimeResponse",
@@ -469,6 +476,13 @@
       "output": "ModifyDBInstanceDeploymentResponse",
       "status": "online"
     },
+    "ModifyDBInstanceHAConfig": {
+      "document": "This API is used to modify the HA configuration of an instance. u200cwhich includes:\n<li>Allow the standby node to promote to the primary node.\n<li>Allow a semi-sync instance to adopt sync or async replication.",
+      "input": "ModifyDBInstanceHAConfigRequest",
+      "name": "Modifies the HA configuration of an instance",
+      "output": "ModifyDBInstanceHAConfigResponse",
+      "status": "online"
+    },
     "ModifyDBInstanceName": {
       "document": "This API is used to rename a TencentDB for PostgreSQL instance.",
       "input": "ModifyDBInstanceNameRequest",
@@ -477,9 +491,9 @@
       "status": "online"
     },
     "ModifyDBInstanceParameters": {
-      "document": "This API is used to modify parameters in batches.",
+      "document": "This API is used to modify instance parameters.",
       "input": "ModifyDBInstanceParametersRequest",
-      "name": "Modifies parameters in batches",
+      "name": "Modifies instance parameters",
       "output": "ModifyDBInstanceParametersResponse",
       "status": "online"
     },
@@ -498,23 +512,23 @@
       "status": "online"
     },
     "ModifyDBInstanceSpec": {
-      "document": "This API is used to modify instance specifications including memory and disk size.",
+      "document": "This API is used to modify instance specifications, including memory and disk size.",
       "input": "ModifyDBInstanceSpecRequest",
-      "name": "Modifies instance specifications (new)",
+      "name": "Modifies instance specifications",
       "output": "ModifyDBInstanceSpecResponse",
       "status": "online"
     },
     "ModifyDBInstancesProject": {
-      "document": "This API is used to transfer an instance to another project.",
+      "document": "This API is used to modify the project of an instance.",
       "input": "ModifyDBInstancesProjectRequest",
-      "name": "Transfers instance to another project",
+      "name": "Modifies the project of an instance",
       "output": "ModifyDBInstancesProjectResponse",
       "status": "online"
     },
     "ModifyParameterTemplate": {
-      "document": "This API is used to modify the parameter template name and description, and add or delete parameter template parameters.",
+      "document": "This API is used to modify the configurations, such as parameter template name and description. It can also be used to manage the parameter list in the parameter template.",
       "input": "ModifyParameterTemplateRequest",
-      "name": "Modifies the parameter template information",
+      "name": "Modifies a parameter template",
       "output": "ModifyParameterTemplateResponse",
       "status": "online"
     },
@@ -533,16 +547,16 @@
       "status": "online"
     },
     "OpenDBExtranetAccess": {
-      "document": "This API is used to enable public network access.",
+      "document": "This API is used to enable the public network access of an instance.",
       "input": "OpenDBExtranetAccessRequest",
-      "name": "Enables public network access",
+      "name": "Enables the public network access of an instance",
       "output": "OpenDBExtranetAccessResponse",
       "status": "online"
     },
     "OpenServerlessDBExtranetAccess": {
-      "document": "This API is used to enable public network access for a PostgreSQL for Serverless instance.",
+      "document": "This API is used to enable the public network address of a PostgreSQL for Serverless instance.",
       "input": "OpenServerlessDBExtranetAccessRequest",
-      "name": "Enables public network access for a PostgreSQL for Serverless instance",
+      "name": "Enables the public network address of a PostgreSQL for Serverless instance",
       "output": "OpenServerlessDBExtranetAccessResponse",
       "status": "online"
     },
@@ -588,8 +602,15 @@
       "output": "SetAutoRenewFlagResponse",
       "status": "online"
     },
+    "SwitchDBInstancePrimary": {
+      "document": "This API is used to enable the primary-standby switch of an instance.\n<li>By initiating a switch, you can verify whether the primary-standby switch is performed correctly.\n<li>By using forced switch, you can forcibly initiate the primary-standby switch when the delay of replica node failed to meet the switch requirement.\n<li>This operation can only be performed for the primary instance.",
+      "input": "SwitchDBInstancePrimaryRequest",
+      "name": "Enables the primary-standby switch of an instance",
+      "output": "SwitchDBInstancePrimaryResponse",
+      "status": "online"
+    },
     "UpgradeDBInstance": {
-      "document": "This API is used to upgrade instance configurations.",
+      "document": "This API is used to upgrade instance configurations. u200cThis API is disused and replaced by the [ModifyDBInstanceSpec](https://intl.cloud.tencent.com/document/api/409/63689?from_cn_redirect=1) API.",
       "input": "UpgradeDBInstanceRequest",
       "name": "Upgrades instance configuration (deprecated)",
       "output": "UpgradeDBInstanceResponse",
@@ -615,6 +636,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of postgres-lnp6j617",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -624,6 +646,7 @@
         {
           "disabled": false,
           "document": "Account",
+          "example": "",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -633,6 +656,7 @@
         {
           "disabled": false,
           "document": "Account remarks",
+          "example": "",
           "member": "string",
           "name": "Remark",
           "required": true,
@@ -642,6 +666,7 @@
         {
           "disabled": false,
           "document": "Account status. 1: creating, 2: normal, 3: modifying, 4: resetting password, -1: deleting",
+          "example": "",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -651,6 +676,7 @@
         {
           "disabled": false,
           "document": "Account creation time",
+          "example": "",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -660,6 +686,7 @@
         {
           "disabled": false,
           "document": "Account last modified time",
+          "example": "",
           "member": "datetime",
           "name": "UpdateTime",
           "required": true,
@@ -1230,7 +1257,7 @@
         },
         {
           "disabled": false,
-          "document": "Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.",
+          "document": "Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.",
           "example": "无",
           "member": "string",
           "name": "SpecCode",
@@ -1248,7 +1275,7 @@
         },
         {
           "disabled": false,
-          "document": "Valid period in months of the purchased instance. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.",
+          "document": "Validity period in months. Valid values:\n<li>Monthly subscription: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.\n<li>Pay-as-you-go: `1`.",
           "example": "1",
           "member": "int64",
           "name": "Period",
@@ -1257,7 +1284,7 @@
         },
         {
           "disabled": false,
-          "document": "Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.",
+          "document": "Auto-renewal flag. Valid values:\n<li>`0`: Manual renewal.\n<li>`1`: Automatic renewal.\nDefault value: `0`.",
           "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -1266,7 +1293,7 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID.",
+          "document": "VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.",
           "example": "无",
           "member": "string",
           "name": "VpcId",
@@ -1275,7 +1302,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of a subnet in the VPC specified by `VpcId`.",
+          "document": "VPC subnet ID in the format of `subnet-xxxxxxxx`, which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.",
           "example": "无",
           "member": "string",
           "name": "SubnetId",
@@ -1284,7 +1311,7 @@
         },
         {
           "disabled": false,
-          "document": "Name of the purchased instance.",
+          "document": "Name of the newly purchased instance, which can contain up to 60 letters, digits, or symbols (-_). If this parameter is not specified, \"Unnamed\" will be displayed by default.",
           "example": "ins-name-clone-1",
           "member": "string",
           "name": "Name",
@@ -1293,7 +1320,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).",
+          "document": "Instance billing mode. Valid values:\n<li>`PREPAID`: Monthly subscription.\n<li>`POSTPAID_BY_HOUR`: Pay-as-you-go.\nDefault value: `PREPAID`.",
           "example": "PREPAID",
           "member": "string",
           "name": "InstanceChargeType",
@@ -1302,7 +1329,7 @@
         },
         {
           "disabled": false,
-          "document": "Security group ID.",
+          "document": "Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.\n",
           "example": "无",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -1320,7 +1347,7 @@
         },
         {
           "disabled": false,
-          "document": "The information of tags to be bound with the purchased instance. This parameter is left empty by default.",
+          "document": "The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.",
           "example": "无",
           "member": "Tag",
           "name": "TagList",
@@ -1329,7 +1356,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter is required if you purchase a multi-AZ deployed instance.",
+          "document": "Deployment information of the instance node, which will display the information of each AZ when the instance node is deployed across multiple AZs.\nThe information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.",
           "example": "无",
           "member": "DBNode",
           "name": "DBNodeSet",
@@ -1338,7 +1365,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.",
+          "document": "Whether to use vouchers automatically. Valid values:\n<li>`0`: No.\n<li>`1`: Yes.\nDefault value: `0`.",
           "example": "无",
           "member": "int64",
           "name": "AutoVoucher",
@@ -1378,6 +1405,15 @@
           "example": "无",
           "member": "string",
           "name": "RecoveryTargetTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Primary-standby sync mode. Valid values:  \n<li>`Semi-sync`\n<li>`Async`\nDefault value for the primary instance: `Semi-sync`.\nDefault value for the standby instance: `Async`.",
+          "example": "Async",
+          "member": "string",
+          "name": "SyncMode",
           "required": false,
           "type": "string"
         }
@@ -1432,6 +1468,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of postgres-6r233v55",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -1440,6 +1477,7 @@
         {
           "disabled": false,
           "document": "Whether to disable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)",
+          "example": "",
           "member": "int64",
           "name": "IsIpv6",
           "required": false,
@@ -1454,6 +1492,7 @@
         {
           "disabled": false,
           "document": "Async task flow ID",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -1474,6 +1513,7 @@
         {
           "disabled": false,
           "document": "Unique ID of an instance",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": false,
@@ -1482,6 +1522,7 @@
         {
           "disabled": false,
           "document": "Instance name",
+          "example": "",
           "member": "string",
           "name": "DBInstanceName",
           "required": false,
@@ -1616,7 +1657,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.",
+          "document": "Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeClasses` API.",
           "example": "无",
           "member": "string",
           "name": "SpecCode",
@@ -1803,6 +1844,7 @@
         {
           "disabled": false,
           "document": "Order number list. Each instance corresponds to an order number.",
+          "example": "",
           "member": "string",
           "name": "DealNames",
           "type": "list",
@@ -1811,6 +1853,7 @@
         {
           "disabled": false,
           "document": "Bill ID of frozen fees",
+          "example": "",
           "member": "string",
           "name": "BillId",
           "type": "string",
@@ -1819,6 +1862,7 @@
         {
           "disabled": false,
           "document": "ID set of instances which have been created successfully. The parameter value will be returned only when the billing mode is postpaid.",
+          "example": "",
           "member": "string",
           "name": "DBInstanceIdSet",
           "type": "list",
@@ -1838,7 +1882,16 @@
       "members": [
         {
           "disabled": false,
-          "document": "Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.",
+          "document": "Primary AZ of the instance in the format of `ap-guangzhou-3`. To support multiple AZs, add information of the primary and standby AZs in the `DBNodeSet.N` field.\nThe information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.",
+          "example": "无",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.",
           "example": "无",
           "member": "string",
           "name": "SpecCode",
@@ -1856,7 +1909,7 @@
         },
         {
           "disabled": false,
-          "document": "The number of instances purchased at a time. Value range: 1-10.",
+          "document": "The number of instances to be purchased at a time. Value range: 1-10. To purchase more than 10 instances each time, you can make multiple calls.",
           "example": "无",
           "member": "uint64",
           "name": "InstanceCount",
@@ -1865,7 +1918,7 @@
         },
         {
           "disabled": false,
-          "document": "Valid period in months of purchased instances. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.",
+          "document": "Validity period in months.\n<li>Monthly subscription: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.\n<li>Pay-as-you-go: `1`.",
           "example": "无",
           "member": "uint64",
           "name": "Period",
@@ -1874,16 +1927,7 @@
         },
         {
           "disabled": false,
-          "document": "Availability zone ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.",
-          "example": "无",
-          "member": "string",
-          "name": "Zone",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Instance character set. Valid values: `UTF8`, `LATIN1`.",
+          "document": "Instance character set. Valid values: \n<li> `UTF8`\n<li> `LATIN1`",
           "example": "UTF8",
           "member": "string",
           "name": "Charset",
@@ -1892,7 +1936,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance root account name",
+          "document": "Username of the instance root account, which has the following rules:\n<li>It must contain 1–16 letters , digits, or underscores\n<li>It can't be `postgres`.\n<li>It can't start with a digit or `pg_`.\n<li>All rules are case-insensitive.",
           "example": "无",
           "member": "string",
           "name": "AdminName",
@@ -1901,7 +1945,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance root account password",
+          "document": "Password of the instance root account, which must contain 8-32 characters (above 12 characters preferably). It cannot begin with \"/\",\nand must contain the following 4 types of characters.\n<li>Lowercase letters: [a–z]\n<li>Uppercase letters: [A–Z]\n<li>Digits: 0-9\n<li>Symbols: ()`~!@#$%^&*-+=_|{}[]:;'<>,.?/",
           "example": "无",
           "member": "string",
           "name": "AdminPassword",
@@ -1910,17 +1954,17 @@
         },
         {
           "disabled": false,
-          "document": "Project ID",
-          "example": "无",
-          "member": "int64",
-          "name": "ProjectId",
+          "document": "The major PostgreSQL version number, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API. Valid values: `10`, `11`, `12`, `13`, `14`, `15`.\nWhen only this parameter is specified, an instance running the latest kernel version of the latest minor version will be created based on this major version.\nYou must pass in at least one of the following parameters: `DBMajorVersion`, `DBVersion`, DBKernelVersion`. If you don't need a minor version, just pass in `DBMajorVersion`.\n",
+          "example": "12",
+          "member": "string",
+          "name": "DBMajorVersion",
           "required": false,
-          "type": "int"
+          "type": "string"
         },
         {
           "disabled": false,
-          "document": "PostgreSQL version. If it is specified, an instance running the latest kernel of PostgreSQL `DBVersion` will be created. You must pass in at least one of the following parameters: DBVersion, DBMajorVersion, DBKernelVersion.",
-          "example": "12.4",
+          "document": "Number of the major PostgreSQL community version and minor version, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.\nIf it is specified, an instance running the latest kernel version will be created based on the community minor version.\nYou must pass in at least one of the following parameters: `DBMajorVersion`, `DBVersion`, DBKernelVersion`.",
+          "example": "12.7",
           "member": "string",
           "name": "DBVersion",
           "required": false,
@@ -1928,7 +1972,16 @@
         },
         {
           "disabled": false,
-          "document": "Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).",
+          "document": "PostgreSQL kernel version number, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.\nPostgreSQL kernel version number. If it is specified, an instance running the specified kernel version will be created. Passing in this parameter in other scenarios is not supported.This parameter is only used to specify a kernel version, which serves no other purposes.\n",
+          "example": "v12.7_r1.8",
+          "member": "string",
+          "name": "DBKernelVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance billing mode. Valid values:\n<li>`PREPAID`: Monthly subscription\n<li>`POSTPAID_BY_HOUR`: Pay-as-you-go\nDefault value: `PREPAID`.",
           "example": "无",
           "member": "string",
           "name": "InstanceChargeType",
@@ -1937,7 +1990,43 @@
         },
         {
           "disabled": false,
-          "document": "Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.",
+          "document": "VPC ID in the format of `vpc-xxxxxxx`. To obtain valid VPC IDs, you can log in to the console or call [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) and look for the `unVpcId` fields in the response.",
+          "example": "无",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VPC subnet ID in the format of `subnet-xxxxxxxx`, u200cwhich can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.",
+          "example": "无",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Deployment information of the instance node, which will display the information of each AZ when the instance node is deployed across multiple AZs.\nThe information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.",
+          "example": "无",
+          "member": "DBNode",
+          "name": "DBNodeSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Auto-renewal flag. Valid values:\n<li>`0`: Manual renewal.\n<li> `1`: Automatic renewal.\nDefault value: `0`.",
+          "example": "无",
+          "member": "int64",
+          "name": "AutoRenewFlag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to use vouchers automatically. Valid values:\n<li>`0`: No.\n<li>`1`: Yes.\nDefault value: `0`.",
           "example": "无",
           "member": "uint64",
           "name": "AutoVoucher",
@@ -1955,28 +2044,10 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID",
-          "example": "无",
-          "member": "string",
-          "name": "VpcId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "ID of a subnet in the VPC specified by `VpcId`",
-          "example": "无",
-          "member": "string",
-          "name": "SubnetId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.",
+          "document": "Project ID",
           "example": "无",
           "member": "int64",
-          "name": "AutoRenewFlag",
+          "name": "ProjectId",
           "required": false,
           "type": "int"
         },
@@ -1991,7 +2062,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance name",
+          "document": "Instance name, which can contain up to 60 letters, digits, hyphens, and symbols (_-). If this parameter is not specified, \"Unnamed\" will be displayed by default.\n",
           "example": "无",
           "member": "string",
           "name": "Name",
@@ -2000,16 +2071,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no). Default value: `0`",
-          "example": "无",
-          "member": "uint64",
-          "name": "NeedSupportIpv6",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "The information of tags to be associated with instances. This parameter is left empty by default.",
+          "document": "The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.",
           "example": "无",
           "member": "Tag",
           "name": "TagList",
@@ -2018,7 +2080,7 @@
         },
         {
           "disabled": false,
-          "document": "Security group IDs",
+          "document": "Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.\n",
           "example": "无",
           "member": "string",
           "name": "SecurityGroupIds",
@@ -2027,34 +2089,7 @@
         },
         {
           "disabled": false,
-          "document": "PostgreSQL major version. Valid values: `10`, `11`, `12`, `13`. If it is specified, an instance running the latest kernel of PostgreSQL `DBMajorVersion` will be created. You must pass in at least one of the following parameters: DBMajorVersion, DBVersion, DBKernelVersion.",
-          "example": "12",
-          "member": "string",
-          "name": "DBMajorVersion",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "PostgreSQL kernel version. If it is specified, an instance running the latest kernel of PostgreSQL `DBKernelVersion` will be created. You must pass in one of the following parameters: DBKernelVersion, DBVersion, DBMajorVersion.",
-          "example": "v12.4_r1.0",
-          "member": "string",
-          "name": "DBKernelVersion",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Instance node information, which is required if you purchase a multi-AZ deployed instance.",
-          "example": "无",
-          "member": "DBNode",
-          "name": "DBNodeSet",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "disabled": false,
-          "document": "Whether to support transparent data encryption. Valid values: 1 (yes), 0 (no). Default value: 0.",
+          "document": "Whether to support TDE. Valid values:\n<li>`0`: No.\n<li>`1`: Yes.\nDefault value: `0`.\nFor more information, see [TDE]u200d(https://www.tencentcloud.com/document/product/409/47765).",
           "example": "1",
           "member": "uint64",
           "name": "NeedSupportTDE",
@@ -2063,7 +2098,7 @@
         },
         {
           "disabled": false,
-          "document": "KeyId of custom key, which is required if you select custom key encryption. It is also the unique CMK identifier.",
+          "document": "KeyId of custom key, which is required if you select custom key encryption. It is also the unique CMK identifier.\nFor more information on creating `KeyId`, see [Enabling TDE](https://www.tencentcloud.com/document/product/409/47762).",
           "example": "无",
           "member": "string",
           "name": "KMSKeyId",
@@ -2072,7 +2107,7 @@
         },
         {
           "disabled": false,
-          "document": "The region where the KMS service is enabled. When `KMSRegion` is left empty, the KMS of the current region will be enabled by default. If the current region is not supported, you need to select another region supported by KMS.",
+          "document": "The region where the KMS service is enabled. When `KMSRegion` is left empty, the current region will be selected by default.  If the current region does not support KMS, you must select another region that does.\nFor more information on `KMSRegion`, see [Enabling TDE](https://intl.cloud.tencent.com/document/product/409/71749?from_cn_redirect=1).",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "KMSRegion",
@@ -2081,7 +2116,7 @@
         },
         {
           "disabled": false,
-          "document": "Database engine. Valid values:\n1. `postgresql` (TencentDB for PostgreSQL)\n2. `mssql_compatible`（MSSQL compatible-TencentDB for PostgreSQL)\nDefault value: `postgresql`",
+          "document": "Database engines. Valid values:\n<li>`postgresql`: TencentDB for PostgreSQL\n<li>`mssql_compatible`: MSSQL compatible-TencentDB for PostgreSQL\nDefault value: `postgresql`.",
           "example": "postgresql",
           "member": "string",
           "name": "DBEngine",
@@ -2090,12 +2125,30 @@
         },
         {
           "disabled": false,
-          "document": "Configuration information of database engine in the following format:\n{\"$key1\":\"$value1\", \"$key2\":\"$value2\"}\n\nValid values:\n1. mssql_compatible engine：\n`migrationMode`: Database mode. Valid values: `single-db` (single-database mode), `multi-db` (multi-database mode). Default value: `single-db`.\n`defaultLocale`: Default locale, which can’t be modified after the initialization. Default value: `en_US`. Valid values:\n\"af_ZA\", \"sq_AL\", \"ar_DZ\", \"ar_BH\", \"ar_EG\", \"ar_IQ\", \"ar_JO\", \"ar_KW\", \"ar_LB\", \"ar_LY\", \"ar_MA\", \"ar_OM\", \"ar_QA\", \"ar_SA\", \"ar_SY\", \"ar_TN\", \"ar_AE\", \"ar_YE\", \"hy_AM\", \"az_Cyrl_AZ\", \"az_Latn_AZ\", \"eu_ES\", \"be_BY\", \"bg_BG\", \"ca_ES\", \"zh_HK\", \"zh_MO\", \"zh_CN\", \"zh_SG\", \"zh_TW\", \"hr_HR\", \"cs_CZ\", \"da_DK\", \"nl_BE\", \"nl_NL\", \"en_AU\", \"en_BZ\", \"en_CA\", \"en_IE\", \"en_JM\", \"en_NZ\", \"en_PH\", \"en_ZA\", \"en_TT\", \"en_GB\", \"en_US\", \"en_ZW\", \"et_EE\", \"fo_FO\", \"fa_IR\", \"fi_FI\", \"fr_BE\", \"fr_CA\", \"fr_FR\", \"fr_LU\", \"fr_MC\", \"fr_CH\", \"mk_MK\", \"ka_GE\", \"de_AT\", \"de_DE\", \"de_LI\", \"de_LU\", \"de_CH\", \"el_GR\", \"gu_IN\", \"he_IL\", \"hi_IN\", \"hu_HU\", \"is_IS\", \"id_ID\", \"it_IT\", \"it_CH\", \"ja_JP\", \"kn_IN\", \"kok_IN\", \"ko_KR\", \"ky_KG\", \"lv_LV\", \"lt_LT\", \"ms_BN\", \"ms_MY\", \"mr_IN\", \"mn_MN\", \"nb_NO\", \"nn_NO\", \"pl_PL\", \"pt_BR\", \"pt_PT\", \"pa_IN\", \"ro_RO\", \"ru_RU\", \"sa_IN\", \"sr_Cyrl_RS\", \"sr_Latn_RS\", \"sk_SK\", \"sl_SI\", \"es_AR\", \"es_BO\", \"es_CL\", \"es_CO\", \"es_CR\", \"es_DO\", \"es_EC\", \"es_SV\", \"es_GT\", \"es_HN\", \"es_MX\", \"es_NI\", \"es_PA\", \"es_PY\",\"es_PE\", \"es_PR\", \"es_ES\", \"es_TRADITIONAL\", \"es_UY\", \"es_VE\", \"sw_KE\", \"sv_FI\", \"sv_SE\", \"tt_RU\", \"te_IN\", \"th_TH\", \"tr_TR\", \"uk_UA\", \"ur_IN\", \"ur_PK\", \"uz_Cyrl_UZ\", \"uz_Latn_UZ\", \"vi_VN\".\n`serverCollationName`: Name of collation rule, which can’t be modified after the initialization. Default value: `sql_latin1_general_cp1_ci_as`. Valid values:\n\"bbf_unicode_general_ci_as\", \"bbf_unicode_cp1_ci_as\", \"bbf_unicode_CP1250_ci_as\", \"bbf_unicode_CP1251_ci_as\", \"bbf_unicode_cp1253_ci_as\", \"bbf_unicode_cp1254_ci_as\", \"bbf_unicode_cp1255_ci_as\", \"bbf_unicode_cp1256_ci_as\", \"bbf_unicode_cp1257_ci_as\", \"bbf_unicode_cp1258_ci_as\", \"bbf_unicode_cp874_ci_as\", \"sql_latin1_general_cp1250_ci_as\", \"sql_latin1_general_cp1251_ci_as\", \"sql_latin1_general_cp1_ci_as\", \"sql_latin1_general_cp1253_ci_as\", \"sql_latin1_general_cp1254_ci_as\", \"sql_latin1_general_cp1255_ci_as\",\"sql_latin1_general_cp1256_ci_as\", \"sql_latin1_general_cp1257_ci_as\", \"sql_latin1_general_cp1258_ci_as\", \"chinese_prc_ci_as\", \"cyrillic_general_ci_as\", \"finnish_swedish_ci_as\", \"french_ci_as\", \"japanese_ci_as\", \"korean_wansung_ci_as\", \"latin1_general_ci_as\", \"modern_spanish_ci_as\", \"polish_ci_as\", \"thai_ci_as\", \"traditional_spanish_ci_as\", \"turkish_ci_as\", \"ukrainian_ci_as\", \"vietnamese_ci_as\".",
+          "document": "Configuration information of database engine in the following format:\n{\"$key1\":\"$value1\", \"$key2\":\"$value2\"}\nValid values:\nmssql_compatible engine:\n<li>`migrationMode`: Database mode. Valid values: `single-db` (single-database mode), `multi-db` (multi-database mode). Default value: `single-db`.\n<li>`defaultLocale`: Default locale, which can’t be modified after the initialization. Default value: `en_US`. Valid values:\n\"af_ZA\", \"sq_AL\", \"ar_DZ\", \"ar_BH\", \"ar_EG\", \"ar_IQ\", \"ar_JO\", \"ar_KW\", \"ar_LB\", \"ar_LY\", \"ar_MA\", \"ar_OM\", \"ar_QA\", \"ar_SA\", \"ar_SY\", \"ar_TN\", \"ar_AE\", \"ar_YE\", \"hy_AM\", \"az_Cyrl_AZ\", \"az_Latn_AZ\", \"eu_ES\", \"be_BY\", \"bg_BG\", \"ca_ES\", \"zh_HK\", \"zh_MO\", \"zh_CN\", \"zh_SG\", \"zh_TW\", \"hr_HR\", \"cs_CZ\", \"da_DK\", \"nl_BE\", \"nl_NL\", \"en_AU\", \"en_BZ\", \"en_CA\", \"en_IE\", \"en_JM\", \"en_NZ\", \"en_PH\", \"en_ZA\", \"en_TT\", \"en_GB\", \"en_US\", \"en_ZW\", \"et_EE\", \"fo_FO\", \"fa_IR\", \"fi_FI\", \"fr_BE\", \"fr_CA\", \"fr_FR\", \"fr_LU\", \"fr_MC\", \"fr_CH\", \"mk_MK\", \"ka_GE\", \"de_AT\", \"de_DE\", \"de_LI\", \"de_LU\", \"de_CH\", \"el_GR\", \"gu_IN\", \"he_IL\", \"hi_IN\", \"hu_HU\", \"is_IS\", \"id_ID\", \"it_IT\", \"it_CH\", \"ja_JP\", \"kn_IN\", \"kok_IN\", \"ko_KR\", \"ky_KG\", \"lv_LV\", \"lt_LT\", \"ms_BN\", \"ms_MY\", \"mr_IN\", \"mn_MN\", \"nb_NO\", \"nn_NO\", \"pl_PL\", \"pt_BR\", \"pt_PT\", \"pa_IN\", \"ro_RO\", \"ru_RU\", \"sa_IN\", \"sr_Cyrl_RS\", \"sr_Latn_RS\", \"sk_SK\", \"sl_SI\", \"es_AR\", \"es_BO\", \"es_CL\", \"es_CO\", \"es_CR\", \"es_DO\", \"es_EC\", \"es_SV\", \"es_GT\", \"es_HN\", \"es_MX\", \"es_NI\", \"es_PA\", \"es_PY\",\"es_PE\", \"es_PR\", \"es_ES\", \"es_TRADITIONAL\", \"es_UY\", \"es_VE\", \"sw_KE\", \"sv_FI\", \"sv_SE\", \"tt_RU\", \"te_IN\", \"th_TH\", \"tr_TR\", \"uk_UA\", \"ur_IN\", \"ur_PK\", \"uz_Cyrl_UZ\", \"uz_Latn_UZ\", \"vi_VN\".\n<li>`serverCollationName`: Default collation name, which can’t be modified after the initialization. Default value: \"bbf_unicode_general_ci_as\". Valid values: \"bbf_unicode_cp1_ci_as\", \"bbf_unicode_CP1250_ci_as\", \"bbf_unicode_CP1251_ci_as\", \"bbf_unicode_cp1253_ci_as\", \"bbf_unicode_cp1254_ci_as\", \"bbf_unicode_cp1255_ci_as\", \"bbf_unicode_cp1256_ci_as\", \"bbf_unicode_cp1257_ci_as\", \"bbf_unicode_cp1258_ci_as\", \"bbf_unicode_cp874_ci_as\", \"sql_latin1_general_cp1250_ci_as\", \"sql_latin1_general_cp1251_ci_as\", \"sql_latin1_general_cp1_ci_as\", \"sql_latin1_general_cp1253_ci_as\", \"sql_latin1_general_cp1254_ci_as\", \"sql_latin1_general_cp1255_ci_as\",\"sql_latin1_general_cp1256_ci_as\", \"sql_latin1_general_cp1257_ci_as\", \"sql_latin1_general_cp1258_ci_as\", \"chinese_prc_ci_as\", \"cyrillic_general_ci_as\", \"finnish_swedish_ci_as\", \"french_ci_as\", \"japanese_ci_as\", \"korean_wansung_ci_as\", \"latin1_general_ci_as\", \"modern_spanish_ci_as\", \"polish_ci_as\", \"thai_ci_as\", \"traditional_spanish_ci_as\", \"turkish_ci_as\", \"ukrainian_ci_as\", \"vietnamese_ci_as\"。",
           "example": "无",
           "member": "string",
           "name": "DBEngineConfig",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Primary-standby sync mode. Valid values:  \n<li>`Semi-sync`\n<li>`Async`\nDefault value for the primary instance: `Semi-sync`.\nDefault value for the standby instance: `Async`.",
+          "example": "Async",
+          "member": "string",
+          "name": "SyncMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether IPv6 is supported.\n<li>`0`: No.\n<li>`1`: Yes.\nDefault value: `0`.",
+          "example": "无",
+          "member": "uint64",
+          "name": "NeedSupportIpv6",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2211,7 +2264,25 @@
       "members": [
         {
           "disabled": false,
-          "document": "Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.",
+          "document": "Primary AZ of an instance, such as \"ap-guangzhou-3\".\nThe information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the primary instance to which the read-only instance belongs",
+          "example": "MasterDBInstanceId",
+          "member": "string",
+          "name": "MasterDBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.",
           "example": "SpecCode",
           "member": "string",
           "name": "SpecCode",
@@ -2229,7 +2300,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of instances purchased at a time. Value range: 1–100.",
+          "document": "The number of instances to be purchased at a time. Value range: 1-10. To purchase more than 10 instances each time, you can make multiple calls.",
           "example": "1",
           "member": "uint64",
           "name": "InstanceCount",
@@ -2238,7 +2309,7 @@
         },
         {
           "disabled": false,
-          "document": "Valid period in months of purchased instances. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.",
+          "document": "Validity period in months, valid values:\n<li>Monthly subscription: `1`, `2`, `3`, 4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.\n<li>Pay-as-you-go: `1`.",
           "example": "1",
           "member": "uint64",
           "name": "Period",
@@ -2247,43 +2318,25 @@
         },
         {
           "disabled": false,
-          "document": "ID of the primary instance to which the read-only replica belongs",
-          "example": "MasterDBInstanceId",
+          "document": "VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.",
+          "example": "VpcId",
           "member": "string",
-          "name": "MasterDBInstanceId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Availability zone ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.",
-          "example": "ap-guangzhou-1",
-          "member": "string",
-          "name": "Zone",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Project ID",
-          "example": "1",
-          "member": "uint64",
-          "name": "ProjectId",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "(Disused) You don’t need to specify a version, as the kernel version is as the same as that of the instance.",
-          "example": "DBVersion",
-          "member": "string",
-          "name": "DBVersion",
+          "name": "VpcId",
           "required": false,
           "type": "string"
         },
         {
           "disabled": false,
-          "document": "Instance billing mode. Valid value: `POSTPAID_BY_HOUR` (pay-as-you-go). If the source instance is pay-as-you-go, so is the read-only instance.",
+          "document": "VPC subnet ID in the format of `subnet-xxxxxxxx` which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.",
+          "example": "SubnetId",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance billing mode. Valid values: \n<li>`PREPAID`: Monthly subscription\n<li>`POSTPAID_BY_HOUR`: Pay-as-you-go\nDefault value: `PREPAID`. If the primary instance is pay-as-you-go, so is the read-only instance.",
           "example": "InstanceChargeType",
           "member": "string",
           "name": "InstanceChargeType",
@@ -2292,7 +2345,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.",
+          "document": "Whether to use vouchers automatically. Valid values:\n<li>`0`: No.\n<li>`1`: Yes.\nDefault value: `0`.",
           "example": "1",
           "member": "uint64",
           "name": "AutoVoucher",
@@ -2310,7 +2363,7 @@
         },
         {
           "disabled": false,
-          "document": "Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.",
+          "document": "Auto-renewal flag. Valid values:\n<li>`0`: Manual renewal.\n<li>`1`: Automatic renewal.\nDefault value: `0`.",
           "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -2319,21 +2372,12 @@
         },
         {
           "disabled": false,
-          "document": "VPC ID",
-          "example": "VpcId",
-          "member": "string",
-          "name": "VpcId",
+          "document": "Project ID",
+          "example": "1",
+          "member": "uint64",
+          "name": "ProjectId",
           "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "VPC subnet ID",
-          "example": "SubnetId",
-          "member": "string",
-          "name": "SubnetId",
-          "required": false,
-          "type": "string"
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2341,24 +2385,6 @@
           "example": "1",
           "member": "int64",
           "name": "ActivityId",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Instance name (which will be supported in the future)",
-          "example": "Name",
-          "member": "string",
-          "name": "Name",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no).",
-          "example": "1",
-          "member": "uint64",
-          "name": "NeedSupportIpv6",
           "required": false,
           "type": "int"
         },
@@ -2373,7 +2399,7 @@
         },
         {
           "disabled": false,
-          "document": "The information of tags to be bound with the purchased instance, which is left empty by default (type: tag array).",
+          "document": "The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.",
           "example": "空",
           "member": "Tag",
           "name": "TagList",
@@ -2382,12 +2408,39 @@
         },
         {
           "disabled": false,
-          "document": "Security group ID",
+          "document": "Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.\n",
           "example": "[\"sasasasd\"]",
           "member": "string",
           "name": "SecurityGroupIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether IPv6 is supported.\n<li>`0`: No.\n<li>`1`: Yes.\nDefault value: `0`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "NeedSupportIpv6",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Instance name (which will be supported in the future)",
+          "example": "Name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "(Disused) You don’t need to specify a version, as the kernel version is as the same as that of the instance.",
+          "example": "DBVersion",
+          "member": "string",
+          "name": "DBVersion",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2650,6 +2703,7 @@
         {
           "disabled": false,
           "document": "Availability zone ID. Only ap-shanghai-2, ap-beijing-1, and ap-guangzhou-2 are supported during the beta test.",
+          "example": "",
           "member": "string",
           "name": "Zone",
           "required": true,
@@ -2658,6 +2712,7 @@
         {
           "disabled": false,
           "document": "Instance name. The value must be unique for the same account.",
+          "example": "",
           "member": "string",
           "name": "DBInstanceName",
           "required": true,
@@ -2666,6 +2721,7 @@
         {
           "disabled": false,
           "document": "Kernel version of a PostgreSQL instance. Currently, only 10.4 is supported.",
+          "example": "",
           "member": "string",
           "name": "DBVersion",
           "required": true,
@@ -2674,6 +2730,7 @@
         {
           "disabled": false,
           "document": "Database character set of a PostgreSQL instance. Currently, only UTF-8 is supported.",
+          "example": "",
           "member": "string",
           "name": "DBCharset",
           "required": true,
@@ -2682,6 +2739,7 @@
         {
           "disabled": false,
           "document": "Project ID.",
+          "example": "",
           "member": "uint64",
           "name": "ProjectId",
           "required": false,
@@ -2690,6 +2748,7 @@
         {
           "disabled": false,
           "document": "VPC ID.",
+          "example": "",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -2698,6 +2757,7 @@
         {
           "disabled": false,
           "document": "VPC subnet ID.",
+          "example": "",
           "member": "string",
           "name": "SubnetId",
           "required": false,
@@ -2706,6 +2766,7 @@
         {
           "disabled": false,
           "document": "Array of tags to be bound with the instance",
+          "example": "",
           "member": "Tag",
           "name": "TagList",
           "required": false,
@@ -2720,6 +2781,7 @@
         {
           "disabled": false,
           "document": "Instance ID, such as \"postgres-xxxxx\". The value must be globally unique.",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "type": "string",
@@ -2865,51 +2927,41 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance region such as ap-guangzhou, which corresponds to the `Region` field of `RegionSet`",
+          "document": "Instance region such as ap-guangzhou, which corresponds to the`Region` field in `RegionSet`.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance AZ such as ap-guangzhou-3, which corresponds to the `Zone` field of `ZoneSet`",
+          "document": "Instance AZ such as ap-guangzhou-3, which corresponds to the `Zone` field of `ZoneSet`.",
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "Zone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Project ID",
-          "example": "1",
-          "member": "uint64",
-          "name": "ProjectId",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "VPC ID",
+          "document": "VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.",
           "example": "vpc-xxxxxxxx",
           "member": "string",
           "name": "VpcId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "SubnetId",
+          "document": "VPC subnet ID in the format of `subnet-xxxxxxxx`, which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets ](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.",
           "example": "subnet-xxxxxxxx",
           "member": "string",
           "name": "SubnetId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2919,7 +2971,7 @@
           "example": "postgres-xxxxxxxx",
           "member": "string",
           "name": "DBInstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2929,17 +2981,17 @@
           "example": "xxxx",
           "member": "string",
           "name": "DBInstanceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance status.  Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolating`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`, `network changing`, `upgrading` (upgrading kernel version).",
+          "document": "Instance status. Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolating`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`, `network changing`, `upgrading` (upgrading kernel version), `audit-switching` (changing audit status), `primary-switching` (primary-standby switching).",
           "example": "applying",
           "member": "string",
           "name": "DBInstanceStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2949,7 +3001,7 @@
           "example": "2",
           "member": "uint64",
           "name": "DBInstanceMemory",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2959,7 +3011,7 @@
           "example": "10",
           "member": "uint64",
           "name": "DBInstanceStorage",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2969,7 +3021,7 @@
           "example": "2",
           "member": "uint64",
           "name": "DBInstanceCpu",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2979,47 +3031,67 @@
           "example": "cdb.pg.ts1.2g",
           "member": "string",
           "name": "DBInstanceClass",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance type. 1: primary (master instance), 2: readonly (read-only instance), 3: guard (disaster recovery instance), 4: temp (temp instance)",
-          "example": "primary",
+          "document": "The major PostgreSQL version number, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API. Valid values: `10`, `11`, `12`, `13`, `14`, `15`.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "12",
           "member": "string",
-          "name": "DBInstanceType",
-          "required": true,
+          "name": "DBMajorVersion",
+          "output_required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Instance edition. Currently, only `standard` edition (dual-server high-availability one-master-one-slave edition) is supported",
-          "example": "standard",
-          "member": "string",
-          "name": "DBInstanceVersion",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Instance database character set",
-          "example": "utf-8",
-          "member": "string",
-          "name": "DBCharset",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "PostgreSQL version number",
+          "document": "Number of the major PostgreSQL community version and minor version, such as 12.4, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.",
           "example": "12.4",
           "member": "string",
           "name": "DBVersion",
-          "required": true,
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "PostgreSQL kernel version number (like v12.7_r1.8), which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "v12.4_r1.0",
+          "member": "string",
+          "name": "DBKernelVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance type. Valid values:\n<li>`primary`: Primary instance\n<li>`readonly`: Read-only instance\n<li>`guard`: Disaster recovery instance\n<li>`temp`: Temp instance",
+          "example": "primary",
+          "member": "string",
+          "name": "DBInstanceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance version. Valid value: `standard` (dual-server high-availability; one-primary-one-standby).",
+          "example": "standard",
+          "member": "string",
+          "name": "DBInstanceVersion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance character set. Valid values:\n<li>`UTF8`\n<li>`LATIN1`",
+          "example": "utf-8",
+          "member": "string",
+          "name": "DBCharset",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3029,17 +3101,17 @@
           "example": "2014-08-03 12:00:00",
           "member": "datetime",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance last modified time",
+          "document": "Last updated time of the instance attribute",
           "example": "2014-08-03 12:00:00",
           "member": "datetime",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3049,7 +3121,7 @@
           "example": "2014-08-03 12:00:00",
           "member": "datetime",
           "name": "ExpireTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3059,27 +3131,27 @@
           "example": "2014-08-03 12:00:00",
           "member": "datetime",
           "name": "IsolatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Billing mode. postpaid: pay-as-you-go",
+          "document": "Billing mode. Valid values:\n<li>`PREPAID`: Monthly subscription\n<li>`postpaid`: Pay-as-you-go",
           "example": "prepaid",
           "member": "string",
           "name": "PayType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether to renew automatically. 1: yes, 0: no",
+          "document": "Whether auto-renewal is enabled. Valid values:\n<li>`0`: Manual renewal.\n<li>`1`: Automatic renewal.\nDefault value: `0`.",
           "example": "1",
           "member": "uint64",
           "name": "AutoRenew",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3089,7 +3161,7 @@
           "example": "无",
           "member": "DBInstanceNetInfo",
           "name": "DBInstanceNetInfo",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3099,7 +3171,7 @@
           "example": "TS85",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3109,7 +3181,7 @@
           "example": "123455",
           "member": "uint64",
           "name": "AppId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3119,77 +3191,107 @@
           "example": "12344",
           "member": "uint64",
           "name": "Uid",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether the instance supports IPv6 address access. Valid values: 1 (yes), 0 (no)",
+          "document": "Project ID",
           "example": "1",
           "member": "uint64",
-          "name": "SupportIpv6",
-          "required": true,
+          "name": "ProjectId",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The information of tags associated with instances.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The information of tags associated with instances\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Tag",
           "name": "TagList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Primary instance information, which is returned only when the instance is read-only\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Primary instance information, which is returned only when the instance is read-only.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "postgres-xxxxxxxx",
           "member": "string",
           "name": "MasterDBInstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Number of read-only instances\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Number of read-only instances\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "6",
           "member": "int64",
           "name": "ReadOnlyInstanceNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The status of a instance in a read-only group\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "The status of a read-only instance in a read-only group\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "ok",
           "member": "string",
           "name": "StatusInReadonlyGroup",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Elimination time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Offline time\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
           "example": "2014-08-03 12:00",
           "member": "string",
           "name": "OfflineTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Database kernel version\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "v12.4_r1.0",
+          "document": "Instance node information\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DBNode",
+          "name": "DBNodeSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the instance supports TDE. Valid values: \n<li>`0`: No.\n<li>`1`: Yes.\nDefault value: `0`.\nFor more information, see [TDE](https://intl.cloud.tencent.com/document/product/409/71748?from_cn_redirect=1).\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsSupportTDE",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Database engines. Valid values:\n<li>`postgresql`: TencentDB for PostgreSQL\n<li>`mssql_compatible`: MSSQL compatible-TencentDB for PostgreSQL\nDefault value: `postgresql`.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "postgresql",
           "member": "string",
-          "name": "DBKernelVersion",
-          "required": true,
+          "name": "DBEngine",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configuration information of database engine in the following format:\n{\"$key1\":\"$value1\", \"$key2\":\"$value2\"}\nValid values:\nmssql_compatible engine:\n<li>`migrationMode`: Database mode. Valid values: `single-db` (single-database mode), `multi-db` (multi-database mode). Default value: `single-db`.\n<li>`defaultLocale`: Default locale, which can’t be modified after the initialization. Default value: `en_US`. Valid values:\n\"af_ZA\", \"sq_AL\", \"ar_DZ\", \"ar_BH\", \"ar_EG\", \"ar_IQ\", \"ar_JO\", \"ar_KW\", \"ar_LB\", \"ar_LY\", \"ar_MA\", \"ar_OM\", \"ar_QA\", \"ar_SA\", \"ar_SY\", \"ar_TN\", \"ar_AE\", \"ar_YE\", \"hy_AM\", \"az_Cyrl_AZ\", \"az_Latn_AZ\", \"eu_ES\", \"be_BY\", \"bg_BG\", \"ca_ES\", \"zh_HK\", \"zh_MO\", \"zh_CN\", \"zh_SG\", \"zh_TW\", \"hr_HR\", \"cs_CZ\", \"da_DK\", \"nl_BE\", \"nl_NL\", \"en_AU\", \"en_BZ\", \"en_CA\", \"en_IE\", \"en_JM\", \"en_NZ\", \"en_PH\", \"en_ZA\", \"en_TT\", \"en_GB\", \"en_US\", \"en_ZW\", \"et_EE\", \"fo_FO\", \"fa_IR\", \"fi_FI\", \"fr_BE\", \"fr_CA\", \"fr_FR\", \"fr_LU\", \"fr_MC\", \"fr_CH\", \"mk_MK\", \"ka_GE\", \"de_AT\", \"de_DE\", \"de_LI\", \"de_LU\", \"de_CH\", \"el_GR\", \"gu_IN\", \"he_IL\", \"hi_IN\", \"hu_HU\", \"is_IS\", \"id_ID\", \"it_IT\", \"it_CH\", \"ja_JP\", \"kn_IN\", \"kok_IN\", \"ko_KR\", \"ky_KG\", \"lv_LV\", \"lt_LT\", \"ms_BN\", \"ms_MY\", \"mr_IN\", \"mn_MN\", \"nb_NO\", \"nn_NO\", \"pl_PL\", \"pt_BR\", \"pt_PT\", \"pa_IN\", \"ro_RO\", \"ru_RU\", \"sa_IN\", \"sr_Cyrl_RS\", \"sr_Latn_RS\", \"sk_SK\", \"sl_SI\", \"es_AR\", \"es_BO\", \"es_CL\", \"es_CO\", \"es_CR\", \"es_DO\", \"es_EC\", \"es_SV\", \"es_GT\", \"es_HN\", \"es_MX\", \"es_NI\", \"es_PA\", \"es_PY\",\"es_PE\", \"es_PR\", \"es_ES\", \"es_TRADITIONAL\", \"es_UY\", \"es_VE\", \"sw_KE\", \"sv_FI\", \"sv_SE\", \"tt_RU\", \"te_IN\", \"th_TH\", \"tr_TR\", \"uk_UA\", \"ur_IN\", \"ur_PK\", \"uz_Cyrl_UZ\", \"uz_Latn_UZ\", \"vi_VN\".\n<li>`serverCollationName`: Default collation name, which can’t be modified after the initialization. Default value: \"sql_latin1_general_cp1_ci_as\". Valid values: \"bbf_unicode_cp1_ci_as\", \"bbf_unicode_CP1250_ci_as\", \"bbf_unicode_CP1251_ci_as\", \"bbf_unicode_cp1253_ci_as\", \"bbf_unicode_cp1254_ci_as\", \"bbf_unicode_cp1255_ci_as\", \"bbf_unicode_cp1256_ci_as\", \"bbf_unicode_cp1257_ci_as\", \"bbf_unicode_cp1258_ci_as\", \"bbf_unicode_cp874_ci_as\", \"sql_latin1_general_cp1250_ci_as\", \"sql_latin1_general_cp1251_ci_as\", \"sql_latin1_general_cp1_ci_as\", \"sql_latin1_general_cp1253_ci_as\", \"sql_latin1_general_cp1254_ci_as\", \"sql_latin1_general_cp1255_ci_as\",\"sql_latin1_general_cp1256_ci_as\", \"sql_latin1_general_cp1257_ci_as\", \"sql_latin1_general_cp1258_ci_as\", \"chinese_prc_ci_as\", \"cyrillic_general_ci_as\", \"finnish_swedish_ci_as\", \"french_ci_as\", \"japanese_ci_as\", \"korean_wansung_ci_as\", \"latin1_general_ci_as\", \"modern_spanish_ci_as\", \"polish_ci_as\", \"thai_ci_as\", \"traditional_spanish_ci_as\", \"turkish_ci_as\", \"ukrainian_ci_as\", \"vietnamese_ci_as\".\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DBEngineConfig",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3199,59 +3301,19 @@
           "example": "无",
           "member": "NetworkAccess",
           "name": "NetworkAccessList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "PostgreSQL major version number\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "12",
-          "member": "string",
-          "name": "DBMajorVersion",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Instance node information\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "DBNode",
-          "name": "DBNodeSet",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Whether the instance supports TDE data encryption. Valid values: 0 (no), 1 (yes)\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether the instance supports IPv6. Valid values:\n<li>`0`: No.\n<li>`1`: Yes.\nDefault value: `0`.",
           "example": "1",
-          "member": "int64",
-          "name": "IsSupportTDE",
-          "required": true,
+          "member": "uint64",
+          "name": "SupportIpv6",
+          "output_required": true,
           "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "",
-          "example": "postgresql",
-          "member": "string",
-          "name": "DBEngine",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Configuration information of database engine\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "DBEngineConfig",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3638,6 +3700,7 @@
         {
           "disabled": false,
           "document": "Instance name. Either instance name or instance ID (or both) must be passed in. If both are passed in, the instance ID will prevail.",
+          "example": "",
           "member": "string",
           "name": "DBInstanceName",
           "required": false,
@@ -3646,6 +3709,7 @@
         {
           "disabled": false,
           "document": "Instance ID. Either instance name or instance ID (or both) must be passed in. If both are passed in, the instance ID will prevail.",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": false,
@@ -3723,6 +3787,7 @@
         {
           "disabled": false,
           "document": "Number of date entries returned for this API call.",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -3731,6 +3796,7 @@
         {
           "disabled": false,
           "document": "Account list details.",
+          "example": "",
           "member": "AccountInfo",
           "name": "Details",
           "type": "list",
@@ -4380,6 +4446,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of postgres-4wdeb0zv.",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -4388,6 +4455,7 @@
         {
           "disabled": false,
           "document": "Backup mode (1: full). Currently, only full backup is supported. The value is 1.",
+          "example": "",
           "member": "int64",
           "name": "Type",
           "required": true,
@@ -4396,6 +4464,7 @@
         {
           "disabled": false,
           "document": "Query start time in the format of 2018-06-10 17:06:38, which cannot be more than 7 days ago",
+          "example": "",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -4404,6 +4473,7 @@
         {
           "disabled": false,
           "document": "Query end time in the format of 2018-06-10 17:06:38",
+          "example": "",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -4412,6 +4482,7 @@
         {
           "disabled": false,
           "document": "Number of entries to be returned per page for backup list. Default value: 20. Minimum value: 1. Maximum value: 100. (If this parameter is left empty or 0, the default value will be used)",
+          "example": "",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -4420,6 +4491,7 @@
         {
           "disabled": false,
           "document": "Page number for data return in paged query. Pagination starts from 0. Default value: 0.",
+          "example": "",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -4434,6 +4506,7 @@
         {
           "disabled": false,
           "document": "Number of backup files in the returned backup list",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -4442,6 +4515,7 @@
         {
           "disabled": false,
           "document": "Backup list",
+          "example": "",
           "member": "DBBackup",
           "name": "BackupList",
           "type": "list",
@@ -4461,7 +4535,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID in the format of postgres-5bq3wfjd",
+          "document": "Instance ID\t",
+          "example": "postgres-apzvwncr",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -4469,7 +4544,8 @@
         },
         {
           "disabled": false,
-          "document": "Query start time in the format of 2018-01-01 00:00:00, which cannot be more than 7 days ago",
+          "document": "u200cu200cu200cQuery start time in the format of 2018-01-01 00:00:00. The log is retained for seven days by default, so the start time must fall within the retention period.\t",
+          "example": "2018-06-10 17:06:38",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -4477,7 +4553,8 @@
         },
         {
           "disabled": false,
-          "document": "Query end time in the format of 2018-01-01 00:00:00",
+          "document": "u200cu200cu200cu200cQuery end time in the format of 2018-01-01 00:00:00\t",
+          "example": "2018-06-11 17:06:38",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -4486,6 +4563,7 @@
         {
           "disabled": false,
           "document": "Database name",
+          "example": "postgres-xxx",
           "member": "string",
           "name": "DatabaseName",
           "required": false,
@@ -4493,7 +4571,8 @@
         },
         {
           "disabled": false,
-          "document": "Search keyword",
+          "document": "Keywords used for search",
+          "example": "test",
           "member": "string",
           "name": "SearchKeys",
           "required": false,
@@ -4501,7 +4580,8 @@
         },
         {
           "disabled": false,
-          "document": "Number of entries returned per page. Value range: 1-100",
+          "document": "Number of results returned per page. Value range: 1-100. Default value: `50`.\t",
+          "example": "20",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -4509,7 +4589,8 @@
         },
         {
           "disabled": false,
-          "document": "Page number for data return in paged query. Pagination starts from 0",
+          "document": "Data offset, which starts from 0. Default value: `0`.\t",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -4523,7 +4604,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Number of date entries returned for this call",
+          "document": "Number of logs returned in a single query. Maximum value: `10000`.",
+          "example": "10",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -4531,7 +4613,8 @@
         },
         {
           "disabled": false,
-          "document": "Error log list",
+          "document": "Detailed sets of error logs",
+          "example": "无",
           "member": "ErrLogDetail",
           "name": "Details",
           "type": "list",
@@ -4552,6 +4635,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -4566,10 +4650,88 @@
         {
           "disabled": false,
           "document": "Instance details.",
+          "example": "",
           "member": "DBInstance",
           "name": "DBInstance",
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstanceHAConfigRequest": {
+      "document": "DescribeDBInstanceHAConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "postgres-aser1j2o",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstanceHAConfigResponse": {
+      "document": "DescribeDBInstanceHAConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Primary-standby sync mode. Valid values:\n<li>`Semi-sync`\n<li>`Async`",
+          "example": "Async",
+          "member": "string",
+          "name": "SyncMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum data lag for high-availability standby server. The standby node can be promoted to the primary node when its data lag and the delay time are both less than the value of `MaxStandbyLatency` and `MaxStandbyLag` respectively.\n<li>Unit: byte\n<li>Value range: 1073741824-322122547200",
+          "example": "2000000000",
+          "member": "uint64",
+          "name": "MaxStandbyLatency",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The maximum delay for high-availability standby server The standby node can be promoted to the primary node when its data lag and the delay time are both less than or equals to the value of `MaxStandbyLatency` and `MaxStandbyLag` respectively.\n<li>Unit: s\n<li>Value range: 5-10",
+          "example": "10",
+          "member": "uint64",
+          "name": "MaxStandbyLag",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum data sync lag for u200du200dstandby server. If data lag of the standby node and the delay time are both less than or equals to the values of `MaxSyncStandbyLatency` and `MaxSyncStandbyLag` respectively, the standby server adopts semi-sync replication; if not, it adopts async replication.\nThis value is only valid for the instance with `SyncMode` set to `Semi-sync`.\nThis field returns null for async instance\nand semi-sync (non-downgradable to async) instance.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "1000000",
+          "member": "uint64",
+          "name": "MaxSyncStandbyLatency",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maximum sync delay time for u200dstandby server. If the delay time for u200dstandby server and the data lag are both less than or equals to the values of `MaxSyncStandbyLag` and `MaxSyncStandbyLatency` respectively, the standby server adopts sync replication mode; if not, it adopts async replication.\nThis value is only valid for the instance with `SyncMode` set to `Semi-sync`.\nThis field will not return for async instance\nand semi-sync (non-downgradable to async) instance.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "5",
+          "member": "uint64",
+          "name": "MaxSyncStandbyLag",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -4739,6 +4901,7 @@
         {
           "disabled": false,
           "document": "Number of instances found.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -4747,6 +4910,7 @@
         {
           "disabled": false,
           "document": "Instance details set.",
+          "example": "",
           "member": "DBInstance",
           "name": "DBInstanceSet",
           "type": "list",
@@ -4767,6 +4931,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of postgres-lnp6j617",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -4775,6 +4940,7 @@
         {
           "disabled": false,
           "document": "Query start time in the format of 2018-06-10 17:06:38, which cannot be more than 7 days ago",
+          "example": "",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -4783,6 +4949,7 @@
         {
           "disabled": false,
           "document": "Query end time in the format of 2018-06-10 17:06:38",
+          "example": "",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -4791,6 +4958,7 @@
         {
           "disabled": false,
           "document": "Database name",
+          "example": "",
           "member": "string",
           "name": "DatabaseName",
           "required": false,
@@ -4799,6 +4967,7 @@
         {
           "disabled": false,
           "document": "Metric for sorting. Valid values: `sum_calls` (total number of calls), `sum_cost_time` (total time consumed)",
+          "example": "",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -4807,6 +4976,7 @@
         {
           "disabled": false,
           "document": "Sorting order. desc: descending, asc: ascending",
+          "example": "",
           "member": "string",
           "name": "OrderByType",
           "required": false,
@@ -4815,6 +4985,7 @@
         {
           "disabled": false,
           "document": "Number of entries returned per page. Value range: 1-100. Default value: 20.",
+          "example": "",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -4823,6 +4994,7 @@
         {
           "disabled": false,
           "document": "Page number for data return in paged query. Pagination starts from 0",
+          "example": "",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -4837,6 +5009,7 @@
         {
           "disabled": false,
           "document": "Number of date entries returned this time",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -4845,6 +5018,7 @@
         {
           "disabled": false,
           "document": "Slow query log details",
+          "example": "",
           "member": "SlowlogDetail",
           "name": "Detail",
           "type": "object",
@@ -4891,6 +5065,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of postgres-4wdeb0zv.",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -4899,6 +5074,7 @@
         {
           "disabled": false,
           "document": "Query start time in the format of 2018-06-10 17:06:38, which cannot be more than 7 days ago",
+          "example": "",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -4907,6 +5083,7 @@
         {
           "disabled": false,
           "document": "Query end time in the format of 2018-06-10 17:06:38",
+          "example": "",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -4915,6 +5092,7 @@
         {
           "disabled": false,
           "document": "Page number for data return in paged query. Pagination starts from 0",
+          "example": "",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -4923,6 +5101,7 @@
         {
           "disabled": false,
           "document": "Number of entries returned per page in paged query. Value range: 1-100.",
+          "example": "",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -4937,6 +5116,7 @@
         {
           "disabled": false,
           "document": "Number of date entries returned this time.",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -4945,6 +5125,7 @@
         {
           "disabled": false,
           "document": "Xlog list",
+          "example": "",
           "member": "Xlog",
           "name": "XlogList",
           "type": "list",
@@ -4965,6 +5146,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -4979,6 +5161,7 @@
         {
           "disabled": false,
           "document": "Database information",
+          "example": "",
           "member": "string",
           "name": "Items",
           "type": "list",
@@ -5193,6 +5376,7 @@
         {
           "disabled": false,
           "document": "Order name set",
+          "example": "",
           "member": "string",
           "name": "DealNames",
           "required": true,
@@ -5207,6 +5391,7 @@
         {
           "disabled": false,
           "document": "Number of orders",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -5215,6 +5400,7 @@
         {
           "disabled": false,
           "document": "Order array",
+          "example": "",
           "member": "PgDeal",
           "name": "Deals",
           "type": "list",
@@ -5486,6 +5672,7 @@
         {
           "disabled": false,
           "document": "Purchasable specification list.",
+          "example": "",
           "member": "SpecInfo",
           "name": "SpecInfoList",
           "type": "list",
@@ -5584,6 +5771,7 @@
         {
           "disabled": false,
           "document": "Number of returned results.",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -5592,6 +5780,7 @@
         {
           "disabled": false,
           "document": "Region information set.",
+          "example": "",
           "member": "RegionInfo",
           "name": "RegionSet",
           "type": "list",
@@ -5612,6 +5801,7 @@
         {
           "disabled": false,
           "document": "Query conditions",
+          "example": "",
           "member": "Filter",
           "name": "Filter",
           "required": false,
@@ -5620,6 +5810,7 @@
         {
           "disabled": false,
           "document": "The number of queries",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -5628,6 +5819,7 @@
         {
           "disabled": false,
           "document": "The offset value",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -5636,6 +5828,7 @@
         {
           "disabled": false,
           "document": "Sorting metric. Currently, only \"CreateTime\" (instance creation time) is supported.",
+          "example": "",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -5644,6 +5837,7 @@
         {
           "disabled": false,
           "document": "Sorting order. Ascending and descending are supported.",
+          "example": "",
           "member": "string",
           "name": "OrderByType",
           "required": false,
@@ -5658,6 +5852,7 @@
         {
           "disabled": false,
           "document": "The number of query results",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -5666,6 +5861,7 @@
         {
           "disabled": false,
           "document": "Query results\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "ServerlessDBInstance",
           "name": "DBInstanceSet",
           "type": "list",
@@ -5921,6 +6117,7 @@
         {
           "disabled": false,
           "document": "Number of returned results.",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -5929,6 +6126,7 @@
         {
           "disabled": false,
           "document": "AZ information set.",
+          "example": "",
           "member": "ZoneInfo",
           "name": "ZoneSet",
           "type": "list",
@@ -6011,7 +6209,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of resource IDs. Note that currently you cannot remove multiple instances from isolation at the same time. Only one instance ID can be passed in here.",
+          "document": "Instance ID list. Currently, you can't remove multiple instances from isolation in batches. Only one instance ID can be passed in here.",
           "example": "[\"postgres-xxxxxxx\"]",
           "member": "string",
           "name": "DBInstanceIdSet",
@@ -6020,7 +6218,7 @@
         },
         {
           "disabled": false,
-          "document": "The valid period (in months) of the monthly-subscribed instance when removing it from isolation",
+          "document": "Validity period in months\n<li>Monthly subscription: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.\n<li>Pay-as-you-go: `1`.",
           "example": "1",
           "member": "int64",
           "name": "Period",
@@ -6029,7 +6227,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to use vouchers. Valid values: `true` (yes), `false` (no). Default value: `false`.",
+          "document": "Whether to use vouchers. Valid values:\n<li>`true`: Yes.\nu200c<li>`false`: No.\nDefault value: `false`.",
           "example": "true",
           "member": "bool",
           "name": "AutoVoucher",
@@ -6158,6 +6356,7 @@
         {
           "disabled": false,
           "document": "Username",
+          "example": "",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -6167,6 +6366,7 @@
         {
           "disabled": false,
           "document": "Database name",
+          "example": "",
           "member": "string",
           "name": "Database",
           "required": true,
@@ -6176,6 +6376,7 @@
         {
           "disabled": false,
           "document": "Error occurrence time",
+          "example": "",
           "member": "string",
           "name": "ErrTime",
           "required": true,
@@ -6185,6 +6386,7 @@
         {
           "disabled": false,
           "document": "Error message",
+          "example": "",
           "member": "string",
           "name": "ErrMsg",
           "required": true,
@@ -6322,6 +6524,7 @@
         {
           "disabled": false,
           "document": "Filter name.",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -6330,6 +6533,7 @@
         {
           "disabled": false,
           "document": "One or more filter values.",
+          "example": "",
           "member": "string",
           "name": "Values",
           "required": false,
@@ -6344,6 +6548,7 @@
         {
           "disabled": false,
           "document": "Instance ID set.",
+          "example": "",
           "member": "string",
           "name": "DBInstanceIdSet",
           "required": true,
@@ -6352,6 +6557,7 @@
         {
           "disabled": false,
           "document": "Instance admin account username.",
+          "example": "",
           "member": "string",
           "name": "AdminName",
           "required": true,
@@ -6360,6 +6566,7 @@
         {
           "disabled": false,
           "document": "Password corresponding to instance root account username.",
+          "example": "",
           "member": "string",
           "name": "AdminPassword",
           "required": true,
@@ -6368,6 +6575,7 @@
         {
           "disabled": false,
           "document": "Instance character set. Valid values: UTF8, LATIN1.",
+          "example": "",
           "member": "string",
           "name": "Charset",
           "required": true,
@@ -6382,6 +6590,7 @@
         {
           "disabled": false,
           "document": "Instance ID set.",
+          "example": "",
           "member": "string",
           "name": "DBInstanceIdSet",
           "type": "list",
@@ -6410,7 +6619,7 @@
         },
         {
           "disabled": false,
-          "document": "Specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.",
+          "document": "Specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeClasses` API.",
           "example": "cdb.pg.z1.2g",
           "member": "string",
           "name": "SpecCode",
@@ -6531,6 +6740,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -6539,6 +6749,7 @@
         {
           "disabled": false,
           "document": "Renewal duration in months. Maximum value: 48",
+          "example": "",
           "member": "int64",
           "name": "Period",
           "required": true,
@@ -6595,6 +6806,7 @@
         {
           "disabled": false,
           "document": "Instance disk size in GB",
+          "example": "",
           "member": "int64",
           "name": "Storage",
           "required": true,
@@ -6603,6 +6815,7 @@
         {
           "disabled": false,
           "document": "Instance memory size in GB",
+          "example": "",
           "member": "int64",
           "name": "Memory",
           "required": true,
@@ -6611,6 +6824,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of postgres-hez4fh0v",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -6619,6 +6833,7 @@
         {
           "disabled": false,
           "document": "Instance billing type. Valid value: `POSTPAID_BY_HOUR` (pay-as-you-go hourly)",
+          "example": "",
           "member": "string",
           "name": "InstanceChargeType",
           "required": false,
@@ -6808,6 +7023,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of postgres-4wdeb0zv",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -6816,6 +7032,7 @@
         {
           "disabled": false,
           "document": "Instance username",
+          "example": "",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -6824,6 +7041,7 @@
         {
           "disabled": false,
           "document": "New remarks corresponding to user `UserName`",
+          "example": "",
           "member": "string",
           "name": "Remark",
           "required": true,
@@ -6939,7 +7157,7 @@
         },
         {
           "disabled": false,
-          "document": "Backup retention period in days. Value range: 3-7",
+          "document": "Backup retention period in days. Value range: 7-1830",
           "example": "7",
           "member": "uint64",
           "name": "BaseBackupRetentionPeriod",
@@ -7029,7 +7247,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance billing mode.  Valid values:  `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go). Default value:  `PREPAID`.",
+          "document": "Instance billing mode. Valid values:\n<li>`PREPAID`: Monthly subscription.\n<li>`POSTPAID_BY_HOUR`: Pay-as-you-go.\nDefault value: `PREPAID`.",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InstanceChargeType",
@@ -7038,7 +7256,7 @@
         },
         {
           "disabled": false,
-          "document": "Validity period  in months. Valid values:  Valid period in months of the purchased instance. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.",
+          "document": "Validity period in months\n<li>Monthly subscription: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.\n<li>Pay-as-you-go: `1`.",
           "example": "1",
           "member": "int64",
           "name": "Period",
@@ -7047,7 +7265,7 @@
         },
         {
           "disabled": false,
-          "document": "Renewal flag. Valid values；  Valid values: `0` (manual renewal), `1` (auto-renewal).",
+          "document": "Auto-renewal flag. Valid values:\n<li>`0`: Manual renewal.\n<li>`1`: Automatic renewal.\nDefault value: `0`.",
           "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
@@ -7056,7 +7274,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.",
+          "document": "Whether to use vouchers automatically. Valid values:\n<li>`0`: No.\n<li>`1`: Yes.\nDefault value: `0`.",
           "example": "0",
           "member": "int64",
           "name": "AutoVoucher",
@@ -7101,7 +7319,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance node information.",
+          "document": "Deployment information of the instance node, which will display the information of each AZ when the instance node is deployed across multiple AZs.\nThe information of AZ can be obtained from the `Zone` field in the returned value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.",
           "example": "无",
           "member": "DBNode",
           "name": "DBNodeSet",
@@ -7110,7 +7328,7 @@
         },
         {
           "disabled": false,
-          "document": "Switch time. Valid values: `0` (switch now), `1` (switch at a specified time), `2` (switch during maintenance time). Default value: `0`.",
+          "document": "Switch time for the specified instance after configuration modification.\n<li>`0`: Switch now. \n<li>`1`: Switch at the specified time.\n<li>`2`: Switch in the maintenance time.\nDefault value: `0`. ",
           "example": "1",
           "member": "int64",
           "name": "SwitchTag",
@@ -7150,12 +7368,13 @@
       ],
       "type": "object"
     },
-    "ModifyDBInstanceNameRequest": {
-      "document": "ModifyDBInstanceName request structure.",
+    "ModifyDBInstanceHAConfigRequest": {
+      "document": "ModifyDBInstanceHAConfig request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Database instance ID in the format of postgres-6fego161",
+          "document": "Instance ID",
+          "example": "postgres-aser1j2o",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -7163,7 +7382,80 @@
         },
         {
           "disabled": false,
-          "document": "New name of database instance",
+          "document": "Primary-standby sync mode. Valid values:\n<li>`Semi-sync`\n<li>`Async`\n",
+          "example": "Async",
+          "member": "string",
+          "name": "SyncMode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "u200cMaximum data lag for high-availability standby server. The standby node can be promoted to the primary node when its data lag and the delay time are both less than the value of `MaxStandbyLatency` and `MaxStandbyLag` respectively.\n<li>Unit: byte\n<li>Value range: 1073741824-322122547200",
+          "example": "1000000000",
+          "member": "uint64",
+          "name": "MaxStandbyLatency",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The maximum delay for high-availability standby server The standby node can be promoted to the primary node when its data lag and the delay time are both less or equals to the value of `MaxStandbyLatency` and `MaxStandbyLag` respectively.\n<li>Unit: s\n<li>Value range: 5-10",
+          "example": "10",
+          "member": "uint64",
+          "name": "MaxStandbyLag",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum data sync lag for u200dstandby server. If data lag of the standby node and the delay ime are both less than or equals to the values of `MaxSyncStandbyLatency` and `MaxSyncStandbyLag`, the standby server adopts semi-sync replication; if not, it adopts async replication.\nThis value is only valid for the instance with `SyncMode` set to `Semi-sync`.\nWhen the semi-sync replication mode of the instance is not allowed to downgrade to async replication, `MaxSyncStandbyLatency` and `MaxSyncStandbyLag` are not required.\nWhen the semi-sync instance is allowed to downgrade to async replication, `MaxSyncStandbyLatency` is required and `MaxSyncStandbyLag` must be left empty for PostgreSQL 9; `MaxSyncStandbyLatency` and MaxSyncStandbyLag` are required for PostgreSQL 10 and later.",
+          "example": "1000000",
+          "member": "uint64",
+          "name": "MaxSyncStandbyLatency",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum delay for u200dsync u200dstandby server. If the delay time for u200dstandby server and the data lag are both less than or equals to the value of `MaxSyncStandbyLag` and `MaxSyncStandbyLatency` respectively, the standby server adopts sync replication mode; if not, it adopts async replication.\nThis value is only valid for the instance with `SyncMode` set to `Semi-sync`.\nWhen the semi-sync replication mode of the instance is not allowed to downgrade to async replication, `MaxSyncStandbyLatency` and `MaxSyncStandbyLag` are not required.\nWhen the semi-sync instance is allowed to downgrade to async replication, `MaxSyncStandbyLatency` is required and `MaxSyncStandbyLag` must be left empty for PostgreSQL 9; `MaxSyncStandbyLatency` and MaxSyncStandbyLag` are required for PostgreSQL 10 and later.",
+          "example": "5",
+          "member": "uint64",
+          "name": "MaxSyncStandbyLag",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceHAConfigResponse": {
+      "document": "ModifyDBInstanceHAConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceNameRequest": {
+      "document": "ModifyDBInstanceName request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database instance ID in the format of postgres-6fego161",
+          "example": "postgres-6fego161",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance name, which can contain up to 60 letters, digits, hyphens, and symbols (_-). If this parameter is not specified, \"Unnamed\" will be displayed by default.\n",
+          "example": "testModifyInstanceName",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -7280,7 +7572,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The list of security groups to be associated with the instance or RO groups",
+          "document": "The list of security groups to be associated with the instance or RO groups.\nInformation of security groups can be obtained from the `sgld` field in the returned value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API.\n",
           "example": "[\"sg-91jbmkp1\"]",
           "member": "string",
           "name": "SecurityGroupIdSet",
@@ -7352,7 +7644,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.",
+          "document": "Whether to use vouchers automatically. Valid values:\n<li>`0`: No.\n<li>`1`: Yes.\nDefault value: `0`.",
           "example": "0",
           "member": "uint64",
           "name": "AutoVoucher",
@@ -7379,7 +7671,7 @@
         },
         {
           "disabled": false,
-          "document": "Switch time after instance configurations are modified. Valid values: `0` (switch now), `1` (switch at a specified time), `2` (switch during maintenance time). Default value: `0`.",
+          "document": "Switch time for the specified instance after configuration modification.\n<li>`0`: Switch now. \n<li>`1`: Switch at the specified time.\n<li>`2`: Switch in the maintenance time.\nDefault value: `0`. ",
           "example": "1",
           "member": "uint64",
           "name": "SwitchTag",
@@ -7469,6 +7761,7 @@
         {
           "disabled": false,
           "document": "Number of successfully transferred instances",
+          "example": "",
           "member": "int64",
           "name": "Count",
           "type": "int",
@@ -7764,6 +8057,7 @@
         {
           "disabled": false,
           "document": "Username",
+          "example": "",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -7773,6 +8067,7 @@
         {
           "disabled": false,
           "document": "Number of calls",
+          "example": "",
           "member": "int64",
           "name": "Calls",
           "required": true,
@@ -7782,6 +8077,7 @@
         {
           "disabled": false,
           "document": "Granularity",
+          "example": "",
           "member": "int64",
           "name": "CallsGrids",
           "required": true,
@@ -7791,6 +8087,7 @@
         {
           "disabled": false,
           "document": "Total time consumed",
+          "example": "",
           "member": "float",
           "name": "CostTime",
           "required": true,
@@ -7800,6 +8097,7 @@
         {
           "disabled": false,
           "document": "Number of affected rows",
+          "example": "",
           "member": "int64",
           "name": "Rows",
           "required": true,
@@ -7809,6 +8107,7 @@
         {
           "disabled": false,
           "document": "Minimum time consumed",
+          "example": "",
           "member": "float",
           "name": "MinCostTime",
           "required": true,
@@ -7818,6 +8117,7 @@
         {
           "disabled": false,
           "document": "Maximum time consumed",
+          "example": "",
           "member": "float",
           "name": "MaxCostTime",
           "required": true,
@@ -7827,6 +8127,7 @@
         {
           "disabled": false,
           "document": "Time of the earliest slow SQL statement",
+          "example": "",
           "member": "string",
           "name": "FirstTime",
           "required": true,
@@ -7836,6 +8137,7 @@
         {
           "disabled": false,
           "document": "Time of the latest slow SQL statement",
+          "example": "",
           "member": "string",
           "name": "LastTime",
           "required": true,
@@ -7845,6 +8147,7 @@
         {
           "disabled": false,
           "document": "Shared memory blocks for reads",
+          "example": "",
           "member": "int64",
           "name": "SharedReadBlks",
           "required": true,
@@ -7854,6 +8157,7 @@
         {
           "disabled": false,
           "document": "Shared memory blocks for writes",
+          "example": "",
           "member": "int64",
           "name": "SharedWriteBlks",
           "required": true,
@@ -7863,6 +8167,7 @@
         {
           "disabled": false,
           "document": "Total IO read time",
+          "example": "",
           "member": "int64",
           "name": "ReadCostTime",
           "required": true,
@@ -7872,6 +8177,7 @@
         {
           "disabled": false,
           "document": "Total IO write time",
+          "example": "",
           "member": "int64",
           "name": "WriteCostTime",
           "required": true,
@@ -7881,6 +8187,7 @@
         {
           "disabled": false,
           "document": "Database name",
+          "example": "",
           "member": "string",
           "name": "DatabaseName",
           "required": true,
@@ -7890,6 +8197,7 @@
         {
           "disabled": false,
           "document": "Slow SQL statement after desensitization",
+          "example": "",
           "member": "string",
           "name": "NormalQuery",
           "required": true,
@@ -7905,6 +8213,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of postgres-hez4fh0v",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -7913,6 +8222,7 @@
         {
           "disabled": false,
           "document": "Whether to enable public network access over IPv6 address. Valid values: 1 (yes), 0 (no)",
+          "example": "",
           "member": "int64",
           "name": "IsIpv6",
           "required": false,
@@ -7927,6 +8237,7 @@
         {
           "disabled": false,
           "document": "Async task flow ID",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -7947,6 +8258,7 @@
         {
           "disabled": false,
           "document": "Unique ID of an instance",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": false,
@@ -7955,6 +8267,7 @@
         {
           "disabled": false,
           "document": "Instance name",
+          "example": "",
           "member": "string",
           "name": "DBInstanceName",
           "required": false,
@@ -8421,6 +8734,7 @@
         {
           "disabled": false,
           "document": "Order name",
+          "example": "",
           "member": "string",
           "name": "DealName",
           "required": true,
@@ -8430,6 +8744,7 @@
         {
           "disabled": false,
           "document": "User",
+          "example": "",
           "member": "string",
           "name": "OwnerUin",
           "required": true,
@@ -8439,6 +8754,7 @@
         {
           "disabled": false,
           "document": "Number of instances involved in order",
+          "example": "",
           "member": "int64",
           "name": "Count",
           "required": true,
@@ -8448,6 +8764,7 @@
         {
           "disabled": false,
           "document": "Billing mode. 0: pay-as-you-go",
+          "example": "",
           "member": "int64",
           "name": "PayMode",
           "required": true,
@@ -8457,6 +8774,7 @@
         {
           "disabled": false,
           "document": "Async task flow ID",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "required": true,
@@ -8466,6 +8784,7 @@
         {
           "disabled": false,
           "document": "Instance ID array",
+          "example": "",
           "member": "string",
           "name": "DBInstanceIdSet",
           "required": true,
@@ -8918,6 +9237,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of `postgres-6fego161`",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -8926,6 +9246,7 @@
         {
           "disabled": false,
           "document": "Renewal duration in months",
+          "example": "",
           "member": "int64",
           "name": "Period",
           "required": true,
@@ -8934,6 +9255,7 @@
         {
           "disabled": false,
           "document": "Whether to automatically use vouchers. 1: yes, 0: no. Default value: 0",
+          "example": "",
           "member": "int64",
           "name": "AutoVoucher",
           "required": false,
@@ -8942,6 +9264,7 @@
         {
           "disabled": false,
           "document": "Voucher ID list (only one voucher can be specified currently)",
+          "example": "",
           "member": "string",
           "name": "VoucherIds",
           "required": false,
@@ -8956,6 +9279,7 @@
         {
           "disabled": false,
           "document": "Order name",
+          "example": "",
           "member": "string",
           "name": "DealName",
           "type": "string",
@@ -8976,6 +9300,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of postgres-4wdeb0zv",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -8984,6 +9309,7 @@
         {
           "disabled": false,
           "document": "Instance account name",
+          "example": "",
           "member": "string",
           "name": "UserName",
           "required": true,
@@ -8992,6 +9318,7 @@
         {
           "disabled": false,
           "document": "New password corresponding to `UserName` account",
+          "example": "",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -9018,6 +9345,7 @@
         {
           "disabled": false,
           "document": "Instance ID in the format of postgres-6r233v55",
+          "example": "",
           "member": "string",
           "name": "DBInstanceId",
           "required": true,
@@ -9032,6 +9360,7 @@
         {
           "disabled": false,
           "document": "Async flow ID",
+          "example": "",
           "member": "int64",
           "name": "FlowId",
           "type": "int",
@@ -9128,6 +9457,7 @@
         {
           "disabled": false,
           "document": "Username\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DBUser",
           "required": true,
@@ -9137,6 +9467,7 @@
         {
           "disabled": false,
           "document": "Password\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DBPassword",
           "required": true,
@@ -9146,6 +9477,7 @@
         {
           "disabled": false,
           "document": "The maximum number of connections\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "DBConnLimit",
           "required": true,
@@ -9337,6 +9669,7 @@
         {
           "disabled": false,
           "document": "Address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Address",
           "required": true,
@@ -9346,6 +9679,7 @@
         {
           "disabled": false,
           "document": "IP address\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Ip",
           "required": true,
@@ -9355,6 +9689,7 @@
         {
           "disabled": false,
           "document": "Port number\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Port",
           "required": true,
@@ -9364,6 +9699,7 @@
         {
           "disabled": false,
           "document": "Status\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -9373,6 +9709,7 @@
         {
           "disabled": false,
           "document": "Network type\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "NetType",
           "required": true,
@@ -9412,6 +9749,7 @@
         {
           "disabled": false,
           "document": "Number of successfully set instances",
+          "example": "",
           "member": "int64",
           "name": "Count",
           "type": "int",
@@ -9432,6 +9770,7 @@
         {
           "disabled": false,
           "document": "Total time consumed",
+          "example": "",
           "member": "float",
           "name": "TotalTime",
           "required": true,
@@ -9441,6 +9780,7 @@
         {
           "disabled": false,
           "document": "Total number of calls",
+          "example": "",
           "member": "int64",
           "name": "TotalCalls",
           "required": true,
@@ -9450,6 +9790,7 @@
         {
           "disabled": false,
           "document": "List of slow SQL statements after desensitization",
+          "example": "",
           "member": "NormalQueryItem",
           "name": "NormalQueries",
           "required": true,
@@ -9641,12 +9982,76 @@
       ],
       "usage": "out"
     },
+    "SwitchDBInstancePrimaryRequest": {
+      "document": "SwitchDBInstancePrimary request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "postgres-aser1j2o",
+          "member": "string",
+          "name": "DBInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to perform forced switch. As long as the standby node can be accessed, the switch will be performed regardless of the primary-standby sync delay. You can switch immediately only when `SwitchTag` is `0.\n<li>Default: `false`.",
+          "example": "true",
+          "member": "bool",
+          "name": "Force",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Switch time for the specified instance after configuration modification.\n<li>`0`: Switch now. \n<li>`1`: Switch at the specified time.\n<li>`2`: Switch in the maintenance time.\n<li>Default value: `0`. ",
+          "example": "1",
+          "member": "uint64",
+          "name": "SwitchTag",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The earliest time to start a switch in the format of \"HH:MM:SS\", such as \"01:00:00\". This parameter is invalid when `SwitchTag` is `0` or `2`.",
+          "example": "01:00:00",
+          "member": "string",
+          "name": "SwitchStartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The latest time to start a switch in the format of \"HH:MM:SS\", such as \"01:30:00\". This parameter is invalid when `SwitchTag` is `0` or `2`. The difference between `SwitchStartTime` and `SwitchEndTime` cannot be less than 30 minutes.",
+          "example": "01:30:00",
+          "member": "string",
+          "name": "SwitchEndTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchDBInstancePrimaryResponse": {
+      "document": "SwitchDBInstancePrimary response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Tag": {
       "document": "The information of tags associated with instances, including `TagKey` and `TagValue`",
       "members": [
         {
           "disabled": false,
           "document": "Tag key",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
@@ -9656,6 +10061,7 @@
         {
           "disabled": false,
           "document": "Tag value",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": true,
@@ -9679,7 +10085,7 @@
         },
         {
           "disabled": false,
-          "document": "Target kernel version, which can be obtained in the `AvailableUpgradeTarget` field returned by the `DescribeDBVersions` API.",
+          "document": "Target kernel version, which can be obtained in the `AvailableUpgradeTarget` field in the returned value of the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.\n",
           "example": "v12.4_r1.5",
           "member": "string",
           "name": "TargetDBKernelVersion",
@@ -9688,7 +10094,7 @@
         },
         {
           "disabled": false,
-          "document": "Switch time after the kernel version upgrade. Valid values:\n`0` (default value): Switch now.\n`1`: Switch at the specified time.\n`2`: Switch in the maintenance time.",
+          "document": "Switch time after the kernel version upgrade for the specified instance. Valid values:\n<li>`0`: Switch now.\n<li>`1`: Switch at the specified time.\n<li>`2`: Switch in the maintenance time.\nDefault value: `0`. ",
           "example": "1",
           "member": "uint64",
           "name": "SwitchTag",
@@ -9715,7 +10121,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to perform a precheck on the current operation of upgrading the instance kernel version. Valid values:\n`true`: Performs a precheck without upgrading the kernel version. Check items include request parameters, kernel version compatibility, and instance parameters.\n`false` (default value): Sends a normal request and upgrades the kernel version directly after the check is passed.",
+          "document": "Whether to perform a pre-check on the current operation of upgrading the instance kernel version. Valid values:\nu200c<li>u200c`true`: Performs a pre-check without upgrading the kernel version. Check items include request parameters, kernel version compatibility, and instance parameters.\nu200cu200c<li>`false`: Sends a normal request and upgrades the kernel version directly after the check is passed.\nDefault value: `false`.",
           "example": "true",
           "member": "bool",
           "name": "DryRun",
@@ -9830,6 +10236,7 @@
         {
           "disabled": false,
           "document": "Transaction name.",
+          "example": "",
           "member": "string",
           "name": "DealName",
           "type": "string",
@@ -9838,6 +10245,7 @@
         {
           "disabled": false,
           "document": "Bill ID of frozen fees",
+          "example": "",
           "member": "string",
           "name": "BillId",
           "type": "string",
@@ -9934,6 +10342,7 @@
         {
           "disabled": false,
           "document": "Unique backup file ID",
+          "example": "",
           "member": "int64",
           "name": "Id",
           "required": true,
@@ -9943,6 +10352,7 @@
         {
           "disabled": false,
           "document": "File generation start time",
+          "example": "",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -9952,6 +10362,7 @@
         {
           "disabled": false,
           "document": "File generation end time",
+          "example": "",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -9961,6 +10372,7 @@
         {
           "disabled": false,
           "document": "Download address on private network",
+          "example": "",
           "member": "string",
           "name": "InternalAddr",
           "required": true,
@@ -9970,6 +10382,7 @@
         {
           "disabled": false,
           "document": "Download address on public network",
+          "example": "",
           "member": "string",
           "name": "ExternalAddr",
           "required": true,
@@ -9979,6 +10392,7 @@
         {
           "disabled": false,
           "document": "Backup file size",
+          "example": "",
           "member": "int64",
           "name": "Size",
           "required": true,
