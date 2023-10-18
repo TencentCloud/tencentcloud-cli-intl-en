@@ -7,6 +7,13 @@
       "output": "AddUserContactResponse",
       "status": "online"
     },
+    "CloseAuditService": {
+      "document": "This API is used to disable database audit as needed.",
+      "input": "CloseAuditServiceRequest",
+      "name": "Disables database audit",
+      "output": "CloseAuditServiceResponse",
+      "status": "online"
+    },
     "CreateDBDiagReportTask": {
       "document": "This API is used to create a health report and send it via email as configured.",
       "input": "CreateDBDiagReportTaskRequest",
@@ -40,6 +47,13 @@
       "input": "CreateProxySessionKillTaskRequest",
       "name": "Creates a task of killing proxy node sessions",
       "output": "CreateProxySessionKillTaskResponse",
+      "status": "online"
+    },
+    "CreateRedisBigKeyAnalysisTask": {
+      "document": "This API is used to create an ad hoc big key analysis task for Redis instances. By default, there can only be up to five running ad hoc analysis tasks.",
+      "input": "CreateRedisBigKeyAnalysisTaskRequest",
+      "name": "Creates an ad hoc big key analysis task for Redis instances",
+      "output": "CreateRedisBigKeyAnalysisTaskResponse",
       "status": "online"
     },
     "CreateSchedulerMailProfile": {
@@ -82,6 +96,13 @@
       "input": "DescribeAllUserGroupRequest",
       "name": "Gets the information of the recipient group in the email",
       "output": "DescribeAllUserGroupResponse",
+      "status": "online"
+    },
+    "DescribeAuditInstanceList": {
+      "document": "This API is used to query the instance list.",
+      "input": "DescribeAuditInstanceListRequest",
+      "name": "Queries the instance list",
+      "output": "DescribeAuditInstanceListResponse",
       "status": "online"
     },
     "DescribeDBDiagEvent": {
@@ -252,11 +273,25 @@
       "output": "KillMySqlThreadsResponse",
       "status": "online"
     },
+    "ModifyAuditService": {
+      "document": "u200cThis API is used to modify audit configurations such as the frequent access storage period.",
+      "input": "ModifyAuditServiceRequest",
+      "name": "Modifies audit configurations",
+      "output": "ModifyAuditServiceResponse",
+      "status": "online"
+    },
     "ModifyDiagDBInstanceConf": {
       "document": "This API is used to enable/disable instance inspection.",
       "input": "ModifyDiagDBInstanceConfRequest",
       "name": "Enables/Disables instance inspection",
       "output": "ModifyDiagDBInstanceConfResponse",
+      "status": "online"
+    },
+    "OpenAuditService": {
+      "document": "This API is used to enable database audit.",
+      "input": "OpenAuditServiceRequest",
+      "name": "Enables database audit",
+      "output": "OpenAuditServiceResponse",
       "status": "online"
     }
   },
@@ -309,6 +344,277 @@
           "member": "int64",
           "name": "Id",
           "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AuditInstance": {
+      "document": "Instance details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audit status. Valid values: `ON` (Enabled), `OFF` (Not enabled).",
+          "example": "NO",
+          "member": "string",
+          "name": "AuditStatus",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audit log size. This parameter is only used for the free trial edition of Database Audit.",
+          "example": "12",
+          "member": "int64",
+          "name": "BillingAmount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing confirmation status. Valid values: `0` (Unconfirmed), `1` (Confirmed).",
+          "example": "0",
+          "member": "int64",
+          "name": "BillingConfirmed",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Infrequent access storage period",
+          "example": "23",
+          "member": "int64",
+          "name": "ColdLogExpireDay",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage size of infrequently accessed logs in MB",
+          "example": "0",
+          "member": "int64",
+          "name": "ColdLogSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage period of frequently accessed logs in days",
+          "example": "7",
+          "member": "int64",
+          "name": "HotLogExpireDay",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage size of frequently accessed logs in MB",
+          "example": "1222",
+          "member": "int64",
+          "name": "HotLogSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "tdsql-kisjgx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Log retention period in days, which is the sum of the frequent and infrequent access storage periods.",
+          "example": "30",
+          "member": "int64",
+          "name": "LogExpireDay",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance creation time",
+          "example": "2023-06-14 15:18:07",
+          "member": "string",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance details",
+          "example": "无",
+          "member": "AuditInstanceInfo",
+          "name": "InstanceInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AuditInstanceFilter": {
+      "document": "Query condition of the instance list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter name",
+          "example": "InstanceId",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter value",
+          "example": "tdsql-fk4kasq",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "AuditInstanceInfo": {
+      "document": "Instance details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "appId",
+          "example": "1235675344",
+          "member": "int64",
+          "name": "AppId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audit status. Valid values: `0` (Not enabled), `1` (Enabled).",
+          "example": "1",
+          "member": "int64",
+          "name": "AuditStatus",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "tdsql-ijlopwe",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name",
+          "example": "test-env",
+          "member": "string",
+          "name": "InstanceName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The region where the instance resides",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource tags\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "ResourceTags",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CloseAuditServiceRequest": {
+      "document": "CloseAuditService request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Service type. Valid values: `dcdb` (TDSQL for MySQL), `mariadb` (TencentDB for MariaDB).",
+          "example": "dcdb",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Use the value of `u200cProduct` for this parameter, such as `dcdb` and `mariadb`.",
+          "example": "dcdb",
+          "member": "string",
+          "name": "NodeRequestType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "tdsql-shartsdf",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CloseAuditServiceResponse": {
+      "document": "CloseAuditService response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "If `0` is returned, audit is successfully disabled; otherwise, an exception will be returned, indicating that audit has failed to be disabled.",
+          "example": "0",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -740,6 +1046,70 @@
       ],
       "type": "object"
     },
+    "CreateRedisBigKeyAnalysisTaskRequest": {
+      "document": "CreateRedisBigKeyAnalysisTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "cdb-c1nl9rpv",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Service type. Valid value: `redis` (TencentDB for Redis).",
+          "example": "redis",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The list of the serial numbers of shard nodes. When the list is empty, all shard nodes will be selected.",
+          "example": "[1,2]",
+          "member": "int64",
+          "name": "ShardIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The list of separators of top key prefixes.\nCurrently, the following separators are supported: \",\", \";\", \":\", \"_\", \"-\", \"+\", \"@\", \"=\", \"|\", \"#\", \".\". When the list is empty, all separators will be selected by default.",
+          "example": "[ \"+\", \"@\", \"#\", \".\"]",
+          "member": "string",
+          "name": "KeyDelimiterList",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateRedisBigKeyAnalysisTaskResponse": {
+      "document": "CreateRedisBigKeyAnalysisTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Async task ID",
+          "example": "8001",
+          "member": "int64",
+          "name": "AsyncRequestId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateSchedulerMailProfileRequest": {
       "document": "CreateSchedulerMailProfile request structure.",
       "members": [
@@ -1077,6 +1447,98 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditInstanceListRequest": {
+      "document": "DescribeAuditInstanceList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Service type. Valid values: `dcdb` (TDSQL for MySQL), `mariadb` (TencentDB for MariaDB).",
+          "example": "dcdb",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Use the value of `u200cProduct` for this parameter, such as `dcdb` and `mariadb`.",
+          "example": "dcdb",
+          "member": "string",
+          "name": "NodeRequestType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Audit status. Valid values: `0` (Not enabled), `1` (Enabled). Default value: `0`.",
+          "example": "1",
+          "member": "int64",
+          "name": "AuditSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The offset. Default value: `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The number of queried items. Default value: `20`. Max value: `100`.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filters for querying instances",
+          "example": "无",
+          "member": "AuditInstanceFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAuditInstanceListResponse": {
+      "document": "DescribeAuditInstanceList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The number of eligible instances.\nNote: u200dThis field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance details",
+          "example": "{}",
+          "member": "AuditInstance",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -2589,7 +3051,7 @@
         },
         {
           "disabled": false,
-          "document": "MD5 value of SOL template",
+          "document": "MD5 value of the SQL template",
           "example": "AD7651E51E8C6FBA",
           "member": "string",
           "name": "Md5",
@@ -4265,6 +4727,79 @@
       ],
       "usage": "both"
     },
+    "ModifyAuditServiceRequest": {
+      "document": "ModifyAuditService request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Service type. Valid values: `dcdb` (TDSQL for MySQL), `mariadb` (TencentDB for MariaDB).",
+          "example": "dcdb",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Use the value of `u200cProduct` for this parameter, such as `dcdb` and `mariadb`.",
+          "example": "dcdb",
+          "member": "string",
+          "name": "NodeRequestType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "tdsql-njshdu",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Total log retention period in days. Valid values: `7`, `30`, `90`, `180`, `365`, `1095`, `1825`.",
+          "example": "30",
+          "member": "int64",
+          "name": "LogExpireDay",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Storage period of frequently accessed logs in days. Valid values: `7`, `30`, `90`, `180`, `365`, `1095`, `1825`.",
+          "example": "7",
+          "member": "int64",
+          "name": "HotLogExpireDay",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyAuditServiceResponse": {
+      "document": "ModifyAuditService response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audit configuration modification result. If `0` is returned, the modification is successful; otherwise, an exception will be returned, indicating that the modification failed.",
+          "example": "0",
+          "member": "int64",
+          "name": "Success",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyDiagDBInstanceConfRequest": {
       "document": "ModifyDiagDBInstanceConf request structure.",
       "members": [
@@ -4528,6 +5063,79 @@
         }
       ],
       "usage": "out"
+    },
+    "OpenAuditServiceRequest": {
+      "document": "OpenAuditService request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Service type. Valid values: `dcdb` (TDSQL for MySQL), `mariadb` (TencentDB for MariaDB).",
+          "example": "dcdb",
+          "member": "string",
+          "name": "Product",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Use the value of `u200cProduct` for this parameter, such as `dcdb` and `mariadb`.",
+          "example": "dcdb",
+          "member": "string",
+          "name": "NodeRequestType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "tdsql-njshdu",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Total log retention period in days. Valid values: `7`, `30`, `90`, `180`, `365`, `1095`, `1825`.",
+          "example": "30",
+          "member": "int64",
+          "name": "LogExpireDay",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Storage period of frequently accessed logs in days. Valid values: `7`, `30`, `90`, `180`, `365`, `1095`, `1825`.",
+          "example": "7",
+          "member": "int64",
+          "name": "HotLogExpireDay",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenAuditServiceResponse": {
+      "document": "OpenAuditService response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audit is successfully enabled only when the value of this parameter is `0`.",
+          "example": "0",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ProcessStatistic": {
       "document": "Real-time session statistics.",

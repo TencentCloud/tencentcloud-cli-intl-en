@@ -8,6 +8,14 @@
         "title": "Adding an email recipient"
       }
     ],
+    "CloseAuditService": [
+      {
+        "document": "This example shows you how to disable database audit as needed.",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action= DescribeAuditInstanceList\n&Product=dcdb\n&NodeRequestType=dcdb\n&InstanceId=tdsqlsdfsd\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 0,\n        \"RequestId\": \"b39db780-0b49-11ee-8525-17d65d16bdaf\"\n    }\n}",
+        "title": "Disabling database audit"
+      }
+    ],
     "CreateDBDiagReportTask": [
       {
         "document": " ",
@@ -46,6 +54,14 @@
         "input": "POST / HTTP/1.1\nHost: dbbrain.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateProxySessionKillTask\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-8jawylhf\",\n    \"Product\": \"redis\"\n}",
         "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": 123456,\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Creating an async task of killing all proxy node connection sessions based on instance ID"
+      }
+    ],
+    "CreateRedisBigKeyAnalysisTask": [
+      {
+        "document": "This example shows you how to create an ad hoc big key analysis task for Redis instances.",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=CreateRedisBigKeyAnalysisTask\n&InstanceId=cdb-test\n&Product=redis\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"24665720-8c93-11eb-bee6-e98cea0e6794\",\n        \"AsyncRequestId\": 8011\n    }\n}",
+        "title": "Creating an ad hoc big key analysis task for Redis instances"
       }
     ],
     "CreateSchedulerMailProfile": [
@@ -94,6 +110,14 @@
         "input": "https://dbbrain.tencentcloudapi.com/?Action=DescribeAllUserGroup\n&Product=mysql\n&Names.0=group1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RequestId\": \"31dd9325-792f-4d76-89ad-ca8902cbe4d9\",\n        \"Groups\": [\n            {\n                \"MemberCount\": 0,\n                \"Id\": 1,\n                \"Name\": \"group1\"\n            },\n            {\n                \"MemberCount\": 2,\n                \"Id\": 2,\n                \"Name\": \"group11\"\n            }\n        ]\n    }\n}",
         "title": "Getting the recipient group information"
+      }
+    ],
+    "DescribeAuditInstanceList": [
+      {
+        "document": "This example shows you how to query the list of instances for which to enable audit.",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action= DescribeAuditInstanceList\n&Product=dcdb\n&NodeRequestType=dcdb\n&AuditSwitch=0\n&Offset=0\n&Limit=50\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"b39db780-0b49-11ee-8525-17d65d16bdaf\",\n        \"Items\": [\n            {\n                \"BillingConfirmed\": 1,\n                \"AuditStatus\": \"ON\",\n                \"ColdLogExpireDay\": 23,\n                \"InstanceId\": \"tdsql-lq5ue8p7\",\n                \"LogExpireDay\": 30,\n                \"CreateTime\": \"2023-06-08 19:48:19\",\n                \"HotLogSize\": 0,\n                \"HotLogExpireDay\": 7,\n                \"BillingAmount\": 0,\n                \"ColdLogSize\": 0,\n                \"InstanceInfo\": {\n                    \"InstanceName\": \"DBbrainTest_fanzhi_MySQL8.0\",\n                    \"AuditStatus\": 1,\n                    \"AppId\": 251009273,\n                    \"InstanceId\": \"tdsql-lq5ue8p7\",\n                    \"ResourceTags\": [\n                        \"abc\"\n                    ],\n                    \"ProjectId\": 0,\n                    \"Region\": \"ap-guangzhou\"\n                }\n            }\n        ]\n    }\n}",
+        "title": "Querying the instance list"
       }
     ],
     "DescribeDBDiagEvent": [
@@ -294,12 +318,28 @@
         "title": "Killing the current session by session ID"
       }
     ],
+    "ModifyAuditService": [
+      {
+        "document": "This example shows you how to modify audit configurations such as the retention period of frequently accessed logs.",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=ModifyAuditService\n&Product=dcdb\n&NodeRequestType=dcdb\n&InstanceId=tdsqlsertsd\n&LogExpireDay=30\n&HotLogExpireDay=7\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Success\": 0,\n        \"RequestId\": \"b39db780-0b49-11ee-8525-17d65d16bdaf\"\n    }\n}",
+        "title": "Modifying audit configurations"
+      }
+    ],
     "ModifyDiagDBInstanceConf": [
       {
         "document": " ",
         "input": "https://dbbrain.tencentcloudapi.com/?Action=ModifyDiagDBInstanceConf\n&InstanceIds.0=cdb-fyclrp7r\n&InstanceConfs.DailyInspection=Yes\n&Regions=All\n&Product=mysql\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"77db16d7-bbe8-48a7-868b-ed776a96f1ab\"\n    }\n}",
         "title": "Modifying the inspection configuration of an instance"
+      }
+    ],
+    "OpenAuditService": [
+      {
+        "document": "This example shows you how to enable database audit. After it is enabled, audit logs will be reported.",
+        "input": "https://dbbrain.tencentcloudapi.com/?Action=OpenAuditService\n&Product=dcdb\n&NodeRequestType=dcdb\n&InstanceId=tdsqlsertsd\n&LogExpireDay=30\n&HotLogExpireDay=7\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 0,\n        \"RequestId\": \"b39db780-0b49-11ee-8525-17d65d16bdaf\"\n    }\n}",
+        "title": "Enabling database audit"
       }
     ]
   },

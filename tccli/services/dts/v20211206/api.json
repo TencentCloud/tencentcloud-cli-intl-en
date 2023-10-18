@@ -1132,7 +1132,7 @@
         },
         {
           "disabled": false,
-          "document": "Sync task options",
+          "document": "Sync task options. The `RateLimitOption` option cannot take effect currently. To modify the speed limit settings, use the `ModifySyncRateLimit` API.",
           "example": "无",
           "member": "Options",
           "name": "Options",
@@ -2933,6 +2933,7 @@
           "example": "dts-amm1jw5q",
           "member": "string",
           "name": "JobId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -2942,6 +2943,7 @@
           "example": "dts-amm1jw5q",
           "member": "string",
           "name": "JobName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -2951,6 +2953,7 @@
           "example": "2022-07-11 16:20:49",
           "member": "string",
           "name": "CreateTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -2960,6 +2963,7 @@
           "example": "2022-07-11 16:20:49",
           "member": "string",
           "name": "UpdateTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -2969,6 +2973,7 @@
           "example": "2022-07-11 16:20:49",
           "member": "string",
           "name": "StartTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -2978,6 +2983,7 @@
           "example": "2022-07-11 16:20:49",
           "member": "string",
           "name": "EndTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -2987,6 +2993,7 @@
           "example": "无",
           "member": "string",
           "name": "BriefMsg",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -2996,6 +3003,7 @@
           "example": "running",
           "member": "string",
           "name": "Status",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3005,6 +3013,7 @@
           "example": "无",
           "member": "MigrateAction",
           "name": "Action",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -3014,6 +3023,7 @@
           "example": "无",
           "member": "MigrateDetailInfo",
           "name": "StepInfo",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -3023,6 +3033,7 @@
           "example": "无",
           "member": "DBEndpointInfo",
           "name": "SrcInfo",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -3032,6 +3043,7 @@
           "example": "无",
           "member": "DBEndpointInfo",
           "name": "DstInfo",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -3041,6 +3053,7 @@
           "example": "无",
           "member": "CompareTaskInfo",
           "name": "CompareTask",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -3050,6 +3063,7 @@
           "example": "无",
           "member": "TagItem",
           "name": "Tags",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -3059,6 +3073,7 @@
           "example": "immediate",
           "member": "string",
           "name": "RunMode",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3068,6 +3083,7 @@
           "example": "2022-07-11 16:20:49",
           "member": "string",
           "name": "ExpectRunTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3077,6 +3093,7 @@
           "example": "无",
           "member": "MigrateOption",
           "name": "MigrateOption",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -3086,6 +3103,7 @@
           "example": "无",
           "member": "CheckStepInfo",
           "name": "CheckStepInfo",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -3095,6 +3113,7 @@
           "example": "无",
           "member": "TradeInfo",
           "name": "TradeInfo",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -3104,7 +3123,28 @@
           "example": "无",
           "member": "ErrorInfoItem",
           "name": "ErrorInfo",
+          "output_required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.",
+          "example": "yes",
+          "member": "string",
+          "name": "DumperResumeCtrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task throttling information\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RateLimitOption",
+          "name": "RateLimitOption",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": true
         },
         {
@@ -3834,6 +3874,7 @@
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3844,6 +3885,7 @@
           "example": "proxy",
           "member": "string",
           "name": "Role",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3854,6 +3896,7 @@
           "example": "mariadb",
           "member": "string",
           "name": "DbKernel",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3864,6 +3907,7 @@
           "example": "cdb-wew23ed",
           "member": "string",
           "name": "InstanceId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3874,6 +3918,7 @@
           "example": "192.168.1.12",
           "member": "string",
           "name": "Ip",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3884,6 +3929,7 @@
           "example": "3306",
           "member": "uint64",
           "name": "Port",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -3894,6 +3940,7 @@
           "example": "user",
           "member": "string",
           "name": "User",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3904,6 +3951,7 @@
           "example": "1234",
           "member": "string",
           "name": "Password",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3914,6 +3962,7 @@
           "example": "postgress",
           "member": "string",
           "name": "DbName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3924,6 +3973,7 @@
           "example": "vpc-23rwfdg",
           "member": "string",
           "name": "VpcId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3934,6 +3984,7 @@
           "example": "subnet-tke9sfg",
           "member": "string",
           "name": "SubnetId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3944,6 +3995,7 @@
           "example": "ins-9emwf2d",
           "member": "string",
           "name": "CvmInstanceId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3954,6 +4006,7 @@
           "example": "dcg-9sdfksk",
           "member": "string",
           "name": "UniqDcgId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3964,6 +4017,7 @@
           "example": "vpngw-3dsfwf2",
           "member": "string",
           "name": "UniqVpnGwId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3974,6 +4028,7 @@
           "example": "ccn-afp6kltc",
           "member": "string",
           "name": "CcnId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3984,6 +4039,7 @@
           "example": "aliyun",
           "member": "string",
           "name": "Supplier",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -3994,6 +4050,7 @@
           "example": "5.6",
           "member": "string",
           "name": "EngineVersion",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4004,6 +4061,7 @@
           "example": "无",
           "member": "string",
           "name": "Account",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4014,6 +4072,7 @@
           "example": "other",
           "member": "string",
           "name": "AccountMode",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4024,6 +4083,7 @@
           "example": "dts test_role",
           "member": "string",
           "name": "AccountRole",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4034,6 +4094,7 @@
           "example": "无",
           "member": "string",
           "name": "RoleExternalId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4044,6 +4105,7 @@
           "example": "无",
           "member": "string",
           "name": "TmpSecretId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4054,6 +4116,7 @@
           "example": "无",
           "member": "string",
           "name": "TmpSecretKey",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4064,6 +4127,7 @@
           "example": "无",
           "member": "string",
           "name": "TmpToken",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4074,6 +4138,7 @@
           "example": "UnEncrypted",
           "member": "string",
           "name": "EncryptConn",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4084,12 +4149,60 @@
           "example": "TencentVPC",
           "member": "string",
           "name": "DatabaseNetEnv",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The root account of CCN in the scenario where the database is connected to CCN under another Tencent Cloud account\nNote: u200dThis field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CcnOwnerUin",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
         }
       ],
       "usage": "both"
+    },
+    "ErrInfo": {
+      "document": "Error information and the corresponding solution",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cause of the error",
+          "example": "无",
+          "member": "string",
+          "name": "Reason",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Solution\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Solution",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "ErrorInfoItem": {
       "document": "Task error information",
@@ -4373,6 +4486,16 @@
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "yes",
+          "member": "string",
+          "name": "DumperResumeCtrl",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4606,6 +4729,7 @@
           "example": "无",
           "member": "DatabaseTableObject",
           "name": "DatabaseTable",
+          "output_required": true,
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -4616,6 +4740,7 @@
           "example": "fullAndIncrement",
           "member": "string",
           "name": "MigrateType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4626,6 +4751,7 @@
           "example": "无",
           "member": "ConsistencyOption",
           "name": "Consistency",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -4636,6 +4762,7 @@
           "example": "false",
           "member": "bool",
           "name": "IsMigrateAccount",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -4646,6 +4773,7 @@
           "example": "false",
           "member": "bool",
           "name": "IsOverrideRoot",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -4656,16 +4784,18 @@
           "example": "false",
           "member": "bool",
           "name": "IsDstReadOnly",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Additional information. You can set additional parameters for certain database types. For Redis, you can define the following parameters: \n[\"ClientOutputBufferHardLimit\":512, \tHard limit of the replica buffer zone capacity in MB\t\"ClientOutputBufferSoftLimit\":512, \tSoft limit of the replica buffer zone capacity in MB\t\"ClientOutputBufferPersistTime\":60, Soft limit duration of the replica buffer zone in seconds\t\"ReplBacklogSize\":512, \tLimit of the circular buffer zone capacity in MB\t\"ReplTimeout\":120, \t\tReplication timeout period in seconds]\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Additional information. You can set additional parameters for certain database types. For Redis, you can define the following parameters: \n[\"DstWriteMode\": `normal`. \tTarget database write mode. Valid values: `clearData` (Clear the target instance data), overwrite` (Execute the task in overwriting mode), `normal` (Follow the normal steps) \t\"IsDstReadOnly\": `true`. \tWhether to set the target database to read-only for a migration task. Valid values: `true` (Yes), `false` (No) \t\"ClientOutputBufferHardLimit\": 512. \tHard limit of the replica buffer zone capacity in MB. \t\"ClientOutputBufferSoftLimit\": 512. \tSoft limit of the replica buffer zone capacity in MB. \t\"ClientOutputBufferPersistTime\": 60. Soft limit duration of the replica buffer zone in seconds. \t\"ReplBacklogSize\": 512, \tLimit of the circular buffer zone capacity in MB. \t\"ReplTimeout\":120，\t\tReplication timeout period in seconds]\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "KeyValuePairOption",
           "name": "ExtraAttr",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -4885,7 +5015,7 @@
         },
         {
           "disabled": false,
-          "document": "Migration task configuration options, which describe how the task performs migration.",
+          "document": "Migration task configuration options, which describe how the task performs migration. The `RateLimitOption` option cannot be configured. To modify the speed limit settings of the task, use the `ModifyMigrateRateLimit` API after the task starts running.",
           "example": "无",
           "member": "MigrateOption",
           "name": "MigrateOption",
@@ -5066,7 +5196,7 @@
           "value_allowed_null": true
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "Options": {
       "document": "Data sync options",
@@ -5077,6 +5207,7 @@
           "example": "无",
           "member": "string",
           "name": "InitType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -5087,6 +5218,7 @@
           "example": "无",
           "member": "string",
           "name": "DealOfExistSameTable",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -5097,6 +5229,7 @@
           "example": "无",
           "member": "string",
           "name": "ConflictHandleType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -5107,6 +5240,7 @@
           "example": "无",
           "member": "bool",
           "name": "AddAdditionalColumn",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -5117,6 +5251,7 @@
           "example": "无",
           "member": "string",
           "name": "OpTypes",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -5127,6 +5262,7 @@
           "example": "无",
           "member": "ConflictHandleOption",
           "name": "ConflictHandleOption",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -5137,6 +5273,7 @@
           "example": "无",
           "member": "DdlOption",
           "name": "DdlOptions",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -5147,8 +5284,31 @@
           "example": "无",
           "member": "KafkaOption",
           "name": "KafkaOption",
+          "output_required": true,
           "required": false,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task speed limit information. This parameter can only be used as an output parameter.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "RateLimitOption",
+          "name": "RateLimitOption",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Settings of the automatic retry time range\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "AutoRetryTimeRangeMinutes",
+          "output_required": true,
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -5309,6 +5469,133 @@
         }
       ],
       "usage": "out"
+    },
+    "RateLimitOption": {
+      "document": "Speed limit details of migration and sync tasks",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The number of full export threads that have taken effect.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "8",
+          "member": "int64",
+          "name": "CurrentDumpThread",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The default number of full export threads.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "8",
+          "member": "int64",
+          "name": "DefaultDumpThread",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The full export RPS that has taken effect.\t\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "400000",
+          "member": "int64",
+          "name": "CurrentDumpRps",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The default full export RPS.\t\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "400000",
+          "member": "int64",
+          "name": "DefaultDumpRps",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The number of full import threads that have taken effect.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "8",
+          "member": "int64",
+          "name": "CurrentLoadThread",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The default number of full import threads.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "8",
+          "member": "int64",
+          "name": "DefaultLoadThread",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The full import RPS that has taken effect.\t\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "400000",
+          "member": "int64",
+          "name": "CurrentLoadRps",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The default full import RPS.\t\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "400000",
+          "member": "int64",
+          "name": "DefaultLoadRps",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The number of incremental import threads that have taken effect.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "32",
+          "member": "int64",
+          "name": "CurrentSinkerThread",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The default number of incremental import threads.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "32",
+          "member": "int64",
+          "name": "DefaultSinkerThread",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the speed limit has been set. Valid values: `no` (No), `yes` (Yes).\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "no",
+          "member": "string",
+          "name": "HasUserSetRateLimit",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "RecoverMigrateJobRequest": {
       "document": "RecoverMigrateJob request structure.",
@@ -6141,7 +6428,7 @@
           "example": "无",
           "member": "uint64",
           "name": "StepAll",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6151,7 +6438,7 @@
           "example": "无",
           "member": "uint64",
           "name": "StepNow",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6161,17 +6448,17 @@
           "example": "无",
           "member": "int64",
           "name": "Progress",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Progress of the current step\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Progress of the current step. Value range: 0-100. The value of `-1` indicates that you can't check the progress of the current step.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "CurrentStepProgress",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6181,7 +6468,7 @@
           "example": "无",
           "member": "int64",
           "name": "MasterSlaveDistance",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6191,7 +6478,7 @@
           "example": "无",
           "member": "int64",
           "name": "SecondsBehindMaster",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6201,7 +6488,7 @@
           "example": "无",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6211,7 +6498,7 @@
           "example": "无",
           "member": "StepInfo",
           "name": "StepInfos",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6221,8 +6508,18 @@
           "example": "无",
           "member": "string",
           "name": "CauseOfCompareDisable",
-          "required": false,
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task error and the corresponding solution\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ErrInfo",
+          "name": "ErrInfo",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -6237,7 +6534,7 @@
           "example": "无",
           "member": "string",
           "name": "JobId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6247,7 +6544,7 @@
           "example": "无",
           "member": "string",
           "name": "JobName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6257,7 +6554,7 @@
           "example": "无",
           "member": "string",
           "name": "PayMode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6267,7 +6564,7 @@
           "example": "无",
           "member": "string",
           "name": "RunMode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6277,7 +6574,7 @@
           "example": "无",
           "member": "string",
           "name": "ExpectRunTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6287,7 +6584,7 @@
           "example": "无",
           "member": "string",
           "name": "AllActions",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6297,7 +6594,7 @@
           "example": "无",
           "member": "string",
           "name": "Actions",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6307,7 +6604,7 @@
           "example": "无",
           "member": "Options",
           "name": "Options",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -6317,7 +6614,7 @@
           "example": "无",
           "member": "Objects",
           "name": "Objects",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -6327,7 +6624,7 @@
           "example": "无",
           "member": "string",
           "name": "Specification",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6337,7 +6634,7 @@
           "example": "无",
           "member": "string",
           "name": "ExpireTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6347,7 +6644,7 @@
           "example": "无",
           "member": "string",
           "name": "SrcRegion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6357,7 +6654,7 @@
           "example": "无",
           "member": "string",
           "name": "SrcDatabaseType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6367,7 +6664,7 @@
           "example": "无",
           "member": "string",
           "name": "SrcAccessType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6377,7 +6674,27 @@
           "example": "无",
           "member": "Endpoint",
           "name": "SrcInfo",
-          "required": true,
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Valid values: `cluster`, `single`. `single`: For single-node source databases; `cluster`: For multi-node source databases.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "cluster",
+          "member": "string",
+          "name": "SrcNodeType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Source database information. This parameter is used for multi-node databases.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SyncDBEndpointInfos",
+          "name": "SrcInfos",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -6387,7 +6704,7 @@
           "example": "无",
           "member": "string",
           "name": "DstRegion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6397,7 +6714,7 @@
           "example": "无",
           "member": "string",
           "name": "DstDatabaseType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6407,7 +6724,7 @@
           "example": "无",
           "member": "string",
           "name": "DstAccessType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6417,7 +6734,27 @@
           "example": "无",
           "member": "Endpoint",
           "name": "DstInfo",
-          "required": true,
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Valid values: `cluster`, `single`. `single`: For single-node target databases; `cluster`: For multi-node target databases.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "cluster",
+          "member": "string",
+          "name": "DstNodeType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Target database information. This parameter is used for multi-node databases.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SyncDBEndpointInfos",
+          "name": "DstInfos",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -6427,7 +6764,7 @@
           "example": "无",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6437,7 +6774,7 @@
           "example": "无",
           "member": "string",
           "name": "StartTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6447,7 +6784,7 @@
           "example": "无",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6457,7 +6794,7 @@
           "example": "无",
           "member": "string",
           "name": "EndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6467,7 +6804,7 @@
           "example": "无",
           "member": "TagItem",
           "name": "Tags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6477,7 +6814,7 @@
           "example": "无",
           "member": "SyncDetailInfo",
           "name": "Detail",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -6487,7 +6824,7 @@
           "example": "Normal",
           "member": "string",
           "name": "TradeStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6497,7 +6834,7 @@
           "example": "medium",
           "member": "string",
           "name": "InstanceClass",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6507,7 +6844,7 @@
           "example": "0",
           "member": "uint64",
           "name": "AutoRenew",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6517,7 +6854,7 @@
           "example": "无",
           "member": "string",
           "name": "OfflineTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6527,8 +6864,18 @@
           "example": "5",
           "member": "int64",
           "name": "AutoRetryTimeRangeMinutes",
-          "required": true,
+          "output_required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "example": "yes",
+          "member": "string",
+          "name": "DumperResumeCtrl",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
