@@ -2639,6 +2639,15 @@
           "name": "SpliceDuration",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Meta information plan configuration.",
+          "example": "无",
+          "member": "TimedMetadataInfo",
+          "name": "TimedMetadataSetting",
+          "required": false,
+          "type": "object"
         }
       ],
       "usage": "in"
@@ -2732,6 +2741,17 @@
           "output_required": true,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Meta information plan configuration.",
+          "example": "无",
+          "member": "TimedMetadataInfo",
+          "name": "TimedMetadataSetting",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -3547,6 +3567,7 @@
           "example": "name",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -3557,6 +3578,7 @@
           "example": "无",
           "member": "string",
           "name": "AudioTemplateNames",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -3567,6 +3589,7 @@
           "example": "无",
           "member": "string",
           "name": "VideoTemplateNames",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -3577,6 +3600,7 @@
           "example": "无",
           "member": "Scte35SettingsInfo",
           "name": "Scte35Settings",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -3587,9 +3611,21 @@
           "example": "无",
           "member": "string",
           "name": "AVTemplateNames",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Meta information controls configuration.",
+          "example": "无",
+          "member": "TimedMetadataSettingInfo",
+          "name": "TimedMetadataSettings",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -4759,6 +4795,40 @@
           "required": false,
           "type": "int",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "TimedMetadataInfo": {
+      "document": "Transparent transmission of meta information plan configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Base64-encoded id3 metadata information, with a maximum limit of 1024 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "ID3",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TimedMetadataSettingInfo": {
+      "document": "Transparent transmission of ID3 information configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to transparently transmit ID3 information, optional values: 0:NO_PASSTHROUGH, 1:PASSTHROUGH, default 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Behavior",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
