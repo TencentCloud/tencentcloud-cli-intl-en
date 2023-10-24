@@ -32,6 +32,14 @@
         "title": "Starting stream push"
       }
     ],
+    "StartPublishStreamWithURL": [
+      {
+        "document": "This example shows you how to start a stream push to the specified URL.",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartPublishStreamWithURL\n<Common request parameters>\n\n{\n    \"UserId\": \"abc\",\n    \"PublishStreamURL\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "This example shows you how to start a stream push to the specified URL."
+      }
+    ],
     "StopPublishStream": [
       {
         "document": " ",

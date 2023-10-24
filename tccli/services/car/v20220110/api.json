@@ -28,6 +28,13 @@
       "output": "StartPublishStreamResponse",
       "status": "online"
     },
+    "StartPublishStreamWithURL": {
+      "document": "This API is used to start stream push to the specified URL. It is billed separately. For billing details, see the [Push to third-party address](https://intl.cloud.tencent.com/document/product/1547/72168?from_cn_redirect=1#98ac188a-d122-4caf-88be-05268ecefdf6) section.",
+      "input": "StartPublishStreamWithURLRequest",
+      "name": "Starts stream push to the specified URL",
+      "output": "StartPublishStreamWithURLResponse",
+      "status": "online"
+    },
     "StopPublishStream": {
       "document": "This API is used to stop stream push.",
       "input": "StopPublishStreamRequest",
@@ -249,6 +256,42 @@
     },
     "StartPublishStreamResponse": {
       "document": "StartPublishStream response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartPublishStreamWithURLRequest": {
+      "document": "StartPublishStreamWithURL request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique user ID, which is customized by you and is not understood by CAR.",
+          "example": "abc123",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Push address. Only RTMP is supported for push currently.",
+          "example": "rtmp://live.stream.com/publish",
+          "member": "string",
+          "name": "PublishStreamURL",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartPublishStreamWithURLResponse": {
+      "document": "StartPublishStreamWithURL response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
