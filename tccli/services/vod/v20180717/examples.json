@@ -746,7 +746,7 @@
       {
         "document": "获取视频重生模板列表。",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRebuildMediaTemplates\n<common request parameters>\n\n{\n    \"Definitions\": [\n        20001\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RebuildMediaTemplateSet\": [\n            {\n                \"Definition\": 20001,\n                \"Name\": \"test\",\n                \"Comment\": \"\",\n                \"Container\": \"mp4\",\n                \"RemoveVideo\": 0,\n                \"RemoveAudio\": 0,\n                \"CreateTime\": \"\",\n                \"UpdateTime\": \"\"\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RebuildMediaTemplateSet\": [\n            {\n                \"Definition\": 20001,\n                \"Name\": \"test\",\n                \"Type\": \"Preset\",\n                \"Comment\": \"\",\n                \"RebuildVideoInfo\": null,\n                \"RebuildAudioInfo\": null,\n                \"TargetVideoInfo\": null,\n                \"TargetAudioInfo\": null,\n                \"Container\": \"mp4\",\n                \"RemoveVideo\": 0,\n                \"RemoveAudio\": 0,\n                \"CreateTime\": \"\",\n                \"UpdateTime\": \"\"\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "获取视频重生模板列表。"
       }
     ],
@@ -1308,6 +1308,44 @@
         "title": "Parsing an index file"
       }
     ],
+    "ProcessMedia": [
+      {
+        "document": "This example shows you how to initiate a task to transcode the video whose `fileId` is `5285485487985271487` according to the transcoding templates 20, 30, and 40.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&MediaProcessTask.TranscodeTaskSet.0.Definition=20\n&MediaProcessTask.TranscodeTaskSet.1.Definition=30\n&MediaProcessTask.TranscodeTaskSet.2.Definition=40\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Initiating a transcoding task"
+      },
+      {
+        "document": "This example shows you how to initiate a task to transcode the video whose `fileId` is `5285485487985271487` according to the transcoding templates 20, 30, and 40, as well as watermark the videos according to the watermark template 15780.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&MediaProcessTask.TranscodeTaskSet.0.Definition=20\n&MediaProcessTask.TranscodeTaskSet.0.WatermarkSet.0.Definition=15780\n&MediaProcessTask.TranscodeTaskSet.1.Definition=30\n&MediaProcessTask.TranscodeTaskSet.1.WatermarkSet.0.Definition=15780\n&MediaProcessTask.TranscodeTaskSet.2.Definition=40\n&MediaProcessTask.TranscodeTaskSet.2.WatermarkSet.0.Definition=15780\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Initiating a transcoding task with watermarked outputs"
+      },
+      {
+        "document": "This example shows you how to initiate a task to transcode the video whose `fileId` is `5285485487985271487` according to the transcoding templates 20, 30, and 40, and take screenshots according to the sampled screenshot template 10.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&MediaProcessTask.TranscodeTaskSet.0.Definition=20\n&MediaProcessTask.TranscodeTaskSet.1.Definition=30\n&MediaProcessTask.TranscodeTaskSet.2.Definition=40\n&MediaProcessTask.SampleSnapshotTaskSet.0.Definition=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Initiating a task to transcode a video and take sampled screenshots"
+      },
+      {
+        "document": "This example shows you how to initiate task to analyze the video whose `fileId` is `5285485487985271487` according to the content analysis template 10 for intelligent categorization, label detection, and thumbnail generation.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&AiAnalysisTask.Definition=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07586237bcecodb01fac7kdikk\"\n    }\n}",
+        "title": "Initiating an intelligent content analysis task"
+      },
+      {
+        "document": "This example shows you how to initiate a task to recognize pornographic, terrorist, and politically sensitive content in the video whose `fileId` is `5285485487985271487` according to the intelligent recognition template 10.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&AiContentReviewTask.Definition=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Initiating an intelligent recognition task"
+      },
+      {
+        "document": "This example shows you how to initiate a task to recognize faces in the video whose `fileId` is `5285485487985271487` according to the content recognition template 10.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&AiRecognitionTask.Definition=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc70006fje1\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07586237bcecodb01fac7kdabc\"\n    }\n}",
+        "title": "Initiating an intelligent content recognition task"
+      }
+    ],
     "ProcessMediaByProcedure": [
       {
         "document": "This example shows you how to initiate a task flow named `TranscodeAndSnapshot` for the video whose `fileId` is 5285485487985271487.",
@@ -1374,10 +1412,10 @@
     ],
     "RebuildMedia": [
       {
-        "document": "发起视频重生",
+        "document": "发起音画质重生",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RebuildMedia\n<common request parameters>\n\n{\n    \"SuperResolutionInfo\": {\n        \"Switch\": \"ON\"\n    },\n    \"VideoFrameInterpolationInfo\": {\n        \"Switch\": \"ON\",\n        \"Fps\": \"25\"\n    },\n    \"FileId\": \"8312960950918954859\",\n    \"RepairInfo\": {\n        \"Switch\": \"ON\"\n    },\n    \"TargetInfo\": {\n        \"Container\": \"mp4\",\n        \"MediaName\": \"字符串\",\n        \"Description\": \"字符串\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"125xxx-RebuildMedia-75e45d323ffad76987112fafe2eb87dxxx\",\n        \"RequestId\": \"ef5aae86-6eab-4cb3-9ebc-0979010b3f22\"\n    }\n}",
-        "title": "发起视频重生"
+        "title": "发起音画质重生"
       }
     ],
     "RebuildMediaByTemplate": [

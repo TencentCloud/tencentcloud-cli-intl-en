@@ -861,6 +861,13 @@
       "output": "ParseStreamingManifestResponse",
       "status": "online"
     },
+    "ProcessMedia": {
+      "document": "",
+      "input": "ProcessMediaRequest",
+      "name": "Processes a video",
+      "output": "ProcessMediaResponse",
+      "status": "online"
+    },
     "ProcessMediaByProcedure": {
       "document": "This API is used to start a task flow on a video.\nThere are two ways to create a task flow template:\n1. Create and modify a task flow template in the console;\n2. Create a task flow template using the `CreateProcedureTemplate` API.\n\nIf event notifications are used, the event type for moderation tasks is [ReviewAudioVideoComplete](https://intl.cloud.tencent.com/document/product/266/81258?from_cn_redirect=1), and that for other tasks is [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).",
       "input": "ProcessMediaByProcedureRequest",
@@ -4501,7 +4508,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "AiReviewPornTaskOutput": {
       "document": "Output for intelligent recognition of pornographic content",
@@ -7927,7 +7934,7 @@
         {
           "disabled": false,
           "document": "Domain",
-          "example": "无",
+          "example": "myexample2.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -7936,7 +7943,7 @@
         {
           "disabled": false,
           "document": "The cloned domain.",
-          "example": "无",
+          "example": "myexample.com",
           "member": "string",
           "name": "ReferenceDomain",
           "required": true,
@@ -7944,8 +7951,8 @@
         },
         {
           "disabled": false,
-          "document": "VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.",
-          "example": "无",
+          "document": "VOD[Subapplication](https://www.tencentcloud.com/document/product/266/33987) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.",
+          "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -9377,7 +9384,7 @@
         {
           "disabled": false,
           "document": "Domain.",
-          "example": "无",
+          "example": "myexample.com",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -9394,8 +9401,8 @@
         },
         {
           "disabled": false,
-          "document": "VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.",
-          "example": "无",
+          "document": "VOD[Subapplication](https://www.tencentcloud.com/zh/document/product/266/33987) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.",
+          "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -16996,9 +17003,10 @@
         {
           "disabled": false,
           "document": "",
-          "example": "无",
+          "example": "on",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -17009,6 +17017,7 @@
           "example": "无",
           "member": "HeuristicCacheConfig",
           "name": "CacheConfig",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -17282,7 +17291,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "ImageCenterCut": {
       "document": "Image cropping details.",
@@ -17328,7 +17337,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "ImageOperation": {
       "document": "An image operation.",
@@ -17522,7 +17531,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "ImageSpriteTaskInput": {
       "document": "Input parameter type of image sprite generating task",
@@ -25571,6 +25580,133 @@
       ],
       "type": "object"
     },
+    "ProcessMediaRequest": {
+      "document": "ProcessMedia request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Media file ID, i.e., the globally unique ID of a file in VOD assigned by the VOD backend after successful upload. This field can be obtained through the [video upload completion event notification](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) or [VOD Console](https://console.cloud.tencent.com/vod/media).",
+          "example": "5285485487985271487",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "123",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Parameter of video processing task.",
+          "example": "无",
+          "member": "MediaProcessTaskInput",
+          "name": "MediaProcessTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The information of the audio/video moderation task\\*.\nThis parameter is <font color=red>\\*no longer recommended</font>. Please use [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) or [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1) instead.",
+          "example": "无",
+          "member": "AiContentReviewTaskInput",
+          "name": "AiContentReviewTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Video content analysis task parameter.",
+          "example": "无",
+          "member": "AiAnalysisTaskInput",
+          "name": "AiAnalysisTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Type parameter of video content recognition task.",
+          "example": "无",
+          "member": "AiRecognitionTaskInput",
+          "name": "AiRecognitionTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Task flow priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.",
+          "example": "0",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Notification mode for task flow status change. Valid values: Finish, Change, None. If this parameter is left empty, `Finish` will be used.",
+          "example": "Finish",
+          "member": "string",
+          "name": "TasksNotifyMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
+          "example": "SessionContext",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.",
+          "example": "SessionId",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Reserved field for special purposes.",
+          "example": "ExtInfo",
+          "member": "string",
+          "name": "ExtInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ProcessMediaResponse": {
+      "document": "ProcessMedia response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ProhibitedAsrReviewTemplateInfo": {
       "document": "Control parameter of prohibited information detection in speech task",
       "members": [
@@ -30481,7 +30617,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "SplitMediaTask": {
       "document": "Video splitting task information. This field has a value only when `TaskType` is `SplitMedia`.",
@@ -31489,16 +31625,6 @@
       "members": [
         {
           "disabled": false,
-          "document": "Parameters for recognition of terrorism content in images\nNote: This field may return `null`, indicating that no valid value can be found.",
-          "example": "无",
-          "member": "TerrorismImgReviewTemplateInfo",
-          "name": "ImgReviewInfo",
-          "required": false,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
           "document": "Parameters for OCR-based recognition of terrorism content\nNote: This field may return `null`, indicating that no valid value can be found.",
           "example": "无",
           "member": "TerrorismOcrReviewTemplateInfo",
@@ -31506,9 +31632,19 @@
           "required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Parameters for recognition of terrorism content in images\nNote: This field may return `null`, indicating that no valid value can be found.",
+          "example": "无",
+          "member": "TerrorismImgReviewTemplateInfo",
+          "name": "ImgReviewInfo",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "TerrorismConfigureInfoForUpdate": {
       "document": "Parameters for recognition of terrorism content",

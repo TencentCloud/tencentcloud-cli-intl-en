@@ -364,6 +364,34 @@
       "output": "DisassociateTargetGroupsResponse",
       "status": "online"
     },
+    "InquiryPriceCreateLoadBalancer": {
+      "document": "This API is used to query the price of creating a CLB instance.",
+      "input": "InquiryPriceCreateLoadBalancerRequest",
+      "name": "Queries the price of creating a CLB instance.",
+      "output": "InquiryPriceCreateLoadBalancerResponse",
+      "status": "online"
+    },
+    "InquiryPriceModifyLoadBalancer": {
+      "document": "This API is used to query the price of adjusting the specification of a CLB instance.",
+      "input": "InquiryPriceModifyLoadBalancerRequest",
+      "name": "Queries the price of adjusting the specification of a CLB instance",
+      "output": "InquiryPriceModifyLoadBalancerResponse",
+      "status": "online"
+    },
+    "InquiryPriceRefundLoadBalancer": {
+      "document": "This API is used to query the refund amount of returning a CLB instance. ",
+      "input": "InquiryPriceRefundLoadBalancerRequest",
+      "name": "Queries the refund amount of returning a CLB instance. ",
+      "output": "InquiryPriceRefundLoadBalancerResponse",
+      "status": "online"
+    },
+    "InquiryPriceRenewLoadBalancer": {
+      "document": "This API is used to query the price of renewing a CLB instance. It's only available to prepaid CLB instances.",
+      "input": "InquiryPriceRenewLoadBalancerRequest",
+      "name": "Queries the price to renew a prepaid CLB instance",
+      "output": "InquiryPriceRenewLoadBalancerResponse",
+      "status": "online"
+    },
     "ManualRewrite": {
       "document": "After the original access address and the address to be redirected are configured manually, the system will automatically redirect requests made to the original access address to the target address of the corresponding path. Multiple paths can be configured as a redirection policy under one domain name to achieve automatic redirection between HTTP and HTTPS. A redirection policy should meet the following rules: if A has already been redirected to B, then it cannot be redirected to C (unless the original redirection relationship is deleted and a new one is created), and B cannot be redirected to any other addresses.",
       "input": "ManualRewriteRequest",
@@ -425,6 +453,13 @@
       "input": "ModifyLoadBalancerSlaRequest",
       "name": "Upgrades to an LCU-supported instance",
       "output": "ModifyLoadBalancerSlaResponse",
+      "status": "online"
+    },
+    "ModifyLoadBalancersProject": {
+      "document": "This API is used to modify the projects of CLB instances. ",
+      "input": "ModifyLoadBalancersProjectRequest",
+      "name": "Modifies the projects of CLB instances",
+      "output": "ModifyLoadBalancersProjectResponse",
       "status": "online"
     },
     "ModifyRule": {
@@ -572,6 +607,7 @@
         {
           "disabled": false,
           "document": "ID of associated CLB instance",
+          "example": "",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -581,6 +617,7 @@
         {
           "disabled": false,
           "document": "ID of associated listener",
+          "example": "",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -590,6 +627,7 @@
         {
           "disabled": false,
           "document": "ID of associated forwarding rule\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "LocationId",
           "required": true,
@@ -599,6 +637,7 @@
         {
           "disabled": false,
           "document": "Protocol type of associated listener, such as HTTP or TCP",
+          "example": "",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -608,6 +647,7 @@
         {
           "disabled": false,
           "document": "Port of associated listener",
+          "example": "",
           "member": "uint64",
           "name": "Port",
           "required": true,
@@ -617,6 +657,7 @@
         {
           "disabled": false,
           "document": "Domain name of associated forwarding rule\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -626,6 +667,7 @@
         {
           "disabled": false,
           "document": "URL of associated forwarding rule\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -635,6 +677,7 @@
         {
           "disabled": false,
           "document": "CLB instance name",
+          "example": "",
           "member": "string",
           "name": "LoadBalancerName",
           "required": true,
@@ -644,6 +687,7 @@
         {
           "disabled": false,
           "document": "Listener name",
+          "example": "",
           "member": "string",
           "name": "ListenerName",
           "required": true,
@@ -722,6 +766,7 @@
         {
           "disabled": false,
           "document": "Real server type. Valid values: CVM, ENI.",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -731,6 +776,7 @@
         {
           "disabled": false,
           "document": "Unique ID of a real server, which can be obtained from the unInstanceId field in the return of the DescribeInstances API",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -740,6 +786,7 @@
         {
           "disabled": false,
           "document": "Listening port of a real server",
+          "example": "",
           "member": "int64",
           "name": "Port",
           "required": true,
@@ -749,6 +796,7 @@
         {
           "disabled": false,
           "document": "Forwarding weight of a real server. Value range: [0, 100]. Default value: 10.",
+          "example": "",
           "member": "int64",
           "name": "Weight",
           "required": true,
@@ -758,6 +806,7 @@
         {
           "disabled": false,
           "document": "Public IP of a real server\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "PublicIpAddresses",
           "required": true,
@@ -767,6 +816,7 @@
         {
           "disabled": false,
           "document": "Private IP of a real server\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "PrivateIpAddresses",
           "required": true,
@@ -776,6 +826,7 @@
         {
           "disabled": false,
           "document": "Real server instance names\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -785,6 +836,7 @@
         {
           "disabled": false,
           "document": "Bound time of a real server\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "RegisteredTime",
           "required": true,
@@ -794,6 +846,7 @@
         {
           "disabled": false,
           "document": "Unique ENI ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "EniId",
           "required": true,
@@ -809,6 +862,7 @@
         {
           "disabled": false,
           "document": "Target group ID",
+          "example": "",
           "member": "string",
           "name": "TargetGroupId",
           "required": true,
@@ -818,6 +872,7 @@
         {
           "disabled": false,
           "document": "Target group name",
+          "example": "",
           "member": "string",
           "name": "TargetGroupName",
           "required": true,
@@ -939,6 +994,7 @@
         {
           "disabled": false,
           "document": "IDs of the listeners failed to bind. If this is blank, all listeners are bound successfully.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "FailListenerIdSet",
           "type": "list",
@@ -1025,6 +1081,7 @@
         {
           "disabled": false,
           "document": "Specifies the ID of CLB to be bound",
+          "example": "",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -1034,6 +1091,7 @@
         {
           "disabled": false,
           "document": "Specifies the ID of listener to be bound\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -1043,6 +1101,7 @@
         {
           "disabled": false,
           "document": "Specifies the domain name to be bound\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -1052,6 +1111,7 @@
         {
           "disabled": false,
           "document": "Sets the bound rule.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "LocationId",
           "required": true,
@@ -1061,6 +1121,7 @@
         {
           "disabled": false,
           "document": "Listener name.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ListenerName",
           "required": true,
@@ -1070,6 +1131,7 @@
         {
           "disabled": false,
           "document": "Listener protocol.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -1079,6 +1141,7 @@
         {
           "disabled": false,
           "document": "Listener port.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Vport",
           "required": true,
@@ -1088,6 +1151,7 @@
         {
           "disabled": false,
           "document": "URL of the location.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -1097,6 +1161,7 @@
         {
           "disabled": false,
           "document": "Configuration ID.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "UconfigId",
           "required": true,
@@ -1112,6 +1177,7 @@
         {
           "disabled": false,
           "document": "Blacklisted IP",
+          "example": "",
           "member": "string",
           "name": "IP",
           "required": true,
@@ -1121,6 +1187,7 @@
         {
           "disabled": false,
           "document": "Blacklisted time",
+          "example": "",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -1130,6 +1197,7 @@
         {
           "disabled": false,
           "document": "Expiration time",
+          "example": "",
           "member": "string",
           "name": "ExpireTime",
           "required": true,
@@ -1145,6 +1213,7 @@
         {
           "disabled": false,
           "document": "Certificate ID",
+          "example": "",
           "member": "string",
           "name": "CertId",
           "required": true,
@@ -1154,6 +1223,7 @@
         {
           "disabled": false,
           "document": "List of CLB instances associated with certificate\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "LoadBalancer",
           "name": "LoadBalancers",
           "required": true,
@@ -1215,6 +1285,7 @@
         {
           "disabled": false,
           "document": "Authentication type. Value range: UNIDIRECTIONAL (unidirectional authentication), MUTUAL (mutual authentication)",
+          "example": "",
           "member": "string",
           "name": "SSLMode",
           "required": false,
@@ -1224,6 +1295,7 @@
         {
           "disabled": false,
           "document": "ID of a server certificate. If you leave this parameter empty, you must upload the certificate, including CertContent, CertKey, and CertName.",
+          "example": "",
           "member": "string",
           "name": "CertId",
           "required": false,
@@ -1233,6 +1305,7 @@
         {
           "disabled": false,
           "document": "ID of a client certificate. When the listener adopts mutual authentication (i.e., SSLMode = mutual), if you leave this parameter empty, you must upload the client certificate, including CertCaContent and CertCaName.",
+          "example": "",
           "member": "string",
           "name": "CertCaId",
           "required": false,
@@ -1242,6 +1315,7 @@
         {
           "disabled": false,
           "document": "Name of the uploaded server certificate. If there is no CertId, this parameter is required.",
+          "example": "",
           "member": "string",
           "name": "CertName",
           "required": false,
@@ -1251,6 +1325,7 @@
         {
           "disabled": false,
           "document": "Key of the uploaded server certificate. If there is no CertId, this parameter is required.",
+          "example": "",
           "member": "string",
           "name": "CertKey",
           "required": false,
@@ -1260,6 +1335,7 @@
         {
           "disabled": false,
           "document": "Content of the uploaded server certificate. If there is no CertId, this parameter is required.",
+          "example": "",
           "member": "string",
           "name": "CertContent",
           "required": false,
@@ -1269,6 +1345,7 @@
         {
           "disabled": false,
           "document": "Name of the uploaded client CA certificate. When SSLMode = mutual, if there is no CertCaId, this parameter is required.",
+          "example": "",
           "member": "string",
           "name": "CertCaName",
           "required": false,
@@ -1278,6 +1355,7 @@
         {
           "disabled": false,
           "document": "Content of the uploaded client certificate. When SSLMode = mutual, if there is no CertCaId, this parameter is required.",
+          "example": "",
           "member": "string",
           "name": "CertCaContent",
           "required": false,
@@ -1339,6 +1417,7 @@
         {
           "disabled": false,
           "document": "Private IP of a real server",
+          "example": "",
           "member": "string",
           "name": "IP",
           "required": true,
@@ -1348,6 +1427,7 @@
         {
           "disabled": false,
           "document": "Real server port",
+          "example": "",
           "member": "int64",
           "name": "Port",
           "required": true,
@@ -1357,6 +1437,7 @@
         {
           "disabled": false,
           "document": "CLB listener port",
+          "example": "",
           "member": "int64",
           "name": "ListenerPort",
           "required": true,
@@ -1366,6 +1447,7 @@
         {
           "disabled": false,
           "document": "Forwarding protocol",
+          "example": "",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -1375,6 +1457,7 @@
         {
           "disabled": false,
           "document": "Health check result. Value range: 1 (healthy), 0 (unhealthy)",
+          "example": "",
           "member": "int64",
           "name": "HealthStatus",
           "required": true,
@@ -1390,6 +1473,7 @@
         {
           "disabled": false,
           "document": "CLB listener ID",
+          "example": "",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -1399,6 +1483,7 @@
         {
           "disabled": false,
           "document": "CLB listener port",
+          "example": "",
           "member": "int64",
           "name": "ListenerPort",
           "required": true,
@@ -1408,6 +1493,7 @@
         {
           "disabled": false,
           "document": "Backend forwarding port of a listener",
+          "example": "",
           "member": "int64",
           "name": "InstancePort",
           "required": true,
@@ -1417,6 +1503,7 @@
         {
           "disabled": false,
           "document": "Listener name",
+          "example": "",
           "member": "string",
           "name": "ListenerName",
           "required": true,
@@ -1426,6 +1513,7 @@
         {
           "disabled": false,
           "document": "Listener protocol type",
+          "example": "",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -1435,6 +1523,7 @@
         {
           "disabled": false,
           "document": "Session persistence time",
+          "example": "",
           "member": "int64",
           "name": "SessionExpire",
           "required": true,
@@ -1444,6 +1533,7 @@
         {
           "disabled": false,
           "document": "Whether health check is enabled. 1: enabled; 0: disabled.",
+          "example": "",
           "member": "int64",
           "name": "HealthSwitch",
           "required": true,
@@ -1453,6 +1543,7 @@
         {
           "disabled": false,
           "document": "Response timeout period",
+          "example": "",
           "member": "int64",
           "name": "TimeOut",
           "required": true,
@@ -1462,6 +1553,7 @@
         {
           "disabled": false,
           "document": "Check interval",
+          "example": "",
           "member": "int64",
           "name": "IntervalTime",
           "required": true,
@@ -1471,6 +1563,7 @@
         {
           "disabled": false,
           "document": "Health threshold",
+          "example": "",
           "member": "int64",
           "name": "HealthNum",
           "required": true,
@@ -1480,6 +1573,7 @@
         {
           "disabled": false,
           "document": "Unhealthy threshold",
+          "example": "",
           "member": "int64",
           "name": "UnhealthNum",
           "required": true,
@@ -1489,6 +1583,7 @@
         {
           "disabled": false,
           "document": "A request balancing method for HTTP and HTTPS listeners of a public network classic CLB. wrr means weighted round robin, while ip_hash means consistent hashing based on source IPs of access requests.",
+          "example": "",
           "member": "string",
           "name": "HttpHash",
           "required": true,
@@ -1498,6 +1593,7 @@
         {
           "disabled": false,
           "document": "Health check return code for HTTP and HTTPS listeners of a public network classic CLB. For more information, see the explanation of the field in the listener creating API.",
+          "example": "",
           "member": "int64",
           "name": "HttpCode",
           "required": true,
@@ -1507,6 +1603,7 @@
         {
           "disabled": false,
           "document": "Health check path for HTTP and HTTPS listeners of a public network classic CLB",
+          "example": "",
           "member": "string",
           "name": "HttpCheckPath",
           "required": true,
@@ -1516,6 +1613,7 @@
         {
           "disabled": false,
           "document": "Authentication method for an HTTPS listener of a public network classic CLB",
+          "example": "",
           "member": "string",
           "name": "SSLMode",
           "required": true,
@@ -1525,6 +1623,7 @@
         {
           "disabled": false,
           "document": "Server certificate ID for an HTTPS listener of a public network classic CLB",
+          "example": "",
           "member": "string",
           "name": "CertId",
           "required": true,
@@ -1534,6 +1633,7 @@
         {
           "disabled": false,
           "document": "Client certificate ID for an HTTPS listener of a public network classic CLB",
+          "example": "",
           "member": "string",
           "name": "CertCaId",
           "required": true,
@@ -1543,6 +1643,7 @@
         {
           "disabled": false,
           "document": "Listener status. Value range: 0 (creating), 1 (running)",
+          "example": "",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -1558,6 +1659,7 @@
         {
           "disabled": false,
           "document": "Real server ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1567,6 +1669,7 @@
         {
           "disabled": false,
           "document": "List of CLB instance IDs\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "LoadBalancerIds",
           "required": true,
@@ -1582,6 +1685,7 @@
         {
           "disabled": false,
           "document": "Real server type. Value range: CVM, ENI (coming soon)",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -1591,6 +1695,7 @@
         {
           "disabled": false,
           "document": "Unique ID of a real server, which can be obtained from the unInstanceId field in the return of the DescribeInstances API",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1600,6 +1705,7 @@
         {
           "disabled": false,
           "document": "Forwarding weight of a real server. Value range: [0, 100]. Default value: 10.",
+          "example": "",
           "member": "int64",
           "name": "Weight",
           "required": true,
@@ -1609,6 +1715,7 @@
         {
           "disabled": false,
           "document": "Public IP of a real server\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "PublicIpAddresses",
           "required": true,
@@ -1618,6 +1725,7 @@
         {
           "disabled": false,
           "document": "Private IP of a real server\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "PrivateIpAddresses",
           "required": true,
@@ -1627,6 +1735,7 @@
         {
           "disabled": false,
           "document": "Real server instance names\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -1636,6 +1745,7 @@
         {
           "disabled": false,
           "document": "Real server status\n1: failed; 2: running; 3: creating; 4: shut down; 5: returned; 6: returning; 7: restarting; 8: starting; 9: shutting down; 10: resetting password; 11: formatting; 12: making image; 13: setting bandwidth; 14: reinstalling system; 19: upgrading; 21: hot migrating\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "RunFlag",
           "required": true,
@@ -1651,6 +1761,7 @@
         {
           "disabled": false,
           "document": "Real server ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -1660,6 +1771,7 @@
         {
           "disabled": false,
           "document": "Weight. Value range: [0, 100]",
+          "example": "",
           "member": "int64",
           "name": "Weight",
           "required": false,
@@ -1737,7 +1849,7 @@
         },
         {
           "disabled": false,
-          "document": "It's only applicable to public network CLB instances. u200dValues: `CMCC` (China Mobile), `CTCC`·(China Telecom) and `CUCC` (China Unicom). If it is not specified, BGP line is used by default. To query ISPs available in a region, use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). If this parameter is specified, the network billing mode must be `BANDWIDTH_PACKAGE`.",
+          "document": "ISP of VIP. Values: `CMCC` (China Mobile), `CUCC` (China Unicom) and `CTCC` (China Telecom). You need to activate static single-line IPs. This feature is in beta and is only available in Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu and Chongqing regions. To try it out, please contact your sales rep. If it's specified, the network billing mode must be `BANDWIDTH_PACKAGE`. If it's not specified, BGP is used by default. To query ISPs supported in a region, please use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). ",
           "example": "CMCC",
           "member": "string",
           "name": "VipIsp",
@@ -1864,6 +1976,7 @@
         {
           "disabled": false,
           "document": "Unique cluster ID",
+          "example": "",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -1873,6 +1986,7 @@
         {
           "disabled": false,
           "document": "Cluster name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ClusterName",
           "required": false,
@@ -1882,6 +1996,7 @@
         {
           "disabled": false,
           "document": "Cluster AZ, such as ap-guangzhou-1\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Zone",
           "required": false,
@@ -1897,6 +2012,7 @@
         {
           "disabled": false,
           "document": "Configuration ID.",
+          "example": "",
           "member": "string",
           "name": "UconfigId",
           "required": true,
@@ -1906,6 +2022,7 @@
         {
           "disabled": false,
           "document": "Configuration type.",
+          "example": "",
           "member": "string",
           "name": "ConfigType",
           "required": true,
@@ -1915,6 +2032,7 @@
         {
           "disabled": false,
           "document": "Configuration name.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ConfigName",
           "required": true,
@@ -1924,6 +2042,7 @@
         {
           "disabled": false,
           "document": "Configuration content.",
+          "example": "",
           "member": "string",
           "name": "ConfigContent",
           "required": true,
@@ -1933,6 +2052,7 @@
         {
           "disabled": false,
           "document": "Creates configuration time.",
+          "example": "",
           "member": "string",
           "name": "CreateTimestamp",
           "required": true,
@@ -1942,6 +2062,7 @@
         {
           "disabled": false,
           "document": "Modifies configuration time.",
+          "example": "",
           "member": "string",
           "name": "UpdateTimestamp",
           "required": true,
@@ -1990,6 +2111,7 @@
         {
           "disabled": false,
           "document": "Logset ID.",
+          "example": "",
           "member": "string",
           "name": "LogsetId",
           "type": "string",
@@ -2271,7 +2393,7 @@
         },
         {
           "disabled": false,
-          "document": "Sets the primary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB.\nNote: By default, the traffic goes to the primary AZ. The secondary AZs only carry traffic when the primary AZ is unavailable. The optimal secondary AZ is chosen automatically. You can query the primary and secondary AZ of a region by calling [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).",
+          "document": "ID of the primary AZ for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`. It's only available to public CLB instances. \nNote: The traffic only goes to the primary AZ in normal cases. The secondary AZ is used only when the primary AZ is unavailable. To query the list of primary AZs in a region, use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "MasterZoneId",
@@ -2298,7 +2420,7 @@
         },
         {
           "disabled": false,
-          "document": "It's only applicable to public network CLB instances. u200dValues: `CMCC` (China Mobile), `CTCC`·(China Telecom) and `CUCC` (China Unicom). If it is not specified, BGP line is used by default. To query ISPs available in a region, use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). If this parameter is specified, the network billing mode must be `BANDWIDTH_PACKAGE`.",
+          "document": "ISP of VIP. Values: `CMCC` (China Mobile), `CUCC` (China Unicom) and `CTCC` (China Telecom). You need to activate static single-line IPs. This feature is in beta and is only available in Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu and Chongqing regions. To try it out, please contact your sales rep. If it's specified, the network billing mode must be `BANDWIDTH_PACKAGE`. If it's not specified, BGP is used by default. To query ISPs supported in a region, please use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). ",
           "example": "CMCC",
           "member": "string",
           "name": "VipIsp",
@@ -2343,7 +2465,7 @@
         },
         {
           "disabled": false,
-          "document": "Creates an LCU-supported instance.\n<ul><li>To create an LCU-supported instance, this parameter must be set to `SLA`, which indicates the Super Large 1 specification. \n<ul><li>If you have activated Super Large LCU-supported instances, `SLA` indicates the Super Large 4 specification. Super u200dLarge LCU-supported specification is in beta now. u200cu200dTo join the beta, [submit a ticket](https://console.cloud.tencent.com/workorder/category). </li></ul></li><li>It’s not required for a shared CLB instance. </li></ul>",
+          "document": "Specification of LCU-supported instance.\n<ul><li>This parameter is required to create LCU-supported instances. Values: <ul><li>`SLA`: Super Large 4. When you have activated Super Large models, `SLA` refers to Super Large 4.</li><li>`clb.c2.medium`: Standard</li><li>`clb.c3.small`: Advanced 1</li><li>`clb.c3.medium`: Advanced 1</li><li>`clb.c4.small`: Super Large 1</li><li>`clb.c4.medium`: Super Large 2</li><li>`clb.c4.large`: Super Large 3</li><li>`clb.c4.xlarge`: Super Large 4</li> For Super Large 2 and above models, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).</ul></li><li> This parameter is not required for creating shared instances.</li></ul>For more details, see [Instance Specifications](https://intl.cloud.tencent.com/document/product/214/84689?from_cn_redirect=1).",
           "example": "无",
           "member": "string",
           "name": "SlaType",
@@ -2421,6 +2543,15 @@
           "name": "DynamicVip",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Network egress point",
+          "example": "center_egress1",
+          "member": "string",
+          "name": "Egress",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2563,6 +2694,7 @@
         {
           "disabled": false,
           "document": "Target group name (up to 50 characters)",
+          "example": "",
           "member": "string",
           "name": "TargetGroupName",
           "required": false,
@@ -2571,6 +2703,7 @@
         {
           "disabled": false,
           "document": "`vpcid` attribute of a target group. If this parameter is left empty, the default VPC will be used.",
+          "example": "",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -2579,6 +2712,7 @@
         {
           "disabled": false,
           "document": "Default port of a target group, which can be used for subsequently added servers.",
+          "example": "",
           "member": "uint64",
           "name": "Port",
           "required": false,
@@ -2587,6 +2721,7 @@
         {
           "disabled": false,
           "document": "Real server bound to a target group",
+          "example": "",
           "member": "TargetGroupInstance",
           "name": "TargetGroupInstances",
           "required": false,
@@ -2601,6 +2736,7 @@
         {
           "disabled": false,
           "document": "ID generated after target group creation",
+          "example": "",
           "member": "string",
           "name": "TargetGroupId",
           "type": "string",
@@ -3284,6 +3420,7 @@
         {
           "disabled": false,
           "document": "CLB instance ID.",
+          "example": "",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -3292,6 +3429,7 @@
         {
           "disabled": false,
           "document": "Data offset. Default value: 0.",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -3300,6 +3438,7 @@
         {
           "disabled": false,
           "document": "Maximum number of IPs to be returned. Default value: 100,000.",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -3314,6 +3453,7 @@
         {
           "disabled": false,
           "document": "Number of returned IPs",
+          "example": "",
           "member": "uint64",
           "name": "BlockedIPCount",
           "type": "int",
@@ -3322,6 +3462,7 @@
         {
           "disabled": false,
           "document": "Field for getting real client IP",
+          "example": "",
           "member": "string",
           "name": "ClientIPField",
           "type": "string",
@@ -3330,6 +3471,7 @@
         {
           "disabled": false,
           "document": "List of IPs added to blocklist 12360",
+          "example": "",
           "member": "BlockedIP",
           "name": "BlockedIPList",
           "type": "list",
@@ -3350,6 +3492,7 @@
         {
           "disabled": false,
           "document": "Async task ID returned by the `ModifyBlockIPList` API",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -3364,6 +3507,7 @@
         {
           "disabled": false,
           "document": "1: running; 2: failed; 6: succeeded",
+          "example": "",
           "member": "int64",
           "name": "Status",
           "type": "int",
@@ -4021,6 +4165,7 @@
         {
           "disabled": false,
           "document": "Server or client certificate ID",
+          "example": "",
           "member": "string",
           "name": "CertIds",
           "required": true,
@@ -4035,6 +4180,7 @@
         {
           "disabled": false,
           "document": "Certificate ID and list of CLB instances associated with it",
+          "example": "",
           "member": "CertIdRelatedWithLoadBalancers",
           "name": "CertSet",
           "type": "list",
@@ -4112,6 +4258,7 @@
         {
           "disabled": false,
           "document": "CLB instance region. If this parameter is not passed in, CLB instances in all regions will be returned.",
+          "example": "",
           "member": "string",
           "name": "LoadBalancerRegion",
           "required": false,
@@ -4199,6 +4346,7 @@
         {
           "disabled": false,
           "document": "Total number of lists describing CLB instance details.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -4207,6 +4355,7 @@
         {
           "disabled": false,
           "document": "List of CLB instance details.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "LoadBalancerDetail",
           "name": "LoadBalancerDetailSet",
           "type": "list",
@@ -4404,6 +4553,7 @@
         {
           "disabled": false,
           "document": "Total number of CLB instances that meet the filter criteria. This value is independent of the Limit in the input parameter.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -4412,6 +4562,7 @@
         {
           "disabled": false,
           "document": "Array of returned CLB instances.",
+          "example": "",
           "member": "LoadBalancer",
           "name": "LoadBalancerSet",
           "type": "list",
@@ -4437,6 +4588,7 @@
         {
           "disabled": false,
           "document": "Quota list",
+          "example": "",
           "member": "Quota",
           "name": "QuotaSet",
           "type": "list",
@@ -4993,6 +5145,7 @@
         {
           "disabled": false,
           "document": "Layer-4 dedicated cluster list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "ClusterItem",
           "name": "L4Clusters",
           "required": false,
@@ -5002,6 +5155,7 @@
         {
           "disabled": false,
           "document": "Layer-7 dedicated cluster list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "ClusterItem",
           "name": "L7Clusters",
           "required": false,
@@ -5011,6 +5165,7 @@
         {
           "disabled": false,
           "document": "vpcgw cluster\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "ClusterItem",
           "name": "ClassicalCluster",
           "required": false,
@@ -5026,6 +5181,7 @@
         {
           "disabled": false,
           "document": "Whether to enable VIP direct connection\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "bool",
           "name": "ZhiTong",
           "required": true,
@@ -5035,6 +5191,7 @@
         {
           "disabled": false,
           "document": "TgwGroup name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "TgwGroupName",
           "required": true,
@@ -5050,6 +5207,7 @@
         {
           "disabled": false,
           "document": "Filter name",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -5059,6 +5217,7 @@
         {
           "disabled": false,
           "document": "Filter value array",
+          "example": "",
           "member": "string",
           "name": "Values",
           "required": true,
@@ -5074,6 +5233,7 @@
         {
           "disabled": false,
           "document": "Function namespace",
+          "example": "",
           "member": "string",
           "name": "FunctionNamespace",
           "required": true,
@@ -5083,6 +5243,7 @@
         {
           "disabled": false,
           "document": "Function name",
+          "example": "",
           "member": "string",
           "name": "FunctionName",
           "required": true,
@@ -5092,6 +5253,7 @@
         {
           "disabled": false,
           "document": "Function version name or alias",
+          "example": "",
           "member": "string",
           "name": "FunctionQualifier",
           "required": true,
@@ -5101,6 +5263,7 @@
         {
           "disabled": false,
           "document": "Function qualifier type. Values: `VERSION`, `ALIAS`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "FunctionQualifierType",
           "required": false,
@@ -5116,6 +5279,7 @@
         {
           "disabled": false,
           "document": "SCF related information\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "FunctionInfo",
           "name": "Function",
           "required": true,
@@ -5125,6 +5289,7 @@
         {
           "disabled": false,
           "document": "Weight",
+          "example": "",
           "member": "uint64",
           "name": "Weight",
           "required": false,
@@ -5216,7 +5381,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check domain name. It is only applicable to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners. For HTTP health checks of TCP listeners, this parameter is required.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Health check domain name. It’s applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners. It’s required for HTTP health check of TCP listeners.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "www.xxxx.com",
           "member": "string",
           "name": "HttpCheckDomain",
@@ -5413,6 +5578,241 @@
       ],
       "usage": "out"
     },
+    "InquiryPriceCreateLoadBalancerRequest": {
+      "document": "InquiryPriceCreateLoadBalancer request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Network type of the CLB to query. `OPEN`: Public network; `INTERNAL`: Private network is intranet type",
+          "example": "OPEN",
+          "member": "string",
+          "name": "LoadBalancerType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The billing mode to query. `POSTPAID`:Pay as you go",
+          "example": "POSTPAID",
+          "member": "string",
+          "name": "LoadBalancerChargeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Reserved field",
+          "example": "无",
+          "member": "LBChargePrepaid",
+          "name": "LoadBalancerChargePrepaid",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The network billing mode to query ",
+          "example": "无",
+          "member": "InternetAccessible",
+          "name": "InternetAccessible",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Number of CLB instances to query. Default value: 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "GoodsNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone in the format of \"ap-guangzhou-1\"",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "To query the price of monthly subscribed LCU-supported instances, specify the instance specification in this parameter, such as `clb.c3.small`. For PAYG instances, use `SLA`.",
+          "example": "clb.c3.small",
+          "member": "string",
+          "name": "SlaType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IP version. Valid values: `IPV4` (default), `IPV6` (IPV6 NAT64 version) or `IPv6FullChain` (IPv6 version). ",
+          "example": "IPV4",
+          "member": "string",
+          "name": "AddressIPVersion",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ISP of VIP. Values: `CMCC` (China Mobile), `CUCC` (China Unicom) and `CTCC` (China Telecom). You need to activate static single-line IPs. This feature is in beta and is only available in Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu and Chongqing regions. To try it out, please contact your sales rep. If it's specified, the network billing mode must be `BANDWIDTH_PACKAGE`. If it's not specified, BGP is used by default. To query ISPs supported in a region, please use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). ",
+          "example": "CMCC",
+          "member": "string",
+          "name": "VipIsp",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceCreateLoadBalancerResponse": {
+      "document": "InquiryPriceCreateLoadBalancer response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Price of the instance with the specified configurations.",
+          "example": "无",
+          "member": "Price",
+          "name": "Price",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceModifyLoadBalancerRequest": {
+      "document": "InquiryPriceModifyLoadBalancer request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CLB instance ID",
+          "example": "lb-dr0mo6w4",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "New bandwidth bandwidth specification",
+          "example": "无",
+          "member": "InternetAccessible",
+          "name": "InternetAccessible",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceModifyLoadBalancerResponse": {
+      "document": "InquiryPriceModifyLoadBalancer response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pricing information",
+          "example": "无",
+          "member": "Price",
+          "name": "Price",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceRefundLoadBalancerRequest": {
+      "document": "InquiryPriceRefundLoadBalancer request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CLB instance ID",
+          "example": "lb-xxxxxxxx",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceRefundLoadBalancerResponse": {
+      "document": "InquiryPriceRefundLoadBalancer response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Price of the instance with the specified configurations.",
+          "example": "无",
+          "member": "Price",
+          "name": "Price",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceRenewLoadBalancerRequest": {
+      "document": "InquiryPriceRenewLoadBalancer request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CLB instance ID",
+          "example": "lb-xxxxxxxx",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Renewal period",
+          "example": "无",
+          "member": "LBChargePrepaid",
+          "name": "LoadBalancerChargePrepaid",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "InquiryPriceRenewLoadBalancerResponse": {
+      "document": "InquiryPriceRenewLoadBalancer response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Price to renew",
+          "example": "无",
+          "member": "Price",
+          "name": "Price",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "InternetAccessible": {
       "document": "Network billing mode based on maximum outbound bandwidth",
       "members": [
@@ -5449,12 +5849,79 @@
       ],
       "usage": "both"
     },
+    "ItemPrice": {
+      "document": "Pricing information of an item",
+      "members": [
+        {
+          "disabled": false,
+          "document": "PAYG unit price, in USD.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "float",
+          "name": "UnitPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subsequent billing unit. Value Range: \n`HOUR`: Calculate the cost by hour. It's available when \"InternetChargeType=POSTPAID_BY_HOUR\".\n`GB`: Calculate the cost by traffic in GB. It's available when \"InternetChargeType=TRAFFIC_POSTPAID_BY_HOUR\".\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "HOUR",
+          "member": "string",
+          "name": "ChargeUnit",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Reserved field\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "50",
+          "member": "float",
+          "name": "OriginalPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Reserved field\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "50",
+          "member": "float",
+          "name": "DiscountPrice",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Discount unit price of a pay-as-you-go instance, in USD.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "float",
+          "name": "UnitPriceDiscount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Discount. For example, 20.0 indicates 80% off.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "float",
+          "name": "Discount",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "LBChargePrepaid": {
       "document": "Monthly subscription configuration of a CLB instance",
       "members": [
         {
           "disabled": false,
           "document": "Renewal type. AUTO_RENEW: automatic renewal; MANUAL_RENEW: manual renewal\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "RenewFlag",
           "required": false,
@@ -5464,6 +5931,7 @@
         {
           "disabled": false,
           "document": "Cycle, indicating the number of months (reserved field)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Period",
           "required": false,
@@ -5479,6 +5947,7 @@
         {
           "disabled": false,
           "document": "String ID of the CLB instance.",
+          "example": "",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -5488,6 +5957,7 @@
         {
           "disabled": false,
           "document": "VIP of the CLB instance.",
+          "example": "",
           "member": "string",
           "name": "Vip",
           "required": true,
@@ -5497,6 +5967,7 @@
         {
           "disabled": false,
           "document": "Listener rule.",
+          "example": "",
           "member": "ListenerItem",
           "name": "Listeners",
           "required": true,
@@ -5506,6 +5977,7 @@
         {
           "disabled": false,
           "document": "Region of the CLB instance",
+          "example": "",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -5521,6 +5993,7 @@
         {
           "disabled": false,
           "document": "VPC ID",
+          "example": "",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -5530,6 +6003,7 @@
         {
           "disabled": false,
           "document": "Private network IP to be queried, which can be of the CVM or ENI.",
+          "example": "",
           "member": "string",
           "name": "PrivateIp",
           "required": true,
@@ -5545,6 +6019,7 @@
         {
           "disabled": false,
           "document": "Private network IP type, which can be `cvm` or `eni`.",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -5554,6 +6029,7 @@
         {
           "disabled": false,
           "document": "Private network IP of the real server.",
+          "example": "",
           "member": "string",
           "name": "PrivateIp",
           "required": true,
@@ -5563,6 +6039,7 @@
         {
           "disabled": false,
           "document": "Port bound to the real server.",
+          "example": "",
           "member": "int64",
           "name": "Port",
           "required": true,
@@ -5572,6 +6049,7 @@
         {
           "disabled": false,
           "document": "VPC ID of the real server.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "VpcId",
           "required": true,
@@ -5581,6 +6059,7 @@
         {
           "disabled": false,
           "document": "Weight of the real server.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Weight",
           "required": true,
@@ -5599,7 +6078,7 @@
           "example": "lbl-odt45qxx",
           "member": "string",
           "name": "ListenerId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5609,7 +6088,7 @@
           "example": "HTTP",
           "member": "string",
           "name": "Protocol",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5619,7 +6098,7 @@
           "example": "80",
           "member": "int64",
           "name": "Port",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5629,7 +6108,7 @@
           "example": "无",
           "member": "CertificateOutput",
           "name": "Certificate",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -5639,7 +6118,7 @@
           "example": "无",
           "member": "HealthCheck",
           "name": "HealthCheck",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -5649,7 +6128,7 @@
           "example": "WRR",
           "member": "string",
           "name": "Scheduler",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5659,17 +6138,17 @@
           "example": "0",
           "member": "int64",
           "name": "SessionExpireTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Whether to enable the SNI feature (this parameter is only meaningful for HTTPS listeners)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to enable SNI. `1`: Enable; `0`: Do not enable. This parameter is only meaningful for HTTPS listeners.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "SniSwitch",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -5679,7 +6158,7 @@
           "example": "无",
           "member": "RuleOutput",
           "name": "Rules",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -5689,7 +6168,7 @@
           "example": "Name",
           "member": "string",
           "name": "ListenerName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5699,7 +6178,7 @@
           "example": "2021-03-01 15:27:04",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5709,7 +6188,7 @@
           "example": "0",
           "member": "int64",
           "name": "EndPort",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -5719,7 +6198,7 @@
           "example": "NODE",
           "member": "string",
           "name": "TargetType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5729,7 +6208,7 @@
           "example": "无",
           "member": "BasicTargetGroupInfo",
           "name": "TargetGroup",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -5739,7 +6218,7 @@
           "example": "NORMAL",
           "member": "string",
           "name": "SessionType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5749,7 +6228,7 @@
           "example": "0",
           "member": "int64",
           "name": "KeepaliveEnable",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -5759,7 +6238,7 @@
           "example": "false",
           "member": "bool",
           "name": "Toa",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -5769,7 +6248,7 @@
           "example": "false",
           "member": "bool",
           "name": "DeregisterTargetRst",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -5779,7 +6258,7 @@
           "example": "Stop",
           "member": "string",
           "name": "AttrFlags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -5789,7 +6268,7 @@
           "example": "无",
           "member": "BasicTargetGroupInfo",
           "name": "TargetGroupList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -5799,7 +6278,7 @@
           "example": "-1",
           "member": "int64",
           "name": "MaxConn",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -5809,7 +6288,7 @@
           "example": "-1",
           "member": "int64",
           "name": "MaxCps",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -5819,7 +6298,7 @@
           "example": "900",
           "member": "int64",
           "name": "IdleConnectTimeout",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         }
@@ -5832,6 +6311,7 @@
         {
           "disabled": false,
           "document": "Listener ID",
+          "example": "",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -5841,6 +6321,7 @@
         {
           "disabled": false,
           "document": "Listener protocol",
+          "example": "",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -5850,6 +6331,7 @@
         {
           "disabled": false,
           "document": "Listener port",
+          "example": "",
           "member": "int64",
           "name": "Port",
           "required": true,
@@ -5859,6 +6341,7 @@
         {
           "disabled": false,
           "document": "Information of rules under a listener (applicable only to HTTP/HTTPS listeners)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "RuleTargets",
           "name": "Rules",
           "required": true,
@@ -5868,6 +6351,7 @@
         {
           "disabled": false,
           "document": "List of real servers bound to a listener (applicable only to TCP/UDP/TCP_SSL listeners)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "Backend",
           "name": "Targets",
           "required": true,
@@ -5877,6 +6361,7 @@
         {
           "disabled": false,
           "document": "Ending port in port range if port range is supported; 0 if port range is not supported\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "EndPort",
           "required": true,
@@ -5892,6 +6377,7 @@
         {
           "disabled": false,
           "document": "Listener ID",
+          "example": "",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -5901,6 +6387,7 @@
         {
           "disabled": false,
           "document": "Listener name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ListenerName",
           "required": true,
@@ -5910,6 +6397,7 @@
         {
           "disabled": false,
           "document": "Listener protocol",
+          "example": "",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -5919,6 +6407,7 @@
         {
           "disabled": false,
           "document": "Listener port",
+          "example": "",
           "member": "int64",
           "name": "Port",
           "required": true,
@@ -5928,6 +6417,7 @@
         {
           "disabled": false,
           "document": "List of forwarding rules of the listener\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "RuleHealth",
           "name": "Rules",
           "required": true,
@@ -5943,6 +6433,7 @@
         {
           "disabled": false,
           "document": "Listener ID.",
+          "example": "",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -5952,6 +6443,7 @@
         {
           "disabled": false,
           "document": "Listener protocol.",
+          "example": "",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -5961,6 +6453,7 @@
         {
           "disabled": false,
           "document": "Listener port.",
+          "example": "",
           "member": "int64",
           "name": "Port",
           "required": true,
@@ -5970,6 +6463,7 @@
         {
           "disabled": false,
           "document": "Bound rule.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "RulesItems",
           "name": "Rules",
           "required": true,
@@ -5979,6 +6473,7 @@
         {
           "disabled": false,
           "document": "Object bound to the layer-4 listener.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "LbRsTargets",
           "name": "Targets",
           "required": true,
@@ -5988,6 +6483,7 @@
         {
           "disabled": false,
           "document": "End port of the listener.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "EndPort",
           "required": true,
@@ -6006,6 +6502,7 @@
           "example": "lb-fwzzxxxx",
           "member": "string",
           "name": "LoadBalancerId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -6016,6 +6513,7 @@
           "example": "Name",
           "member": "string",
           "name": "LoadBalancerName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -6026,6 +6524,7 @@
           "example": "OPEN",
           "member": "string",
           "name": "LoadBalancerType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -6036,6 +6535,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Forward",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -6046,6 +6546,7 @@
           "example": "www.aaa.com",
           "member": "string",
           "name": "Domain",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6056,6 +6557,7 @@
           "example": "x.x.x.x",
           "member": "string",
           "name": "LoadBalancerVips",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -6066,6 +6568,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Status",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -6076,6 +6579,7 @@
           "example": "2020-12-08 08:00:00",
           "member": "string",
           "name": "CreateTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6086,6 +6590,7 @@
           "example": "2020-12-08 08:00:00",
           "member": "string",
           "name": "StatusTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6096,6 +6601,7 @@
           "example": "0",
           "member": "uint64",
           "name": "ProjectId",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -6106,6 +6612,7 @@
           "example": "vpc-mj65xxxx",
           "member": "string",
           "name": "VpcId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6116,6 +6623,7 @@
           "example": "0",
           "member": "uint64",
           "name": "OpenBgp",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -6126,6 +6634,7 @@
           "example": "false",
           "member": "bool",
           "name": "Snat",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -6136,6 +6645,7 @@
           "example": "0",
           "member": "uint64",
           "name": "Isolation",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -6146,6 +6656,7 @@
           "example": " null",
           "member": "string",
           "name": "Log",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6156,6 +6667,7 @@
           "example": "subnet-lzj3xxxx",
           "member": "string",
           "name": "SubnetId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6166,6 +6678,7 @@
           "example": "无",
           "member": "TagInfo",
           "name": "Tags",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -6176,6 +6689,7 @@
           "example": "sg-hx6dxxxx",
           "member": "string",
           "name": "SecureGroups",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -6186,6 +6700,7 @@
           "example": "无",
           "member": "TargetRegionInfo",
           "name": "TargetRegionInfo",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -6196,6 +6711,7 @@
           "example": " null",
           "member": "string",
           "name": "AnycastZone",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6206,6 +6722,7 @@
           "example": "ipv4",
           "member": "string",
           "name": "AddressIPVersion",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6216,6 +6733,7 @@
           "example": "77599",
           "member": "uint64",
           "name": "NumericalVpcId",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -6226,6 +6744,7 @@
           "example": "BGP",
           "member": "string",
           "name": "VipIsp",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6236,6 +6755,7 @@
           "example": "无",
           "member": "ZoneInfo",
           "name": "MasterZone",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -6246,6 +6766,7 @@
           "example": "无",
           "member": "ZoneInfo",
           "name": "BackupZoneSet",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -6256,6 +6777,7 @@
           "example": "2022-02-12 12:15:08",
           "member": "string",
           "name": "IsolatedTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6266,6 +6788,7 @@
           "example": "2021-02-12 12:15:08",
           "member": "string",
           "name": "ExpireTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6276,6 +6799,7 @@
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "ChargeType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6286,6 +6810,7 @@
           "example": "无",
           "member": "InternetAccessible",
           "name": "NetworkAttributes",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -6296,6 +6821,7 @@
           "example": "无",
           "member": "LBChargePrepaid",
           "name": "PrepaidAttributes",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -6306,6 +6832,7 @@
           "example": "c32fc818-e984-414a-b8f5-3985b4c5xxxx",
           "member": "string",
           "name": "LogSetId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6316,6 +6843,7 @@
           "example": "c32fc818-e984-414a-b8f5-3985b4c5xxxx",
           "member": "string",
           "name": "LogTopicId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6326,6 +6854,7 @@
           "example": "2402:4e00:1000:4e00:0:920b:5519:d96d",
           "member": "string",
           "name": "AddressIPv6",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6336,6 +6865,7 @@
           "example": "无",
           "member": "ExtraInfo",
           "name": "ExtraInfo",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -6346,6 +6876,7 @@
           "example": "false",
           "member": "bool",
           "name": "IsDDos",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -6356,6 +6887,7 @@
           "example": "pz-5itmxxxxx",
           "member": "string",
           "name": "ConfigId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6366,6 +6898,7 @@
           "example": "false",
           "member": "bool",
           "name": "LoadBalancerPassToTarget",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -6376,6 +6909,7 @@
           "example": "无",
           "member": "ExclusiveCluster",
           "name": "ExclusiveCluster",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -6386,6 +6920,7 @@
           "example": "IPv6FullChain",
           "member": "string",
           "name": "IPv6Mode",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6396,6 +6931,7 @@
           "example": "true",
           "member": "bool",
           "name": "SnatPro",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -6406,6 +6942,7 @@
           "example": "无",
           "member": "SnatIp",
           "name": "SnatIps",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -6416,6 +6953,7 @@
           "example": " null",
           "member": "string",
           "name": "SlaType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6426,6 +6964,7 @@
           "example": "false",
           "member": "bool",
           "name": "IsBlock",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -6436,6 +6975,7 @@
           "example": "2021-02-12 12:15:08",
           "member": "string",
           "name": "IsBlockTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6446,6 +6986,7 @@
           "example": "false",
           "member": "bool",
           "name": "LocalBgp",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -6456,6 +6997,7 @@
           "example": "FOR_TEST",
           "member": "string",
           "name": "ClusterTag",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6466,6 +7008,7 @@
           "example": "false",
           "member": "bool",
           "name": "MixIpTarget",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -6476,6 +7019,7 @@
           "example": "null",
           "member": "string",
           "name": "Zones",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -6486,6 +7030,7 @@
           "example": "null",
           "member": "string",
           "name": "NfvInfo",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6496,6 +7041,7 @@
           "example": "c32fc818-e984-414a-b8f5-3985b4c51111",
           "member": "string",
           "name": "HealthLogSetId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6506,6 +7052,7 @@
           "example": "c32fc818-e984-414a-b8f5-3985b4c52222",
           "member": "string",
           "name": "HealthLogTopicId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6516,6 +7063,7 @@
           "example": "cluster-1234xxxx",
           "member": "string",
           "name": "ClusterIds",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -6526,6 +7074,7 @@
           "example": "DeleteProtect",
           "member": "string",
           "name": "AttributeFlags",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -6536,6 +7085,18 @@
           "example": "lb-xxxxxxx-e4841923c1214a90.clb.ap-guangzhou.tencentclb.com",
           "member": "string",
           "name": "LoadBalancerDomain",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Network egress\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "center_egress1",
+          "member": "string",
+          "name": "Egress",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6552,7 +7113,7 @@
           "example": "lb-12345678",
           "member": "string",
           "name": "LoadBalancerId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6562,7 +7123,7 @@
           "example": "test",
           "member": "string",
           "name": "LoadBalancerName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6572,7 +7133,7 @@
           "example": "OPEN",
           "member": "string",
           "name": "LoadBalancerType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6582,7 +7143,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6592,7 +7153,7 @@
           "example": "1.1.1.1",
           "member": "string",
           "name": "Address",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6602,7 +7163,7 @@
           "example": "null",
           "member": "string",
           "name": "AddressIPv6",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6612,7 +7173,7 @@
           "example": "IPv4",
           "member": "string",
           "name": "AddressIPVersion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6622,7 +7183,7 @@
           "example": "null",
           "member": "string",
           "name": "IPv6Mode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6632,7 +7193,7 @@
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "Zone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6642,7 +7203,7 @@
           "example": "CMCC",
           "member": "string",
           "name": "AddressIsp",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6652,7 +7213,7 @@
           "example": "vpc-12345678",
           "member": "string",
           "name": "VpcId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6662,7 +7223,7 @@
           "example": "0",
           "member": "uint64",
           "name": "ProjectId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6672,7 +7233,7 @@
           "example": "2020-01-01 00:00:00",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6682,7 +7243,7 @@
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "ChargeType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6692,7 +7253,7 @@
           "example": "null",
           "member": "InternetAccessible",
           "name": "NetworkAttributes",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -6702,7 +7263,7 @@
           "example": "null",
           "member": "LBChargePrepaid",
           "name": "PrepaidAttributes",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -6712,7 +7273,7 @@
           "example": "{\"ZhitTong\":false,\"TgwGroupName\":null}",
           "member": "ExtraInfo",
           "name": "ExtraInfo",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -6722,7 +7283,7 @@
           "example": "pz-12345678",
           "member": "string",
           "name": "ConfigId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6732,7 +7293,7 @@
           "example": "[{\"TagKey\":\"1\",\"TagValue\":\"2\"}]",
           "member": "TagInfo",
           "name": "Tags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6742,7 +7303,7 @@
           "example": "lbl-12345678",
           "member": "string",
           "name": "ListenerId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6752,7 +7313,7 @@
           "example": "tcp",
           "member": "string",
           "name": "Protocol",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6762,7 +7323,7 @@
           "example": "80",
           "member": "uint64",
           "name": "Port",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6772,7 +7333,7 @@
           "example": "loc-12345678",
           "member": "string",
           "name": "LocationId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6782,7 +7343,7 @@
           "example": "test.com",
           "member": "string",
           "name": "Domain",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6792,7 +7353,7 @@
           "example": "/",
           "member": "string",
           "name": "Url",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6802,7 +7363,7 @@
           "example": "ins-12345678",
           "member": "string",
           "name": "TargetId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6812,7 +7373,7 @@
           "example": "172.16.0.2",
           "member": "string",
           "name": "TargetAddress",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6822,7 +7383,7 @@
           "example": "80",
           "member": "uint64",
           "name": "TargetPort",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6832,7 +7393,7 @@
           "example": "10",
           "member": "uint64",
           "name": "TargetWeight",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6842,7 +7403,7 @@
           "example": "0",
           "member": "uint64",
           "name": "Isolation",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6852,7 +7413,7 @@
           "example": "[\"sg-12345678\"]",
           "member": "string",
           "name": "SecurityGroup",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6862,7 +7423,7 @@
           "example": "1",
           "member": "uint64",
           "name": "LoadBalancerPassToTarget",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6872,7 +7433,7 @@
           "example": "Alive",
           "member": "string",
           "name": "TargetHealth",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6882,7 +7443,7 @@
           "example": "[\"www.xxxx.com\"]",
           "member": "string",
           "name": "Domains",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6892,7 +7453,7 @@
           "example": "[\"ap-guangzhou-2\"]",
           "member": "string",
           "name": "SlaveZone",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6902,17 +7463,17 @@
           "example": "[\"ap-guangzhou-1\"]",
           "member": "string",
           "name": "Zones",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Whether SNI is enabled. This parameter is only meaningful for HTTPS listeners.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether to enable SNI. `1`: Enable; `0`: Do not enable. This parameter is only meaningful for HTTPS listeners.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "SniSwitch",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6922,7 +7483,17 @@
           "example": "lb-xxxxxxx-e4841923c1214a90.clb.ap-guangzhou.tencentclb.com",
           "member": "string",
           "name": "LoadBalancerDomain",
-          "required": false,
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Network egress\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "center_egress1",
+          "member": "string",
+          "name": "Egress",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -6935,6 +7506,7 @@
         {
           "disabled": false,
           "document": "CLB instance ID",
+          "example": "",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -6944,6 +7516,7 @@
         {
           "disabled": false,
           "document": "CLB instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "LoadBalancerName",
           "required": true,
@@ -6953,6 +7526,7 @@
         {
           "disabled": false,
           "document": "List of listeners\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "ListenerHealth",
           "name": "Listeners",
           "required": true,
@@ -7124,6 +7698,7 @@
         {
           "disabled": false,
           "document": "CLB instance ID",
+          "example": "",
           "member": "string",
           "name": "LoadBalancerIds",
           "required": true,
@@ -7132,6 +7707,7 @@
         {
           "disabled": false,
           "document": "Operation type. Valid values:\n<li> add_customized_field (sets header initially to enable the blocklist feature)</li>\n<li> set_customized_field (modifies header)</li>\n<li> del_customized_field (deletes header)</li>\n<li> add_blocked (adds IPs to blocklist)</li>\n<li> del_blocked (deletes IPs from blocklist)</li>\n<li> flush_blocked (clears blocklist)</li>",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -7140,6 +7716,7 @@
         {
           "disabled": false,
           "document": "Header field that stores real client IPs",
+          "example": "",
           "member": "string",
           "name": "ClientIPField",
           "required": true,
@@ -7148,6 +7725,7 @@
         {
           "disabled": false,
           "document": "List of blocked IPs. The array can contain up to 200,000 entries in one operation.",
+          "example": "",
           "member": "string",
           "name": "BlockIPList",
           "required": false,
@@ -7156,6 +7734,7 @@
         {
           "disabled": false,
           "document": "Expiration time in seconds. Default value: 3600",
+          "example": "",
           "member": "uint64",
           "name": "ExpireTime",
           "required": false,
@@ -7164,6 +7743,7 @@
         {
           "disabled": false,
           "document": "IP adding policy. Valid value: fifo (if a blocklist is full, new IPs added to the blocklist will adopt the first-in first-out policy)",
+          "example": "",
           "member": "string",
           "name": "AddStrategy",
           "required": false,
@@ -7178,6 +7758,7 @@
         {
           "disabled": false,
           "document": "Async task ID",
+          "example": "",
           "member": "string",
           "name": "JodId",
           "type": "string",
@@ -7681,6 +8262,7 @@
         {
           "disabled": false,
           "document": "This parameter can be used to query whether CLB billing mode switch is successful.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DealName",
           "type": "string",
@@ -7712,6 +8294,42 @@
     },
     "ModifyLoadBalancerSlaResponse": {
       "document": "ModifyLoadBalancerSla response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLoadBalancersProjectRequest": {
+      "document": "ModifyLoadBalancersProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IDs of CLB instances ID(s).",
+          "example": "[\"lb-1234abcd\\r\\n\",\"lb-5678wwqq\\r\\n\"]",
+          "member": "string",
+          "name": "LoadBalancerIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "1122",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyLoadBalancersProjectResponse": {
+      "document": "ModifyLoadBalancersProject response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -8135,6 +8753,42 @@
       ],
       "usage": "in"
     },
+    "Price": {
+      "document": "Price of CLB instances.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance price.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ItemPrice",
+          "name": "InstancePrice",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Network price.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ItemPrice",
+          "name": "BandwidthPrice",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "LCU price.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ItemPrice",
+          "name": "LcuPrice",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "Quota": {
       "document": "Quota description. All quotas are in the current region.",
       "members": [
@@ -8249,6 +8903,7 @@
         {
           "disabled": false,
           "document": "Target group ID",
+          "example": "",
           "member": "string",
           "name": "TargetGroupId",
           "required": true,
@@ -8257,6 +8912,7 @@
         {
           "disabled": false,
           "document": "Server instance array",
+          "example": "",
           "member": "TargetGroupInstance",
           "name": "TargetGroupInstances",
           "required": true,
@@ -8391,6 +9047,7 @@
         {
           "disabled": false,
           "document": "ID of the certificate to be replaced, which can be a server certificate or a client certificate.",
+          "example": "",
           "member": "string",
           "name": "OldCertificateId",
           "required": true,
@@ -8399,6 +9056,7 @@
         {
           "disabled": false,
           "document": "Information such as the content of the new certificate",
+          "example": "",
           "member": "CertificateInput",
           "name": "Certificate",
           "required": true,
@@ -8497,47 +9155,47 @@
         {
           "disabled": false,
           "document": "Source forwarding rule ID",
+          "example": "无",
           "member": "string",
           "name": "SourceLocationId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
-          "document": "Forwarding rule ID of a redirect target",
+          "document": "ID of the forwarding rule of the destination",
+          "example": "无",
           "member": "string",
           "name": "TargetLocationId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Redirection status code. Valid values: 301, 302, and 307.",
+          "example": "无",
           "member": "int64",
           "name": "RewriteCode",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "Whether the matched URL is carried in redirection. It is required when configuring `RewriteCode`.",
+          "example": "无",
           "member": "bool",
           "name": "TakeUrl",
           "required": false,
-          "type": "bool",
-          "value_allowed_null": false
+          "type": "bool"
         },
         {
           "disabled": false,
           "document": "Original domain name of redirection, which must be the corresponding domain name of `SourceLocationId`. It is required when configuring `RewriteCode`.",
+          "example": "无",
           "member": "string",
           "name": "SourceDomain",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -8548,6 +9206,7 @@
         {
           "disabled": false,
           "document": "Listener ID of a redirect target\nNote: This field may return null, indicating that there is no redirection.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "TargetListenerId",
           "required": true,
@@ -8557,6 +9216,7 @@
         {
           "disabled": false,
           "document": "Forwarding rule ID of a redirect target\nNote: This field may return null, indicating that there is no redirection.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "TargetLocationId",
           "required": true,
@@ -8566,6 +9226,7 @@
         {
           "disabled": false,
           "document": "Redirection status code\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "RewriteCode",
           "required": true,
@@ -8575,6 +9236,7 @@
         {
           "disabled": false,
           "document": "Whether the matched URL is carried in redirection.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "bool",
           "name": "TakeUrl",
           "required": true,
@@ -8584,6 +9246,7 @@
         {
           "disabled": false,
           "document": "Redirection type. Manual: manual redirection; Auto: automatic redirection.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "RewriteType",
           "required": true,
@@ -8665,6 +9328,7 @@
         {
           "disabled": false,
           "document": "Forwarding rule ID",
+          "example": "",
           "member": "string",
           "name": "LocationId",
           "required": true,
@@ -8674,6 +9338,7 @@
         {
           "disabled": false,
           "document": "Domain name of the forwarding rule\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -8683,6 +9348,7 @@
         {
           "disabled": false,
           "document": "Forwarding rule Url\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -8692,6 +9358,7 @@
         {
           "disabled": false,
           "document": "Health status of the real server bound to this rule\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "TargetHealth",
           "name": "Targets",
           "required": true,
@@ -9140,6 +9807,7 @@
         {
           "disabled": false,
           "document": "Rule ID.",
+          "example": "",
           "member": "string",
           "name": "LocationId",
           "required": true,
@@ -9149,6 +9817,7 @@
         {
           "disabled": false,
           "document": "Domain name.",
+          "example": "",
           "member": "string",
           "name": "Domain",
           "required": true,
@@ -9158,6 +9827,7 @@
         {
           "disabled": false,
           "document": "Uri",
+          "example": "",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -9167,6 +9837,7 @@
         {
           "disabled": false,
           "document": "Object bound to the real server.",
+          "example": "",
           "member": "LbRsTargets",
           "name": "Targets",
           "required": true,
@@ -9309,6 +9980,7 @@
         {
           "disabled": false,
           "document": "CLB instance ID",
+          "example": "",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -9317,6 +9989,7 @@
         {
           "disabled": false,
           "document": "Array of security group IDs. One CLB instance can be bound to up to 50 security groups. If you want to unbind all security groups, you do not need to pass in this parameter, or you can pass in an empty array.",
+          "example": "",
           "member": "string",
           "name": "SecurityGroups",
           "required": false,
@@ -9343,6 +10016,7 @@
         {
           "disabled": false,
           "document": "Security group ID, such as sg-12345678",
+          "example": "",
           "member": "string",
           "name": "SecurityGroup",
           "required": true,
@@ -9351,6 +10025,7 @@
         {
           "disabled": false,
           "document": "ADD: bind a security group;\nDEL: unbind a security group",
+          "example": "",
           "member": "string",
           "name": "OperationType",
           "required": true,
@@ -9359,6 +10034,7 @@
         {
           "disabled": false,
           "document": "Array of CLB instance IDs",
+          "example": "",
           "member": "string",
           "name": "LoadBalancerIds",
           "required": true,
@@ -9393,7 +10069,7 @@
         },
         {
           "disabled": false,
-          "document": "u200dTo upgrade the instance to an LCU-support instance, set it to `SLA`. `SLA` indicates Super Large 1. \nIf you have activated Super Large LCU-supported instances, `SLA` indicates the Super Large 4 specification. Super u200dLarge LCU-supported specification is in beta now. u200cu200dTo join the beta, [submit a ticket](https://console.cloud.tencent.com/workorder/category).",
+          "document": "LCU-supported instance specification. Value:\n<li>`SLA`: If you have activated Super Large LCU-supported instances, `SLA` indicates Super Large 4.</li>\n<li>`clb.c2.medium`: Standard</li>\n<li>`clb.c3.small`: Advanced 1</li>\n<li>`clb.c3.medium`: Advanced 2</li>\n<li>`clb.c4.small`: Super Large 1</li>\n<li>`clb.c4.medium`: Super Large 2</li>\n<li>`clb.c4.large`: Super Large 3</li>\n<li>`clb.c4.xlarge`: Super Large 4</li> For Super Large 2 and above specifications, please [submit a ticket](https://console.cloud.tencent.com/workorder/category). For more specifications, see [Specifications Comparison](https://intl.cloud.tencent.com/document/product/214/84689?from_cn_redirect=1)",
           "example": "SLA",
           "member": "string",
           "name": "SlaType",
@@ -9409,6 +10085,7 @@
         {
           "disabled": false,
           "document": "Unique VPC subnet ID, such as `subnet-12345678`.",
+          "example": "",
           "member": "string",
           "name": "SubnetId",
           "required": true,
@@ -9418,6 +10095,7 @@
         {
           "disabled": false,
           "document": "IP address, such as 192.168.0.1",
+          "example": "",
           "member": "string",
           "name": "Ip",
           "required": false,
@@ -9459,6 +10137,7 @@
         {
           "disabled": false,
           "document": "Tag key",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
@@ -9468,6 +10147,7 @@
         {
           "disabled": false,
           "document": "Tag value",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": true,
@@ -9539,6 +10219,7 @@
         {
           "disabled": false,
           "document": "CLB instance ID",
+          "example": "",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -9548,6 +10229,7 @@
         {
           "disabled": false,
           "document": "Listener ID",
+          "example": "",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -9557,6 +10239,7 @@
         {
           "disabled": false,
           "document": "Target group ID",
+          "example": "",
           "member": "string",
           "name": "TargetGroupId",
           "required": true,
@@ -9566,6 +10249,7 @@
         {
           "disabled": false,
           "document": "Forwarding rule ID",
+          "example": "",
           "member": "string",
           "name": "LocationId",
           "required": false,
@@ -9697,6 +10381,7 @@
         {
           "disabled": false,
           "document": "Target group ID",
+          "example": "",
           "member": "string",
           "name": "TargetGroupId",
           "required": true,
@@ -9706,6 +10391,7 @@
         {
           "disabled": false,
           "document": "`vpcid` of target group",
+          "example": "",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -9715,6 +10401,7 @@
         {
           "disabled": false,
           "document": "Target group name",
+          "example": "",
           "member": "string",
           "name": "TargetGroupName",
           "required": true,
@@ -9724,6 +10411,7 @@
         {
           "disabled": false,
           "document": "Default port of target group\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "uint64",
           "name": "Port",
           "required": true,
@@ -9733,6 +10421,7 @@
         {
           "disabled": false,
           "document": "Target group creation time",
+          "example": "",
           "member": "datetime",
           "name": "CreatedTime",
           "required": true,
@@ -9742,6 +10431,7 @@
         {
           "disabled": false,
           "document": "Target group modification time",
+          "example": "",
           "member": "datetime",
           "name": "UpdatedTime",
           "required": true,
@@ -9751,6 +10441,7 @@
         {
           "disabled": false,
           "document": "Array of associated rules\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "AssociationItem",
           "name": "AssociatedRule",
           "required": true,
@@ -9766,6 +10457,7 @@
         {
           "disabled": false,
           "document": "Private IP of target group instance",
+          "example": "",
           "member": "string",
           "name": "BindIP",
           "required": true,
@@ -9775,6 +10467,7 @@
         {
           "disabled": false,
           "document": "Port of target group instance",
+          "example": "",
           "member": "uint64",
           "name": "Port",
           "required": true,
@@ -9784,6 +10477,7 @@
         {
           "disabled": false,
           "document": "Weight of target group instance",
+          "example": "",
           "member": "uint64",
           "name": "Weight",
           "required": false,
@@ -9793,6 +10487,7 @@
         {
           "disabled": false,
           "document": "New port of target group instance",
+          "example": "",
           "member": "uint64",
           "name": "NewPort",
           "required": false,
@@ -9874,6 +10569,7 @@
         {
           "disabled": false,
           "document": "Region of the target, such as ap-guangzhou",
+          "example": "",
           "member": "string",
           "name": "Region",
           "required": true,
@@ -9883,6 +10579,7 @@
         {
           "disabled": false,
           "document": "Network of the target, which is in the format of vpc-abcd1234 for VPC or 0 for basic network",
+          "example": "",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -9993,7 +10690,7 @@
           "example": "ap-guangzhou-2",
           "member": "string",
           "name": "MasterZone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10003,7 +10700,7 @@
           "example": "无",
           "member": "Resource",
           "name": "ResourceSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -10013,7 +10710,7 @@
           "example": "ap-guangzhou-3",
           "member": "string",
           "name": "SlaveZone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -10023,7 +10720,7 @@
           "example": "IPv4",
           "member": "string",
           "name": "IPVersion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10033,7 +10730,7 @@
           "example": "ap-guangzhou",
           "member": "string",
           "name": "ZoneRegion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10043,7 +10740,7 @@
           "example": "false",
           "member": "bool",
           "name": "LocalZone",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -10053,7 +10750,7 @@
           "example": "\"SHARED\"",
           "member": "string",
           "name": "ZoneResourceType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10063,9 +10760,19 @@
           "example": "false",
           "member": "bool",
           "name": "EdgeZone",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Network egress\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "center_egress1",
+          "member": "string",
+          "name": "Egress",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
