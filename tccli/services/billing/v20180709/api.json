@@ -1,5 +1,19 @@
 {
   "actions": {
+    "CreateAllocationTag": {
+      "document": "This API is used to batch set cost allocation tags.",
+      "input": "CreateAllocationTagRequest",
+      "name": "Batch sets cost allocation tags",
+      "output": "CreateAllocationTagResponse",
+      "status": "online"
+    },
+    "DeleteAllocationTag": {
+      "document": "u200cThis API is used to batch cancel cost allocation tags.",
+      "input": "DeleteAllocationTagRequest",
+      "name": "Batch cancels cost allocation tags",
+      "output": "DeleteAllocationTagResponse",
+      "status": "online"
+    },
     "DescribeAccountBalance": {
       "document": "This API is used to check the Tencent Cloud account balance.",
       "input": "DescribeAccountBalanceRequest",
@@ -8,23 +22,44 @@
       "status": "online"
     },
     "DescribeBillDetail": {
-      "document": "This API is used to get bill details. \nNotes: 1. The API request may fail due to network instability or other network exceptions. In this case, we recommend you manually retry the request when the API request fails. 2. If the volume of your bill data is high (for example, if over 200 thousand bill entries are generated for a month), querying bill data via APIs may be slow. We recommend you enable bill storage so that you can obtain bill files from COS buckets for analysis. For details, see [Saving Bills to COS](https://intl.cloud.tencent.com/document/product/555/61275?from_cn_redirect=1).",
+      "document": "u200cThis API is used to get bill details.\nNote:\n1. The API request may fail due to network instability or other exceptions. In this case, we recommend you manually retry the request when the API request fails.\n2.If the volume of your bill data is high (for example, if over 200 thousand bill entries are generated for a month), bill data query via APIs may be slow. We recommend you enable bill storage so that you can obtain bill files from COS buckets for analysis. For details, see [Saving Bills to COS](https://intl.cloud.tencent.com/document/product/555/61275?from_cn_redirect=1).",
       "input": "DescribeBillDetailRequest",
-      "name": "Queries bill details",
+      "name": "Gets bill details",
       "output": "DescribeBillDetailResponse",
       "status": "online"
     },
+    "DescribeBillDetailForOrganization": {
+      "document": "This API is used to get pay-on-behalf bills of the admin account (bill details).\nNote: The API request may fail due to network instability or other exceptions. In this case, we recommend you manually retry the request when the API request fails.",
+      "input": "DescribeBillDetailForOrganizationRequest",
+      "name": "Gets pay-on-behalf bills of the admin account (bill details)",
+      "output": "DescribeBillDetailForOrganizationResponse",
+      "status": "online"
+    },
+    "DescribeBillDownloadUrl": {
+      "document": "This API is used to get bill download URLs for L0, L1, L2, and L3 bills and bill packs.",
+      "input": "DescribeBillDownloadUrlRequest",
+      "name": "Gets bill download URLs",
+      "output": "DescribeBillDownloadUrlResponse",
+      "status": "online"
+    },
     "DescribeBillResourceSummary": {
-      "document": "This API is used to query bill resources summary.",
+      "document": "This API is used to get the bill summarized by instance.",
       "input": "DescribeBillResourceSummaryRequest",
-      "name": "Queries bill resource summary",
+      "name": "Gets the bill summarized by instance",
       "output": "DescribeBillResourceSummaryResponse",
+      "status": "online"
+    },
+    "DescribeBillResourceSummaryForOrganization": {
+      "document": "This API is used to get pay-on-behalf bills of the admin account (bills by instance).",
+      "input": "DescribeBillResourceSummaryForOrganizationRequest",
+      "name": "Gets pay-on-behalf bills of the admin account (bills by instance)",
+      "output": "DescribeBillResourceSummaryForOrganizationResponse",
       "status": "online"
     },
     "DescribeBillSummary": {
       "document": "This API is used to get bill details by product, project, region, billing mode, and tag by passing in parameters.",
       "input": "DescribeBillSummaryRequest",
-      "name": "Gets bills summarized by multiple dimensions (New)",
+      "name": "Gets bills summarized by multiple dimensions",
       "output": "DescribeBillSummaryResponse",
       "status": "online"
     },
@@ -63,11 +98,25 @@
       "output": "DescribeBillSummaryByTagResponse",
       "status": "online"
     },
+    "DescribeBillSummaryForOrganization": {
+      "document": "This API is used to get bills summarized by product, project, region, billing mode, and tag by passing in parameters.",
+      "input": "DescribeBillSummaryForOrganizationRequest",
+      "name": "Gets pay-on-behalf bills of the admin account (bills by multiple dimensions)",
+      "output": "DescribeBillSummaryForOrganizationResponse",
+      "status": "online"
+    },
     "DescribeDosageCosDetailByDate": {
       "document": "This API is used to query COS usage details.",
       "input": "DescribeDosageCosDetailByDateRequest",
       "name": "Queries COS usage details",
       "output": "DescribeDosageCosDetailByDateResponse",
+      "status": "online"
+    },
+    "DescribeTagList": {
+      "document": "This API is used to get cost allocation tags.",
+      "input": "DescribeTagListRequest",
+      "name": "Gets cost allocation tags",
+      "output": "DescribeTagListResponse",
       "status": "online"
     },
     "DescribeVoucherInfo": {
@@ -232,7 +281,7 @@
           "example": "云服务器CVM",
           "member": "string",
           "name": "BusinessCodeName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -242,7 +291,7 @@
           "example": "云服务器CVM-标准型S1",
           "member": "string",
           "name": "ProductCodeName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -252,7 +301,7 @@
           "example": "按量计费",
           "member": "string",
           "name": "PayModeName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -262,7 +311,7 @@
           "example": "默认项目",
           "member": "string",
           "name": "ProjectName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -272,7 +321,7 @@
           "example": "华南地区（广州）",
           "member": "string",
           "name": "RegionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -282,7 +331,7 @@
           "example": "广州三区",
           "member": "string",
           "name": "ZoneName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -292,7 +341,7 @@
           "example": "ins-rb7bmkwx",
           "member": "string",
           "name": "ResourceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -302,7 +351,7 @@
           "example": "emr-Core.3_emr-4g83a3k3",
           "member": "string",
           "name": "ResourceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -312,7 +361,7 @@
           "example": "包年包月新购",
           "member": "string",
           "name": "ActionTypeName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -322,7 +371,7 @@
           "example": "20211202400008418120371",
           "member": "string",
           "name": "OrderId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -332,7 +381,7 @@
           "example": "20211202400008418120371",
           "member": "string",
           "name": "BillId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -342,7 +391,7 @@
           "example": "2021-12-02 12:45:12",
           "member": "datetime",
           "name": "PayTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -352,7 +401,7 @@
           "example": "2021-12-02 12:45:05",
           "member": "datetime",
           "name": "FeeBeginTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -362,7 +411,7 @@
           "example": "2021-12-03 12:45:05",
           "member": "datetime",
           "name": "FeeEndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -372,7 +421,7 @@
           "example": "[           {             \"ComponentCodeName\": \"实例\",            ",
           "member": "BillDetailComponent",
           "name": "ComponentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -382,7 +431,7 @@
           "example": "909619400",
           "member": "string",
           "name": "PayerUin",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -392,7 +441,7 @@
           "example": "909619400",
           "member": "string",
           "name": "OwnerUin",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -402,7 +451,7 @@
           "example": "909619400",
           "member": "string",
           "name": "OperateUin",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -412,7 +461,7 @@
           "example": "[           {             \"TagKey\": \"jemmahuang\",             \"T",
           "member": "BillTagInfo",
           "name": "Tags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -422,7 +471,7 @@
           "example": "p_cdn",
           "member": "string",
           "name": "BusinessCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -432,7 +481,7 @@
           "example": "sp_cvm_sa2",
           "member": "string",
           "name": "ProductCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -442,7 +491,7 @@
           "example": "postpay_deduct_h",
           "member": "string",
           "name": "ActionType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -452,7 +501,7 @@
           "example": "1",
           "member": "string",
           "name": "RegionId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -462,18 +511,114 @@
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Price attribute\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Price attribute: A set of attributes which will determine the price of a component, apart from unit price and usage duration.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"操作系统\"：\"linux\"，\"连续使用时长T\"：\"第三阶梯\"，\"平台\"：\"云平\"]",
           "member": "string",
           "name": "PriceInfo",
-          "required": false,
+          "output_required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Associated transaction document ID: The ID of the document associated with a transaction, such as a write-off order, the original order showing a deduction error during first settlement, a restructured order, or the original purchase order corresponding to a refund order.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{                     \"PrepayPurchase\":\"20230707400000439953321\",                     \"PrepayRenew\":\"20230707400000440668101,20230707400000440730331,20230707400000440886501\"                 }",
+          "member": "BillDetailAssociatedOrder",
+          "name": "AssociatedOrder",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Calculation formula: The detailed calculation formula for a specific transaction type, such as refund or configuration change.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"退款：686.51元，现金券： 0元,代金券/折扣券不退（订单号20230707400000439953321\"",
+          "member": "string",
+          "name": "Formula",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing rules: Official website links for detailed billing rules of each product.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "https://buy.cloud.tencent.com/price/cvm",
+          "member": "string",
+          "name": "FormulaUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BillDetailAssociatedOrder": {
+      "document": "Information of the document associated with bill details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Purchase order.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20230707400000439953321",
+          "member": "string",
+          "name": "PrepayPurchase",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Renewal order.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20230707400000439953321",
+          "member": "string",
+          "name": "PrepayRenew",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Upgrade order.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20230707400000439953321",
+          "member": "string",
+          "name": "PrepayModifyUp",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Write-off order.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20230707400000439953321",
+          "member": "string",
+          "name": "ReverseOrder",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The order after discount.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20230707400000439953321",
+          "member": "string",
+          "name": "NewOrder",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The original order before discount.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20230707400000439953321",
+          "member": "string",
+          "name": "Original",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -771,6 +916,418 @@
           "output_required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configuration description: The specification configuration of an instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BillDetailComponentConfig",
+          "name": "ComponentConfig",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BillDetailComponentConfig": {
+      "document": "Bill details configuration descriptions",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Configuration description name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "内网IP",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configuration description value\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10.12.0.22",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BillDistributionResourceSummary": {
+      "document": "Summary objects for a reseller bill",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.",
+          "example": "实时音视频",
+          "member": "string",
+          "name": "BusinessCodeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM - Standard S1.",
+          "example": "实时音视频-音视频通话",
+          "member": "string",
+          "name": "ProductCodeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing mode: The billing mode, which can be monthly subscription or pay-as-you-go.",
+          "example": "包年包月",
+          "member": "string",
+          "name": "PayModeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project Name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.",
+          "example": "默认项目",
+          "member": "string",
+          "name": "ProjectName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region: The region of a resource, e.g. South China (Guangzhou).",
+          "example": "华南地区（广州）",
+          "member": "string",
+          "name": "RegionName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone: The availability zone of a resource, e.g. Guangzhou Zone 3.",
+          "example": "其他",
+          "member": "string",
+          "name": "ZoneName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID: The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.\t",
+          "example": "1000068815",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.",
+          "example": " 1",
+          "member": "string",
+          "name": "ResourceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Transaction type, which can be monthly subscription purchase, monthly subscription renewal, pay-as-you-go deduction, etc.",
+          "example": "包年包月新购",
+          "member": "string",
+          "name": "ActionTypeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Order ID: The ID of a monthly subscription order.",
+          "example": "20210818400005559878881",
+          "member": "string",
+          "name": "OrderId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deduction time: The settlement cost deduction time.",
+          "example": "2021-08-18 15:35:01",
+          "member": "datetime",
+          "name": "PayTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Usage start time: The time at which product or service usage starts.",
+          "example": "2021-08-18 15:35:00",
+          "member": "datetime",
+          "name": "FeeBeginTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Usage end time: The time at which product or service usage ends.",
+          "example": "2022-08-31 23:59:59",
+          "member": "datetime",
+          "name": "FeeEndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configuration description: The billable item names and usage of a resource, which are displayed on the resource bill only.",
+          "example": "音视频通话-自定义套餐包: 1000分钟; ",
+          "member": "string",
+          "name": "ConfigDesc",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Extended Field 1: The extended attribute information of a product, which is displayed on the resource bill only.",
+          "example": "-",
+          "member": "string",
+          "name": "ExtendField1",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Extended field 2: The extended attribute information of a product, which is displayed on the resource bill only.",
+          "example": "-",
+          "member": "string",
+          "name": "ExtendField2",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Original cost. The original cost of a component = Component price x Usage x Usage duration. If a customer has applied for a fixed preferential price or contract price or if a customer is in a refund scenario, this parameter will not be displayed by default.",
+          "example": "7",
+          "member": "string",
+          "name": "TotalCost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Discount multiplier: The discount multiplier that applies to the component. If a customer has applied for a fixed preferential price or contract price or if a customer is in a refund scenario, this parameter will not be displayed by default.",
+          "example": "1",
+          "member": "string",
+          "name": "Discount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Offer type.",
+          "example": "折扣",
+          "member": "string",
+          "name": "ReduceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total amount after discount.",
+          "example": "7.00000000",
+          "member": "string",
+          "name": "RealTotalCost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Voucher payment: The voucher deduction amount.",
+          "example": "0.00000000",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cash credit payment: The amount paid through the user's cash account.",
+          "example": "7.00000000",
+          "member": "string",
+          "name": "CashPayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Free credit payment: The amount paid with the user's free credit.",
+          "example": "0.00000000",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Commission credit payment: The amount paid with the user's commission credit.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.00000000",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Extended field 3: The extended attribute information of a product, which is displayed on the resource bill only.",
+          "example": "-",
+          "member": "string",
+          "name": "ExtendField3",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Extended field 4: The extended attribute information of a product, which is displayed on the resource bill only.",
+          "example": "-",
+          "member": "string",
+          "name": "ExtendField4",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Extended field 5: The extended attribute information of a product, which is displayed on the resource bill only.",
+          "example": "-",
+          "member": "string",
+          "name": "ExtendField5",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "BillTagInfo",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Owner account ID: The account ID of the actual resource user.",
+          "example": "xxx",
+          "member": "string",
+          "name": "OwnerUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operator account ID: The account or role ID of the operator who purchases or activates a resource.",
+          "example": "xxx",
+          "member": "string",
+          "name": "OperateUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product code.",
+          "example": "p_rav",
+          "member": "string",
+          "name": "BusinessCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct code.",
+          "example": "sp_rav_audio_video",
+          "member": "string",
+          "name": "ProductCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region ID.",
+          "example": "1",
+          "member": "int64",
+          "name": "RegionId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance type: The instance type of a product or service purchased, which can be resource package, RI, SP, or spot instance. Other instance types are not displayed by default.",
+          "example": "ri",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "RI deduction (cost): The amount deducted from the original cost by RI.\t",
+          "example": "0",
+          "member": "string",
+          "name": "OriginalCostWithRI",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": true,
+          "document": "Savings plan deduction (disused).",
+          "example": "0",
+          "member": "string",
+          "name": "SPDeduction",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SP deduction (cost): The amount of cost deducted by a savings plan based on the component's original cost. SP deduction (cost) = Cost deduction by SP / SP deduction rate\t",
+          "example": "0",
+          "member": "string",
+          "name": "OriginalCostWithSP",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -1167,6 +1724,7 @@
         {
           "disabled": false,
           "document": "Cost allocation tag key",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
@@ -1176,6 +1734,7 @@
         {
           "disabled": false,
           "document": "Tag value",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": true,
@@ -1519,6 +2078,60 @@
       ],
       "usage": "out"
     },
+    "CreateAllocationTagRequest": {
+      "document": "CreateAllocationTag request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cost allocation tag key.",
+          "example": "testTag",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAllocationTagResponse": {
+      "document": "CreateAllocationTag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAllocationTagRequest": {
+      "document": "DeleteAllocationTag request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cost allocation tag key",
+          "example": "无",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteAllocationTagResponse": {
+      "document": "DeleteAllocationTag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAccountBalanceRequest": {
       "document": "DescribeAccountBalance request structure.",
       "members": [],
@@ -1656,6 +2269,171 @@
           "required": true,
           "type": "float",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillDetailForOrganizationRequest": {
+      "document": "DescribeBillDetailForOrganization request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The number of entries returned at a time. The maximum value is `100`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Cycle type, which can be `byUsedTime` (by billing cycle) or `byPayTime` (by deduction time). This value must be the same as the billing period type in Billing Center for that particular month. You can check your billing cycle at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.",
+          "example": "byPayTime",
+          "member": "string",
+          "name": "PeriodType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Bill month in the format of \"yyyy-mm\". You only have to enter either `Month` or `BeginTime` and `EndTime`. When you enter values for `BeginTime` and `EndTime`, `Month` becomes invalid. This value must be no earlier than the month when Bill 2.0 is activated; last 18 months data is available.",
+          "example": "2018-07",
+          "member": "string",
+          "name": "Month",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time of the cycle in the format of \"yyyy-mm-dd hh:ii:ss\". You only have to enter either `Month` or `BeginTime` and `EndTime`. When you enter values for `BeginTime` and `EndTime`, `Month` becomes invalid. `BeginTime` and `EndTime` must be passed together, and their values must be of the same month. Query period must start and end on the same month, andthe query result returned will be of the entire month. This value must be no earlier than the month when Bill 2.0 is activated; last 18 months data is available.",
+          "example": "2018-11-01 00:00:00",
+          "member": "string",
+          "name": "BeginTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time of the cycle in the format of \"yyyy-mm-dd hh:ii:ss\". You only have to enter either `Month` or `BeginTime` and `EndTime`. When you enter values for `BeginTime` and `EndTime`, `Month` becomes invalid. `BeginTime` and `EndTime` must be passed together, and their values must be of the same month. Query period must start and end on the same month, andthe query result returned will be of the entire month. This value must be no earlier than the month when Bill 2.0 is activated; last 18 months data is available.",
+          "example": "2018-11-01 23:59:59",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether the total number of records is required, used for pagination.\nValid values: `1` (required), `0` (not required).",
+          "example": "1",
+          "member": "int64",
+          "name": "NeedRecordNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Billing mode, which can be `prePay` (monthly subscription) or `postPay` (pay-as-you-go).",
+          "example": "prePay",
+          "member": "string",
+          "name": "PayMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the instance to be queried.",
+          "example": "ins-49zhx6z1",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:\nMonthly subscription purchase\nMonthly subscription renewal\nMonthly subscription upgrade/downgrade\nMonthly subscription refund \nPay-as-you-go deduction \nOffline project deduction \nOffline product deduction \nAdjustment deduction \nAdjustment compensation \nHourly pay-as-you-go \nDaily pay-as-you-go \nMonthly pay-as-you-go \nHourly spot instance \nOffline project adjustment compensation \nOffline product adjustment compensation \nOffer deduction \nOffer compensation \nPay-as-you-go resource migration in \nPay-as-you-go resource migration out \nMonthly subscription resource migration in \nMonthly subscription resource migration out \nPrepaid \nHourly \nRI refund \nPay-as-you-go reversal \nMonthly subscription to pay-as-you-go \nMinimum spend deduction \nHourly savings plan fee",
+          "example": "按量计费日结",
+          "member": "string",
+          "name": "ActionType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID: The ID of the project to which the resource belongs.",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Product code.\nNote: To query the product codes used in the current month, call <a href=\"https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1\">DescribeBillSummaryByProduct</a>.",
+          "example": "p_cvm",
+          "member": "string",
+          "name": "BusinessCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Context information returned by the last response. You can view multiple pages when querying for data after May 2023 to speed up the query. We recommend you use this query method if your data volume is above 100 thousand entries, which can improve query speed by 2-10 times.",
+          "example": "UEEJBfSsteS7dZgAaEEziWS40d4sn4urG7",
+          "member": "string",
+          "name": "Context",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillDetailForOrganizationResponse": {
+      "document": "DescribeBillDetailForOrganization response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Details list.",
+          "example": "无",
+          "member": "DistributionBillDetail",
+          "name": "DetailSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of records, which is cached every 24 hours and may be less than the actual total number of records.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "11841",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Context information of the current request, which can be used in the parameters of the next request to speed up the query.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "UEEJBfSsteS7dZgAaEEziWS40d4sn4urG7",
+          "member": "string",
+          "name": "Context",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -1846,6 +2624,208 @@
       ],
       "type": "object"
     },
+    "DescribeBillDownloadUrlRequest": {
+      "document": "DescribeBillDownloadUrl request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Bill type. Valid values:\n`billOverview` (L0: PDF bills)\n`billSummary` (L1: Bill summary)\t\n`billResource` (L2: Bill by instance)\t\n`billDetail` (L3: Bill details)\t\n`billPack` (Bill packs)",
+          "example": "billOverview",
+          "member": "string",
+          "name": "FileType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Bill month.\nThe earliest month that can be queried is January 2021.\nL0 bills and bill packs cannot be downloaded for the current month. Please download the current month's bills after it is generated at 19:00 on the 1st day of the next month.",
+          "example": "2023-08",
+          "member": "string",
+          "name": "Month",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of account IDs for downloading the bill. By default, it queries the bill for the current account. If you are an admin account and need to download bills for member accounts with their own payment, input the member account's UIN for this parameter.",
+          "example": "无",
+          "member": "string",
+          "name": "ChildUin",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillDownloadUrlResponse": {
+      "document": "DescribeBillDownloadUrl response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Indicates whether the bill file is ready. Valid values: `0` (the file is being generated), `1` (the file has been generated).",
+          "example": "1",
+          "member": "int64",
+          "name": "Ready",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bill download URL, valid for one hour.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DownloadUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillResourceSummaryForOrganizationRequest": {
+      "document": "DescribeBillResourceSummaryForOrganization request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The number of entries returned at a time. The maximum value is `1000`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Bill month in the format of \"yyyy-mm\". This value must be no earlier than the month when Bill 2.0 is activated.",
+          "example": "2018-08",
+          "member": "string",
+          "name": "Month",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cycle type, which can be `byUsedTime` (by billing cycle) or `byPayTime` (by deduction time). This value must be the same as the billing period type in Billing Center for that particular month. You can check your billing cycle at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.",
+          "example": "byPayTime",
+          "member": "string",
+          "name": "PeriodType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether the total number of records is required, used for pagination.\nValid values: `1` (required), `0` (not required).",
+          "example": "无",
+          "member": "int64",
+          "name": "NeedRecordNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:\nMonthly subscription purchase\nMonthly subscription renewal\nMonthly subscription upgrade/downgrade\nMonthly subscription refund \nPay-as-you-go deduction \nOffline project deduction \nOffline product deduction \nAdjustment deduction \nAdjustment compensation \nHourly pay-as-you-go \nDaily pay-as-you-go \nMonthly pay-as-you-go \nHourly spot instance \nOffline project adjustment compensation \nOffline product adjustment compensation \nOffer deduction \nOffer compensation \nPay-as-you-go resource migration in \nPay-as-you-go resource migration out \nMonthly subscription resource migration in \nMonthly subscription resource migration out \nPrepaid \nHourly \nRI refund \nPay-as-you-go reversal \nMonthly subscription to pay-as-you-go \nMinimum spend deduction \nHourly savings plan fee",
+          "example": "按量计费扣费",
+          "member": "string",
+          "name": "ActionType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the instance to be queried.",
+          "example": "ins-1op7g2iz",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Billing mode. Valid values: `prePay`, `postPay`.",
+          "example": "prePay",
+          "member": "string",
+          "name": "PayMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Product code\nNote: To query the product codes (`BusinessCode`) used in the current month, call <a href=\"https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1\">DescribeBillSummaryByProduct</a>.",
+          "example": "p_cvm",
+          "member": "string",
+          "name": "BusinessCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cost allocation tag key, which can be customized. This parameter can be used for querying bills after January 2021.",
+          "example": "province",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resource tag value. If it is left empty, there are no records with tag values set under this tag key.\nThis parameter can be used for querying bills after January 2021.",
+          "example": "0",
+          "member": "string",
+          "name": "TagValue",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillResourceSummaryForOrganizationResponse": {
+      "document": "DescribeBillResourceSummaryForOrganization response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource summary list.",
+          "example": "无",
+          "member": "BillDistributionResourceSummary",
+          "name": "ResourceSummarySet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of resource summary lists. It will not be returned if `NeedRecordNum` is `0`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "103",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBillResourceSummaryRequest": {
       "document": "DescribeBillResourceSummary request structure.",
       "members": [
@@ -1938,6 +2918,24 @@
           "name": "PayerUin",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cost allocation tag key, which can be customized. This parameter can be used for querying bills after January 2021.",
+          "example": "province",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resource tag value. If it is left empty, there are no records with tag values set under this tag key.\nThis parameter can be used for querying bills after January 2021.",
+          "example": "0",
+          "member": "string",
+          "name": "TagValue",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1978,6 +2976,7 @@
         {
           "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
+          "example": "",
           "member": "string",
           "name": "BeginTime",
           "required": true,
@@ -1986,6 +2985,7 @@
         {
           "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -1994,6 +2994,7 @@
         {
           "disabled": false,
           "document": "Query bill data user's UIN",
+          "example": "",
           "member": "string",
           "name": "PayerUin",
           "required": false,
@@ -2119,6 +3120,7 @@
         {
           "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
+          "example": "",
           "member": "string",
           "name": "BeginTime",
           "required": true,
@@ -2127,6 +3129,7 @@
         {
           "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -2135,6 +3138,7 @@
         {
           "disabled": false,
           "document": "Queries bill data user's UIN",
+          "example": "",
           "member": "string",
           "name": "PayerUin",
           "required": false,
@@ -2179,6 +3183,7 @@
         {
           "disabled": false,
           "document": "The value must be of the same month as `EndTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
+          "example": "",
           "member": "string",
           "name": "BeginTime",
           "required": true,
@@ -2187,6 +3192,7 @@
         {
           "disabled": false,
           "document": "The value must be of the same month as `BeginTime`. Query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -2195,6 +3201,7 @@
         {
           "disabled": false,
           "document": "Queries bill data user's UIN",
+          "example": "",
           "member": "string",
           "name": "PayerUin",
           "required": false,
@@ -2323,6 +3330,71 @@
       ],
       "type": "object"
     },
+    "DescribeBillSummaryForOrganizationRequest": {
+      "document": "DescribeBillSummaryForOrganization request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Bill month in the format of \"yyyy-mm\".",
+          "example": "2023-05",
+          "member": "string",
+          "name": "Month",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Bill dimension. Valid values: `business`, `project`, `region`, `payMode`, and `tag`.",
+          "example": "business",
+          "member": "string",
+          "name": "GroupType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag key. Pass in it when `GroupType` is `tag`.",
+          "example": "测试键",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryForOrganizationResponse": {
+      "document": "DescribeBillSummaryForOrganization response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Indicates whether the data is ready. Valid values: `0` (not ready), `1` (ready). If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Ready",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bills summarized by multiple dimensions.",
+          "example": "无",
+          "member": "SummaryDetail",
+          "name": "SummaryDetail",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBillSummaryRequest": {
       "document": "DescribeBillSummary request structure.",
       "members": [
@@ -2431,6 +3503,89 @@
           "member": "CosDetailSets",
           "name": "DetailSets",
           "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagListRequest": {
+      "document": "DescribeTagList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.",
+          "example": "3",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The number of entries returned at a time. The maximum value is `1000`.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Cost allocation tag key, used for fuzzy search.",
+          "example": "test",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag type, used for tag filtering. Valid values: `0` (general tags), `1` (cost allocation tags). If it is not specified, all tag keys will be queried.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting order. Valid values: `asc` (ascending order), `desc` (descending order).",
+          "example": "asc",
+          "member": "string",
+          "name": "OrderType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTagListResponse": {
+      "document": "DescribeTagList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of records.",
+          "example": "10",
+          "member": "uint64",
+          "name": "RecordNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag information.",
+          "example": "无",
+          "member": "TagDataInfo",
+          "name": "Data",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2709,6 +3864,282 @@
         }
       ],
       "type": "object"
+    },
+    "DistributionBillDetail": {
+      "document": "Objects of reseller bill details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.",
+          "example": "云服务器CVM",
+          "member": "string",
+          "name": "BusinessCodeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM - Standard S1.",
+          "example": "云服务器CVM-标准型S1",
+          "member": "string",
+          "name": "ProductCodeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing mode: The billing mode, which can be monthly subscription or pay-as-you-go.",
+          "example": "按量计费",
+          "member": "string",
+          "name": "PayModeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project Name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.",
+          "example": "默认项目",
+          "member": "string",
+          "name": "ProjectName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region: The region of a resource, e.g. South China (Guangzhou).",
+          "example": "华南地区（广州）",
+          "member": "string",
+          "name": "RegionName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3.",
+          "example": "广州三区",
+          "member": "string",
+          "name": "ZoneName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID: The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.",
+          "example": "ins-rb7bmkwx",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.",
+          "example": "emr-Core.3_emr-4g83a3k3",
+          "member": "string",
+          "name": "ResourceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Transaction type, which can be monthly subscription purchase, monthly subscription renewal, pay-as-you-go deduction, etc.",
+          "example": "包年包月新购",
+          "member": "string",
+          "name": "ActionTypeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Order ID: The ID of a monthly subscription order.",
+          "example": "20211202400008418120371",
+          "member": "string",
+          "name": "OrderId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Transaction ID: The ID of a settlement bill.",
+          "example": "20211202400008418120371",
+          "member": "string",
+          "name": "BillId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deduction time: The settlement cost deduction time.",
+          "example": "2021-12-02 12:45:12",
+          "member": "datetime",
+          "name": "PayTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Usage start time: The time at which product or service usage starts.",
+          "example": "2021-12-02 12:45:05",
+          "member": "datetime",
+          "name": "FeeBeginTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Usage end time: The time at which product or service usage ends.",
+          "example": "2021-12-03 12:45:05",
+          "member": "datetime",
+          "name": "FeeEndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of components.",
+          "example": "[           {             \"ComponentCodeName\": \"实例\",            ",
+          "member": "BillDetailComponent",
+          "name": "ComponentSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Owner account ID: The account ID of the actual resource user.",
+          "example": "909619400",
+          "member": "string",
+          "name": "OwnerUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Operator account ID: The account or role ID of the operator who purchases or activates a resource.",
+          "example": "909619400",
+          "member": "string",
+          "name": "OperateUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[           {             \"TagKey\": \"jemmahuang\",             \"T",
+          "member": "BillTagInfo",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Product code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "p_cdn",
+          "member": "string",
+          "name": "BusinessCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sp_cvm_sa2",
+          "member": "string",
+          "name": "ProductCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Transaction type code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "postpay_deduct_h",
+          "member": "string",
+          "name": "ActionType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "RegionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project ID.",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Price attribute: A set of attributes which will determine the price of a component, apart from unit price and usage duration.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"操作系统\"：\"linux\"，\"连续使用时长T\"：\"第三阶梯\"，\"平台\"：\"云平\"]",
+          "member": "string",
+          "name": "PriceInfo",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Associated transaction document ID: The ID of the document associated with a transaction, such as a write-off order, the original order showing a deduction error during first settlement, a restructured order, or the original purchase order corresponding to a refund order.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{                     \"PrepayPurchase\":\"20230707400000439953321\",                     \"PrepayRenew\":\"20230707400000440668101,20230707400000440730331,20230707400000440886501\"                 }",
+          "member": "BillDetailAssociatedOrder",
+          "name": "AssociatedOrder",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Calculation formula: The detailed calculation formula for a specific transaction type, such as refund or configuration change.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"退款：686.51元，现金券： 0元,代金券/折扣券不退（订单号20230707400000439953321\"",
+          "member": "string",
+          "name": "Formula",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing rules: Official website links for detailed billing rules of each product.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "https://buy.cloud.tencent.com/price/cvm",
+          "member": "string",
+          "name": "FormulaUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "ExcludedProducts": {
       "document": "The products that are not applicable.",
@@ -3170,6 +4601,42 @@
           "member": "string",
           "name": "TotalCost",
           "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TagDataInfo": {
+      "document": "Tag information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cost allocation tag key.",
+          "example": "test1",
+          "member": "string",
+          "name": "TagKey",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag type. Valid values: `0` (general tags), `1` (cost allocation tags).",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time to set the cost allocation tag. It will not be returned if `Status` is `0`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-02-28 19:22:21",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": true
         }

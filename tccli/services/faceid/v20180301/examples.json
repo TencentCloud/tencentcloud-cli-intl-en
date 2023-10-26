@@ -18,10 +18,10 @@
     ],
     "ApplyWebVerificationBizTokenIntl": [
       {
-        "document": "This example shows you how to apply for a token for a web-based verification process.",
+        "document": "Apply Web Verification BizToken",
         "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetWebFaceIDToken\n<Common request parameters>\n\n{\n    \"CompareImageBase64\": \"CompareImageBase64String\",\n    \"RedirectURL\": \"https://www.tencentcloud.com/products/faceid\",\n    \"Extra\": \"ExtraString\"\n}",
-        "output": "{\n    \"Response\": {\n        \"VerificationUrl\": \"https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442\",\n        \"BizToken\": \"81EEF678-28EE-4759-A82E-6CBBBE6BC442\",\n        \"RequestId\": \"b16194cd-8f52-4e66-882a-eb6bf15c016d\"\n    }\n}",
-        "title": "Applying for a token for a web-based verification process"
+        "output": "{\n    \"Response\": {\n        \"VerificationURL\": \"https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442\",\n        \"BizToken\": \"81EEF678-28EE-4759-A82E-6CBBBE6BC442\",\n        \"RequestId\": \"b16194cd-8f52-4e66-882a-eb6bf15c016d\"\n    }\n}",
+        "title": "Apply Web Verification BizToken"
       }
     ],
     "ApplyWebVerificationToken": [
@@ -30,6 +30,26 @@
         "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApplyWebVerificationToken\n<Common request parameters>\n\n{\n    \"RedirectUrl\": \"https://www.domain.com/result/callback\",\n    \"CompareImageUrl\": \"https%3A%2F%2Fsingapore-1257237511.cos.ap-singapore.myqcloud.com%2Ffaceid%2F%2Ftest.png%3Fq-sign-algorithm%3Dsha1%26q-ak%3DAKIDpguZTmihib_W5VoMU1T07CvytjqfY6auKJN6akSM4tmgbmjHnwl2d7EW9TIUYxmK%26q-sign-time%3D1637288206%3B1637291806%26q-key-time%3D1637288206%3B1637291806%26q-header-list%3Dhost%26q-url-param-list%3D%26q-signature%3D7b95d6494e30b05c493ea32db18bbded2e52cd20%26x-cos-security-token%3DkdihJH25E3bZ062DmV2DK1Hv7kE9LQgab4e9fcd283fe59181502e2e1cbecca83iCHquGrh0AClApqec56ahy-298Taz8DrfmRBHFlARDI1XytSLuMcSltSighEh-N7hRDmcug2POunRzWY5JIi7vYiSTxDj1QDZql5o1C6nraxlGkyM-EAZquEK1M6hUXFV6x1_C1G0CpUi3-TJl0cx5M1MUItmdx0h3vZ9u0IuEtZgrvGDrEAViW432lRrlSi\",\n    \"CompareImageMd5\": \"2455b660dfe11f7e00ddf4831603d897\"\n}",
         "output": "{\n    \"Response\": {\n        \"BizToken\": \"0AEEA2AE-7166-4EA4-BD82-3494ECF216BD\",\n        \"RequestId\": \"f3ef2ddf-c5a6-4e2a-9ac6-441231ba8a61\",\n        \"VerificationUrl\": \"https://sg.faceid.qq.com/reflect/?token=0AEEA2AE-7166-4EA4-BD82-3494ECF216BD\"\n    }\n}",
         "title": "Applying for a token"
+      }
+    ],
+    "CompareFaceLiveness": [
+      {
+        "document": "Liveness detection and face comparison failed. Determined not to be the same person.",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CompareFaceLiveness\n<Common request parameters>\n\n{\n    \"ImageBase64\": \"iVBORw0KGg...(total length:121036)s97n//2Q==\",\n    \"VideoBase64\": \"AAAAGGZ0eX...(total length:1651021)AAwAAAAEecg=\",\n    \"LivenessType\": \"ACTION\",\n    \"ValidateData\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"FailedOperation.CompareLowSimilarity\",\n        \"Description\": \"The comparison similarity did not reach the passing standard.\",\n        \"Sim\": 9.21,\n        \"BestFrameBase64\": \"/9j/4AAQSk...(total length:138021)8ASrH/2Q==\",\n        \"RequestId\": \"6176fad1-f078-445b-8a4d-c8a903528b5a\"\n    }\n}",
+        "title": "Liveness detection and face comparison failed. Determined not to be the same person."
+      },
+      {
+        "document": "Liveness detection and face comparison passed. Determined to be the same person.",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CompareFaceLiveness\n<Common request parameters>\n\n{\n    \"LivenessType\": \"SILENT\",\n    \"ImageBase64\": \"iVBORw0KGg...(total length:121036)s97n//2Q==\",\n    \"VideoBase64\": \"AAAAGGZ0eX...(total length:1651021)AAwAAAAEecg=\",\n    \"ValidateData\": \"\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"Success\",\n        \"Description\": \"Success\",\n        \"Sim\": 100,\n        \"BestFrameBase64\": \"/9j/4AAQSk...(total length:142036)s97n//2Q==\",\n        \"RequestId\": \"f89097ac-4003-4d73-acb3-696d4057b9eb\"\n    }\n}",
+        "title": "Liveness detection and face comparison passed. Determined to be the same person."
+      },
+      {
+        "document": "Liveness detection failed, the specified action was not detected.",
+        "input": "POST / HTTP/1.1\nHost: faceid.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CompareFaceLiveness\n<Common request parameters>\n\n{\n    \"ImageBase64\": \"iVBORw0KGg...(total length:121036)s97n//2Q==\",\n    \"VideoBase64\": \"AAAAGGZ0eX...(total length:1651021)AAwAAAAEecg=\",\n    \"LivenessType\": \"ACTION\",\n    \"ValidateData\": \"4,2\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": \"FailedOperation.ActionFirstAction\",\n        \"Description\": \"The first motion is not detected.\",\n        \"Sim\": 0,\n        \"BestFrameBase64\": \"/9j/4AAQSk...(total length:161021)W/M7/M/9k=\",\n        \"RequestId\": \"df5afd82-6469-4a4a-bd62-debf8c2ef94f\"\n    }\n}",
+        "title": "Liveness detection failed, the specified action was not detected."
       }
     ],
     "CreateUploadUrl": [

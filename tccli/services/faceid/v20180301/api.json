@@ -28,6 +28,13 @@
       "output": "ApplyWebVerificationTokenResponse",
       "status": "online"
     },
+    "CompareFaceLiveness": {
+      "document": "This interface supports judgment of real person and photo comparison to verify the user's identity online. By passing the video and photo into the interface, it will first judge whether the person in the video is real. If yes, it judges whether the person in the video is the same one as the uploaded photo and returns authentication result.",
+      "input": "CompareFaceLivenessRequest",
+      "name": "CompareFaceLiveness",
+      "output": "CompareFaceLivenessResponse",
+      "status": "online"
+    },
     "CreateUploadUrl": {
       "document": "This API is used to generate a temporary `UploadUrl` for uploading resource files (with the `HTTP PUT` method). After resource upload, `ResourceUrl` will be passed to the `TargetAction` API to complete the resource passing (specific fields vary by case). \nThe data will be stored in a COS bucket in the region specified by the parameter `Region` for two hours.",
       "input": "CreateUploadUrlRequest",
@@ -263,7 +270,7 @@
         },
         {
           "disabled": false,
-          "document": "The web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. Example: `https://www.tencentcloud.com/products/faceid`.\nAfter the verification process is completed, the `BizToken` of this process will be spliced to the callback URL in the format of `https://www.tencentcloud.com/products/faceid?token={BizToken}` before redirect.",
+          "document": "The web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. \nExample: https://www.tencentcloud.com/products/faceid.\nAfter the verification process is completed, the BizToken of this process will be spliced to the callback URL in the format of https://www.tencentcloud.com/products/faceid?token={BizToken} before redirect.",
           "example": "https://www.tencentcloud.com/products/faceid",
           "member": "string",
           "name": "RedirectURL",
@@ -272,7 +279,7 @@
         },
         {
           "disabled": false,
-          "document": "The passthrough parameter of the business, max 1,000 characters, which will be returned in `GetWebVerificationResultIntl`.",
+          "document": "The passthrough parameter of the business, max 1,000 characters, which will be returned in GetWebVerificationResultIntl.",
           "example": "ExtraString",
           "member": "string",
           "name": "Extra",
@@ -296,7 +303,7 @@
       "members": [
         {
           "disabled": true,
-          "document": "The URL of this verification process, which will be returned to the frontend of the browser for starting the process.",
+          "document": "The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.",
           "example": "https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442",
           "member": "string",
           "name": "VerificationUrl",
@@ -306,7 +313,7 @@
         },
         {
           "disabled": false,
-          "document": "The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.",
+          "document": "The token for the web-based verification, which is generated using the ApplyWebVerificationBizTokenIntl API.",
           "example": "81EEF678-28EE-4759-A82E-6CBBBE6BC442",
           "member": "string",
           "name": "BizToken",
@@ -453,6 +460,100 @@
         }
       ],
       "usage": "out"
+    },
+    "CompareFaceLivenessRequest": {
+      "document": "CompareFaceLiveness request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Base64 value of photos used for face comparison. \nThe size of image data encoded by Base64 shall not exceed 3M, only jpg and png are supported. \nPlease use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. \nExample values: \"/9j/4AAQSk... (total length:61944)KiiK//2Q==\"",
+          "example": "\"/9j/4AAQSk...(total length:61944)KiiK//2Q==\"",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Base64 value of photos used for face comparison. \nThe size of image data encoded by Base64 shall not exceed 3M, only jpg and png are supported. \nPlease use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. \nExample values: \"/9j/4AAQSk... (total length:61944)KiiK//2Q==\"",
+          "example": "\"/9j/4AAQSk...(total length: 597242)U7JbKxuf/Z\"",
+          "member": "string",
+          "name": "VideoBase64",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.\n`LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.\nExample value: \"SILENT\"",
+          "example": "\"SILENT\"",
+          "member": "string",
+          "name": "LivenessType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "When the “LivenessType” parameter is “ACTION”, it must be specified.\nIt is used to control the action sequence. Action types: \n1 (open mouth)\n2 (blink)\n3 (nod)\n4 (shake head). \nSelect one or two from the four actions.\nExample of passing single action parameter: \"1\".\nExample of passing multiple action parameters: \"4,2\".\nWhen the “LivenessType” parameter value is “SILENT”, it shall be unspecified.\nExample value: \"\"",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ValidateData",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CompareFaceLivenessResponse": {
+      "document": "CompareFaceLiveness response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Service error code. When the return value is \"Success\", it indicates that the liveness detection and face comparison succeeded. It is determined that they are the same person. When the return value is \"FailedOperation.CompareLowSimilarity\", it indicates that the liveness detection succeeded, and the face comparison similarity is lower than 70 points. It is determined that they are not the same person. For other error cases, please refer to Liveness Face Comparison (Pure API) Error Code (https://www.tencentcloud.com/document/product/1061/55390). \nExample Value: \"Success\".",
+          "example": "\"Success\"",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Description of business results. \nExample value: \"Success\"",
+          "example": "\"Success\"",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "This value is valid when the “Result” parameter is \"Success\" or \"FailedOperation.CompareLowSimilarity.\" \nThis value indicates the similarity of face comparison. Value range: [0.00, 100.00]. The false pass rate for threshold 70 is 1 in 1,000, and the false pass rate for threshold 80 is 1 in 1,000. \nExample value: 80.00",
+          "example": "80.00",
+          "member": "float",
+          "name": "Sim",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The optimal screenshot of the video after verification is the value encoded by BASE64, jpg format. \nNote: This field may return “null”, indicating that no valid value can be obtained. \nExample values: \"/9j/4AAQSk... (total length:142036)s97n//2Q==\"",
+          "example": "\"/9j/4AAQSk...(total length:142036)s97n//2Q==\"",
+          "member": "string",
+          "name": "BestFrameBase64",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CompareResult": {
       "document": "The description of a single comparison result.",
@@ -1663,11 +1764,11 @@
       "type": "object"
     },
     "WebVerificationConfigIntl": {
-      "document": "",
+      "document": "eKYC Web related configuration",
       "members": [
         {
           "disabled": false,
-          "document": "Whether to automatically redirect to `RedirectUrl` after successful verification. Default value: `false`.",
+          "document": "Whether to automatically redirect to RedirectUrl after successful verification. Default value: false.",
           "example": "false",
           "member": "bool",
           "name": "AutoSkip",
