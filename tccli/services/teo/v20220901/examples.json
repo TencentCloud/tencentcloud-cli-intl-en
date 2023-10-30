@@ -18,16 +18,16 @@
     ],
     "CreateAccelerationDomain": [
       {
-        "document": "This example shows you how to connect a domain to EdgeOne.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccelerationDomain\n<Common request parameters>\n\n{\n    \"DomainName\": \"qq.com\",\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"OriginInfo\": {\n        \"OriginType\": \"ip_domain\",\n        \"Origin\": \"qq.com\",\n        \"BackupOrigin\": \"\"\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
-        "title": "Connecting a domain to EdgeOne"
+        "document": "创建源站类型为 AWS S3，开启私有访问，鉴权算法版本为 AWS signature v2 的加速域名。",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccelerationDomain\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"DomainName\": \"qq.com\",\n    \"OriginInfo\": {\n        \"OriginType\": \"AWS_S3\",\n        \"Origin\": \"https://test.s3.ap-east-1.amazonaws.com\",\n        \"PrivateAccess\": \"on\",\n        \"PrivateParameters\": [\n            {\n                \"Name\": \"AccessKeyId\",\n                \"Value\": \"AKIDdDva7VjFk7LQJ0X5WnbKE7mQTest\"\n            },\n            {\n                \"Name\": \"SecretAccessKey\",\n                \"Value\": \"nMirpdWhhT6bxPsaFwYM1SzQrTest\"\n            },\n            {\n                \"Name\": \"SignatureVersion\",\n                \"Value\": \"v2\"\n            },\n            {\n                \"Name\": \"Region\",\n                \"Value\": \"ap-east-1\"\n            }\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a703\"\n    }\n}",
+        "title": "创建源站类型为 AWS S3 的加速域名"
       },
       {
-        "document": "This example shows you how to connect a domain u200dto EdgeOne and configure an AWS S3 origin that supports u200dAWS Signature Version 2.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccelerationDomain\n<Common request parameters>\n\n{\n    \"DomainName\": \"qq.com\",\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"OriginInfo\": {\n        \"OriginType\": \"AWS_S3\",\n        \"Origin\": \"https://teo.cos.ap-beijing.myqcloud.com\",\n        \"PrivateParameters\": [\n            {\n                \"Name\": \"AccessKeyId\",\n                \"Value\": \"AKIDdDva7VjFk7LQJ0X5WnbKE7mQTest\"\n            },\n            {\n                \"Name\": \"SecretAccessKey\",\n                \"Value\": \"nMirpdWhhT6bxPsaFwYM1SzQrTest\"\n            },\n            {\n                \"Name\": \"SignatureVersion\",\n                \"Value\": \"v2\"\n            },\n            {\n                \"Name\": \"Region\",\n                \"Value\": \"ap-beijing\"\n            }\n        ]\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a703\"\n    }\n}",
-        "title": "Connecting a domain to EdgeOne and configuring AWS Signature Version 2"
+        "document": "创建源站类型为域名的加速域名。",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAccelerationDomain\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"DomainName\": \"qq.com\",\n    \"OriginInfo\": {\n        \"OriginType\": \"ip_domain\",\n        \"Origin\": \"www.test.com\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "创建源站类型为域名的加速域名"
       }
     ],
     "CreateAliasDomain": [
@@ -56,46 +56,10 @@
     ],
     "CreateOriginGroup": [
       {
-        "document": "In this example, the origin group can be used for layer-4 proxy rules and load balancing. If it is used for layer-4 proxy rules, OriginType must be `self` and a port number must be contained.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupName\": \"origingroupforl4\",\n    \"ConfigurationType\": \"weight\",\n    \"OriginType\": \"self\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"1.2.3.4\",\n            \"Weight\": 50,\n            \"Port\": 80\n        },\n        {\n            \"Record\": \"1.2.3.5\",\n            \"Weight\": 50,\n            \"Port\": 80\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
-        "title": "Creating a customer origin group that performs origin-pull by weight"
-      },
-      {
-        "document": "In this example, the origin group can be used for load balancing and the origin-pull will be performed by round-robin.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupName\": \"origingroupforloadbalancing\",\n    \"ConfigurationType\": \"weight\",\n    \"OriginType\": \"self\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"1.2.3.4\"\n        },\n        {\n            \"Record\": \"1.2.3.5\"\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
-        "title": "Creating a customer origin group that performs origin-pull by weight (default port)"
-      },
-      {
-        "document": "In this example, the origin group can be used for load balancing.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupName\": \"origingroupforloadbalancing\",\n    \"ConfigurationType\": \"proto\",\n    \"OriginType\": \"self\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"1.2.3.4\",\n            \"Proto\": \"http\",\n            \"Port\": 80\n        },\n        {\n            \"Record\": \"1.2.3.5\",\n            \"Proto\": \"https\",\n            \"Port\": 443\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
-        "title": "Creating a customer origin group that performs origin-pull by protocol (specified protocol and port)"
-      },
-      {
-        "document": "In this example, the origin group can be used for load balancing.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupName\": \"origingroupforloadbalancing\",\n    \"ConfigurationType\": \"\",\n    \"OriginType\": \"third_party\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"your-name.s3.us-east-1.amazonaws.com\"\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
-        "title": "Creating a public AWS object storage origin group"
-      },
-      {
-        "document": "In this example, the origin group can be used for load balancing.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupName\": \"origingroupforloadbalancing\",\n    \"ConfigurationType\": \"\",\n    \"OriginType\": \"third_party\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"your-name.s3.us-east-1.amazonaws.com\",\n            \"Private\": true,\n            \"PrivateParameters\": [\n                {\n                    \"Name\": \"AccessKeyId\",\n                    \"Value\": \"your aws access key id\"\n                },\n                {\n                    \"Name\": \"SecretAccessKey\",\n                    \"Value\": \"your aws secret access key\"\n                }\n            ]\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
-        "title": "Creating a private AWS object storage origin group"
-      },
-      {
-        "document": "In this example, the origin group can be used for load balancing.\nNote: To give EdgeOne access to COS products, you can complete authorization on the console.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupName\": \"origingroupforloadbalancing\",\n    \"ConfigurationType\": \"\",\n    \"OriginType\": \"cos\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"your-name.cos.ap-nanjing.myqcloud.com\"\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
-        "title": "Creating a public Tencent Cloud COS origin group"
-      },
-      {
-        "document": "In this example, the origin group can be used for load balancing.\nNote: To give EdgeOne access to COS products, you can complete authorization on the console.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupName\": \"origingroupforloadbalancing\",\n    \"ConfigurationType\": \"\",\n    \"OriginType\": \"cos\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"your-name.cos.ap-nanjing.myqcloud.com\",\n            \"Private\": true\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
-        "title": "Creating a private Tencent Cloud COS origin group"
+        "document": "创建HTTP专用型源站组",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOriginGroup\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-2kblak89bkx1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"OriginGroupId\": \"origin-df19b73e-3a4c-11ee-a68f-5254000a367f\",\n        \"RequestId\": \"8240f255-241c-4bae-979f-4738d7ea3f84\"\n    }\n}",
+        "title": "创建源站组"
       }
     ],
     "CreatePlanForZone": [
@@ -116,13 +80,13 @@
     ],
     "CreatePurgeTask": [
       {
-        "document": "By using Invalidate method, resources under a site are associated with tags in the HTTP response header Cache-Tag and marked as invalid.\nThis example shows you how to purge resources that contain tag1, tag2 and tag3 and have changed under the site example.com.",
+        "document": "Purging will clear all resources with the tag specified in `Cache-Tag` in all HTTP responses. \nThis example shows you how to purge resources that contain tag1, tag2 and tag3 in all HTTP responses of the site example.com.",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<Common request parameters>\n\n{\n    \"Targets\": [\n        \"tag1\",\n        \"tag2\",\n        \"tag3\"\n    ],\n    \"Type\": \"purge_cache_tag\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwcs\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Purging by the Cache-Tag"
       },
       {
-        "document": "By using Invalidate method, resources under a domain name that matches the specified hostname are marked as invalid.\nThis example shows you how to purge resources changed under the site domain www.example.com. <li>Note: Domain names cannot include wildcards (*). </li>",
+        "document": "This method marks resources under a domain name that matches the specified hostname as expired.\nThis example shows you how to purge all changed resources under the site domain name www.example.com <li>Note: Host in the format *. example.com is not supported, i.e., the domain name cannot contain wildcards, and the corresponding subdomain name needs to be specified.</li>",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<Common request parameters>\n\n{\n    \"Targets\": [\n        \"www.example.com\"\n    ],\n    \"Type\": \"purge_host\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwcs\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Purging by the hostname"
@@ -143,10 +107,10 @@
         "document": "To purge the resources updated under a directory, pass `invalidate` into the Method field.\nThis example shows you how to purge resources changed in the directory /test under the site domain www.example.com.\n",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<Common request parameters>\n\n{\n    \"Targets\": [\n        \"http://www.example.com/test/\"\n    ],\n    \"Type\": \"purge_prefix\",\n    \"Method\": \"invalidate\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwcj\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Only purging resources updated in the directory"
+        "title": "Only purging updated resources in a directory"
       },
       {
-        "document": "To purge all resources under u200da directory, pass `delete` into the Method field.\nThis example shows you how to purge all resources in the /test directory under www.example.com.\n",
+        "document": "All resources under the directory are purged when `Method = delete`.\nThis example shows you how to purge all resources in the /test directory under www.example.com.\n",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePurgeTask\n<Common request parameters>\n\n{\n    \"Targets\": [\n        \"http://www.example.com/test/\"\n    ],\n    \"Type\": \"purge_prefix\",\n    \"Method\": \"delete\",\n    \"ZoneId\": \"zone-ajj243dwrew\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"20ga521cpwck\",\n        \"FailedList\": [],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Purging by the directory – Deleting resources in the directory"
@@ -174,12 +138,32 @@
         "title": "Creating a security IP group"
       }
     ],
+    "CreateSharedCNAME": [
+      {
+        "document": "This example shows you how to create a shared CNAME.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSharedCNAME\n<Common request parameters>\n\n{\n    \"SharedCNAMEPrefix\": \"test\",\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"Description\": \"For business A \"\n}",
+        "output": "{\n    \"Response\": {\n        \"SharedCNAME\": \"test.225qgrnvbi9w.share.eo.dnse1.com\",\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Creating a shared CNAME"
+      }
+    ],
     "CreateZone": [
       {
-        "document": "This example shows you how to connect a site to EdgeOne.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateZone\n<Common request parameters>\n\n{\n    \"JumpStart\": false,\n    \"Type\": \"full\",\n    \"ZoneName\": \"example.com\",\n    \"AllowDuplicates\": false,\n    \"AliasZoneName\": \"zone-example\"\n}",
-        "output": "{\n    \"Response\": {\n        \"ZoneId\": \"zone-27q0p0bali16\",\n        \"RequestId\": \"2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\"\n    }\n}",
-        "title": "Connecting a site to EdgeOne"
+        "document": "创建 CNAME 接入类型的站点 example.com，服务区域为全球可用区，绑定套餐 edgeone-37q0w6qali10。接口将返回站点 ID 和站点归属权验证信息。您可以对站点进行归属权验证，可参考 [站点/域名归属权验证](https://cloud.tencent.com/document/product/1552/70789)。",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateZone\n<common request parameters>\n\n{\n    \"Type\": \"partial\",\n    \"ZoneName\": \"example.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ZoneId\": \"zone-27q0p0bali16\",\n        \"RequestId\": \"9kl50bew-89ga-44f4-91ce-78125d53vd2a\"\n    }\n}",
+        "title": "创建 CNAME 接入类型的站点"
+      },
+      {
+        "document": "创建NS接入模式站点 example.com，服务区域为中国大陆可用区，绑定套餐 edgeone-37q0w6qali10。接口将返回 DNS 服务器信息，您需要前往域名注册商处修改，可参考 [修改 DNS 服务器](https://cloud.tencent.com/document/product/1552/90452)。",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateZone\n<common request parameters>\n\n{\n    \"Type\": \"full\",\n    \"ZoneName\": \"example.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ZoneId\": \"zone-27q0p0bali16\",\n        \"RequestId\": \"9kl50bew-89ga-44f4-91ce-78125d53vd2a\"\n    }\n}",
+        "title": "创建 NS 接入类型的站点 "
+      },
+      {
+        "document": "创建无域名接入模式站点，绑定套餐 edgeone-37q0w6qali10。接口将返回站点 ID。有关无域名接入模式的相关信息，可参考 [快速启用四层代理服务](https://cloud.tencent.com/document/product/1552/96051)。",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateZone\n<common request parameters>\n\n{\n    \"Type\": \"noDomainAccess\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ZoneId\": \"zone-27q0p0bali16\",\n        \"RequestId\": \"9kl50bew-89ga-44f4-91ce-78125d53vd2a\"\n    }\n}",
+        "title": "创建无域名接入模式站点"
       }
     ],
     "DeleteAccelerationDomains": [
@@ -248,10 +232,10 @@
     ],
     "DescribeAccelerationDomains": [
       {
-        "document": "The following example shows you how to query accelerated domains names.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccelerationDomains\n<Common request parameters>\n\n{\n    \"Direction\": \"desc\",\n    \"ZoneId\": \"zone-20hyebgyfsko\",\n    \"Limit\": 0,\n    \"Filters\": [\n        {\n            \"Fuzzy\": true,\n            \"Values\": [\n                \"domain-3d5dg39c\"\n            ],\n            \"Name\": \"domain-id\"\n        }\n    ],\n    \"Offset\": 0,\n    \"Order\": \"created_on\",\n    \"Match\": \"all\"\n}",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\",\n        \"AccelerationDomains\": [\n            {\n                \"DomainName\": \"example.qq.com\",\n                \"ModifiedOn\": \"2020-09-22T00:00:00+00:00\",\n                \"CreatedOn\": \"2020-09-22T00:00:00+00:00\",\n                \"DomainStatus\": \"online\",\n                \"ZoneId\": \"zone-20hyebgyfsko\",\n                \"Cname\": \"example.qq.com.cname.com\",\n                \"OriginDetail\": {\n                    \"Origin\": \"qq.com\",\n                    \"OriginType\": \"ip_domain\",\n                    \"BackupOrigin\": \"\"\n                }\n            }\n        ]\n    }\n}",
-        "title": "acceleration_domains"
+        "document": "查询指定 zone-id 的下的源站类型为 IP_DOMAIN 的所有加速域名的信息，并将结果按照创建时间降序排列。",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAccelerationDomains\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-20hyebgyfsko\",\n    \"Filters\": [\n        {\n            \"Fuzzy\": true,\n            \"Values\": [\n                \"IP_DOMAIN\"\n            ],\n            \"Name\": \"origin-type\"\n        }\n    ],\n    \"Direction\": \"desc\",\n    \"Order\": \"created_on\",\n    \"Match\": \"all\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AccelerationDomains\": [\n            {\n                \"ZoneId\": \"zone-20hyebgyfsko\",\n                \"DomainName\": \"www.qq.com\",\n                \"DomainStatus\": \"online\",\n                \"OriginDetail\": {\n                    \"OriginType\": \"IP_DOMAIN\",\n                    \"Origin\": \"origin.qq.com\",\n                    \"BackupOrigin\": \"\",\n                    \"PrivateParameters\": [],\n                    \"PrivateAccess\": \"\",\n                    \"OriginGroupName\": \"\",\n                    \"BackOriginGroupName\": \"\"\n                },\n                \"IdentificationStatus\": \"finished\",\n                \"Cname\": \"www.qq.com.eo.dnse3.com\",\n                \"CreatedOn\": \"2020-09-22T00:00:00+00:00\",\n                \"ModifiedOn\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ],\n        \"RequestId\": \"5e5a0d0f-52f3-4bad-9bd3-dcf1d5c954e7\"\n    }\n}",
+        "title": "查询指定站点下的域名信息"
       }
     ],
     "DescribeAliasDomains": [
@@ -336,22 +320,10 @@
     ],
     "DescribeOriginGroup": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginGroup\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-20hzkd4rdmy0\"\n            ],\n            \"Fuzzy\": false\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"TotalCount\": 1,\n        \"OriginGroups\": [\n            {\n                \"OriginGroupId\": \"origin-136db381-8d3d-11ec-89a4-00ff977fb3c8\",\n                \"OriginGroupName\": \"origin-name\",\n                \"ZoneId\": \"zone-20hzkd4rdmy0\",\n                \"ZoneName\": \"tencent.com\",\n                \"OriginRecords\": [\n                    {\n                        \"Area\": [],\n                        \"Port\": 80,\n                        \"Record\": \"1.2.3.4\",\n                        \"RecordId\": \"record-4b2dbd84-8d9a-11ec-9527-00ff977fb3c8\",\n                        \"Weight\": 100\n                    }\n                ],\n                \"ConfigurationType\": \"weight\",\n                \"OriginType\": \"self\",\n                \"UpdateTime\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ]\n    }\n}",
-        "title": "Querying the origin group list of a site"
-      },
-      {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginGroup\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-20hzkd4rdmy0\"\n            ],\n            \"Fuzzy\": false\n        },\n        {\n            \"Name\": \"origin-group-id\",\n            \"Values\": [\n                \"origin-136db381-8d3d-11ec-89a4-00ff977fb3c8\"\n            ],\n            \"Fuzzy\": false\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"TotalCount\": 1,\n        \"OriginGroups\": [\n            {\n                \"OriginGroupId\": \"origin-136db381-8d3d-11ec-89a4-00ff977fb3c8\",\n                \"OriginGroupName\": \"origin-name\",\n                \"ZoneId\": \"zone-20hzkd4rdmy0\",\n                \"ZoneName\": \"tencent.com\",\n                \"OriginRecords\": [\n                    {\n                        \"Area\": [],\n                        \"Port\": 80,\n                        \"Record\": \"1.2.3.4\",\n                        \"RecordId\": \"record-4b2dbd84-8d9a-11ec-9527-00ff977fb3c8\",\n                        \"Weight\": 100\n                    }\n                ],\n                \"ConfigurationType\": \"weight\",\n                \"OriginType\": \"self\",\n                \"UpdateTime\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ]\n    }\n}",
-        "title": "Querying the details of an origin group by ID"
-      },
-      {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginGroup\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10,\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-20hzkd4rdmy0\"\n            ],\n            \"Fuzzy\": false\n        },\n        {\n            \"Name\": \"origin-group-name\",\n            \"Values\": [\n                \"name\"\n            ],\n            \"Fuzzy\": true\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"TotalCount\": 1,\n        \"OriginGroups\": [\n            {\n                \"OriginGroupId\": \"origin-136db381-8d3d-11ec-89a4-00ff977fb3c8\",\n                \"OriginGroupName\": \"origin-name\",\n                \"ZoneId\": \"zone-20hzkd4rdmy0\",\n                \"ZoneName\": \"tencent.com\",\n                \"OriginRecords\": [\n                    {\n                        \"Area\": [],\n                        \"Port\": 80,\n                        \"Record\": \"1.2.3.4\",\n                        \"RecordId\": \"record-4b2dbd84-8d9a-11ec-9527-00ff977fb3c8\",\n                        \"Weight\": 100\n                    }\n                ],\n                \"ConfigurationType\": \"weight\",\n                \"OriginType\": \"self\",\n                \"UpdateTime\": \"2020-09-22T00:00:00+00:00\"\n            }\n        ]\n    }\n}",
-        "title": "Querying the details of an origin group by name in a fuzzy query"
+        "document": "获取指定源站组ID的源站组列表",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginGroup\n<common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"origin-group-id\",\n            \"Values\": [\n                \"origin-057c4d82-383c-11ee-8888-525400682e90\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"OriginGroups\": [\n            {\n                \"ConfigurationType\": \"\",\n                \"HostHeader\": \"\",\n                \"OriginType\": \"self\",\n                \"UpdateTime\": \"2023-08-11T19:41:33Z\"\n            }\n        ],\n        \"RequestId\": \"a2e38df8-5800-4495-bd61-b6761b070d50\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "获取源站组列表"
       }
     ],
     "DescribeOriginProtection": [
@@ -620,18 +592,30 @@
     ],
     "ModifyHostsCertificate": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyHostsCertificate\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-asdfasc\",\n    \"Hosts\": [\n        \"xxx.test.com\"\n    ],\n    \"ServerCertInfo\": [\n        {\n            \"CertId\": \"EO-sddafcasf\"\n        }\n    ]\n}",
+        "document": "针对站点（ZoneId 为 zone-2fgd17m17xw）下的域名（abc.test.com）配置 SSL 证书（CertId 为 cert-244ffgv7m17xw）。",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyHostsCertificate\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-2fgd17m17xw\",\n    \"Hosts\": [\n        \"abc.test.com\"\n    ],\n    \"ServerCertInfo\": [\n        {\n            \"CertId\": \"cert-244ffgv7m17xw\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e5a0d0f-52f3-4bad-9bd3-dcf1d5c954e7\"\n    }\n}",
+        "title": "配置 SSL 证书"
+      },
+      {
+        "document": "针对站点（ZoneId 为 zone-2fgd17m17xw）下的域名（abc.test.com）配置免费证书。",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyHostsCertificate\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-2fgd17m17xw\",\n    \"Hosts\": [\n        \"abc.test.com\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"084d5612-67a7-4aca-aac9-827aa3662b2d\"\n    }\n}",
-        "title": "Modifying the certificate configuration for domain names"
+        "title": "配置免费证书"
       }
     ],
     "ModifyOriginGroup": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyOriginGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-27q0p0bali16\",\n    \"OriginGroupId\": \"origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a\",\n    \"OriginGroupName\": \"renameorigingroup\",\n    \"ConfigurationType\": \"weight\",\n    \"OriginType\": \"self\",\n    \"OriginRecords\": [\n        {\n            \"Record\": \"1.2.3.4\",\n            \"Weight\": 50,\n            \"Port\": 80\n        },\n        {\n            \"Record\": \"1.2.3.5\",\n            \"Weight\": 50,\n            \"Port\": 80\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
-        "title": "Modifying an origin group"
+        "document": "修改源站组名称为edgeone-new-origin",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyOriginGroup\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-2kblak89bkx1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c2886bcd-173f-499e-b425-022ceaf636d8\"\n    }\n}",
+        "title": "修改源站组名称"
+      },
+      {
+        "document": "修改源站组记录，新源站记录将覆盖旧源站组中的源站记录。",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyOriginGroup\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-2nrle17s0v0r\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"39f96a44-9a52-4a9f-8b76-4ccc9e496f40\"\n    }\n}",
+        "title": "修改源站组记录"
       }
     ],
     "ModifyRule": [

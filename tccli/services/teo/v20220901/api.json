@@ -64,7 +64,7 @@
       "status": "online"
     },
     "CreatePurgeTask": {
-      "document": "When there are resources updated on the origin with the TTL remaining valid, users cannot access the latest resources. In this case, you can purge the cache using this API. There are two methods: <li>Delete: This method deletes the node cache without verification and retrieves u200dthe latest resources from the origin when receiving a request.</li><li>Invalidate: This method marks the node cache as invalid and sends a request with the If-None-Match and If-Modified-Since headers to the origin. If the origin responses with 200, the latest resources are retrieved to be cached on the node. If a 304 response is returned, the latest resources are not cached on the node.\n\n</li>For more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1). </li>",
+      "document": "When the origin server resource is updated but the node cache TTL has not expired, the user will still access the old resource. To solve this problem, you can use this API to purge the node cache. There are two action options: <li>Delete directly: Delete the node cache directly without any verification. Trigger origin-pull when the resource is requested.</li><li>Mark as expired: Set the node resource as expired, and trigger origin-pull verification when the resource, that is, send an HTTP conditional request with If-None-Match and If-Modified-Since headers. If the origin responds with 200, the node pulls new resources from the origin and update the cache. If the origin responds with 304, the node does not update the cache</li>.\n\nFor more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1).",
       "input": "CreatePurgeTaskRequest",
       "name": "This API is used to create a cache purging task.",
       "output": "CreatePurgeTaskResponse",
@@ -82,6 +82,13 @@
       "input": "CreateSecurityIPGroupRequest",
       "name": "Creates a security IP group",
       "output": "CreateSecurityIPGroupResponse",
+      "status": "online"
+    },
+    "CreateSharedCNAME": {
+      "document": "This API is used to create a shared CNAME.",
+      "input": "CreateSharedCNAMERequest",
+      "name": "Creates a shared CNAME.",
+      "output": "CreateSharedCNAMEResponse",
       "status": "online"
     },
     "CreateZone": {
@@ -2324,6 +2331,16 @@
       "document": "CreateAccelerationDomain response structure.",
       "members": [
         {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "OwnershipVerification",
+          "name": "OwnershipVerification",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -2875,7 +2892,7 @@
         },
         {
           "disabled": false,
-          "document": "Configures how resources under the directory are purged when `Type = purge_prefix`. Values: <li>`invalidate`: Only resources updated under the directory are purged.</li><li>`delete`: All resources under the directory are purged regardless of whether they are updated. </li>Default value: `invalidate`.",
+          "document": "Configures how cache are purged. It works when `Type` is `purge_prefix`, `purge_host` or `purge_all`. Values: <li>`invalidate`: Only resources updated under the directory are purged.</li><li>`delete`: All resources under the directory are purged regardless of whether they are updated.</li>Note that when Type` is `purge_prefix`, it defaults to `invalidate`.",
           "example": "invalidate",
           "member": "string",
           "name": "Method",
@@ -3040,6 +3057,61 @@
           "member": "int64",
           "name": "GroupId",
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSharedCNAMERequest": {
+      "document": "CreateSharedCNAME request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the site to which the shared CNAME belongs.\t",
+          "example": "zone-2drvsif25rt7",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Prefix of the shared CNAME. Format: \"test-api\",\"test-api.com\". Up 50 characters allowed.\nThe full format of the shared CNAME is: <custom prefix> + <12-bit random string in ZoneId> + \"share.eo.dns[0-5].com\". For example, if the prefix is \"example.com\", the created shared CNAME is \"example.com.sai2ig51kaa5.share.eo.dnse2.com\"\nExample: example.com",
+          "example": "example.com",
+          "member": "string",
+          "name": "SharedCNAMEPrefix",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Description. It supports 1-50 characters.",
+          "example": "用于业务 A 场景",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSharedCNAMEResponse": {
+      "document": "CreateSharedCNAME response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Shared CNAME. Format: <Custom Prefix> + <12-bit random string in ZoneId> + \"share.eo.dnse[0-5].com\"",
+          "example": "example.com.drvsif25rt7.share.eo.dnse2.com",
+          "member": "string",
+          "name": "SharedCNAME",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -6014,6 +6086,42 @@
       ],
       "usage": "out"
     },
+    "DnsVerification": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "edgeonereclaim",
+          "member": "string",
+          "name": "Subdomain",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "TXT",
+          "member": "string",
+          "name": "RecordType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "reclaim-3qgbn3tmzj5ctnfxvctzvljklf3odjv2",
+          "member": "string",
+          "name": "RecordValue",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DownloadL4LogsRequest": {
       "document": "DownloadL4Logs request structure.",
       "members": [
@@ -6055,7 +6163,7 @@
         },
         {
           "disabled": false,
-          "document": "Limit on paginated queries. Default value: 20. Maximum value: 1000.",
+          "document": "Limit on paginated queries. Default value: 20. Maximum value: 300.",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -6147,7 +6255,7 @@
         },
         {
           "disabled": false,
-          "document": "Limit on paginated queries. Default value: 20. Maximum value: 1000.",
+          "document": "Limit on paginated queries. Default value: 20. Maximum value: 300.",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -6530,6 +6638,32 @@
           "member": "string",
           "name": "IdentifyContent",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "FileVerification": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "/.well-known/teo-verification/z12h416twn.txt",
+          "member": "string",
+          "name": "Path",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ryjrj07mntythul2j09xabc0jv6g8xxx",
+          "member": "string",
+          "name": "Content",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -8588,6 +8722,22 @@
       ],
       "usage": "both"
     },
+    "NsVerification": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "NameServers",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "OfflineCache": {
       "document": "Offline cache feature status switch.",
       "members": [
@@ -8827,7 +8977,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The origin type. Values:\n<li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>\n<li>`COS`: COS bucket address </li>\n<li>`ORIGIN_GROUP`: Origin group </li>\n<li>`AWS_S3`: AWS S3 bucket address </li>\n<li>`SPACE`: EdgeOne Shield Space </li>",
+          "document": "The origin type. Values:\n<li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>\n<li>`COS`: COS bucket address</li>\n<li>`ORIGIN_GROUP`: Origin group</li>\n<li>`AWS_S3`: AWS S3 bucket address</li>\n<li>`LB`: Tencent Cloud CLB instance</li>\n<li>`SPACE`: EdgeOne Shield Space</li>",
           "example": "ip_domain",
           "member": "string",
           "name": "OriginType",
@@ -8845,7 +8995,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the secondary origin group (valid when `OriginType=ORIGIN_GROUP`). If it’s not specified, it indicates that secondary origins are not used.",
+          "document": "ID of the backup origin group (valid when `OriginType=ORIGIN_GROUP`). If it’s not specified, it indicates not to use backup origins.",
           "example": "\"origin-07fa3f6c-4498-11ed-a368-5254006ca63d\"",
           "member": "string",
           "name": "BackupOrigin",
@@ -8854,7 +9004,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to authenticate access to the private object storage origin (valid when `OriginType=COS/AWS_S3`). Values: \n<li>`on`: Enable private authentication.</li>\n<li>`off`: Disable private authentication.</li>If this field is not specified, the default value `off` is used.",
+          "document": "Whether to allow access to the private object storage origin (valid when `OriginType=COS/AWS_S3`). Values:\nu200c<li>`on`: Enable private authentication.</li>\n<li>`off`: (Default) Disable private authentication.</li>",
           "example": "on",
           "member": "string",
           "name": "PrivateAccess",
@@ -9044,6 +9194,42 @@
         }
       ],
       "usage": "both"
+    },
+    "OwnershipVerification": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "DnsVerification",
+          "name": "DnsVerification",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "FileVerification",
+          "name": "FileVerification",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "NsVerification",
+          "name": "NsVerification",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "PartialModule": {
       "document": "Module settings of the exception rule",
@@ -9243,7 +9429,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "QueryString": {
       "document": "Request parameter contained in `CacheKey`",
@@ -10577,6 +10763,7 @@
           "example": "EO-dsfdsf",
           "member": "string",
           "name": "CertId",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -10587,16 +10774,18 @@
           "example": "默认证书",
           "member": "string",
           "name": "Alias",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Type of the certificate. Values:\n<li>`default`: Default certificate</lil>\n<li>`upload`: Specified certificate</li>\n<li>`managed`: Tencent Cloud-managed certificate</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Type of the certificate. Values:\nu200c<li>`default`: Default certificate</li>\nu200c<li>`upload`: Custom certificate</li>\nu200c<li>`managed`: Tencent Cloud-managed certificate</li>\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "default",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -10607,6 +10796,7 @@
           "example": "2014-08-03T12:00:00+08:00",
           "member": "datetime_iso",
           "name": "ExpireTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -10617,6 +10807,7 @@
           "example": "2014-08-03T12:00:00+08:00",
           "member": "datetime_iso",
           "name": "DeployTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -10627,6 +10818,7 @@
           "example": "RSA",
           "member": "string",
           "name": "SignAlgo",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -10637,6 +10829,7 @@
           "example": "tencent.cloud",
           "member": "string",
           "name": "CommonName",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": true

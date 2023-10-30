@@ -860,6 +860,15 @@
           "name": "InputLossBehavior",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Pipeline configuration.",
+          "example": "无",
+          "member": "PipelineInputSettingsInfo",
+          "name": "PipelineInputSettings",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -873,7 +882,7 @@
           "example": "sda",
           "member": "string",
           "name": "Id",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2506,7 +2515,7 @@
         },
         {
           "disabled": false,
-          "document": "The DRM type. Valid values: `FAIRPLAY`, `WIDEVINE`, `AES128`. For HLS, this can be `FAIRPLAY` or `AES128`. For DASH, this can only be `WIDEVINE`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The DRM type. Valid values: `FAIRPLAY`, `WIDEVINE`, `AES128`, `PLAYREADY`. For HLS, this can be `FAIRPLAY` or `AES128` or `PLAYREADY`. For DASH, valid values: `WIDEVINE` or `PLAYREADY`. ",
           "example": "1",
           "member": "string",
           "name": "DrmType",
@@ -2802,6 +2811,7 @@
           "example": "4000",
           "member": "uint64",
           "name": "SegmentDuration",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -2812,6 +2822,7 @@
           "example": "5",
           "member": "uint64",
           "name": "SegmentNumber",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -2822,6 +2833,7 @@
           "example": "CLOSE",
           "member": "string",
           "name": "PdtInsertion",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -2832,6 +2844,7 @@
           "example": "600",
           "member": "uint64",
           "name": "PdtDuration",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -2842,6 +2855,7 @@
           "example": "SEPARATE",
           "member": "string",
           "name": "Scheme",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -2852,6 +2866,7 @@
           "example": "ts",
           "member": "string",
           "name": "SegmentType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -2862,36 +2877,62 @@
           "example": "fmp4",
           "member": "string",
           "name": "H265PackageType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to enable low latency 0:CLOSE, 1:OPEN, default value: 0.",
           "example": "1",
           "member": "uint64",
           "name": "LowLatency",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Low latency slice size, unit ms. Value range: integer [200-HlsRemuxSettings.SegmentDuration] Default value: 500ms.",
           "example": "500",
           "member": "uint64",
           "name": "PartialSegmentDuration",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Low latency slice playback position, unit ms. Value range: integer [3*HlsRemuxSettings.PartiSegmentDuration - 3*HlsRemuxSettings.SegmentDuration], Default value: 3*HlsRemuxSettings.PartiSegmentDuration.",
           "example": "1500",
           "member": "uint64",
           "name": "PartialSegmentPlaySite",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Hls main m3u8 file sorting rules by bitrate, optional values: 1: video bitrate ascending order; 2: video bitrate descending order. Default value: 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "StreamOrder",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the Hls main m3u8 file contains resolution information, optional values: 1: INCLUDE includes video resolution; 2: EXCLUDE does not include video resolution. Default value: 1.",
+          "example": "2",
+          "member": "uint64",
+          "name": "VideoResolution",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -3389,6 +3430,15 @@
           "name": "InputLossBehavior",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Pipeline configuration.",
+          "example": "无",
+          "member": "PipelineInputSettingsInfo",
+          "name": "PipelineInputSettings",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -3655,6 +3705,23 @@
         }
       ],
       "usage": "out"
+    },
+    "PipelineInputSettingsInfo": {
+      "document": "Pipeline failover information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pipeline failover configuration, the valid value is: 1.PIPELINE_FAILOVER (channels are mutually failover); 2.PIPELINE_FILLING (channels fill in themselves). Default value: PIPELINE_FILLING. The specific content is specified by FaultBehavior.",
+          "example": "PIPELINE_FAILOVER",
+          "member": "string",
+          "name": "FaultBehavior",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "PipelineInputStatistics": {
       "document": "Pipeline input statistics.",
@@ -4446,7 +4513,7 @@
           "example": "无",
           "member": "string",
           "name": "Id",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4456,7 +4523,7 @@
           "example": "无",
           "member": "string",
           "name": "State",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4466,7 +4533,7 @@
           "example": "无",
           "member": "AttachedInput",
           "name": "AttachedInputs",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4476,7 +4543,7 @@
           "example": "无",
           "member": "StreamLiveOutputGroupsInfo",
           "name": "OutputGroups",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4486,7 +4553,7 @@
           "example": "无",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4496,7 +4563,7 @@
           "example": "无",
           "member": "AudioTemplateInfo",
           "name": "AudioTemplates",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -4506,7 +4573,7 @@
           "example": "无",
           "member": "VideoTemplateInfo",
           "name": "VideoTemplates",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -4516,7 +4583,7 @@
           "example": "无",
           "member": "AVTemplate",
           "name": "AVTemplates",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -4526,7 +4593,7 @@
           "example": "无",
           "member": "PlanSettings",
           "name": "PlanSettings",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -4536,7 +4603,7 @@
           "example": "无",
           "member": "EventNotifySetting",
           "name": "EventNotifySettings",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -4546,9 +4613,19 @@
           "example": "无",
           "member": "InputLossBehaviorInfo",
           "name": "InputLossBehavior",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pipeline configuration.",
+          "example": "无",
+          "member": "PipelineInputSettingsInfo",
+          "name": "PipelineInputSettings",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -4788,7 +4865,7 @@
         },
         {
           "disabled": false,
-          "document": "Allowable time-shift period (s). Value range: [600, 1209600]. Default value: 300\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "Allowable time-shift period (s). Value range: [300, 2592000]. Default value: 300Note: This field may return `null`, indicating that no valid value was found.",
           "example": "600",
           "member": "int64",
           "name": "StartoverWindow",

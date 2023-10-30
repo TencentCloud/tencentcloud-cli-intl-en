@@ -15,11 +15,11 @@
       "status": "online"
     },
     "CreateOfflineRecord": {
-      "document": "This API is used to create an offline recording task.",
+      "document": "课后录制服务已下线\n\nThis API is used to create an offline recording task.",
       "input": "CreateOfflineRecordRequest",
       "name": "Creates an offline recording task",
       "output": "CreateOfflineRecordResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "CreateSnapshotTask": {
       "document": "This API is used to create a whiteboard snapshot task. If a callback URL is provided, the whiteboard snapshot result is sent to the callback URL after the task is complete.",
@@ -78,18 +78,18 @@
       "status": "online"
     },
     "DescribeOfflineRecord": {
-      "document": "This API is used to query the information about an offline recording task, including the recording progress and recording result.",
+      "document": "课后录制服务已下线\n\nThis API is used to query the information about an offline recording task, including the recording progress and recording result.",
       "input": "DescribeOfflineRecordRequest",
       "name": "Queries the information about an offline recording task",
       "output": "DescribeOfflineRecordResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "DescribeOfflineRecordCallback": {
-      "document": "This API is used to query the offline recording callback URL.",
+      "document": "课后录制服务已下线\n\nThis API is used to query the offline recording callback URL.",
       "input": "DescribeOfflineRecordCallbackRequest",
       "name": "Queries the offline recording callback URL",
       "output": "DescribeOfflineRecordCallbackResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "DescribeOnlineRecord": {
       "document": "This API is used to query the status and result of a real-time recording task.",
@@ -295,11 +295,11 @@
       "status": "online"
     },
     "SetOfflineRecordCallback": {
-      "document": "This API is used to set the offline recording callback URL.",
+      "document": "课后录制服务已下线\n\nThis API is used to set the offline recording callback URL.",
       "input": "SetOfflineRecordCallbackRequest",
       "name": "Sets the offline recording callback URL",
       "output": "SetOfflineRecordCallbackResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "SetOnlineRecordCallback": {
       "document": "This API is used to set the real-time recording callback address. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1).",
@@ -398,6 +398,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -407,6 +408,7 @@
         {
           "disabled": false,
           "document": "Application name.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -416,6 +418,7 @@
         {
           "disabled": false,
           "document": "Creation time.",
+          "example": "",
           "member": "datetime",
           "name": "CreateTime",
           "required": true,
@@ -425,6 +428,7 @@
         {
           "disabled": false,
           "document": "Tag list.",
+          "example": "",
           "member": "Tag",
           "name": "TagList",
           "required": true,
@@ -493,6 +497,7 @@
         {
           "disabled": false,
           "document": "Width and height of the mixed stream canvas",
+          "example": "",
           "member": "LayoutParams",
           "name": "LayoutParams",
           "required": true,
@@ -502,6 +507,7 @@
         {
           "disabled": false,
           "document": "Background color, which is black by default. Its format is RGB. for example, \"#FF0000\" for the red color.",
+          "example": "",
           "member": "string",
           "name": "BackgroundColor",
           "required": false,
@@ -517,6 +523,7 @@
         {
           "disabled": false,
           "document": "Whether to enable the video splicing feature\nIf the video splicing feature is enabled, the real-time recording service will splice multiple video clips resulting from the pause into one video.",
+          "example": "",
           "member": "bool",
           "name": "Enabled",
           "required": true,
@@ -526,6 +533,7 @@
         {
           "disabled": false,
           "document": "Download address of the padding image used during video splicing. If it is not specified, a pure black image is used by default.",
+          "example": "",
           "member": "string",
           "name": "Image",
           "required": false,
@@ -541,6 +549,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -549,6 +558,7 @@
         {
           "disabled": false,
           "document": "Application name.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": false,
@@ -557,6 +567,7 @@
         {
           "disabled": false,
           "document": "SKey required for creating an IM application.",
+          "example": "",
           "member": "string",
           "name": "SKey",
           "required": false,
@@ -565,6 +576,7 @@
         {
           "disabled": false,
           "document": "TinyId required for creating an IM application.",
+          "example": "",
           "member": "string",
           "name": "TinyId",
           "required": false,
@@ -573,6 +585,7 @@
         {
           "disabled": false,
           "document": "List of tags to be bound.",
+          "example": "",
           "member": "Tag",
           "name": "TagList",
           "required": false,
@@ -587,6 +600,7 @@
         {
           "disabled": false,
           "document": "AppId of the customer.",
+          "example": "",
           "member": "int64",
           "name": "AppId",
           "type": "int",
@@ -595,6 +609,7 @@
         {
           "disabled": false,
           "document": "Application name.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "type": "string",
@@ -603,6 +618,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "type": "int",
@@ -623,6 +639,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -631,6 +648,7 @@
         {
           "disabled": false,
           "document": "Room ID corresponding to the recording task.",
+          "example": "",
           "member": "int64",
           "name": "RoomId",
           "required": true,
@@ -639,6 +657,7 @@
         {
           "disabled": false,
           "document": "Group ID corresponding to the recording task.",
+          "example": "",
           "member": "string",
           "name": "GroupId",
           "required": false,
@@ -647,6 +666,7 @@
         {
           "disabled": false,
           "document": "Stream mixing parameters.\nThe Custom parameter is not supported for offline recording tasks.",
+          "example": "",
           "member": "MixStream",
           "name": "MixStream",
           "required": false,
@@ -655,6 +675,7 @@
         {
           "disabled": false,
           "document": "Whiteboard parameters.",
+          "example": "",
           "member": "Whiteboard",
           "name": "Whiteboard",
           "required": false,
@@ -859,6 +880,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the document transcoding task, which is used to query the task progress and transcoding result",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "type": "string",
@@ -879,6 +901,7 @@
         {
           "disabled": false,
           "document": "ID of the recording task.",
+          "example": "",
           "member": "string",
           "name": "OnlineRecordTaskId",
           "required": true,
@@ -887,6 +910,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -895,6 +919,7 @@
         {
           "disabled": false,
           "document": "Whiteboard parameters of the recording video generation task, such as the width and height of the whiteboard.\n\nThis parameter conflicts with the Whiteboard parameter in the API for starting a recording task. If the two Whiteboard parameters are both specified, the Whiteboard parameter in this API takes priority for recording video generation. If the Whiteboard parameter in this API is not specified, the Whiteboard parameter specified in the API for starting a recording task is used for recording video generation.",
+          "example": "",
           "member": "Whiteboard",
           "name": "Whiteboard",
           "required": false,
@@ -903,6 +928,7 @@
         {
           "disabled": false,
           "document": "Video splicing parameters.\n\nThis parameter conflicts with the Concat parameter in the API for starting a recording task. If the two Concat parameters are both specified, the Concat parameter in this API takes priority for video splicing. If the Concat parameter in this API is not specified, the Concat parameter specified in the API for starting a recording task is used for video splicing.",
+          "example": "",
           "member": "Concat",
           "name": "Concat",
           "required": false,
@@ -911,6 +937,7 @@
         {
           "disabled": false,
           "document": "Video stream mixing parameters.\n\nThis parameter conflicts with the MixStream parameter in the API for starting a recording task. If the two MixStream parameters are both specified, the MixStream parameter in this API takes priority for video stream mixing. If the MixStream parameter in this API is not specified, the MixStream parameter specified in the API for starting a recording task is used for video stream mixing.",
+          "example": "",
           "member": "MixStream",
           "name": "MixStream",
           "required": false,
@@ -919,6 +946,7 @@
         {
           "disabled": false,
           "document": "A group of video generation parameters. It specifies the streams to be generated, whether to disable audio recording for a stream, and whether to record only low-resolution videos, etc.\n\nThis parameter conflicts with the RecordControl parameter in the API for starting a recording task. If the two RecordControl parameters are both specified, the RecordControl parameter in this API takes priority for video generation control. If the RecordControl parameter in this API is not specified, the RecordControl parameter specified in the API for starting a recording task is used for video generation control.",
+          "example": "",
           "member": "RecordControl",
           "name": "RecordControl",
           "required": false,
@@ -927,6 +955,7 @@
         {
           "disabled": false,
           "document": "Internal parameter.",
+          "example": "",
           "member": "string",
           "name": "ExtraData",
           "required": false,
@@ -941,6 +970,7 @@
         {
           "disabled": false,
           "document": "ID of the video generation task.",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "type": "string",
@@ -961,6 +991,7 @@
         {
           "disabled": false,
           "document": "Mixed stream canvas parameter",
+          "example": "",
           "member": "Canvas",
           "name": "Canvas",
           "required": true,
@@ -970,6 +1001,7 @@
         {
           "disabled": false,
           "document": "Stream layout. The layout of each stream cannot exceed the canvas area.",
+          "example": "",
           "member": "StreamLayout",
           "name": "InputStreamList",
           "required": true,
@@ -985,6 +1017,7 @@
         {
           "disabled": false,
           "document": "Time. The following formats are supported:\nyyyy-mm\nyyyy-mm-dd\nyyyy-mm-dd HH:MM:SS",
+          "example": "",
           "member": "string",
           "name": "Time",
           "required": true,
@@ -994,6 +1027,7 @@
         {
           "disabled": false,
           "document": "Values required for drawing charts.",
+          "example": "",
           "member": "int64",
           "name": "Value",
           "required": true,
@@ -1003,6 +1037,7 @@
         {
           "disabled": false,
           "document": "Details of the values.",
+          "example": "",
           "member": "Detail",
           "name": "Details",
           "required": true,
@@ -1018,6 +1053,7 @@
         {
           "disabled": false,
           "document": "Supported services are cos:GetService and cdn:DescribeDomainsConfig.",
+          "example": "",
           "member": "string",
           "name": "Service",
           "required": true,
@@ -1026,6 +1062,7 @@
         {
           "disabled": false,
           "document": "Request parameters in JSON format.",
+          "example": "",
           "member": "string",
           "name": "Data",
           "required": false,
@@ -1040,6 +1077,7 @@
         {
           "disabled": false,
           "document": "Response data in JSON format.",
+          "example": "",
           "member": "string",
           "name": "ResponseData",
           "type": "string",
@@ -1326,6 +1364,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -1352,6 +1391,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -1360,6 +1400,7 @@
         {
           "disabled": false,
           "document": "ID of the offline recording task.",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -1386,6 +1427,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the application",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -1400,6 +1442,7 @@
         {
           "disabled": false,
           "document": "Callback address of the real-time recording event. If no callback address is set, this field is null.",
+          "example": "",
           "member": "string",
           "name": "Callback",
           "type": "string",
@@ -1408,6 +1451,7 @@
         {
           "disabled": false,
           "document": "Authentication key of the real-time recording callback",
+          "example": "",
           "member": "string",
           "name": "CallbackKey",
           "type": "string",
@@ -1428,6 +1472,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the customer",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -1436,6 +1481,7 @@
         {
           "disabled": false,
           "document": "ID of the real-time recording task",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -1602,6 +1648,7 @@
         {
           "disabled": false,
           "document": "Start time of the query period.",
+          "example": "",
           "member": "datetime",
           "name": "BeginTime",
           "required": true,
@@ -1610,6 +1657,7 @@
         {
           "disabled": false,
           "document": "End time of the query period.",
+          "example": "",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -2071,6 +2119,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the application",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -2085,6 +2134,7 @@
         {
           "disabled": false,
           "document": "Document transcoding callback address",
+          "example": "",
           "member": "string",
           "name": "Callback",
           "type": "string",
@@ -2093,6 +2143,7 @@
         {
           "disabled": false,
           "document": "Authentication key of the document transcoding callback",
+          "example": "",
           "member": "string",
           "name": "CallbackKey",
           "type": "string",
@@ -2113,6 +2164,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the customer",
+          "example": "1400000001",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -2121,6 +2173,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the document transcoding task",
+          "example": "g0jb42ps49vtebjshilb",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -2138,6 +2191,7 @@
           "example": "1",
           "member": "int64",
           "name": "Pages",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2147,6 +2201,7 @@
           "example": "100",
           "member": "int64",
           "name": "Progress",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2156,6 +2211,7 @@
           "example": "793x1122",
           "member": "string",
           "name": "Resolution",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2165,6 +2221,7 @@
           "example": "https://transcode-result/0agdnligqtgtvkm65emb/index.html",
           "member": "string",
           "name": "ResultUrl",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2174,6 +2231,7 @@
           "example": "FINISHED",
           "member": "string",
           "name": "Status",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2183,6 +2241,7 @@
           "example": "0agdnligqtgtvkm65emb",
           "member": "string",
           "name": "TaskId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2192,6 +2251,7 @@
           "example": "59378.docx",
           "member": "string",
           "name": "Title",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2201,6 +2261,7 @@
           "example": "https://transcode-thumbnal/0agdnligqtgtvkm65emb/",
           "member": "string",
           "name": "ThumbnailUrl",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2210,6 +2271,7 @@
           "example": "793x1122",
           "member": "string",
           "name": "ThumbnailResolution",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2219,6 +2281,7 @@
           "example": "无",
           "member": "string",
           "name": "CompressFileUrl",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2228,6 +2291,7 @@
           "example": "无",
           "member": "string",
           "name": "ResourceListUrl",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -2237,7 +2301,38 @@
           "example": "office",
           "member": "string",
           "name": "Ext",
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document transcoding task creation time, unit: seconds.\nNote: This parameter may return null, indicating that no valid values can be obtained.",
+          "example": "1688974545",
+          "member": "uint64",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document transcoding task assignment time, unit: seconds.\nNote: This parameter may return null, indicating that no valid values can be obtained.",
+          "example": "1688974545",
+          "member": "uint64",
+          "name": "AssignTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Document transcoding task finished time, unit: seconds.\nNote: This parameter may return null, indicating that no valid values can be obtained.",
+          "example": "1688974545",
+          "member": "uint64",
+          "name": "FinishedTime",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": true
         },
         {
@@ -2292,6 +2387,7 @@
         {
           "disabled": false,
           "document": "Start time of the query period.",
+          "example": "",
           "member": "datetime",
           "name": "BeginTime",
           "required": true,
@@ -2300,6 +2396,7 @@
         {
           "disabled": false,
           "document": "End time of the query period.",
+          "example": "",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -2308,6 +2405,7 @@
         {
           "disabled": false,
           "document": "Subproducts whose usage you want to query.",
+          "example": "",
           "member": "string",
           "name": "SubProducts",
           "required": true,
@@ -2316,6 +2414,7 @@
         {
           "disabled": false,
           "document": "true: Returns weighted data.\nfalse: Returns raw data.",
+          "example": "",
           "member": "bool",
           "name": "IsWeighted",
           "required": false,
@@ -2437,6 +2536,7 @@
         {
           "disabled": false,
           "document": "AppId of the customer.",
+          "example": "",
           "member": "int64",
           "name": "AppId",
           "type": "int",
@@ -2445,6 +2545,7 @@
         {
           "disabled": false,
           "document": "Specifies whether the whiteboard service of the trial or official edition is activated before.\n\n0: The whiteboard service is not activated.\n1: The whiteboard service is activated.",
+          "example": "",
           "member": "int64",
           "name": "IsTiwUser",
           "type": "int",
@@ -2453,6 +2554,7 @@
         {
           "disabled": false,
           "document": "Specifies whether the interactive class feature of the trial or official edition is activated before.",
+          "example": "",
           "member": "int64",
           "name": "IsSaaSUser",
           "type": "int",
@@ -2461,6 +2563,7 @@
         {
           "disabled": false,
           "document": "Specifies whether the user uses the offline recording feature of the whiteboard service.",
+          "example": "",
           "member": "int64",
           "name": "IsTiwOfflineRecordUser",
           "type": "int",
@@ -2469,6 +2572,7 @@
         {
           "disabled": false,
           "document": "Specifies whether the user is authenticated.",
+          "example": "",
           "member": "int64",
           "name": "IsAuthenticated",
           "type": "int",
@@ -2489,6 +2593,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -2503,6 +2608,7 @@
         {
           "disabled": false,
           "document": "Callback URL for recording video generation.",
+          "example": "",
           "member": "string",
           "name": "Callback",
           "type": "string",
@@ -2511,6 +2617,7 @@
         {
           "disabled": false,
           "document": "Callback authentication key for recording video generation.",
+          "example": "",
           "member": "string",
           "name": "CallbackKey",
           "type": "string",
@@ -2531,6 +2638,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -2539,6 +2647,7 @@
         {
           "disabled": false,
           "document": "ID of the recording video generation task.",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -2553,6 +2662,7 @@
         {
           "disabled": false,
           "document": "Group ID corresponding to the task.",
+          "example": "",
           "member": "string",
           "name": "GroupId",
           "type": "string",
@@ -2561,6 +2671,7 @@
         {
           "disabled": false,
           "document": "Room ID corresponding to the task.",
+          "example": "",
           "member": "int64",
           "name": "RoomId",
           "type": "int",
@@ -2569,6 +2680,7 @@
         {
           "disabled": false,
           "document": "Task ID.",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "type": "string",
@@ -2577,6 +2689,7 @@
         {
           "disabled": false,
           "document": "Disused.",
+          "example": "",
           "member": "int64",
           "name": "Progress",
           "type": "int",
@@ -2585,6 +2698,7 @@
         {
           "disabled": false,
           "document": "Status of the recording video generation task. Valid values:\n- QUEUED: Queuing.\n- PROCESSING: Video generation in progress.\n- FINISHED: Video generation finished. (To determine whether the task succeeded or failed, check the error code and message.)",
+          "example": "",
           "member": "string",
           "name": "Status",
           "type": "string",
@@ -2593,6 +2707,7 @@
         {
           "disabled": false,
           "document": "Total video playback duration. Unit: milliseconds.",
+          "example": "",
           "member": "int64",
           "name": "TotalTime",
           "type": "int",
@@ -2601,6 +2716,7 @@
         {
           "disabled": false,
           "document": "Disused. Use the `VideoInfoList` parameter.",
+          "example": "",
           "member": "VideoInfo",
           "name": "VideoInfos",
           "type": "object",
@@ -2609,6 +2725,7 @@
         {
           "disabled": false,
           "document": "List of videos generated by the recording video generation tasks.",
+          "example": "",
           "member": "VideoInfo",
           "name": "VideoInfoList",
           "type": "list",
@@ -2694,6 +2811,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -2702,6 +2820,7 @@
         {
           "disabled": false,
           "document": "Task type to be queried.\nrecording: Real-time recording.\ntranscode: Document transcoding.",
+          "example": "",
           "member": "string",
           "name": "TaskType",
           "required": true,
@@ -2947,6 +3066,7 @@
         {
           "disabled": false,
           "document": "Usage metric.",
+          "example": "",
           "member": "string",
           "name": "TagName",
           "required": true,
@@ -2956,6 +3076,7 @@
         {
           "disabled": false,
           "document": "Usage weight.",
+          "example": "",
           "member": "float",
           "name": "Weight",
           "required": true,
@@ -2965,6 +3086,7 @@
         {
           "disabled": false,
           "document": "Usage value.",
+          "example": "",
           "member": "float",
           "name": "Value",
           "required": true,
@@ -3006,6 +3128,7 @@
         {
           "disabled": false,
           "document": "Stream image width. Value range: [2,3000]",
+          "example": "",
           "member": "int64",
           "name": "Width",
           "required": true,
@@ -3015,6 +3138,7 @@
         {
           "disabled": false,
           "document": "Stream image height. Value range: [2,3000]",
+          "example": "",
           "member": "int64",
           "name": "Height",
           "required": true,
@@ -3024,6 +3148,7 @@
         {
           "disabled": false,
           "document": "Offset of the top point in the upper-left corner of the current image to the X axis of the top point in the upper-left corner of the canvas. Default value: 0. Value range: [0,3000].",
+          "example": "",
           "member": "int64",
           "name": "X",
           "required": false,
@@ -3033,6 +3158,7 @@
         {
           "disabled": false,
           "document": "Offset of the top point in the upper-left corner of the current image to the Y axis of the top point in the upper-left corner of the canvas. Default value: 0. Value range: [0,3000].",
+          "example": "",
           "member": "int64",
           "name": "Y",
           "required": false,
@@ -3042,6 +3168,7 @@
         {
           "disabled": false,
           "document": "Z-axis position of the image. The default value is 0.\nThe Z axis determines the overlap sequence of images. The image with the largest z-axis value is at the top layer.",
+          "example": "",
           "member": "int64",
           "name": "ZOrder",
           "required": false,
@@ -3057,6 +3184,7 @@
         {
           "disabled": false,
           "document": "Whether stream mixing is enabled",
+          "example": "",
           "member": "bool",
           "name": "Enabled",
           "required": true,
@@ -3066,6 +3194,7 @@
         {
           "disabled": false,
           "document": "Whether audio stream mixing is disabled",
+          "example": "",
           "member": "bool",
           "name": "DisableAudio",
           "required": false,
@@ -3075,6 +3204,7 @@
         {
           "disabled": false,
           "document": "ID of the embedded mixed stream layout template. Valid values: 1 and 2. For more information on the differences of both values, see the sample embedded mixed stream layout template.\nIf the Custom field is not specified, ModelId is required.",
+          "example": "",
           "member": "int64",
           "name": "ModelId",
           "required": false,
@@ -3084,6 +3214,7 @@
         {
           "disabled": false,
           "document": "ID of a teacher account\nThis field is valid only when ModelId is specified.\nIf you specify TeacherID for a user, the user's video stream will be displayed in the first image of the embedded template.",
+          "example": "",
           "member": "string",
           "name": "TeacherId",
           "required": false,
@@ -3093,6 +3224,7 @@
         {
           "disabled": false,
           "document": "Custom mixed stream layout parameter\nIf this parameter is available, the ModelId and TeacherId fields will be ignored.",
+          "example": "",
           "member": "CustomLayout",
           "name": "Custom",
           "required": false,
@@ -3108,6 +3240,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -3116,6 +3249,7 @@
         {
           "disabled": false,
           "document": "Application name.",
+          "example": "",
           "member": "string",
           "name": "AppName",
           "required": true,
@@ -3142,6 +3276,7 @@
         {
           "disabled": false,
           "document": "Subproduct ID. To obtain this ID, call the `DescribeUserResources` API and find the subproduct ID of the monthly feature package with the level 1. Usually the value is `sp_tiw_package`.",
+          "example": "",
           "member": "string",
           "name": "SubProduct",
           "required": true,
@@ -3150,6 +3285,7 @@
         {
           "disabled": false,
           "document": "Resource ID. To obtain this ID, call the `DescribeUserResources` API and find the resource ID of the monthly feature package with the level 1.",
+          "example": "",
           "member": "string",
           "name": "ResourceId",
           "required": true,
@@ -3158,6 +3294,7 @@
         {
           "disabled": false,
           "document": "Renewal mode. Valid values: `0` (default mode, which is auto-renewal), `1` (auto-renewal), `2` (manual renewal, which is specified by users). If no renewal is required, set it to `0`.",
+          "example": "",
           "member": "int64",
           "name": "AutoRenewFlag",
           "required": true,
@@ -3220,6 +3357,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -3228,6 +3366,7 @@
         {
           "disabled": false,
           "document": "Task type to be queried.\nrecording: Real-time recording.\ntranscode: Document transcoding.",
+          "example": "",
           "member": "string",
           "name": "TaskType",
           "required": true,
@@ -3236,6 +3375,7 @@
         {
           "disabled": false,
           "document": "Name of the COS bucket.",
+          "example": "",
           "member": "string",
           "name": "BucketName",
           "required": true,
@@ -3244,6 +3384,7 @@
         {
           "disabled": false,
           "document": "Region of the COS bucket.",
+          "example": "",
           "member": "string",
           "name": "BucketLocation",
           "required": true,
@@ -3252,6 +3393,7 @@
         {
           "disabled": false,
           "document": "Resource prefix of the bucket.",
+          "example": "",
           "member": "string",
           "name": "BucketPrefix",
           "required": true,
@@ -3260,6 +3402,7 @@
         {
           "disabled": false,
           "document": "Domain name of the URL of the bucket.",
+          "example": "",
           "member": "string",
           "name": "ResultDomain",
           "required": true,
@@ -3286,6 +3429,7 @@
         {
           "disabled": false,
           "document": "Offset of the paused time in the spliced video, in milliseconds",
+          "example": "",
           "member": "int64",
           "name": "VideoTime",
           "required": true,
@@ -3295,6 +3439,7 @@
         {
           "disabled": false,
           "document": "Recording pause timestamp, in milliseconds",
+          "example": "",
           "member": "int64",
           "name": "PauseTime",
           "required": true,
@@ -3304,6 +3449,7 @@
         {
           "disabled": false,
           "document": "Recording resumption timestamp, in milliseconds",
+          "example": "",
           "member": "int64",
           "name": "ResumeTime",
           "required": true,
@@ -3319,6 +3465,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the customer",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -3327,6 +3474,7 @@
         {
           "disabled": false,
           "document": "ID of the real-time recording task",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -3353,6 +3501,7 @@
         {
           "disabled": false,
           "document": "It specifies whether to enable RecordControl. Valid values: true (yes); false (no).",
+          "example": "",
           "member": "bool",
           "name": "Enabled",
           "required": true,
@@ -3362,6 +3511,7 @@
         {
           "disabled": false,
           "document": "A global parameter generally used in conjunction with `StreamControls` that specifies whether to disable recording. Valid values:\n\ntrue: no stream is recorded.\nfalse: all streams are recorded. Default value: false.\n\nThe setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.",
+          "example": "",
           "member": "bool",
           "name": "DisableRecord",
           "required": false,
@@ -3371,6 +3521,7 @@
         {
           "disabled": false,
           "document": "A global parameter generally used in conjunction with `StreamControls` that specifies whether to disable audio recording over all streams. Valid values:\n\ntrue: no audio recording of any streams.\nfalse: audio recording of all streams. Default value: false.\n\nThe setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.",
+          "example": "",
           "member": "bool",
           "name": "DisableAudio",
           "required": false,
@@ -3380,6 +3531,7 @@
         {
           "disabled": false,
           "document": "A global parameter generally used in conjunction with `StreamControls` that specifies whether to record low-resolution videos only. Valid values:\n\ntrue: only records low-resolution videos for all streams. Please ensure that the up-streaming end pushes the low-resolution videos. Otherwise, the recorded video may be black.\nfalse: high-resolution video recording of all streams. Default value: false.\n\nThe setting in this parameter is applied to all streams. However, if `StreamControls` is passed in, the parameters in `StreamControls` will take precedence.",
+          "example": "",
           "member": "bool",
           "name": "PullSmallVideo",
           "required": false,
@@ -3389,6 +3541,7 @@
         {
           "disabled": false,
           "document": "Parameters over specific streams, which take priority over global configurations. If it’s empty, all streams are recorded according to the global configurations. ",
+          "example": "",
           "member": "StreamControl",
           "name": "StreamControls",
           "required": false,
@@ -3404,6 +3557,7 @@
         {
           "disabled": false,
           "document": "`AUTO`: Recording automatically stops. `USER_CALL`: The API for stopping recording is called.",
+          "example": "",
           "member": "string",
           "name": "FinishReason",
           "required": true,
@@ -3413,6 +3567,7 @@
         {
           "disabled": false,
           "document": "Number of exceptions.",
+          "example": "",
           "member": "int64",
           "name": "ExceptionCnt",
           "required": true,
@@ -3422,6 +3577,7 @@
         {
           "disabled": false,
           "document": "Room ID.",
+          "example": "",
           "member": "int64",
           "name": "RoomId",
           "required": true,
@@ -3431,6 +3587,7 @@
         {
           "disabled": false,
           "document": "Group ID.",
+          "example": "",
           "member": "string",
           "name": "GroupId",
           "required": true,
@@ -3440,6 +3597,7 @@
         {
           "disabled": false,
           "document": "Actual recording start time.",
+          "example": "",
           "member": "int64",
           "name": "RecordStartTime",
           "required": true,
@@ -3449,6 +3607,7 @@
         {
           "disabled": false,
           "document": "Recording end time.",
+          "example": "",
           "member": "int64",
           "name": "RecordStopTime",
           "required": true,
@@ -3458,6 +3617,7 @@
         {
           "disabled": false,
           "document": "Recording duration.",
+          "example": "",
           "member": "int64",
           "name": "TotalTime",
           "required": true,
@@ -3467,6 +3627,7 @@
         {
           "disabled": false,
           "document": "List of video information.",
+          "example": "",
           "member": "VideoInfo",
           "name": "VideoInfos",
           "required": true,
@@ -3476,6 +3637,7 @@
         {
           "disabled": false,
           "document": "Omitted video durations.",
+          "example": "",
           "member": "OmittedDuration",
           "name": "OmittedDurations",
           "required": true,
@@ -3485,6 +3647,7 @@
         {
           "disabled": false,
           "document": "Details.",
+          "example": "",
           "member": "string",
           "name": "Details",
           "required": true,
@@ -3494,6 +3657,7 @@
         {
           "disabled": false,
           "document": "Task execution error code.",
+          "example": "",
           "member": "int64",
           "name": "ErrorCode",
           "required": true,
@@ -3503,6 +3667,7 @@
         {
           "disabled": false,
           "document": "Error message.",
+          "example": "",
           "member": "string",
           "name": "ErrorMsg",
           "required": true,
@@ -3518,6 +3683,7 @@
         {
           "disabled": false,
           "document": "Unique task ID.",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -3527,6 +3693,7 @@
         {
           "disabled": false,
           "document": "Status of the real-time recording task.\n- PAUSED: Recording paused.\n- PREPARED: Recording in preparation.\n- RECORDING: Recording in progress.\n- STOPPED: Recording stopped.\n- FINISHED: Recording finished.",
+          "example": "",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -3536,6 +3703,7 @@
         {
           "disabled": false,
           "document": "Room ID of the real-time recording task.",
+          "example": "",
           "member": "int64",
           "name": "RoomId",
           "required": true,
@@ -3545,6 +3713,7 @@
         {
           "disabled": false,
           "document": "Creation time of the task.",
+          "example": "",
           "member": "datetime_iso",
           "name": "CreateTime",
           "required": true,
@@ -3554,6 +3723,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -3563,6 +3733,7 @@
         {
           "disabled": false,
           "document": "Real-time recording result.",
+          "example": "",
           "member": "RecordTaskResult",
           "name": "Result",
           "required": true,
@@ -3578,6 +3749,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the customer",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -3586,6 +3758,7 @@
         {
           "disabled": false,
           "document": "ID of the resumed real-time recording task",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -3714,6 +3887,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -3722,6 +3896,7 @@
         {
           "disabled": false,
           "document": "Callback URL of the offline recording task result. If it is specified as null, the set callback URL is deleted. The callback URL only supports the HTTP or HTTPS protocol, and therefore the callback URL must start with `http://` or `https://`.",
+          "example": "",
           "member": "string",
           "name": "Callback",
           "required": true,
@@ -3748,6 +3923,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the application",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -3756,6 +3932,7 @@
         {
           "disabled": false,
           "document": "Authentication key for the real-time recording callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+          "example": "",
           "member": "string",
           "name": "CallbackKey",
           "required": true,
@@ -3782,6 +3959,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the customer",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -3790,6 +3968,7 @@
         {
           "disabled": false,
           "document": "Callback address of the real-time recording task result. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1).",
+          "example": "",
           "member": "string",
           "name": "Callback",
           "required": true,
@@ -3816,6 +3995,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the application",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -3824,6 +4004,7 @@
         {
           "disabled": false,
           "document": "Authentication key for the document transcoding callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information about callback authentication, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+          "example": "",
           "member": "string",
           "name": "CallbackKey",
           "required": true,
@@ -3850,6 +4031,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the customer",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -3858,6 +4040,7 @@
         {
           "disabled": false,
           "document": "Callback address for the document transcoding progress. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`.\nFor more information about the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40260?from_cn_redirect=1).",
+          "example": "",
           "member": "string",
           "name": "Callback",
           "required": true,
@@ -3884,6 +4067,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -3892,6 +4076,7 @@
         {
           "disabled": false,
           "document": "Callback authentication key for recording video generation. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key is deleted.",
+          "example": "",
           "member": "string",
           "name": "CallbackKey",
           "required": true,
@@ -3918,6 +4103,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -3926,6 +4112,7 @@
         {
           "disabled": false,
           "document": "Callback URL of the offline recording task result. If it is specified as null, the set callback URL is deleted. The callback URL only supports the HTTP or HTTPS protocol, and therefore the callback URL must start with `http://` or `https://`.",
+          "example": "",
           "member": "string",
           "name": "Callback",
           "required": true,
@@ -3952,6 +4139,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -3960,6 +4148,7 @@
         {
           "disabled": false,
           "document": "Callback authentication key for whiteboard push. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key is deleted. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+          "example": "",
           "member": "string",
           "name": "CallbackKey",
           "required": true,
@@ -4301,6 +4490,7 @@
         {
           "disabled": false,
           "document": "ID of the real-time recording task",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "type": "string",
@@ -4546,6 +4736,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the customer",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -4554,6 +4745,7 @@
         {
           "disabled": false,
           "document": "ID of the recording task to stop",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -4580,6 +4772,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -4588,6 +4781,7 @@
         {
           "disabled": false,
           "document": "ID of the whiteboard push task to be stopped.",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -4602,6 +4796,7 @@
         {
           "disabled": false,
           "document": "Parameters of the backup task.\nNote: This parameter may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Backup",
           "type": "string",
@@ -4622,6 +4817,7 @@
         {
           "disabled": false,
           "document": "Video stream ID\nDescription of the possible video stream ID values:\n1. `tic_record_user`: the whiteboard video stream\n2. `tic_substream`: the auxiliary video stream\n3. Specific user ID: the video stream of the specified user\n\nThe actual recording uses the prefix match of the video stream ID. The real stream becomes the specified stream once its ID prefix matches with the stream ID.",
+          "example": "",
           "member": "string",
           "name": "StreamId",
           "required": true,
@@ -4631,6 +4827,7 @@
         {
           "disabled": false,
           "document": "Whether to disable recording over the stream.\n\ntrue: does not record this stream. This stream will not be included in the final recording file.\nfalse: records this stream. This stream will be included in the final recording file.\n\nDefault value: false",
+          "example": "",
           "member": "bool",
           "name": "DisableRecord",
           "required": false,
@@ -4640,6 +4837,7 @@
         {
           "disabled": false,
           "document": "Whether to disable the audio recording of the stream.\n\ntrue: does not record the audio of the stream. In the final recording file, this stream will be soundless.\nfalse: the stream has both video and audio recording.\n\nDefault value: false",
+          "example": "",
           "member": "bool",
           "name": "DisableAudio",
           "required": false,
@@ -4649,6 +4847,7 @@
         {
           "disabled": false,
           "document": "Whether to only record low-resolution stream videos.\n\ntrue: records only low-resolution videos. In this case, please make sure that the client pushes low-resolution videos upstream. Otherwise, the recorded video may be black. \nfalse: records only high-resolution videos.\n\nDefault value: false",
+          "example": "",
           "member": "bool",
           "name": "PullSmallVideo",
           "required": false,
@@ -4664,6 +4863,7 @@
         {
           "disabled": false,
           "document": "Stream layout configuration",
+          "example": "",
           "member": "LayoutParams",
           "name": "LayoutParams",
           "required": true,
@@ -4673,6 +4873,7 @@
         {
           "disabled": false,
           "document": "Video stream ID\nDescription of the possible video stream ID values:\n1. tic_record_user: the current picture is used to display the whiteboard video stream.\n2. tic_substream: the current picture is used to display the auxiliary video stream.\n3. Specific user ID: the current picture is used to display the video stream of a specific user.\n4.Left empty: the current picture is vacant for new video stream.",
+          "example": "",
           "member": "string",
           "name": "InputStreamId",
           "required": false,
@@ -4682,6 +4883,7 @@
         {
           "disabled": false,
           "document": "Background color in RGB format, such as \"#FF0000\" for red. The default color is black. ",
+          "example": "",
           "member": "string",
           "name": "BackgroundColor",
           "required": false,
@@ -4691,6 +4893,7 @@
         {
           "disabled": false,
           "document": "Video filling mode.\n\n0: self-adaption mode. Scales the video proportionally to completely display it in the specified area. In this mode, there may be black bars.\n1: full-screen mode. Scales the video to make it fill the entire specified area. In this mode, no black bars will appear, but the video may not be displayed fully.",
+          "example": "",
           "member": "int64",
           "name": "FillMode",
           "required": false,
@@ -4706,6 +4909,7 @@
         {
           "disabled": false,
           "document": "Tag key.",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
@@ -4715,6 +4919,7 @@
         {
           "disabled": false,
           "document": "Tag value.",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": true,
@@ -4756,6 +4961,7 @@
         {
           "disabled": false,
           "document": "Transcoding result URL.",
+          "example": "",
           "member": "string",
           "name": "ResultUrl",
           "required": true,
@@ -4765,6 +4971,7 @@
         {
           "disabled": false,
           "document": "Target resolution.",
+          "example": "",
           "member": "string",
           "name": "Resolution",
           "required": true,
@@ -4774,6 +4981,7 @@
         {
           "disabled": false,
           "document": "Title (usually the document name).",
+          "example": "",
           "member": "string",
           "name": "Title",
           "required": true,
@@ -4783,6 +4991,7 @@
         {
           "disabled": false,
           "document": "Number of transcoded pages.",
+          "example": "",
           "member": "int64",
           "name": "Pages",
           "required": true,
@@ -4792,6 +5001,7 @@
         {
           "disabled": false,
           "document": "URL prefix of the thumbnail. If the URL prefix is `http://example.com/g0jb42ps49vtebjshilb/`, the thumbnail URL for the first page of the dynamically transcoded PowerPoint file is\n`http://example.com/g0jb42ps49vtebjshilb/1.jpg`, and so on.\n\nIf the document transcoding request carries the ThumbnailResolution parameter and the transcoding type is dynamic transcoding, this parameter is not null. In other cases, this parameter is null.",
+          "example": "",
           "member": "string",
           "name": "ThumbnailUrl",
           "required": true,
@@ -4801,6 +5011,7 @@
         {
           "disabled": false,
           "document": "Resolution of the thumbnail generated for dynamic transcoding",
+          "example": "",
           "member": "string",
           "name": "ThumbnailResolution",
           "required": true,
@@ -4810,6 +5021,7 @@
         {
           "disabled": false,
           "document": "URL for downloading the transcoded and compressed file. If `CompressFileType` carried in the document transcoding request is null or is not a supported compression format, this parameter is null.",
+          "example": "",
           "member": "string",
           "name": "CompressFileUrl",
           "required": true,
@@ -4819,6 +5031,7 @@
         {
           "disabled": false,
           "document": "Task execution error code.",
+          "example": "",
           "member": "int64",
           "name": "ErrorCode",
           "required": true,
@@ -4828,6 +5041,7 @@
         {
           "disabled": false,
           "document": "Task execution error message.",
+          "example": "",
           "member": "string",
           "name": "ErrorMsg",
           "required": true,
@@ -4843,6 +5057,7 @@
         {
           "disabled": false,
           "document": "Creation time of the task.",
+          "example": "",
           "member": "datetime_iso",
           "name": "CreateTime",
           "required": true,
@@ -4852,6 +5067,7 @@
         {
           "disabled": false,
           "document": "Unique task ID.",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -4861,6 +5077,7 @@
         {
           "disabled": false,
           "document": "Current task status.\n- QUEUED: Queuing for transcoding.\n- PROCESSING: Transcoding in progress.\n- FINISHED: Transcoding finished.",
+          "example": "",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -4870,6 +5087,7 @@
         {
           "disabled": false,
           "document": "Original name of the transcoded document.",
+          "example": "",
           "member": "string",
           "name": "OriginalFilename",
           "required": true,
@@ -4879,6 +5097,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -4888,6 +5107,7 @@
         {
           "disabled": false,
           "document": "Transcoding task result.",
+          "example": "",
           "member": "TranscodeTaskResult",
           "name": "Result",
           "required": true,
@@ -4897,6 +5117,7 @@
         {
           "disabled": false,
           "document": "Specifies whether the transcoding is static.",
+          "example": "",
           "member": "bool",
           "name": "IsStatic",
           "required": true,
@@ -4994,6 +5215,7 @@
         {
           "disabled": false,
           "document": "Video playback start time, in milliseconds",
+          "example": "",
           "member": "int64",
           "name": "VideoPlayTime",
           "required": true,
@@ -5003,6 +5225,7 @@
         {
           "disabled": false,
           "document": "Video size, in bytes",
+          "example": "",
           "member": "int64",
           "name": "VideoSize",
           "required": true,
@@ -5012,6 +5235,7 @@
         {
           "disabled": false,
           "document": "Video format",
+          "example": "",
           "member": "string",
           "name": "VideoFormat",
           "required": true,
@@ -5021,6 +5245,7 @@
         {
           "disabled": false,
           "document": "Video playback duration, in milliseconds",
+          "example": "",
           "member": "int64",
           "name": "VideoDuration",
           "required": true,
@@ -5030,6 +5255,7 @@
         {
           "disabled": false,
           "document": "Video file URL",
+          "example": "",
           "member": "string",
           "name": "VideoUrl",
           "required": true,
@@ -5039,6 +5265,7 @@
         {
           "disabled": false,
           "document": "Video file ID",
+          "example": "",
           "member": "string",
           "name": "VideoId",
           "required": true,
@@ -5048,6 +5275,7 @@
         {
           "disabled": false,
           "document": "Video stream type - 0: camera video - 1: screen-sharing video - 2: whiteboard video - 3: mixed stream video - 4: audio-only (mp3)",
+          "example": "",
           "member": "int64",
           "name": "VideoType",
           "required": true,
@@ -5057,6 +5285,7 @@
         {
           "disabled": false,
           "document": "ID of the user to which the camera video or screen-sharing video belongs (whiteboard video: null, mixed stream video: tic_mixstream_<Room ID>_<Mixed stream layout type>, auxiliary video: tic_substream_user ID)",
+          "example": "",
           "member": "string",
           "name": "UserId",
           "required": true,
@@ -5066,6 +5295,7 @@
         {
           "disabled": false,
           "document": "Width of the video resolution.",
+          "example": "",
           "member": "int64",
           "name": "Width",
           "required": true,
@@ -5075,6 +5305,7 @@
         {
           "disabled": false,
           "document": "Height of the video resolution.",
+          "example": "",
           "member": "int64",
           "name": "Height",
           "required": true,
@@ -5126,6 +5357,7 @@
         {
           "disabled": false,
           "document": "Task type.\n\nrecording: Real-time recording.\ntranscode: Document transcoding.",
+          "example": "",
           "member": "string",
           "name": "TaskType",
           "required": true,
@@ -5135,6 +5367,7 @@
         {
           "disabled": false,
           "document": "Bucket name.",
+          "example": "",
           "member": "string",
           "name": "BucketName",
           "required": true,
@@ -5144,6 +5377,7 @@
         {
           "disabled": false,
           "document": "Region of the bucket.",
+          "example": "",
           "member": "string",
           "name": "BucketLocation",
           "required": true,
@@ -5153,6 +5387,7 @@
         {
           "disabled": false,
           "document": "Resource prefix of the bucket.",
+          "example": "",
           "member": "string",
           "name": "BucketPrefix",
           "required": true,
@@ -5162,6 +5397,7 @@
         {
           "disabled": false,
           "document": "Destination CDN domain name.",
+          "example": "",
           "member": "string",
           "name": "ResultDomain",
           "required": true,
@@ -5171,6 +5407,7 @@
         {
           "disabled": false,
           "document": "Callback URL.",
+          "example": "",
           "member": "string",
           "name": "Callback",
           "required": true,
@@ -5180,6 +5417,7 @@
         {
           "disabled": false,
           "document": "Callback authentication key.",
+          "example": "",
           "member": "string",
           "name": "CallbackKey",
           "required": true,
@@ -5189,6 +5427,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": false,
@@ -5198,6 +5437,7 @@
         {
           "disabled": false,
           "document": "IM admin user ID.",
+          "example": "",
           "member": "string",
           "name": "AdminUserId",
           "required": false,
@@ -5207,6 +5447,7 @@
         {
           "disabled": false,
           "document": "IM admin user signature.",
+          "example": "",
           "member": "string",
           "name": "AdminUserSig",
           "required": false,
@@ -5222,6 +5463,7 @@
         {
           "disabled": false,
           "document": "User ID used by the whiteboard push service for entering a room,\nThe ID must be an unused ID in the SDK. The whiteboard push service uses the user ID to enter the room for whiteboard push. If this ID is already used in the SDK, the SDK and recording service will conflict, affecting the pushing operation.",
+          "example": "",
           "member": "string",
           "name": "PushUserId",
           "required": true,
@@ -5231,6 +5473,7 @@
         {
           "disabled": false,
           "document": "Signature corresponding to the PushUserId ID.",
+          "example": "",
           "member": "string",
           "name": "PushUserSig",
           "required": true,
@@ -5246,6 +5489,7 @@
         {
           "disabled": false,
           "document": "`AUTO`: Pushing automatically stops. `USER_CALL`: The API for stopping pushing is called.",
+          "example": "",
           "member": "string",
           "name": "FinishReason",
           "required": true,
@@ -5255,6 +5499,7 @@
         {
           "disabled": false,
           "document": "Number of exceptions.",
+          "example": "",
           "member": "int64",
           "name": "ExceptionCnt",
           "required": true,
@@ -5264,6 +5509,7 @@
         {
           "disabled": false,
           "document": "Room ID.",
+          "example": "",
           "member": "int64",
           "name": "RoomId",
           "required": true,
@@ -5273,6 +5519,7 @@
         {
           "disabled": false,
           "document": "IM group ID.",
+          "example": "",
           "member": "string",
           "name": "GroupId",
           "required": true,
@@ -5282,6 +5529,7 @@
         {
           "disabled": false,
           "document": "Actual push start time.",
+          "example": "",
           "member": "int64",
           "name": "PushStartTime",
           "required": true,
@@ -5291,6 +5539,7 @@
         {
           "disabled": false,
           "document": "Push end time.",
+          "example": "",
           "member": "int64",
           "name": "PushStopTime",
           "required": true,
@@ -5300,6 +5549,7 @@
         {
           "disabled": false,
           "document": "IM timestamp corresponding to the first frame of the whiteboard push video. The timestamp is used for time synchronization between IM messages and the whiteboard push video during playback.",
+          "example": "",
           "member": "int64",
           "name": "IMSyncTime",
           "required": true,
@@ -5309,6 +5559,7 @@
         {
           "disabled": false,
           "document": "Task execution error code.",
+          "example": "",
           "member": "int64",
           "name": "ErrorCode",
           "required": true,
@@ -5318,6 +5569,7 @@
         {
           "disabled": false,
           "document": "Error message.",
+          "example": "",
           "member": "string",
           "name": "ErrorMsg",
           "required": true,
@@ -5333,6 +5585,7 @@
         {
           "disabled": false,
           "document": "Unique task ID.",
+          "example": "",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -5342,6 +5595,7 @@
         {
           "disabled": false,
           "document": "Status of the whiteboard push task.\n- PREPARED: Push in preparation.\n- PUSHING: Pushing in progress.\n- STOPPED: Pushing stopped.",
+          "example": "",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -5351,6 +5605,7 @@
         {
           "disabled": false,
           "document": "Room ID of the whiteboard push task.",
+          "example": "",
           "member": "int64",
           "name": "RoomId",
           "required": true,
@@ -5360,6 +5615,7 @@
         {
           "disabled": false,
           "document": "Creation time of the task.",
+          "example": "",
           "member": "datetime_iso",
           "name": "CreateTime",
           "required": true,
@@ -5369,6 +5625,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the whiteboard application.",
+          "example": "",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -5378,6 +5635,7 @@
         {
           "disabled": false,
           "document": "Whiteboard push result.",
+          "example": "",
           "member": "WhiteboardPushResult",
           "name": "Result",
           "required": true,
@@ -5387,6 +5645,7 @@
         {
           "disabled": false,
           "document": "User ID of the whiteboard push task.",
+          "example": "",
           "member": "string",
           "name": "PushUserId",
           "required": true,
