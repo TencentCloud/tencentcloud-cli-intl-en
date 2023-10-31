@@ -15,7 +15,7 @@
       "status": "online"
     },
     "CreateAccelerationDomain": {
-      "document": "This API is used to connect a domain to EdgeOne.",
+      "document": "This API is used to create an acceleration domain name. \n\nFor sites connected via the CNAME, if you have not verified the ownership of the domain name, the ownership verification information of the domain name is returned. To verify your ownership of the domain name, see [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1).",
       "input": "CreateAccelerationDomainRequest",
       "name": "Connects a domain to EdgeOne",
       "output": "CreateAccelerationDomainResponse",
@@ -92,7 +92,7 @@
       "status": "online"
     },
     "CreateZone": {
-      "document": "This API is used to access a new site.",
+      "document": "This API is used to create a site. After you create the site, you can connect it to EdgeOne via the CNAME or NS (see [Quick Start](https://intl.cloud.tencent.com/document/product/1552/87601?from_cn_redirect=1)), or connect it without a domain name (see [Quick Access to L4 Proxy Service](https://intl.cloud.tencent.com/document/product/1552/96051?from_cn_redirect=1)).\n\nIf there are already EdgeOne plans under the current account, it is recommended to pass in the `PlanId` to bind the site with the plan directly. If `PlanId` is not passed in, the created site is not activated. You need to call [BindZoneToPlan](https://intl.cloud.tencent.com/document/product/1552/83042?from_cn_redirect=1) to bind the site with a plan. To purchase a plan, please go to the EdgeOne console.",
       "input": "CreateZoneRequest",
       "name": "Creates a site",
       "output": "CreateZoneResponse",
@@ -155,7 +155,7 @@
       "status": "online"
     },
     "DescribeAccelerationDomains": {
-      "document": "This API is used to query accelerated domain names. Paging, sorting and filtering are supported.",
+      "document": "This API is used to query domain name information of a site, including the acceleration domain name, origin, and domain name status. You can query the information of all domain names, or specific domain names by specifying filters information.",
       "input": "DescribeAccelerationDomainsRequest",
       "name": "Queries accelerated domain names",
       "output": "DescribeAccelerationDomainsResponse",
@@ -323,9 +323,9 @@
       "status": "online"
     },
     "DescribeZones": {
-      "document": "This API is used to query the list of user sites.",
+      "document": "This API is used to query the information of sites that you have access to. You can filter sites based on different query criteria.",
       "input": "DescribeZonesRequest",
-      "name": "Queries the list of user sites",
+      "name": "Queries the list of sites",
       "output": "DescribeZonesResponse",
       "status": "online"
     },
@@ -407,9 +407,9 @@
       "status": "online"
     },
     "ModifyHostsCertificate": {
-      "document": "This API is used to modify the certificate of a domain name.",
+      "document": "This API is used to configure the certificate of a site. You can use your own certificate or [apply for a free certificate](https://intl.cloud.tencent.com/document/product/1552/90437?from_cn_redirect=1).\nTo use an external certificate, upload the certificate to [SSL Certificates Console](https://console.cloud.tencent.com/certoview) first, and then input the certificate ID in this API. For details, see [Deploying Own Certificates to EdgeOne Domains](https://intl.cloud.tencent.com/document/product/1552/88874?from_cn_redirect=1).\n ",
       "input": "ModifyHostsCertificateRequest",
-      "name": "Modifies the certificate of a domain name",
+      "name": "Configures the certificate",
       "output": "ModifyHostsCertificateResponse",
       "status": "online"
     },
@@ -461,6 +461,13 @@
       "name": "Changes the site status",
       "output": "ModifyZoneStatusResponse",
       "status": "online"
+    },
+    "VerifyOwnership": {
+      "document": "This API is used to verify your ownership of a site or domain name. It's required in the CNAME access mode. After a site is verified, you don't need to verify the ownership again for domain names added to it in the future. For details, see [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1).\n\nFor sites connected via the NS, you can query whether the NS is successfully switched through this API. For details, see [Modifying DNS Servers](https://intl.cloud.tencent.com/document/product/1552/90452?from_cn_redirect=1).",
+      "input": "VerifyOwnershipRequest",
+      "name": "Verifies ownership",
+      "output": "VerifyOwnershipResponse",
+      "status": "online"
     }
   },
   "metadata": {
@@ -506,21 +513,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Details of the origin.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "OriginDetail",
-          "name": "OriginDetail",
-          "required": false,
-          "type": "object",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Creation time of the accelerated domain name.",
-          "example": "2020-09-22T00:00:00+00:00",
-          "member": "datetime_iso",
-          "name": "CreatedOn",
-          "required": false,
+          "document": "ID of the site.",
+          "example": "zone-20hyebgyfsko",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -530,27 +527,7 @@
           "example": "www.example.com",
           "member": "string",
           "name": "DomainName",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Modification time of the accelerated domain name.",
-          "example": "2020-09-22T00:00:00+00:00",
-          "member": "datetime_iso",
-          "name": "ModifiedOn",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "ID of the site.",
-          "example": "zone-20hyebgyfsko",
-          "member": "string",
-          "name": "ZoneId",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -560,9 +537,59 @@
           "example": "online",
           "member": "string",
           "name": "DomainStatus",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Details of the origin.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OriginDetail",
+          "name": "OriginDetail",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "FOLLOW",
+          "member": "string",
+          "name": "OriginProtocol",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "80",
+          "member": "uint64",
+          "name": "HttpOriginPort",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "443",
+          "member": "uint64",
+          "name": "HttpsOriginPort",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "follow",
+          "member": "string",
+          "name": "IPv6Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -570,7 +597,7 @@
           "example": "www.example.com.eo.dnse1.com",
           "member": "string",
           "name": "Cname",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -580,12 +607,80 @@
           "example": "pending",
           "member": "string",
           "name": "IdentificationStatus",
-          "required": false,
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time of the accelerated domain name.",
+          "example": "2020-09-22T00:00:00+00:00",
+          "member": "datetime_iso",
+          "name": "CreatedOn",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modification time of the accelerated domain name.",
+          "example": "2020-09-22T00:00:00+00:00",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Information required to verify the ownership of a domain name.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OwnershipVerification",
+          "name": "OwnershipVerification",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Domain name certificate information\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AccelerationDomainCertificate",
+          "name": "Certificate",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
       "usage": "out"
+    },
+    "AccelerationDomainCertificate": {
+      "document": "Information of the acceleration domain name certificate.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Certificate configuration mode. Values: <li>`disable`: Do not configure the certificate;</li><li>`eofreecert`: Use a free certificate provided by EdgeOne; </li><li>`sslcert`: Configure an SSL certificate.</li>",
+          "example": "\"ssl\"",
+          "member": "string",
+          "name": "Mode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of certificates\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CertificateInfo",
+          "name": "List",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "AclCondition": {
       "document": "The condition that makes up an access control rule",
@@ -2108,6 +2203,82 @@
       ],
       "usage": "both"
     },
+    "CertificateInfo": {
+      "document": "HTTPS server certificate configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the server certificate.",
+          "example": "EO-dsfdsf",
+          "member": "string",
+          "name": "CertId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alias of the certificate.",
+          "example": "默认证书",
+          "member": "string",
+          "name": "Alias",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Type of the certificate. Values:\n<li>`default`: Default certificate</li>\n<li>`upload`: Specified certificate</li>\n<li>`managed`: Tencent Cloud-managed certificate</li>",
+          "example": "default",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The certificate expiration time.",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "ExpireTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time when the certificate is deployed.",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "DeployTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Signature algorithm.",
+          "example": "RSA",
+          "member": "string",
+          "name": "SignAlgo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status of the certificate. Values:\nu200c<li>`deployed`: The deployment has completed</li>\nu200c<li>`processing`: Deployment in progress</li>\nu200c<li>`applying`: Application in progress</li>\nu200c<li>`failed`: Application rejected</li>\n<li>`issued`: Binding failed.</li>",
+          "example": "deployed",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "CheckCnameStatusRequest": {
       "document": "CheckCnameStatus request structure.",
       "members": [
@@ -2299,7 +2470,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the site related with the accelerated domain name.",
+          "document": "ID of the site related with the acceleration domain name.",
           "example": "zone-225qgrnvbi9w",
           "member": "string",
           "name": "ZoneId",
@@ -2308,7 +2479,7 @@
         },
         {
           "disabled": false,
-          "document": "Accelerated domain name",
+          "document": "Acceleration domain name",
           "example": "qq.com",
           "member": "string",
           "name": "DomainName",
@@ -2323,6 +2494,42 @@
           "name": "OriginInfo",
           "required": true,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "FOLLOW",
+          "member": "string",
+          "name": "OriginProtocol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "80",
+          "member": "uint64",
+          "name": "HttpOriginPort",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "443",
+          "member": "uint64",
+          "name": "HttpsOriginPort",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "follow",
+          "member": "string",
+          "name": "IPv6Status",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2332,7 +2539,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Use the information returned by this parameter to verify the ownership of a domain name. For details, see [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1).\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "OwnershipVerification",
           "name": "OwnershipVerification",
@@ -3128,16 +3335,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The site name.",
-          "example": "test.com",
-          "member": "string",
-          "name": "ZoneName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "The access mode. Values:\n<li> `full`: Access through a name server.</li>\n<li> `partial`: Access through a CNAME. Before using this access mode, first verify your site with the site verification API (IdentifyZone).<li>`noDomainAccess`: Access without using a domain name. If this value is passed, only the Tags field needs to be set. </li>\nIf not specified, this field uses the default value `full`.",
+          "document": "Site access types. Options include:\n<li>`partial`: (Default) Access through a CNAME record</li>\n<li>`full`: Access through a name server</li>\n<li>`noDomainAccess`: Access without using a domain name</li>",
           "example": "full",
           "member": "string",
           "name": "Type",
@@ -3146,24 +3344,51 @@
         },
         {
           "disabled": false,
-          "document": "Whether to skip scanning the existing DNS records of the site. Default value: false.",
-          "example": "false",
-          "member": "bool",
-          "name": "JumpStart",
+          "document": "Site name. For sites connected via CNAME/NS, pass in the secondary domain name (example.com). Leave it blank if the site is connected without a domain name. ",
+          "example": "test.com",
+          "member": "string",
+          "name": "ZoneName",
           "required": false,
-          "type": "bool"
+          "type": "string"
         },
         {
           "disabled": false,
-          "document": "The resource tag.",
-          "example": "无",
+          "document": "The acceleration area of the L7 domain name when `Type` is `partial` or `full`. When Type is `noDomainAccess`, please leave it blank.\n<li>`global`: Global AZs</li>\n<li>`mainland`: AZs in the Chinese mainland</li>\n<li>`overseas`: (Default) AZs outside the Chinese mainland </li>",
+          "example": "mainland",
+          "member": "string",
+          "name": "Area",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the plan to which you want to bind the site. If you don't have an EdgeOne plan, purchase one in the EdgeOne console.",
+          "example": "edgeone-qqqwwweee",
+          "member": "string",
+          "name": "PlanId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The site alias. It allows up to 20 characters, including [0-9], [a-z], [A-Z] and [-_]. For details, see [Glossary](https://intl.cloud.tencent.com/document/product/1552/70202?from_cn_redirect=1). If you don't want to use it, just leave it blank.",
+          "example": "zone-example",
+          "member": "string",
+          "name": "AliasZoneName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tags of the site. To create tags, go to the [Tag Console](https://console.cloud.tencent.com/tag/taglist).",
+          "example": "a",
           "member": "Tag",
           "name": "Tags",
           "required": false,
           "type": "list"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Whether to allow duplicate sites. Values:\n<li>`true`: Duplicate sites are allowed.</li>\n<li>`false`: Duplicate sites are not allowed.</li>If it is left empty, the default value `false` is used.",
           "example": "false",
           "member": "bool",
@@ -3172,13 +3397,13 @@
           "type": "bool"
         },
         {
-          "disabled": false,
-          "document": "The site alias. It can be up to 20 characters consisting of digits, letters, hyphens (-) and underscores (_).",
-          "example": "zone-example",
-          "member": "string",
-          "name": "AliasZoneName",
+          "disabled": true,
+          "document": "Whether to skip scanning the existing DNS records of the site. Default value: false.",
+          "example": "false",
+          "member": "bool",
+          "name": "JumpStart",
           "required": false,
-          "type": "string"
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -3188,13 +3413,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "The site ID.",
+          "document": "Site ID.",
           "example": "zone-xxxxx",
           "member": "string",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Site ownership verification information. After the site is created, you need to complete the ownership verification before the site can serve normally.\n\nIf `Type=partial`, add TXT records to your DNS provider or add files to the root DNS server, and then call [VerifyOwnership]() to complete verification. For more information, see [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1).\n\nIf `Type = full`, switch the DNS server as instructed by [Modifying DNS Server](https://intl.cloud.tencent.com/document/product/1552/90452?from_cn_redirect=1). Then call [VerifyOwnership]() to check the result.\n\nIf `Type = noDomainAccess`, leave it blank. No action is required.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OwnershipVerification",
+          "name": "OwnershipVerification",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3781,7 +4016,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the site related with the accelerated domain name.",
+          "document": "ID of the site related with the acceleration domain name.",
           "example": "zone-20hyebgyfsko",
           "member": "string",
           "name": "ZoneId",
@@ -3790,7 +4025,25 @@
         },
         {
           "disabled": false,
-          "document": "Filters. Each filter can have up to 20 entries. See below for details: \n<li>`domain-name`:<br>   <strong>Accelerated domain name</strong><br>   Type: String<br>Required: No \n<li>`origin-type`:<br>   <strong>Type of the origin</strong><br>   Type: String<br>   Required: No \n<li>`origin`:<br>   <strong>Primary origin</strong><br>   Type: String<br>   Required: No \n<li>`backup-origin`:<br>   <strong>Secondary origin</strong><br>   Type: String<br>   Required: No \n<li>`domain-cname`:<br>   <strong>Accelerated CNAME</strong><br>   Type: String<br>   Required: No \n<li>`share-cname`:<br>   <strong> Shared CNAME</strong><br>   Type: String<br>   Required: No",
+          "document": "Offset for paginated queries. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Limit on paginated queries. Default value: 20. Maximum value: 200.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter conditions. Up to 20 values for each filter. If it is not passed in, all domain names related with the specific zone-id are returned. \n<li>`domain-name`: Acceleration domain name</li>\n<li>`origin-type`: Type of the origin</li>\n<li>`origin`: Primary origin address</li>\n<li>`backup-origin`: Secondary origin address</li>\n<li>`domain-cname`: CNAME</li>\n<li>`share-cname`: Shared CNAME</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -3799,7 +4052,16 @@
         },
         {
           "disabled": false,
-          "document": "The sorting order. Values:\n<li>`asc`: Ascending order.</li>\n<li>`desc`: Descending order.</li>Default value: `asc`.",
+          "document": "Sort the returned results according to this field. Values include:\n<li>`created_on`: Creation time of the acceleration domain name</li>\n<li>`domain-name`: (Default) Acceleration domain name.</li> ",
+          "example": "domain-name",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort direction. If the field value is number, sort by the numeric value. If the field value is text, sort by the ascill code. Values include:\n<li>`asc`: Ascending order.</li>\n<li>`desc`: Descending order.</li> Default value: `asc`.",
           "example": "asc",
           "member": "string",
           "name": "Direction",
@@ -3814,33 +4076,6 @@
           "name": "Match",
           "required": false,
           "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Limit on paginated queries. Default value: 20. Maximum value: 200.",
-          "example": "10",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Offset for paginated queries. Default value: 0.",
-          "example": "0",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "The sorting criteria. Values:\n<li>`created_on`: Creation time of the accelerated domain name.</li>\n<li>`domain-name`: Acceleration domain name.</li>\n</li>Default value: `domain-name`.",
-          "example": "domain-name",
-          "member": "string",
-          "name": "Order",
-          "required": false,
-          "type": "string"
         }
       ],
       "type": "object"
@@ -3850,19 +4085,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of matched accelerated domain names.",
+          "document": "Total of matched alias domain names.",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List of accelerated domain names.",
+          "document": "Information of all matched acceleration domain names",
           "example": "无",
           "member": "AccelerationDomain",
           "name": "AccelerationDomains",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5735,8 +5972,8 @@
         },
         {
           "disabled": false,
-          "document": "The paginated query limit. Default value: 20. Maximum value: 1000.",
-          "example": "1000",
+          "document": "Limit on paginated queries. Default value: 20. Maximum value: 100.",
+          "example": "100",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -5744,7 +5981,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone-name`:<br>   Filter by <strong>site name</strong><br>   Type: String<br>   Required: No</li><li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-xxx<br>   Type: String<br>   Required: No</li><li>`status`:<br>   Filter by <strong>site status</strong><br>   Type: String<br>   Required: No</li><li>`tag-key`:<br>   Filter by <strong>tag key</strong><br>   Type: String<br>   Required: No</li><li>`tag-value`:<br>   Filter by <strong>tag value</strong><br>   Type: String<br>   Required: No</li>Only `zone-name` supports fuzzy query.",
+          "document": "Filter conditions. Up to 20 values for each filter. If this parameter is not filled in, the information of all sites under the current account is returned. Detailed filtering conditions are as follows:\n<li>`zone-name`: Site name </li><li>`zone-id`: Site ID, such as zone-2noz78a8ev6k</li><li>`status`: Site status </li><li>`tag-key`: Tag key </li><li>`tag-value`: Tag value </li>Only `zone-name` supports fuzzy query.",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -5753,7 +5990,7 @@
         },
         {
           "disabled": false,
-          "document": "The sorting field. Values:\n<li>`type`: Access mode</li>\n<li>`area`: Acceleration region</li>\n<li>`create-time`: Creation date</li>\n<li>`zone-name`: Site name</li>\n<li>`use-time`: Last used date</li>\n<li>`active-status`: Activation status</li>If it is left empty, the default value `create-time` is used.",
+          "document": "Sort the returned results according to this field. Values include:\n<li>`type`: Connection mode</li>\n<li>`area`: Acceleration region</li>\n<li>`create-time`: Creation time</li>\n<li>`zone-name`: Site name</li>\n<li>`use-time`: Last used time</li>\n<li>`active-status` Effective status</li> Default value: `create-time`",
           "example": "\"status\"",
           "member": "string",
           "name": "Order",
@@ -5762,7 +5999,7 @@
         },
         {
           "disabled": false,
-          "document": "The sorting direction. Values:\n<li>`asc`: From smallest to largest</li>\n<li>`desc`: From largest to smallest</li>If it is left empty, the default value `desc` is used.",
+          "document": "Sort direction. If the field value is a number, sort by the numeric value. If the field value is text, sort by the ascill code. Values include:\n<li>`asc`: From the smallest to largest</li>\n<li>`desc`: From the largest to smallest.</li>Default value: `desc`",
           "example": "\"desc\"",
           "member": "string",
           "name": "Direction",
@@ -5781,17 +6018,17 @@
           "example": "10",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Details of sites",
+          "document": "Details of sites.",
           "example": "无",
           "member": "Zone",
           "name": "Zones",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6091,7 +6328,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The host record.",
           "example": "edgeonereclaim",
           "member": "string",
           "name": "Subdomain",
@@ -6101,7 +6338,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The record type.",
           "example": "TXT",
           "member": "string",
           "name": "RecordType",
@@ -6111,7 +6348,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The record value.",
           "example": "reclaim-3qgbn3tmzj5ctnfxvctzvljklf3odjv2",
           "member": "string",
           "name": "RecordValue",
@@ -6645,11 +6882,11 @@
       "usage": "out"
     },
     "FileVerification": {
-      "document": "",
+      "document": "Information required for verifying via a file. It's applicable to sites connected via CNAMEs.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "EdgeOne obtains the file verification information in the format of \"Scheme + Host + URL Path\", (e.g. https://www.example.com/.well-known/teo-verification/z12h416twn.txt). This field is the URL path section of the URL you need to create.",
           "example": "/.well-known/teo-verification/z12h416twn.txt",
           "member": "string",
           "name": "Path",
@@ -6659,7 +6896,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Content of the verification file. The contents of this field need to be filled into the text file returned by `Path`.",
           "example": "ryjrj07mntythul2j09xabc0jv6g8xxx",
           "member": "string",
           "name": "Content",
@@ -8063,7 +8300,7 @@
         },
         {
           "disabled": false,
-          "document": "List of domain names that the certificate will be attached to.",
+          "document": "Domain names that you need to modify the certificate configuration",
           "example": "xxx.test.com",
           "member": "string",
           "name": "Hosts",
@@ -8072,7 +8309,16 @@
         },
         {
           "disabled": false,
-          "document": "Certificate information. Note that only `CertId` is required. If it is not specified, the default certificate will be used.",
+          "document": "Certificate configuration mode. Values:\n<li>`disable`: (Default) Do not configure the certificate</li>\n<li>`eofreecert`: Use a free certificate provided by EdgeOne</li>\n<li>`sslcert`: Configure an SSL certificate.</li>",
+          "example": "eoFreeCert",
+          "member": "string",
+          "name": "Mode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the SSL certificate. It takes effect when `mode=sslcert`. To check the certificate ID, go to the [SSL Certificate](https://console.cloud.tencent.com/certoview) console.",
           "example": "teo-xxxxx",
           "member": "ServerCertInfo",
           "name": "ServerCertInfo",
@@ -8080,8 +8326,8 @@
           "type": "list"
         },
         {
-          "disabled": false,
-          "document": "Whether the certificate is managed by EdgeOne. Values:\n<li>`apply`: Managed by EdgeOne.</li>\n<li>`none`: Not managed by EdgeOne.</li>If not specified, this field uses the default value `none`.",
+          "disabled": true,
+          "document": "Whether the certificate is managed by EdgeOne. Values:\n<li>`none`: Not managed by EdgeOne</li>\n<li>`apply`: Managed by EdgeOne</li>\nDefault value: `none`.",
           "example": "apply",
           "member": "string",
           "name": "ApplyType",
@@ -8723,11 +8969,11 @@
       "usage": "both"
     },
     "NsVerification": {
-      "document": "",
+      "document": "Information required for switching DNS servers. It's applicable to sites connected via NSs.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The DNS server address assigned to the user when connecting a site to EO via NS. You need to switch the NameServer of the domain name to this address.",
           "example": "无",
           "member": "string",
           "name": "NameServers",
@@ -8977,7 +9223,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The origin type. Values:\n<li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>\n<li>`COS`: COS bucket address</li>\n<li>`ORIGIN_GROUP`: Origin group</li>\n<li>`AWS_S3`: AWS S3 bucket address</li>\n<li>`LB`: Tencent Cloud CLB instance</li>\n<li>`SPACE`: EdgeOne Shield Space</li>",
+          "document": "The origin type. Values:\n<li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>\n<li>`COS`: COS bucket address</li>\n<li>`ORIGIN_GROUP`: Origin group</li>\n<li>`AWS_S3`: AWS S3 bucket address</li>\n<li>`LB`: Tencent Cloud CLB instance</li>\n<li>`SPACE`: EdgeOne Shield Space</li>  ",
           "example": "ip_domain",
           "member": "string",
           "name": "OriginType",
@@ -9196,11 +9442,11 @@
       "usage": "both"
     },
     "OwnershipVerification": {
-      "document": "",
+      "document": "Information of domain name ownership verification.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "u200cInformation required for authentication using DNS resolution. It's applicable to sites connected via CNAME. See [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5).\n \nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "DnsVerification",
           "name": "DnsVerification",
@@ -9210,7 +9456,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "u200cInformation required for verifying via a file. It's applicable to sites connected via CNAMEs. See [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5).\n \nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FileVerification",
           "name": "FileVerification",
@@ -9220,7 +9466,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "u200cInformation required for switching DNS servers. It's applicable to sites connected via NSs. For details, see [Modifying DNS Server](https://intl.cloud.tencent.com/document/product/1552/90452?from_cn_redirect=1).\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NsVerification",
           "name": "NsVerification",
@@ -10207,16 +10453,18 @@
           "example": "equal",
           "member": "string",
           "name": "Operator",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The match type. Values:\n<li>`filename`: File name</li>\n<li>`extension`: File extension</li>\n<li>`host`: Host</li>\n<li>`full_url`: Full URL, which indicates the complete URL path under the current site and must contain the HTTP protocol, host, and path.</li>\n<li>`url`: Partial URL under the current site</li><li>`client_country`: Country/Region of the client</li>\n<li>`query_string`: Query string in the request URL</li>\n<li>`request_header`: HTTP request header</li>",
+          "document": "Match fields. Values: <li>`filename`: File name;</li><li>`extension`: File suffix;</li><li>`host`: HOST;</li><li>`full_url`: The complete URL path under the current site, including the HTTP protocol, Host and path;</li><li>`url`: The URL path request under the current site;</li><li>`client_country`: Client country;</li><li>`query_string`: The query string of the URL requested under the current site;</li><li>`request_header`: HTTP request header. </li>",
           "example": "url",
           "member": "string",
           "name": "Target",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10227,6 +10475,7 @@
           "example": "[\"www.maxx55.com\"]",
           "member": "string",
           "name": "Values",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -10237,6 +10486,7 @@
           "example": "true",
           "member": "bool",
           "name": "IgnoreCase",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": false
@@ -10247,16 +10497,18 @@
           "example": "Accept-Language",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Whether the parameter name is case insensitive. Default value: `false`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
           "name": "IgnoreNameCase",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -11572,6 +11824,53 @@
       ],
       "usage": "out"
     },
+    "VerifyOwnershipRequest": {
+      "document": "VerifyOwnership request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Site or acceleration domain name",
+          "example": "qq.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "VerifyOwnershipResponse": {
+      "document": "VerifyOwnership response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Result of ownership verification\n<li>`success`: Verification passed</li>\n<li>`fail`: Verification failed</li>",
+          "example": "success",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "When the ownership verification result is `fail`, this field returns the reason of failure.",
+          "example": "无",
+          "member": "string",
+          "name": "Result",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Waf": {
       "document": "N/A",
       "members": [
@@ -11721,11 +12020,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "The site ID.",
+          "document": "Site ID.",
           "example": "zone-27q0p0bali16",
           "member": "string",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11735,7 +12034,7 @@
           "example": "example.com",
           "member": "string",
           "name": "ZoneName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11745,7 +12044,7 @@
           "example": "[\"ns1.example.com.\",\"ns2.example.com.\"]",
           "member": "string",
           "name": "OriginalNameServers",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -11755,27 +12054,27 @@
           "example": "[\"ns1.teodns.com.\",\"\"ns2.teodns.com.\"]",
           "member": "string",
           "name": "NameServers",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The site status. Values:\n<li>`active`: The name server is switched.</li>\n<li>`pending`: The name server is not switched.</li>\n<li>`moved`: The name server is moved.</li>\n<li>`deactivated`: The site is blocked.</li>",
+          "document": "The site status. Values:\nu200c<li>`active`: The name server is switched to EdgeOne.</li>\nu200c<li>`pending`: The name server is not switched.</li>\nu200c<li>`moved`: The name server is changed to other service providers.</li>\nu200c<li>`deactivated`: The site is blocked.</li>\n<li>`initializing`: The site is not bound with any plan. </li>",
           "example": "active",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Access mode of the site. Values:\n<li> `full`: Access through a name server.</li>\n<li> `partial`: Access through a CNAME record.</li>\n<li> `noDomainAccess`: Access without using a domain name </li>",
+          "document": "Connection mode of the site. Values:\n<li>`full`: Connect via the name server.</li>\n<li>`partial`: Connect via the CNAME record.</li>\n<li>`noDomainAccess`: Connect without using a domain name\n ",
           "example": "full",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11785,7 +12084,7 @@
           "example": "false",
           "member": "bool",
           "name": "Paused",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -11795,7 +12094,7 @@
           "example": "无",
           "member": "string",
           "name": "CnameSpeedUp",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11805,7 +12104,7 @@
           "example": "finished",
           "member": "string",
           "name": "CnameStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11815,7 +12114,7 @@
           "example": "无",
           "member": "Tag",
           "name": "Tags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -11825,7 +12124,7 @@
           "example": "无",
           "member": "Resource",
           "name": "Resources",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -11835,7 +12134,7 @@
           "example": "无",
           "member": "datetime_iso",
           "name": "CreatedOn",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11845,7 +12144,7 @@
           "example": "无",
           "member": "datetime_iso",
           "name": "ModifiedOn",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11855,7 +12154,7 @@
           "example": "overseas",
           "member": "string",
           "name": "Area",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11865,7 +12164,7 @@
           "example": "无",
           "member": "VanityNameServers",
           "name": "VanityNameServers",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -11875,7 +12174,7 @@
           "example": "无",
           "member": "VanityNameServersIps",
           "name": "VanityNameServersIps",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -11885,7 +12184,7 @@
           "example": "active",
           "member": "string",
           "name": "ActiveStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11895,7 +12194,7 @@
           "example": "zone-example",
           "member": "string",
           "name": "AliasZoneName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -11905,19 +12204,29 @@
           "example": "1",
           "member": "int64",
           "name": "IsFake",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Lock status. Valid values: <li>`enable`: Normal. Modifying is allowed;</li><li>`disable`: Locked. Modifying is not allowed.</li>",
+          "document": "Lock status. Values: <li>`enable`: Normal. Modification is allowed.</li><li>`disable`: Locked. Modification is not allowed.</li><li>`plan_migrate`: Adjusting the plan. Modification is not allowed.</li> ",
           "example": "enable",
           "member": "string",
           "name": "LockStatus",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Ownership verification information\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OwnershipVerification",
+          "name": "OwnershipVerification",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
