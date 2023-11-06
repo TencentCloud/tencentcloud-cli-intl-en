@@ -637,6 +637,13 @@
       "output": "DescribeWordSamplesResponse",
       "status": "online"
     },
+    "EditMedia": {
+      "document": "",
+      "input": "EditMediaRequest",
+      "name": "Edits a video",
+      "output": "EditMediaResponse",
+      "status": "online"
+    },
     "ExecuteFunction": {
       "document": "This API is only used in special scenarios of custom development. Unless requested by VOD customer service, please do not call it.",
       "input": "ExecuteFunctionRequest",
@@ -852,6 +859,13 @@
       "input": "ParseStreamingManifestRequest",
       "name": "Parses video index file",
       "output": "ParseStreamingManifestResponse",
+      "status": "online"
+    },
+    "ProcessMedia": {
+      "document": "This API is used to initiate a media processing task on a VOD file. The task may include:\n1. Video transcoding (with watermark)\n2. Animated image generating\n3. Time point screenshot\n4. Sampled screenshot\n5. Image sprite generating\n6. Taking a screenshot to use as the thumbnail\n7. Adaptive bitrate streaming and encryption\n8. Moderation (pornographic, terrorist, and politically sensitive content). We <font color=red>do not recommend</font> using this API to initiate a moderation task. Please use [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) or [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1) instead.\n9. Content analysis for labeling, categorization, thumbnail generation, or labeling by frame.\n10. Recognition of opening and closing segments, faces, full text, text keywords, full speech, speech keywords, and objects\n\nIf event notifications are used, the event type is [ProcedureStateChanged](https://intl.cloud.tencent.com/document/product/266/9636?from_cn_redirect=1).",
+      "input": "ProcessMediaRequest",
+      "name": "Processes a video",
+      "output": "ProcessMediaResponse",
       "status": "online"
     },
     "ProcessMediaByProcedure": {
@@ -15982,6 +15996,193 @@
       ],
       "usage": "both"
     },
+    "EditMediaOutputConfig": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "filenamexx",
+          "member": "string",
+          "name": "MediaName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "mp4",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "ClassId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2018-10-01T18:00:00+08:00",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "EditMediaVideoStream",
+          "name": "VideoStream",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "EditMediaTEHDConfig",
+          "name": "TEHDConfig",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "EditMediaRequest": {
+      "document": "EditMedia request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "File",
+          "member": "string",
+          "name": "InputType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1490012345",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "EditMediaFileInfo",
+          "name": "FileInfos",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "EditMediaStreamInfo",
+          "name": "StreamInfos",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "10",
+          "member": "uint64",
+          "name": "Definition",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "LongVideoPreset",
+          "member": "string",
+          "name": "ProcedureName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "EditMediaOutputConfig",
+          "name": "OutputConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "\"\"",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Reserved field for special purposes.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ExtInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "EditMediaResponse": {
+      "document": "EditMedia response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "125xxx65-EditMedia-bffb15f07530b57bc1aabb01fac74bca",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "EditMediaStreamInfo": {
       "document": "Video stream editing information",
       "members": [
@@ -16012,6 +16213,22 @@
           "member": "string",
           "name": "EndTime",
           "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "EditMediaTEHDConfig": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "TEHD-100",
+          "member": "string",
+          "name": "Type",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -16255,6 +16472,48 @@
         }
       ],
       "usage": "out"
+    },
+    "EditMediaVideoStream": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "open",
+          "member": "string",
+          "name": "ResolutionAdaptive",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "Width",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "Height",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "Fps",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
     },
     "EmptyTrackItem": {
       "document": "Empty track segment used as placeholder on time axis. If you want a period of silence between two audio segments, you can use `EmptyTrackItem` to hold the place.",
@@ -26369,6 +26628,133 @@
           "example": "",
           "member": "string",
           "name": "TaskId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ProcessMediaRequest": {
+      "document": "ProcessMedia request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Media file ID, i.e., the globally unique ID of a file in VOD assigned by the VOD backend after successful upload. This field can be obtained through the [video upload completion event notification](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) or [VOD Console](https://console.cloud.tencent.com/vod/media).",
+          "example": "5285485487985271487",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "example": "123",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Parameter of video processing task.",
+          "example": "无",
+          "member": "MediaProcessTaskInput",
+          "name": "MediaProcessTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The information of the audio/video moderation task\\*.\nThis parameter is <font color=red>\\*no longer recommended</font>. Please use [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) or [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1) instead.",
+          "example": "无",
+          "member": "AiContentReviewTaskInput",
+          "name": "AiContentReviewTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Video content analysis task parameter.",
+          "example": "无",
+          "member": "AiAnalysisTaskInput",
+          "name": "AiAnalysisTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Type parameter of video content recognition task.",
+          "example": "无",
+          "member": "AiRecognitionTaskInput",
+          "name": "AiRecognitionTask",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Task flow priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.",
+          "example": "0",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Notification mode for task flow status change. Valid values: Finish, Change, None. If this parameter is left empty, `Finish` will be used.",
+          "example": "Finish",
+          "member": "string",
+          "name": "TasksNotifyMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.",
+          "example": "SessionContext",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.",
+          "example": "SessionId",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Reserved field for special purposes.",
+          "example": "ExtInfo",
+          "member": "string",
+          "name": "ExtInfo",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ProcessMediaResponse": {
+      "document": "ProcessMedia response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },

@@ -914,6 +914,56 @@
         "title": "Querying keyword samples - filters specified"
       }
     ],
+    "EditMedia": [
+      {
+        "document": "This example shows you how to clip the 60th to 120th seconds of video `5285485487985271487` to generate a new VOD video.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=File\n&FileInfos.0.FileId=5285485487985271487\n&FileInfos.0.StartTimeOffset=60.0\n&FileInfos.0.EndTimeOffset=120.0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-EditMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Clipping one VOD file to generate a new video"
+      },
+      {
+        "document": "This example shows you how to splice three LVB recording streams whose IDs are 99873, 99874, and 99875 to generate a new VOD video.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=Stream\n&StreamInfos.0.StreamId=99873\n&StreamInfos.1.StreamId=99874\n&StreamInfos.2.StreamId=99875\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-clipMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Splicing multiple VOD streams to generate a new video"
+      },
+      {
+        "document": "This example shows you how to clip the segment between 10:00:00 and 11:00:00 on September 20, 2018 of the LVB recording stream whose ID is 99873 to generate a new VOD video.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=Stream\n&StreamInfos.0.StreamId=99873\n&StreamInfos.0.StartTime=2018-09-20T10:00:00Z\n&StreamInfos.0.StartTime=2018-09-20T11:00:00Z\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-clipMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Clipping one VOD stream to generate a new video"
+      },
+      {
+        "document": "This example shows you how to generate a new VOD video from LVB recording stream whose ID is 99873.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=Stream\n&StreamInfos.0.StreamId=99873\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-EditMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Directly generating a new video from VOD stream"
+      },
+      {
+        "document": "This example shows you how to clip the 60th to 120th seconds of videos `5285485487985271487`, `5285485487985271488`, and `5285485487985271489` respectively and splice the clips to generate a new VOD video.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=File\n&FileInfos.0.FileId=5285485487985271487\n&FileInfos.0.StartTimeOffset=60.0\n&FileInfos.0.EndTimeOffset=120.0\n&FileInfos.1.FileId=5285485487985271488\n&FileInfos.1.StartTimeOffset=60.0\n&FileInfos.1.EndTimeOffset=120.0\n&FileInfos.2.FileId=5285485487985271489\n&FileInfos.2.StartTimeOffset=60.0\n&FileInfos.2.EndTimeOffset=120.0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-EditMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Clipping multiple VOD files and then splicing clips to generate a new video"
+      },
+      {
+        "document": "This example shows you how to clip the 60th to 120th seconds of video `5285485487985271487` to generate a new VOD video and run task flow `TranscodeAndSnapshot`.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=File\n&FileInfos.0.FileId=5285485487985271487\n&FileInfos.0.StartTimeOffset=60.0\n&FileInfos.0.EndTimeOffset=120.0\n&ProcedureName=TranscodeAndSnapshot\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-clipMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Clipping one VOD file to generate a new video and run a task flow"
+      },
+      {
+        "document": "This example shows you how to clip the segments between 10:00:00 and 11:00:00 on September 20, 2018 of three LVB recording streams whose IDs are 99873, 99874, and 99875 and splice them to generate a new VOD video.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=Stream\n&StreamInfos.0.StreamId=99873\n&StreamInfos.0.StartTime=2018-09-20T10:00:00Z\n&StreamInfos.0.StartTime=2018-09-20T11:00:00Z\n&StreamInfos.1.StreamId=99874\n&StreamInfos.1.StartTime=2018-09-20T10:00:00Z\n&StreamInfos.1.StartTime=2018-09-20T11:00:00Z\n&StreamInfos.2.StreamId=99875\n&StreamInfos.2.StartTime=2018-09-20T10:00:00Z\n&StreamInfos.2.StartTime=2018-09-20T11:00:00Z\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-clipMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Clipping multiple VOD streams and then splicing clips to generate a new video"
+      },
+      {
+        "document": "This example shows you how to splice videos `5285485487985271487`, `5285485487985271488`, and `5285485487985271489` to generate a new VOD video.",
+        "input": "https://vod.tencentcloudapi.com/?Action=EditMedia\n&InputType=File\n&FileInfos.0.FileId=5285485487985271487\n&FileInfos.1.FileId=5285485487985271488\n&FileInfos.2.FileId=5285485487985271489\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-EditMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Splicing multiple VOD files to generate a new video"
+      }
+    ],
     "ExecuteFunction": [
       {
         "document": " ",
@@ -1256,6 +1306,44 @@
         "input": "https://vod.tencentcloudapi.com/?Action=ParseStreamingManifest\r\n&MediaManifestContent=%23EXTM3U%0D%0A%23EXT-X-TARGETDURATION:10%0D%0A%23EXTINF:9.009%0D%0Afirst.ts%0D%0A%23EXTINF:9.009%0D%0Asecond.ts%0D%0A%23EXT-X-ENDLIST\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"MediaSegmentSet\": [\n            \"first.ts\",\n            \"second.ts\"\n        ]\n    }\n}",
         "title": "Parsing an index file"
+      }
+    ],
+    "ProcessMedia": [
+      {
+        "document": "This example shows you how to initiate a task to transcode the video whose `fileId` is `5285485487985271487` according to the transcoding templates 20, 30, and 40.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&MediaProcessTask.TranscodeTaskSet.0.Definition=20\n&MediaProcessTask.TranscodeTaskSet.1.Definition=30\n&MediaProcessTask.TranscodeTaskSet.2.Definition=40\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Initiating a transcoding task"
+      },
+      {
+        "document": "This example shows you how to initiate a task to transcode the video whose `fileId` is `5285485487985271487` according to the transcoding templates 20, 30, and 40, as well as watermark the videos according to the watermark template 15780.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&MediaProcessTask.TranscodeTaskSet.0.Definition=20\n&MediaProcessTask.TranscodeTaskSet.0.WatermarkSet.0.Definition=15780\n&MediaProcessTask.TranscodeTaskSet.1.Definition=30\n&MediaProcessTask.TranscodeTaskSet.1.WatermarkSet.0.Definition=15780\n&MediaProcessTask.TranscodeTaskSet.2.Definition=40\n&MediaProcessTask.TranscodeTaskSet.2.WatermarkSet.0.Definition=15780\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Initiating a transcoding task with watermarked outputs"
+      },
+      {
+        "document": "This example shows you how to initiate a task to transcode the video whose `fileId` is `5285485487985271487` according to the transcoding templates 20, 30, and 40, and take screenshots according to the sampled screenshot template 10.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&MediaProcessTask.TranscodeTaskSet.0.Definition=20\n&MediaProcessTask.TranscodeTaskSet.1.Definition=30\n&MediaProcessTask.TranscodeTaskSet.2.Definition=40\n&MediaProcessTask.SampleSnapshotTaskSet.0.Definition=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Initiating a task to transcode a video and take sampled screenshots"
+      },
+      {
+        "document": "This example shows you how to initiate task to analyze the video whose `fileId` is `5285485487985271487` according to the content analysis template 10 for intelligent categorization, label detection, and thumbnail generation.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&AiAnalysisTask.Definition=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07586237bcecodb01fac7kdikk\"\n    }\n}",
+        "title": "Initiating an intelligent content analysis task"
+      },
+      {
+        "document": "This example shows you how to initiate a task to recognize pornographic, terrorist, and politically sensitive content in the video whose `fileId` is `5285485487985271487` according to the intelligent recognition template 10.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&AiContentReviewTask.Definition=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
+        "title": "Initiating an intelligent recognition task"
+      },
+      {
+        "document": "This example shows you how to initiate a task to recognize faces in the video whose `fileId` is `5285485487985271487` according to the content recognition template 10.",
+        "input": "https://vod.tencentcloudapi.com/?Action=ProcessMedia\n&FileId=5285485487985271487\n&AiRecognitionTask.Definition=10\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc70006fje1\",\n        \"TaskId\": \"125xxx65-procedurev2-bffb15f07586237bcecodb01fac7kdabc\"\n    }\n}",
+        "title": "Initiating an intelligent content recognition task"
       }
     ],
     "ProcessMediaByProcedure": [
