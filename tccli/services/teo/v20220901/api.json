@@ -1,5 +1,12 @@
 {
   "actions": {
+    "BindSharedCNAME": {
+      "document": "This API is used to bind/unbind a domain name to/from a shared CNAME. It is now only available to beta users.",
+      "input": "BindSharedCNAMERequest",
+      "name": "Binds with a shared CNAME",
+      "output": "BindSharedCNAMEResponse",
+      "status": "online"
+    },
     "BindZoneToPlan": {
       "document": "This API is used to bind a site to a plan.",
       "input": "BindZoneToPlanRequest",
@@ -85,7 +92,7 @@
       "status": "online"
     },
     "CreateSharedCNAME": {
-      "document": "This API is used to create a shared CNAME.",
+      "document": "This API is used to create a shared CNAME. It is now only available to beta users.",
       "input": "CreateSharedCNAMERequest",
       "name": "Creates a shared CNAME.",
       "output": "CreateSharedCNAMEResponse",
@@ -145,6 +152,13 @@
       "input": "DeleteSecurityIPGroupRequest",
       "name": "Deletes a security IP group",
       "output": "DeleteSecurityIPGroupResponse",
+      "status": "online"
+    },
+    "DeleteSharedCNAME": {
+      "document": "This API is used to delete a shared CNAME. It is now only available to beta users.",
+      "input": "DeleteSharedCNAMERequest",
+      "name": "Deletes a shared CNAME",
+      "output": "DeleteSharedCNAMEResponse",
       "status": "online"
     },
     "DeleteZone": {
@@ -1656,6 +1670,79 @@
         }
       ],
       "usage": "out"
+    },
+    "BindSharedCNAMEMap": {
+      "document": "Bindings between a shared CNAME and connected domain names",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The shared CNAME to be bound with or unbound from.",
+          "example": "qq.com.sai2ig51kaa5.share.dnse5.com",
+          "member": "string",
+          "name": "SharedCNAME",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Acceleration domains (up to 20).",
+          "example": "[\"a.qq.com\",\"b.qq.com\"]",
+          "member": "string",
+          "name": "DomainNames",
+          "output_required": true,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "BindSharedCNAMERequest": {
+      "document": "BindSharedCNAME request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the site related with the acceleration domain name.\t",
+          "example": "zone-20hyebgyfsko",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Action type. Values:\n<li>`bind`: To bind</li>\n<li>`unbind`: To unbind</li>",
+          "example": "bind",
+          "member": "string",
+          "name": "BindType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Bindings between domain names and a shared CNAME",
+          "example": "无",
+          "member": "BindSharedCNAMEMap",
+          "name": "BindSharedCNAMEMaps",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "BindSharedCNAMEResponse": {
+      "document": "BindSharedCNAME response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "BindZoneToPlanRequest": {
       "document": "BindZoneToPlan request structure.",
@@ -3289,7 +3376,7 @@
         },
         {
           "disabled": false,
-          "document": "Prefix of the shared CNAME. Format: \"test-api\",\"test-api.com\". Up 50 characters allowed.\nThe full format of the shared CNAME is: <custom prefix> + <12-bit random string in ZoneId> + \"share.eo.dns[0-5].com\". For example, if the prefix is \"example.com\", the created shared CNAME is \"example.com.sai2ig51kaa5.share.eo.dnse2.com\"\nExample: example.com",
+          "document": "Prefix of the shared CNAME (up to 50 characters). Format: \"test-api\", \"test-api.com\". \n\nThe complete format of a shared CNAME: <Custom Prefix> + <12-bit random string in ZoneId> + \"share.dnse[0-5].com\"\n\nFor example, if the prefix is `example.com`, the generated shared CNAME is `example.com.sai2ig51kaa5.share.dnse2.com`.",
           "example": "example.com",
           "member": "string",
           "name": "SharedCNAMEPrefix",
@@ -3313,8 +3400,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Shared CNAME. Format: <Custom Prefix> + <12-bit random string in ZoneId> + \"share.eo.dnse[0-5].com\"",
-          "example": "example.com.drvsif25rt7.share.eo.dnse2.com",
+          "document": "Shared CNAME. Format: <Custom prefix> + <12-bit random string in ZoneId> + \"share.dnse[0-5].com\"",
+          "example": "example.com.drvsif25rt7.share.dnse2.com",
           "member": "string",
           "name": "SharedCNAME",
           "output_required": false,
@@ -3974,6 +4061,42 @@
     },
     "DeleteSecurityIPGroupResponse": {
       "document": "DeleteSecurityIPGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSharedCNAMERequest": {
+      "document": "DeleteSharedCNAME request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the site to which the shared CNAME belongs.",
+          "example": "zone-2drvsif25rt7",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The shared CNAME to be deleted",
+          "example": "qq.com.sai2ig51kaa5.share.dns2.com",
+          "member": "string",
+          "name": "SharedCNAME",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSharedCNAMEResponse": {
+      "document": "DeleteSharedCNAME response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -9127,72 +9250,62 @@
       "members": [
         {
           "disabled": false,
-          "document": "The site ID.",
-          "example": "zone-xxx",
-          "member": "string",
-          "name": "ZoneId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The site name.",
-          "example": "123.com",
-          "member": "string",
-          "name": "ZoneName",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The ID of the origin group.",
+          "document": "",
           "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
           "member": "string",
-          "name": "OriginGroupId",
-          "required": true,
+          "name": "GroupId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The origin type. Values:\n<li>`self`: Customer origin</li>\n<li>`third_party`: Third-party origin</li>\n<li>`cos`: Tencent Cloud COS origin</li>",
-          "example": "self",
+          "document": "",
+          "example": "Name",
           "member": "string",
-          "name": "OriginType",
-          "required": true,
+          "name": "Name",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The name of the origin group.",
-          "example": "name",
+          "document": "",
+          "example": "HTTP",
           "member": "string",
-          "name": "OriginGroupName",
-          "required": true,
+          "name": "Type",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The origin configuration type when `OriginType=self`. Values:\n<li>`area`: Configure by region.</li>\n<li>`weight`: Configure by weight.</li>\n<li>`proto`: Configure by HTTP protocol.</li>When `OriginType=third_party/cos`, leave this field empty.",
-          "example": "area",
-          "member": "string",
-          "name": "ConfigurationType",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The origin record information.",
+          "document": "",
           "example": "[]",
           "member": "OriginRecord",
-          "name": "OriginRecords",
-          "required": true,
+          "name": "Records",
+          "output_required": true,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "OriginGroupReference",
+          "name": "References",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -9201,19 +9314,55 @@
           "example": "2014-08-03T12:00:00+08:00",
           "member": "datetime_iso",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The origin domain when `OriginType=self`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Origin-pull host header\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "www.tencent.com",
           "member": "string",
           "name": "HostHeader",
-          "required": true,
+          "output_required": false,
           "type": "string",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "OriginGroupReference": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "AccelerationDomain",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "domain-123456",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -11279,7 +11428,7 @@
         },
         {
           "disabled": false,
-          "document": "The client IP to allow. It can be an IPv4/IPv6 address or a CIDR block. If not specified, it means to allow any client IP",
+          "document": "Allowed client source. It supports IPv4/IPv6 addresses and CIDR blocks.",
           "example": "[\"9.142.236.194\", \"43.154.226.0/24\"]",
           "member": "string",
           "name": "AllowClientIPList",
@@ -12070,7 +12219,7 @@
         },
         {
           "disabled": false,
-          "document": "Connection mode of the site. Values:\n<li>`full`: Connect via the name server.</li>\n<li>`partial`: Connect via the CNAME record.</li>\n<li>`noDomainAccess`: Connect without using a domain name\n ",
+          "document": "Connection mode of the site. Values:\n<li>`full`: Connect via the name server.</li>\n<li>`partial`: Connect via the CNAME record.</li>\n<li>`noDomainAccess`: Connect without using a domain name</li>",
           "example": "full",
           "member": "string",
           "name": "Type",

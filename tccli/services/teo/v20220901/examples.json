@@ -1,5 +1,19 @@
 {
   "actions": {
+    "BindSharedCNAME": [
+      {
+        "document": "In this example, we bind the domain names `a.qq.com` and `b.qq.com` under the site `zone-225qgrnvbi9w` to the shared CNAME `qq.com.sai2ig51kaa5.share.dnse5.com`, and bind the domain names `api.qq.com` and `img.qq.com` to the shared CNAME `config.qq.com.sai2ig51kaa5.share.dnse5.com`.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindSharedCNAME\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"BindType\": \"bind\",\n    \"BindSharedCNAMEMaps\": [\n        {\n            \"SharedCNAME\": \"qq.com.sai2ig51kaa5.share.dnse5.com\",\n            \"DomainNames\": [\n                \"a.qq.com\",\n                \"b.qq.com\"\n            ]\n        },\n        {\n            \"SharedCNAME\": \"config.qq.com.sai2ig51kaa5.share.dnse5.com\",\n            \"DomainNames\": [\n                \"api.qq.com\",\n                \"img.qq.com\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Binding with a shared CNAME"
+      },
+      {
+        "document": "In this example, we unbind the domain name `a.qq.com` under the site `zone-225qgrnvbi9w` from the shared CNAME `qq.com.sai2ig51kaa5.share.dnse5.com`.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindSharedCNAME\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"BindType\": \"unbind\",\n    \"BindSharedCNAMEMaps\": [\n        {\n            \"SharedCNAME\": \"qq.com.sai2ig51kaa5.share.dnse5.com\",\n            \"DomainNames\": [\n                \"a.qq.com\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-5d3a-ac39-1706cbf8a708\"\n    }\n}",
+        "title": "Unbinding from a shared CNAME"
+      }
+    ],
     "BindZoneToPlan": [
       {
         "document": " ",
@@ -140,9 +154,9 @@
     ],
     "CreateSharedCNAME": [
       {
-        "document": "This example shows you how to create a shared CNAME.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSharedCNAME\n<Common request parameters>\n\n{\n    \"SharedCNAMEPrefix\": \"test\",\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"Description\": \"For business A \"\n}",
-        "output": "{\n    \"Response\": {\n        \"SharedCNAME\": \"test.225qgrnvbi9w.share.eo.dnse1.com\",\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "document": "This example shows you how to create a shared CNAME under the site `zone-225qgrnvbi9w` with the prefix of `test` and description of `For Service A`.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSharedCNAME\n<Common request parameters>\n\n{\n    \"SharedCNAMEPrefix\": \"test\",\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"Description\": \"For Service A\"\n}",
+        "output": "{\n    \"Response\": {\n        \"SharedCNAME\": \"test.225qgrnvbi9w.share.dnse1.com\",\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Creating a shared CNAME"
       }
     ],
@@ -220,6 +234,14 @@
         "input": "POST / HTTP/1.1 \nHost: teo.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: DeleteSecurityIPGroup \n<Common request parameters>\n\n{\n    \"GroupId\": 85,\n    \"ZoneId\": \"zone-qdwibsa\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"09ce3d28-1119-49cd-xxxx-27cb34dac669\"\n    }\n}",
         "title": "Deleting a security IP group"
+      }
+    ],
+    "DeleteSharedCNAME": [
+      {
+        "document": "This example deletes the share CNAME `qq.com.225qgrnvbi9w.share.dnse5.com` under the site `zone-225qgrnvbi9w`.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteSharedCNAME\n<Common request parameters>\n\n{\n    \"SharedCNAME\": \"qq.com.225qgrnvbi9w.share.dnse5.com\",\n    \"ZoneId\": \"zone-225qgrnvbi9w\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Deleting a shared CNAME"
       }
     ],
     "DeleteZone": [
@@ -320,10 +342,10 @@
     ],
     "DescribeOriginGroup": [
       {
-        "document": "获取指定源站组ID的源站组列表",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginGroup\n<common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"origin-group-id\",\n            \"Values\": [\n                \"origin-057c4d82-383c-11ee-8888-525400682e90\"\n            ]\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"OriginGroups\": [\n            {\n                \"ConfigurationType\": \"\",\n                \"HostHeader\": \"\",\n                \"OriginType\": \"self\",\n                \"UpdateTime\": \"2023-08-11T19:41:33Z\"\n            }\n        ],\n        \"RequestId\": \"a2e38df8-5800-4495-bd61-b6761b070d50\",\n        \"TotalCount\": 1\n    }\n}",
-        "title": "获取源站组列表"
+        "document": "This example shows you how to query the list of origin groups by a specified ID.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOriginGroup\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"origin-group-id\",\n            \"Values\": [\n                \"origin-057c4d82-383c-11ee-8888-525400682e90\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"OriginGroups\": [\n            {\n                \"CreateTime\": \"2023-08-11T19:41:33Z\",\n                \"GroupId\": \"origin-057c4d82-383c-11ee-8888-525400682e90\",\n                \"HostHeader\": \"\",\n                \"Name\": \"test_ruichaolin\",\n                \"Records\": [\n                    {\n                        \"Private\": false,\n                        \"PrivateParameters\": [],\n                        \"Record\": \"4.4.4.4\",\n                        \"RecordId\": \"record-3492ee3b-383c-11ee-8888-525400682e90\",\n                        \"Weight\": 40\n                    }\n                ],\n                \"References\": [],\n                \"Type\": \"HTTP\",\n                \"UpdateTime\": \"2023-08-11T19:41:33Z\"\n            }\n        ],\n        \"RequestId\": \"a2e38df8-5800-4495-bd61-b6761b070d50\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying the list of origin groups"
       }
     ],
     "DescribeOriginProtection": [
