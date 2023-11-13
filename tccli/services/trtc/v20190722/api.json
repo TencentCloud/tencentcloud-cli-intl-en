@@ -181,6 +181,7 @@
         {
           "disabled": false,
           "document": "The error event ID. For details, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1",
+          "example": "",
           "member": "uint64",
           "name": "AbnormalEventId",
           "required": true,
@@ -190,6 +191,7 @@
         {
           "disabled": false,
           "document": "The remote user ID. If this parameter is empty, it indicates that the error event is not associated with a remote user.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "PeerId",
           "required": true,
@@ -205,6 +207,7 @@
         {
           "disabled": false,
           "document": "The user ID.",
+          "example": "",
           "member": "string",
           "name": "UserId",
           "required": true,
@@ -214,6 +217,7 @@
         {
           "disabled": false,
           "document": "The abnormal experience ID.",
+          "example": "",
           "member": "uint64",
           "name": "ExperienceId",
           "required": true,
@@ -223,6 +227,7 @@
         {
           "disabled": false,
           "document": "The room ID (string).",
+          "example": "",
           "member": "string",
           "name": "RoomId",
           "required": true,
@@ -232,6 +237,7 @@
         {
           "disabled": false,
           "document": "The possible error events.",
+          "example": "",
           "member": "AbnormalEvent",
           "name": "AbnormalEventList",
           "required": true,
@@ -241,6 +247,7 @@
         {
           "disabled": false,
           "document": "The report time.",
+          "example": "",
           "member": "uint64",
           "name": "EventTime",
           "required": true,
@@ -1550,6 +1557,7 @@
         {
           "disabled": false,
           "document": "`SDKAppId` of TRTC",
+          "example": "",
           "member": "uint64",
           "name": "SdkAppId",
           "required": true,
@@ -1558,6 +1566,7 @@
         {
           "disabled": false,
           "document": "Room ID",
+          "example": "",
           "member": "string",
           "name": "RoomId",
           "required": true,
@@ -1584,6 +1593,7 @@
         {
           "disabled": false,
           "document": "`SDKAppId` of TRTC.",
+          "example": "",
           "member": "uint64",
           "name": "SdkAppId",
           "required": true,
@@ -1592,6 +1602,7 @@
         {
           "disabled": false,
           "document": "Room number.",
+          "example": "",
           "member": "uint64",
           "name": "RoomId",
           "required": true,
@@ -1618,6 +1629,7 @@
         {
           "disabled": false,
           "document": "The event information.",
+          "example": "",
           "member": "EventMessage",
           "name": "Content",
           "required": true,
@@ -1627,6 +1639,7 @@
         {
           "disabled": false,
           "document": "The user ID of the sender.",
+          "example": "",
           "member": "string",
           "name": "PeerId",
           "required": true,
@@ -1642,6 +1655,7 @@
         {
           "disabled": false,
           "document": "The video stream type. Valid values:\n`0`: A non-video event\n`2`: The big video\n`3`: The small video\n`7`: A relayed video",
+          "example": "",
           "member": "uint64",
           "name": "Type",
           "required": true,
@@ -1651,6 +1665,7 @@
         {
           "disabled": false,
           "document": "The event reporting time in the format of UNIX timestamp (milliseconds), such as `1589891188801`.",
+          "example": "",
           "member": "uint64",
           "name": "Time",
           "required": true,
@@ -1660,6 +1675,7 @@
         {
           "disabled": false,
           "document": "The event ID. Events are classified into SDK events and WebRTC events. For more information, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1",
+          "example": "",
           "member": "uint64",
           "name": "EventId",
           "required": true,
@@ -1669,6 +1685,7 @@
         {
           "disabled": false,
           "document": "The first event parameter, such as the video width.",
+          "example": "",
           "member": "int64",
           "name": "ParamOne",
           "required": true,
@@ -1678,6 +1695,7 @@
         {
           "disabled": false,
           "document": "The second event parameter, such as the video height.",
+          "example": "",
           "member": "int64",
           "name": "ParamTwo",
           "required": true,
@@ -2774,6 +2792,7 @@
         {
           "disabled": false,
           "document": "The quality data.",
+          "example": "",
           "member": "TimeValue",
           "name": "Content",
           "required": true,
@@ -2783,6 +2802,7 @@
         {
           "disabled": false,
           "document": "The user ID.",
+          "example": "",
           "member": "string",
           "name": "UserId",
           "required": true,
@@ -2792,6 +2812,7 @@
         {
           "disabled": false,
           "document": "The remote user ID. An empty string indicates that the data is upstream data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "PeerId",
           "required": true,
@@ -2801,6 +2822,7 @@
         {
           "disabled": false,
           "document": "The data type.",
+          "example": "",
           "member": "string",
           "name": "DataType",
           "required": true,
@@ -2820,8 +2842,7 @@
           "member": "uint64",
           "name": "RecordMode",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2830,18 +2851,16 @@
           "member": "uint64",
           "name": "MaxIdleTime",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "The media type of the streams to record.\n0: Audio and video streams (default)\n1: Audio streams only\n2: Video streams only",
-          "example": "3",
+          "example": "0",
           "member": "uint64",
           "name": "StreamType",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2850,18 +2869,16 @@
           "member": "SubscribeStreamUserIds",
           "name": "SubscribeStreamUserIds",
           "required": false,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
         },
         {
           "disabled": false,
-          "document": "The output format. `0` (default): HLS; `1`: HLS + MP4; `2`: HLS + AAC. This parameter is invalid if you save recording files to VOD. To specify the format of files saved to VOD, use `MediaType` of `TencentVod`.",
+          "document": "The output format. `0` (default): HLS; `1`: HLS + MP4; `2`: HLS + AAC;  `3` : MP4,  `4` : AAC. This parameter is invalid if you save recording files to VOD. To specify the format of files saved to VOD, use `MediaType` of `TencentVod`.",
           "example": "0",
           "member": "uint64",
           "name": "OutputFormat",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2870,8 +2887,7 @@
           "member": "uint64",
           "name": "AvMerge",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2880,8 +2896,7 @@
           "member": "uint64",
           "name": "MaxMediaFileDuration",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2890,8 +2905,7 @@
           "member": "uint64",
           "name": "MediaId",
           "required": false,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -2902,6 +2916,7 @@
         {
           "disabled": false,
           "document": "`SDKAppId` of TRTC",
+          "example": "",
           "member": "uint64",
           "name": "SdkAppId",
           "required": true,
@@ -2910,6 +2925,7 @@
         {
           "disabled": false,
           "document": "Room ID",
+          "example": "",
           "member": "string",
           "name": "RoomId",
           "required": true,
@@ -2918,6 +2934,7 @@
         {
           "disabled": false,
           "document": "List of up to 10 users to be removed",
+          "example": "",
           "member": "string",
           "name": "UserIds",
           "required": true,
@@ -2944,6 +2961,7 @@
         {
           "disabled": false,
           "document": "`SDKAppId` of TRTC.",
+          "example": "",
           "member": "uint64",
           "name": "SdkAppId",
           "required": true,
@@ -2952,6 +2970,7 @@
         {
           "disabled": false,
           "document": "Room number.",
+          "example": "",
           "member": "uint64",
           "name": "RoomId",
           "required": true,
@@ -2960,6 +2979,7 @@
         {
           "disabled": false,
           "document": "List of up to 10 users to be removed.",
+          "example": "",
           "member": "string",
           "name": "UserIds",
           "required": true,
@@ -2986,6 +3006,7 @@
         {
           "disabled": false,
           "document": "The call ID, which uniquely identifies a call.",
+          "example": "",
           "member": "string",
           "name": "CommId",
           "required": true,
@@ -2995,6 +3016,7 @@
         {
           "disabled": false,
           "document": "The room ID.",
+          "example": "",
           "member": "string",
           "name": "RoomString",
           "required": true,
@@ -3004,6 +3026,7 @@
         {
           "disabled": false,
           "document": "The room creation time.",
+          "example": "",
           "member": "uint64",
           "name": "CreateTime",
           "required": true,
@@ -3013,6 +3036,7 @@
         {
           "disabled": false,
           "document": "The room termination time.",
+          "example": "",
           "member": "uint64",
           "name": "DestroyTime",
           "required": true,
@@ -3022,6 +3046,7 @@
         {
           "disabled": false,
           "document": "Whether the room is terminated.",
+          "example": "",
           "member": "bool",
           "name": "IsFinished",
           "required": true,
@@ -3031,6 +3056,7 @@
         {
           "disabled": false,
           "document": "The user ID of the room creator.",
+          "example": "",
           "member": "string",
           "name": "UserId",
           "required": true,
@@ -3046,6 +3072,7 @@
         {
           "disabled": false,
           "document": "Start time for each day",
+          "example": "",
           "member": "uint64",
           "name": "Time",
           "required": true,
@@ -3055,6 +3082,7 @@
         {
           "disabled": false,
           "document": "The number of users. If a user enters a room multiple times, it will be counted as one user.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "uint64",
           "name": "UserNumber",
           "required": true,
@@ -3064,6 +3092,7 @@
         {
           "disabled": false,
           "document": "The number of room entries. Every time a user enters a room, it will be counted as one room entry.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "uint64",
           "name": "UserCount",
           "required": true,
@@ -3073,6 +3102,7 @@
         {
           "disabled": false,
           "document": "The total number of rooms of the application on a day.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "uint64",
           "name": "RoomNumbers",
           "required": true,
@@ -3507,8 +3537,7 @@
           "member": "string",
           "name": "Procedure",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -3517,8 +3546,7 @@
           "member": "uint64",
           "name": "ExpireTime",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -3527,8 +3555,7 @@
           "member": "string",
           "name": "StorageRegion",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -3537,8 +3564,7 @@
           "member": "uint64",
           "name": "ClassId",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -3547,8 +3573,7 @@
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -3557,8 +3582,7 @@
           "member": "string",
           "name": "SessionContext",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -3567,18 +3591,16 @@
           "member": "string",
           "name": "SourceContext",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
-          "document": "The format of recording files uploaded to VOD. `0` (default): MP4; `1`: HLS; `2`: AAC (valid only if `StreamType` is `1`).",
+          "document": "The format of recording files uploaded to VOD. `0` (default): MP4; `1`: HLS; `2`: AAC (valid only if `StreamType` is `1`); `3`: HLS+MP4; `4`: HLS+AAC.",
           "example": "1",
           "member": "uint64",
           "name": "MediaType",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -3587,8 +3609,7 @@
           "member": "string",
           "name": "UserDefineRecordId",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -3599,6 +3620,7 @@
         {
           "disabled": false,
           "document": "The UNIX timestamp (seconds), such as `1590065877`.",
+          "example": "",
           "member": "uint64",
           "name": "Time",
           "required": true,
@@ -3608,6 +3630,7 @@
         {
           "disabled": false,
           "document": "The metric value. For example, if the video capturing frame rate (`bigvCapFps`) at the time `1590065877` is `0`, the value of this parameter will be `0`.",
+          "example": "",
           "member": "float",
           "name": "Value",
           "required": true,
@@ -3767,6 +3790,7 @@
         {
           "disabled": false,
           "document": "The room ID.",
+          "example": "",
           "member": "string",
           "name": "RoomStr",
           "required": true,
@@ -3776,6 +3800,7 @@
         {
           "disabled": false,
           "document": "The user ID.",
+          "example": "",
           "member": "string",
           "name": "UserId",
           "required": true,
@@ -3785,6 +3810,7 @@
         {
           "disabled": false,
           "document": "The time when the user entered the room.",
+          "example": "",
           "member": "uint64",
           "name": "JoinTs",
           "required": true,
@@ -3794,6 +3820,7 @@
         {
           "disabled": false,
           "document": "The time when the user left the room. If the user is still in the room, the current time will be returned.",
+          "example": "",
           "member": "uint64",
           "name": "LeaveTs",
           "required": true,
@@ -3803,6 +3830,7 @@
         {
           "disabled": false,
           "document": "The device type.",
+          "example": "",
           "member": "string",
           "name": "DeviceType",
           "required": true,
@@ -3812,6 +3840,7 @@
         {
           "disabled": false,
           "document": "The SDK version number.",
+          "example": "",
           "member": "string",
           "name": "SdkVersion",
           "required": true,
@@ -3821,6 +3850,7 @@
         {
           "disabled": false,
           "document": "The client IP address.",
+          "example": "",
           "member": "string",
           "name": "ClientIp",
           "required": true,
@@ -3830,6 +3860,7 @@
         {
           "disabled": false,
           "document": "Whether a user has left the room.",
+          "example": "",
           "member": "bool",
           "name": "Finished",
           "required": true,
