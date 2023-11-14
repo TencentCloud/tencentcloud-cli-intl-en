@@ -3520,7 +3520,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.",
+          "document": "The number of entries returned at a time. The maximum value is `1000`.",
           "example": "3",
           "member": "uint64",
           "name": "Limit",
@@ -3529,7 +3529,7 @@
         },
         {
           "disabled": false,
-          "document": "The number of entries returned at a time. The maximum value is `1000`.",
+          "document": "Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
