@@ -88,6 +88,7 @@
       "document": "BindNewLVBDomainWithChannel request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel ID",
           "example": "5F61C341B92D6BE9225E",
           "member": "string",
@@ -96,6 +97,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The LVB domain name to bind",
           "example": "www.domain.com",
           "member": "string",
@@ -110,6 +112,7 @@
       "document": "BindNewLVBDomainWithChannel response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The LVB domain name bound successfully",
           "example": "www.domain.com",
           "member": "string",
@@ -131,7 +134,9 @@
       "document": "Cache configuration",
       "members": [
         {
+          "disabled": false,
           "document": "List of timeout parameter configuration\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "",
           "member": "CacheInfoInfo",
           "name": "Info",
           "required": false,
@@ -145,7 +150,9 @@
       "document": "Timeout information for cache configuration",
       "members": [
         {
+          "disabled": false,
           "document": "Timeout period (ms), which must be an integer multiple of 1000\n.m3u8/.mpd: [1000, 60000]\n.ts/.m4s/.mp4: [10000, 1800000]",
+          "example": "",
           "member": "int64",
           "name": "Timeout",
           "required": true,
@@ -153,7 +160,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "File extension. Valid values: .m3u8, .ts, .mpd, .m4s, .mp4\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "",
           "member": "string",
           "name": "Ext",
           "required": false,
@@ -167,7 +176,9 @@
       "document": "Channel information.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel ID.",
+          "example": "",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -175,7 +186,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Channel name.",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -183,7 +196,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Channel protocol.",
+          "example": "",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -191,7 +206,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Channel input and output.",
+          "example": "",
           "member": "PointInfo",
           "name": "Points",
           "required": true,
@@ -199,7 +216,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Cache configuration\nNote: this field may return `null`, indicating that no valid value was found.",
+          "example": "",
           "member": "CacheInfo",
           "name": "CacheInfo",
           "required": true,
@@ -213,6 +232,7 @@
       "document": "CreateStreamPackageChannelEndpoint request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel ID",
           "example": "XXX",
           "member": "string",
@@ -221,6 +241,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Endpoint name, which must contain 1 to 32 characters and supports digits, letters, and underscores",
           "example": "XXX",
           "member": "string",
@@ -229,6 +250,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Authentication information",
           "example": "无",
           "member": "EndpointAuthInfo",
@@ -243,6 +265,7 @@
       "document": "CreateStreamPackageChannelEndpoint response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Information of the created channel endpoint",
           "example": "无",
           "member": "EndpointInfo",
@@ -264,6 +287,7 @@
       "document": "CreateStreamPackageChannel request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel name",
           "example": "xxx",
           "member": "string",
@@ -272,6 +296,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Channel protocol. Valid values: HLS, DASH",
           "example": "HLS",
           "member": "string",
@@ -280,6 +305,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Cache configuration",
           "example": "无",
           "member": "CacheInfo",
@@ -294,6 +320,7 @@
       "document": "CreateStreamPackageChannel response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel information",
           "example": "无",
           "member": "ChannelInfo",
@@ -315,6 +342,7 @@
       "document": "DeleteStreamPackageChannelEndpoints request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel ID",
           "example": "xxx",
           "member": "string",
@@ -323,6 +351,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "List of the URLs of the endpoints to delete",
           "example": "[\"xxx\\r\\n\"]",
           "member": "string",
@@ -349,6 +378,7 @@
       "document": "DeleteStreamPackageChannels request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of the IDs of the channels to delete",
           "example": "[\"xxx\\r\\n\"]",
           "member": "string",
@@ -363,6 +393,7 @@
       "document": "DeleteStreamPackageChannels response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of the information of successfully deleted channels",
           "example": "无",
           "member": "ChannelInfo",
@@ -372,6 +403,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of the information of the channels that failed to be deleted",
           "example": "无",
           "member": "ChannelInfo",
@@ -393,6 +425,7 @@
       "document": "DescribeStreamPackageChannel request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel ID",
           "example": "xxx",
           "member": "string",
@@ -407,6 +440,7 @@
       "document": "DescribeStreamPackageChannel response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel information",
           "example": "无",
           "member": "ChannelInfo",
@@ -428,6 +462,7 @@
       "document": "DescribeStreamPackageChannels request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Page number. Value range: [1, 1000]",
           "example": "1",
           "member": "uint64",
@@ -436,6 +471,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page. Value range: [1, 1000]",
           "example": "10",
           "member": "uint64",
@@ -450,6 +486,7 @@
       "document": "DescribeStreamPackageChannels response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of channel information\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "ChannelInfo",
@@ -459,6 +496,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Page number",
           "example": "1",
           "member": "uint64",
@@ -468,6 +506,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of entries per page",
           "example": "10",
           "member": "uint64",
@@ -477,6 +516,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of entries",
           "example": "1",
           "member": "uint64",
@@ -486,6 +526,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of pages",
           "example": "1",
           "member": "uint64",
@@ -507,7 +548,9 @@
       "document": "The authentication information of channel endpoints.",
       "members": [
         {
+          "disabled": false,
           "document": "The security group allowlist in CIDR format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "WhiteIpList",
           "required": false,
@@ -515,7 +558,9 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The security group blocklist in CIDR format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "BlackIpList",
           "required": false,
@@ -523,7 +568,9 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "The authentication key. Its value is same as `X-TENCENT-PACKAGE` set in the HTTP request header.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "AuthKey",
           "required": false,
@@ -537,7 +584,9 @@
       "document": "Channel endpoint information.",
       "members": [
         {
+          "disabled": false,
           "document": "Endpoint name.",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -545,7 +594,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Endpoint URL.",
+          "example": "",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -553,7 +604,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Endpoint authentication information.",
+          "example": "",
           "member": "EndpointAuthInfo",
           "name": "AuthInfo",
           "required": true,
@@ -567,7 +620,9 @@
       "document": "Channel input authentication information.",
       "members": [
         {
+          "disabled": false,
           "document": "Username.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Username",
           "required": true,
@@ -575,7 +630,9 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Password.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -589,7 +646,9 @@
       "document": "Channel input.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel input URL.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Url",
           "required": true,
@@ -597,7 +656,9 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Channel input authentication information.",
+          "example": "",
           "member": "InputAuthInfo",
           "name": "AuthInfo",
           "required": true,
@@ -611,6 +672,7 @@
       "document": "ModifyStreamPackageChannelEndpoint request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel ID",
           "example": "XXX",
           "member": "string",
@@ -619,6 +681,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Channel endpoint URL",
           "example": "XXX",
           "member": "string",
@@ -627,6 +690,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "New endpoint name",
           "example": "XXX",
           "member": "string",
@@ -635,6 +699,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "New channel authentication information",
           "example": "无",
           "member": "EndpointAuthInfo",
@@ -661,6 +726,7 @@
       "document": "ModifyStreamPackageChannelInputAuthInfo request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel ID",
           "example": "xxx",
           "member": "string",
@@ -669,6 +735,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Channel input URL",
           "example": "xxx",
           "member": "string",
@@ -677,6 +744,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Authentication configuration. Valid values: `CLOSE`, `UPDATE`\n`CLOSE`: disable authentication\n`UPDATE`: update authentication information",
           "example": "UPDATE",
           "member": "string",
@@ -691,6 +759,7 @@
       "document": "ModifyStreamPackageChannelInputAuthInfo response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel input authentication information",
           "example": "无",
           "member": "InputAuthInfo",
@@ -712,6 +781,7 @@
       "document": "ModifyStreamPackageChannel request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel ID",
           "example": "xxx",
           "member": "string",
@@ -720,6 +790,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "New channel name",
           "example": "xxx",
           "member": "string",
@@ -728,6 +799,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "New channel protocol. Valid values: HLS, DASH",
           "example": "HLS",
           "member": "string",
@@ -736,6 +808,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Cache configuration",
           "example": "无",
           "member": "CacheInfo",
@@ -762,7 +835,9 @@
       "document": "Channel input and output.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel input list.",
+          "example": "",
           "member": "InputInfo",
           "name": "Inputs",
           "required": true,
@@ -770,7 +845,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Channel output list.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "EndpointInfo",
           "name": "Endpoints",
           "required": true,
@@ -784,14 +861,18 @@
       "document": "UnbindCdnDomainWithChannel request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Channel ID",
+          "example": "",
           "member": "string",
           "name": "ChannelId",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "CDN playback domain name",
+          "example": "",
           "member": "string",
           "name": "CdnDomain",
           "required": true,

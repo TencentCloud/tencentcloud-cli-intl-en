@@ -2,7 +2,7 @@
   "actions": {
     "BindNewLVBDomainWithChannel": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindNewLVBDomainWithChannel\n<Common request parameters>\n\n{\n    \"ChannelId\": \"5F61C341B92D6BE9225E\",\n    \"LVBDomain\": \"mdptest.domain.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"LVBDomain\": \"mdptest.domain.com\",\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Sample request"
@@ -10,7 +10,7 @@
     ],
     "CreateStreamPackageChannel": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://mdp.tencentcloudapi.com/?Action=CreateStreamPackageChannel\n&Name=xxx\n&Protocol=HLS\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Points\": {\n                \"Inputs\": [\n                    {\n                        \"Url\": \"xx\",\n                        \"AuthInfo\": {\n                            \"Username\": \"xx\",\n                            \"Password\": \"xx\"\n                        }\n                    },\n                    {\n                        \"Url\": \"xx\",\n                        \"AuthInfo\": {\n                            \"Username\": \"xx\",\n                            \"Password\": \"xx\"\n                        }\n                    }\n                ],\n                \"Endpoints\": [\n                    {\n                        \"Url\": \"xx\",\n                        \"AuthInfo\": {\n                            \"AuthKey\": \"xx\",\n                            \"BlackIpList\": [\n                                \"xx\"\n                            ],\n                            \"WhiteIpList\": [\n                                \"xx\"\n                            ]\n                        },\n                        \"Name\": \"xx\"\n                    }\n                ]\n            },\n            \"Protocol\": \"xx\",\n            \"Name\": \"xx\",\n            \"CacheInfo\": {\n                \"Info\": [\n                    {\n                        \"Ext\": \"xx\",\n                        \"Timeout\": 0\n                    }\n                ]\n            },\n            \"Id\": \"xx\"\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Sample request"
@@ -18,7 +18,7 @@
     ],
     "CreateStreamPackageChannelEndpoint": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://mdp.tencentcloudapi.com/?Action=CreateStreamPackageChannelEndpoint\n&Id=XXX\n&Name=XXX\n&AuthInfo.WhiteIpList.0=0.0.0.0/0\n&AuthInfo.BlackIpList.0=0.0.0.0/0\n&AuthInfo.AuthKey=XXX\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Url\": \"\",\n            \"AuthInfo\": {\n                \"AuthKey\": \"\",\n                \"BlackIpList\": [\n                    \"1.2.3.4/24\",\n                    \"19.76.68.1/1\"\n                ],\n                \"WhiteIpList\": [\n                    \"11.2.3.4/24\",\n                    \"119.76.68.1/1\"\n                ]\n            },\n            \"Name\": \"\"\n        },\n        \"RequestId\": \"11-222-333\"\n    }\n}",
         "title": "Sample request"
@@ -26,7 +26,7 @@
     ],
     "DeleteStreamPackageChannelEndpoints": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://mdp.tencentcloudapi.com/?Action=DeleteStreamPackageChannelEndpoints\n&Id=xxx\n&Urls.0=xxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"11-222-333\"\n    }\n}",
         "title": "Sample request"
@@ -34,7 +34,7 @@
     ],
     "DeleteStreamPackageChannels": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://mdp.tencentcloudapi.com/?Action=DeleteStreamPackageChannels\n&Ids.0=xxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"SuccessInfos\": [\n            {\n                \"Id\": \"AEABF123954\",\n                \"Name\": \"channelName\",\n                \"Protocol\": \"HLS\",\n                \"Points\": {\n                    \"Inputs\": [\n                        {\n                            \"Url\": \"http://streampackage.${region}-1.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760444\",\n                            \"AuthInfo\": {\n                                \"Username\": \"\",\n                                \"Password\": \"\"\n                            }\n                        },\n                        {\n                            \"Url\": \"http://streampackage.${region}-2.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760445\",\n                            \"AuthInfo\": {\n                                \"Username\": \"\",\n                                \"Password\": \"\"\n                            }\n                        }\n                    ],\n                    \"Endpoints\": [\n                        {\n                            \"Name\": \"\",\n                            \"Url\": \"\",\n                            \"AuthInfo\": {\n                                \"AuthKey\": \"\"\n                            }\n                        }\n                    ]\n                },\n                \"CacheInfo\": {\n                    \"Info\": [\n                        {\n                            \"Ext\": \"xx\",\n                            \"Timeout\": 0\n                        }\n                    ]\n                }\n            }\n        ],\n        \"FailInfos\": [\n            {\n                \"Id\": \"AD13ED\",\n                \"Name\": \"channelName\",\n                \"Protocol\": \"HLS\",\n                \"Points\": {\n                    \"Inputs\": [\n                        {\n                            \"Url\": \"http://mediapackage.${region}-1.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760444\",\n                            \"AuthInfo\": {\n                                \"Username\": \"\",\n                                \"Password\": \"\"\n                            }\n                        },\n                        {\n                            \"Url\": \"http://mediapackage.${region}-2.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760445\",\n                            \"AuthInfo\": {\n                                \"Username\": \"\",\n                                \"Password\": \"\"\n                            }\n                        }\n                    ],\n                    \"Endpoints\": [\n                        {\n                            \"Name\": \"\",\n                            \"Url\": \"\",\n                            \"AuthInfo\": {\n                                \"AuthKey\": \"\"\n                            }\n                        }\n                    ]\n                },\n                \"CacheInfo\": {\n                    \"Info\": [\n                        {\n                            \"Ext\": \"xx\",\n                            \"Timeout\": 0\n                        }\n                    ]\n                }\n            }\n        ],\n        \"RequestId\": \"11-222-333\"\n    }\n}",
         "title": "Sample request"
@@ -42,7 +42,7 @@
     ],
     "DescribeStreamPackageChannel": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://mdp.tencentcloudapi.com/?Action=DescribeStreamPackageChannel\n&Id=xxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Id\": \"AEABF123954\",\n            \"Name\": \"channelName\",\n            \"Protocol\": \"HLS\",\n            \"Points\": {\n                \"Inputs\": [\n                    {\n                        \"Url\": \"http://streampackage.${region}-1.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760444\",\n                        \"AuthInfo\": {\n                            \"Username\": \"\",\n                            \"Password\": \"\"\n                        }\n                    },\n                    {\n                        \"Url\": \"http://streampackage.${region}-2.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760445\",\n                        \"AuthInfo\": {\n                            \"Username\": \"\",\n                            \"Password\": \"\"\n                        }\n                    }\n                ],\n                \"Endpoints\": [\n                    {\n                        \"Name\": \"\",\n                        \"Url\": \"\",\n                        \"AuthInfo\": {\n                            \"AuthKey\": \"\"\n                        }\n                    }\n                ]\n            },\n            \"CacheInfo\": {\n                \"Info\": [\n                    {\n                        \"Ext\": \"xx\",\n                        \"Timeout\": 0\n                    }\n                ]\n            }\n        },\n        \"RequestId\": \"11-222-333\"\n    }\n}",
         "title": "Sample request"
@@ -50,7 +50,7 @@
     ],
     "DescribeStreamPackageChannels": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://mdp.tencentcloudapi.com/?Action=DescribeStreamPackageChannels\n&PageNum=1\n&PageSize=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"Id\": \"AEABF123954\",\n                \"Name\": \"channelName\",\n                \"Protocol\": \"HLS\",\n                \"Points\": {\n                    \"Inputs\": [\n                        {\n                            \"Url\": \"http://streampackage.${region}-1.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760444\",\n                            \"AuthInfo\": {\n                                \"Username\": \"\",\n                                \"Password\": \"\"\n                            }\n                        },\n                        {\n                            \"Url\": \"http://streampackage.${region}-2.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760445\",\n                            \"AuthInfo\": {\n                                \"Username\": \"\",\n                                \"Password\": \"\"\n                            }\n                        }\n                    ],\n                    \"Endpoints\": [\n                        {\n                            \"Name\": \"\",\n                            \"Url\": \"\",\n                            \"AuthInfo\": {\n                                \"AuthKey\": \"\"\n                            }\n                        }\n                    ]\n                }\n            }\n        ],\n        \"PageNum\": 1,\n        \"PageSize\": 10,\n        \"TotalNum\": 1,\n        \"TotalPage\": 1,\n        \"RequestId\": \"11-222-333\"\n    }\n}",
         "title": "Sample request"
@@ -58,7 +58,7 @@
     ],
     "ModifyStreamPackageChannel": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://mdp.tencentcloudapi.com/?Action=ModifyStreamPackageChannel\n&Id=xxx\n&Name=xxx\n&Protocol=HLS\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"11-222-333\"\n    }\n}",
         "title": "Sample request"
@@ -66,7 +66,7 @@
     ],
     "ModifyStreamPackageChannelEndpoint": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://mdp.tencentcloudapi.com/?Action=ModifyStreamPackageChannelEndpoint\n&Id=XXX\n&Url=XXX\n&Name=XXX\n&AuthInfo.WhiteIpList.0=0.0.0.0/0\n&AuthInfo.BlackIpList.0=0.0.0.0/0\n&AuthInfo.AuthKey=XXX\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"11-222-333\"\n    }\n}",
         "title": "Sample request"
@@ -74,7 +74,7 @@
     ],
     "ModifyStreamPackageChannelInputAuthInfo": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://mdp.tencentcloudapi.com/?Action=ModifyStreamPackageChannelInputAuthInfo\n&Id=xxx\n&Url=xxx\n&ActionType=UPDATE\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"11-222-333\",\n        \"AuthInfo\": {\n            \"Username\": \"Sdsai3412y7\",\n            \"Password\": \"jsada54rhnj2SS\"\n        }\n    }\n}",
         "title": "Sample request"
@@ -82,7 +82,7 @@
     ],
     "UnbindCdnDomainWithChannel": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://mdp.tencentcloudapi.com/?Action=UnbindCdnDomainWithChannel\n&ChannelId=AAAAA\n&CdnDomain=cdn.liveplay.myqcloud.com\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5532214ssffasdf\"\n    }\n}",
         "title": "Sample request"
