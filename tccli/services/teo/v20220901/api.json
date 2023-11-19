@@ -1,5 +1,12 @@
 {
   "actions": {
+    "BindSecurityTemplateToEntity": {
+      "document": "This API is used to bind/unbind a domain name to/from a specific policy template. ",
+      "input": "BindSecurityTemplateToEntityRequest",
+      "name": "Binds/Unbinds a domain name to/from a security policy template",
+      "output": "BindSecurityTemplateToEntityResponse",
+      "status": "online"
+    },
     "BindSharedCNAME": {
       "document": "This API is used to bind/unbind a domain name to/from a shared CNAME. It is now only available to beta users.",
       "input": "BindSharedCNAMERequest",
@@ -50,9 +57,9 @@
       "status": "online"
     },
     "CreateOriginGroup": {
-      "document": "This API is used to create an origin group.",
+      "document": "This API is used to create an origin group for easy management. The created origin server group can be used for **adding acceleration domain names** and **layer-4 proxy configuration**.",
       "input": "CreateOriginGroupRequest",
-      "name": "Creates an origin group.",
+      "name": "Creates an origin group",
       "output": "CreateOriginGroupResponse",
       "status": "online"
     },
@@ -134,9 +141,9 @@
       "status": "online"
     },
     "DeleteOriginGroup": {
-      "document": "This API is used to delete an origin group.",
+      "document": "This API is used to delete an origin group. Note that an origin group can not be deleted if it is referenced by services (e.g. L4 Proxy, domain name service, load balancing, rule engines). ",
       "input": "DeleteOriginGroupRequest",
-      "name": "Deletes an origin group.",
+      "name": "Deletes an origin group",
       "output": "DeleteOriginGroupResponse",
       "status": "online"
     },
@@ -294,6 +301,13 @@
       "output": "DescribeRulesSettingResponse",
       "status": "online"
     },
+    "DescribeSecurityTemplateBindings": {
+      "document": "This API is used to query bindings of a policy template.",
+      "input": "DescribeSecurityTemplateBindingsRequest",
+      "name": "Queries bindings of a policy template",
+      "output": "DescribeSecurityTemplateBindingsResponse",
+      "status": "online"
+    },
     "DescribeTimingL4Data": {
       "document": "This API is used to query the list of L4 traffic data recorded over time.",
       "input": "DescribeTimingL4DataRequest",
@@ -428,9 +442,9 @@
       "status": "online"
     },
     "ModifyOriginGroup": {
-      "document": "This API is used to modify an origin group.",
+      "document": "This API is used to modify the configuration of an origin group. The original configuration will be overwritten. ",
       "input": "ModifyOriginGroupRequest",
-      "name": "Modifies an origin group.",
+      "name": "Modifies an origin group",
       "output": "ModifyOriginGroupResponse",
       "status": "online"
     },
@@ -567,7 +581,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Origin-pull protocol configuration. Values:\n<li>`FOLLOW`: Follow the protocol of origin</li>\n<li>`HTTP`: Send requests to the origin over HTTP</li>\n<li>`HTTPS`: Send requests to the origin over HTTPS</li>\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "FOLLOW",
           "member": "string",
           "name": "OriginProtocol",
@@ -577,7 +591,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The port used for HTTP origin-pull requests\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "80",
           "member": "uint64",
           "name": "HttpOriginPort",
@@ -587,7 +601,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The port used for HTTPS origin-pull requests\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "443",
           "member": "uint64",
           "name": "HttpsOriginPort",
@@ -597,7 +611,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "IPv6 status. Values:\n<li>`follow`: Follow the IPv6 configuration of the site</li>\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "follow",
           "member": "string",
           "name": "IPv6Status",
@@ -787,16 +801,18 @@
           "example": "rule1",
           "member": "string",
           "name": "RuleName",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The rule action. Values:\n<li>`trans`: Allow the request.</li>\n<li>`drop`: Block the request.</li>\n<li>`monitor`: Observe the request.</li>\n<li>`ban`: Block the IP.</li>\n<li>`redirect`: Redirect the request.</li>\n<li>`page`: Return the specified page.</li>\n<li>`alg`: Verify the request by Javascript challenge.</li>",
+          "document": "The action. Values:\n<li>`trans`: Allow</li>\n<li>`drop`: Block the request</li>\n<li>`monitor`: Observe</li>\n<li>`ban`: Block the IP</li>\n<li>`redirect`: Redirect the request</li>\n<li>`page`: Return the specified page</li>\n<li>`alg`: JavaScript challenge</li>",
           "example": "drop",
           "member": "string",
           "name": "Action",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -807,6 +823,7 @@
           "example": "on",
           "member": "string",
           "name": "RuleStatus",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -817,6 +834,7 @@
           "example": "无",
           "member": "AclCondition",
           "name": "AclConditions",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -827,95 +845,115 @@
           "example": "50",
           "member": "int64",
           "name": "RulePriority",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The rule ID, which is only used as an output parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Rule ID, which is only used as an output parameter.",
           "example": "1",
           "member": "int64",
           "name": "RuleID",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The update time, which is only used as an output parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The update time, which is only used as an output parameter.",
           "example": "xxx",
           "member": "string",
           "name": "UpdateTime",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The IP blocking duration. Value range: 0 seconds - 2 days. Default value: 0 seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "IP ban duration. Range: 0-2 days. It's required when `Action=ban`. ",
           "example": "10",
           "member": "int64",
           "name": "PunishTime",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The unit of the IP blocking duration. Values:\n<li>`second`: Second</li>\n<li>`minutes`: Minute</li>\n<li>`hour`: Hour</li>Default value: second.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The unit of the IP ban duration. Values:\n<li>`second`: Second</li>\n<li>`minutes`: Minute</li>\n<li>`hour`: Hour</li>Default value: `second`.",
           "example": "min",
           "member": "string",
           "name": "PunishTimeUnit",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The name of the custom page, which defaults to an empty string.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Name of the custom return page. It's required when `Action=page`.\t",
           "example": "error.html",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The ID of the custom page, which defaults to 0.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "(Disused) ID of the custom return page. The default value is 0, which means that the system default blocking page is used. ",
           "example": "1111",
           "member": "int64",
           "name": "PageId",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The redirection URL, which must be a subdomain name of the site. It defaults to an empty string.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "ID of custom response. The ID can be obtained via the `DescribeCustomErrorPages` API. It's required when `Action=page`.\t",
+          "example": "p-xxx",
+          "member": "string",
+          "name": "CustomResponseId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The response code to trigger the return page. It's required when `Action=page`. Value: 100-600. 3xx response codes are not supported. Default value: 567.",
+          "example": "567",
+          "member": "int64",
+          "name": "ResponseCode",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The redirection URL. It's required when `Action=redirect`.\t",
           "example": "http%3A%2F%2Fexample.com%2Fpath%2Ferror.html",
           "member": "string",
           "name": "RedirectUrl",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "The response code returned after redirection, which defaults to 0.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "566",
-          "member": "int64",
-          "name": "ResponseCode",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
     },
     "Action": {
-      "document": "Rule engine feature operation. A feature can be of only one of the following three types, so each item in the `RuleAction` array can be of only one of the following types. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view more requirements for entering feature items.",
+      "document": "Rule engine action. Each feature supports only one of the following three action types. The `RuleAction` array can be of only one of the following types. For all details, see [DescribeRulesSetting](https://intl.cloud.tencent.com/document/product/1552/80618?from_cn_redirect=1).",
       "members": [
         {
           "disabled": false,
@@ -923,6 +961,7 @@
           "example": "无",
           "member": "NormalAction",
           "name": "NormalAction",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -933,6 +972,7 @@
           "example": "无",
           "member": "RewriteAction",
           "name": "RewriteAction",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -943,6 +983,7 @@
           "example": "无",
           "member": "CodeAction",
           "name": "CodeAction",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -1671,6 +1712,69 @@
       ],
       "usage": "out"
     },
+    "BindSecurityTemplateToEntityRequest": {
+      "document": "BindSecurityTemplateToEntity request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Site ID of the policy template to be bound to or unbound from.",
+          "example": "zone-2mz9k20k",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of domain names to bind to/unbind from a policy template",
+          "example": "[\"a.test.com\"]",
+          "member": "string",
+          "name": "Entities",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Action options. Values include:\n<li>`bind`: Bind the domain names to the specified policy template </li>\n<li>`unbind-keep-policy`: Unbind a domain name from a policy template and keep the current policy when unbinding</li>\n<li>`unbind-use-default`: Unbind domain names from policy templates and use default blank policy.</li> Note: Only one domain name can be unbound at one time. When `Operate` is `unbind-keep-policy` or `unbind-use-default`, there can only be one domain name specified in `Entities`.",
+          "example": "bind",
+          "member": "string",
+          "name": "Operate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the policy template ID to bind or unbind.",
+          "example": "temp-wj86oi2",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to replace the existing policy template bound with the domain name. Values: \n<li>`true`: Replace the template bound to the domain. </li>\n<li>`false`: Do not replace the template.</li> Note: In this case, the API returns an error if there is already a policy template bound to the specified domain name.",
+          "example": "false",
+          "member": "bool",
+          "name": "OverWrite",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "BindSecurityTemplateToEntityResponse": {
+      "document": "BindSecurityTemplateToEntity response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "BindSharedCNAMEMap": {
       "document": "Bindings between a shared CNAME and connected domain names",
       "members": [
@@ -2033,16 +2137,18 @@
           "example": "rule",
           "member": "string",
           "name": "RuleName",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Action. Valid values: \n<li>`drop`: Block;</li>\n<li>`monitor`: Observe;</li>\n<li>`trans`: Allow;</li>\n<li>`alg`: JavaScript challenge;</li>\n<li>`captcha`: Managed challenge;</li>\n<li>`random`: Random action;</li>\n<li>`silence`: Silence;</li>\n<li>`shortdelay`: Add short latency;</li>\n<li>`longdelay`: Add long latency.</li>",
+          "document": "The action. Values:\n<li>`drop`: Block the request</li>\n<li>`monitor`: Observe</li>\n<li>`trans`: Allow</li>\n<li>`redirect`: Redirect the request</li>\n<li>`page`: Return the specified page</li>\n<li>`alg`: JavaScript challenge</li>\n<li>`captcha`: Managed challenge</li>\n<li>`random`: Handle the request randomly by the weight</li>\n<li>`silence`: Keep the connection but do not response to the client</li>\n<li>`shortdelay`: Add a short latency period</li>\n<li>`longdelay`: Add a long latency period</li>",
           "example": "drop",
           "member": "string",
           "name": "Action",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2053,6 +2159,7 @@
           "example": "on",
           "member": "string",
           "name": "RuleStatus",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2063,6 +2170,7 @@
           "example": "无",
           "member": "AclCondition",
           "name": "AclConditions",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -2073,19 +2181,21 @@
           "example": "1",
           "member": "int64",
           "name": "RulePriority",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The rule ID, which is only used as an output parameter.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Rule ID, which is only used as an output parameter.",
           "example": "1",
           "member": "int64",
           "name": "RuleID",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -2093,39 +2203,87 @@
           "example": "drop",
           "member": "BotExtendAction",
           "name": "ExtendActions",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The filter. Values:\n<li>`sip`: Client IP</li>\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The filter. Values:\n<li>`sip`: Client IP</li>\nThis parameter is left empty by default.",
           "example": "\"sip\"",
           "member": "string",
           "name": "FreqFields",
+          "output_required": true,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Updated time\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The update time, which is only used as an output parameter.",
           "example": "xxx",
           "member": "string",
           "name": "UpdateTime",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The statistical dimension. Values:\n<li>`source_to_eo`: Responses from the origin server to EdgeOne</li>\n<li>`client_to_eo`: Requests from the client to EdgeOne</li>\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Query scope. Values:\n<li>`source_to_eo`: (Response) Traffic going from the origin to EdgeOne.</li>\n<li>`client_to_eo`: (Request) Traffic going from the client to EdgeOne.</li>\nDefault: `source_to_eo`.",
           "example": "source_to_eo",
           "member": "string",
           "name": "FreqScope",
+          "output_required": true,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name of the custom return page. It's required when `Action=page`.",
+          "example": "error.html",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID of custom response. The ID can be obtained via the `DescribeCustomErrorPages` API. It's required when `Action=page`.\t",
+          "example": "p-xxx",
+          "member": "string",
+          "name": "CustomResponseId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The response code to trigger the return page. It's required when `Action=page`. Value: 100-600. 3xx response codes are not supported. Default value: 567.",
+          "example": "567",
+          "member": "int64",
+          "name": "ResponseCode",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The redirection URL. It's required when `Action=redirect`.",
+          "example": "http%3A%2F%2Fexample.com%2Fpath%2Ferror.html",
+          "member": "string",
+          "name": "RedirectUrl",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -2505,10 +2663,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+          "document": "Feature name. For details, see [DescribeRulesSetting](https://intl.cloud.tencent.com/document/product/1552/80618?from_cn_redirect=1) API",
           "example": "StatusCodeCache",
           "member": "string",
           "name": "Action",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2519,6 +2678,7 @@
           "example": "[]",
           "member": "RuleCodeActionParams",
           "name": "Parameters",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -2584,7 +2744,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Origin-pull protocol configuration. Values:\n<li>`FOLLOW`: Follow the protocol of origin</li>\n<li>`HTTP`: Send requests to the origin over HTTP</li>\n<li>`HTTPS`: Send requests to the origin over HTTPS</li>\n<li>Default: `FOLLOW`</li>",
           "example": "FOLLOW",
           "member": "string",
           "name": "OriginProtocol",
@@ -2593,7 +2753,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Ports for HTTP origin-pull requests. Range: 1-65535. It takes effect when `OriginProtocol=FOLLOW/HTTP`. Port 80 is used if it's not specified. ",
           "example": "80",
           "member": "uint64",
           "name": "HttpOriginPort",
@@ -2602,7 +2762,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Ports for HTTPS origin-pull requests. Range: 1-65535. It takes effect when `OriginProtocol=FOLLOW/HTTPS`. Port 443 is used if it's not specified. ",
           "example": "443",
           "member": "uint64",
           "name": "HttpsOriginPort",
@@ -2611,7 +2771,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "IPv6 status. Values:\n<li>`follow`: Follow the IPv6 configuration of the site</li>\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>\n<li>Default: `follow`</li>",
           "example": "follow",
           "member": "string",
           "name": "IPv6Status",
@@ -2956,7 +3116,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The site ID.",
+          "document": "Site ID",
           "example": "zone-27q0p0bali16",
           "member": "string",
           "name": "ZoneId",
@@ -2965,43 +3125,34 @@
         },
         {
           "disabled": false,
-          "document": "The origin type. Values:\n<li>`self`: Customer origin</li>\n<li>`third_party`: Third-party origin</li>\n<li>`cos`: Tencent Cloud COS origin</li>",
-          "example": "self",
-          "member": "string",
-          "name": "OriginType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "The name of the origin group.",
+          "document": "Origin group name. It can contain 1 to 200 characters ([a-z], [A-Z], [0-9] and [_-]).",
           "example": "name",
           "member": "string",
-          "name": "OriginGroupName",
-          "required": true,
+          "name": "Name",
+          "required": false,
           "type": "string"
         },
         {
           "disabled": false,
-          "document": "The origin configuration type when `OriginType=self`. Values:\n<li>`area`: Configure by region.</li>\n<li>`weight`: Configure by weight.</li>\n<li>`proto`: Configure by HTTP protocol.</li>When `OriginType=third_party/cos`, leave this field empty.",
-          "example": "area",
+          "document": "(Required) Origin group type. Values:\n<li>`GENERAL`: General origin groups. It supports IPs and domain names. It can be referenced by DNS, Rule Engine, Layer 4 Proxy and General LoadBalancer. </li>\n<li>`HTTP`: HTTP-specific origin groups. It supports IPs/domain names and object storage buckets. It can be referenced by acceleration domain names, rule engines and HTTP LoadBalancer. It cannot be referenced by L4 proxies. </li>",
+          "example": "HTTP",
           "member": "string",
-          "name": "ConfigurationType",
-          "required": true,
+          "name": "Type",
+          "required": false,
           "type": "string"
         },
         {
           "disabled": false,
-          "document": "Details of the origin record.",
+          "document": "(Required) Origins in the origin group.",
           "example": "无",
           "member": "OriginRecord",
-          "name": "OriginRecords",
-          "required": true,
+          "name": "Records",
+          "required": false,
           "type": "list"
         },
         {
           "disabled": false,
-          "document": "The origin domain. This field can be specified only when `OriginType=self`.",
+          "document": "Host header used for origin-pull. It only works when `Type=HTTP`. The `HostHeader` specified in `RuleEngine` takes a higher priority over this configuration.",
           "example": "www.tencent.com",
           "member": "string",
           "name": "HostHeader",
@@ -3020,7 +3171,7 @@
           "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
           "member": "string",
           "name": "OriginGroupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3968,7 +4119,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The site ID.",
+          "document": "ID of the site.",
           "example": "zone-27q0p0bali16",
           "member": "string",
           "name": "ZoneId",
@@ -3977,11 +4128,11 @@
         },
         {
           "disabled": false,
-          "document": "The ID of the origin group.",
+          "document": "(Required) Origin group IDe group ID. This parameter is required.",
           "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
           "member": "string",
-          "name": "OriginGroupId",
-          "required": true,
+          "name": "GroupId",
+          "required": false,
           "type": "string"
         }
       ],
@@ -5012,25 +5163,34 @@
       "members": [
         {
           "disabled": false,
-          "document": "Offset for paginated queries. Default value: 0.",
+          "document": "(Required) Site ID",
+          "example": "zone-123456",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The paginated query offset. Default value: 0",
           "example": "0",
           "member": "uint64",
           "name": "Offset",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
           "disabled": false,
-          "document": "Limit on paginated queries. Value range: 1-1000. Default value: 10.",
+          "document": "Limit on paginated queries. Value range: 1-1000. Default value: 20.",
           "example": "10",
           "member": "uint64",
           "name": "Limit",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
           "disabled": false,
-          "document": "Filters. Each filter can have up to 20 entries. See below for details:\n<li>`zone-id`<br>   Filter by the specified <strong>site ID</strong>, such as zone-20hzkd4rdmy0<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`origin-group-id`:<br>   Filter by the specified <strong>origin group ID</strong>, such as origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`origin-group-name`:<br>   Filter by the specified <strong>origin group name</strong><br>   Type: String<br>   Required: No<br>   Fuzzy query: Supported (only one origin group name allowed in a query)</li>",
+          "document": "Filters. Each filter can have up to 20 entries. See below for details:\n<li>`origin-group-id`<br>Filter by the <strong>origin group ID</strong>. Format: `origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a`<br>Fuzzy query is not supported</li><li>`origin-group-name`<br>Filter by the <strong>origin group name</strong><br>Fuzzy query is supported. When fuzzy query is used, only one origin groupsource site group name is supported</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -5512,6 +5672,52 @@
       ],
       "type": "object"
     },
+    "DescribeSecurityTemplateBindingsRequest": {
+      "document": "DescribeSecurityTemplateBindings request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the site to query",
+          "example": "zone-j9j09au1",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the policy template to query.",
+          "example": "temp-n23na0",
+          "member": "string",
+          "name": "TemplateId",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecurityTemplateBindingsResponse": {
+      "document": "DescribeSecurityTemplateBindings response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Bindings of the specified policy template.\n\nWhen a domain name of a site is bound with the specified policy template, `TemplateScope` includes the `ZoneId` of the related site and the bindings of the domain name. \n\nNote: If the template is not bound with any domain name, and there is not any existing binding, `TemplateScope=0` is returned.\n\nIn the binding list, the same domain name may appear repeatedly in the `EntityStatus` list with different `Status`. For example, when a domain name is being bound to another policy template, it's marked both `online` and `pending`.",
+          "example": "{ \"TemplateId\": \"temp-fjsoelx\", \"TemplateScope\":[ {\"ZoneId\": \"zone-fdsjjkfsda\", \"EntityStatus\":[ {\"Entity\":\"a.example.com\", \"Status\":\"online\", \"Message\": \"\"}, {\"Entity\":\"a.anotherexample.com\", \"Status\":\"online\", \"Message\": \"\"} ] } ] }",
+          "member": "SecurityTemplateBinding",
+          "name": "SecurityTemplate",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTimingL4DataRequest": {
       "document": "DescribeTimingL4Data request structure.",
       "members": [
@@ -5672,7 +5878,7 @@
         },
         {
           "disabled": false,
-          "document": "Filters\n<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href=\"https://en.wikipedia.org/wiki/ISO_3166-1\">ISO 3166</a> country codes are used.</li>\n<li>`province`:<br>   Filter by the specified <strong>province name</strong>. It’s only available when `Area` is `mainland`. </li>\n<li>`isp`:<br>   Filter by the specified <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others.</li>\n<li>`domain`:<br>   Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>\n<li>`url`:<br>   Filter by the specified <strong>URL Path</strong> (such as `/content` or `content/test.jpg`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`referer`:<br>   Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`resourceType`<br>   Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol version</strong><br>   Values:<br>   `HTTP/1.0`: HTTP 1.0;<br>   `HTTP/1.1`: HTTP 1.1;<br>   `HTTP/2.0`: HTTP 2.0;<br>   `HTTP/3.0`: HTTP 3.0;<br>   `WebSocket`: WebSocket.</li>\n<li>`socket`:<br>   Filter by the specified <strong>HTTP protocol type</strong><br>   Values:<br>   `HTTP`: HTTP protocol;<br>   `HTTPS`: HTTPS protocol;<br>   `QUIC`: QUIC protocol.</li>\n<li>`statusCode`:<br>   Filter by the specified <strong> status code</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>\n<li>`browserType`:<br>   Filter by the specified <strong>browser type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>\n<li>`deviceType`:<br>   Filter by the <strong>device type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>\n<li>`operatingSystemType`:<br>   Filter by the <strong>operating system</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `Linux`: Linux OS;<br>   `MacOS`: Mac OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>\n<li>`tlsVersion`:<br>   Filter by the <strong>TLS version</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>\n<li>`ipVersion`:<br>   Filter by the specified <strong>IP version</strong>.<br>   Values:<br>   `4`: IPv4;<br>   `6`: IPv6.</li>\n<li>`tagKey`:<br>   Filter by the specified <strong>tag key</strong></li>\n<li>`tagValue`<br>   Filter by the specified <strong>tag value</strong></li>",
+          "document": "Filters\n<li>country<br>Filter by the <strong> Country/Region</strong>. The country/region follows <a href=\"https://baike.baidu.com/item/ISO%203166-1/5269555\">ISO 3166</a> specification. </li>\n<li>`province`<br>Filter by the <strong>specified province name</strong>. It’s only available when `Area` is `mainland`.</li>\n<li>`isp`<br>:   Filter by the specified ISP. It’s only available when `Area` is `mainland`.<br>Values: <br>`2`: CTCC; <br>`26`: CUCC; <br>`1046`: CMCC; <br>`3947`: CTT; <br>`38`: CERNET; <br>`43`: GWBN; <br>`0`: Others.</li>\n<li>`domain`<br>: Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>\n<li>`url`:<br>Filter by the specified <strong>URL path<strong> (such as `/content` or `content/test.jpg`.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>\n<li>`referer`:<br>Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>If this parameter is specified, the max query period is the last 30 days.<br>The<a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>\n<li>`resourceType`:<br>Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>Note that if this parameter is specified, the max data query period is the last 30 days. <br>The [data query scope stated in the specifications of service package]<a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\"> related with the `ZoneIds` becomes invalid.</li>\n<li>`protocol`:<br> Filter by the specified <strong>HTTP protocol</strong> version <br>Values: <br>`HTTP/1.0`: HTTP 1.0;<br>`HTTP/1.1`: HTTP 1.1;<br>`HTTP/2.0`: HTTP 2.0;<br>`HTTP/3.0`: HTTP 3.0;<br>`WebSocket`: WebSocket.</li>\n<li>`socket`:<br>Filter by the specified <strong>HTTP protocol</strong> type <br>Values: <br>`HTTP`: HTTP protocol;<br>`HTTPS`: HTTPS protocol;<br>`QUIC`: QUIC protocol.</li>\n<li>statusCode<br>u2003u2003 Filter by [strong> Status Code/strong>]. lt;br>u2003u2003 If you only fill in statusCode parameter, you can query data of nearly 30 days at most; br>u2003u2003 If statusCode+Zonelds parameter is filled in at the same time, the supported query data range is the smaller of a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\"> Maximum query range of data analysis/a> and 30 days supported by package. lt;br>u2003u2003 The corresponding Value options are as follows: br>u2003u2003 1XX: Status code of type 1xx; br>u2003u2003 100:100 status code; br>u2003u2003 101:101 status code; br>u2003u2003 102:102 status code; br>u2003u2003 2XX: Status code of type 2xx; br>u2003u2003 200:200 status code; br>u2003u2003 201:201 status code; br>u2003u2003 202:202 status code; br>u2003u2003 203:203 status code; br>u2003u2003 204:204 status code; br>u2003u2003 205:205 status code; br>u2003u2003 206:206 status code; br>u2003u2003 207:207 status code; br>u2003u2003 3XX: Status code of type 3xx; br>u2003u2003 300:300 status code; br>u2003u2003 301:301 status code; br>u2003u2003 302:302 status code; br>u2003u2003 303:303 status code; br>u2003u2003 304:304 status code; br>u2003u2003 305:305 status code; br>u2003u2003 307:307 status code; br>u2003u2003 4XX: Status code of type 4xx; br>u2003u2003 400:400 status code; br>u2003u2003 401:401 status code; br>u2003u2003 402:402 status code; br>u2003u2003 403:403 status code; br>u2003u2003 404:404 status code; br>u2003u2003 405:405 status code; br>u2003u2003 406:406 status code; br>u2003u2003 407:407 status code; br>u2003u2003 408:408 status code; br>u2003u2003 409:409 status code; br>u2003u2003 410:410 status code; br>u2003u2003 411:411 status code; br>u2003u2003 412:412 status code; br>u2003u2003 412:413 Status Code; br>u2003u2003 414:414 status code; br>u2003u2003 415:415 status code; br>u2003u2003 416:416 status code; br>u2003u2003 417:417 status code; br>u2003u2003 422:422 status code; br>u2003u2003 423:423 status code; br>u2003u2003 424:424 status code; br>u2003u2003 426:426 status code; br>u2003u2003 451:451 status code; br>u2003u2003 5XX: Status code of type 5xx; br>u2003u2003 500:500 status code; br>u2003u2003 501:501 status code; br>u2003u2003 502:502 status code; br>u2003u2003 503:503 status code; br>u2003u2003 504:504 status code; br>u2003u2003 505:505 status code; br>u2003u2003 506:506 status code; br>u2003u2003 507:507 status code; br>u2003u2003 510:510 status code; br>u2003u2003 514:514 status code; br>u2003u2003 544:544 Status Code.& lt</li>\n<li>`browserType`:<br>Filter by the specified <strong>browser type</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li><br>Values: <br>`Firefox`: Firefox browser; <br>`Chrome`: Chrome browser; <br>`Safari`: Safari browser; <br>`MicrosoftEdge`: Microsoft Edge browser; <br>`IE`: IE browser; <br>`Opera`: Opera browser; <br>`QQBrowser`: QQ browser; <br>`LBBrowser`: LB browser; <br>`MaxthonBrowser`: Maxthon browser; <br>`SouGouBrowser`: Sogou browser; <br>`BIDUBrowser`: Baidu browser; <br>`TaoBrowser`: Tao browser; <br>`UBrowser`: UC browser; <br>`Other`: Other browsers; <br>`Empty`: The browser type is not specified; <br>`Bot`: Web crawler.</li>\n<li>`deviceType`:<br>Filter by the <strong>device type</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values:<br>`TV`: TV; <br>`Tablet`: Tablet;<br>`Mobile`: Mobile phone; <br>`Desktop`: Desktop device;<br>`Other`: Other device;<br>`Empty`: Device type not specified.</li>\n<li>`operatingSystemType`:<br>Filter by the <strong>operating system</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`Linux`: Linux OS; <br>`MacOS`: Mac OS;<br>`Android`: Android OS;<br>`IOS`: iOS OS;<br>`Windows`: Windows OS;<br>`NetBSD`: NetBSD OS;<br>`ChromiumOS`: Chromium OS; <br>`Bot`: Web crawler:<br>`Other`: Other OS;   <br>`Empty`: The OS is not specified.</li>\n<li>`tlsVersion`:<br>Filter by the <strong>TLS version</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`TLS1.0`: TLS 1.0;<br>`TLS1.1`: TLS 1.1; <br>`TLS1.2`: TLS 1.2;<br>`TLS1.3`: TLS 1.3.</li>\n<li>`ipVersion`<br>Filter by the <strong>specified IP version. <br>Values: <br>`4`: IPv4; <br>`6`: IPv6.\n<li>`tagKey`<br>Filter by the <strong>Tag Key</strong>. </li>\n<li>`tagValue`<br>Filter by the <strong>Tag Value</strong>. </li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -5874,7 +6080,7 @@
         },
         {
           "disabled": false,
-          "document": "Filters\n<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href=\"https://en.wikipedia.org/wiki/ISO_3166-1\">ISO 3166</a> country codes are used.</li>\n<li>`province`:<br>   Filter by the specified <strong>province name</strong>. It’s only available when `Area` is `mainland`.</li>\n<li>`isp`:<br>   Filter by the specified <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others</li>\n<li>`domain`:<br>   Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>\n<li>`url`:<br>   Filter by the specified <strong>URL Path</strong> (such as `/content` or `content/test.jpg`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`referer`:<br>   Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`resourceType`:<br>   Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.</li>\n<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol version</strong><br>   Values:<br>   `HTTP/1.0`: HTTP 1.0;<br>   `HTTP/1.1`: HTTP 1.1;<br>   `HTTP/2.0`: HTTP 2.0;<br>   `HTTP/3.0`: HTTP 3.0;<br>   `WebSocket`: WebSocket.</li>\n<li>`socket`<br>   Filter by the specified <strong>HTTP protocol type</strong><br>   Values:<br>   `HTTP`: HTTP protocol;<br>   `HTTPS`: HTTPS protocol;<br>   `QUIC`: QUIC protocol.</li>\n<li>`statusCode`:<br>   Filter by the specified <strong> status code</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>  In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>\n<li>`browserType`:<br>   Filter by the specified <strong>browser type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>\n<li>`deviceType`:<br>   Filter by the <strong>device type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>\n<li>`operatingSystemType`:<br>   Filter by the <strong>operating system</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `Linux`: Linux OS;<br>   `MacOS`: Mac OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>\n<li>`tlsVersion`:<br>   Filter by the <strong>TLS version</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>\n<li>`ipVersion`:<br>   Filter by the specified <strong>IP version</strong>.<br>   Values:<br>   `4`: IPv4;<br>   `6`: IPv6.</li>\n<li>`tagKey`:<br>   Filter by the specified <strong>tag key</strong></li>\n<li>`tagValue`:<br>   Filter by the specified <strong>tag value</strong></li>",
+          "document": "Filters\n<li>`country`<br>Filter by the <strong> Country/Region</strong>. The country/region follows <a href=\"https://baike.baidu.com/item/ISO%203166-1/5269555\">ISO 3166</a> specification. </li>\n<li>`province`<br>Filter by the <strong>specified province name</strong>. It’s only available when `Area` is `mainland`.</li>\n<li>`isp`<br>:   Filter by the specified ISP. It’s only available when `Area` is `mainland`.<br>Values: <br>`2`: CTCC; <br>`26`: CUCC; <br>`1046`: CMCC; <br>`3947`: CTT; <br>`38`: CERNET; <br>`43`: GWBN; <br>`0`: Others.</li>\n<li>`domain`<br>: Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>\n<li>`url`:<br>Filter by the <strong>specified URL Path (such as `/content` or `content/test.jpg`. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>\n<li>`referer`:<br>Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>\n<li>`resourceType`:<br>Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>\n<li>`protocol`:<br> Filter by the specified <strong>HTTP protocol</strong> version <br>Values: <br>`HTTP/1.0`: HTTP 1.0;<br>`HTTP/1.1`: HTTP 1.1;<br>`HTTP/2.0`: HTTP 2.0;<br>`HTTP/3.0`: HTTP 3.0;<br>`WebSocket`: WebSocket.</li>\n<li>`socket`:<br>Filter by the specified <strong>HTTP protocol type</strong> <br>Values:<br>`HTTP`: HTTP protocol; <br>`HTTPS`: HTTPS protocol;<br>`QUIC`: QUIC protocol.\n<li>`statusCode`:<br> Filter by the <strong> Status Code</strong><br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values:<br>1XX: Status code of type 1xx <br>100: 100 status code <br>101: 101 status code <br>102: 102 status code <br>2XX: Status code of type 2xx <br>200: 200 status code <br>201: 201 status code <br>202: 202 status code <br>203: 203 status code <br>204: 204 status code <br>205: 205 status code <br>206: 206 status code <br>207: 207 status code <br>3XX: Status code of type 3xx <br>300: 300 status code <br>301: 301 status code <br>302: 302 status code <br>303: 303 status code <br>304: 304 status code <br>305: 305 status code <br>307: 307 status code <br>4XX: Status code of type 4xx <br>400: 400 status code <br>401: 401 status code <br>402: 402 status code <br>403: 403 status code <br>404: 404 status code <br>405: 405 status code <br>406: 406 status code <br>407: 407 status code <br>408: 408 status code <br>409: 409 status code <br>410: 410 status code <br>411: 411 status code <br>412: 412 status code <br>412: 413 Status Code <br>414: 414 status code <br>415: 415 status code <br>416: 416 status code <br>417: 417 status code <br>422: 422 status code <br>423: 423 status code <br>424: 424 status code <br>426: 426 status code <br>451: 451 status code <br>5XX: Status code of type 5xx <br>500: 500 status code <br>501: 501 status code <br>502:502 status code <br>503: 503 status code <br>504: 504 status code <br>505: 505 status code <br>506: 506 status code <br>507: 507 status code <br>510: 510 status code <br>514: 514 status code <br>544: 544 Status Code. </li>\n<li>`browserType`:<br>Filter by the specified <strong>browser type</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li><br>Values: <br>`Firefox`: Firefox browser; <br>`Chrome`: Chrome browser; <br>`Safari`: Safari browser; <br>`MicrosoftEdge`: Microsoft Edge browser; <br>`IE`: IE browser; <br>`Opera`: Opera browser; <br>`QQBrowser`: QQ browser; <br>`LBBrowser`: LB browser; <br>`MaxthonBrowser`: Maxthon browser; <br>`SouGouBrowser`: Sogou browser; <br>`BIDUBrowser`: Baidu browser; <br>`TaoBrowser`: Tao browser; <br>`UBrowser`: UC browser; <br>`Other`: Other browsers; <br>`Empty`: The browser type is not specified; <br>`Bot`: Web crawler.</li>\n<li>`deviceType`:<br>Filter by the <strong>device type</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values:<br>`TV`: TV; <br>`Tablet`: Tablet;<br>`Mobile`: Mobile phone; <br>`Desktop`: Desktop device;<br>`Other`: Other device;<br>`Empty`: Device type not specified.</li>\n<li>`operatingSystemType`:<br>Filter by the <strong>operating system</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`Linux`: Linux OS; <br>`MacOS`: Mac OS;<br>`Android`: Android OS;<br>`IOS`: iOS OS;<br>`Windows`: Windows OS;<br>`NetBSD`: NetBSD OS;<br>`ChromiumOS`: Chromium OS; <br>`Bot`: Web crawler:<br>`Other`: Other OS;   <br>`Empty`: The OS is not specified.</li>\n<li>`tlsVersion`:<br>Filter by the <strong>TLS version</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href=\"https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90\">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`TLS1.0`: TLS 1.0;<br>`TLS1.1`: TLS 1.1; <br>`TLS1.2`: TLS 1.2;<br>`TLS1.3`: TLS 1.3.</li>\n<li>`ipVersion`<br>Filter by the <strong>specified IP version. <br>Values: <br>`4`: IPv4; <br>`6`: IPv6.\n<li>`tagKey`<br>Filter by the <strong>Tag Key</strong>. </li>\n<li>`tagValue`<br>Filter by the <strong>Tag Value</strong>. </li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -6707,20 +6913,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "The ID of the block page, which can be obtained from the CreateSecurityDropPage API.\nIf 0 is passed, the default block page will be used.",
+          "document": "The ID of the block page. Specify `0` to use the default block page. \n(Disused) If 0 is passed, the default block page will be used.",
           "example": "0",
           "member": "int64",
           "name": "PageId",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The HTTP status code of the block page. Value range: 100-600.",
+          "document": "The HTTP status code to trigger the block page. Range: 100-600, excluding 3xx codes. Code 566: Requests blocked by managed rules. Code 567: Requests blocked by web security rules (except managed rules).",
           "example": "566",
           "member": "int64",
           "name": "StatusCode",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -6731,22 +6939,71 @@
           "example": "error.html",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Type of the block page. Values:\n<li>`file`: Block page file</li>\n<li>`url`: Block page URL</li>",
+          "document": "Type of the block page. Values:\n<li>`page`: Return the specified page.</li>\n",
           "example": "url",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID of custom response. The ID can be obtained via the `DescribeCustomErrorPages` API. It's required when `Type=page`.",
+          "example": "page-xxx\t",
+          "member": "string",
+          "name": "CustomResponseId",
+          "output_required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
       ],
       "usage": "both"
+    },
+    "EntityStatus": {
+      "document": "Status of domain names bound with this template.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance name. Only subdomain names are supported.",
+          "example": "a.qq.com",
+          "member": "string",
+          "name": "Entity",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance configuration status. Values:\n<li>`online`: Configuration has taken effect;</li><li>`fail`: Configuration failed;</li><li>`process`: Configuration is being delivered. </li>",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Message returned after the operation completed. ",
+          "example": "cc rule quota has exhausted 6/5, upgrade to use more",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "ExceptConfig": {
       "document": "Exception rules, which are used to bypass specific rules",
@@ -7923,8 +8180,44 @@
           "example": "无",
           "member": "OriginInfo",
           "name": "OriginInfo",
-          "required": true,
+          "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Origin-pull protocol configuration. Values:\n<li>`FOLLOW`: Follow the protocol of origin</li>\n<li>`HTTP`: Send requests to the origin over HTTP</li>\n<li>`HTTPS`: Send requests to the origin over HTTPS</li>\n<li>The original configuration applies if this field is not specified.</li>",
+          "example": "FOLLOW",
+          "member": "string",
+          "name": "OriginProtocol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Ports for HTTP origin-pull requests. Range: 1-65535. It takes effect when `OriginProtocol=FOLLOW/HTTP`. The original configuration is used if it's not specified.",
+          "example": "80",
+          "member": "uint64",
+          "name": "HttpOriginPort",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Ports for HTTPS origin-pull requests. Range: 1-65535. It takes effect when `OriginProtocol=FOLLOW/HTTPS`. The original configuration is used if it's not specified.",
+          "example": "443",
+          "member": "uint64",
+          "name": "HttpsOriginPort",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "IPv6 status. Values:\n<li>`follow`: Follow the IPv6 configuration of the site</li>\n<li>`on`: Enable</li>\n<li>`off`: Disable</li>\n<li>The original configuration applies if this field is not specified.</li>",
+          "example": "follow",
+          "member": "string",
+          "name": "IPv6Status",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -8477,7 +8770,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The site ID.",
+          "document": "Site ID",
           "example": "zone-27q0p0bali16",
           "member": "string",
           "name": "ZoneId",
@@ -8486,52 +8779,43 @@
         },
         {
           "disabled": false,
-          "document": "The ID of the origin group.",
+          "document": "(Required) Origin group ID",
           "example": "origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
           "member": "string",
-          "name": "OriginGroupId",
-          "required": true,
+          "name": "GroupId",
+          "required": false,
           "type": "string"
         },
         {
           "disabled": false,
-          "document": "The origin type. Values:\n<li>`self`: Customer origin</li>\n<li>`third_party`: Third-party origin</li>\n<li>`cos`: Tencent Cloud COS origin</li>",
-          "example": "self",
+          "document": "Origin group name. It can contain 1 to 200 characters ([a-z], [A-Z], [0-9] and [_-]). The original configuration applies if this field is not specified.\t",
+          "example": "test",
           "member": "string",
-          "name": "OriginType",
-          "required": true,
+          "name": "Name",
+          "required": false,
           "type": "string"
         },
         {
           "disabled": false,
-          "document": "The name of the origin group.",
-          "example": "name",
+          "document": "The origin grouptype. Values:\n<li>`GENERAL`: General origin groups. It supports IPs and domain names. It can be referenced by DNS, Rule Engine, Layer 4 Proxy and General LoadBalancer.</li>\n<li>`HTTP`: HTTP-specific origin groups. It supports IPs/domain names and object storage buckets. It can be referenced by acceleration domain names, rule engines and HTTP LoadBalancer. It cannot be referenced by L4 proxies. </li>The original configuration is used if it's not specified.",
+          "example": "HTTP",
           "member": "string",
-          "name": "OriginGroupName",
-          "required": true,
+          "name": "Type",
+          "required": false,
           "type": "string"
         },
         {
           "disabled": false,
-          "document": "The origin configuration type when `OriginType=self`. Values:\n<li>`area`: Configure by region.</li>\n<li>`weight`: Configure by weight.</li>\n<li>`proto`: Configure by HTTP protocol.</li> When `OriginType=third_party/cos`, leave this field empty.",
-          "example": "area",
-          "member": "string",
-          "name": "ConfigurationType",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Details of the origin record.",
-          "example": "[]",
+          "document": "Origin information. The original configuration is used if it's not specified.",
+          "example": "无",
           "member": "OriginRecord",
-          "name": "OriginRecords",
-          "required": true,
+          "name": "Records",
+          "required": false,
           "type": "list"
         },
         {
           "disabled": false,
-          "document": "The origin domain. This field can be specified only when `OriginType=self`.\nIf it is left empty, the existing configuration is used.",
+          "document": "Host header used for origin-pull. It only works when `Type=HTTP`. If it's not specified, no specific Host header is configured. The `HostHeader` specified in `RuleEngine` takes a higher priority over this configuration. ",
           "example": "www.tencent.com",
           "member": "string",
           "name": "HostHeader",
@@ -9070,10 +9354,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+          "document": "Feature name. For details, see [DescribeRulesSetting](https://intl.cloud.tencent.com/document/product/1552/80618?from_cn_redirect=1) API",
           "example": "AccessUrlRedirect",
           "member": "string",
           "name": "Action",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9084,6 +9369,7 @@
           "example": "[]",
           "member": "RuleNormalActionParams",
           "name": "Parameters",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -9250,7 +9536,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "The ID of the origin group.",
           "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
           "member": "string",
           "name": "GroupId",
@@ -9260,7 +9546,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The name of the origin group.",
           "example": "Name",
           "member": "string",
           "name": "Name",
@@ -9270,7 +9556,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The origin group type. Values:\n<li>`GENERAL`: General origin group</li>\n<li>`HTTP`: HTTP-specific origin group</li>",
           "example": "HTTP",
           "member": "string",
           "name": "Type",
@@ -9280,7 +9566,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Details of the origin record.",
           "example": "[]",
           "member": "OriginRecord",
           "name": "Records",
@@ -9290,7 +9576,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "List of instances referencing this origin group.\t",
           "example": "无",
           "member": "OriginGroupReference",
           "name": "References",
@@ -9300,7 +9586,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Creation time of the origin group.",
           "example": "2014-08-03T12:00:00+08:00",
           "member": "datetime_iso",
           "name": "CreateTime",
@@ -9332,11 +9618,11 @@
       "usage": "out"
     },
     "OriginGroupReference": {
-      "document": "",
+      "document": "Services referencing this origin group",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Services referencing the origin group. Values:\n<li>`AccelerationDomain`: Acceleration domain name</li>\n<li>`RuleEngine`: Rules engine</li>\n<li>`Loadbalance`: Load balancer</li>\n<li>`ApplicationProxy`: L4 proxy</li>",
           "example": "AccelerationDomain",
           "member": "string",
           "name": "InstanceType",
@@ -9346,7 +9632,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "ID of the instances referencing the origin group",
           "example": "domain-123456",
           "member": "string",
           "name": "InstanceId",
@@ -9356,7 +9642,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Name of the instance referencing the origin group",
           "example": "1.1.1.1",
           "member": "string",
           "name": "InstanceName",
@@ -9513,7 +9799,19 @@
           "example": "8.8.8.8",
           "member": "string",
           "name": "Record",
+          "output_required": true,
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The origin type. Values:\n<li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>\n<li>`COS`: COS bucket address</li>\n<li>`AWS_S3`: AWS S3 bucket address",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9523,66 +9821,40 @@
           "example": "record-27q0p0bali16",
           "member": "string",
           "name": "RecordId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The origin port. Value rang: 1-65535.",
-          "example": "80",
-          "member": "uint64",
-          "name": "Port",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The weight when `ConfigurationType=weight`.\nIf 0 or no value is passed, the weight of each origin in a group will be 0 or left empty, indicating that origin-pull is performed by round-robin.\nIf a value between 1-100 is passed, the total weight of multiple origins in a group should be 100, indicating that origin-pull is performed by weight.\nThe weight when `ConfigurationType=proto`.\nIf 0 or no value is passed, the weight of each origin in a group will be 0 or left empty, indicating that origin-pull is performed by round-robin.\nIf a value between 1-100 is passed, the total weight of multiple origins with the same protocol in a group should be 100, indicating that origin-pull is performed by weight.",
+          "document": "Weight of an origin. Range: 0-100. If it is not specified, a random weight is assigned. If `0` is passed in, there is no traffic scheduled to this origin.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "100",
           "member": "uint64",
           "name": "Weight",
+          "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The origin protocol when `ConfigurationType=proto`, indicating that origin-pull is performed by protocol.\n<li>`http`: HTTP protocol</li>\n<li>`https`: HTTPS protocol</li>",
-          "example": "http",
-          "member": "string",
-          "name": "Proto",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The region when `ConfigurationType=area`, which is specified by country code (ISO 3166 alpha-2) or continent code. If not specified, it indicates all regions. Supported continent codes:\n<li>`Asia`</li>\n<li>`Europe`</li>\n<li>`Africa`</li>\n<li>`Oceania`</li>\n<li>`Americas`</li>An origin group must have at least one origin configured with all regions.",
-          "example": "[]",
-          "member": "string",
-          "name": "Area",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "It is valid only when `OriginType=third_part`.\nWhether the origin group is private. Values:\n<li>`true`: Yes.</li>\n<li>`false`: No.</li>If not specified, it defaults to false.",
+          "document": "Whether to enable private authentication. It is valid when `OriginType=COS/AWS_S3`. Values:\n<li>`true`: Yes.</li>\n<li>`false`: No.</li>Default: `false`.\n",
           "example": "false",
           "member": "bool",
           "name": "Private",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The authentication parameter, which is used when `Private=true`.",
+          "document": "Private authentication parameters. This field is valid when `Private=true`.",
           "example": "无",
           "member": "PrivateParameter",
           "name": "PrivateParameters",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -9765,14 +10037,15 @@
       "usage": "both"
     },
     "PrivateParameter": {
-      "document": "Origin authentication parameter",
+      "document": "Private authentication parameters of object storage origins",
       "members": [
         {
           "disabled": false,
-          "document": "The parameter name. Values\n<li>`AccessKeyId`: Access Key ID</li>\n<li>`SecretAccessKey`: Secret Access Key</li>",
+          "document": "The parameter name. Values\n<li>`AccessKeyId`: Access Key ID</li>\n<li>`SecretAccessKey`: Secret Access Key</li>\n<li>`SignatureVersion`: Signature version. Values: `v2`, `v4`</li>\n<li>`Region`: Region of the storage bucket</li>",
           "example": "AccessKeyId",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9783,6 +10056,7 @@
           "example": "无",
           "member": "string",
           "name": "Value",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10156,7 +10430,7 @@
         },
         {
           "disabled": false,
-          "document": "Action. Valid values: <li>`monitor`: Observe;</li>`<li>drop`: Block;</li> <li>`alg`: JavaScript challenge. </li>\t",
+          "document": "Action. Values:<li>`monitor`: Observe;</li><li>`drop`: Block;</li><li>`redirect`: Redirect;</li><li>`page`: Return a specific page;</li><li>`alg`: JavaScript challenge. </li>\t",
           "example": "drop",
           "member": "string",
           "name": "Action",
@@ -10189,7 +10463,7 @@
         },
         {
           "disabled": false,
-          "document": "The rule status. Values:\n<li>`on`: Enabled</li>\n<li>`off`: Disabled</li>Default value: on",
+          "document": "The rule status. Values:\n<li>`on`: Enabled</li>\n<li>`off`: Disabled</li>Default value: `on`",
           "example": "on",
           "member": "string",
           "name": "RuleStatus",
@@ -10222,47 +10496,91 @@
         },
         {
           "disabled": false,
-          "document": "Rule ID, which is only used as an output parameter.\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
+          "document": "Rule ID, which is only used as an output parameter.",
           "example": "1",
           "member": "int64",
           "name": "RuleID",
           "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The filter. Values:\n<li>`sip`: Client IP</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The filter. Values:\n<li>`sip`: Client IP</li>\nThis parameter is left empty by default.",
           "example": "\"sip\"",
           "member": "string",
           "name": "FreqFields",
           "output_required": true,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Update time. It is only used as a response parameter, and defaults to the current time. ",
           "example": "xxx",
           "member": "string",
           "name": "UpdateTime",
           "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Statistical dimension. `source_to_eo` is entered by default when this parameter is not specified. Valid values:\n<li>`source_to_eo`: (Response) Traffic going from the origin to EdgeOne. </li>\n<li>`client_to_eo`: (Request) Traffic going from the client to EdgeOne.</li>\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
+          "document": "Query scope. Values:\n<li>`source_to_eo`: (Response) Traffic going from the origin to EdgeOne.</li>\n<li>`client_to_eo`: (Request) Traffic going from the client to EdgeOne.</li>\nDefault: `source_to_eo`.",
           "example": "source_to_eo",
           "member": "string",
           "name": "FreqScope",
           "output_required": true,
           "required": false,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name of the custom return page. It's required when `Action=page`.",
+          "example": "error.html\t",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID of custom response. The ID can be obtained via the `DescribeCustomErrorPages` API. It's required when `Action=page`.\t",
+          "example": "p-xxx\t",
+          "member": "string",
+          "name": "CustomResponseId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The response code to trigger the return page. It's required when `Action=page`. Value: 100-600. 3xx response codes are not supported. Default value: 567.",
+          "example": "567",
+          "member": "int64",
+          "name": "ResponseCode",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The redirection URL. It's required when `Action=redirect`.",
+          "example": "http%3A%2F%2Fexample.com%2Fpath%2Ferror.html",
+          "member": "string",
+          "name": "RedirectUrl",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -10398,10 +10716,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.",
+          "document": "Feature name. For details, see [DescribeRulesSetting](https://intl.cloud.tencent.com/document/product/1552/80618?from_cn_redirect=1) API",
           "example": "ResponseHeader",
           "member": "string",
           "name": "Action",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10412,6 +10731,7 @@
           "example": "[]",
           "member": "RuleRewriteActionParams",
           "name": "Parameters",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -10566,16 +10886,18 @@
           "example": "200",
           "member": "int64",
           "name": "StatusCode",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name.",
+          "document": "The parameter name. For details, see [DescribeRulesSetting](https://intl.cloud.tencent.com/document/product/1552/80618?from_cn_redirect=1).",
           "example": "RedirectUrl",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10586,6 +10908,7 @@
           "example": "[\"on\"]",
           "member": "string",
           "name": "Values",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -10772,10 +11095,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name.",
+          "document": "The parameter name. For details, see [DescribeRulesSetting](https://intl.cloud.tencent.com/document/product/1552/80618?from_cn_redirect=1).",
           "example": "ParamName",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10786,6 +11110,7 @@
           "example": "[\"on\"]",
           "member": "string",
           "name": "Values",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -10798,10 +11123,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Feature parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name, which has three values:\n<li>add: Add the HTTP header.</li>\n<li>set: Rewrite the HTTP header.</li>\n<li>del: Delete the HTTP header.</li>",
+          "document": "Feature parameter name. For details, see [DescribeRulesSetting](https://intl.cloud.tencent.com/document/product/1552/80618?from_cn_redirect=1).\n<li>`add`: Add the HTTP header.</li>\n<li>`set`: Rewrite the HTTP header.</li>\n<li>`del`: Delete the HTTP header.</li>",
           "example": "set",
           "member": "string",
           "name": "Action",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10812,6 +11138,7 @@
           "example": "token",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10822,6 +11149,7 @@
           "example": "[\"Bar\"]",
           "member": "string",
           "name": "Values",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -10838,7 +11166,7 @@
           "example": "Cache",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10848,7 +11176,7 @@
           "example": "0",
           "member": "int64",
           "name": "Min",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10858,17 +11186,17 @@
           "example": "[\"TypeD\",\"TypeA\"]",
           "member": "string",
           "name": "ChoicesValue",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Parameter value type.\n<li>`CHOICE`: The parameter value can be selected only from `ChoicesValue`.</li>\n<li>`TOGGLE`: The parameter value is of switch type and can be selected from `ChoicesValue`.</li>\n<li>`OBJECT`: The parameter value is of object type, and `ChoiceProperties` indicates the attributes associated with the object type.</li>\n<li>`CUSTOM_NUM`: Custom integer</li>\n<li>`CUSTOM_STRING`: Custom string.</li>Note: If `OBJECT` is selected, refer to [Example 2. Create a rule with parameters of OBJECT type](https://tcloud4api.woa.com/document/product/1657/79382?!preview&!document=1).",
+          "document": "The parameter value type.\n<li>`CHOICE`: `If Type=CHOICE`, choose a value in `ChoiceValue`.</li>\n<li>`TOGGLE`: If `Type=TOGGLE`, choose `on` or `off` from `ChoicesValue`.</li>\n<li>`OBJECT`: Specify an object. If this is specified, `ChoiceProperties` includes attributes of the specified object. See [Example 2. Create a rule with Type=OBJECT](https://intl.cloud.tencent.com/document/product/1552/80622?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B2-.E5.8F.82.E6.95.B0.E4.B8.BA-OBJECT-.E7.B1.BB.E5.9E.8B.E7.9A.84.E5.88.9B.E5.BB.BA)</li>\n<li>`CUSTOM_NUM`: (Integer) Custom value.</li>\n<li>`CUSTOM_STRING`: (String) Custom value.</li>",
           "example": "CHOICE",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10878,7 +11206,7 @@
           "example": "100000000",
           "member": "int64",
           "name": "Max",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10888,7 +11216,7 @@
           "example": "true",
           "member": "bool",
           "name": "IsMultiple",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -10898,7 +11226,7 @@
           "example": "false",
           "member": "bool",
           "name": "IsAllowEmpty",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -10908,7 +11236,7 @@
           "example": "无",
           "member": "RuleChoicePropertiesItem",
           "name": "ChoiceProperties",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -10918,7 +11246,7 @@
           "example": "无",
           "member": "RuleExtraParameter",
           "name": "ExtraParameter",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -11138,6 +11466,32 @@
         }
       ],
       "usage": "both"
+    },
+    "SecurityTemplateBinding": {
+      "document": "Bindings of a security policy template",
+      "members": [
+        {
+          "disabled": false,
+          "document": "template ID",
+          "example": "\"temp-dfjkffd\"",
+          "member": "string",
+          "name": "TemplateId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Binding status of the template.",
+          "example": "无",
+          "member": "TemplateScope",
+          "name": "TemplateScope",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "SecurityType": {
       "document": "The security type setting item.",
@@ -11689,6 +12043,34 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TemplateScope": {
+      "document": "Domain names bound with the template. ",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the site.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "zone-fdsjjkfsda",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "List of instance statuses\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "EntityStatus",
+          "name": "EntityStatus",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"

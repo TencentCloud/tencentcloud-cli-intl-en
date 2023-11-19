@@ -1845,7 +1845,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Type of the query action. `1`: Query emergency vulnerabilities; `2`: Query all vulnerabilities; `3`: Query a specific vulnerability. When `Id=3`, `CVEId` is required. \nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Vulnerability ID\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "Id",
@@ -1995,7 +1995,7 @@
         },
         {
           "disabled": false,
-          "document": "Published or not, `0`: Not published; `1`: Published.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Specify whether the vulnerability is published as an emergency vulnerability. `1`: Published as an emergency vulnerability; `0`: Not an emergency vulnerability.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "0为未发布，1为发布",
           "member": "uint64",
           "name": "IsPublish",
@@ -2005,7 +2005,7 @@
         },
         {
           "disabled": false,
-          "document": "Release time\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Disclosure time of the vulnerability. \nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "ReleaseTime",
@@ -2015,7 +2015,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation time\nNote: u200dThis field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The time when the vulnerability is added to the vulnerability database.\nNote: u200dThis field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "CreateTime",
@@ -2025,7 +2025,7 @@
         },
         {
           "disabled": false,
-          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The last update time of the vulnerability in the database\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "UpdateTime",
@@ -2403,7 +2403,7 @@
         },
         {
           "disabled": false,
-          "document": "Network attacks\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Number of network attacks\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
           "name": "Attack",
@@ -2414,7 +2414,7 @@
         },
         {
           "disabled": false,
-          "document": "Network access\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Number of network access requests\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
           "name": "Access",
@@ -2425,7 +2425,7 @@
         },
         {
           "disabled": false,
-          "document": "Network interception\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Number of blocked attacks\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
           "name": "Intercept",
@@ -3904,7 +3904,7 @@
         },
         {
           "disabled": false,
-          "document": "List of protection status\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "List of WAF protection status\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FilterDataObject",
           "name": "DefenseStatusList",
@@ -4057,7 +4057,7 @@
         },
         {
           "disabled": false,
-          "document": "List of IPs\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "List of IP types\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "FilterDataObject",
           "name": "IpTypeList",
@@ -4163,7 +4163,7 @@
         },
         {
           "disabled": false,
-          "document": "List of status",
+          "document": "List of risk handling status",
           "example": "无",
           "member": "FilterDataObject",
           "name": "StatusLists",
@@ -4279,7 +4279,7 @@
         },
         {
           "disabled": false,
-          "document": "List of status",
+          "document": "List of risk handling status",
           "example": "无",
           "member": "FilterDataObject",
           "name": "StatusLists",
@@ -4385,7 +4385,7 @@
         },
         {
           "disabled": false,
-          "document": "List of status",
+          "document": "List of risk handling status",
           "example": "无",
           "member": "FilterDataObject",
           "name": "StatusLists",
@@ -4491,7 +4491,7 @@
         },
         {
           "disabled": false,
-          "document": "List of status",
+          "document": "List of risk handling status",
           "example": "无",
           "member": "FilterDataObject",
           "name": "StatusLists",
@@ -4835,7 +4835,7 @@
         },
         {
           "disabled": false,
-          "document": "List of status",
+          "document": "List of risk handling status",
           "example": "无",
           "member": "FilterDataObject",
           "name": "StatusLists",
@@ -5566,7 +5566,7 @@
         },
         {
           "disabled": false,
-          "document": "Network interception\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Number of blocked attacks\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "-",
           "member": "uint64",
           "name": "Intercept",
@@ -5816,7 +5816,7 @@
         },
         {
           "disabled": false,
-          "document": "Bot access data\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "u200cNumber of bot attacks\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "BotAccessCount",
@@ -6084,7 +6084,7 @@
         },
         {
           "disabled": false,
-          "document": "Network attacks\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Number of network attacks\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
           "name": "Attack",
@@ -6094,7 +6094,7 @@
         },
         {
           "disabled": false,
-          "document": "Network access\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Number of network access requests\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
           "name": "Access",
@@ -6104,7 +6104,7 @@
         },
         {
           "disabled": false,
-          "document": "Network Interception\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Number of blocked attacks\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
           "name": "Intercept",
@@ -7791,7 +7791,7 @@
         },
         {
           "disabled": false,
-          "document": "Unique ID of Multi-cloud asset\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The ID specific for an asset synched from another cloud platform\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Arn",
