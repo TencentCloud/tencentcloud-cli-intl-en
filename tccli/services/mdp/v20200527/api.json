@@ -21,6 +21,13 @@
       "output": "CreateStreamPackageChannelEndpointResponse",
       "status": "online"
     },
+    "CreateStreamPackageHarvestJob": {
+      "document": "Create HarvestJob.",
+      "input": "CreateStreamPackageHarvestJobRequest",
+      "name": "CreateStreamPackageHarvestJob",
+      "output": "CreateStreamPackageHarvestJobResponse",
+      "status": "online"
+    },
     "DeleteStreamPackageChannelEndpoints": {
       "document": "This API is used to delete endpoints from a StreamPackage channel in batches.",
       "input": "DeleteStreamPackageChannelEndpointsRequest",
@@ -35,6 +42,20 @@
       "output": "DeleteStreamPackageChannelsResponse",
       "status": "online"
     },
+    "DeleteStreamPackageHarvestJob": {
+      "document": "Delete HarvestJob.",
+      "input": "DeleteStreamPackageHarvestJobRequest",
+      "name": "DeleteStreamPackageHarvestJob",
+      "output": "DeleteStreamPackageHarvestJobResponse",
+      "status": "online"
+    },
+    "DeleteStreamPackageHarvestJobs": {
+      "document": "Deleting HarvestJobs in Batch.",
+      "input": "DeleteStreamPackageHarvestJobsRequest",
+      "name": "DeleteStreamPackageHarvestJobs",
+      "output": "DeleteStreamPackageHarvestJobsResponse",
+      "status": "online"
+    },
     "DescribeStreamPackageChannel": {
       "document": "This API is used to query the information of a StreamPackage channel.",
       "input": "DescribeStreamPackageChannelRequest",
@@ -47,6 +68,20 @@
       "input": "DescribeStreamPackageChannelsRequest",
       "name": "Queries multiple channels",
       "output": "DescribeStreamPackageChannelsResponse",
+      "status": "online"
+    },
+    "DescribeStreamPackageHarvestJob": {
+      "document": "Query HarvestJob.",
+      "input": "DescribeStreamPackageHarvestJobRequest",
+      "name": "DescribeStreamPackageHarvestJob",
+      "output": "DescribeStreamPackageHarvestJobResponse",
+      "status": "online"
+    },
+    "DescribeStreamPackageHarvestJobs": {
+      "document": "Batch query HarvestJob.",
+      "input": "DescribeStreamPackageHarvestJobsRequest",
+      "name": "DescribeStreamPackageHarvestJobs",
+      "output": "DescribeStreamPackageHarvestJobsResponse",
       "status": "online"
     },
     "ModifyStreamPackageChannel": {
@@ -338,6 +373,106 @@
       ],
       "type": "object"
     },
+    "CreateStreamPackageHarvestJobRequest": {
+      "document": "CreateStreamPackageHarvestJob request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID, a globally unique identifier, ID can contain up to 128 characters. Supported characters are numbers, letters, underscores (_), and dashes (-).",
+          "example": "test",
+          "member": "string",
+          "name": "ID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The associated channel name.",
+          "example": "channelTest",
+          "member": "string",
+          "name": "ChannelName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The associated endpoint name, StreamPackage only supports harvesting content from HLS and DASH endpoints that have startover turned on.",
+          "example": "endpointTest",
+          "member": "string",
+          "name": "EndpointName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time format, supports the following types: \n1. Epoch seconds \n2. ISO-8601.",
+          "example": "ISO-8601",
+          "member": "string",
+          "name": "TimeFormat",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Task start time supports two formats for TimeFormat input: \n1. Epoch seconds: The input box is a numeric input box, and only positive integers can be entered. \n2. ISO-8601: The supported format is ISO time, for example: 2023-08-01T10:00:00+08:00.",
+          "example": "2023-08-10 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Task end time supports two formats for TimeFormat input: \n1. Epoch seconds: The input box is a numeric input box, and only positive integers can be entered. \n2. ISO-8601: The supported format is ISO time, for example: 2023-08-01T10:00:00+08:00.",
+          "example": "2023-08-10 01:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The COS bucket address where the recording file is stored in COS, format: https://{Bucket_name}-{AppId}.cos.{Region}.myqcloud.com/.",
+          "example": "http://cosinfo.com",
+          "member": "string",
+          "name": "Destination",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The path in the cos bucket and identifier for the parent manifest for the live-to-VOD asset, fotmat: {path 1}/xxx/{path n}/{name}.m3u8.",
+          "example": "main",
+          "member": "string",
+          "name": "Manifest",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStreamPackageHarvestJobResponse": {
+      "document": "CreateStreamPackageHarvestJob response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HarvestJob information.",
+          "example": "无",
+          "member": "HarvestJobResp",
+          "name": "Info",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteStreamPackageChannelEndpointsRequest": {
       "document": "DeleteStreamPackageChannelEndpoints request structure.",
       "members": [
@@ -412,6 +547,60 @@
           "type": "list",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageHarvestJobRequest": {
+      "document": "DeleteStreamPackageHarvestJob request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID, a globally unique identifier.",
+          "example": "test",
+          "member": "string",
+          "name": "ID",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageHarvestJobResponse": {
+      "document": "DeleteStreamPackageHarvestJob response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageHarvestJobsRequest": {
+      "document": "DeleteStreamPackageHarvestJobs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task IDs, id is a globally unique identifier.",
+          "example": "[\"test\"]",
+          "member": "string",
+          "name": "IDs",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageHarvestJobsResponse": {
+      "document": "DeleteStreamPackageHarvestJobs response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -544,6 +733,128 @@
       ],
       "type": "object"
     },
+    "DescribeStreamPackageHarvestJobRequest": {
+      "document": "DescribeStreamPackageHarvestJob request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID, a globally unique identifier.",
+          "example": "test",
+          "member": "string",
+          "name": "ID",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageHarvestJobResponse": {
+      "document": "DescribeStreamPackageHarvestJob response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HarvestJob information.",
+          "example": "无",
+          "member": "HarvestJobResp",
+          "name": "Info",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageHarvestJobsRequest": {
+      "document": "DescribeStreamPackageHarvestJobs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The bound channel name. If not passed, all channels will be queried by default.",
+          "example": "test",
+          "member": "string",
+          "name": "ChannelName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "PageSize.",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageHarvestJobsResponse": {
+      "document": "DescribeStreamPackageHarvestJobs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HarvestJob information list.",
+          "example": "无",
+          "member": "HarvestJobResp",
+          "name": "Infos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Page number.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "PageSize",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "TotalNum",
+          "example": "20",
+          "member": "uint64",
+          "name": "TotalNum",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "EndpointAuthInfo": {
       "document": "The authentication information of channel endpoints.",
       "members": [
@@ -611,6 +922,142 @@
           "name": "AuthInfo",
           "required": true,
           "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "HarvestJobResp": {
+      "document": "HarvestJob Response parameter structure",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Job ID, a globally unique identifier.",
+          "example": "test",
+          "member": "string",
+          "name": "ID",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The associated channel name.",
+          "example": "channelTest",
+          "member": "string",
+          "name": "ChannelName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The associated endpoint name.",
+          "example": "endpointTest",
+          "member": "string",
+          "name": "EndpointName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time format, supports the following types: 1. Epoch seconds 2. ISO-8601",
+          "example": "Local time",
+          "member": "string",
+          "name": "TimeFormat",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Job start time.",
+          "example": "2023-08-10 00:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Job end time.",
+          "example": "2023-08-10 01:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The path where the recording file is stored in COS.",
+          "example": "http://cosinfo.com",
+          "member": "string",
+          "name": "Destination",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The file name of the recording file stored in COS.",
+          "example": "main",
+          "member": "string",
+          "name": "Manifest",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The task status is divided into running: Running, execution completed: Completed, and execution failure: Failed.",
+          "example": "Creating",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Job error message.",
+          "example": "none",
+          "member": "string",
+          "name": "ErrMessage",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Job creation time, timestamp in seconds.",
+          "example": "1693210646",
+          "member": "uint64",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The associated ChannelID.",
+          "example": "test",
+          "member": "string",
+          "name": "ChannelId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The region corresponding to the harvest job.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

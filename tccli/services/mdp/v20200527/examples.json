@@ -24,6 +24,14 @@
         "title": "Sample request"
       }
     ],
+    "CreateStreamPackageHarvestJob": [
+      {
+        "document": "Create HarvestJob.",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStreamPackageHarvestJob\n<Common request parameters>\n\n{\n    \"ID\": \"abc\",\n    \"ChannelName\": \"abc\",\n    \"EndpointName\": \"abc\",\n    \"TimeFormat\": \"abc\",\n    \"StartTime\": \"abc\",\n    \"EndTime\": \"abc\",\n    \"Destination\": \"abc\",\n    \"Manifest\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"ID\": \"abc\",\n            \"ChannelName\": \"abc\",\n            \"EndpointName\": \"abc\",\n            \"TimeFormat\": \"abc\",\n            \"StartTime\": \"abc\",\n            \"EndTime\": \"abc\",\n            \"Destination\": \"abc\",\n            \"Manifest\": \"abc\"\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example1 Sample request"
+      }
+    ],
     "DeleteStreamPackageChannelEndpoints": [
       {
         "document": " ",
@@ -40,6 +48,22 @@
         "title": "Sample request"
       }
     ],
+    "DeleteStreamPackageHarvestJob": [
+      {
+        "document": "Delete HarvestJob.",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageHarvestJobs\n<Common request parameters>\n\n{\n    \"ID\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example1 Sample request"
+      }
+    ],
+    "DeleteStreamPackageHarvestJobs": [
+      {
+        "document": "Deleting HarvestJobs in Batch.",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageHarvestJobs\n<Common request parameters>\n\n{\n    \"IDs\": [\n        \"abc\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example1 Sample request"
+      }
+    ],
     "DescribeStreamPackageChannel": [
       {
         "document": " ",
@@ -54,6 +78,22 @@
         "input": "https://mdp.tencentcloudapi.com/?Action=DescribeStreamPackageChannels\n&PageNum=1\n&PageSize=10\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"Id\": \"AEABF123954\",\n                \"Name\": \"channelName\",\n                \"Protocol\": \"HLS\",\n                \"Points\": {\n                    \"Inputs\": [\n                        {\n                            \"Url\": \"http://streampackage.${region}-1.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760444\",\n                            \"AuthInfo\": {\n                                \"Username\": \"\",\n                                \"Password\": \"\"\n                            }\n                        },\n                        {\n                            \"Url\": \"http://streampackage.${region}-2.srclivepush.myqcloud.com/v1/017182d5d3c4647d244530760443/017182d5d3c4647d244530760445\",\n                            \"AuthInfo\": {\n                                \"Username\": \"\",\n                                \"Password\": \"\"\n                            }\n                        }\n                    ],\n                    \"Endpoints\": [\n                        {\n                            \"Name\": \"\",\n                            \"Url\": \"\",\n                            \"AuthInfo\": {\n                                \"AuthKey\": \"\"\n                            }\n                        }\n                    ]\n                }\n            }\n        ],\n        \"PageNum\": 1,\n        \"PageSize\": 10,\n        \"TotalNum\": 1,\n        \"TotalPage\": 1,\n        \"RequestId\": \"11-222-333\"\n    }\n}",
         "title": "Sample request"
+      }
+    ],
+    "DescribeStreamPackageHarvestJob": [
+      {
+        "document": "Query HarvestJob.",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageHarvestJob\n<Common request parameters>\n\n{\n    \"ID\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"ID\": \"abc\",\n            \"ChannelName\": \"abc\",\n            \"EndpointName\": \"abc\",\n            \"TimeFormat\": \"abc\",\n            \"StartTime\": \"abc\",\n            \"EndTime\": \"abc\",\n            \"Destination\": \"abc\",\n            \"Manifest\": \"abc\"\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example1 Sample request"
+      }
+    ],
+    "DescribeStreamPackageHarvestJobs": [
+      {
+        "document": "Batch query HarvestJob.",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageHarvestJobs\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"ID\": \"abc\",\n                \"ChannelName\": \"abc\",\n                \"EndpointName\": \"abc\",\n                \"TimeFormat\": \"abc\",\n                \"StartTime\": \"abc\",\n                \"EndTime\": \"abc\",\n                \"Destination\": \"abc\",\n                \"Manifest\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example1 Sample request"
       }
     ],
     "ModifyStreamPackageChannel": [
