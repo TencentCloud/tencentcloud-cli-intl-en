@@ -27,8 +27,8 @@
     "CreateStreamPackageHarvestJob": [
       {
         "document": "Create HarvestJob.",
-        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStreamPackageHarvestJob\n<Common request parameters>\n\n{\n    \"ID\": \"abc\",\n    \"ChannelName\": \"abc\",\n    \"EndpointName\": \"abc\",\n    \"TimeFormat\": \"abc\",\n    \"StartTime\": \"abc\",\n    \"EndTime\": \"abc\",\n    \"Destination\": \"abc\",\n    \"Manifest\": \"abc\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"ID\": \"abc\",\n            \"ChannelName\": \"abc\",\n            \"EndpointName\": \"abc\",\n            \"TimeFormat\": \"abc\",\n            \"StartTime\": \"abc\",\n            \"EndTime\": \"abc\",\n            \"Destination\": \"abc\",\n            \"Manifest\": \"abc\"\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStreamPackageHarvestJob\n<Common request parameters>\n\n{\n    \"ID\": \"your HarvestJob ID\",\n    \"ChannelName\": \"your package channel name that have startover turned on\",\n    \"EndpointName\": \"your endpoint name\",\n    \"TimeFormat\": \"ISO-8601\",\n    \"StartTime\": \"2023-11-22T14:38:30+08:00\",\n    \"EndTime\": \"2023-11-22T14:38:30+08:00\",\n    \"Destination\": \"https://bucket-appid.cos.ap-mumbai.myqcloud.com/\",\n    \"Manifest\": \"main.m3u8\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"ID\": \"your HarvestJob ID\",\n            \"ChannelName\": \"your package channel name\",\n            \"EndpointName\": \"your endpoint name\",\n            \"TimeFormat\": \"ISO-8601\",\n            \"StartTime\": \"2023-11-22T14:38:30+08:00\",\n            \"EndTime\": \"2023-11-22T14:38:30+08:00\",\n            \"Destination\": \"https://bucket-appid.cos.ap-mumbai.myqcloud.com/\",\n            \"Manifest\": \"main.m3u8\"\n        },\n        \"RequestId\": \"reqid\"\n    }\n}",
         "title": "Example1 Sample request"
       }
     ],
@@ -51,7 +51,7 @@
     "DeleteStreamPackageHarvestJob": [
       {
         "document": "Delete HarvestJob.",
-        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageHarvestJobs\n<Common request parameters>\n\n{\n    \"ID\": \"abc\"\n}",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageHarvestJobs\n<Common request parameters>\n\n{\n    \"ID\": \"your HarvestJob ID\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Example1 Sample request"
       }
@@ -59,7 +59,7 @@
     "DeleteStreamPackageHarvestJobs": [
       {
         "document": "Deleting HarvestJobs in Batch.",
-        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageHarvestJobs\n<Common request parameters>\n\n{\n    \"IDs\": [\n        \"abc\"\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageHarvestJobs\n<Common request parameters>\n\n{\n    \"IDs\": [\n        \"your HarvestJob IDs\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Example1 Sample request"
       }
@@ -83,8 +83,8 @@
     "DescribeStreamPackageHarvestJob": [
       {
         "document": "Query HarvestJob.",
-        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageHarvestJob\n<Common request parameters>\n\n{\n    \"ID\": \"abc\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"ID\": \"abc\",\n            \"ChannelName\": \"abc\",\n            \"EndpointName\": \"abc\",\n            \"TimeFormat\": \"abc\",\n            \"StartTime\": \"abc\",\n            \"EndTime\": \"abc\",\n            \"Destination\": \"abc\",\n            \"Manifest\": \"abc\"\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageHarvestJob\n<Common request parameters>\n\n{\n    \"ID\": \"your HarvestJob ID\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"ID\": \"abc\",\n            \"ChannelName\": \"abc\",\n            \"EndpointName\": \"abc\",\n            \"TimeFormat\": \"ISO-8601\",\n            \"StartTime\": \"2023-11-22T14:38:30+08:00\",\n            \"EndTime\": \"2023-11-22T14:38:30+08:00\",\n            \"Destination\": \"abc\",\n            \"Manifest\": \"abc\"\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Example1 Sample request"
       }
     ],
@@ -92,7 +92,7 @@
       {
         "document": "Batch query HarvestJob.",
         "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageHarvestJobs\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"ID\": \"abc\",\n                \"ChannelName\": \"abc\",\n                \"EndpointName\": \"abc\",\n                \"TimeFormat\": \"abc\",\n                \"StartTime\": \"abc\",\n                \"EndTime\": \"abc\",\n                \"Destination\": \"abc\",\n                \"Manifest\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"ID\": \"abc\",\n                \"ChannelName\": \"abc\",\n                \"EndpointName\": \"abc\",\n                \"TimeFormat\": \"ISO-8601\",\n                \"StartTime\": \"2023-11-22T14:38:30+08:00\",\n                \"EndTime\": \"2023-11-22T14:38:30+08:00\",\n                \"Destination\": \"abc\",\n                \"Manifest\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Example1 Sample request"
       }
     ],

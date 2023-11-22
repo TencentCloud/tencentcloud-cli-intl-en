@@ -378,7 +378,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID, a globally unique identifier, ID can contain up to 128 characters. Supported characters are numbers, letters, underscores (_), and dashes (-).",
+          "document": "HarvestJob ID, a globally unique identifier.",
           "example": "test",
           "member": "string",
           "name": "ID",
@@ -396,7 +396,7 @@
         },
         {
           "disabled": false,
-          "document": "The associated endpoint name, StreamPackage only supports harvesting content from HLS and DASH endpoints that have startover turned on.",
+          "document": "The associated endpoint name.",
           "example": "endpointTest",
           "member": "string",
           "name": "EndpointName",
@@ -405,7 +405,7 @@
         },
         {
           "disabled": false,
-          "document": "Time format, supports the following types: \n1. Epoch seconds \n2. ISO-8601.",
+          "document": "Time format, supports the following types: 1. Epoch seconds 2. ISO-8601",
           "example": "ISO-8601",
           "member": "string",
           "name": "TimeFormat",
@@ -414,7 +414,7 @@
         },
         {
           "disabled": false,
-          "document": "Task start time supports two formats for TimeFormat input: \n1. Epoch seconds: The input box is a numeric input box, and only positive integers can be entered. \n2. ISO-8601: The supported format is ISO time, for example: 2023-08-01T10:00:00+08:00.",
+          "document": "Task start time supports two formats for TimeFormat input: 1. Epoch seconds: The input box is a numeric input box, and only positive integers can be entered. 2. ISO-8601: The supported format is ISO time, for example: 2023-08-01T10:00:00+08:00.",
           "example": "2023-08-10 00:00:00",
           "member": "string",
           "name": "StartTime",
@@ -423,7 +423,7 @@
         },
         {
           "disabled": false,
-          "document": "Task end time supports two formats for TimeFormat input: \n1. Epoch seconds: The input box is a numeric input box, and only positive integers can be entered. \n2. ISO-8601: The supported format is ISO time, for example: 2023-08-01T10:00:00+08:00.",
+          "document": "Task end time supports two formats for TimeFormat input: 1. Epoch seconds: The input box is a numeric input box, and only positive integers can be entered. 2. ISO-8601: The supported format is ISO time, for example: 2023-08-01T10:00:00+08:00.",
           "example": "2023-08-10 01:00:00",
           "member": "string",
           "name": "EndTime",
@@ -432,7 +432,7 @@
         },
         {
           "disabled": false,
-          "document": "The COS bucket address where the recording file is stored in COS, format: https://{Bucket_name}-{AppId}.cos.{Region}.myqcloud.com/.",
+          "document": "The path where the recording file is stored in Cos.",
           "example": "http://cosinfo.com",
           "member": "string",
           "name": "Destination",
@@ -441,7 +441,7 @@
         },
         {
           "disabled": false,
-          "document": "The path in the cos bucket and identifier for the parent manifest for the live-to-VOD asset, fotmat: {path 1}/xxx/{path n}/{name}.m3u8.",
+          "document": "The file name of the recording file stored in Cos.",
           "example": "main",
           "member": "string",
           "name": "Manifest",
@@ -561,7 +561,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID, a globally unique identifier.",
+          "document": "HarvestJob ID, a globally unique identifier.",
           "example": "test",
           "member": "string",
           "name": "ID",
@@ -588,7 +588,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task IDs, id is a globally unique identifier.",
+          "document": "HarvestJob IDs, id is a globally unique identifier.",
           "example": "[\"test\"]",
           "member": "string",
           "name": "IDs",
@@ -738,7 +738,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID, a globally unique identifier.",
+          "document": "HarvestJob ID, a globally unique identifier.",
           "example": "test",
           "member": "string",
           "name": "ID",
@@ -928,11 +928,11 @@
       "usage": "out"
     },
     "HarvestJobResp": {
-      "document": "HarvestJob Response parameter structure",
+      "document": "HarvestJob response info.",
       "members": [
         {
           "disabled": false,
-          "document": "Job ID, a globally unique identifier.",
+          "document": "HarvestJob ID, a globally unique identifier.",
           "example": "test",
           "member": "string",
           "name": "ID",
@@ -972,7 +972,7 @@
         },
         {
           "disabled": false,
-          "document": "Job start time.",
+          "document": "HarvestJob start time.",
           "example": "2023-08-10 00:00:00",
           "member": "string",
           "name": "StartTime",
@@ -982,7 +982,7 @@
         },
         {
           "disabled": false,
-          "document": "Job end time.",
+          "document": "HarvestJob end time.",
           "example": "2023-08-10 01:00:00",
           "member": "string",
           "name": "EndTime",
@@ -1022,7 +1022,7 @@
         },
         {
           "disabled": false,
-          "document": "Job error message.",
+          "document": "HarvestJob error message.",
           "example": "none",
           "member": "string",
           "name": "ErrMessage",
@@ -1032,7 +1032,7 @@
         },
         {
           "disabled": false,
-          "document": "Job creation time, timestamp in seconds.",
+          "document": "HarvestJob creation time, timestamp in seconds.",
           "example": "1693210646",
           "member": "uint64",
           "name": "CreateTime",
