@@ -63,6 +63,13 @@
       "output": "DescribeScaleInfoResponse",
       "status": "online"
     },
+    "DescribeStreamIngest": {
+      "document": "You can query the status of the Relay task.",
+      "input": "DescribeStreamIngestRequest",
+      "name": "Query Relay Task",
+      "output": "DescribeStreamIngestResponse",
+      "status": "online"
+    },
     "DescribeTrtcRoomUsage": {
       "document": "This API is used to query usage data grouped by room.\n- The queried period cannot exceed 24 hours. If the period spans two different days, the data returned may not be accurate due to a delay in data collection. You can make multiple calls to query the usage on different days.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is one call every 15 seconds.",
       "input": "DescribeTrtcRoomUsageRequest",
@@ -154,11 +161,25 @@
       "output": "StartPublishCdnStreamResponse",
       "status": "online"
     },
+    "StartStreamIngest": {
+      "document": "Push an online media stream to the TRTC room.",
+      "input": "StartStreamIngestRequest",
+      "name": "Start Pull stream Relay",
+      "output": "StartStreamIngestResponse",
+      "status": "online"
+    },
     "StopPublishCdnStream": {
       "document": "This API is used to stop a relaying task.",
       "input": "StopPublishCdnStreamRequest",
       "name": "Stops a relaying task",
       "output": "StopPublishCdnStreamResponse",
+      "status": "online"
+    },
+    "StopStreamIngest": {
+      "document": "Stop a Pull stream Relay task.",
+      "input": "StopStreamIngestRequest",
+      "name": "Stop Pull stream Relay",
+      "output": "StopStreamIngestResponse",
       "status": "online"
     },
     "UpdatePublishCdnStream": {
@@ -335,6 +356,39 @@
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "AudioEncodeParams": {
+      "document": "Audio transcoding parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audio Sample rate, Value range [48000, 44100], unit is Hz.",
+          "example": "48000",
+          "member": "uint64",
+          "name": "SampleRate",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Audio Channel number, Value range [1,2], 1 means Audio is Mono-channel, 2 means Audio is Dual-channel.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Channel",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Audio Bitrate, Value range [8,500], unit is kbps.",
+          "example": "64",
+          "member": "uint64",
+          "name": "BitRate",
+          "required": true,
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -1165,6 +1219,52 @@
           "name": "ScaleList",
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamIngestRequest": {
+      "document": "DescribeStreamIngest request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The SDKAppId of TRTC should be the same as the SDKAppId corresponding to the task room.",
+          "example": "1234",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The unique Id of the task, will return after successfully starting the task.",
+          "example": "1234",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamIngestResponse": {
+      "document": "DescribeStreamIngest response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status information. InProgress: Indicates that the current task is in progress. NotExist: Indicates that the current task does not exist. Example value: InProgress",
+          "example": "InProgress",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3363,6 +3463,115 @@
       ],
       "type": "object"
     },
+    "StartStreamIngestRequest": {
+      "document": "StartStreamIngest request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "TRTC's [SdkAppId](https://intl.cloud.tencent.com/document/product/647/46351?from_cn_redirect=1#sdkappid), the same as the SdkAppId corresponding to the Record room.",
+          "example": "1234",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "TRTC's [RoomId](https://intl.cloud.tencent.com/document/product/647/46351?from_cn_redirect=1#roomid), the RoomId corresponding to the Record TRTC room.",
+          "example": "1234",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Type of TRTC RoomId. 【*Note】Must be the same as the RoomId type corresponding to the Record room: 0: String type RoomId 1: 32-bit Integer type RoomId (default)",
+          "example": "1",
+          "member": "uint64",
+          "name": "RoomIdType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "UserId of the Pull stream Relay Robot, used to enter the room and initiate the Pull stream Relay Task.",
+          "example": "recorder_1234",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "UserSig corresponding to the Pull stream Relay Robot UserId, i.e., UserId and UserSig are equivalent to the Robot's Login password for entering the room. For the specific Calculation method, please refer to the TRTC [UserSig](https://intl.cloud.tencent.com/document/product/647/45910?from_cn_redirect=1#UserSig) Scheme.",
+          "example": "recorder_1234_sig",
+          "member": "string",
+          "name": "UserSig",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "\t\nSource URL. Example value: https://a.b/test.mp4",
+          "example": "https://a.b/test.mp4",
+          "member": "string",
+          "name": "SourceUrl",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "TRTC room permission Encryption ticket, only needed when advanced permission control is enabled in the Console. After enabling advanced permission control in the TRTC Console, TRTC's backend service system will verify a so-called [PrivateMapKey] 'Permission ticket', which contains an encrypted RoomId and an encrypted 'Permission bit list'. Since PrivateMapKey contains RoomId, providing only UserSig without PrivateMapKey does not allow entry into the specified room.",
+          "example": "无",
+          "member": "string",
+          "name": "PrivateMapKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Video Codec Parameters. Optional, if not filled, Keep original stream Parameters.",
+          "example": "无",
+          "member": "VideoEncodeParams",
+          "name": "VideoEncodeParams",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Audio Codec Parameters. Optional, if not filled, Keep original stream Parameters.",
+          "example": "无",
+          "member": "AudioEncodeParams",
+          "name": "AudioEncodeParams",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "StartStreamIngestResponse": {
+      "document": "StartStreamIngest response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The Task ID of the Pull stream Relay. The Task ID is a unique identifier for a Pull stream Relay lifecycle process, and it loses its meaning when the task ends. The Task ID needs to be saved by the business as a parameter for the next operation on this task.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "StopPublishCdnStreamRequest": {
       "document": "StopPublishCdnStream request structure.",
       "members": [
@@ -3400,6 +3609,42 @@
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopStreamIngestRequest": {
+      "document": "StopStreamIngest request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the task's room.",
+          "example": "1234",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The unique Task ID, which will be returned after the task is successfully started.",
+          "example": "1234",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopStreamIngestResponse": {
+      "document": "StopStreamIngest response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -3948,6 +4193,57 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "VideoEncodeParams": {
+      "document": "Video transcoding parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Width. Value range [0,1920], unit is pixel value.",
+          "example": "1280",
+          "member": "uint64",
+          "name": "Width",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Height. Value range [0,1080], unit is pixel value.",
+          "example": "720",
+          "member": "uint64",
+          "name": "Height",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Frame Rate. Value range [1,60], indicating that the frame rate can be selected from 1 to 60fps.",
+          "example": "15",
+          "member": "uint64",
+          "name": "Fps",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Bitrate. Value range [1,10000], unit is kbps.",
+          "example": "1500",
+          "member": "uint64",
+          "name": "BitRate",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Gop. Value range [1,2], unit is second.",
+          "example": "2",
+          "member": "uint64",
+          "name": "Gop",
+          "required": true,
+          "type": "int"
         }
       ],
       "usage": "in"
