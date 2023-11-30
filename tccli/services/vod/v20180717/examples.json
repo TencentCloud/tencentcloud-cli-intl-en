@@ -34,22 +34,22 @@
     ],
     "ComposeMedia": [
       {
-        "document": "This example shows you how to remove the original audio from the video track `5285485487985271487` and dub the video with two other audio tracks, generating a new VOD file. The video starting from 00:05 is dubbed with the audio track `5285485487985271488`. The video starting from second 00:20 is dubbed with the audio from 00:02 to 00:16 of the audio track `5285485487985271489`.",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ComposeMedia\n<Common request parameters>\n\n{\n    \"Output\": {\n        \"Container\": \"mp4\",\n        \"FileName\": \"test\"\n    },\n    \"Tracks\": [\n        {\n            \"TrackItems\": [\n                {\n                    \"Type\": \"Empty\",\n                    \"EmptyItem\": {\n                        \"Duration\": \"5\"\n                    }\n                },\n                {\n                    \"AudioItem\": {\n                        \"SourceMedia\": \"5285485487985271488\"\n                    },\n                    \"Type\": \"Audio\"\n                },\n                {\n                    \"AudioItem\": {\n                        \"Duration\": \"14\",\n                        \"SourceMedia\": \"5285485487985271489\",\n                        \"SourceMediaStartTime\": \"2\"\n                    },\n                    \"Type\": \"Audio\"\n                }\n            ],\n            \"Type\": \"Audio\"\n        },\n        {\n            \"TrackItems\": [\n                {\n                    \"Type\": \"Video\",\n                    \"VideoItem\": {\n                        \"SourceMedia\": \"5285485487985271487\",\n                        \"AudioOperations\": [\n                            {\n                                \"VolumeParam\": {\n                                    \"Mute\": \"1\"\n                                },\n                                \"Type\": \"Volume\"\n                            }\n                        ]\n                    }\n                }\n            ],\n            \"Type\": \"Video\"\n        }\n    ]\n}",
+        "document": "Eliminate the original audio of 5285485487985271487, use 5285485487985271488 for dubbing starting from 5 seconds, use 2 to 16 seconds of 5285485487985271489 starting from 20 seconds for dubbing, and generate a new video.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ComposeMedia\n<Public request parameters>\n\n{\n    \"Output\": {\n        \"Container\": \"mp4\",\n        \"FileName\": \"test\"\n    },\n    \"Tracks\": [\n        {\n            \"TrackItems\": [\n                {\n                    \"Type\": \"Empty\",\n                    \"EmptyItem\": {\n                        \"Duration\": \"5\"\n                    }\n                },\n                {\n                    \"AudioItem\": {\n                        \"SourceMedia\": \"5285485487985271488\",\n                        \"Duration\": \"15\"\n                    },\n                    \"Type\": \"Audio\"\n                },\n                {\n                    \"AudioItem\": {\n                        \"Duration\": \"14\",\n                        \"SourceMedia\": \"5285485487985271489\",\n                        \"SourceMediaStartTime\": \"2\"\n                    },\n                    \"Type\": \"Audio\"\n                }\n            ],\n            \"Type\": \"Audio\"\n        },\n        {\n            \"TrackItems\": [\n                {\n                    \"Type\": \"Video\",\n                    \"VideoItem\": {\n                        \"SourceMedia\": \"5285485487985271487\",\n                        \"AudioOperations\": [\n                            {\n                                \"VolumeParam\": {\n                                    \"Mute\": \"1\"\n                                },\n                                \"Type\": \"Volume\"\n                            }\n                        ]\n                    }\n                }\n            ],\n            \"Type\": \"Video\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-ComposeMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
-        "title": "Dubbing a VOD video"
+        "title": "Add new audio to video"
       },
       {
-        "document": "This example shows you how to splice two videos together. A section of the video `5285485487985271487` from 00:02 to 01:02 is spliced together with a section of the video `5285485487985271488` from 00:06 to 01:21, with a fade-in/fade-out transition of 5 seconds between the video sections. The image `5285485487985271489` is added to the video from 00:03 to 00:18 at the position of (20 px, 20 px). The width and height of the image displayed on the video are (100 px, 100 px).",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ComposeMedia\n<Common request parameters>\n\n{\n    \"Output\": {\n        \"Container\": \"mp4\",\n        \"FileName\": \"test\"\n    },\n    \"Tracks\": [\n        {\n            \"TrackItems\": [\n                {\n                    \"StickerItem\": {\n                        \"CoordinateOrigin\": \"TopLeft\",\n                        \"XPos\": \"20px\",\n                        \"YPos\": \"20px\",\n                        \"Height\": \"100px\",\n                        \"Width\": \"100px\",\n                        \"StartTime\": \"3\",\n                        \"Duration\": \"15\",\n                        \"SourceMedia\": \"5285485487985271489\"\n                    },\n                    \"Type\": \"Sticker\"\n                }\n            ],\n            \"Type\": \"Sticker\"\n        },\n        {\n            \"TrackItems\": [\n                {\n                    \"TransitionItem\": {\n                        \"Duration\": \"5\"\n                    },\n                    \"Type\": \"Transition\"\n                },\n                {\n                    \"Type\": \"Video\",\n                    \"VideoItem\": {\n                        \"Duration\": \"60\",\n                        \"SourceMedia\": \"5285485487985271487\",\n                        \"SourceMediaStartTime\": \"2\"\n                    }\n                },\n                {\n                    \"Type\": \"Video\",\n                    \"VideoItem\": {\n                        \"Duration\": \"75\",\n                        \"SourceMedia\": \"5285485487985271488\",\n                        \"SourceMediaStartTime\": \"6\"\n                    }\n                }\n            ],\n            \"Type\": \"Video\"\n        }\n    ]\n}",
+        "document": "Take the 2nd to 62nd second of 5285485487985271487 and the 6th to 81st second of 5285485487985271488 for splicing. Set a 5-second fade-in and fade-out transition in the middle. Paste a picture 5285485487985271489 from 3 seconds to 18 seconds of the video. The position is (20px , 20px), width and height (100px, 100px).",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ComposeMedia\n<Public request parameters>\n\n{\n    \"Output\": {\n        \"Container\": \"mp4\",\n        \"FileName\": \"test\"\n    },\n    \"Tracks\": [\n        {\n            \"TrackItems\": [\n                {\n                    \"StickerItem\": {\n                        \"CoordinateOrigin\": \"TopLeft\",\n                        \"XPos\": \"20px\",\n                        \"YPos\": \"20px\",\n                        \"Height\": \"100px\",\n                        \"Width\": \"100px\",\n                        \"StartTime\": \"3\",\n                        \"Duration\": \"15\",\n                        \"SourceMedia\": \"5285485487985271489\"\n                    },\n                    \"Type\": \"Sticker\"\n                }\n            ],\n            \"Type\": \"Sticker\"\n        },\n        {\n            \"TrackItems\": [\n                {\n                    \"TransitionItem\": {\n                        \"Duration\": \"5\",\n                        \"MediaTransitions\": [\n                            {\n                                \"Type\": \"ImageFadeInFadeOut\"\n                            }\n                        ]\n                    },\n                    \"Type\": \"Transition\"\n                },\n                {\n                    \"Type\": \"Video\",\n                    \"VideoItem\": {\n                        \"Duration\": \"60\",\n                        \"SourceMedia\": \"5285485487985271487\",\n                        \"SourceMediaStartTime\": \"2\"\n                    }\n                },\n                {\n                    \"Type\": \"Video\",\n                    \"VideoItem\": {\n                        \"Duration\": \"75\",\n                        \"SourceMedia\": \"5285485487985271488\",\n                        \"SourceMediaStartTime\": \"6\"\n                    }\n                }\n            ],\n            \"Type\": \"Video\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-ComposeMedia-bffb15f07530b57bc1aabb01fac74bc2\"\n    }\n}",
-        "title": "Clipping segments from two videos and splicing them"
+        "title": "Crop and splice two video streams together"
       },
       {
-        "document": "This example shows you how to display two videos in picture-in-picture mode. The video `5285485487985271487` is used as the primary video, and the video `5285485487985271488` is used as the subvideo. The centers of the videos are offset by 25% (i.e., the subvideo is displayed in the bottom-right corner of the primary video), and the width of the subvideo image is set to 30% of the primary video image.",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ComposeMedia\n<Common request parameters>\n\n{\n    \"Output\": {\n        \"Container\": \"mp4\",\n        \"FileName\": \"test\"\n    },\n    \"Tracks\": [\n        {\n            \"TrackItems\": [\n                {\n                    \"Type\": \"Video\",\n                    \"VideoItem\": {\n                        \"CoordinateOrigin\": \"Center\",\n                        \"Width\": \"30%\",\n                        \"SourceMedia\": \"5285485487985271488\",\n                        \"XPos\": \"25%\",\n                        \"YPos\": \"25%\"\n                    }\n                }\n            ],\n            \"Type\": \"Video\"\n        },\n        {\n            \"TrackItems\": [\n                {\n                    \"Type\": \"Video\",\n                    \"VideoItem\": {\n                        \"SourceMedia\": \"5285485487985271487\"\n                    }\n                }\n            ],\n            \"Type\": \"Video\"\n        }\n    ]\n}",
+        "document": "Use the video of 5285485487985271487 as the main picture of the picture-in-picture; use the video of 5285485487985271488 as the sub-picture of the picture-in-picture; the center of the sub-picture is offset by 25% of the main picture (that is, in the lower right corner of the main picture), and the width accounts for 30% of the picture.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ComposeMedia\n<Public request parameters>\n\n{\n    \"Output\": {\n        \"Container\": \"mp4\",\n        \"FileName\": \"test\"\n    },\n    \"Tracks\": [\n        {\n            \"TrackItems\": [\n                {\n                    \"Type\": \"Video\",\n                    \"VideoItem\": {\n                        \"CoordinateOrigin\": \"Center\",\n                        \"Width\": \"30%\",\n                        \"SourceMedia\": \"5285485487985271488\",\n                        \"XPos\": \"25%\",\n                        \"YPos\": \"25%\"\n                    }\n                }\n            ],\n            \"Type\": \"Video\"\n        },\n        {\n            \"TrackItems\": [\n                {\n                    \"Type\": \"Video\",\n                    \"VideoItem\": {\n                        \"SourceMedia\": \"5285485487985271487\"\n                    }\n                }\n            ],\n            \"Type\": \"Video\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-ComposeMedia-bffb15f07530b57bc1aabb01fac74bca\"\n    }\n}",
-        "title": "Playing two videos in picture-in-picture mode"
+        "title": "Use one video as a picture-in-picture for another video"
       }
     ],
     "ConfirmEvents": [
@@ -202,6 +202,14 @@
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateImageSpriteTemplate\n<Public Request Parameter>\n\n{\n    \"ColumnCount\": \"10\",\n    \"Name\": \"Sprite chart template 1\",\n    \"RowCount\": \"5\",\n    \"SampleType\": \"Percent\",\n    \"Height\": \"128\",\n    \"Width\": \"128\",\n    \"SampleInterval\": \"10\"\n}",
         "output": "{\n    \"Response\": {\n        \"Definition\": 1008,\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "CreateImageSpriteTemplate"
+      }
+    ],
+    "CreateJustInTimeTranscodeTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateJustInTimeTranscodeTemplate\n<Public request parameters>\n\n{\n    \"Name\": \"testtempaltename\",\n    \"VideoConfigure\": {\n        \"Width\": 720,\n        \"Height\": 1080,\n        \"Bitrate\": 10000,\n        \"ResolutionAdaptive\": \"open\"\n    },\n    \"WatermarkConfigure\": {\n        \"Switch\": \"ON\",\n        \"ImageContent\": \"111\",\n        \"Width\": \"10%\",\n        \"Height\": \"10%\",\n        \"XPos\": \"10%\",\n        \"YPos\": \"10%\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\"\n    }\n}",
+        "title": "Create Just In Time Transcode Template"
       }
     ],
     "CreatePersonSample": [
@@ -446,6 +454,14 @@
         "input": "https://vod.tencentcloudapi.com/?Action=DeleteImageSpriteTemplate\n&Definition=10001\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Deleting an image sprite generating template"
+      }
+    ],
+    "DeleteJustInTimeTranscodeTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteJustInTimeTranscodeTemplate\n<Public request parameters>\n\n{\n    \"Name\": \"testtempaltename\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Delete Just In Time Transcode Template"
       }
     ],
     "DeleteMedia": [
@@ -752,6 +768,14 @@
         "input": "https://vod.tencentcloudapi.com/?Action=DescribeImageSpriteTemplates\n&Definitions.0=10001\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ImageSpriteTemplateSet\": [\n            {\n                \"Definition\": 10001,\n                \"Type\": \"Custom\",\n                \"Name\": \"Image sprite generating template 1\",\n                \"Comment\": \"test\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\",\n                \"Height\": 540,\n                \"SampleType\": \"Percent\",\n                \"SampleInterval\": 10,\n                \"ResolutionAdaptive\": \"open\",\n                \"FillType\": \"black\",\n                \"ColumnCount\": 1,\n                \"RowCount\": 1,\n                \"Width\": 960\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Querying image sprite generating templates"
+      }
+    ],
+    "DescribeJustInTimeTranscodeTemplates": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeJustInTimeTranscodeTemplates\n<Public request parameters>\n\n{\n    \"Names\": [\n        \"testtempaltename\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"JustInTimeTranscodeTemplateSet\": [\n            {\n                \"Type\": \"Custom\",\n                \"Name\": \"test\",\n                \"Comment\": \"comment\",\n                \"VideoConfigure\": {\n                    \"Width\": 720,\n                    \"Height\": 1080,\n                    \"Bitrate\": 10000,\n                    \"ResolutionAdaptive\": \"open\"\n                },\n                \"WatermarkConfigure\": {\n                    \"Switch\": \"ON\",\n                    \"Url\": \"http://example.com/aa.png\",\n                    \"Width\": \"10%\",\n                    \"Height\": \"10%\",\n                    \"XPos\": \"10%\",\n                    \"YPos\": \"10%\"\n                }\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Describe Just In Time Transcode Templates"
       }
     ],
     "DescribeLicenseUsageData": [
@@ -1246,6 +1270,14 @@
         "title": "Modifying an image sprite generating template"
       }
     ],
+    "ModifyJustInTimeTranscodeTemplate": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyJustInTimeTranscodeTemplate\n<Public request parameters>\n\n{\n    \"Name\": \"testtempaltename\",\n    \"Comment\": \"this is a test comment\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Modify Just In Time Transcode Template"
+      }
+    ],
     "ModifyMediaInfo": [
       {
         "document": " ",
@@ -1648,6 +1680,14 @@
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetDrmKeyProviderInfo\n<Common request parameters>\n\n{\n    \"SDMCInfo\": {\n        \"SecretKey\": \"testKey\",\n        \"SecretId\": \"testId\",\n        \"Uid\": \"123\",\n        \"FairPlayCertificateUrl\": \"https://xx/fairplay.cer\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\"\n    }\n}",
         "title": "Configuring DRM key information"
+      }
+    ],
+    "SetVodDomainCertificate": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetVodDomainCertificate\n<Public request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4551-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Set Vod Domain Certificate"
       }
     ],
     "SimpleHlsClip": [
