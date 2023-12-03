@@ -84,6 +84,13 @@
       "output": "DeleteTransformationResponse",
       "status": "online"
     },
+    "DescribeLogTagValue": {
+      "document": "This API is used to query log searching metric values.",
+      "input": "DescribeLogTagValueRequest",
+      "name": "Queries log searching metric values",
+      "output": "DescribeLogTagValueResponse",
+      "status": "online"
+    },
     "GetEventBus": {
       "document": "This API is used to get the details of an event bus.",
       "input": "GetEventBusRequest",
@@ -131,6 +138,13 @@
       "input": "ListTargetsRequest",
       "name": "Gets delivery target list",
       "output": "ListTargetsResponse",
+      "status": "online"
+    },
+    "SearchLog": {
+      "document": "This API is used to query logs. ",
+      "input": "SearchLogRequest",
+      "name": "Searches for logs. ",
+      "output": "SearchLogResponse",
       "status": "online"
     },
     "UpdateConnection": {
@@ -1078,6 +1092,96 @@
       ],
       "type": "object"
     },
+    "DescribeLogTagValueRequest": {
+      "document": "DescribeLogTagValue request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The query start time.",
+          "example": "无",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The query end time.",
+          "example": "无",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Event bus ID",
+          "example": "eb-xxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Aggregation field",
+          "example": "无",
+          "member": "string",
+          "name": "GroupField",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages.",
+          "example": "无",
+          "member": "int64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Logs returned per page",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter conditions",
+          "example": "无",
+          "member": "LogFilter",
+          "name": "Filter",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeLogTagValueResponse": {
+      "document": "DescribeLogTagValue response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query searching metric value. \nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Results",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ESTargetParams": {
       "document": "ES rule targets",
       "members": [
@@ -1984,6 +2088,98 @@
       ],
       "type": "object"
     },
+    "LogFilter": {
+      "document": "Definition of filter parameters of log query-related API",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Field name",
+          "example": "status",
+          "member": "string",
+          "name": "Key",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Operator. Values: `eq` (Equal to), `neq` (Not equal to), `like`, `not like`, `lt` (Smaller than), `lte` (Smaller than and equal to), `gt` (Greater than), `gte` (Greater than and equal to), `range` (Within the range) and `norange` (Not in the range).",
+          "example": "eq",
+          "member": "string",
+          "name": "Operator",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Filter value. Two values should be entered for range operation, separated by a comma (,).\n",
+          "example": "\"0\"",
+          "member": "string",
+          "name": "Value",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The logical relationship between conditions. Values: `AND` and `OR`.",
+          "example": "AND",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "LogFilters array",
+          "example": "无",
+          "member": "LogFilters",
+          "name": "Filters",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
+    "LogFilters": {
+      "document": "Log filters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Field name",
+          "example": "status",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Operator. Values: `eq` (Equal to), `neq` (Not equal to), `like`, `not like`, `lt` (Smaller than), `lte` (Smaller than and equal to), `gt` (Greater than), `gte` (Greater than and equal to), `range` (Within the range) and `norange` (Not in the range).",
+          "example": "eq",
+          "member": "string",
+          "name": "Operator",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Filter value. Two values should be entered for range operation, separated by a comma (,)\n",
+          "example": "\"0\"",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
     "OutputStructParam": {
       "document": "`Transform` output parameter",
       "members": [
@@ -2187,6 +2383,218 @@
         }
       ],
       "usage": "in"
+    },
+    "SearchLogRequest": {
+      "document": "SearchLog request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query start time (UNIX in ms)",
+          "example": "无",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Query end time (UNIX in ms)",
+          "example": "无",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Event bus ID",
+          "example": "eb-xxxxxx",
+          "member": "string",
+          "name": "EventBusId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page number",
+          "example": "无",
+          "member": "int64",
+          "name": "Page",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Logs returned per page",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter conditions",
+          "example": "无",
+          "member": "LogFilter",
+          "name": "Filter",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting array",
+          "example": "无",
+          "member": "string",
+          "name": "OrderFields",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting order. Values: `asc` (earliest first); `desc` (latest first)",
+          "example": "无",
+          "member": "string",
+          "name": "OrderBy",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SearchLogResponse": {
+      "document": "SearchLog response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of logs\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Total",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of entries per page.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Page number\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Page",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Log searching results\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "SearchLogResult",
+          "name": "Results",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SearchLogResult": {
+      "document": "Retails of returned logs",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Log reported time\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Timestamp",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Log details\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Event source\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Source",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The event type.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Event matching rule\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "rule-xxxx",
+          "member": "string",
+          "name": "RuleIds",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The instance ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ins-xxxx",
+          "member": "string",
+          "name": "Subject",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The region.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Event status\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "Target": {
       "document": "Target information",

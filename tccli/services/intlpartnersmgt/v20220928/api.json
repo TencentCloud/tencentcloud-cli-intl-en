@@ -275,7 +275,7 @@
           "example": "2000111111",
           "member": "int64",
           "name": "PayerAccountId",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -285,7 +285,7 @@
           "example": "2000111111",
           "member": "int64",
           "name": "OwnerAccountId",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -295,7 +295,7 @@
           "example": "2000111111",
           "member": "int64",
           "name": "OperatorAccountId",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -305,7 +305,7 @@
           "example": "无",
           "member": "string",
           "name": "ProductName",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -315,7 +315,7 @@
           "example": "无",
           "member": "string",
           "name": "BillingMode",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -325,7 +325,7 @@
           "example": "无",
           "member": "string",
           "name": "ProjectName",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -335,7 +335,7 @@
           "example": "无",
           "member": "string",
           "name": "Region",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -345,7 +345,7 @@
           "example": "无",
           "member": "string",
           "name": "AvailabilityZone",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -355,7 +355,7 @@
           "example": "无",
           "member": "string",
           "name": "InstanceId",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -365,7 +365,7 @@
           "example": "无",
           "member": "string",
           "name": "InstanceName",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -375,7 +375,7 @@
           "example": "无",
           "member": "string",
           "name": "SubProductName",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -385,7 +385,7 @@
           "example": "无",
           "member": "string",
           "name": "TransactionType",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -395,7 +395,7 @@
           "example": "无",
           "member": "string",
           "name": "TransactionId",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -405,7 +405,7 @@
           "example": "无",
           "member": "string",
           "name": "TransactionTime",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -415,7 +415,7 @@
           "example": "无",
           "member": "string",
           "name": "UsageStartTime",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -425,7 +425,7 @@
           "example": "无",
           "member": "string",
           "name": "UsageEndTime",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -435,7 +435,7 @@
           "example": "无",
           "member": "string",
           "name": "ComponentType",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -445,7 +445,7 @@
           "example": "无",
           "member": "string",
           "name": "ComponentName",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -455,7 +455,7 @@
           "example": "无",
           "member": "string",
           "name": "ComponentListPrice",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -465,7 +465,7 @@
           "example": "无",
           "member": "string",
           "name": "ComponentPriceMeasurementUnit",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -475,7 +475,7 @@
           "example": "无",
           "member": "string",
           "name": "ComponentUsage",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -485,7 +485,7 @@
           "example": "无",
           "member": "string",
           "name": "ComponentUsageUnit",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -495,7 +495,7 @@
           "example": "无",
           "member": "string",
           "name": "UsageDuration",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -505,7 +505,7 @@
           "example": "无",
           "member": "string",
           "name": "DurationUnit",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -515,7 +515,7 @@
           "example": "无",
           "member": "string",
           "name": "OriginalCost",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -525,7 +525,7 @@
           "example": "无",
           "member": "string",
           "name": "DiscountRate",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -535,7 +535,7 @@
           "example": "无",
           "member": "string",
           "name": "Currency",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -545,7 +545,7 @@
           "example": "无",
           "member": "string",
           "name": "TotalAmountAfterDiscount",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -555,7 +555,7 @@
           "example": "无",
           "member": "string",
           "name": "VoucherDeduction",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -565,7 +565,17 @@
           "example": "无",
           "member": "string",
           "name": "TotalCost",
-          "required": false,
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "ID\nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": true
         }
@@ -1056,6 +1066,16 @@
           "output_required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "ID\nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1074,7 +1094,7 @@
         },
         {
           "disabled": false,
-          "document": "A pagination parameter that specifies the number of entries per page",
+          "document": "Page parameter: Indicates the number of entries per page. The maximum value is 200.",
           "example": "20",
           "member": "int64",
           "name": "PageSize",
@@ -1301,7 +1321,7 @@
         },
         {
           "disabled": false,
-          "document": "A pagination parameter that specifies the number of entries per page",
+          "document": "Page parameter: Indicates the number of entries per page. The maximum value is 200.",
           "example": "1",
           "member": "int64",
           "name": "PageSize",
@@ -1514,7 +1534,7 @@
         },
         {
           "disabled": false,
-          "document": "Account status Valid values: `0` (Not frozen),  `1` (Frozen).  Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Account status\n0: Normal\n1: Forcibly mandatory (this function is not supported yet)\n2. Mandatory arrears\nNote: The return value may be null, indicating that no valid data can be obtained.",
           "example": "1",
           "member": "string",
           "name": "AccountStatus",
@@ -1524,7 +1544,7 @@
         },
         {
           "disabled": false,
-          "document": "Identity verification status Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Identity verification status\n-1: Files not uploaded\n0: Not submitted for review\n1: Under review\n2: Review error\n3: Approved\nNote: The return value may be null, indicating that no valid data can be obtained.",
           "example": "1",
           "member": "string",
           "name": "AuthStatus",
@@ -1783,7 +1803,7 @@
           "example": "2021-08-18",
           "member": "string",
           "name": "AllocatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1793,7 +1813,7 @@
           "example": "usernames",
           "member": "string",
           "name": "Operator",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1803,7 +1823,7 @@
           "example": "123456.78",
           "member": "float",
           "name": "Credit",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -1813,9 +1833,19 @@
           "example": "123.45",
           "member": "float",
           "name": "AllocatedCredit",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Available credits after allocation\nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "example": "123456.78",
+          "member": "float",
+          "name": "ClientCreditAfter",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2235,7 +2265,7 @@
           "example": "1",
           "member": "float",
           "name": "AllocatedCredit",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -2245,7 +2275,7 @@
           "example": "1",
           "member": "float",
           "name": "TotalCredit",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -2255,7 +2285,27 @@
           "example": "1",
           "member": "float",
           "name": "RemainingCredit",
-          "required": true,
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Allocated quota for the client",
+          "example": "10",
+          "member": "float",
+          "name": "CustomerTotalCredit",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remaining quota for the client",
+          "example": "0.5",
+          "member": "float",
+          "name": "CustomerRemainingCredit",
+          "output_required": false,
           "type": "float",
           "value_allowed_null": false
         },

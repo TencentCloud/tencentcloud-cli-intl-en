@@ -238,6 +238,13 @@
       "output": "ManageClsTopicDomainsResponse",
       "status": "online"
     },
+    "ModifyDomainConfig": {
+      "document": "This API is used to modify the configuration of a CDN acceleration domain name in a finer manner than `UpdateDomainConfig`.\nNotes:\nIn `Route`, separate values by dots (.). The last value is called a leaf node. For non-leaf nodes, keep the configuration unchanged.\nThe Value field is serialized to a JSON string {key:value}, where **key** is fixed to `update` and **value** is used to specify the value of the configuration parameter. To specify configurations with complex types, see https://intl.cloud.tencent.com/document/product/228/41116.?from_cn_redirect=1\nThe input parameters of this API are not reported to CloudAudit as it may contain sensitive data, such as keys and secrets.",
+      "input": "ModifyDomainConfigRequest",
+      "name": "Modifies domain name configuration",
+      "output": "ModifyDomainConfigResponse",
+      "status": "online"
+    },
     "PurgePathCache": {
       "document": "This API is used to submit multiple directory purge tasks, which are carried out according to the acceleration region of the domain names.\nBy default, a maximum of 100 directories can be purged per day for acceleration regions either within or outside the Chinese mainland, and up to 500 tasks can be submitted at a time.",
       "input": "PurgePathCacheRequest",
@@ -281,7 +288,7 @@
       "status": "online"
     },
     "UpdateDomainConfig": {
-      "document": "This API is used to modify the configuration of CDN acceleration domain names.\nNote: if you need to update complex configuration items, you must pass all the attributes of the entire object. The default value will be used for attributes that are not passed. We recommend calling the querying API to obtain the configuration attributes first. You can then modify and pass the attributes to the API. The certificate and key fields do not need to be passed for HTTPS configuration.",
+      "document": "This API is used to modify the configuration of CDN acceleration domain names.\nNote: To update complex configuration items, all attributes of the object must be specified, or the default values are used. We recommend calling the querying API to get attributes before modifying and passing them to this API.\nThe input parameters of this API are not reported to CloudAudit as it may contain sensitive data, such as keys and secrets.",
       "input": "UpdateDomainConfigRequest",
       "name": "Updates domain name configuration",
       "output": "UpdateDomainConfigResponse",
@@ -313,8 +320,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable request header and request URL access control. Valid values: on, off",
-          "example": "",
+          "document": "Whether to enable access control based on the request header and request URL. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -324,7 +331,7 @@
         {
           "disabled": false,
           "document": "Request header and request URL access rule\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AccessControlRule",
           "name": "AccessControlRules",
           "required": false,
@@ -334,7 +341,7 @@
         {
           "disabled": false,
           "document": "Returns status code\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "ReturnCode",
           "required": false,
@@ -955,8 +962,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Hotlink protection configuration switch (which can be on or off). If it is enabled, only one mode can and must be configured, while other modes are null.",
-          "example": "",
+          "document": "Whether to enable hot linking protection. Values:\n`on`: Enable\n`off`: Disable\nOnly one advanced configuration can be enabled. Set the rests to `null`.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -966,7 +973,7 @@
         {
           "disabled": false,
           "document": "Timestamp hotlink protection advanced configuration mode A\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AdvancedAuthenticationTypeA",
           "name": "TypeA",
           "required": false,
@@ -976,7 +983,7 @@
         {
           "disabled": false,
           "document": "Timestamp hotlink protection advanced configuration mode B\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AdvancedAuthenticationTypeB",
           "name": "TypeB",
           "required": false,
@@ -986,7 +993,7 @@
         {
           "disabled": false,
           "document": "Timestamp hotlink protection advanced configuration mode C\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AdvancedAuthenticationTypeC",
           "name": "TypeC",
           "required": false,
@@ -996,7 +1003,7 @@
         {
           "disabled": false,
           "document": "Timestamp hotlink protection advanced configuration mode D\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AdvancedAuthenticationTypeD",
           "name": "TypeD",
           "required": false,
@@ -1006,7 +1013,7 @@
         {
           "disabled": false,
           "document": "Timestamp hotlink protection advanced configuration mode E\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AdvancedAuthenticationTypeE",
           "name": "TypeE",
           "required": false,
@@ -1016,7 +1023,7 @@
         {
           "disabled": false,
           "document": "Timestamp hotlink protection advanced configuration mode F\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AdvancedAuthenticationTypeF",
           "name": "TypeF",
           "required": false,
@@ -1497,7 +1504,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable IP penalty. Valid values: `on` and `off`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether to enable IP blocking. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "PunishmentSwitch",
@@ -1547,7 +1554,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the rule. Values: `on` (enable), `off` (disable).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to enable custom CC rules. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -1659,6 +1666,7 @@
           "example": "无",
           "member": "string",
           "name": "MatchKey",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1669,16 +1677,18 @@
           "example": "无",
           "member": "string",
           "name": "LogicOperator",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Match value\nWhen `MatchKey` is `protocol`,\nValues: `HTTP` and `HTTPS`.\n\nWhen `MatchKey` is `httpVersion`,\nValues: `HTTP/1.0`, `HTTP/1.1`, `HTTP/1.2`, `HTTP/2`, and `HTTP/3`.\n\nWhen `MatchKey` is `method`,\nValues: `HEAD`, `GET`, `POST`, `PUT`, `OPTIONS`, `TRACE`, `DELETE`, `PATCH` and `CONNECT`.\n\nWhen `MatchKey` is `ipCountry`, valid values include:\n`OTHER`: Other areas\n`VE`: Venezuela\n`UY`: Uruguay\n`SR`: Suriname\n`PY`: Paraguay\n`PE`: Peru\n`GY`: Guyana\n`EC`: Ecuador\n`CO`: Colombia\n`CL`: Chile\n`BR`: Brazil\n`BO`: Bolivia\n`AR`: Argentina\n`NZ`: New Zealand\n`WS`: Samoa\n`VU`: Vanuatu\n`TV`: Tuvalu\n`TO`: Tonga\n`TK`: Tokelau\n`PW`: Palau\n`NU`: Niue\n`NR`: Nauru\n`KI`: Kiribati\n`GU`: Guam\n`FM`: Micronesia\n`AU`: Australia\n`US`: United States\n`PR`: Puerto Rico\n`DO`: Dominican Republic\n`CR`: Costa Rica\n`AS`: American Samoa\n`AG`: Antigua and Barbuda\n`PA`: Panama\n`NI`: Nicaragua\n`MX`: Mexico\n`JM`: Jamaica\n`HT`: Haiti\n`HN`: Honduras\n`GT`: Guatemala\n`GP`: Guadeloupe\n`GL`: Greenland\n`GD`: Grenada\n`CU`: Cuba\n`CA`: Canada\n`BZ`: Belize\n`BS`: Bahamas\n`BM`: Bermuda\n`BB`: Barbados\n`AW`: Aruba\n`AI`: Anguilla\n`VA`: Vatican\n`SK`: Slovakia\n`RU`: Russia\n`GB`: United Kingdom\n`CZ`: Czech Republic\n`UA`: Ukraine\n`TR`: Turkey\n`SI`: Slovenia\n`SE`: Sweden\n`RS`: Republic of Serbia\n`RO`: Romania\n`PT`: Portugal\n`PL`: Poland\n`NO`: Norway\n`NL`: Netherlands\n`MT`: Malta\n`MK`: Macedonia\n`ME`: Montenegro\n`MD`: Moldova\n`MC`: Monaco\n`LV`: Latvia\n`LU`: Luxembourg\n`LT`: Lithuania\n`LI`: Liechtenstein\n`KZ`: Kazakhstan\n`IT`: Italy\n`IS`: Iceland\n`IE`: Ireland\n`HU`: Hungary\n`HR`: Croatia\n`GR`: Greece\n`GI`: Gibraltar\n`GG`: Guernsey\n`GE`: Georgia\n`FR`: France\n`FI`: Finland\n`ES`: Spain\n`EE`: Estonia\n`DK`: Denmark\n`DE`: Germany\n`CY`: Cyprus\n`CH`: Switzerland\n`BY`: Belarus\n`BG`: Bulgaria\n`BE`: Belgium\n`AZ`: Azerbaijan\n`AT`: Austria\n`AM`: Armenia\n`AL`: Albania\n`AD`: Andorra\n`TL`: East Timor\n`SY`: Syria\n`SA`: Saudi Arabia\n`PS`: Palestine\n`LK`: Sri Lanka\n`LK`: Sri Lanka\n`KP`: North Korea\n`KG`: Kyrgyzstan\n`HK`: Hong Kong, China\n`BN`: Brunei\n`BD`: Bangladesh\n`AE`: United Arab Emirates\n`YE`: Yemen\n`VN`: Vietnam\n`UZ`: Uzbekistan\n`TW`: Taiwan, China\n`TM`: Turkmenistan\n`TJ`: Tajikistan\n`TH`: Thailand\n`SG`: Singapore\n`QA`: Qatar\n`PK`: Pakistan\n`PH`: Philippines\n`OM`: Oman\n`NP`: Nepal\n`MY`: Malaysia\n`MV`: Maldives\n`MO`: Macao, China\n`MN`: Mongolia\n`MM`: Myanmar\n`LB`: Lebanon\n`KW`: Kuwait\n`KR`: South Korea\n`KH`: Cambodia\n`JP`: Japan\n`JO`: Jordan\n`IR`: Iran\n`IQ`: Iraq\n`IN`: India\n`IL`: Israel\n`ID`: Indonesia\n`CN`: China\n`BT`: Bhutan\n`BH`: Bahrain\n`AF`: Afghanistan\n`LY`: Libya\n`CD`: Democratic Republic of the Congo\n`RE`: La Réunion\n`SZ`: Swaziland\n`ZW`: Zimbabwe\n`ZM`: Zambia\n`YT`: Mayotte\n`UG`: Uganda\n`TZ`: Tanzania\n`TN`: Tunisia\n`TG`: Togo\n`TD`: Chad\n`SO`: Somalia\n`SN`: Senegal\n`SD`: Sudan\n`SC`: Seychelles\n`RW`: Rwanda\n`NG`: Nigeria\n`NE`: Niger\n`NA`: Namibia\n`MZ`: Mozambique\n`MW`: Malawi\n`MU`: Mauritius\n`MR`: Mauritania\n`ML`: Mali\n`MG`: Madagascar\n`MA`: Morocco\n`LS`: Lesotho\n`LR`: Liberia\n`KM`: Comoros\n`KE`: Kenya\n`GN`: Guinea\n`GM`: Gambia\n`GH`: Ghana\n`GA`: Gabon\n`ET`: Ethiopia\n`ER`: Eritrea\n`EG`: Egypt\n`DZ`: Algeria\n`DJ`: Djibouti\n`CM`: Cameroon\n`CG`: Republic of the Congo\n`BW`: Botswana\n`BJ`: Benin\n`BI`: Burundi\n`AO`: Angola\n\nWhen MatchKey is `ipArea`, valid values include:\n`OTHER`: other areas\n`AS`: Asia\n`EU`: Europe\n`AN`: Antarctica\n`AF`: Africa\n`OC`: Oceania\n`NA`: North America\n`SA`: South America\n\nWhen MatchKey is `index`,\nvalid value is `/;/index.html`.",
+          "document": "Matched value.\nWhen `MatchKey` is `protocol`,\nValues: `HTTP` and `HTTPS`.\n\nWhen `MatchKey` is `httpVersion`,\nValues: `HTTP/1.0`, `HTTP/1.1`, `HTTP/1.2`, `HTTP/2`, and `HTTP/3`.\n\nWhen `MatchKey` is `method`,\nValues: `HEAD`, `GET`, `POST`, `PUT`, `OPTIONS`, `TRACE`, `DELETE`, `PATCH` and `CONNECT`.\n\nWhen `MatchKey` is `ipCountry`, valid values include:\n`OTHER`: Other areas\n`VE`: Venezuela\n`UY`: Uruguay\n`SR`: Suriname\n`PY`: Paraguay\n`PE`: Peru\n`GY`: Guyana\n`EC`: Ecuador\n`CO`: Colombia\n`CL`: Chile\n`BR`: Brazil\n`BO`: Bolivia\n`AR`: Argentina\n`NZ`: New Zealand\n`WS`: Samoa\n`VU`: Vanuatu\n`TV`: Tuvalu\n`TO`: Tonga\n`TK`: Tokelau\n`PW`: Palau\n`NU`: Niue\n`NR`: Nauru\n`KI`: Kiribati\n`GU`: Guam\n`FM`: Micronesia\n`AU`: Australia\n`US`: United States\n`PR`: Puerto Rico\n`DO`: Dominican Republic\n`CR`: Costa Rica\n`AS`: American Samoa\n`AG`: Antigua and Barbuda\n`PA`: Panama\n`NI`: Nicaragua\n`MX`: Mexico\n`JM`: Jamaica\n`HT`: Haiti\n`HN`: Honduras\n`GT`: Guatemala\n`GP`: Guadeloupe\n`GL`: Greenland\n`GD`: Grenada\n`CU`: Cuba\n`CA`: Canada\n`BZ`: Belize\n`BS`: Bahamas\n`BM`: Bermuda\n`BB`: Barbados\n`AW`: Aruba\n`AI`: Anguilla\n`VA`: Vatican\n`SK`: Slovakia\n`GB`: United Kingdom\n`CZ`: Czech Republic\n`UA`: Ukraine\n`TR`: Türkiye\n`SI`: Slovenia\n`SE`: Sweden\n`RS`: Republic of Serbia\n`RO`: Romania\n`PT`: Portugal\n`PL`: Poland\n`NO`: Norway\n`NL`: Netherlands\n`MT`: Malta\n`MK`: Macedonia\n`ME`: Montenegro\n`MD`: Moldova\n`MC`: Monaco\n`LV`: Latvia\n`LU`: Luxembourg\n`LT`: Lithuania\n`LI`: Liechtenstein\n`KZ`: Kazakhstan\n`IT`: Italy\n`IS`: Iceland\n`IE`: Ireland\n`HU`: Hungary\n`HR`: Croatia\n`GR`: Greece\n`GI`: Gibraltar\n`GG`: Guernsey\n`GE`: Georgia\n`FR`: France\n`FI`: Finland\n`ES`: Spain\n`EE`: Estonia\n`DK`: Denmark\n`DE`: Germany\n`CY`: Cyprus\n`CH`: Switzerland\n`BY`: Belarus\n`BG`: Bulgaria\n`BE`: Belgium\n`AZ`: Azerbaijan\n`AT`: Austria\n`AM`: Armenia\n`AL`: Albania\n`AD`: Andorra\n`TL`: East Timor\n`SY`: Syria\n`SA`: Saudi Arabia\n`PS`: Palestine\n`LK`: Sri Lanka\n`LK`: Sri Lanka\n`KP`: North Korea\n`KG`: Kyrgyzstan\n`HK`: Hong Kong, China\n`BN`: Brunei\n`BD`: Bangladesh\n`AE`: United Arab Emirates\n`YE`: Yemen\n`VN`: Vietnam\n`UZ`: Uzbekistan\n`TW`: Taiwan, China\n`TM`: Turkmenistan\n`TJ`: Tajikistan\n`TH`: Thailand\n`SG`: Singapore\n`QA`: Qatar\n`PK`: Pakistan\n`PH`: Philippines\n`OM`: Oman\n`NP`: Nepal\n`MY`: Malaysia\n`MV`: Maldives\n`MO`: Macao, China\n`MN`: Mongolia\n`MM`: Myanmar\n`LB`: Lebanon\n`KW`: Kuwait\n`KR`: South Korea\n`KH`: Cambodia\n`JP`: Japan\n`JO`: Jordan\n`IR`: Iran\n`IQ`: Iraq\n`IN`: India\n`IL`: Israel\n`ID`: Indonesia\n`CN`: China\n`BT`: Bhutan\n`BH`: Bahrain\n`AF`: Afghanistan\n`LY`: Libya\n`CD`: Democratic Republic of the Congo\n`RE`: La Réunion\n`SZ`: Swaziland\n`ZW`: Zimbabwe\n`ZM`: Zambia\n`YT`: Mayotte\n`UG`: Uganda\n`TZ`: Tanzania\n`TN`: Tunisia\n`TG`: Togo\n`TD`: Chad\n`SO`: Somalia\n`SN`: Senegal\n`SD`: Sudan\n`SC`: Seychelles\n`RW`: Rwanda\n`NG`: Nigeria\n`NE`: Niger\n`NA`: Namibia\n`MZ`: Mozambique\n`MW`: Malawi\n`MU`: Mauritius\n`MR`: Mauritania\n`ML`: Mali\n`MG`: Madagascar\n`MA`: Morocco\n`LS`: Lesotho\n`LR`: Liberia\n`KM`: Comoros\n`KE`: Kenya\n`GN`: Guinea\n`GM`: Gambia\n`GH`: Ghana\n`GA`: Gabon\n`ET`: Ethiopia\n`ER`: Eritrea\n`EG`: Egypt\n`DZ`: Algeria\n`DJ`: Djibouti\n`CM`: Cameroon\n`CG`: Republic of the Congo\n`BW`: Botswana\n`BJ`: Benin\n`BI`: Burundi\n`AO`: Angola\n\nWhen MatchKey is `ipArea`, valid values include:\n`OTHER`: Other areas\n`AS`: Asia\n`EU`: Europe\n`AN`: Antarctica\n`AF`: Africa\n`OC`: Oceania\n`NA`: North America\n`SA`: South America\n\nWhen MatchKey is `index`,\nvalid value is `/;/index.html`.",
           "example": "无",
           "member": "string",
           "name": "MatchValue",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -1689,6 +1699,7 @@
           "example": "无",
           "member": "bool",
           "name": "CaseSensitive",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": false
@@ -1699,6 +1710,7 @@
           "example": "无",
           "member": "string",
           "name": "MatchKeyParam",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -1711,8 +1723,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Hotlink protection configuration switch\n`on`: Enable\n`off`: Disable\nWhen this is enabled, one mode needs to be configured. Other modes need to be set to null.",
-          "example": "",
+          "document": "Whether to enable hot linking protection. Values:\n`on`: Enable\n`off`: Disable\nOnly one advanced configuration can be enabled. Set the rests to `null`.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -1721,8 +1733,18 @@
         },
         {
           "disabled": false,
+          "document": "Authentication algorithm. Values:\n`md5`: Calculate the hash using MD5.\n`sha256`: Calculate the hash using SHA-256.\nDefault value: `md5`.\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
+          "example": "md5",
+          "member": "string",
+          "name": "AuthAlgorithm",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
           "document": "Timestamp hotlink protection mode A configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AuthenticationTypeA",
           "name": "TypeA",
           "required": false,
@@ -1732,7 +1754,7 @@
         {
           "disabled": false,
           "document": "Timestamp hotlink protection mode B configuration (mode B is being upgraded and is currently not supported)\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AuthenticationTypeB",
           "name": "TypeB",
           "required": false,
@@ -1742,7 +1764,7 @@
         {
           "disabled": false,
           "document": "Timestamp hotlink protection mode C configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AuthenticationTypeC",
           "name": "TypeC",
           "required": false,
@@ -1752,7 +1774,7 @@
         {
           "disabled": false,
           "document": "Timestamp hotlink protection mode D configuration\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AuthenticationTypeD",
           "name": "TypeD",
           "required": false,
@@ -2041,7 +2063,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Switch. Valid values: `on`, `off`.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "Whether to enable `AvifAdapter` for image optimization. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
           "example": "on/off",
           "member": "string",
           "name": "Switch",
@@ -2057,7 +2079,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Switch, which can be set to on or off.",
+          "document": "Whether to enable origin-pull authentication for S3 buckets.\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -2113,7 +2135,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies whether to enable the bandwidth cap\n`on`: Enable\n`off`: Disable",
+          "document": "Whether to enable usage limit. Values:\n`on`: Enable\n`off`: Disable",
           "example": "off",
           "member": "string",
           "name": "Switch",
@@ -2153,7 +2175,7 @@
         },
         {
           "disabled": false,
-          "document": "Indicates whether to trigger alerts when the upper limit is reached\n`on`: Enable\n`off`: Disable\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether to enable alerts for usage limit. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "off",
           "member": "string",
           "name": "AlertSwitch",
@@ -2209,8 +2231,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Valid values: `on` and `off`.",
-          "example": "",
+          "document": "Whether to enable bot cookie policies. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -2220,7 +2242,7 @@
         {
           "disabled": false,
           "document": "Rule type, which can only be `all` currently.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "RuleType",
           "required": true,
@@ -2230,7 +2252,7 @@
         {
           "disabled": false,
           "document": "Rule value. Valid value: `*`.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "RuleValue",
           "required": true,
@@ -2240,7 +2262,7 @@
         {
           "disabled": false,
           "document": "Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Action",
           "required": true,
@@ -2250,7 +2272,7 @@
         {
           "disabled": false,
           "document": "Redirection target page\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "RedirectUrl",
           "required": false,
@@ -2260,7 +2282,7 @@
         {
           "disabled": false,
           "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "datetime",
           "name": "UpdateTime",
           "required": false,
@@ -2275,8 +2297,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Valid values: `on` and `off`.",
-          "example": "",
+          "document": "Whether to enable bot JS policies. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -2286,7 +2308,7 @@
         {
           "disabled": false,
           "document": "Rule type, which can only be `file` currently.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "RuleType",
           "required": true,
@@ -2296,7 +2318,7 @@
         {
           "disabled": false,
           "document": "Rule value. Valid values: `html` and `htm`.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "RuleValue",
           "required": true,
@@ -2306,7 +2328,7 @@
         {
           "disabled": false,
           "document": "Action. Valid values: `monitor`, `intercept`, `redirect`, and `captcha`.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Action",
           "required": true,
@@ -2316,7 +2338,7 @@
         {
           "disabled": false,
           "document": "Redirection target page\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "RedirectUrl",
           "required": false,
@@ -2326,7 +2348,7 @@
         {
           "disabled": false,
           "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "datetime",
           "name": "UpdateTime",
           "required": false,
@@ -2533,23 +2555,25 @@
       "members": [
         {
           "disabled": false,
-          "document": "`on`: Enable\n`off`: Disable",
+          "document": "Whether to enable heuristic cache validity. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
           "example": "on",
           "member": "string",
           "name": "HeuristicCacheTimeSwitch",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Unit: Second",
+          "document": "Unit: Second\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
           "example": "10",
           "member": "int64",
           "name": "HeuristicCacheTime",
+          "output_required": false,
           "required": true,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -2559,7 +2583,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cache configuration switch\non: enable\noff: disable\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Whether to enable path cache. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -2615,7 +2639,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Follow origin server switch configuration\n`on`: Enable\n`off`: Disable",
+          "document": "Whether to follow the origin configuration for path cache. Values:\n`on`: Enable\n`off`: Disable",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -2641,8 +2665,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "No-cache configuration switch\n`on`: Enable\n`off`: Disable\nNote: this field may return null, indicating that no valid value is obtained.",
-          "example": "",
+          "document": "Whether to enable no-caching at the path. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -2652,7 +2676,7 @@
         {
           "disabled": false,
           "document": "Always forwards to the origin server for verification\n`on`: Enable\n`off`: Disable\nIt is disabled by default.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Revalidate",
           "required": true,
@@ -2779,8 +2803,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to use `CacheTag` as part of `CacheKey`\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to include `CacheTag` as part of `CacheKey`. Values:\n`on`: Yes\n`off`: No\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -2790,7 +2814,7 @@
         {
           "disabled": false,
           "document": "Value of custom `CacheTag`\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Value",
           "required": false,
@@ -3133,8 +3157,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Smart compression configuration switch\n`on`: Enable\n`off`: Disable",
-          "example": "",
+          "document": "Whether to enable smart compression. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -3144,7 +3168,7 @@
         {
           "disabled": false,
           "document": "Compression rules array\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "CompressionRule",
           "name": "CompressionRules",
           "required": false,
@@ -3235,8 +3259,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to use `Cookie` as part of `CacheKey`. Valid values: on, off\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to include Cookie as part of CacheKey. Values:\n`on`: Yes\n`off`: No\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -3246,7 +3270,7 @@
         {
           "disabled": false,
           "document": "Used cookies (separated by ';')\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Value",
           "required": false,
@@ -4483,7 +4507,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies a service region.\n`mainland`: queries billing methods within Mainland China;\n`overseas`: queries billing methods outside Mainland China.\nDefault value: `mainland`.",
+          "document": "Specifies the service area.\n`mainland`: Queries billing methods available in the Chinese mainland.\n`overseas`: Queries billing methods available in the regions outside the Chinese mainland.\n`Global`: Queries billing methods available across the globe.\nIf it is not specified, it defaults to `mainland`.",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -4498,6 +4522,15 @@
           "name": "Product",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies resources.\n`flux`: Traffic package\n`https`: HTTPS requests\nIt defaults to `flux` if not specified. ",
+          "example": "https",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4507,51 +4540,46 @@
       "members": [
         {
           "disabled": false,
-          "document": "Billing modes:\n`flux`: Bill by traffic\n`bandwidth`: Bill by bandwidth\n`request`: Bill by the number of requests\n`flux_sep`: Disused field\n`bandwidth_sep`: Disused field\nWhen you change a daily billing mode to another, and there is network usage on the day of change, this field shows the new billing mode, which takes effect from the next day. If there is no network usage on the day of change, this field shows the new billing mode directly.",
+          "document": "Billing type\n`flux`: Bill by traffic\n`bandwidth`: Bill by bandwidth\n`request`: Bill by the number of requests\n`flux_sep`: Bill by dynamic and static traffic separately \n`bandwidth_sep`: Bill by dynamic and static bandwidth separately\nIf you incur any usage when switching the billing mode, the new mode will take effect the next day. If no usage is incurred, the new mode takes effect immediately.",
           "example": "flux",
           "member": "string",
           "name": "PayType",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Billing cycle:\n`day`: Daily\n`month`: Monthly \n`hour`: Hourly ",
+          "document": "Billing cycle\n`day`: Daily\n`month`: Monthly\n`hour`: Hourly",
           "example": "day",
           "member": "string",
           "name": "BillingCycle",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "`monthMax`: Billed by the monthly average of daily peak traffic (monthly settlement)\n`day95`: Billed by the daily 95th percentile bandwidth (monthly settlement)\n`month95`: Billed by the monthly 95th percentile bandwidth (monthly settlement)\n`sum`: Billed by the total traffic/total requests (daily or monthly settlement)\n`max`: Billed by the peak bandwidth (daily settlement)",
+          "document": "Statistic data\n`monthMax`: Billed monthly based on the monthly average daily peak traffic\n`day95`: Billed monthly based on the daily 95th percentile bandwidth\n`month95`: Billed monthly based on the monthly 95th percentile bandwidth\n`sum`: Billed daily/monthly based on the total traffic or requests\n`max`: Billed daily based on the peak bandwidth",
           "example": "sum",
           "member": "string",
           "name": "StatType",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Billing method for regions outside the Chinese mainland:\n`all`: Unified billing for all regions\n`multiple`: Region-specific billing",
+          "document": "Regionl billing\n`all`: Unified billing for all regions\n`multiple`: Region-specific billing",
           "example": "all",
           "member": "string",
           "name": "RegionType",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The current billing mode in effect:\n`flux`: Billed by traffic\n`bandwidth`: Billed by bandwidth\n`request`: Billed by the number of requests\n`flux_sep`: Disused field\n`bandwidth_sep`: Disused field",
+          "document": "Current billing mode\n`flux`: Bill by traffic\n`bandwidth`: Bill by bandwidth\n`request`: Bill by the number of requests\n`flux_sep`: Bill by dynamic and static traffic separately \n`bandwidth_sep`: Bill by dynamic and static bandwidth separately",
           "example": "flux",
           "member": "string",
           "name": "CurrentPayType",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4806,7 +4834,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies a region for your query:\n`mainland`: Chinese mainland\n`overseas`: Outside the Chinese mainland\n`global`: Globe",
+          "document": "Specifies a region to query the prefetch records\n`mainland`: Chinese mainland\n`overseas`: Outside the Chinese mainland\n`global`: Globe",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -5812,13 +5840,12 @@
       "members": [
         {
           "disabled": false,
-          "document": "Filters by the field name, which includes:\n- `origin`: Primary origin server.\n- `domain`: Domain name.\n- `resourceId`: Domain name ID.\n- `status`: Domain name status. Valid values: `online`, `offline`, and `processing`.\n- `serviceType`: Service type. Valid values: `web`, `download`, `media`, `hybrid` and `dynamic`.\n- `projectId`: Project ID.\n- `domainType`: Primary origin server type. Valid values: `cname` (customer origin), `COS` (COS origin), and `third_party` (third-party object storage origin).\n- `fullUrlCache`: Whether to enable full-path cache, which can be `on` or `off`.\n- `https`: Whether to configure HTTPS, which can be `on`, `off` or `processing`.\n- `originPullProtocol`: Origin-pull protocol type, which can be `http`, `follow`, or `https`.\n- `tagKey`: Tag key.",
+          "document": "Filter filter. Values:\n- `origin`: Primary origin server.\n- `domain`: Domain name.\n- `resourceId`: Domain name ID.\n- `status`: Domain name status. Values: `online`, `offline`, and `processing`.\n- `serviceType`: Service type. Values: `web`, `download`, `media`, `hybrid` and `dynamic`.\n- `projectId`: Project ID.\n- `domainType`: Primary origin type. Values: `cname` (customer origin), `COS` (COS origin), `third_party` (third-party object storage origin), and `igtm` (IGTM origin).\n- `fullUrlCache`: Whether to enable path cache. Values: `on`, `off`.\n- `https`: Whether to configure HTTPS. Values: `on`, `off` and `processing`.\n- `originPullProtocol`: Origin-pull protocol type. Value: `http`, `follow`, and `https`.\n- `tagKey`: Tag key.",
           "example": "domainType",
           "member": "string",
           "name": "Name",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -5827,8 +5854,7 @@
           "member": "string",
           "name": "Value",
           "required": true,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
@@ -5837,8 +5863,7 @@
           "member": "bool",
           "name": "Fuzzy",
           "required": false,
-          "type": "bool",
-          "value_allowed_null": false
+          "type": "bool"
         }
       ],
       "usage": "in"
@@ -5849,7 +5874,7 @@
         {
           "disabled": false,
           "document": "Starting time of the log package",
-          "example": "",
+          "example": "无",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -5859,7 +5884,7 @@
         {
           "disabled": false,
           "document": "End time of the log package",
-          "example": "",
+          "example": "无",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -5869,7 +5894,7 @@
         {
           "disabled": false,
           "document": "Log package download link",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "LogPath",
           "required": true,
@@ -5879,7 +5904,7 @@
         {
           "disabled": false,
           "document": "Acceleration region corresponding to the log package\n`mainland`: Within the Chinese mainland\n`overseas`: Outside the Chinese mainland",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Area",
           "required": true,
@@ -5889,12 +5914,22 @@
         {
           "disabled": false,
           "document": "Log package filename",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "LogName",
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File size, in bytes.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "FileSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -5904,8 +5939,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Downstream speed configuration switch\n`on`: Enable\n`off`: Disable",
-          "example": "",
+          "document": "Whether to enable downstream speed limit. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -5915,7 +5950,7 @@
         {
           "disabled": false,
           "document": "Downstream speed limiting rules\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "CappingRule",
           "name": "CappingRules",
           "required": false,
@@ -6031,7 +6066,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Status code redirect configuration switch\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Whether to enable status code-based redirection. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "off",
           "member": "string",
           "name": "Switch",
@@ -6119,7 +6154,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Origin-pull follow-redirect switch\n`on`: Enable\n`off`: Disable",
+          "document": "Whether to enable origin-pull to follow the origin configuration. Values:\n`on`: Enable\n`off`: Disable",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -6145,8 +6180,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Access forced redirect configuration switch\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to enable forced HTTPS redirects. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -6156,7 +6191,7 @@
         {
           "disabled": false,
           "document": "Access forced redirect types\nhttp: forced HTTP redirect\nhttps: forced HTTPS redirect\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "RedirectType",
           "required": false,
@@ -6166,7 +6201,7 @@
         {
           "disabled": false,
           "document": "Status code returned for forced redirect \nSupports 301, 302.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "RedirectStatusCode",
           "required": false,
@@ -6176,7 +6211,7 @@
         {
           "disabled": false,
           "document": "Whether to return the newly added header during force redirection\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "CarryHeaders",
           "required": false,
@@ -6292,8 +6327,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Switch. Valid values: on, off\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to enable AvifAdapter for image optimization. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -6334,8 +6369,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to use it as part of `CacheKey`\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to enable Cachekey control. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -6345,7 +6380,7 @@
         {
           "disabled": false,
           "document": "Array of headers that make up the `CacheKey` (separated by ';')\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Value",
           "required": false,
@@ -6360,23 +6395,25 @@
       "members": [
         {
           "disabled": false,
-          "document": "`on`: Enable\n`off`: Disable",
+          "document": "Whether to enable heuristic caching. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
           "example": "on",
           "member": "string",
           "name": "Switch",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Heuristic cache validity configuration",
+          "document": "Heuristic cache validity configuration\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CacheConfig",
           "name": "CacheConfig",
+          "output_required": false,
           "required": false,
           "type": "object",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -6386,8 +6423,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable. Valid values: on, off.",
-          "example": "",
+          "document": "Whether to enable HSTS. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -6397,7 +6434,7 @@
         {
           "disabled": false,
           "document": "`MaxAge` value.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "MaxAge",
           "required": false,
@@ -6407,7 +6444,7 @@
         {
           "disabled": false,
           "document": "Whether to include subdomain names. Valid values: on, off.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "IncludeSubDomains",
           "required": false,
@@ -6514,10 +6551,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "HTTPS configuration switch\n`on`: Enable\n`off`: Disable\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether to enable HTTPS. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "on",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -6528,6 +6566,7 @@
           "example": "rewrew",
           "member": "string",
           "name": "Http2",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6538,6 +6577,7 @@
           "example": "123456",
           "member": "string",
           "name": "OcspStapling",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6548,6 +6588,7 @@
           "example": "dsadsa",
           "member": "string",
           "name": "VerifyClient",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6558,6 +6599,7 @@
           "example": "无",
           "member": "ServerCert",
           "name": "CertInfo",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -6568,6 +6610,7 @@
           "example": "无",
           "member": "ClientCert",
           "name": "ClientCertInfo",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -6578,6 +6621,7 @@
           "example": "dfdf",
           "member": "string",
           "name": "Spdy",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6588,6 +6632,7 @@
           "example": "closed",
           "member": "string",
           "name": "SslStatus",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6598,6 +6643,7 @@
           "example": "无",
           "member": "Hsts",
           "name": "Hsts",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -6608,6 +6654,7 @@
           "example": "[\"TLSv1\"]",
           "member": "string",
           "name": "TlsVersion",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -6620,7 +6667,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "HTTPS (enabled by default), which will incur charges.",
+          "document": "Whether to enable HTTPS. Values:\n`on`: When it's enabled, HTTPS requests are allowed and incur charges. If not specified, his field uses the default value `on`.\n`off`: When it's disabled, HTTPS requests are blocked.\n",
           "example": "on/off",
           "member": "string",
           "name": "Switch",
@@ -6632,11 +6679,11 @@
       "usage": "both"
     },
     "HwPrivateAccess": {
-      "document": " Access authentication for Huawei Cloud OBS origin",
+      "document": "Origin-pull authentication for Huawei Cloud OBS origin",
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable access authentication. Valid values: `on`, `off`.",
+          "document": " Whether to enable origin-pull authentication for Huawei Cloud OBS origin. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -6728,7 +6775,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "IP blocklist/allowlist configuration switch\n`on`: Enable\n`off`: Disable",
+          "document": "Whether to enable IP blocklist/allowlist. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -6826,12 +6873,12 @@
       "usage": "both"
     },
     "IpFreqLimit": {
-      "document": "Access limit configuration for a single IP of a single node. This is disabled by default. ",
+      "document": "Access limit configuration for a single IP of a single node. This is disabled by default.",
       "members": [
         {
           "disabled": false,
-          "document": "IP access limit configuration switch\n`on`: Enable\n`off`: Disable",
-          "example": "",
+          "document": "Whether to enable IP rate limit. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -6841,7 +6888,7 @@
         {
           "disabled": false,
           "document": "Sets the limited number of requests per second\n514 will be returned for requests that exceed the limit\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Qps",
           "required": false,
@@ -6908,12 +6955,12 @@
       "usage": "out"
     },
     "Ipv6": {
-      "document": "IPv6 activation configurations, which cannot be changed.",
+      "document": "IPv6 origin configuration (changes not allowed).",
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable the IPv6 feature for a domain name. Values include `on` or `off`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to enable an IPv6 address for the origin server. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -6928,8 +6975,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable the IPv6 feature for a domain name. Values include `on` or `off`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to enable IPv6 access. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -7182,7 +7229,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Query start time in the format of `yyyy-MM-dd HH:mm:ss`\nOnly supports data query at daily granularity. The date in the input parameter is used as the start date.\nIf the specified start date is greater than 00:00:00, it will be rounded down to 00:00:00 on the date. For example, if `StartTime` is 2018-09-04 10:40:00, it will be rounded down to 2018-09-04 00:00:00.\nOnly data from the last 90 days will be queried.",
+          "document": "Query start time in the format of `yyyy-MM-dd HH:mm:ss`\nOnly data queries at the granularity of minutes are supported. The start time is truncated to minutes. For example, if the value of `StartTime` is 2018-09-04 10:40:23, the start time of the data returned is 2018-09-04 10:40:00.\nOnly data for the last 90 days can be queried.",
           "example": "2021-01-01 00:00:00",
           "member": "datetime",
           "name": "StartTime",
@@ -7191,7 +7238,7 @@
         },
         {
           "disabled": false,
-          "document": "Query end time in the format of `yyyy-MM-dd HH:mm:ss`\nOnly supports data query at daily granularity. The date in the input parameter is used as the end date.\nIf the specified end date is smaller than 23:59:59, it will be rounded up to 23:59:59 on the date. For example, if `EndTime` is 2018-09-05 22:40:00, it will be rounded up to 2018-09-05 23:59:59.\n`EndTime` must be later than or equal to `StartTime`",
+          "document": "Query end time in the format of `yyyy-MM-dd HH:mm:ss`\nOnly data queries at the granularity of days are supported. Take the day in the input parameter as the end date, and the data generated on or before 23:59:59 on the end date is returned. For example, if the value of `EndTime` is 2018-09-05 22:40:00, the end time of the data returned is 2018-09-05 23:59:59.\n`EndTime` must be later than or equal to `StartTime`.",
           "example": "2021-01-01 23:59:59",
           "member": "datetime",
           "name": "EndTime",
@@ -7420,7 +7467,7 @@
       "usage": "out"
     },
     "MainlandConfig": {
-      "document": "Specific configuration for domain names in the mainland China by region. UpdateDomainConfig API only supports modification of certain region configurations. A list of differences that may exist for older configurations will be provided for a compatibility check. The supported configuration list is as follows:\n+ Authentication\n+ BandwidthAlert\n+ ErrorPage\n+ IpFilter\n+ Origin\n+ Referer",
+      "document": "Specific configuration for domain names in the Chinese mainland. Specific configuration by region. The `UpdateDomainConfig` API only supports modification of some region configurations. A list of differences that may exist for older configurations will be provided for a compatibility check. The supported configuration list is as follows:\n+ Authentication\n+ BandwidthAlert\n+ ErrorPage\n+ IpFilter\n+ Origin\n+ Referer",
       "members": [
         {
           "disabled": false,
@@ -7428,6 +7475,7 @@
           "example": "无",
           "member": "Authentication",
           "name": "Authentication",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7438,6 +7486,7 @@
           "example": "无",
           "member": "BandwidthAlert",
           "name": "BandwidthAlert",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7448,6 +7497,7 @@
           "example": "无",
           "member": "Cache",
           "name": "Cache",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7458,6 +7508,7 @@
           "example": "无",
           "member": "CacheKey",
           "name": "CacheKey",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7468,6 +7519,7 @@
           "example": "无",
           "member": "Compression",
           "name": "Compression",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7478,6 +7530,7 @@
           "example": "无",
           "member": "DownstreamCapping",
           "name": "DownstreamCapping",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7488,6 +7541,7 @@
           "example": "无",
           "member": "ErrorPage",
           "name": "ErrorPage",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7498,6 +7552,7 @@
           "example": "无",
           "member": "FollowRedirect",
           "name": "FollowRedirect",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7508,6 +7563,7 @@
           "example": "无",
           "member": "ForceRedirect",
           "name": "ForceRedirect",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7518,6 +7574,7 @@
           "example": "无",
           "member": "Https",
           "name": "Https",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7528,6 +7585,7 @@
           "example": "无",
           "member": "IpFilter",
           "name": "IpFilter",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7538,6 +7596,7 @@
           "example": "无",
           "member": "IpFreqLimit",
           "name": "IpFreqLimit",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7548,6 +7607,7 @@
           "example": "无",
           "member": "MaxAge",
           "name": "MaxAge",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7558,6 +7618,7 @@
           "example": "无",
           "member": "Origin",
           "name": "Origin",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7568,6 +7629,7 @@
           "example": "无",
           "member": "OriginPullOptimization",
           "name": "OriginPullOptimization",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7578,6 +7640,7 @@
           "example": "无",
           "member": "RangeOriginPull",
           "name": "RangeOriginPull",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7588,6 +7651,7 @@
           "example": "无",
           "member": "Referer",
           "name": "Referer",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7598,6 +7662,7 @@
           "example": "无",
           "member": "RequestHeader",
           "name": "RequestHeader",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7608,6 +7673,7 @@
           "example": "无",
           "member": "ResponseHeader",
           "name": "ResponseHeader",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7618,6 +7684,7 @@
           "example": "无",
           "member": "ResponseHeaderCache",
           "name": "ResponseHeaderCache",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7628,6 +7695,7 @@
           "example": "无",
           "member": "Seo",
           "name": "Seo",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7638,6 +7706,7 @@
           "example": "无",
           "member": "string",
           "name": "ServiceType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -7648,6 +7717,7 @@
           "example": "无",
           "member": "StatusCodeCache",
           "name": "StatusCodeCache",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7658,6 +7728,7 @@
           "example": "无",
           "member": "VideoSeek",
           "name": "VideoSeek",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7668,6 +7739,7 @@
           "example": "无",
           "member": "AwsPrivateAccess",
           "name": "AwsPrivateAccess",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7678,6 +7750,7 @@
           "example": "无",
           "member": "OssPrivateAccess",
           "name": "OssPrivateAccess",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7688,6 +7761,7 @@
           "example": "无",
           "member": "HwPrivateAccess",
           "name": "HwPrivateAccess",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7698,6 +7772,7 @@
           "example": "无",
           "member": "QnPrivateAccess",
           "name": "QnPrivateAccess",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -7790,7 +7865,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Browser cache configuration switch\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Whether to enable browser caching. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "off",
           "member": "string",
           "name": "Switch",
@@ -7893,13 +7968,58 @@
       ],
       "usage": "both"
     },
+    "ModifyDomainConfigRequest": {
+      "document": "ModifyDomainConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The domain name.",
+          "example": "www.test.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Name of the configuration parameter.",
+          "example": "Https.CertInfo.CertId",
+          "member": "string",
+          "name": "Route",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Value of the configuration parameter. This field is serialized to a JSON string {key:value}, where **key** is fixed to `update`.",
+          "example": "{\\\"update\\\":\\\"0VpOXiPz\\\"}",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDomainConfigResponse": {
+      "document": "ModifyDomainConfig response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "OfflineCache": {
       "document": "Offline cache feature status switch.",
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable offline cache. Valid values: `on` and `off`.",
-          "example": "",
+          "document": "Whether to enable offline caching. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -7910,34 +8030,37 @@
       "usage": "both"
     },
     "Origin": {
-      "document": "Complex origin server configurations. The following configurations are supported:\n+ Origin server specified as a single domain name\n+ Origin server specified as multiple IPs. Supported port range: 1-65535; Supported weight range: 1-100. Format: IP:Port:Weight.\n+ Origin-pull domain name configuration\n+ Cloud Object Storage (COS) specified as origin server\n+ Hot backup origin server specified as a single domain name\n+ Hot backup origin server specified as multiple IPs. Supported port range: 1-65535. At present, weight configuration is not supported.\n+ Hot backup origin server origin-pull domain name configuration",
+      "document": "Complex origin server configurations. The following configurations are supported:\n+ Origin server specified as a single domain name\n+ Origin server specified as multiple IPs. Supported port range: 1-65535; Supported weight range: 1-100. Format: IP:Port:Weight.\n+ Origin-pull domain name configuration\n+ Cloud Object Storage (COS) specified as origin server\n+ Hot backup origin server specified as a single domain name\n+ Hot backup origin server specified as multiple IPs. Supported port range: 1-65535. Weight configuration is not supported.\n+ Hot backup origin server origin-pull domain name configuration",
       "members": [
         {
           "disabled": false,
-          "document": "Primary origin server list\nWhen modifying the origin server, you need to enter the corresponding OriginType.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "List of primary origin servers\n<font color=red>When modifying the origins, you need to specify `OriginType`.</font>\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[\"1.1.1.1\"]",
           "member": "string",
           "name": "Origins",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Primary origin server type\nThe following types are supported for input parameters:\n`domain`: domain name\n`domainv6`: IPv6 domain name\ncos: COS origin\n`ip`: IP address\nipv6: origin server list is a single IPv6 address\n`ip_ipv6`: multiple IPv4 addresses and one IPv6 address\n`ip_domain`: IP addresses and domain names (only available to beta users)\n`ip_domainv6`: Multiple IPv4 addresses and one IPv6 domain name\n`ipv6_domain`: multiple IPv6 addresses and one domain name\n`ipv6_domainv6`: Multiple IPv6 addresses and one IPv6 domain name\n`domain_domainv6`: Multiple IPv4 domain names and one IPv6 domain name\n`ip_ipv6_domain`: multiple IPv4 and IPv6 addresses and one domain name\n`ip_ipv6_domainv6`: Multiple IPv4 and IPv6 addresses and one IPv6 domain name\n`ip_domain_domainv6`: Multiple IPv4 addresses and IPv4 domain names and one IPv6 domain name\n`ipv6_domain_domainv6`: Multiple IPv4 domain names and IPv6 addresses and one IPv6 domain name\n`ip_ipv6_domain_domainv6`: Multiple IPv4 and IPv6 addresses and IPv4 domain names and one IPv6 domain name\nThe following types of output parameters are added:\nimage: Cloud Infinite origin\nftp: legacy FTP origin, which is no longer maintained.\nWhen modifying `Origins`, you need to enter the corresponding OriginType.\nThe IPv6 feature is not generally available yet. Please send in a whitelist application to use this feature.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Primary origin server type\n<font color=red>This field is used together with `Origins`.</font>\nInput:\n`domain`: Domain name\n`domainv6`: IPv6 domain name\n`cos`: COS bucket address\n`third_party`: Third-party object storage origin\n`igtm`: IGTM origin\n`ip`: IP address\n`ipv6`: One IPv6 address\n`ip_ipv6`: Multiple IPv4 addresses and one IPv6 address\n`ip_domain`: IP addresses and domain names (only available to beta users)\n`ip_domainv6`: Multiple IPv4 addresses and one IPv6 domain name\n`ipv6_domain`: Multiple IPv6 addresses and one domain name\n`ipv6_domainv6`: Multiple IPv6 addresses and one IPv6 domain name\n`domain_domainv6`: Multiple IPv4 domain names and one IPv6 domain name\n`ip_ipv6_domain`: Multiple IPv4 and IPv6 addresses and one domain name\n`ip_ipv6_domainv6`: Multiple IPv4 and IPv6 addresses and one IPv6 domain name\n`ip_domain_domainv6`: Multiple IPv4 addresses and IPv4 domain names and one IPv6 domain name\n`ipv6_domain_domainv6`: Multiple IPv4 domain names and IPv6 addresses and one IPv6 domain name\n`ip_ipv6_domain_domainv6`: Multiple IPv4 and IPv6 addresses and IPv4 domain names and one IPv6 domain name\nOutput:\n`image`: Cloud Infinite origin\n`ftp`: FTP origin (disused)\nWhen modifying `Origins`, you need to specify `OriginType`.\nThe IPv6 feature is now only available to beta users. Submit a ticket if you need it.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "ip",
           "member": "string",
           "name": "OriginType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "It is required when a COS origin or third-party origin is used for acceleration.\nHost header used when accessing the primary origin server. If it is left empty, the acceleration domain name will be used by default.\nIf a wildcard domain name is accessed, then the sub-domain name during the access will be used by default.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Origin-pull host header.\n<font color=red>This field is required when `OriginType=cos/third-party`.</font>\nIf not specified, this field defaults to the acceleration domain name.\nFor a wildcard domain name, the sub-domain name during the access is used by default.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "www.test.com",
           "member": "string",
           "name": "ServerName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -7948,6 +8071,7 @@
           "example": "off",
           "member": "string",
           "name": "CosPrivateAccess",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -7958,26 +8082,29 @@
           "example": "http",
           "member": "string",
           "name": "OriginPullProtocol",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Backup origin server list\nWhen modifying the backup origin server, you need to enter the corresponding BackupOriginType.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "List of secondary origin servers\n<font color=red>This field is used together with `BackupOriginType`.</font>\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "[\"2.2.2.2\"]",
           "member": "string",
           "name": "BackupOrigins",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Backup origin server type, which supports the following types:\n`domain`: Domain name\n`ip`: IP address\nWhen modifying BackupOrigins, you need to enter the corresponding BackupOriginType.\nThe following backup origin servers are only available to beta users. Submit an application if you want to become a beta user.\n`ipv6_domain`: Multiple IPv6 addresses and one domain name\n`ip_ipv6`: Multiple IPv4 addresses and one IPv6 address\n`ipv6_domain`: Multiple IPv6 addresses and one domain name\n`ip_ipv6_domain`: Multiple IPv4 and IPv6 addresses and one domain name\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Secondary origin type\n<font color=red>This field is used together with `BackupOrigins`.</font>\nValues:\n`domain`: Domain name\n`ip`: IP address\nThe following secondary origin types are only available to beta users. Submit a ticket to use it.\n`ipv6_domain`: Multiple IPv6 addresses and one domain name\n`ip_ipv6`: Multiple IPv4 addresses and one IPv6 address\n`ipv6_domain`: Multiple IPv6 addresses and one domain name\n`ip_ipv6_domain`: Multiple IPv4 and IPv6 addresses and one domain name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "ip",
           "member": "string",
           "name": "BackupOriginType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -7988,6 +8115,7 @@
           "example": "www.test2.com",
           "member": "string",
           "name": "BackupServerName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -7998,6 +8126,7 @@
           "example": "/",
           "member": "string",
           "name": "BasePath",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -8008,6 +8137,7 @@
           "example": "[]",
           "member": "PathRule",
           "name": "PathRules",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -8018,8 +8148,20 @@
           "example": "[]",
           "member": "PathBasedOriginRule",
           "name": "PathBasedOrigin",
+          "output_required": true,
           "required": false,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "HTTPS origin-pull SNI\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "{\"Switch\":\"on\",\"ServerName\":\"abc.com\"}",
+          "member": "OriginSni",
+          "name": "Sni",
+          "output_required": true,
+          "required": false,
+          "type": "object",
           "value_allowed_null": true
         },
         {
@@ -8028,16 +8170,18 @@
           "example": "null",
           "member": "AdvanceHttps",
           "name": "AdvanceHttps",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Object storage vendor\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Third-party object storage service vendor\n<font color=red>This field is required when `OriginType=third-party`.</font>\nValues:\n`aws_s3`: AWS S3\n`ali_oss`: Alibaba Cloud OSS\n`hw_obs`: Huawei Cloud OBS\n`Qiniu_kodo`: Qiniu Kodo\n`Others`: Other object storage service vendors. Only AWS signature-compatible object storage services are supported, such as Tencent Cloud COS for Finance Zone.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "hw-oss",
           "member": "string",
           "name": "OriginCompany",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -8050,8 +8194,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Authentication switch, which can be on or off.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "document": "Whether to enable advanced origin-pull authentication. Values:\n`on`: Enable\n`off`: Disable\n\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -8061,7 +8205,7 @@
         {
           "disabled": false,
           "document": "Authentication type configuration A\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "OriginAuthenticationTypeA",
           "name": "TypeA",
           "required": false,
@@ -8092,8 +8236,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable the merging pull requests feature. Valid values: `on` and `off`.",
-          "example": "",
+          "document": "Whether to enable origin-pull merge. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -8124,7 +8268,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cross-border origin-pull optimization configuration switch\n`on`: Enable\n`off`: Disable",
+          "document": "Whether to enable cross-MLC-border origin-pull optimization. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -8171,12 +8315,38 @@
       ],
       "usage": "both"
     },
+    "OriginSni": {
+      "document": "HTTPS origin-pull SNI",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable HTTPS origin-pull SNI. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin-pull domain name.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "ServerName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "OssPrivateAccess": {
       "document": "Access authentication configuration for OSS origin ",
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable access authentication. Valid values: `on`, `off`.",
+          "document": "Whether to enable OSS origin-pull authentication. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -8232,7 +8402,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable access authentication. Valid values: `on`, `off`.",
+          "document": "Whether to enable origin-pull authentication for other object storage origins. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -8284,7 +8454,7 @@
       "usage": "both"
     },
     "OverseaConfig": {
-      "document": "Specific configuration for domain names outside mainland China. UpdateDomainConfig API only supports modification of some region configurations. A list of differences that may exist for older configurations will be provided for a compatibility check. The supported configuration list is as follows:\n+ Authentication\n+ BandwidthAlert\n+ ErrorPage\n+ IpFilter\n+ Origin\n+ Referer",
+      "document": "Specific configuration for domain names outside the Chinese mainland. The `UpdateDomainConfig` API only supports modification of some region configurations. A list of differences that may exist for older configurations will be provided for a compatibility check. The supported configuration list is as follows:\n+ Authentication\n+ BandwidthAlert\n+ ErrorPage\n+ IpFilter\n+ Origin\n+ Referer",
       "members": [
         {
           "disabled": false,
@@ -8292,6 +8462,7 @@
           "example": "无",
           "member": "Authentication",
           "name": "Authentication",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8302,6 +8473,7 @@
           "example": "无",
           "member": "BandwidthAlert",
           "name": "BandwidthAlert",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8312,6 +8484,7 @@
           "example": "无",
           "member": "Cache",
           "name": "Cache",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8322,6 +8495,7 @@
           "example": "无",
           "member": "CacheKey",
           "name": "CacheKey",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8332,6 +8506,7 @@
           "example": "无",
           "member": "Compression",
           "name": "Compression",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8342,6 +8517,7 @@
           "example": "无",
           "member": "DownstreamCapping",
           "name": "DownstreamCapping",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8352,6 +8528,7 @@
           "example": "无",
           "member": "ErrorPage",
           "name": "ErrorPage",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8362,6 +8539,7 @@
           "example": "无",
           "member": "FollowRedirect",
           "name": "FollowRedirect",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8372,6 +8550,7 @@
           "example": "无",
           "member": "ForceRedirect",
           "name": "ForceRedirect",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8382,6 +8561,7 @@
           "example": "无",
           "member": "Https",
           "name": "Https",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8392,6 +8572,7 @@
           "example": "无",
           "member": "IpFilter",
           "name": "IpFilter",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8402,6 +8583,7 @@
           "example": "无",
           "member": "IpFreqLimit",
           "name": "IpFreqLimit",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8412,6 +8594,7 @@
           "example": "无",
           "member": "MaxAge",
           "name": "MaxAge",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8422,6 +8605,7 @@
           "example": "无",
           "member": "Origin",
           "name": "Origin",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8432,6 +8616,7 @@
           "example": "无",
           "member": "OriginPullOptimization",
           "name": "OriginPullOptimization",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8442,6 +8627,7 @@
           "example": "无",
           "member": "RangeOriginPull",
           "name": "RangeOriginPull",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8452,6 +8638,7 @@
           "example": "无",
           "member": "Referer",
           "name": "Referer",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8462,6 +8649,7 @@
           "example": "无",
           "member": "RequestHeader",
           "name": "RequestHeader",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8472,6 +8660,7 @@
           "example": "无",
           "member": "ResponseHeader",
           "name": "ResponseHeader",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8482,6 +8671,7 @@
           "example": "无",
           "member": "ResponseHeaderCache",
           "name": "ResponseHeaderCache",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8492,6 +8682,7 @@
           "example": "无",
           "member": "Seo",
           "name": "Seo",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8502,6 +8693,7 @@
           "example": "无",
           "member": "string",
           "name": "ServiceType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -8512,6 +8704,7 @@
           "example": "无",
           "member": "StatusCodeCache",
           "name": "StatusCodeCache",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8522,6 +8715,7 @@
           "example": "无",
           "member": "VideoSeek",
           "name": "VideoSeek",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8532,6 +8726,7 @@
           "example": "无",
           "member": "AwsPrivateAccess",
           "name": "AwsPrivateAccess",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8542,6 +8737,7 @@
           "example": "无",
           "member": "OssPrivateAccess",
           "name": "OssPrivateAccess",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8552,6 +8748,7 @@
           "example": "无",
           "member": "HwPrivateAccess",
           "name": "HwPrivateAccess",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8562,6 +8759,7 @@
           "example": "无",
           "member": "QnPrivateAccess",
           "name": "QnPrivateAccess",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -8696,7 +8894,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Limit the size of POST requests. The default value is 32 MB.\noff: Disable\non: Enable",
+          "document": "Maximum size of the file uploaded for streaming via a POST request. Values:\n`on`: Enable. When enabled, it is set to 32 MB by default.\n`off`: Disable\n",
           "example": "on/off",
           "member": "string",
           "name": "Switch",
@@ -9081,7 +9279,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Switch. Valid values: `on`, `off`.",
+          "document": "Whether to enable origin-pull authentication for QiNiu Cloud Kodo. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -9117,7 +9315,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to use `QueryString` as part of `CacheKey`. Valid values: on, off\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Whether to include `QueryString` as part of `CacheKey`. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Switch",
@@ -9137,7 +9335,7 @@
         },
         {
           "disabled": false,
-          "document": "Includes/excludes query parameters. Valid values: `includeAll`, `excludeAll`, `includeCustom`, `excludeCustom`\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to include URL parameters. Values:\n`includeAll`: Include all parameters.\n`excludeAll`: Exclude all parameters.\n`includeCustom`: Include custom parameters.\n`excludeCustom`: Exclude custom parameters.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Action",
@@ -9163,7 +9361,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable QUIC",
+          "document": "Whether to enable QUIC. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on/off",
           "member": "string",
           "name": "Switch",
@@ -9225,7 +9423,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Range GETs configuration switch\n`on`: Enable\n`off`: Disable",
+          "document": "Whether to enable Range GETs. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -9251,7 +9449,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies whether Range GETs is enabled",
+          "document": "Whether to enable Range GETs. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -9287,7 +9485,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Configuration switch",
+          "document": "Whether to enable the custom origin-pull request to follow the host when a 302 code is returned. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -9323,8 +9521,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Referer blacklist/whitelist configuration switch\n`on`: Enable\n`off`: Disable",
-          "example": "",
+          "document": "Whether to enable referer blocklist/allowlist. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -9334,7 +9532,7 @@
         {
           "disabled": false,
           "document": "Referer blacklist/whitelist configuration rule\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "RefererRule",
           "name": "RefererRules",
           "required": false,
@@ -9353,6 +9551,7 @@
           "example": "all",
           "member": "string",
           "name": "RuleType",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9363,6 +9562,7 @@
           "example": "*",
           "member": "string",
           "name": "RulePaths",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -9373,6 +9573,7 @@
           "example": "whitelist",
           "member": "string",
           "name": "RefererType",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9383,6 +9584,7 @@
           "example": "qq.com",
           "member": "string",
           "name": "Referers",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -9393,6 +9595,7 @@
           "example": "true",
           "member": "bool",
           "name": "AllowEmpty",
+          "output_required": true,
           "required": true,
           "type": "bool",
           "value_allowed_null": false
@@ -9431,7 +9634,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Remote authentication switch\n`on`: enable\n`off`: disable\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether to enable remote authentication. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -9599,8 +9802,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Custom request header configuration switch\n`on`: Enable\n`off`: Disable",
-          "example": "",
+          "document": "Whether to enable custom request headers. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -9610,7 +9813,7 @@
         {
           "disabled": false,
           "document": "Custom request header configuration rules\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "HttpHeaderPathRule",
           "name": "HeaderRules",
           "required": false,
@@ -9703,8 +9906,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Custom response header switch\n`on`: Enable\n`off`: Disable",
-          "example": "",
+          "document": "Whether to enable custom response headers. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -9714,7 +9917,7 @@
         {
           "disabled": false,
           "document": "Custom response header rules\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "HttpHeaderPathRule",
           "name": "HeaderRules",
           "required": false,
@@ -9729,8 +9932,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Origin server header cache switch\n`on`: Enable\n`off`: Disable",
-          "example": "",
+          "document": "Whether to enable response header caching. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -9745,8 +9948,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to always forward to the origin server for verification. Valid values: on, off\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to enable origin-pull authentication. Values:\n`on`: Enable\n`off`: Disable\n\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -9756,7 +9959,7 @@
         {
           "disabled": false,
           "document": "Forwards to the origin server for verification only for specific request path\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Path",
           "required": false,
@@ -9843,7 +10046,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specifies whether to enable rule engine\n`on`: Enable\n`off`: Disable",
+          "document": "Whether to enable rule engine. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -9869,8 +10072,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to use `QueryString` as part of `CacheKey`. Valid values: on, off\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to include query string parameters. Values:\n`on`: Include `QueryString` as part of `CacheKey`.\n`off`: Do not include `QueryString` as part of `CacheKey`.\n\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -9880,7 +10083,7 @@
         {
           "disabled": false,
           "document": "`includeCustom` will retain partial query strings\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Action",
           "required": true,
@@ -9890,7 +10093,7 @@
         {
           "disabled": false,
           "document": "Array of included/excluded query strings (separated by ';')\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Value",
           "required": true,
@@ -9905,7 +10108,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable. Valid values: `on` and `off`.",
+          "document": "Whether to enable SCDN access. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -10043,8 +10246,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Valid values: `on` and `off`.",
-          "example": "",
+          "document": "Whether to enable SCDN bot configuration. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -10054,7 +10257,7 @@
         {
           "disabled": false,
           "document": "Bot cookie policy\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "BotCookie",
           "name": "BotCookie",
           "required": false,
@@ -10064,7 +10267,7 @@
         {
           "disabled": false,
           "document": "Bot JS policy\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "BotJavaScript",
           "name": "BotJavaScript",
           "required": false,
@@ -10129,7 +10332,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to block or redirect requests from suspicious IPs. Valid values: `on` and `off`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether to enable IP blocking. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "PunishmentSwitch",
@@ -10175,7 +10378,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Valid values: `on` and `off`.",
+          "document": "Whether to enable SCDN CC configuration. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -10221,8 +10424,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable DDoS defense. Valid values: `on` and `off`.",
-          "example": "",
+          "document": "Whether to enable SCDN DDoS configuration. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -10319,7 +10522,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable WAF. Valid values: `on` and `off`.",
+          "document": "Whether to enable SCDN WAF configuration. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -10349,7 +10552,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable Web shell blocking. Valid values: `on` and `off`. Default value: `off`.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether to enable webshell blocking. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "on",
           "member": "string",
           "name": "WebShellSwitch",
@@ -10379,7 +10582,7 @@
         },
         {
           "disabled": false,
-          "document": "WAF sub-rule switch\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Whether to enable WAF sub-rules. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "见子类型",
           "member": "WafSubRuleStatus",
           "name": "SubRuleSwitch",
@@ -10421,8 +10624,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to use the scheme as part of the cache key. Valid values: on, off\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to enable scheme as part of the cache key. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -10546,8 +10749,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "on|off",
-          "example": "",
+          "document": "Whether to enable SCDN. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -10562,8 +10765,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "SEO configuration switch\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to enable SEO. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -10660,11 +10863,11 @@
       "usage": "both"
     },
     "ShareCname": {
-      "document": "Shared CNAME configuration",
+      "document": "Shared CNAME configuration\nShareCname is only available to beta users. Submit a ticket if you need it.",
       "members": [
         {
           "disabled": false,
-          "document": "Specifies whether to enable Shared CNAME. If it is set to `off`, the default CNAME is used. If it is set to `on`, a shared CNAME is used.\n\n* ShareCname is only available to beta users. To use this feature, please submit a ticket for application.",
+          "document": "Whether to enable Shared CNAME. Values:\n`on`: Enable. When enabled, it uses a shared CNAME.\n`off`: Disable. When disabled, it uses a default CNAME.\n",
           "example": "off",
           "member": "string",
           "name": "Switch",
@@ -10921,7 +11124,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the alarm threshold trigger. Values: `on`, `off`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Whether to enable alerts for cumulative usage limit. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "on",
           "member": "string",
           "name": "AlertSwitch",
@@ -10951,7 +11154,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable usage limit configuration. Values: `on`, `off`.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Whether to enable cumulative usage limit. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -10967,10 +11170,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Status code cache expiration configuration switch\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to enable status code caching. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -10978,9 +11182,10 @@
         {
           "disabled": false,
           "document": "Status code cache expiration rules details\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "StatusCodeCacheRule",
           "name": "CacheRules",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -11242,8 +11447,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Switch. Valid values: `on`, `off`\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to enable TpgAdapter for image optimization. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -11357,7 +11562,7 @@
         },
         {
           "disabled": false,
-          "document": "Request header configuration",
+          "document": "Origin-pull request header configuration.",
           "example": "无",
           "member": "RequestHeader",
           "name": "RequestHeader",
@@ -11881,7 +12086,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable URL rewriting\n`on`: Enable\n`off`: Disable",
+          "document": "Whether to enable URL rewriting. Values:\n`on`: Enable\n`off`: Disable",
           "example": "off",
           "member": "string",
           "name": "Switch",
@@ -11963,8 +12168,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Switch. Valid values: on, off\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to enable User-Agent blocklist/allowlist. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -11974,7 +12179,7 @@
         {
           "disabled": false,
           "document": "UA blacklist/whitelist effect rule list\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "UserAgentFilterRule",
           "name": "FilterRules",
           "required": false,
@@ -12035,8 +12240,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Video dragging switch\n`on`: Enable\n`off`: Disable",
-          "example": "",
+          "document": "Whether to enable video dragging. Values:\n`on`: Enable\n`off`: Disable",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -12052,60 +12257,60 @@
         {
           "disabled": false,
           "document": "ID",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Id",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Origin access URL of the resource in violation",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "RealUrl",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Snapshot path. This is used to display a snapshot of the content in violation on the console.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "DownloadUrl",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Current status of the resources in violation\n`forbid`: Blocked\n`release`: Unblocked\n`delay`: Processing delayed\n`reject`: Appeal dismissed. The status is still blocked.\n`complain`: Appeal in process",
-          "example": "",
+          "document": "Current status of non-compliant resource\n`forbid`: Blocked\n`release`: Unblocked\n`delay`: Processing delayed\n`reject`: Appeal dismissed. It is still in `forbid` status.\n`complain`: Appeal in process",
+          "example": "无",
           "member": "string",
           "name": "UrlStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creation time",
-          "example": "",
+          "example": "无",
           "member": "datetime",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Update time",
-          "example": "",
+          "example": "无",
           "member": "datetime",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -12117,7 +12322,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Sub-rule status. Valid values: `on` and `off`.",
+          "document": "Whether to enable WAF sub-rules. Values:\n`on`: Enable\n`off`: Disable",
           "example": "on",
           "member": "string",
           "name": "Switch",
@@ -12139,11 +12344,11 @@
       "usage": "both"
     },
     "WebSocket": {
-      "document": "WebSocket configuration.",
+      "document": "WebSocket configuration.\nWebSocket is an ECDN feature. You can enable it in the ECDN domain name configuration.",
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable custom WebSocket timeout setting. When it’s `off`: WebSocket connection is supported, and the default timeout period is 15 seconds. To change the timeout period, please set it to `on`.\n\n* WebSocket is an ECDN feature. You can enable it in the ECDN domain name configuration.",
+          "document": "Whether to enable WebSocket connection timeout. Values:\n`on`: When it's enabled, the connection timeout can be configured.\n`off`: When it's disabled, the connection timeout is set to 15 seconds by default.\n",
           "example": "off",
           "member": "string",
           "name": "Switch",
@@ -12169,8 +12374,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "Switch. Valid values: on, off\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "",
+          "document": "Whether to enable WebpAdapter for image optimization. Values:\n`on`: Enable\n`off`: Disable\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,

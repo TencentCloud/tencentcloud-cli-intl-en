@@ -126,6 +126,20 @@
       "output": "DescribeHostTeoInstanceListResponse",
       "status": "online"
     },
+    "DescribeHostUpdateRecord": {
+      "document": "Query certificate cloud resource update record list",
+      "input": "DescribeHostUpdateRecordRequest",
+      "name": "Query Certificate Cloud Resource Update Record List",
+      "output": "DescribeHostUpdateRecordResponse",
+      "status": "online"
+    },
+    "DescribeHostUpdateRecordDetail": {
+      "document": "Query certificate cloud resource update record details list",
+      "input": "DescribeHostUpdateRecordDetailRequest",
+      "name": "Query Certificate Cloud Resource Update Record Details List",
+      "output": "DescribeHostUpdateRecordDetailResponse",
+      "status": "online"
+    },
     "DownloadCertificate": {
       "document": "This API is used to download a certificate.",
       "input": "DownloadCertificateRequest",
@@ -173,6 +187,27 @@
       "input": "SubmitCertificateInformationRequest",
       "name": "Submits certificate information",
       "output": "SubmitCertificateInformationResponse",
+      "status": "online"
+    },
+    "UpdateCertificateInstance": {
+      "document": "This API is used to update old certificate resources with one click and is an asynchronous interface. After this API is called, the returned DeployRecordId being 0 indicates that the task is in progress, and the returned DeployRecordId being greater than 0 indicates that the task is successfully created. If the creation fails, an exception is returned.",
+      "input": "UpdateCertificateInstanceRequest",
+      "name": "One-Click Update Old Certificate Resources",
+      "output": "UpdateCertificateInstanceResponse",
+      "status": "online"
+    },
+    "UpdateCertificateRecordRetry": {
+      "document": "Cloud resource update deployment retry record",
+      "input": "UpdateCertificateRecordRetryRequest",
+      "name": "Cloud Resource Update Deployment Retry Record",
+      "output": "UpdateCertificateRecordRetryResponse",
+      "status": "online"
+    },
+    "UpdateCertificateRecordRollback": {
+      "document": "Cloud resource update one-click rollback",
+      "input": "UpdateCertificateRecordRollbackRequest",
+      "name": "Cloud Resource Update One-Click Rollback",
+      "output": "UpdateCertificateRecordRollbackResponse",
       "status": "online"
     },
     "UploadCertificate": {
@@ -365,7 +400,7 @@
         },
         {
           "disabled": false,
-          "document": "Key pair parameter. RSA supports only the 2048-bit key and ECC supports only prime256v1.",
+          "document": "Key pair parameters. RSA supports only 2048. ECC supports only prime256v1. When the encryption algorithm is set to ECC, this parameter is mandatory.",
           "example": "无",
           "member": "string",
           "name": "CsrKeyParameter",
@@ -904,7 +939,7 @@
           "example": "无",
           "member": "string",
           "name": "DomainNumber",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -914,7 +949,7 @@
           "example": "无",
           "member": "string",
           "name": "OriginCertificateId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -924,7 +959,7 @@
           "example": "无",
           "member": "string",
           "name": "ReplacedBy",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -934,7 +969,7 @@
           "example": "无",
           "member": "string",
           "name": "ReplacedFor",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -944,7 +979,7 @@
           "example": "无",
           "member": "string",
           "name": "RenewOrder",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -954,7 +989,17 @@
           "example": "无",
           "member": "int64",
           "name": "SMCert",
-          "required": false,
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Company type\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "CompanyType",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         }
@@ -1216,7 +1261,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the certificate can be reissued\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether it can be renewed \nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "bool",
           "name": "RenewAble",
@@ -1350,7 +1395,7 @@
           "example": "无",
           "member": "int64",
           "name": "HostingStatus",
-          "output_required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -1360,7 +1405,7 @@
           "example": "无",
           "member": "string",
           "name": "HostingCompleteTime",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1370,8 +1415,128 @@
           "example": "无",
           "member": "string",
           "name": "HostingRenewCertId",
-          "output_required": false,
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Existing renewed certificate ID\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "HasRenewOrder",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the original certificate is deleted when a certificate is reissued.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "ReplaceOriCertIsDelete",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the certificate is expiring soon. A certificate is considered to be expiring soon when there are 30 days or less left.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsExpiring",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Validation expiration time for the addition of the DV certificate\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DVAuthDeadline",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Domain name validation pass time\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ValidationPassedTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Multiple domain names with which the certificate is associated\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CertSANs",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Domain name validation rejection information\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "AwaitingValidationMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether downloading is allowed\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "AllowDownload",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "bool",
+          "name": "IsDNSPODResolve",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "bool",
+          "name": "IsPackage",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "bool",
+          "name": "KeyPasswordCustomFlag",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "SupportDownloadType",
+          "name": "SupportDownloadType",
+          "output_required": true,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -2444,6 +2609,16 @@
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Associated TSE resource details\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "TSEInstanceList",
+          "name": "TSE",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3670,6 +3845,175 @@
       ],
       "type": "object"
     },
+    "DescribeHostUpdateRecordDetailRequest": {
+      "document": "DescribeHostUpdateRecordDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "One-click update record ID",
+          "example": "无",
+          "member": "string",
+          "name": "DeployRecordId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number per page, 10 by default.",
+          "example": "10",
+          "member": "string",
+          "name": "Limit",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Paging offset, starting from 0",
+          "example": "0",
+          "member": "string",
+          "name": "Offset",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHostUpdateRecordDetailResponse": {
+      "document": "DescribeHostUpdateRecordDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total count\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Certificate deployment record list\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "UpdateRecordDetails",
+          "name": "RecordDetailList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total successful deployments\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "SuccessTotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total failed deployments\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "FailedTotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total running deployments\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "RunningTotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHostUpdateRecordRequest": {
+      "document": "DescribeHostUpdateRecord request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Paging offset, starting from 0",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number per page, 10 by default.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "New certificate ID",
+          "example": "无",
+          "member": "string",
+          "name": "CertificateId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Old certificate ID",
+          "example": "无",
+          "member": "string",
+          "name": "OldCertificateId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHostUpdateRecordResponse": {
+      "document": "DescribeHostUpdateRecord response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total count\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Certificate deployment record list\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "UpdateRecordInfo",
+          "name": "DeployRecordList",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DownloadCertificateRequest": {
       "document": "DownloadCertificate request structure.",
       "members": [
@@ -3898,6 +4242,62 @@
         }
       ],
       "usage": "in"
+    },
+    "GatewayCertificate": {
+      "document": "Cloud-native gateway certificate information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Gateway certificate ID\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Gateway certificate information\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bound domain name\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "BindDomains",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Certificate source\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CertSource",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "SSL certificate ID that is currently bound\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CertId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "LiveInstanceDetail": {
       "document": "Details of a LIVE instance",
@@ -4469,6 +4869,32 @@
       ],
       "type": "object"
     },
+    "ResourceTypeRegions": {
+      "document": "Cloud resource region list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cloud resource type",
+          "example": "无",
+          "member": "string",
+          "name": "ResourceType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region list",
+          "example": "无",
+          "member": "string",
+          "name": "Regions",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
     "RootCertificates": {
       "document": "Root certificate",
       "members": [
@@ -5022,6 +5448,82 @@
       ],
       "usage": "both"
     },
+    "SupportDownloadType": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "bool",
+          "name": "NGINX",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "bool",
+          "name": "APACHE",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "bool",
+          "name": "TOMCAT",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "bool",
+          "name": "IIS",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "bool",
+          "name": "JKS",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "bool",
+          "name": "OTHER",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "bool",
+          "name": "ROOT",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SyncTaskBindResourceResult": {
       "document": "Result of an async task for querying associated cloud resources",
       "members": [
@@ -5350,6 +5852,78 @@
       ],
       "usage": "out"
     },
+    "TSEInstanceDetail": {
+      "document": "TSE instance details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Gateway ID\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "GatewayId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Gateway name\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "GatewayName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Gateway certificate list\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "GatewayCertificate",
+          "name": "CertificateList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TSEInstanceList": {
+      "document": "TSE instance details - asynchronously associated cloud resource data structure",
+      "members": [
+        {
+          "disabled": false,
+          "document": "TSE instance details\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "TSEInstanceDetail",
+          "name": "InstanceList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total TSE instances in this region\t",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region\t",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "Tags": {
       "document": "Tag",
       "members": [
@@ -5643,6 +6217,665 @@
           "name": "NoMatchDomains",
           "required": true,
           "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UpdateCertificateInstanceRequest": {
+      "document": "UpdateCertificateInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "One-click update old certificate ID",
+          "example": "无",
+          "member": "string",
+          "name": "OldCertificateId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Type of the resource that needs to be deployed. The following parameter values are optional: clb, cdn, waf, live, ddos, teo, apigateway, vod, tke, and tcb.",
+          "example": "无",
+          "member": "string",
+          "name": "ResourceTypes",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "One-click update new certificate ID",
+          "example": "无",
+          "member": "string",
+          "name": "CertificateId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "List of regions that need to be deployed (deprecated)",
+          "example": "无",
+          "member": "string",
+          "name": "Regions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "List of regions for which cloud resources need to be deployed",
+          "example": "无",
+          "member": "ResourceTypeRegions",
+          "name": "ResourceTypesRegions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Public key of the certificate. If the public key of the certificate is uploaded, CertificateId does not need to be uploaded.",
+          "example": "无",
+          "member": "string",
+          "name": "CertificatePublicKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Private key of the certificate. If the public key of the certificate is uploaded, the private key of the certificate is required.",
+          "example": "无",
+          "member": "string",
+          "name": "CertificatePrivateKey",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether an expiration reminder is ignored for the old certificate. 0: The notification is not ignored. 1: The notification is ignored.",
+          "example": "无",
+          "member": "uint64",
+          "name": "ExpiringNotificationSwitch",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether repeated uploading of the same certificate is allowed. If the public key of the certificate is uploaded, this parameter can be configured.",
+          "example": "无",
+          "member": "bool",
+          "name": "Repeatable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether downloading is allowed. If the public key of the certificate is uploaded, this parameter can be configured.",
+          "example": "无",
+          "member": "bool",
+          "name": "AllowDownload",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Tag list. If the public key of the certificate is uploaded, this parameter can be configured.",
+          "example": "无",
+          "member": "Tags",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID. If the public key of the certificate is uploaded, this parameter can be configured.",
+          "example": "无",
+          "member": "uint64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCertificateInstanceResponse": {
+      "document": "UpdateCertificateInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cloud resource deployment task ID\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "DeployRecordId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Deployment status. 1 indicates that the deployment succeeded, and 0 indicates that the deployment failed.",
+          "example": "无",
+          "member": "int64",
+          "name": "DeployStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "UpdateSyncProgress",
+          "name": "UpdateSyncProgress",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCertificateRecordRetryRequest": {
+      "document": "UpdateCertificateRecordRetry request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "To-be-redeployed record ID",
+          "example": "无",
+          "member": "int64",
+          "name": "DeployRecordId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "To-be-redeployed record detail ID",
+          "example": "无",
+          "member": "int64",
+          "name": "DeployRecordDetailId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCertificateRecordRetryResponse": {
+      "document": "UpdateCertificateRecordRetry response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCertificateRecordRollbackRequest": {
+      "document": "UpdateCertificateRecordRollback request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "To-be-redeployed record ID",
+          "example": "无",
+          "member": "int64",
+          "name": "DeployRecordId",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCertificateRecordRollbackResponse": {
+      "document": "UpdateCertificateRecordRollback response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rollback deployment record ID",
+          "example": "无",
+          "member": "int64",
+          "name": "DeployRecordId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateRecordDetail": {
+      "document": "Update record details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Detail record ID",
+          "example": "无",
+          "member": "uint64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "New certificate ID",
+          "example": "无",
+          "member": "string",
+          "name": "CertId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Old certificate ID",
+          "example": "无",
+          "member": "string",
+          "name": "OldCertId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment domain name list\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Domains",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Deployment resource type",
+          "example": "无",
+          "member": "string",
+          "name": "ResourceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment region\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Deployment status",
+          "example": "无",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment error message\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Deployment time",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last update time",
+          "example": "无",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment instance ID\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Deployment instance name\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Deployment listener ID (only for CLB)\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ListenerId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Deployment listener name (only for CLB)\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ListenerName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Protocol\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether SNI is enabled (only for CLB)\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "SniSwitch",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bucket name (only for COS)\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Bucket",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Port\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Port",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Namespace (only for TKE)\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Namespace",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Secret name (only for TKE)\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SecretName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Environment ID\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "EnvId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "TCB deployment type\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TCBType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UpdateRecordDetails": {
+      "document": "Update record detail list",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Deployment resource type",
+          "example": "无",
+          "member": "string",
+          "name": "ResourceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment resource detail list",
+          "example": "无",
+          "member": "UpdateRecordDetail",
+          "name": "List",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total deployment resource count",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "UpdateRecordInfo": {
+      "document": "Deployment record information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Record ID",
+          "example": "无",
+          "member": "uint64",
+          "name": "Id",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "New certificate ID",
+          "example": "无",
+          "member": "string",
+          "name": "CertId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Old certificate ID",
+          "example": "无",
+          "member": "string",
+          "name": "OldCertId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment resource type list",
+          "example": "无",
+          "member": "string",
+          "name": "ResourceTypes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment region list\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Regions",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Deployment status",
+          "example": "无",
+          "member": "uint64",
+          "name": "Status",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deployment time",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last update time",
+          "example": "无",
+          "member": "string",
+          "name": "UpdateTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "UpdateSyncProgress": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "ResourceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "UpdateSyncProgressRegion",
+          "name": "UpdateSyncProgressRegions",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UpdateSyncProgressRegion": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "地域",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "总数",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "偏移量",
+          "member": "int64",
+          "name": "OffsetCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": true
         }
       ],

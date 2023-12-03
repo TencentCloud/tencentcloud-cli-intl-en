@@ -350,6 +350,13 @@
       "output": "DescribeDBInstanceInfoResponse",
       "status": "online"
     },
+    "DescribeDBInstanceLogToCLS": {
+      "document": "The API DescribeDBInstanceLogToCLS is used to query the configurations of sending slow and error logs of an instance (InstanceId) filtered by AppId and Region to Cloud Log Service (CLS).",
+      "input": "DescribeDBInstanceLogToCLSRequest",
+      "name": "Query configurations of sending instance logs to CLS",
+      "output": "DescribeDBInstanceLogToCLSResponse",
+      "status": "online"
+    },
     "DescribeDBInstanceRebootTime": {
       "document": "This API (DescribeDBInstanceRebootTime) is used to query the estimated time needed for a TencentDB instance to restart.",
       "input": "DescribeDBInstanceRebootTimeRequest",
@@ -519,7 +526,7 @@
       "status": "online"
     },
     "DescribeSlowLogs": {
-      "document": "This API (DescribeSlowLogs) is used to query the slow logs of a TencentDB instance.",
+      "document": "The API DescribeSlowLogs is used to obtain slow query logs of a cloud database (CDB) instance. Note: If the size of logs to be queried is too large, the operation may time out. It is recommended that you select a shorter time range, such as one hour.",
       "input": "DescribeSlowLogsRequest",
       "name": "Queries slow logs",
       "output": "DescribeSlowLogsResponse",
@@ -663,6 +670,13 @@
       "input": "ModifyCdbProxyParamRequest",
       "name": "Configures the database proxy parameters",
       "output": "ModifyCdbProxyParamResponse",
+      "status": "online"
+    },
+    "ModifyDBInstanceLogToCLS": {
+      "document": "This API is used to enable or disable the feature of sending CDB slow and error logs to CLS.",
+      "input": "ModifyDBInstanceLogToCLSRequest",
+      "name": "Enable or disable the feature of sending CDB logs to CLS",
+      "output": "ModifyDBInstanceLogToCLSResponse",
       "status": "online"
     },
     "ModifyDBInstanceName": {
@@ -1671,7 +1685,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of scanned rows\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Number of scanned rows\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "CheckRows",
@@ -1681,7 +1695,7 @@
         },
         {
           "disabled": false,
-          "document": "CPU u200dexecution time (μs)\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "CPU execution time (μs)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "289.474",
           "member": "float",
           "name": "CpuTime",
@@ -1691,7 +1705,7 @@
         },
         {
           "disabled": false,
-          "document": "IO wait time (μs)\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "IO wait time (μs)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "11",
           "member": "uint64",
           "name": "IoWaitTime",
@@ -1701,7 +1715,7 @@
         },
         {
           "disabled": false,
-          "document": "Lock wait time (μs)\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Lock wait time (μs)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "57",
           "member": "uint64",
           "name": "LockWaitTime",
@@ -1711,7 +1725,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time, which forms a time accurate to nanoseconds with·`timestamp`.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Start time, which forms a time accurate to nanoseconds with·`timestamp`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "106483229",
           "member": "uint64",
           "name": "NsTime",
@@ -1721,12 +1735,22 @@
         },
         {
           "disabled": false,
-          "document": "Transaction u200dduration (μs)\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Transaction duration (μs)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "uint64",
           "name": "TrxLivingTime",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Basic information on the rule template hit by the log.\nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "example": "无",
+          "member": "LogRuleTemplateInfo",
+          "name": "TemplateInfo",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -2151,6 +2175,48 @@
         }
       ],
       "usage": "both"
+    },
+    "AutoStrategy": {
+      "document": "Automatic scale-out policy for elastic CPU scale-out.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CPU utilization threshold (percent value). Valid values: 70, 80, and 90. Automatic scale-out will be triggered when CPU utilization reaches the set threshold.",
+          "example": "70",
+          "member": "int64",
+          "name": "ExpandThreshold",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Interval, in seconds. Valid values: 1, 3, 5, 10, 15, and 30. The system backend determines whether automatic scale-out is required at the set interval.",
+          "example": "1",
+          "member": "int64",
+          "name": "ExpandPeriod",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "CPU utilization threshold (percent value). Valid values: 10, 20, and 30. Automatic scale-in will be triggered when CPU utilization reaches the set threshold.",
+          "example": "10",
+          "member": "int64",
+          "name": "ShrinkThreshold",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Interval, in seconds. Valid values: 5, 10, 15, and 30. The system backend determines whether automatic scale-in is required at the set interval.",
+          "example": "5",
+          "member": "int64",
+          "name": "ShrinkPeriod",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
     },
     "BackupConfig": {
       "document": "Configuration information of ECDB secondary database 2. This field is only applicable to ECDB instances",
@@ -5892,7 +5958,7 @@
         },
         {
           "disabled": false,
-          "document": "Audit log details\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Audit log details\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "AuditLog",
           "name": "Items",
@@ -7044,7 +7110,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Policy type. Valid values: `auto`, `manual`.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Policy type. Valid values: `auto`, `manual`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "auto",
           "member": "string",
           "name": "Type",
@@ -7053,7 +7119,7 @@
         },
         {
           "disabled": false,
-          "document": "Manually expanded CPU, which is valid when `Type` is `manual`.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Manually expanded CPU, which is valid when `Type` is `manual`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "4",
           "member": "string",
           "name": "ExpandCpu",
@@ -7062,7 +7128,7 @@
         },
         {
           "disabled": false,
-          "document": "Automatic expansion policy, which is valid when `Type` is `auto`.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Automatic expansion policy, which is valid when `Type` is `auto`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "略",
           "member": "string",
           "name": "AutoStrategy",
@@ -7505,6 +7571,53 @@
           "member": "string",
           "name": "DefaultKmsRegion",
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstanceLogToCLSRequest": {
+      "document": "DescribeDBInstanceLogToCLS request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cdb-r1ok5w15",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDBInstanceLogToCLSResponse": {
+      "document": "DescribeDBInstanceLogToCLS response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Configurations of sending error logs to CLS.\nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "example": "{\"Status\": \"ON\",\"LogSetId\":\"xxx\",\"LogTopicId\":\"xxx\"}",
+          "member": "LogToCLSConfig",
+          "name": "ErrorLog",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configurations of sending slow logs to CLS.\nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "example": "{\"Status\": \"ON\",\"LogSetId\":\"xxx\",\"LogTopicId\":\"xxx\"}",
+          "member": "LogToCLSConfig",
+          "name": "SlowLog",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": true
         },
         {
@@ -9383,7 +9496,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the clone instance and the source instance are in one AZ. Valid values: `true` (yes), `false` (no).",
+          "document": "Whether the clone instance and the source instance are in the same AZ. Valid values: `true` (yes), `false` (no).",
           "example": "false",
           "member": "string",
           "name": "IsRemoteZone",
@@ -10800,7 +10913,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Filter condition. The search conditions are supported as follows:\n\nInclude/Exclude, and Include/Exclude (segment dimension) can be used to search for:\n`sql` - SQL details.\n\n`Equal to`, `Not equal to`, `Include`, and `Exclude` can be used to search for:\n`host` - Client IP,\n`user` - Username,\n`DBName` - Database name.\n\n`Equal to` and `Not equal to` can be used to search for:\n`sqlType` - SQL u200dtype,\n`errCode` - Error code,\n`threadId` - Thread ID.\n\nRange search is supported for:\n`execTime`- Execution time (μs),\n`lockWaitTime`u200d - Lock wait time (μs),\n`ioWaitTime` - IO wait time (μs),\n`trxLivingTime` - Transaction duration (μs),\n`cpuTime` - CPU time (μs),\n`checkRows` - Number of scanned rows,\n`affectRows` - Number of affected rows,\n`sentRows` - Number of returned rows.",
+          "document": "Filter condition. The search conditions are supported as follows:\n\nInclude/Exclude, and Include/Exclude (segment dimension) can be used to search for:\n`sql` - SQL details.\n\n`Equal to`, `Not equal to`, `Include`, and `Exclude` can be used to search for:\n`host` - Client IP,\n`user` - Username,\n`DBName` - Database name.\n\n`Equal to` and `Not equal to` can be used to search for:\n`sqlType` - SQL type,\n`errCode` - Error code,\n`threadId` - Thread ID.\n\nRange search is supported for:\n`execTime`- Execution time (μs),\n`lockWaitTime` - Lock wait time (μs),\n`ioWaitTime` - IO wait time (μs),\n`trxLivingTime` - Transaction duration (μs),\n`cpuTime` - CPU time (μs),\n`checkRows` - Number of scanned rows,\n`affectRows` - Number of affected rows,\n`sentRows` - Number of returned rows.",
           "example": "host",
           "member": "string",
           "name": "Type",
@@ -10809,7 +10922,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter. Valid values:\n`WINC` - Include (segment dimension)\n`WEXC` - Exclude (segment dimension)\n`INC` - Include,\n`EXC` - Exclude,\n`EQS` - Equal to,\n`NEQ` - Not equal to.\nu200d`RA` - Range",
+          "document": "Filter. Valid values:\n`WINC` - Include (segment dimension)\n`WEXC` - Exclude (segment dimension)\n`INC` - Include,\n`EXC` - Exclude,\n`EQS` - Equal to,\n`NEQ` - Not equal to.\n`RA` - Range",
           "example": "EXC",
           "member": "string",
           "name": "Compare",
@@ -11444,6 +11557,88 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "LogRuleTemplateInfo": {
+      "document": "Basic information on the rule template hit by the audit log.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Template ID. \nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "example": "cdb-art-8qx2kcr7",
+          "member": "string",
+          "name": "RuleTemplateId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Template name.\nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "example": "test_rule",
+          "member": "string",
+          "name": "RuleTemplateName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Alarm level. Valid values: 1: Low risk; 2: Medium risk; 3: High risk. \nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "example": "2",
+          "member": "string",
+          "name": "AlarmLevel",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Template change status. Valid values: 0: Unchanged; 1: Changed; 2: Deleted.\nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "RuleTemplateStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "LogToCLSConfig": {
+      "document": "Configurations of sending slow and error logs of a CDB instance to CLS.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Enabling status of the feature.\nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "example": "ON/OFF",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "CLS log set ID.\nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "example": "8dff8d62-fa10-4d6c-bee0-6e31a0ade975",
+          "member": "string",
+          "name": "LogSetId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Log topic ID.\nNote: The return value may be null, indicating that no valid data can be obtained.",
+          "example": "09c3c2d1-ac46-4e4e-b688-b73950e64682",
+          "member": "string",
+          "name": "LogTopicId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -12391,6 +12586,105 @@
       ],
       "type": "object"
     },
+    "ModifyDBInstanceLogToCLSRequest": {
+      "document": "ModifyDBInstanceLogToCLS request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cdb-234rsta",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log type. Valid values: error and slowLog.",
+          "example": "error",
+          "member": "string",
+          "name": "LogType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Enabling status. Valid values: ON and OFF.",
+          "example": "ON",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether a log set needs to be created.",
+          "example": "true",
+          "member": "bool",
+          "name": "CreateLogset",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Log set name if the log set is to be created or ID of the selected existing log set.",
+          "example": "my_test",
+          "member": "string",
+          "name": "Logset",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether a log topic needs to be created.",
+          "example": "true",
+          "member": "bool",
+          "name": "CreateLogTopic",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Log topic name if the topic is to be created or ID of the selected existing topic.",
+          "example": "my_test",
+          "member": "string",
+          "name": "LogTopic",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Log topic validity period, which is 30 days by default if not specified.",
+          "example": "30",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to create an index when creating the log topic.",
+          "example": "true",
+          "member": "bool",
+          "name": "CreateIndex",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDBInstanceLogToCLSResponse": {
+      "document": "ModifyDBInstanceLogToCLS response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyDBInstanceNameRequest": {
       "document": "ModifyDBInstanceName request structure.",
       "members": [
@@ -13164,12 +13458,21 @@
         },
         {
           "disabled": false,
-          "document": "Rule template ID If both this parameter and `AuditRuleFilters` are left empty, full audit will be applied.",
+          "document": "Rule template ID. If both this parameter and AuditRuleFilters are not specified, all SQL statements will be recorded.",
           "example": "[\"cdb-art-l1mlbo59\"]",
           "member": "string",
           "name": "RuleTemplateIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Audit type. Valid values: true: Record all; false: Record by rules (default value).",
+          "example": "true",
+          "member": "bool",
+          "name": "AuditAll",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -13409,61 +13712,71 @@
         {
           "disabled": false,
           "document": "Instance ID",
-          "example": "",
+          "example": "\"\"",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Parameter name",
-          "example": "",
+          "example": "\"\"",
           "member": "string",
           "name": "ParamName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Parameter value before modification",
-          "example": "",
+          "example": "\"\"",
           "member": "string",
           "name": "OldValue",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Parameter value after modification",
-          "example": "",
+          "example": "\"\"",
           "member": "string",
           "name": "NewValue",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Whether the parameter is modified successfully",
-          "example": "",
+          "example": "true",
           "member": "bool",
           "name": "IsSucess",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Modification time",
-          "example": "",
+          "example": "\"\"",
           "member": "string",
           "name": "ModifyTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether the parameter is modified successfully.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsSuccess",
+          "output_required": true,
+          "type": "bool",
           "value_allowed_null": false
         }
       ],
@@ -15781,7 +16094,44 @@
     },
     "StartCpuExpandRequest": {
       "document": "StartCpuExpand request structure.",
-      "members": [],
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "cdb-test",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scale-out mode. Valid values: auto and\nmanual.",
+          "example": "auto",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of CPU cores to increase during manual scale-out. This parameter is required when Type is set to manual.",
+          "example": "4",
+          "member": "int64",
+          "name": "ExpandCpu",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Automatic scale-out policy. This parameter is required when Type is set to auto.",
+          "example": "无",
+          "member": "AutoStrategy",
+          "name": "AutoStrategy",
+          "required": false,
+          "type": "object"
+        }
+      ],
       "type": "object"
     },
     "StartCpuExpandResponse": {
@@ -15789,10 +16139,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Async task ID, which can be passed in by calling the u200c`DescribeAsyncRequest` API for task progress query.",
+          "document": "Async task ID, which can be passed in by calling the `DescribeAsyncRequest` API for task progress query.",
           "example": "xxxxxxx-xxxxxxxx",
           "member": "string",
           "name": "AsyncRequestId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -15862,7 +16213,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Async task ID, which can be passed in by calling the u200c`DescribeAsyncRequest` API for task progress query.",
+          "document": "Async task ID, which can be passed in by calling the `DescribeAsyncRequest` API for task progress query.",
           "example": "xxxxxxx-xxxxxxxx",
           "member": "string",
           "name": "AsyncRequestId",

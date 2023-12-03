@@ -150,6 +150,22 @@
         "title": "u200cQuerying the list of EDGEONE instances"
       }
     ],
+    "DescribeHostUpdateRecord": [
+      {
+        "document": "Query certificate cloud resource update record list",
+        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeHostUpdateRecord\n<Common request parameters>\n\n{\n    \"OldCertificateId\": \"zYrIXwpu\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"DeployRecordList\": [\n            {\n                \"Id\": 1,\n                \"CertId\": \"zXkBVP88\",\n                \"OldCertId\": \"zYrIXwpu\",\n                \"ResourceTypes\": [\n                    \"cdn\"\n                ],\n                \"Status\": 1,\n                \"CreateTime\": \"2022-10-09 17:38:38\",\n                \"UpdateTime\": \"2022-10-09 19:21:35\"\n            }\n        ],\n        \"RequestId\": \"1111111111111\"\n    }\n}",
+        "title": "Query Certificate Cloud Resource Update Record List"
+      }
+    ],
+    "DescribeHostUpdateRecordDetail": [
+      {
+        "document": "Query certificate cloud resource update record details list",
+        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeHostUpdateRecordDetail\n<Common request parameters>\n\n{\n    \"DeployRecordId\": \"abc\",\n    \"Limit\": \"abc\",\n    \"Offset\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"RecordDetailList\": [\n            {\n                \"ResourceType\": \"abc\",\n                \"List\": [\n                    {\n                        \"Id\": 1,\n                        \"CertId\": \"abc\",\n                        \"OldCertId\": \"abc\",\n                        \"Domains\": [\n                            \"abc\"\n                        ],\n                        \"ResourceType\": \"abc\",\n                        \"Region\": \"abc\",\n                        \"Status\": 1,\n                        \"ErrorMsg\": \"abc\",\n                        \"CreateTime\": \"abc\",\n                        \"UpdateTime\": \"abc\",\n                        \"InstanceId\": \"abc\",\n                        \"InstanceName\": \"abc\",\n                        \"ListenerId\": \"abc\",\n                        \"ListenerName\": \"abc\",\n                        \"Protocol\": \"abc\",\n                        \"SniSwitch\": 1,\n                        \"Bucket\": \"abc\",\n                        \"Port\": 0,\n                        \"Namespace\": \"abc\",\n                        \"SecretName\": \"abc\",\n                        \"EnvId\": \"abc\",\n                        \"TCBType\": \"abc\"\n                    }\n                ],\n                \"TotalCount\": 0\n            }\n        ],\n        \"SuccessTotalCount\": 0,\n        \"FailedTotalCount\": 0,\n        \"RunningTotalCount\": 0,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Query Certificate Cloud Resource Update Record Details List"
+      }
+    ],
     "DownloadCertificate": [
       {
         "document": " ",
@@ -204,6 +220,30 @@
         "input": "https://ssl.tencentcloudapi.com/?Action=SubmitCertificateInformation\n&CertificateId=abcb1234\n&CsrType=online\n&CertificateDomain=*.test-dq342da.com\n&OrganizationName=Tencent\n&OrganizationDivision=Qcloud\n&OrganizationAddress=Tencent Building, No.10000 Shennan Avenue, Nanshan District\n&OrganizationCountry=CN\n&OrganizationCity=Shenzhen\n&OrganizationRegion=Guangdong\n&PhoneAreaCode=0755\n&PhoneNumber=86013388\n&AdminFirstName=test\n&AdminLastName=test\n&AdminPhoneNum=12345678901\n&AdminEmail=test@tencent.com\n&AdminPosition=developer\n&ContactFirstName=test\n&ContactLastName=test\n&ContactEmail=test@tencent.com\n&ContactNumber=12345678901\n&ContactPosition=developer\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"CertificateId\": \"abcb1234\",\n        \"RequestId\": \"9b397ac6-7d01-4fbc-8acc-52dd6ff0877b\"\n    }\n}",
         "title": "Submitting certificate information"
+      }
+    ],
+    "UpdateCertificateInstance": [
+      {
+        "document": "One-click update old certificate resources",
+        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCertificateInstance\n<Common request parameters>\n\n{\n    \"CertificateId\": \"abc\",\n    \"OldCertificateId\": \"abc\",\n    \"ResourceTypes\": [\n        \"abc\"\n    ],\n    \"Regions\": [\n        \"abc\"\n    ],\n    \"ResourceTypesRegions\": [\n        {\n            \"ResourceType\": \"abc\",\n            \"Regions\": [\n                \"abc\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"DeployRecordId\": 1,\n        \"DeployStatus\": 1,\n        \"RequestId\": \"c9c9d2fb-41c0-43b6-8c10-44c81de553c1\"\n    }\n}",
+        "title": "One-Click Update Old Certificate Resources"
+      }
+    ],
+    "UpdateCertificateRecordRetry": [
+      {
+        "document": "Cloud resource update deployment retry record",
+        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCertificateRecordRetry\n<Common request parameters>\n\n{\n    \"DeployRecordId\": 1,\n    \"DeployRecordDetailId\": 2\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1111111111111\"\n    }\n}",
+        "title": "Cloud Resource Update Deployment Retry Record"
+      }
+    ],
+    "UpdateCertificateRecordRollback": [
+      {
+        "document": "Cloud resource update one-click rollback",
+        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCertificateRecordRollback\n<Common request parameters>\n\n{\n    \"DeployRecordId\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"DeployRecordId\": 0,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Cloud Resource Update One-Click Rollback"
       }
     ],
     "UploadCertificate": [

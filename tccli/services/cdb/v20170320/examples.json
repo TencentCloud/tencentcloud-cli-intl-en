@@ -430,6 +430,14 @@
         "title": "Querying instance information"
       }
     ],
+    "DescribeDBInstanceLogToCLS": [
+      {
+        "document": "This API is used to query the configurations of sending slow and error logs to CLS in the Operation Log module.",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstanceLogToCLS\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-70zdmgg1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorLog\": {\n            \"Status\": \"ON\",\n            \"LogSetId\": \"test\",\n            \"LogTopicId\": \"test\"\n        },\n        \"SlowLog\": {\n            \"Status\": \"OFF\",\n            \"LogSetId\": \"test\",\n            \"LogTopicId\": \"test\"\n        },\n        \"RequestId\": \"8a96c7fec3c747adb83cb0868c0107d5\"\n    }\n}",
+        "title": "Query configurations of sending instance logs to CLS"
+      }
+    ],
     "DescribeDBInstanceRebootTime": [
       {
         "document": " ",
@@ -796,6 +804,14 @@
         "title": "Configuring the database proxy parameters"
       }
     ],
+    "ModifyDBInstanceLogToCLS": [
+      {
+        "document": "This API is used to enable or disable the feature of sending slow and error logs of a CDB instance to CLS.",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceLogToCLS\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-ewa3b\",\n    \"LogType\": \"errorLog\",\n    \"Status\": \"ON\",\n    \"CreateLogset\": true,\n    \"Logset\": \"sub_fyrtjbqw\",\n    \"CreateLogTopic\": true,\n    \"LogTopic\": \"my_test\",\n    \"Period\": \"1\",\n    \"CreateIndex\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
+        "title": "Enable or disable the feature of sending CDB logs to CLS"
+      }
+    ],
     "ModifyDBInstanceName": [
       {
         "document": " ",
@@ -996,10 +1012,10 @@
     ],
     "StartCpuExpand": [
       {
-        "document": "This API is used to adjust the number of CPU cores.",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartCpuExpand\n<Common request parameters>\n\n{}",
+        "document": "This API can be called to increase CPU cores for an instance.",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartCpuExpand\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-test\",\n    \"Type\": \"manual\",\n    \"ExpandCpu\": 4\n}",
         "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": \"xxxxxxxxxxxxxx-xxxxxxxxxxx\",\n        \"RequestId\": \"xxxxxxxxxxxxxxxxxxxxxxxx\"\n    }\n}",
-        "title": "Enabling elastic expansion"
+        "title": "Enable elastic scale-out"
       }
     ],
     "StartReplication": [

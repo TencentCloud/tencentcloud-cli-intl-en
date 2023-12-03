@@ -56,6 +56,13 @@
       "output": "CreateApplicationProxyRuleResponse",
       "status": "online"
     },
+    "CreateConfigGroupVersion": {
+      "document": "This API is used to create a new version for the specified configuration group in version management mode. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.",
+      "input": "CreateConfigGroupVersionRequest",
+      "name": "Create Configuration Group Version",
+      "output": "CreateConfigGroupVersionResponse",
+      "status": "online"
+    },
     "CreateOriginGroup": {
       "document": "This API is used to create an origin group for easy management. The created origin server group can be used for **adding acceleration domain names** and **layer-4 proxy configuration**.",
       "input": "CreateOriginGroupRequest",
@@ -78,7 +85,7 @@
       "status": "online"
     },
     "CreatePurgeTask": {
-      "document": "When the origin server resource is updated but the node cache TTL has not expired, the user will still access the old resource. To solve this problem, you can use this API to purge the node cache. There are two action options: <li>Delete directly: Delete the node cache directly without any verification. Trigger origin-pull when the resource is requested.</li><li>Mark as expired: Set the node resource as expired, and trigger origin-pull verification when the resource, that is, send an HTTP conditional request with If-None-Match and If-Modified-Since headers. If the origin responds with 200, the node pulls new resources from the origin and update the cache. If the origin responds with 304, the node does not update the cache</li>.\n\nFor more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1).",
+      "document": "When there are resources updated on the origin with the TTL remaining valid, users cannot access the latest resources. In this case, you can purge the cache using this API. There are two methods: <li>Delete: This method deletes the node cache without verification and retrieves the latest resources from the origin when receiving a request.</li><li>Invalidate: This method marks the node cache as invalid and sends a request with the If-None-Match and If-Modified-Since headers to the origin. If the origin responses with 200, the latest resources are retrieved to be cached on the node. If a 304 response is returned, the latest resources are not cached on the node.\n\n</li>For more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1). </li>",
       "input": "CreatePurgeTaskRequest",
       "name": "This API is used to create a cache purging task.",
       "output": "CreatePurgeTaskResponse",
@@ -175,6 +182,13 @@
       "output": "DeleteZoneResponse",
       "status": "online"
     },
+    "DeployConfigGroupVersion": {
+      "document": "This API is used to release versions in version management mode. Users can deploy the version to either the testing environment or the production environment by specifying the EnvId parameter. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.",
+      "input": "DeployConfigGroupVersionRequest",
+      "name": "Release Configuration Group Version",
+      "output": "DeployConfigGroupVersionResponse",
+      "status": "online"
+    },
     "DescribeAccelerationDomains": {
       "document": "This API is used to query domain name information of a site, including the acceleration domain name, origin, and domain name status. You can query the information of all domain names, or specific domain names by specifying filters information.",
       "input": "DescribeAccelerationDomainsRequest",
@@ -201,6 +215,20 @@
       "input": "DescribeAvailablePlansRequest",
       "name": "Queries plan options available for purchase",
       "output": "DescribeAvailablePlansResponse",
+      "status": "online"
+    },
+    "DescribeConfigGroupVersionDetail": {
+      "document": "This API is used to obtain detailed information about a version in version management mode. The response includes the version ID, description, status, creation time, configuration group information, and the content of the version configuration file. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.",
+      "input": "DescribeConfigGroupVersionDetailRequest",
+      "name": "Query Configuration Group Version Details",
+      "output": "DescribeConfigGroupVersionDetailResponse",
+      "status": "online"
+    },
+    "DescribeConfigGroupVersions": {
+      "document": "This API is used to query the version list for the specified configuration group in version management mode. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.",
+      "input": "DescribeConfigGroupVersionsRequest",
+      "name": "Query Configuration Group Version List",
+      "output": "DescribeConfigGroupVersionsResponse",
       "status": "online"
     },
     "DescribeContentQuota": {
@@ -236,6 +264,20 @@
       "input": "DescribeDefaultCertificatesRequest",
       "name": "Queries the list of default certificates",
       "output": "DescribeDefaultCertificatesResponse",
+      "status": "online"
+    },
+    "DescribeDeployHistory": {
+      "document": "This API is used to query the release history of versions in the production or test environment in version management mode. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.",
+      "input": "DescribeDeployHistoryRequest",
+      "name": "Query Version Release History",
+      "output": "DescribeDeployHistoryResponse",
+      "status": "online"
+    },
+    "DescribeEnvironments": {
+      "document": "This API is used to query environment information in version management mode. The response includes the environment ID, type, and current effective version. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.",
+      "input": "DescribeEnvironmentsRequest",
+      "name": "Query Environment Information",
+      "output": "DescribeEnvironmentsResponse",
       "status": "online"
     },
     "DescribeHostsSetting": {
@@ -1664,7 +1706,7 @@
         },
         {
           "disabled": false,
-          "document": "Rule tag.\nNote: u200dThis field may returnu200d·`nullu200d`, indicating that no valid values can be obtained.",
+          "document": "Rule tag.\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
           "example": "rule-service1",
           "member": "string",
           "name": "RuleTag",
@@ -2323,6 +2365,7 @@
           "example": "on/off",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2333,16 +2376,18 @@
           "example": "36000",
           "member": "int64",
           "name": "CacheTime",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": true,
-          "document": "Whether to enable force cache. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable </li>\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether to enable force cache. Values:\n<li>`on`: Enable</li>\n<li>`off`: Disable </li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "on/off",
           "member": "string",
           "name": "IgnoreCacheControl",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -2637,7 +2682,7 @@
         },
         {
           "disabled": false,
-          "document": "The CNAME address.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The CNAME address.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "test.qq.com.acc.tyxcdn.com",
           "member": "string",
           "name": "Cname",
@@ -2647,7 +2692,7 @@
         },
         {
           "disabled": false,
-          "document": "The CNAME status. Values:\n<li>`active`: Activated</li>\n<li>`moved`: Not activated </li>\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The CNAME status. Values:\n<li>`active`: Activated</li>\n<li>`moved`: Not activated </li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "active",
           "member": "string",
           "name": "Status",
@@ -2708,6 +2753,89 @@
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ConfigGroupVersionInfo": {
+      "document": "Version information about the configuration group.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Version ID.",
+          "example": "ver-2kplomhisdcb",
+          "member": "string",
+          "name": "VersionId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Version No.",
+          "example": "1.0",
+          "member": "string",
+          "name": "VersionNumber",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configuraration group ID.",
+          "example": "cg-2kplomhisdcb",
+          "member": "string",
+          "name": "GroupId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configuration group type. Valid values: \n<li>l7_acceleration: L7 acceleration configuration group. </li>\n<li>edge_functions: Edge function configuration group. </li>",
+          "example": "l7_acceleration",
+          "member": "string",
+          "name": "GroupType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Version description.",
+          "example": "这是个测试版本",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Version status. Valid values: \n<li>creating: Being created.</li>\n<li>inactive: Not effective.</li>\n<li>active: Effective. </li>",
+          "example": "creating ",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Version creation time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).",
+          "example": "2023-06-30T17:37:56+0800",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -3111,6 +3239,70 @@
       ],
       "type": "object"
     },
+    "CreateConfigGroupVersionRequest": {
+      "document": "CreateConfigGroupVersion request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-225qgrnvbi9w",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "GroupId of the version to be created.",
+          "example": "cg-245xgrhv2i9w",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration content to be imported. It is required to be in JSON format and encoded in UTF-8. Please refer to the example below for the configuration file content.",
+          "example": "无",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version description. The maximum length allowed is 50 characters. This field can be used to provide details about the application scenarios of this version.",
+          "example": "create for test",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateConfigGroupVersionResponse": {
+      "document": "CreateConfigGroupVersion response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Version ID.",
+          "example": "ver-2njd27gendjm",
+          "member": "string",
+          "name": "VersionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateOriginGroupRequest": {
       "document": "CreateOriginGroup request structure.",
       "members": [
@@ -3337,7 +3529,7 @@
         },
         {
           "disabled": false,
-          "document": "Configures how cache are purged. It works when `Type` is `purge_prefix`, `purge_host` or `purge_all`. Values: <li>`invalidate`: Only resources updated under the directory are purged.</li><li>`delete`: All resources under the directory are purged regardless of whether they are updated.</li>Note that when Type` is `purge_prefix`, it defaults to `invalidate`.",
+          "document": "Configures how resources under the directory are purged when `Type = purge_prefix`. Values: <li>`invalidate`: Only resources updated under the directory are purged.</li><li>`delete`: All resources under the directory are purged regardless of whether they are updated. </li>Default value: `invalidate`.",
           "example": "invalidate",
           "member": "string",
           "name": "Method",
@@ -3346,7 +3538,7 @@
         },
         {
           "disabled": false,
-          "document": "List of cached resources to purge. The format for input depends on the type of cache purging. See examples below for details. <li>By default, non-ASCII characters u200dare escaped based on RFC3986.</li><li>The maximum number of tasks per purging request is determined by the EdgeOne plan. See [Billing Overview (New)](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1). </li>",
+          "document": "List of cached resources to purge. The format for input depends on the type of cache purging. See examples below for details. <li>By default, non-ASCII characters are escaped based on RFC3986.</li><li>The maximum number of tasks per purging request is determined by the EdgeOne plan. See [Billing Overview (New)](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1). </li>",
           "example": "[\"http://www.qq.com/1.txt\"]",
           "member": "string",
           "name": "Targets",
@@ -4285,6 +4477,136 @@
       ],
       "type": "object"
     },
+    "DeployConfigGroupVersionRequest": {
+      "document": "DeployConfigGroupVersion request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-yoaan091nx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment ID. Please specify the environment ID to which the version should be released.",
+          "example": "env-13aan091nx",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version information required for release. Multiple versions of different configuration groups can be modified simultaneously, while each group allows modifying only one version at a time.",
+          "example": "ver-khasdj345r",
+          "member": "ConfigGroupVersionInfo",
+          "name": "ConfigGroupVersionInfos",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Change description. It is used to describe the content and reasons for this change. A maximum of 100 characters are supported.",
+          "example": "变更说明：新增IPV6、CN2等功能",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeployConfigGroupVersionResponse": {
+      "document": "DeployConfigGroupVersion response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Release record ID.",
+          "example": "dr-2nvadq3sa41u",
+          "member": "string",
+          "name": "RecordId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeployRecord": {
+      "document": "Version release record details for the configuration group.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Details about the released version.",
+          "example": "无",
+          "member": "ConfigGroupVersionInfo",
+          "name": "ConfigGroupVersionInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Release time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).",
+          "example": "2023-06-30T17:37:56+0800",
+          "member": "datetime_iso",
+          "name": "DeployTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Release status. Valid values: \n<li>deploying: Being released.</li>\n<li>failure: Release failed.</li>\n<li>success: Released successfully. </li>",
+          "example": "failure",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Release result information.",
+          "example": "发布失败：校验不通过",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Release record ID. \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "dr-2nvwh63fa40u",
+          "member": "string",
+          "name": "RecordId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Change description.",
+          "example": "变更说明：新增IPV6、CN2等功能\t",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DescribeAccelerationDomainsRequest": {
       "document": "DescribeAccelerationDomains request structure.",
       "members": [
@@ -4483,7 +4805,7 @@
         },
         {
           "disabled": false,
-          "document": "Filters. Each filter can have up to 20 entries. Details: <li>proxy-id<br>   Filter by the <strong>Proxy ID</strong>u200d, such as: `proxy-ev2sawbwfd`. <br>   Type: String<br>   Required: No</li><li>zone-id<br>   Filter by the <strong>Site ID</strong>, such as `zone-vawer2vadg`. <br>   Type: String<br>   Required: No</li><li>rule-tag<br>   Filter by the <strong>Rule tag</strong>, such as `rule-service-1`. <br>   Type: String<br>   Required: No</li>",
+          "document": "Filters. Each filter can have up to 20 entries. Details: <li>proxy-id<br>   Filter by the <strong>Proxy ID</strong>, such as: `proxy-ev2sawbwfd`. <br>   Type: String<br>   Required: No</li><li>zone-id<br>   Filter by the <strong>Site ID</strong>, such as `zone-vawer2vadg`. <br>   Type: String<br>   Required: No</li><li>rule-tag<br>   Filter by the <strong>Rule tag</strong>, such as `rule-service-1`. <br>   Type: String<br>   Required: No</li>",
           "example": "[{\"Name\": \"proxy-id\", [\"proxy-124521xfqlh4qjee\"]}]",
           "member": "Filter",
           "name": "Filters",
@@ -4542,6 +4864,145 @@
           "required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConfigGroupVersionDetailRequest": {
+      "document": "DescribeConfigGroupVersionDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2jwahzkd4cn0",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version ID.",
+          "example": "ver-2jwahzkd4cn0",
+          "member": "string",
+          "name": "VersionId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConfigGroupVersionDetailResponse": {
+      "document": "DescribeConfigGroupVersionDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Version information.",
+          "example": "无",
+          "member": "ConfigGroupVersionInfo",
+          "name": "ConfigGroupVersionInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Version file content. It is returned in JSON format.",
+          "example": "无",
+          "member": "string",
+          "name": "Content",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConfigGroupVersionsRequest": {
+      "document": "DescribeConfigGroupVersions request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2jwahzkd4cn0",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Configuraration group ID.",
+          "example": "confgroup-27fil18zp2v1",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering condition. The maximum value of Filters.Values is 20. If this parameter is not specified, all version information for the selected configuration group is returned. Detailed filtering conditions: \n<li>version-id: Filter by version ID.</li>",
+          "example": "无",
+          "member": "AdvancedFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Paging query offset. The default value is 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Limited entries in paging queries. The default value is 20 and the maximum value is 100. ",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConfigGroupVersionsResponse": {
+      "document": "DescribeConfigGroupVersions response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total versions.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Version information list.",
+          "example": "无",
+          "member": "ConfigGroupVersionInfo",
+          "name": "ConfigGroupVersionInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -5019,6 +5480,118 @@
       ],
       "type": "object"
     },
+    "DescribeDeployHistoryRequest": {
+      "document": "DescribeDeployHistory request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2jwahzkd4cn0",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment ID.",
+          "example": "env-2jwahzkd4cn0",
+          "member": "string",
+          "name": "EnvId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: \n<li>record-id: Filter by release record ID. </li>",
+          "example": "无",
+          "member": "AdvancedFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDeployHistoryResponse": {
+      "document": "DescribeDeployHistory response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total release records.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Release record details.",
+          "example": "无",
+          "member": "DeployRecord",
+          "name": "Records",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEnvironmentsRequest": {
+      "document": "DescribeEnvironments request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2jwahzkd4cn0",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEnvironmentsResponse": {
+      "document": "DescribeEnvironments response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total environments.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Environment list.",
+          "example": "无",
+          "member": "EnvInfo",
+          "name": "EnvInfos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeHostsSettingRequest": {
       "document": "DescribeHostsSetting request structure.",
       "members": [
@@ -5363,7 +5936,7 @@
         },
         {
           "disabled": false,
-          "document": "Filtering condition. The detailed filtering condition key values are as follows: \n<li>socket<br>    Filter based on [<strong>HTTP protocol type</strong>]. <br>    Corresponding value options: <br>    HTTP: HTTP protocol；<br>    HTTPS: HTTPS protocol;<br>    QUIC: QUIC protocol. </li>\n<li>domains<br>    Filter based on [<strong>domain name</strong>]. </li>\n<li>tagKey<br>    Filter based on [<strong>Tag Key</strong>]. </li>\n<li>tagValue<br>    Filter based on [<strong>Tag Value</strong>]. </li>",
+          "document": "Filtering condition. The detailed filtering condition key values are as follows: \n<li>socket<br>u2003u2003 Filter based on [<strong>HTTP protocol type</strong>]. <br>u2003u2003 Corresponding value options: <br>u2003u2003 HTTP: HTTP protocol；<br>u2003u2003 HTTPS: HTTPS protocol;<br>u2003u2003 QUIC: QUIC protocol. </li>\n<li>domains<br>u2003u2003 Filter based on [<strong>domain name</strong>]. </li>\n<li>tagKey<br>u2003u2003 Filter based on [<strong>Tag Key</strong>]. </li>\n<li>tagValue<br>u2003u2003 Filter based on [<strong>Tag Value</strong>]. </li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -5464,7 +6037,7 @@
         },
         {
           "disabled": false,
-          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: <li>job-id<br>    Filter based on [<strong>task ID</strong>]. job-id format: 1379afjk91u32h. Multiple values are not supported. <br>    Type: String<br>    Required: No. <br>    Fuzz query: Not supported. </li><li>target<br>    Filter based on [<strong>target resource information</strong>]. target format: http://www.qq.com/1.txt. Multiple values are not supported. <br>    Type: String<br>    Required: No. <br>    Fuzz query: Not supported. </li><li>domains<br>    Filter based on [<strong>domain name</strong>]. domains format: www.qq.com. <br>    Type: String<br>    Required: No. <br>    Fuzz query: Not supported. </li><li>statuses<br>    Filter based on [<strong>task status</strong>]. <br>    Required: No<br>    Fuzz query: Not supported. <br>    Options:<br>    processing: Processing<br>    success: Success<br>    failed: Failure<br>    timeout: Timeout</li>",
+          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: <li>job-id<br>u2003u2003 Filter based on [<strong>task ID</strong>]. job-id format: 1379afjk91u32h. Multiple values are not supported. <br>u2003u2003 Type: String<br>u2003u2003 Required: No. <br>u2003u2003 Fuzz query: Not supported. </li><li>target<br>u2003u2003 Filter based on [<strong>target resource information</strong>]. target format: http://www.qq.com/1.txt. Multiple values are not supported. <br>u2003u2003 Type: String<br>u2003u2003 Required: No. <br>u2003u2003 Fuzz query: Not supported. </li><li>domains<br>u2003u2003 Filter based on [<strong>domain name</strong>]. domains format: www.qq.com. <br>u2003u2003 Type: String<br>u2003u2003 Required: No. <br>u2003u2003 Fuzz query: Not supported. </li><li>statuses<br>u2003u2003 Filter based on [<strong>task status</strong>]. <br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported. <br>u2003u2003 Options:<br>u2003u2003 processing: Processing<br>u2003u2003 success: Success<br>u2003u2003 failed: Failure<br>u2003u2003 timeout: Timeout</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -5556,7 +6129,7 @@
         },
         {
           "disabled": false,
-          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: <li>job-id<br>    Filter based on [<strong>task ID</strong>]. job-id format: 1379afjk91u32h. Multiple values are not supported. <br>    Type: String<br>    Required: No<br>    Fuzz query: Not supported.</li><li>target<br>    Filter based on: [strong>target resource information</strong>. target format: http://www.qq.com/1.txt or tag1. Multiple values are not supported.<br>    Type: String<br>    Required: No<br>    Fuzz query: Not supported.</li><li>domains<br>    Filter based on [<strong>domain name</strong>]. domains format: www.qq.com<br>    Type: String<br>    Required: No<br>    Fuzz query: Not supported. </li><li>statuses<br>    Filter based on <strong>task status</strong>.<br>    Required: No<br>    Fuzz query: Not supported. <br>    Options:<br>    processing: Processing<br>    success: Success<br>    failed: Failure<br>    timeout: Timeout</li><li>type<br>    Filter based on [<strong>cleared cache type</strong>]. Multiple values are not supported. <br>    Type: String<br>    Required: No<br>    Fuzz query: Not supported.<br>    Options:<br>    purge_url: URL<br>    purge_prefix: Prefix<br>    purge_all: All cache content<br>    purge_host: Hostname<br>    purge_cache_tag: CacheTag</li>",
+          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: <li>job-id<br>u2003u2003 Filter based on [<strong>task ID</strong>]. job-id format: 1379afjk91u32h. Multiple values are not supported. <br>u2003u2003 Type: String<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported.</li><li>target<br>u2003u2003 Filter based on: [strong>target resource information</strong>. target format: http://www.qq.com/1.txt or tag1. Multiple values are not supported.<br>u2003u2003 Type: String<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported.</li><li>domains<br>u2003u2003 Filter based on [<strong>domain name</strong>]. domains format: www.qq.com<br>u2003u2003 Type: String<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported. </li><li>statuses<br>u2003u2003 Filter based on <strong>task status</strong>.<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported. <br>u2003u2003 Options:<br>u2003u2003 processing: Processing<br>u2003u2003 success: Success<br>u2003u2003 failed: Failure<br>u2003u2003 timeout: Timeout</li><li>type<br>u2003u2003 Filter based on [<strong>cleared cache type</strong>]. Multiple values are not supported. <br>u2003u2003 Type: String<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported.<br>u2003u2003 Options:<br>u2003u2003 purge_url: URL<br>u2003u2003 purge_prefix: Prefix<br>u2003u2003 purge_all: All cache content<br>u2003u2003 purge_host: Hostname<br>u2003u2003 purge_cache_tag: CacheTag</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -7014,6 +7587,82 @@
       ],
       "usage": "out"
     },
+    "EnvInfo": {
+      "document": "Environment information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Environment ID.",
+          "example": "env-2kplomhisdcb",
+          "member": "string",
+          "name": "EnvId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Environment type. Valid values: \n<li>production: Production environment.</li><li> staging: Test environment. </li>",
+          "example": "无",
+          "member": "string",
+          "name": "EnvType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Environment status. Valid values: \n<li>creating: Being created.</li>\n<li>running: The environment is stable, with version changes allowed.</li>\n<li>version_deploying: The version is currently being deployed, with no more changes allowed. </li>",
+          "example": "running ",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Effective scope of the configuration in the current environment. Valid values: \n<li>ALL: It takes effect on the entire network when EnvType is set to production.</li>\n<li>It returns the IP address of the test node for host binding during testing when EnvType is set to staging. </li>",
+          "example": "[\"1.1.1.1\",\"2.2.2.2\"]",
+          "member": "string",
+          "name": "Scope",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "For the effective versions of each configuration group in the current environment, there are two possible scenarios based on the value of Status: \n<li>When Status is set to version_deploying, the returned value of this field represents the previously effective version. In other words, during the deployment of the new version, the effective version is the one that was in effect before any changes were made.</li>\n<li>When Status is set to running, the value returned by this field is the currently effective version. </li>",
+          "example": "无",
+          "member": "ConfigGroupVersionInfo",
+          "name": "CurrentConfigGroupVersionInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).",
+          "example": "2023-06-30T17:37:56+0800",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).",
+          "example": "2023-06-30T17:37:56+0800",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ExceptConfig": {
       "document": "Exception rules, which are used to bypass specific rules",
       "members": [
@@ -8446,8 +9095,8 @@
         },
         {
           "disabled": false,
-          "document": "The proxy type. Values:\n<li>`hostname`: The proxy is created by subdomain name.</li>\n<li>`instance`: The proxy is created by instance.</li>If not specified, this field uses the default value `instance`.",
-          "example": "hostname",
+          "document": "L4 proxy mode. Valid values: \n<li>instance: Instance mode. </li>If it is not specified, instance is used by default.",
+          "example": "instance",
           "member": "string",
           "name": "ProxyType",
           "required": false,
@@ -9041,7 +9690,7 @@
         },
         {
           "disabled": false,
-          "document": "Access mode of the site. Values:\n<li> `full`: Access through a name server.</li>\n<li> `partial`: Access through a CNAME u200drecord. A site using domainless access can only switch to CNAME access. </li>The original configuration applies if this field is not specified.",
+          "document": "Access mode of the site. Values:\n<li> `full`: Access through a name server.</li>\n<li> `partial`: Access through a CNAME record. A site using domainless access can only switch to CNAME access. </li>The original configuration applies if this field is not specified.",
           "example": "partial",
           "member": "string",
           "name": "Type",
@@ -10603,7 +11252,7 @@
           "example": "edgeone-2cnw94j16y39",
           "member": "string",
           "name": "Id",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10613,7 +11262,7 @@
           "example": "0",
           "member": "int64",
           "name": "PayMode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10623,7 +11272,7 @@
           "example": "无",
           "member": "datetime_iso",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10633,7 +11282,7 @@
           "example": "无",
           "member": "datetime_iso",
           "name": "EnableTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10643,7 +11292,7 @@
           "example": "无",
           "member": "datetime_iso",
           "name": "ExpireTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10653,7 +11302,7 @@
           "example": "normal",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10663,7 +11312,7 @@
           "example": "无",
           "member": "Sv",
           "name": "Sv",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -10673,7 +11322,7 @@
           "example": "1",
           "member": "int64",
           "name": "AutoRenewFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10683,7 +11332,7 @@
           "example": "edgeone-2cnw94j16y39",
           "member": "string",
           "name": "PlanId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10693,27 +11342,27 @@
           "example": "mainland",
           "member": "string",
           "name": "Area",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The resource type. Values:\n<li>`plan`: Plan resources</li>\n<li>`pay-as-you-go`: Pay-as-you-go resources </li>\n<li>`value-added`: Value-added resources </li>\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The resource type. Values:\n<li>`plan`: Plan resources</li>\n<li>`pay-as-you-go`: Pay-as-you-go resources </li>\n<li>`value-added`: Value-added resources </li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "value-added",
           "member": "string",
           "name": "Group",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The sites that are associated with the current resources.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The sites that are associated with the current resources.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "ZoneNumber",
-          "required": false,
+          "output_required": false,
           "type": "int",
           "value_allowed_null": true
         }
@@ -11791,7 +12440,7 @@
         },
         {
           "disabled": false,
-          "document": "Allowed client source. IPv4 and IPv6 addresses and network segments are supported. 0.0.0.0/0 indicates that all IPv4 clients can be debugged, and ::/0 indicates that all IPv6 clients can be debugged.",
+          "document": "The client IP to allow. It can be an IPv4/IPv6 address or a CIDR block. If not specified, it means to allow any client IP",
           "example": "[\"9.142.236.194\", \"43.154.226.0/24\"]",
           "member": "string",
           "name": "AllowClientIPList",
@@ -11802,7 +12451,7 @@
         },
         {
           "disabled": false,
-          "document": "The time when the standard debugging setting expires. If it is exceeded, this feature u200dbecomes invalid.",
+          "document": "The time when the standard debugging setting expires. If it is exceeded, this feature becomes invalid.",
           "example": "2023-06-30T17:37:56+0800",
           "member": "datetime_iso",
           "name": "ExpireTime",
@@ -11891,7 +12540,7 @@
         },
         {
           "disabled": false,
-          "document": "Quota for a resource. Values:\n<li>`zone`: Quota for sites</li>\n<li>`custom-rule`: Quota for custom rules</li>\n<li>`rate-limiting-rule`: Quota for rate limiting rules</li>\n<li>`l4-proxy-instance`: Quota for L4 proxy instances </li>\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Quota for a resource. Values:\n<li>`zone`: Quota for sites</li>\n<li>`custom-rule`: Quota for custom rules</li>\n<li>`rate-limiting-rule`: Quota for rate limiting rules</li>\n<li>`l4-proxy-instance`: Quota for L4 proxy instances </li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "zone",
           "member": "string",
           "name": "Pack",
@@ -11901,7 +12550,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the L4 proxy instance.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "ID of the L4 proxy instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "sid-xxxx",
           "member": "string",
           "name": "InstanceId",
@@ -11911,7 +12560,7 @@
         },
         {
           "disabled": false,
-          "document": "The protection specification.\nValues: <li> `cm_30G`: 30 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `cm_60G`: 60 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `cm_100G`: 100 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `anycast_300G`: 300 Gbps Anycast-based protection in **Global (MLC)** service area</li><li> `anycast_unlimited`: Unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_30G_anycast_300G`: 30 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_30G_anycast_unlimited`: 30 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_60G_anycast_300G`: 60 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_60G_anycast_unlimited`: 60 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_100G_anycast_300G`: 100 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_100G_anycast_unlimited`: 100 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area </li>\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The protection specification.\nValues: <li> `cm_30G`: 30 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `cm_60G`: 60 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `cm_100G`: 100 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `anycast_300G`: 300 Gbps Anycast-based protection in **Global (MLC)** service area</li><li> `anycast_unlimited`: Unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_30G_anycast_300G`: 30 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_30G_anycast_unlimited`: 30 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_60G_anycast_300G`: 60 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_60G_anycast_unlimited`: 60 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_100G_anycast_300G`: 100 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_100G_anycast_unlimited`: 100 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area </li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "cm_30g",
           "member": "string",
           "name": "ProtectionSpecs",
@@ -12996,7 +13645,7 @@
         },
         {
           "disabled": false,
-          "document": "Standard debugging configuration.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Standard debugging configuration.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "StandardDebug",
           "name": "StandardDebug",
