@@ -15,7 +15,7 @@
       "status": "online"
     },
     "DescribeTaskDetail": {
-      "document": "This API is used to view the details of an audio moderation task, including task status, detection result, recognized text content of the audio file, maliciousness tag that corresponds to the detection result, and suggested operation. For the specific output content, see the sample output parameters.",
+      "document": "This interface is used to view the detailed information of the audio moderation tasks, including task status, detection results, corresponding text content recognized from the audio file, recommended follow-up operations of the maliciousness tags corresponding to the detection results, and so on. For specific output content, see the output parameter examples.",
       "input": "DescribeTaskDetailRequest",
       "name": "Views task details",
       "output": "DescribeTaskDetailResponse",
@@ -100,7 +100,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the length of an audio file in seconds.",
+          "document": "This field is used to return the length of an audio file in milliseconds.",
           "example": "无",
           "member": "string",
           "name": "Duration",
@@ -196,7 +196,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter is used to return the start time of the segment of an audio file under the corresponding language tag in milliseconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "This parameter is used to return the start time of the segment of an audio file under the corresponding language tag in seconds. \nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "StartTime",
@@ -206,7 +206,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter is used to return the end time of the segment of an audio file under the corresponding language tag in milliseconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "This parameter is used to return the end time of the segment of an audio file under the corresponding language tag in seconds. \nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "EndTime",
@@ -252,7 +252,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the start time of the segment of an audio file under the corresponding moan tag in milliseconds.",
+          "document": "This field is used to return the start time of the segment of an audio file under the corresponding moan tag in seconds.",
           "example": "无",
           "member": "float",
           "name": "StartTime",
@@ -262,7 +262,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the end time of the segment of an audio file under the corresponding moan tag in milliseconds.",
+          "document": "This field is used to return the end time of the segment of an audio file under the corresponding moan tag in seconds.",
           "example": "无",
           "member": "float",
           "name": "EndTime",
@@ -420,33 +420,36 @@
       "members": [
         {
           "disabled": false,
-          "document": "This field indicates a bucket name in Tencent Cloud COS. For more information on buckets, see [Basic Concepts](https://intl.cloud.tencent.com/document/product/436/44352?from_cn_redirect=1).",
+          "document": "This field indicates a bucket name in Tencent Cloud COS. For more information on buckets, see Basic Concepts (https://intl.cloud.tencent.com/document/product/436/44352?from_cn_redirect=1). \nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Bucket",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "This field indicates a region where a Tencent Cloud managed data center is deployed. COS data is stored in buckets in these regions.",
+          "document": "This field indicates a region where a Tencent Cloud COS managed data center is deployed. COS data is stored in buckets in these regions. \nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Region",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "This field indicates an object key in Tencent Cloud COS. An object is stored in a bucket as a basic storage unit. You can manage objects through the Tencent Cloud console, API, or SDK. For more information on objects, see [Object Overview](https://intl.cloud.tencent.com/document/product/436/13324?from_cn_redirect=1).",
+          "document": "This field indicates an object key in Tencent Cloud COS. Object z is stored in a bucket as a basic storage unit. You can manage objects through the Tencent Cloud console, API, or SDK. For more information on objects, see Object Overview (https://intl.cloud.tencent.com/document/product/436/13324?from_cn_redirect=1). \nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Object",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -580,7 +583,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "This field is used to return the task ID (in the `Results` parameter) after an audio moderation task is created. It is used to identify the moderation task for which to query the details.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "w-audio-YBJzazmYs4vO27p2",
           "member": "string",
           "name": "TaskId",
@@ -590,7 +593,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the data ID parameter passed in within the `Tasks` parameter when the audio moderation API is called for easier data identification and management.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "azmYs4vO27p2",
           "member": "string",
           "name": "DataId",
@@ -600,7 +603,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the `BizType` parameter passed in when the audio moderation API is called for easier data identification and management.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "default",
           "member": "string",
           "name": "BizType",
@@ -610,7 +613,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the task name in the `TaskInput` parameter passed in when the audio moderation API is called for easier task identification and management.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "名称",
           "member": "string",
           "name": "Name",
@@ -620,7 +623,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the task status of the queried content.\n<br>Valid values: **FINISH** (task completed), **PENDING** (task pending), **RUNNING** (task in progress), **ERROR** (task error), **CANCELLED** (task canceled).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "FINISH",
           "member": "string",
           "name": "Status",
@@ -630,7 +633,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the audio moderation type passed in when the audio moderation API is called. Valid values: **AUDIO** (audio on demand), **LIVE_AUDIO** (audio live streaming). Default value: AUDIO.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "AUDIO",
           "member": "string",
           "name": "Type",
@@ -640,7 +643,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the operation suggestion for the maliciousness tag. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "Pass",
           "member": "string",
           "name": "Suggestion",
@@ -650,7 +653,7 @@
         },
         {
           "disabled": false,
-          "document": "Label of the malicious content detected. <br>Values: **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "{}",
           "member": "TaskLabel",
           "name": "Labels",
@@ -660,7 +663,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the media content information of the moderation service, mainly including the input file type and access URL.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "{}",
           "member": "InputInfo",
           "name": "InputInfo",
@@ -670,7 +673,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the recognized text content of an audio file. **Up to the first 1,000 characters** can be recognized.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "the text",
           "member": "string",
           "name": "AudioText",
@@ -680,7 +683,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the moderation result of an audio segment, mainly including the start time and audio moderation result.<br>For the specific output content, see the detailed description of the `AudioSegments` and `AudioResult` data structures.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "{}",
           "member": "AudioSegments",
           "name": "AudioSegments",
@@ -690,7 +693,7 @@
         },
         {
           "disabled": false,
-          "document": "If the task status is `Error`, this field will return the error type; otherwise, null will be returned by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "URL_ERROR",
           "member": "string",
           "name": "ErrorType",
@@ -700,7 +703,7 @@
         },
         {
           "disabled": false,
-          "document": "If the task status is `Error`, this field will return the error message; otherwise, null will be returned by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "the url is request is 404",
           "member": "string",
           "name": "ErrorDescription",
@@ -710,7 +713,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the creation time of the queried task in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2021-01-28T08:20:25.759Z",
           "member": "string",
           "name": "CreatedAt",
@@ -720,7 +723,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the last update time of the queried task in ISO 8601 format.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "2021-01-28T08:20:25.759Z",
           "member": "string",
           "name": "UpdatedAt",
@@ -730,7 +733,7 @@
         },
         {
           "disabled": false,
-          "document": "If the recognition result is normal, this parameter is returned with the value `Normal`. If malicious content is recognized, the tag with the highest priority in the result of `Labels` is returned.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "Normal",
           "member": "string",
           "name": "Label",
@@ -891,7 +894,7 @@
         },
         {
           "disabled": false,
-          "document": "This field is used to return the segment length of the input streaming media file in seconds. It is **15 seconds by default** and is customizable.",
+          "document": "This field is used to return the segment length of the input streaming media file in milliseconds.** It is 15 seconds** by default and is customizable.",
           "example": "无",
           "member": "int64",
           "name": "Duration",

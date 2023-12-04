@@ -2,7 +2,7 @@
   "actions": {
     "ApplyInstanceSnapshot": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=ApplyInstanceSnapshot\n&InstanceId=lhins-k31c771o\n&SnapshotId=lhsnap-nv6aqcv6\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"96aee6e3-172c-4f0f-be7c-fc46b9865763\"\n    }\n}",
         "title": "Rolling back instance snapshot"
@@ -26,10 +26,10 @@
     ],
     "AttachDisks": [
       {
-        "document": " ",
+        "document": "This example shows you how to attach a cloud disk. ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AttachDisks\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-5vmz00i3\"\n    ],\n    \"InstanceId\": \"lhins-qg08np8l\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0d5e192e-10a2-44a6-a6ce-2ac6b01f7646\"\n    }\n}",
-        "title": "Attaching cloud disks"
+        "title": "Attaching a cloud disk "
       }
     ],
     "CreateBlueprint": [
@@ -38,6 +38,14 @@
         "input": "POST / HTTP/1.1 \nHost: lighthouse.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: CreateBlueprint \n<Common request parameters>\n\n{\n    \"BlueprintName\": \"test-blueprint\",\n    \"InstanceId\": \"lhins-7ugtz5e1\"\n}",
         "output": "{\n    \"Response\": {\n        \"BlueprintId\": \"lhbp-xkeh87da\",\n        \"RequestId\": \"6bdba9db-c3fe-45b2-87f3-b0125d901a90\"\n    }\n}",
         "title": "Creating an image of a Lighthouse instance"
+      }
+    ],
+    "CreateDisks": [
+      {
+        "document": "This example shows you how to create a cloud disk.",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDisks\n<Common request parameters>\n\n{\n    \"DiskCount\": 1,\n    \"DiskChargePrepaid\": {\n        \"Period\": 1,\n        \"TimeUnit\": \"m\"\n    },\n    \"DiskName\": \"test\",\n    \"DiskType\": \"CLOUD_PREMIUM\",\n    \"DiskSize\": 20,\n    \"Zone\": \"ap-hongkong-2\",\n    \"DiskBackupQuota\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"DiskIdSet\": [\n            \"lhdisk-2q0cs4oe\"\n        ],\n        \"RequestId\": \"69765fd3-56a6-4633-8afd-72ca7805226b\"\n    }\n}",
+        "title": "Creating a cloud disk"
       }
     ],
     "CreateFirewallRules": [
@@ -50,10 +58,10 @@
     ],
     "CreateInstanceSnapshot": [
       {
-        "document": " ",
+        "document": "This example shows you how to create an instance snapshot.",
         "input": "https://lighthouse.tencentcloudapi.com/?Action=CreateInstanceSnapshot\n&InstanceId=lhins-k31c771o\n&SnapshotName=snap_20200903\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"SnapshotId\": \"lhsnap-nv6aqcv6\",\n        \"RequestId\": \"0580622c-03ef-4ae0-8192-016783412094\"\n    }\n}",
-        "title": "Creating instance snapshot"
+        "title": "Creating an instance snapshot"
       }
     ],
     "CreateInstances": [
@@ -138,10 +146,10 @@
     ],
     "DescribeBundles": [
       {
-        "document": " ",
+        "document": "This example shows you how to query the information of specific bundles. ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBundles\n<Common request parameters>\n\n{\n    \"BundleIds\": [\n        \"bundle_ntp_small1_500\",\n        \"bundle_bw_small1_1\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"BundleSet\": [\n            {\n                \"BundleId\": \"bundle_bw_small1_1\",\n                \"CPU\": 1,\n                \"Memory\": 1,\n                \"SystemDiskType\": \"CLOUD_SSD\",\n                \"SystemDiskSize\": 20,\n                \"InternetMaxBandwidthOut\": 1,\n                \"InternetChargeType\": \"BANDWIDTH_POSTPAID_BY_HOUR\",\n                \"MonthlyTraffic\": 1,\n                \"Price\": {\n                    \"InstancePrice\": {\n                        \"OriginalBundlePrice\": 60,\n                        \"OriginalPrice\": 60,\n                        \"Discount\": 65,\n                        \"DiscountPrice\": 39\n                    }\n                },\n                \"SupportLinuxUnixPlatform\": true,\n                \"SupportWindowsPlatform\": false,\n                \"BundleType\": \"GENERAL_BUNDLE\",\n                \"BundleSalesState\": \"AVAILABLE\",\n                \"BundleDisplayLabel\": \"NORMAL\"\n            },\n            {\n                \"BundleId\": \"bundle_ntp_small1_500\",\n                \"CPU\": 1,\n                \"Memory\": 1,\n                \"SystemDiskType\": \"CLOUD_SSD\",\n                \"SystemDiskSize\": 40,\n                \"InternetMaxBandwidthOut\": 3,\n                \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                \"MonthlyTraffic\": 500,\n                \"Price\": {\n                    \"InstancePrice\": {\n                        \"OriginalBundlePrice\": 90,\n                        \"OriginalPrice\": 90,\n                        \"Discount\": 65,\n                        \"DiscountPrice\": 58.5\n                    }\n                },\n                \"SupportLinuxUnixPlatform\": true,\n                \"SupportWindowsPlatform\": true,\n                \"BundleType\": \"GENERAL_BUNDLE\",\n                \"BundleSalesState\": \"AVAILABLE\",\n                \"BundleDisplayLabel\": \"NORMAL\"\n            }\n        ],\n        \"TotalCount\": 2,\n        \"RequestId\": \"6d4c966d-bc42-4425-8c98-a39f36c7ad1b\"\n    }\n}",
-        "title": "Querying the bundle (succeeded)"
+        "output": "{\n    \"Response\": {\n        \"BundleSet\": [\n            {\n                \"BundleId\": \"bundle2022_gen_02\",\n                \"CPU\": 2,\n                \"Memory\": 2,\n                \"SystemDiskType\": \"CLOUD_SSD\",\n                \"SystemDiskSize\": 50,\n                \"InternetMaxBandwidthOut\": 5,\n                \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                \"MonthlyTraffic\": 500,\n                \"Price\": {\n                    \"InstancePrice\": {\n                        \"Currency\": \"USD\",\n                        \"OriginalBundlePrice\": 60.0,\n                        \"OriginalPrice\": 60.0,\n                        \"Discount\": 66.229933,\n                        \"DiscountPrice\": 39.74\n                    }\n                },\n                \"SupportLinuxUnixPlatform\": true,\n                \"SupportWindowsPlatform\": true,\n                \"BundleType\": \"GENERAL_BUNDLE\",\n                \"BundleTypeDescription\": \"Standard\",\n                \"BundleSalesState\": \"AVAILABLE\",\n                \"BundleDisplayLabel\": \"NORMAL\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"b2563b1d-e93f-4e05-9c6f-096e0c403add\"\n    }\n}",
+        "title": "Querying bundles "
       }
     ],
     "DescribeCcnAttachedInstances": [
@@ -336,7 +344,7 @@
     ],
     "DescribeZones": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeZones\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"ZoneInfoSet\": [\n            {\n                \"Zone\": \"ap-guangzhou-2\",\n                \"ZoneName\": \"Guangzhou Zone 2\",\n                \"InstanceDisplayLabel\": \"NORMAL\"\n            },\n            {\n                \"Zone\": \"ap-guangzhou-3\",\n                \"ZoneName\": \"Guangzhou Zone 3\",\n                \"InstanceDisplayLabel\": \"NORMAL\"\n            },\n            {\n                \"Zone\": \"ap-guangzhou-4\",\n                \"ZoneName\": \"Guangzhou Zone 4\",\n                \"InstanceDisplayLabel\": \"NORMAL\"\n            }\n        ],\n        \"TotalCount\": 3,\n        \"RequestId\": \"5e1bf334-e530-4c26-ab92-d911ab148d3a\"\n    }\n}",
         "title": "Querying AZs"
@@ -344,10 +352,10 @@
     ],
     "DetachCcn": [
       {
-        "document": " ",
+        "document": "Unassociates CCN instance",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetachCcn\n<Common request parameters>\n\n{\n    \"CcnId\": \"ccn-pf78xmcp\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6c947389-ed9f-4c7a-ba68-4b118a4ac11a\"\n    }\n}",
-        "title": "Unassociating CCN instance"
+        "title": "Unassociates CCN instance"
       }
     ],
     "DetachDisks": [
@@ -414,17 +422,25 @@
         "title": "Querying the price of renewing instances (succeeded)"
       }
     ],
+    "IsolateDisks": [
+      {
+        "document": "Returns cloud disks",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IsolateDisks\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-ovav4qmi\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e43cdee7-5dc8-4d3c-9c46-56718971b193\"\n    }\n}",
+        "title": "Returns cloud disks"
+      }
+    ],
     "IsolateInstances": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1 \nHost: lighthouse.tencentcloudapi.com \nContent-Type: application/json \nX-TC-Action: IsolateInstances \n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"lhins-lfdnmikp\"\n    ]\n}",
+        "document": "This example shows you how to return an instance. ",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IsolateInstances\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"lhins-lfdnmikp\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"35eee594-4644-401a-815a-1c9075b5f39c\"\n    }\n}",
-        "title": "Returning Lighthouse instances"
+        "title": "Returning an instance "
       }
     ],
     "ModifyBlueprintAttribute": [
       {
-        "document": " ",
+        "document": "This example shows you how to modify the name and description of an image.",
         "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyBlueprintAttribute\n<Common request parameters>\n\n{\n    \"BlueprintId\": \"lhbp-1ynlfst1\",\n    \"BlueprintName\": \"new-blueprint\",\n    \"Description\": \"new-blueprint\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"896682bb-fb47-4fce-94d9-9a4f2abbfaac\"\n    }\n}",
         "title": "Modifying image name and description"
@@ -508,6 +524,22 @@
         "input": "https://lighthouse.tencentcloudapi.com/?Action=RebootInstances\n&InstanceIds.0=lhins-ruy9d2tw\n&InstanceIds.1=lhins-rusdke45\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4225fd9d-38cb-4cc7-b7b0-7332809ddca7\"\n    }\n}",
         "title": "Restarting instances"
+      }
+    ],
+    "RenewDisks": [
+      {
+        "document": "This example shows you how to review a cloud disk.",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RenewDisks\n<Common request parameters>\n\n{\n    \"DiskIds\": [\n        \"lhdisk-ovav4qmi\"\n    ],\n    \"RenewDiskChargePrepaid\": {\n        \"CurInstanceDeadline\": \"2023-09-09 23:59:59\"\n    },\n    \"AutoVoucher\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c139e106-cdb2-4923-8f1e-ea1dc4fe3a47\"\n    }\n}",
+        "title": "Renewing a cloud disk"
+      }
+    ],
+    "RenewInstances": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: lighthouse.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RenewInstances\n<Common request parameters>\n\n{\n    \"InstanceIds\": [\n        \"lhins-1cte6j63\",\n        \"lhins-oxfq8tad\"\n    ],\n    \"InstanceChargePrepaid\": {\n        \"Period\": 1\n    },\n    \"AutoVoucher\": true,\n    \"RenewDataDisk\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c139e106-cdb2-4923-8f1e-ea1dc4fe3a47\"\n    }\n}",
+        "title": "Renewing specific instances"
       }
     ],
     "ResetAttachCcn": [

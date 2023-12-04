@@ -35,6 +35,13 @@
       "output": "CreateBlueprintResponse",
       "status": "online"
     },
+    "CreateDisks": {
+      "document": "This API is used to create one or more cloud disks.",
+      "input": "CreateDisksRequest",
+      "name": "Creates cloud disks",
+      "output": "CreateDisksResponse",
+      "status": "online"
+    },
     "CreateFirewallRules": {
       "document": "This API is used to add a firewall rule on an instance.\n\n\n* `FirewallVersion` is the firewall version number. Every time you update the firewall rule version, it will be automatically increased by 1 to prevent the updated rule from expiring. If it is left empty, conflicts will not be considered.\n\nIn the `FirewallRules` parameter:\n* Valid values of the `Protocol` field include `TCP`, `UDP`, `ICMP`, and `ALL`.\n* For the `Port` field, you can enter only `ALL`, a single port number, several port numbers separated by commas, or a port range indicated by two port numbers separated by a minus sign. If `Port` is a range, the port number on the left of the minus sign must be smaller than the one on the right. If `Protocol` is not `TCP` or `UDP`, `Port` can only be empty or `ALL`. The length of the `Port` field cannot exceed 64 characters.\n* For the `CidrBlock` field, you can enter any string that conforms to the CIDR format standard. Multi-Tenant network isolation rules take precedence over private network rules in the firewall.\n* For the `Action` field, you can enter only `ACCEPT` or `DROP`.\n* The length of the `FirewallRuleDescription` field cannot exceed 64 characters.",
       "input": "CreateFirewallRulesRequest",
@@ -295,7 +302,7 @@
       "status": "online"
     },
     "DetachCcn": {
-      "document": "This API is used to unassociate a CCN instance.",
+      "document": "This API is used to disassociate with a CCN instance.",
       "input": "DetachCcnRequest",
       "name": "Unassociates CCN instance",
       "output": "DetachCcnResponse",
@@ -355,6 +362,13 @@
       "input": "InquirePriceRenewInstancesRequest",
       "name": "Queries the price of renewing instances",
       "output": "InquirePriceRenewInstancesResponse",
+      "status": "online"
+    },
+    "IsolateDisks": {
+      "document": "This API is used to return one or more Lighthouse cloud disks.\n\nYou can only perform this operation on `UNATTACHED` disks.\nAfter the successful call of the API, the cloud disk goes to the SHUTDOWN state.\nUp to 20 instances are supported at one time. \nThis API is async. After the request is sent, a `RequestId` is returned. At this time, the operation is not completed yet. To check the result, you need to call  [DescribeDisks](https://intl.cloud.tencent.com/document/product/1207/66093?from_cn_redirect=1). If the latest operation status (LatestOperationState) of the disk is `SUCCESS`, the operation is successful.",
+      "input": "IsolateDisksRequest",
+      "name": "Returns cloud disks",
+      "output": "IsolateDisksResponse",
       "status": "online"
     },
     "IsolateInstances": {
@@ -439,6 +453,20 @@
       "input": "RebootInstancesRequest",
       "name": "Restarts instances",
       "output": "RebootInstancesResponse",
+      "status": "online"
+    },
+    "RenewDisks": {
+      "document": "This API is used to renew one or more Lighthouse cloud disks.\n\nThis operation can only be performed on data disks with the status of `ATTACHED`, `UNATTACHED` or `SHUTDOWN`.\nUp to 50 cloud disks are supported at one time.\nThis API is async. After the request is sent, a `RequestId` is returned. At this time, the operation is not completed yet. To check the result, you need to call  [DescribeDisks](https://intl.cloud.tencent.com/document/product/1207/66093?from_cn_redirect=1). If the latest operation status (LatestOperationState) of the disk is `SUCCESS`, the operation is successful.",
+      "input": "RenewDisksRequest",
+      "name": "Renews cloud disks",
+      "output": "RenewDisksResponse",
+      "status": "online"
+    },
+    "RenewInstances": {
+      "document": "This API is used to renew one or more Lighthouse instances.\n* You can only perform this operation on instances whose status is `RUNNING`, `STOPPED` and `SHUTDOWN`.\n* Batch operations are supported. Up to 100 instances are supported in each request.\n* This API is async. After the request is sent successfully, a `RequestId` will be returned. At this time, the operation is not completed immediately. The result of the instance operation can be queried by calling the `DescribeInstances` API. If the latest operation status (LatestOperationState) of the instance is `SUCCESS`, the operation is successful.",
+      "input": "RenewInstancesRequest",
+      "name": "Renews instances",
+      "output": "RenewInstancesResponse",
       "status": "online"
     },
     "ResetAttachCcn": {
@@ -655,7 +683,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether Auto-Renewal is enabled ",
+          "document": "Specify whether to renew an instance automatically when it expires. Values: \n\n`NOTIFY_AND_AUTO_RENEW`: Trigger expiration notification and renew automatically; `NOTIFY_AND_MANUAL_RENEW`: Trigger expiration notification but do not renew; `DISABLE_NOTIFY_AND_MANUAL_RENEW`: Do not trigger the notification and do not renew.\n\nDefault: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the instance is automatically renewed on a monthly basis when the account balance is sufficient.",
           "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
           "name": "RenewFlag",
@@ -676,6 +704,42 @@
         }
       ],
       "type": "object"
+    },
+    "AutoMountConfiguration": {
+      "document": "Automatically attach and initialize the data disk.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the instance to be mounted to. The instance must be **Running**.",
+          "example": "lhins-xxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The mount point within the instance. Only Linux instances are supported. If it's not specified, the default mount point is \"/data/disk\".",
+          "example": "/data/disk",
+          "member": "string",
+          "name": "MountPoint",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The file system type. Values: `ext4` (default) and `xfs`. Only Linux instances are supported. ",
+          "example": "ext4",
+          "member": "string",
+          "name": "FileSystemType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
     },
     "Blueprint": {
       "document": "Image information.",
@@ -889,6 +953,7 @@
         {
           "disabled": false,
           "document": "Image information.",
+          "example": "",
           "member": "Blueprint",
           "name": "Blueprint",
           "required": true,
@@ -898,6 +963,7 @@
         {
           "disabled": false,
           "document": "Software list.",
+          "example": "",
           "member": "Software",
           "name": "SoftwareSet",
           "required": true,
@@ -907,6 +973,7 @@
         {
           "disabled": false,
           "document": "Instance ID.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -987,7 +1054,7 @@
         },
         {
           "disabled": false,
-          "document": "System disk type.\nValid values: \n<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: HDD cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: Premium Cloud Storage</li>",
+          "document": "System disk type.\nValues: \n<li>`CLOUD_SSD`: SSD cloud disks</li><li>`CLOUD_PREMIUM`: Premium cloud disks</li>",
           "example": "CLOUD_SSD",
           "member": "string",
           "name": "SystemDiskType",
@@ -997,7 +1064,7 @@
         },
         {
           "disabled": false,
-          "document": "System disk size.",
+          "document": "System disk size in GB.",
           "example": "40",
           "member": "int64",
           "name": "SystemDiskSize",
@@ -1007,7 +1074,7 @@
         },
         {
           "disabled": false,
-          "document": "Monthly network traffic in Gb.",
+          "document": "Monthly network traffic in GB.",
           "example": "300",
           "member": "int64",
           "name": "MonthlyTraffic",
@@ -1253,6 +1320,115 @@
           "name": "BlueprintId",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDisksRequest": {
+      "document": "CreateDisks request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Availability zone. You can call [DescribeZones](https://intl.cloud.tencent.com/document/product/1207/57513?from_cn_redirect=1) and get the information in the `Zone` parameter re ",
+          "example": "ap-hongkong-2",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cloud disk size in GB.",
+          "example": "20",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Cloud disk media type. Valid values: \"CLOUD_PREMIUM\" (premium cloud disk), \"CLOUD_SSD\" (SSD cloud disk).",
+          "example": "CLOUD_SSD",
+          "member": "string",
+          "name": "DiskType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Parameters of monthly subscribed cloud disks",
+          "example": "无",
+          "member": "DiskChargePrepaid",
+          "name": "DiskChargePrepaid",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Image name, which can contain up to 60 characters.",
+          "example": "test",
+          "member": "string",
+          "name": "DiskName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of cloud disks. Range: [1, 30]. Default value: 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "DiskCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.",
+          "example": "1",
+          "member": "int64",
+          "name": "DiskBackupQuota",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to use the vouchers automatically. It defaults to No.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Automatically mount and initialize the data disk.",
+          "example": "无",
+          "member": "AutoMountConfiguration",
+          "name": "AutoMountConfiguration",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDisksResponse": {
+      "document": "CreateDisks response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of IDs created by using this API. The returning of IDs does not mean that the instances are created successfully.\n\nYou can call `DescribeDisks` API, and find the disk ID in the `DiskSet` returned to check its status. If the status changes from `PENDING` to `UNATTACHED` or `ATTACHED`, the instance is created successfully.",
+          "example": "无",
+          "member": "string",
+          "name": "DiskIdSet",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -1717,6 +1893,7 @@
         {
           "disabled": false,
           "document": "Restricted operation name.",
+          "example": "",
           "member": "string",
           "name": "Action",
           "required": true,
@@ -1726,6 +1903,7 @@
         {
           "disabled": false,
           "document": "Restricted operation message code.",
+          "example": "",
           "member": "string",
           "name": "Code",
           "required": true,
@@ -1735,6 +1913,7 @@
         {
           "disabled": false,
           "document": "Restricted operation message.",
+          "example": "",
           "member": "string",
           "name": "Message",
           "required": true,
@@ -1983,7 +2162,7 @@
         {
           "disabled": false,
           "document": "Package ID list.",
-          "example": "bundle_ntp_small1_500",
+          "example": "[\"bundle_ntp_small1_500”]",
           "member": "string",
           "name": "BundleIds",
           "required": false,
@@ -2009,7 +2188,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter list\n<li>bundle-id</li>Filter by the **bundle ID**.\nType: String\nRequired: No\n<li>support-platform-type</li>Filter by the **OS type**.\nValid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)\nType: String\nRequired: No\n<li>bundle-type</li>Filter by the **bundle type**.\nValid values: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle)\nType: String\nRequired: No\n<li>bundle-state</li>Filter by the **bundle status**.\nValid values: `ONLINE`, `OFFLINE`\nType: String\nRequired: No\nEach request can contain up to 10 `Filters`, and up to 5 `Filter.Values` for each filter. You cannot specify both `BundleIds` and `Filters` at the same time.",
+          "document": "Filter list.\n<li>bundle-id</li>Filter by the **bundle ID**.\nType: String\nRequired: No\n<li>`support-platform-type`<li>Filter by the **system type**.\nValues: `LINUX_UNIX` (Linux/Unix), `WINDOWS` (Windows).\nType: String\nRequired: No\n<li>bundle-type</li>Filter by the **bundle type**.\nValues: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle), `STARTER_BUNDLE` (Beginner bundle); `CAREFREE_BUNDLE` (Carefree bundle);\nType: String\nRequired: No\n<li>bundle-state</li>Filter by the **bundle status**.\nValues: `ONLINE`, `OFFLINE`\nType: String\nRequired: No\nEach request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `BundleIds` and `Filters` at the same time.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -2835,6 +3014,7 @@
         {
           "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "example": "",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -2843,6 +3023,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
+          "example": "",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -2851,6 +3032,7 @@
         {
           "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100.",
+          "example": "",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -2865,6 +3047,7 @@
         {
           "disabled": false,
           "document": "Number of eligible instance traffic package details.",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -2873,6 +3056,7 @@
         {
           "disabled": false,
           "document": "List of instance traffic package details.",
+          "example": "",
           "member": "InstanceTrafficPackage",
           "name": "InstanceTrafficPackageSet",
           "type": "list",
@@ -3530,6 +3714,7 @@
         {
           "disabled": false,
           "document": "Billing duration.",
+          "example": "",
           "member": "int64",
           "name": "TimeSpan",
           "required": true,
@@ -3539,6 +3724,7 @@
         {
           "disabled": false,
           "document": "Billing unit.",
+          "example": "",
           "member": "string",
           "name": "TimeUnit",
           "required": true,
@@ -3548,6 +3734,7 @@
         {
           "disabled": false,
           "document": "Total price.",
+          "example": "",
           "member": "float",
           "name": "TotalCost",
           "required": true,
@@ -3557,6 +3744,7 @@
         {
           "disabled": false,
           "document": "Discounted total price.",
+          "example": "",
           "member": "float",
           "name": "RealTotalCost",
           "required": true,
@@ -3566,6 +3754,7 @@
         {
           "disabled": false,
           "document": "Discount.",
+          "example": "",
           "member": "int64",
           "name": "Discount",
           "required": true,
@@ -3575,6 +3764,7 @@
         {
           "disabled": false,
           "document": "Discount details.",
+          "example": "",
           "member": "PolicyDetail",
           "name": "PolicyDetail",
           "required": true,
@@ -3800,18 +3990,16 @@
           "member": "int64",
           "name": "Period",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
-          "document": "Whether Auto-Renewal is enabled ",
+          "document": "Auto-Renewal flag. Valid values:\n\n`NOTIFY_AND_AUTO_RENEW`: Trigger expiration notification and renew automatically\n`NOTIFY_AND_MANUAL_RENEW`: Trigger expiration notification but do not renew\n`u200cDISABLE_NOTIFY_AND_AUTO_RENEW`: Neither trigger expiration notification nor renew\n\nDefault: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the instance is automatically renewed on a monthly basis when the account balance is sufficient.",
           "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
           "name": "RenewFlag",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -3820,8 +4008,7 @@
           "member": "string",
           "name": "TimeUnit",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -4238,7 +4425,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "FirewallRuleInfo": {
       "document": "Firewall rule details.",
@@ -4312,6 +4499,7 @@
         {
           "disabled": false,
           "document": "Resource name.",
+          "example": "",
           "member": "string",
           "name": "ResourceName",
           "required": true,
@@ -4321,6 +4509,7 @@
         {
           "disabled": false,
           "document": "Number of available resources.",
+          "example": "",
           "member": "int64",
           "name": "ResourceQuotaAvailable",
           "required": true,
@@ -4330,6 +4519,7 @@
         {
           "disabled": false,
           "document": "Total number of resources.",
+          "example": "",
           "member": "int64",
           "name": "ResourceQuotaTotal",
           "required": true,
@@ -4977,6 +5167,7 @@
         {
           "disabled": false,
           "document": "Subscription period in months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.",
+          "example": "",
           "member": "int64",
           "name": "Period",
           "required": true,
@@ -4986,6 +5177,7 @@
         {
           "disabled": false,
           "document": "Auto-Renewal flag. Valid values: <br><li>NOTIFY_AND_AUTO_RENEW: notify upon expiration and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: notify upon expiration but do not renew automatically. You need to manually renew <br><li>DISABLE_NOTIFY_AND_AUTO_RENEW: neither notify upon expiration nor renew automatically<br><br>Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as `NOTIFY_AND_AUTO_RENEW`, the instance will be automatically renewed monthly if the account balance is sufficient.",
+          "example": "",
           "member": "string",
           "name": "RenewFlag",
           "required": false,
@@ -5001,6 +5193,7 @@
         {
           "disabled": false,
           "document": "Instance ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5010,6 +5203,7 @@
         {
           "disabled": false,
           "document": "List of operation limits.",
+          "example": "",
           "member": "DeniedAction",
           "name": "DeniedActions",
           "required": true,
@@ -5117,6 +5311,7 @@
         {
           "disabled": false,
           "document": "Instance ID.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5126,6 +5321,7 @@
         {
           "disabled": false,
           "document": "Whether the instance can be returned.",
+          "example": "",
           "member": "bool",
           "name": "IsReturnable",
           "required": true,
@@ -5135,6 +5331,7 @@
         {
           "disabled": false,
           "document": "Error code of instance return failure.",
+          "example": "",
           "member": "int64",
           "name": "ReturnFailCode",
           "required": true,
@@ -5144,6 +5341,7 @@
         {
           "disabled": false,
           "document": "Error message of instance return failure.",
+          "example": "",
           "member": "string",
           "name": "ReturnFailMessage",
           "required": true,
@@ -5159,6 +5357,7 @@
         {
           "disabled": false,
           "document": "Instance ID.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5168,6 +5367,7 @@
         {
           "disabled": false,
           "document": "List of traffic package details.",
+          "example": "",
           "member": "TrafficPackage",
           "name": "TrafficPackageSet",
           "required": true,
@@ -5213,6 +5413,33 @@
       ],
       "usage": "out"
     },
+    "IsolateDisksRequest": {
+      "document": "IsolateDisks request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IDs of cloud disks. The value can be obtained from the `InstanceId` parameter returned by the [DescribeDisks](https://intl.cloud.tencent.com/document/product/1207/66093?from_cn_redirect=1) API. Up to 20 disks can be processed at a time.",
+          "example": "无",
+          "member": "string",
+          "name": "DiskIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "IsolateDisksResponse": {
+      "document": "IsolateDisks response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "IsolateInstancesRequest": {
       "document": "IsolateInstances request structure.",
       "members": [
@@ -5255,6 +5482,7 @@
         {
           "disabled": false,
           "document": "Key pair ID, which is the unique identifier of a key pair.",
+          "example": "",
           "member": "string",
           "name": "KeyId",
           "required": true,
@@ -5264,6 +5492,7 @@
         {
           "disabled": false,
           "document": "Key pair name.",
+          "example": "",
           "member": "string",
           "name": "KeyName",
           "required": true,
@@ -5273,6 +5502,7 @@
         {
           "disabled": false,
           "document": "Public key (in plain text) of key pair.",
+          "example": "",
           "member": "string",
           "name": "PublicKey",
           "required": true,
@@ -5282,6 +5512,7 @@
         {
           "disabled": false,
           "document": "List of IDs of instances associated with the key pair.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "AssociatedInstanceIds",
           "required": true,
@@ -5291,6 +5522,7 @@
         {
           "disabled": false,
           "document": "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "datetime_iso",
           "name": "CreatedTime",
           "required": true,
@@ -5300,6 +5532,7 @@
         {
           "disabled": false,
           "document": "Private key of key pair.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "PrivateKey",
           "required": true,
@@ -5318,19 +5551,26 @@
           "example": "NO",
           "member": "string",
           "name": "AutoGeneratePassword",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "required": false,
+          "type": "string"
         },
         {
           "disabled": false,
-          "document": "Instace login password.\nFor Windows instances, the password must contain 12 to 30 characters of the following types. It cannot start with “/” and cannot include the username.\n<li>[a-z]</li>\n<li>[A-Z]</li>\n<li>[0-9]</li>\n<li>[()`~!@#$%^&*-+=_|{}[]:;' <>,.?/]</li>",
+          "document": "Instance login password. \nFor Windows instances, the password must contain 12 to 30 characters of the following types. It cannot start with “/” and cannot include the username. \n<li>Lowercase letters: [a–z]</li>\n<li>Uppercase letters: [A–Z]</li>\n<li>Digits: 0-9</li>\n<li>Symbols: ()`~!@#$%^&*-+=_|{}[]:;'<>,.?/</li>",
           "example": " HelloTgHd123_&*",
           "member": "string",
           "name": "Password",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[\"lhkp-7f7lh1fv\"]",
+          "member": "string",
+          "name": "KeyIds",
+          "required": false,
+          "type": "list"
         }
       ],
       "usage": "in"
@@ -5341,6 +5581,7 @@
         {
           "disabled": false,
           "document": "Key ID list. After a key is associated, you can use it to access the instance. Note: this field may return [], indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "KeyIds",
           "required": true,
@@ -5854,6 +6095,7 @@
         {
           "disabled": false,
           "document": "Instance price.",
+          "example": "",
           "member": "InstancePrice",
           "name": "InstancePrice",
           "required": true,
@@ -5869,6 +6111,7 @@
         {
           "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "example": "",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -5940,46 +6183,141 @@
       "members": [
         {
           "disabled": false,
-          "document": "Purchase duration.",
+          "document": "Renewal period",
           "example": "1",
           "member": "int64",
           "name": "Period",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
-          "document": "Whether Auto-Renewal is enabled ",
+          "document": "Whether to renew the disk automatically. Values:\n\n`NOTIFY_AND_AUTO_RENEW`: Trigger expiration notification and renew automatically; `NOTIFY_AND_MANUAL_RENEW`: Trigger expiration notification but do not renew; `DISABLE_NOTIFY_AND_MANUAL_RENEW`: Do not trigger the notification and do not renew.\n\nDefault: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the instance is automatically renewed on a monthly basis when the account balance is sufficient.",
           "example": "NOTIFY_AND_AUTO_RENEW",
           "member": "string",
           "name": "RenewFlag",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
-          "document": "Duration unit. Default value: \"m\" (month).",
+          "document": "Unit of the period. Values: `m` (month).",
           "example": "m",
           "member": "string",
           "name": "TimeUnit",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
-          "document": "Expiration time of the current instance.",
-          "example": "无",
+          "document": "Expiration time of the current instance, such as \"2018-01-01 00:00:00\". Specify this parameter to align the expiration time of the instance and attached cloud disks. `CurInstanceDeadline` and `Period` cannot be both specified.",
+          "example": "2018-01-01 00:00:00",
           "member": "string",
           "name": "CurInstanceDeadline",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         }
       ],
       "usage": "in"
+    },
+    "RenewDisksRequest": {
+      "document": "RenewDisks request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IDs of cloud disks. The value can be obtained from the `DiskId` parameter returned by the [DescribeDisks](https://intl.cloud.tencent.com/document/product/1207/66093?from_cn_redirect=1) API. Up to 50 disks can be requested at a time.",
+          "example": "[“lhdisk-xxxxxx”]",
+          "member": "string",
+          "name": "DiskIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Parameter settings for renewing the monthly subscribed cloud disk.",
+          "example": "无",
+          "member": "RenewDiskChargePrepaid",
+          "name": "RenewDiskChargePrepaid",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to use the vouchers automatically. It defaults to No.",
+          "example": "true",
+          "member": "bool",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewDisksResponse": {
+      "document": "RenewDisks response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewInstancesRequest": {
+      "document": "RenewInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IDs of one or more instances to be operated. The value can be obtained from the `InstanceId` parameter returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API. Up to 100 instances can be requested at a time.",
+          "example": "[\"lhins-7ofik5q9\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.",
+          "example": "无",
+          "member": "InstanceChargePrepaid",
+          "name": "InstanceChargePrepaid",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to renew elastic data disks. Values: \n`TRUE`: Renew the elastic data disks attached to the instance as well when the related instance is renewed.\n`FALSE`: Do not renew the elastic data disks attached to the instance as well when the related instance is renewed.\nDefault: `TRUE`",
+          "example": "true",
+          "member": "bool",
+          "name": "RenewDataDisk",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to automatically use vouchers. Values:\n`TRUE`: Use vouchers for payment automatically.\n`FALSE`: Do not use vouchers for payment automatically.\nDefault: `FALSE`.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoVoucher",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewInstancesResponse": {
+      "document": "RenewInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ResetAttachCcnRequest": {
       "document": "ResetAttachCcn request structure.",
@@ -6014,6 +6352,7 @@
         {
           "disabled": false,
           "document": "Image details",
+          "example": "",
           "member": "Blueprint",
           "name": "BlueprintInfo",
           "required": true,
@@ -6023,6 +6362,7 @@
         {
           "disabled": false,
           "document": "Whether the image can be reset as the target image",
+          "example": "",
           "member": "bool",
           "name": "IsResettable",
           "required": true,
@@ -6032,6 +6372,7 @@
         {
           "disabled": false,
           "document": "Non-Resettable flag. If the image is resettable, it will be \"\"",
+          "example": "",
           "member": "string",
           "name": "NonResettableMessage",
           "required": true,
@@ -6316,6 +6657,7 @@
         {
           "disabled": false,
           "document": "Snapshot ID.",
+          "example": "",
           "member": "string",
           "name": "SnapshotId",
           "required": true,
@@ -6325,6 +6667,7 @@
         {
           "disabled": false,
           "document": "List of operation limits.",
+          "example": "",
           "member": "DeniedAction",
           "name": "DeniedActions",
           "required": true,
@@ -6340,6 +6683,7 @@
         {
           "disabled": false,
           "document": "Software name.",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -6349,6 +6693,7 @@
         {
           "disabled": false,
           "document": "Software version.",
+          "example": "",
           "member": "string",
           "name": "Version",
           "required": true,
@@ -6358,6 +6703,7 @@
         {
           "disabled": false,
           "document": "Software picture URL.",
+          "example": "",
           "member": "string",
           "name": "ImageUrl",
           "required": true,
@@ -6367,6 +6713,7 @@
         {
           "disabled": false,
           "document": "Software installation directory.",
+          "example": "",
           "member": "string",
           "name": "InstallDir",
           "required": true,
@@ -6376,6 +6723,7 @@
         {
           "disabled": false,
           "document": "List of software details.",
+          "example": "",
           "member": "SoftwareDetail",
           "name": "DetailSet",
           "required": true,
@@ -6391,6 +6739,7 @@
         {
           "disabled": false,
           "document": "Unique detail key",
+          "example": "",
           "member": "string",
           "name": "Key",
           "required": true,
@@ -6400,6 +6749,7 @@
         {
           "disabled": false,
           "document": "Detail title.",
+          "example": "",
           "member": "string",
           "name": "Title",
           "required": true,
@@ -6409,6 +6759,7 @@
         {
           "disabled": false,
           "document": "Detail value.",
+          "example": "",
           "member": "string",
           "name": "Value",
           "required": true,
@@ -6424,6 +6775,7 @@
         {
           "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "example": "",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -6450,6 +6802,7 @@
         {
           "disabled": false,
           "document": "Instance ID list. Each request can contain up to 100 instances at a time. You can get an instance ID from the `InstanceId` returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API.",
+          "example": "",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -6476,6 +6829,7 @@
         {
           "disabled": false,
           "document": "System disk type.\nValid values: \n<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: HDD cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: Premium Cloud Storage</li>",
+          "example": "",
           "member": "string",
           "name": "DiskType",
           "required": true,
@@ -6485,6 +6839,7 @@
         {
           "disabled": false,
           "document": "System disk size in GB.",
+          "example": "",
           "member": "int64",
           "name": "DiskSize",
           "required": true,
@@ -6494,6 +6849,7 @@
         {
           "disabled": false,
           "document": "System disk ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DiskId",
           "required": true,
@@ -6527,7 +6883,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "TerminateDisksRequest": {
       "document": "TerminateDisks request structure.",
@@ -6615,6 +6971,7 @@
         {
           "disabled": false,
           "document": "Traffic package ID.",
+          "example": "",
           "member": "string",
           "name": "TrafficPackageId",
           "required": true,
@@ -6624,6 +6981,7 @@
         {
           "disabled": false,
           "document": "Used traffic in bytes during traffic package validity period.",
+          "example": "",
           "member": "int64",
           "name": "TrafficUsed",
           "required": true,
@@ -6633,6 +6991,7 @@
         {
           "disabled": false,
           "document": "Total traffic in bytes during traffic package validity period.",
+          "example": "",
           "member": "int64",
           "name": "TrafficPackageTotal",
           "required": true,
@@ -6642,6 +7001,7 @@
         {
           "disabled": false,
           "document": "Remaining traffic in bytes during traffic package validity period.",
+          "example": "",
           "member": "int64",
           "name": "TrafficPackageRemaining",
           "required": true,
@@ -6651,6 +7011,7 @@
         {
           "disabled": false,
           "document": "Traffic exceeding package amount in bytes during traffic package validity period.",
+          "example": "",
           "member": "int64",
           "name": "TrafficOverflow",
           "required": true,
@@ -6660,6 +7021,7 @@
         {
           "disabled": false,
           "document": "Start time of traffic package validity period according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "datetime_iso",
           "name": "StartTime",
           "required": true,
@@ -6669,6 +7031,7 @@
         {
           "disabled": false,
           "document": "End time of traffic package validity period according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "datetime_iso",
           "name": "EndTime",
           "required": true,
@@ -6678,6 +7041,7 @@
         {
           "disabled": false,
           "document": "Traffic package expiration time according to ISO 8601 standard. UTC time is used. \nFormat: YYYY-MM-DDThh:mm:ssZ.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "datetime_iso",
           "name": "Deadline",
           "required": true,
@@ -6687,6 +7051,7 @@
         {
           "disabled": false,
           "document": "Traffic package status:\n<li>NETWORK_NORMAL: normal</li>\n<li>OVERDUE_NETWORK_DISABLED: the network is disconnected due to overdue payments</li>",
+          "example": "",
           "member": "string",
           "name": "Status",
           "required": true,

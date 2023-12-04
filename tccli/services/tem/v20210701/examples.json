@@ -18,7 +18,7 @@
     ],
     "CreateApplicationService": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationService\n<Common request parameters>\n\n{\n    \"SourceChannel\": 0,\n    \"ApplicationId\": \"xx\",\n    \"Service\": {\n        \"ExternalIp\": \"xx\",\n        \"VpcId\": \"xx\",\n        \"PortMappingItemList\": [\n            {\n                \"Protocol\": \"xx\",\n                \"TargetPort\": 0,\n                \"Port\": 0\n            }\n        ],\n        \"Yaml\": \"xx\",\n        \"LoadBalanceId\": \"xx\",\n        \"ServiceName\": \"xx\",\n        \"ClusterIp\": \"xx\",\n        \"SubnetId\": \"xx\",\n        \"Type\": \"xx\",\n        \"Ports\": [\n            0\n        ]\n    },\n    \"EnvironmentId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Adding an access policy"
@@ -82,7 +82,7 @@
     ],
     "DeleteApplicationService": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteApplicationService\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "This API is used to delete an access policy."
@@ -136,7 +136,7 @@
     ],
     "DescribeApplicationServiceList": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApplicationServiceList\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"xx\",\n    \"ApplicationId\": \"xx\",\n    \"SourceChannel\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"ApplicationName\": \"xx\",\n            \"ExternalIp\": \"xx\",\n            \"Name\": \"xx\",\n            \"ApplicationId\": \"xx\",\n            \"AllIpDone\": true,\n            \"PortMappings\": [\n                {\n                    \"Protocol\": \"xx\",\n                    \"ServiceName\": \"xx\",\n                    \"TargetPort\": 0,\n                    \"Port\": 0\n                }\n            ],\n            \"Yaml\": \"xx\",\n            \"LoadBalanceId\": \"xx\",\n            \"ServicePortMappingList\": [\n                {\n                    \"ExternalIp\": \"xx\",\n                    \"VpcId\": \"xx\",\n                    \"PortMappingItemList\": [\n                        {\n                            \"Protocol\": \"xx\",\n                            \"TargetPort\": 0,\n                            \"Port\": 0\n                        }\n                    ],\n                    \"Yaml\": \"xx\",\n                    \"LoadBalanceId\": \"xx\",\n                    \"ServiceName\": \"xx\",\n                    \"ClusterIp\": \"xx\",\n                    \"SubnetId\": \"xx\",\n                    \"Type\": \"xx\",\n                    \"Ports\": [\n                        0\n                    ]\n                }\n            ],\n            \"VersionName\": \"xx\",\n            \"ClusterIp\": [\n                \"xx\"\n            ],\n            \"SubnetId\": \"xx\",\n            \"Type\": \"xx\",\n            \"Ports\": [\n                0\n            ],\n            \"EnableRegistryNextDeploy\": 0,\n            \"FlushAll\": true\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "This API is used to query the list of access policies."
@@ -240,7 +240,7 @@
     ],
     "DestroyConfigData": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DestroyConfigData\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"xx\",\n    \"Name\": \"xx\",\n    \"SourceChannel\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": true\n    }\n}",
         "title": "Terminating a configuration"
@@ -304,7 +304,7 @@
     ],
     "ModifyApplicationService": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationService\n<Common request parameters>\n\n{\n    \"SourceChannel\": 0,\n    \"ApplicationId\": \"xx\",\n    \"Service\": {\n        \"ApplicationName\": \"xx\",\n        \"ExternalIp\": \"xx\",\n        \"Name\": \"xx\",\n        \"ApplicationId\": \"xx\",\n        \"AllIpDone\": true,\n        \"PortMappings\": [\n            {\n                \"Protocol\": \"xx\",\n                \"ServiceName\": \"xx\",\n                \"TargetPort\": 0,\n                \"Port\": 0\n            }\n        ],\n        \"Yaml\": \"xx\",\n        \"LoadBalanceId\": \"xx\",\n        \"ServicePortMappingList\": [\n            {\n                \"ExternalIp\": \"xx\",\n                \"VpcId\": \"xx\",\n                \"PortMappingItemList\": [\n                    {\n                        \"Protocol\": \"xx\",\n                        \"TargetPort\": 0,\n                        \"Port\": 0\n                    }\n                ],\n                \"Yaml\": \"xx\",\n                \"LoadBalanceId\": \"xx\",\n                \"ServiceName\": \"xx\",\n                \"ClusterIp\": \"xx\",\n                \"SubnetId\": \"xx\",\n                \"Type\": \"xx\",\n                \"Ports\": [\n                    0\n                ]\n            }\n        ],\n        \"VersionName\": \"xx\",\n        \"ClusterIp\": [\n            \"xx\"\n        ],\n        \"SubnetId\": \"xx\",\n        \"Type\": \"xx\",\n        \"Ports\": [\n            0\n        ],\n        \"EnableRegistryNextDeploy\": 0,\n        \"FlushAll\": true\n    },\n    \"EnvironmentId\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Modifying an access policy"
@@ -344,10 +344,10 @@
     ],
     "RestartApplication": [
       {
-        "document": "This example shows how to stop an application.",
-        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestartApplication\n<Common request parameters>\n\n{\n    \"SourceChannel\": 0,\n    \"ApplicationId\": \"xx\",\n    \"EnvironmentId\": \"xx\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Stopping an application"
+        "document": "服务重启",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestartApplication\n<common request parameters>\n\n{\n    \"ApplicationId\": \"abc\",\n    \"SourceChannel\": 0,\n    \"EnvironmentId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "服务重启"
       }
     ],
     "RestartApplicationPod": [
@@ -360,13 +360,13 @@
     ],
     "RollingUpdateApplicationByVersion": [
       {
-        "document": "This example shows you how to deploy a service version.",
-        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RollingUpdateApplicationByVersion\n<Common request parameters>\n\n{\n    \"ApplicationId\": \"xx\",\n    \"EnvironmentId\": \"xx\",\n    \"DeployVersion\": \"xx\",\n    \"PackageName\": \"xxx\"\n}",
+        "document": "This example shows you how to deploy an application.",
+        "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RollingUpdateApplicationByVersion\n<Common request parameters>\n\n{\n    \"ApplicationId\": \"abc\",\n    \"EnvironmentId\": \"abc\",\n    \"DeployVersion\": \"abc\",\n    \"PackageName\": \"abc\",\n    \"From\": \"abc\",\n    \"DeployStrategyType\": \"abc\",\n    \"TotalBatchCount\": 0,\n    \"BatchInterval\": 0,\n    \"BetaBatchNum\": 0,\n    \"MinAvailable\": 0,\n    \"Force\": true\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"81f74023-563c-437d-abf7-8139449ef178\",\n        \"Result\": \"version-xxx\"\n    }\n}",
-        "title": "Deploying service version"
+        "title": "Deploying an application"
       },
       {
-        "document": "",
+        "document": "Deployed successfully.",
         "input": "POST / HTTP/1.1\nHost: tem.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RollingUpdateApplicationByVersion\n<Common request parameters>\n\n{\n    \"EnvironmentId\": \"env-qgnzgy8r\",\n    \"TotalBatchCount\": \"2\",\n    \"PackageName\": \"tem/pkg/1300555551/service-gn54vdy6/1641528220867/hello-world-0.0.1-SNAPSHOT.jar\",\n    \"DeployStrategyType\": \"AUTO\",\n    \"DeployVersion\": \"20220107122452\",\n    \"BatchInterval\": \"60\",\n    \"ApplicationId\": \"service-gn54vdy6\",\n    \"BetaBatchNum\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"28fe46b2-dbd9-4ee6-b388-603acb6c9263\",\n        \"Result\": \"\"\n    }\n}",
         "title": "Deployed successfully."
