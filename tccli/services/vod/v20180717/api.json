@@ -742,6 +742,13 @@
       "output": "EnhanceMediaByTemplateResponse",
       "status": "online"
     },
+    "EnhanceMediaQuality": {
+      "document": "Initiate a Remaster task for audio and video media in VOD",
+      "input": "EnhanceMediaQualityRequest",
+      "name": "Remaster",
+      "output": "EnhanceMediaQualityResponse",
+      "status": "online"
+    },
     "ExecuteFunction": {
       "document": "This API is only used in special scenarios of custom development. Unless requested by VOD customer service, please do not call it.",
       "input": "ExecuteFunctionRequest",
@@ -13626,7 +13633,7 @@
         },
         {
           "disabled": false,
-          "document": "VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.",
+          "document": "VOD [Subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?from_cn_redirect=1) ID. If you want to access resources in the Subapplication, enter the Subapplication ID in this field; otherwise, you do not need to fill in this field.",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -16281,7 +16288,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The task type. Valid values:\n<li>`Procedure`: Video processing</li>\n<li>`EditMedia`: Video editing</li>\n<li>`SplitMedia`: Video splitting</li>\n<li>`ComposeMedia`: Media file production</li>\n<li>`WechatPublish`: Weixin publishing</li>\n<li>`WechatMiniProgramPublish`: Publishing videos on Weixin Mini Program</li>\n<li>`PullUpload`: Pulling media files for upload</li>\n<li>`FastClipMedia`: Quick clipping</li>\n<li>`RemoveWatermarkTask`: Watermark removal</li>\n<li>`DescribeFileAttributesTask`: Getting file attributes</li>\n<li>`RebuildMedia`; Remastering audio/video</li>\n<li> `ReviewAudioVideo`: Moderation</li>\n<li>`ExtractTraceWatermark`: Digital watermark extraction</li>",
+          "document": "The task type. Valid values:\n<li>`Procedure`: Video processing</li>\n<li>`EditMedia`: Video editing</li>\n<li>`SplitMedia`: Video splitting</li>\n<li>`ComposeMedia`: Media file production</li>\n<li>`WechatPublish`: Weixin publishing</li>\n<li>`WechatMiniProgramPublish`: Publishing videos on Weixin Mini Program</li>\n<li>`PullUpload`: Pulling media files for upload</li>\n<li>`FastClipMedia`: Quick clipping</li>\n<li>`RemoveWatermarkTask`: Watermark removal</li>\n<li>`DescribeFileAttributesTask`: Getting file attributes</li>\n<li> `ReviewAudioVideo`: Moderation</li>\n<li>`ExtractTraceWatermark`: Digital watermark extraction</li>\n<li>`QualityEnhance：Enhance audio/video</li>",
           "example": "Procedure",
           "member": "string",
           "name": "TaskType",
@@ -17938,6 +17945,130 @@
       ],
       "type": "object"
     },
+    "EnhanceMediaQualityOutputConfig": {
+      "document": "Remaster result file output",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Output file name, up to 64 characters. The system will specify the file name by default",
+          "example": "name",
+          "member": "string",
+          "name": "MediaName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Category ID, used for media classification management, can be obtained by [creating a category](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) interface, create a category, get the category ID.\n<li>Default value: 0, which means other categories.</li>",
+          "example": "0",
+          "member": "int64",
+          "name": "ClassId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The expiration time of the output file, the file will be deleted after this time, the default is never to expire, the format is in accordance with the ISO 8601 standard, see [ISO date format description](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I)。",
+          "example": "2023-09-08T02:23:29Z",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "EnhanceMediaQualityRequest": {
+      "document": "EnhanceMediaQuality request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Media file ID, that is, the globally unique identifier of the file on VOD, which is assigned by the VOD backend after successful upload. This field can be obtained from [video upload completion event notification](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) or [vod console](https://console.cloud.tencent.com/vod/media).",
+          "example": "52123456",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remaster template ID, please contact Tencent Cloud for details",
+          "example": "10",
+          "member": "uint64",
+          "name": "Definition",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "<b>VOD [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you want to access resources in the Subapplication, enter the Subapplication ID in this field; otherwise, you do not need to fill in this field.</b>",
+          "example": "1490012345",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration of media files after Remaster",
+          "example": "无",
+          "member": "EnhanceMediaQualityOutputConfig",
+          "name": "OutputConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The identification code used for deduplication. If there has been a request with the same identification code within three days, this request will return an error. Up to 50 characters, without or with an empty string means no deduplication",
+          "example": "\"\"",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source context, used to pass through user request information, Remaster completion callback will return this field value, up to 1000 characters",
+          "example": "\"\"",
+          "member": "string",
+          "name": "SessionContext",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The priority of the task, the higher the value, the higher the priority, the range is -10 to 10, not filled in means 0",
+          "example": "2",
+          "member": "int64",
+          "name": "TasksPriority",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "EnhanceMediaQualityResponse": {
+      "document": "EnhanceMediaQuality response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Remaster task ID",
+          "example": "125xxx65-EnhanceMediaQuality-bffb15f07530b57bc1aabb01fac74bcc",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "EventContent": {
       "document": "Event notification content, where TranscodeCompleteEvent, ConcatCompleteEvent, ClipCompleteEvent, CreateImageSpriteCompleteEvent, and SnapshotByTimeOffsetCompleteEvent are event notifications for tasks that are initiated by v2017-compatible APIs.",
       "members": [
@@ -17947,7 +18078,7 @@
           "example": "123",
           "member": "string",
           "name": "EventHandle",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -17957,7 +18088,7 @@
           "example": "null",
           "member": "string",
           "name": "EventType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -17967,7 +18098,7 @@
           "example": "null",
           "member": "FileUploadTask",
           "name": "FileUploadEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -17977,7 +18108,7 @@
           "example": "null",
           "member": "ProcedureTask",
           "name": "ProcedureStateChangeEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -17987,7 +18118,7 @@
           "example": "null",
           "member": "FileDeleteTask",
           "name": "FileDeleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -17997,7 +18128,7 @@
           "example": "null",
           "member": "PullUploadTask",
           "name": "PullCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18007,7 +18138,7 @@
           "example": "null",
           "member": "EditMediaTask",
           "name": "EditMediaCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18017,7 +18148,7 @@
           "example": "null",
           "member": "SplitMediaTask",
           "name": "SplitMediaCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18027,7 +18158,7 @@
           "example": "null",
           "member": "ComposeMediaTask",
           "name": "ComposeMediaCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18037,7 +18168,7 @@
           "example": "null",
           "member": "ClipTask2017",
           "name": "ClipCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18047,7 +18178,7 @@
           "example": "null",
           "member": "TranscodeTask2017",
           "name": "TranscodeCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18057,7 +18188,7 @@
           "example": "null",
           "member": "CreateImageSpriteTask2017",
           "name": "CreateImageSpriteCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18067,7 +18198,7 @@
           "example": "null",
           "member": "ConcatTask2017",
           "name": "ConcatCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18077,7 +18208,7 @@
           "example": "null",
           "member": "SnapshotByTimeOffsetTask2017",
           "name": "SnapshotByTimeOffsetCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18087,7 +18218,7 @@
           "example": "null",
           "member": "WechatPublishTask",
           "name": "WechatPublishCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18097,7 +18228,7 @@
           "example": "null",
           "member": "WechatMiniProgramPublishTask",
           "name": "WechatMiniProgramPublishCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18107,7 +18238,7 @@
           "example": "null",
           "member": "RemoveWatermarkTask",
           "name": "RemoveWatermarkCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18117,7 +18248,7 @@
           "example": "null",
           "member": "RestoreMediaTask",
           "name": "RestoreMediaCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18127,7 +18258,7 @@
           "example": "null",
           "member": "RebuildMediaTask",
           "name": "RebuildMediaCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18137,7 +18268,7 @@
           "example": "null",
           "member": "ExtractTraceWatermarkTask",
           "name": "ExtractTraceWatermarkCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18147,7 +18278,7 @@
           "example": "无",
           "member": "ExtractCopyRightWatermarkTask",
           "name": "ExtractCopyRightWatermarkCompleteEvent",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18157,7 +18288,7 @@
           "example": "null",
           "member": "ReviewAudioVideoTask",
           "name": "ReviewAudioVideoCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18167,7 +18298,7 @@
           "example": "null",
           "member": "ReduceMediaBitrateTask",
           "name": "ReduceMediaBitrateCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18177,7 +18308,7 @@
           "example": "null",
           "member": "DescribeFileAttributesTask",
           "name": "DescribeFileAttributesCompleteEvent",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -18187,7 +18318,17 @@
           "example": "无",
           "member": "QualityInspectTask",
           "name": "QualityInspectCompleteEvent",
-          "required": false,
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Remaster completion event, valid when the event type is QualityEnhanceComplete.\nPay attention to: this field may return null, indicating that no valid value can be obtained",
+          "example": "无",
+          "member": "QualityEnhanceTask",
+          "name": "QualityEnhanceCompleteEvent",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -34295,7 +34436,44 @@
     },
     "SetVodDomainCertificateRequest": {
       "document": "SetVodDomainCertificate request structure.",
-      "members": [],
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain name",
+          "example": "xxx.test.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The operation type of this API call, optional value:\n<li>Set: Set the certificate required for the domain name HTTPS;</li>\n<li>Clear: Clear the domain name HTTPS configuration, after clearing, the domain name cannot support </li>",
+          "example": "Set",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<b>VOD [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you want to access resources in the Subapplication, enter the Subapplication ID in this field; otherwise, you do not need to fill in this field.</b>",
+          "example": "123",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "[Tencent Cloud SSL](https://intl.cloud.tencent.com/document/product/400/7572?from_cn_redirect=1) uploaded certificate ID. No need to fill in this field when clearing domain HTTPS configuration",
+          "example": "\"\"",
+          "member": "string",
+          "name": "CertID",
+          "required": false,
+          "type": "string"
+        }
+      ],
       "type": "object"
     },
     "SetVodDomainCertificateResponse": {

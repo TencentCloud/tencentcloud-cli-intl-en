@@ -1076,6 +1076,14 @@
         "title": "Enhance Media By Template"
       }
     ],
+    "EnhanceMediaQuality": [
+      {
+        "document": "Initiate a Remaster task for the video with fileId 5285485487985271487",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: EnhanceMediaQuality\n<Common request parameters>\n\n{\n    \"FileId\": \"5285485487985271487\",\n    \"Definition\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"TaskId\": \"125xxx65-EnhanceMediaQuality-bffb15f07530b57bc1aabb01fac74bcc\"\n    }\n}",
+        "title": "Initiate a Remaster task"
+      }
+    ],
     "ExecuteFunction": [
       {
         "document": " ",
@@ -1685,9 +1693,9 @@
     "SetVodDomainCertificate": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetVodDomainCertificate\n<Public request parameters>\n\n{}",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetVodDomainCertificate\n<Common request parameters>\n\n{\n    \"Domain\": \"myexample.com\",\n    \"Operation\": \"Set\",\n    \"CertID\": \"xfgfdgds\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4551-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Set Vod Domain Certificate"
+        "title": "Set domain name HTTPS certificate information"
       }
     ],
     "SimpleHlsClip": [
