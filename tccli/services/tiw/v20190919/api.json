@@ -14,13 +14,6 @@
       "output": "CreateApplicationResponse",
       "status": "online"
     },
-    "CreateOfflineRecord": {
-      "document": "课后录制服务已下线\n\nThis API is used to create an offline recording task.",
-      "input": "CreateOfflineRecordRequest",
-      "name": "Creates an offline recording task",
-      "output": "CreateOfflineRecordResponse",
-      "status": "deprecated"
-    },
     "CreateSnapshotTask": {
       "document": "This API is used to create a whiteboard snapshot task. If a callback URL is provided, the whiteboard snapshot result is sent to the callback URL after the task is complete.",
       "input": "CreateSnapshotTaskRequest",
@@ -76,20 +69,6 @@
       "name": "Queries available IM applications",
       "output": "DescribeIMApplicationsResponse",
       "status": "online"
-    },
-    "DescribeOfflineRecord": {
-      "document": "课后录制服务已下线\n\nThis API is used to query the information about an offline recording task, including the recording progress and recording result.",
-      "input": "DescribeOfflineRecordRequest",
-      "name": "Queries the information about an offline recording task",
-      "output": "DescribeOfflineRecordResponse",
-      "status": "deprecated"
-    },
-    "DescribeOfflineRecordCallback": {
-      "document": "课后录制服务已下线\n\nThis API is used to query the offline recording callback URL.",
-      "input": "DescribeOfflineRecordCallbackRequest",
-      "name": "Queries the offline recording callback URL",
-      "output": "DescribeOfflineRecordCallbackResponse",
-      "status": "deprecated"
     },
     "DescribeOnlineRecord": {
       "document": "This API is used to query the status and result of a real-time recording task.",
@@ -294,36 +273,29 @@
       "output": "ResumeOnlineRecordResponse",
       "status": "online"
     },
-    "SetOfflineRecordCallback": {
-      "document": "课后录制服务已下线\n\nThis API is used to set the offline recording callback URL.",
-      "input": "SetOfflineRecordCallbackRequest",
-      "name": "Sets the offline recording callback URL",
-      "output": "SetOfflineRecordCallbackResponse",
-      "status": "deprecated"
-    },
     "SetOnlineRecordCallback": {
-      "document": "This API is used to set the real-time recording callback address. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1).",
+      "document": "This API is used to set the real-time recording callback address. For the callback format, please [see here](https://www.tencentcloud.com/document/product/1176/55569).",
       "input": "SetOnlineRecordCallbackRequest",
       "name": "Sets the real-time recording callback URL",
       "output": "SetOnlineRecordCallbackResponse",
       "status": "online"
     },
     "SetOnlineRecordCallbackKey": {
-      "document": "This API is used to set the callback authentication key for real-time recording. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+      "document": "This API is used to set the callback authentication key for real-time recording. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).",
       "input": "SetOnlineRecordCallbackKeyRequest",
       "name": "Sets the key for the real-time recording callback",
       "output": "SetOnlineRecordCallbackKeyResponse",
       "status": "online"
     },
     "SetTranscodeCallback": {
-      "document": "This API is used to set the callback address for document transcoding. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40260?from_cn_redirect=1).",
+      "document": "This API is used to set the callback address for document transcoding. For the callback format, please [see here](https://www.tencentcloud.com/document/product/1176/55569).",
       "input": "SetTranscodeCallbackRequest",
       "name": "Sets the document transcoding callback URL",
       "output": "SetTranscodeCallbackResponse",
       "status": "online"
     },
     "SetTranscodeCallbackKey": {
-      "document": "This API is used to set the callback authentication key for document transcoding. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+      "document": "This API is used to set the callback authentication key for document transcoding. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).",
       "input": "SetTranscodeCallbackKeyRequest",
       "name": "Sets the key for the document transcoding callback.",
       "output": "SetTranscodeCallbackKeyResponse",
@@ -344,14 +316,14 @@
       "status": "online"
     },
     "SetWhiteboardPushCallback": {
-      "document": "This API is used to set the whiteboard push callback URL. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+      "document": "This API is used to set the whiteboard push callback URL. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).",
       "input": "SetWhiteboardPushCallbackRequest",
       "name": "Sets the whiteboard push callback URL",
       "output": "SetWhiteboardPushCallbackResponse",
       "status": "online"
     },
     "SetWhiteboardPushCallbackKey": {
-      "document": "This API is used to set the callback authentication key for whiteboard push. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+      "document": "This API is used to set the callback authentication key for whiteboard push. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).",
       "input": "SetWhiteboardPushCallbackKeyRequest",
       "name": "Sets the callback authentication key for whiteboard push",
       "output": "SetWhiteboardPushCallbackKeyResponse",
@@ -624,69 +596,6 @@
           "type": "int",
           "value_allowed_null": false
         },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateOfflineRecordRequest": {
-      "document": "CreateOfflineRecord request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "SdkAppId of the whiteboard application.",
-          "example": "",
-          "member": "int64",
-          "name": "SdkAppId",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Room ID corresponding to the recording task.",
-          "example": "",
-          "member": "int64",
-          "name": "RoomId",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Group ID corresponding to the recording task.",
-          "example": "",
-          "member": "string",
-          "name": "GroupId",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Stream mixing parameters.\nThe Custom parameter is not supported for offline recording tasks.",
-          "example": "",
-          "member": "MixStream",
-          "name": "MixStream",
-          "required": false,
-          "type": "object"
-        },
-        {
-          "disabled": false,
-          "document": "Whiteboard parameters.",
-          "example": "",
-          "member": "Whiteboard",
-          "name": "Whiteboard",
-          "required": false,
-          "type": "object"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateOfflineRecordResponse": {
-      "document": "CreateOfflineRecord response structure.",
-      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -1348,69 +1257,6 @@
     },
     "DescribeIMApplicationsResponse": {
       "document": "DescribeIMApplications response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeOfflineRecordCallbackRequest": {
-      "document": "DescribeOfflineRecordCallback request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "SdkAppId of the whiteboard application.",
-          "example": "",
-          "member": "int64",
-          "name": "SdkAppId",
-          "required": true,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeOfflineRecordCallbackResponse": {
-      "document": "DescribeOfflineRecordCallback response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeOfflineRecordRequest": {
-      "document": "DescribeOfflineRecord request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "SdkAppId of the whiteboard application.",
-          "example": "",
-          "member": "int64",
-          "name": "SdkAppId",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "ID of the offline recording task.",
-          "example": "",
-          "member": "string",
-          "name": "TaskId",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeOfflineRecordResponse": {
-      "document": "DescribeOfflineRecord response structure.",
       "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3881,42 +3727,6 @@
       ],
       "usage": "out"
     },
-    "SetOfflineRecordCallbackRequest": {
-      "document": "SetOfflineRecordCallback request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "SdkAppId of the whiteboard application.",
-          "example": "",
-          "member": "int64",
-          "name": "SdkAppId",
-          "required": true,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Callback URL of the offline recording task result. If it is specified as null, the set callback URL is deleted. The callback URL only supports the HTTP or HTTPS protocol, and therefore the callback URL must start with `http://` or `https://`.",
-          "example": "",
-          "member": "string",
-          "name": "Callback",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "SetOfflineRecordCallbackResponse": {
-      "document": "SetOfflineRecordCallback response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "SetOnlineRecordCallbackKeyRequest": {
       "document": "SetOnlineRecordCallbackKey request structure.",
       "members": [
@@ -3931,7 +3741,7 @@
         },
         {
           "disabled": false,
-          "document": "Authentication key for the real-time recording callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+          "document": "Authentication key for the real-time recording callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information, please [see here](https://www.tencentcloud.com/document/product/1176/55569).",
           "example": "",
           "member": "string",
           "name": "CallbackKey",
@@ -3959,7 +3769,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the customer",
-          "example": "",
+          "example": "1400000001",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -3967,8 +3777,8 @@
         },
         {
           "disabled": false,
-          "document": "Callback address of the real-time recording task result. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1).",
-          "example": "",
+          "document": "Callback address of the real-time recording task result. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`. For the callback format, please [see here](https://www.tencentcloud.com/document/product/1176/55569).",
+          "example": "https://example.com/online/callback",
           "member": "string",
           "name": "Callback",
           "required": true,
@@ -4003,7 +3813,7 @@
         },
         {
           "disabled": false,
-          "document": "Authentication key for the document transcoding callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information about callback authentication, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+          "document": "Authentication key for the document transcoding callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information about callback authentication, please [see here](https://www.tencentcloud.com/document/product/1176/55569).",
           "example": "",
           "member": "string",
           "name": "CallbackKey",
@@ -4031,7 +3841,7 @@
         {
           "disabled": false,
           "document": "SdkAppId of the customer",
-          "example": "",
+          "example": "1400000001",
           "member": "int64",
           "name": "SdkAppId",
           "required": true,
@@ -4039,8 +3849,8 @@
         },
         {
           "disabled": false,
-          "document": "Callback address for the document transcoding progress. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`.\nFor more information about the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40260?from_cn_redirect=1).",
-          "example": "",
+          "document": "Callback address for the document transcoding progress. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`.\nFor more information about the callback format, please [see here](https://www.tencentcloud.com/document/product/1176/55569).",
+          "example": "https://example.com/transcode/callback",
           "member": "string",
           "name": "Callback",
           "required": true,
@@ -4147,7 +3957,7 @@
         },
         {
           "disabled": false,
-          "document": "Callback authentication key for whiteboard push. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key is deleted. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+          "document": "Callback authentication key for whiteboard push. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key is deleted. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).",
           "example": "",
           "member": "string",
           "name": "CallbackKey",
@@ -4183,7 +3993,7 @@
         },
         {
           "disabled": false,
-          "document": "Callback URL of the whiteboard push task result. If an empty string is passed in, the existing callback URL is deleted. The callback URL only supports the HTTP or HTTPS protocol, and therefore the callback URL must start with `http://` or `https://`. For the callback format, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).",
+          "document": "Callback URL of the whiteboard push task result. If an empty string is passed in, the existing callback URL is deleted. The callback URL only supports the HTTP or HTTPS protocol, and therefore the callback URL must start with `http://` or `https://`. For the callback format, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).",
           "example": "https://example.com/online/callback",
           "member": "string",
           "name": "Callback",

@@ -16,14 +16,6 @@
         "title": "Creating a whiteboard application"
       }
     ],
-    "CreateOfflineRecord": [
-      {
-        "document": "This example shows you how to create an offline recording task.",
-        "input": "https://tiw.tencentcloudapi.com/?Action=CreateOfflineRecord\n&SdkAppId=1400000001\n&RoomId=8000\n&GroupId=8000\n&MixStream.Enabled=true\n&MixStream.ModelId=1\n&Whiteboard.Width=1280\n&Whiteboard.Height=960\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Creating an offline recording task"
-      }
-    ],
     "CreateSnapshotTask": [
       {
         "document": " ",
@@ -92,22 +84,6 @@
         "input": "https://tiw.tencentcloudapi.com/?Action=DescribeIMApplications\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d290f1ee-6c54-4b01-90e6-d701748f0851\"\n    }\n}",
         "title": "Querying available IM applications"
-      }
-    ],
-    "DescribeOfflineRecord": [
-      {
-        "document": "This example shows you how to query the information about an offline recording task.",
-        "input": "https://tiw.tencentcloudapi.com/?Action=DescribeOfflineRecord\n&SdkAppId=1400000001\n&TaskId=00e1jv8ve0jcqk7da9lb\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d290f1ee-6c54-4b01-90e6-d701748f0851\"\n    }\n}",
-        "title": "Querying the information about an offline recording task"
-      }
-    ],
-    "DescribeOfflineRecordCallback": [
-      {
-        "document": "This example shows you how to query the offline recording callback URL.",
-        "input": "https://tiw.tencentcloudapi.com/?Action=DescribeOfflineRecordCallback\n&SdkAppId=1400000001\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Querying the offline recording callback URL"
       }
     ],
     "DescribeOnlineRecord": [
@@ -358,14 +334,6 @@
         "input": "https://tiw.tencentcloudapi.com/?Action=ResumeOnlineRecord\n&SdkAppId=1400000001\n&TaskId=07b4c70bpafm1b4majmb\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Resuming a real-time recording task"
-      }
-    ],
-    "SetOfflineRecordCallback": [
-      {
-        "document": " ",
-        "input": "https://tiw.tencentcloudapi.com/?Action=SetOfflineRecordCallback\n&SdkAppId=1400000001\n&Callback=https://example.com/offline/callback\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Setting the offline recording callback URL"
       }
     ],
     "SetOnlineRecordCallback": [
