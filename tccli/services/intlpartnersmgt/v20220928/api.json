@@ -1094,7 +1094,7 @@
         },
         {
           "disabled": false,
-          "document": "Page parameter: Indicates the number of entries per page. The maximum value is 200.",
+          "document": "Page parameter: Indicates the number of entries per page. Value range: [1, 200]",
           "example": "20",
           "member": "int64",
           "name": "PageSize",
@@ -1103,7 +1103,7 @@
         },
         {
           "disabled": false,
-          "document": "A pagination parameter that specifies the current page number",
+          "document": "Page parameter: Indicates the current page number. The minimum value is 1.",
           "example": "1",
           "member": "int64",
           "name": "Page",
@@ -1321,7 +1321,7 @@
         },
         {
           "disabled": false,
-          "document": "Page parameter: Indicates the number of entries per page. The maximum value is 200.",
+          "document": "Page parameter: Indicates the number of entries per page. Value range: [1, 200]",
           "example": "1",
           "member": "int64",
           "name": "PageSize",
@@ -1330,7 +1330,7 @@
         },
         {
           "disabled": false,
-          "document": "A pagination parameter that specifies the current page number",
+          "document": "Page parameter: Indicates the current page number. The minimum value is 1.",
           "example": "10",
           "member": "int64",
           "name": "Page",
