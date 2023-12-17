@@ -1085,7 +1085,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The queried month in u200dthe format of “YYYY-MM”, such as 2023-01.",
+          "document": "The queried month in the format of “YYYY-MM”, such as 2023-01.",
           "example": "2023-04",
           "member": "string",
           "name": "Month",
