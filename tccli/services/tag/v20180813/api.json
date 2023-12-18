@@ -99,7 +99,7 @@
       "status": "online"
     },
     "DescribeTagKeys": {
-      "document": "This API is used to query tag keys in an existing tag list.\n",
+      "document": "This API is used to query tag keys in the list of created tags.",
       "input": "DescribeTagKeysRequest",
       "name": "Querying Tag Keys",
       "output": "DescribeTagKeysResponse",
@@ -120,7 +120,7 @@
       "status": "online"
     },
     "DescribeTags": {
-      "document": "This API is used to query existing tag lists.\n",
+      "document": "This API is used to query the list of created tags.",
       "input": "DescribeTagsRequest",
       "name": "Querying Tag Lists",
       "output": "DescribeTagsResponse",
@@ -214,21 +214,27 @@
       "document": "AddResourceTag request structure.",
       "members": [
         {
-          "document": "Tag key.",
+          "disabled": false,
+          "document": "The tag key that needs to be bound. For the requirements, refer to: https://intl.cloud.tencent.com/document/product/651/13354?from_cn_redirect=1",
+          "example": "testTagKey",
           "member": "string",
           "name": "TagKey",
           "required": true,
           "type": "string"
         },
         {
-          "document": "Tag value.",
+          "disabled": false,
+          "document": "The tag value that needs to be bound. For the requirements, refer to: https://intl.cloud.tencent.com/document/product/651/13354?from_cn_redirect=1",
+          "example": "testTagValue",
           "member": "string",
           "name": "TagValue",
           "required": true,
           "type": "string"
         },
         {
-          "document": "[Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
+          "disabled": false,
+          "document": "Resource to be associated, represented in the standard six-segment resource format. For the correct format, see https://intl.cloud.tencent.com/document/product/651/89122?from_cn_redirect=1",
+          "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
           "member": "string",
           "name": "Resource",
           "required": true,
@@ -253,42 +259,54 @@
       "document": "AttachResourcesTag request structure.",
       "members": [
         {
-          "document": "Resource service name (the third segment in the six-segment resource description)",
+          "disabled": false,
+          "document": "Service short name, which is the third segment of the six-segment resource format. For more information on the format, see https://intl.cloud.tencent.com/document/product/651/89122?from_cn_redirect=1",
+          "example": "cvm",
           "member": "string",
           "name": "ServiceType",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Resource ID array, which can contain up to 50 resources",
+          "example": "instance-***",
           "member": "string",
           "name": "ResourceIds",
           "required": true,
           "type": "list"
         },
         {
-          "document": "Tag key",
+          "disabled": false,
+          "document": "The tag key that needs to be bound. For the requirements, refer to: https://intl.cloud.tencent.com/document/product/651/13354?from_cn_redirect=1",
+          "example": "testKey",
           "member": "string",
           "name": "TagKey",
           "required": true,
           "type": "string"
         },
         {
-          "document": "Tag value",
+          "disabled": false,
+          "document": "The tag value that needs to be bound. For the requirements, refer to: https://intl.cloud.tencent.com/document/product/651/13354?from_cn_redirect=1",
+          "example": "testValue",
           "member": "string",
           "name": "TagValue",
           "required": true,
           "type": "string"
         },
         {
-          "document": "Resource region. If resources have the region attribute, this field is required; otherwise, it is optional.",
+          "disabled": false,
+          "document": "Region of the resource. This parameter can be left blank if region is not involved. The region must correspond to resources specified by ResourceIds.N. Once the region is specified, all resources specified by ResourceIds.N must locate in this region. Example: ap-beijing.",
+          "example": "ap-beijing",
           "member": "string",
           "name": "ResourceRegion",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Resource prefix (the part before \"/\" in the last segment in the six-segment resource description), which is optional for COS buckets but required for other Tencent Cloud resources.",
+          "example": "instance",
           "member": "string",
           "name": "ResourcePrefix",
           "required": false,
@@ -313,14 +331,18 @@
       "document": "CreateTag request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag key.",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Tag value.",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": true,
@@ -345,6 +367,7 @@
       "document": "CreateTags request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag list.\nValue range of N: 0–9",
           "example": "无",
           "member": "Tag",
@@ -371,14 +394,18 @@
       "document": "DeleteResourceTag request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag key.",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "[Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
+          "example": "",
           "member": "string",
           "name": "Resource",
           "required": true,
@@ -403,14 +430,18 @@
       "document": "DeleteTag request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The tag key to be deleted.",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The tag value to be deleted.",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": true,
@@ -435,6 +466,7 @@
       "document": "DeleteTags request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag list.\nValue range of N: 0–9",
           "example": "无",
           "member": "Tag",
@@ -461,6 +493,7 @@
       "document": "DescribeProjects request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "If this parameter is 1, all projects (including hidden ones) will be queried. If it is 0, only non-hidden projects will be queried.",
           "example": "1",
           "member": "uint64",
@@ -469,6 +502,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page. Fixed value: 1,000.",
           "example": "1000",
           "member": "uint64",
@@ -477,6 +511,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Pagination offset.",
           "example": "0",
           "member": "uint64",
@@ -491,6 +526,7 @@
       "document": "DescribeProjects response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of data entries.",
           "example": "1000",
           "member": "uint64",
@@ -500,6 +536,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Project list.",
           "example": "无",
           "member": "Project",
@@ -521,46 +558,67 @@
       "document": "DescribeResourceTagsByResourceIds request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Service type.",
+          "example": "cvm",
           "member": "string",
           "name": "ServiceType",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Resource prefix.",
+          "example": "instance",
           "member": "string",
           "name": "ResourcePrefix",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Array of resource IDs (up to 50)",
+          "example": "ins-12345",
           "member": "string",
           "name": "ResourceIds",
           "required": true,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The resource's region.",
+          "example": "ap-beijing",
           "member": "string",
           "name": "ResourceRegion",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Page size. The default value is 0.",
+          "example": "15",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.",
+          "example": "All",
+          "member": "string",
+          "name": "Category",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -569,28 +627,36 @@
       "document": "DescribeResourceTagsByResourceIds response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of results.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Data offset.",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Page size.",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag list.",
+          "example": "",
           "member": "TagResource",
           "name": "Tags",
           "type": "list",
@@ -609,42 +675,54 @@
       "document": "DescribeResourceTagsByResourceIdsSeq request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Service type",
+          "example": "",
           "member": "string",
           "name": "ServiceType",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Resource prefix",
+          "example": "",
           "member": "string",
           "name": "ResourcePrefix",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Unique resource ID",
+          "example": "",
           "member": "string",
           "name": "ResourceIds",
           "required": true,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Resource region",
+          "example": "",
           "member": "string",
           "name": "ResourceRegion",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page. Default value: 15",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -657,28 +735,36 @@
       "document": "DescribeResourceTagsByResourceIdsSeq response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of results",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Data offset",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of entries per page",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag list",
+          "example": "",
           "member": "TagResource",
           "name": "Tags",
           "type": "list",
@@ -697,49 +783,63 @@
       "document": "DescribeResourceTagsByTagKeys request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Service type",
+          "example": "cvm",
           "member": "string",
           "name": "ServiceType",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Resource prefix",
+          "example": "instance",
           "member": "string",
           "name": "ResourcePrefix",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Resource region",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "ResourceRegion",
           "required": true,
           "type": "string"
         },
         {
-          "document": "Unique resource ID",
+          "disabled": false,
+          "document": "List of unique resource IDs, which can contain no more than 20 IDs.",
+          "example": "无",
           "member": "string",
           "name": "ResourceIds",
           "required": true,
           "type": "list"
         },
         {
-          "document": "Resource tag key",
+          "disabled": false,
+          "document": "List of resource tag keys, which can contain no more than 20 keys.",
+          "example": "tagKey",
           "member": "string",
           "name": "TagKeys",
           "required": true,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page. Default value: 400",
+          "example": "400",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -752,28 +852,36 @@
       "document": "DescribeResourceTagsByTagKeys response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of results",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Data offset",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of entries per page",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Resource tag",
+          "example": "",
           "member": "ResourceIdTag",
           "name": "Rows",
           "type": "list",
@@ -792,56 +900,72 @@
       "document": "DescribeResourceTags request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Creator `uin`",
+          "example": "",
           "member": "uint64",
           "name": "CreateUin",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Resource region.",
+          "example": "",
           "member": "string",
           "name": "ResourceRegion",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Service type.",
+          "example": "",
           "member": "string",
           "name": "ServiceType",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Resource prefix",
+          "example": "",
           "member": "string",
           "name": "ResourcePrefix",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Unique resource ID. Queries with `ResourceId` only may be slow or fail to return results. We recommend you also enter `ServiceType`, `ResourcePrefix`, and `ResourceRegion` (which can be ignored for resources that don't have the region attribute) when entering `ResourceId`.",
+          "example": "",
           "member": "string",
           "name": "ResourceId",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page. Default value: 15",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Whether it is a COS resource (0 or 1). This parameter is required when the entered `ResourceId` is a COS resource.",
+          "example": "",
           "member": "uint64",
           "name": "CosResourceId",
           "required": false,
@@ -854,28 +978,36 @@
       "document": "DescribeResourceTags response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of results",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Data offset.",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of entries per page.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "type": "int",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Resource tag",
+          "example": "",
           "member": "TagResource",
           "name": "Rows",
           "type": "list",
@@ -894,56 +1026,72 @@
       "document": "DescribeResourcesByTags request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag filtering arrays.",
+          "example": "",
           "member": "TagFilter",
           "name": "TagFilters",
           "required": true,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Tag creator uin.",
+          "example": "",
           "member": "uint64",
           "name": "CreateUin",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Page size. The default value is 15.",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Resource prefix.",
+          "example": "",
           "member": "string",
           "name": "ResourcePrefix",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Unique resource ID.",
+          "example": "",
           "member": "string",
           "name": "ResourceId",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The resource's region.",
+          "example": "",
           "member": "string",
           "name": "ResourceRegion",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Service type.",
+          "example": "",
           "member": "string",
           "name": "ServiceType",
           "required": false,
@@ -956,28 +1104,36 @@
       "document": "DescribeResourcesByTags response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of results.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Data offset.",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of entries per page.\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "type": "int",
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Resource tag.",
+          "example": "",
           "member": "ResourceTag",
           "name": "Rows",
           "type": "list",
@@ -996,56 +1152,72 @@
       "document": "DescribeResourcesByTagsUnion request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag filtering arrays.",
+          "example": "",
           "member": "TagFilter",
           "name": "TagFilters",
           "required": true,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Tag creator uin.",
+          "example": "",
           "member": "uint64",
           "name": "CreateUin",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Page size. The default value is 15.",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Resource prefix.",
+          "example": "",
           "member": "string",
           "name": "ResourcePrefix",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Unique resource ID.",
+          "example": "",
           "member": "string",
           "name": "ResourceId",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The resource’s region.",
+          "example": "",
           "member": "string",
           "name": "ResourceRegion",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Service type",
+          "example": "",
           "member": "string",
           "name": "ServiceType",
           "required": false,
@@ -1058,28 +1230,36 @@
       "document": "DescribeResourcesByTagsUnion response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of results.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Data offset.",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The size of each page.",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Resource tag.",
+          "example": "",
           "member": "ResourceTag",
           "name": "Rows",
           "type": "list",
@@ -1098,32 +1278,49 @@
       "document": "DescribeTagKeys request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Creator `Uin`. If not specified, `Uin` is only used as the query condition.",
+          "example": "1486445011xxx",
           "member": "uint64",
           "name": "CreateUin",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
-          "document": "Page size. The default value is 0.",
+          "disabled": false,
+          "document": "Number of entries per page. Default: 15; maximum: 1,000.",
+          "example": "10",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Whether to show project",
+          "example": "0",
           "member": "uint64",
           "name": "ShowProject",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.",
+          "example": "All",
+          "member": "string",
+          "name": "Category",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1132,28 +1329,36 @@
       "document": "DescribeTagKeys response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of results.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Data offset.",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Page size.",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag list.",
+          "example": "",
           "member": "string",
           "name": "Tags",
           "type": "list",
@@ -1172,32 +1377,49 @@
       "document": "DescribeTagValues request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag key list.",
+          "example": "testKey",
           "member": "string",
           "name": "TagKeys",
           "required": true,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Creator `Uin`. If not specified, `Uin` is only used as the query condition.",
+          "example": "12345",
           "member": "uint64",
           "name": "CreateUin",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
+          "example": "0",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Page size. The default value is 0.",
+          "example": "15",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.",
+          "example": "All",
+          "member": "string",
+          "name": "Category",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1206,28 +1428,36 @@
       "document": "DescribeTagValues response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of results.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Data offset.",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Page size.",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag list.",
+          "example": "",
           "member": "Tag",
           "name": "Tags",
           "type": "list",
@@ -1246,28 +1476,36 @@
       "document": "DescribeTagValuesSeq request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag key list",
+          "example": "",
           "member": "string",
           "name": "TagKeys",
           "required": true,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Creator `Uin`. If this parameter is blank or left empty, only `Uin` will be used as a condition for query",
+          "example": "",
           "member": "uint64",
           "name": "CreateUin",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page. Default value: 15",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -1280,28 +1518,36 @@
       "document": "DescribeTagValuesSeq response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of results",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Data offset",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of entries per page",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag list",
+          "example": "",
           "member": "Tag",
           "name": "Tags",
           "type": "list",
@@ -1320,49 +1566,63 @@
       "document": "DescribeTags request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag key. Either exists or does not exist alongside the tag value. If it does not exist, all of the user's tags will be queried.",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Tag value. Either exists or does not exist alongside the tag key. If it does not exist, all of the user's tags will be queried.",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Page size. The default value is 0.",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Creator `Uin`. If not specified, `Uin` is only used as the query condition.",
+          "example": "",
           "member": "uint64",
           "name": "CreateUin",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored.",
+          "example": "",
           "member": "string",
           "name": "TagKeys",
           "required": false,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Whether to show project tag",
+          "example": "",
           "member": "uint64",
           "name": "ShowProject",
           "required": false,
@@ -1375,28 +1635,36 @@
       "document": "DescribeTags response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of results.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Data offset.",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Page size.",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag list.",
+          "example": "",
           "member": "TagWithDelete",
           "name": "Tags",
           "type": "list",
@@ -1415,49 +1683,63 @@
       "document": "DescribeTagsSeq request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag key, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Tag value, which either exists or does not exist with the tag key. If it does not exist, all tags of the user will be queried",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Data offset. Default value: 0. It must be an integer multiple of the `Limit` parameter",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page. Default value: 15",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Creator `Uin`. If this parameter is blank or left empty, only `Uin` will be used as a condition for query",
+          "example": "",
           "member": "uint64",
           "name": "CreateUin",
           "required": false,
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Tag key array, which either exists or does not exist with the tag value. If it does not exist, all tags of the user will be queried. If it is passed in together with `TagKey`, it will be used and the `TagKey` will be ignored.",
+          "example": "",
           "member": "string",
           "name": "TagKeys",
           "required": false,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Whether to show project tag",
+          "example": "",
           "member": "uint64",
           "name": "ShowProject",
           "required": false,
@@ -1470,28 +1752,36 @@
       "document": "DescribeTagsSeq response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of results",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Data offset",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of entries per page",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "type": "int",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag list",
+          "example": "",
           "member": "TagWithDelete",
           "name": "Tags",
           "type": "list",
@@ -1510,35 +1800,45 @@
       "document": "DetachResourcesTag request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Resource service name (the third segment in the six-segment resource description)",
+          "example": "",
           "member": "string",
           "name": "ServiceType",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Resource ID array, which can contain up to 50 resources",
+          "example": "",
           "member": "string",
           "name": "ResourceIds",
           "required": true,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Tag key to be unbound",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Resource region. If resources have the region attribute, this field is required; otherwise, it is optional.",
+          "example": "",
           "member": "string",
           "name": "ResourceRegion",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Resource prefix (the part before \"/\" in the last segment in the six-segment resource description), which is optional for COS buckets but required for other Tencent Cloud resources.",
+          "example": "",
           "member": "string",
           "name": "ResourcePrefix",
           "required": false,
@@ -1563,6 +1863,7 @@
       "document": "Information of failed resources.\nThis is returned when resource tag binding or unbinding fails.",
       "members": [
         {
+          "disabled": false,
           "document": "Six-segment descriptions of failed resources",
           "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
           "member": "string",
@@ -1572,6 +1873,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Error code",
           "example": "InvalidParameterValue.TagKeyDuplicate",
           "member": "string",
@@ -1581,6 +1883,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Error message",
           "example": "TagKeyDuplicate",
           "member": "string",
@@ -1596,6 +1899,7 @@
       "document": "GetResources request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource.\nFor example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.\nIf this parameter is passed in, the list of all matching resources will be returned, and the specified `MaxResults` will become invalid.\nValue range of N: 0–9",
           "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
           "member": "string",
@@ -1604,6 +1908,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Tag key and value.\nIf multiple tags are specified, resources bound to all such tags will be queried.\nValue range of N: 0–5\nThere can be up to 10 `TagValues` in each `TagFilters`.",
           "example": "无",
           "member": "TagFilter",
@@ -1612,6 +1917,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The token value of the next page obtained from the response of the previous page.\nLeave it empty for the first request.",
           "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
           "member": "string",
@@ -1620,6 +1926,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Number of data entries to return per page (up to 200).\nDefault value: 50.",
           "example": "50",
           "member": "uint64",
@@ -1634,6 +1941,7 @@
       "document": "GetResources response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Token value obtained for the next page",
           "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
           "member": "string",
@@ -1643,6 +1951,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of resources and their associated tags (key-value pairs)",
           "example": "无",
           "member": "ResourceTagMapping",
@@ -1664,6 +1973,7 @@
       "document": "GetTagKeys request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The token value of the next page obtained from the response of the previous page.\nLeave it empty for the first request.",
           "example": "无",
           "member": "string",
@@ -1672,12 +1982,22 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Number of data entries to return per page (up to 1,000).\nDefault value: 50.",
           "example": "50",
           "member": "uint64",
           "name": "MaxResults",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.",
+          "example": "All",
+          "member": "string",
+          "name": "Category",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1686,6 +2006,7 @@
       "document": "GetTagKeys response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Token value obtained for the next page",
           "example": "无",
           "member": "string",
@@ -1695,6 +2016,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag key information.",
           "example": "无",
           "member": "string",
@@ -1716,6 +2038,7 @@
       "document": "GetTagValues request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag key.\nAll tag values corresponding to the list of tag keys.\nMaximum length: 20",
           "example": "无",
           "member": "string",
@@ -1724,6 +2047,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The token value of the next page obtained from the response of the previous page.\nLeave it empty for the first request.",
           "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
           "member": "string",
@@ -1732,12 +2056,22 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Number of data entries to return per page (up to 1,000).\nDefault value: 50.",
           "example": "50",
           "member": "uint64",
           "name": "MaxResults",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.",
+          "example": "All",
+          "member": "string",
+          "name": "Category",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1746,6 +2080,7 @@
       "document": "GetTagValues response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Token value obtained for the next page",
           "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
           "member": "string",
@@ -1755,6 +2090,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag list.",
           "example": "无",
           "member": "Tag",
@@ -1776,6 +2112,7 @@
       "document": "GetTags request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The token value of the next page obtained from the response of the previous page.\nLeave it empty for the first request.",
           "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
           "member": "string",
@@ -1784,6 +2121,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Number of data entries to return per page (up to 1,000).\nDefault value: 50.",
           "example": "50",
           "member": "uint64",
@@ -1792,12 +2130,22 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Tag key.\nAll tags corresponding to the list of tag keys.\nMaximum length: 20",
           "example": "无",
           "member": "string",
           "name": "TagKeys",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.",
+          "example": "All",
+          "member": "string",
+          "name": "Category",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -1806,6 +2154,7 @@
       "document": "GetTags response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Token value obtained for the next page",
           "example": "POzXXYGXh2fRDHxx7PGaJnLApcyIuAYBC5HX25gKI4Sz2R*********",
           "member": "string",
@@ -1815,6 +2164,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag list.",
           "example": "无",
           "member": "Tag",
@@ -1836,21 +2186,27 @@
       "document": "ModifyResourceTags request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "[Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
+          "example": "",
           "member": "string",
           "name": "Resource",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The tags to be added or modified. If the resource described by `Resource` is not associated with the input tag keys, an association will be added. If the tag keys are already associated, the values corresponding to the associated tag keys will be modified to the input values. This API must contain either `ReplaceTags` or `DeleteTag`, and these two parameters cannot include the same tag keys. This parameter can be omitted, but it cannot be an empty array.",
+          "example": "",
           "member": "Tag",
           "name": "ReplaceTags",
           "required": false,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "The tags to be disassociated. This API must contain either `ReplaceTags` or `DeleteTag`, and these two parameters cannot include the same tag keys. This parameter can be omitted, but it cannot be an empty array.",
+          "example": "",
           "member": "TagKeyObject",
           "name": "DeleteTags",
           "required": false,
@@ -1875,42 +2231,54 @@
       "document": "ModifyResourcesTagValue request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Resource service name (the third segment in the six-segment resource description)",
+          "example": "",
           "member": "string",
           "name": "ServiceType",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Resource ID array, which can contain up to 50 resources",
+          "example": "",
           "member": "string",
           "name": "ResourceIds",
           "required": true,
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Tag key",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Tag value",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Resource region. If resources have the region attribute, this field is required; otherwise, it is optional.",
+          "example": "",
           "member": "string",
           "name": "ResourceRegion",
           "required": false,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Resource prefix (the part before \"/\" in the last segment in the six-segment resource description), which is optional for COS buckets but required for other Tencent Cloud resources.",
+          "example": "",
           "member": "string",
           "name": "ResourcePrefix",
           "required": false,
@@ -1935,6 +2303,7 @@
       "document": "Project information.",
       "members": [
         {
+          "disabled": false,
           "document": "Project ID.",
           "example": "1",
           "member": "uint64",
@@ -1944,6 +2313,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Project name.",
           "example": "project_1",
           "member": "string",
@@ -1953,6 +2323,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creator UIN.",
           "example": "1",
           "member": "uint64",
@@ -1962,6 +2333,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Project description.",
           "example": "info",
           "member": "string",
@@ -1971,6 +2343,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Creation time.",
           "example": "2022-08-03 00:00:00",
           "member": "string",
@@ -1986,7 +2359,9 @@
       "document": "Resource tag key value",
       "members": [
         {
+          "disabled": false,
           "document": "Unique resource ID\nNote: this field may return null, indicating that no valid values can be obtained",
+          "example": "",
           "member": "string",
           "name": "ResourceId",
           "required": true,
@@ -1994,7 +2369,9 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Tag key-value pair\nNote: this field may return null, indicating that no valid values can be obtained",
+          "example": "",
           "member": "Tag",
           "name": "TagKeyValues",
           "required": true,
@@ -2008,7 +2385,9 @@
       "document": "Resource tag.",
       "members": [
         {
+          "disabled": false,
           "document": "The resource's region.\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "",
           "member": "string",
           "name": "ResourceRegion",
           "required": true,
@@ -2016,7 +2395,9 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Service type.\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "",
           "member": "string",
           "name": "ServiceType",
           "required": true,
@@ -2024,7 +2405,9 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Resource prefix.\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "",
           "member": "string",
           "name": "ResourcePrefix",
           "required": true,
@@ -2032,7 +2415,9 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Unique resource ID.\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "",
           "member": "string",
           "name": "ResourceId",
           "required": true,
@@ -2040,7 +2425,9 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "Resource tag.\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "",
           "member": "Tag",
           "name": "Tags",
           "required": true,
@@ -2054,6 +2441,7 @@
       "document": "Resources and their associated tags (key-value pairs).",
       "members": [
         {
+          "disabled": false,
           "document": "Six-segment resource description. Tencent Cloud uses a six-segment value to describe a resource.\nFor example, ResourceList.1 = qcs::${ServiceType}:${Region}:${Account}:${ResourcePreifx}/${ResourceId}.",
           "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
           "member": "string",
@@ -2063,6 +2451,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of tags associated with the resource",
           "example": "无",
           "member": "Tag",
@@ -2078,20 +2467,37 @@
       "document": "A tag key-value pair.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag key.",
+          "example": "无",
           "member": "string",
           "name": "TagKey",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag value.",
+          "example": "无",
           "member": "string",
           "name": "TagValue",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.Note: This field may return null, indicating that no value is obtained.",
+          "example": "All",
+          "member": "string",
+          "name": "Category",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -2100,7 +2506,9 @@
       "document": "Tag filtering array. '**AND**' relation if multiple arrays.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag key.",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
@@ -2108,7 +2516,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag value array. '**OR**' relation if multiple values.",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": false,
@@ -2122,7 +2532,9 @@
       "document": "Tag key object.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag key.",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
@@ -2136,50 +2548,72 @@
       "document": "Tag key-value pair and resource ID.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag key.",
+          "example": "无",
           "member": "string",
           "name": "TagKey",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag value.",
+          "example": "无",
           "member": "string",
           "name": "TagValue",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Resource ID.",
+          "example": "无",
           "member": "string",
           "name": "ResourceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag key MD5 value.",
+          "example": "无",
           "member": "string",
           "name": "TagKeyMd5",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag value MD5 value.",
+          "example": "无",
           "member": "string",
           "name": "TagValueMd5",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Resource type\nNote: this field may return null, indicating that no valid values found.",
+          "example": "无",
           "member": "string",
           "name": "ServiceType",
-          "required": true,
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag type. Valid values: Custom: custom tag; System: system tag.Note: This field may return null, indicating that no value is obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Category",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": true
         }
@@ -2190,7 +2624,8 @@
       "document": "TagResources request structure.",
       "members": [
         {
-          "document": "Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource. For more information, see [CAM](https://intl.cloud.tencent.com/document/product/598/67350?from_cn_redirect=1) > Overview > API List > Six-Segment Resource Information.\nFor example: ResourceList.1 = qcs::${ServiceType}:${Region}:uin/${Account}:${ResourcePrefix}/${ResourceId}.\nValue range of N: 0–9",
+          "disabled": false,
+          "document": "Cloud resource to be bound, represented in the standard six-segment resource format. For the correct format, see [Resource Description Method](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1) and [Tagging-enabled Resources](https://intl.cloud.tencent.com/document/product/651/89122?from_cn_redirect=1).\nValue range of N: 0-9.",
           "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
           "member": "string",
           "name": "ResourceList",
@@ -2198,6 +2633,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Tag key and value.\nIf multiple tags are specified, all such tags will be created and bound to the specified resources.\nFor each resource, each tag key can have only one value. If you try to add an existing tag key, the corresponding tag value will be updated to the new value.\nNon-existent tags will be automatically created.\nValue range of N: 0–9",
           "example": "无",
           "member": "Tag",
@@ -2212,6 +2648,7 @@
       "document": "TagResources response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Information of failed resources.\nWhen tag creating and binding succeeds, the returned `FailedResources` will be empty.\nWhen tag creating and binding partially or completely fails, the returned `FailedResources` will display the details of failed resources.",
           "example": "无",
           "member": "FailedResource",
@@ -2233,28 +2670,44 @@
       "document": "A tag key-value pair and if deletion is allowed.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag key.",
+          "example": "无",
           "member": "string",
           "name": "TagKey",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag value.",
+          "example": "无",
           "member": "string",
           "name": "TagValue",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "If deletion is allowed.",
+          "example": "无",
           "member": "uint64",
           "name": "CanDelete",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.Note: This field may return null, indicating that no value is obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Category",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2263,6 +2716,7 @@
       "document": "UnTagResources request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource. For more information, see [CAM](https://intl.cloud.tencent.com/document/product/598/67350?from_cn_redirect=1) > Overview > API List > Six-Segment Resource Information.\nFor example: ResourceList.1 = qcs::${ServiceType}:${Region}:uin/${Account}:${ResourcePrefix}/${ResourceId}.\nValue range of N: 0–9",
           "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
           "member": "string",
@@ -2271,6 +2725,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Tag key.\nValue range: 0–9",
           "example": "无",
           "member": "string",
@@ -2285,6 +2740,7 @@
       "document": "UnTagResources response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Information of failed resources.\nWhen tag unbinding succeeds, the returned `FailedResources` will be empty.\nWhen tag unbinding partially or completely fails, the returned `FailedResources` will display the details of failed resources.",
           "example": "无",
           "member": "FailedResource",
@@ -2306,21 +2762,27 @@
       "document": "UpdateResourceTagValue request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Tag key associated with the resource.",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Modified tag value.",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": true,
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "[Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)",
+          "example": "",
           "member": "string",
           "name": "Resource",
           "required": true,
