@@ -261,20 +261,20 @@
       "members": [
         {
           "disabled": false,
-          "document": "The Base64-encoded string (max 8 MB in size) of the photo to be compared.",
-          "example": "CompareImageBase64String",
+          "document": "The web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. \nAfter the verification process is completed, the BizToken of this process will be spliced to the callback URL in the format of https://www.tencentcloud.com/products/faceid?token={BizToken} before redirect.\nExample: https://www.tencentcloud.com/products/faceid.",
+          "example": "https://www.tencentcloud.com/products/faceid",
           "member": "string",
-          "name": "CompareImageBase64",
+          "name": "RedirectURL",
           "required": true,
           "type": "string"
         },
         {
           "disabled": false,
-          "document": "The web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. \nExample: https://www.tencentcloud.com/products/faceid.\nAfter the verification process is completed, the BizToken of this process will be spliced to the callback URL in the format of https://www.tencentcloud.com/products/faceid?token={BizToken} before redirect.",
-          "example": "https://www.tencentcloud.com/products/faceid",
+          "document": "The Base64-encoded string (max 8 MB in size) of the photo to be compared.The Data URI scheme header needs to be removed from the encoded string\nExample: xhBQAAACBjSFJNAAB6****AAAASUVORK5CYII=",
+          "example": "CompareImageBase64String",
           "member": "string",
-          "name": "RedirectURL",
-          "required": true,
+          "name": "CompareImageBase64",
+          "required": false,
           "type": "string"
         },
         {
@@ -288,8 +288,8 @@
         },
         {
           "disabled": false,
-          "document": "The parameter control the page configuration.",
-          "example": "无",
+          "document": "The parameter control the page configuration.\nExample: {\"AutoSkip\": true,\"CheckMode\": 1,\"IdCardType\": \"HKIDCard\"}",
+          "example": "{\"AutoSkip\": true,\"CheckMode\": 1,\"IdCardType\": \"HKIDCard\"}",
           "member": "WebVerificationConfigIntl",
           "name": "Config",
           "required": false,
@@ -303,7 +303,7 @@
       "members": [
         {
           "disabled": true,
-          "document": "The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.",
+          "document": "The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.\nExample: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442",
           "example": "https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442",
           "member": "string",
           "name": "VerificationUrl",
@@ -313,7 +313,7 @@
         },
         {
           "disabled": false,
-          "document": "The token for the web-based verification, which is generated using the ApplyWebVerificationBizTokenIntl API.",
+          "document": "The token for the web-based verification, which is generated using the ApplyWebVerificationBizTokenIntl API.\nExample: 81EEF678-28EE-4759-A82E-6CBBBE6BC442",
           "example": "81EEF678-28EE-4759-A82E-6CBBBE6BC442",
           "member": "string",
           "name": "BizToken",
@@ -323,7 +323,7 @@
         },
         {
           "disabled": false,
-          "document": "The verification URL to be opened with a browser to start the verification process.",
+          "document": "The verification URL to be opened with a browser to start the verification process.\nExample: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442",
           "example": "https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442",
           "member": "string",
           "name": "VerificationURL",
