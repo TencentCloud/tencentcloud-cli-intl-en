@@ -1560,7 +1560,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of customer UINs",
+          "document": "List of customer UIN. Array length value: 1-20.",
           "example": "[200000000000, 200000000001]",
           "member": "int64",
           "name": "CustomerUin",
@@ -1920,7 +1920,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "User list",
+          "document": "List of user. Array length value: 1-50.",
           "example": "{10000,10001}",
           "member": "uint64",
           "name": "UinList",
@@ -2359,7 +2359,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Customer UIN list",
+          "document": "List of customer UIN. Array length value: 1-20.",
           "example": "[123]",
           "member": "uint64",
           "name": "ClientUins",
@@ -2432,7 +2432,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Customer UIN list",
+          "document": "List of customer UIN. Array length value:1-20.",
           "example": "[123]",
           "member": "uint64",
           "name": "ClientUins",

@@ -147,7 +147,7 @@
     "QueryVoucherAmountByUin": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryVoucherAmountByUin\n<Common request parameters>\n\n{\n    \"ClientUins\": [\n        1\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryVoucherAmountByUin\n<Common Request Parameters>\n\n{\n    \"ClientUins\": [\n        1\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"TotalAmount\": 0.0,\n                \"ClientUin\": 0,\n                \"RemainAmount\": 0.0\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying the voucher quota based on the customer UIN"
       }
@@ -155,7 +155,7 @@
     "QueryVoucherListByUin": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryVoucherListByUin\n<Common request parameters>\n\n{\n    \"Status\": \"xx\",\n    \"ClientUins\": [\n        1\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryVoucherListByUin\n<Common Request Parameters>\n\n{\n    \"ClientUins\": [\n        1\n    ],\n    \"Status\": \"abc\"\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"TotalCount\": 0,\n                \"ClientUin\": 0,\n                \"Data\": [\n                    {\n                        \"VoucherId\": \"xx\",\n                        \"TotalAmount\": 0.0,\n                        \"RemainAmount\": 0.0,\n                        \"VoucherStatus\": \"xx\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
         "title": "Querying the voucher list based on the customer UIN"
       }
