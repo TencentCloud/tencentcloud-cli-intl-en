@@ -337,6 +337,7 @@
         {
           "disabled": false,
           "document": "Messages with receipt.",
+          "example": "",
           "member": "uint64",
           "name": "CallbackCount",
           "required": true,
@@ -346,6 +347,7 @@
         {
           "disabled": false,
           "document": "Successfully submitted SMS messages.",
+          "example": "",
           "member": "uint64",
           "name": "RequestSuccessCount",
           "required": true,
@@ -355,6 +357,7 @@
         {
           "disabled": false,
           "document": "Failed receipts.",
+          "example": "",
           "member": "uint64",
           "name": "CallbackFailCount",
           "required": true,
@@ -364,6 +367,7 @@
         {
           "disabled": false,
           "document": "Successful receipts.",
+          "example": "",
           "member": "uint64",
           "name": "CallbackSuccessCount",
           "required": true,
@@ -373,6 +377,7 @@
         {
           "disabled": false,
           "document": "Carrier's internal error.",
+          "example": "",
           "member": "uint64",
           "name": "InternalErrorCount",
           "required": true,
@@ -382,6 +387,7 @@
         {
           "disabled": false,
           "document": "Invalid numbers.",
+          "example": "",
           "member": "uint64",
           "name": "InvalidNumberCount",
           "required": true,
@@ -391,6 +397,7 @@
         {
           "disabled": false,
           "document": "Errors such as out-of-service or power-off.",
+          "example": "",
           "member": "uint64",
           "name": "ShutdownErrorCount",
           "required": true,
@@ -400,6 +407,7 @@
         {
           "disabled": false,
           "document": "Blocked mobile numbers.",
+          "example": "",
           "member": "uint64",
           "name": "BlackListCount",
           "required": true,
@@ -409,6 +417,7 @@
         {
           "disabled": false,
           "document": "Carrier rate limit hits.",
+          "example": "",
           "member": "uint64",
           "name": "FrequencyLimitCount",
           "required": true,
@@ -497,6 +506,7 @@
         {
           "disabled": false,
           "document": "Deletion status information.",
+          "example": "",
           "member": "string",
           "name": "DeleteStatus",
           "required": true,
@@ -506,6 +516,7 @@
         {
           "disabled": false,
           "document": "Deleted time in seconds in the format of UNIX timestamp.",
+          "example": "",
           "member": "uint64",
           "name": "DeleteTime",
           "required": true,
@@ -513,7 +524,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "DeleteSmsSignRequest": {
       "document": "DeleteSmsSign request structure.",
@@ -595,6 +606,7 @@
         {
           "disabled": false,
           "document": "Deletion status information.",
+          "example": "",
           "member": "string",
           "name": "DeleteStatus",
           "required": true,
@@ -604,6 +616,7 @@
         {
           "disabled": false,
           "document": "Deleted time in seconds in the format of UNIX timestamp.",
+          "example": "",
           "member": "uint64",
           "name": "DeleteTime",
           "required": true,
@@ -1881,6 +1894,7 @@
         {
           "disabled": false,
           "document": "Billable SMS message quantity; for example, in 100 successfully submitted SMS messages, if 20 ones are long messages (over 80 characters) and split into two messages each, then the billable quantity will be 80 * 1 + 20 * 2 = 120.",
+          "example": "",
           "member": "uint64",
           "name": "FeeCount",
           "required": true,
@@ -1890,6 +1904,7 @@
         {
           "disabled": false,
           "document": "Submitted SMS messages.",
+          "example": "",
           "member": "uint64",
           "name": "RequestCount",
           "required": true,
@@ -1899,6 +1914,7 @@
         {
           "disabled": false,
           "document": "Successfully submitted SMS messages.",
+          "example": "",
           "member": "uint64",
           "name": "RequestSuccessCount",
           "required": true,
