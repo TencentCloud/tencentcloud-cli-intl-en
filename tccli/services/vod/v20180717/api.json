@@ -1037,7 +1037,7 @@
       "status": "online"
     },
     "PullEvents": {
-      "document": "* This API is used to get event notifications from the business server through [reliable callback](https://intl.cloud.tencent.com/document/product/266/33948).\n* The API gets event data through long polling. That is, if there is any unconsumed event on the server, the event notification will be returned to the requester immediately. If there is no unconsumed event on the server, the request will be suspended in the backend until a new event is generated.\n* The request can be suspended for up to 5 seconds. It’s recommended to set the request timeout period to 10 seconds.\n* Event notifications not pulled will be retained for up to 4 days and may be cleared after this period.\n* After the API returns an event, the caller must call the [ConfirmEvents](https://intl.cloud.tencent.com/document/product/266/34184) API within <font color=\"red\">30 seconds</font> to confirm that the event notification has been processed. Otherwise, the event notification will be pulled again after <font color=\"red\">30 seconds</font>.\n* This API can get up to 16 event notifications at a time.",
+      "document": "* This API is used to get event notifications from the business server through [reliable callback](https://intl.cloud.tencent.com/document/product/266/33948).\n* The API gets event data through long polling. That is, if there is any unconsumed event on the server, the event notification will be returned to the requester immediately. If there is no unconsumed event on the server, the request will be suspended in the backend until a new event is generated.\n* The request can be suspended for up to 5 seconds. It's recommended to set the request timeout period to 10 seconds.\n* Event notifications not pulled will be retained for up to 4 days and may be cleared after this period.\n* After the API returns an event, the caller must call the [ConfirmEvents](https://intl.cloud.tencent.com/document/product/266/34184) API within <font color=\"red\">30 seconds</font> to confirm that the event notification has been processed. Otherwise, the event notification will be pulled again after <font color=\"red\">30 seconds</font>.\n* This API can get up to 16 event notifications at a time.",
       "input": "PullEventsRequest",
       "name": "Pulls event notifications",
       "output": "PullEventsResponse",
@@ -1135,7 +1135,7 @@
       "status": "online"
     },
     "SimpleHlsClip": {
-      "document": "This API is used to cut a clip from an HLS video to generate a new video (in HLS format). You can either share the new video or save it.\n\nVOD supports two types of clipping:\n- Clipping for persistent storage: The video clip is saved as an independent video file with its own `FileId`.\n- Clipping for temporary sharing: The video clip shares `FileId` with the input file.\n\nNotes:\n- Clipping is based on the M3U8 file that contains a list of TS segments, so the smallest clipping unit is one TS segment instead of a second or less.\n\n\n### Clipping for persistent storage\nIn this mode, a video clip is saved as an independent video file with a `FileId`, and its lifecycle is not subject to the input video. Even if the source video is deleted, the video clip still exists. Moreover, the video clip can be transcoded, published on WeChat, and processed in other ways.\n\nSuppose you recorded a two-hour football match. You want to save the full video for only two months to save costs, but want to save the highlights for a longer time and perhaps transcode and publish the highlight clip to WeChat. In this case, you can choose clipping for persistent storage.\n\nThe advantage of clipping for persistent storage is that the video clip has a lifecycle independent of the input video and can be managed independently and stored persistently.\n\n### Clipping for temporary sharing\nThe video clip (an M3U8 file) shares the same TS segments with the input video instead of being an independent video. It only has a playback URL but has no `FileId`, and its validity period is the same as that of the input video. Once the input video is deleted, the video clip cannot be played back.\n\nBecause the video clip is not an independent video, it’s not displayed as a media asset in the VOD console, and cannot be transcoded or published to WeChat.\n\nClipping for temporary sharing is lightweight and incurs no additional storage fees. However, the video clip has the same lifecycle as the source recording video and cannot be transcoded or processed in other ways.",
+      "document": "This API is used to cut a clip from an HLS video to generate a new video (in HLS format). You can either share the new video or save it.\n\nVOD supports two types of clipping:\n- Clipping for persistent storage: The video clip is saved as an independent video file with its own `FileId`.\n- Clipping for temporary sharing: The video clip shares `FileId` with the input file.\n\nNotes:\n- Clipping is based on the M3U8 file that contains a list of TS segments, so the smallest clipping unit is one TS segment instead of a second or less.\n\n\n### Clipping for persistent storage\nIn this mode, a video clip is saved as an independent video file with a `FileId`, and its lifecycle is not subject to the input video. Even if the source video is deleted, the video clip still exists. Moreover, the video clip can be transcoded, published on WeChat, and processed in other ways.\n\nSuppose you recorded a two-hour football match. You want to save the full video for only two months to save costs, but want to save the highlights for a longer time and perhaps transcode and publish the highlight clip to WeChat. In this case, you can choose clipping for persistent storage.\n\nThe advantage of clipping for persistent storage is that the video clip has a lifecycle independent of the input video and can be managed independently and stored persistently.\n\n### Clipping for temporary sharing\nThe video clip (an M3U8 file) shares the same TS segments with the input video instead of being an independent video. It only has a playback URL but has no `FileId`, and its validity period is the same as that of the input video. Once the input video is deleted, the video clip cannot be played back.\n\nBecause the video clip is not an independent video, it's not displayed as a media asset in the VOD console, and cannot be transcoded or published to WeChat.\n\nClipping for temporary sharing is lightweight and incurs no additional storage fees. However, the video clip has the same lifecycle as the source recording video and cannot be transcoded or processed in other ways.",
       "input": "SimpleHlsClipRequest",
       "name": "Performs simple HLS clipping",
       "output": "SimpleHlsClipResponse",
@@ -6662,7 +6662,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -6759,54 +6759,60 @@
         {
           "disabled": false,
           "document": "Storage bucket, which is used as the `bucket_name` in the URL of the upload API.",
-          "example": "",
+          "example": "xadagzp111211-100922",
           "member": "string",
           "name": "StorageBucket",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Storage region, which is used as the `Region` in the `Host` of the upload API.",
-          "example": "",
+          "example": "ap-guangzhou-2",
           "member": "string",
           "name": "StorageRegion",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "VOD session, which is used to confirm the `VodSessionKey` parameter of the upload API.",
-          "example": "",
+          "example": "VodSessionKey",
           "member": "string",
           "name": "VodSessionKey",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Media storage path, which is used as the `Key` of the stored media of the upload API.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "/dir/name.xx",
           "member": "string",
           "name": "MediaStoragePath",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Cover storage path, which is used as the `Key` of the stored cover of the upload API.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "/dir/cover.xx",
           "member": "string",
           "name": "CoverStoragePath",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Temporary credential, which is used for authentication of the upload API.",
-          "example": "",
+          "example": "无",
           "member": "TempCertificate",
           "name": "TempCertificate",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -7030,7 +7036,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -8636,7 +8642,7 @@
         },
         {
           "disabled": false,
-          "document": "VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -8698,7 +8704,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -8869,7 +8875,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -8912,9 +8918,10 @@
         {
           "disabled": false,
           "document": "Media file composing task ID, which can be used to query the status of composing task (with task type being `MakeMedia`).",
-          "example": "",
+          "example": "125xxx65-ComposeMedia-bffb15f07530b57bc1aabb01fac74bca",
           "member": "string",
           "name": "TaskId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9240,7 +9247,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -9658,7 +9665,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -9737,9 +9744,10 @@
         {
           "disabled": false,
           "document": "Unique ID of video content analysis template.",
-          "example": "",
+          "example": "30",
           "member": "int64",
           "name": "Definition",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -9757,7 +9765,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "无",
           "member": "uint64",
           "name": "SubAppId",
@@ -9872,7 +9880,7 @@
         {
           "disabled": false,
           "document": "Unique ID of video content recognition template.",
-          "example": "",
+          "example": "30",
           "member": "int64",
           "name": "Definition",
           "type": "int",
@@ -9910,7 +9918,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -9989,9 +9997,10 @@
         {
           "disabled": false,
           "document": "Unique ID of adaptive bitrate streaming template.",
-          "example": "",
+          "example": "30018",
           "member": "uint64",
           "name": "Definition",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10018,7 +10027,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -10097,9 +10106,10 @@
         {
           "disabled": false,
           "document": "Unique ID of an animated image generating template.",
-          "example": "",
+          "example": "1008",
           "member": "uint64",
           "name": "Definition",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10135,7 +10145,7 @@
         },
         {
           "disabled": false,
-          "document": "VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -10180,7 +10190,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -10196,9 +10206,10 @@
         {
           "disabled": false,
           "document": "Category ID",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "ClassId",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10225,7 +10236,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -10380,7 +10391,7 @@
         },
         {
           "disabled": false,
-          "document": "VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -10498,7 +10509,7 @@
         },
         {
           "disabled": false,
-          "document": "</b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "125000",
           "member": "uint64",
           "name": "SubAppId",
@@ -10579,7 +10590,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -10755,7 +10766,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -10834,9 +10845,10 @@
         {
           "disabled": false,
           "document": "Unique ID of an image sprite generating template.",
-          "example": "",
+          "example": "1008",
           "member": "uint64",
           "name": "Definition",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10872,7 +10884,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>VOD application ID. If you want to access resources in a sub-application, fill this field with the SubAppID; when empty, it means accessing the resources of the default application.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "int64",
           "name": "SubAppId",
@@ -10935,7 +10947,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -11018,7 +11030,7 @@
         },
         {
           "disabled": false,
-          "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -11099,7 +11111,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -11262,7 +11274,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -11380,7 +11392,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "string",
           "name": "SubAppId",
@@ -11453,7 +11465,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -11480,7 +11492,7 @@
         },
         {
           "disabled": false,
-          "document": "Play mode, optional values:\n<li>Loop: Play the playlist in a loop;</li>\n<li>Linear: Play once, stop playing after the playlist is played. </li>\nDefault value：Loop。",
+          "document": "Play mode, optional values:\n<li>Loop: Play the playlist in a loop;</li>\n<li>Linear: Play once, stop playing after the playlist is played. </li>\nDefault value: Loop.",
           "example": "Loop",
           "member": "string",
           "name": "PlayBackMode",
@@ -11545,7 +11557,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -11624,9 +11636,10 @@
         {
           "disabled": false,
           "document": "Unique ID of a sampled screencapturing template.",
-          "example": "",
+          "example": "1008",
           "member": "uint64",
           "name": "Definition",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -11644,7 +11657,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -11723,9 +11736,10 @@
         {
           "disabled": false,
           "document": "Unique ID of a time point screencapturing template.",
-          "example": "",
+          "example": "1008",
           "member": "uint64",
           "name": "Definition",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -11752,7 +11766,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -11833,7 +11847,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -11959,7 +11973,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "0",
           "member": "uint64",
           "name": "SubAppId",
@@ -12047,9 +12061,10 @@
         {
           "disabled": false,
           "document": "Unique ID of transcoding template.",
-          "example": "",
+          "example": "1008",
           "member": "int64",
           "name": "Definition",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -12085,7 +12100,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -12121,7 +12136,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -12209,18 +12224,20 @@
         {
           "disabled": false,
           "document": "Unique ID of watermarking template.",
-          "example": "",
+          "example": "1001",
           "member": "int64",
           "name": "Definition",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Watermark image address. This field is valid only when `Type` is `image`.",
-          "example": "",
+          "example": "http://1256768367.vod2.myqcloud.com/8b0dd2b5vodcq1256768367/4d27b39f5285890783754292994/aa.jpeg",
           "member": "string",
           "name": "ImageUrl",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -12256,7 +12273,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -12328,7 +12345,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -12364,7 +12381,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -12400,7 +12417,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -12436,7 +12453,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -12472,7 +12489,7 @@
         },
         {
           "disabled": false,
-          "document": "VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -12508,7 +12525,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -12544,7 +12561,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -12580,7 +12597,7 @@
         },
         {
           "disabled": false,
-          "document": "</b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -12616,7 +12633,7 @@
         },
         {
           "disabled": false,
-          "document": "</b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "25100",
           "member": "uint64",
           "name": "SubAppId",
@@ -12652,7 +12669,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "0",
           "member": "uint64",
           "name": "SubAppId",
@@ -12688,7 +12705,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -12724,7 +12741,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>VOD application ID. If you want to access resources in a sub-application, fill this field with the SubAppID; when empty, it means accessing the resources of the default application.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "int64",
           "name": "SubAppId",
@@ -12760,7 +12777,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -12805,7 +12822,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -12841,7 +12858,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -12877,7 +12894,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -12913,7 +12930,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "int64",
           "name": "SubAppId",
@@ -12949,7 +12966,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -12985,7 +13002,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -13021,7 +13038,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -13057,7 +13074,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -13093,7 +13110,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -13129,7 +13146,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -13165,7 +13182,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -13201,7 +13218,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -13237,7 +13254,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -13264,7 +13281,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -13307,18 +13324,20 @@
         {
           "disabled": false,
           "document": "Number of eligible entries.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of video content analysis template details.",
-          "example": "",
+          "example": "无",
           "member": "AIAnalysisTemplateItem",
           "name": "AIAnalysisTemplateSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -13336,7 +13355,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -13379,7 +13398,7 @@
         {
           "disabled": false,
           "document": "Number of eligible entries.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -13388,7 +13407,7 @@
         {
           "disabled": false,
           "document": "List of video content recognition template details.",
-          "example": "",
+          "example": "无",
           "member": "AIRecognitionTemplateItem",
           "name": "AIRecognitionTemplateSet",
           "type": "list",
@@ -13408,7 +13427,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -13460,18 +13479,20 @@
         {
           "disabled": false,
           "document": "Number of eligible entries.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of transcoding to adaptive bitrate streaming template details.",
-          "example": "",
+          "example": "无",
           "member": "AdaptiveDynamicStreamingTemplate",
           "name": "AdaptiveDynamicStreamingTemplateSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -13489,7 +13510,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -13505,9 +13526,10 @@
         {
           "disabled": false,
           "document": "Category information set\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "MediaClassInfo",
           "name": "ClassInfoSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -13525,7 +13547,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -13577,18 +13599,20 @@
         {
           "disabled": false,
           "document": "Number of eligible entries.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of animated image generating template details.",
-          "example": "",
+          "example": "无",
           "member": "AnimatedGraphicsTemplate",
           "name": "AnimatedGraphicsTemplateSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -13633,7 +13657,7 @@
         },
         {
           "disabled": false,
-          "document": "VOD [Subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?from_cn_redirect=1) ID. If you want to access resources in the Subapplication, enter the Subapplication ID in this field; otherwise, you do not need to fill in this field.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -13707,7 +13731,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -13826,7 +13850,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.\nYou can set this parameter to 1 to query the total usage of all applications (including the primary application) as an admin (only 1-day granularity is supported).</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -13860,18 +13884,20 @@
         {
           "disabled": false,
           "document": "Time granularity in minutes.",
-          "example": "",
+          "example": "1440",
           "member": "int64",
           "name": "DataInterval",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "CDN statistics.",
-          "example": "",
+          "example": "无",
           "member": "StatDataItem",
           "name": "Data",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -13916,7 +13942,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "0",
           "member": "uint64",
           "name": "SubAppId",
@@ -14009,7 +14035,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -14055,7 +14081,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -14147,7 +14173,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -14184,7 +14210,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -14221,7 +14247,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "</b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -14313,7 +14339,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "15400000001",
           "member": "uint64",
           "name": "SubAppId",
@@ -14518,7 +14544,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "</b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "125000",
           "member": "uint64",
           "name": "SubAppId",
@@ -14590,7 +14616,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -14645,6 +14671,7 @@
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -14654,6 +14681,7 @@
           "example": "无",
           "member": "ImageProcessingTemplate",
           "name": "ImageProcessingTemplateSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -14689,7 +14717,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -14726,7 +14754,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -14778,18 +14806,20 @@
         {
           "disabled": false,
           "document": "Number of eligible entries.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of image sprite generating template details.",
-          "example": "",
+          "example": "无",
           "member": "ImageSpriteTemplate",
           "name": "ImageSpriteTemplateSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -14816,7 +14846,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>VOD application ID. If you want to access resources in a sub-application, fill this field with the SubAppID; when empty, it means accessing the resources of the default application.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "int64",
           "name": "SubAppId",
@@ -14917,7 +14947,7 @@
         },
         {
           "disabled": false,
-          "document": "The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -14963,7 +14993,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -14988,18 +15018,20 @@
         {
           "disabled": false,
           "document": "Media file information list.",
-          "example": "",
+          "example": "无",
           "member": "MediaInfo",
           "name": "MediaInfoSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of IDs of files that do not exist.",
-          "example": "",
+          "example": "[\"5285485487985271488\"]",
           "member": "string",
           "name": "NotExistFileIdSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -15044,7 +15076,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1450001234",
           "member": "uint64",
           "name": "SubAppId",
@@ -15108,7 +15140,7 @@
         },
         {
           "disabled": false,
-          "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -15133,9 +15165,10 @@
         {
           "disabled": false,
           "document": "Overview of video processing statistics, which displays the overview and details of queried tasks.",
-          "example": "",
+          "example": "无",
           "member": "TaskStatData",
           "name": "MediaProcessDataSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -15153,7 +15186,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -15223,18 +15256,20 @@
         {
           "disabled": false,
           "document": "Number of eligible entries.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Figure information.",
-          "example": "",
+          "example": "无",
           "member": "AiSamplePerson",
           "name": "PersonSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -15252,7 +15287,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -15304,18 +15339,20 @@
         {
           "disabled": false,
           "document": "Number of eligible entries.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of task flow template details.",
-          "example": "",
+          "example": "无",
           "member": "ProcedureTemplate",
           "name": "ProcedureTemplateSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -15333,7 +15370,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -15425,7 +15462,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "int64",
           "name": "SubAppId",
@@ -15517,7 +15554,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -15574,7 +15611,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "int64",
           "name": "SubAppId",
@@ -15657,7 +15694,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -15731,7 +15768,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -15783,18 +15820,20 @@
         {
           "disabled": false,
           "document": "Number of eligible entries.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of sampled screencapturing template details.",
-          "example": "",
+          "example": "无",
           "member": "SampleSnapshotTemplate",
           "name": "SampleSnapshotTemplateSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -15812,7 +15851,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -15864,18 +15903,20 @@
         {
           "disabled": false,
           "document": "Number of eligible entries.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of time point screencapturing template details.",
-          "example": "",
+          "example": "无",
           "member": "SnapshotByTimeOffsetTemplate",
           "name": "SnapshotByTimeOffsetTemplateSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -15893,7 +15934,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1250000001",
           "member": "uint64",
           "name": "SubAppId",
@@ -16008,7 +16049,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.\nYou can set this parameter to 1 to query the total usage of all applications (including the primary application) as an admin.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1450001234",
           "member": "uint64",
           "name": "SubAppId",
@@ -16072,7 +16113,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -16183,7 +16224,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -16235,18 +16276,20 @@
         {
           "disabled": false,
           "document": "Number of eligible entries.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Player configuration array.",
-          "example": "",
+          "example": "无",
           "member": "PlayerConfig",
           "name": "PlayerConfigSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -16273,7 +16316,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -16288,7 +16331,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The task type. Valid values:\n<li>`Procedure`: Video processing</li>\n<li>`EditMedia`: Video editing</li>\n<li>`SplitMedia`: Video splitting</li>\n<li>`ComposeMedia`: Media file production</li>\n<li>`WechatPublish`: Weixin publishing</li>\n<li>`WechatMiniProgramPublish`: Publishing videos on Weixin Mini Program</li>\n<li>`PullUpload`: Pulling media files for upload</li>\n<li>`FastClipMedia`: Quick clipping</li>\n<li>`RemoveWatermarkTask`: Watermark removal</li>\n<li>`DescribeFileAttributesTask`: Getting file attributes</li>\n<li> `ReviewAudioVideo`: Moderation</li>\n<li>`ExtractTraceWatermark`: Digital watermark extraction</li>\n<li>`QualityEnhance`：Enhance audio/video</li>",
+          "document": "The task type. Valid values:\n<li>`Procedure`: Video processing</li>\n<li>`EditMedia`: Video editing</li>\n<li>`SplitMedia`: Video splitting</li>\n<li>`ComposeMedia`: Media file production</li>\n<li>`WechatPublish`: Weixin publishing</li>\n<li>`WechatMiniProgramPublish`: Publishing videos on Weixin Mini Program</li>\n<li>`PullUpload`: Pulling media files for upload</li>\n<li>`FastClipMedia`: Quick clipping</li>\n<li>`RemoveWatermarkTask`: Watermark removal</li>\n<li>`DescribeFileAttributesTask`: Getting file attributes</li>\n<li> `ReviewAudioVideo`: Moderation</li>\n<li>`ExtractTraceWatermark`: Digital watermark extraction</li>\n<li>`QualityEnhance`: Enhance audio/video</li>",
           "example": "Procedure",
           "member": "string",
           "name": "TaskType",
@@ -16560,7 +16603,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "145xxx",
           "member": "uint64",
           "name": "SubAppId",
@@ -16639,7 +16682,7 @@
         {
           "disabled": false,
           "document": "Task overview list.",
-          "example": "",
+          "example": "无",
           "member": "TaskSimpleInfo",
           "name": "TaskSet",
           "type": "list",
@@ -16648,7 +16691,7 @@
         {
           "disabled": false,
           "document": "Scrolling identifier. If a request does not return all the data entries, this field indicates the ID of the next entry. If this field is empty, there is no more data.",
-          "example": "",
+          "example": "taskId6",
           "member": "string",
           "name": "ScrollToken",
           "type": "string",
@@ -16668,7 +16711,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -16738,18 +16781,20 @@
         {
           "disabled": false,
           "document": "Number of eligible entries.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of transcoding template details.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "TranscodeTemplate",
           "name": "TranscodeTemplateSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -16794,7 +16839,7 @@
         },
         {
           "disabled": false,
-          "document": "VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -16841,7 +16886,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -16893,18 +16938,20 @@
         {
           "disabled": false,
           "document": "Number of eligible entries.",
-          "example": "",
+          "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of watermarking template details.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "WatermarkTemplate",
           "name": "WatermarkTemplateSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -16922,7 +16969,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -16983,18 +17030,20 @@
         {
           "disabled": false,
           "document": "Number of eligible entries.",
-          "example": "",
+          "example": "2",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Keyword information.",
-          "example": "",
+          "example": "无",
           "member": "AiSampleWord",
           "name": "WordSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -17348,7 +17397,7 @@
         },
         {
           "disabled": false,
-          "document": "</b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -17850,7 +17899,7 @@
         },
         {
           "disabled": false,
-          "document": "</b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -18358,7 +18407,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -18401,9 +18450,10 @@
         {
           "disabled": false,
           "document": "String generated by packaging processing result. For specifications, negotiate with the backend.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "XXX",
           "member": "string",
           "name": "Result",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -18430,7 +18480,7 @@
         },
         {
           "disabled": false,
-          "document": "</b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -18649,7 +18699,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -19213,7 +19263,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -19229,9 +19279,10 @@
         {
           "disabled": false,
           "document": "List of IDs of files that do not exist.",
-          "example": "",
+          "example": "[]",
           "member": "string",
           "name": "NotExistFileIdSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -20466,7 +20517,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -20822,7 +20873,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -20858,7 +20909,7 @@
         },
         {
           "disabled": false,
-          "document": "The ID of the media file’s category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.\n<li>The default value is `0`, which means the “Other” category.</li>\nThis parameter is valid only if `IsPersistence` is `1`.",
+          "document": "The ID of the media file's category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.\n<li>The default value is `0`, which means the \"Other\" category.</li>\nThis parameter is valid only if `IsPersistence` is `1`.",
           "example": "0",
           "member": "int64",
           "name": "ClassId",
@@ -21093,7 +21144,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "251000333",
           "member": "uint64",
           "name": "SubAppId",
@@ -24323,7 +24374,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -24422,7 +24473,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -24557,7 +24608,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -24656,7 +24707,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -24773,7 +24824,7 @@
         },
         {
           "disabled": false,
-          "document": "VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -24809,7 +24860,7 @@
         },
         {
           "disabled": false,
-          "document": "Category name, which can contain 1–64 characters.",
+          "document": "Category name, which can contain 1-64 characters.",
           "example": "一级分类2",
           "member": "string",
           "name": "ClassName",
@@ -24818,7 +24869,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -24854,7 +24905,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -24971,7 +25022,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -25007,7 +25058,7 @@
         },
         {
           "disabled": false,
-          "document": "</b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -25151,7 +25202,7 @@
         },
         {
           "disabled": false,
-          "document": "VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "0",
           "member": "uint64",
           "name": "SubAppId",
@@ -25187,7 +25238,7 @@
         },
         {
           "disabled": false,
-          "document": "</b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "125000",
           "member": "uint64",
           "name": "SubAppId",
@@ -25268,7 +25319,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -25403,7 +25454,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>VOD application ID. If you want to access resources in a sub-application, fill this field with the SubAppID; when empty, it means accessing the resources of the default application.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "无",
           "member": "int64",
           "name": "SubAppId",
@@ -25466,7 +25517,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
@@ -25657,7 +25708,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -25702,7 +25753,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -25803,7 +25854,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -25956,7 +26007,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "string",
           "name": "SubAppId",
@@ -26073,7 +26124,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -26136,7 +26187,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -26226,7 +26277,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -26343,7 +26394,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -26433,7 +26484,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1400000001",
           "member": "uint64",
           "name": "SubAppId",
@@ -26478,7 +26529,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1400000001",
           "member": "uint64",
           "name": "SubAppId",
@@ -26487,7 +26538,7 @@
         },
         {
           "disabled": false,
-          "document": "Subapplication status. Valid values:\n<li>On: enabled</li>\n<li>Off: disabled</li>\n<li>Destroyed: terminated</li>\nYou cannot enable a subapplication whose status is “Destroying”. You can enable it after it was terminated.",
+          "document": "Subapplication status. Valid values:\n<li>On: enabled</li>\n<li>Off: disabled</li>\n<li>Destroyed: terminated</li>\nYou cannot enable a subapplication whose status is \"Destroying\". You can enable it after it was terminated.",
           "example": "Off",
           "member": "string",
           "name": "Status",
@@ -26523,7 +26574,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -26649,7 +26700,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "0",
           "member": "uint64",
           "name": "SubAppId",
@@ -26784,7 +26835,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -26820,7 +26871,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -26883,7 +26934,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -26971,9 +27022,10 @@
         {
           "disabled": false,
           "document": "Image watermark address. This field has a value only when `ImageTemplate.ImageContent` is not empty.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "http://xxx/xxx/abc.jpg",
           "member": "string",
           "name": "ImageUrl",
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -27000,7 +27052,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -28922,7 +28974,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -29095,7 +29147,7 @@
         },
         {
           "disabled": false,
-          "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -29111,9 +29163,10 @@
         {
           "disabled": false,
           "document": "Task ID",
-          "example": "",
+          "example": "125xxxxxx07-procedurev2-893dc41e6fdc22dcf24aa6e9c61cp94",
           "member": "string",
           "name": "TaskId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -29140,7 +29193,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -29455,7 +29508,7 @@
         {
           "disabled": false,
           "document": "Reserved field for special purposes.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ExtInfo",
           "required": false,
@@ -29463,8 +29516,8 @@
         },
         {
           "disabled": false,
-          "document": "[Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.",
-          "example": "",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
+          "example": "123",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -29479,9 +29532,10 @@
         {
           "disabled": false,
           "document": "List of events.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "EventContent",
           "name": "EventSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -29517,7 +29571,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "无",
           "member": "uint64",
           "name": "SubAppId",
@@ -29623,7 +29677,7 @@
         {
           "disabled": false,
           "document": "Video pull for upload task ID, which can be used to query the status of pull for upload task.",
-          "example": "",
+          "example": "125xxxxxx07-pull-893dc41e6fdc22dcf24aa6e9c61cp94",
           "member": "string",
           "name": "TaskId",
           "type": "string",
@@ -29788,7 +29842,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -30593,7 +30647,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "string",
           "name": "SubAppId",
@@ -30735,7 +30789,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -32223,7 +32277,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "0",
           "member": "uint64",
           "name": "SubAppId",
@@ -32331,7 +32385,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -32563,7 +32617,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -32573,7 +32627,7 @@
         {
           "disabled": false,
           "document": "Template description. Length limit: 256 characters.",
-          "example": "我的模版",
+          "example": "我的模板",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -32731,7 +32785,7 @@
         },
         {
           "disabled": false,
-          "document": "The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -32861,7 +32915,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://www.tencentcloud.com/document/product/266/33987) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -33294,7 +33348,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>\t",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -34063,7 +34117,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -34412,7 +34466,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -34457,7 +34511,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>VOD [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you want to access resources in the Subapplication, enter the Subapplication ID in this field; otherwise, you do not need to fill in this field.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -34528,7 +34582,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "1",
           "member": "uint64",
           "name": "SubAppId",
@@ -34582,7 +34636,7 @@
         },
         {
           "disabled": false,
-          "document": "The ID of the media file’s category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.\n<li>The default value is `0`, which means the “Other” category.</li>\nThis parameter is valid only if `IsPersistence` is `1`.",
+          "document": "The ID of the media file's category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.\n<li>The default value is `0`, which means the \"Other\" category.</li>\nThis parameter is valid only if `IsPersistence` is `1`.",
           "example": "1",
           "member": "int64",
           "name": "ClassId",
@@ -35031,7 +35085,7 @@
         },
         {
           "disabled": false,
-          "document": "</b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",
@@ -35357,7 +35411,7 @@
         },
         {
           "disabled": false,
-          "document": "VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.",
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
           "example": "123",
           "member": "uint64",
           "name": "SubAppId",

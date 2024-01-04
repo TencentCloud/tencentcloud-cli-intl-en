@@ -106,7 +106,7 @@
       "status": "online"
     },
     "SendSms": {
-      "document": "This API is used to send SMS verification codes, notification, or marketing messages to users.\n>- Note: Because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the [SDK](https://intl.cloud.tencent.com/document/product/382/43193?from_cn_redirect=1).\n>- Note: You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n>- Note: This API is currently on the 2021-01-11 version. If you are still using the [2019-07-11 version](https://intl.cloud.tencent.com/document/product/382/38778?from_cn_redirect=1), we recommend you use this latest version. For version differences, see [Version description](https://intl.cloud.tencent.com/document/product/382/63195?from_cn_redirect=1#.E7.89.88.E6.9C.AC.E6.8F.8F.E8.BF.B0).",
+      "document": "This API is used to send SMS verification codes, notification, or marketing messages to users.\n>- Note: Because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the [SDK](https://intl.cloud.tencent.com/document/product/382/43193?from_cn_redirect=1).\n>- Note: You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "SendSmsRequest",
       "name": "Sends SMS messages",
       "output": "SendSmsResponse",
@@ -1737,7 +1737,7 @@
         {
           "disabled": false,
           "document": "Template ID, which can be viewed on the **Body Templates** page in [Global SMS](https://console.cloud.tencent.com/smsv2/isms-template). You must enter the ID of an approved template.",
-          "example": "1234",
+          "example": "1110",
           "member": "string",
           "name": "TemplateId",
           "required": true,
@@ -1755,7 +1755,7 @@
         {
           "disabled": false,
           "document": "Template parameter. If there is no template parameter, leave this field empty.\n<dx-alert infotype=\"notice\" title=\"Note\">The number of template parameters should be consistent with that of the template variables of `TemplateId`.</dx-alert>",
-          "example": "12345",
+          "example": "[1234]",
           "member": "string",
           "name": "TemplateParamSet",
           "required": false,
@@ -1764,7 +1764,7 @@
         {
           "disabled": false,
           "document": "SMS code number extension, which is not activated by default. If you need to activate it, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
-          "example": "1400006666",
+          "example": "12",
           "member": "string",
           "name": "ExtendCode",
           "required": false,
@@ -1782,7 +1782,7 @@
         {
           "disabled": false,
           "document": "For Global SMS, if you have applied for a separate `SenderId`, this parameter is required. By default, the public `SenderId` is used, in which case you don't need to enter this parameter.\nNote: If your monthly usage reaches the specified threshold, you can apply for an independent `SenderId`. For more information, contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
-          "example": "test",
+          "example": "Qsms",
           "member": "string",
           "name": "SenderId",
           "required": false,
@@ -1797,9 +1797,10 @@
         {
           "disabled": false,
           "document": "SMS delivery status.",
-          "example": "\"SendStatusSet\": [       {         \"SerialNo\": \"5000:10457106691",
+          "example": "[{\"SerialNo\":\"5000:1045710669157053657849499619\",\"PhoneNumber\":\"+8618511122233\",\"Fee\":1,\"SessionContext\":\"test\",\"Code\":\"Ok\",\"Message\":\"send success\",\"IsoCode\":\"CN\"}]",
           "member": "SendStatus",
           "name": "SendStatusSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },

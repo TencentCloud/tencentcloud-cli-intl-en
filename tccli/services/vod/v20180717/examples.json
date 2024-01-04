@@ -510,10 +510,10 @@
     ],
     "DeleteRebuildMediaTemplate": [
       {
-        "document": "Delete Rebuild Media Template。",
+        "document": "Delete Rebuild Media Template.",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRebuildMediaTemplate\n<Public Request Parameter>\n\n{\n    \"Definition\": 20001\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Delete Rebuild Media Template。"
+        "title": "Delete Rebuild Media Template."
       }
     ],
     "DeleteReviewTemplate": [
@@ -1264,7 +1264,7 @@
     ],
     "ModifyHeadTailTemplate": [
       {
-        "document": "Modify HeadTail Template。",
+        "document": "Modify HeadTail Template",
         "input": "https://vod.tencentcloudapi.com/?Action=ModifyHeadTailTemplate\n&Definition=10000\n&Name=Template1\n&HeadCandidateSet.0=1234422xxxx123\n&TailCandidateSet.0=1234422xxxx124\n&<Public Request Parameter>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-xxxx-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modify HeadTail Template"
