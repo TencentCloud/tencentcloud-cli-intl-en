@@ -21,6 +21,13 @@
       "output": "CreateInstanceResponse",
       "status": "online"
     },
+    "DescribeAutoScaleRecords": {
+      "document": "This API is used to inquiry detailed records of cluster autoscaling.",
+      "input": "DescribeAutoScaleRecordsRequest",
+      "name": "Inquiries autoscaling records.",
+      "output": "DescribeAutoScaleRecordsResponse",
+      "status": "online"
+    },
     "DescribeClusterNodes": {
       "document": "This API is used to query the information of nodes in a cluster.",
       "input": "DescribeClusterNodesRequest",
@@ -33,6 +40,13 @@
       "input": "DescribeEmrApplicationStaticsRequest",
       "name": "Queries the statistics of YARN tasks",
       "output": "DescribeEmrApplicationStaticsResponse",
+      "status": "online"
+    },
+    "DescribeHiveQueries": {
+      "document": "This API is used to inquiry Hive query data.",
+      "input": "DescribeHiveQueriesRequest",
+      "name": "Inquiries Hive query data",
+      "output": "DescribeHiveQueriesResponse",
       "status": "online"
     },
     "DescribeInstances": {
@@ -105,6 +119,20 @@
       "output": "ModifyResourceSchedulerResponse",
       "status": "online"
     },
+    "ModifyResourcesTags": {
+      "document": "This API is used to forcibly modify tags.",
+      "input": "ModifyResourcesTagsRequest",
+      "name": "Forcibly modifies tags.",
+      "output": "ModifyResourcesTagsResponse",
+      "status": "online"
+    },
+    "ModifyUserManagerPwd": {
+      "document": "This API is used to change user password (user management).",
+      "input": "ModifyUserManagerPwdRequest",
+      "name": "Changes user password (user management).",
+      "output": "ModifyUserManagerPwdResponse",
+      "status": "online"
+    },
     "ScaleOutCluster": {
       "document": "This API is used to scale out a cluster.",
       "input": "ScaleOutClusterRequest",
@@ -120,9 +148,9 @@
       "status": "online"
     },
     "StartStopServiceOrMonitor": {
-      "document": "This API is used to start or stop the monitor or services.",
+      "document": "This API is used to start, stop, or restart services.",
       "input": "StartStopServiceOrMonitorRequest",
-      "name": "Starts or stops the monitor or services",
+      "name": "Starts or stops the monitor or services.",
       "output": "StartStopServiceOrMonitorResponse",
       "status": "online"
     },
@@ -382,12 +410,149 @@
       ],
       "usage": "out"
     },
+    "AutoScaleRecord": {
+      "document": "Elastic Scaling Record",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name of the scale-in or scale-out rule.",
+          "example": "测试策略",
+          "member": "string",
+          "name": "StrategyName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "\"SCALE_OUT\" and \"SCALE_IN\", representing expansion and reduction respectively.",
+          "example": "SCALE_OUT",
+          "member": "string",
+          "name": "ScaleAction",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The values are \"SUCCESS\", \"FAILED\", \"PART_SUCCESS\", \"IN_PROCESS\", which indicate success, failure, partial success, and in-progress, respectively.",
+          "example": "IN_PROCESS",
+          "member": "string",
+          "name": "ActionStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Process initiation time.",
+          "example": "2021-07-21 00:00:00",
+          "member": "string",
+          "name": "ActionTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Description related to auto-scaling.",
+          "example": "扩容成功5个",
+          "member": "string",
+          "name": "ScaleInfo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Valid only when ScaleAction is SCALE_OUT.",
+          "example": "1",
+          "member": "int64",
+          "name": "ExpectScaleNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Process termination time.",
+          "example": "2021-07-21 00:01:00",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy type. Valid values: 1 (load-based scaling), 2 (time-based scaling).",
+          "example": "1",
+          "member": "int64",
+          "name": "StrategyType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specification information used during scale-out.",
+          "example": "四核八G。",
+          "member": "string",
+          "name": "SpecInfo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Compensatory scale-out. Valid values: 0 (disabled), 1 (enabled).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "CompensateFlag",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of compensations\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "CompensateCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "RetryCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "重试次数: 1, 重试结束时间: 2023-12-08 12:00:00, 重试原因: 资源不足",
+          "member": "string",
+          "name": "RetryInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "COSSettings": {
       "document": "COS-related configuration",
       "members": [
         {
           "disabled": false,
           "document": "COS `SecretId`",
+          "example": "",
           "member": "string",
           "name": "CosSecretId",
           "required": true,
@@ -397,6 +562,7 @@
         {
           "disabled": false,
           "document": "COS `SecrectKey`",
+          "example": "",
           "member": "string",
           "name": "CosSecretKey",
           "required": true,
@@ -406,6 +572,7 @@
         {
           "disabled": false,
           "document": "COS path to log",
+          "example": "",
           "member": "string",
           "name": "LogOnCosPath",
           "required": false,
@@ -421,6 +588,7 @@
         {
           "disabled": false,
           "document": "Database instance\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -430,6 +598,7 @@
         {
           "disabled": false,
           "document": "Database IP\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Ip",
           "required": true,
@@ -439,6 +608,7 @@
         {
           "disabled": false,
           "document": "Database port\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Port",
           "required": true,
@@ -448,6 +618,7 @@
         {
           "disabled": false,
           "document": "Database memory specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "MemSize",
           "required": true,
@@ -457,6 +628,7 @@
         {
           "disabled": false,
           "document": "Database disk specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Volume",
           "required": true,
@@ -466,6 +638,7 @@
         {
           "disabled": false,
           "document": "Service flag\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Service",
           "required": true,
@@ -475,6 +648,7 @@
         {
           "disabled": false,
           "document": "Expiration time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ExpireTime",
           "required": true,
@@ -484,6 +658,7 @@
         {
           "disabled": false,
           "document": "Application time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ApplyTime",
           "required": true,
@@ -493,6 +668,7 @@
         {
           "disabled": false,
           "document": "Payment type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "PayType",
           "required": true,
@@ -502,6 +678,7 @@
         {
           "disabled": false,
           "document": "Expiration flag\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "bool",
           "name": "ExpireFlag",
           "required": true,
@@ -511,6 +688,7 @@
         {
           "disabled": false,
           "document": "Database status\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -520,6 +698,7 @@
         {
           "disabled": false,
           "document": "Renewal flag\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "IsAutoRenew",
           "required": true,
@@ -529,6 +708,7 @@
         {
           "disabled": false,
           "document": "Database string\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "SerialNo",
           "required": true,
@@ -538,6 +718,7 @@
         {
           "disabled": false,
           "document": "ZoneId\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "ZoneId",
           "required": true,
@@ -547,6 +728,7 @@
         {
           "disabled": false,
           "document": "RegionId\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "RegionId",
           "required": true,
@@ -596,6 +778,32 @@
           "member": "int64",
           "name": "ClusterStatus",
           "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ClusterIDToFlowID": {
+      "document": "Mapping of cluster ID and process ID",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster IDNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ClusterId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Process ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "FlowId",
+          "output_required": false,
           "type": "int",
           "value_allowed_null": true
         }
@@ -1267,7 +1475,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The product ID. Different product IDs represent different EMR product versions. Valid values:\n<li>16: EMR v2.3.0</li>\n<li>20: EMR v2.5.0</li>\n<li>25: EMR v3.1.0</li>\n<li>27: Kafka v1.0.0</li>\n<li>30: EMR v2.6.0</li>\n<li>33: EMR v3.2.1</li>\n<li>34: EMR v3.3.0</li>\n<li>36: StarRocks v1.0.0</li>\n<li>37: EMR v3.4.0</li>\n<li>38: EMR v2.7.0</li>\n<li>39: StarRocks v1.1.0</li>\n<li>41: Druid v1.1.0</li>",
+          "document": "Product ID. Different product IDs stand for different EMR product versions. Valid range:\n51: STARROCKS-V1.4.0\n54: STARROCKS-V2.0.0\n27: KAFKA-V1.0.0\n50: KAFKA-V2.0.0\n16: EMR-V2.3.0\n20: EMR-V2.5.0\n30: EMR-V2.6.0\n38: EMR-V2.7.0\n25: EMR-V3.1.0\n33: EMR-V3.2.1\n34: EMR-V3.3.0\n37: EMR-V3.4.0\n44: EMR-V3.5.0\n53: EMR-V3.6.0",
           "example": "4",
           "member": "uint64",
           "name": "ProductId",
@@ -1640,6 +1848,7 @@
         {
           "disabled": false,
           "document": "JDBC connection to custom MetaDB instance beginning with `jdbc:mysql://`",
+          "example": "",
           "member": "string",
           "name": "MetaDataJdbcUrl",
           "required": false,
@@ -1649,6 +1858,7 @@
         {
           "disabled": false,
           "document": "Custom MetaDB instance username",
+          "example": "",
           "member": "string",
           "name": "MetaDataUser",
           "required": false,
@@ -1658,6 +1868,7 @@
         {
           "disabled": false,
           "document": "Custom MetaDB instance password",
+          "example": "",
           "member": "string",
           "name": "MetaDataPass",
           "required": false,
@@ -1718,6 +1929,80 @@
         }
       ],
       "usage": "in"
+    },
+    "DescribeAutoScaleRecordsRequest": {
+      "document": "DescribeAutoScaleRecords request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The instance ID.",
+          "example": "emr-3ap64zl6",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Parameter for record filtration. Valid values: \"StartTime\", \"EndTime\" and \"StrategyName\". StartTime and EndTime support the time format of 2006-01-02 15:04:05 or 2006/01/02 15:04:05.",
+          "example": "无",
+          "member": "KeyValue",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameters.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameters. Maximum value: 100",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAutoScaleRecordsResponse": {
+      "document": "DescribeAutoScaleRecords response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total scale-in and scale-out records.",
+          "example": "11",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Record list.",
+          "example": "无",
+          "member": "AutoScaleRecord",
+          "name": "RecordList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "DescribeClusterNodesRequest": {
       "document": "DescribeClusterNodes request structure.",
@@ -1803,6 +2088,7 @@
         {
           "disabled": false,
           "document": "Total number of queried nodes",
+          "example": "",
           "member": "int64",
           "name": "TotalCnt",
           "type": "int",
@@ -1811,6 +2097,7 @@
         {
           "disabled": false,
           "document": "List of node details\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "NodeHardwareInfo",
           "name": "NodeList",
           "type": "list",
@@ -1819,6 +2106,7 @@
         {
           "disabled": false,
           "document": "List of tag keys owned by user\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "TagKeys",
           "type": "list",
@@ -1827,6 +2115,7 @@
         {
           "disabled": false,
           "document": "Resource type list\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "HardwareResourceTypeList",
           "type": "list",
@@ -2008,6 +2297,89 @@
       ],
       "type": "object"
     },
+    "DescribeHiveQueriesRequest": {
+      "document": "DescribeHiveQueries request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The cluster ID.",
+          "example": "emr-9kd5tnmq",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The start time in seconds.",
+          "example": "1621570097",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The end time in seconds. EndTime-StartTime should not exceed one day's duration, which is 86400 seconds.",
+          "example": "1621590097",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Starting offset for pagination. Start value: 0",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page size. Valid range: [1,100]",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeHiveQueriesResponse": {
+      "document": "DescribeHiveQueries response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total items",
+          "example": "3",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Result list",
+          "example": "无",
+          "member": "HiveQuery",
+          "name": "Results",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeInstancesListRequest": {
       "document": "DescribeInstancesList request structure.",
       "members": [
@@ -2049,7 +2421,7 @@
         },
         {
           "disabled": false,
-          "document": "Sort ascending or descending based on `OrderField`. Valid values:<li>0: Descending.</li><li>1: Ascending.</li>Default value: `0`.",
+          "document": "Sort according to OrderField in ascending or descending order. Valid range:<li>0: Descending order.</li><li>1: Ascending order.</li>Default: 0.",
           "example": "0",
           "member": "int64",
           "name": "Asc",
@@ -2106,6 +2478,7 @@
         {
           "disabled": false,
           "document": "Cluster filtering policy. Valid values:\n<li>clusterList: queries the list of clusters except terminated ones.</li>\n<li>monitorManage: queries the list of clusters except those that have been terminated, are being created, or failed to be created.</li>\n<li>cloudHardwareManage/componentManage: reserved fields with the same meaning as `monitorManage`.</li>",
+          "example": "",
           "member": "string",
           "name": "DisplayStrategy",
           "required": true,
@@ -2114,6 +2487,7 @@
         {
           "disabled": false,
           "document": "Queries by one or more instance IDs in the format of `emr-xxxxxxxx`. For the format of this parameter, please see the `id.N` section in [API Overview](https://intl.cloud.tencent.com/document/api/213/15688). If no instance ID is entered, the list of all instances under this `APPID` will be returned.",
+          "example": "",
           "member": "string",
           "name": "InstanceIds",
           "required": false,
@@ -2122,6 +2496,7 @@
         {
           "disabled": false,
           "document": "Page number. Default value: 0, indicating the first page.",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -2130,6 +2505,7 @@
         {
           "disabled": false,
           "document": "Number of returned results per page. Default value: 10. Maximum value: 100",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -2138,6 +2514,7 @@
         {
           "disabled": false,
           "document": "ID of the project to which the instance belongs. This parameter can be obtained from the `projectId` field in the return value of the `DescribeProject` API. If this value is -1, the list of all instances will be returned.",
+          "example": "",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -2146,6 +2523,7 @@
         {
           "disabled": false,
           "document": "Sorting field. Valid values:\n<li>clusterId: sorts by cluster ID.</li>\n<li>addTime: sorts by instance creation time.</li>\n<li>status: sorts by instance status code.</li>",
+          "example": "",
           "member": "string",
           "name": "OrderField",
           "required": false,
@@ -2154,6 +2532,7 @@
         {
           "disabled": false,
           "document": "Sorts according to `OrderField` in ascending or descending order. Valid values:\n<li>0: descending order.</li>\n<li>1: ascending order.</li>Default value: 0.\u0007",
+          "example": "",
           "member": "int64",
           "name": "Asc",
           "required": false,
@@ -2168,6 +2547,7 @@
         {
           "disabled": false,
           "document": "Number of eligible instances.",
+          "example": "",
           "member": "int64",
           "name": "TotalCnt",
           "type": "int",
@@ -2176,6 +2556,7 @@
         {
           "disabled": false,
           "document": "List of EMR instance details.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "ClusterInstancesInfo",
           "name": "ClusterList",
           "type": "list",
@@ -2184,6 +2565,7 @@
         {
           "disabled": false,
           "document": "List of tag keys associated to an instance.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "TagKeys",
           "type": "list",
@@ -3040,6 +3422,7 @@
         {
           "disabled": false,
           "document": "Field name",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -3049,6 +3432,7 @@
         {
           "disabled": false,
           "document": "Filters by the field value",
+          "example": "",
           "member": "string",
           "name": "Values",
           "required": true,
@@ -3058,12 +3442,109 @@
       ],
       "usage": "in"
     },
+    "HiveQuery": {
+      "document": "Hive query details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query statementNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "show databases;",
+          "member": "string",
+          "name": "Statement",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Execution Duration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0ms",
+          "member": "string",
+          "name": "Duration",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start Time in Milliseconds\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1686101465000",
+          "member": "int64",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "End Time in Milliseconds\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1686101465000",
+          "member": "int64",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "StatusNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "FINISHED",
+          "member": "string",
+          "name": "State",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "UserNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "hadoop",
+          "member": "string",
+          "name": "User",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "AppId List\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[application_16732132113_0001]",
+          "member": "string",
+          "name": "JobIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Execution Engine\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "tez",
+          "member": "string",
+          "name": "ExecutionEngine",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Query ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "hadoop_20230606172943_a31edbc7",
+          "member": "string",
+          "name": "Id",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "HostVolumeContext": {
       "document": "Description of `HostPath` mounting method in the pod",
       "members": [
         {
           "disabled": false,
           "document": "The directory for mounting the host in the pod, which is the mount point of the host in the resource. A specified mount point corresponds to the host path and is used as the data storage directory in the pod.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "VolumePath",
           "required": true,
@@ -3369,6 +3850,7 @@
         {
           "disabled": false,
           "document": "Original price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "float",
           "name": "OriginalCost",
           "type": "float",
@@ -3377,6 +3859,7 @@
         {
           "disabled": false,
           "document": "Discounted price.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "float",
           "name": "DiscountCost",
           "type": "float",
@@ -3385,6 +3868,7 @@
         {
           "disabled": false,
           "document": "Unit of time for instance renewal.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "TimeUnit",
           "type": "string",
@@ -3393,6 +3877,7 @@
         {
           "disabled": false,
           "document": "How long the instance will be renewed for.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "TimeSpan",
           "type": "int",
@@ -3722,6 +4207,32 @@
       ],
       "usage": "both"
     },
+    "KeyValue": {
+      "document": "Key-value pair, primarily used for filtering",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Key\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "Key",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "ValueNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "LoginSettings": {
       "document": "Login settings",
       "members": [
@@ -3868,41 +4379,243 @@
       ],
       "type": "object"
     },
+    "ModifyResourceTags": {
+      "document": "Forcibly Modifying Tags",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID or CVM ID",
+          "example": "emr-xxxx",
+          "member": "string",
+          "name": "ResourceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "6-segment resource expression",
+          "example": "qcs::emr:ap-guangzhou:...",
+          "member": "string",
+          "name": "Resource",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resource prefix",
+          "example": "无",
+          "member": "string",
+          "name": "ResourcePrefix",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ap-beijing",
+          "example": "地域",
+          "member": "string",
+          "name": "ResourceRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "emr",
+          "example": "服务类型",
+          "member": "string",
+          "name": "ServiceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of deleted tags",
+          "example": "无",
+          "member": "Tag",
+          "name": "DeleteTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "List of added tags",
+          "example": "无",
+          "member": "Tag",
+          "name": "AddTags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "List of modified tags",
+          "example": "无",
+          "member": "Tag",
+          "name": "ModifyTags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "ModifyResourcesTagsRequest": {
+      "document": "ModifyResourcesTags request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag type. Valid values: Cluster and Node",
+          "example": "cluster",
+          "member": "string",
+          "name": "ModifyType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag information",
+          "example": "无",
+          "member": "ModifyResourceTags",
+          "name": "ModifyResourceTagsInfoList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyResourcesTagsResponse": {
+      "document": "ModifyResourcesTags response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of resource IDs with successful modification\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"emr-xxx\"]",
+          "member": "string",
+          "name": "SuccessList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "List of resource IDs with failed modification\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"emr-xxx\"]",
+          "member": "string",
+          "name": "FailList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "List of resource IDs with partial successful modification\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"emr-xxx\"]",
+          "member": "string",
+          "name": "PartSuccessList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Mapping list of cluster IDs and process IDs\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"ClusterId\":\"emr-2qhwmqln\",\"FlowId\":79}]",
+          "member": "ClusterIDToFlowID",
+          "name": "ClusterToFlowIdList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyUserManagerPwdRequest": {
+      "document": "ModifyUserManagerPwd request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster instance ID",
+          "example": "emr-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Username",
+          "example": "emr",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Password",
+          "example": "pwd-test-123",
+          "member": "string",
+          "name": "PassWord",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyUserManagerPwdResponse": {
+      "document": "ModifyUserManagerPwd response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "MultiDisk": {
       "document": "Multi-cloud disk parameters",
       "members": [
         {
           "disabled": false,
-          "document": "Cloud disk type\n<li>`CLOUD_SSD`: SSD</li>\n<li>`CLOUD_PREMIUM`: Premium Cloud Storage</li>\n<li>`CLOUD_HSSD`: Enhanced SSD</li>",
+          "document": "Disk type\n<li>CLOUD_SSD: Cloud SSD.</li>\n<li>CLOUD_PREMIUM: Premium cloud disk.</li>\n<li>CLOUD_HSSD: Enhanced SSD.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "CLOUD_SSD",
           "member": "string",
           "name": "DiskType",
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Cloud disk size",
+          "document": "Cloud disk sizeNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "20000",
           "member": "int64",
           "name": "Volume",
+          "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Number of cloud disks of this type",
+          "document": "Number of cloud disks of this typeNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "Count",
+          "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "MultiDiskMC": {
       "document": "Multi-cloud disk parameters",
@@ -3910,6 +4623,7 @@
         {
           "disabled": false,
           "document": "Number of cloud disks in this type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Count",
           "required": true,
@@ -3919,6 +4633,7 @@
         {
           "disabled": false,
           "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Type",
           "required": false,
@@ -3928,6 +4643,7 @@
         {
           "disabled": false,
           "document": "Cloud disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Volume",
           "required": false,
@@ -3989,6 +4705,7 @@
         {
           "disabled": false,
           "document": "Describes master node resource",
+          "example": "",
           "member": "Resource",
           "name": "MasterResourceSpec",
           "required": false,
@@ -3998,6 +4715,7 @@
         {
           "disabled": false,
           "document": "Describes core node resource",
+          "example": "",
           "member": "Resource",
           "name": "CoreResourceSpec",
           "required": false,
@@ -4007,6 +4725,7 @@
         {
           "disabled": false,
           "document": "Describes task node resource",
+          "example": "",
           "member": "Resource",
           "name": "TaskResourceSpec",
           "required": false,
@@ -4016,6 +4735,7 @@
         {
           "disabled": false,
           "document": "Number of master nodes",
+          "example": "",
           "member": "int64",
           "name": "MasterCount",
           "required": false,
@@ -4025,6 +4745,7 @@
         {
           "disabled": false,
           "document": "Number of core nodes",
+          "example": "",
           "member": "int64",
           "name": "CoreCount",
           "required": false,
@@ -4034,6 +4755,7 @@
         {
           "disabled": false,
           "document": "Number of task nodes",
+          "example": "",
           "member": "int64",
           "name": "TaskCount",
           "required": false,
@@ -4043,6 +4765,7 @@
         {
           "disabled": false,
           "document": "Describes common node resource",
+          "example": "",
           "member": "Resource",
           "name": "CommonResourceSpec",
           "required": false,
@@ -4052,6 +4775,7 @@
         {
           "disabled": false,
           "document": "Number of common nodes",
+          "example": "",
           "member": "int64",
           "name": "CommonCount",
           "required": false,
@@ -4096,7 +4820,7 @@
           "example": "0",
           "member": "int64",
           "name": "AppId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4106,7 +4830,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "SerialNo",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4116,7 +4840,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "OrderNo",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4126,7 +4850,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "WanIp",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4136,7 +4860,7 @@
           "example": "0",
           "member": "int64",
           "name": "Flag",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4146,7 +4870,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Spec",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4156,7 +4880,7 @@
           "example": "0",
           "member": "int64",
           "name": "CpuNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4166,7 +4890,7 @@
           "example": "0",
           "member": "int64",
           "name": "MemSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4176,7 +4900,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "MemDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4186,7 +4910,7 @@
           "example": "0",
           "member": "int64",
           "name": "RegionId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4196,7 +4920,7 @@
           "example": "0",
           "member": "int64",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4206,7 +4930,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "ApplyTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4216,7 +4940,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "FreeTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4226,7 +4950,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "DiskSize",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4236,7 +4960,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "NameTag",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4246,7 +4970,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Services",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4256,7 +4980,7 @@
           "example": "0",
           "member": "int64",
           "name": "StorageType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4266,7 +4990,7 @@
           "example": "0",
           "member": "int64",
           "name": "RootSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4276,7 +5000,7 @@
           "example": "0",
           "member": "int64",
           "name": "ChargeType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4286,7 +5010,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "CdbIp",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4296,7 +5020,7 @@
           "example": "0",
           "member": "int64",
           "name": "CdbPort",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4306,7 +5030,7 @@
           "example": "0",
           "member": "int64",
           "name": "HwDiskSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4316,7 +5040,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "HwDiskSizeDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4326,7 +5050,7 @@
           "example": "0",
           "member": "int64",
           "name": "HwMemSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4336,7 +5060,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "HwMemSizeDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4346,7 +5070,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "ExpireTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4356,7 +5080,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "EmrResourceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4366,7 +5090,7 @@
           "example": "0",
           "member": "int64",
           "name": "IsAutoRenew",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4376,7 +5100,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "DeviceClass",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4386,7 +5110,7 @@
           "example": "0",
           "member": "int64",
           "name": "Mutable",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4396,7 +5120,7 @@
           "example": "[]",
           "member": "MultiDiskMC",
           "name": "MCMultiDisk",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -4406,7 +5130,7 @@
           "example": "无",
           "member": "CdbInfo",
           "name": "CdbNodeInfo",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -4416,7 +5140,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Ip",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4426,7 +5150,7 @@
           "example": "0",
           "member": "int64",
           "name": "Destroyable",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4436,7 +5160,7 @@
           "example": "[]",
           "member": "Tag",
           "name": "Tags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -4446,7 +5170,7 @@
           "example": "0",
           "member": "int64",
           "name": "AutoFlag",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4456,7 +5180,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "HardwareResourceType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4466,7 +5190,7 @@
           "example": "0",
           "member": "int64",
           "name": "IsDynamicSpec",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4476,7 +5200,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "DynamicPodSpec",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4486,7 +5210,7 @@
           "example": "0",
           "member": "int64",
           "name": "SupportModifyPayMode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4496,7 +5220,7 @@
           "example": "无",
           "member": "int64",
           "name": "RootStorageType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4506,7 +5230,7 @@
           "example": "无",
           "member": "string",
           "name": "Zone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4516,7 +5240,7 @@
           "example": "无",
           "member": "SubnetInfo",
           "name": "SubnetInfo",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -4526,7 +5250,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Clients",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4536,7 +5260,7 @@
           "example": "无",
           "member": "string",
           "name": "CurrentTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4546,7 +5270,7 @@
           "example": "无",
           "member": "int64",
           "name": "IsFederation",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4556,7 +5280,7 @@
           "example": "无",
           "member": "string",
           "name": "DeviceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4566,7 +5290,7 @@
           "example": "无",
           "member": "string",
           "name": "ServiceClient",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4576,7 +5300,7 @@
           "example": "true",
           "member": "bool",
           "name": "DisableApiTermination",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -4586,8 +5310,18 @@
           "example": "1",
           "member": "int64",
           "name": "TradeVersion",
-          "required": true,
+          "output_required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status of each component. Zookeeper: STARTED; ResourceManager: STARTED. STARTED indicates \"already in operation\"; STOPPED indicates \"ceased\".\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ServicesStatus",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -4671,6 +5405,7 @@
         {
           "disabled": false,
           "document": "Specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Spec",
           "required": true,
@@ -4680,6 +5415,7 @@
         {
           "disabled": false,
           "document": "Specification name\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "SpecName",
           "required": true,
@@ -4689,6 +5425,7 @@
         {
           "disabled": false,
           "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "StorageType",
           "required": true,
@@ -4698,6 +5435,7 @@
         {
           "disabled": false,
           "document": "Disk type\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DiskType",
           "required": true,
@@ -4707,6 +5445,7 @@
         {
           "disabled": false,
           "document": "System disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "RootSize",
           "required": true,
@@ -4716,6 +5455,7 @@
         {
           "disabled": false,
           "document": "Memory size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "MemSize",
           "required": true,
@@ -4725,6 +5465,7 @@
         {
           "disabled": false,
           "document": "Number of CPUs\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Cpu",
           "required": true,
@@ -4734,6 +5475,7 @@
         {
           "disabled": false,
           "document": "Disk size\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "DiskSize",
           "required": true,
@@ -4743,6 +5485,7 @@
         {
           "disabled": false,
           "document": "Specification\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "InstanceType",
           "required": true,
@@ -4824,6 +5567,7 @@
         {
           "disabled": false,
           "document": "Disk size in GB.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "uint64",
           "name": "DiskSize",
           "required": false,
@@ -4833,6 +5577,7 @@
         {
           "disabled": false,
           "document": "Disk type. Valid values: `CLOUD_PREMIUM` and `CLOUD_SSD`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DiskType",
           "required": false,
@@ -4842,6 +5587,7 @@
         {
           "disabled": false,
           "document": "Number of disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "DiskNum",
           "required": false,
@@ -5243,6 +5989,7 @@
         {
           "disabled": false,
           "document": "Storage type. Valid values: `pvc` and `hostpath`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "VolumeType",
           "required": true,
@@ -5252,6 +5999,7 @@
         {
           "disabled": false,
           "document": "This field will take effect if `VolumeType` is `pvc`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "PersistentVolumeContext",
           "name": "PVCVolume",
           "required": false,
@@ -5261,6 +6009,7 @@
         {
           "disabled": false,
           "document": "This field will take effect if `VolumeType` is `hostpath`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "HostVolumeContext",
           "name": "HostVolume",
           "required": false,
@@ -5276,110 +6025,119 @@
         {
           "disabled": false,
           "document": "COS path to script, which has been disused",
+          "example": "emr/emr_init.sh",
           "member": "string",
           "name": "Path",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Execution script parameter",
+          "example": "无",
           "member": "string",
           "name": "Args",
           "required": false,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "COS bucket name, which has been disused",
+          "example": "starmaker-research-xxxx",
           "member": "string",
           "name": "Bucket",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "COS region name, which has been disused",
+          "example": "ap-mumbai",
           "member": "string",
           "name": "Region",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "COS domain data, which has been disused",
+          "example": "xxxx",
           "member": "string",
           "name": "Domain",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Execution sequence",
+          "example": "0",
           "member": "int64",
           "name": "RunOrder",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "`resourceAfter` or `clusterAfter`",
+          "example": "resourceAfter",
           "member": "string",
           "name": "WhenRun",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Script name, which has been disused",
+          "example": "无",
           "member": "string",
           "name": "CosFileName",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "COS address of script",
+          "example": "cos://xxxxx",
           "member": "string",
           "name": "CosFileURI",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "COS `SecretId`",
+          "example": "xxxx",
           "member": "string",
           "name": "CosSecretId",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "COS `SecretKey`",
+          "example": "xxxxx",
           "member": "string",
           "name": "CosSecretKey",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "COS `appid`, which has been disused",
+          "example": "xxxxxx",
           "member": "string",
           "name": "AppId",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "无",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -5436,6 +6194,7 @@
         {
           "disabled": false,
           "document": "Target specification\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Spec",
           "required": true,
@@ -5445,6 +6204,7 @@
         {
           "disabled": false,
           "document": "Disk type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "uint64",
           "name": "StorageType",
           "required": true,
@@ -5454,6 +6214,7 @@
         {
           "disabled": false,
           "document": "Disk type.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "DiskType",
           "required": true,
@@ -5463,6 +6224,7 @@
         {
           "disabled": false,
           "document": "System disk size\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "RootSize",
           "required": true,
@@ -5472,6 +6234,7 @@
         {
           "disabled": false,
           "document": "Memory size.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "MemSize",
           "required": true,
@@ -5481,6 +6244,7 @@
         {
           "disabled": false,
           "document": "Number of CPUs.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Cpu",
           "required": true,
@@ -5490,6 +6254,7 @@
         {
           "disabled": false,
           "document": "Disk size.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "DiskSize",
           "required": true,
@@ -5499,6 +6264,7 @@
         {
           "disabled": false,
           "document": "List of cloud disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "MultiDisk",
           "name": "MultiDisks",
           "required": true,
@@ -5508,6 +6274,7 @@
         {
           "disabled": false,
           "document": "Number of disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "DiskCnt",
           "required": true,
@@ -5517,6 +6284,7 @@
         {
           "disabled": false,
           "document": "Specification\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "InstanceType",
           "required": true,
@@ -5526,6 +6294,7 @@
         {
           "disabled": false,
           "document": "Tag\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "Tag",
           "name": "Tags",
           "required": true,
@@ -5535,6 +6304,7 @@
         {
           "disabled": false,
           "document": "Number of disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "DiskNum",
           "required": true,
@@ -5544,6 +6314,7 @@
         {
           "disabled": false,
           "document": "Number of local disks.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "LocalDiskNum",
           "required": true,
@@ -5685,7 +6456,7 @@
         {
           "disabled": false,
           "document": "The node billing mode. Valid values:\n<li>`POSTPAID_BY_HOUR`: The postpaid mode by hour.</li>\n<li>`SPOTPAID`: The spot instance mode (for task nodes only).</li>",
-          "example": "\"\"",
+          "example": "\"SPOTPAID\"",
           "member": "string",
           "name": "InstanceChargeType",
           "required": true,
@@ -5694,7 +6465,7 @@
         {
           "disabled": false,
           "document": "The cluster instance ID.",
-          "example": "无",
+          "example": "\"emr-ge0vrqkl\"",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5712,7 +6483,7 @@
         {
           "disabled": false,
           "document": "A unique random token, which is valid for 5 minutes and needs to be specified by the caller to prevent the client from repeatedly creating resources. An example value is `a9a90aa6-751a-41b6-aad6-fae36063280`.",
-          "example": "\"\"",
+          "example": "\"a9a90aa6-751a-41b6-aad6-fae36063280\"",
           "member": "string",
           "name": "ClientToken",
           "required": false,
@@ -5738,7 +6509,7 @@
         },
         {
           "disabled": false,
-          "document": "The services to be deployed for new nodes. By default, new nodes will inherit all services deployed for the current node type. Deployed services include default optional services. This parameter only supports optional services. For example, if `HDFS`, `YARN`, and `Impala` have been deployed for existing task nodes, only `HDFS` and `YARN` are passed in with this parameter if `Impala` is not deployed during the task node scale-out with API.",
+          "document": "The services to be deployed for new nodes. By default, new nodes will inherit services deployed for the current node type, including default optional services. This parameter only supports the inclusion of optional services. For example, if HDFS, YARN, and Impala have been deployed for existing task nodes, when using the API for task node scale-out without deploying Impala, only HDFS and YARN are included in with this parameter. Refer to the [component name mapping table](https://intl.cloud.tencent.com/document/product/589/98760?from_cn_redirect=1).",
           "example": "无",
           "member": "int64",
           "name": "SoftDeployInfo",
@@ -5747,7 +6518,7 @@
         },
         {
           "disabled": false,
-          "document": "The processes to be deployed. All processes for services to be added are deployed by default. Deployed processes can be changed. For example, `HDFS`, `YARN`, and `Impala` have been deployed for current task nodes, and default services are `DataNode`, `NodeManager`, and `ImpalaServer`; if you want to change deployed processes, you can set this parameter to `DataNode,NodeManager,ImpalaServerCoordinator` or `DataNode,NodeManager,ImpalaServerExecutor`.",
+          "document": "The processes to be deployed. All processes for services to be added are deployed by default. Deployed processes can be changed. For example, HDFS, YARN, and Impala have been deployed for current task nodes, and default services are DataNode, NodeManager, and ImpalaServer; if you want to change deployed processes, you can set this parameter to DataNode,NodeManager,ImpalaServerCoordinator or DataNode,NodeManager,ImpalaServerExecutor. Refer to the [process name mapping table](https://intl.cloud.tencent.com/document/product/589/98760?from_cn_redirect=1).",
           "example": "无",
           "member": "int64",
           "name": "ServiceNodeInfo",
@@ -6304,6 +7075,7 @@
         {
           "disabled": false,
           "document": "Searchable type",
+          "example": "",
           "member": "string",
           "name": "SearchType",
           "required": true,
@@ -6313,6 +7085,7 @@
         {
           "disabled": false,
           "document": "Searchable value",
+          "example": "",
           "member": "string",
           "name": "SearchValue",
           "required": true,
@@ -6320,7 +7093,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "ServiceBasicRestartInfo": {
       "document": "The services to operate on",
@@ -6470,7 +7243,7 @@
         },
         {
           "disabled": false,
-          "document": "The number of nodes to be restarted per batch in rolling restart, with a maximum value of 99,999.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The quantity of restarts per batch during a rolling restart, with the maximum number of restarts being 99999\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "int64",
           "name": "BatchSize",
@@ -6536,6 +7309,7 @@
         {
           "disabled": false,
           "document": "Tag key",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": false,
@@ -6545,6 +7319,7 @@
         {
           "disabled": false,
           "document": "Tag value",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": false,
@@ -6668,6 +7443,7 @@
         {
           "disabled": false,
           "document": "Instance ID.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -6676,6 +7452,7 @@
         {
           "disabled": false,
           "document": "List of resource IDs of the node to be terminated. The resource ID is in the format of `emr-vm-xxxxxxxx`. A valid resource ID can be queried in the [console](https://console.cloud.tencent.com/emr/static/hardware).",
+          "example": "",
           "member": "string",
           "name": "ResourceIds",
           "required": true,
@@ -6748,6 +7525,7 @@
         {
           "disabled": false,
           "document": "Memory capacity in GB",
+          "example": "",
           "member": "uint64",
           "name": "Memory",
           "required": true,
@@ -6757,6 +7535,7 @@
         {
           "disabled": false,
           "document": "Number of CPU cores",
+          "example": "",
           "member": "uint64",
           "name": "CPUCores",
           "required": true,
@@ -6766,6 +7545,7 @@
         {
           "disabled": false,
           "document": "Machine resource ID (EMR resource identifier)",
+          "example": "",
           "member": "string",
           "name": "ResourceId",
           "required": true,
@@ -6775,6 +7555,7 @@
         {
           "disabled": false,
           "document": "Target machine specification",
+          "example": "",
           "member": "string",
           "name": "InstanceType",
           "required": false,
@@ -6918,6 +7699,7 @@
         {
           "disabled": false,
           "document": "VPC ID",
+          "example": "",
           "member": "string",
           "name": "VpcId",
           "required": true,
@@ -6927,6 +7709,7 @@
         {
           "disabled": false,
           "document": "Subnet ID",
+          "example": "",
           "member": "string",
           "name": "SubnetId",
           "required": true,
