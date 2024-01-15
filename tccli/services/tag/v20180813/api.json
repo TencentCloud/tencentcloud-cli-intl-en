@@ -2625,7 +2625,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cloud resource to be bound, represented in the standard six-segment resource format. For the correct format, see [Resource Description Method](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1) and [Tagging-enabled Resources](https://intl.cloud.tencent.com/document/product/651/89122?from_cn_redirect=1).\nValue range of N: 0-9.",
+          "document": "Cloud resource to be bound, represented in the standard six-segment resource format. For the correct format, see [Resource Description Method](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1).\nValue range of N: 0-9.",
           "example": "qcs::cvm:ap-beijing:uin/1234567:instance/ins-123",
           "member": "string",
           "name": "ResourceList",
@@ -2634,7 +2634,7 @@
         },
         {
           "disabled": false,
-          "document": "Tag key and value.\nIf multiple tags are specified, all such tags will be created and bound to the specified resources.\nFor each resource, each tag key can have only one value. If you try to add an existing tag key, the corresponding tag value will be updated to the new value.\nNon-existent tags will be automatically created.\nValue range of N: 0–9",
+          "document": "Tag key and value.\nIf multiple tags are specified, all such tags will be created and bound to the specified resources.\nFor each resource, each tag key can have only one value. If you try to add an existing tag key, the corresponding tag value will be updated to the new value.\nNon-existent tags will be automatically created.\nValue range of N: 0-9",
           "example": "无",
           "member": "Tag",
           "name": "Tags",
@@ -2653,7 +2653,7 @@
           "example": "无",
           "member": "FailedResource",
           "name": "FailedResources",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
