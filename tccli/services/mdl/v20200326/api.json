@@ -4675,7 +4675,7 @@
         },
         {
           "disabled": false,
-          "document": "HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE outputs\nNote: this field may return `null`, indicating that no valid value was found.",
+          "document": "HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE/HLS_STREAM_PACKAGE outputs.\nNote: this field may return `null`, indicating that no valid value was found.",
           "example": "无",
           "member": "HlsRemuxSettingsInfo",
           "name": "HlsRemuxSettings",

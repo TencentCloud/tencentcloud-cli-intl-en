@@ -70,6 +70,34 @@
       "output": "DescribeStreamIngestResponse",
       "status": "online"
     },
+    "DescribeTRTCMarketQualityData": {
+      "document": "Query TRTC Monitoring Dashboard - Data Dashboard Quality Metrics (including the following metrics)\njoinSuccessRate: Join channel success rate.\njoinSuccessIn5sRate: Join channel success rate within 5s.\naudioFreezeRate: Audio stutter rate.\nvideoFreezeRate: Video stutter rate.\nnetworkDelay: Lag rate.\nNote:\n1. To call the API, you need to activate the monitoring dashboard Standard Edition and Premium Edition, the monitoring dashboard Free Edition does not support calling. Monitoring dashboard version features and billing overview: https://trtc.io/document/54481.\n2. The query time range depends on the monitoring dashboard function version, premium edition can query the last 30 days.",
+      "input": "DescribeTRTCMarketQualityDataRequest",
+      "name": "Query TRTC Monitoring Dashboard - Data Dashboard Quality Metrics",
+      "output": "DescribeTRTCMarketQualityDataResponse",
+      "status": "online"
+    },
+    "DescribeTRTCMarketScaleData": {
+      "document": "Query TRTC Monitoring Dashboard - Data Dashboard Scale Metrics (will return userCount, roomCount, peakCurrentUsers, peakCurrentChannels)\n- userCount: number of users in the call,\n- roomCount: number of rooms in the call, counted as one call channel from the time a user joins the channel to the time all users leave the channel.\n- peakCurrentChannels: peak number of channels online at the same time.\n- peakCurrentUsers: peak number of users online at the same time.\nNote:\n1. To call the interface, you need to activate the monitoring dashboard Standard Edition and Premium Edition, the monitoring dashboard Free Edition does not support calling, for monitoring dashboard version features and billing overview: https://trtc.io/document/54481.\n2. The query time range depends on the monitoring dashboard function version, premium edition can query up to 60 days.",
+      "input": "DescribeTRTCMarketScaleDataRequest",
+      "name": "Query TRTC Monitoring Dashboard - Data Dashboard Scale Metrics",
+      "output": "DescribeTRTCMarketScaleDataResponse",
+      "status": "online"
+    },
+    "DescribeTRTCRealTimeQualityData": {
+      "document": "Query TRTC Monitoring Dashboard - Real-Time Monitoring Quality Metrics (return the following metrics)\n -Video stutter rate\n -Audio stutter rate\n Note:\n 1. To call the API, you need to activate the Monitoring Dashboard Standard Edition and Premium Edition. The Monitoring Dashboard Free Edition does not support calling. For monitoring dashboard version features and billing overview, please visit: https://trtc.io/document/54481.\n 2. The query time range depends on the monitoring dashboard function version. The premium edition can query up to 1 hours",
+      "input": "DescribeTRTCRealTimeQualityDataRequest",
+      "name": "Query TRTC Monitoring Dashboard - Real-Time Monitoring Quality",
+      "output": "DescribeTRTCRealTimeQualityDataResponse",
+      "status": "online"
+    },
+    "DescribeTRTCRealTimeScaleData": {
+      "document": "Query TRTC Monitoring Dashboard - Real-Time Monitoring Scale Metrics (the following metrics will be returned) -userCount (Online users) -roomCount (Online rooms) Note: 1. To call the interface, you need to activate the monitoring dashboard Standard Edition and Premium Edition, the monitoring dashboard Free Edition does not support calling. For monitoring dashboard version features and billing overview, please visit: https://trtc.io/document/54481. 2. The query time range depends on the function version of the monitoring dashboard. The premium edition can query the last 1 hours",
+      "input": "DescribeTRTCRealTimeScaleDataRequest",
+      "name": "Query TRTC Monitoring Dashboard - Real-Time Monitoring Scale",
+      "output": "DescribeTRTCRealTimeScaleDataResponse",
+      "status": "online"
+    },
     "DescribeTrtcRoomUsage": {
       "document": "This API is used to query usage data grouped by room.\n- The queried period cannot exceed 24 hours. If the period spans two different days, the data returned may not be accurate due to a delay in data collection. You can make multiple calls to query the usage on different days.\n- You can use this API to query your historical usage or to reconcile data, but we do not recommend you use it for crucial business logic.\n- The rate limit of this API is one call every 15 seconds.",
       "input": "DescribeTrtcRoomUsageRequest",
@@ -201,7 +229,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The error event ID. For details, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1",
+          "document": "The error event ID. For details, see https://www.tencentcloud.com/document/product/647/37906?has_map=1",
           "example": "",
           "member": "uint64",
           "name": "AbnormalEventId",
@@ -1275,6 +1303,262 @@
       ],
       "type": "object"
     },
+    "DescribeTRTCMarketQualityDataRequest": {
+      "document": "DescribeTRTCMarketQualityData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User SDKAppId (e.g., 1400xxxxxx)",
+          "example": "1400188366",
+          "member": "string",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query start time, format is YYYY-MM-DD. (The query time range depends on the monitoring dashboard function version, the premium edition can query up to 30 days)",
+          "example": "2022-10-20",
+          "member": "date",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query end time, format is YYYY-MM-DD.",
+          "example": "2022-10-21",
+          "member": "date",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The granularity of the returned data, which can be set to the following values:\nd: by day. This returns data for the entire UTC day of the query time range. \nh: by hour. This returns data for the entire UTC hour of the query time range.",
+          "example": "\"d\"",
+          "member": "string",
+          "name": "Period",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTRTCMarketQualityDataResponse": {
+      "document": "DescribeTRTCMarketQualityData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "TRTC Data Dashboard output parameters",
+          "example": "无",
+          "member": "TRTCDataResult",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTRTCMarketScaleDataRequest": {
+      "document": "DescribeTRTCMarketScaleData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User SDKAppId",
+          "example": "1400000000",
+          "member": "string",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query start time, format is YYYY-MM-DD. (The query time range depends on the monitoring dashboard function version, the premium edition can query up to 60 days)",
+          "example": "2022-10-20",
+          "member": "date",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query end time, format is YYYY-MM-DD.",
+          "example": "2022-10-21",
+          "member": "date",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The granularity of the returned data, which can be set to the following values:\n d: by day. This returns data for the entire UTC day of the query time range.\n h: by hour. This returns data for the entire UTC hour of the query time range.",
+          "example": "\"d\"",
+          "member": "string",
+          "name": "Period",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTRTCMarketScaleDataResponse": {
+      "document": "DescribeTRTCMarketScaleData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "TRTC Data Dashboard output parameters",
+          "example": "无",
+          "member": "TRTCDataResult",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTRTCRealTimeQualityDataRequest": {
+      "document": "DescribeTRTCRealTimeQualityData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User SDKAppId (e.g., 1400xxxxxx)",
+          "example": "1400000000",
+          "member": "string",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time, unix timestamp, Unit: seconds (Query time range depends on the monitoring dashboard function version, standard edition can query the last 3 hours, premium edition can query the last 12 hours)",
+          "example": "1665747036",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time, unix timestamp, Unit: seconds",
+          "example": "1665747284",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Room ID",
+          "example": "23390",
+          "member": "string",
+          "name": "RoomId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTRTCRealTimeQualityDataResponse": {
+      "document": "DescribeTRTCRealTimeQualityData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "TRTC Real- Time Monitoring output parameters",
+          "example": "无",
+          "member": "TRTCDataResult",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTRTCRealTimeScaleDataRequest": {
+      "document": "DescribeTRTCRealTimeScaleData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User SDKAppId (e.g., 1400xxxxxx)",
+          "example": "1400000000",
+          "member": "string",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time, unix timestamp, Unit: seconds (Query time range depends on the function version of the monitoring dashboard, premium edition can query up to 1 hours)",
+          "example": "1665747036",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "End time, unix timestamp, Unit: seconds",
+          "example": "1665747284",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Room ID",
+          "example": "23390",
+          "member": "string",
+          "name": "RoomId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTRTCRealTimeScaleDataResponse": {
+      "document": "DescribeTRTCRealTimeScaleData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "TRTC Real- Time Monitoring\n output parameter",
+          "example": "无",
+          "member": "TRTCDataResult",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeTrtcRoomUsageRequest": {
       "document": "DescribeTrtcRoomUsage request structure.",
       "members": [
@@ -1774,7 +2058,7 @@
         },
         {
           "disabled": false,
-          "document": "The event ID. Events are classified into SDK events and WebRTC events. For more information, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1",
+          "document": "The event ID. Events are classified into SDK events and WebRTC events. For more information, see https://www.tencentcloud.com/document/product/647/37906?has_map=1",
           "example": "",
           "member": "uint64",
           "name": "EventId",
@@ -3166,6 +3450,23 @@
       ],
       "usage": "out"
     },
+    "RowValues": {
+      "document": "Two-dimensional array of SeriesInfo type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data value",
+          "example": "[1659927600,399]",
+          "member": "int64",
+          "name": "RowValue",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "ScaleInfomation": {
       "document": "The room and user number.",
       "members": [
@@ -3207,6 +3508,32 @@
           "name": "RoomNumbers",
           "required": true,
           "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SeriesInfos": {
+      "document": "SeriesInfos type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data columns",
+          "example": "[\"time\",\"count(queryCount)\"]",
+          "member": "string",
+          "name": "Columns",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data values",
+          "example": "1659927600,399]",
+          "member": "RowValues",
+          "name": "Values",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -3771,6 +4098,42 @@
         }
       ],
       "usage": "in"
+    },
+    "TRTCDataResult": {
+      "document": "TRTC Data Dashboard/Real-Time Monitoring API output parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "StatementID value, fixed at 0 for Monitoring Dashboard.",
+          "example": "0",
+          "member": "int64",
+          "name": "StatementID",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Query result data, returned in Columns-Values format.",
+          "example": "无",
+          "member": "SeriesInfos",
+          "name": "Series",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total value, fixed at 1 for Monitoring Dashboard.",
+          "example": "0",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "TencentVod": {
       "document": "The Tencent Cloud VOD parameters.",
