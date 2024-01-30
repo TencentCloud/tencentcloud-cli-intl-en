@@ -14638,8 +14638,8 @@
           "example": "123",
           "member": "int64",
           "name": "SubBackupId",
-          "required": true,
-          "type": "list",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -14648,7 +14648,7 @@
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14658,7 +14658,7 @@
           "example": "SUCCESS",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14668,7 +14668,7 @@
           "example": "2016-03-17 02:00:37",
           "member": "string",
           "name": "StartTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14678,7 +14678,7 @@
           "example": "2016-03-17 02:00:37",
           "member": "string",
           "name": "FinishTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14688,7 +14688,7 @@
           "example": "https://XXX",
           "member": "string",
           "name": "Url",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
