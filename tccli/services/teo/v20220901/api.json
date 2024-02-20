@@ -43,16 +43,16 @@
       "status": "online"
     },
     "CreateApplicationProxy": {
-      "document": "This API is used to create an application proxy.",
+      "document": "This API is on an earlier version. If you want to call it, please switch to the latest version [CreateL4Proxy] (https://intl.cloud.tencent.com/document/product/1552/103417?from_cn_redirect=1).",
       "input": "CreateApplicationProxyRequest",
-      "name": "Creates an application proxy.",
+      "name": "Creates an application proxy (legacy)",
       "output": "CreateApplicationProxyResponse",
       "status": "online"
     },
     "CreateApplicationProxyRule": {
-      "document": "This API is used to create an application proxy rule.",
+      "document": "This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [CreateL4ProxyRules] (https://intl.cloud.tencent.com/document/product/1552/103416?from_cn_redirect=1).",
       "input": "CreateApplicationProxyRuleRequest",
-      "name": "Creates an application proxy rule.",
+      "name": "Creates an application proxy rule (legacy)",
       "output": "CreateApplicationProxyRuleResponse",
       "status": "online"
     },
@@ -61,6 +61,20 @@
       "input": "CreateConfigGroupVersionRequest",
       "name": "Create Configuration Group Version",
       "output": "CreateConfigGroupVersionResponse",
+      "status": "online"
+    },
+    "CreateL4Proxy": {
+      "document": "This API is used to create Layer 4 proxy instances.",
+      "input": "CreateL4ProxyRequest",
+      "name": "Creates Layer 4 proxy instances",
+      "output": "CreateL4ProxyResponse",
+      "status": "online"
+    },
+    "CreateL4ProxyRules": {
+      "document": "This API is used to create Layer 4 proxy instance rules, supporting both individual and batch creation.",
+      "input": "CreateL4ProxyRulesRequest",
+      "name": "Creates Layer 4 proxy forwarding rules",
+      "output": "CreateL4ProxyRulesResponse",
       "status": "online"
     },
     "CreateOriginGroup": {
@@ -134,17 +148,31 @@
       "status": "online"
     },
     "DeleteApplicationProxy": {
-      "document": "This API is used to delete an application proxy.",
+      "document": "This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [DeleteL4Proxy] (https://intl.cloud.tencent.com/document/product/1552/103415?from_cn_redirect=1).",
       "input": "DeleteApplicationProxyRequest",
-      "name": "Deletes an application proxy.",
+      "name": "Deletes an application proxy (legacy)",
       "output": "DeleteApplicationProxyResponse",
       "status": "online"
     },
     "DeleteApplicationProxyRule": {
-      "document": "This API is used to delete an application proxy rule.",
+      "document": "This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [DeleteL4ProxyRules] (https://intl.cloud.tencent.com/document/product/1552/103414?from_cn_redirect=1).",
       "input": "DeleteApplicationProxyRuleRequest",
-      "name": "Deletes an application proxy rule.",
+      "name": "Deletes an application proxy rule (legacy)",
       "output": "DeleteApplicationProxyRuleResponse",
+      "status": "online"
+    },
+    "DeleteL4Proxy": {
+      "document": "This API is used to delete a Layer 4 proxy instance.",
+      "input": "DeleteL4ProxyRequest",
+      "name": "Deletes a Layer 4 proxy instance",
+      "output": "DeleteL4ProxyResponse",
+      "status": "online"
+    },
+    "DeleteL4ProxyRules": {
+      "document": "This API is used to delete Layer 4 proxy forwarding rules, supporting both individual and batch operation.",
+      "input": "DeleteL4ProxyRulesRequest",
+      "name": "Deletes Layer 4 proxy forwarding rules",
+      "output": "DeleteL4ProxyRulesResponse",
       "status": "online"
     },
     "DeleteOriginGroup": {
@@ -204,9 +232,9 @@
       "status": "online"
     },
     "DescribeApplicationProxies": {
-      "document": "This API is used to query the list of application proxies.",
+      "document": "This API is on an earlier version. If you want to call it, please switch to the latest version. In the latest version, this API has been split into two APIs: one for querying the Layer 4 proxy instance list and the other for querying Layer 4 forwarding rules. For details, see [DescribeL4Proxy] (https://intl.cloud.tencent.com/document/product/1552/103413?from_cn_redirect=1) and [DescribeL4ProxyRules] (https://intl.cloud.tencent.com/document/product/1552/103412?from_cn_redirect=1).",
       "input": "DescribeApplicationProxiesRequest",
-      "name": "Queries the list of application proxies.",
+      "name": "Queries the application proxy list (legacy)",
       "output": "DescribeApplicationProxiesResponse",
       "status": "online"
     },
@@ -215,6 +243,13 @@
       "input": "DescribeAvailablePlansRequest",
       "name": "Queries plan options available for purchase",
       "output": "DescribeAvailablePlansResponse",
+      "status": "online"
+    },
+    "DescribeBillingData": {
+      "document": "This API is used to query billing data.",
+      "input": "DescribeBillingDataRequest",
+      "name": "Queries billing data",
+      "output": "DescribeBillingDataResponse",
       "status": "online"
     },
     "DescribeConfigGroupVersionDetail": {
@@ -287,11 +322,32 @@
       "output": "DescribeHostsSettingResponse",
       "status": "online"
     },
+    "DescribeIPRegion": {
+      "document": "This API is used to check if the IP is an EdgeOne IP.",
+      "input": "DescribeIPRegionRequest",
+      "name": "Queries IP location information",
+      "output": "DescribeIPRegionResponse",
+      "status": "online"
+    },
     "DescribeIdentifications": {
       "document": "This API is used to query the verification information of a site.",
       "input": "DescribeIdentificationsRequest",
       "name": "Queries the verification information of a site.",
       "output": "DescribeIdentificationsResponse",
+      "status": "online"
+    },
+    "DescribeL4Proxy": {
+      "document": "This API is used to query a Layer 4 proxy instance list.",
+      "input": "DescribeL4ProxyRequest",
+      "name": "Queries a Layer 4 proxy instance list",
+      "output": "DescribeL4ProxyResponse",
+      "status": "online"
+    },
+    "DescribeL4ProxyRules": {
+      "document": "This API is used to query the forwarding rule list under a Layer 4 proxy instance.",
+      "input": "DescribeL4ProxyRulesRequest",
+      "name": "Queries a Layer 4 proxy forwarding rule list",
+      "output": "DescribeL4ProxyRulesResponse",
       "status": "online"
     },
     "DescribeOriginGroup": {
@@ -449,30 +505,30 @@
       "status": "online"
     },
     "ModifyApplicationProxy": {
-      "document": "This API is used to modify an application proxy.",
+      "document": "This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [ModifyL4Proxy\n] (https://intl.cloud.tencent.com/document/product/1552/103411?from_cn_redirect=1).",
       "input": "ModifyApplicationProxyRequest",
-      "name": "Modifies an application proxy.",
+      "name": "Modifies an application proxy (legacy)",
       "output": "ModifyApplicationProxyResponse",
       "status": "online"
     },
     "ModifyApplicationProxyRule": {
-      "document": "This API is used to modify an application proxy rule.",
+      "document": "This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [ModifyL4ProxyRules] (https://intl.cloud.tencent.com/document/product/1552/103410?from_cn_redirect=1).",
       "input": "ModifyApplicationProxyRuleRequest",
-      "name": "Modifies an application proxy rule.",
+      "name": "Modifies an application proxy rule (legacy)",
       "output": "ModifyApplicationProxyRuleResponse",
       "status": "online"
     },
     "ModifyApplicationProxyRuleStatus": {
-      "document": "This API is used to modify the status of an application proxy rule.",
+      "document": "This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [ModifyL4ProxyRulesStatus\n] (https://intl.cloud.tencent.com/document/product/1552/103409?from_cn_redirect=1).",
       "input": "ModifyApplicationProxyRuleStatusRequest",
-      "name": "Modifies the status of an application proxy rule.",
+      "name": "Modifies the status of an application proxy rule (legacy)",
       "output": "ModifyApplicationProxyRuleStatusResponse",
       "status": "online"
     },
     "ModifyApplicationProxyStatus": {
-      "document": "This API is used to modify the status of an application proxy.",
+      "document": "This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [ModifyL4ProxyStatus] (https://intl.cloud.tencent.com/document/product/1552/103408?from_cn_redirect=1).",
       "input": "ModifyApplicationProxyStatusRequest",
-      "name": "Modifies the status of an application proxy.",
+      "name": "Modifies the application proxy status (legacy)",
       "output": "ModifyApplicationProxyStatusResponse",
       "status": "online"
     },
@@ -481,6 +537,34 @@
       "input": "ModifyHostsCertificateRequest",
       "name": "Configures the certificate",
       "output": "ModifyHostsCertificateResponse",
+      "status": "online"
+    },
+    "ModifyL4Proxy": {
+      "document": "This API is used to modify the configuration of a Layer 4 proxy instance.",
+      "input": "ModifyL4ProxyRequest",
+      "name": "Modifies a Layer 4 proxy instance",
+      "output": "ModifyL4ProxyResponse",
+      "status": "online"
+    },
+    "ModifyL4ProxyRules": {
+      "document": "This API is used to modify Layer 4 proxy forwarding rules, supporting both individual and batch modification.",
+      "input": "ModifyL4ProxyRulesRequest",
+      "name": "Modifies Layer 4 proxy forwarding rules",
+      "output": "ModifyL4ProxyRulesResponse",
+      "status": "online"
+    },
+    "ModifyL4ProxyRulesStatus": {
+      "document": "This API is used to start or stop Layer 4 proxy forwarding rules, supporting both individual and batch operation.",
+      "input": "ModifyL4ProxyRulesStatusRequest",
+      "name": "Modifies Layer 4 proxy forwarding rule status",
+      "output": "ModifyL4ProxyRulesStatusResponse",
+      "status": "online"
+    },
+    "ModifyL4ProxyStatus": {
+      "document": "This API is used to enable or disable a Layer 4 proxy instance.",
+      "input": "ModifyL4ProxyStatusRequest",
+      "name": "Modifies Layer 4 proxy instance status",
+      "output": "ModifyL4ProxyStatusResponse",
       "status": "online"
     },
     "ModifyOriginGroup": {
@@ -1618,7 +1702,7 @@
         },
         {
           "disabled": false,
-          "document": "The origin type. Values:\n<li>`custom`: Specified origins</li>\n<li>`origins`: Origin group</li>",
+          "document": "Origin server type. Valid values:<li>custom: Manually added;</li><li>loadbalancer: Cloud Load Balancer;</li><li>origins: Origin server group.</li>",
           "example": "custom",
           "member": "string",
           "name": "OriginType",
@@ -1629,7 +1713,7 @@
         },
         {
           "disabled": false,
-          "document": "Origin server information:\n<li>When `OriginType=custom`, it indicates one or more origin servers, such as [\"8.8.8.8\",\"9.9.9.9\"] or [\"test.com\"].</li>\n<li>When `OriginType=origins`, it indicates an origin group ID, such as [\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"].</li>",
+          "document": "Details of the origin server:\n<li>When OriginType is custom, it indicates one or more origin servers, such as [\"8.8.8.8\",\"9.9.9.9\"] or OriginValue=[\"test.com\"];</li><li>When OriginType is loadbalancer, it indicates a single Cloud Load Balancer, such as [\"lb-xdffsfasdfs\"];</li>\n<li>When OriginType is origins, it requires one and only one element, which represents an origin server group ID, such as [\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"].</li>",
           "example": "[\"1.1.1.1\",\"2.2.2.2\"]",
           "member": "string",
           "name": "OriginValue",
@@ -1753,6 +1837,56 @@
         }
       ],
       "usage": "out"
+    },
+    "BillingData": {
+      "document": "Billing data item",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Time.",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "Time",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Value.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Value",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "BillingDataFilter": {
+      "document": "Billing data filter criteria.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Parameter name.",
+          "example": "host",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Parameter value.",
+          "example": "test.example.com",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
     },
     "BindSecurityTemplateToEntityRequest": {
       "document": "BindSecurityTemplateToEntity request structure.",
@@ -3044,8 +3178,8 @@
         },
         {
           "disabled": false,
-          "document": "The proxy type. Values:\n<li>`hostname`: The proxy is created by subdomain name.</li>\n<li>`instance`: The proxy is created by instance.</li>If not specified, this field uses the default value `instance`.",
-          "example": "hostname",
+          "document": "Layer 4 proxy mode, with value: <li>instance: instance mode.</li>If not specified, the default value instance will be used.",
+          "example": "instance",
           "member": "string",
           "name": "ProxyType",
           "required": false,
@@ -3153,7 +3287,7 @@
         },
         {
           "disabled": false,
-          "document": "The origin type. Values:\n<li>`custom`: Specified origins</li>\n<li>`origins`: Origin group</li>",
+          "document": "Origin server type. Valid values:<li>custom: Manually added;</li>\n<li>loadbalancer: Cloud Load Balancer;</li><li>origins: Origin server group.</li>",
           "example": "custom",
           "member": "string",
           "name": "OriginType",
@@ -3162,7 +3296,7 @@
         },
         {
           "disabled": false,
-          "document": "Origin server information:\n<li>When `OriginType=custom`, it indicates one or more origin servers, such as [\"8.8.8.8\",\"9.9.9.9\"] or [\"test.com\"].</li>\n<li>When `OriginType=origins`, it indicates an origin group ID, such as [\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"].</li>",
+          "document": "Details of the origin server:<li>When OriginType is custom, it indicates one or more origin servers, such as [\"8.8.8.8\",\"9.9.9.9\"] or OriginValue=[\"test.com\"];</li><li>When OriginType is loadbalancer, it indicates a single Cloud Load Balancer, such as [\"lb-xdffsfasdfs\"];</li><li>When OriginType is origins, it requires one and only one element, which represents an origin server group ID, such as [\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"].</li>",
           "example": "[\"1.1.1.1:80\",\"2.2.2.2:80\"]",
           "member": "string",
           "name": "OriginValue",
@@ -3292,6 +3426,152 @@
           "name": "VersionId",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateL4ProxyRequest": {
+      "document": "CreateL4Proxy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2gps1z8cx8y2",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Layer 4 proxy instance name. You can enter 1-50 characters. Valid characters are a-z, 0-9, and hyphens (-). However, hyphens (-) cannot be used individually or consecutively and should not be placed at the beginning or end of the name. Modifications are not allowed after creation.",
+          "example": "proxy-name",
+          "member": "string",
+          "name": "ProxyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Acceleration zone of the Layer 4 proxy instance.<li>mainland: Availability zone in the Chinese mainland;</li><li>overseas: Global availability zone (excluding the Chinese mainland);</li><li>global: Global availability zone.</li>",
+          "example": "mainland",
+          "member": "string",
+          "name": "Area",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to enable IPv6 access. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li>\n<li>off: Disable.</li>\n",
+          "example": "on",
+          "member": "string",
+          "name": "Ipv6",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to enable the fixed IP address. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li>\n<li>off: Disable.</li>\n",
+          "example": "off",
+          "member": "string",
+          "name": "StaticIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to enable network optimization in the Chinese mainland. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li>\n<li>off: Disable.</li>\n",
+          "example": "on",
+          "member": "string",
+          "name": "AccelerateMainland",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Layer 3/Layer 4 DDoS protection. The default protection option of the platform will be used if it is left empty. For details, see [Exclusive DDoS Protection Usage](https://intl.cloud.tencent.com/document/product/1552/95994?from_cn_redirect=1).",
+          "example": "无",
+          "member": "DDosProtectionConfig",
+          "name": "DDosProtectionConfig",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateL4ProxyResponse": {
+      "document": "CreateL4Proxy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Layer 4 instance ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ProxyId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateL4ProxyRulesRequest": {
+      "document": "CreateL4ProxyRules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-67e6b1962",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Layer 4 proxy instance ID.",
+          "example": "proxy-19389e5dwwxfs",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of forwarding rules. A single request supports up to 200 forwarding rules.\nNote: When L4ProxyRule is used here, Protocol, PortRange, OriginType, OriginValue, and OriginPortRange are required fields; ClientIPPassThroughMode, SessionPersist, SessionPersistTime, and RuleTag are optional fields; do not fill in RuleId and Status.",
+          "example": "无",
+          "member": "L4ProxyRule",
+          "name": "L4ProxyRules",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateL4ProxyRulesResponse": {
+      "document": "CreateL4ProxyRules response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IDs of newly added forwarding rules, returned as an array.",
+          "example": "无",
+          "member": "string",
+          "name": "L4ProxyRuleIds",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -3446,7 +3726,7 @@
         },
         {
           "disabled": false,
-          "document": "Resources to be pre-warmed, for example: \nhttp://www.example.com/example.txt \nNote: The number of submitted tasks is limited by the quota of the plan. For details, see [Billing Overview](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1).",
+          "document": "List of resources to be preheated. Each element format is similar to the following:\nhttp://www.example.com/example.txt. The parameter value is currently required.\nNote: The number of tasks that can be submitted is limited by the quota of a billing package. For details, see [Billing Overview] (https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1).",
           "example": "[\"http://www.qq.com/1.txt\"]",
           "member": "string",
           "name": "Targets",
@@ -3529,7 +3809,7 @@
         },
         {
           "disabled": false,
-          "document": "Configures how resources under the directory are purged when `Type = purge_prefix`. Values: <li>`invalidate`: Only resources updated under the directory are purged.</li><li>`delete`: All resources under the directory are purged regardless of whether they are updated. </li>Default value: `invalidate`.",
+          "document": "Node cache purge method, valid for directory, hostname, and all cache refreshes. Valid values: <li>invalidate: Refreshes only resources that were updated under the directory; </li><li>delete: Refreshes all node resources, regardless of whether they were updated. </li>Default value: invalidate.",
           "example": "invalidate",
           "member": "string",
           "name": "Method",
@@ -3538,7 +3818,7 @@
         },
         {
           "disabled": false,
-          "document": "List of cached resources to purge. The format for input depends on the type of cache purging. See examples below for details. <li>By default, non-ASCII characters are escaped based on RFC3986.</li><li>The maximum number of tasks per purging request is determined by the EdgeOne plan. See [Billing Overview (New)](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1). </li>",
+          "document": "List of resources for which cache is to be purged. Each element format depends on the cache purge type and you can refer to the API examples for details. <li>The number of tasks that can be submitted at a time is limited by the quota of a billing package. For details, see [Billing Overview] (https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1).</li>",
           "example": "[\"http://www.qq.com/1.txt\"]",
           "member": "string",
           "name": "Targets",
@@ -4038,6 +4318,45 @@
       ],
       "usage": "out"
     },
+    "DDosProtectionConfig": {
+      "document": "Exclusive DDoS protection specifications configuration applicable to Layer 4 proxy or web site service.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Exclusive DDoS protection specifications in the Chinese mainland. For details, see [Dedicated DDoS Mitigation Fee (Pay-as-You-Go)] (https://intl.cloud.tencent.com/document/product/1552/94162?from_cn_redirect=1).<li>PLATFORM: Default protection of the platform, i.e., Exclusive DDoS protection is not enabled;</li>\n<li>BASE30_MAX300: Exclusive DDoS protection enabled, providing a baseline protection bandwidth of 30 Gbps and an elastic protection bandwidth of up to 300 Gbps;</li><li>BASE60_MAX600: Exclusive DDoS protection enabled, providing a baseline protection bandwidth of 60 Gbps and an elastic protection bandwidth of up to 600 Gbps.</li>If no parameters are filled, the default value PLATFORM is used.",
+          "example": "PLATFORM",
+          "member": "string",
+          "name": "LevelMainland",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configuration of elastic protection bandwidth for exclusive DDoS protection in the Chinese mainland.Valid only when exclusive DDoS protection in the Chinese mainland is enabled (refer to the LevelMainland parameter configuration), and the value has the following limitations:<li>When exclusive DDoS protection is enabled in the Chinese mainland and the 30 Gbps baseline protection bandwidth is used (the LevelMainland parameter value is BASE30_MAX300): the value range is 30 to 300 in Gbps;</li><li>When exclusive DDoS protection is enabled in the Chinese mainland and the 60 Gbps baseline protection bandwidth is used (the LevelMainland parameter value is BASE60_MAX600): the value range is 60 to 600 in Gbps;</li><li>When the default protection of the platform is used (the LevelMainland parameter value is PLATFORM): configuration is not supported, and the value of this parameter is invalid.</li>",
+          "example": "30",
+          "member": "uint64",
+          "name": "MaxBandwidthMainland",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Exclusive DDoS protection specifications in the worldwide region (excluding the Chinese mainland).<li>PLATFORM: Default protection of the platform, i.e., Exclusive DDoS protection is not enabled;</li><li>ANYCAST300: Exclusive DDoS protection enabled, offering a total maximum protection bandwidth of 300 Gbps;</li>\n<li>ANYCAST_ALLIN: Exclusive DDoS protection enabled, utilizing all available protection resources for protection.</li>When no parameters are filled, the default value PLATFORM is used.",
+          "example": "ANYCAST_ALLIN",
+          "member": "string",
+          "name": "LevelOverseas",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "DefaultServerCertInfo": {
       "document": "HTTPS server certificate configuration",
       "members": [
@@ -4306,12 +4625,93 @@
       ],
       "type": "object"
     },
+    "DeleteL4ProxyRequest": {
+      "document": "DeleteL4Proxy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-67e6b1962",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Layer 4 proxy instance ID.",
+          "example": "proxy-19389e5dwwxfs",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteL4ProxyResponse": {
+      "document": "DeleteL4Proxy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteL4ProxyRulesRequest": {
+      "document": "DeleteL4ProxyRules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-67e6b1962",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Layer 4 proxy instance ID.",
+          "example": "proxy-19389e5dwwxfs",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of forwarding rule IDs. It supports up to 200 forwarding rules at a time.",
+          "example": "[\"rule-sdacd\"]",
+          "member": "string",
+          "name": "RuleIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteL4ProxyRulesResponse": {
+      "document": "DeleteL4ProxyRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteOriginGroupRequest": {
       "document": "DeleteOriginGroup request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "ID of the site.",
+          "document": "Zone ID.",
           "example": "zone-27q0p0bali16",
           "member": "string",
           "name": "ZoneId",
@@ -4320,7 +4720,7 @@
         },
         {
           "disabled": false,
-          "document": "(Required) Origin group IDe group ID. This parameter is required.",
+          "document": "Origin server group ID. This parameter is required.",
           "example": "orgin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a",
           "member": "string",
           "name": "GroupId",
@@ -4639,7 +5039,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter conditions. Up to 20 values for each filter. If it is not passed in, all domain names related with the specific zone-id are returned. \n<li>`domain-name`: Acceleration domain name</li>\n<li>`origin-type`: Type of the origin</li>\n<li>`origin`: Primary origin address</li>\n<li>`backup-origin`: Secondary origin address</li>\n<li>`domain-cname`: CNAME</li>\n<li>`share-cname`: Shared CNAME</li>",
+          "document": "Filter conditions. The maximum value of Filters.Values is 20. If it is not specified, all domains related with the specific zone-id are returned.\n<li>domain-name: Filtering based on the acceleration domain name</li>\n<li>origin-type: Filtering based on the type of the origin server</li>\n<li>origin: Filtering based on the primary origin server address</li>\n<li>backup-origin: Filtering based on the secondary origin server address</li>\n<li>domain-cname: Filtering based on the CNAME</li>\n<li>share-cname: Filtering based on the shared CNAME</li>\n<li>vodeo-sub-app-id: Filtering based on [vodeo sub-application ID]</li>\n<li>vodeo-distribution-range: Filtering based on [vodeo distribution range]</li>\n<li>vodeo-bucket-id: Filtering based on [vodeo storage bucket ID];</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -4787,6 +5187,24 @@
       "members": [
         {
           "disabled": false,
+          "document": "Zone ID. This parameter is required.",
+          "example": "zone-vawer2vadg",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filters. Each filter can have up to 20 entries. Details: <li>proxy-id<br>   Filter by the <strong>Proxy ID</strong>, such as: `proxy-ev2sawbwfd`. <br>   Type: String<br>   Required: No</li><li>zone-id<br>   Filter by the <strong>Site ID</strong>, such as `zone-vawer2vadg`. <br>   Type: String<br>   Required: No</li><li>rule-tag<br>   Filter by the <strong>Rule tag</strong>, such as `rule-service-1`. <br>   Type: String<br>   Required: No</li>",
+          "example": "[{\"Name\": \"proxy-id\", [\"proxy-124521xfqlh4qjee\"]}]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
           "document": "The paginated query offset. Default value: 0",
           "example": "0",
           "member": "int64",
@@ -4802,15 +5220,6 @@
           "name": "Limit",
           "required": false,
           "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Filters. Each filter can have up to 20 entries. Details: <li>proxy-id<br>   Filter by the <strong>Proxy ID</strong>, such as: `proxy-ev2sawbwfd`. <br>   Type: String<br>   Required: No</li><li>zone-id<br>   Filter by the <strong>Site ID</strong>, such as `zone-vawer2vadg`. <br>   Type: String<br>   Required: No</li><li>rule-tag<br>   Filter by the <strong>Rule tag</strong>, such as `rule-service-1`. <br>   Type: String<br>   Required: No</li>",
-          "example": "[{\"Name\": \"proxy-id\", [\"proxy-124521xfqlh4qjee\"]}]",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
         }
       ],
       "type": "object"
@@ -4862,6 +5271,88 @@
           "member": "PlanInfo",
           "name": "PlanInfo",
           "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillingDataRequest": {
+      "document": "DescribeBillingData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Start time of the query.",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time of the query.",
+          "example": "2014-08-03T12:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Zone ID set. This parameter is required.",
+          "example": "zone-2siulp074dz3",
+          "member": "string",
+          "name": "ZoneIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Indicator list. Valid values:<li>acc_flux: Content acceleration traffic, in bytes;</li>\n<li>smt_flux: Intelligent acceleration traffic, in bytes;</li>\n<li>l4_flux: Layer 4 acceleration traffic, in bytes;</li>\n<li>sec_flux: Exclusive protection traffic, in bytes;</li>\n<li>zxctg_flux: Traffic for network optimization in the Chinese mainland, in bytes;</li>\n<li>acc_bandwidth: Bandwidth for content acceleration, in bps;</li>\n<li>smt_bandwidth: Bandwidth for intelligent acceleration, in bps;</li>\n<li>l4_bandwidth: Bandwidth for Layer 4 acceleration, in bps;</li>\n<li>sec_bandwidth: Bandwidth for exclusive protection, in bps;</li>\n<li>zxctg_bandwidth: Bandwidth for network optimization in the Chinese mainland, in bps;</li><li>sec_request_clean: HTTP/HTTPS requests, count;</li>\n<li>smt_request_clean: Intelligent acceleration requests, count;</li>\n<li>quic_request: QUIC requests, count;</li>\n<li>bot_request_clean: Bot requests, count;</li>\n<li>cls_count: Real-time log pushes, count;</li>\n<li>ddos_bandwidth: Elastic Anti-DDoS bandwidth, in bps.</li>",
+          "example": "acc_flux",
+          "member": "string",
+          "name": "MetricName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query period granularity. Valid values:<li>5min: 5-minute granularity;</li>\n<li>hour: 1-hour granularity;</li>\n<li>day: 1-day granularity.</li>",
+          "example": "hour",
+          "member": "string",
+          "name": "Interval",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria. The detailed filter criteria are as follows:\n<li>host<br>   Filters by <strong>Domain Name</strong>. Example: test.example.com<br>   Type: String<br>   Required: No</li>\n<li>proxy-id<br>   Filters by <strong>Layer 4 Proxy Instance ID</strong>. Example: sid-2rugn89bkla9<br>   Type: String<br>   Required: No</li>\n<li>region-id<br>   Filters by <strong>Billing Region</strong>.<br>   Type: String<br>   Required: No<br>   Options are:<br>   CH: Chinese mainland<br>   AF: Africa<br>   AS1: Asia-Pacific Region 1<br>   AS2: Asia-Pacific Region 2<br>   AS3: Asia-Pacific Region 3<br>   EU: Europe<br>   MidEast: Middle East<br>   NA: North America<br>   SA: South America</li>",
+          "example": "无",
+          "member": "BillingDataFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillingDataResponse": {
+      "document": "DescribeBillingData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of data points.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "BillingData",
+          "name": "Data",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -5092,7 +5583,7 @@
         },
         {
           "disabled": false,
-          "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
+          "document": "ZoneId set. This parameter is required.",
           "example": "[\"zoneId1\",\"zoneId2\"]",
           "member": "string",
           "name": "ZoneIds",
@@ -5166,7 +5657,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time of the query period.",
+          "document": "Start time. Time range: 30 days.",
           "example": "2020-04-29T00:00:00Z",
           "member": "datetime_iso",
           "name": "StartTime",
@@ -5175,7 +5666,7 @@
         },
         {
           "disabled": false,
-          "document": "End time of the query period.",
+          "document": "End time. Time range: 30 days.",
           "example": "2020-04-30T00:00:00Z",
           "member": "datetime_iso",
           "name": "EndTime",
@@ -5193,7 +5684,7 @@
         },
         {
           "disabled": false,
-          "document": "(Required) List of sites. No query results are returned if this field is not specified.",
+          "document": "ZoneId set. This parameter is required.",
           "example": "[\"zoneId1\",\"zoneId2\"]",
           "member": "string",
           "name": "ZoneIds",
@@ -5220,7 +5711,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to display the details.",
+          "document": "Parameter to show attack details. If it is configured as false, only the number of attacks is returned without details. If it is configured as true, attack details are returned.",
           "example": "true",
           "member": "bool",
           "name": "ShowDetail",
@@ -5319,7 +5810,7 @@
         },
         {
           "disabled": false,
-          "document": "List of site IDs to be queried. All sites will be selected if this field is not specified.",
+          "document": "Site ID set. This parameter is required.",
           "example": "[\"zoneId1\",\"zoneId2\"]",
           "member": "string",
           "name": "ZoneIds",
@@ -5420,11 +5911,20 @@
       "members": [
         {
           "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-xxx",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "Filter criteria. Each filter criteria can have up to 5 entries.\n<li>`zone-id`: <br>Filter by <strong>site ID</strong>, such as zone-xxx<br>   Type: String<br>   Required: No</li>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
-          "required": true,
+          "required": false,
           "type": "list"
         },
         {
@@ -5666,6 +6166,43 @@
       ],
       "type": "object"
     },
+    "DescribeIPRegionRequest": {
+      "document": "DescribeIPRegion request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of IPs to be queried, supporting IPV4 and IPV6. Up to 100 can be queried.",
+          "example": "[\"1.1.1.1\",\"2402:4e00:1403:eb00:0:9440:b55a:39a8\"]",
+          "member": "string",
+          "name": "IPs",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIPRegionResponse": {
+      "document": "DescribeIPRegion response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of IP attribution information.",
+          "example": "[]",
+          "member": "IPRegionInfo",
+          "name": "IPRegionInfo",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeIdentificationsRequest": {
       "document": "DescribeIdentifications request structure.",
       "members": [
@@ -5719,6 +6256,163 @@
           "member": "Identification",
           "name": "Identifications",
           "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeL4ProxyRequest": {
+      "document": "DescribeL4Proxy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the zone where the Layer 4 proxy instance belongs.",
+          "example": "无",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Paginated query offset. Defaults to 0 when not specified.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paginated query limit. Default value: 20. Maximum value: 1000.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria. The upper limit for Filters.Values is 20. If left empty, all Layer 4 proxy instance information under the current zone ID is returned. The detailed filter criteria are as follows: <li>proxy-id: Filters by Layer 4 proxy instance ID;</li>\n<li>ddos-protection-type: Filters by security protection type;</li>\n",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeL4ProxyResponse": {
+      "document": "DescribeL4Proxy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The number of Layer 4 proxy instances.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of Layer 4 proxy instances.",
+          "example": "无",
+          "member": "L4Proxy",
+          "name": "L4Proxies",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeL4ProxyRulesRequest": {
+      "document": "DescribeL4ProxyRules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2q79r12251hk",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Layer 4 proxy instance ID.",
+          "example": "sid-2q79r12251hk",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Paginated query offset. Defaults to 0 when not specified.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paginated query limit. Default value: 20. Maximum value: 1000.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria. The upper limit for Filters.Values is 20. All rule information under the current Layer 4 instance will be returned if left empty. The detailed filter criteria are as follows: <li>rule-tag: Filters rules under the Layer 4 proxy instance according to rule tag.</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeL4ProxyRulesResponse": {
+      "document": "DescribeL4ProxyRules response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The total count of forwarding rules.",
+          "example": "121",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of forwarding rules.\t",
+          "example": "无",
+          "member": "L4ProxyRule",
+          "name": "L4ProxyRules",
+          "output_required": false,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5810,7 +6504,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of sites to be queried. All sites will be selected if this field is not specified.",
+          "document": "Set of site IDs to be queried. This is a required parameter.",
           "example": "[\"zone-276zs184g93m\",\"zone-27fil18zp2v1\"]",
           "member": "string",
           "name": "ZoneIds",
@@ -6001,7 +6695,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time of the query.",
+          "document": "Start time of the query. Either time or job-id is required.",
           "example": "2022-02-09T02:35:00Z",
           "member": "datetime_iso",
           "name": "StartTime",
@@ -6010,7 +6704,7 @@
         },
         {
           "disabled": false,
-          "document": "End time of the query.",
+          "document": "End time of the query. Either time or job-id is required.",
           "example": "2022-02-09T02:35:00Z",
           "member": "datetime_iso",
           "name": "EndTime",
@@ -6093,7 +6787,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time of the query.",
+          "document": "Start time of the query. Either time or job-id is required.",
           "example": "2022-02-09T02:35:00Z",
           "member": "datetime_iso",
           "name": "StartTime",
@@ -6102,7 +6796,7 @@
         },
         {
           "disabled": false,
-          "document": "End time of the query.",
+          "document": "End time of the query. Either time or job-id is required.",
           "example": "2022-02-09T02:35:00Z",
           "member": "datetime_iso",
           "name": "EndTime",
@@ -6653,7 +7347,7 @@
         },
         {
           "disabled": false,
-          "document": "Queries the top n rows of data. Maximum value: 1000. Top 10 rows of data will be queried if this field is not specified.",
+          "document": "Queries the top N data entries. Maximum value: 1000. Top 10 data entries will be queried if this field is not specified.",
           "example": "3",
           "member": "int64",
           "name": "Limit",
@@ -6763,7 +7457,7 @@
         },
         {
           "disabled": false,
-          "document": "Top rows of data to query. Maximum value: 1000. Top 10 rows of data are queried if this field is not specified.",
+          "document": "The number of data entries to be queried. The maximum value is 1000. If it is not specified, the value 10 is used by default, indicating that the top 10 data entries.",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -8242,6 +8936,7 @@
           "example": "11",
           "member": "int64",
           "name": "GroupId",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -8252,22 +8947,50 @@
           "example": "group1",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "IP group information, including IP and IP mask.",
+          "document": "IP group content. Only supports IP and IP mask.",
           "example": "[\"1.1.1.1\", \"2.2.2.2\"]",
           "member": "string",
           "name": "Content",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
         }
       ],
       "usage": "both"
+    },
+    "IPRegionInfo": {
+      "document": "IP location information query",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IP address, IPV4 or IPV6.",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "IP",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the IP belongs to an EdgeOne node. Valid values:\n<li>yes: This IP belongs to an EdgeOne node;</li>\n<li>no: This IP does not belong to an EdgeOne node.</li>",
+          "example": "yes",
+          "member": "string",
+          "name": "IsEdgeOneIP",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "IPWhitelist": {
       "document": "Intermediate IPs",
@@ -8698,6 +9421,282 @@
         }
       ],
       "usage": "out"
+    },
+    "L4Proxy": {
+      "document": "Layer 4 proxy instance.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2gpv1z8cx8y2",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Layer 4 proxy instance ID.",
+          "example": "sid-2gpv1z8cx8y2",
+          "member": "string",
+          "name": "ProxyId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Layer 4 proxy instance name.",
+          "example": "proxy-name",
+          "member": "string",
+          "name": "ProxyName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Acceleration zone of the Layer 4 proxy instance.<li>mainland: Availability zone in the Chinese mainland;</li><li>overseas: Global availability zone (excluding the Chinese mainland);</li><li>global: Global availability zone.</li>\t",
+          "example": "mainland",
+          "member": "string",
+          "name": "Area",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Access via CNAME.",
+          "example": "8dde93816fba8809.jakeyjing.fun.acc.tyxcdn.com.",
+          "member": "string",
+          "name": "Cname",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "After the fixed IP address is enabled, this value will return the corresponding access IP address; if it is not enabled, this value will be empty.",
+          "example": "[\"1.2.3.4\"]",
+          "member": "string",
+          "name": "Ips",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status of the Layer 4 proxy instance.<li>online: Enabled;</li>\n<li>offline: Disabled;</li>\n<li>progress: Deploying;</li>\t\n<li>stopping: Disabling;</li>\n<li>banned: Blocked;</li>\n<li>fail: Failed to deploy or disable.</li>\t",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to enable IPv6 access.<li>on: Enable;</li> <li>off: Disable.</li>",
+          "example": "on",
+          "member": "string",
+          "name": "Ipv6",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to enable the fixed IP address.<li>on: Enable;</li> <li>off: Disable.</li>",
+          "example": "off",
+          "member": "string",
+          "name": "StaticIp",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to enable network optimization in the Chinese mainland.<li>on: Enable</li> <li>off: Disable</li>",
+          "example": "off",
+          "member": "string",
+          "name": "AccelerateMainland",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Security protection configuration.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "DDosProtectionConfig",
+          "name": "DDosProtectionConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of forwarding rules under the Layer 4 proxy instance.",
+          "example": "10",
+          "member": "int64",
+          "name": "L4ProxyRuleCount",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Latest modification time.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "L4ProxyRule": {
+      "document": "Details of Layer 4 proxy forwarding rules.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Forwarding rule ID.\nNote: Do not fill in this parameter when L4ProxyRule is used as an input parameter in CreateL4ProxyRules; it must be filled in when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules.",
+          "example": "rule-xxx",
+          "member": "string",
+          "name": "RuleId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Forwarding protocol. Valid values:\n<li>TCP: TCP protocol;</li>\n<li>UDP: UDP protocol.</li>\nNote: This parameter must be filled in when L4ProxyRule is used as an input parameter in CreateL4ProxyRules; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.",
+          "example": "TCP",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Forwarding port, which can be set as follows:\n<li>A single port, such as 80;</li>\n<li>A range of ports, such as 81-85, representing ports 81, 82, 83, 84, 85.</li>\nNote: This parameter must be filled in when L4ProxyRule is used as an input parameter in CreateL4ProxyRules; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.",
+          "example": "[\"80\"]",
+          "member": "string",
+          "name": "PortRange",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin server type. Valid values:\n<li>IP_DOMAIN: IP/Domain name origin server;</li>\n<li>ORIGIN_GROUP: Origin server group;</li>\n<li>LB: Cloud Load Balancer, currently only open to the allowlist.</li>\nNote: This parameter must be filled in when L4ProxyRule is used as an input parameter in CreateL4ProxyRules; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.",
+          "example": "IP_DOMAIN",
+          "member": "string",
+          "name": "OriginType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin server address.\n<li>When OriginType is set to IP_DOMAIN, enter the IP address or domain name, such as 8.8.8.8 or test.com;</li>\n<li>When OriginType is set to ORIGIN_GROUP, enter the origin server group ID, such as og-537y24vf5b41;</li>\n<li>When OriginType is set to LB, enter the Cloud Load Balancer instance ID, such as lb-2qwk30xf7s9g.</li>\nNote: This parameter must be filled in when L4ProxyRule is used as an input parameter in CreateL4ProxyRules; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.",
+          "example": "[\"1.1.1.1\"]",
+          "member": "string",
+          "name": "OriginValue",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin server port, which can be set as follows:<li>A single port, such as 80;</li>\n<li>A range of ports, such as 81-85, representing ports 81, 82, 83, 84, 85. When inputting a range of ports, ensure that the length corresponds with that of the forwarding port range. For example, if the forwarding port range is 80-90, this port range should be 90-100.</li>\nNote: This parameter must be filled in when L4ProxyRule is used as an input parameter in CreateL4ProxyRules; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.",
+          "example": "80-90",
+          "member": "string",
+          "name": "OriginPortRange",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Transmission of the client IP address. Valid values:<li>TOA: Available only when Protocol=TCP;</li> \n<li>PPV1: Transmission via Proxy Protocol V1. Available only when Protocol=TCP;</li>\n<li>PPV2: Transmission via Proxy Protocol V2;</li> \n<li>SPP: Transmission via Simple Proxy Protocol. Available only when Protocol=UDP;</li> \n<li>OFF: No transmission.</li>\nNote: This parameter is optional when L4ProxyRule is used as an input parameter in CreateL4ProxyRules, and if not specified, the default value OFF will be used; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.",
+          "example": "TOA",
+          "member": "string",
+          "name": "ClientIPPassThroughMode",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to enable session persistence. Valid values:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\nNote: This parameter is optional when L4ProxyRule is used as an input parameter in CreateL4ProxyRules, and if not specified, the default value off will be used; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.",
+          "example": "off",
+          "member": "string",
+          "name": "SessionPersist",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Session persistence period, with a range of 30-3600, measured in seconds.\nNote: This parameter is optional when L4ProxyRule is used as an input parameter in CreateL4ProxyRules. It is valid only when SessionPersist is set to on and defaults to 3600 if not specified. It is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.",
+          "example": "3600",
+          "member": "uint64",
+          "name": "SessionPersistTime",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule tag. Accepts 1-50 arbitrary characters.\nNote: This parameter is optional when L4ProxyRule is used as an input parameter in CreateL4ProxyRules; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.",
+          "example": "rule-service1",
+          "member": "string",
+          "name": "RuleTag",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule status. Valid values:<li>online: Enabled;</li>\n<li>offline: Disabled;</li>\n<li>progress: Deploying;</li>\n<li>stopping: Disabling;</li>\n<li>fail: Failed to deploy or disable.</li>\nNote: Do not set this parameter when L4ProxyRule is used as an input parameter in CreateL4ProxyRules and ModifyL4ProxyRules.",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "L7OfflineLog": {
       "document": "Details of L7 logs.",
@@ -9423,6 +10422,204 @@
       ],
       "type": "object"
     },
+    "ModifyL4ProxyRequest": {
+      "document": "ModifyL4Proxy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2gpv1z8cx8y2",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Application ID.",
+          "example": "sid-2gpv1z8sx8y2",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to enable IPv6 access. If this parameter is not filled, this configuration will not be modified. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li> \n<li>off: Disable.</li>\n",
+          "example": "off",
+          "member": "string",
+          "name": "Ipv6",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies whether to enable network optimization in the Chinese mainland. If this parameter is not filled, this configuration will not be modified. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li> \n<li>off: Disable.</li>",
+          "example": "on",
+          "member": "string",
+          "name": "AccelerateMainland",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyL4ProxyResponse": {
+      "document": "ModifyL4Proxy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyL4ProxyRulesRequest": {
+      "document": "ModifyL4ProxyRules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-21xfqlh4qjee",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Layer 4 proxy instance ID.",
+          "example": "proxy-00dde48321vd",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of forwarding rules. A single request supports up to 200 forwarding rules.\nNote: When L4ProxyRule is used here, RuleId is a required field; Protocol, PortRange, OriginType, OriginValue, OriginPortRange, ClientIPPassThroughMode, SessionPersist, SessionPersistTime, and RuleTag are all optional fields. No modification is made when no value is specified for those fields. Status should not be filled.",
+          "example": "无",
+          "member": "L4ProxyRule",
+          "name": "L4ProxyRules",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyL4ProxyRulesResponse": {
+      "document": "ModifyL4ProxyRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyL4ProxyRulesStatusRequest": {
+      "document": "ModifyL4ProxyRulesStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-21xfqlh4qjee",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Layer 4 proxy instance ID.",
+          "example": "proxy-00dde483-9a2b-11ec-bcb0",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of forwarding rule IDs. It supports up to 200 forwarding rules at a time.",
+          "example": "[\"rule-xxx\"]",
+          "member": "string",
+          "name": "RuleIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Status of forwarding rules. Valid values:\n<li>online: Enabled;</li>\n<li>offline: Disabled.</li>",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyL4ProxyRulesStatusResponse": {
+      "document": "ModifyL4ProxyRulesStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyL4ProxyStatusRequest": {
+      "document": "ModifyL4ProxyStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-67e6b19620",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Layer 4 proxy instance ID.",
+          "example": "sid-2nvaw7ab73kc",
+          "member": "string",
+          "name": "ProxyId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Layer 4 proxy instance status. Valid values:<li>online: Enabled;</li>\n<li>offline: Disabled.</li>",
+          "example": "online",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyL4ProxyStatusResponse": {
+      "document": "ModifyL4ProxyStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyOriginGroupRequest": {
       "document": "ModifyOriginGroup request structure.",
       "members": [
@@ -10118,73 +11315,103 @@
       "members": [
         {
           "disabled": false,
-          "document": "The origin type. Values:\n<li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>\n<li>`COS`: COS bucket address</li>\n<li>`ORIGIN_GROUP`: Origin group</li>\n<li>`AWS_S3`: AWS S3 bucket address</li>",
+          "document": "Origin server type. Valid values:\n<li>IP_DOMAIN: IPV4, IPV6, or domain type origin server;</li>\n<li>COS: Tencent Cloud Object Storage origin server;</li>\n<li>AWS_S3: AWS S3 Cloud Object Storage origin server;</li>\n<li>ORIGIN_GROUP: Origin group type origin server;</li>\n<li>VODEO: Video on Demand (hybrid cloud edition);</li>\n<li>SPACE: Origin shield, currently only available to the whitelist;</li>\n<li>LB: Cloud Load Balancer, currently only available to the whitelist.</li>",
           "example": "ip_domain",
           "member": "string",
           "name": "OriginType",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The origin address. Enter the origin group ID if `OriginType=ORIGIN_GROUP`.",
+          "document": "Origin server address, varying depending on the value of OriginType:\n<li>When OriginType is IP_DOMAIN, this parameter is IPv4 address, IPv6 address, or domain name;</li>\n<li>When OriginType is COS, this parameter is the COS bucket's access domain;</li>\n<li>When OriginType is AWS_S3, this parameter is the S3 bucket's access domain;</li>\n<li>When OriginType is ORIGIN_GROUP, this parameter is the origin group ID;</li>\n<li>When OriginType is VODEO, if VodeoDistributionRange is ALL, this parameter is \"all-buckets-in-vodeo-application\"; if VodeoDistributionRange is Bucket, this parameter is the corresponding bucket domain.</li>\n",
           "example": "qq.com",
           "member": "string",
           "name": "Origin",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "ID of the secondary origin group (valid when `OriginType=ORIGIN_GROUP`). If it’s not specified, it indicates that secondary origins are not used.",
+          "document": "Secondary origin group ID. This parameter is valid only when OriginType is ORIGIN_GROUP and a secondary origin group is configured.",
           "example": "\"origin-07fa3f6c-4498-11ed-a368-5254006ca63d\"",
           "member": "string",
           "name": "BackupOrigin",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Name of the primary origin group (valid when `OriginType=ORIGIN_GROUP`).",
+          "document": "Primary origin group name. This parameter returns a value when OriginType is ORIGIN_GROUP.",
           "example": "\"QQ\"",
           "member": "string",
           "name": "OriginGroupName",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Name of the secondary origin group (valid when `OriginType=ORIGIN_GROUP` and `BackupOrigin` is specified).",
+          "document": "Secondary origin group name. This parameter is valid only when OriginType is ORIGIN_GROUP and a secondary origin group is configured.",
           "example": "\"腾讯云\"",
           "member": "string",
           "name": "BackOriginGroupName",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Whether to authenticate access to the private object storage origin (valid when `OriginType=COS/AWS_S3`). Values:\n<li>`on`: Enable private authentication.</li>\n<li>`off`: Disable private authentication.</li>\nIf this field is not specified, the default value `off` is used.",
+          "document": "Whether access to the private Cloud Object Storage origin server is allowed. This parameter is valid only when OriginType is COS or AWS_S3. Valid values:\n<li>on: Enable private authentication;</li>\n<li>off: Disable private authentication.</li>\nIf it is not specified, off is the default value.",
           "example": "on",
           "member": "string",
           "name": "PrivateAccess",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The private authentication parameters. This field is valid when `PrivateAccess=on`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Private authentication parameter. This parameter is valid only when PrivateAccess is on.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "PrivateParameter",
           "name": "PrivateParameters",
-          "required": false,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "MO sub-application ID",
+          "example": "无",
+          "member": "int64",
+          "name": "VodeoSubAppId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MO distribution range. Valid values: <li>All: All</li> <li>Bucket: Bucket</li>",
+          "example": "无",
+          "member": "string",
+          "name": "VodeoDistributionRange",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MO bucket ID, required when the distribution range (DistributionRange) is bucket (Bucket)",
+          "example": "无",
+          "member": "string",
+          "name": "VodeoBucketId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -10316,7 +11543,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The origin type. Values:\n<li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>\n<li>`COS`: COS bucket address</li>\n<li>`ORIGIN_GROUP`: Origin group</li>\n<li>`AWS_S3`: AWS S3 bucket address</li>\n<li>`LB`: Tencent Cloud CLB instance</li>\n<li>`SPACE`: EdgeOne Shield Space</li>  ",
+          "document": "Origin server type. Valid values:\n<li>IP_DOMAIN: IPV4, IPV6, or domain type origin server;</li>\n<li>COS: Tencent Cloud Object Storage origin server;</li>\n<li>AWS_S3: AWS S3 Cloud Object Storage origin server;</li>\n<li>ORIGIN_GROUP: Origin group type origin server;</li>\n<li>VODEO: Video on Demand (hybrid cloud edition);</li>\n<li>SPACE: Origin shield, currently only available to the whitelist;</li>\n<li>LB: Cloud Load Balancer, currently only available to the whitelist.</li>",
           "example": "ip_domain",
           "member": "string",
           "name": "OriginType",
@@ -10325,7 +11552,7 @@
         },
         {
           "disabled": false,
-          "document": "The origin address. Enter the origin group ID if `OriginType=ORIGIN_GROUP`.",
+          "document": "Origin server address, varying depending on the value of OriginType:\n<li>When OriginType is IP_DOMAIN, specify this parameter with IPv4, IPv6, or domain name;</li>\n<li>When OriginType is COS, specify this parameter with the COS bucket access domain name;</li>\n<li>When OriginType is AWS_S3, specify this parameter with the S3 bucket access domain name;</li>\n<li>When OriginType is ORIGIN_GROUP, specify this parameter with the origin group ID;</li>\n<li>When OriginType is VODEO and VodeoDistributionRange is ALL, specify this parameter with \"all-buckets-in-vodeo-application\"; if VodeoDistributionRange is Bucket, specify this parameter with the corresponding storage bucket domain name;</li>\n<li>When OriginType is LB, specify the Cloud Load Balancer instance ID. This feature is currently only available to the whitelist;</li>\n<li>When OriginType is SPACE, specify this parameter with the origin shield space ID. This feature is currently only available to the whitelist.</li>",
           "example": "qq.com",
           "member": "string",
           "name": "Origin",
@@ -10334,7 +11561,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the backup origin group (valid when `OriginType=ORIGIN_GROUP`). If it’s not specified, it indicates not to use backup origins.",
+          "document": "The ID of the secondary origin group. This parameter is valid only when OriginType is ORIGIN_GROUP. This field indicates the old version capability, which cannot be configured or modified on the control panel after being called. Please submit a ticket if required.",
           "example": "\"origin-07fa3f6c-4498-11ed-a368-5254006ca63d\"",
           "member": "string",
           "name": "BackupOrigin",
@@ -10343,7 +11570,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to allow access to the private object storage origin (valid when `OriginType=COS/AWS_S3`). Values:\nu200c<li>`on`: Enable private authentication.</li>\n<li>`off`: (Default) Disable private authentication.</li>",
+          "document": "Whether access to the private Cloud Object Storage origin server is allowed. This parameter is valid only when OriginType is COS or AWS_S3. Valid values:\n<li>on: Enable private authentication;</li>\n<li>off: Disable private authentication.</li>\nIf it is not specified, the default value is off.",
           "example": "on",
           "member": "string",
           "name": "PrivateAccess",
@@ -10352,12 +11579,39 @@
         },
         {
           "disabled": false,
-          "document": "The private authentication parameters. This field is valid when `PrivateAccess=on`.",
+          "document": "Private authentication parameter. This parameter is valid only when PrivateAccess is on.",
           "example": "无",
           "member": "PrivateParameter",
           "name": "PrivateParameters",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "VODEO sub-application ID. This parameter is required when OriginType is VODEO.",
+          "example": "无",
+          "member": "int64",
+          "name": "VodeoSubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "VODEO distribution range. This parameter is required when OriginType is VODEO. Valid values:\n<li>All: All storage buckets under the current application;</li>\n<li>Bucket: A specified storage bucket.</li>",
+          "example": "无",
+          "member": "string",
+          "name": "VodeoDistributionRange",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VODEO storage bucket ID. This parameter is required when OriginType is VODEO and VodeoDistributionRange is Bucket.",
+          "example": "无",
+          "member": "string",
+          "name": "VodeoBucketId",
+          "required": false,
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -10695,11 +11949,11 @@
       "usage": "both"
     },
     "PrivateParameter": {
-      "document": "Private authentication parameters of object storage origins",
+      "document": "Private authentication parameters for Cloud Object Storage origin server",
       "members": [
         {
           "disabled": false,
-          "document": "The parameter name. Values\n<li>`AccessKeyId`: Access Key ID</li>\n<li>`SecretAccessKey`: Secret Access Key</li>\n<li>`SignatureVersion`: Signature version. Values: `v2`, `v4`</li>\n<li>`Region`: Region of the storage bucket</li>",
+          "document": "The name of the private authentication parameter. Valid values:\n<li>AccessKeyId: Access Key ID for authentication;</li>\n<li>SecretAccessKey: Secret Access Key for authentication;</li>\n<li>SignatureVersion: Authentication version, v2 or v4;</li>\n<li>Region: The region of the storage bucket.</li>",
           "example": "AccessKeyId",
           "member": "string",
           "name": "Name",
@@ -11048,7 +12302,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "RateLimitUserRule": {
       "document": "Rate limit rule",
@@ -11365,6 +12619,16 @@
           "output_required": false,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource tag type. Valid values:\n<li>vodeo: vodeo resource.</li>",
+          "example": "vodeo",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -12024,80 +13288,88 @@
       "members": [
         {
           "disabled": false,
-          "document": "The settings of the managed rule. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Managed rule. If the parameter is null or not filled, the configuration last set will be used by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "WafConfig",
           "name": "WafConfig",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The settings of the rate limiting rule. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Rate limiting. If the parameter is null or not filled, the configuration last set will be used by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "RateLimitConfig",
           "name": "RateLimitConfig",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The settings of the custom rule. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Custom rule. If the parameter is null or not filled, the configuration last set will be used by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "AclConfig",
           "name": "AclConfig",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The settings of the bot configuration. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Bot configuration. If the parameter is null or not filled, the configuration last set will be used by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "BotConfig",
           "name": "BotConfig",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The switch setting of the layer-7 protection. If it is null, the setting that was last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Switch setting of the 7-layer protection. If the parameter is null or not filled, the configuration last set will be used by default.Note: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "SwitchConfig",
           "name": "SwitchConfig",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The settings of the basic access control rule. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Basic access control. If the parameter is null or not filled, the configuration last set will be used by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "IpTableConfig",
           "name": "IpTableConfig",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The settings of the exception rule. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Exception rule configuration. If the parameter is null or not filled, the configuration last set will be used by default.Note: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "ExceptConfig",
           "name": "ExceptConfig",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The settings of the custom block page. If it is null, the settings that were last configured will be used.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Custom block page settings. If the parameter is null or not filled, the configuration last set will be used by default.Note: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "DropPageConfig",
           "name": "DropPageConfig",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -12108,16 +13380,18 @@
           "example": "无",
           "member": "TemplateConfig",
           "name": "TemplateConfig",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Slow attack defense configuration. If it is `null`, the previous setting is used.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Settings for slow attack defense. If the parameter is null or not filled, the configuration last set will be used by default.Note: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "SlowPostConfig",
           "name": "SlowPostConfig",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -13259,7 +14533,7 @@
         },
         {
           "disabled": false,
-          "document": "Connection mode of the site. Values:\n<li>`full`: Connect via the name server.</li>\n<li>`partial`: Connect via the CNAME record.</li>\n<li>`noDomainAccess`: Connect without using a domain name</li>",
+          "document": "Site connection method, valid values:\n<li>full: Connect via NS;</li>\n<li>partial: Connect via CNAME;</li>\n<li>noDomainAccess: Connect without using a domain name;</li>\n<li>vodeo: Connect by default when VODEO is enabled.</li>",
           "example": "full",
           "member": "string",
           "name": "Type",

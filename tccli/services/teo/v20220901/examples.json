@@ -77,7 +77,7 @@
     "CreateApplicationProxyRule": [
       {
         "document": "This example shows you how to create an application proxy rule.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationProxyRule\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"Proto\": \"TCP\",\n    \"Port\": [\n        \"99-110\"\n    ],\n    \"OriginType\": \"custom\",\n    \"OriginValue\": [\n        \"1.1.1.1\"\n    ],\n    \"OriginPort\": \"99-110\",\n    \"ForwardClientIp\": \"TOA\",\n    \"SessionPersist\": false\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationProxyRule\n<Common Request Parameters>\n\n{\n    \"ZoneId\": \"zone-21xfqlh4qjee\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"Proto\": \"TCP\",\n    \"Port\": [\n        \"99-110\"\n    ],\n    \"OriginType\": \"custom\",\n    \"OriginValue\": [\n        \"1.1.1.1\"\n    ],\n    \"OriginPort\": \"99-110\",\n    \"ForwardClientIp\": \"TOA\",\n    \"SessionPersist\": false,\n    \"RuleTag\": \"rule-service-1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3df3e931-3159-4337-adc7-7604e01e0fa9\",\n        \"RuleId\": \"rule-a8f0d49a-33d7-11ed-9b89-52540005c111\"\n    }\n}",
         "title": "Creating an application proxy rule"
       }
@@ -90,6 +90,28 @@
         "title": "Create a New Version for the Specified Configuration Group"
       }
     ],
+    "CreateL4Proxy": [
+      {
+        "document": "This example shows you how to create a Layer 4 instance named 'test', with the acceleration zone of 'Availability zone in the Chinese mainland', under the zone with ZoneId 'zone-2jc2xy3hr7f7'.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateL4Proxy\n<Common Request Parameters>\n\n{\n    \"ProxyName\": \"test\",\n    \"ZoneId\": \"zone-2jc2xy3hr7f7\",\n    \"Area\": \"mainland\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ProxyId\": \"sid-2jc2hl2hr8f7\",\n        \"RequestId\": \"0se57a54-cc42-11ed-8efb-525401a961b1\"\n    }\n}",
+        "title": "Creating a Layer 4 proxy instance with the acceleration zone of 'Availability Zone in the Chinese mainland'"
+      },
+      {
+        "document": "This example shows you how to create a Layer 4 instance named 'test', with the acceleration zone of 'Global availability zone (excluding the Chinese mainland)', and exclusive DDoS protection enabled under the zone with ZoneId 'zone-2jc2xy3hr7f7', to provide full protection within the acceleration zone.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateL4Proxy\n<Common Request Parameters>\n\n{\n    \"ZoneId\": \"zone-2jc2xy3hr7f7\",\n    \"ProxyName\": \"test\",\n    \"Area\": \"overseas\",\n    \"DDosProtectionConfig\": {\n        \"LevelOverseas\": \"ANYCAST_ALLIN\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"ProxyId\": \"sid-2jc2hl2hr8f7\",\n        \"RequestId\": \"0se57a54-cc42-11ed-8efb-525401a961b1\"\n    }\n}",
+        "title": "Creating a Layer 4 proxy instance with the acceleration zone of 'Global Availability Zone (excluding Chinese mainland)' and exclusive DDoS protection enabled"
+      }
+    ],
+    "CreateL4ProxyRules": [
+      {
+        "document": "This example shows you how to create a forwarding rule in the instance with ProxyId 'sid-2qwk27xf7j9g' under the zone with ZoneId 'zone-24wjy25v1cwi'.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateL4ProxyRules\n<Common Request Parameters>\n\n{\n    \"ZoneId\": \"zone-24wjy25v1cwi\",\n    \"ProxyId\": \"sid-2qwk27xf7j9g\",\n    \"L4ProxyRules\": [\n        {\n            \"Protocol\": \"TCP\",\n            \"PortRange\": [\n                \"80\"\n            ],\n            \"OriginType\": \"IP_DOMAIN\",\n            \"OriginValue\": [\n                \"119.23.100.45\"\n            ],\n            \"OriginPortRange\": \"90\",\n            \"ClientIPPassThroughMode\": \"TOA\",\n            \"SessionPersist\": \"on\",\n            \"SessionPersistTime\": 3600,\n            \"RuleTag\": \"test\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6f8h5358-df6d-4d2a-ac39-1706cbf8a707\",\n        \"L4ProxyRuleIds\": [\n            \"rule-2qzkbvx3hxl1\"\n        ]\n    }\n}",
+        "title": "Creating a Layer 4 proxy forwarding rule"
+      }
+    ],
     "CreateOriginGroup": [
       {
         "document": "This example shows you how to create an HTTP-specific origin groups.",
@@ -100,8 +122,8 @@
     ],
     "CreatePlanForZone": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePlanForZone\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-25z65bfb4414\",\n    \"PlanType\": \"sta\"\n}",
+        "document": "This example shows you how to create a plan for a zone.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePlanForZone\n<Common Request Parameters>\n\n{\n    \"ZoneId\": \"zone-25z65bfb4414\",\n    \"PlanType\": \"sta\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a06f52e7-2aab-4510-b2c2-1065bfb4414c\",\n        \"ResourceNames\": [\n            \"plan_sta\"\n        ],\n        \"DealNames\": [\n            \"2022080135400110011001\"\n        ]\n    }\n}",
         "title": "CreatePlanForZone"
       }
@@ -258,6 +280,22 @@
         "title": "Deleting an application proxy rule"
       }
     ],
+    "DeleteL4Proxy": [
+      {
+        "document": "This example shows you how to delete a Layer 4 proxy instance with ZoneId as 'zone-24wjy25v1cwi' and ProxyId as 'sid-2qwk27xf7j9g'.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteL4Proxy\n<Common Request Parameters>\n\n{\n    \"ZoneId\": \"zone-24wjy25v1cwi\",\n    \"ProxyId\": \"sid-2qwk27xf7j9g\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6f8h5258-cdda-4f82-b7sc-0aef4a219244\"\n    }\n}",
+        "title": "Deleting a Layer 4 proxy instance"
+      }
+    ],
+    "DeleteL4ProxyRules": [
+      {
+        "document": "This example shows you how to delete the rules with RuleId 'rule-2qzkbvx3hxl7' and 'rule-3pszkbox0hm1' in ProxyId 'sid-2qwk27xf7j9g' under the zone with ZoneId 'zone-24wjy25v1cwi' in batches.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteL4ProxyRules\n<Common Request Parameters>\n\n{\n    \"ZoneId\": \"zone-24wjy25v1cwi\",\n    \"ProxyId\": \"sid-2qwk27xf7j9g\",\n    \"RuleIds\": [\n        \"rule-2qzkbvx3hxl7\",\n        \"rule-3pszkbox0hm1\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6f8h5358-3159-4337-adc7-7604e01e0fa9\"\n    }\n}",
+        "title": "Deleting Layer 4 proxy forwarding rules in batches"
+      }
+    ],
     "DeleteOriginGroup": [
       {
         "document": "This example shows you how to delete an origin group.",
@@ -338,6 +376,14 @@
         "title": "Querying available plan options"
       }
     ],
+    "DescribeBillingData": [
+      {
+        "document": "This example shows you how to query the billing volume of content acceleration traffic with a specific zone ID and region ID on a daily granularity.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillingData\n<Common Request Parameters>\n\n{\n    \"StartTime\": \"2024-01-01T00:00:00+08:00\",\n    \"EndTime\": \"2024-01-24T03:20:00+08:00\",\n    \"Interval\": \"day\",\n    \"MetricName\": \"acc_flux\",\n    \"Filters\": [\n        {\n            \"Type\": \"region-id\",\n            \"Value\": \"MidEast\"\n        }\n    ],\n    \"ZoneIds\": [\n        \"zone-2smdfso9dr58\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"457e8933-4296-4878-9a7f-fb888559e29e\",\n        \"Data\": [\n            {\n                \"Time\": \"2023-12-31T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-01T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-02T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-03T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-04T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-05T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-06T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-07T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-08T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-09T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-10T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-11T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-12T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-13T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-14T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-15T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-16T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-17T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-18T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-19T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-20T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-21T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-22T16:00:00Z\",\n                \"Value\": 0\n            },\n            {\n                \"Time\": \"2024-01-23T16:00:00Z\",\n                \"Value\": 0\n            }\n        ]\n    }\n}",
+        "title": "Querying content acceleration traffic in the specified zone and billing region"
+      }
+    ],
     "DescribeConfigGroupVersionDetail": [
       {
         "document": "Query version details with ZoneId set to zone-m2kplohsdc4b and VersionId to ver-5ksglmhghsu3.",
@@ -365,15 +411,15 @@
     "DescribeDDoSAttackData": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDDoSAttackData\n<Common request parameters>\n\n{\n    \"MetricNames\": [\n        \"ddos_attackMaxBandwidth\"\n    ],\n    \"Interval\": \"min\",\n    \"PolicyIds\": [\n        1706\n    ],\n    \"ZoneIds\": [\n        \"zone-21xfqlh4qjee\"\n    ],\n    \"StartTime\": \"2022-08-22T00:00:00+00:00\",\n    \"EndTime\": \"2022-08-23T00:00:00+00:00\",\n    \"Area\": \"overseas\"\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDDoSAttackData\n<Common request parameters>\n{\n    \"MetricNames\": [\n        \"ddos_attackMaxBandwidth\"\n    ],\n    \"Interval\": \"min\",\n    \"PolicyIds\": [\n        1706\n    ],\n    \"ZoneIds\": [\n        \"zone-21xfqlh4qjee\"\n    ],\n    \"StartTime\": \"2022-08-22T00:00:00+00:00\",\n    \"EndTime\": \"2022-08-23T00:00:00+00:00\",\n    \"Area\": \"overseas\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Data\": [\n            {\n                \"Value\": [\n                    {\n                        \"Max\": 100,\n                        \"Metric\": \"ddos_attackMaxBandwidth\",\n                        \"Avg\": 100.0,\n                        \"Detail\": [\n                            {\n                                \"Value\": 100\n                            }\n                        ],\n                        \"Sum\": 100.0\n                    }\n                ],\n                \"Key\": \"ddos_attackMaxBandwidth\"\n            }\n        ],\n        \"RequestId\": \"a79e60f8-34cc-4ee5-a7f9-a24adb572c68\"\n    }\n}",
-        "title": "Queries the time-series data of DDoS attacks."
+        "title": "Querying the Time-series Data of DDoS Attacks"
       }
     ],
     "DescribeDDoSAttackEvent": [
       {
-        "document": "This example shows you how to query DDoS attack events.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDDoSAttackEvent\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"Offset\": 1,\n    \"PolicyIds\": [\n        1245\n    ],\n    \"ZoneIds\": [\n        \"zone-21xfqlh4qjee\"\n    ],\n    \"StartTime\": \"2020-09-22T00:00:00+00:00\",\n    \"EndTime\": \"2020-09-22T00:00:00+00:00\",\n    \"ShowDetail\": false,\n    \"Area\": \"overseas\"\n}",
+        "document": "Querying a DDoS attack event",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDDoSAttackEvent\n<Common request parameters>{\n    \"Limit\": 1,\n    \"Offset\": 1,\n    \"PolicyIds\": [\n        1245\n    ],\n    \"ZoneIds\": [\n        \"zone-21xfqlh4qjee\"\n    ],\n    \"StartTime\": \"2020-09-22T00:00:00+00:00\",\n    \"EndTime\": \"2020-09-22T00:00:00+00:00\",\n    \"ShowDetail\": false,\n    \"Area\": \"overseas\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"Data\": [\n            {\n                \"EventId\": \"12214521\",\n                \"AttackPacketMaxRate\": 10,\n                \"AttackEndTime\": 1659595468,\n                \"AttackMaxBandWidth\": 10,\n                \"AttackStartTime\": 1659595468,\n                \"ZoneId\": \"zone-21xfqlh4qjee\",\n                \"PolicyId\": 1245,\n                \"AttackType\": \"UDPFLOOD\",\n                \"AttackStatus\": 1,\n                \"Area\": \"mainland\",\n                \"DDoSBlockData\": [\n                    {\n                        \"StartTime\": 1659595468,\n                        \"EndTime\": 0,\n                        \"BlockArea\": \"Access resitricted in some regions.\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"c0ce8b7c-a48f-4eed-a0eb-c24177efc430\"\n    }\n}",
         "title": "Querying a DDoS attack event"
       }
@@ -389,9 +435,9 @@
     "DescribeDefaultCertificates": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDefaultCertificates\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-fafcasdf\"\n            ]\n        }\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDefaultCertificates\n<Common Request Parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Name\": \"zone-id\",\n            \"Values\": [\n                \"zone-fafcasdf\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"084d5612-67a7-4aca-aac9-827aa3662b2d\",\n        \"DefaultServerCertInfo\": [\n            {\n                \"Status\": \"deployed\",\n                \"CertId\": \"teo-285inl1otbtd\",\n                \"SubjectAltName\": [\n                    \"*.test.com\",\n                    \"test.com\"\n                ],\n                \"EffectiveTime\": \"2020-09-22T00:00:00+00:00\",\n                \"CommonName\": \"test.com\",\n                \"ExpireTime\": \"2020-09-22T00:00:00+00:00\",\n                \"Alias\": \"EdgeOne default\",\n                \"Message\": \"\",\n                \"Type\": \"default\"\n            }\n        ]\n    }\n}",
-        "title": "Obtaining default certificates"
+        "title": "Obtaining the default certificate"
       }
     ],
     "DescribeDeployHistory": [
@@ -418,12 +464,36 @@
         "title": "Query detailed configurations of the domain name"
       }
     ],
+    "DescribeIPRegion": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIPRegion\n<Common request parameters>{\n    \"IPs\": [\n        \"1.1.1.1\",\n        \"2402:4e00:1403:eb00:0:9440:b55a:39a8\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bc0bb357-0b72-4abb-ae66-ffffb965aced\",\n        \"IPRegionInfo\": [\n            {\n                \"IP\": \"120.226.17.168\",\n                \"IsEdgeOneIP\": \"yes\"\n            },\n            {\n                \"IP\": \"101.33.20.11\",\n                \"IsEdgeOneIP\": \"yes\"\n            },\n            {\n                \"IP\": \"120.222.238.33\",\n                \"IsEdgeOneIP\": \"yes\"\n            },\n            {\n                \"IP\": \"120.222.238.33\",\n                \"IsEdgeOneIP\": \"yes\"\n            },\n            {\n                \"IP\": \"120.226.17.167\",\n                \"IsEdgeOneIP\": \"yes\"\n            },\n            {\n                \"IP\": \"120.226.17.168\",\n                \"IsEdgeOneIP\": \"yes\"\n            },\n            {\n                \"IP\": \"43.130.34.95\",\n                \"IsEdgeOneIP\": \"no\"\n            },\n            {\n                \"IP\": \"43.128.224.98\",\n                \"IsEdgeOneIP\": \"no\"\n            }\n        ]\n    }\n}",
+        "title": "Querying IP geographic location information"
+      }
+    ],
     "DescribeIdentifications": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIdentifications\n<Common request parameters>\n\n{\n    \"Limit\": 20,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"example.com\"\n            ],\n            \"Name\": \"zone-name\"\n        }\n    ],\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Identifications\": [\n            {\n                \"ZoneName\": \"example.com\",\n                \"Status\": \"pending\",\n                \"Ascription\": {\n                    \"Subdomain\": \"edgeonereclaim\",\n                    \"RecordType\": \"TXT\",\n                    \"RecordValue\": \"reclaim-a24aba2420cf4ce8b7bff7c8be6d337f\"\n                },\n                \"OriginalNameServers\": [\n                    \"ns1.example.com\",\n                    \"ns2.example.com\"\n                ],\n                \"FileAscription\": {\n                    \"IdentifyContent\": \"88v24mnnljwbhaohrpfx80f63duhdnjx\",\n                    \"IdentifyPath\": \"/.well-known/teo-verification/vd4ewuqa9n.txt\"\n                }\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"8gs50b24-7df5-47f4-96ae-95825d53er3c\"\n    }\n}",
         "title": "Querying the verification status of a site"
+      }
+    ],
+    "DescribeL4Proxy": [
+      {
+        "document": "This example shows you how to query the list of Layer 4 proxy instances under the zone with ZoneId 'zone-24wjy25v1cwi'.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeL4Proxy\n<Common Request Parameters>\n\n{\n    \"Offset\": 1,\n    \"Limit\": 10,\n    \"Filters\": [],\n    \"ZoneId\": \"zone-24wjy25v1cwi\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"L4Proxies\": [\n            {\n                \"ZoneId\": \"zone-24wjy25v1cwi\",\n                \"ProxyId\": \"sid-2qwk27xf7j9g\",\n                \"ProxyName\": \"test\",\n                \"Area\": \"mainland\",\n                \"Cname\": \"test.24wjy25v1cwi.eo.dnse5.com\",\n                \"Ips\": [],\n                \"Status\": \"online\",\n                \"Ipv6\": \"off\",\n                \"StaticIp\": \"off\",\n                \"AccelerateMainland\": \"off\",\n                \"UpdateTime\": \"2023-09-22T15:31:04+00:00\"\n            }\n        ],\n        \"RequestId\": \"6f8h5258-cdda-4f82-b7sc-0aef4a219244\"\n    }\n}",
+        "title": "Querying the list of Layer 4 proxy instances under a zone"
+      }
+    ],
+    "DescribeL4ProxyRules": [
+      {
+        "document": "This example shows you how to query the list of forwarding rules with ProxyId 'sid-2qwk27xf7j9g' under the zone with ZoneId 'zone-24wjy25v1cwi'.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeL4ProxyRules\n<Common Request Parameters>\n\n{\n    \"ZoneId\": \"zone-24wjy25v1cwi\",\n    \"ProxyId\": \"sid-2qwk27xf7j9g\",\n    \"Offset\": 1,\n    \"Limit\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"L4ProxyRules\": [\n            {\n                \"RuleId\": \"rule-2qzkbvx3hxl1\",\n                \"Protocol\": \"TCP\",\n                \"PortRange\": [\n                    \"80\"\n                ],\n                \"OriginType\": \"IP_DOMAIN\",\n                \"OriginValue\": [\n                    \"119.23.100.45\"\n                ],\n                \"OriginPortRange\": \"90\",\n                \"ClientIPPassThroughMode\": \"TOA\",\n                \"SessionPersist\": \"on\",\n                \"SessionPersistTime\": 3600,\n                \"RuleTag\": \"test\",\n                \"Status\": \"online\"\n            }\n        ],\n        \"RequestId\": \"6f8h5358-cdda-4f82-b7sc-0aef4a219244\"\n    }\n}",
+        "title": "Querying a Layer 4 proxy instance forwarding rule list"
       }
     ],
     "DescribeOriginGroup": [
@@ -652,8 +722,8 @@
     ],
     "ModifyAccelerationDomainStatuses": [
       {
-        "document": "The following example shows how to disable a specified accelerated domain name.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAccelerationDomainStatuses\n<Common request parameters>\n\n{\n    \"DomainNames\": [\n        \"example.com\"\n    ],\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"Status\": \"offline\",\n    \"Force\": \"false\"\n}",
+        "document": "The following example shows how to disable a specified acceleration domain name.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAccelerationDomainStatuses\n<Common request parameters>\n{\n    \"DomainNames\": [\n        \"example.com\"\n    ],\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"Status\": \"offline\",\n    \"Force\": \"false\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Batch modifying the status of accelerated domains"
       }
@@ -685,7 +755,7 @@
     "ModifyApplicationProxyRule": [
       {
         "document": "This example shows you how to modify an application proxy rule.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyRule\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"RuleId\": \"rule-5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n    \"Proto\": \"TCP\",\n    \"Port\": [\n        \"99-110\"\n    ],\n    \"OriginType\": \"custom\",\n    \"OriginValue\": [\n        \"1.1.1.1\"\n    ],\n    \"OriginPort\": \"99-110\",\n    \"ForwardClientIp\": \"TOA\",\n    \"SessionPersist\": false\n}",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProxyRule\n<Common Request Parameters>\n\n{\n    \"ZoneId\": \"zone-276zs184g93m\",\n    \"ProxyId\": \"proxy-19389e5dwwxfs\",\n    \"RuleId\": \"rule-5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n    \"Proto\": \"TCP\",\n    \"Port\": [\n        \"99-110\"\n    ],\n    \"OriginType\": \"custom\",\n    \"OriginValue\": [\n        \"1.1.1.1\"\n    ],\n    \"OriginPort\": \"99-110\",\n    \"ForwardClientIp\": \"TOA\",\n    \"SessionPersist\": false,\n    \"RuleTag\": \"rule-service-1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
         "title": "Modifying an application proxy rule"
       }
@@ -718,6 +788,38 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyHostsCertificate\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2fgd17m17xw\",\n    \"Hosts\": [\n        \"abc.test.com\"\n    ],\n    \"Mode\": \"eofreecert\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"084d5612-67a7-4aca-aac9-827aa3662b2d\"\n    }\n}",
         "title": "Configuring a free certificate"
+      }
+    ],
+    "ModifyL4Proxy": [
+      {
+        "document": "This example shows you how to enable IPv6 access for the Layer 4 proxy instance with ZoneId 'zone-24wjy25v1cwi' and ProxyId 'sid-2qwk27xf7j9g'.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyL4Proxy\n<Common Request Parameters>\n\n{\n    \"ZoneId\": \"zone-24wjy25v1cwi\",\n    \"ProxyId\": \"sid-2qwk27xf7j9g\",\n    \"Ipv6\": \"on\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"fbdb42f0-6a1e-4d397783c36csdf\"\n    }\n}",
+        "title": "Modifying IPv6 access configuration"
+      }
+    ],
+    "ModifyL4ProxyRules": [
+      {
+        "document": "This example shows you how to modify the RuleTag of the rule with RuleId 'rule-2qzkbvx3hxl7' in ProxyId 'sid-2qwk27xf7j9g' of ZoneId 'zone-24wjy25v1cwi' as 'service-1', Protocol as 'TCP', and ClientIPPassThroughMode as 'TOA'.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyL4ProxyRules\n<Common Request Parameters>\n\n{\n    \"ZoneId\": \"zone-24wjy25v1cwi\",\n    \"ProxyId\": \"sid-2qwk27xf7j9g\",\n    \"L4ProxyRules\": [\n        {\n            \"RuleId\": \"rule-2qzkbvx3hxl7\",\n            \"RuleTag\": \"service-1\",\n            \"Protocol\": \"TCP\",\n            \"ClientIPPassThroughMode\": \"TOA\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3df3e931-3119-4237-adc7-7604e01e0fa9\"\n    }\n}",
+        "title": "Modifying Layer 4 proxy forwarding rules"
+      }
+    ],
+    "ModifyL4ProxyRulesStatus": [
+      {
+        "document": "This example shows you how to disable all rules with RuleId 'rule-2qzkbvx3hxl7' and 'rule-3pszkbox0hm1' in ProxyId 'sid-2qwk27xf7j9g' under the zone with ZoneId 'zone-24wjy25v1cwi'.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyL4ProxyRulesStatus\n<Common Request Parameters>\n\n{\n    \"ZoneId\": \"zone-24wjy25v1cwi\",\n    \"ProxyId\": \"sid-2qwk27xf7j9g\",\n    \"RuleIds\": [\n        \"rule-2qzkbvx3hxl7\",\n        \"rule-3pszkbox0hm1\"\n    ],\n    \"Status\": \"offline\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6f8h5358-3159-4337-adc7-7604e01e0fa9\"\n    }\n}",
+        "title": "Modifying Layer 4 proxy forwarding rule status in batches"
+      }
+    ],
+    "ModifyL4ProxyStatus": [
+      {
+        "document": "This example shows you how to enable the Layer 4 proxy instance with ProxyId 'sid-2qwk27xf7j9g' under the zone with ZoneId 'zone-24wjy25v1cwi'.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyL4ProxyStatus\n<Common Request Parameters>\n\n{\n    \"ZoneId\": \"zone-24wjy25v1cwi\",\n    \"ProxyId\": \"sid-2qwk27xf7j9g\",\n    \"Status\": \"online\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6f8h5258-cdda-4f82-b7sc-0aef4a219244\"\n    }\n}",
+        "title": "Enabling a Layer 4 proxy instance"
       }
     ],
     "ModifyOriginGroup": [
