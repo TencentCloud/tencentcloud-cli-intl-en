@@ -550,7 +550,7 @@
           "example": "true",
           "member": "bool",
           "name": "IsPass",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -560,7 +560,7 @@
           "example": "无",
           "member": "FileInfo",
           "name": "CardVideo",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -570,7 +570,7 @@
           "example": "无",
           "member": "FileInfo",
           "name": "CardImage",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -580,7 +580,7 @@
           "example": "无",
           "member": "FileInfo",
           "name": "CardInfoOcrJson",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -590,9 +590,19 @@
           "example": "c6df4b3d-d1aa-4d49-a676-d44baf379613",
           "member": "string",
           "name": "RequestId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The recognition results of ID card",
+          "example": "无",
+          "member": "CardInfo",
+          "name": "CardInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
