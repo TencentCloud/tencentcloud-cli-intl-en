@@ -119,6 +119,112 @@
     "serviceShortName": "faceid"
   },
   "objects": {
+    "Address": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Nationality.",
+          "example": "无",
+          "member": "string",
+          "name": "Country",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Post code.",
+          "example": "无",
+          "member": "string",
+          "name": "PostalCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subregion.",
+          "example": "无",
+          "member": "string",
+          "name": "Subdivision",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "City.",
+          "example": "无",
+          "member": "string",
+          "name": "City",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Complete address.",
+          "example": "无",
+          "member": "string",
+          "name": "FormattedAddress",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The first line of address.",
+          "example": "无",
+          "member": "string",
+          "name": "LineOne",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The second line of address.",
+          "example": "无",
+          "member": "string",
+          "name": "LineTwo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The third line of address.",
+          "example": "无",
+          "member": "string",
+          "name": "LineThree",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The fourth line of address.",
+          "example": "无",
+          "member": "string",
+          "name": "LineFour",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The fifth line of address.",
+          "example": "无",
+          "member": "string",
+          "name": "LineFive",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "ApplyLivenessTokenRequest": {
       "document": "ApplyLivenessToken request structure.",
       "members": [
@@ -1169,7 +1275,7 @@
         },
         {
           "disabled": false,
-          "document": "Gender on the license\n- M：male\n- F：female\n- X：other gender\nNote: This field may return null, indicating that no valid values can be obtained.\nExample: M",
+          "document": "Gender on the license\n- M: male\n- F: female\n- X: other gender\nNote: This field may return null, indicating that no valid values can be obtained.\nExample: M",
           "example": "M",
           "member": "string",
           "name": "Sex",
@@ -1226,6 +1332,16 @@
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Address",
+          "name": "Address",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -3288,6 +3404,15 @@
       "members": [
         {
           "disabled": false,
+          "document": "When starting verification, whether to skip the starting verification page. If true, enter the verification process directly. The default is false. This configuration will not take effect if the downgrade policy is triggered.",
+          "example": "false",
+          "member": "bool",
+          "name": "AutoSkipStartPage",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
           "document": "When the verification passed, whether to skip the result page and automatically jump to RedirectURL. The default value is false.\nExample value: false",
           "example": "false",
           "member": "bool",
@@ -3312,6 +3437,15 @@
           "name": "IDCardType",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to turn off document alarms, the default is false (the alarm detection function is turned on). When enabled, the identity authentication process will be intercepted based on the alarm status of the certificate. If you need to use the document authentication function, please contact us.",
+          "example": "false",
+          "member": "bool",
+          "name": "DisableCheckOcrWarnings",
+          "required": false,
+          "type": "bool"
         }
       ],
       "usage": "in"
