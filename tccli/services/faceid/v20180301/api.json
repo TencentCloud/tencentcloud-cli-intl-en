@@ -1,5 +1,12 @@
 {
   "actions": {
+    "ApplyCardVerification": {
+      "document": "The types of national cards supported by the API and whether instructions on the back of the card are required are as follows:  <table> <thead> <tr> <td style=\"width:200px\"Nationality</td> <td style=\"width:200px\">CardType</td> <td style=\"width:200px\">Back side required</td> </tr> </thead> <tbody> <tr> <td>Indonesia</td> <td>ID card</td> <td>No</td> </tr> <tr> <td>Indonesia</td> <td>Drving license</td> <td>No</td> </tr> <tr> <td>Hongkong</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Thailand</td> <td>ID card</td> <td>No</td> </tr> <tr> <td>Thailand</td> <td>Drving license</td> <td>Yes</td> </tr> <tr> <td>Malaysia</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Malaysia</td> <td>Drving license</td> <td>Yes</td> </tr> <tr> <td>Singapore</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Singapore</td> <td>Drving license</td> <td>Yes</td> </tr> <tr> <td>Philippine</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Philippine</td> <td>Drving license</td> <td>No</td> </tr> <tr> <td>Japan</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Japan</td> <td>Drving license</td> <td>No</td> </tr> </tbody> </table>",
+      "input": "ApplyCardVerificationRequest",
+      "name": "ApplyCardVerification",
+      "output": "ApplyCardVerificationResponse",
+      "status": "online"
+    },
     "ApplyLivenessToken": {
       "document": "This API is used to apply for a token before calling the liveness detection service each time. This token is required for initiating the verification process and getting the result after the verification is completed.",
       "input": "ApplyLivenessTokenRequest",
@@ -54,6 +61,13 @@
       "input": "GenerateReflectSequenceRequest",
       "name": "Obtains light sequences",
       "output": "GenerateReflectSequenceResponse",
+      "status": "online"
+    },
+    "GetCardVerificationResult": {
+      "document": "The interface supports obtaining the certificate authentication result based on the token.",
+      "input": "GetCardVerificationResultRequest",
+      "name": "GetCardVerificationResult",
+      "output": "GetCardVerificationResultResponse",
       "status": "online"
     },
     "GetFaceIdResultIntl": {
@@ -224,6 +238,108 @@
         }
       ],
       "usage": "out"
+    },
+    "ApplyCardVerificationRequest": {
+      "document": "ApplyCardVerification request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Please select the country code of ID document.\nIDN: Indonesia\nHKG: Hong Kong\nTHA: Thailand\nMYS: Malaysia\nSGP: Singapore\nJPN: Japan\nAUTO: Automatic Identification",
+          "example": "IDN：Indonesia; HKG: Hong Kong;  THA: Thailand;  MYS: Malaysia;  SGP: Singapore; JPN: Japan; PHL: Philippines;   AUTO:  支持200+国家的卡证，若有需求请联系商务",
+          "member": "string",
+          "name": "Nationality",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Please select the type of ID document. The supported options are:\nID_CARD\nPASSPORT\nDRIVING_LICENSE\nAUTO",
+          "example": "ID_CARD; PASSPORT; DRIVING_LICENSE; AUTO 支持上述3类卡证的自动识别",
+          "member": "string",
+          "name": "CardType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Base64 value for the front of the document. Supported image formats: PNG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. \nThe image download takes no more than 3 seconds. Supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64 Front of the image must be provided. If both are provided, only ImageUrlFront will be used.",
+          "example": "无",
+          "member": "string",
+          "name": "ImageBase64Front",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Base64 value of the reverse side of the document. Supported image formats: PNG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.",
+          "example": "无",
+          "member": "string",
+          "name": "ImageBase64Back",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The URL value on the back of the certificate. Supported image formats: PNG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64Front of the image must be provided. If both are provided, only ImageUrlFront will be used.",
+          "example": "无",
+          "member": "string",
+          "name": "ImageUrlFront",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The URL value on the back of the certificate. Supported image formats: PNG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.",
+          "example": "无",
+          "member": "string",
+          "name": "ImageUrlBack",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ApplyCardVerificationResponse": {
+      "document": "ApplyCardVerification response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The token used to identify an verification process. It can be used to get the verification result after the process is completed.",
+          "example": "无",
+          "member": "string",
+          "name": "CardVerificationToken",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The maximum number of polls for calling the pull result interface polling.",
+          "example": "无",
+          "member": "uint64",
+          "name": "AsyncCardVerificationMaxPollingTimes",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The interval for polling when calling the pull result interface (in seconds).",
+          "example": "无",
+          "member": "uint64",
+          "name": "AsyncCardVerificationPollingWaitTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ApplyLivenessTokenRequest": {
       "document": "ApplyLivenessToken request structure.",
@@ -1399,6 +1515,103 @@
           "member": "string",
           "name": "ReflectSequenceMd5",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCardVerificationResultRequest": {
+      "document": "GetCardVerificationResult request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The token used to identify an verification process. It can be used to get the verification result after the process is completed.",
+          "example": "无",
+          "member": "string",
+          "name": "CardVerificationToken",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetCardVerificationResultResponse": {
+      "document": "GetCardVerificationResult response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pass status. When Warning and Rejected are returned, please check the specific reasons in the WarnInfo structure return. Example values are as follows:\nPassed\nWarning\nRejected",
+          "example": "0：PASSED 1：WARNING 2：REJECTED 3：PROCESSING",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Warning information returned by document verification.",
+          "example": "无",
+          "member": "string",
+          "name": "WarnInfo",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Nationality code. Complies with standard ISO 3166-1 alpha-3. \n\nExample value: IDN",
+          "example": "IDN：Indonesia HKG：Hong Kong THA：Thailand MYS：Malaysia SGP：Singapore  JPN：Japan  PHL：Philippines",
+          "member": "string",
+          "name": "Nationality",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Card Type. The supported options are:\nID_CARD\nPASSPORT\nDRIVING_LICENSE\nAUTO\n\nExample value: ID_CARD",
+          "example": "1：ID CARD; 2：PASSPORT;  3：DRIVING LICENSE;  4：VISA ; -1：UNSUPPORTED",
+          "member": "string",
+          "name": "CardType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subtype of the ID document.\n",
+          "example": "ID_CARD：-NATIONAL_ID -CONSULAR_ID -ELECTORAL_ID -RESIDENT_PERMIT_ID -TAX_ID -STUDENT_ID -PASSPORT_CARD_ID -MILITARY_ID -PUBLIC_SAFETY_ID -HEALTH_ID -OTHER_ID -VISA -UNKOWN   DRIVING_LICENSE: -REGULAR_DRIVING_LICENSE -LEARNING_DRIVING_LICENSE   PASSPORT: -E_PASSPORT(mobile only)",
+          "member": "string",
+          "name": "CardSubType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Recognition results of the ID document.",
+          "example": "无",
+          "member": "CardInfo",
+          "name": "CardInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The token used to identify an verification process. It can be used to get the verification result after the process is completed.",
+          "example": "无",
+          "member": "string",
+          "name": "IDVerificationToken",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         },
