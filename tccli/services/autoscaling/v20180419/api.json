@@ -14,6 +14,13 @@
       "output": "AttachLoadBalancersResponse",
       "status": "online"
     },
+    "CancelInstanceRefresh": {
+      "document": "This API is used to cancel the instance refresh activity of the scaling group.\n* Batches that have already been refreshed or are currently being refreshed remain unaffected; batches pending refresh will be canceled.\n* If a refresh fails, the affected instances will remain in the standby status and require manual intervention by the user to either attempt to exit the standby status or destroy the instances.\n* Rollback operations are not allowed after cancellation, and resuming is also unsupported.",
+      "input": "CancelInstanceRefreshRequest",
+      "name": "Cancels instance refresh",
+      "output": "CancelInstanceRefreshResponse",
+      "status": "online"
+    },
     "ClearLaunchConfigurationAttributes": {
       "document": "This API is used to clear specific attributes of the launch configuration.",
       "input": "ClearLaunchConfigurationAttributesRequest",
@@ -182,6 +189,13 @@
       "output": "DescribeNotificationConfigurationsResponse",
       "status": "online"
     },
+    "DescribeRefreshActivities": {
+      "document": "This API (DescribeRefreshActivities) is used to query the instance refresh activity records of a scaling group.",
+      "input": "DescribeRefreshActivitiesRequest",
+      "name": "Queries the instance refresh activity",
+      "output": "DescribeRefreshActivitiesResponse",
+      "status": "online"
+    },
     "DescribeScalingPolicies": {
       "document": "This API (DescribeScalingPolicies) is used to query alarm trigger policies.",
       "input": "DescribeScalingPoliciesRequest",
@@ -229,6 +243,13 @@
       "input": "ExecuteScalingPolicyRequest",
       "name": "Triggers a scaling policy",
       "output": "ExecuteScalingPolicyResponse",
+      "status": "online"
+    },
+    "ExitStandby": {
+      "document": "This API is used to exit instances from the standby status in the scaling group.\n* When an instance is in standby status, its load balancer weight is set to 0. Upon exiting the standby status, the weight value automatically gets restored.\n* Initiating power-on/power-off actions on instances that are in standby status also results in them exiting from the standby status.",
+      "input": "ExitStandbyRequest",
+      "name": "Exits instances from standby status",
+      "output": "ExitStandbyResponse",
       "status": "online"
     },
     "ModifyAutoScalingGroup": {
@@ -301,6 +322,20 @@
       "output": "RemoveInstancesResponse",
       "status": "online"
     },
+    "ResumeInstanceRefresh": {
+      "document": "This API is used to resume the paused instance refresh activity, allowing it to retry failed instances in the current batch or proceed with refreshing subsequent batches. Note that calling this interface is ineffective when the activity is not in a paused status.",
+      "input": "ResumeInstanceRefreshRequest",
+      "name": "Resumes instance refresh",
+      "output": "ResumeInstanceRefreshResponse",
+      "status": "online"
+    },
+    "RollbackInstanceRefresh": {
+      "document": "This API is used to generate a new instance refresh activity, which also supports batched refreshing and operations such as pausing, resuming, and canceling. The interface returns the RefreshActivityId for the rollback activity.\n* Instances pending refresh in the original activity are updated to a canceled status. Nonexistent instances are disregarded, while instances in all other statuses proceed to enter the rollback process.\n* Instances that were being refreshed in the original activity will not be immediately terminated; instead, the rollback activity will be executed after their refresh has been completed.\n* Rollback is supported for activities that are in a paused status or those with the most recent successful refresh; it is not supported for activities in other statuses.\n* When the original refresh activity involves reinstalling instances, for the ImageId parameter, it will automatically restore to the image ID before the rollback; for parameters such as UserData, EnhancedService, LoginSettings, and HostName, they will still be retrieved from the launch configuration, requiring users to manually modify the launch configuration before initiating the rollback.",
+      "input": "RollbackInstanceRefreshRequest",
+      "name": "Rolls back instance refresh",
+      "output": "RollbackInstanceRefreshResponse",
+      "status": "online"
+    },
     "ScaleInInstances": {
       "document": "This API is used to reduce the specified number of instances from the scaling group.\n* There is no on going scaling task.\n* This API is valid even when the scaling group is disabled. For more details, see [DisableAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20435?from_cn_redirect=1).\n* You can specify the instances to remove in the scale-in activity by using `TerminationPolicies`. For more information, see [Scaling In Policies](https://intl.cloud.tencent.com/document/product/377/8563?from_cn_redirect=1).\n* Only the `IN_SERVICE` instances will be reduced. To reduce instances in other statues, use the [`DetachInstances`](https://intl.cloud.tencent.com/document/api/377/20436?from_cn_redirect=1) or [`RemoveInstances`](https://intl.cloud.tencent.com/document/api/377/20431?from_cn_redirect=1) API.\n* The desired capacity will be reduced accordingly. The new desired capacity should be no less than the minimum capacity.\n* If the scale-in activity failed or partially succeeded, the final desired capacity only deducts the instances that have been reduced successfully.",
       "input": "ScaleInInstancesRequest",
@@ -329,6 +364,13 @@
       "output": "StartAutoScalingInstancesResponse",
       "status": "online"
     },
+    "StartInstanceRefresh": {
+      "document": "This API is used to refresh running CVM instances in the scaling group and return the RefreshActivityId for the instance refresh activity based on parameters in the launch configuration.\n* For refresh methods involving reinstallation (currently only reinstallation is supported), during reinstallation, only the ImageId, UserData, EnhancedService, HostName, and LoginSettings parameters will be fetched from the launch configuration for refreshing; other parameters of the instance will not be refreshed.\n* During the instance refresh process (including paused status), the scaling group will be disabled. It is not recommended to modify the associated launch configuration during a refresh, as this may impact the refresh parameters, leading to inconsistent instance configurations.\n* In rolling update mode, instance refreshes are performed in multiple batches. If there are failed refreshes within a batch, the activity will enter a failed paused status.\n* Instances pending refresh that are removed or destroyed will be marked as NOT_FOUND status, but they will not block the instance refresh activity.\n* Even if a running instance has parameters consistent with the latest launch configuration, it can still undergo another refresh.",
+      "input": "StartInstanceRefreshRequest",
+      "name": "Starts instance refresh",
+      "output": "StartInstanceRefreshResponse",
+      "status": "online"
+    },
     "StopAutoScalingInstances": {
       "document": "This API is used to shut down CVM instances in a scaling group.\n* Use the `SOFT_FIRST` shutdown, which means the CVM will be forcibly shut down if the soft shutdown fails.\n* Shutting down instances in the `IN_SERVICE` status will reduce the desired capacity, but the desired capacity cannot be less than the minimum value.\n* To use the `STOP_CHARGING` shutdown, the instances you want to shut down must satisfy the conditions of [no charges when shut down](https://intl.cloud.tencent.com/document/product/213/19918?from_cn_redirect=1).\n* This API supports batch operation. Up to 100 instances can be shut down in each request.",
       "input": "StopAutoScalingInstancesRequest",
@@ -336,12 +378,19 @@
       "output": "StopAutoScalingInstancesResponse",
       "status": "online"
     },
+    "StopInstanceRefresh": {
+      "document": "This API is used to pause the ongoing instance refresh activity.\n* In the paused status, the scaling group will also be disabled.\n* Instances that are currently being updated will not be paused, instances pending updates will have their updates paused.",
+      "input": "StopInstanceRefreshRequest",
+      "name": "Pauses instance refresh",
+      "output": "StopInstanceRefreshResponse",
+      "status": "online"
+    },
     "UpgradeLaunchConfiguration": {
-      "document": "This API is used to upgrade a launch configuration.\n\n* This API is used to upgrade a launch configuration in a \"completely overriding\" manner, i.e., it uniformly sets a new configuration according to the API parameters regardless of the original parameters. If optional fields are left empty, their default values will be used.\n* After the launch configuration is upgraded, the existing instances that have been created by it will not be changed, but new instances will be created according to the new configuration.",
+      "document": "已有替代接口ModifyLaunchConfiguration。该接口存在覆盖参数风险，目前官网已隐藏\n\nThere is a replacement API: ModifyLaunchConfiguration. This API carries the risk of parameter overwriting, and it has currently been hidden on the official website.\nThis API (UpgradeLaunchConfiguration) is used to upgrade the launch configuration.\n* This API is used to upgrade the launch configuration, adopting an \"entirely overwrite\" approach. Regardless of previous parameter settings, they will be uniformly replaced with new configurations as specified in the interface parameters. For non-mandatory fields, if not filled in, default values will be assigned.\n* After upgrading and modifying the launch configuration, existing instances that have been scaled out using this configuration will not undergo any changes. Subsequently, newly added instances using this upgraded launch configuration will be scaled out according to the new configuration.",
       "input": "UpgradeLaunchConfigurationRequest",
       "name": "Upgrades a launch configuration",
       "output": "UpgradeLaunchConfigurationResponse",
-      "status": "online"
+      "status": "deprecated"
     },
     "UpgradeLifecycleHook": {
       "document": "This API (UpgradeLifecycleHook) is used to upgrade a lifecycle hook.\n\n* This API is used to upgrade a lifecycle hook in a \"completely overriding\" manner, i.e., it uniformly sets a new configuration according to the API parameters regardless of the original parameters. If optional fields are left empty, their default values will be used.\n",
@@ -529,6 +578,7 @@
         {
           "disabled": false,
           "document": "Instance ID.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -538,6 +588,7 @@
         {
           "disabled": false,
           "document": "Status of the instance in the scaling activity. Value range:\n<li>INIT: initializing\n<li>RUNNING: running\n<li>SUCCESSFUL: succeeded\n<li>FAILED: failed",
+          "example": "",
           "member": "string",
           "name": "InstanceStatus",
           "required": true,
@@ -599,6 +650,7 @@
         {
           "disabled": false,
           "document": "Auto scaling group ID",
+          "example": "",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -607,6 +659,7 @@
         {
           "disabled": false,
           "document": "List of CVM instance IDs",
+          "example": "",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -621,6 +674,7 @@
         {
           "disabled": false,
           "document": "Scaling activity ID",
+          "example": "",
           "member": "string",
           "name": "ActivityId",
           "type": "string",
@@ -735,7 +789,7 @@
           "example": "asg-30wif85u",
           "member": "string",
           "name": "AutoScalingGroupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -745,7 +799,7 @@
           "example": "test-asg",
           "member": "string",
           "name": "AutoScalingGroupName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -755,7 +809,7 @@
           "example": "NORMAL",
           "member": "string",
           "name": "AutoScalingGroupStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -765,7 +819,7 @@
           "example": "2021-05-31T12:38:35Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -775,7 +829,7 @@
           "example": "300",
           "member": "int64",
           "name": "DefaultCooldown",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -785,7 +839,7 @@
           "example": "0",
           "member": "int64",
           "name": "DesiredCapacity",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -795,7 +849,7 @@
           "example": "ENABLED",
           "member": "string",
           "name": "EnabledStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -805,7 +859,7 @@
           "example": "[]",
           "member": "ForwardLoadBalancer",
           "name": "ForwardLoadBalancerSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -815,7 +869,7 @@
           "example": "0",
           "member": "int64",
           "name": "InstanceCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -825,7 +879,7 @@
           "example": "0",
           "member": "int64",
           "name": "InServiceInstanceCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -835,7 +889,7 @@
           "example": "asc-966b7fk2",
           "member": "string",
           "name": "LaunchConfigurationId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -845,7 +899,7 @@
           "example": "test-lc",
           "member": "string",
           "name": "LaunchConfigurationName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -855,7 +909,7 @@
           "example": "[]",
           "member": "string",
           "name": "LoadBalancerIdSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -865,7 +919,7 @@
           "example": "10",
           "member": "int64",
           "name": "MaxSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -875,7 +929,7 @@
           "example": "0",
           "member": "int64",
           "name": "MinSize",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -885,7 +939,7 @@
           "example": "0",
           "member": "int64",
           "name": "ProjectId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -895,7 +949,7 @@
           "example": "[\"subnet-rdm629r2\"]",
           "member": "string",
           "name": "SubnetIdSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -905,7 +959,7 @@
           "example": "OLDEST_INSTANCE",
           "member": "string",
           "name": "TerminationPolicySet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -915,7 +969,7 @@
           "example": "vpc-h3cd5td5",
           "member": "string",
           "name": "VpcId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -925,7 +979,7 @@
           "example": "[]",
           "member": "string",
           "name": "ZoneSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -935,7 +989,7 @@
           "example": "NO_RETRY",
           "member": "string",
           "name": "RetryPolicy",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -945,7 +999,7 @@
           "example": "IN_ACTIVITY",
           "member": "string",
           "name": "InActivityStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -955,7 +1009,7 @@
           "example": "[]",
           "member": "Tag",
           "name": "Tags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -965,7 +1019,7 @@
           "example": "null",
           "member": "ServiceSettings",
           "name": "ServiceSettings",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -975,7 +1029,7 @@
           "example": "0",
           "member": "int64",
           "name": "Ipv6AddressCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -985,7 +1039,7 @@
           "example": "PRIORITY",
           "member": "string",
           "name": "MultiZoneSubnetPolicy",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -995,7 +1049,7 @@
           "example": "CLB",
           "member": "string",
           "name": "HealthCheckType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1005,7 +1059,7 @@
           "example": "300",
           "member": "uint64",
           "name": "LoadBalancerHealthCheckGracePeriod",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1015,7 +1069,7 @@
           "example": "LAUNCH_CONFIGURATION",
           "member": "string",
           "name": "InstanceAllocationPolicy",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1025,7 +1079,7 @@
           "example": "无",
           "member": "SpotMixedAllocationPolicy",
           "name": "SpotMixedAllocationPolicy",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1035,9 +1089,19 @@
           "example": "false",
           "member": "bool",
           "name": "CapacityRebalance",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name sequencing settings.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "null",
+          "member": "InstanceNameIndexSettings",
+          "name": "InstanceNameIndexSettings",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1048,6 +1112,7 @@
         {
           "disabled": false,
           "document": "Scaling group ID",
+          "example": "",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -1057,6 +1122,7 @@
         {
           "disabled": false,
           "document": "Auto scaling group name.",
+          "example": "",
           "member": "string",
           "name": "AutoScalingGroupName",
           "required": true,
@@ -1142,6 +1208,42 @@
       ],
       "usage": "out"
     },
+    "CancelInstanceRefreshRequest": {
+      "document": "CancelInstanceRefresh request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scaling group ID.",
+          "example": "asg-u7dy6t5r",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Refresh activity ID.",
+          "example": "asr-dhwt6r54",
+          "member": "string",
+          "name": "RefreshActivityId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CancelInstanceRefreshResponse": {
+      "document": "CancelInstanceRefresh response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ClearLaunchConfigurationAttributesRequest": {
       "document": "ClearLaunchConfigurationAttributes request structure.",
       "members": [
@@ -1211,6 +1313,7 @@
         {
           "disabled": false,
           "document": "Lifecycle hook ID",
+          "example": "",
           "member": "string",
           "name": "LifecycleHookId",
           "required": true,
@@ -1219,6 +1322,7 @@
         {
           "disabled": false,
           "document": "Result of the lifecycle action. Value range: \"CONTINUE\", \"ABANDON\"",
+          "example": "",
           "member": "string",
           "name": "LifecycleActionResult",
           "required": true,
@@ -1227,6 +1331,7 @@
         {
           "disabled": false,
           "document": "Instance ID. Either \"InstanceId\" or \"LifecycleActionToken\" must be specified",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": false,
@@ -1235,6 +1340,7 @@
         {
           "disabled": false,
           "document": "Either \"InstanceId\" or \"LifecycleActionToken\" must be specified",
+          "example": "",
           "member": "string",
           "name": "LifecycleActionToken",
           "required": false,
@@ -1321,6 +1427,7 @@
         {
           "disabled": false,
           "document": "The scaling group ID.",
+          "example": "",
           "member": "string",
           "name": "AutoScalingGroupId",
           "type": "string",
@@ -1553,6 +1660,15 @@
           "name": "CapacityRebalance",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Instance name sequencing settings. If this parameter is not specified, the default is not enabled. When enabled, an incremental numeric sequence will be appended to the names of instances automatically created within the scaling group.",
+          "example": "无",
+          "member": "InstanceNameIndexSettings",
+          "name": "InstanceNameIndexSettings",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -1563,6 +1679,7 @@
         {
           "disabled": false,
           "document": "Auto scaling group ID",
+          "example": "",
           "member": "string",
           "name": "AutoScalingGroupId",
           "type": "string",
@@ -1923,6 +2040,7 @@
         {
           "disabled": false,
           "document": "Lifecycle hook ID",
+          "example": "",
           "member": "string",
           "name": "LifecycleHookId",
           "type": "string",
@@ -2003,6 +2121,7 @@
         {
           "disabled": false,
           "document": "Notification ID.",
+          "example": "",
           "member": "string",
           "name": "AutoScalingNotificationId",
           "type": "string",
@@ -2137,6 +2256,7 @@
         {
           "disabled": false,
           "document": "Alarm trigger policy ID.",
+          "example": "",
           "member": "string",
           "name": "AutoScalingPolicyId",
           "type": "string",
@@ -2157,6 +2277,7 @@
         {
           "disabled": false,
           "document": "Auto scaling group ID",
+          "example": "",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -2165,6 +2286,7 @@
         {
           "disabled": false,
           "document": "Scheduled task name, which can only contain letters, numbers, underscores, hyphens (\"-\"), and decimal points with a maximum length of 60 bytes and must be unique in an auto scaling group.",
+          "example": "",
           "member": "string",
           "name": "ScheduledActionName",
           "required": true,
@@ -2173,6 +2295,7 @@
         {
           "disabled": false,
           "document": "The maximum number of instances set for the auto scaling group when the scheduled task is triggered.",
+          "example": "",
           "member": "uint64",
           "name": "MaxSize",
           "required": true,
@@ -2181,6 +2304,7 @@
         {
           "disabled": false,
           "document": "The minimum number of instances set for the auto scaling group when the scheduled task is triggered.",
+          "example": "",
           "member": "uint64",
           "name": "MinSize",
           "required": true,
@@ -2189,6 +2313,7 @@
         {
           "disabled": false,
           "document": "The desired number of instances set for the auto scaling group when the scheduled task is triggered.",
+          "example": "",
           "member": "uint64",
           "name": "DesiredCapacity",
           "required": true,
@@ -2197,6 +2322,7 @@
         {
           "disabled": false,
           "document": "Initial triggered time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard.",
+          "example": "",
           "member": "datetime_iso",
           "name": "StartTime",
           "required": true,
@@ -2205,6 +2331,7 @@
         {
           "disabled": false,
           "document": "End time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard. <br><br>This parameter and `Recurrence` need to be specified at the same time. After the end time, the scheduled task will no longer take effect.",
+          "example": "",
           "member": "datetime_iso",
           "name": "EndTime",
           "required": false,
@@ -2213,6 +2340,7 @@
         {
           "disabled": false,
           "document": "Repeating mode of the scheduled task, which is in standard cron format. <br><br>This parameter and `EndTime` need to be specified at the same time.",
+          "example": "",
           "member": "string",
           "name": "Recurrence",
           "required": false,
@@ -2227,6 +2355,7 @@
         {
           "disabled": false,
           "document": "Scheduled task ID",
+          "example": "",
           "member": "string",
           "name": "ScheduledActionId",
           "type": "string",
@@ -2313,6 +2442,7 @@
         {
           "disabled": false,
           "document": "Auto scaling group ID",
+          "example": "",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -2339,6 +2469,7 @@
         {
           "disabled": false,
           "document": "ID of the launch configuration to be deleted.",
+          "example": "",
           "member": "string",
           "name": "LaunchConfigurationId",
           "required": true,
@@ -2365,6 +2496,7 @@
         {
           "disabled": false,
           "document": "Lifecycle hook ID",
+          "example": "",
           "member": "string",
           "name": "LifecycleHookId",
           "required": true,
@@ -2391,6 +2523,7 @@
         {
           "disabled": false,
           "document": "ID of the notification to be deleted.",
+          "example": "",
           "member": "string",
           "name": "AutoScalingNotificationId",
           "required": false,
@@ -2417,6 +2550,7 @@
         {
           "disabled": false,
           "document": "ID of the alarm policy to be deleted.",
+          "example": "",
           "member": "string",
           "name": "AutoScalingPolicyId",
           "required": true,
@@ -2443,6 +2577,7 @@
         {
           "disabled": false,
           "document": "ID of the scheduled task to be deleted.",
+          "example": "",
           "member": "string",
           "name": "ScheduledActionId",
           "required": true,
@@ -2474,6 +2609,7 @@
         {
           "disabled": false,
           "document": "Maximum number of launch configurations allowed for creation by the user account",
+          "example": "",
           "member": "int64",
           "name": "MaxNumberOfLaunchConfigurations",
           "type": "int",
@@ -2482,6 +2618,7 @@
         {
           "disabled": false,
           "document": "Current number of launch configurations under the user account",
+          "example": "",
           "member": "int64",
           "name": "NumberOfLaunchConfigurations",
           "type": "int",
@@ -2490,6 +2627,7 @@
         {
           "disabled": false,
           "document": "Maximum number of auto scaling groups allowed for creation by the user account",
+          "example": "",
           "member": "int64",
           "name": "MaxNumberOfAutoScalingGroups",
           "type": "int",
@@ -2498,6 +2636,7 @@
         {
           "disabled": false,
           "document": "Current number of auto scaling groups under the user account",
+          "example": "",
           "member": "int64",
           "name": "NumberOfAutoScalingGroups",
           "type": "int",
@@ -2518,6 +2657,7 @@
         {
           "disabled": false,
           "document": "Queries by one or more scaling activity IDs in the format of `asa-5l2ejpfo`. The maximum quantity per request is 100. This parameter does not support specifying both `ActivityIds` and `Filters` at the same time.",
+          "example": "",
           "member": "string",
           "name": "ActivityIds",
           "required": false,
@@ -2526,6 +2666,7 @@
         {
           "disabled": false,
           "document": "Filter.\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\n<li> activity-status-code - String - Required: No - (Filter) Filter by scaling activity status . (INIT: initializing | RUNNING: running | SUCCESSFUL: succeeded | PARTIALLY_SUCCESSFUL: partially succeeded | FAILED: failed | CANCELLED: canceled)</li>\n<li> activity-type - String - Required: No - (Filter) Filter by scaling activity type. (SCALE_OUT: scale-out | SCALE_IN: scale-in | ATTACH_INSTANCES: adding an instance | REMOVE_INSTANCES: terminating an instance | DETACH_INSTANCES: removing an instance | TERMINATE_INSTANCES_UNEXPECTEDLY: terminating an instance in the CVM console | REPLACE_UNHEALTHY_INSTANCE: replacing an unhealthy instance | UPDATE_LOAD_BALANCERS: updating a load balancer)</li>\n<li> activity-id - String - Required: No - (Filter) Filter by scaling activity ID.</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `ActivityIds` and `Filters` at the same time.",
+          "example": "",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2534,6 +2675,7 @@
         {
           "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -2542,6 +2684,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -2550,6 +2693,7 @@
         {
           "disabled": false,
           "document": "The earliest start time of the scaling activity, which will be ignored if ActivityIds is specified. The value is in `UTC time` in the format of `YYYY-MM-DDThh:mm:ssZ` according to the `ISO8601` standard.",
+          "example": "",
           "member": "datetime_iso",
           "name": "StartTime",
           "required": false,
@@ -2558,6 +2702,7 @@
         {
           "disabled": false,
           "document": "The latest end time of the scaling activity, which will be ignored if ActivityIds is specified. The value is in `UTC time` in the format of `YYYY-MM-DDThh:mm:ssZ` according to the `ISO8601` standard.",
+          "example": "",
           "member": "datetime_iso",
           "name": "EndTime",
           "required": false,
@@ -2572,6 +2717,7 @@
         {
           "disabled": false,
           "document": "Number of eligible scaling activities.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -2580,6 +2726,7 @@
         {
           "disabled": false,
           "document": "Information set of eligible scaling activities.",
+          "example": "",
           "member": "Activity",
           "name": "ActivitySet",
           "type": "list",
@@ -2637,6 +2784,7 @@
         {
           "disabled": false,
           "document": "ID list of an auto scaling group.",
+          "example": "",
           "member": "string",
           "name": "AutoScalingGroupIds",
           "required": true,
@@ -2651,6 +2799,7 @@
         {
           "disabled": false,
           "document": "Information set of eligible scaling activities. Scaling groups without scaling activities are not returned. For example, if there are 50 auto scaling group IDs but only 45 records are returned, it indicates that 5 of the auto scaling groups do not have scaling activities.",
+          "example": "",
           "member": "Activity",
           "name": "ActivitySet",
           "type": "list",
@@ -2671,6 +2820,7 @@
         {
           "disabled": false,
           "document": "Queries by one or more auto scaling group IDs in the format of `asg-nkdwoui0`. The maximum quantity per request is 100. This parameter does not support specifying both `AutoScalingGroupIds` and `Filters` at the same time.",
+          "example": "",
           "member": "string",
           "name": "AutoScalingGroupIds",
           "required": false,
@@ -2679,6 +2829,7 @@
         {
           "disabled": false,
           "document": "Filters.\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\n<li> auto-scaling-group-name - String - Required: No - (Filter) Filter by auto scaling group name.</li>\n<li> vague-auto-scaling-group-name - String - Required: No - (Filter) Fuzzy search by auto scaling group name.</li>\n<li> launch-configuration-id - String - Required: No - (Filter) Filter by launch configuration ID.</li>\n<li> tag-key - String - Required: No - (Filter) Filter by tag key.</li>\n<li> tag-value - String - Required: No - (Filter) Filter by tag value.</li>\n<li> tag:tag-key - String - Required: No - (Filter) Filter by tag key-value pair. The tag-key should be replaced with a specified tag key. For more information, see example 2.</li>\nThe maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `AutoScalingGroupIds` and `Filters` at the same time.",
+          "example": "",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2687,6 +2838,7 @@
         {
           "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -2695,6 +2847,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -2709,6 +2862,7 @@
         {
           "disabled": false,
           "document": "List of auto scaling group details.",
+          "example": "",
           "member": "AutoScalingGroup",
           "name": "AutoScalingGroupSet",
           "type": "list",
@@ -2717,6 +2871,7 @@
         {
           "disabled": false,
           "document": "Number of eligible auto scaling groups.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -2779,6 +2934,7 @@
         {
           "disabled": false,
           "document": "List of instance details.",
+          "example": "",
           "member": "Instance",
           "name": "AutoScalingInstanceSet",
           "type": "list",
@@ -2787,6 +2943,7 @@
         {
           "disabled": false,
           "document": "Number of eligible instances.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -2923,6 +3080,7 @@
         {
           "disabled": false,
           "document": "Array of lifecycle hooks",
+          "example": "",
           "member": "LifecycleHook",
           "name": "LifecycleHookSet",
           "type": "list",
@@ -2931,6 +3089,7 @@
         {
           "disabled": false,
           "document": "Total quantity",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "type": "int",
@@ -2951,6 +3110,7 @@
         {
           "disabled": false,
           "document": "Queries by one or more notification IDs in the format of asn-2sestqbr. The maximum number of instances per request is 100. This parameter does not support specifying both `AutoScalingNotificationIds` and `Filters` at the same time.",
+          "example": "",
           "member": "string",
           "name": "AutoScalingNotificationIds",
           "required": false,
@@ -2959,6 +3119,7 @@
         {
           "disabled": false,
           "document": "Filter.\n<li> auto-scaling-notification-id - String - Required: No - (Filter) Filter by notification ID.</li>\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>\nThe maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `AutoScalingNotificationIds` and `Filters` at the same time.",
+          "example": "",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -2967,6 +3128,7 @@
         {
           "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -2975,6 +3137,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -2989,6 +3152,7 @@
         {
           "disabled": false,
           "document": "Number of eligible notifications.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -2997,8 +3161,83 @@
         {
           "disabled": false,
           "document": "List of AS event notification details.",
+          "example": "",
           "member": "AutoScalingNotification",
           "name": "AutoScalingNotificationSet",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRefreshActivitiesRequest": {
+      "document": "DescribeRefreshActivities request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of refresh activity IDs. IDs are formatted like: 'asr-5l2ejpfo'. The upper limit per request is 100. Parameters do not support specifying both RefreshActivityIds and Filters simultaneously.",
+          "example": "[\"asr-aaaabbbb\"]",
+          "member": "string",
+          "name": "RefreshActivityIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filtering conditions.\n<li> auto-scaling-group-id - String - Required or not: No - (Filtering conditions) Filters by scaling group ID. </li>\n<li> refresh-activity-status-code - String - Required or not: No - (Filtering conditions) Filters by refresh activity status. (INIT: Initializing. | RUNNING: In progress. | SUCCESSFUL: Activity successful. | FAILED_PAUSE: Failed paused. | AUTO_PAUSE: Automatic pause. | MANUAL_PAUSE: Manual pause. | CANCELLED: Activity canceled. | FAILED: Activity failed.)</li>\n<li> refresh-activity-type - String - Required or not: No - (Filtering conditions) Filters by refresh activity type. (NORMAL: Normal refresh activity. | ROLLBACK: Rollback refresh activity.)</li>\n<li> refresh-activity-id - String - Required or not: No - (Filtering conditions) Filters by refresh activity ID. </li>\n<li> The maximum limit for Filters per request is 10, and the upper limit for Filter.Values is 5. Parameters do not support specifying both RefreshActivityIds and Filters simultaneously.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned pieces. Default value: 20. Maximum value: 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "100",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset, 0 by default. For further information on Offset, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRefreshActivitiesResponse": {
+      "document": "DescribeRefreshActivities response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of refresh activities that meet the conditions.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "A collection of information about refresh activities that meet the conditions.",
+          "example": "无",
+          "member": "RefreshActivity",
+          "name": "RefreshActivitySet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3059,6 +3298,7 @@
         {
           "disabled": false,
           "document": "List of AS alarm trigger policy details.",
+          "example": "",
           "member": "ScalingPolicy",
           "name": "ScalingPolicySet",
           "type": "list",
@@ -3067,6 +3307,7 @@
         {
           "disabled": false,
           "document": "Number of eligible notifications.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -3087,6 +3328,7 @@
         {
           "disabled": false,
           "document": "Queries by one or more scheduled task IDs in the format of asst-am691zxo. The maximum number of instances per request is 100. This parameter does not support specifying both ScheduledActionIds` and `Filters` at the same time.",
+          "example": "",
           "member": "string",
           "name": "ScheduledActionIds",
           "required": false,
@@ -3095,6 +3337,7 @@
         {
           "disabled": false,
           "document": "Filter.\n<li> scheduled-action-id - String - Required: No - (Filter) Filter by scheduled task ID.</li>\n<li> scheduled-action-name - String - Required: No - (Filter) Filter by scheduled task name.</li>\n<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>",
+          "example": "",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -3103,6 +3346,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -3111,6 +3355,7 @@
         {
           "disabled": false,
           "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).",
+          "example": "",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -3125,6 +3370,7 @@
         {
           "disabled": false,
           "document": "Number of eligible scheduled tasks.",
+          "example": "",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -3133,6 +3379,7 @@
         {
           "disabled": false,
           "document": "List of scheduled task details.",
+          "example": "",
           "member": "ScheduledAction",
           "name": "ScheduledActionSet",
           "type": "list",
@@ -3153,6 +3400,7 @@
         {
           "disabled": false,
           "document": "Auto scaling group ID",
+          "example": "",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -3161,6 +3409,7 @@
         {
           "disabled": false,
           "document": "List of CVM instance IDs",
+          "example": "",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -3175,6 +3424,7 @@
         {
           "disabled": false,
           "document": "Scaling activity ID",
+          "example": "",
           "member": "string",
           "name": "ActivityId",
           "type": "string",
@@ -3353,6 +3603,7 @@
         {
           "disabled": false,
           "document": "Auto scaling group ID",
+          "example": "",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -3458,10 +3709,57 @@
         {
           "disabled": false,
           "document": "Scaling activity ID",
+          "example": "",
           "member": "string",
           "name": "ActivityId",
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ExitStandbyRequest": {
+      "document": "ExitStandby request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scaling group ID.",
+          "example": "asg-boz1qhnk",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of CVM instances in standby status.",
+          "example": "[\"ins-cri8d02t\",\"ins-osckfnm7\"]",
+          "member": "string",
+          "name": "InstanceIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ExitStandbyResponse": {
+      "document": "ExitStandby response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scaling activity ID.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "asa-q59zikez",
+          "member": "string",
+          "name": "ActivityId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
@@ -3478,6 +3776,7 @@
         {
           "disabled": false,
           "document": "Field to be filtered.",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -3487,6 +3786,7 @@
         {
           "disabled": false,
           "document": "Filter value of the field.",
+          "example": "",
           "member": "string",
           "name": "Values",
           "required": true,
@@ -3502,6 +3802,7 @@
         {
           "disabled": false,
           "document": "Load balancer ID",
+          "example": "",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
@@ -3511,6 +3812,7 @@
         {
           "disabled": false,
           "document": "Application load balancer listener ID",
+          "example": "",
           "member": "string",
           "name": "ListenerId",
           "required": true,
@@ -3520,6 +3822,7 @@
         {
           "disabled": false,
           "document": "List of target rule attributes",
+          "example": "",
           "member": "TargetAttribute",
           "name": "TargetAttributes",
           "required": true,
@@ -3529,6 +3832,7 @@
         {
           "disabled": false,
           "document": "ID of a forwarding rule. This parameter is required for layer-7 listeners.",
+          "example": "",
           "member": "string",
           "name": "LocationId",
           "required": false,
@@ -3538,6 +3842,7 @@
         {
           "disabled": false,
           "document": "The region of CLB instance. It defaults to the region of AS service and is in the format of the common parameter `Region`, such as `ap-guangzhou`.",
+          "example": "",
           "member": "string",
           "name": "Region",
           "required": false,
@@ -3807,23 +4112,27 @@
         {
           "disabled": false,
           "document": "Purchased usage period of an instance in months. Value range: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
+          "example": "1",
           "member": "int64",
           "name": "Period",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Auto-renewal flag. Value range: <br><li>NOTIFY_AND_AUTO_RENEW: Notify expiry and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: Notify expiry but not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify expiry nor renew automatically <br><br>Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis if the account balance is sufficient.",
+          "document": "Auto-renewal flag. Valid values: <li>NOTIFY_AND_AUTO_RENEW: Notify upon expiration and automatically renew.</li> <li>NOTIFY_AND_MANUAL_RENEW: Notify upon expiration but do not auto-renew.</li> <li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Do not notify and do not auto-renew</li> Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is set to NOTIFY_AND_AUTO_RENEW, and the account balance is sufficient, the instance will automatically renew monthly upon its expiration date.",
+          "example": "NOTIFY_AND_MANUAL_RENEW",
           "member": "string",
           "name": "RenewFlag",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "InstanceMarketOptionsRequest": {
       "document": "Options related to a CVM bidding request",
@@ -3831,6 +4140,7 @@
         {
           "disabled": false,
           "document": "Bidding-related options",
+          "example": "",
           "member": "SpotMarketOptions",
           "name": "SpotOptions",
           "required": true,
@@ -3840,10 +4150,39 @@
         {
           "disabled": false,
           "document": "Market option type. Currently, this only supports the value \"spot\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "MarketType",
           "required": false,
           "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "InstanceNameIndexSettings": {
+      "document": "Instance name sequencing settings.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable instance creation sequencing, which is disabled by default. Valid values: <li>TRUE: Indicates that instance creation sequencing is enabled. <li>FALSE: Indicates that instance creation sequencing is disabled.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "FALSE",
+          "member": "bool",
+          "name": "Enabled",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Initial sequence number, with a value range of [0, 99,999,999]. When the sequence number exceeds this range after incrementing, scale-out activities will fail. <li>Upon the first enabling of instance name sequencing: The default value is 0. <li>Upon the enabling of instance name sequencing (not for the first time): If this parameter is not specified, the historical sequence number will be carried forward. Lowering the initial sequence number may result in duplicate instance name sequences within the scaling group.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "BeginIndex",
+          "output_required": false,
+          "required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -3854,10 +4193,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "CVM instance name\n\nThe `InstanceName` cannot start or end with a dot (.) or hyphen (-), and cannot contain consecutive dots and hyphens.\nThe name contains 2 to 40 characters, and supports multiple dots (.). The string between two dots can consist of letters (case-insensitive), numbers, and hyphens (-), and cannot be all numbers.",
+          "document": "CVM instance name. Value range: 2-108.",
           "example": "test",
           "member": "string",
           "name": "InstanceName",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -3868,12 +4208,13 @@
           "example": "ORIGINAL",
           "member": "string",
           "name": "InstanceNameStyle",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "InstanceTag": {
       "document": "Instance tag. This parameter is used to bind tags to newly added instances.",
@@ -3881,6 +4222,7 @@
         {
           "disabled": false,
           "document": "Tag key",
+          "example": "",
           "member": "string",
           "name": "Key",
           "required": true,
@@ -3890,6 +4232,7 @@
         {
           "disabled": false,
           "document": "Tag value",
+          "example": "",
           "member": "string",
           "name": "Value",
           "required": true,
@@ -3905,6 +4248,7 @@
         {
           "disabled": false,
           "document": "Network billing method. Value range: <br><li>BANDWIDTH_PREPAID: Prepaid by bandwidth <br><li>TRAFFIC_POSTPAID_BY_HOUR: Postpaid by traffic on a per hour basis <br><li>BANDWIDTH_POSTPAID_BY_HOUR: Postpaid by bandwidth on a per hour basis <br><li>BANDWIDTH_PACKAGE: BWP user <br>Default value: TRAFFIC_POSTPAID_BY_HOUR.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "InternetChargeType",
           "required": false,
@@ -3914,6 +4258,7 @@
         {
           "disabled": false,
           "document": "The maximum outbound bandwidth in Mbps of the public network. The default value is 0 Mbps. The upper limit of bandwidth varies by model. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/509?from_cn_redirect=1).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "uint64",
           "name": "InternetMaxBandwidthOut",
           "required": false,
@@ -3923,6 +4268,7 @@
         {
           "disabled": false,
           "document": "Whether to assign a public IP. Value range: <br><li>TRUE: Assign a public IP <br><li>FALSE: Do not assign a public IP <br><br>If the public network bandwidth is greater than 0 Mbps, you are free to choose whether to enable the public IP (which is enabled by default). If the public network bandwidth is 0 Mbps, no public IP will be allowed to be assigned.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "bool",
           "name": "PublicIpAssigned",
           "required": false,
@@ -3932,6 +4278,7 @@
         {
           "disabled": false,
           "document": "Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.\nNote: this field may return null, indicating that no valid value was found.",
+          "example": "",
           "member": "string",
           "name": "BandwidthPackageId",
           "required": false,
@@ -4016,7 +4363,7 @@
           "example": "无",
           "member": "int64",
           "name": "ProjectId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4026,7 +4373,7 @@
           "example": "无",
           "member": "string",
           "name": "LaunchConfigurationId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4036,7 +4383,7 @@
           "example": "无",
           "member": "string",
           "name": "LaunchConfigurationName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4046,7 +4393,7 @@
           "example": "无",
           "member": "string",
           "name": "InstanceType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4056,7 +4403,7 @@
           "example": "无",
           "member": "SystemDisk",
           "name": "SystemDisk",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4066,7 +4413,7 @@
           "example": "无",
           "member": "DataDisk",
           "name": "DataDisks",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4076,7 +4423,7 @@
           "example": "无",
           "member": "LimitedLoginSettings",
           "name": "LoginSettings",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4086,7 +4433,7 @@
           "example": "无",
           "member": "InternetAccessible",
           "name": "InternetAccessible",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4096,7 +4443,7 @@
           "example": "无",
           "member": "string",
           "name": "SecurityGroupIds",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4106,7 +4453,7 @@
           "example": "无",
           "member": "AutoScalingGroupAbstract",
           "name": "AutoScalingGroupAbstractSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4116,7 +4463,7 @@
           "example": "无",
           "member": "string",
           "name": "UserData",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4126,7 +4473,7 @@
           "example": "无",
           "member": "datetime_iso",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4136,7 +4483,7 @@
           "example": "无",
           "member": "EnhancedService",
           "name": "EnhancedService",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4146,27 +4493,27 @@
           "example": "无",
           "member": "string",
           "name": "ImageId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Current status of the launch configuration. Value range: <br><li>NORMAL: normal <br><li>IMAGE_ABNORMAL: Exception with the image of the launch configuration <br><li>CBS_SNAP_ABNORMAL: Exception with the data disk snapshot of the launch configuration <br><li>SECURITY_GROUP_ABNORMAL: Exception with the security group of the launch configuration<br>",
+          "document": "Current status of the launch configuration. Valid values: <li>NORMAL: Normal.</li> <li>IMAGE_ABNORMAL: Image exception in the launch configuration.</li> <li>CBS_SNAP_ABNORMAL: Exception with data disk snapshot in the launch configuration.</li> <li>SECURITY_GROUP_ABNORMAL: Security group exception in the launch configuration.</li>",
           "example": "无",
           "member": "string",
           "name": "LaunchConfigurationStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Instance billing mode. CVM instances take `POSTPAID_BY_HOUR` by default. Valid values:\n<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly\n<br><li>SPOTPAID: spot instance",
+          "document": "Instance billing type, with the CVM default value processed as POSTPAID_BY_HOUR. <li>POSTPAID_BY_HOUR: Hourly postpaid billing.</li> <li>SPOTPAID: Spot billing.</li>",
           "example": "无",
           "member": "string",
           "name": "InstanceChargeType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4176,7 +4523,7 @@
           "example": "无",
           "member": "InstanceMarketOptionsRequest",
           "name": "InstanceMarketOptions",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -4186,7 +4533,7 @@
           "example": "无",
           "member": "string",
           "name": "InstanceTypes",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4196,7 +4543,7 @@
           "example": "无",
           "member": "InstanceTag",
           "name": "InstanceTags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4206,7 +4553,7 @@
           "example": "无",
           "member": "Tag",
           "name": "Tags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -4216,7 +4563,7 @@
           "example": "无",
           "member": "int64",
           "name": "VersionNumber",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4226,7 +4573,7 @@
           "example": "无",
           "member": "datetime_iso",
           "name": "UpdatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4236,7 +4583,7 @@
           "example": "无",
           "member": "string",
           "name": "CamRoleName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4246,7 +4593,7 @@
           "example": "无",
           "member": "string",
           "name": "LastOperationInstanceTypesCheckPolicy",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4256,7 +4603,7 @@
           "example": "无",
           "member": "HostNameSettings",
           "name": "HostNameSettings",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4266,7 +4613,7 @@
           "example": "无",
           "member": "InstanceNameSettings",
           "name": "InstanceNameSettings",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4276,17 +4623,17 @@
           "example": "无",
           "member": "InstanceChargePrepaid",
           "name": "InstanceChargePrepaid",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Selection policy of cloud disks. Default value: ORIGINAL. Valid values:\n<br><li>ORIGINAL: uses the configured cloud disk type\n<br><li>AUTOMATIC: automatically chooses an available cloud disk type in the current availability zone",
+          "document": "Cloud disk type selection policy. Valid values: <li>ORIGINAL: Use the set cloud disk type.</li> <li>AUTOMATIC: Automatically select available cloud disk types in the current availability zone.</li>",
           "example": "无",
           "member": "string",
           "name": "DiskTypePolicy",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4296,7 +4643,7 @@
           "example": "无",
           "member": "string",
           "name": "HpcClusterId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4306,8 +4653,18 @@
           "example": "无",
           "member": "IPv6InternetAccessible",
           "name": "IPv6InternetAccessible",
-          "required": true,
+          "output_required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Placement group ID, supporting specification of only one.",
+          "example": "[\"ps-dy7ui89o\"]",
+          "member": "string",
+          "name": "DisasterRecoverGroupIds",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -4537,6 +4894,7 @@
         {
           "disabled": false,
           "document": "List of key IDs.",
+          "example": "",
           "member": "string",
           "name": "KeyIds",
           "required": true,
@@ -4552,6 +4910,7 @@
         {
           "disabled": false,
           "document": "Instance login password. <br><li>Linux: 8-16 characters. It should contain at least two sets of the following categories: [a-z], [A-Z], [0-9] and [()`~!@#$%^&*-+=|{}[]:;',.?/]. <br><li>Windows: 12-16 characters. It should contain at least three sets of the following categories: [a-z], [A-Z], [0-9] and [()`~!@#$%^&*-+={}[]:;',.?/]. <br><br>If this parameter is not specified, a random password is generated and sent to you via the Message Center.",
+          "example": "",
           "member": "string",
           "name": "Password",
           "required": false,
@@ -4561,6 +4920,7 @@
         {
           "disabled": false,
           "document": "List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.",
+          "example": "",
           "member": "string",
           "name": "KeyIds",
           "required": false,
@@ -4570,6 +4930,7 @@
         {
           "disabled": false,
           "document": "Whether to keep the original settings of an image. It cannot be specified together with `Password` or `KeyIds.N`. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>`TRUE`: Keep the login settings of the image <br><li>`FALSE` (Default): Do not keep the login settings of the image <br>",
+          "example": "",
           "member": "bool",
           "name": "KeepImageLogin",
           "required": false,
@@ -4588,26 +4949,29 @@
           "example": "GREATER_THAN",
           "member": "string",
           "name": "ComparisonOperator",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Metric name. Value range: <br><li>CPU_UTILIZATION: CPU utilization </li><li>MEM_UTILIZATION: memory utilization </li><li>LAN_TRAFFIC_OUT: private network outbound bandwidth </li><li>LAN_TRAFFIC_IN: private network inbound bandwidth </li><li>WAN_TRAFFIC_OUT: public network outbound bandwidth </li><li>WAN_TRAFFIC_IN: public network inbound bandwidth </li>",
+          "document": "Metric names, with the following optional fields: <br><li>CPU_UTILIZATION: CPU utilization.</li> <li>MEM_UTILIZATION: Memory utilization.</li> <li>LAN_TRAFFIC_OUT: Private network outbound bandwidth.</li> <li>LAN_TRAFFIC_IN: Private network inbound bandwidth.</li> <li>WAN_TRAFFIC_OUT: Public network outbound bandwidth.</li> <li>WAN_TRAFFIC_IN: Public network inbound bandwidth.</li> <li>TCP_CURR_ESTAB: TCP connections.</li>",
           "example": "CPU_UTILIZATION",
           "member": "string",
           "name": "MetricName",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Alarming threshold: <br><li>CPU_UTILIZATION: [1, 100] in % </li><li>MEM_UTILIZATION: [1, 100] in % </li><li>LAN_TRAFFIC_OUT: >0 in Mbps </li><li>LAN_TRAFFIC_IN: >0 in Mbps </li><li>WAN_TRAFFIC_OUT: >0 in Mbps </li><li>WAN_TRAFFIC_IN: >0 in Mbps </li>",
+          "document": "Alarm threshold values: <br><li>CPU_UTILIZATION: [1, 100], Unit: %.</li> <li>MEM_UTILIZATION: [1, 100], Unit: %.</li> <li>LAN_TRAFFIC_OUT: >0, Unit: Mbps.</li> <li>LAN_TRAFFIC_IN: >0, Unit: Mbps.</li> <li>WAN_TRAFFIC_OUT: >0, Unit: Mbps.</li> <li>WAN_TRAFFIC_IN: >0, Unit: Mbps.</li> <li>TCP_CURR_ESTAB: >0, Unit: Count.</li>",
           "example": "10",
           "member": "uint64",
           "name": "Threshold",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -4618,6 +4982,7 @@
           "example": "60",
           "member": "uint64",
           "name": "Period",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -4628,6 +4993,7 @@
           "example": "3",
           "member": "uint64",
           "name": "ContinuousTime",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -4638,16 +5004,18 @@
           "example": "AVERAGE",
           "member": "string",
           "name": "Statistic",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Exact alarming threshold. This parameter is only used in API outputs. Values: <br><li>`CPU_UTILIZATION` (in %): (0, 100]</li><li>`MEM_UTILIZATION` (in %): (0, 100]</li><li>`LAN_TRAFFIC_OUT` (in Mbps): > 0</li><li>`LAN_TRAFFIC_IN` (in Mbps): > 0</li><li>`WAN_TRAFFIC_OUT` (in Mbps): > 0</li><li>`WAN_TRAFFIC_IN` (in Mbps): > 0</li>",
+          "document": "Precise alarm threshold values. This parameter is not used as an input argument but is used solely as an output parameter for the query API: <br><li>CPU_UTILIZATION: (0, 100], Unit: %.</li> <li>MEM_UTILIZATION: (0, 100], Unit: %.</li> <li>LAN_TRAFFIC_OUT: >0, Unit: Mbps.</li> <li>LAN_TRAFFIC_IN: >0, Unit: Mbps.</li> <li>WAN_TRAFFIC_OUT: >0, Unit: Mbps.</li> <li>WAN_TRAFFIC_IN: >0, Unit: Mbps.</li> <li>TCP_CURR_ESTAB: >0, Unit: Count.</li>",
           "example": "10.123",
           "member": "float",
           "name": "PreciseThreshold",
+          "output_required": true,
           "required": false,
           "type": "float",
           "value_allowed_null": false
@@ -4855,6 +5223,15 @@
           "name": "CapacityRebalance",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Instance name sequencing settings. When enabled, an incremental numeric sequence will be appended to the names of instances automatically created within the scaling group.",
+          "example": "无",
+          "member": "InstanceNameIndexSettings",
+          "name": "InstanceNameIndexSettings",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -5116,6 +5493,15 @@
           "name": "DisasterRecoverGroupIds",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Instance login settings, which include passwords, keys, or the original login settings inherited from the image. <br>Please note that specifying new login settings will overwrite the existing ones. For instance, if you previously used a password for login and then use this parameter to switch the login settings to a key, the original password will be removed.",
+          "example": "无",
+          "member": "LoginSettings",
+          "name": "LoginSettings",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -5325,6 +5711,7 @@
         {
           "disabled": false,
           "document": "Scaling activity ID",
+          "example": "",
           "member": "string",
           "name": "ActivityId",
           "type": "string",
@@ -5525,6 +5912,7 @@
         {
           "disabled": false,
           "document": "ID of the scheduled task to be edited",
+          "example": "",
           "member": "string",
           "name": "ScheduledActionId",
           "required": true,
@@ -5533,6 +5921,7 @@
         {
           "disabled": false,
           "document": "Scheduled task name, which can only contain letters, numbers, underscores, hyphens (\"-\"), and decimal points with a maximum length of 60 bytes and must be unique in an auto scaling group.",
+          "example": "",
           "member": "string",
           "name": "ScheduledActionName",
           "required": false,
@@ -5541,6 +5930,7 @@
         {
           "disabled": false,
           "document": "The maximum number of instances set for the auto scaling group when the scheduled task is triggered.",
+          "example": "",
           "member": "uint64",
           "name": "MaxSize",
           "required": false,
@@ -5549,6 +5939,7 @@
         {
           "disabled": false,
           "document": "The minimum number of instances set for the auto scaling group when the scheduled task is triggered.",
+          "example": "",
           "member": "uint64",
           "name": "MinSize",
           "required": false,
@@ -5557,6 +5948,7 @@
         {
           "disabled": false,
           "document": "The desired number of instances set for the auto scaling group when the scheduled task is triggered.",
+          "example": "",
           "member": "uint64",
           "name": "DesiredCapacity",
           "required": false,
@@ -5565,6 +5957,7 @@
         {
           "disabled": false,
           "document": "Initial triggered time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard.",
+          "example": "",
           "member": "datetime_iso",
           "name": "StartTime",
           "required": false,
@@ -5573,6 +5966,7 @@
         {
           "disabled": false,
           "document": "End time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard. <br>This parameter and `Recurrence` need to be specified at the same time. After the end time, the scheduled task will no longer take effect.",
+          "example": "",
           "member": "datetime_iso",
           "name": "EndTime",
           "required": false,
@@ -5581,6 +5975,7 @@
         {
           "disabled": false,
           "document": "Repeating mode of the scheduled task, which is in standard cron format. <br>This parameter and `EndTime` need to be specified at the same time.",
+          "example": "",
           "member": "string",
           "name": "Recurrence",
           "required": false,
@@ -5637,6 +6032,262 @@
       ],
       "usage": "both"
     },
+    "RefreshActivity": {
+      "document": "Instance refresh activity.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scaling group ID.",
+          "example": "asg-t67yhy7u",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Refresh activity ID.",
+          "example": "asr-v8dd7er6",
+          "member": "string",
+          "name": "RefreshActivityId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Original refresh activity ID, which exists only in the rollback refresh activity.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "asr-v8dd7er6",
+          "member": "string",
+          "name": "OriginRefreshActivityId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Refresh batch information list.",
+          "example": "无",
+          "member": "RefreshBatch",
+          "name": "RefreshBatchSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Refresh mode.",
+          "example": "ROLLING_UPDATE",
+          "member": "string",
+          "name": "RefreshMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance update setting parameters.",
+          "example": "无",
+          "member": "RefreshSettings",
+          "name": "RefreshSettings",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Refresh activity type. Valid values: <br><li>NORMAL: Normal refresh activity.</li> <li>ROLLBACK: Rollback refresh activity.",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "ActivityType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Refresh activity status. Valid values: <br><li>INIT: Initializing.</li> <li>RUNNING: Running.</li> <li>SUCCESSFUL: Activity successful.</li> <li>FAILED_PAUSE: Paused due to a failed refresh batch.</li> <li>AUTO_PAUSE: Automatically paused according to pause policy.</li> <li>MANUAL_PAUSE: Manually paused.</li> <li>CANCELLED: Activity canceled.</li> <li>FAILED: Activity failed.",
+          "example": "RUNNING",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Current refresh batch number. For example, a value of 2 indicates that the current activity is refreshing the second batch of instances.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "2",
+          "member": "uint64",
+          "name": "CurrentRefreshBatchNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Refresh activity start time.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "2023-09-04T11:42:46Z",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Refresh activity end time.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "2023-09-04T11:42:46Z",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Refresh activity creation time.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "2023-09-04T11:42:46Z",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RefreshBatch": {
+      "document": "Instance refresh batch information, containing the refresh status, instances, start and end time, etc., of the batch.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Refresh batch number. For example, a value of 2 indicates that the current batch of instances will be refreshed in the second batch.",
+          "example": "2",
+          "member": "uint64",
+          "name": "RefreshBatchNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Refresh batch status. Valid values: <br><li>WAITING: Pending refresh.</li> <li>INIT: Initializing.</li> <li>RUNNING: Refreshing.</li> <li>FAILED: Refresh failed.</li> <li>PARTIALLY_SUCCESSFUL: Partially successful in the batch.</li> <li>CANCELLED: Canceled.</li> <li>SUCCESSFUL: Refreshed.",
+          "example": "WAITING",
+          "member": "string",
+          "name": "RefreshBatchStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of instances linked to a refresh batch.",
+          "example": "无",
+          "member": "RefreshBatchRelatedInstance",
+          "name": "RefreshBatchRelatedInstanceSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Refresh batch start time.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "2023-08-31T11:46:40Z",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Refresh batch end time.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "2023-08-31T11:46:40Z",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RefreshBatchRelatedInstance": {
+      "document": "Refresh batch associated instances, including the refresh activity status of individual instances and related scaling activity information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "ins-d73gg3yt",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Refresh instance status. If an instance is removed or destroyed during the refresh process, its status will be updated to NOT_FOUND. Valid values: <br><li>WAITING: pending refresh.</li> <li>INIT: Initializing.</li> <li>RUNNING: Refreshing in progress.</li> <li>FAILED: Refresh failed.</li> <li>CANCELLED: Canceled.</li> <li>SUCCESSFUL: Refreshed.</li> <li>NOT_FOUND: Instance not found.",
+          "example": "WAITING",
+          "member": "string",
+          "name": "InstanceStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The most recent scaling activity ID during instance refresh can be queried via the DescribeAutoScalingActivities API.\nPlease note that scaling activities differ from instance refresh activities; a single instance refresh activity may involve multiple scaling activities.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "asa-7y5rey56",
+          "member": "string",
+          "name": "LastActivityId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance refresh status information.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "success",
+          "member": "string",
+          "name": "InstanceStatusMessage",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RefreshSettings": {
+      "document": "Instance refresh settings.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rolling update settings parameters. RefreshMode is the rolling update. This parameter must be filled in.Note: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "RollingUpdateSettings",
+          "name": "RollingUpdateSettings",
+          "output_required": false,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Backend service health check status for instances, defaults to FALSE. This setting takes effect only for scaling groups bound with application load balancers. When enabled, if an instance fails the check after being refreshed, its load balancer port weight remains 0 and is marked as a refresh failure. Valid values: <br><li>TRUE: Enable the check.</li> <li>FALSE: Do not enable the check.",
+          "example": "TRUE",
+          "member": "bool",
+          "name": "CheckInstanceTargetHealth",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "RelatedInstance": {
       "document": "Information of the instances related to the current scaling activity.",
       "members": [
@@ -5669,6 +6320,7 @@
         {
           "disabled": false,
           "document": "Auto scaling group ID",
+          "example": "",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -5677,6 +6329,7 @@
         {
           "disabled": false,
           "document": "List of CVM instance IDs",
+          "example": "",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -5691,6 +6344,7 @@
         {
           "disabled": false,
           "document": "Scaling activity ID",
+          "example": "",
           "member": "string",
           "name": "ActivityId",
           "type": "string",
@@ -5704,6 +6358,143 @@
         }
       ],
       "type": "object"
+    },
+    "ResumeInstanceRefreshRequest": {
+      "document": "ResumeInstanceRefresh request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scaling group ID.",
+          "example": "asg-u7dy6t5r",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Refresh activity ID.",
+          "example": "asr-dhwt6r54",
+          "member": "string",
+          "name": "RefreshActivityId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The recovery method for the current batch's failed instances. If there are no failed instances, this parameter becomes invalid. Default value: RETRY. Valid values: <br><li>RETRY: Retry refreshing failed instances in the current batch.</li> <li>CONTINUE: Skip failed instances in the current batch.",
+          "example": "RETRY",
+          "member": "string",
+          "name": "ResumeMode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResumeInstanceRefreshResponse": {
+      "document": "ResumeInstanceRefresh response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RollbackInstanceRefreshRequest": {
+      "document": "RollbackInstanceRefresh request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scaling group ID.",
+          "example": "asg-12yqet78",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Refresh settings.",
+          "example": "无",
+          "member": "RefreshSettings",
+          "name": "RefreshSettings",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Original refresh activity ID.",
+          "example": "无",
+          "member": "string",
+          "name": "OriginRefreshActivityId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Refresh mode, currently, only rolling updates are supported, with the default value being ROLLING_UPDATE_RESET.",
+          "example": "ROLLING_UPDATE_RESET",
+          "member": "string",
+          "name": "RefreshMode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RollbackInstanceRefreshResponse": {
+      "document": "RollbackInstanceRefresh response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Refresh activity ID.",
+          "example": "asr-6t7y8u5r",
+          "member": "string",
+          "name": "RefreshActivityId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RollingUpdateSettings": {
+      "document": "Rolling update settings.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Batch quantity. The batch quantity should be a positive integer greater than 0, but cannot exceed the total number of instances pending refresh.",
+          "example": "1",
+          "member": "uint64",
+          "name": "BatchNumber",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Pause policy between batches. Default value: Automatic. Valid values: <br><li>FIRST_BATCH_PAUSE: Pause after the first batch update completes.</li> <li>BATCH_INTERVAL_PAUSE: Pause between each batch update.</li> <li>AUTOMATIC: No pauses.",
+          "example": "Automatic",
+          "member": "string",
+          "name": "BatchPause",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "RunAutomationServiceEnabled": {
       "document": "Status of TAT service.",
@@ -5727,6 +6518,7 @@
         {
           "disabled": false,
           "document": "Whether to enable the [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1) service. Value range: <br><li>TRUE: Cloud Monitor is enabled <br><li>FALSE: Cloud Monitor is disabled <br><br>Default value: TRUE. |\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "bool",
           "name": "Enabled",
           "required": false,
@@ -5742,6 +6534,7 @@
         {
           "disabled": false,
           "document": "Whether to enable the [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1) service. Value range: <br><li>TRUE: Cloud Security is enabled <br><li>FALSE: Cloud Security is disabled <br><br>Default value: TRUE.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "bool",
           "name": "Enabled",
           "required": false,
@@ -6192,6 +6985,7 @@
         {
           "disabled": false,
           "document": "Bidding price such as \"1.05\"",
+          "example": "",
           "member": "string",
           "name": "MaxPrice",
           "required": true,
@@ -6201,6 +6995,7 @@
         {
           "disabled": false,
           "document": "Bid request type. Currently, only \"one-time\" type is supported. Default value: one-time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "SpotInstanceType",
           "required": false,
@@ -6262,6 +7057,7 @@
         {
           "disabled": false,
           "document": "The scaling group ID.",
+          "example": "",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -6270,6 +7066,7 @@
         {
           "disabled": false,
           "document": "The list of the CVM instances you want to start up.",
+          "example": "",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -6284,8 +7081,64 @@
         {
           "disabled": false,
           "document": "The scaling activity ID.",
+          "example": "",
           "member": "string",
           "name": "ActivityId",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartInstanceRefreshRequest": {
+      "document": "StartInstanceRefresh request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scaling group ID.",
+          "example": "asg-12yqet78",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Refresh settings.",
+          "example": "无",
+          "member": "RefreshSettings",
+          "name": "RefreshSettings",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Refresh mode, currently, only rolling updates are supported, with the default value being ROLLING_UPDATE_RESET.",
+          "example": "ROLLING_UPDATE_RESET",
+          "member": "string",
+          "name": "RefreshMode",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartInstanceRefreshResponse": {
+      "document": "StartInstanceRefresh response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Refresh activity ID.",
+          "example": "asr-6t7y8u5r",
+          "member": "string",
+          "name": "RefreshActivityId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6304,6 +7157,7 @@
         {
           "disabled": false,
           "document": "The scaling group ID.",
+          "example": "",
           "member": "string",
           "name": "AutoScalingGroupId",
           "required": true,
@@ -6312,6 +7166,7 @@
         {
           "disabled": false,
           "document": "The list of the CVM instances you want to shut down.",
+          "example": "",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -6320,6 +7175,7 @@
         {
           "disabled": false,
           "document": "Whether the shutdown instances will be charged. Valid values:  \nKEEP_CHARGING: keep charging after shutdown.  \nSTOP_CHARGING: stop charging after shutdown.\nDefault value: KEEP_CHARGING.",
+          "example": "",
           "member": "string",
           "name": "StoppedMode",
           "required": false,
@@ -6334,11 +7190,48 @@
         {
           "disabled": false,
           "document": "The scaling activity ID.",
+          "example": "",
           "member": "string",
           "name": "ActivityId",
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopInstanceRefreshRequest": {
+      "document": "StopInstanceRefresh request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Scaling group ID.",
+          "example": "asg-u7dy6t5r",
+          "member": "string",
+          "name": "AutoScalingGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Refresh activity ID.",
+          "example": "asr-dhwt6r54",
+          "member": "string",
+          "name": "RefreshActivityId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopInstanceRefreshResponse": {
+      "document": "StopInstanceRefresh response structure.",
+      "members": [
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
           "member": "string",
@@ -6380,6 +7273,7 @@
         {
           "disabled": false,
           "document": "Tag key",
+          "example": "",
           "member": "string",
           "name": "Key",
           "required": true,
@@ -6389,6 +7283,7 @@
         {
           "disabled": false,
           "document": "Tag value",
+          "example": "",
           "member": "string",
           "name": "Value",
           "required": true,
@@ -6398,6 +7293,7 @@
         {
           "disabled": false,
           "document": "Type of the resource binded to the tag. Currently supported types include \"auto-scaling-group\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "ResourceType",
           "required": false,
@@ -6413,6 +7309,7 @@
         {
           "disabled": false,
           "document": "Port",
+          "example": "",
           "member": "uint64",
           "name": "Port",
           "required": true,
@@ -6422,6 +7319,7 @@
         {
           "disabled": false,
           "document": "Weight",
+          "example": "",
           "member": "uint64",
           "name": "Weight",
           "required": true,
@@ -6526,7 +7424,7 @@
         },
         {
           "disabled": false,
-          "document": "Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.",
+          "document": "This parameter is now invalid and should not be used. Upgrading the launch configuration API does not allow modification or overwriting of the LoginSettings parameter. LoginSettings will not change after upgrade.",
           "example": "无",
           "member": "LoginSettings",
           "name": "LoginSettings",

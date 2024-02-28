@@ -22,6 +22,14 @@
         "title": "Adding the application CLB `lb-23aejgcv` (listener: lbl-ncw704sn, forwarding rule ID: loc-l3hmaev9) to the scaling group"
       }
     ],
+    "CancelInstanceRefresh": [
+      {
+        "document": "This example shows you how to cancel the instance refresh activity asr-juhf6ytr in scaling group asg-h7tgd87d.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CancelInstanceRefresh\n<Common request parameters>\n{\n    \"AutoScalingGroupId\": \"asg-h7tgd87d\",\n    \"RefreshActivityId\": \"asr-juhf6ytr\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c4190090-bc60-4f48-b9d4-48095b9596db\"\n    }\n}",
+        "title": "Canceling Instance Refresh Activity"
+      }
+    ],
     "ClearLaunchConfigurationAttributes": [
       {
         "document": "The following example clears the data disks of the launch configuration `asc-kr4beurf`. And do not assign data disks to CVMs created by using `asc-kr4beurf`.",
@@ -316,6 +324,14 @@
         "title": "Querying notifications"
       }
     ],
+    "DescribeRefreshActivities": [
+      {
+        "document": "This example shows you how to query the details of refresh activity asr-cs0fxpcu using Filters.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRefreshActivities\n<Common request parameters>\n{\n    \"Filters\": [\n        {\n            \"Name\": \"refresh-activity-id\",\n            \"Values\": [\n                \"asr-cs0fxpcu\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RefreshActivitySet\": [\n            {\n                \"Status\": \"SUCCESSFUL\",\n                \"RefreshBatchSet\": [\n                    {\n                        \"RefreshBatchNum\": 3,\n                        \"EndTime\": \"2023-09-07T16:32:56Z\",\n                        \"RefreshBatchRelatedInstanceSet\": [\n                            {\n                                \"InstanceId\": \"ins-w188n53l\",\n                                \"InstanceStatusMessage\": \"success\",\n                                \"LastActivityId\": \"asa-pb2y1bna\",\n                                \"InstanceStatus\": \"SUCCESSFUL\"\n                            }\n                        ],\n                        \"StartTime\": \"2023-09-07T16:31:44Z\",\n                        \"RefreshBatchStatus\": \"SUCCESSFUL\"\n                    },\n                    {\n                        \"RefreshBatchNum\": 2,\n                        \"EndTime\": \"2023-09-07T16:31:44Z\",\n                        \"RefreshBatchRelatedInstanceSet\": [\n                            {\n                                \"InstanceId\": \"ins-w1824wre\",\n                                \"InstanceStatusMessage\": \"success\",\n                                \"LastActivityId\": \"asa-e8dqz8r6\",\n                                \"InstanceStatus\": \"SUCCESSFUL\"\n                            },\n                            {\n                                \"InstanceId\": \"ins-w188n53m\",\n                                \"InstanceStatusMessage\": \"success\",\n                                \"LastActivityId\": \"asa-e8dqz8r6\",\n                                \"InstanceStatus\": \"SUCCESSFUL\"\n                            }\n                        ],\n                        \"StartTime\": \"2023-09-07T16:29:56Z\",\n                        \"RefreshBatchStatus\": \"SUCCESSFUL\"\n                    },\n                    {\n                        \"RefreshBatchNum\": 1,\n                        \"EndTime\": \"2023-09-07T16:29:55Z\",\n                        \"RefreshBatchRelatedInstanceSet\": [\n                            {\n                                \"InstanceId\": \"ins-w188n53k\",\n                                \"InstanceStatusMessage\": \"success\",\n                                \"LastActivityId\": \"asa-e0o3uxsu\",\n                                \"InstanceStatus\": \"SUCCESSFUL\"\n                            },\n                            {\n                                \"InstanceId\": \"ins-w188n53n\",\n                                \"InstanceStatusMessage\": \"success\",\n                                \"LastActivityId\": \"asa-e0o3uxsu\",\n                                \"InstanceStatus\": \"SUCCESSFUL\"\n                            }\n                        ],\n                        \"StartTime\": \"2023-09-07T16:27:49Z\",\n                        \"RefreshBatchStatus\": \"SUCCESSFUL\"\n                    }\n                ],\n                \"RefreshMode\": \"ROLLING_UPDATE_RESET\",\n                \"AutoScalingGroupId\": \"asg-kgujlegg\",\n                \"ActivityType\": \"NORMAL\",\n                \"RefreshSettings\": {\n                    \"CheckInstanceTargetHealth\": true,\n                    \"RollingUpdateSettings\": {\n                        \"BatchNumber\": 3,\n                        \"BatchPause\": \"AUTOMATIC\"\n                    }\n                },\n                \"OriginRefreshActivityId\": \"\",\n                \"CurrentRefreshBatchNum\": 3,\n                \"RefreshActivityId\": \"asr-cs0fxpcu\",\n                \"StartTime\": \"2023-09-07T16:27:49Z\",\n                \"CreatedTime\": \"2023-09-07T16:27:49Z\",\n                \"EndTime\": \"2023-09-07T16:32:56Z\"\n            }\n        ],\n        \"RequestId\": \"48869660-f1df-4085-a62c-1f9636cbe030\"\n    }\n}",
+        "title": "Viewing List of Refresh Activities Using Filters"
+      }
+    ],
     "DescribeScalingPolicies": [
       {
         "document": "This example shows you how to query a simple alarm triggering policy by a specific policy ID.",
@@ -376,6 +392,14 @@
         "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExecuteScalingPolicy\n<Common request parameters>\n\n{\n    \"HonorCooldown\": \"false\",\n    \"AutoScalingPolicyId\": \"asp-f59pppuh\"\n}",
         "output": "{\n    \"Response\": {\n        \"ActivityId\": \"asa-o4v87ae9\",\n        \"RequestId\": \"116213d6-2269-44cc-af76-c4a8dc7dbdf9\"\n    }\n}",
         "title": "Triggering a scaling policy"
+      }
+    ],
+    "ExitStandby": [
+      {
+        "document": "This example shows you how to exit instances ins-osckfnm7 and ins-cri8d02t from standby status in the scaling group asg-boz1qhnk.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExitStandby\n<Common request parameters>\n{\n    \"AutoScalingGroupId\": \"asg-boz1qhnk\",\n    \"InstanceIds\": [\n        \"ins-osckfnm7\",\n        \"ins-cri8d02t\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"ActivityId\": \"asa-q59zikez\",\n        \"RequestId\": \"5b039ee6-e8ff-4605-bb24-b45337747431\"\n    }\n}",
+        "title": "Exiting Instances from Standby Status in the Scaling Group"
       }
     ],
     "ModifyAutoScalingGroup": [
@@ -488,6 +512,22 @@
         "title": "Removing instances from a scaling group"
       }
     ],
+    "ResumeInstanceRefresh": [
+      {
+        "document": "This example shows you how to resume the instance refresh activity asr-juhf6ytr in the scaling group asg-h7tgd87d to retry refreshing the failed instances in the current batch.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResumeInstanceRefresh\n<Common request parameters>\n{\n    \"AutoScalingGroupId\": \"asg-h7tgd87d\",\n    \"RefreshActivityId\": \"img-juhf6ytr\",\n    \"ResumeMode\": \"RETRY\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c4190090-bc60-4f48-b9d4-48095b9596db\"\n    }\n}",
+        "title": "Resuming Instance Refresh Activity"
+      }
+    ],
+    "RollbackInstanceRefresh": [
+      {
+        "document": "This example shows you how to roll back the instance refresh activity asr-i8u7tytd for the scaling group asg-9dn1a5y6.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartInstanceRefresh\n<Common request parameters>\n{\n    \"AutoScalingGroupId\": \"asg-9dn1a5y6\",\n    \"RefreshMode\": \"ROLLING_UPDATE\",\n    \"OriginRefreshActivityId\": \"asr-i8u7tytd\",\n    \"RefreshSettings\": {\n        \"RollingUpdateSettings\": {\n            \"BatchNumber\": 3,\n            \"BatchPause\": \"BATCH_INTERVAL_PAUSE\"\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RefreshActivityId\": \"asr-y67t5r4e\",\n        \"RequestId\": \"c4190090-bc60-4f48-b9d4-48095b9596db\"\n    }\n}",
+        "title": "Rolling Back Instance Refresh Activity Using the Rolling Update Method"
+      }
+    ],
     "ScaleInInstances": [
       {
         "document": " ",
@@ -520,12 +560,28 @@
         "title": "Starting up CVM instances"
       }
     ],
+    "StartInstanceRefresh": [
+      {
+        "document": "This example shows you how to divide the instances in the scaling group asg-9dn1a5y6 into 3 batches for rolling updates, and there will be an automatic pause between batches.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartInstanceRefresh\n<Common request parameters>\n{\n    \"AutoScalingGroupId\": \"asg-9dn1a5y6\",\n    \"RefreshMode\": \"ROLLING_UPDATE\",\n    \"RefreshSettings\": {\n        \"RollingUpdateSettings\": {\n            \"BatchNumber\": 3,\n            \"BatchPause\": \"BATCH_INTERVAL_PAUSE\"\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RefreshActivityId\": \"asr-y67t5r4e\",\n        \"RequestId\": \"c4190090-bc60-4f48-b9d4-48095b9596db\"\n    }\n}",
+        "title": "Performing Instance Refresh Using the Rolling Update Method"
+      }
+    ],
     "StopAutoScalingInstances": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopAutoScalingInstances\n<Common request parameters>\n\n{\n    \"AutoScalingGroupId\": \"asg-boz1qhnk\",\n    \"StoppedMode\": \"STOP_CHARGING\",\n    \"InstanceIds\": [\n        \"ins-osckfnm7\",\n        \"ins-cri8d02t\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"ActivityId\": \"asa-m1ebiskl\",\n        \"RequestId\": \"f3e2873c-af7c-43ee-8aa7-53565d4181c2\"\n    }\n}",
         "title": "Shutting down instances in the scaling group in the manner of **No Charges When Shut Down**"
+      }
+    ],
+    "StopInstanceRefresh": [
+      {
+        "document": "This example shows you how to pause the instance refresh activity asr-juhf6ytr for the scaling group asg-h7tgd87d.",
+        "input": "POST / HTTP/1.1\nHost: as.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopInstanceRefresh\n<Common request parameters>\n{\n    \"AutoScalingGroupId\": \"asg-h7tgd87d\",\n    \"RefreshActivityId\": \"img-juhf6ytr\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c4190090-bc60-4f48-b9d4-48095b9596db\"\n    }\n}",
+        "title": "Pausing Instance Refresh Activity"
       }
     ],
     "UpgradeLaunchConfiguration": [
