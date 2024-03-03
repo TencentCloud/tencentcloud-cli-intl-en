@@ -898,6 +898,7 @@
         {
           "disabled": false,
           "document": "Database",
+          "example": "",
           "member": "int64",
           "name": "DB",
           "required": true,
@@ -907,6 +908,7 @@
         {
           "disabled": false,
           "document": "Big key",
+          "example": "",
           "member": "string",
           "name": "Key",
           "required": true,
@@ -916,6 +918,7 @@
         {
           "disabled": false,
           "document": "Type",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -925,6 +928,7 @@
         {
           "disabled": false,
           "document": "Size",
+          "example": "",
           "member": "int64",
           "name": "Size",
           "required": true,
@@ -934,6 +938,7 @@
         {
           "disabled": false,
           "document": "Data timestamp",
+          "example": "",
           "member": "int64",
           "name": "Updatetime",
           "required": true,
@@ -949,6 +954,7 @@
         {
           "disabled": false,
           "document": "Type",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -958,6 +964,7 @@
         {
           "disabled": false,
           "document": "Count",
+          "example": "",
           "member": "int64",
           "name": "Count",
           "required": true,
@@ -967,6 +974,7 @@
         {
           "disabled": false,
           "document": "Size",
+          "example": "",
           "member": "int64",
           "name": "Size",
           "required": true,
@@ -976,6 +984,7 @@
         {
           "disabled": false,
           "document": "Timestamp",
+          "example": "",
           "member": "int64",
           "name": "Updatetime",
           "required": true,
@@ -1473,6 +1482,7 @@
         {
           "disabled": false,
           "document": "Command",
+          "example": "",
           "member": "string",
           "name": "Cmd",
           "required": true,
@@ -1482,6 +1492,7 @@
         {
           "disabled": false,
           "document": "Duration",
+          "example": "",
           "member": "int64",
           "name": "Took",
           "required": true,
@@ -2827,6 +2838,7 @@
         {
           "disabled": false,
           "document": "Region ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "RegionId",
           "required": true,
@@ -2836,6 +2848,7 @@
         {
           "disabled": false,
           "document": "Instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2845,6 +2858,7 @@
         {
           "disabled": false,
           "document": "Repository ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "SetId",
           "required": true,
@@ -2854,6 +2868,7 @@
         {
           "disabled": false,
           "document": "AZ ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "ZoneId",
           "required": true,
@@ -2863,6 +2878,7 @@
         {
           "disabled": false,
           "document": "Instance type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Type",
           "required": true,
@@ -2872,6 +2888,7 @@
         {
           "disabled": false,
           "document": "Instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "InstanceName",
           "required": true,
@@ -2881,6 +2898,7 @@
         {
           "disabled": false,
           "document": "Instance access address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Vip",
           "required": true,
@@ -2890,6 +2908,7 @@
         {
           "disabled": false,
           "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -2941,6 +2960,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2949,6 +2969,7 @@
         {
           "disabled": false,
           "document": "Request type. 1: string type; 2: all types",
+          "example": "",
           "member": "int64",
           "name": "ReqType",
           "required": true,
@@ -2957,6 +2978,7 @@
         {
           "disabled": false,
           "document": "Time, such as \"20190219\"",
+          "example": "",
           "member": "string",
           "name": "Date",
           "required": true,
@@ -2971,6 +2993,7 @@
         {
           "disabled": false,
           "document": "Big key details",
+          "example": "",
           "member": "BigKeyInfo",
           "name": "Data",
           "type": "list",
@@ -2991,6 +3014,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -2999,6 +3023,7 @@
         {
           "disabled": false,
           "document": "Time, such as \"20190219\"",
+          "example": "",
           "member": "string",
           "name": "Date",
           "required": true,
@@ -3013,6 +3038,7 @@
         {
           "disabled": false,
           "document": "Big key size distribution details",
+          "example": "",
           "member": "DelayDistribution",
           "name": "Data",
           "type": "list",
@@ -3033,6 +3059,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3041,6 +3068,7 @@
         {
           "disabled": false,
           "document": "Time, such as \"20190219\"",
+          "example": "",
           "member": "string",
           "name": "Date",
           "required": true,
@@ -3055,6 +3083,7 @@
         {
           "disabled": false,
           "document": "Big key type distribution details",
+          "example": "",
           "member": "BigKeyTypeInfo",
           "name": "Data",
           "type": "list",
@@ -3075,6 +3104,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3083,6 +3113,7 @@
         {
           "disabled": false,
           "document": "Time span. 1: real time; 2: past 30 minutes; 3: past 6 hours; 4: past 24 hours",
+          "example": "",
           "member": "int64",
           "name": "SpanType",
           "required": true,
@@ -3097,6 +3128,7 @@
         {
           "disabled": false,
           "document": "Hot key details",
+          "example": "",
           "member": "HotKeyInfo",
           "name": "Data",
           "type": "list",
@@ -3117,6 +3149,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3131,6 +3164,7 @@
         {
           "disabled": false,
           "document": "Access source information",
+          "example": "",
           "member": "SourceInfo",
           "name": "Data",
           "type": "list",
@@ -3151,6 +3185,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3159,6 +3194,7 @@
         {
           "disabled": false,
           "document": "Time, such as \"20190219\"",
+          "example": "",
           "member": "string",
           "name": "Date",
           "required": true,
@@ -3167,6 +3203,7 @@
         {
           "disabled": false,
           "document": "Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours",
+          "example": "",
           "member": "int64",
           "name": "SpanType",
           "required": true,
@@ -3181,6 +3218,7 @@
         {
           "disabled": false,
           "document": "Latency distribution information",
+          "example": "",
           "member": "DelayDistribution",
           "name": "Data",
           "type": "list",
@@ -3201,6 +3239,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3209,6 +3248,7 @@
         {
           "disabled": false,
           "document": "Time span. 1: real time; 2: last 30 minutes; 3: last 6 hours; 4: last 24 hours",
+          "example": "",
           "member": "int64",
           "name": "SpanType",
           "required": true,
@@ -3223,6 +3263,7 @@
         {
           "disabled": false,
           "document": "Access command information",
+          "example": "",
           "member": "SourceCommand",
           "name": "Data",
           "type": "list",
@@ -3267,6 +3308,7 @@
         {
           "disabled": false,
           "document": "Duration details",
+          "example": "",
           "member": "CommandTake",
           "name": "Data",
           "type": "list",
@@ -3939,6 +3981,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -3953,6 +3996,7 @@
         {
           "disabled": false,
           "document": "Start time of the maintenance window, such as 17:00.",
+          "example": "",
           "member": "string",
           "name": "StartTime",
           "type": "string",
@@ -3961,6 +4005,7 @@
         {
           "disabled": false,
           "document": "End time of the maintenance window, such as 19:00.",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "type": "string",
@@ -5226,6 +5271,7 @@
         {
           "disabled": false,
           "document": "Hot key",
+          "example": "",
           "member": "string",
           "name": "Key",
           "required": true,
@@ -5235,6 +5281,7 @@
         {
           "disabled": false,
           "document": "Type",
+          "example": "",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -5244,6 +5291,7 @@
         {
           "disabled": false,
           "document": "Count",
+          "example": "",
           "member": "int64",
           "name": "Count",
           "required": true,
@@ -5259,6 +5307,7 @@
         {
           "disabled": false,
           "document": "Policy. Valid values: ACCEPT, DROP.",
+          "example": "",
           "member": "string",
           "name": "Action",
           "required": true,
@@ -5268,6 +5317,7 @@
         {
           "disabled": false,
           "document": "All the addresses that the address group ID represents.",
+          "example": "",
           "member": "string",
           "name": "AddressModule",
           "required": true,
@@ -5277,6 +5327,7 @@
         {
           "disabled": false,
           "document": "Source IP or IP address range, such as 192.168.0.0/16.",
+          "example": "",
           "member": "string",
           "name": "CidrIp",
           "required": true,
@@ -5286,6 +5337,7 @@
         {
           "disabled": false,
           "document": "Description.",
+          "example": "",
           "member": "string",
           "name": "Desc",
           "required": true,
@@ -5295,6 +5347,7 @@
         {
           "disabled": false,
           "document": "Network protocol, such as UDP and TCP.",
+          "example": "",
           "member": "string",
           "name": "IpProtocol",
           "required": true,
@@ -5304,6 +5357,7 @@
         {
           "disabled": false,
           "document": "Port.",
+          "example": "",
           "member": "string",
           "name": "PortRange",
           "required": true,
@@ -5313,6 +5367,7 @@
         {
           "disabled": false,
           "document": "All the protocols and ports that the service group ID represents.",
+          "example": "",
           "member": "string",
           "name": "ServiceModule",
           "required": true,
@@ -5322,6 +5377,7 @@
         {
           "disabled": false,
           "document": "All the addresses that the security group ID represents.",
+          "example": "",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -5464,6 +5520,7 @@
         {
           "disabled": false,
           "document": "Instance ID.",
+          "example": "",
           "member": "string",
           "name": "InstanceId",
           "required": true,
@@ -5472,6 +5529,7 @@
         {
           "disabled": false,
           "document": "Shard size in MB.",
+          "example": "",
           "member": "uint64",
           "name": "MemSize",
           "required": true,
@@ -5480,6 +5538,7 @@
         {
           "disabled": false,
           "document": "Number of shards. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.",
+          "example": "",
           "member": "uint64",
           "name": "RedisShardNum",
           "required": false,
@@ -5488,6 +5547,7 @@
         {
           "disabled": false,
           "document": "Number of replicas. This parameter can be left blank for Redis 2.8 in standard architecture, CKV in standard architecture, and Redis 2.8 in standalone architecture.",
+          "example": "",
           "member": "uint64",
           "name": "RedisReplicasNum",
           "required": false,
@@ -5502,6 +5562,7 @@
         {
           "disabled": false,
           "document": "Price. Unit: USD\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "float",
           "name": "Price",
           "type": "float",
@@ -5840,6 +5901,7 @@
         {
           "disabled": false,
           "document": "Parameter name",
+          "example": "",
           "member": "string",
           "name": "ParamName",
           "required": true,
@@ -5849,6 +5911,7 @@
         {
           "disabled": false,
           "document": "Parameter type: Integer",
+          "example": "",
           "member": "string",
           "name": "ValueType",
           "required": true,
@@ -5858,6 +5921,7 @@
         {
           "disabled": false,
           "document": "Whether restart is required after a modification is made. Valid values: true, false",
+          "example": "",
           "member": "string",
           "name": "NeedRestart",
           "required": true,
@@ -5867,6 +5931,7 @@
         {
           "disabled": false,
           "document": "Default value of the parameter",
+          "example": "",
           "member": "string",
           "name": "DefaultValue",
           "required": true,
@@ -5876,6 +5941,7 @@
         {
           "disabled": false,
           "document": "Current value",
+          "example": "",
           "member": "string",
           "name": "CurrentValue",
           "required": true,
@@ -5885,6 +5951,7 @@
         {
           "disabled": false,
           "document": "Parameter description",
+          "example": "",
           "member": "string",
           "name": "Tips",
           "required": true,
@@ -5894,6 +5961,7 @@
         {
           "disabled": false,
           "document": "Minimum value of the parameter",
+          "example": "",
           "member": "string",
           "name": "Min",
           "required": true,
@@ -5903,6 +5971,7 @@
         {
           "disabled": false,
           "document": "Maximum value of the parameter",
+          "example": "",
           "member": "string",
           "name": "Max",
           "required": true,
@@ -5912,6 +5981,7 @@
         {
           "disabled": false,
           "document": "Parameter status. 1: modifying; 2: modified",
+          "example": "",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -5921,6 +5991,7 @@
         {
           "disabled": false,
           "document": "Parameter unit\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
           "member": "string",
           "name": "Unit",
           "required": true,
@@ -6768,6 +6839,7 @@
         {
           "disabled": false,
           "document": "Slow log duration",
+          "example": "",
           "member": "int64",
           "name": "Duration",
           "required": true,
@@ -6777,6 +6849,7 @@
         {
           "disabled": false,
           "document": "Client address",
+          "example": "",
           "member": "string",
           "name": "Client",
           "required": true,
@@ -6786,6 +6859,7 @@
         {
           "disabled": false,
           "document": "Command",
+          "example": "",
           "member": "string",
           "name": "Command",
           "required": true,
@@ -6795,6 +6869,7 @@
         {
           "disabled": false,
           "document": "Command line details",
+          "example": "",
           "member": "string",
           "name": "CommandLine",
           "required": true,
@@ -6804,6 +6879,7 @@
         {
           "disabled": false,
           "document": "Execution duration",
+          "example": "",
           "member": "string",
           "name": "ExecuteTime",
           "required": true,
@@ -6813,6 +6889,7 @@
         {
           "disabled": false,
           "document": "Node ID",
+          "example": "",
           "member": "string",
           "name": "Node",
           "required": true,
@@ -8062,6 +8139,7 @@
         {
           "disabled": false,
           "document": "Policy. Valid values: ACCEPT, DROP.",
+          "example": "",
           "member": "string",
           "name": "Action",
           "required": true,
@@ -8071,6 +8149,7 @@
         {
           "disabled": false,
           "document": "All the addresses that the address group ID represents.",
+          "example": "",
           "member": "string",
           "name": "AddressModule",
           "required": true,
@@ -8080,6 +8159,7 @@
         {
           "disabled": false,
           "document": "Source IP or IP address range, such as 192.168.0.0/16.",
+          "example": "",
           "member": "string",
           "name": "CidrIp",
           "required": true,
@@ -8089,6 +8169,7 @@
         {
           "disabled": false,
           "document": "Description.",
+          "example": "",
           "member": "string",
           "name": "Desc",
           "required": true,
@@ -8098,6 +8179,7 @@
         {
           "disabled": false,
           "document": "Network protocol, such as UDP and TCP.",
+          "example": "",
           "member": "string",
           "name": "IpProtocol",
           "required": true,
@@ -8107,6 +8189,7 @@
         {
           "disabled": false,
           "document": "Port.",
+          "example": "",
           "member": "string",
           "name": "PortRange",
           "required": true,
@@ -8116,6 +8199,7 @@
         {
           "disabled": false,
           "document": "All the protocols and ports that the service group ID represents.",
+          "example": "",
           "member": "string",
           "name": "ServiceModule",
           "required": true,
@@ -8125,6 +8209,7 @@
         {
           "disabled": false,
           "document": "All the addresses that the security group ID represents.",
+          "example": "",
           "member": "string",
           "name": "Id",
           "required": true,
@@ -8894,6 +8979,7 @@
         {
           "disabled": false,
           "document": "Region ID",
+          "example": "",
           "member": "string",
           "name": "RegionId",
           "required": true,
@@ -8903,6 +8989,7 @@
         {
           "disabled": false,
           "document": "Region name",
+          "example": "",
           "member": "string",
           "name": "RegionName",
           "required": true,
@@ -8912,6 +8999,7 @@
         {
           "disabled": false,
           "document": "Region abbreviation",
+          "example": "",
           "member": "string",
           "name": "RegionShortName",
           "required": true,
@@ -8921,6 +9009,7 @@
         {
           "disabled": false,
           "document": "Name of the area where a region is located",
+          "example": "",
           "member": "string",
           "name": "Area",
           "required": true,
@@ -8930,6 +9019,7 @@
         {
           "disabled": false,
           "document": "AZ information",
+          "example": "",
           "member": "ZoneCapacityConf",
           "name": "ZoneSet",
           "required": true,
@@ -9294,6 +9384,7 @@
         {
           "disabled": false,
           "document": "Creation time in the format of yyyy-mm-dd hh:mm:ss.",
+          "example": "",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -9303,6 +9394,7 @@
         {
           "disabled": false,
           "document": "Project ID.",
+          "example": "",
           "member": "uint64",
           "name": "ProjectId",
           "required": true,
@@ -9312,6 +9404,7 @@
         {
           "disabled": false,
           "document": "Security group ID.",
+          "example": "",
           "member": "string",
           "name": "SecurityGroupId",
           "required": true,
@@ -9321,6 +9414,7 @@
         {
           "disabled": false,
           "document": "Security group name.",
+          "example": "",
           "member": "string",
           "name": "SecurityGroupName",
           "required": true,
@@ -9330,6 +9424,7 @@
         {
           "disabled": false,
           "document": "Security group remarks.",
+          "example": "",
           "member": "string",
           "name": "SecurityGroupRemark",
           "required": true,
@@ -9339,6 +9434,7 @@
         {
           "disabled": false,
           "document": "Outbound rule.",
+          "example": "",
           "member": "Outbound",
           "name": "Outbound",
           "required": true,
@@ -9348,6 +9444,7 @@
         {
           "disabled": false,
           "document": "Inbound rule.",
+          "example": "",
           "member": "Inbound",
           "name": "Inbound",
           "required": true,
@@ -9485,6 +9582,7 @@
         {
           "disabled": false,
           "document": "Command",
+          "example": "",
           "member": "string",
           "name": "Cmd",
           "required": true,
@@ -9494,6 +9592,7 @@
         {
           "disabled": false,
           "document": "Number of executions",
+          "example": "",
           "member": "int64",
           "name": "Count",
           "required": true,
@@ -9509,6 +9608,7 @@
         {
           "disabled": false,
           "document": "Source IP",
+          "example": "",
           "member": "string",
           "name": "Ip",
           "required": true,
@@ -9518,6 +9618,7 @@
         {
           "disabled": false,
           "document": "Number of connections",
+          "example": "",
           "member": "int64",
           "name": "Conn",
           "required": true,
@@ -9527,6 +9628,7 @@
         {
           "disabled": false,
           "document": "Command",
+          "example": "",
           "member": "int64",
           "name": "Cmd",
           "required": true,
@@ -9784,6 +9886,7 @@
         {
           "disabled": false,
           "document": "Node ID",
+          "example": "",
           "member": "string",
           "name": "NodeId",
           "required": true,
@@ -9793,6 +9896,7 @@
         {
           "disabled": false,
           "document": "Node role",
+          "example": "",
           "member": "string",
           "name": "NodeRole",
           "required": true,
@@ -9808,6 +9912,7 @@
         {
           "disabled": false,
           "document": "Execution time",
+          "example": "",
           "member": "string",
           "name": "ExecuteTime",
           "required": true,
@@ -9817,6 +9922,7 @@
         {
           "disabled": false,
           "document": "Duration of the slow query (ms)",
+          "example": "",
           "member": "int64",
           "name": "Duration",
           "required": true,
@@ -9826,6 +9932,7 @@
         {
           "disabled": false,
           "document": "Command",
+          "example": "",
           "member": "string",
           "name": "Command",
           "required": true,
@@ -9835,6 +9942,7 @@
         {
           "disabled": false,
           "document": "Command line details",
+          "example": "",
           "member": "string",
           "name": "CommandLine",
           "required": true,
@@ -9844,6 +9952,7 @@
         {
           "disabled": false,
           "document": "Node ID",
+          "example": "",
           "member": "string",
           "name": "Node",
           "required": true,
@@ -9859,6 +9968,7 @@
         {
           "disabled": false,
           "document": "Order ID, which is used when a TencentCloud API is called.",
+          "example": "",
           "member": "string",
           "name": "DealId",
           "required": true,
@@ -9868,6 +9978,7 @@
         {
           "disabled": false,
           "document": "Long order ID, which is used when an order issue is submitted for assistance.",
+          "example": "",
           "member": "string",
           "name": "DealName",
           "required": true,
@@ -9877,6 +9988,7 @@
         {
           "disabled": false,
           "document": "AZ ID",
+          "example": "",
           "member": "int64",
           "name": "ZoneId",
           "required": true,
@@ -9886,6 +9998,7 @@
         {
           "disabled": false,
           "document": "Number of instances associated with the order",
+          "example": "",
           "member": "int64",
           "name": "GoodsNum",
           "required": true,
@@ -9895,6 +10008,7 @@
         {
           "disabled": false,
           "document": "Creator UIN",
+          "example": "",
           "member": "string",
           "name": "Creater",
           "required": true,
@@ -9904,6 +10018,7 @@
         {
           "disabled": false,
           "document": "Order creation time",
+          "example": "",
           "member": "string",
           "name": "CreatTime",
           "required": true,
@@ -9913,6 +10028,7 @@
         {
           "disabled": false,
           "document": "Order timeout period",
+          "example": "",
           "member": "string",
           "name": "OverdueTime",
           "required": true,
@@ -9922,6 +10038,7 @@
         {
           "disabled": false,
           "document": "Order completion time",
+          "example": "",
           "member": "string",
           "name": "EndTime",
           "required": true,
@@ -9931,6 +10048,7 @@
         {
           "disabled": false,
           "document": "Order status. 1: unpaid; 2: paid but not delivered; 3: In delivery; 4: successfully delivered; 5: delivery failed; 6: refunded; 7: order closed; 8: order expired; 9: order invalidated; 10: product invalidated; 11: requested payment rejected; 12: paying",
+          "example": "",
           "member": "int64",
           "name": "Status",
           "required": true,
@@ -9940,6 +10058,7 @@
         {
           "disabled": false,
           "document": "Order status description",
+          "example": "",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -9949,6 +10068,7 @@
         {
           "disabled": false,
           "document": "Actual total price of the order in 0.01 CNY",
+          "example": "",
           "member": "int64",
           "name": "Price",
           "required": true,
@@ -9958,6 +10078,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
+          "example": "",
           "member": "string",
           "name": "InstanceIds",
           "required": true,
@@ -10275,6 +10396,7 @@
         {
           "disabled": false,
           "document": "AZ ID, such as ap-guangzhou-3",
+          "example": "",
           "member": "string",
           "name": "ZoneId",
           "required": true,
@@ -10284,6 +10406,7 @@
         {
           "disabled": false,
           "document": "AZ name",
+          "example": "",
           "member": "string",
           "name": "ZoneName",
           "required": true,
@@ -10293,6 +10416,7 @@
         {
           "disabled": false,
           "document": "Whether a product is sold out in an AZ",
+          "example": "",
           "member": "bool",
           "name": "IsSaleout",
           "required": true,
@@ -10302,6 +10426,7 @@
         {
           "disabled": false,
           "document": "Whether it is a default AZ",
+          "example": "",
           "member": "bool",
           "name": "IsDefault",
           "required": true,
@@ -10311,6 +10436,7 @@
         {
           "disabled": false,
           "document": "Network type. basenet: basic network; vpcnet: VPC",
+          "example": "",
           "member": "string",
           "name": "NetWorkType",
           "required": true,
@@ -10320,6 +10446,7 @@
         {
           "disabled": false,
           "document": "Information of an AZ, such as product specifications in it",
+          "example": "",
           "member": "ProductConf",
           "name": "ProductSet",
           "required": true,
@@ -10329,6 +10456,7 @@
         {
           "disabled": false,
           "document": "AZ ID, such as 100003",
+          "example": "",
           "member": "int64",
           "name": "OldZoneId",
           "required": true,
