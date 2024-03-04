@@ -121,6 +121,58 @@ def doDescribeInstanceCustomizedDomain(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
+def doModifyServiceAccountPassword(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION)             and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID)             and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE)             and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyServiceAccountPasswordRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifyServiceAccountPassword(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
 def doDescribeImmutableTagRules(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -329,7 +381,7 @@ def doDeleteSecurityPolicy(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeInternalEndpoints(args, parsed_globals):
+def doCreateNamespace(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -358,11 +410,11 @@ def doDescribeInternalEndpoints(args, parsed_globals):
     client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeInternalEndpointsRequest()
+    model = models.CreateNamespaceRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeInternalEndpoints(model)
+        rsp = client.CreateNamespace(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -537,7 +589,7 @@ def doCreateSignaturePolicy(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateNamespace(args, parsed_globals):
+def doDeleteInstance(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -566,11 +618,11 @@ def doCreateNamespace(args, parsed_globals):
     client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateNamespaceRequest()
+    model = models.DeleteInstanceRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateNamespace(model)
+        rsp = client.DeleteInstance(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -797,7 +849,7 @@ def doDescribeChartDownloadInfo(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateCustomAccount(args, parsed_globals):
+def doDeleteInstanceCustomizedDomain(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -826,11 +878,11 @@ def doCreateCustomAccount(args, parsed_globals):
     client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateCustomAccountRequest()
+    model = models.DeleteInstanceCustomizedDomainRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateCustomAccount(model)
+        rsp = client.DeleteInstanceCustomizedDomain(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1421,7 +1473,7 @@ def doDescribeInstanceAllNamespaces(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteInstanceCustomizedDomain(args, parsed_globals):
+def doDeleteNamespace(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -1450,11 +1502,11 @@ def doDeleteInstanceCustomizedDomain(args, parsed_globals):
     client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteInstanceCustomizedDomainRequest()
+    model = models.DeleteNamespaceRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DeleteInstanceCustomizedDomain(model)
+        rsp = client.DeleteNamespace(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -1889,110 +1941,6 @@ def doDeleteInstanceToken(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeCustomAccounts(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
-        cred = credential.CVMRoleCredential()
-    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
-        cred = credential.STSAssumeRoleCredential(
-            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
-            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
-        )
-    elif os.getenv(OptionsDefine.ENV_TKE_REGION)             and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID)             and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE)             and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
-        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
-    else:
-        cred = credential.Credential(
-            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-        )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint],
-        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    if g_param[OptionsDefine.Language]:
-        profile.language = g_param[OptionsDefine.Language]
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeCustomAccountsRequest()
-    model.from_json_string(json.dumps(args))
-    start_time = time.time()
-    while True:
-        rsp = client.DescribeCustomAccounts(model)
-        result = rsp.to_json_string()
-        try:
-            json_obj = json.loads(result)
-        except TypeError as e:
-            json_obj = json.loads(result.decode('utf-8'))  # python3.3
-        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
-            break
-        cur_time = time.time()
-        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
-            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
-            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
-            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
-        else:
-            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
-        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeSecurityPolicies(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
-        cred = credential.CVMRoleCredential()
-    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
-        cred = credential.STSAssumeRoleCredential(
-            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
-            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
-        )
-    elif os.getenv(OptionsDefine.ENV_TKE_REGION)             and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID)             and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE)             and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
-        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
-    else:
-        cred = credential.Credential(
-            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-        )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint],
-        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    if g_param[OptionsDefine.Language]:
-        profile.language = g_param[OptionsDefine.Language]
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeSecurityPoliciesRequest()
-    model.from_json_string(json.dumps(args))
-    start_time = time.time()
-    while True:
-        rsp = client.DescribeSecurityPolicies(model)
-        result = rsp.to_json_string()
-        try:
-            json_obj = json.loads(result)
-        except TypeError as e:
-            json_obj = json.loads(result.decode('utf-8'))  # python3.3
-        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
-            break
-        cur_time = time.time()
-        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
-            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
-            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
-            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
-        else:
-            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
-        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doCreateSignature(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -2357,7 +2305,7 @@ def doCreateInstance(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDescribeReplicationInstances(args, parsed_globals):
+def doDuplicateImage(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -2386,11 +2334,11 @@ def doDescribeReplicationInstances(args, parsed_globals):
     client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeReplicationInstancesRequest()
+    model = models.DuplicateImageRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DescribeReplicationInstances(model)
+        rsp = client.DuplicateImage(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -2461,7 +2409,7 @@ def doCreateWebhookTrigger(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteCustomAccount(args, parsed_globals):
+def doDescribeReplicationInstances(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -2490,11 +2438,11 @@ def doDeleteCustomAccount(args, parsed_globals):
     client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteCustomAccountRequest()
+    model = models.DescribeReplicationInstancesRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DeleteCustomAccount(model)
+        rsp = client.DescribeReplicationInstances(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -2773,7 +2721,7 @@ def doDescribeReplicationInstanceCreateTasks(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyCustomAccount(args, parsed_globals):
+def doDescribeInternalEndpoints(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -2802,11 +2750,11 @@ def doModifyCustomAccount(args, parsed_globals):
     client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyCustomAccountRequest()
+    model = models.DescribeInternalEndpointsRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifyCustomAccount(model)
+        rsp = client.DescribeInternalEndpoints(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -2981,7 +2929,7 @@ def doModifySecurityPolicy(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteInstance(args, parsed_globals):
+def doDescribeSecurityPolicies(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -3010,11 +2958,11 @@ def doDeleteInstance(args, parsed_globals):
     client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteInstanceRequest()
+    model = models.DescribeSecurityPoliciesRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.DeleteInstance(model)
+        rsp = client.DescribeSecurityPolicies(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -3379,58 +3327,6 @@ def doDeleteMultipleSecurityPolicy(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.DeleteMultipleSecurityPolicy(model)
-        result = rsp.to_json_string()
-        try:
-            json_obj = json.loads(result)
-        except TypeError as e:
-            json_obj = json.loads(result.decode('utf-8'))  # python3.3
-        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
-            break
-        cur_time = time.time()
-        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
-            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
-            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
-            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
-        else:
-            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
-        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDeleteNamespace(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
-        cred = credential.CVMRoleCredential()
-    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
-        cred = credential.STSAssumeRoleCredential(
-            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
-            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
-        )
-    elif os.getenv(OptionsDefine.ENV_TKE_REGION)             and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID)             and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE)             and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
-        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
-    else:
-        cred = credential.Credential(
-            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-        )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint],
-        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    if g_param[OptionsDefine.Language]:
-        profile.language = g_param[OptionsDefine.Language]
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.TcrClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteNamespaceRequest()
-    model.from_json_string(json.dumps(args))
-    start_time = time.time()
-    while True:
-        rsp = client.DeleteNamespace(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -4086,20 +3982,21 @@ MODELS_MAP = {
 ACTION_MAP = {
     "ModifyNamespace": doModifyNamespace,
     "DescribeInstanceCustomizedDomain": doDescribeInstanceCustomizedDomain,
+    "ModifyServiceAccountPassword": doModifyServiceAccountPassword,
     "DescribeImmutableTagRules": doDescribeImmutableTagRules,
     "DescribeTagRetentionExecutionTask": doDescribeTagRetentionExecutionTask,
     "CreateSecurityPolicy": doCreateSecurityPolicy,
     "DeleteSecurityPolicy": doDeleteSecurityPolicy,
-    "DescribeInternalEndpoints": doDescribeInternalEndpoints,
+    "CreateNamespace": doCreateNamespace,
     "CreateRepository": doCreateRepository,
     "DescribeImages": doDescribeImages,
     "CreateSignaturePolicy": doCreateSignaturePolicy,
-    "CreateNamespace": doCreateNamespace,
+    "DeleteInstance": doDeleteInstance,
     "DeleteTagRetentionRule": doDeleteTagRetentionRule,
     "DescribeTagRetentionExecution": doDescribeTagRetentionExecution,
     "ModifyRepository": doModifyRepository,
     "DescribeChartDownloadInfo": doDescribeChartDownloadInfo,
-    "CreateCustomAccount": doCreateCustomAccount,
+    "DeleteInstanceCustomizedDomain": doDeleteInstanceCustomizedDomain,
     "DeleteSignaturePolicy": doDeleteSignaturePolicy,
     "DeleteRepository": doDeleteRepository,
     "DescribeImageAccelerateService": doDescribeImageAccelerateService,
@@ -4111,7 +4008,7 @@ ACTION_MAP = {
     "CheckInstance": doCheckInstance,
     "CreateImmutableTagRules": doCreateImmutableTagRules,
     "DescribeInstanceAllNamespaces": doDescribeInstanceAllNamespaces,
-    "DeleteInstanceCustomizedDomain": doDeleteInstanceCustomizedDomain,
+    "DeleteNamespace": doDeleteNamespace,
     "DescribeWebhookTriggerLog": doDescribeWebhookTriggerLog,
     "DeleteRepositoryTags": doDeleteRepositoryTags,
     "DescribeInstanceToken": doDescribeInstanceToken,
@@ -4120,8 +4017,6 @@ ACTION_MAP = {
     "DeleteImmutableTagRules": doDeleteImmutableTagRules,
     "DescribeGCJobs": doDescribeGCJobs,
     "DeleteInstanceToken": doDeleteInstanceToken,
-    "DescribeCustomAccounts": doDescribeCustomAccounts,
-    "DescribeSecurityPolicies": doDescribeSecurityPolicies,
     "CreateSignature": doCreateSignature,
     "DescribeWebhookTrigger": doDescribeWebhookTrigger,
     "ModifyServiceAccount": doModifyServiceAccount,
@@ -4129,19 +4024,19 @@ ACTION_MAP = {
     "ModifyWebhookTrigger": doModifyWebhookTrigger,
     "ModifyInstanceToken": doModifyInstanceToken,
     "CreateInstance": doCreateInstance,
-    "DescribeReplicationInstances": doDescribeReplicationInstances,
+    "DuplicateImage": doDuplicateImage,
     "CreateWebhookTrigger": doCreateWebhookTrigger,
-    "DeleteCustomAccount": doDeleteCustomAccount,
+    "DescribeReplicationInstances": doDescribeReplicationInstances,
     "DescribeRegions": doDescribeRegions,
     "ModifyImmutableTagRules": doModifyImmutableTagRules,
     "DescribeTagRetentionRules": doDescribeTagRetentionRules,
     "DeleteWebhookTrigger": doDeleteWebhookTrigger,
     "DescribeReplicationInstanceCreateTasks": doDescribeReplicationInstanceCreateTasks,
-    "ModifyCustomAccount": doModifyCustomAccount,
+    "DescribeInternalEndpoints": doDescribeInternalEndpoints,
     "DeleteImageAccelerateService": doDeleteImageAccelerateService,
     "ManageExternalEndpoint": doManageExternalEndpoint,
     "ModifySecurityPolicy": doModifySecurityPolicy,
-    "DeleteInstance": doDeleteInstance,
+    "DescribeSecurityPolicies": doDescribeSecurityPolicies,
     "CreateMultipleSecurityPolicy": doCreateMultipleSecurityPolicy,
     "DescribeNamespaces": doDescribeNamespaces,
     "DescribeInstanceStatus": doDescribeInstanceStatus,
@@ -4149,7 +4044,6 @@ ACTION_MAP = {
     "CreateReplicationInstance": doCreateReplicationInstance,
     "RenewInstance": doRenewInstance,
     "DeleteMultipleSecurityPolicy": doDeleteMultipleSecurityPolicy,
-    "DeleteNamespace": doDeleteNamespace,
     "DeleteReplicationInstance": doDeleteReplicationInstance,
     "CreateTagRetentionRule": doCreateTagRetentionRule,
     "ManageReplication": doManageReplication,

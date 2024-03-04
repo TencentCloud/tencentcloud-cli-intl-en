@@ -16,14 +16,6 @@
         "title": "Checking whether the name of the instance to be created meets the specifications"
       }
     ],
-    "CreateCustomAccount": [
-      {
-        "document": "This example shows you how to create a custom account.",
-        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCustomAccount\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-12345\",\n    \"Name\": \"robot\",\n    \"Description\": \"desc\",\n    \"ExpiresAt\": 1676897989,\n    \"Disable\": false,\n    \"Permissions\": [\n        {\n            \"Resource\": \"library\",\n            \"Actions\": [\n                \"tcr:PushRepository\",\n                \"tcr:PullRepository\"\n            ]\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"Name\": \"tcr$robot\",\n        \"Password\": \"kiHUaTAmF6a94mNzhZWDans3dYahHQNE\",\n        \"ExpiresAt\": 1676897989,\n        \"CreateTime\": \"2023-02-20T21:00:00+00:00\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
-        "title": "Creating a custom account"
-      }
-    ],
     "CreateImageAccelerationService": [
       {
         "document": " ",
@@ -164,14 +156,6 @@
         "title": "Creating a trigger"
       }
     ],
-    "DeleteCustomAccount": [
-      {
-        "document": "This example shows you how to delete a custom account.",
-        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCustomAccount\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-xxx\",\n    \"Name\": \"tcr$robot\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Deleting a custom account"
-      }
-    ],
     "DeleteImage": [
       {
         "document": " ",
@@ -306,14 +290,6 @@
         "input": "https://tcr.tencentcloudapi.com/?Action=DescribeChartDownloadInfo\n&RegistryId=tcr-test123\n&NamespaceName=mytest\n&ChartName=mytest\n&ChartVersion=1.0\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"PreSignedDownloadURL\": \"http://tcr-mfoeec7x-1251707795.cos.ap-beijing.myqcloud.com/mytest%2Faaa-1.0.tgz?x-cos-security-token=crYJrPad4qVUuF1wM7B6ydE6fHmfC2Aa029f573e37399315f36f138a35d76483CzO4vdVHQC37m42wwxGV25f9eYVEMC1mwypgp3oLANGncOsZiRLHRQT39V32-eO7uK5V1AyROprYScr7zhVl-y9HgVX8b1Q-48X0y_CebL2pLchYzWMBnn86lS9vQGBYAZYyKnK8yHc20GuqbXjHuPeJUU6o7E9GIxmqQnN2otJeVqkJRqAvl_7dlE-z3SoxKoXAc3mtv5_2LRJKzGelfW7T3kA6D9etVFa4WYlc-qEHCRwKY4V5Qcz6nLklYJTcHAWod-Z5jl1YD7OvTV_Tcs45myCHz_LufpxwXErAdvXcFHfNIP5NNWVTGHX0xXYFlTa6O7XrivSy9Y7sHyKlD2_GFXIVfqJ_ngfW9NBjWf0&sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDwgeCmMrZak-ZNXGoGgRm04pnzUHahzQPZvSqc1o7F1cMQ53q0RfOCImKR3McEgfD%26q-sign-time%3D1620704774%3B1620708374%26q-key-time%3D1620704774%3B1620708374%26q-header-list%3Dhost%26q-url-param-list%3Dx-cos-security-token%26q-signature%3D6a17a10308b9ead591bee149665b469756dd6711\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Querying the download information of a chart"
-      }
-    ],
-    "DescribeCustomAccounts": [
-      {
-        "document": "This example shows you how to query custom accounts.",
-        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomAccounts\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-xxx\",\n    \"EmbedPermission\": true,\n    \"All\": false,\n    \"Filters\": [],\n    \"Offset\": 0,\n    \"Limit\": 20\n}",
-        "output": "{\n    \"Response\": {\n        \"CustomAccounts\": [\n            {\n                \"Name\": \"tcr$robot\",\n                \"Disable\": false,\n                \"UpdateTime\": \"2022-09-22T00:00:00+00:00\",\n                \"Permissions\": [\n                    {\n                        \"Resource\": \"library\",\n                        \"Actions\": [\n                            \"tcr:PushRepository\",\n                            \"tcr:PullRepository\"\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
-        "title": "Querying custom accounts"
       }
     ],
     "DescribeExternalEndpointStatus": [
@@ -470,10 +446,10 @@
     ],
     "DescribeServiceAccounts": [
       {
-        "document": "This example shows you how to query service accounts.",
-        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeServiceAccounts\n<Common request parameters>\n\n{\n    \"RegistryId\": \"abc\",\n    \"All\": true,\n    \"EmbedPermission\": true,\n    \"Filters\": [\n        {\n            \"Name\": \"abc\",\n            \"Values\": [\n                \"abc\"\n            ]\n        }\n    ],\n    \"Offset\": 0,\n    \"Limit\": 0\n}",
+        "document": "This example shows you how to query service level accounts.",
+        "input": "POST / HTTP/1.1Host: tcr.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: DescribeServiceAccounts<Common request parameters>\n\n{\n    \"RegistryId\": \"abc\",\n    \"All\": true,\n    \"EmbedPermission\": true,\n    \"Filters\": [\n        {\n            \"Name\": \"abc\",\n            \"Values\": [\n                \"abc\"\n            ]\n        }\n    ],\n    \"Offset\": 0,\n    \"Limit\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"ServiceAccounts\": [\n            {\n                \"Name\": \"abc\",\n                \"Description\": \"abc\",\n                \"Disable\": true,\n                \"ExpiresAt\": 0,\n                \"CreateTime\": \"2020-09-22T00:00:00+00:00\",\n                \"UpdateTime\": \"2020-09-22T00:00:00+00:00\",\n                \"Permissions\": [\n                    {\n                        \"Resource\": \"abc\",\n                        \"Actions\": [\n                            \"abc\"\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": 0,\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Querying a custom account"
+        "title": "Querying Service Level Accounts"
       }
     ],
     "DescribeTagRetentionExecution": [
@@ -524,6 +500,14 @@
         "title": "Downloading a Helm chart"
       }
     ],
+    "DuplicateImage": [
+      {
+        "document": "This example shows you how to duplicate image versions in the enterprise edition repository.",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DuplicateImage\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-e8pg46c6\",\n    \"SourceNamespace\": \"develop\",\n    \"SourceRepo\": \"app\",\n    \"SourceReference\": \"stg\",\n    \"DestinationNamespace\": \"release\",\n    \"DestinationRepo\": \"app\",\n    \"DestinationTag\": \"prd\",\n    \"Override\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eee33f6d-9271-4894-aaf6-14642d5a88da\"\n    }\n}",
+        "title": "Duplicating Enterprise Edition Repository Image Versions"
+      }
+    ],
     "ManageExternalEndpoint": [
       {
         "document": " ",
@@ -552,14 +536,6 @@
         "input": "https://tcr.tencentcloudapi.com/?Action=ManageReplication\n&SourceRegistryId=tcr-3498\n&DestinationRegistryId=tcr-98676\n&DestinationRegionId=9\n&Rule.Override=true\n&Rule.DestNamespace=test\n&Rule.Name=test\n&Rule.Filters.0.Type=tag\n&Rule.Filters.0.Value=test\n&PeerReplicationOption.EnablePeerReplication=true\n&PeerReplicationOption.PeerRegistryUin=113498\n&PeerReplicationOption.PeerRegistryToken=xxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Creating a synchronization rule for instances under different Tencent Cloud root accounts"
-      }
-    ],
-    "ModifyCustomAccount": [
-      {
-        "document": "This example shows you how to update a custom account.",
-        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCustomAccount\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-12345\",\n    \"Name\": \"robot\",\n    \"Description\": \"desc\",\n    \"ExpiresAt\": 1676897989,\n    \"Disable\": false,\n    \"Permissions\": [\n        {\n            \"Resource\": \"library\",\n            \"Actions\": [\n                \"tcr:PushRepository\",\n                \"tcr:PullRepository\"\n            ]\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"reqId\"\n    }\n}",
-        "title": "Updating a custom account"
       }
     ],
     "ModifyImmutableTagRules": [
@@ -628,6 +604,20 @@
         "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyServiceAccount\n<Common request parameters>\n\n{\n    \"RegistryId\": \"abc\",\n    \"Name\": \"abc\",\n    \"Description\": \"abc\",\n    \"Duration\": 0,\n    \"ExpiresAt\": 0,\n    \"Disable\": true,\n    \"Permissions\": [\n        {\n            \"Resource\": \"abc\",\n            \"Actions\": [\n                \"abc\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Updating a service account"
+      }
+    ],
+    "ModifyServiceAccountPassword": [
+      {
+        "document": "This example shows you how to customize service level account password.",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyServiceAccountPassword\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-gijwqid7\",\n    \"Name\": \"robot\",\n    \"Random\": false,\n    \"Password\": \"NewPass123\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Password\": \"NewPass123\",\n        \"RequestId\": \"8c63b1e6-02b8-48af-94c2-416aa71e0c12\"\n    }\n}",
+        "title": "Customizing Service Level Account Password"
+      },
+      {
+        "document": "This example shows you how to reset service level account password.",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyServiceAccountPassword\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-gijwqid7\",\n    \"Name\": \"robot\",\n    \"Random\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"Password\": \"kukui1ECDL8kr9cm6W66Me8PlhHemFmC\",\n        \"RequestId\": \"60e7d0ce-c8ed-4495-9814-9397482f0d4a\"\n    }\n}",
+        "title": "Resetting Service Level Account Password"
       }
     ],
     "ModifyTagRetentionRule": [

@@ -14,13 +14,6 @@
       "output": "CheckInstanceNameResponse",
       "status": "online"
     },
-    "CreateCustomAccount": {
-      "document": "This API is used to create a custom account.",
-      "input": "CreateCustomAccountRequest",
-      "name": "Creates a custom account",
-      "output": "CreateCustomAccountResponse",
-      "status": "online"
-    },
     "CreateImageAccelerationService": {
       "document": "This API is used to create an image acceleration service.",
       "input": "CreateImageAccelerationServiceRequest",
@@ -92,7 +85,7 @@
       "status": "online"
     },
     "CreateServiceAccount": {
-      "document": "This API is used to create a service account.",
+      "document": "This API is used to create a service level account.",
       "input": "CreateServiceAccountRequest",
       "name": "Creates a service account",
       "output": "CreateServiceAccountResponse",
@@ -131,13 +124,6 @@
       "input": "CreateWebhookTriggerRequest",
       "name": "Creates a trigger",
       "output": "CreateWebhookTriggerResponse",
-      "status": "online"
-    },
-    "DeleteCustomAccount": {
-      "document": "This API is used to delete a custom account.",
-      "input": "DeleteCustomAccountRequest",
-      "name": "Deletes a custom account",
-      "output": "DeleteCustomAccountResponse",
       "status": "online"
     },
     "DeleteImage": {
@@ -257,13 +243,6 @@
       "input": "DescribeChartDownloadInfoRequest",
       "name": "Queries the download information of a chart",
       "output": "DescribeChartDownloadInfoResponse",
-      "status": "online"
-    },
-    "DescribeCustomAccounts": {
-      "document": "This API is used to query custom accounts.",
-      "input": "DescribeCustomAccountsRequest",
-      "name": "Queries custom accounts",
-      "output": "DescribeCustomAccountsResponse",
       "status": "online"
     },
     "DescribeExternalEndpointStatus": {
@@ -448,6 +427,13 @@
       "output": "DownloadHelmChartResponse",
       "status": "online"
     },
+    "DuplicateImage": {
+      "document": "This API is used to duplicate the Enterprise Edition repository image version.",
+      "input": "DuplicateImageRequest",
+      "name": "Duplicates Enterprise Edition repository image versions",
+      "output": "DuplicateImageResponse",
+      "status": "online"
+    },
     "ManageExternalEndpoint": {
       "document": "This API is used to manage the public network access of an instance.",
       "input": "ManageExternalEndpointRequest",
@@ -467,13 +453,6 @@
       "input": "ManageReplicationRequest",
       "name": "Manages instance synchronization rule",
       "output": "ManageReplicationResponse",
-      "status": "online"
-    },
-    "ModifyCustomAccount": {
-      "document": "This API is used to update a custom account.",
-      "input": "ModifyCustomAccountRequest",
-      "name": "Updates a custom account",
-      "output": "ModifyCustomAccountResponse",
       "status": "online"
     },
     "ModifyImmutableTagRules": {
@@ -523,6 +502,13 @@
       "input": "ModifyServiceAccountRequest",
       "name": "Updates a service account",
       "output": "ModifyServiceAccountResponse",
+      "status": "online"
+    },
+    "ModifyServiceAccountPassword": {
+      "document": "This API is used to update the password for a service level account.",
+      "input": "ModifyServiceAccountPasswordRequest",
+      "name": "Updates the password for service level account",
+      "output": "ModifyServiceAccountPasswordResponse",
       "status": "online"
     },
     "ModifyTagRetentionRule": {
@@ -671,123 +657,6 @@
           "name": "RegionId",
           "required": true,
           "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateCustomAccountRequest": {
-      "document": "CreateCustomAccount request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Instance ID",
-          "example": "tcr-xxx",
-          "member": "string",
-          "name": "RegistryId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Custom account name",
-          "example": "robot",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Policy list",
-          "example": "{   \"Resource\": \"library\",   \"Actions\": [\"tcr:PushRepository\", \"tcr:PullRepository\"] }",
-          "member": "Permission",
-          "name": "Permissions",
-          "required": true,
-          "type": "list"
-        },
-        {
-          "disabled": false,
-          "document": "Custom account description",
-          "example": "for namespace library",
-          "member": "string",
-          "name": "Description",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Validity in days starting from the current day. It takes a higher priority than `ExpiresAt`.",
-          "example": "10",
-          "member": "int64",
-          "name": "Duration",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Expiry time of the custom account (timestamp, in milliseconds)",
-          "example": "1676897989000",
-          "member": "int64",
-          "name": "ExpiresAt",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Whether to disable the custom account",
-          "example": "false",
-          "member": "bool",
-          "name": "Disable",
-          "required": false,
-          "type": "bool"
-        }
-      ],
-      "type": "object"
-    },
-    "CreateCustomAccountResponse": {
-      "document": "CreateCustomAccount response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Custom username (the prefix `tcr$` is automatically added)",
-          "example": "tcr$robot",
-          "member": "string",
-          "name": "Name",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Custom password, which is displayed only once",
-          "example": "kiHUaTAmF6a94mNzhZWDans3dYahHQNE",
-          "member": "string",
-          "name": "Password",
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Custom expiry time (timestamp)",
-          "example": "1676897989",
-          "member": "int64",
-          "name": "ExpiresAt",
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Custom account creation time",
-          "example": "2023-02-20T17:30:00+8:00",
-          "member": "datetime_iso",
-          "name": "CreateTime",
-          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -1861,82 +1730,6 @@
       ],
       "type": "object"
     },
-    "CustomAccount": {
-      "document": "Custom account",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Custom account name\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "tcr$robot",
-          "member": "string",
-          "name": "Name",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Description\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "Description",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Whether to disable\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "false",
-          "member": "bool",
-          "name": "Disable",
-          "required": false,
-          "type": "bool",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Expiry time\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "1676897989",
-          "member": "int64",
-          "name": "ExpiresAt",
-          "required": false,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Creation time\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "2023-02-14T07:14:43+08:00",
-          "member": "datetime_iso",
-          "name": "CreateTime",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Update time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "2023-02-14T07:14:43+08:00",
-          "member": "datetime_iso",
-          "name": "UpdateTime",
-          "required": false,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Policy\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "[     {       \"Resource\": \"library\",       \"Actions\": [         \"tcr:PushRepository\",          \"tcr:PullRepository\"       ]     }   ]",
-          "member": "Permission",
-          "name": "Permissions",
-          "required": false,
-          "type": "list",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "both"
-    },
     "CustomizedDomainInfo": {
       "document": "Custom domain name information",
       "members": [
@@ -1982,42 +1775,6 @@
         }
       ],
       "usage": "out"
-    },
-    "DeleteCustomAccountRequest": {
-      "document": "DeleteCustomAccount request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Instance ID\t",
-          "example": "tcr-xxx",
-          "member": "string",
-          "name": "RegistryId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Custom account name",
-          "example": "robot",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DeleteCustomAccountResponse": {
-      "document": "DeleteCustomAccount response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
     },
     "DeleteImageAccelerateServiceRequest": {
       "document": "DeleteImageAccelerateService request structure.",
@@ -2767,96 +2524,6 @@
           "name": "PreSignedDownloadURL",
           "required": true,
           "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeCustomAccountsRequest": {
-      "document": "DescribeCustomAccounts request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Instance ID",
-          "example": "tcr-xxx",
-          "member": "string",
-          "name": "RegistryId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "All custom accounts",
-          "example": "无",
-          "member": "bool",
-          "name": "All",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "disabled": false,
-          "document": "Whether to enter the policy",
-          "example": "false",
-          "member": "bool",
-          "name": "EmbedPermission",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "disabled": false,
-          "document": "Filters",
-          "example": "无",
-          "member": "Filter",
-          "name": "Filters",
-          "required": false,
-          "type": "list"
-        },
-        {
-          "disabled": false,
-          "document": "Offset. Default value: `0`",
-          "example": "0",
-          "member": "int64",
-          "name": "Offset",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Maximum number of output entries. Default value: `20`. Maximum value: 100`.",
-          "example": "20",
-          "member": "int64",
-          "name": "Limit",
-          "required": false,
-          "type": "int"
-        }
-      ],
-      "type": "object"
-    },
-    "DescribeCustomAccountsResponse": {
-      "document": "DescribeCustomAccounts response structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "List of custom accounts\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "CustomAccount",
-          "name": "CustomAccounts",
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Number of custom accounts",
-          "example": "20",
-          "member": "int64",
-          "name": "TotalCount",
-          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4082,7 +3749,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to fill in permission information",
+          "document": "Whether to fill in permission information.",
           "example": "false",
           "member": "bool",
           "name": "EmbedPermission",
@@ -4128,15 +3795,17 @@
           "example": "无",
           "member": "ServiceAccount",
           "name": "ServiceAccounts",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Number of service accounts",
+          "document": "Number of service level accounts.",
           "example": "20",
           "member": "int64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4669,6 +4338,96 @@
       ],
       "type": "object"
     },
+    "DuplicateImageRequest": {
+      "document": "DuplicateImage request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "tcr-e8pg46c6",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source namespace name.",
+          "example": "develop",
+          "member": "string",
+          "name": "SourceNamespace",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source image repository name.",
+          "example": "app",
+          "member": "string",
+          "name": "SourceRepo",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source image tag or digest value. Currently, only tag is supported.",
+          "example": "v1.0",
+          "member": "string",
+          "name": "SourceReference",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Destination image version.",
+          "example": "v1.0",
+          "member": "string",
+          "name": "DestinationTag",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Destination namespace. Defaults to the same as the source if not filled.",
+          "example": "release",
+          "member": "string",
+          "name": "DestinationNamespace",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Destination image repository. Defaults to the same as the source if not filled.",
+          "example": "app",
+          "member": "string",
+          "name": "DestinationRepo",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to overwrite.",
+          "example": "true",
+          "member": "bool",
+          "name": "Override",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DuplicateImageResponse": {
+      "document": "DuplicateImage response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "Filter": {
       "document": "Filter",
       "members": [
@@ -5079,87 +4838,6 @@
       ],
       "type": "object"
     },
-    "ModifyCustomAccountRequest": {
-      "document": "ModifyCustomAccount request structure.",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Instance ID",
-          "example": "tcr-xxx",
-          "member": "string",
-          "name": "RegistryId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Custom account name",
-          "example": "tcr$robot",
-          "member": "string",
-          "name": "Name",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Custom account description",
-          "example": "无",
-          "member": "string",
-          "name": "Description",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
-          "document": "Validity in days starting from the current day. It takes a higher priority than `ExpiresAt`.",
-          "example": "无",
-          "member": "int64",
-          "name": "Duration",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Expiry time of the custom account (timestamp)",
-          "example": "1676897989",
-          "member": "int64",
-          "name": "ExpiresAt",
-          "required": false,
-          "type": "int"
-        },
-        {
-          "disabled": false,
-          "document": "Whether to disable the custom account",
-          "example": "true",
-          "member": "bool",
-          "name": "Disable",
-          "required": false,
-          "type": "bool"
-        },
-        {
-          "disabled": false,
-          "document": "Policy list",
-          "example": "{   \"Resource\": \"library\",   \"Actions\": [\"tcr:PushRepository\", \"tcr:PullRepository\"] }",
-          "member": "Permission",
-          "name": "Permissions",
-          "required": false,
-          "type": "list"
-        }
-      ],
-      "type": "object"
-    },
-    "ModifyCustomAccountResponse": {
-      "document": "ModifyCustomAccount response structure.",
-      "members": [
-        {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
-          "member": "string",
-          "name": "RequestId",
-          "type": "string"
-        }
-      ],
-      "type": "object"
-    },
     "ModifyImmutableTagRulesRequest": {
       "document": "ModifyImmutableTagRules request structure.",
       "members": [
@@ -5494,6 +5172,70 @@
       ],
       "type": "object"
     },
+    "ModifyServiceAccountPasswordRequest": {
+      "document": "ModifyServiceAccountPassword request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "tcr-xxx",
+          "member": "string",
+          "name": "RegistryId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Service level account name.",
+          "example": "tcr$robot",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to randomly generate a password.",
+          "example": "true",
+          "member": "bool",
+          "name": "Random",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Service level account password, 8 to 20 characters, contains at least one uppercase letter, one lowercase letter, and one number.",
+          "example": "MyPass",
+          "member": "string",
+          "name": "Password",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyServiceAccountPasswordResponse": {
+      "document": "ModifyServiceAccountPassword response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom user password, displayed only once. Please make sure to retain it securely.",
+          "example": "kiHUaTAmF6a94mNzhZWDans3dYahHQNE",
+          "member": "string",
+          "name": "Password",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyServiceAccountRequest": {
       "document": "ModifyServiceAccount request structure.",
       "members": [
@@ -5737,16 +5479,18 @@
           "example": "library",
           "member": "string",
           "name": "Resource",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Action. Valid values: `tcr:PushRepository`, `tcr:PullRepository`\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Actions. Currently only support: tcr:PushRepository, tcr:PullRepository, tcr:CreateRepository, tcr:CreateHelmChart, tcr:DescribeHelmCharts.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "[\"tcr:PushRepository\", \"tcr:PullRepository\"]",
           "member": "string",
           "name": "Actions",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": true
@@ -5846,7 +5590,7 @@
         {
           "disabled": false,
           "document": "Instance ID",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "RegistryId",
           "required": true,
@@ -5856,7 +5600,7 @@
         {
           "disabled": false,
           "document": "Instance name",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "RegistryName",
           "required": true,
@@ -5866,7 +5610,7 @@
         {
           "disabled": false,
           "document": "Instance specification",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "RegistryType",
           "required": true,
@@ -5876,7 +5620,7 @@
         {
           "disabled": false,
           "document": "Instance status",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -5886,7 +5630,7 @@
         {
           "disabled": false,
           "document": "Public access URL of the instance",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "PublicDomain",
           "required": true,
@@ -5896,7 +5640,7 @@
         {
           "disabled": false,
           "document": "Instance creation time",
-          "example": "",
+          "example": "无",
           "member": "datetime_iso",
           "name": "CreatedAt",
           "required": true,
@@ -5906,7 +5650,7 @@
         {
           "disabled": false,
           "document": "Region name",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "RegionName",
           "required": true,
@@ -5916,7 +5660,7 @@
         {
           "disabled": false,
           "document": "Region ID",
-          "example": "",
+          "example": "无",
           "member": "uint64",
           "name": "RegionId",
           "required": true,
@@ -5926,7 +5670,7 @@
         {
           "disabled": false,
           "document": "Whether to enable anonymity",
-          "example": "",
+          "example": "无",
           "member": "bool",
           "name": "EnableAnonymous",
           "required": true,
@@ -5936,7 +5680,7 @@
         {
           "disabled": false,
           "document": "Token validity period",
-          "example": "",
+          "example": "无",
           "member": "uint64",
           "name": "TokenValidTime",
           "required": true,
@@ -5946,7 +5690,7 @@
         {
           "disabled": false,
           "document": "Internal access address of the instance",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "InternalEndpoint",
           "required": true,
@@ -5956,7 +5700,7 @@
         {
           "disabled": false,
           "document": "Cloud tag of the instance\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "TagSpecification",
           "name": "TagSpecification",
           "required": true,
@@ -5966,7 +5710,7 @@
         {
           "disabled": false,
           "document": "Instance expiration time (for prepayment)\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ExpiredAt",
           "required": true,
@@ -5976,7 +5720,7 @@
         {
           "disabled": false,
           "document": "Instance billing mode. Valid values: 0: Postpayment; 1: Prepayment.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "PayMod",
           "required": true,
@@ -5986,12 +5730,22 @@
         {
           "disabled": false,
           "document": "Prepayment renewal flag. Valid values: 0: Manual renewal; 1: Auto-renewal; 2: No renewal and no notification.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "RenewFlag",
           "required": true,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable instance deletion protection. false indicates it is not enabled.",
+          "example": "无",
+          "member": "bool",
+          "name": "DeletionProtection",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -6730,26 +6484,28 @@
       "members": [
         {
           "disabled": false,
-          "document": "Cloud tag key",
-          "example": "",
+          "document": "Cloud tag key.Note: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Key",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Cloud tag value",
-          "example": "",
+          "document": "Cloud tag value.Note: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
           "member": "string",
           "name": "Value",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "TagSpecification": {
       "document": "Cloud tag",
