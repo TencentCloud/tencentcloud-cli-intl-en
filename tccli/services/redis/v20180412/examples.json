@@ -83,9 +83,9 @@
     "CreateInstanceAccount": [
       {
         "document": " ",
-        "input": "https://redis.tencentcloudapi.com/?Action=CreateInstanceAccount\n&InstanceId=crs-5a4py64p\n&AccountName=test\n&AccountPassword=1234567a\n&ReadonlyPolicy.0=master\n&Privilege=rw\n&<Common request parameters>",
+        "input": "https://redis.tencentcloudapi.com/?Action=CreateInstanceAccount\n&InstanceId=crs-evst****\n&AccountName=redis_dev\n&AccountPassword=c1evuh****\n&ReadonlyPolicy.0=master\n&Privilege=rw\n&Remark=\"Development account\"\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TaskId\": 123456,\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
-        "title": "Sample request"
+        "title": "Sample Request"
       }
     ],
     "CreateInstances": [
@@ -310,6 +310,14 @@
         "title": "Sample request"
       }
     ],
+    "DescribeInstanceSupportFeature": [
+      {
+        "document": "This example shows you how to query whether proximity access is supported.",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceSupportFeature\n<Common request parameters>\n{\n    \"InstanceId\": \"crs-fhsw2mh4\",\n    \"FeatureName\": \"read-local-node-only\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"60b6c537-1021-4360-a7b9-90feaca647a1\",\n        \"Support\": true\n    }\n}",
+        "title": "Sample 1"
+      }
+    ],
     "DescribeInstanceZoneInfo": [
       {
         "document": "This example shows you how to query the node information of a specified instance.",
@@ -400,10 +408,10 @@
     ],
     "DescribeSlowLog": [
       {
-        "document": "This example shows you how to query the details of a slow query for an instance, including  slow log commands, command line information, delay time, client address, and node ID.",
-        "input": "https://redis.tencentcloudapi.com/?Action=DescribeProxySlowLog&InstanceId=crs-asda****&BeginTime=2019-09-08 12:12:41&EndTime=2019-09-09 12:12:41&<Common request parameters>crs-asda****\",    \"EndTime\": \"2019-09-09 12:12:41\",    \"BeginTime\": \"2019-09-08 12:12:41\"}",
+        "document": "This example shows you how to query detailed information about slow queries for a specific instance through the DescribeSlowLog API, including the slow query commands, command line information, latency time, client addresses, and node IDs.",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSlowLog\n<Common request parameters>\n{\n    \"InstanceId\": \"crs-asda****\",\n    \"EndTime\": \"2019-09-09 12:12:41\",\n    \"BeginTime\": \"2019-09-08 12:12:41\"\n}",
         "output": "{\n    \"Response\": {\n        \"InstanceSlowlogDetail\": [\n            {\n                \"Node\": \"833a2f6d8b402319aee8ad7f1c0fbbf7********\",\n                \"Command\": \"hget\",\n                \"CommandLine\": \"hget hash_key classify_scope::default\",\n                \"Duration\": 45,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\",\n                \"Client\": \"\"\n            },\n            {\n                \"Node\": \"833a2f6d8b402319aee8ad7f1c0fbbf7********\",\n                \"Command\": \"keys\",\n                \"CommandLine\": \"keys OtherResControler:orion.ovs.client.1514259512471:orion.ovs.entprise.9281083591:sence:*\",\n                \"Duration\": 41,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\",\n                \"Client\": \"\"\n            },\n            {\n                \"Node\": \"24a05f0d545da235f07a5bc5deebb937********\",\n                \"Command\": \"get\",\n                \"CommandLine\": \"get slot::fsm::status::orion.ovs.client.1508751991541::1db7ffcf9216bc1fd939e6c710514f6fb40fd4fe1525f\",\n                \"Duration\": 41,\n                \"ExecuteTime\": \"2019-09-08 12:13:08\",\n                \"Client\": \"\"\n            }\n        ],\n        \"RequestId\": \"121d5b40-d2b8-11e9-8c40-ef686158cbd6\",\n        \"TotalCount\": 106980\n    }\n}",
-        "title": "Querying the slow log record of an instance"
+        "title": "Query Slow Query Logs of the Instance"
       }
     ],
     "DescribeTaskInfo": [
@@ -550,6 +558,14 @@
         "title": "Sample request"
       }
     ],
+    "ModifyInstanceAvailabilityZones": [
+      {
+        "document": "This example shows you how to change the availability zones of multiple AZ instances (time window switch).",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceAvailabilityZones\n<Common request parameters>\n{\n    \"InstanceId\": \"crs-rrhr1lm6\",\n    \"SwitchOption\": 1,\n    \"NodeSet\": [\n        {\n            \"NodeId\": 339472,\n            \"NodeType\": 0,\n            \"ZoneId\": 100004\n        },\n        {\n            \"NodeId\": 339473,\n            \"NodeType\": 1,\n            \"ZoneId\": 100003\n        },\n        {\n            \"NodeId\": 339549,\n            \"NodeType\": 1,\n            \"ZoneId\": 100003\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"27c0d6e8-9894-42e0-a03b-814a204437ba\",\n        \"TaskId\": 2031290200\n    }\n}",
+        "title": "Sample 1"
+      }
+    ],
     "ModifyInstanceParams": [
       {
         "document": " ",
@@ -644,6 +660,14 @@
         "input": "https://redis.tencentcloudapi.com/?Action=StartupInstance\n&InstanceId=crs-7ponppu3\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3e96ecad-23db-4fa8-ac41-af9b8e015b26\",\n        \"TaskId\": 1203\n    }\n}",
         "title": "Sample request"
+      }
+    ],
+    "SwitchAccessNewInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SwitchAccessNewInstance\n<Common request parameters>\n{\n    \"InstanceId\": \"crs-kf******\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"dc7c5c1b-e0b4-4cbc-a1bf-b6fea3be9500\"\n    }\n}",
+        "title": "Sample 1"
       }
     ],
     "SwitchInstanceVip": [
