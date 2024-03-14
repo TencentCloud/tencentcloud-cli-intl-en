@@ -80,10 +80,10 @@ class ServiceDocumentHandler(BaseDocumentHandler):
         self.doc.style.h2('Available Versions')
         versions = self._cli_data.get_available_services()[self._service]
         for version in versions:
-            self.doc.doc_title_indent(version)
-        # self.doc.style.new_line()
-        self.doc.doc_description_indent("By default, only the latest version is displayed, " \
-                                        "if you want the help information of other versions please add --version xxxx-xx-xx")
+            if version == versions[0]:
+                self.doc.doc_title_indent(version + "  (recommended)")
+            else:
+                self.doc.doc_title_indent(version)
 
     def description(self):
         self.doc.style.h2('Description')
