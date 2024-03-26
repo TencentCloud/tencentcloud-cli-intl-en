@@ -1108,6 +1108,14 @@
         "title": "Extracting the user ID of a user that distributed a video containing a digital watermark"
       }
     ],
+    "FastEditMedia": [
+      {
+        "document": " ",
+        "input": "\t\nPOST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: FastEditMedia\n<Public Request Parameter>\n\n{\n    \"FileInfos\": [{\n        \"EndTimeOffset\": 0.0, \n        \"StartTimeOffset\": 30.0, \n        \"AudioVideoType\": \"Original\", \n        \"TranscodeDefinition\": 100210, \n        \"FileId\": \"5285890784246869930\"\n    }]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ca31e3a-6b8e-4b4e-9256-fdc700064ef3\",\n        \"FileId\": \"152854854879852xxxxx\",\n        \"Url\": \"https://xxx.vod2.myqcloud.com/xxx/xxx.m3u8\"\n    }\n}",
+        "title": "Fast Clip Video"
+      }
+    ],
     "ForbidMediaDistribution": [
       {
         "document": " ",
