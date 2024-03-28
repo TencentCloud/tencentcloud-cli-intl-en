@@ -1,0 +1,357 @@
+{
+  "actions": {
+    "AbortPredictiveDialingCampaign": [
+      {
+        "document": "This example shows you how to stop the predictive outbound call task.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AbortPredictiveDialingCampaign\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"CampaignId\": 2569\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Stopping Predictive Outbound Call Task"
+      }
+    ],
+    "BindNumberCallOutSkillGroup": [
+      {
+        "document": "This example shows you how to bind numbers and skill groups.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindNumberCallOutSkillGroup\n<Common request parameters>\n{\n    \"Number\": \"0086075512345678\",\n    \"SkillGroupIds\": [\n        1,\n        2,\n        3\n    ],\n    \"SdkAppId\": 1400000000\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Binding Number and Skill Group"
+      }
+    ],
+    "BindStaffSkillGroupList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindStaffSkillGroupList\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"StaffEmail\": \"staff1@xxx.com\",\n    \"StaffSkillGroupList\": [\n        {\n            \"SkillGroupId\": 100,\n            \"Priority\": 1\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"48edd236-7ef1-45af-9e12-fc376ba355bf\"\n    }\n}",
+        "title": "Binding Agent's Skill Group"
+      }
+    ],
+    "CreateAdminURL": [
+      {
+        "document": "This example shows you how to create the admin log-in link.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAdminURL\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"SeatUserId\": \"foo@tencent.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"48edd236-7ef1-45af-9e12-fc376ba355bf\",\n        \"URL\": \"https://tccc.qcloud.com/saas-manage/#/1400000000/home?token=6bb56a09-2787-40bc-80c5-dc6dab783eff\"\n    }\n}",
+        "title": "Creating Admin Log-in Link"
+      }
+    ],
+    "CreateAutoCalloutTask": [
+      {
+        "document": "This example shows you how to create task",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAutoCalloutTask\n<Common request parameters>\n{\n    \"SdkAppId\": 1400123455,\n    \"NotBefore\": 1642500621,\n    \"Callees\": [\n        \"008613012345678\"\n    ],\n    \"Callers\": [\n        \"008602012345678\"\n    ],\n    \"IvrId\": 8\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 1,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Creating Task"
+      }
+    ],
+    "CreateCCCSkillGroup": [
+      {
+        "document": " ",
+        "input": "https://ccc.tencentcloudapi.com/?Action=CreateCCCSkillGroup\n&SdkAppId=1400000000\n&SkillGroupName=“test”\n&SkillGroupType=0\n&MaxConcurrency=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ac74e13-ef15-41a6-9639-f1bc8c9896bd\",\n        \"SkillGroupId\": 602\n    }\n}",
+        "title": "Creating Skill Group"
+      }
+    ],
+    "CreateCallOutSession": [
+      {
+        "document": "This example shows you how to trigger outbound calls through this API in the backend, without loading the front-end SDK. Currently, only outbound call back through the mobile end (first dialing the customer service mobile phone) is supported, and make sure that the addition of outbound call allowlist has been applied and passed.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCallOutSession\n<Common request parameters>\n{\n    \"IsForceUseMobile\": \"true\",\n    \"Callee\": \"008612300000000\",\n    \"UUI\": \"fooandbar\",\n    \"UserId\": \"FooOrBar@tencent.com\",\n    \"SdkAppId\": 1400000000\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6bb56a09-2787-40bc-80c5-dc6dab783eff\",\n        \"SessionId\": \"6bb56a09278740bc80c5dc6dab783eff\"\n    }\n}",
+        "title": "Calling Outbound Call API"
+      }
+    ],
+    "CreateExtension": [
+      {
+        "document": "This example shows you how to create telephone account.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateExtension\n<Common Request Parameters>\n{\n    \"SdkAppId\": 140000000,\n    \"ExtensionId\": \"1001\",\n\"ExtensionName\": \"Extension 1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"86a17f0e-bcb3-46bf-ac66-8f165fe52127\"\n    }\n}",
+        "title": "Creating Telephone Account"
+      }
+    ],
+    "CreatePredictiveDialingCampaign": [
+      {
+        "document": "This example shows you how to create the predictive outbound call task.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePredictiveDialingCampaign\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"Name\": \"New energy SUV recommendation\",\n    \"Callees\": [\n        \"+8613012345678\",\n        \"+8613012345679\",\n        \"+8613012345670\"\n    ],\n    \"Callers\": [\n        \"0086075586013388\"\n    ],\n    \"CallOrder\": 0,\n    \"SkillGroupId\": 255,\n    \"IVRId\": 4600,\n    \"Priority\": 3,\n    \"ExpectedAbandonRate\": 10,\n    \"RetryTimes\": 1,\n    \"RetryInterval\": 1800,\n    \"StartTime\": 1708483433,\n    \"EndTime\": 1708485433\n}",
+        "output": "{\n    \"Response\": {\n        \"CampaignId\": 2569,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Creating Predictive Outbound Call Task"
+      }
+    ],
+    "CreateSDKLoginToken": [
+      {
+        "document": "This example shows you how to create SDK log-in token.",
+        "input": "https://ccc.tencentcloudapi.com/?Action=CreateSDKLoginToken\n&SdkAppId=1400000000\n&SeatUserId=FooOrBar@tencent.com\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6bb56a09-2787-40bc-80c5-dc6dab783eff\",\n        \"Token\": \"6bb56a09278740bc80c5dc6dab783eff\",\n        \"SdkURL\": \"https://29294-22989-29805-29810.cdn-go.cn/tccc-agent-sdk/latest/\",\n        \"ExpiredTime\": 1601371974\n    }\n}",
+        "title": "Creating SDK Log-in Token"
+      }
+    ],
+    "CreateStaff": [
+      {
+        "document": "This example shows you how to create customer service.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStaff\n<Common request parameters>\n{\n    \"Staffs\": [\n        {\n            \"Phone\": \"Contact phone\",\n            \"Mail\": \"Contact person email\",\n            \"StaffNumber\": \"001\",\n            \"Name\": \"Xiao Jun\"\n        }\n    ],\n    \"SdkAppId\": 1400000000\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6bb56a09-2787-40bc-80c5-dc6dab783eff\",\n        \"ErrorStaffList\": null\n    }\n}",
+        "title": "Creating Customer Service"
+      }
+    ],
+    "DeleteExtension": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteExtension\n<Common request parameters>\n{\n    \"SdkAppId\": 140000000,\n    \"ExtensionId\": \"1001\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"86a17f0e-bcb3-46bf-ac66-8f165fe52127\"\n    }\n}",
+        "title": "Deleting Telephone Account"
+      }
+    ],
+    "DeletePredictiveDialingCampaign": [
+      {
+        "document": "This example shows you how to delete the predictive outbound call task.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeletePredictiveDialingCampaign\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"CampaignId\": 2569\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Deleting Predictive Outbound Call Task"
+      }
+    ],
+    "DeleteStaff": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStaff\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"StaffList\": [\n        \"staff1@xxx.com\",\n        \"staff2@xxx.com\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"48edd236-7ef1-45af-9e12-fc376ba355bf\",\n        \"OnlineStaffList\": null\n    }\n}",
+        "title": "Deleting Agent Information"
+      }
+    ],
+    "DescribeAutoCalloutTask": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAutoCalloutTask\n<Common request parameters>\n{\n    \"SdkAppId\": 1,\n    \"TaskId\": 2\n}",
+        "output": "{\n    \"Response\": {\n        \"IvrId\": 1,\n        \"Name\": \"foobar\",\n        \"NotBefore\": 1,\n        \"NotAfter\": 0,\n        \"State\": 1,\n        \"Callers\": [\n            \"008610086\"\n        ],\n        \"RequestId\": \"foobar\",\n        \"Callees\": [\n            {\n                \"State\": 1,\n                \"Callee\": \"foobar\",\n                \"Sessions\": [\n                    \"foobar\"\n                ]\n            }\n        ],\n        \"Description\": \"foobar\"\n    }\n}",
+        "title": "Querying Task"
+      }
+    ],
+    "DescribeAutoCalloutTasks": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAutoCalloutTasks\n<Common request parameters>\n{\n    \"PageNumber\": 0,\n    \"PageSize\": 10,\n    \"SdkAppId\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Tasks\": [\n            {\n                \"TaskId\": 3241,\n                \"IvrId\": 1,\n                \"CalleeCount\": 1,\n                \"Name\": \"foobar\",\n                \"NotBefore\": 0,\n                \"NotAfter\": 0,\n                \"State\": 1,\n                \"Callers\": [\n                    \"123456\"\n                ]\n            }\n        ],\n        \"RequestId\": \"123456\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeCCCBuyInfoList": [
+      {
+        "document": " ",
+        "input": "https://ccc.tencentcloudapi.com/?Action=DescribeCCCBuyInfoList\n&SdkAppIds.0=1400000000\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"SdkAppIdBuyList\": [\n            {\n                \"SdkAppId\": 1400000000,\n                \"Name\": \"abc\",\n                \"StaffBuyNum\": 0,\n                \"StaffBuyList\": [\n                    {\n                        \"Num\": 0,\n                        \"EndTime\": 1623988825,\n                        \"BuyTime\": 1613988825,\n                        \"SipNum\": 0\n                    }\n                ],\n                \"PhoneNumBuyList\": [\n                    {\n                        \"PhoneNum\": \"abc\",\n                        \"Type\": 0,\n                        \"CallType\": 0,\n                        \"EndTime\": 1623988825,\n                        \"BuyTime\": 1613988825,\n                        \"State\": 0\n                    }\n                ],\n                \"SipBuyNum\": 0\n            }\n        ],\n        \"PackageBuyList\": [\n            {\n                \"PackageId\": \"abc\",\n                \"Type\": 0,\n                \"CapacitySize\": 0,\n                \"CapacityRemain\": 0,\n                \"EndTime\": 1623988825,\n                \"BuyTime\": 1613988825\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Accessing User Purchasing Information List"
+      }
+    ],
+    "DescribeCallInMetrics": [
+      {
+        "document": "This example shows you how to access inbound real-time data statistical metrics.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCallInMetrics\n<Common request parameters>\n{\n    \"EnabledNumber\": true,\n    \"EnabledSkillGroup\": true,\n    \"SdkAppId\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Timestamp\": 0,\n        \"TotalMetrics\": {\n            \"IvrCount\": 0,\n            \"QueueCount\": 0,\n            \"RingCount\": 0,\n            \"AcceptCount\": 0,\n            \"TransferOuterCount\": 0,\n            \"MaxQueueDuration\": 0,\n            \"AvgQueueDuration\": 0,\n            \"MaxRingDuration\": 0,\n            \"AvgRingDuration\": 0,\n            \"MaxAcceptDuration\": 0,\n            \"AvgAcceptDuration\": 0\n        },\n        \"NumberMetrics\": [\n            {\n                \"Number\": \"abc\",\n                \"Metrics\": {\n                    \"IvrCount\": 0,\n                    \"QueueCount\": 0,\n                    \"RingCount\": 0,\n                    \"AcceptCount\": 0,\n                    \"TransferOuterCount\": 0,\n                    \"MaxQueueDuration\": 0,\n                    \"AvgQueueDuration\": 0,\n                    \"MaxRingDuration\": 0,\n                    \"AvgRingDuration\": 0,\n                    \"MaxAcceptDuration\": 0,\n                    \"AvgAcceptDuration\": 0\n                },\n                \"SkillGroupMetrics\": [\n                    {\n                        \"SkillGroupId\": 0,\n                        \"Metrics\": {\n                            \"IvrCount\": 0,\n                            \"QueueCount\": 0,\n                            \"RingCount\": 0,\n                            \"AcceptCount\": 0,\n                            \"TransferOuterCount\": 0,\n                            \"MaxQueueDuration\": 0,\n                            \"AvgQueueDuration\": 0,\n                            \"MaxRingDuration\": 0,\n                            \"AvgRingDuration\": 0,\n                            \"MaxAcceptDuration\": 0,\n                            \"AvgAcceptDuration\": 0\n                        },\n                        \"Name\": \"abc\"\n                    }\n                ]\n            }\n        ],\n        \"SkillGroupMetrics\": [\n            {\n                \"SkillGroupId\": 0,\n                \"Name\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Accessing Inbound Real-time Data Statistical Metric"
+      }
+    ],
+    "DescribeExtension": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeExtension\n<Common request parameters>\n{\n    \"SdkAppId\": 140000000,\n    \"ExtensionId\": \"1001\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"86a17f0e-bcb3-46bf-ac66-8f165fe52127\",\n        \"ExtensionId\": \"1001\",\n        \"ExtensionDomain\": \"1400000214.tccc.qcloud.com\",\n        \"Password\": \"0pMnxfdsdLT6G\",\n        \"OutboundProxy\": \"sip.tccc.qcloud.com:5061\",\n        \"Transport\": \"tls\"\n    }\n}",
+        "title": "Accessing Telephone Information"
+      }
+    ],
+    "DescribeExtensions": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeExtensions\n<Common Request Parameters>\n{\n    \"PageNumber\": 0,\n    \"PageSize\": 35,\n    \"SdkAppId\": 1400264214,\n    \"ExtensionIds\": [\n        \"1001\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"86a17f0e-bcb3-46bf-ac66-8f165fe52127\",\n        \"Total\": 1,\n        \"ExtensionList\": [\n            {\n                \"SdkAppId\": 1400000014,\n                \"FullExtensionId\": \"1001@140000014.tccc.qcloud.com\",\n                \"ExtensionId\": \"1001\",\n                \"SkillGroupId\": \"1532\",\n                \"ExtensionName\": \"lulu\",\n                \"CreateTime\": 0,\n                \"ModifyTime\": 0,\n                \"Status\": 0,\n                \"Register\": false,\n                \"Relation\": \"123456\",\n                \"RelationName\": \"foobar\"\n            }\n        ]\n    }\n}",
+        "title": "Querying Telephone List Information"
+      }
+    ],
+    "DescribeNumbers": [
+      {
+        "document": "This example shows you how to query the number list.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeNumbers\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"PageNumber\": 0,\n    \"PageSize\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Numbers\": [\n            {\n                \"Number\": \"0086075512345678\",\n                \"State\": 1,\n                \"CallOutSkillGroupIds\": [\n                    1\n                ]\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying the Number List"
+      }
+    ],
+    "DescribePSTNActiveSessionList": [
+      {
+        "document": " ",
+        "input": "https://ccc.tencentcloudapi.com/?Action=DescribePSTNActiveSessionList\n&SdkAppId=1400000000\n&Offset=0\n&Limit=25\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"RequestId\": \"53bccf04-0870-4520-8614-f4bdddfd68df\",\n        \"Sessions\": [\n            {\n                \"Direction\": 1,\n                \"AcceptTimestamp\": \"1607702329\",\n                \"ProtectedCaller\": \"\",\n                \"RoomID\": \"32929373\",\n                \"StartTimestamp\": \"1607702199\",\n                \"Caller\": \"00864009282737\",\n                \"ProtectedCallee\": \"\",\n                \"StaffNumber\": \"1007\",\n                \"SessionID\": \"0cf5be1b-de75-4445-a0c4-8dff3fa4b68b\",\n                \"StaffEmail\": \"foo@tencent.com\",\n                \"RingTimestamp\": 1607702299,\n                \"Callee\": \"00864001783747\",\n                \"SessionStatus\": \"inProgress\"\n            }\n        ]\n    }\n}",
+        "title": "Accessing the PSTN Active Session List"
+      }
+    ],
+    "DescribePredictiveDialingCampaign": [
+      {
+        "document": "This example shows you how to query the predictive outbound call task.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePredictiveDialingCampaign\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"CampaignId\": 2569\n}",
+        "output": "{\n    \"Response\": {\n        \"CampaignId\": 2569,\n        \"Name\": \"New energy SUV recommendation\",\n        \"CallOrder\": 0,\n        \"SkillGroupId\": 255,\n        \"IVRId\": 4600,\n        \"Priority\": 3,\n        \"ExpectedAbandonRate\": 10,\n        \"RetryTimes\": 1,\n        \"RetryInterval\": 1800,\n        \"StartTime\": 1708483433,\n        \"EndTime\": 1708485433,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Querying Predictive Outbound Call Task"
+      }
+    ],
+    "DescribePredictiveDialingCampaigns": [
+      {
+        "document": "This example shows you how to query the predictive outbound call task list.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePredictiveDialingCampaigns\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"PageSize\": 25,\n    \"PageNumber\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 66,\n        \"CampaignList\": [\n            {\n                \"CampaignId\": 2567,\n                \"Name\": \"New energy SUV recommendation 1\",\n                \"Status\": 0,\n                \"StatusReason\": 0,\n                \"CalleeCount\": 1000,\n                \"FinishedCalleeCount\": 0,\n                \"Priority\": 3,\n                \"SkillGroupId\": 255\n            },\n            {\n                \"CampaignId\": 2568,\n                \"Name\": \"New energy SUV recommendation 2\",\n                \"Status\": 0,\n                \"StatusReason\": 0,\n                \"CalleeCount\": 1000,\n                \"FinishedCalleeCount\": 0,\n                \"Priority\": 3,\n                \"SkillGroupId\": 255\n            },\n            {\n                \"CampaignId\": 2569,\n                \"Name\": \"New energy SUV recommendation 3\",\n                \"Status\": 0,\n                \"StatusReason\": 0,\n                \"CalleeCount\": 1000,\n                \"FinishedCalleeCount\": 0,\n                \"Priority\": 3,\n                \"SkillGroupId\": 255\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Querying Predictive Outbound Call Task List"
+      }
+    ],
+    "DescribePredictiveDialingSessions": [
+      {
+        "document": "This example shows you how to query the predictive outbound call list.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePredictiveDialingSessions\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"CampaignId\": 2569,\n    \"PageSize\": 25,\n    \"PageNumber\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 66,\n        \"SessionList\": [\n            \"a5be1044-e8b0-4f02-9b25-64baee24374b\",\n            \"22c3e170-f307-47c8-9f10-1b77413a646f\",\n            \"e8557b17-d68b-4475-9a97-639a1108887b\"\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Querying Predictive Outbound Call List"
+      }
+    ],
+    "DescribeProtectedTelCdr": [
+      {
+        "document": " ",
+        "input": "https://ccc.tencentcloudapi.com/?Action=DescribeProtectedTelCdr\n&SdkAppId=1400000000\n&StartTimeStamp=1590547606\n&EndTimeStamp=1590147606\n&PageSize=10\n&PageNumber=0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"TelCdrList\": [\n            {\n                \"ProtectedCaller\": \"abc\",\n                \"EndStatus\": 1,\n                \"SessionId\": \"abc\",\n                \"CustomRecordURL\": \"abc\",\n                \"SkillGroupId\": 100,\n                \"Direction\": 0,\n                \"StartTimestamp\": 1590547606,\n                \"AsrUrl\": \"abc\",\n                \"HungUpSide\": \"abc\",\n                \"ServeParticipants\": [\n                    {\n                        \"TransferTo\": \"abc\",\n                        \"TransferFromType\": \"abc\",\n                        \"EndStatusString\": \"abc\",\n                        \"RecordURL\": \"abc\",\n                        \"TransferToType\": \"abc\",\n                        \"AcceptTimestamp\": 0,\n                        \"RecordId\": \"abc\",\n                        \"TransferFrom\": \"abc\",\n                        \"EndedTimestamp\": 0,\n                        \"Sequence\": 0,\n                        \"Phone\": \"abc\",\n                        \"SkillGroupName\": \"abc\",\n                        \"Mail\": \"abc\",\n                        \"RingTimestamp\": 0,\n                        \"Type\": \"abc\",\n                        \"StartTimestamp\": 0,\n                        \"CustomRecordURL\": \"abc\",\n                        \"SkillGroupId\": 0\n                    }\n                ],\n                \"PostIVRKeyPressed\": [\n                    {\n                        \"Key\": \"abc\",\n                        \"Label\": \"abc\"\n                    }\n                ],\n                \"EndStatusString\": \"abc\",\n                \"UUI\": \"abc\",\n                \"QueuedSkillGroupId\": 100,\n                \"RingTimestamp\": 1590547606,\n                \"AcceptTimestamp\": 1590547606,\n                \"EndedTimestamp\": 1590547606,\n                \"Caller\": \"\",\n                \"CallerLocation\": \"abc\",\n                \"Time\": 1590547606,\n                \"Callee\": \"\",\n                \"SeatUser\": {\n                    \"Name\": \"abc\",\n                    \"Phone\": \"abc\",\n                    \"UserId\": \"abc\",\n                    \"Nick\": \"abc\",\n                    \"StaffNumber\": \"abc\",\n                    \"Mail\": \"abc\",\n                    \"SkillGroupNameList\": [\n                        \"abc\"\n                    ]\n                },\n                \"RecordURL\": \"abc\",\n                \"RecordId\": \"abc\",\n                \"QueuedTimestamp\": 1610627284,\n                \"ProtectedCallee\": \"abc\",\n                \"IVRDuration\": 5,\n                \"SkillGroup\": \"abc\",\n                \"Duration\": 60,\n                \"IVRKeyPressed\": [\n                    \"5\"\n                ],\n                \"IVRKeyPressedEx\": [\n                    {\n                        \"Key\": \"abc\",\n                        \"Label\": \"abc\"\n                    }\n                ],\n                \"QueuedSkillGroupName\": \"abc\",\n                \"Remark\": \"abc\",\n                \"VoicemailRecordURL\": [\n                    \"abc\"\n                ]\n            },\n            {\n                \"ProtectedCaller\": \"abc\",\n                \"EndStatus\": 1,\n                \"SessionId\": \"abc\",\n                \"CustomRecordURL\": \"abc\",\n                \"SkillGroupId\": 100,\n                \"Direction\": 0,\n                \"StartTimestamp\": 1590547630,\n                \"AsrUrl\": \"abc\",\n                \"HungUpSide\": \"abc\",\n                \"ServeParticipants\": [\n                    {\n                        \"TransferTo\": \"abc\",\n                        \"TransferFromType\": \"abc\",\n                        \"RecordURL\": \"abc\",\n                        \"TransferToType\": \"abc\",\n                        \"AcceptTimestamp\": 0,\n                        \"RecordId\": \"abc\",\n                        \"TransferFrom\": \"abc\",\n                        \"EndedTimestamp\": 0,\n                        \"Sequence\": 0,\n                        \"Phone\": \"abc\",\n                        \"EndStatusString\": \"abc\",\n                        \"SkillGroupName\": \"abc\",\n                        \"Mail\": \"abc\",\n                        \"RingTimestamp\": 0,\n                        \"Type\": \"abc\",\n                        \"StartTimestamp\": 0,\n                        \"CustomRecordURL\": \"abc\",\n                        \"SkillGroupId\": 0\n                    }\n                ],\n                \"PostIVRKeyPressed\": [\n                    {\n                        \"Key\": \"abc\",\n                        \"Label\": \"abc\"\n                    }\n                ],\n                \"EndStatusString\": \"abc\",\n                \"UUI\": \"abc\",\n                \"QueuedSkillGroupId\": 100,\n                \"RingTimestamp\": 1590547606,\n                \"AcceptTimestamp\": 1590547606,\n                \"EndedTimestamp\": 1590547606,\n                \"Caller\": \"\",\n                \"CallerLocation\": \"abc\",\n                \"Time\": 1590547630,\n                \"Callee\": \"\",\n                \"SeatUser\": {\n                    \"Name\": \"abc\",\n                    \"Nick\": \"abc\",\n                    \"UserId\": \"abc\",\n                    \"Phone\": \"abc\",\n                    \"StaffNumber\": \"abc\",\n                    \"Mail\": \"abc\",\n                    \"SkillGroupNameList\": [\n                        \"abc\"\n                    ]\n                },\n                \"RecordURL\": \"abc\",\n                \"RecordId\": \"abc\",\n                \"QueuedTimestamp\": 1610627284,\n                \"ProtectedCallee\": \"abc\",\n                \"IVRDuration\": 5,\n                \"SkillGroup\": \"abc\",\n                \"Duration\": 62,\n                \"IVRKeyPressed\": [\n                    \"5\"\n                ],\n                \"IVRKeyPressedEx\": [\n                    {\n                        \"Key\": \"abc\",\n                        \"Label\": \"abc\"\n                    }\n                ],\n                \"QueuedSkillGroupName\": \"abc\",\n                \"Remark\": \"abc\",\n                \"VoicemailRecordURL\": [\n                    \"abc\"\n                ]\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Accessing Protected Phone Call Records of both Inbound and Outbound Calls"
+      }
+    ],
+    "DescribeSkillGroupInfoList": [
+      {
+        "document": "This example shows you how to access the skill group list.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSkillGroupInfoList\n<Common request parameters>\n{\n    \"PageSize\": 10,\n    \"PageNumber\": 0,\n    \"ModifiedTime\": 1590147606,\n    \"SdkAppId\": 1400000000,\n    \"SkillGroupId\": 12\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ac74e13-ef15-41a6-9639-f1bc8c9896bd\",\n        \"TotalCount\": 2,\n        \"SkillGroupList\": [\n            {\n                \"SkillGroupId\": 1115,\n                \"SkillGroupName\": \"luluttt\",\n                \"SkillGroupType\": 1,\n                \"Type\": \"TEL\",\n                \"RoutePolicy\": \"firstCreate\",\n                \"UsingLastSeat\": 0,\n                \"MaxConcurrency\": 1,\n                \"LastModifyTimestamp\": 1613976392\n            }\n        ]\n    }\n}",
+        "title": "Accessing Skill Group List"
+      }
+    ],
+    "DescribeStaffInfoList": [
+      {
+        "document": "This example shows you how to access agent list.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStaffInfoList\n<Common Request Parameters>\n{\n    \"ModifiedTime\": 1590147606,\n    \"PageSize\": 10,\n    \"PageNumber\": 0,\n    \"StaffMail\": \"“121223@qq.com”\",\n    \"SdkAppId\": \"1400000000\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ac74e13-ef15-41a6-9639-f1bc8c9896bd\",\n        \"TotalCount\": 602,\n        \"StaffList\": [\n            {\n                \"Name\": \"xiao\",\n                \"Mail\": \"1000273@qq.com\",\n                \"Phone\": \"008617636049517\",\n                \"Nick\": \"Test 3\",\n                \"StaffNumber\": \"125\",\n                \"SkillGroupList\": [\n                    {\n                        \"SkillGroupId\": 53,\n                        \"SkillGroupName\": \"ALL-dingoding-Test\",\n                        \"Priority\": 3,\n                        \"Type\": \"ALL\"\n                    },\n                    {\n                        \"SkillGroupId\": 82,\n                        \"SkillGroupName\": \"uu\",\n                        \"Priority\": 1,\n                        \"Type\": \"IM\"\n                    }\n                ],\n                \"LastModifyTimestamp\": 1613988825\n            }\n        ]\n    }\n}",
+        "title": "Accessing Agent List"
+      }
+    ],
+    "DescribeStaffStatusMetrics": [
+      {
+        "document": "This example shows you how to access agent real-time status statistics metrics.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStaffStatusMetrics\n<Common request parameters>\n{\n    \"SdkAppId\": 0,\n    \"StaffList\": [\n        \"aaa@abc.com\"\n    ],\n    \"GroupIdList\": [\n        0\n    ],\n    \"StatusList\": [\n        \"free\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Metrics\": [\n            {\n                \"Email\": \"aaa@abc.com\",\n                \"Status\": \"free\",\n                \"StatusExtra\": {\n                    \"Type\": \"tel\",\n                    \"Direct\": \"callin\"\n                },\n                \"OnlineDuration\": 0,\n                \"FreeDuration\": 0,\n                \"BusyDuration\": 0,\n                \"NotReadyDuration\": 0,\n                \"RestDuration\": 0,\n                \"AfterCallWorkDuration\": 0,\n                \"Reason\": \"abc\",\n                \"ReserveRest\": true,\n                \"ReserveNotReady\": true,\n                \"UseMobileAccept\": 0,\n                \"UseMobileCallOut\": true,\n                \"LastOnlineTimestamp\": 0,\n                \"LastStatusTimestamp\": 0\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Accessing Agent Real-Time Status Statistics Metrics"
+      }
+    ],
+    "DescribeTelCallInfo": [
+      {
+        "document": "This example shows you how to access phone call statistics",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTelCallInfo\n<Common request parameters>\n{\n    \"StartTimeStamp\": \"0\",\n    \"EndTimeStamp\": \"0\",\n    \"SdkAppIdList\": [\n        \"0\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TelCallOutCount\": 0,\n        \"TelCallInCount\": 0,\n        \"SeatUsedCount\": 0,\n        \"VOIPCallInCount\": 0,\n        \"AsrOfflineCount\": 0,\n        \"AsrRealtimeCount\": 0,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Accessing Phone Call Statistics"
+      }
+    ],
+    "DescribeTelCdr": [
+      {
+        "document": " ",
+        "input": "https://ccc.tencentcloudapi.com/?Action=DescribeTelCdr\n&SdkAppId=1400000000\n&StartTimeStamp=1590547606\n&EndTimeStamp=1590147606\n&PageSize=10\n&PageNumber=0\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"TelCdrList\": [\n            {\n                \"ProtectedCaller\": \"abc\",\n                \"EndStatus\": 1,\n                \"SessionId\": \"abc\",\n                \"CustomRecordURL\": \"abc\",\n                \"RecordId\": \"abc\",\n                \"SkillGroupId\": 100,\n                \"Direction\": 0,\n                \"StartTimestamp\": 1590547606,\n                \"AsrUrl\": \"abc\",\n                \"HungUpSide\": \"abc\",\n                \"ServeParticipants\": [\n                    {\n                        \"TransferTo\": \"abc\",\n                        \"TransferFromType\": \"abc\",\n                        \"EndStatusString\": \"abc\",\n                        \"RecordURL\": \"abc\",\n                        \"TransferToType\": \"abc\",\n                        \"AcceptTimestamp\": 0,\n                        \"RecordId\": \"abc\",\n                        \"TransferFrom\": \"abc\",\n                        \"EndedTimestamp\": 0,\n                        \"Sequence\": 0,\n                        \"Phone\": \"abc\",\n                        \"SkillGroupName\": \"abc\",\n                        \"Mail\": \"abc\",\n                        \"RingTimestamp\": 0,\n                        \"Type\": \"abc\",\n                        \"StartTimestamp\": 0,\n                        \"CustomRecordURL\": \"abc\",\n                        \"SkillGroupId\": 0\n                    }\n                ],\n                \"PostIVRKeyPressed\": [\n                    {\n                        \"Key\": \"abc\",\n                        \"Label\": \"abc\"\n                    }\n                ],\n                \"EndStatusString\": \"abc\",\n                \"UUI\": \"abc\",\n                \"QueuedSkillGroupId\": 100,\n                \"RingTimestamp\": 1590547606,\n                \"AcceptTimestamp\": 1590547606,\n                \"EndedTimestamp\": 1590547606,\n                \"Caller\": \"abc\",\n                \"CallerLocation\": \"abc\",\n                \"Time\": 1590547606,\n                \"Callee\": \"abc\",\n                \"SeatUser\": {\n                    \"Name\": \"abc\",\n                    \"Phone\": \"abc\",\n                    \"UserId\": \"abc\",\n                    \"Nick\": \"abc\",\n                    \"StaffNumber\": \"abc\",\n                    \"Mail\": \"abc\",\n                    \"SkillGroupNameList\": [\n                        \"abc\"\n                    ]\n                },\n                \"RecordURL\": \"abc\",\n                \"QueuedTimestamp\": 1610627284,\n                \"ProtectedCallee\": \"abc\",\n                \"IVRDuration\": 5,\n                \"SkillGroup\": \"abc\",\n                \"Duration\": 60,\n                \"IVRKeyPressed\": [\n                    \"5\"\n                ],\n                \"IVRKeyPressedEx\": [\n                    {\n                        \"Key\": \"abc\",\n                        \"Label\": \"abc\"\n                    }\n                ],\n                \"Remark\": \"abc\",\n                \"QueuedSkillGroupName\": \"abc\",\n                \"VoicemailRecordURL\": [\n                    \"abc\"\n                ]\n            },\n            {\n                \"ProtectedCaller\": \"abc\",\n                \"EndStatus\": 1,\n                \"SessionId\": \"abc\",\n                \"CustomRecordURL\": \"abc\",\n                \"RecordId\": \"abc\",\n                \"SkillGroupId\": 100,\n                \"Direction\": 0,\n                \"StartTimestamp\": 1590547630,\n                \"AsrUrl\": \"abc\",\n                \"HungUpSide\": \"abc\",\n                \"ServeParticipants\": [\n                    {\n                        \"TransferTo\": \"abc\",\n                        \"TransferFromType\": \"abc\",\n                        \"RecordURL\": \"abc\",\n                        \"TransferToType\": \"abc\",\n                        \"AcceptTimestamp\": 0,\n                        \"RecordId\": \"abc\",\n                        \"TransferFrom\": \"abc\",\n                        \"EndedTimestamp\": 0,\n                        \"Sequence\": 0,\n                        \"Phone\": \"abc\",\n                        \"EndStatusString\": \"abc\",\n                        \"SkillGroupName\": \"abc\",\n                        \"Mail\": \"abc\",\n                        \"RingTimestamp\": 0,\n                        \"Type\": \"abc\",\n                        \"StartTimestamp\": 0,\n                        \"CustomRecordURL\": \"abc\",\n                        \"SkillGroupId\": 0\n                    }\n                ],\n                \"PostIVRKeyPressed\": [\n                    {\n                        \"Key\": \"abc\",\n                        \"Label\": \"abc\"\n                    }\n                ],\n                \"EndStatusString\": \"abc\",\n                \"UUI\": \"abc\",\n                \"QueuedSkillGroupId\": 100,\n                \"RingTimestamp\": 1590547606,\n                \"AcceptTimestamp\": 1590547606,\n                \"EndedTimestamp\": 1590547606,\n                \"Caller\": \"abc\",\n                \"CallerLocation\": \"abc\",\n                \"Time\": 1590547630,\n                \"Callee\": \"abc\",\n                \"SeatUser\": {\n                    \"Name\": \"abc\",\n                    \"Nick\": \"abc\",\n                    \"UserId\": \"abc\",\n                    \"Phone\": \"abc\",\n                    \"StaffNumber\": \"abc\",\n                    \"Mail\": \"abc\",\n                    \"SkillGroupNameList\": [\n                        \"abc\"\n                    ]\n                },\n                \"RecordURL\": \"abc\",\n                \"QueuedTimestamp\": 1610627284,\n                \"ProtectedCallee\": \"abc\",\n                \"IVRDuration\": 5,\n                \"SkillGroup\": \"abc\",\n                \"Duration\": 62,\n                \"IVRKeyPressed\": [\n                    \"5\"\n                ],\n                \"IVRKeyPressedEx\": [\n                    {\n                        \"Key\": \"abc\",\n                        \"Label\": \"abc\"\n                    }\n                ],\n                \"Remark\": \"abc\",\n                \"QueuedSkillGroupName\": \"abc\",\n                \"VoicemailRecordURL\": [\n                    \"abc\"\n                ]\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample Code for Accessing Phone Call Record"
+      }
+    ],
+    "DescribeTelSession": [
+      {
+        "document": " ",
+        "input": "https://ccc.tencentcloudapi.com/?Action=DescribeTelSession\n&SdkAppId=1400000000\n&SessionId=0cf5be1b-de75-4445-a0c4-8dff3fa4b68b\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"53bccf04-0870-4520-8614-f4bdddfd68df\",\n        \"Session\": {\n            \"SessionID\": \"0cf5be1b-de75-4445-a0c4-8dff3fa4b68b\",\n            \"RoomID\": \"32929373\",\n            \"Caller\": \"00864009282737\",\n            \"Callee\": \"00864001783747\",\n            \"StartTimestamp\": 1607702199,\n            \"RingTimestamp\": 1607702299,\n            \"AcceptTimestamp\": 1607702329,\n            \"StaffEmail\": \"foo@tencent.com\",\n            \"StaffNumber\": \"1007\",\n            \"SessionStatus\": \"inProgress\",\n            \"Direction\": 1,\n            \"OutBoundCaller\": \"\",\n            \"OutBoundCallee\": \"\",\n            \"ProtectedCallee\": \"\",\n            \"ProtectedCaller\": \"\"\n        }\n    }\n}",
+        "title": "Accessing PSTN Session Information"
+      }
+    ],
+    "DisableCCCPhoneNumber": [
+      {
+        "document": "This example shows you how to disable number.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisableCCCPhoneNumber\n<Common request parameters>\n{\n    \"SdkAppId\": 1,\n    \"PhoneNumbers\": [\n        \"008602112345678\"\n    ],\n    \"Disabled\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3651cda6-6501-4482-9f4e-8d0c9548a4db\"\n    }\n}",
+        "title": "Disabling Number"
+      }
+    ],
+    "HangUpCall": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: HangUpCall\n<Common request parameters>\n{\n    \"SdkAppId\": 140000000,\n    \"SessionId\": \"9dc79b2c-9902-419c-b963-16bee762ae3a\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"86a17f0e-bcb3-46bf-ac66-8f165fe52127\"\n    }\n}",
+        "title": "Hanging up the Phone"
+      }
+    ],
+    "ModifyExtension": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyExtension\n<Common request parameters>\n{\n    \"SdkAppId\": 140000000,\n    \"ExtensionId\": \"1001\",\n    \"ExtensionName\": \"Extension 1\",\n    \"SkillGroupIds\": [\n        1000\n    ],\n    \"Relation\": \"xxx@xxxx.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"86a17f0e-bcb3-46bf-ac66-8f165fe52127\"\n    }\n}",
+        "title": "Modifying Telephone Account"
+      }
+    ],
+    "ModifyStaff": [
+      {
+        "document": "This example shows you how to modify customer service.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStaff\n<Common request parameters>\n{\n    \"Phone\": \"008618092688910\",\n    \"Email\": \"xxx@tencent.com\",\n    \"SdkAppId\": 1400000000\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6bb56a09-2787-40bc-80c5-dc6dab783eff\"\n    }\n}",
+        "title": "Modifying Customer Service"
+      }
+    ],
+    "PausePredictiveDialingCampaign": [
+      {
+        "document": "This example shows you how to pause the predictive outbound call task.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: PausePredictiveDialingCampaign\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"CampaignId\": 2569\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Pausing Predictive Outbound Call Task"
+      }
+    ],
+    "ResetExtensionPassword": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetExtensionPassword\n<Common request parameters>\n{\n    \"SdkAppId\": 140000000,\n    \"ExtensionId\": \"1001\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"86a17f0e-bcb3-46bf-ac66-8f165fe52127\",\n        \"Password\": \"xxxxxxxxxxxxxxxxx\"\n    }\n}",
+        "title": "Resetting Telephone Register Password"
+      }
+    ],
+    "ResumePredictiveDialingCampaign": [
+      {
+        "document": "This example shows you how to resume the predictive outbound call task.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResumePredictiveCalloutTask\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"CampaignId\": 2569\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Resuming Predictive Outbound Call Task"
+      }
+    ],
+    "StopAutoCalloutTask": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopAutoCalloutTask\n<Common request parameters>\n{\n    \"SdkAppId\": 1,\n    \"TaskId\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\"\n    }\n}",
+        "title": "Stopping Task"
+      }
+    ],
+    "UnbindNumberCallOutSkillGroup": [
+      {
+        "document": "This example shows you how to unbind the number from the outbound call skill group.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnbindNumberCallOutSkillGroup\n<Common Request Parameters>\n{\n    \"Number\": \"0086075512345678\",\n    \"SkillGroupIds\": [\n        1,\n        2,\n        3\n    ],\n    \"SdkAppId\": 1400000000\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Unbinding the Number from the Outbound Call Skill Group"
+      }
+    ],
+    "UnbindStaffSkillGroupList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnbindStaffSkillGroupList\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"StaffEmail\": \"staff1@xxx.com\",\n    \"SkillGroupList\": [\n        100,\n        101\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"48edd236-7ef1-45af-9e12-fc376ba355bf\"\n    }\n}",
+        "title": "Unbinding Agent's Skill Group"
+      }
+    ],
+    "UpdateCCCSkillGroup": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCCCSkillGroup\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000,\n    \"SkillGroupID\": 1234,\n    \"SkillGroupName\": \"abc\",\n    \"MaxConcurrency\": 1,\n    \"RingAll\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Updating Skill Group Information"
+      }
+    ],
+    "UpdatePredictiveDialingCampaign": [
+      {
+        "document": "This example shows you how to update the predictive outbound call task.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdatePredictiveDialingCampaign\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"CampaignId\": 2569,\n    \"Name\": \"New energy SUV recommendation\",\n    \"Callees\": [\n        \"+8613012345678\",\n        \"+8613012345679\",\n        \"+8613012345670\"\n    ],\n    \"Callers\": [\n        \"0086075586013388\"\n    ],\n    \"CallOrder\": 0,\n    \"SkillGroupId\": 255,\n    \"IVRId\": 4600,\n    \"Priority\": 3,\n    \"ExpectedAbandonRate\": 10,\n    \"RetryTimes\": 1,\n    \"RetryInterval\": 1800,\n    \"StartTime\": 1708483433,\n    \"EndTime\": 1708485433\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Updating Predictive Outbound Call Task"
+      }
+    ]
+  },
+  "version": "1.0"
+}

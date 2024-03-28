@@ -19061,11 +19061,11 @@
       "usage": "both"
     },
     "FastEditMediaFileInfo": {
-      "document": "",
+      "document": "VOD  fast media editing information",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Media file ID.",
           "example": "12345",
           "member": "string",
           "name": "FileId",
@@ -19074,7 +19074,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "The types of media. Valid values: <li>Transcode:Transcoded output; </li> <li>Original: Original audio and video. </li>The audio and video being operated on must be in HLS format.",
           "example": "Original",
           "member": "string",
           "name": "AudioVideoType",
@@ -19083,7 +19083,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "When AudioVideoType is set to Transcode, it is valid and indicates the transcoding template ID for the media being operated on.",
           "example": "100210",
           "member": "int64",
           "name": "TranscodeDefinition",
@@ -19092,7 +19092,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Offset time of the start of the video clip, unit: seconds.",
           "example": "0",
           "member": "float",
           "name": "StartTimeOffset",
@@ -19101,7 +19101,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Offset time at the end of the video clip, unit: seconds.",
           "example": "0",
           "member": "float",
           "name": "EndTimeOffset",
