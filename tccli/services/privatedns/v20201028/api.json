@@ -21,6 +21,13 @@
       "output": "CreatePrivateZoneRecordResponse",
       "status": "online"
     },
+    "DeletePrivateZoneRecord": {
+      "document": "This API is used to delete a DNS record for a private domain.",
+      "input": "DeletePrivateZoneRecordRequest",
+      "name": "Deletes DNS record for private domain",
+      "output": "DeletePrivateZoneRecordResponse",
+      "status": "online"
+    },
     "DescribeAccountVpcList": {
       "document": "This API is used to get the VPC list of a Private DNS account.",
       "input": "DescribeAccountVpcListRequest",
@@ -47,6 +54,20 @@
       "input": "DescribePrivateDNSAccountListRequest",
       "name": "Gets the list of Private DNS accounts",
       "output": "DescribePrivateDNSAccountListResponse",
+      "status": "online"
+    },
+    "DescribePrivateZoneList": {
+      "document": "This API is used to get the list of private domains.",
+      "input": "DescribePrivateZoneListRequest",
+      "name": "Gets the list of private domains",
+      "output": "DescribePrivateZoneListResponse",
+      "status": "online"
+    },
+    "DescribePrivateZoneRecordList": {
+      "document": "This API is used to get the list of records for a private domain.",
+      "input": "DescribePrivateZoneRecordListRequest",
+      "name": "Gets the list of records for private domain",
+      "output": "DescribePrivateZoneRecordListResponse",
       "status": "online"
     },
     "DescribePrivateZoneService": {
@@ -116,6 +137,7 @@
       "document": "VPC information of a Private DNS account",
       "members": [
         {
+          "disabled": false,
           "document": "VpcId: vpc-xadsafsdasd",
           "example": "无",
           "member": "string",
@@ -125,6 +147,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "VPC region: ap-guangzhou, ap-shanghai\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -134,6 +157,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "VPC account: 123456789\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "123456789",
           "member": "string",
@@ -143,6 +167,7 @@
           "value_allowed_null": true
         },
         {
+          "disabled": false,
           "document": "VPC name: testname\nNote: this field may return `null`, indicating that no valid values can be obtained.",
           "example": "testname",
           "member": "string",
@@ -158,6 +183,7 @@
       "document": "Output parameters of the associated VPC",
       "members": [
         {
+          "disabled": false,
           "document": "VpcId: vpc-xadsafsdasd",
           "example": "无",
           "member": "string",
@@ -167,6 +193,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Region: ap-guangzhou, ap-shanghai",
           "example": "无",
           "member": "string",
@@ -176,6 +203,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "VPC ID: 123456789",
           "example": "无",
           "member": "string",
@@ -185,6 +213,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "VPC name: testname",
           "example": "无",
           "member": "string",
@@ -200,6 +229,7 @@
       "document": "Output parameters of the associated VPC",
       "members": [
         {
+          "disabled": false,
           "document": "UIN of the VPC account",
           "example": "12345678",
           "member": "string",
@@ -209,6 +239,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "VPC ID",
           "example": "vpc-wdskdss1",
           "member": "string",
@@ -218,6 +249,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Region",
           "example": "ap-guangzhou",
           "member": "string",
@@ -233,7 +265,9 @@
       "document": "Operation log",
       "members": [
         {
+          "disabled": false,
           "document": "Log type",
+          "example": "",
           "member": "string",
           "name": "Resource",
           "required": true,
@@ -241,7 +275,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Log table name",
+          "example": "",
           "member": "string",
           "name": "Metric",
           "required": true,
@@ -249,7 +285,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of logs",
+          "example": "",
           "member": "int64",
           "name": "TotalCount",
           "required": true,
@@ -257,7 +295,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of logs",
+          "example": "",
           "member": "AuditLogInfo",
           "name": "DataSet",
           "required": true,
@@ -271,7 +311,9 @@
       "document": "Log details",
       "members": [
         {
+          "disabled": false,
           "document": "Time",
+          "example": "",
           "member": "datetime",
           "name": "Date",
           "required": true,
@@ -279,7 +321,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Operator UIN",
+          "example": "",
           "member": "string",
           "name": "OperatorUin",
           "required": true,
@@ -287,7 +331,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Log content",
+          "example": "",
           "member": "string",
           "name": "Content",
           "required": true,
@@ -301,6 +347,7 @@
       "document": "CreatePrivateDNSAccount request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Private DNS account",
           "example": "无",
           "member": "PrivateDNSAccount",
@@ -315,7 +362,7 @@
       "document": "CreatePrivateDNSAccount response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -327,6 +374,7 @@
       "document": "CreatePrivateZoneRecord request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Private domain ID",
           "example": "1",
           "member": "string",
@@ -335,6 +383,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Record type. Valid values: \"A\", \"AAAA\", \"CNAME\", \"MX\", \"TXT\", \"PTR\"",
           "example": "A",
           "member": "string",
@@ -343,6 +392,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Subdomain, such as \"www\", \"m\", and \"@\"",
           "example": "b",
           "member": "string",
@@ -351,6 +401,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Record value, such as IP: 192.168.10.2, CNAME: cname.qcloud.com., and MX: mail.qcloud.com.",
           "example": "3.3.3.3",
           "member": "string",
@@ -359,6 +410,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Record weight. Value range: 1–100",
           "example": "100",
           "member": "int64",
@@ -367,6 +419,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "MX priority, which is required when the record type is MX. Valid values: 5, 10, 15, 20, 30, 40, 50",
           "example": "15",
           "member": "int64",
@@ -375,6 +428,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Record cache time. The smaller the value, the faster the record will take effect. Value range: 1–86400s. Default value: 600",
           "example": "600",
           "member": "int64",
@@ -389,6 +443,7 @@
       "document": "CreatePrivateZoneRecord response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Record ID",
           "example": "1111",
           "member": "string",
@@ -398,7 +453,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -410,6 +465,7 @@
       "document": "CreatePrivateZone request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Domain name, which must be in the format of standard TLD",
           "example": "a.com",
           "member": "string",
@@ -418,6 +474,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Tags the private domain when it is created",
           "example": "无",
           "member": "TagInfo",
@@ -426,6 +483,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Associates the private domain to a VPC when it is created",
           "example": "无",
           "member": "VpcInfo",
@@ -434,6 +492,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Remarks",
           "example": "测试域名",
           "member": "string",
@@ -442,6 +501,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to enable subdomain recursive DNS. Valid values: `ENABLED` (default) and `DISABLED`.",
           "example": "ENABLED",
           "member": "string",
@@ -450,6 +510,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Associates the private domain to a VPC when it is created",
           "example": "无",
           "member": "VpcInfo",
@@ -458,6 +519,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "List of authorized accounts' VPCs to associate with the private domain",
           "example": "无",
           "member": "AccountVpcInfo",
@@ -466,6 +528,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Whether to enable CNAME flattening. Valid values: `ENABLED` (default) and `DISABLED`.",
           "example": "ENABLED",
           "member": "string",
@@ -480,6 +543,7 @@
       "document": "CreatePrivateZone response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Private domain ID, such as zone-xxxxxx",
           "example": "41",
           "member": "string",
@@ -489,6 +553,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Private domain",
           "example": "a.com",
           "member": "string",
@@ -498,7 +563,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -510,7 +575,9 @@
       "document": "Time statistics",
       "members": [
         {
+          "disabled": false,
           "document": "Time",
+          "example": "",
           "member": "datetime",
           "name": "Date",
           "required": true,
@@ -518,7 +585,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Value",
+          "example": "",
           "member": "int64",
           "name": "Value",
           "required": true,
@@ -528,10 +597,56 @@
       ],
       "usage": "out"
     },
+    "DeletePrivateZoneRecordRequest": {
+      "document": "DeletePrivateZoneRecord request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Private domain ID",
+          "example": "1999",
+          "member": "string",
+          "name": "ZoneId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Record ID",
+          "example": "2323",
+          "member": "string",
+          "name": "RecordId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Array of record IDs. `RecordId` takes precedence.",
+          "example": "[]",
+          "member": "string",
+          "name": "RecordIdSet",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeletePrivateZoneRecordResponse": {
+      "document": "DeletePrivateZoneRecord response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeAccountVpcListRequest": {
       "document": "DescribeAccountVpcList request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "UIN of account",
           "example": "123456789",
           "member": "string",
@@ -540,6 +655,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Pagination offset, starting from 0",
           "example": "无",
           "member": "int64",
@@ -548,6 +664,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page. Maximum value: `100`. Default value: `20`",
           "example": "无",
           "member": "int64",
@@ -556,6 +673,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Filter parameters",
           "example": "无",
           "member": "Filter",
@@ -570,6 +688,7 @@
       "document": "DescribeAccountVpcList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of VPCs",
           "example": "无",
           "member": "int64",
@@ -579,6 +698,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "VPC list",
           "example": "无",
           "member": "AccountVpcInfoOut",
@@ -588,7 +708,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -600,6 +720,7 @@
       "document": "DescribeAuditLog request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Request volume statistics start time",
           "example": "2020-11-22 00:00:00",
           "member": "string",
@@ -608,6 +729,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Filter parameter. Valid values: ZoneId (private domain ID), Domain (private domain), OperatorUin (operator account ID)",
           "example": "无",
           "member": "Filter",
@@ -616,6 +738,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Request volume statistics end time",
           "example": "2020-11-23 23:59:59",
           "member": "string",
@@ -624,6 +747,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Pagination offset, starting from 0",
           "example": "0",
           "member": "int64",
@@ -632,6 +756,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page. Maximum value: 100. Default value: 20",
           "example": "20",
           "member": "int64",
@@ -646,6 +771,7 @@
       "document": "DescribeAuditLog response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "List of operation logs",
           "example": "无",
           "member": "AuditLog",
@@ -655,7 +781,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -672,6 +798,7 @@
       "document": "DescribeDashboard response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Total number of private domain DNS records",
           "example": "20",
           "member": "int64",
@@ -681,6 +808,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Number of VPCs associated with private domain",
           "example": "7",
           "member": "int64",
@@ -690,6 +818,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Total number of historical requests",
           "example": "10000",
           "member": "int64",
@@ -699,6 +828,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Traffic package usage",
           "example": "无",
           "member": "FlowUsage",
@@ -708,7 +838,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -720,6 +850,7 @@
       "document": "DescribePrivateDNSAccountList request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Pagination offset, starting from `0`",
           "example": "无",
           "member": "int64",
@@ -728,6 +859,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Number of entries per page. Maximum value: `100`. Default value: `20`",
           "example": "无",
           "member": "int64",
@@ -736,6 +868,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Filter parameters",
           "example": "无",
           "member": "Filter",
@@ -750,6 +883,7 @@
       "document": "DescribePrivateDNSAccountList response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Number of Private DNS accounts",
           "example": "无",
           "member": "int64",
@@ -759,6 +893,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of Private DNS accounts",
           "example": "无",
           "member": "PrivateDNSAccount",
@@ -768,7 +903,146 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrivateZoneListRequest": {
+      "document": "DescribePrivateZoneList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pagination offset, starting from 0",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of entries per page. Maximum value: 100. Default value: 20",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter parameter",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrivateZoneListResponse": {
+      "document": "DescribePrivateZoneList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of private domains",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of private domains",
+          "example": "无",
+          "member": "PrivateZone",
+          "name": "PrivateZoneSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrivateZoneRecordListRequest": {
+      "document": "DescribePrivateZoneRecordList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Private domain ID: zone-xxxxxx",
+          "example": "1",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter parameter",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset, starting from 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of entries per page. Maximum value: 100. Default value: 20",
+          "example": "200",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePrivateZoneRecordListResponse": {
+      "document": "DescribePrivateZoneRecordList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of DNS records",
+          "example": "5",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of DNS records",
+          "example": "无",
+          "member": "PrivateZoneRecord",
+          "name": "RecordSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -785,6 +1059,7 @@
       "document": "DescribePrivateZoneService response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Private DNS service activation status. Valid values: ENABLED, DISABLED",
           "example": "ENABLED",
           "member": "string",
@@ -794,7 +1069,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -811,6 +1086,7 @@
       "document": "DescribeQuotaUsage response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "TLD quota usage",
           "example": "无",
           "member": "TldQuota",
@@ -820,7 +1096,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -832,6 +1108,7 @@
       "document": "DescribeRequestData request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Request volume statistics start time in the format of 2020-11-22 00:00:00",
           "example": "2020-11-22 00:00:00",
           "member": "string",
@@ -840,6 +1117,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Filter parameter:",
           "example": "无",
           "member": "Filter",
@@ -848,6 +1126,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "Request volume statistics end time in the format of 2020-11-22 23:59:59",
           "example": "2020-11-23 23:59:59",
           "member": "string",
@@ -862,6 +1141,7 @@
       "document": "DescribeRequestData response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Request volume statistics table",
           "example": "无",
           "member": "MetricData",
@@ -871,6 +1151,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Request volume unit time. Valid values: Day, Hour",
           "example": "hour",
           "member": "string",
@@ -880,7 +1161,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -892,7 +1173,9 @@
       "document": "Filter parameter",
       "members": [
         {
+          "disabled": false,
           "document": "Parameter name",
+          "example": "",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -900,7 +1183,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Array of parameter values",
+          "example": "",
           "member": "string",
           "name": "Values",
           "required": true,
@@ -914,6 +1199,7 @@
       "document": "Traffic package usage",
       "members": [
         {
+          "disabled": false,
           "document": "Traffic package type, Valid values: ZONE (private domain); TRAFFIC (DNS traffic package)",
           "example": "zone",
           "member": "string",
@@ -923,6 +1209,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Traffic package quota",
           "example": "无",
           "member": "int64",
@@ -932,6 +1219,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Available quota of traffic package",
           "example": "无",
           "member": "int64",
@@ -947,6 +1235,7 @@
       "document": "Statistics table",
       "members": [
         {
+          "disabled": false,
           "document": "Resource description",
           "example": "无",
           "member": "string",
@@ -956,6 +1245,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Table name",
           "example": "无",
           "member": "string",
@@ -965,6 +1255,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Table data",
           "example": "无",
           "member": "DatePoint",
@@ -974,6 +1265,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The total number of requests within the query scope.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "100",
           "member": "int64",
@@ -989,6 +1281,7 @@
       "document": "ModifyPrivateZoneRecord request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Private domain ID",
           "example": "zone-xxxxxx",
           "member": "string",
@@ -997,6 +1290,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Record ID",
           "example": "289",
           "member": "string",
@@ -1005,6 +1299,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Record type. Valid values: \"A\", \"AAAA\", \"CNAME\", \"MX\", \"TXT\", \"PTR\"",
           "example": "A",
           "member": "string",
@@ -1013,6 +1308,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Subdomain, such as \"www\", \"m\", and \"@\"",
           "example": "@",
           "member": "string",
@@ -1021,6 +1317,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Record value, such as IP: 192.168.10.2, CNAME: cname.qcloud.com., and MX: mail.qcloud.com.",
           "example": "8.8.8.8",
           "member": "string",
@@ -1029,6 +1326,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Record weight. Value range: 1–100",
           "example": "100",
           "member": "int64",
@@ -1037,6 +1335,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "MX priority, which is required when the record type is MX. Valid values: 5, 10, 15, 20, 30, 40, 50",
           "example": "50",
           "member": "int64",
@@ -1045,6 +1344,7 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "Record cache time. The smaller the value, the faster the record will take effect. Value range: 1–86400s. Default value: 600",
           "example": "600",
           "member": "int64",
@@ -1059,7 +1359,7 @@
       "document": "ModifyPrivateZoneRecord response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1071,6 +1371,7 @@
       "document": "ModifyPrivateZone request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Private domain ID",
           "example": "1",
           "member": "string",
@@ -1079,6 +1380,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Remarks",
           "example": "测试域名",
           "member": "string",
@@ -1087,6 +1389,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to enable subdomain recursive DNS. Valid values: ENABLED, DISABLED",
           "example": "ENABLED",
           "member": "string",
@@ -1095,6 +1398,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Whether to enable CNAME flattening. Valid values: `ENABLED` and `DISABLED`.",
           "example": "ENABLED",
           "member": "string",
@@ -1109,7 +1413,7 @@
       "document": "ModifyPrivateZone response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1121,6 +1425,7 @@
       "document": "ModifyPrivateZoneVpc request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Private domain ID",
           "example": "1",
           "member": "string",
@@ -1129,6 +1434,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "List of all VPCs associated with private domain",
           "example": "无",
           "member": "VpcInfo",
@@ -1137,6 +1443,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "List of authorized accounts' VPCs to associate with the private domain",
           "example": "无",
           "member": "AccountVpcInfo",
@@ -1151,6 +1458,7 @@
       "document": "ModifyPrivateZoneVpc response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Private domain ID, such as zone-xxxxxx",
           "example": "1",
           "member": "string",
@@ -1160,6 +1468,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of VPCs associated with domain",
           "example": "无",
           "member": "VpcInfo",
@@ -1169,6 +1478,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "List of authorized accounts' VPCs associated with the private domain",
           "example": "无",
           "member": "AccountVpcInfoOutput",
@@ -1178,7 +1488,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1190,6 +1500,7 @@
       "document": "ModifyRecordsStatus request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The private domain ID",
           "example": "zone-vcxs31di",
           "member": "string",
@@ -1198,6 +1509,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The DNS record IDs.",
           "example": "[1,2,3]",
           "member": "int64",
@@ -1206,6 +1518,7 @@
           "type": "list"
         },
         {
+          "disabled": false,
           "document": "`enabled`: Enable; `disabled`: Disable.",
           "example": "enabled",
           "member": "string",
@@ -1220,6 +1533,7 @@
       "document": "ModifyRecordsStatus response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The private domain ID",
           "example": "zone-sdf1fds3",
           "member": "string",
@@ -1229,6 +1543,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The DNS record IDs.",
           "example": "[1,2,3]",
           "member": "int64",
@@ -1238,6 +1553,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "`enabled`: Enabled; `disabled`: Disabled.",
           "example": "enabled",
           "member": "string",
@@ -1247,7 +1563,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1259,6 +1575,7 @@
       "document": "Private DNS account",
       "members": [
         {
+          "disabled": false,
           "document": "Root account UIN",
           "example": "123456789",
           "member": "string",
@@ -1268,6 +1585,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Root account name",
           "example": "privatedns@qcloud.com",
           "member": "string",
@@ -1277,6 +1595,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Account name",
           "example": "私有域解析用户",
           "member": "string",
@@ -1288,6 +1607,258 @@
       ],
       "usage": "both"
     },
+    "PrivateZone": {
+      "document": "Private domain information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Private domain ID: zone-xxxxxxxx",
+          "example": "1782",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Domain name owner UIN",
+          "example": "444353877",
+          "member": "int64",
+          "name": "OwnerUin",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Private domain",
+          "example": "test.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time",
+          "example": "2020-12-26 18:51:20",
+          "member": "datetime",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modification time",
+          "example": "2020-12-26 18:51:20",
+          "member": "datetime",
+          "name": "UpdatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of results",
+          "example": "0",
+          "member": "int64",
+          "name": "RecordCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "备注",
+          "member": "string",
+          "name": "Remark",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "List of bound VPCs",
+          "example": "[]",
+          "member": "VpcInfo",
+          "name": "VpcSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Private domain status. Valid values: ENABLED (DNS enabled); SUSPEND (DNS paused); FROZEN (locked)",
+          "example": "ENABLED",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subdomain recursive DNS status. Valid values: ENABLED, DISABLED",
+          "example": "DISABLED",
+          "member": "string",
+          "name": "DnsForwardStatus",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Set of tag key-value pairs",
+          "example": "[{TagKey: \"testtag\", TagValue: \"testtag\"}]",
+          "member": "TagInfo",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of authorized accounts' VPCs associated with the private domain\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AccountVpcInfoOutput",
+          "name": "AccountVpcSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "PrivateZoneRecord": {
+      "document": "Private domain information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Record ID",
+          "example": "",
+          "member": "string",
+          "name": "RecordId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Private domain ID: zone-xxxxxxxx",
+          "example": "",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subdomain",
+          "example": "",
+          "member": "string",
+          "name": "SubDomain",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Record type. Valid values: \"A\", \"AAAA\", \"CNAME\", \"MX\", \"TXT\", \"PTR\"",
+          "example": "",
+          "member": "string",
+          "name": "RecordType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Record value",
+          "example": "",
+          "member": "string",
+          "name": "RecordValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Record cache time. The smaller the value, the faster the record will take effect. Value range: 1–86400s. Default value: 600",
+          "example": "",
+          "member": "int64",
+          "name": "TTL",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MX priority, which is required when the record type is MX. Valid values: 5, 10, 15, 20, 30, 40, 50\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "MX",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Record status: ENABLED",
+          "example": "",
+          "member": "string",
+          "name": "Status",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Record weight. Value range: 1–100\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "int64",
+          "name": "Weight",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Record creation time",
+          "example": "",
+          "member": "datetime",
+          "name": "CreatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Record update time",
+          "example": "",
+          "member": "datetime",
+          "name": "UpdatedOn",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional information\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "Extra",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "SubscribePrivateZoneServiceRequest": {
       "document": "SubscribePrivateZoneService request structure.",
       "members": [],
@@ -1297,6 +1868,7 @@
       "document": "SubscribePrivateZoneService response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "Private DNS service activation status",
           "example": "ENABLED",
           "member": "string",
@@ -1306,7 +1878,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1318,7 +1890,9 @@
       "document": "Tag",
       "members": [
         {
+          "disabled": false,
           "document": "Tag key",
+          "example": "",
           "member": "string",
           "name": "TagKey",
           "required": true,
@@ -1326,7 +1900,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Tag value",
+          "example": "",
           "member": "string",
           "name": "TagValue",
           "required": true,
@@ -1340,6 +1916,7 @@
       "document": "TLD quota",
       "members": [
         {
+          "disabled": false,
           "document": "Total quota",
           "example": "1",
           "member": "int64",
@@ -1349,6 +1926,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Used quota",
           "example": "1",
           "member": "int64",
@@ -1358,6 +1936,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Available quota",
           "example": "5000",
           "member": "int64",
@@ -1367,6 +1946,7 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "User’s quota",
           "example": "100",
           "member": "int64",
@@ -1382,7 +1962,9 @@
       "document": "VPC information",
       "members": [
         {
+          "disabled": false,
           "document": "VpcId: vpc-xadsafsdasd",
+          "example": "",
           "member": "string",
           "name": "UniqVpcId",
           "required": true,
@@ -1390,7 +1972,9 @@
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "VPC region: ap-guangzhou, ap-shanghai",
+          "example": "",
           "member": "string",
           "name": "Region",
           "required": true,
