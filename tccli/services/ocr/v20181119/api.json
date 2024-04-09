@@ -57,7 +57,7 @@
       "status": "online"
     },
     "MLIDPassportOCR": {
-      "document": "This API is used to recognize a passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions. Recognizable fields include passport ID, name, date of birth, gender, expiration date, issuing country/region, and nationality. It has the features of cropping identity photos and alarming for photographed or photocopied documents.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
+      "document": "This API is used to recognize a passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions. Recognizable fields include passport ID, name, date of birth, gender, expiration date, issuing country/region, and nationality. It has the features of cropping identity photos and alarming for photographed or photocopied documents.",
       "input": "MLIDPassportOCRRequest",
       "name": "Recognizes a non-Mainland China passport",
       "output": "MLIDPassportOCRResponse",
@@ -2268,20 +2268,29 @@
         {
           "disabled": false,
           "document": "Base64-encoded value of image. The image cannot exceed 7 MB in size after being Base64-encoded. A resolution above 500x800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies more than 2/3 area of the image.",
-          "example": "",
+          "example": "base64编码",
           "member": "string",
           "name": "ImageBase64",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
           "disabled": false,
-          "document": "Whether to return an image. Default value: false.",
-          "example": "",
+          "document": "Whether to return an image. \nDefault value: false.",
+          "example": "false",
           "member": "bool",
           "name": "RetImage",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "URL address of image. (This field is not supported outside Chinese mainland)\nSupported image formats: PNG, JPG, JPEG. GIF is currently not supported.\nSupported image size: the downloaded image cannot exceed 7 MB after being Base64-encoded. The download time of the image cannot exceed 3 seconds.\nWe recommend you store the image in Tencent Cloud, as a Tencent Cloud URL can guarantee higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "https://xx/a.jpg",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2295,6 +2304,7 @@
           "example": "E6918C",
           "member": "string",
           "name": "ID",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2304,6 +2314,7 @@
           "example": "BROWN BENJAMIN",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2313,6 +2324,7 @@
           "example": "20230414",
           "member": "string",
           "name": "DateOfBirth",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2322,6 +2334,7 @@
           "example": "M",
           "member": "string",
           "name": "Sex",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2331,6 +2344,7 @@
           "example": "20230414",
           "member": "string",
           "name": "DateOfExpiration",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2340,6 +2354,7 @@
           "example": "SGP",
           "member": "string",
           "name": "IssuingCountry",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2349,15 +2364,17 @@
           "example": "SGP",
           "member": "string",
           "name": "Nationality",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Alarm codes\n-9103 Alarm for spoofed document\n-9102 Alarm for photocopied document (including black & white and color ones)\n-9106 Alarm for covered card",
+          "document": "Alarm codes\n-9102 Alarm for photocopy on a paper document (including black & white and color ones)\n-9103 Alarm for photocopy on an electronic device\n-9106 Alarm for covered card",
           "example": "[]",
           "member": "int64",
           "name": "Warn",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2367,6 +2384,7 @@
           "example": "无",
           "member": "string",
           "name": "Image",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2376,24 +2394,27 @@
           "example": "{\"IssuingCountry\":{\"Confidence\":\"0.9500\"},\"Name\":{\"Confidence\":\"0.9500\"},\"ID\":{\"Confidence\":\"0.9500\"},\"Nationality\":{\"Confidence\":\"0.9500\"},\"Sex\":{\"Confidence\":\"0.9500\"},\"DateOfExpiration\":{\"Confidence\":\"0.9500\"}}",
           "member": "string",
           "name": "AdvancedInfo",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The first row of the machine-readable zone (MRZ) at the bottom",
-          "example": "P<CANBROWN<<BENJAMIN<<<<<<<<<<<<<<<<<<<<<<<<",
+          "example": "`P<CANBROWN<<BENJAMIN<<<<<<<<<<<<<<<<<<<<<<<<`",
           "member": "string",
           "name": "CodeSet",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The second row of the MRZ at the bottom",
-          "example": "JK123488<3CAN8510168M2603298<<<<<<<<<<<<<<04",
+          "example": "`JK123488<3CAN8510168M2603298<<<<<<<<<<<<<<04`",
           "member": "string",
           "name": "CodeCrc",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2403,6 +2424,7 @@
           "example": "BROWN",
           "member": "string",
           "name": "Surname",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -2412,11 +2434,32 @@
           "example": "BENJAMIN",
           "member": "string",
           "name": "GivenName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "disabled": false,
+          "document": "Type (in Machine Readable Zone)",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Document content in Information Zone",
+          "example": "无",
+          "member": "PassportRecognizeInfos",
+          "name": "PassportRecognizeInfos",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3861,6 +3904,152 @@
           "name": "OtherInvoiceItemList",
           "required": false,
           "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "PassportRecognizeInfos": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "IssuingCountry",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "PassportID",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Surname",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "GivenName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Nationality",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "DateOfBirth",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Sex",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "DateOfIssuance",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "DateOfExpiration",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Signature",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "IssuePlace",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "IssuingAuthority",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],

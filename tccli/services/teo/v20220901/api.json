@@ -113,7 +113,7 @@
       "status": "online"
     },
     "CreateRealtimeLogDeliveryTask": {
-      "document": "This API is used to create real-time log delivery tasks. This API has the following restrictions:\nUnder the same combination of data delivery type (LogType) and data delivery area (Area), an entity (Layer 7 domain or Layer 4 proxy instance) can be added to only one real-time log delivery task. It is recommended to first query the real-time log delivery task list by entity through the [DescribeRealtimeLogDeliveryTasks](https://tcloud4api.woa.com/document/product/1657/343539?!preview&!document=1) API to check whether an entity has been added to a real-time log delivery task.",
+      "document": "This API is used to create a real-time log delivery task. The following limits apply:\nAn entity (a Layer 7 domain name or a Layer 4 proxy instance) under the combination of the same data delivery type (LogType) and data delivery area (Area) can be added to only one real-time log delivery task. It is recommended to first query the real-time log delivery task list by entity through the [DescribeRealtimeLogDeliveryTasks](https://intl.cloud.tencent.com/document/product/1552/104110?from_cn_redirect=1) API to check whether the entity has been added to another real-time log delivery task.",
       "input": "CreateRealtimeLogDeliveryTaskRequest",
       "name": "Creates a real-time log delivery task",
       "output": "CreateRealtimeLogDeliveryTaskResponse",
@@ -425,6 +425,13 @@
       "input": "DescribeRulesSettingRequest",
       "name": "Queries the setting parameters of the rule engine.",
       "output": "DescribeRulesSettingResponse",
+      "status": "online"
+    },
+    "DescribeSecurityIPGroupInfo": {
+      "document": "This API is used to query the configuration information of an IP group, including the IP group name, IP group content, and the site the IP group belongs to.",
+      "input": "DescribeSecurityIPGroupInfoRequest",
+      "name": "Queries IP group configuration information",
+      "output": "DescribeSecurityIPGroupInfoResponse",
       "status": "online"
     },
     "DescribeSecurityTemplateBindings": {
@@ -1118,7 +1125,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Common operation. Values:\n<li>`AccessUrlRedirect`: Access URL rewrite</li>\n<li>`UpstreamUrlRedirect`: Origin-pull URL rewrite</li>\n<li>`QUIC`: QUIC</li>\n<li>`WebSocket`: WebSocket</li>\n<li>`VideoSeek`: Video dragging</li>\n<li>`Authentication`: Token authentication</li>\n<li>`CacheKey`: Custom cache key</li>\n<li>`Cache`: Node cache TTL</li>\n<li>`MaxAge`: Browser cache TTL</li>\n<li>`OfflineCache`: Offline cache</li>\n<li>`SmartRouting`: Smart acceleration</li>\n<li>`RangeOriginPull`: Range GETs</li>\n<li>`UpstreamHttp2`: HTTP/2 forwarding</li>\n<li>`HostHeader`: Host header rewrite</li>\n<li>`ForceRedirect`: Force HTTPS</li>\n<li>`OriginPullProtocol`: Origin-pull HTTPS</li>\n<li>`CachePrefresh`: Cache prefresh</li>\n<li>`Compression`: Smart compression</li>\n<li>`Hsts`</li>\n<li>`ClientIpHeader`</li>\n<li>`SslTlsSecureConf`</li>\n<li>`OcspStapling`</li>\n<li>`Http2`: HTTP/2 access</li>\n<li>`UpstreamFollowRedirect`: Follow origin redirect</li>\n<li>`Origin`: Origin</li>\nNote: This field may return `null`, indicating that no valid value can be obtained.",
+          "document": "Common feature operations. The options for this category include:\n<li> Access URL overriding (AccessUrlRedirect);</li>\n<li> Origin URL overriding (UpstreamUrlRedirect);</li>\n<li> QUIC;</li>\n<li> WebSocket;</li>\n<li> Video dragging (VideoSeek);</li>\n<li> Token authentication (Authentication);</li>\n<li> Custom CacheKey (CacheKey);</li>\n<li> Node caching TTL (Cache);</li>\n<li> Browser caching TTL (MaxAge);</li>\n<li> Offline caching (OfflineCache);</li>\n<li> Smart routing (SmartRouting);</li>\n<li> Range-based origin pull (RangeOriginPull);</li>\n<li> HTTP/2 origin pull (UpstreamHttp2);</li>\n<li> Host header overriding (HostHeader);</li>\n<li> Forced HTTPS (ForceRedirect);</li>\n<li> HTTPS origin pull (OriginPullProtocol);</li>\n<li> Cache pre-refresh (CachePrefresh);</li>\n<li> Smart compression (Compression);</li>\n<li> Hsts;</li>\n<li> ClientIpHeader;</li>\n<li> SslTlsSecureConf;</li>\n<li> OcspStapling;</li>\n<li> HTTP/2 access (Http2);</li>\n<li> Redirection during origin pull (UpstreamFollowRedirect);</li>\n<li> Modifying origin server (Origin);</li>\n<li> Layer 7 origin pull timeout (HTTPUpstreamTimeout);</li>\n<li> HTTP response (HttpResponse).</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "NormalAction",
           "name": "NormalAction",
@@ -1955,7 +1962,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the policy template ID to bind or unbind.",
+          "document": "Specifies the ID of the policy template or the site's global policy to be bound or unbound.\n- To bind to a policy template, or unbind from it, specify the policy template ID.\n- To bind to the site's global policy, or unbind from it, use the @ZoneLevel@domain parameter value.\n\nNote: After unbinding, the domain name will use an independent policy and rule quota will be calculated separately. Please make sure there is sufficient rule quota before unbinding.",
           "example": "temp-wj86oi2",
           "member": "string",
           "name": "TemplateId",
@@ -3307,7 +3314,7 @@
           "example": "proxy-xxx",
           "member": "string",
           "name": "ProxyId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3434,7 +3441,7 @@
           "example": "rule-xxx",
           "member": "string",
           "name": "RuleId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3799,7 +3806,7 @@
           "example": "无",
           "member": "string",
           "name": "ResourceNames",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3809,7 +3816,7 @@
           "example": "无",
           "member": "string",
           "name": "DealNames",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3873,7 +3880,7 @@
           "example": "jkqj4hahfkaf",
           "member": "string",
           "name": "JobId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3883,7 +3890,7 @@
           "example": "[]",
           "member": "FailReason",
           "name": "FailedList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -3956,6 +3963,7 @@
           "example": "jkqj4hahfkaf",
           "member": "string",
           "name": "JobId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3965,6 +3973,7 @@
           "example": "[]",
           "member": "FailReason",
           "name": "FailedList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -4182,7 +4191,7 @@
           "example": "rule-qbjifysd",
           "member": "string",
           "name": "RuleId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4228,6 +4237,7 @@
           "example": "1",
           "member": "int64",
           "name": "GroupId",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5559,7 +5569,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`target-name`:<br>   Filter by <strong>target domain name</strong><br>   Type: String<br>   Required: No</li><li>`alias-name`:<br>   Filter by <strong>alias domain name</strong><br>   Type: String<br>   Required: No</li>Only `alias-name` supports fuzzy query.",
+          "document": "Filter conditions. The maximum value for Filters.Values is 20. The detailed conditions are as follows:\n<li>target-name: Filter by the target domain name;</li>\n<li>alias-name: Filter by the alias of the domain name.</li>Fuzzy queries are only supported for the field name alias-name.",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -5578,7 +5588,7 @@
           "example": "10",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5588,7 +5598,7 @@
           "example": "无",
           "member": "AliasDomain",
           "name": "AliasDomains",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5652,7 +5662,7 @@
           "example": "无",
           "member": "ApplicationProxy",
           "name": "ApplicationProxies",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5662,7 +5672,7 @@
           "example": "10",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5689,7 +5699,7 @@
           "example": "无",
           "member": "PlanInfo",
           "name": "PlanInfo",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -5947,7 +5957,7 @@
           "example": "无",
           "member": "Quota",
           "name": "PurgeQuota",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -5957,7 +5967,7 @@
           "example": "无",
           "member": "Quota",
           "name": "PrefetchQuota",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6048,7 +6058,7 @@
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6058,7 +6068,7 @@
           "example": "无",
           "member": "SecEntry",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6176,6 +6186,7 @@
           "example": "无",
           "member": "DDoSAttackEvent",
           "name": "Data",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6185,6 +6196,7 @@
           "example": "10",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6302,7 +6314,7 @@
           "example": "无",
           "member": "TopEntry",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6312,7 +6324,7 @@
           "example": "10",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6376,7 +6388,7 @@
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6386,7 +6398,7 @@
           "example": "无",
           "member": "DefaultServerCertInfo",
           "name": "DefaultServerCertInfo",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6543,7 +6555,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`host`:<br>   Filter by <strong>domain name </strong><br>   Type: String<br>   Required: No</li>",
+          "document": "Filter conditions. The maximum value for Filters.Values is 20. The detailed conditions are as follows:<li>host: Filter by domain name.</li>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -6562,7 +6574,7 @@
           "example": "无",
           "member": "DetailHost",
           "name": "DetailHosts",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6572,7 +6584,7 @@
           "example": "无",
           "member": "int64",
           "name": "TotalNumber",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6627,7 +6639,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Filter criteria. Each filter criteria can have up to 20 entries.\n<li>`zone-name`: <br>Filter by <strong>site name</strong><br>   Type: String<br>   Required: No</li>",
+          "document": "Filter conditions. The maximum value for Filters.Values is 20. The detailed conditions are as follows:<li>zone-name: Filter by site name.</li>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -6664,7 +6676,7 @@
           "example": "10",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6674,7 +6686,7 @@
           "example": "无",
           "member": "Identification",
           "name": "Identifications",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6895,7 +6907,7 @@
           "example": "10",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6905,7 +6917,7 @@
           "example": "无",
           "member": "OriginGroup",
           "name": "OriginGroups",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6969,6 +6981,7 @@
           "example": "无",
           "member": "OriginProtectionInfo",
           "name": "OriginProtectionInfo",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -7031,7 +7044,7 @@
         },
         {
           "disabled": false,
-          "document": "The protocol type. Values:\n<li>`http`: HTTP protocol;</li>\n<li>`https`: HTTPS protocol;</li>\n<li>`http2`: HTTP2 protocol;</li>\n<li>`all`:   All protocols. </li>If it’s not specified, `all` is used. This parameter is not yet available now.",
+          "document": "The protocol type. Values:\n<li>`http`: HTTP protocol;</li>\n<li>`https`: HTTPS protocol;</li>\n<li>`http2`: HTTP2 protocol;</li>\n<li>`all`: All protocols. </li>If it's not specified, `all` is used. This parameter is not yet available now.",
           "example": "http",
           "member": "string",
           "name": "Protocol",
@@ -7040,7 +7053,7 @@
         },
         {
           "disabled": false,
-          "document": "The query granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minutes;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: One day</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.",
+          "document": "The query granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minutes;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: One day</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period <= 1 hour: `min`; <br>1 hour < Period <= 2 days: `5min`; <br>2 days < period <= 7 days: `hour`; <br>Period > 7 days: `day`.",
           "example": "min",
           "member": "string",
           "name": "Interval",
@@ -7049,7 +7062,7 @@
         },
         {
           "disabled": false,
-          "document": "Filtering condition. The detailed filtering condition key values are as follows: \n<li>socket<br>u2003u2003 Filter based on [<strong>HTTP protocol type</strong>]. <br>u2003u2003 Corresponding value options: <br>u2003u2003 HTTP: HTTP protocol；<br>u2003u2003 HTTPS: HTTPS protocol;<br>u2003u2003 QUIC: QUIC protocol. </li>\n<li>domains<br>u2003u2003 Filter based on [<strong>domain name</strong>]. </li>\n<li>tagKey<br>u2003u2003 Filter based on [<strong>Tag Key</strong>]. </li>\n<li>tagValue<br>u2003u2003 Filter based on [<strong>Tag Value</strong>]. </li>",
+          "document": "Filtering condition. The detailed filtering condition key values are as follows: \n<li>socket: Filter based on HTTP protocol type. Corresponding value options: <br> HTTP: HTTP protocol; <br> HTTPS: HTTPS protocol; <br> QUIC: QUIC protocol. </li>\n<li>domains: Filter based on domain name. </li>\n<li>tagKey: Filter based on Tag Key. </li>\n<li>tagValue: Filter based on Tag Value. </li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -7077,7 +7090,7 @@
           "example": "10",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7087,7 +7100,7 @@
           "example": "无",
           "member": "TimingDataRecord",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -7105,7 +7118,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ZoneId. \nThe parameter is required.",
+          "document": "ZoneId. The parameter is required.",
           "example": "zone-xxx",
           "member": "string",
           "name": "ZoneId",
@@ -7150,7 +7163,7 @@
         },
         {
           "disabled": false,
-          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: <li>job-id<br>u2003u2003 Filter based on [<strong>task ID</strong>]. job-id format: 1379afjk91u32h. Multiple values are not supported. <br>u2003u2003 Type: String<br>u2003u2003 Required: No. <br>u2003u2003 Fuzz query: Not supported. </li><li>target<br>u2003u2003 Filter based on [<strong>target resource information</strong>]. target format: http://www.qq.com/1.txt. Multiple values are not supported. <br>u2003u2003 Type: String<br>u2003u2003 Required: No. <br>u2003u2003 Fuzz query: Not supported. </li><li>domains<br>u2003u2003 Filter based on [<strong>domain name</strong>]. domains format: www.qq.com. <br>u2003u2003 Type: String<br>u2003u2003 Required: No. <br>u2003u2003 Fuzz query: Not supported. </li><li>statuses<br>u2003u2003 Filter based on [<strong>task status</strong>]. <br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported. <br>u2003u2003 Options:<br>u2003u2003 processing: Processing<br>u2003u2003 success: Success<br>u2003u2003 failed: Failure<br>u2003u2003 timeout: Timeout</li>",
+          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: \n<li>job-id<br> Filter based on task ID.  job-id format: 1379afjk91u32h. Multiple values are not supported, Fuzzy search is not supported. </li>\n<li>target<br> Filter based on target resource information. target format: http://www.qq.com/1.txt. Multiple values are not supported, Fuzzy search is not supported. </li>\n<li>domains<br> Filter based on domain name. domains format: www.qq.com. Fuzzy search is not supported.</li>\n<li>statuses<br> Filter based on task status.  Fuzzy search is not supported. Options:<br> processing: Processing<br> success: Success<br> failed: Failure<br> timeout: Timeout</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -7169,7 +7182,7 @@
           "example": "100",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7179,7 +7192,7 @@
           "example": "无",
           "member": "Task",
           "name": "Tasks",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -7197,7 +7210,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ZoneId. \nThe parameter is required.",
+          "document": "ZoneId. The parameter is required.",
           "example": "zone-xxxxxx",
           "member": "string",
           "name": "ZoneId",
@@ -7242,7 +7255,7 @@
         },
         {
           "disabled": false,
-          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: <li>job-id<br>u2003u2003 Filter based on [<strong>task ID</strong>]. job-id format: 1379afjk91u32h. Multiple values are not supported. <br>u2003u2003 Type: String<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported.</li><li>target<br>u2003u2003 Filter based on: [strong>target resource information</strong>. target format: http://www.qq.com/1.txt or tag1. Multiple values are not supported.<br>u2003u2003 Type: String<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported.</li><li>domains<br>u2003u2003 Filter based on [<strong>domain name</strong>]. domains format: www.qq.com<br>u2003u2003 Type: String<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported. </li><li>statuses<br>u2003u2003 Filter based on <strong>task status</strong>.<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported. <br>u2003u2003 Options:<br>u2003u2003 processing: Processing<br>u2003u2003 success: Success<br>u2003u2003 failed: Failure<br>u2003u2003 timeout: Timeout</li><li>type<br>u2003u2003 Filter based on [<strong>cleared cache type</strong>]. Multiple values are not supported. <br>u2003u2003 Type: String<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported.<br>u2003u2003 Options:<br>u2003u2003 purge_url: URL<br>u2003u2003 purge_prefix: Prefix<br>u2003u2003 purge_all: All cache content<br>u2003u2003 purge_host: Hostname<br>u2003u2003 purge_cache_tag: CacheTag</li>",
+          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: \n<li>job-id: Filter based on task ID. job-id format: 1379afjk91u32h. Multiple values are not supported, Fuzzy search is not supported;</li>\n<li>target: Filter based on: target resource information. target format: http://www.qq.com/1.txt or tag1. Multiple values are not supported, Fuzzy search is not supported; </li>\n<li>domains: Filter based on domain name. domains format: www.qq.com, Fuzzy search is not supported; </li>\n<li>statuses: Filter based on task status, Fuzzy search is not supported. Options: <br>processing: Processing<br>success: Success<br>failed: Failure<br>timeout: Timeout</li>\n<li>type: Filter based on cleared cache type. Multiple values are not supported, Fuzzy search is not supported. Options:<br> purge_url: URL<br> purge_prefix: Prefix<br> purge_all: All cache content<br> purge_host: Hostname<br> purge_cache_tag: CacheTag</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -7261,7 +7274,7 @@
           "example": "100",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7271,7 +7284,7 @@
           "example": "无",
           "member": "Task",
           "name": "Tasks",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -7391,7 +7404,7 @@
           "example": "zone-qbjifysd",
           "member": "string",
           "name": "ZoneId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -7401,7 +7414,7 @@
           "example": "无",
           "member": "RuleItem",
           "name": "RuleItems",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -7429,6 +7442,71 @@
           "member": "RulesSettingAction",
           "name": "Actions",
           "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecurityIPGroupInfoRequest": {
+      "document": "DescribeSecurityIPGroupInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Site ID, used to specify the query scope.",
+          "example": "[\"zone-21xfqlh4qjee\"]",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of entries returned in a single response. Default value: 20. Maximum query entries: 1000.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The starting entry offset for pagination queries. The default value is 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSecurityIPGroupInfoResponse": {
+      "document": "DescribeSecurityIPGroupInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The number of IP groups that meet the conditions.",
+          "example": "10",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Detailed configuration information of the IP group, including the ID, name, and IP/network segment list of each IP group.",
+          "example": "[{\"GroupId\":123,\"Name\":\"group1\",\"Content\":[\"1.1.1.1\",\"1.1.2.0/24\"]}]",
+          "member": "IPGroup",
+          "name": "IPGroups",
+          "output_required": false,
           "type": "list",
           "value_allowed_null": false
         },
@@ -7574,7 +7652,7 @@
           "example": "10",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7584,7 +7662,7 @@
           "example": "无",
           "member": "TimingDataRecord",
           "name": "Data",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -7671,23 +7749,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "The list of L7 traffic data recorded over time.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "TimingDataRecord",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
           "document": "Total number of query results.",
           "example": "20",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of L7 traffic data recorded over time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TimingDataRecord",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -7772,23 +7850,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "The list of cached L7 time-series data.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "TimingDataRecord",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
           "document": "Total number of query results.",
           "example": "10",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of cached L7 time-series data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TimingDataRecord",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -7882,23 +7960,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "The list of top-ranked L7 traffic data.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "TopDataRecord",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
           "document": "Total number of query results.",
           "example": "10",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of top-ranked L7 traffic data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TopDataRecord",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -7992,23 +8070,23 @@
       "members": [
         {
           "disabled": false,
-          "document": "The list of cached L7 top-ranked traffic data.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "TopDataRecord",
-          "name": "Data",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
           "document": "Total number of query results.",
           "example": "10",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The list of cached L7 top-ranked traffic data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TopDataRecord",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -8043,7 +8121,7 @@
           "example": "无",
           "member": "ZoneSetting",
           "name": "ZoneSetting",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -9610,7 +9688,7 @@
           "example": "无",
           "member": "AscriptionInfo",
           "name": "Ascription",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -9620,7 +9698,7 @@
           "example": "无",
           "member": "FileAscriptionInfo",
           "name": "FileAscription",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -10670,7 +10748,7 @@
         },
         {
           "disabled": false,
-          "document": "The origin type. Values:\n<li>`custom`: Specified origins</li>\n<li>`origins`: Origin group</li></li>The original configuration will apply if this field is not specified.",
+          "document": "Origin server type. Valid values:\n<li>custom: Manually added;</li>\n<li>origins: Origin server group.</li>",
           "example": "custom",
           "member": "string",
           "name": "OriginType",
@@ -11382,7 +11460,7 @@
           "example": "rule-duxamq",
           "member": "string",
           "name": "RuleId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -11463,7 +11541,7 @@
         },
         {
           "disabled": false,
-          "document": "The subdomain name/L4 proxy. You must specify either \"Entity\" or \"TemplateId\".",
+          "document": "Subdomain/application name.\n\nNote: When both this parameter and the TemplateId parameter are specified, this parameter will not take effect. Do not specify this parameter and the TemplateId parameter at the same time.",
           "example": "a.test.com",
           "member": "string",
           "name": "Entity",
@@ -11472,8 +11550,8 @@
         },
         {
           "disabled": false,
-          "document": "The template ID. You must specify either this field or \"Entity\".",
-          "example": "1",
+          "document": "Specifies the policy template ID, or the site's global policy.\n- To configure a policy template, specify the policy template ID.\n- To configure the site's global policy, use the @ZoneLevel@Domain parameter value.\n\nNote: When this parameter is used, the Entity parameter will not take effect. Do not use this parameter and the Entity parameter at the same time.",
+          "example": "temp-wj86oi2",
           "member": "string",
           "name": "TemplateId",
           "required": false,
@@ -13233,7 +13311,7 @@
         },
         {
           "disabled": false,
-          "document": "The configuration information of CLS.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CLSTopic",
           "name": "CLS",
@@ -13243,7 +13321,7 @@
         },
         {
           "disabled": false,
-          "document": "The configuration information of the custom HTTP service.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CustomEndpoint",
           "name": "CustomEndpoint",
@@ -13253,7 +13331,7 @@
         },
         {
           "disabled": false,
-          "document": "The configuration information of the AWS S3-compatible bucket.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "S3",
           "name": "S3",
@@ -13641,7 +13719,7 @@
         },
         {
           "disabled": false,
-          "document": "Match fields. Values: <li>`filename`: File name;</li><li>`extension`: File suffix;</li><li>`host`: HOST;</li><li>`full_url`: The complete URL path under the current site, including the HTTP protocol, Host and path;</li><li>`url`: The URL path request under the current site;</li><li>`client_country`: Client country;</li><li>`query_string`: The query string of the URL requested under the current site;</li><li>`request_header`: HTTP request header. </li>",
+          "document": "Match type. Valid values: <li> filename: File name; </li> <li> extension: File extension; </li> <li> host: Host name; </li> <li> full_url: The complete URL path under the current site, which must include the HTTP protocol, host, and path; </li> <li> url: Request for the URL path under the current site; </li><li> client_country: Client country/region;</li> <li> query_string: The query string of the URL requested under the current site; </li> <li> request_header: HTTP request header; </li><li> client_ip: Client IP address. </li>",
           "example": "url",
           "member": "string",
           "name": "Target",
@@ -13652,7 +13730,7 @@
         },
         {
           "disabled": false,
-          "document": "The parameter value of the match type. It can be an empty string only when `Target=query string/request header` and `Operator=exist/notexist`.\n<li>When `Target=extension`, enter the file extension, such as \"jpg\" and \"txt\".</li>\n<li>When `Target=filename`, enter the file name, such as \"foo\" in \"foo.jpg\".</li>\n<li>When `Target=all`, it indicates any site request.</li>\n<li>When `Target=host`, enter the host under the current site, such as \"www.maxx55.com\".</li>\n<li>When `Target=url`, enter the partial URL path under the current site, such as \"/example\".</li>\n<li>When `Target=full_url`, enter the complete URL under the current site. It must contain the HTTP protocol, host, and path, such as \"https://www.maxx55.cn/example\".</li>\n<li>When `Target=client_country`, enter the ISO-3166 country/region code.</li>\n<li>When `Target=query_string`, enter the value of the query string, such as \"cn\" and \"1\" in \"lang=cn&version=1\".</li>\n<li>When `Target=request_header`, enter the HTTP request header value, such as \"zh-CN,zh;q=0.9\" in the \"Accept-Language:zh-CN,zh;q=0.9\" header.</li>",
+          "document": "The parameter values for match types. It is allowed to pass an empty array only when the match type is query_string or request_header and the operator value is Exist or Does Not Exist. The corresponding match types include:\n<li> File extension: Extensions like jpg, txt, etc.;</li>\n<li> File name: For example, foo in foo.jpg;</li>\n<li> All: All requests for domain names under the site; </li>\n<li> HOST: The host under the current site, for example, www.maxx55.com;</li>\n<li> URL Path: Request for the URL path under the current site, for example, /example;</li>\n<li> URL Full: The complete URL request under the current site, which must include the HTTP protocol, host, and path, for example, https://www.maxx55.cn/example;</li>\n<li> Client country/region: Country/region codes compliant with the ISO3166 standard;</li>\n<li> Query string: The parameter values in the query string of the URL requested under the current site, for example, cn and 1 in lang=cn&version=1; </li>\n<li> HTTP request header: The value of the HTTP request header field, for example, zh-CN,zh;q=0.9 in Accept-Language:zh-CN,zh;q=0.9; </li>\n<li> Client IP: The client IP address carried by the current request, supporting IPv4, IPv6, and an IP range. </li>",
           "example": "[\"www.maxx55.com\"]",
           "member": "string",
           "name": "Values",
