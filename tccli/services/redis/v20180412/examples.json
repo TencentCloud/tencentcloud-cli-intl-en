@@ -1,5 +1,13 @@
 {
   "actions": {
+    "AddReplicationInstance": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddReplicationInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-sa5dsfs\",\n    \"InstanceRole\": \"rw\",\n    \"GroupId\": \"crs-rpl-sa5dsfs\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c4ed5948-d156-4931-b9c3-10133a0bb6c9\",\n        \"TaskId\": 10856\n    }\n}",
+        "title": "Request Sample"
+      }
+    ],
     "AllocateWanAddress": [
       {
         "document": " ",
@@ -110,6 +118,14 @@
         "title": "Sample request"
       }
     ],
+    "CreateReplicationGroup": [
+      {
+        "document": "This example shows you how to create a replication group.",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateReplicationGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-5qlr****\",\n    \"GroupName\": \"name\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": 327,\n        \"RequestId\": \"e546784b-709c-401d-aba6-73037eb4e522\"\n    }\n}",
+        "title": "Request Sample"
+      }
+    ],
     "DeleteInstanceAccount": [
       {
         "document": " ",
@@ -124,6 +140,14 @@
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteParamTemplate\n<Common request parameters>\n\n{\n    \"TemplateId\": \"crs-cfg-sa23d5d3\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
         "title": "Sample request"
+      }
+    ],
+    "DeleteReplicationInstance": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteReplicationInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-sa5dsfs\",\n    \"SyncType\": true,\n    \"GroupId\": \"crs-rpl-sa5dsfs\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c4ed5948-d156-4931-b9c3-10133a0bb6c9\",\n        \"TaskId\": 10856\n    }\n}",
+        "title": "Request Sample"
       }
     ],
     "DescribeAutoBackupConfig": [
@@ -204,6 +228,14 @@
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeInstanceDealDetail\n&DealIds.0=6959052\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"DealDetails\": [\n            {\n                \"DealId\": \"6959052\",\n                \"DealName\": \"20181101110365\",\n                \"ZoneId\": 100002,\n                \"GoodsNum\": 1,\n                \"Creater\": \"1817983094\",\n                \"CreatTime\": \"2018-11-01 21:12:05\",\n                \"OverdueTime\": \"2018-11-16 21:12:05\",\n                \"EndTime\": \"2018-11-01 21:13:18\",\n                \"Status\": 4,\n                \"Description\": \"Successfully delivered\",\n                \"Price\": 91949,\n                \"InstanceIds\": [\n                    \"crs-bz8prb7x\"\n                ]\n            }\n        ],\n        \"RequestId\": \"5d739ed7-af13-489f-b005-aaa57aeaf022\"\n    }\n}",
         "title": "Sample request"
+      }
+    ],
+    "DescribeInstanceEvents": [
+      {
+        "document": "This example shows you how to query instance events.",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceEvents\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-b6wst31p\",\n    \"PageSize\": 20,\n    \"PageNo\": 1,\n    \"ExecutionStartDate\": \"2023-10-04\",\n    \"ExecutionEndDate\": \"2023-10-04\",\n    \"Grades\": [\n        \"Low\"\n    ],\n    \"Status\": [\n        \"Waiting\"\n    ],\n    \"EventTypes\": [\n        \"InstanceMigration\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RedisInstanceEvents\": [\n            {\n                \"EffectInfo\": \"Momentary disconnection that lasts for several seconds will occur after the migration is completed.\",\n                \"EndTime\": \"22:00\",\n                \"ExecutionDate\": \"2023-09-18\",\n                \"Grade\": \"Low\",\n                \"ID\": 10,\n                \"InitialExecutionDate\": \"2023-08-19\",\n                \"InstanceId\": \"crs-b6wst31p\",\n                \"InstanceName\": \"benyqhuang8\",\n                \"LatestExecutionDate\": \"2023-09-18\",\n                \"StartTime\": \"21:00\",\n                \"Status\": \"Waiting\",\n                \"TaskEndTime\": \"0000-00-00 00:00:00\",\n                \"Type\": \"InstanceMigration\"\n            }\n        ],\n        \"RequestId\": \"36a33a3d-f9ce-47c1-87d0-84869a37466d\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying Instance Events"
       }
     ],
     "DescribeInstanceMonitorBigKey": [
@@ -534,6 +566,14 @@
         "title": "Modifying the download address for a backup file"
       }
     ],
+    "ModifyConnectionConfig": [
+      {
+        "document": " ",
+        "input": "https://redis.tencentcloudapi.com/?Action=ModifyConnectionConfig\n&InstanceId=crs-cpz6b1fn\n&Bandwidth=5\n&ClientLimit=20000\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"950088b4-c71f-4bb3-ae6d-a0d0569f8666\",\n        \"TaskId\": 95027\n    }\n}",
+        "title": "Request Sample"
+      }
+    ],
     "ModifyDBInstanceSecurityGroups": [
       {
         "document": " ",
@@ -564,6 +604,14 @@
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceAvailabilityZones\n<Common request parameters>\n{\n    \"InstanceId\": \"crs-rrhr1lm6\",\n    \"SwitchOption\": 1,\n    \"NodeSet\": [\n        {\n            \"NodeId\": 339472,\n            \"NodeType\": 0,\n            \"ZoneId\": 100004\n        },\n        {\n            \"NodeId\": 339473,\n            \"NodeType\": 1,\n            \"ZoneId\": 100003\n        },\n        {\n            \"NodeId\": 339549,\n            \"NodeType\": 1,\n            \"ZoneId\": 100003\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"27c0d6e8-9894-42e0-a03b-814a204437ba\",\n        \"TaskId\": 2031290200\n    }\n}",
         "title": "Sample 1"
+      }
+    ],
+    "ModifyInstanceEvent": [
+      {
+        "document": "This example shows you how to modify the instance event information.",
+        "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceEvent\n<Common request parameters>\n\n{\n    \"InstanceId\": \"crs-b6wst31p\",\n    \"EventId\": 10,\n    \"StartTime\": \"22:00\",\n    \"EndTime\": \"23:01\",\n    \"ExecutionDate\": \"2023-09-18\"\n}",
+        "output": "{\n    \"Response\": {\n        \"EventId\": 10,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Modifying Instance Event Information"
       }
     ],
     "ModifyInstanceParams": [

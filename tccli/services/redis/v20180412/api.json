@@ -1,5 +1,12 @@
 {
   "actions": {
+    "AddReplicationInstance": {
+      "document": "This API is used to add replication group members.",
+      "input": "AddReplicationInstanceRequest",
+      "name": "Adds replication group members",
+      "output": "AddReplicationInstanceResponse",
+      "status": "online"
+    },
     "AllocateWanAddress": {
       "document": "This API is used to enable public network access.",
       "input": "AllocateWanAddressRequest",
@@ -91,6 +98,13 @@
       "output": "CreateParamTemplateResponse",
       "status": "online"
     },
+    "CreateReplicationGroup": {
+      "document": "This API is used to create a replication group.",
+      "input": "CreateReplicationGroupRequest",
+      "name": "Creates a replication group",
+      "output": "CreateReplicationGroupResponse",
+      "status": "online"
+    },
     "DeleteInstanceAccount": {
       "document": "This API is used to delete an instance sub-account.",
       "input": "DeleteInstanceAccountRequest",
@@ -103,6 +117,13 @@
       "input": "DeleteParamTemplateRequest",
       "name": "Deletes parameter template",
       "output": "DeleteParamTemplateResponse",
+      "status": "online"
+    },
+    "DeleteReplicationInstance": {
+      "document": "This API is used to remove replication group members. Note: The API is being deprecated. Please use RemoveReplicationInstance instead.",
+      "input": "DeleteReplicationInstanceRequest",
+      "name": "Deletes replication group members",
+      "output": "DeleteReplicationInstanceResponse",
       "status": "online"
     },
     "DescribeAutoBackupConfig": {
@@ -173,6 +194,13 @@
       "input": "DescribeInstanceDealDetailRequest",
       "name": "Queries order information",
       "output": "DescribeInstanceDealDetailResponse",
+      "status": "online"
+    },
+    "DescribeInstanceEvents": {
+      "document": "This API is used to query the event information on a TecentDB for Redis instance.",
+      "input": "DescribeInstanceEventsRequest",
+      "name": "Queries instance event information",
+      "output": "DescribeInstanceEventsResponse",
       "status": "online"
     },
     "DescribeInstanceMonitorBigKey": {
@@ -462,6 +490,13 @@
       "output": "ModifyBackupDownloadRestrictionResponse",
       "status": "online"
     },
+    "ModifyConnectionConfig": {
+      "document": "This API is used to modify the connection configuration of an instance, including the bandwidth and maximum number of connections.",
+      "input": "ModifyConnectionConfigRequest",
+      "name": "Modifies instance connection configuration",
+      "output": "ModifyConnectionConfigResponse",
+      "status": "online"
+    },
     "ModifyDBInstanceSecurityGroups": {
       "document": "This API is used to modify the security groups bound to an instance.",
       "input": "ModifyDBInstanceSecurityGroupsRequest",
@@ -488,6 +523,13 @@
       "input": "ModifyInstanceAvailabilityZonesRequest",
       "name": "Modifies the availability zone of the instance",
       "output": "ModifyInstanceAvailabilityZonesResponse",
+      "status": "online"
+    },
+    "ModifyInstanceEvent": {
+      "document": "This API is used to modify the operations event execution schedule of an instance.",
+      "input": "ModifyInstanceEventRequest",
+      "name": "Modifies the operations event execution schedule of an instance",
+      "output": "ModifyInstanceEventResponse",
       "status": "online"
     },
     "ModifyInstanceParams": {
@@ -642,66 +684,131 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Account name \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "AccountName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Account description information \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Remark",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Read/write permission policy. Valid values: `r` (read-only),  `w` (write-only),  `rw`  (read/write). \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Privilege",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Read-only routing policy. Valid values: `master` (master node),  `replication`  (replica node). \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "ReadonlyPolicy",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Sub-account status. Valid values:  `1` (being changed),  `2` (valid). `4` (deleted). \nNote:  This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"2024-01-03 17:44:25\"，如果没有则显示为空",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
       "usage": "out"
+    },
+    "AddReplicationInstanceRequest": {
+      "document": "AddReplicationInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Replication group ID.",
+          "example": "crs-rpl-267khx71",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "crs-deindi7de",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Assigns roles to instances added to the replication group. <ul><li>rw: read-write;</li> <li>r: read-only.</li></ul>",
+          "example": "rw",
+          "member": "string",
+          "name": "InstanceRole",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddReplicationInstanceResponse": {
+      "document": "AddReplicationInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous process ID.",
+          "example": "486489",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "AllocateWanAddressRequest": {
       "document": "AllocateWanAddress request structure.",
@@ -1592,7 +1699,7 @@
           "example": "123456",
           "member": "int64",
           "name": "TaskId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1939,6 +2046,61 @@
       ],
       "type": "object"
     },
+    "CreateReplicationGroupRequest": {
+      "document": "CreateReplicationGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the ID of the primary instance in the replication group.",
+          "example": "crs-dvchdv5",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Replication group name. It supports only Chinese characters, letters, digits, underscores (_), and hyphens (-), with a length of 2-64 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "GroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remark information.",
+          "example": "无",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateReplicationGroupResponse": {
+      "document": "CreateReplicationGroup response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous process ID.",
+          "example": "486489",
+          "member": "int64",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DelayDistribution": {
       "document": "Delay distribution details",
       "members": [
@@ -2039,6 +2201,61 @@
     "DeleteParamTemplateResponse": {
       "document": "DeleteParamTemplate response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteReplicationInstanceRequest": {
+      "document": "DeleteReplicationInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Replication group ID.",
+          "example": "crs-rpl-deindi7de",
+          "member": "string",
+          "name": "GroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.",
+          "example": "crs-deindi7de",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data synchronization type. Valid values: true (Strong synchronization is required.) and false (Strong synchronization is not required. This value applies only to primary instance deletion.)",
+          "example": "false",
+          "member": "bool",
+          "name": "SyncType",
+          "required": true,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteReplicationInstanceResponse": {
+      "document": "DeleteReplicationInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task ID.",
+          "example": "486489",
+          "member": "float",
+          "name": "TaskId",
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -2503,7 +2720,6 @@
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2513,7 +2729,6 @@
           "example": "无",
           "member": "RedisCommonInstanceList",
           "name": "InstanceDetails",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2559,6 +2774,7 @@
           "example": "无",
           "member": "SecurityGroup",
           "name": "Groups",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2568,6 +2784,7 @@
           "example": "10.10.0.1",
           "member": "string",
           "name": "VIP",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2577,6 +2794,7 @@
           "example": "6379",
           "member": "string",
           "name": "VPort",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2980,6 +3198,116 @@
       ],
       "type": "object"
     },
+    "DescribeInstanceEventsRequest": {
+      "document": "DescribeInstanceEvents request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Configures the start date for querying the event execution schedule.",
+          "example": "2018-09-10",
+          "member": "string",
+          "name": "ExecutionStartDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Configures the end date for querying the event execution schedule.",
+          "example": "2018-09-10",
+          "member": "string",
+          "name": "ExecutionEndDate",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID. Example: crs-xjhsdj****. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.",
+          "example": "crs-asdasdas",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Outputs the number of events displayed per page. Default value: 10.",
+          "example": "10",
+          "member": "int64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Configures the page number for querying events. You can query events on a certain page by specifying PageNo and PageSize. Default value: 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNo",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Current status of the event.- Waiting: The event is waiting for execution on the execution date or during the operations period.- Running: The event is being executed during the operations period.- Finished: Execution of the event is completed.- Canceled: Execution of the event is canceled.",
+          "example": "Running",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Event type. Currently, the type can only be related to instance migration, resource movement, and IDC deletion. This parameter can be set only to **InstanceMigration**.",
+          "example": "InstanceMigration",
+          "member": "string",
+          "name": "EventTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Configures the level of the queried event. Events are divided into Critical, High, Medium, and Low events according to the severity and urgency.- Critical- High- Medium- Low",
+          "example": "Low",
+          "member": "string",
+          "name": "Grades",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceEventsResponse": {
+      "document": "DescribeInstanceEvents response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of events.",
+          "example": "100",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance event information.",
+          "example": "RedisInstanceEvent",
+          "member": "RedisInstanceEvent",
+          "name": "RedisInstanceEvents",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeInstanceMonitorBigKeyRequest": {
       "document": "DescribeInstanceMonitorBigKey request structure.",
       "members": [
@@ -3019,7 +3347,7 @@
         {
           "disabled": false,
           "document": "Big key details",
-          "example": "",
+          "example": "无",
           "member": "BigKeyInfo",
           "name": "Data",
           "type": "list",
@@ -3064,7 +3392,7 @@
         {
           "disabled": false,
           "document": "Big key size distribution details",
-          "example": "",
+          "example": "无",
           "member": "DelayDistribution",
           "name": "Data",
           "type": "list",
@@ -3109,7 +3437,7 @@
         {
           "disabled": false,
           "document": "Big key type distribution details",
-          "example": "",
+          "example": "无",
           "member": "BigKeyTypeInfo",
           "name": "Data",
           "type": "list",
@@ -3190,9 +3518,10 @@
         {
           "disabled": false,
           "document": "Access source information",
-          "example": "",
+          "example": "crs-5a4py64p",
           "member": "SourceInfo",
           "name": "Data",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3334,9 +3663,10 @@
         {
           "disabled": false,
           "document": "Duration details",
-          "example": "",
+          "example": "无",
           "member": "CommandTake",
           "name": "Data",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4024,7 +4354,7 @@
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4034,7 +4364,7 @@
           "example": "无",
           "member": "InstanceSet",
           "name": "InstanceSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4535,7 +4865,7 @@
           "example": "100",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4545,7 +4875,7 @@
           "example": "无",
           "member": "Groups",
           "name": "Groups",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6704,7 +7034,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance tag information\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "InstanceTagInfo",
           "name": "InstanceTags",
@@ -6714,7 +7044,7 @@
         },
         {
           "disabled": false,
-          "document": "Project name\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "Default",
           "member": "string",
           "name": "ProjectName",
@@ -6724,7 +7054,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether an instance is password-free. <ul><li>`true`: Yes. </li><li>`false`: No. </li></ul>\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "true",
           "member": "bool",
           "name": "NoAuth",
@@ -6734,7 +7064,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of client connections\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "30000",
           "member": "int64",
           "name": "ClientLimit",
@@ -6744,7 +7074,7 @@
         },
         {
           "disabled": false,
-          "document": "DTS status (internal parameter, which can be ignored)\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "DtsStatus",
@@ -6754,7 +7084,7 @@
         },
         {
           "disabled": false,
-          "document": "Upper shard bandwidth limit in MB\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1800",
           "member": "int64",
           "name": "NetLimit",
@@ -6764,7 +7094,7 @@
         },
         {
           "disabled": false,
-          "document": "Password-free instance flag (internal parameter, which can be ignored)\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "PasswordFree",
@@ -6774,7 +7104,7 @@
         },
         {
           "disabled": false,
-          "document": "Due to the naming irregularity of this parameter, it is recommended to use the parameter IPv6 instead. Internal parameters, which can be ignored by users.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Vip6",
@@ -6784,7 +7114,7 @@
         },
         {
           "disabled": false,
-          "document": "Internal parameters, which can be ignored by users.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "IPv6",
@@ -6794,7 +7124,7 @@
         },
         {
           "disabled": false,
-          "document": "Read-only instance flag (internal parameter, which can be ignored)\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "ReadOnly",
@@ -6804,7 +7134,7 @@
         },
         {
           "disabled": false,
-          "document": "Internal parameter, which can be ignored.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "RemainBandwidthDuration",
@@ -6814,7 +7144,7 @@
         },
         {
           "disabled": false,
-          "document": "This parameter can be ignored for Redis instance.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "400",
           "member": "int64",
           "name": "DiskSize",
@@ -6824,7 +7154,7 @@
         },
         {
           "disabled": false,
-          "document": "Monitoring granularity. <ul><li>`1m`: Monitoring at one-minute granularity. This granularity has been disused. For more information, see [1-Minute Granularity Will Be Disused](https://www.tencentcloud.com/document/product/239/50440).</li><li>`5s`: Monitoring at five-second granularity.</li></ul>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "5s",
           "member": "string",
           "name": "MonitorVersion",
@@ -6834,7 +7164,7 @@
         },
         {
           "disabled": false,
-          "document": "The minimum number of max client connections\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000",
           "member": "int64",
           "name": "ClientLimitMin",
@@ -6844,7 +7174,7 @@
         },
         {
           "disabled": false,
-          "document": "The maximum number of max client connections\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "10000",
           "member": "int64",
           "name": "ClientLimitMax",
@@ -6854,7 +7184,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance node details\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "RedisNodeInfo",
           "name": "NodeSet",
@@ -6864,7 +7194,7 @@
         },
         {
           "disabled": false,
-          "document": "Information of the region where the instance is deployed, such as `ap-guangzhou`.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
@@ -6874,7 +7204,7 @@
         },
         {
           "disabled": false,
-          "document": "Public IP\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid value can be obtained.",
           "example": "gz-crs-xxx.sql.tencentcdb.com",
           "member": "string",
           "name": "WanAddress",
@@ -6884,7 +7214,7 @@
         },
         {
           "disabled": false,
-          "document": "Polaris service address, which is for internal use.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid value can be obtained.",
           "example": "txcloud-paas-crs-xxx",
           "member": "string",
           "name": "PolarisServer",
@@ -6894,7 +7224,7 @@
         },
         {
           "disabled": false,
-          "document": "The current proxy version of an instance\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid value can be obtained.",
           "example": "5.5.0",
           "member": "string",
           "name": "CurrentProxyVersion",
@@ -6904,7 +7234,7 @@
         },
         {
           "disabled": false,
-          "document": "The current cache minor version of an instance\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid value can be obtained.",
           "example": "4.3.0",
           "member": "string",
           "name": "CurrentRedisVersion",
@@ -6914,7 +7244,7 @@
         },
         {
           "disabled": false,
-          "document": "Proxy version, which can be upgraded for the instance\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid value can be obtained.",
           "example": "5.6.0",
           "member": "string",
           "name": "UpgradeProxyVersion",
@@ -6924,7 +7254,7 @@
         },
         {
           "disabled": false,
-          "document": "Cache minor version, which can be upgraded for the instance\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid value can be obtained.",
           "example": "6.0.0",
           "member": "string",
           "name": "UpgradeRedisVersion",
@@ -7425,7 +7755,6 @@
           "example": "6954227",
           "member": "int64",
           "name": "TaskId",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7480,6 +7809,7 @@
           "example": "16661",
           "member": "int64",
           "name": "TaskId",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7636,6 +7966,61 @@
     "ModifyBackupDownloadRestrictionResponse": {
       "document": "ModifyBackupDownloadRestriction response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyConnectionConfigRequest": {
+      "document": "ModifyConnectionConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID, which can contain 12 to 36 characters.",
+          "example": "crs-cpz6b1fn",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Additional bandwidth in MB, which should be greater than 0.",
+          "example": "5",
+          "member": "int64",
+          "name": "Bandwidth",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Total number of connections of a single shard.When read-only replicas are not enabled, the lower limit is 10,000, and the upper limit is 40,000.When read-only replicas are enabled, the lower limit is 10,000, and the upper limit is 10,000 × (the number of read-only replicas + 3).",
+          "example": "20000",
+          "member": "int64",
+          "name": "ClientLimit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyConnectionConfigResponse": {
+      "document": "ModifyConnectionConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "95027",
+          "member": "int64",
+          "name": "TaskId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -7824,6 +8209,88 @@
           "member": "int64",
           "name": "TaskId",
           "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceEventRequest": {
+      "document": "ModifyInstanceEvent request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies the instance ID. Example: crs-xjhsdj****. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis#/) and copy the instance ID in the instance list.",
+          "example": "crs-deindi7de",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Event ID. Obtain the ID of the event to be modified using DescribeInstanceEvents.",
+          "example": "89",
+          "member": "int64",
+          "name": "EventId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Modifies the scheduled start time of event execution.",
+          "example": "03:10",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modifies the scheduled end time of event execution. After the start time is configured, the end time can only be 30 minutes, 1 hour, 1.5 hours, 2 hours, or 3 hours later than the start time.",
+          "example": "04:10",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modifies the start date of the event execution schedule.",
+          "example": "2018-09-10",
+          "member": "string",
+          "name": "ExecutionDate",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modifies the running status of the event. Currently, this parameter can be set only to **Canceled**, indicating that the execution of the current event is canceled. You can query the running status and level of the current event using DescribeInstanceEvents.- Critical or High events cannot be canceled, which means that they must be executed.- Only events in the Waiting state (to be executed) can be canceled.",
+          "example": "Canceled",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceEventResponse": {
+      "document": "ModifyInstanceEvent response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Event ID.",
+          "example": "89",
+          "member": "int64",
+          "name": "EventId",
+          "output_required": false,
           "type": "int",
           "value_allowed_null": false
         },
@@ -8998,6 +9465,142 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RedisInstanceEvent": {
+      "document": "Instance event information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Event ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "102",
+          "member": "int64",
+          "name": "ID",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "crs-ewflkgfe",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance name.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "redis",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Event type. Currently, the type can only be related to instance migration, resource movement, and IDC deletion. This parameter can be only set to **InstanceMigration**.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "InstanceMigration",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Event levels are divided into Critical, High, Medium, and Low events according to the severity and urgency.- Critical\n- High\n- Middle\n- Low\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Critical",
+          "member": "string",
+          "name": "Grade",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled event execution date.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2018-09-10",
+          "member": "string",
+          "name": "ExecutionDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled start time of event execution.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "03:00",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled end time of event execution.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "04:00",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The latest execution date of the operations event. Event execution must be completed before this date. Otherwise, the business may be affected.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2018-09-10",
+          "member": "string",
+          "name": "LatestExecutionDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Current event status.- Waiting: The event is waiting for execution on the execution date or during the operations period.- Running: The event is being executed during the operations period.- Finished: Execution of the event operations is completed.- Canceled: Execution of the event is canceled.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Waiting",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Completion time of the event execution task.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2018-09-10 09:10:23",
+          "member": "string",
+          "name": "TaskEndTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Impact of the event.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "迁移完成时会有一次秒级别的闪断",
+          "member": "string",
+          "name": "EffectInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Initial scheduled execution date of the event.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2018-09-10",
+          "member": "string",
+          "name": "InitialExecutionDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -10407,7 +11010,6 @@
           "example": "6954227",
           "member": "string",
           "name": "DealId",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
