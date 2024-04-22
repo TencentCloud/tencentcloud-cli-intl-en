@@ -1939,6 +1939,15 @@
           "name": "RedisClusterId",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Alarm policy ID array.- Please log in to [Tencent Cloud Observability Platform - Alarm Management - Policy Management](https://console.cloud.tencent.com/monitor/alarm/policy) to access the alarm policy ID.- If this parameter is not configured, the default alarm policy will be bound. For the specific information about the default alarm policy, please log in to [Tencent Cloud Observability Platform - Alarm Management - Policy Management](https://console.cloud.tencent.com/monitor/alarm/policy) to view.",
+          "example": "[\"policy-6e6wodv4\"]",
+          "member": "string",
+          "name": "AlarmPolicyList",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
