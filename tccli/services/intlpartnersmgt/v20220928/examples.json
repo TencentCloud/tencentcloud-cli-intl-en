@@ -24,6 +24,34 @@
         "title": "Querying the customer bill details"
       }
     ],
+    "DescribeBillDownloadUrl": [
+      {
+        "document": "This example shows you how to download billing files and return billing file URLs by customers.",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillDownloadUrl\n<Public request parameters>\n\n{\n    \"Month\": \"2023-10\",\n    \"FileType\": \"L3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DownloadUrl\": \"https://xxxx.cos.ap-singapore.myqcloud.com/L3-bill_details.csv\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "DescribeBillDownloadUrl"
+      }
+    ],
+    "DescribeBillSummary": [
+      {
+        "document": "This example shows you how to view the API and tag dimension statistics in customer billing center L1 bill by customers.",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummary\n<Public request parameters>{\n    \"Month\": \"2023-10\",\n    \"GroupType\": \"tag\",\n    \"TagKey\": [\n        \"abc\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"SummaryDetail\": [\n            {\n                \"Business\": [\n                    {\n                        \"BusinessCodeName\": \"CVM Dedicated Host\",\n                        \"BusinessCode\": \"p_cdh\",\n                        \"OriginalCost\": \"12.11\",\n                        \"VoucherPayAmount\": \"1.1\",\n                        \"RICost\": \"0.1\",\n                        \"TotalCost\": \"12.1\"\n                    }\n                ],\n                \"OriginalCost\": \"12.1\",\n                \"VoucherPayAmount\": \"1.1\",\n                \"RICost\": \"1.1\",\n                \"TotalCost\": \"2.2\",\n                \"GroupKey\": \"abc\",\n                \"GroupValue\": \"default\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Summarizing DescribeBillSummary by tag dimension"
+      },
+      {
+        "document": "This example shows you how to view the API and project dimension statistics in customer billing center L1 bill by customers.",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummary\n< Public request parameters>{\n    \"Month\": \"2023-10\",\n    \"GroupType\": \"project\"\n}",
+        "output": "{\n    \"Response\": {\n        \"SummaryDetail\": [\n            {\n                \"Business\": [\n                    {\n                        \"BusinessCodeName\": \"cloud block storage\",\n                        \"BusinessCode\": \"p_cbs\",\n                        \"OriginalCost\": \"148.40000000\",\n                        \"VoucherPayAmount\": \"129.70000000\",\n                        \"RICost\": \"0.00000000\",\n                        \"TotalCost\": \"18.70000000\"\n                    }\n                ],\n                \"OriginalCost\": \"148.40000000\",\n                \"VoucherPayAmount\": \"129.70000000\",\n                \"RICost\": \"0.00000000\",\n                \"TotalCost\": \"18.70000000\",\n                \"GroupKey\": \"0\",\n                \"GroupValue\": \"default\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Summarizing DescribeBillSummary by project dimension"
+      },
+      {
+        "document": "This example shows you how to view the API and product dimension statistics in customer billing center L1 bill by customers.",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBillSummary\n< Public request parameters>{\n    \"Month\": \"2023-10\",\n    \"GroupType\": \"product\"\n}",
+        "output": "{\n    \"Response\": {\n        \"SummaryDetail\": [\n            {\n                \"Business\": null,\n                \"OriginalCost\": \"148.40000000\",\n                \"VoucherPayAmount\": \"129.70000000\",\n                \"RICost\": \"0.00000000\",\n                \"TotalCost\": \"18.70000000\",\n                \"GroupKey\": \"p_cbs\",\n                \"GroupValue\": \"cloud block storage\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Summarizing DescribeBillSummary by product dimension"
+      }
+    ],
     "DescribeBillSummaryByPayMode": [
       {
         "document": "This example shows you how to obtain the total amount of customer bills by payment mode.",

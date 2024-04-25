@@ -21,6 +21,20 @@
       "output": "DescribeBillDetailResponse",
       "status": "online"
     },
+    "DescribeBillDownloadUrl": {
+      "document": "This API is used to download billing files and return billing file URLs by customers.",
+      "input": "DescribeBillDownloadUrlRequest",
+      "name": "Downloads billing file links by customers",
+      "output": "DescribeBillDownloadUrlResponse",
+      "status": "online"
+    },
+    "DescribeBillSummary": {
+      "document": "External API for the L1 billing of the customer billing center",
+      "input": "DescribeBillSummaryRequest",
+      "name": "External API for the L1 billing of the customer billing center",
+      "output": "DescribeBillSummaryResponse",
+      "status": "online"
+    },
     "DescribeBillSummaryByPayMode": {
       "document": "This API is used to obtain the total amount of customer bills by payment mode.",
       "input": "DescribeBillSummaryByPayModeRequest",
@@ -575,6 +589,72 @@
           "example": "无",
           "member": "string",
           "name": "Id",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "BusinessInfo": {
+      "document": "Product information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ProductNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Cloud Virtual Machine",
+          "member": "string",
+          "name": "BusinessCodeName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Product codeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "p_cvm",
+          "member": "string",
+          "name": "BusinessCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Original price\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "12.2",
+          "member": "string",
+          "name": "OriginalCost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Voucher amount\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.1",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Daily deduction\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.2",
+          "member": "string",
+          "name": "RICost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total amount\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "13.2",
+          "member": "string",
+          "name": "TotalCost",
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
@@ -1173,6 +1253,52 @@
       ],
       "type": "object"
     },
+    "DescribeBillDownloadUrlRequest": {
+      "document": "DescribeBillDownloadUrl request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Bill month in the format of \"yyyy-mm\"; the earliest month available for query is June, 2022. Current month's billing data may be inaccurate; please download the current month's bill after it is generated at 1:00 on the 5th of the next month.",
+          "example": "2023-02",
+          "member": "string",
+          "name": "Month",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Type of bill. Valid values: L2 or L3",
+          "example": "L3",
+          "member": "string",
+          "name": "FileType",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillDownloadUrlResponse": {
+      "document": "DescribeBillDownloadUrl response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File download address, valid for one hour.",
+          "example": "https://xxxx.cos.ap-singapore.myqcloud.com/L3-bill_details.csv",
+          "member": "string",
+          "name": "DownloadUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeBillSummaryByPayModeRequest": {
       "document": "DescribeBillSummaryByPayMode request structure.",
       "members": [
@@ -1301,6 +1427,61 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryRequest": {
+      "document": "DescribeBillSummary request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Bill month in the format of \"yyyy-mm\".",
+          "example": "2023-02",
+          "member": "string",
+          "name": "Month",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Billing dimension. Optional parameters: product, project, tag",
+          "example": "product",
+          "member": "string",
+          "name": "GroupType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag value list",
+          "example": "key",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeBillSummaryResponse": {
+      "document": "DescribeBillSummary response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Detailed summary by billing dimensionNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[   {     \"Business\": [       {         \"BusinessCodeName\": \"cloud block storage\",         \"BusinessCode\": \"p_cbs\",         \"OriginalCost\": \"0.003585\",         \"VoucherPayAmount\": \"0\",         \"RICost\": \"0\",         \"TotalCost\": \"0.003585\"       }     ],     \"OriginalCost\": \"0.003585\",     \"VoucherPayAmount\": \"0\",     \"RICost\": \"0\",     \"TotalCost\": \"0.003585\"     \"GroupKey\": \"0\",     \"GroupValue\": \"default\"   } ]",
+          "member": "SummaryDetails",
+          "name": "SummaryDetail",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2646,6 +2827,82 @@
           "member": "string",
           "name": "TotalCost",
           "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "SummaryDetails": {
+      "document": "Detailed summary by billing dimension",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Product information list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{   \"BusinessCodeName\": \"cloud block storage\",   \"BusinessCode\": \"p_cbs\",   \"OriginalCost\": \"0.003585\",   \"VoucherPayAmount\": \"0\",   \"RICost\": \"0\",   \"TotalCost\": \"0.003585\" }]",
+          "member": "BusinessInfo",
+          "name": "Business",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Original price\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "12.1",
+          "member": "string",
+          "name": "OriginalCost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Voucher amount\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.1",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Daily deduction\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.2",
+          "member": "string",
+          "name": "RICost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total amount\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123.1",
+          "member": "string",
+          "name": "TotalCost",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Summary key by classification dimension Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "key",
+          "member": "string",
+          "name": "GroupKey",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": " Summary value by classification dimension\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "value",
+          "member": "string",
+          "name": "GroupValue",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": true
         }
