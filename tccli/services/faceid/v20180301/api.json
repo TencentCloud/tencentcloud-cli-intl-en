@@ -3724,6 +3724,15 @@
           "name": "Language",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Automatic downgrade mode, with the following parameter values: 1: Downgrade to silent live mode; 2: Disable downgrade mode. The default value is 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "AutoDowngrade",
+          "required": false,
+          "type": "int"
         }
       ],
       "usage": "in"
