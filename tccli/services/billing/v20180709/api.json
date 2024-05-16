@@ -105,6 +105,13 @@
       "output": "DescribeBillSummaryForOrganizationResponse",
       "status": "online"
     },
+    "DescribeCostExplorerSummary": {
+      "document": "This API is used to view cost analysis details.",
+      "input": "DescribeCostExplorerSummaryRequest",
+      "name": "Views cost analysis details",
+      "output": "DescribeCostExplorerSummaryResponse",
+      "status": "online"
+    },
     "DescribeDosageCosDetailByDate": {
       "document": "This API is used to query COS usage details.",
       "input": "DescribeDosageCosDetailByDateRequest",
@@ -245,6 +252,567 @@
         }
       ],
       "usage": "out"
+    },
+    "AnalyseActionTypeDetail": {
+      "document": "Cost analysis transaction type complex type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Transaction type codeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "prepay_purchase",
+          "member": "string",
+          "name": "ActionType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Transaction type nameNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "包年包月新购",
+          "member": "string",
+          "name": "ActionTypeName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AnalyseAmountDetail": {
+      "document": "Cost analysis amount return data model",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Fee typeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cost",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to displayNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Display",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AnalyseBusinessDetail": {
+      "document": "Cost analysis product return complex type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Product codeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "billVirtualId",
+          "member": "string",
+          "name": "BusinessCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Product nameNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "月度计费精度差异",
+          "member": "string",
+          "name": "BusinessCodeName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AnalyseConditionDetail": {
+      "document": "Cost analysis filter box complex type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ProductNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AnalyseBusinessDetail",
+          "name": "Business",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "ItemNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AnalyseProjectDetail",
+          "name": "Project",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "RegionNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AnalyseRegionDetail",
+          "name": "Region",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing modeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AnalysePayModeDetail",
+          "name": "PayMode",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Transaction typeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AnalyseActionTypeDetail",
+          "name": "ActionType",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Availability zoneNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AnalyseZoneDetail",
+          "name": "Zone",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource owner UINNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AnalyseOwnerUinDetail",
+          "name": "OwnerUin",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Fee typeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AnalyseAmountDetail",
+          "name": "Amount",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AnalyseConditions": {
+      "document": "Cost analysis query conditions",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Product name codeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "p_cvm",
+          "member": "string",
+          "name": "BusinessCodes",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Sub-product name codeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sp_cvm",
+          "member": "string",
+          "name": "ProductCodes",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Component type codeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "v_cpu",
+          "member": "string",
+          "name": "ComponentCode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone ID: The availability zone ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10001",
+          "member": "string",
+          "name": "ZoneIds",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region ID: The region ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "47",
+          "member": "string",
+          "name": "RegionIds",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project ID: The project ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "ProjectIds",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing mode prePay (indicates monthly subscription)/postPay (indicates pay-as-you-go billing)Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "postPay",
+          "member": "string",
+          "name": "PayModes",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Transaction type. Query transaction type. (Use transaction type code input parameter.)Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "postpay_deduct_d",
+          "member": "string",
+          "name": "ActionTypes",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cost allocation tag keyNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{\"二级业务\":\"CoreDB_740044\"}",
+          "member": "string",
+          "name": "Tags",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Fee type. Query fee type. (Use fee type code input parameter.) The input parameter enumeration is as follows:cashPayAmount: cash incentivePayAmount: free credits voucherPayAmount: coupons tax:taxes costBeforeTax: price before taxNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cashPayAmount",
+          "member": "string",
+          "name": "FeeType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User UIN for querying cost analysis dataNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "909619400",
+          "member": "string",
+          "name": "PayerUins",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User UIN for using resourcesNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "909614900",
+          "member": "string",
+          "name": "OwnerUins",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Consumption type. Query consumption type. (Use consumption type code input parameter.)Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "prepay_purchase",
+          "member": "string",
+          "name": "ConsumptionTypes",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AnalyseDetail": {
+      "document": "Cost analysis data complex type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Time",
+          "example": "'2023-01-01 00:00:00'",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Amount",
+          "example": "0",
+          "member": "string",
+          "name": "Total",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Date detailed amountNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AnalyseTimeDetail",
+          "name": "TimeDetail",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AnalyseHeaderDetail": {
+      "document": "Cost analysis header data complex type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Header dateNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{                     \"name\":\"2023-12-01 00:00:00\"                 }",
+          "member": "AnalyseHeaderTimeDetail",
+          "name": "HeadDetail",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "TimeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "'2023-12-01 00:00:00'",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "TotalNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "总计",
+          "member": "string",
+          "name": "Total",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AnalyseHeaderTimeDetail": {
+      "document": "Cost analysis header data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "DateNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-01-01 00:00:00",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AnalyseOwnerUinDetail": {
+      "document": "Cost analysis user UIN complex type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User UIN\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "909619400",
+          "member": "string",
+          "name": "OwnerUin",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AnalysePayModeDetail": {
+      "document": "Cost analysis payment method complex type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Billing mode codeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "postPay",
+          "member": "string",
+          "name": "PayMode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing mode nameNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "按量计费",
+          "member": "string",
+          "name": "PayModeName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AnalyseProjectDetail": {
+      "document": "Cost analysis project return complex type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Default projectNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "默认项目",
+          "member": "string",
+          "name": "ProjectName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AnalyseRegionDetail": {
+      "document": "Cost analysis region return complex type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Region ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "RegionId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region nameNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "其他",
+          "member": "string",
+          "name": "RegionName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AnalyseTimeDetail": {
+      "document": "Cost analysis return value complex type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "DateNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-12-01 00:00:00",
+          "member": "string",
+          "name": "Time",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "AmountNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1.0",
+          "member": "string",
+          "name": "Money",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "AnalyseZoneDetail": {
+      "document": "Cost analysis availability zone complex type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Availability zone IDNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone nameNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "其他",
+          "member": "string",
+          "name": "ZoneName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "ApplicableProducts": {
       "document": "The products that are applicable.",
@@ -551,6 +1119,66 @@
           "example": "https://buy.cloud.tencent.com/price/cvm",
           "member": "string",
           "name": "FormulaUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing dayNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-10-10 00:00:00",
+          "member": "string",
+          "name": "BillDay",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing monthNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-10-01 00:00:00",
+          "member": "string",
+          "name": "BillMonth",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing record IDNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1234",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Domestic and international codesNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "international",
+          "member": "string",
+          "name": "RegionType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Domestic and International: The region type to which the resource belongs (domestic, international)Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "International",
+          "member": "string",
+          "name": "RegionTypeName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Note attributes (instance configuration): Other note information, such as the reserved instance, the reserved instance type, the transaction type, and the region information on both ends of the CCN product.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "优惠生效单号：T2024041930694; 本条账单类型：调账-重出单; ",
+          "member": "string",
+          "name": "ReserveDetail",
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
@@ -1328,6 +1956,16 @@
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing monthNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-10-01 00:00:00",
+          "member": "string",
+          "name": "BillMonth",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1341,7 +1979,7 @@
           "example": "实时音视频",
           "member": "string",
           "name": "BusinessCodeName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1351,7 +1989,7 @@
           "example": "实时音视频-音视频通话",
           "member": "string",
           "name": "ProductCodeName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1361,7 +1999,7 @@
           "example": "包年包月",
           "member": "string",
           "name": "PayModeName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1371,7 +2009,7 @@
           "example": "默认项目",
           "member": "string",
           "name": "ProjectName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1381,7 +2019,7 @@
           "example": "华南地区（广州）",
           "member": "string",
           "name": "RegionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1391,7 +2029,7 @@
           "example": "其他",
           "member": "string",
           "name": "ZoneName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1401,7 +2039,7 @@
           "example": "1000068815",
           "member": "string",
           "name": "ResourceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1411,7 +2049,7 @@
           "example": " 1",
           "member": "string",
           "name": "ResourceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1421,7 +2059,7 @@
           "example": "包年包月新购",
           "member": "string",
           "name": "ActionTypeName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1431,7 +2069,7 @@
           "example": "20210818400005559878881",
           "member": "string",
           "name": "OrderId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1441,7 +2079,7 @@
           "example": "2021-08-18 15:35:01",
           "member": "datetime",
           "name": "PayTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1451,7 +2089,7 @@
           "example": "2021-08-18 15:35:00",
           "member": "datetime",
           "name": "FeeBeginTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1461,7 +2099,7 @@
           "example": "2022-08-31 23:59:59",
           "member": "datetime",
           "name": "FeeEndTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1471,7 +2109,7 @@
           "example": "音视频通话-自定义套餐包: 1000分钟; ",
           "member": "string",
           "name": "ConfigDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1481,7 +2119,7 @@
           "example": "-",
           "member": "string",
           "name": "ExtendField1",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1491,7 +2129,7 @@
           "example": "-",
           "member": "string",
           "name": "ExtendField2",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1501,7 +2139,7 @@
           "example": "7",
           "member": "string",
           "name": "TotalCost",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1511,7 +2149,7 @@
           "example": "1",
           "member": "string",
           "name": "Discount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1521,7 +2159,7 @@
           "example": "折扣",
           "member": "string",
           "name": "ReduceType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1531,7 +2169,7 @@
           "example": "7.00000000",
           "member": "string",
           "name": "RealTotalCost",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1541,7 +2179,7 @@
           "example": "0.00000000",
           "member": "string",
           "name": "VoucherPayAmount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1551,7 +2189,7 @@
           "example": "7.00000000",
           "member": "string",
           "name": "CashPayAmount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1561,7 +2199,7 @@
           "example": "0.00000000",
           "member": "string",
           "name": "IncentivePayAmount",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1571,7 +2209,7 @@
           "example": "0.00000000",
           "member": "string",
           "name": "TransferPayAmount",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -1581,7 +2219,7 @@
           "example": "-",
           "member": "string",
           "name": "ExtendField3",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1591,7 +2229,7 @@
           "example": "-",
           "member": "string",
           "name": "ExtendField4",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1601,7 +2239,7 @@
           "example": "-",
           "member": "string",
           "name": "ExtendField5",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1611,7 +2249,7 @@
           "example": "[]",
           "member": "BillTagInfo",
           "name": "Tags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -1621,7 +2259,7 @@
           "example": "xxx",
           "member": "string",
           "name": "PayerUin",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1631,7 +2269,7 @@
           "example": "xxx",
           "member": "string",
           "name": "OwnerUin",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1641,7 +2279,7 @@
           "example": "xxx",
           "member": "string",
           "name": "OperateUin",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1651,7 +2289,7 @@
           "example": "p_rav",
           "member": "string",
           "name": "BusinessCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1661,7 +2299,7 @@
           "example": "sp_rav_audio_video",
           "member": "string",
           "name": "ProductCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1671,7 +2309,7 @@
           "example": "1",
           "member": "int64",
           "name": "RegionId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1681,7 +2319,7 @@
           "example": "ri",
           "member": "string",
           "name": "InstanceType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1691,7 +2329,7 @@
           "example": "0",
           "member": "string",
           "name": "OriginalCostWithRI",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1701,7 +2339,7 @@
           "example": "0",
           "member": "string",
           "name": "SPDeduction",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1711,9 +2349,19 @@
           "example": "0",
           "member": "string",
           "name": "OriginalCostWithSP",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing monthNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-10-01 00:00:00",
+          "member": "string",
+          "name": "BillMonth",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2097,7 +2745,7 @@
       "document": "CreateAllocationTag response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2124,7 +2772,7 @@
       "document": "DeleteAllocationTag response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2271,7 +2919,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2301,7 +2949,7 @@
           "type": "int"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Cycle type, which can be `byUsedTime` (by billing cycle) or `byPayTime` (by deduction time). This value must be the same as the billing period type in Billing Center for that particular month. You can check your billing cycle at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.",
           "example": "byPayTime",
           "member": "string",
@@ -2311,7 +2959,7 @@
         },
         {
           "disabled": false,
-          "document": "Bill month in the format of \"yyyy-mm\". You only have to enter either `Month` or `BeginTime` and `EndTime`. When you enter values for `BeginTime` and `EndTime`, `Month` becomes invalid. This value must be no earlier than the month when Bill 2.0 is activated; last 18 months data is available.",
+          "document": "The month is in the format of yyyy-mm. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. Data within the last 18 months can be pulled at most.",
           "example": "2018-07",
           "member": "string",
           "name": "Month",
@@ -2320,7 +2968,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time of the cycle in the format of \"yyyy-mm-dd hh:ii:ss\". You only have to enter either `Month` or `BeginTime` and `EndTime`. When you enter values for `BeginTime` and `EndTime`, `Month` becomes invalid. `BeginTime` and `EndTime` must be passed together, and their values must be of the same month. Query period must start and end on the same month, andthe query result returned will be of the entire month. This value must be no earlier than the month when Bill 2.0 is activated; last 18 months data is available.",
+          "document": "The start time of the period in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. BeginTime and EndTime must be specified together and must be in the same month. Cross-month queries are not supported and the query results are data for the entire month. Data within the last 18 months can be pulled at most.",
           "example": "2018-11-01 00:00:00",
           "member": "string",
           "name": "BeginTime",
@@ -2329,7 +2977,7 @@
         },
         {
           "disabled": false,
-          "document": "End time of the cycle in the format of \"yyyy-mm-dd hh:ii:ss\". You only have to enter either `Month` or `BeginTime` and `EndTime`. When you enter values for `BeginTime` and `EndTime`, `Month` becomes invalid. `BeginTime` and `EndTime` must be passed together, and their values must be of the same month. Query period must start and end on the same month, andthe query result returned will be of the entire month. This value must be no earlier than the month when Bill 2.0 is activated; last 18 months data is available.",
+          "document": "The end time of the period in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. BeginTime and EndTime must be specified together and must be in the same month. Cross-month queries are not supported and the query results are data for the entire month. Data within the last 18 months can be pulled at most.",
           "example": "2018-11-01 23:59:59",
           "member": "string",
           "name": "EndTime",
@@ -2436,7 +3084,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2466,7 +3114,7 @@
           "type": "int"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "The period type. byUsedTime: By usage period; byPayTime: By payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page. ",
           "example": "byPayTime",
           "member": "string",
@@ -2594,6 +3242,7 @@
           "example": "无",
           "member": "BillDetail",
           "name": "DetailSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2603,6 +3252,7 @@
           "example": "11841",
           "member": "uint64",
           "name": "Total",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -2612,11 +3262,12 @@
           "example": "UEEJBfSsteS7dZgAaEEziWS40d4sn4urG7",
           "member": "string",
           "name": "Context",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2681,7 +3332,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2818,7 +3469,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2949,6 +3600,7 @@
           "example": "无",
           "member": "BillResourceSummary",
           "name": "ResourceSummarySet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2958,11 +3610,12 @@
           "example": "103",
           "member": "int64",
           "name": "Total",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3025,7 +3678,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3106,7 +3759,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3169,7 +3822,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3232,7 +3885,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3322,7 +3975,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3387,7 +4040,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3452,7 +4105,174 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCostExplorerSummaryRequest": {
+      "document": "DescribeCostExplorerSummary request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The start time of the period in the format of yyyy-mm-dd hh:ii:ss.",
+          "example": "2023-01-01 00:00:00",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The end time of the period in the format of yyyy-mm-dd hh:ii:ss.",
+          "example": "2024-01-01 23:59:59",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Bill type: 1-cost bill, 2-consumption bill",
+          "example": "1",
+          "member": "string",
+          "name": "BillType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Statistical period: day-day, month-month;",
+          "example": "day",
+          "member": "string",
+          "name": "PeriodType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Classification dimension (data aggregation dimension). Query classification dimension. (Use classification dimension code input parameter.) Input parameter enumeration value:default = Total only\nfeeType = Fee typebillType = Bill typebusiness = Product\nproduct = Sub-productregion=Region\nzone = Availability zoneactionType = Transaction typepayMode = Billing modetags = Tagproject = ProjectpayerUin = Payer accountownerUin = User account",
+          "example": "business",
+          "member": "string",
+          "name": "Dimensions",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Fee type: cost-total cost, totalCost-original price cost",
+          "example": "cost",
+          "member": "string",
+          "name": "FeeType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Quantity. The maximum value per page is 100.",
+          "example": "100",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Starting page, where PageNo=1 indicates the first page, PageNo=2 indicates the second page, and so on.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNo",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Cost allocation tag value",
+          "example": "test",
+          "member": "string",
+          "name": "TagKeyStr",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the filter box is needed: 1- indicates it is needed, 0- indicates it is not needed. If it is not specified, it is not required by default.",
+          "example": "0",
+          "member": "string",
+          "name": "NeedConditionValue",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter parameters",
+          "example": "{}",
+          "member": "AnalyseConditions",
+          "name": "Conditions",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCostExplorerSummaryResponse": {
+      "document": "DescribeCostExplorerSummary response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of data entries\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Header informationNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{             \"name\":\"产品\",             \"total\":\"总计\",             \"headDetail\":[                 {                     \"name\":\"2023-12-01 00:00:00\"                 },                 {                     \"name\":\"2024-01-01 00:00:00\"                 }             ]         }",
+          "member": "AnalyseHeaderDetail",
+          "name": "Header",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data detailsNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{                 \"name\":\"云服务器CVM\",                 \"total\":11.63454774,                 \"timeDetail\":[                     {                         \"time\":\"2023-12-01 00:00:00\",                         \"money\":\"2.92527168\"                     },                     {                         \"time\":\"2024-01-01 00:00:00\",                         \"money\":\"8.70927606\"                     }                 ]             }",
+          "member": "AnalyseDetail",
+          "name": "Detail",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data amountNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{             \"name\":\"总计\",             \"total\":7662.59744864,             \"timeDetail\":[                 {                     \"name\":\"2023-12-01 00:00:00\",                     \"money\":\"7313.09744864\"                 },                 {                     \"name\":\"2024-01-01 00:00:00\",                     \"money\":\"349.50000000\"                 }             ]         }",
+          "member": "AnalyseDetail",
+          "name": "TotalDetail",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Filter boxNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AnalyseConditionDetail",
+          "name": "ConditionValue",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3502,12 +4322,11 @@
           "example": "无",
           "member": "CosDetailSets",
           "name": "DetailSets",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3590,7 +4409,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3735,6 +4554,24 @@
           "name": "Operator",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The primary types of vouchers are has_price and no_price, which represent the cash voucher with a price and the cash voucher without a price respectively.",
+          "example": "no_price",
+          "member": "string",
+          "name": "VoucherMainType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Voucher subtype: Discount is a discount voucher, and deduct is a deduction voucher.",
+          "example": "discount",
+          "member": "string",
+          "name": "VoucherSubType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -3748,7 +4585,7 @@
           "example": "0",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3758,7 +4595,7 @@
           "example": "0",
           "member": "int64",
           "name": "TotalBalance",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3768,12 +4605,12 @@
           "example": "无",
           "member": "VoucherInfos",
           "name": "VoucherInfos",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3832,7 +4669,6 @@
           "example": "0",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3842,7 +4678,6 @@
           "example": "0",
           "member": "int64",
           "name": "TotalUsedAmount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3852,12 +4687,11 @@
           "example": "无",
           "member": "UsageRecords",
           "name": "UsageRecords",
-          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4134,6 +4968,26 @@
           "example": "https://buy.cloud.tencent.com/price/cvm",
           "member": "string",
           "name": "FormulaUrl",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing monthNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-10-01 00:00:00",
+          "member": "string",
+          "name": "BillMonth",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing dayNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-10-10 00:00:00",
+          "member": "string",
+          "name": "BillDay",
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
