@@ -8,7 +8,7 @@
       "status": "online"
     },
     "AddSmsTemplate": {
-      "document": "1. This API is used to add an SMS template. You need to read the [Tencent Cloud SMS Body Template Review Standards](https://intl.cloud.tencent.com/zh/document/product/382/40659) before starting an application.\n2. ⚠️ Note: individual users cannot use this API to apply for SMS body templates. For more information, see [Identity Verification Overview](https://intl.cloud.tencent.com/zh/document/product/378/3629). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to apply for SMS body templates.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
+      "document": "1. This API is used to add an SMS template. You need to read the [Tencent Cloud SMS Body Template Review Standards](https://intl.cloud.tencent.com/zh/document/product/382/40659) before starting an application.\n2. Note: individual users cannot use this API to apply for SMS body templates. For more information, see [Identity Verification Overview](https://intl.cloud.tencent.com/zh/document/product/378/3629). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to apply for SMS body templates.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "AddSmsTemplateRequest",
       "name": "Adds SMS template",
       "output": "AddSmsTemplateResponse",
@@ -64,7 +64,7 @@
       "status": "online"
     },
     "ModifySmsTemplate": {
-      "document": "1. This API is used to modify an SMS body template. Please read the [Tencent Cloud SMS Body Template Review Standards](https://intl.cloud.tencent.com/document/product/382/39023?from_cn_redirect=1) before making a modification.\n2. ⚠️ Note: individual users cannot use this API to modify SMS body templates. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to modify SMS body templates.\n3. Modifications can be made only if the body template status is **Pending Review** or **Rejected**. **Approved** body templates cannot be modified.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.\n",
+      "document": "1. This API is used to modify an SMS body template. Please read the [Tencent Cloud SMS Body Template Review Standards](https://intl.cloud.tencent.com/document/product/382/39023?from_cn_redirect=1) before making a modification.\n2. Note: individual users cannot use this API to modify SMS body templates. For more information, please see [Identity Verification Overview](https://intl.cloud.tencent.com/document/product/378/3629?from_cn_redirect=1). If your account identity is individual, you can log in to the [console](https://console.cloud.tencent.com/smsv2) to modify SMS body templates.\n3. Modifications can be made only if the body template status is **Pending Review** or **Rejected**. **Approved** body templates cannot be modified.\n>- Note: because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the SDK.\n>- You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.",
       "input": "ModifySmsTemplateRequest",
       "name": "Modifies SMS template",
       "output": "ModifySmsTemplateResponse",
@@ -248,7 +248,7 @@
         {
           "disabled": false,
           "document": "Template name.",
-          "example": "腾讯云",
+          "example": "验证码",
           "member": "string",
           "name": "TemplateName",
           "required": true,
@@ -257,7 +257,7 @@
         {
           "disabled": false,
           "document": "Template content.",
-          "example": "xxx",
+          "example": "您的验证码是{1}",
           "member": "string",
           "name": "TemplateContent",
           "required": true,
@@ -265,8 +265,8 @@
         },
         {
           "disabled": false,
-          "document": "SMS type. 0: regular SMS, 1: marketing SMS.",
-          "example": "0",
+          "document": "SMS type. 1: Marketing SMS, 2: Notification SMS, 3: OTP SMS.\nNote: The \"Regular SMS\" type template currently still supports submission. However, in order to further improve the quality of SMS service and increase the approval rate of SMS templates, it is recommended to apply for a new template according to the \"Notification SMS\" type or the \"OTP SMS\" type. You can Refer to [Optimization of Tencent Cloud SMS Template Types](https://www.tencentcloud.com/document/product/382/60410).",
+          "example": "3",
           "member": "uint64",
           "name": "SmsType",
           "required": true,
@@ -284,7 +284,7 @@
         {
           "disabled": false,
           "document": "Template remarks, such as reason for application and use case.",
-          "example": "xxx",
+          "example": "业务验证码",
           "member": "string",
           "name": "Remark",
           "required": true,
@@ -299,10 +299,10 @@
         {
           "disabled": false,
           "document": "SMS template addition response body",
-          "example": "   \"AddTemplateStatus\": {       \"TemplateId\": 1110,       \"Reque",
+          "example": "{\"TemplateId\":\"1110\"}",
           "member": "AddTemplateStatus",
           "name": "AddTemplateStatus",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1064,7 +1064,7 @@
         {
           "disabled": false,
           "document": "New template content.",
-          "example": "xxx",
+          "example": "您的验证码是{1}",
           "member": "string",
           "name": "TemplateContent",
           "required": true,
@@ -1072,8 +1072,8 @@
         },
         {
           "disabled": false,
-          "document": "SMS type. 0: regular SMS, 1: marketing SMS.",
-          "example": "0",
+          "document": "SMS type. 1: Marketing SMS, 2: Notification SMS, 3: OTP SMS.\nNote: The \"Regular SMS\" type template currently still supports submission. However, in order to further improve the quality of SMS service and increase the approval rate of SMS templates, it is recommended to apply for a new template according to the \"Notification SMS\" type or the \"OTP SMS\" type. You can Refer to [Optimization of Tencent Cloud SMS Template Types](https://www.tencentcloud.com/document/product/382/60410).",
+          "example": "3",
           "member": "uint64",
           "name": "SmsType",
           "required": true,
@@ -1091,7 +1091,7 @@
         {
           "disabled": false,
           "document": "Template remarks, such as reason for application and use case.",
-          "example": "xxx",
+          "example": "业务验证码",
           "member": "string",
           "name": "Remark",
           "required": true,
@@ -1106,10 +1106,10 @@
         {
           "disabled": false,
           "document": "Template parameter modification response",
-          "example": "\"ModifyTemplateStatus\": {       \"TemplateId\": 1110     }",
+          "example": "{\"TemplateId\":1110}",
           "member": "ModifyTemplateStatus",
           "name": "ModifyTemplateStatus",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },

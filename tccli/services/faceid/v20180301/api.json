@@ -2827,11 +2827,11 @@
       "usage": "out"
     },
     "MacaoIDCard": {
-      "document": "",
+      "document": "Macao ID Card",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "First name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "FirstName",
@@ -2841,7 +2841,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Last name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "LastName",
@@ -2851,7 +2851,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Birthday\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Birthday",
@@ -2861,7 +2861,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Expiration date\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "ExpirationDate",
@@ -2871,7 +2871,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "License number\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "LicenseNumber",
@@ -2881,7 +2881,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Sex\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Sex",
@@ -2891,7 +2891,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Age\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Age",
@@ -2901,7 +2901,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Issued country\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "IssuedCountry",
@@ -2911,7 +2911,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "MRZ1 on card\nNote: This field may return null, indicating that no valid values can be obtained. ",
           "example": "无",
           "member": "string",
           "name": "Field1",
@@ -2921,7 +2921,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "MRZ2 on card\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Field2",
