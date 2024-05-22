@@ -344,6 +344,42 @@
           "name": "AuthInfo",
           "required": true,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint protocol type, supports HLS, DASH, CMAF (only HLS type input can create CMAF Endpoint).",
+          "example": "\"CMAF\"",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mainifest name, default is main.",
+          "example": "main",
+          "member": "string",
+          "name": "Manifest",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to turn on the TimeShift function, true: on, false: off, the default is off.",
+          "example": "true",
+          "member": "bool",
+          "name": "TimeShiftEnable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "The number of days to look back in TimeShift, up to 30 days is supported.",
+          "example": "7",
+          "member": "uint64",
+          "name": "TimeShiftDuration",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -357,7 +393,7 @@
           "example": "无",
           "member": "EndpointInfo",
           "name": "Info",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
