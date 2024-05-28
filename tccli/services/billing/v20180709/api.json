@@ -105,11 +105,46 @@
       "output": "DescribeBillSummaryForOrganizationResponse",
       "status": "online"
     },
+    "DescribeCostDetail": {
+      "document": "This API is used to query consumption details.",
+      "input": "DescribeCostDetailRequest",
+      "name": "Queries consumption details",
+      "output": "DescribeCostDetailResponse",
+      "status": "online"
+    },
     "DescribeCostExplorerSummary": {
       "document": "This API is used to view cost analysis details.",
       "input": "DescribeCostExplorerSummaryRequest",
       "name": "Views cost analysis details",
       "output": "DescribeCostExplorerSummaryResponse",
+      "status": "online"
+    },
+    "DescribeCostSummaryByProduct": {
+      "document": "This API is used to obtain consumption details summarized by product.",
+      "input": "DescribeCostSummaryByProductRequest",
+      "name": "Obtains consumption details summarized by product",
+      "output": "DescribeCostSummaryByProductResponse",
+      "status": "online"
+    },
+    "DescribeCostSummaryByProject": {
+      "document": "This API is used to obtain consumption details summarized by project.",
+      "input": "DescribeCostSummaryByProjectRequest",
+      "name": "Obtains consumption details summarized by project",
+      "output": "DescribeCostSummaryByProjectResponse",
+      "status": "online"
+    },
+    "DescribeCostSummaryByRegion": {
+      "document": "This API is used to obtain consumption details summarized by region.",
+      "input": "DescribeCostSummaryByRegionRequest",
+      "name": "Obtains consumption details summarized by region",
+      "output": "DescribeCostSummaryByRegionResponse",
+      "status": "online"
+    },
+    "DescribeCostSummaryByResource": {
+      "document": "This API is used to obtain consumption details summarized by resource.",
+      "input": "DescribeCostSummaryByResourceRequest",
+      "name": "Obtains consumption details summarized by resource",
+      "output": "DescribeCostSummaryByResourceResponse",
       "status": "online"
     },
     "DescribeDosageCosDetailByDate": {
@@ -2650,6 +2685,1078 @@
       ],
       "usage": "out"
     },
+    "ConditionBusiness": {
+      "document": "Product filter criteria",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Product name code",
+          "example": "p_clb",
+          "member": "string",
+          "name": "BusinessCode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product name",
+          "example": "负载均衡CLB",
+          "member": "string",
+          "name": "BusinessCodeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ConditionPayMode": {
+      "document": "Payment mode filter criteria",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Payment mode",
+          "example": "",
+          "member": "string",
+          "name": "PayMode",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode name",
+          "example": "",
+          "member": "string",
+          "name": "PayModeName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ConditionProject": {
+      "document": "Project filter criteria",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project name",
+          "example": "",
+          "member": "string",
+          "name": "ProjectName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ConditionRegion": {
+      "document": "Regional filter criteria",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Region ID",
+          "example": "",
+          "member": "string",
+          "name": "RegionId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region name",
+          "example": "",
+          "member": "string",
+          "name": "RegionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "Conditions": {
+      "document": "Billing filter criteria object",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Only supports two values: 6 and 12.",
+          "example": "6",
+          "member": "uint64",
+          "name": "TimeRange",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product name code",
+          "example": "p_clb",
+          "member": "string",
+          "name": "BusinessCode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "0",
+          "member": "int64",
+          "name": "ProjectId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region ID",
+          "example": "0",
+          "member": "int64",
+          "name": "RegionId",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode. Options include prePay and postPay.",
+          "example": "postPay",
+          "member": "string",
+          "name": "PayMode",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource keyword",
+          "example": "lb-1weg57ny",
+          "member": "string",
+          "name": "ResourceKeyword",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product name code",
+          "example": "['p_clb']",
+          "member": "string",
+          "name": "BusinessCodes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct name code",
+          "example": "['sp_clb']",
+          "member": "string",
+          "name": "ProductCodes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region ID",
+          "example": "[1]",
+          "member": "int64",
+          "name": "RegionIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "[0]",
+          "member": "int64",
+          "name": "ProjectIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode. Options include prePay and postPay.",
+          "example": "['postPay']",
+          "member": "string",
+          "name": "PayModes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Transaction type",
+          "example": "['postpay_deduct_h']",
+          "member": "string",
+          "name": "ActionTypes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to hide zero-amount transactions",
+          "example": "1",
+          "member": "int64",
+          "name": "HideFreeCost",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sorting rule. Options include desc and asc.",
+          "example": "asc",
+          "member": "string",
+          "name": "OrderByCost",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Transaction ID",
+          "example": "20211101400077789101862",
+          "member": "string",
+          "name": "BillIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Component code",
+          "example": "['v_clb_ins']",
+          "member": "string",
+          "name": "ComponentCodes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File ID",
+          "example": "1",
+          "member": "string",
+          "name": "FileIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File type",
+          "example": "-",
+          "member": "string",
+          "name": "FileTypes",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status",
+          "example": "[1]",
+          "member": "uint64",
+          "name": "Status",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "ConsumptionBusinessSummaryDataItem": {
+      "document": "Consumption details summarized by product",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Product name code",
+          "example": "p_clb",
+          "member": "string",
+          "name": "BusinessCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product name",
+          "example": "负载均衡CLB",
+          "member": "string",
+          "name": "BusinessCodeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Discounted total price",
+          "example": "0.00",
+          "member": "string",
+          "name": "RealTotalCost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cost trend",
+          "example": "0",
+          "member": "ConsumptionSummaryTrend",
+          "name": "Trend",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cash\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CashPayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bonus\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "VoucherNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Share revenueNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region name (only shown in regional summary)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RegionName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ConsumptionProjectSummaryDataItem": {
+      "document": "Consumption details summarized by project",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project name",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Discounted total price",
+          "example": "无",
+          "member": "string",
+          "name": "RealTotalCost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Trend",
+          "example": "无",
+          "member": "ConsumptionSummaryTrend",
+          "name": "Trend",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product consumption details",
+          "example": "无",
+          "member": "ConsumptionBusinessSummaryDataItem",
+          "name": "Business",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cash\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CashPayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bonus\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "VoucherNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Share revenueNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ConsumptionRegionSummaryDataItem": {
+      "document": "Consumption details summarized by region",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Region ID",
+          "example": "无",
+          "member": "string",
+          "name": "RegionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region name",
+          "example": "无",
+          "member": "string",
+          "name": "RegionName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Discounted total price",
+          "example": "无",
+          "member": "string",
+          "name": "RealTotalCost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Trend",
+          "example": "无",
+          "member": "ConsumptionSummaryTrend",
+          "name": "Trend",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product consumption details",
+          "example": "无",
+          "member": "ConsumptionBusinessSummaryDataItem",
+          "name": "Business",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cash\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CashPayAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "VoucherNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bonus\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Share revenueNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ConsumptionResourceSummaryConditionValue": {
+      "document": "Filter criteria of consumption details summarized by resource",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Product list",
+          "example": "",
+          "member": "ConditionBusiness",
+          "name": "Business",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project list",
+          "example": "",
+          "member": "ConditionProject",
+          "name": "Project",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region list",
+          "example": "",
+          "member": "ConditionRegion",
+          "name": "Region",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode list",
+          "example": "",
+          "member": "ConditionPayMode",
+          "name": "PayMode",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ConsumptionResourceSummaryDataItem": {
+      "document": "Consumption details summarized by resource",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID",
+          "example": "lb-1weg57ny",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource name",
+          "example": "lb-6073eff6",
+          "member": "string",
+          "name": "ResourceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Discounted total price",
+          "example": "0.00",
+          "member": "string",
+          "name": "RealTotalCost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cash expenditure",
+          "example": "0.00",
+          "member": "string",
+          "name": "CashPayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "0",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project name",
+          "example": "默认项目",
+          "member": "string",
+          "name": "ProjectName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region ID",
+          "example": "1",
+          "member": "string",
+          "name": "RegionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region name",
+          "example": "广州一区",
+          "member": "string",
+          "name": "RegionName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode",
+          "example": "postPay",
+          "member": "string",
+          "name": "PayMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode name",
+          "example": "按量计费",
+          "member": "string",
+          "name": "PayModeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product name code",
+          "example": "p_clb",
+          "member": "string",
+          "name": "BusinessCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product name",
+          "example": "负载均衡CLB",
+          "member": "string",
+          "name": "BusinessCodeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumption type",
+          "example": "历史新购",
+          "member": "string",
+          "name": "ConsumptionTypeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Pre-discount priceNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RealCost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time of feesNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FeeBeginTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "End time of feesNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FeeEndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Days\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DayDiff",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Daily consumptionNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DailyTotalCost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Order numberNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OrderId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "VoucherNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bonus\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Share revenueNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TransferPayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Payer UIN: the account ID of the payer, which is the unique identifier of a Tencent Cloud userNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PayerUin",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User UIN: the account ID of the actual resource userNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OwnerUin",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Operator UIN: the account ID or role ID of the operator who places orders for prepaid resources or activates postpaid resourcesNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "OperateUin",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct codeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ProductCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct name: the subcategory of a product purchased by the user, such as CVM – Standard S1Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ProductCodeName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region typeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RegionType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region type nameNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RegionTypeName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Extended field 1Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Extend1",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Extended field 2Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Extend2",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Extended field 3Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Extend3",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Extended field 4Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Extend4",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Extended field 5Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Extend5",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance typeNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance type nameNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceTypeName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Deduction time: the time at which a payment is deductedNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PayTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ZoneName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configuration descriptionNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ComponentConfig",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ConsumptionSummaryTotal": {
+      "document": "Consumption summary details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Discounted total price",
+          "example": "",
+          "member": "string",
+          "name": "RealTotalCost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ConsumptionSummaryTrend": {
+      "document": "Consumption cost trend",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Trend type, upward for rising, downward for falling, none for no change",
+          "example": "",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Trend value. The value is null when Type is none.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "string",
+          "name": "Value",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "CosDetailSets": {
       "document": "Information about the data structure of the returned COS usage details",
       "members": [
@@ -2720,6 +3827,298 @@
           "member": "string",
           "name": "Unit",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CostComponentSet": {
+      "document": "Consumption component details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Component type name",
+          "example": "无",
+          "member": "string",
+          "name": "ComponentCodeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Component name",
+          "example": "无",
+          "member": "string",
+          "name": "ItemCodeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List price",
+          "example": "无",
+          "member": "string",
+          "name": "SinglePrice",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List price unit",
+          "example": "无",
+          "member": "string",
+          "name": "PriceUnit",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Usage",
+          "example": "无",
+          "member": "string",
+          "name": "UsedAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Usage unit",
+          "example": "无",
+          "member": "string",
+          "name": "UsedAmountUnit",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Original price",
+          "example": "无",
+          "member": "string",
+          "name": "Cost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Discount",
+          "example": "无",
+          "member": "string",
+          "name": "Discount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Discounted price",
+          "example": "无",
+          "member": "string",
+          "name": "RealCost",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Voucher payment amount",
+          "example": "无",
+          "member": "string",
+          "name": "VoucherPayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cash payment amount",
+          "example": "无",
+          "member": "string",
+          "name": "CashPayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bonus payment amount",
+          "example": "无",
+          "member": "string",
+          "name": "IncentivePayAmount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CostDetail": {
+      "document": "Consumption details data type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Payer UIN",
+          "example": "909619400",
+          "member": "string",
+          "name": "PayerUin",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product name",
+          "example": "移动推送",
+          "member": "string",
+          "name": "BusinessCodeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct name",
+          "example": "移动推送基础服务",
+          "member": "string",
+          "name": "ProductCodeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing mode name",
+          "example": "包年包月",
+          "member": "string",
+          "name": "PayModeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project name",
+          "example": "默认项目",
+          "member": "string",
+          "name": "ProjectName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region Name",
+          "example": "华南地区（广州）",
+          "member": "string",
+          "name": "RegionName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Zone name",
+          "example": "其他",
+          "member": "string",
+          "name": "ZoneName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource ID",
+          "example": "tpns1150002173220210809400005346410791c7c8b9aff765f56aaa052c8f16",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource name",
+          "example": "未命名",
+          "member": "string",
+          "name": "ResourceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Type nameNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "包年包月续费",
+          "member": "string",
+          "name": "ActionTypeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Order ID",
+          "example": "20211009400006732337101",
+          "member": "string",
+          "name": "OrderId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Transaction ID",
+          "example": "20211009400006732337101",
+          "member": "string",
+          "name": "BillId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start time of fees",
+          "example": "2021-11-03 00:00:00",
+          "member": "string",
+          "name": "FeeBeginTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End time of fees",
+          "example": "2021-11-03 23:59:59",
+          "member": "string",
+          "name": "FeeEndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Component details",
+          "example": "[           {             \"ComponentCodeName\": \"移动推送TPNS_预付费_境内资",
+          "member": "CostComponentSet",
+          "name": "ComponentSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct name code",
+          "example": "sp_tpns_basic",
+          "member": "string",
+          "name": "ProductCode",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -3258,7 +4657,7 @@
         },
         {
           "disabled": false,
-          "document": "Context information returned by this request. The value can be passed in as the value of parameters in the next request to accelerate queries. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "UEEJBfSsteS7dZgAaEEziWS40d4sn4urG7",
           "member": "string",
           "name": "Context",
@@ -3323,7 +4722,7 @@
         },
         {
           "disabled": false,
-          "document": "Bill download URL, valid for one hour.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Billing file download link, valid for 1 day. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "DownloadUrl",
@@ -4113,6 +5512,125 @@
       ],
       "type": "object"
     },
+    "DescribeCostDetailRequest": {
+      "document": "DescribeCostDetail request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The number of entries returned at a time. The maximum value is `100`.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Cycle start time in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be entered, and if this field is present, Month becomes invalid. BeginTime and EndTime must be entered together, and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after cost analysis is activated and within the past 24 months.",
+          "example": "2024-01-01 00:00:00",
+          "member": "datetime",
+          "name": "BeginTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cycle end time in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be entered, and if this field is present, Month becomes invalid. BeginTime and EndTime must be entered together, and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after cost analysis is activated and within the past 24 months.",
+          "example": "2024-01-31 00:00:00",
+          "member": "datetime",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the total number of records in the list is needed, for frontend pagination1: needed, 0: not needed",
+          "example": "0",
+          "member": "uint64",
+          "name": "NeedRecordNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Month, in the format of yyyy-mm. Either Month or BeginTime&EndTime must be entered, and if BeginTime&EndTime is entered, Month becomes invalid. It cannot be earlier than the month when cost analysis is activated. Data of up to 24 months can be retrieved.",
+          "example": "\"2024-01-01 00:00:00\"",
+          "member": "string",
+          "name": "Month",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Used to query information of a specified product (currently not available)",
+          "example": "\"code\"",
+          "member": "string",
+          "name": "ProductCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode. Options include prePay and postPay.",
+          "example": "\"postPay\"",
+          "member": "string",
+          "name": "PayMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Used to query information of a specified resource",
+          "example": "\"1400532488\"",
+          "member": "string",
+          "name": "ResourceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCostDetailResponse": {
+      "document": "DescribeCostDetail response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Consumption details\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[                     {                         \"ComponentCodeName\": \"standard storage usage\",                         \"ItemCodeName\": \"cos standard storage usage\",                         \"UsedAmount\": \"44.04199273\",                         \"UsedAmountUnit\": \"GB\",                         \"SinglePrice\": \"0.00080000\",                         \"PriceUnit\": \"USD\\/GB\\/Day\",                         \"Cost\": \"0.03523359\",                         \"Discount\": \"1.00000000\",                         \"RealCost\": \"0.03875695\",                         \"VoucherPayAmount\": \"0.00000000\",                         \"CashPayAmount\": \"0.03875695\",                         \"IncentivePayAmount\": \"0.00000000\",                         \"Tax\": \"0.00352336\",                         \"TaxRate\": \"0.10000000\"                     }                 ]",
+          "member": "CostDetail",
+          "name": "DetailSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Record countNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeCostExplorerSummaryRequest": {
       "document": "DescribeCostExplorerSummary request structure.",
       "members": [
@@ -4269,6 +5787,478 @@
           "name": "ConditionValue",
           "output_required": false,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCostSummaryByProductRequest": {
+      "document": "DescribeCostSummaryByProduct request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The value must be of the same month as `EndTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
+          "example": "2018-11",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The value must be of the same month as `BeginTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
+          "example": "2018-11",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data quantity per fetch. The maximum value is 100.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset, which starts from 0 by default",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "UIN of the user querying the bill data",
+          "example": "无",
+          "member": "string",
+          "name": "PayerUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to return the record count. 0 for no, 1 for yes. Default is no.",
+          "example": "1",
+          "member": "uint64",
+          "name": "NeedRecordNum",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCostSummaryByProductResponse": {
+      "document": "DescribeCostSummaryByProduct response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data readiness, 0 for not ready, 1 for ready",
+          "example": "1",
+          "member": "uint64",
+          "name": "Ready",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumption details",
+          "example": "无",
+          "member": "ConsumptionSummaryTotal",
+          "name": "Total",
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumption details summarized by productNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ConsumptionBusinessSummaryDataItem",
+          "name": "Data",
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Record count. The system returns null when NeedRecordNum is 0.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "uint64",
+          "name": "RecordNum",
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCostSummaryByProjectRequest": {
+      "document": "DescribeCostSummaryByProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The value must be of the same month as `EndTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
+          "example": "2018-11",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The value must be of the same month as `BeginTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
+          "example": "2018-11",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data quantity per fetch. The maximum value is `100`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset, which starts from 0 by default",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "UIN of the user querying the bill data",
+          "example": "无",
+          "member": "string",
+          "name": "PayerUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to return the record count. 0 for no, 1 for yes. Default is no.",
+          "example": "1",
+          "member": "uint64",
+          "name": "NeedRecordNum",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCostSummaryByProjectResponse": {
+      "document": "DescribeCostSummaryByProject response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data readiness, 0 for not ready, 1 for ready",
+          "example": "1",
+          "member": "uint64",
+          "name": "Ready",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumption details",
+          "example": "无",
+          "member": "ConsumptionSummaryTotal",
+          "name": "Total",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumption details summarized by business",
+          "example": "无",
+          "member": "ConsumptionProjectSummaryDataItem",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Record count. The system returns null when NeedRecordNum is 0.",
+          "example": "6",
+          "member": "uint64",
+          "name": "RecordNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCostSummaryByRegionRequest": {
+      "document": "DescribeCostSummaryByRegion request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The value must be of the same month as `EndTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
+          "example": "2018-11",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The value must be of the same month as `BeginTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.",
+          "example": "2018-11",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data quantity per fetch. The maximum value is `100`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset, which starts from 0 by default",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "UIN of the user querying the bill data",
+          "example": "无",
+          "member": "string",
+          "name": "PayerUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to return the record count. 0 for no, 1 for yes. Default is no.",
+          "example": "1",
+          "member": "uint64",
+          "name": "NeedRecordNum",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCostSummaryByRegionResponse": {
+      "document": "DescribeCostSummaryByRegion response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data readiness, 0 for not ready, 1 for ready",
+          "example": "1",
+          "member": "uint64",
+          "name": "Ready",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumption details",
+          "example": "无",
+          "member": "ConsumptionSummaryTotal",
+          "name": "Total",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumption details summarized by region",
+          "example": "无",
+          "member": "ConsumptionRegionSummaryDataItem",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Record count. The system returns null when NeedRecordNum is 0.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "8",
+          "member": "uint64",
+          "name": "RecordNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCostSummaryByResourceRequest": {
+      "document": "DescribeCostSummaryByResource request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The value must be of the same month as EndTime. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both BeginTime and EndTime are 2018-09, the data returned will be for the entire month of September 2018.",
+          "example": "2018-11",
+          "member": "string",
+          "name": "BeginTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The value must be of the same month as BeginTime. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both BeginTime and EndTime are 2018-09, the data returned will be for the entire month of September 2018.",
+          "example": "2018-11",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data quantity per fetch. The maximum value is 100.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset, which starts from 0 by default",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "UIN of the user querying the bill data",
+          "example": "无",
+          "member": "string",
+          "name": "PayerUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to return the record count. 0 for no, 1 for yes. Default is no.",
+          "example": "无",
+          "member": "uint64",
+          "name": "NeedRecordNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to return filter criteria. 0 for no, 1 for yes. Default is no.",
+          "example": "无",
+          "member": "uint64",
+          "name": "NeedConditionValue",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria. It only supports ResourceKeyword (resource keyword, which supports fuzzy query by resource ID or resource name), ProjectIds (project ID), RegionIds (region ID), PayModes (payment mode, prePay or postPay), HideFreeCost (whether to hide zero-amount transactions, 0 or 1), and OrderByCost (sorting rule by fees, desc or asc).",
+          "example": "无",
+          "member": "Conditions",
+          "name": "Conditions",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCostSummaryByResourceResponse": {
+      "document": "DescribeCostSummaryByResource response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data readiness, 0 for not ready, 1 for ready",
+          "example": "1",
+          "member": "uint64",
+          "name": "Ready",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Consumption detailsNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ConsumptionSummaryTotal",
+          "name": "Total",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ConsumptionResourceSummaryConditionValue",
+          "name": "ConditionValue",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Record countNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "29",
+          "member": "uint64",
+          "name": "RecordNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource consumption detailsNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ConsumptionResourceSummaryDataItem",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": true
         },
         {
