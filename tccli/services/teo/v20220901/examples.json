@@ -128,6 +128,20 @@
         "title": "Creating an origin group"
       }
     ],
+    "CreatePlan": [
+      {
+        "document": "Create a Personal Edition Billing Plan, with a duration of 1 month, and set it not to auto-renew.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePlan\n<Common request parameters>\n\n{\n    \"PlanType\": \"personal\",\n    \"PrepaidPlanParam\": {\n        \"Period\": 1,\n        \"RenewFlag\": \"off\"\n    },\n    \"AutoUseVoucher\": \"false\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a617014-efc9-45c6-ba9d-c87d70472461\",\n        \"PlanId\": \"edgeone-2unuvzjmmn2q\",\n        \"DealName\": \"20240312347001004723731\"\n    }\n}",
+        "title": "Creating Personal Edition Billing Plan"
+      },
+      {
+        "document": "Create an Enterprise Edition Plan.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreatePlan\n<Common request parameters>\n\n{\n    \"PlanType\": \"enterprise\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a617014-efc9-45c6-ba9d-c87d70472461\",\n        \"PlanId\": \"edgeone-2unuvzjmmn2q\",\n        \"DealName\": \"20240312347001004723731\"\n    }\n}",
+        "title": "Creating Enterprise Edition Plan"
+      }
+    ],
     "CreatePlanForZone": [
       {
         "document": "This example shows you how to create a plan for a zone.",
@@ -574,16 +588,16 @@
     ],
     "DescribeRealtimeLogDeliveryTasks": [
       {
-        "document": "This example shows you how to query all real-time log delivery task information under a specified zone-id.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRealtimeLogDeliveryTasks\n<Common Request Parameters>\n\n{\n    \"ZoneId\": \"zone-2o7b38ba1hvr\",\n    \"Offset\": 0,\n    \"Limit\": 1000\n}",
-        "output": "{\n    \"Response\": {\n        \"RealtimeLogDeliveryTasks\": [\n            {\n                \"Area\": \"overseas\",\n                \"CLS\": {\n                    \"LogSetId\": \"980611e5-3eb2-430f-a0cc-e1c4e84a9e40\",\n                    \"LogSetRegion\": \"ap-guangzhou\",\n                    \"TopicId\": \"d258c060-dc6e-4586-8b7c-6a951667fa7a\"\n                },\n                \"CreateTime\": \"2024-03-26T03:00:39+08:00\",\n                \"CustomEndpoint\": null,\n                \"CustomFields\": [],\n                \"DeliveryConditions\": [],\n                \"DeliveryStatus\": \"enabled\",\n                \"EntityList\": [\n                    \"qqqq.loliyu.com\"\n                ],\n                \"Fields\": [\n                    \"RequestID\",\n                    \"ClientIP\",\n                    \"ClientRegion\",\n                    \"RequestTime\",\n                    \"RequestHost\",\n                    \"RequestBytes\",\n                    \"RequestMethod\",\n                    \"RequestUrl\",\n                    \"RequestUrlQueryString\",\n                    \"RequestUA\",\n                    \"RequestRange\",\n                    \"RequestReferer\",\n                    \"RequestProtocol\",\n                    \"RemotePort\",\n                    \"EdgeCacheStatus\",\n                    \"EdgeResponseStatusCode\",\n                    \"EdgeResponseBytes\",\n                    \"EdgeResponseTime\",\n                    \"EdgeInternalTime\",\n                    \"ClientState\",\n                    \"ClientISP\",\n                    \"EdgeServerID\",\n                    \"EdgeServerIP\"\n                ],\n                \"LogType\": \"domain\",\n                \"S3\": null,\n                \"Sample\": 0,\n                \"TaskId\": \"f0e1686a-1c4e-4f15-967b-5afb2a0803ea\",\n                \"TaskName\": \"ccc\",\n                \"TaskType\": \"cls\",\n                \"UpdateTime\": \"2024-03-26T03:10:13+08:00\"\n            }\n        ],\n        \"RequestId\": \"05205d07-f582-444d-b558-b338a3f68857\",\n        \"TotalCount\": 1\n    }\n}",
-        "title": "Querying All Real-time Log Delivery Task Information Under a Site"
+        "document": "Query all real-time log delivery task information for a specified zone ID.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRealtimeLogDeliveryTasks\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2ur49nglp1a2\",\n    \"Offset\": 0,\n    \"Limit\": 1000\n}",
+        "output": "{\n    \"Response\": {\n        \"RealtimeLogDeliveryTasks\": [\n            {\n                \"Area\": \"overseas\",\n                \"CLS\": {\n                    \"LogSetId\": \"980611e5-3eb2-430f-a0cc-e1c4e84a9e40\",\n                    \"LogSetRegion\": \"ap-guangzhou\",\n                    \"TopicId\": \"d258c060-dc6e-4586-8b7c-6a951667fa7a\"\n                },\n                \"CreateTime\": \"2024-03-26T03:00:39+08:00\",\n                \"CustomEndpoint\": null,\n                \"CustomFields\": [],\n                \"DeliveryConditions\": [],\n                \"DeliveryStatus\": \"enabled\",\n                \"EntityList\": [\n                    \"qqqq.loliyu.com\"\n                ],\n                \"Fields\": [\n                    \"RequestID\",\n                    \"ClientIP\",\n                    \"ClientRegion\",\n                    \"RequestTime\",\n                    \"RequestHost\",\n                    \"RequestBytes\",\n                    \"RequestMethod\",\n                    \"RequestUrl\",\n                    \"RequestUrlQueryString\",\n                    \"RequestUA\",\n                    \"RequestRange\",\n                    \"RequestReferer\",\n                    \"RequestProtocol\",\n                    \"RemotePort\",\n                    \"EdgeCacheStatus\",\n                    \"EdgeResponseStatusCode\",\n                    \"EdgeResponseBytes\",\n                    \"EdgeResponseTime\",\n                    \"EdgeInternalTime\",\n                    \"ClientState\",\n                    \"ClientISP\",\n                    \"EdgeServerID\",\n                    \"EdgeServerIP\"\n                ],\n                \"LogFormat\": null,\n                \"LogType\": \"domain\",\n                \"S3\": null,\n                \"Sample\": 0,\n                \"TaskId\": \"f0e1686a-1c4e-4f15-967b-5afb2a0803ea\",\n                \"TaskName\": \"ccc\",\n                \"TaskType\": \"cls\",\n                \"UpdateTime\": \"2024-03-26T03:10:13+08:00\"\n            }\n        ],\n        \"RequestId\": \"05205d07-f582-444d-b558-b338a3f68857\",\n        \"TotalCount\": 1\n    }\n}",
+        "title": "Querying All Real-time Log Delivery Task Information for a Specific Site"
       },
       {
-        "document": "This example shows you how to query the real-time log delivery task information corresponding to a specified acceleration domain. If the TotalCount in the output return result is 0, it can be determined that the acceleration domain has not been added to any real-time log delivery task.",
-        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRealtimeLogDeliveryTasks\n<Common Request Parameters>\n\n{\n    \"ZoneId\": \"zone-2o7b38ba1hvr\",\n    \"Offset\": 0,\n    \"Limit\": 20,\n    \"Filters\": [\n        {\n            \"Name\": \"entity-list\",\n            \"Values\": [\n                \"domain.example.com\"\n            ]\n        }\n    ]\n}",
+        "document": "Query real-time log delivery task information for a specified acceleration domain name. If TotalCount in returned output result is '0', it indicates that this acceleration domain name has not been added to any Real-time Log Delivery Task.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRealtimeLogDeliveryTasks\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2o7b38ba1hvr\",\n    \"Offset\": 0,\n    \"Limit\": 20,\n    \"Filters\": [\n        {\n            \"Name\": \"entity-list\",\n            \"Values\": [\n                \"domain.example.com\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"RealtimeLogDeliveryTasks\": [],\n        \"RequestId\": \"f025c1f0-cb83-41b1-bb7d-565af7e28479\"\n    }\n}",
-        "title": "Querying Real-time Log Delivery Task Information Based on an Acceleration Domain"
+        "title": "Querying Real-time Log Delivery Task Information by Acceleration Domain Name"
       }
     ],
     "DescribeRules": [
@@ -740,6 +754,14 @@
         "title": "Querying the list of user sites"
       }
     ],
+    "DestroyPlan": [
+      {
+        "document": "Terminate the billing plan edgeone-2wdo315m2y4c.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DestroyPlan\n<Common request parameters>\n\n{\n    \"PlanId\": \"edgeone-2wdo315m2y4c\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a617014-efc9-45c6-ba9d-c87d70472461\"\n    }\n}",
+        "title": "Terminating Billing Plan"
+      }
+    ],
     "DownloadL4Logs": [
       {
         "document": " ",
@@ -762,6 +784,20 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IdentifyZone\n<Common request parameters>\n\n{\n    \"ZoneName\": \"example.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"Ascription\": {\n            \"Subdomain\": \"edgeonereclaim\",\n            \"RecordType\": \"TXT\",\n            \"RecordValue\": \"reclaim-a24aba2420cf4ce8b7bff7c8be6d337f\"\n        },\n        \"FileAscription\": {\n            \"IdentifyPath\": \"/.well-known/teo-verification/vd4ewuqa9n.txt\",\n            \"IdentifyContent\": \"88v24mnnljwbhaohrpfx80f63duhdnjx\"\n        },\n        \"RequestId\": \"9kl50bew-89ga-44f4-91ce-78125d53vd2a\"\n    }\n}",
         "title": "Verifying site ownership"
+      }
+    ],
+    "IncreasePlanQuota": [
+      {
+        "document": "Add 10 site number quotas for the plan edgeone-2unuvzjmmn2q.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPlanQuota\n<Common request parameters>\n\n{\n    \"PlanId\": \"edgeone-2unuvzjmmn2q\",\n    \"QuotaType\": \"site\",\n    \"QuotaNumber\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"DealName\": \"20240312347001004723731\",\n        \"RequestId\": \"6a617014-efc9-45c6-ba9d-c87d70472461\"\n    }\n}",
+        "title": "Adding Site Number Quota to Plan"
+      },
+      {
+        "document": "Add 10 rule quotas for \"Web Protection - Custom Rules - Precision Matching Policy\" to the plan edgeone-2unuvzjmmn2q.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPlanQuota\n<Common request parameters>\n\n{\n    \"PlanId\": \"edgeone-2unuvzjmmn2q\",\n    \"QuotaType\": \"precise_access_control_rule\",\n    \"QuotaNumber\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"DealName\": \"20240312347001004723731\",\n        \"RequestId\": \"6a617014-efc9-45c6-ba9d-c87d70472461\"\n    }\n}",
+        "title": "Adding Custom Rule Quotas to Plan"
       }
     ],
     "ModifyAccelerationDomain": [
@@ -888,6 +924,14 @@
         "title": "Modifying an origin group"
       }
     ],
+    "ModifyPlan": [
+      {
+        "document": "Enable the auto-renewal feature for the prepaid plan edgeone-2unuvzjmmn2q.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyPlanRenewFlag\n<Common request parameters>\n\n{\n    \"PlanId\": \"edgeone-2unuvzjmmn2q\",\n    \"RenewFlag\": {\n        \"Switch\": \"on\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6a617014-efc9-45c6-ba9d-c87d70472461\"\n    }\n}",
+        "title": "Modifying Auto-Renewal Tag for Prepaid Plan"
+      }
+    ],
     "ModifyRealtimeLogDeliveryTask": [
       {
         "document": "This example shows you how to modify the configuration of a successfully created real-time log delivery task and disable its log sampling feature. Before modification, the log sampling ratio is 60.5%. After modification, log sampling will no longer be performed, and 100% of the logs will be delivered to the destination.",
@@ -984,6 +1028,22 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyZoneStatus\n<Common request parameters>\n\n{\n    \"Paused\": true,\n    \"ZoneId\": \"zone-27q0p0bali16\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"7sd20b24-7dc5-98f4-96ce-95825dcd34sa\"\n    }\n}",
         "title": "Changes the site status"
+      }
+    ],
+    "RenewPlan": [
+      {
+        "document": "The plan edgeone-2unuvzjmmn2q is renewed for three months and the voucher will not be automatically used.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RenewPlan\n<Common request parameters>\n\n{\n    \"PlanId\": \"edgeone-2unuvzjmmn2q\",\n    \"Period\": 3,\n    \"AutoUseVoucher\": \"false\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DealName\": \"20240312347001004723731\",\n        \"RequestId\": \"6a617014-efc9-45c6-ba9d-c87d70472461\"\n    }\n}",
+        "title": "Renewing Plan for Three Months"
+      }
+    ],
+    "UpgradePlan": [
+      {
+        "document": "Upgrade the prepaid plan edgeone-2unuvzjmmn2q to the Standard Edition without using the voucher.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradePlan\n<Common request parameters>\n\n{\n    \"PlanId\": \"edgeone-2unuvzjmmn2q\",\n    \"PlanType\": \"standard\",\n    \"AutoUseVoucher\": \"false\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DealName\": \"20240312347001004723731\",\n        \"RequestId\": \"6a617014-efc9-45c6-ba9d-c87d70472461\"\n    }\n}",
+        "title": "Upgrading Prepaid Plan to Standard Edition"
       }
     ],
     "VerifyOwnership": [

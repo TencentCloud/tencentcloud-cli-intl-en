@@ -91,6 +91,13 @@
       "output": "CreateOriginGroupResponse",
       "status": "online"
     },
+    "CreatePlan": {
+      "document": "If you need to use the EdgeOne product, you must create a billing plan through this interface.\n> After creating a plan, you need to complete the process of creating a site and binding the plan through [CreateZone](https://intl.cloud.tencent.com/document/product/1552/80719?from_cn_redirect=1), so that the EdgeOne can provide services properly.",
+      "input": "CreatePlanRequest",
+      "name": "Creates plan",
+      "output": "CreatePlanResponse",
+      "status": "online"
+    },
     "CreatePlanForZone": {
       "document": "This API is used to purchase a plan for a new site.",
       "input": "CreatePlanForZoneRequest",
@@ -490,6 +497,13 @@
       "output": "DescribeZonesResponse",
       "status": "online"
     },
+    "DestroyPlan": {
+      "document": "To stop billing for your EdgeOne plan, you can use this interface to terminate the billing plan.\n> Terminating a billing plan requires the following conditions:\n    1. The plan has expired (except for the Enterprise Edition Plan);\n    2. All sites under the plan have been either shut down or deleted.\n\n> The site status can be queried through the [Query Site List](https://intl.cloud.tencent.com/document/product/1552/80713?from_cn_redirect=1) interface.\nA site can be deactivated by switching the site to a closed status through the [Switch Site Status](https://intl.cloud.tencent.com/document/product/1552/80707?from_cn_redirect=1) interface.\nA site can be deleted by using the [Delete Site](https://intl.cloud.tencent.com/document/product/1552/80717?from_cn_redirect=1) interface.",
+      "input": "DestroyPlanRequest",
+      "name": "Terminates plan",
+      "output": "DestroyPlanResponse",
+      "status": "online"
+    },
     "DownloadL4Logs": {
       "document": "This API is used to download L4 logs.",
       "input": "DownloadL4LogsRequest",
@@ -509,6 +523,13 @@
       "input": "IdentifyZoneRequest",
       "name": "Verifies site ownership",
       "output": "IdentifyZoneResponse",
+      "status": "online"
+    },
+    "IncreasePlanQuota": {
+      "document": "When the number of sites bound to your plan, the number of rules under \"Web Protection - Custom Rules - Precision Matching Policy\", or the number of rules under \"Web Protection - Rate Limiting - Precision Rate Limiting Module\" reaches the plan's quota, you can use this interface to purchase additional quotas.\n> This interface only supports the Enterprise Edition Plan.",
+      "input": "IncreasePlanQuotaRequest",
+      "name": "Purchases additional plan quota",
+      "output": "IncreasePlanQuotaResponse",
       "status": "online"
     },
     "ModifyAccelerationDomain": {
@@ -609,6 +630,13 @@
       "output": "ModifyOriginGroupResponse",
       "status": "online"
     },
+    "ModifyPlan": {
+      "document": "Modify the plan settings. Currently, only the auto-renewal switch of prepaid plans can be modified.",
+      "input": "ModifyPlanRequest",
+      "name": "Modifies plan setting",
+      "output": "ModifyPlanResponse",
+      "status": "online"
+    },
     "ModifyRealtimeLogDeliveryTask": {
       "document": "This API is used to modify the real-time log delivery task configuration. This API has the following restrictions:<li>Does not support modifying the destination type of the real-time log delivery task (TaskType);</li><li>Does not support modifying the data delivery type (LogType)</li><li>Does not support modifying the data delivery area (Area)</li><li>Does not support modifying the detailed destination configuration, such as log set and log topic, when the destination of the original real-time log delivery task is Tencent Cloud CLS.</li>",
       "input": "ModifyRealtimeLogDeliveryTaskRequest",
@@ -656,6 +684,20 @@
       "input": "ModifyZoneStatusRequest",
       "name": "Changes the site status",
       "output": "ModifyZoneStatusResponse",
+      "status": "online"
+    },
+    "RenewPlan": {
+      "document": "When your plan needs to be extended, you can use this interface to renew it. Plan renewal is only supported for the Personal, Basic, and Standard Editions.\n> For cost details, refer to [Plan Fees](https://intl.cloud.tencent.com/document/product/1552/94158?from_cn_redirect=1).",
+      "input": "RenewPlanRequest",
+      "name": "Renews plan",
+      "output": "RenewPlanResponse",
+      "status": "online"
+    },
+    "UpgradePlan": {
+      "document": "When you need features available only in higher-tier plans, you can upgrade your plan through this interface. Upgrades are only supported for Personal and Basic Edition Plans.\n> For differences between EdgeOne billing plans, refer to [Comparison of EdgeOne Plans](https://intl.cloud.tencent.com/document/product/1552/94165?from_cn_redirect=1).\nFor EdgeOne plan upgrade rules and pricing details, refer to [EdgeOne Plan Upgrade Guide](https://intl.cloud.tencent.com/document/product/1552/95291?from_cn_redirect=1).\nIf your plan needs to upgrade to the Enterprise Edition, [Contact Us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).",
+      "input": "UpgradePlanRequest",
+      "name": "Upgrades plan",
+      "output": "UpgradePlanResponse",
       "status": "online"
     },
     "VerifyOwnership": {
@@ -3829,6 +3871,71 @@
       ],
       "type": "object"
     },
+    "CreatePlanRequest": {
+      "document": "CreatePlan request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Type of plan subscribed to. Valid values:<li>personal: Personal Edition Plan, prepaid;</li><li>basic: Basic Edition Plan, prepaid;</li><li>standard: Standard Edition Plan, prepaid;</li><li>enterprise: Enterprise Edition Plan, post-paid. </li>When subscribing to a prepaid plan, ensure there is sufficient balance in the account, as insufficient balance will result in a pending payment order.\nFor an overview of billing, refer to [Billing Overview](https://intl.cloud.tencent.com/document/product/1552/94156?from_cn_redirect=1).\nFor differences between plans, refer to [ Comparison of EdgeOne Plan](https://intl.cloud.tencent.com/document/product/1552/94165?from_cn_redirect=1).",
+          "example": "无",
+          "member": "string",
+          "name": "PlanType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to automatically use a voucher. Valid values: <li>true: Yes;</li><li>false: No. </li> This parameter is valid only when PlanType is personal, basic, or standard.\nIf this field is not specified, the default value 'false' will be used.",
+          "example": "无",
+          "member": "string",
+          "name": "AutoUseVoucher",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Parameters for subscribing to prepaid plans. When PlanType is personal, basic, or standard, this parameter can be optionally set to specify the subscription duration and whether to enable auto-renewal for the plan.\nIf this field is not specified, the default plan duration is 1 month, with auto-renewal disabled.",
+          "example": "无",
+          "member": "PrepaidPlanParam",
+          "name": "PrepaidPlanParam",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreatePlanResponse": {
+      "document": "CreatePlan response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Plan ID, formatted as edgeone-2unuvzjmmn2q.",
+          "example": "edgeone-2unuvzjmmn2q",
+          "member": "string",
+          "name": "PlanId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Order number.",
+          "example": "2024123412312312",
+          "member": "string",
+          "name": "DealName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreatePrefetchTaskRequest": {
       "document": "CreatePrefetchTask request structure.",
       "members": [
@@ -4078,6 +4185,15 @@
           "name": "Sample",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Output format for log delivery. If this field is not specified, the default format is used, which works as follows:\n<li>When TaskType is 'custom_endpoint', the default format is an array of JSON objects, with each JSON object representing a log entry;</li>\n<li>When TaskType is 's3', the default format is JSON Lines;</li>Specifically, when TaskType is 'cls', the only allowed value for LogFormat.FormatType is 'json', and other parameters in LogFormat will be ignored. It is recommended not to transfer LogFormat.",
+          "example": "无",
+          "member": "LogFormat",
+          "name": "LogFormat",
+          "required": false,
+          "type": "object"
         },
         {
           "disabled": false,
@@ -4699,7 +4815,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Exclusive DDoS protection specifications in the Chinese mainland. For details, see [Dedicated DDoS Mitigation Fee (Pay-as-You-Go)] (https://intl.cloud.tencent.com/document/product/1552/94162?from_cn_redirect=1).<li>PLATFORM: Default protection of the platform, i.e., Exclusive DDoS protection is not enabled;</li>\n<li>BASE30_MAX300: Exclusive DDoS protection enabled, providing a baseline protection bandwidth of 30 Gbps and an elastic protection bandwidth of up to 300 Gbps;</li><li>BASE60_MAX600: Exclusive DDoS protection enabled, providing a baseline protection bandwidth of 60 Gbps and an elastic protection bandwidth of up to 600 Gbps.</li>If no parameters are filled, the default value PLATFORM is used.",
+          "document": "Dedicated anti-DDoS specifications in the Chinese mainland. For details, refer to [Dedicated Anti-DDoS Related Fees](https://intl.cloud.tencent.com/document/product/1552/94162?from_cn_redirect=1).\n<li>PLATFORM: uses the default protection. Dedicated anti-DDoS is not enabled;</li>\n<li>BASE30_MAX300: uses dedicated anti-DDoS, which provides 30 Gbps guaranteed protection bandwidth and up to 300 Gbps elastic protection bandwidth;</li>\n<li>BASE60_MAX600: uses dedicated anti-DDoS, which provides 60 Gbps guaranteed protection bandwidth and up to 600 Gbps elastic protection bandwidth. </li>If this field is not specified, the default value 'PLATFORM' will be used.",
           "example": "PLATFORM",
           "member": "string",
           "name": "LevelMainland",
@@ -4721,7 +4837,7 @@
         },
         {
           "disabled": false,
-          "document": "Exclusive DDoS protection specifications in the worldwide region (excluding the Chinese mainland).<li>PLATFORM: Default protection of the platform, i.e., Exclusive DDoS protection is not enabled;</li><li>ANYCAST300: Exclusive DDoS protection enabled, offering a total maximum protection bandwidth of 300 Gbps;</li>\n<li>ANYCAST_ALLIN: Exclusive DDoS protection enabled, utilizing all available protection resources for protection.</li>When no parameters are filled, the default value PLATFORM is used.",
+          "document": "Dedicated anti-DDoS specifications in global regions (excluding the Chinese mainland).\n<li>PLATFORM: uses the default protection. Dedicated anti-DDoS is not enabled;</li>\n<li>ANYCAST300: uses dedicated anti-DDoS, which provides 300 Gbps protection bandwidth;</li>\n<li>ANYCAST_ALLIN: uses dedicated anti-DDoS, which provides all available protection resources. </li>If this field is not specified, the default value 'PLATFORM' will be used.",
           "example": "ANYCAST_ALLIN",
           "member": "string",
           "name": "LevelOverseas",
@@ -7096,7 +7212,7 @@
         },
         {
           "disabled": false,
-          "document": "The list of L7 traffic summary statistics recorded over time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return 'null', which indicates a failure to obtain a valid value.",
           "example": "无",
           "member": "TimingDataRecord",
           "name": "Data",
@@ -7163,7 +7279,7 @@
         },
         {
           "disabled": false,
-          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: \n<li>job-id<br> Filter based on task ID.  job-id format: 1379afjk91u32h. Multiple values are not supported, Fuzzy search is not supported. </li>\n<li>target<br> Filter based on target resource information. target format: http://www.qq.com/1.txt. Multiple values are not supported, Fuzzy search is not supported. </li>\n<li>domains<br> Filter based on domain name. domains format: www.qq.com. Fuzzy search is not supported.</li>\n<li>statuses<br> Filter based on task status.  Fuzzy search is not supported. Options:<br> processing: Processing<br> success: Success<br> failed: Failure<br> timeout: Timeout</li>",
+          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: \n<li>job-id \nFilter based on task ID.  job-id format: 1379afjk91u32h. Multiple values are not supported, Fuzzy search is not supported. </li>\n<li>target\nFilter based on target resource information. target format: http://www.qq.com/1.txt. Multiple values are not supported, Fuzzy search is not supported. </li>\n<li>domains \nFilter based on domain name. domains format: www.qq.com. Fuzzy search is not supported.</li>\n<li>statuses\nFilter based on task status.  Fuzzy search is not supported. Options:<br> processing: Processing<br> success: Success<br> failed: Failure<br> timeout: Timeout</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -7255,7 +7371,7 @@
         },
         {
           "disabled": false,
-          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: \n<li>job-id: Filter based on task ID. job-id format: 1379afjk91u32h. Multiple values are not supported, Fuzzy search is not supported;</li>\n<li>target: Filter based on: target resource information. target format: http://www.qq.com/1.txt or tag1. Multiple values are not supported, Fuzzy search is not supported; </li>\n<li>domains: Filter based on domain name. domains format: www.qq.com, Fuzzy search is not supported; </li>\n<li>statuses: Filter based on task status, Fuzzy search is not supported. Options: <br>processing: Processing<br>success: Success<br>failed: Failure<br>timeout: Timeout</li>\n<li>type: Filter based on cleared cache type. Multiple values are not supported, Fuzzy search is not supported. Options:<br> purge_url: URL<br> purge_prefix: Prefix<br> purge_all: All cache content<br> purge_host: Hostname<br> purge_cache_tag: CacheTag</li>",
+          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: \n<li>job-id\nFilter based on task ID. job-id format: 1379afjk91u32h. Multiple values are not supported, Fuzzy search is not supported;</li>\n<li>target\nFilter based on: target resource information. target format: http://www.qq.com/1.txt or tag1. Multiple values are not supported, Fuzzy search is not supported; </li>\n<li>domains\nFilter based on domain name. domains format: www.qq.com, Fuzzy search is not supported; </li>\n<li>statuses\nFilter based on task status, Fuzzy search is not supported. Options: <br>processing: Processing<br>success: Success<br>failed: Failure<br>timeout: Timeout</li>\n<li>type\nFilter based on cleared cache type. Multiple values are not supported, Fuzzy search is not supported. Options:<br> purge_url: URL<br> purge_prefix: Prefix<br> purge_all: All cache content<br> purge_host: Hostname<br> purge_cache_tag: CacheTag</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -8208,6 +8324,33 @@
           "type": "list",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyPlanRequest": {
+      "document": "DestroyPlan request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Plan ID, in the format of edgeone-2wdo315m2y4c.",
+          "example": "edgeone-edgeone-2unuvzjmmn2q",
+          "member": "string",
+          "name": "PlanId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyPlanResponse": {
+      "document": "DestroyPlan response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -9727,6 +9870,61 @@
       ],
       "usage": "both"
     },
+    "IncreasePlanQuotaRequest": {
+      "document": "IncreasePlanQuota request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Plan ID, formatted as edgeone-2unuvzjmmn2q.",
+          "example": "edgeone-2unuvzjmmn2q",
+          "member": "string",
+          "name": "PlanId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The types of new plan quotas available include:<li> site: Number of sites;</li><li> precise_access_control_rule: the number of rules under \"Web Protection - Custom Rules - Precision Matching Policy\";</li><li> rate_limiting_rule: the number of rules under \"Web Protection - Rate Limiting - Precision Rate Limiting Module\". </li>",
+          "example": "zone",
+          "member": "string",
+          "name": "QuotaType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of new quotas. The maximum number of quotas that can be added at one time is 100.",
+          "example": "1",
+          "member": "int64",
+          "name": "QuotaNumber",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "IncreasePlanQuotaResponse": {
+      "document": "IncreasePlanQuota response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Order number.",
+          "example": "20240312347001004723731",
+          "member": "string",
+          "name": "DealName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "IntelligenceRule": {
       "document": "Bot intelligence rules",
       "members": [
@@ -10365,6 +10563,89 @@
         }
       ],
       "usage": "out"
+    },
+    "LogFormat": {
+      "document": "Output format for real-time log delivery. You can directly use the specified predefined log output format (JSON Lines / csv) through the FormatType parameter, or define a variant output format through additional parameters based on the predefined log output format.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Predefined output format type for log delivery. Valid values:\n<li>json: Use the predefined log output format JSON Lines, where fields in each log record are presented as key-value pairs;</li>\n<li>csv: Use the predefined log output format csv, where fields in each log record is only presented as field values, excluding field names. </li>",
+          "example": "json",
+          "member": "string",
+          "name": "FormatType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "A string added before each log delivery batch. Each log delivery batch may contain multiple log records.",
+          "example": "{\"events\":[",
+          "member": "string",
+          "name": "BatchPrefix",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "A string appended after each log delivery batch.",
+          "example": "]}",
+          "member": "string",
+          "name": "BatchSuffix",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "A string added before each log record.",
+          "example": "{",
+          "member": "string",
+          "name": "RecordPrefix",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "A string appended after each log record.",
+          "example": "}",
+          "member": "string",
+          "name": "RecordSuffix",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "A string inserted between log records as a separator. Valid values:\n<li>\\n: Line break;</li>\n<li>\\t: Tab character;</li>\n<li>,: Half-width comma. </li>",
+          "example": ",",
+          "member": "string",
+          "name": "RecordDelimiter",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "A string inserted between fields as a separator within a single log record. Valid values:\n<li>\\t: Tab character;</li>\n<li>,: Half-width comma;</li>\n<li>;: Half-width semicolon. </li>",
+          "example": ",",
+          "member": "string",
+          "name": "FieldDelimiter",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "MaxAge": {
       "document": "Browser cache rule configuration, which is used to set the default value of `MaxAge` and is disabled by default.",
@@ -11274,6 +11555,42 @@
       ],
       "type": "object"
     },
+    "ModifyPlanRequest": {
+      "document": "ModifyPlan request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Plan ID, formatted as edgeone-2unuvzjmmn2q.",
+          "example": "edgeone-2unuvzjmmn2q",
+          "member": "string",
+          "name": "PlanId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Auto-renewal configuration item in a prepaid plan. If auto-renewal is enabled, the plan will be automatically renewed one day before it expires. This feature is only available for Personal, Basic, and Standard Edition Plans. If this field is not specified, the original configuration will be retained.",
+          "example": "无",
+          "member": "RenewFlag",
+          "name": "RenewFlag",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyPlanResponse": {
+      "document": "ModifyPlan response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyRealtimeLogDeliveryTaskRequest": {
       "document": "ModifyRealtimeLogDeliveryTask request structure.",
       "members": [
@@ -11357,6 +11674,15 @@
           "name": "Sample",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Output format for log delivery. If this field is not specified, the original configuration will be retained.",
+          "example": "无",
+          "member": "LogFormat",
+          "name": "LogFormat",
+          "required": false,
+          "type": "object"
         },
         {
           "disabled": false,
@@ -12014,7 +12340,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Origin server type. Valid values:\n<li>IP_DOMAIN: IPV4, IPV6, or domain type origin server;</li>\n<li>COS: Tencent Cloud Object Storage origin server;</li>\n<li>AWS_S3: AWS S3 Cloud Object Storage origin server;</li>\n<li>ORIGIN_GROUP: Origin group type origin server;</li>\n<li>VODEO: Video on Demand (hybrid cloud edition);</li>\n<li>SPACE: Origin shield, currently only available to the whitelist;</li>\n<li>LB: Cloud Load Balancer, currently only available to the whitelist.</li>",
+          "document": "Origin server type. Valid values:\n<li>IP_DOMAIN: IPv4, IPv6, or domain name-typed origin servers;</li>\n<li>COS: Tencent Cloud COS origin servers;</li>\n<li>AWS_S3: AWS S3 object storage origin servers;</li>\n<li>ORIGIN_GROUP: origin server group-typed origin servers;</li>\n<li>VODEO: Cloud VOD (Hybrid Cloud Edition);</li>\n<li>SPACE: uninstalling origin servers. Currently only available to the allowlist;</li>\n<li>LB: load balancing. Currently only available to the allowlist. </li>",
           "example": "ip_domain",
           "member": "string",
           "name": "OriginType",
@@ -12024,7 +12350,7 @@
         },
         {
           "disabled": false,
-          "document": "Origin server address, varying depending on the value of OriginType:\n<li>When OriginType is IP_DOMAIN, this parameter is IPv4 address, IPv6 address, or domain name;</li>\n<li>When OriginType is COS, this parameter is the COS bucket's access domain;</li>\n<li>When OriginType is AWS_S3, this parameter is the S3 bucket's access domain;</li>\n<li>When OriginType is ORIGIN_GROUP, this parameter is the origin group ID;</li>\n<li>When OriginType is VODEO, if VodeoDistributionRange is ALL, this parameter is \"all-buckets-in-vodeo-application\"; if VodeoDistributionRange is Bucket, this parameter is the corresponding bucket domain.</li>\n",
+          "document": "Origin server address, which varies according to the value of OriginType:\n<li>For OriginType = IP_DOMAIN, this parameter is an IPv4, IPv6 address or domain name;</li>\n<li>For OriginType = COS, this parameter is the access domain name of the COS bucket;</li>\n<li>For OriginType = AWS_S3, this parameter is the access domain name of the S3 bucket;</li>\n<li>For OriginType = ORIGIN_GROUP, this parameter is the origin server group ID;</li>\n<li>When OriginType = VODEO, if VodeoDistributionRange = ALL, then this parameter is \"all-buckets-in-vodeo-application\"; if VodeoDistributionRange = Bucket, then this parameter is the domain name of the corresponding bucket. </li>",
           "example": "qq.com",
           "member": "string",
           "name": "Origin",
@@ -12064,7 +12390,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether access to the private Cloud Object Storage origin server is allowed. This parameter is valid only when OriginType is COS or AWS_S3. Valid values:\n<li>on: Enable private authentication;</li>\n<li>off: Disable private authentication.</li>\nIf it is not specified, off is the default value.",
+          "document": "Whether access to the private object storage origin server is allowed. This parameter is valid only when the origin server type OriginType is COS or AWS_S3. Valid values:\n<li>on: Enable private authentication;</li>\n<li>off: Disable private authentication. </li>\nIf this field is not specified, the default value 'off' will be used.",
           "example": "on",
           "member": "string",
           "name": "PrivateAccess",
@@ -12094,7 +12420,7 @@
         },
         {
           "disabled": false,
-          "document": "MO distribution range. Valid values: <li>All: All</li> <li>Bucket: Bucket</li>",
+          "document": "MO distribution range. Valid values: <li>All: all</li> <li>Bucket: bucket</li>",
           "example": "无",
           "member": "string",
           "name": "VodeoDistributionRange",
@@ -12646,6 +12972,30 @@
         }
       ],
       "usage": "both"
+    },
+    "PrepaidPlanParam": {
+      "document": "Prepaid Plan Billing Parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Prepaid plan duration, unit: month. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.\n\nIf this field is not specified, the default value '1' will be used.",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The auto-renewal flag for prepaid plan has the following values:\n<li> on: Enable auto-renewal;</li>\n<li> off: Disable auto-renewal. </li>\nIf this field is not specified, the default value 'off' will be used. When auto-renewal is enabled, it defaults to renewing for one month.",
+          "example": "on",
+          "member": "string",
+          "name": "RenewFlag",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
     },
     "PrivateParameter": {
       "document": "Private authentication parameters for Cloud Object Storage origin server",
@@ -13311,6 +13661,16 @@
         },
         {
           "disabled": false,
+          "document": "Output format for log delivery. When the output parameter is null, the default format is used, which works as follows:\n<li>When TaskType is 'custom_endpoint', the default format is an array of JSON objects, with each JSON object representing a log entry;</li>\n<li>When TaskType is 's3', the default format is JSON Lines. </li>\nNote: This field may return 'null', which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "LogFormat",
+          "name": "LogFormat",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
           "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CLSTopic",
@@ -13361,6 +13721,76 @@
         }
       ],
       "usage": "out"
+    },
+    "RenewFlag": {
+      "document": "Auto-renewal configuration item in a prepaid plan.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The auto-renewal flag for prepaid plan has the following values:\n<li> on: Enable auto-renewal;</li>\n<li> off: Disable auto-renewal. </li>",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "RenewPlanRequest": {
+      "document": "RenewPlan request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Plan ID, formatted as edgeone-2unuvzjmmn2q.",
+          "example": "edgeone-2unuvzjmmn2q",
+          "member": "string",
+          "name": "PlanId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Renewal plan duration, unit: month. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.",
+          "example": "1",
+          "member": "int64",
+          "name": "Period",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to automatically use a voucher. Valid values: <li>true: Yes;</li><li>false: No. </li> If this field is not specified, the default value 'false' will be used.",
+          "example": "true",
+          "member": "string",
+          "name": "AutoUseVoucher",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RenewPlanResponse": {
+      "document": "RenewPlan response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Order number.",
+          "example": "20240312347001004723731",
+          "member": "string",
+          "name": "DealName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "Resource": {
       "document": "Billable resource",
@@ -14833,17 +15263,7 @@
           "example": "20g9wz8m9mgx",
           "member": "string",
           "name": "JobId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Status of the task.",
-          "example": "状态",
-          "member": "string",
-          "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14853,7 +15273,7 @@
           "example": "http://www.qq.com",
           "member": "string",
           "name": "Target",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14863,7 +15283,27 @@
           "example": "purge_url",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "invalidate",
+          "member": "string",
+          "name": "Method",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status. Valid values:\n<li>processing: Processing;</li>\n<li>success: Succeeded;</li>\n<li>failed: Failed;</li>\n<li>timeout: Timed out. </li>",
+          "example": "状态",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14873,7 +15313,7 @@
           "example": "2022-02-09T02:28:43Z",
           "member": "datetime_iso",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14883,7 +15323,7 @@
           "example": "2022-02-09T02:28:43Z",
           "member": "datetime_iso",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -15155,6 +15595,61 @@
         }
       ],
       "usage": "out"
+    },
+    "UpgradePlanRequest": {
+      "document": "UpgradePlan request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Plan ID, formatted as edgeone-2unuvzjmmn2q.",
+          "example": "edgeone-2unuvzjmmn2q",
+          "member": "string",
+          "name": "PlanId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target plan version for upgrade. Valid values: <li>basic: Basic Edition Plan;</li><li>standard: Standard Edition Plan. </li>",
+          "example": "basic",
+          "member": "string",
+          "name": "PlanType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to automatically use a voucher. Valid values: <li>true: Yes;</li><li>false: No. </li> If this field is not specified, the default value 'false' will be used.",
+          "example": "true",
+          "member": "string",
+          "name": "AutoUseVoucher",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpgradePlanResponse": {
+      "document": "UpgradePlan response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Order number.",
+          "example": "20240312347001004723731",
+          "member": "string",
+          "name": "DealName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UpstreamHttp2": {
       "document": "HTTP2 origin-pull configuration",
