@@ -401,7 +401,7 @@
         },
         {
           "disabled": false,
-          "document": "The identity document type. Valid values: \n1. `HK` (default): Identity card of Hong Kong (China)\n2. `ML`: Malaysian identity card\n3. `IndonesiaIDCard`: Indonesian identity card\n4. `PhilippinesVoteID`: Philippine voters ID card\n5. `PhilippinesDrivingLicense`: Philippine driver's license\n6. `PhilippinesTinID`: Philippine TIN ID card\n7. `PhilippinesSSSID`: Philippine SSS ID card\n8. `PhilippinesUMID`: Philippine UMID card\n9. `MLIDPassport`: Passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions\n10..MacaoIDCard: Macao ID Card\n11.ThailandIDCard: Thailand ID Card\n12.MainlandIDCard: Mainland ID Card",
+          "document": "The identity document type. Valid values: \n1. HK (default): Identity card of Hong Kong (China)\n2. ML: Malaysian identity card\n3. IndonesiaIDCard: Indonesian identity card\n4. PhilippinesVoteID: Philippine voters ID card\n5. PhilippinesDrivingLicense: Philippine driver's license\n6. PhilippinesTinID: Philippine TIN ID card\n7. PhilippinesSSSID: Philippine SSS ID card\n8. PhilippinesUMID: Philippine UMID card\n9. MLIDPassport: Passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions\n10..MacaoIDCard: Macao ID Card\n11.ThailandIDCard: Thailand ID Card\n12.MainlandIDCard: Mainland ID Card\n13.SingaporeIDCard: Singapore ID Card\n14.JapanIDCard: Japan ID Card\n15.MLDrivingLicense: Malaysian Driving License\n16.IndonesiaDrivingLicense: Indonesia Driving License\n17.ThailandDrivingLicense: Thailand Driving License\n18.SingaporeDrivingLicense: Singapore Driving License\n19.JapanDrivingLicense: Japan Driving License",
           "example": "HK",
           "member": "string",
           "name": "IdCardType",
