@@ -3157,16 +3157,6 @@
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Mainland ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "MainlandIDCard",
-          "name": "MainlandIDCard",
-          "output_required": false,
-          "type": "object",
-          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -4095,7 +4085,7 @@
       "document": "Singapore ID Card",
       "members": [
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Chinese name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4106,6 +4096,16 @@
         },
         {
           "disabled": false,
+          "document": "Chinese name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ChineseName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": true,
           "document": "English name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -4116,10 +4116,30 @@
         },
         {
           "disabled": false,
+          "document": "English name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FullName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": true,
           "document": "License number\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "ID",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "License number\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LicenseNumber",
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4135,11 +4155,21 @@
           "value_allowed_null": true
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Country of birth\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "CountryOfBirth",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Nationality\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Nationality",
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4166,7 +4196,7 @@
         },
         {
           "disabled": false,
-          "document": "Nationality (on the back)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Race (on the back)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Race",

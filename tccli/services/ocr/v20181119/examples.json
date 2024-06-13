@@ -28,7 +28,7 @@
       {
         "document": " ",
         "input": "https://ocr.tencentcloudapi.com/?Action=HKIDCardOCR\r\n&ImageUrl=https://xx/a.jpg &DetectFake=true&ReturnHeadImage=false\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"CnName\": \"申能\",\n        \"EnName\": \"SAN, Nan\",\n        \"TelexCode\": \"300000000000\",\n        \"Sex\": \"女F\",\n        \"Birthday\": \"01-01-2001\",\n        \"Permanent\": 1,\n        \"IdNum\": \"C000000(E)\",\n        \"Symbol\": \"***AZ\",\n        \"FirstIssueDate\": \"(09-99)\",\n        \"CurrentIssueDate\": \"23-09-10\",\n        \"FakeDetectResult\": 1,\n        \"WarningCode\": [\n            -9102,\n            -9103\n        ],\n        \"RequestId\": \"fba1c9ad-aeb3-4418-9ecf-80ab1b5fc875\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Birthday\": \"08-09-1987\",\n        \"CnName\": \"\",\n        \"CurrentIssueDate\": \"19-03-11\",\n        \"EnName\": \"abc\",\n        \"FakeDetectResult\": null,\n        \"FirstIssueDate\": \"\",\n        \"HeadImage\": null,\n        \"IdNum\": \"\",\n        \"Permanent\": 0,\n        \"RequestId\": \"6d5eee73-396e-4a2b-8cc0-10f6def8fb2f\",\n        \"Sex\": \"\",\n        \"Symbol\": \"\",\n        \"TelexCode\": \"\",\n        \"WarnCardInfos\": [\n            -9104\n        ],\n        \"WarningCode\": [\n            -9104\n        ]\n    }\n}",
         "title": "Recognizing Hong Kong (China) identity card"
       }
     ],
@@ -192,6 +192,14 @@
         "title": "Recognizing a Philippine voters ID card"
       }
     ],
+    "RecognizeSingaporeIDCardOCR": [
+      {
+        "document": " ",
+        "input": "\t\nPOST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeSingaporeIDCardOCR\n\n{\n    \"ReturnHeadImage\": \"false\",\n    \"ImageUrl\": \"https:\\/\\/xx\\/a.jpg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ChName\": \"abc\",\n        \"EnName\": \"abc\",\n        \"Sex\": \"abc\",\n        \"CountryOfBirth\": \"abc\",\n        \"Birthday\": \"abc\",\n        \"Address\": \"abc\",\n        \"ID\": \"abc\",\n        \"Race\": \"abc\",\n        \"NRICCode\": \"abc\",\n        \"PostCode\": \"abc\",\n        \"DateOfExpiration\": \"abc\",\n        \"DateOfIssue\": \"abc\",\n        \"Photo\": \"abc\",\n        \"WarnCardInfos\": [\n            0\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Recognize Singapore ID Card"
+      }
+    ],
     "RecognizeTableAccurateOCR": [
       {
         "document": "This example shows you how to recognize a table.",
@@ -204,7 +212,7 @@
       {
         "document": "This example shows you how to recognize a Thai identity card.",
         "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeThaiIDCardOCR\n<Common request parameters>\n\n{\n    \"ImageUrl\": \"https://xx/a.jpg\"\n}",
-        "output": "{\n    \"Response\": {\n        \"ID\": \"3102001968756\",\n        \"ThaiName\": \"นาย ธนกฤต  บุญโญปกรุณ์\",\n        \"EnFirstName\": \"Mr. Thanakit\",\n        \"Address\": \"Boonyopakron\",\n        \"Birthday\": \"ที่อยู่21/19หมู่ที่3ต.บางคูครัดอ.บางบัวทอง\",\n        \"IssueDate\": \"14ธ.ค.2509\",\n        \"ExpirationDate\": \"9ธ.ค.2559\",\n        \"EnLastName\": \"Boonyopakron\",\n        \"PortraitImage\": \"oiuu\",\n        \"RequestId\": \"98f8fcbf-933a-4e95-ac48-6f1a9308fs51\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"ID\": \"3102001968756\",\n        \"ThaiName\": \"[ThaiName in thai]\",\n        \"EnFirstName\": \"Mr. Thanakit\",\n        \"Address\": \"Boonyopakron\",\n        \"Birthday\": \"[Birthday in thai]\",\n        \"IssueDate\": \"[IssueDate in thai]\",\n        \"ExpirationDate\": \"[ExpirationDate in thai]\",\n        \"EnLastName\": \"Boonyopakron\",\n        \"PortraitImage\": \"oiuu\",\n        \"RequestId\": \"98f8fcbf-933a-4e95-ac48-6f1a9308fs51\"\n    }\n}",
         "title": "Recognizing a Thai identity card"
       }
     ],
