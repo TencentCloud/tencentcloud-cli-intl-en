@@ -237,9 +237,10 @@
         {
           "disabled": false,
           "document": "Name of an audio/video transcoding template, which can contain 1-20 case-sensitive letters and digits",
-          "example": "name",
+          "example": "Name",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -250,6 +251,7 @@
           "example": "1",
           "member": "uint64",
           "name": "NeedVideo",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -260,6 +262,7 @@
           "example": "H264",
           "member": "string",
           "name": "Vcodec",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -270,6 +273,7 @@
           "example": "1920",
           "member": "uint64",
           "name": "Width",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -280,6 +284,7 @@
           "example": "1080",
           "member": "uint64",
           "name": "Height",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -290,6 +295,7 @@
           "example": "30",
           "member": "uint64",
           "name": "Fps",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -300,6 +306,7 @@
           "example": "OPEN",
           "member": "string",
           "name": "TopSpeed",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -310,6 +317,7 @@
           "example": "0",
           "member": "uint64",
           "name": "BitrateCompressionRatio",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -320,6 +328,7 @@
           "example": "1",
           "member": "int64",
           "name": "NeedAudio",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -330,6 +339,7 @@
           "example": "AAC",
           "member": "string",
           "name": "Acodec",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -340,6 +350,7 @@
           "example": "128000",
           "member": "uint64",
           "name": "AudioBitrate",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -350,6 +361,7 @@
           "example": "1000000",
           "member": "uint64",
           "name": "VideoBitrate",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -360,6 +372,7 @@
           "example": "ABR",
           "member": "string",
           "name": "RateControlMode",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -370,6 +383,7 @@
           "example": "AB342ED131CE",
           "member": "string",
           "name": "WatermarkId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -380,6 +394,7 @@
           "example": "0",
           "member": "uint64",
           "name": "SmartSubtitles",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -390,8 +405,202 @@
           "example": "eng2eng",
           "member": "string",
           "name": "SubtitleConfiguration",
+          "output_required": true,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable the face blur function, 1 is on, 0 is off, and the default is 0.",
+          "example": "1",
+          "member": "uint64",
+          "name": "FaceBlurringEnabled",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Only AttachedInputs.AudioSelectors.Name can be selected. The following types need to be filled in: 'RTP_PUSH', 'SRT_PUSH', 'UDP_PUSH', 'RTP-FEC_PUSH'.",
+          "example": "无",
+          "member": "string",
+          "name": "AudioSelectorName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio transcoding special configuration information.",
+          "example": "无",
+          "member": "AudioNormalizationSettings",
+          "name": "AudioNormalization",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio sampling rate, unit HZ.",
+          "example": "44100",
+          "member": "uint64",
+          "name": "AudioSampleRate",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "This field indicates how to specify the output video frame rate. If FOLLOW_SOURCE is selected, the output video frame rate will be set equal to the input video frame rate of the first input. If SPECIFIED_FRACTION is selected, the output video frame rate is determined by the fraction (frame rate numerator and frame rate denominator). If SPECIFIED_HZ is selected, the frame rate of the output video is determined by the HZ you enter.",
+          "example": "SPECIFIED_HZ",
+          "member": "string",
+          "name": "FrameRateType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate numerator setting.",
+          "example": "24000",
+          "member": "uint64",
+          "name": "FrameRateNumerator",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate denominator setting.",
+          "example": "1001",
+          "member": "uint64",
+          "name": "FrameRateDenominator",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of B frames can be selected from 1 to 3.",
+          "example": "无",
+          "member": "uint64",
+          "name": "BFramesNum",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of reference frames can be selected from 1 to 16.",
+          "example": "无",
+          "member": "uint64",
+          "name": "RefFramesNum",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional video bitrate configuration.",
+          "example": "无",
+          "member": "AdditionalRateSetting",
+          "name": "AdditionalRateSettings",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Video encoding configuration.",
+          "example": "无",
+          "member": "VideoCodecDetail",
+          "name": "VideoCodecDetails",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio encoding configuration.",
+          "example": "无",
+          "member": "AudioCodecDetail",
+          "name": "AudioCodecDetails",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable multiple audio tracks 0: Not required 1: Required Default value 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "MultiAudioTrackEnabled",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quantity limit 0-20 Valid when MultiAudioTrackEnabled is turned on.",
+          "example": "无",
+          "member": "AudioTrackInfo",
+          "name": "AudioTracks",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AdditionalRateSetting": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The maximum bit rate in a VBR scenario must be a multiple of 1000 and between 50000 - 40000000.",
+          "example": "无",
+          "member": "uint64",
+          "name": "VideoMaxBitrate",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cache configuration supports configuring a Max Bitrate value of 1-4 times.",
+          "example": "无",
+          "member": "uint64",
+          "name": "BufferSize",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VBR scene is valid, video quality level, only supports user input numbers between 1-51.",
+          "example": "无",
+          "member": "uint64",
+          "name": "QualityLevel",
+          "output_required": false,
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -439,6 +648,62 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AudioCodecDetail": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Channel configuration, optional values: MONO (mono), STEREO (two-channel), 5.1 (surround).",
+          "example": "无",
+          "member": "string",
+          "name": "ChannelMode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Level in aac case, optional values: \"LC\" \"HE-AAC\" \"HE-AACV2\".",
+          "example": "无",
+          "member": "string",
+          "name": "Profile",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AudioNormalizationSettings": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "AudioNormalizationEnabled",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "-2",
+          "member": "float",
+          "name": "TargetLUFS",
+          "output_required": true,
+          "required": false,
+          "type": "float",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -501,9 +766,10 @@
         {
           "disabled": false,
           "document": "Audio name, which can contain 1-32 letters, digits, and underscores.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -511,9 +777,32 @@
         {
           "disabled": false,
           "document": "Audio `Pid` selection.",
-          "example": "",
+          "example": "无",
           "member": "AudioPidSelectionInfo",
           "name": "AudioPidSelection",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio input type, optional values: 'PID_SELECTOR' 'TRACK_SELECTOR', default value PID_SELECTOR.",
+          "example": "PID_SELECTOR",
+          "member": "string",
+          "name": "AudioSelectorType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AudioTrack configuration.",
+          "example": "无",
+          "member": "InputTracks",
+          "name": "AudioTrackSelection",
+          "output_required": false,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -527,9 +816,10 @@
         {
           "disabled": false,
           "document": "Only `AttachedInputs.AudioSelectors.Name` can be selected. This parameter is required for RTP_PUSH and UDP_PUSH.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "AudioSelectorName",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -537,9 +827,10 @@
         {
           "disabled": false,
           "document": "Audio transcoding template name, which can contain 1-20 letters and digits.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -547,9 +838,10 @@
         {
           "disabled": false,
           "document": "Audio codec. Valid value: AAC. Default value: AAC.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Acodec",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -557,9 +849,10 @@
         {
           "disabled": false,
           "document": "Audio bitrate. If this parameter is left empty, the original value will be used.\nValid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 288000, 320000, 384000, 448000, 512000, 576000, 640000, 768000, 896000, 1024000",
-          "example": "",
+          "example": "无",
           "member": "uint64",
           "name": "AudioBitrate",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -567,11 +860,117 @@
         {
           "disabled": false,
           "document": "Audio language code, whose length is always 3 characters.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "LanguageCode",
+          "output_required": true,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio transcoding special configuration information.",
+          "example": "无",
+          "member": "AudioNormalizationSettings",
+          "name": "AudioNormalization",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio sampling rate, unit HZ.",
+          "example": "44100",
+          "member": "uint64",
+          "name": "AudioSampleRate",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio encoding parameters.",
+          "example": "无",
+          "member": "AudioCodecDetail",
+          "name": "AudioCodecDetails",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AudioTrackInfo": {
+      "document": "Audio track configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User input is limited to letters and numbers, the length should not exceed 20, and should not be repeated in the same channel.",
+          "example": "无",
+          "member": "string",
+          "name": "TrackName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Only AAC is supported.",
+          "example": "AAC",
+          "member": "string",
+          "name": "AudioCodec",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio bitrate.",
+          "example": "192000",
+          "member": "uint64",
+          "name": "AudioBitrate",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio sample rate.",
+          "example": "44100",
+          "member": "uint64",
+          "name": "AudioSampleRate",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Only values defined by AttachedInputs.$.AudioSelectors.$.audioPidSelection.pid can be entered.",
+          "example": "无",
+          "member": "string",
+          "name": "AudioSelectorName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio loudness configuration.",
+          "example": "无",
+          "member": "AudioNormalizationSettings",
+          "name": "AudioNormalization",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -887,7 +1286,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -951,7 +1350,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -997,7 +1396,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1033,7 +1432,7 @@
       "document": "CreateStreamLivePlan response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1097,7 +1496,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1236,7 +1635,7 @@
       "document": "DeleteStreamLiveChannel response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1263,7 +1662,7 @@
       "document": "DeleteStreamLiveInput response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1290,7 +1689,7 @@
       "document": "DeleteStreamLiveInputSecurityGroup response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1326,7 +1725,7 @@
       "document": "DeleteStreamLivePlan response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1353,7 +1752,7 @@
       "document": "DeleteStreamLiveWatermark response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1496,7 +1895,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1560,7 +1959,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1615,7 +2014,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1679,7 +2078,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1716,7 +2115,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1743,7 +2142,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1780,7 +2179,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1817,7 +2216,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1844,7 +2243,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1871,7 +2270,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1908,7 +2307,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1935,7 +2334,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2048,7 +2447,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2085,7 +2484,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2112,7 +2511,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3286,6 +3685,40 @@
       ],
       "usage": "out"
     },
+    "InputTrack": {
+      "document": "Audio track configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audio track index 1-based index mapping to the specified audio track integer starting from 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TrackIndex",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "InputTracks": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Audio track configuration information.",
+          "example": "无",
+          "member": "InputTrack",
+          "name": "Tracks",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "LogInfo": {
       "document": "Log information.",
       "members": [
@@ -3447,7 +3880,7 @@
       "document": "ModifyStreamLiveChannel response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3501,7 +3934,7 @@
       "document": "ModifyStreamLiveInput response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3546,7 +3979,7 @@
       "document": "ModifyStreamLiveInputSecurityGroup response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3600,7 +4033,7 @@
       "document": "ModifyStreamLiveWatermark response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4010,7 +4443,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4367,7 +4800,7 @@
       "document": "StartStreamLiveChannel response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4394,7 +4827,7 @@
       "document": "StopStreamLiveChannel response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -5018,6 +5451,67 @@
       ],
       "usage": "in"
     },
+    "VideoCodecDetail": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The three image quality levels of h264 include: BASELINE, HIGH, and MAIN. The default option is MAIN.",
+          "example": "无",
+          "member": "string",
+          "name": "Profile",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Profile corresponding codec performance, options include: 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 2.3, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, 5.1, AUTO. The default option is AUTO.",
+          "example": "无",
+          "member": "string",
+          "name": "Level",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Codecs include entropy coding and lossless coding, and options include: CABAC and CAVLC. The default option is CABAC. .",
+          "example": "无",
+          "member": "string",
+          "name": "EntropyEncoding",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Mode, options include: AUTO, HIGH, HIGHER, LOW, MAX, MEDIUM, OFF. The default option is: AUTO. .",
+          "example": "无",
+          "member": "string",
+          "name": "AdaptiveQuantization",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Analyze subsequent encoded frames in advance, options include: HIGH, LOW, MEDIUM. The default option is: MEDIUM. .",
+          "example": "无",
+          "member": "string",
+          "name": "LookAheadRateControl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "VideoPipelineInputStatistics": {
       "document": "Pipeline input video statistics.",
       "members": [
@@ -5060,9 +5554,10 @@
         {
           "disabled": false,
           "document": "Video transcoding template name, which can contain 1-20 letters and digits.",
-          "example": "name",
+          "example": "Name",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -5073,6 +5568,7 @@
           "example": "H264",
           "member": "string",
           "name": "Vcodec",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -5083,6 +5579,7 @@
           "example": "1000000",
           "member": "uint64",
           "name": "VideoBitrate",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -5093,6 +5590,7 @@
           "example": "1920",
           "member": "uint64",
           "name": "Width",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -5103,6 +5601,7 @@
           "example": "1080",
           "member": "uint64",
           "name": "Height",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -5113,6 +5612,7 @@
           "example": "30",
           "member": "uint64",
           "name": "Fps",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -5123,6 +5623,7 @@
           "example": "OPEN",
           "member": "string",
           "name": "TopSpeed",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -5133,6 +5634,7 @@
           "example": "0",
           "member": "uint64",
           "name": "BitrateCompressionRatio",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -5143,6 +5645,7 @@
           "example": "ABR",
           "member": "string",
           "name": "RateControlMode",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -5153,9 +5656,98 @@
           "example": "AB342ED131CE",
           "member": "string",
           "name": "WatermarkId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable the face blur function, 1 is on, 0 is off, and the default is 0.",
+          "example": "1",
+          "member": "uint64",
+          "name": "FaceBlurringEnabled",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "This field indicates how to specify the output video frame rate. If FOLLOW_SOURCE is selected, the output video frame rate will be set equal to the input video frame rate of the first input. If SPECIFIED_FRACTION is selected, the output video frame rate is determined by the fraction (frame rate numerator and frame rate denominator). If SPECIFIED_HZ is selected, the frame rate of the output video is determined by the HZ you enter.",
+          "example": "SPECIFIED_HZ",
+          "member": "string",
+          "name": "FrameRateType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate numerator setting.",
+          "example": "24000",
+          "member": "uint64",
+          "name": "FrameRateNumerator",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate denominator setting.",
+          "example": "1001",
+          "member": "uint64",
+          "name": "FrameRateDenominator",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of B frames can be selected from 1 to 3.",
+          "example": "无",
+          "member": "uint64",
+          "name": "BFramesNum",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of reference frames can be selected from 1 to 16.",
+          "example": "无",
+          "member": "uint64",
+          "name": "RefFramesNum",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional video bitrate configuration.",
+          "example": "无",
+          "member": "AdditionalRateSetting",
+          "name": "AdditionalRateSettings",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Video encoding configuration.",
+          "example": "无",
+          "member": "VideoCodecDetail",
+          "name": "VideoCodecDetails",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"

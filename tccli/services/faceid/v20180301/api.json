@@ -1880,7 +1880,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The token used to identify an SDK-based verification process.",
+          "document": "The token used to identify an SDK-based verification process. ",
           "example": "无",
           "member": "string",
           "name": "SdkToken",
@@ -1899,6 +1899,7 @@
           "example": "无",
           "member": "string",
           "name": "Result",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1908,6 +1909,7 @@
           "example": "无",
           "member": "string",
           "name": "Description",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1917,6 +1919,7 @@
           "example": "4",
           "member": "int64",
           "name": "ChargeCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1926,6 +1929,7 @@
           "example": "无",
           "member": "CardVerifyResult",
           "name": "CardVerifyResults",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1935,6 +1939,7 @@
           "example": "无",
           "member": "CompareResult",
           "name": "CompareResults",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1944,6 +1949,7 @@
           "example": "无",
           "member": "string",
           "name": "Extra",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3154,6 +3160,16 @@
           "example": "无",
           "member": "MacaoIDCard",
           "name": "MacaoIDCard",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Mainland ID Card\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "MainlandIDCard",
+          "name": "MainlandIDCard",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
@@ -4581,7 +4597,7 @@
         },
         {
           "disabled": false,
-          "document": "Liveness security level: 1:Silent mode;2:Action mode;3:Lighting mode;4:Action+Lighting mode;default value is 3",
+          "document": "Liveness security level: 1:Silent mode;2:Action mode;3:Lighting mode;4:Action+Lighting mode;5:Action+Lighting(High security) mode; default value is 3",
           "example": "3",
           "member": "int64",
           "name": "SecurityLevel",
