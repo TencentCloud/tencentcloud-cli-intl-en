@@ -243,15 +243,15 @@
     "DescribeBasicDeviceStatus": [
       {
         "document": " ",
-        "input": "https://antiddos.tencentcloudapi.com/?Action=DescribeBasicDeviceStatus\n&IpList.0=‘1.1.1.1’\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Key\": \"1.1.1.1\",\n                \"Value\": \"1\"\n            }\n        ],\n        \"RequestId\": \"8f7a9451-2372-4a88-a69d-9868b8991076\"\n    }\n}",
-        "title": "Querying the status of an Anti-DDoS IP"
-      },
-      {
-        "document": " ",
         "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBasicDeviceStatus\n<common request parameters>\n\n{\n    \"IpList\": [\n        \"abc\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Key\": \"abc\",\n                \"Value\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "获取基础防护状态"
+      },
+      {
+        "document": " ",
+        "input": "https://antiddos.tencentcloudapi.com/?Action=DescribeBasicDeviceStatus\n&IpList.0=‘1.1.1.1’\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Key\": \"1.1.1.1\",\n                \"Value\": \"1\"\n            }\n        ],\n        \"RequestId\": \"8f7a9451-2372-4a88-a69d-9868b8991076\"\n    }\n}",
+        "title": "Querying the status of an Anti-DDoS IP"
       }
     ],
     "DescribeBgpBizTrend": [
@@ -368,7 +368,7 @@
     ],
     "DescribeListBGPIPInstances": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeListBGPIPInstances\n<Common request parameters>\n\n{\n    \"Limit\": \"1\",\n    \"Offset\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0381c271-292d-4e2a-adcc-cd7bcd6977a7\",\n        \"InstanceList\": [\n            {\n                \"InstanceDetail\": {\n                    \"EipList\": [\n                        \"2402:4e00:31:804::17\"\n                    ],\n                    \"InstanceId\": \"bgpip-00000001\"\n                },\n                \"SpecificationLimit\": {\n                    \"ProtectBandwidth\": 30000,\n                    \"ProtectCCQPS\": 40000,\n                    \"ElasticBandwidth\": 50000,\n                    \"NormalBandwidth\": 1000,\n                    \"ForwardRulesLimit\": 60,\n                    \"AutoRenewFlag\": 0,\n                    \"Line\": 1\n                },\n                \"Usage\": {\n                    \"PortRulesUsage\": 0,\n                    \"DomainRulesUsage\": 0,\n                    \"Last7DayAttackCount\": 0\n                },\n                \"Region\": {\n                    \"Region\": \"ap-shanghai\"\n                },\n                \"PackInfo\": null,\n                \"StaticPackRelation\": null,\n                \"EipAddressPackRelation\": null,\n                \"AnycastOutPackRelation\": null,\n                \"Tgw\": 2,\n                \"ZoneId\": 0,\n                \"Name\": \"\",\n                \"V6Flag\": 1,\n                \"Domain\": \"\",\n                \"Status\": \"idle\",\n                \"ExpiredTime\": \"2023-01-08 21:22:24\",\n                \"CreatedTime\": \"2022-12-08 21:22:24\",\n                \"EipAddressStatus\": \"\",\n                \"EipFlag\": 0,\n                \"EipAddressInfo\": null,\n                \"ConvoyId\": \"\",\n                \"DamDDoSStatus\": 0,\n                \"BGPIPChannelFlag\": 0,\n                \"TagInfoList\": [],\n                \"InstanceVersion\": 3\n            }\n        ],\n        \"Total\": 12\n    }\n}",
         "title": "Getting a list of Anti-DDoS Advanced instances"
@@ -416,7 +416,7 @@
     ],
     "DescribeListIPAlarmConfig": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://antiddos.tencentcloudapi.com/?Action=DescribeListIPAlarmConfig\n&Offset=0\n&Limit=25\n&FilterIp=1.1.1.1\n&FilterInstanceId=bgpip-0000011x\n&FilterAlarmType=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"a3056c16-1cb6-4bdb-9d3b-a2361fe5b63c\",\n        \"ConfigList\": [\n            {\n                \"AlarmType\": 2,\n                \"AlarmThreshold\": 2000,\n                \"InstanceDetailList\": [\n                    {\n                        \"EipList\": [\n                            \"1.1.1.1\"\n                        ],\n                        \"InstanceId\": \"bgpip-0000011x\"\n                    }\n                ]\n            },\n            {\n                \"AlarmType\": 1,\n                \"AlarmThreshold\": 5000,\n                \"InstanceDetailList\": [\n                    {\n                        \"EipList\": [\n                            \"1.1.1.1\"\n                        ],\n                        \"InstanceId\": \"bgpip-0000011x\"\n                    }\n                ]\n            }\n        ],\n        \"Total\": 2\n    }\n}",
         "title": "Getting a list of IP alarm threshold configurations"
@@ -424,7 +424,7 @@
     ],
     "DescribeListListener": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://antiddos.tencentcloudapi.com/?Action=DescribeListListener\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"83ef9ee6-a46a-4aa7-b8aa-42c65637edad\",\n        \"Layer4Listeners\": [\n            {\n                \"BackendPort\": 12,\n                \"FrontendPort\": 12,\n                \"Protocol\": \"TCP\",\n                \"RealServers\": [\n                    {\n                        \"RealServer\": \"1.1.1.1\",\n                        \"RsType\": 2,\n                        \"Weight\": 50\n                    }\n                ],\n                \"InstanceDetails\": [\n                    {\n                        \"EipList\": [\n                            \"1.1.1.1\"\n                        ],\n                        \"InstanceId\": \"bgpip-0000011e\"\n                    }\n                ]\n            }\n        ],\n        \"Layer7Listeners\": [\n            {\n                \"Domain\": \"121.test.com\",\n                \"ProxyTypeList\": [\n                    {\n                        \"ProxyPorts\": [\n                            443\n                        ],\n                        \"ProxyType\": \"https\"\n                    }\n                ],\n                \"RealServers\": [\n                    {\n                        \"RealServer\": \"1.1.1.1\",\n                        \"RsType\": 2,\n                        \"Weight\": 100\n                    }\n                ],\n                \"InstanceDetails\": [\n                    {\n                        \"EipList\": [\n                            \"1.1.1.1\"\n                        ],\n                        \"InstanceId\": \"bgpip-000000y2\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
         "title": "Getting a list of forwarding listeners"
@@ -456,7 +456,7 @@
     ],
     "DescribeListSchedulingDomain": [
       {
-        "document": "查询智能调度列表",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeListSchedulingDomain\n<Common request parameters>\n\n{\n    \"Limit\": 1,\n    \"FilterDomain\": \"www.test.com\",\n    \"Offset\": 1\n}",
         "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"RequestId\": \"0506d138-ef0f-4ff4-83b0-f1d85e740afd\",\n        \"DomainList\": [\n            {\n                \"Status\": 1,\n                \"Domain\": \"www.test.com\",\n                \"ModifyTime\": \"2020-09-22 00:00:00\",\n                \"TTL\": 1,\n                \"CreatedTime\": \"2020-09-22 00:00:00\",\n                \"UsrDomainName\": \"www.test.com\",\n                \"LineIPList\": [\n                    {\n                        \"Eip\": \"1.1.1.1\",\n                        \"Type\": \"bgp\"\n                    }\n                ],\n                \"Method\": \"priority\"\n            }\n        ]\n    }\n}",
         "title": "Getting a list of intelligent scheduling domain names"
@@ -512,7 +512,7 @@
     ],
     "ModifyCCPrecisionPolicy": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://antiddos.tencentcloudapi.com/?Action=ModifyCCPrecisionPolicy\n&InstanceId=bgpip-0000011x\n&PolicyId=ccPrecs-00000326\n&PolicyAction=alg\n&PolicyList.0.FieldType=value\n&PolicyList.0.FieldName=cgi\n&PolicyList.0.Value=/cadwe\n&PolicyList.0.ValueOperator=equal\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5063ab0a-a8a7-41e8-ace2-263b2c1c8794\"\n    }\n}",
         "title": "Modifying a CC precise protection policy"
