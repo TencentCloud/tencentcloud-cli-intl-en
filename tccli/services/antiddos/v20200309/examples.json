@@ -242,14 +242,14 @@
     ],
     "DescribeBasicDeviceStatus": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBasicDeviceStatus\n<common request parameters>\n\n{\n    \"IpList\": [\n        \"abc\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Key\": \"abc\",\n                \"Value\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "获取基础防护状态"
+        "document": " get basic protect status",
+        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBasicDeviceStatus\n<Common request parameters>\n\n{\n    \"IpList\": [\n        \"abc\"\n    ],\n    \"IdList\": [\n        \"abc\"\n    ],\n    \"FilterRegion\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Key\": \"abc\",\n                \"Value\": \"abc\"\n            }\n        ],\n        \"CLBData\": [\n            {\n                \"Key\": \"abc\",\n                \"Value\": \"abc\"\n            }\n        ],\n        \"CnameWafData\": [\n            {\n                \"Key\": \"1.1.1.1\",\n                \"Value\": \"1\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "get basic protect status"
       },
       {
         "document": " ",
-        "input": "https://antiddos.tencentcloudapi.com/?Action=DescribeBasicDeviceStatus\n&IpList.0=‘1.1.1.1’\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: antiddos.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBasicDeviceStatus\n<Common request parameters>\n\n{\n    \"IpList\": [\n        \"127.0.0.1\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Data\": [\n            {\n                \"Key\": \"1.1.1.1\",\n                \"Value\": \"1\"\n            }\n        ],\n        \"RequestId\": \"8f7a9451-2372-4a88-a69d-9868b8991076\"\n    }\n}",
         "title": "Querying the status of an Anti-DDoS IP"
       }
