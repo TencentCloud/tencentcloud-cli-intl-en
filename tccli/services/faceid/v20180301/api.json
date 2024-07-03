@@ -4633,7 +4633,7 @@
         },
         {
           "disabled": false,
-          "document": "International language, the default value is en (English). Currently supported: th: Thai; en: English;",
+          "document": "International language, the default value is en (English). Currently supported: th: Thai; en: English; zh-cn: Simplified Chinese; zh-tc: Tradionnal Chinese; id: Bahasa Indonesia.",
           "example": "en",
           "member": "string",
           "name": "Language",
