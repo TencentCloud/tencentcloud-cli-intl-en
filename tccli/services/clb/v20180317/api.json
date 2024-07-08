@@ -36,7 +36,7 @@
       "status": "online"
     },
     "CloneLoadBalancer": {
-      "document": "This API is used to create a clone of the source CLB instance with the same forwarding rules and binding relations. Note that this API is asynchronous, which means that changes to the source CLB after invocation of the API are not included in the clone.\n\nLimits:\nInstance attribute restrictions\n  Only pay-as-you-go instances can be cloned. Monthly-subscribed instances cannot be cloned. \n  CLB instances without any billable items cannot be cloned.\n  Classic CLB instances and CLB u200dinstances created for Anti-DDoS service cannot be cloned.\n  Classic network-based instances cannot be cloned.\n  IPv6 instances, IPv6 NAT64 instances, and instances bound with both IPv4 and IPv6 cannot be cloned.\n  The following settings will not be cloned: **Custom configuration**, **Redirection configurations**, and **Allow Traffic by Default** in security groups.\n  Before cloning an instance, make sure all certificates used on the instance are valid. Cloning will fail if there are any expired certificates.\nListener restrictions\n  Instances with QUIC listeners or port range listeners cannot be cloned.\n  Private network CLB instances with TCP_SSL listeners cannot be cloned.\n  Instances with layer-7 listeners that have no forwarding rules cannot be cloned.\n  u200dInstances u200dwith more than 50 listeners cannot be cloned. \nBackend service restrictions\n  Instances with target groups and SCF cloud functions as the backend services cannot be cloned.\n\nNotes:\nIf you are using a BGP bandwidth package, you need to pass the package ID.\nTo create a dedicated cluster-based CLB by cloning the source CLB, you need to pass the cluster ID. Otherwise, a normal CLB is created.\nThis API is only available for beta users. To try it out, [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&step=1).",
+      "document": "This API is used to create a clone of the source CLB instance with the same forwarding rules and binding relations. Note that this API is asynchronous, which means that changes to the source CLB after invocation of the API are not included in the clone.\n\nLimits:\nInstance attribute restrictions\n  Only pay-as-you-go instances can be cloned. Monthly-subscribed instances cannot be cloned. \n  CLB instances without any billable items cannot be cloned.\n  Classic CLB instances and CLB instances created for Anti-DDoS service cannot be cloned.\n  Classic network-based instances cannot be cloned.\n  IPv6 instances, IPv6 NAT64 instances, and instances bound with both IPv4 and IPv6 cannot be cloned.\n  The following settings will not be cloned: **Custom configuration**, **Redirection configurations**, and **Allow Traffic by Default** in security groups.\n  Before cloning an instance, make sure all certificates used on the instance are valid. Cloning will fail if there are any expired certificates.\nListener restrictions\n  Instances with QUIC listeners or port range listeners cannot be cloned.\n  Private network CLB instances with TCP_SSL listeners cannot be cloned.\n  Instances with layer-7 listeners that have no forwarding rules cannot be cloned.\n  Instances with more than 50 listeners cannot be cloned. \nBackend service restrictions\n  Instances with target groups and SCF cloud functions as the backend services cannot be cloned.\n\nNotes:\nIf you are using a BGP bandwidth package, you need to pass the package ID.\nTo create a dedicated cluster-based CLB by cloning the source CLB, you need to pass the cluster ID. Otherwise, a normal CLB is created.\nThis API is only available for beta users. To try it out, [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&step=1).",
       "input": "CloneLoadBalancerRequest",
       "name": "Clones a CLB instance",
       "output": "CloneLoadBalancerResponse",
@@ -1913,7 +1913,7 @@
         {
           "disabled": false,
           "document": "ID of the public network CLB dedicated cluster",
-          "example": "无",
+          "example": "[\"cluster-gbo2****\"]",
           "member": "string",
           "name": "ClusterIds",
           "required": false,
@@ -1940,7 +1940,7 @@
         {
           "disabled": false,
           "document": "Availability zones for nearby access of private network CLB instances to distribute traffic",
-          "example": "无",
+          "example": "[\"ap-guangzhou-3\"]",
           "member": "string",
           "name": "Zones",
           "required": false,
@@ -1962,7 +1962,7 @@
       "document": "CloneLoadBalancer response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2141,7 +2141,7 @@
         {
           "disabled": false,
           "document": "Specifies for which ports to create listeners. Each port corresponds to a new listener.",
-          "example": "[\"7569\\n\",\"7570\\n\"]",
+          "example": "[\"7569\",\"7570\"]",
           "member": "int64",
           "name": "Ports",
           "required": true,
@@ -2194,7 +2194,7 @@
         },
         {
           "disabled": false,
-          "document": "Listener forwarding mode. u200dValues: `WRR` (weighted round robin) and `LEAST_CONN` (least connections). \nDefault value: `WRR`. This parameter is only applicable to TCP, UDP, TCP_SSL and QUIC listeners.",
+          "document": "Listener forwarding mode. Values: `WRR` (weighted round robin) and `LEAST_CONN` (least connections). \nDefault value: `WRR`. This parameter is only applicable to TCP, UDP, TCP_SSL and QUIC listeners.",
           "example": "WRR",
           "member": "string",
           "name": "Scheduler",
@@ -2266,7 +2266,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of concurrent listener connections. It’s available for TCP/UDP/TCP_SSL/QUIC listeners. If it’s set to `-1` or not specified, the listener speed is not limited. ",
+          "document": "Maximum number of concurrent listener connections. It's available for TCP/UDP/TCP_SSL/QUIC listeners. If it's set to `-1` or not specified, the listener speed is not limited. ",
           "example": "-1",
           "member": "int64",
           "name": "MaxConn",
@@ -2275,7 +2275,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum number of new listener connections. It’s available for TCP/UDP/TCP_SSL/QUIC listeners. If it’s set to `-1` or not specified, the listener speed is not limited. ",
+          "document": "Maximum number of new listener connections. It's available for TCP/UDP/TCP_SSL/QUIC listeners. If it's set to `-1` or not specified, the listener speed is not limited. ",
           "example": "-1",
           "member": "int64",
           "name": "MaxCps",
@@ -2284,12 +2284,21 @@
         },
         {
           "disabled": false,
-          "document": "Connection idle timeout period (in seconds). It’s only available to TCP listeners. Value range: 300-900 for shared and dedicated instances; 300-2000 for LCU-supported CLB instances. It defaults to 900. To set a period longer than 2000 seconds (up to 3600 seconds), please submit a [submit](https://console.cloud.tencent.com/workorder/category). ",
+          "document": "Connection idle timeout period (in seconds). It's only available to TCP listeners. Value range: 300-900 for shared and dedicated instances; 300-2000 for LCU-supported CLB instances. It defaults to 900. To set a period longer than 2000 seconds (up to 3600 seconds), please submit a [submit](https://console.cloud.tencent.com/workorder/category). ",
           "example": "900",
           "member": "int64",
           "name": "IdleConnectTimeout",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "False",
+          "member": "bool",
+          "name": "SnatEnable",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -2303,12 +2312,12 @@
           "example": "[\"lbl-d1ubsydq\",\"lbl-4udz130k\"]",
           "member": "string",
           "name": "ListenerIds",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -5360,7 +5369,7 @@
         {
           "disabled": false,
           "document": "Health check status code (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners). Value range: 1-31. Default value: 31.\n`1`: Returns code 1xx for healthy status. `2`: Returns code 2xx for healthy status. `4`: Returns code 3xx for healthy status. `8`: Returns code 4xx for healthy status. `16`: Returns code 5xx for healthy status. If you want multiple return codes to represent healthy, sum up the corresponding values. \nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "504",
+          "example": "8",
           "member": "int64",
           "name": "HttpCode",
           "output_required": true,
@@ -5381,7 +5390,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check domain name. It’s applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners. It’s required for HTTP health check of TCP listeners.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Health check domain name. It's applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners. It's required for HTTP health check of TCP listeners.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "www.xxxx.com",
           "member": "string",
           "name": "HttpCheckDomain",
@@ -5426,7 +5435,7 @@
         {
           "disabled": false,
           "document": "Health check protocol (a custom check parameter), which is required if the value of CheckType is CUSTOM. This parameter represents the content of the request sent by the health check. Only ASCII visible characters are allowed, and the maximum length is 500. (Applicable only to TCP/UDP listeners.)\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "request-info",
           "member": "string",
           "name": "SendContext",
           "output_required": true,
@@ -5437,7 +5446,7 @@
         {
           "disabled": false,
           "document": "Health check protocol (a custom check parameter), which is required if the value of CheckType is CUSTOM. This parameter represents the result returned by the health check. Only ASCII visible characters are allowed, and the maximum length is 500. (Applicable only to TCP/UDP listeners.)\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "response-info",
           "member": "string",
           "name": "RecvContext",
           "output_required": true,
@@ -5447,7 +5456,7 @@
         },
         {
           "disabled": false,
-          "document": "u200dHealth check protocol. Values: `TCP`, `HTTP`, `HTTPS`, `GRPC`, `PING`, and `CUSTOM`. UDP listeners support `PING`/`CUSTOM`. TCP listener support `TCP`/`HTTP`/`CUSTOM`. TCP_SSL and QUIC listeners support `TCP`/`HTTP`. HTTP rules support `HTTP`/`GRPC. HTTPS rules support `HTTP`/`HTTPS`/`GRPC`.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Health check protocol. Values: `TCP`, `HTTP`, `HTTPS`, `GRPC`, `PING`, and `CUSTOM`. UDP listeners support `PING`/`CUSTOM`. TCP listener support `TCP`/`HTTP`/`CUSTOM`. TCP_SSL and QUIC listeners support `TCP`/`HTTP`. HTTP rules support `HTTP`/`GRPC. HTTPS rules support `HTTP`/`HTTPS`/`GRPC`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "HTTP",
           "member": "string",
           "name": "CheckType",
@@ -5458,7 +5467,7 @@
         },
         {
           "disabled": false,
-          "document": "HTTP version. HTTP version of the backend service. Values: `HTTP/1.0`, HTTP/1.1`. It is only applicable to TCP listeners, and is required when `CheckType`=`HTTP`. \nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "HTTP version. HTTP version of the backend service. Values: `HTTP/1.0`, HTTP/1.1`. It is only applicable to TCP listeners, and is required when `CheckType`=`HTTP`. \nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "HTTP/1.1",
           "member": "string",
           "name": "HttpVersion",
@@ -5469,7 +5478,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the type of health check source IP. `0` (default): CLB VIP. `1`: 100.64 IP range.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Specifies the type of health check source IP. `0` (default): CLB VIP. `1`: 100.64 IP range.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "SourceIpType",

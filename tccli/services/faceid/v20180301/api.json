@@ -106,9 +106,9 @@
       "status": "online"
     },
     "GetWebVerificationResultIntl": {
-      "document": "This API is used to get the verification result with the corresponding BizToken after the u200dweb-based verification is completed. The token is valid for three days (259,200s) after issuance and can be called multiple times.",
+      "document": "This API is used to get the verification result with the corresponding BizToken after the web-based verification is completed. The token is valid for three days (259,200s) after issuance and can be called multiple times.",
       "input": "GetWebVerificationResultIntlRequest",
-      "name": "Gets the result of a u200dweb-based verification process",
+      "name": "Gets the result of a web-based verification process",
       "output": "GetWebVerificationResultIntlResponse",
       "status": "online"
     },
@@ -865,6 +865,16 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Details of the OCR modifications for this EKYC card, when the user manually modifies the card recognition results (IsEdit=true), EditDetails will return the modified fields. When IsEdit=false, EditDetails is empty.",
+          "example": "无",
+          "member": "EditDetail",
+          "name": "EditDetails",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -1269,6 +1279,42 @@
         }
       ],
       "type": "object"
+    },
+    "EditDetail": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Modified Field Name",
+          "example": "无",
+          "member": "string",
+          "name": "FieldName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Value of the field before modification, the original OCR result",
+          "example": "无",
+          "member": "string",
+          "name": "OriginalFieldValue",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Value of the field after modification,the user's manually entered result",
+          "example": "无",
+          "member": "string",
+          "name": "RevisedFieldValue",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "FileInfo": {
       "document": "The description of a file, including a download URL and the MD5 checksum and size of the file.",
@@ -1982,7 +2028,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nFor other error codes, see <a href=\"https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#8a960e1e-39c0-42cb-b181-b3164d77f81e\">Liveness Detection and Face Comparison (Mobile HTML5) Error Codes</a>\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nFor other error codes, see <a href=\"https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#8a960e1e-39c0-42cb-b181-b3164d77f81e\">Liveness Detection and Face Comparison (Mobile HTML5) Error Codes</a>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "ErrorCode",
@@ -1992,7 +2038,7 @@
         },
         {
           "disabled": false,
-          "document": "The description of the final verification result.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The description of the final verification result.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Success",
           "member": "string",
           "name": "ErrorMsg",
@@ -2002,7 +2048,7 @@
         },
         {
           "disabled": false,
-          "document": "The detailed verification result list of this process. Retries are allowed, so a verification process may have several entries of results.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The detailed verification result list of this process. Retries are allowed, so a verification process may have several entries of results.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "VerificationDetail",
           "name": "VerificationDetailList",
@@ -2012,7 +2058,7 @@
         },
         {
           "disabled": false,
-          "document": "The Base64-encoded string of the video collected from the video stream. Retries are allowed, and this field returns only the data collected in the last verification. If no video is collected, null is returned.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The Base64-encoded string of the video collected from the video stream. Retries are allowed, and this field returns only the data collected in the last verification. If no video is collected, null is returned.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "VideoBase64String",
           "member": "string",
           "name": "VideoBase64",
@@ -2022,7 +2068,7 @@
         },
         {
           "disabled": false,
-          "document": "The Base64-encoded string of the best face screenshot u200dcollected from the video stream. Retries are allowed, and this field returns only the data collected in the last verification. If no best face screenshot is collected, null is returned.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The Base64-encoded string of the best face screenshot collected from the video stream. Retries are allowed, and this field returns only the data collected in the last verification. If no best face screenshot is collected, null is returned.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "BestFrameBase64String",
           "member": "string",
           "name": "BestFrameBase64",
@@ -4344,7 +4390,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "ErrorCode",
@@ -4354,7 +4400,7 @@
         },
         {
           "disabled": false,
-          "document": "The description of the final verification result.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The description of the final verification result.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "Success",
           "member": "string",
           "name": "ErrorMsg",
@@ -4364,7 +4410,7 @@
         },
         {
           "disabled": false,
-          "document": "The result of this liveness detection process. `0` indicates success.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The result of this liveness detection process. `0` indicates success.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "LivenessErrorCode",
@@ -4384,7 +4430,7 @@
         },
         {
           "disabled": false,
-          "document": "The result of this comparison process. `0` indicates that the person in the best face screenshot collected from the video stream is the same as that in the uploaded image for comparison.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The result of this comparison process. `0` indicates that the person in the best face screenshot collected from the video stream is the same as that in the uploaded image for comparison.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "CompareErrorCode",
@@ -4394,7 +4440,7 @@
         },
         {
           "disabled": false,
-          "document": "The result description of this comparison process.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The result description of this comparison process.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "success",
           "member": "string",
           "name": "CompareErrorMsg",
@@ -4414,7 +4460,7 @@
         },
         {
           "disabled": false,
-          "document": "The similarity of the best face screenshot collected from the video stream and the uploaded image for comparison in this verification process. Value range: [0.00, 100.00]. By default, the person in the screenshot is determined to be the same person in the image if the similarity is greater than or equal to 70.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "The similarity of the best face screenshot collected from the video stream and the uploaded image for comparison in this verification process. Value range: [0.00, 100.00]. By default, the person in the screenshot is determined to be the same person in the image if the similarity is greater than or equal to 70.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "100.00",
           "member": "float",
           "name": "Similarity",

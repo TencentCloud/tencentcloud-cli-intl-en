@@ -382,7 +382,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The task creation time in ms.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The task creation time in ms.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "CreateTaskTime",
@@ -392,7 +392,7 @@
         },
         {
           "disabled": false,
-          "document": "The processing time in ms.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The processing time in ms.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "ProcessTime",
@@ -402,7 +402,7 @@
         },
         {
           "disabled": false,
-          "document": "The queue time in ms.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The queue time in ms.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "QueueTime",
@@ -412,7 +412,7 @@
         },
         {
           "disabled": false,
-          "document": "The execution duration in ms.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The execution duration in ms.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "ExecutionTime",
@@ -422,7 +422,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the result cache is hit.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "Whether the result cache is hit.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "bool",
           "name": "IsResultCacheHit",
@@ -432,7 +432,7 @@
         },
         {
           "disabled": false,
-          "document": "The volume of matched materialized views, in bytes.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The volume of matched materialized views, in bytes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "MatchedMVBytes",
@@ -442,7 +442,7 @@
         },
         {
           "disabled": false,
-          "document": "The list of matched materialized views.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The list of matched materialized views.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "MatchedMVs",
@@ -452,7 +452,7 @@
         },
         {
           "disabled": false,
-          "document": "The result data in bytes.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The result data in bytes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "AffectedBytes",
@@ -462,7 +462,7 @@
         },
         {
           "disabled": false,
-          "document": "\tThe number of rows in the result.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "\tThe number of rows in the result.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "AffectedRows",
@@ -472,7 +472,7 @@
         },
         {
           "disabled": false,
-          "document": "The volume of the data scanned, in bytes.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The volume of the data scanned, in bytes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "ProcessedBytes",
@@ -482,7 +482,7 @@
         },
         {
           "disabled": false,
-          "document": "\tThe number of scanned rows.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "\tThe number of scanned rows.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "ProcessedRows",
@@ -498,7 +498,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The COS path.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The COS path.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "cosn://***",
           "member": "string",
           "name": "CosPath",
@@ -509,7 +509,7 @@
         },
         {
           "disabled": false,
-          "document": "The permissions. Valid values: `read` and `write`.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The permissions. Valid values: `read` and `write`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "[\"read\",\"write\"]",
           "member": "string",
           "name": "Permissions",
@@ -1983,7 +1983,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2314,7 +2314,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2397,7 +2397,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3113,7 +3113,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "\tThe Alluxio cache hit rate.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "\tThe Alluxio cache hit rate.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "LocalCacheHitRate",
@@ -3123,7 +3123,7 @@
         },
         {
           "disabled": false,
-          "document": "The Fragment cache hit rate.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The Fragment cache hit rate.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "float",
           "name": "FragmentCacheHitRate",
@@ -3567,7 +3567,7 @@
         },
         {
           "disabled": false,
-          "document": "Engine status. -100 (default value): unknown; -2–11: normal.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Engine status. -100 (default value): unknown; -2-11: normal.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "DataEngineStatus",
@@ -3637,12 +3637,22 @@
         },
         {
           "disabled": false,
-          "document": "Whether the task runs with the session SQLs. Valid values: `false` for no and `true` for yes.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "Whether the task runs with the session SQLs. Valid values: `false` for no and `true` for yes.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "false",
           "member": "bool",
           "name": "IsSessionStarted",
           "output_required": false,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "SparkSQL",
+          "member": "string",
+          "name": "EngineTypeDetail",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -3653,7 +3663,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The shuffle data (in bytes) that overflows to COS.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The shuffle data (in bytes) that overflows to COS.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "ShuffleWriteBytesCos",
@@ -3663,7 +3673,7 @@
         },
         {
           "disabled": false,
-          "document": "The total shuffle data (in bytes).\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The total shuffle data (in bytes).\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "ShuffleWriteBytesTotal",
@@ -4629,7 +4639,7 @@
         },
         {
           "disabled": false,
-          "document": "Common task metrics\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "Common task metrics\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CommonMetrics",
           "name": "CommonMetrics",
@@ -4639,7 +4649,7 @@
         },
         {
           "disabled": false,
-          "document": "The Spark task metrics.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The Spark task metrics.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "SparkMonitorMetrics",
           "name": "SparkMonitorMetrics",
@@ -4649,12 +4659,42 @@
         },
         {
           "disabled": false,
-          "document": "The Presto task metrics.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The Presto task metrics.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "PrestoMonitorMetrics",
           "name": "PrestoMonitorMetrics",
           "output_required": true,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "csv",
+          "member": "string",
+          "name": "ResultFormat",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "SparkSQL",
+          "member": "string",
+          "name": "EngineTypeDetail",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ResourceGroupName1",
+          "member": "string",
+          "name": "ResourceGroupName",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -5059,7 +5099,7 @@
         },
         {
           "disabled": false,
-          "document": "The role name.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The role name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "RoleName",
@@ -5069,7 +5109,7 @@
         },
         {
           "disabled": false,
-          "document": "The creator UIN.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The creator UIN.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Creator",
@@ -5079,7 +5119,7 @@
         },
         {
           "disabled": false,
-          "document": "The COS permission list.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The COS permission list.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "CosPermission",
           "name": "CosPermissionList",
@@ -5089,7 +5129,7 @@
         },
         {
           "disabled": false,
-          "document": "The CAM policy in JSON.\nNote: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.",
+          "document": "The CAM policy in JSON.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "PermissionJson",

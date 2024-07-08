@@ -740,7 +740,7 @@
     ],
     "UpdateService": [
       {
-        "document": "u200dThis API is used to switch the running version of a service published in an environment to a specified version. After you create a service by using API Gateway and publish it to an environment, multiple versions will be generated during development. In this case, you can call this API to switch versions.",
+        "document": " This API is used to switch the running version of a service published in an environment to a specified version. After you create a service by using API Gateway and publish it to an environment, multiple versions will be generated during development. In this case, you can call this API to switch versions.",
         "input": "https://apigateway.tencentcloudapi.com/?Action=UpdateService\n&ServiceId=service-ody35h5e\n&EnvironmentName=test\n&VersionName=202002161926124aa59df4-7198-4f7a-acc7-887ab7ee0215\n&UpdateDesc=test\n&<Common Request Parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"7787aa0e-be74-43c0-b6f6-7bf56995ce2d\"\n    }\n}",
         "title": "UpdateService"
