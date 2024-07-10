@@ -972,6 +972,17 @@
           "required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio encoding configuration.",
+          "example": "无",
+          "member": "AudioCodecDetail",
+          "name": "AudioCodecDetails",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -2763,9 +2774,10 @@
         {
           "disabled": false,
           "document": "Relay destination address. Length limit: [1,512].",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "OutputUrl",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -2773,9 +2785,10 @@
         {
           "disabled": false,
           "document": "Authentication key. Length limit: [1,128].\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "AuthKey",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -2783,9 +2796,10 @@
         {
           "disabled": false,
           "document": "Authentication username. Length limit: [1,128].\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Username",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -2793,12 +2807,24 @@
         {
           "disabled": false,
           "document": "Authentication password. Length limit: [1,128].\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Password",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The destination type of the retweet. Currently available values are: Standard, AWS_MediaPackageV1, AWS_MediaPackageV2. The default is: Standard.",
+          "example": "Standard",
+          "member": "string",
+          "name": "DestinationType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"

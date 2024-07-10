@@ -1887,7 +1887,7 @@
         },
         {
           "disabled": false,
-          "document": "Duration for the persistent session. The value takes effect only when `SessionPersist = true`.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Duration for the persistent session. The value takes effect only when `SessionPersist = true`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "3600",
           "member": "uint64",
           "name": "SessionPersistTime",
@@ -1909,7 +1909,7 @@
         },
         {
           "disabled": false,
-          "document": "Rule tag.\nNote: This field may return·`null`, indicating that no valid values can be obtained.",
+          "document": "Rule tag.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "rule-service1",
           "member": "string",
           "name": "RuleTag",
