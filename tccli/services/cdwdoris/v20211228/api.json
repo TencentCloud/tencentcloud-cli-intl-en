@@ -1,0 +1,3286 @@
+{
+  "actions": {
+    "CreateInstanceNew": {
+      "document": "This API is used to create clusters.",
+      "input": "CreateInstanceNewRequest",
+      "name": "Creates clusters",
+      "output": "CreateInstanceNewResponse",
+      "status": "online"
+    },
+    "DescribeClusterConfigs": {
+      "document": "This API is used to get the contents of the latest configuration files (config.xml, metrika.xml, and user.xml) of the cluster and display them to the user.",
+      "input": "DescribeClusterConfigsRequest",
+      "name": "Gets the contents of the cluster configuration file",
+      "output": "DescribeClusterConfigsResponse",
+      "status": "online"
+    },
+    "DescribeDatabaseAuditDownload": {
+      "document": "This API is used to download database audit logs.",
+      "input": "DescribeDatabaseAuditDownloadRequest",
+      "name": "Downloads database audit logs",
+      "output": "DescribeDatabaseAuditDownloadResponse",
+      "status": "online"
+    },
+    "DescribeDatabaseAuditRecords": {
+      "document": "This API is used to get database audit records.",
+      "input": "DescribeDatabaseAuditRecordsRequest",
+      "name": "Gets database audit records",
+      "output": "DescribeDatabaseAuditRecordsResponse",
+      "status": "online"
+    },
+    "DescribeInstance": {
+      "document": "This API is used to query the specific information of a cluster based on the cluster ID.",
+      "input": "DescribeInstanceRequest",
+      "name": "Accesses cluster description information",
+      "output": "DescribeInstanceResponse",
+      "status": "online"
+    },
+    "DescribeInstanceNodes": {
+      "document": "This API is used to get the list of cluster node information.",
+      "input": "DescribeInstanceNodesRequest",
+      "name": "Gets the list of cluster node information",
+      "output": "DescribeInstanceNodesResponse",
+      "status": "online"
+    },
+    "DescribeInstanceNodesInfo": {
+      "document": "This API is used to get the BE/FE node roles.",
+      "input": "DescribeInstanceNodesInfoRequest",
+      "name": "Gets BE and FE node roles",
+      "output": "DescribeInstanceNodesInfoResponse",
+      "status": "online"
+    },
+    "DescribeInstanceState": {
+      "document": "This API is used to display cluster status, process progress, etc. in the cluster details page.",
+      "input": "DescribeInstanceStateRequest",
+      "name": "Gets cluster status",
+      "output": "DescribeInstanceStateResponse",
+      "status": "online"
+    },
+    "DescribeInstances": {
+      "document": "This API is used to get the list of clusters.",
+      "input": "DescribeInstancesRequest",
+      "name": "Gets the list of clusters",
+      "output": "DescribeInstancesResponse",
+      "status": "online"
+    },
+    "DescribeSlowQueryRecords": {
+      "document": "This API is used to get the slow log list.",
+      "input": "DescribeSlowQueryRecordsRequest",
+      "name": "Gets the slow log list",
+      "output": "DescribeSlowQueryRecordsResponse",
+      "status": "online"
+    },
+    "DescribeSlowQueryRecordsDownload": {
+      "document": "This API is used to download slow log files.",
+      "input": "DescribeSlowQueryRecordsDownloadRequest",
+      "name": "Downloads slow log files",
+      "output": "DescribeSlowQueryRecordsDownloadResponse",
+      "status": "online"
+    },
+    "DestroyInstance": {
+      "document": "This API is used to terminate clusters.",
+      "input": "DestroyInstanceRequest",
+      "name": "Terminates clusters",
+      "output": "DestroyInstanceResponse",
+      "status": "online"
+    },
+    "ModifyInstance": {
+      "document": "This API is used to modify the cluster's name.",
+      "input": "ModifyInstanceRequest",
+      "name": "Modifies the cluster's name",
+      "output": "ModifyInstanceResponse",
+      "status": "online"
+    },
+    "ResizeDisk": {
+      "document": "This API is used to expand cloud disks.",
+      "input": "ResizeDiskRequest",
+      "name": "Expands cloud disks",
+      "output": "ResizeDiskResponse",
+      "status": "online"
+    },
+    "RestartClusterForNode": {
+      "document": "This API is used to indicate the rolling restart of the clusters.",
+      "input": "RestartClusterForNodeRequest",
+      "name": "Rolling restart of the cluster",
+      "output": "RestartClusterForNodeResponse",
+      "status": "online"
+    },
+    "ScaleOutInstance": {
+      "document": "This API is used to horizontally scale out nodes.",
+      "input": "ScaleOutInstanceRequest",
+      "name": "Scales out horizontally",
+      "output": "ScaleOutInstanceResponse",
+      "status": "online"
+    },
+    "ScaleUpInstance": {
+      "document": "This API is used to scale up/down computing resources.",
+      "input": "ScaleUpInstanceRequest",
+      "name": "Scales up/down computing resources",
+      "output": "ScaleUpInstanceResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2021-12-28",
+    "serviceNameCN": "腾讯云数据仓库 TCHouse-D",
+    "serviceShortName": "cdwdoris"
+  },
+  "objects": {
+    "AttachCBSSpec": {
+      "document": "Specifications of nodes in the cluster and disk specifications description",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Node disk type, such as CLOUD_SSD\"\\\"CLOUD_PREMIUM",
+          "example": "xx",
+          "member": "string",
+          "name": "DiskType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disk capacity, in GB",
+          "example": "xx",
+          "member": "int64",
+          "name": "DiskSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of disks",
+          "example": "xx",
+          "member": "int64",
+          "name": "DiskCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Description",
+          "example": "xx",
+          "member": "string",
+          "name": "DiskDesc",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ChargeProperties": {
+      "document": "Cluster billing-related information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Billing type: PREPAID for prepayment, and POSTPAID_BY_HOUR for postpayment.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ChargeType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to automatically renew. 1 means automatic renewal is enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "RenewFlag",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing duration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "TimeSpan",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing time unit, and \"m\" means month, etc.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TimeUnit",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ClusterConfigsInfoFromEMR": {
+      "document": "It is used to return configuration files and content in XML format, as well as other information related to the configuration files.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Configuration file's name",
+          "example": "config.xml",
+          "member": "string",
+          "name": "FileName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Related attribute information corresponding to the configuration files",
+          "example": "{\"editable\":true,\"display\":true,\"type\":\"Customize\",\"fileOwner\":\"",
+          "member": "string",
+          "name": "FileConf",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Other attribute information corresponding to the configuration files",
+          "example": "{\"customKey\":{\"name\":\"customKey\",\"type\":\"string\",\"description\":\"",
+          "member": "string",
+          "name": "KeyConf",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Contents of the configuration files, base64 encoded",
+          "example": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHlhbmRleD4K",
+          "member": "string",
+          "name": "OriParam",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "This is used to indicate whether the current configuration file has been modified without a restart, and reminds the user that a restart is needed.",
+          "example": "1",
+          "member": "int64",
+          "name": "NeedRestart",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configuration file path\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": ":\"/usr/local/service/doris/conf\"",
+          "member": "string",
+          "name": "FilePath",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": true,
+          "document": "kv value of a configuration file\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"KeyName\":\"broker_ipc_port\",\"Value\":\"8000\",\"Message\":\"内部通信端口\",\"Display\":1,\"SupportHotUpdate\":0},{\"KeyName\":\"client_expire_seconds\",\"Value\":\"300\",\"Message\":\"客户端过期时间\",\"Display\":1,\"SupportHotUpdate\":0},{\"KeyName\":\"XMX\",\"Value\":\"3g\",\"Message\":\"最大Heap的大小\",\"Display\":2,\"SupportHotUpdate\":0}]}]",
+          "member": "string",
+          "name": "FileKeyValues",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "kv value of a configuration file\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ConfigKeyValue",
+          "name": "FileKeyValuesNew",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ConfigKeyValue": {
+      "document": "Return the configuration file content (key-value)",
+      "members": [
+        {
+          "disabled": false,
+          "document": "key\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "KeyName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Value\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Notes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "1 indicates read-only, 2 indicates editable but undeletable, and 3 indicates deletable.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Display",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "0 means not supported, and 1 means hot update is supported.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "SupportHotUpdate",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateInstanceNewRequest": {
+      "document": "CreateInstanceNew request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Availability zone",
+          "example": "无",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "FE specifications",
+          "example": "无",
+          "member": "CreateInstanceSpec",
+          "name": "FeSpec",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "BE specifications.",
+          "example": "无",
+          "member": "CreateInstanceSpec",
+          "name": "BeSpec",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is highly available.",
+          "example": "无",
+          "member": "bool",
+          "name": "HaFlag",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "User VPCID",
+          "example": "无",
+          "member": "string",
+          "name": "UserVPCId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User subnet ID",
+          "example": "无",
+          "member": "string",
+          "name": "UserSubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Product version number",
+          "example": "无",
+          "member": "string",
+          "name": "ProductVersion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Payment type",
+          "example": "无",
+          "member": "ChargeProperties",
+          "name": "ChargeProperties",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Instance name",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database password",
+          "example": "无",
+          "member": "string",
+          "name": "DorisUserPwd",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag list",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "High availability type:\n0 indicates non-high availability (only one FE, FeSpec.CreateInstanceSpec.Count=1),\n1 indicates read high availability (at least 3 FEs must be deployed, FeSpec.CreateInstanceSpec.Count>=3, and it must be an odd number),\n2 indicates read and write high availability (at least 5 FEs must be deployed, FeSpec.CreateInstanceSpec.Count>=5, and it must be an odd number).",
+          "example": "0",
+          "member": "int64",
+          "name": "HaType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether the table name is case sensitive, 0 refers to sensitive, 1 refers to insensitive, compared in lowercase; 2 refers to insensitive, and the table name is changed to lowercase for storage.",
+          "example": "0",
+          "member": "int64",
+          "name": "CaseSensitive",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable multi-availability zone.",
+          "example": "true",
+          "member": "bool",
+          "name": "EnableMultiZones",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "After the Multi-AZ is enabled, all user's Availability Zones and Subnets information are shown.",
+          "example": "无",
+          "member": "NetworkInfo",
+          "name": "UserMultiZoneInfos",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceNewResponse": {
+      "document": "CreateInstanceNew response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Process ID",
+          "example": "无",
+          "member": "string",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "无",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateInstanceSpec": {
+      "document": "Cluster specifications",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specification name",
+          "example": "无",
+          "member": "string",
+          "name": "SpecName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Quantities",
+          "example": "无",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Cloud disk size",
+          "example": "无",
+          "member": "uint64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
+    "DataBaseAuditRecord": {
+      "document": "Database audit",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query user\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "OsUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Query ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "InitialQueryId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "SQL statement\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "Sql",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "QueryStartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Execution duration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "int64",
+          "name": "DurationMs",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The number of read rows\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "int64",
+          "name": "ReadRows",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total number of read bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "int64",
+          "name": "ResultRows",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Result bytes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "uint64",
+          "name": "ResultBytes",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Memory\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "int64",
+          "name": "MemoryUsage",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Initial query IP\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "InitialAddress",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Database\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "DbName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "SQL type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "SqlType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Catalog name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Catalog",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeClusterConfigsRequest": {
+      "document": "DescribeClusterConfigs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster instance ID",
+          "example": "cdwch-f625kxu6",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "0 indicates public cloud query, and 1 Qinge query. Qinge query shows all that needs to be displayed.",
+          "example": "1",
+          "member": "int64",
+          "name": "ConfigType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search for files with fuzzy keywords",
+          "example": "Keytab",
+          "member": "string",
+          "name": "FileName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "0 indicates cluster dimension and 1 node dimension",
+          "example": "0",
+          "member": "int64",
+          "name": "ClusterConfigType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "eth0's IP address",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "IPAddress",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeClusterConfigsResponse": {
+      "document": "DescribeClusterConfigs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Return information about the instance's configuration file.",
+          "example": "无",
+          "member": "ClusterConfigsInfoFromEMR",
+          "name": "ClusterConfList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Return the current kernel version. If it does not exist, a null character string is returned.",
+          "example": "无",
+          "member": "string",
+          "name": "BuildVersion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseAuditDownloadRequest": {
+      "document": "DescribeDatabaseAuditDownload request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "xx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "xx",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time",
+          "example": "xx",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Paging",
+          "example": "1",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paging",
+          "example": "10",
+          "member": "int64",
+          "name": "PageNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sort parameters",
+          "example": "DESC/ASC",
+          "member": "string",
+          "name": "OrderType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User",
+          "example": "无",
+          "member": "string",
+          "name": "User",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database",
+          "example": "无",
+          "member": "string",
+          "name": "DbName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "SQL type",
+          "example": "无",
+          "member": "string",
+          "name": "SqlType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "SQL statement",
+          "example": "sql",
+          "member": "string",
+          "name": "Sql",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Users (multiple selections)",
+          "example": "无",
+          "member": "string",
+          "name": "Users",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Databases (multiple selections)",
+          "example": "无",
+          "member": "string",
+          "name": "DbNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "SQL types (multiple selections)",
+          "example": "无",
+          "member": "string",
+          "name": "SqlTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Catalog names (multiple selections)",
+          "example": "无",
+          "member": "string",
+          "name": "Catalogs",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseAuditDownloadResponse": {
+      "document": "DescribeDatabaseAuditDownload response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The cos address of the log",
+          "example": "xx",
+          "member": "string",
+          "name": "CosUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseAuditRecordsRequest": {
+      "document": "DescribeDatabaseAuditRecords request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "xx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "xx",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time",
+          "example": "xx",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Paging",
+          "example": "xx",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paging",
+          "example": "xx",
+          "member": "int64",
+          "name": "PageNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sort parameters",
+          "example": "DESC/ASC",
+          "member": "string",
+          "name": "OrderType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User",
+          "example": "无",
+          "member": "string",
+          "name": "User",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database",
+          "example": "无",
+          "member": "string",
+          "name": "DbName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "SQL type",
+          "example": "无",
+          "member": "string",
+          "name": "SqlType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "SQL statement",
+          "example": "sql",
+          "member": "string",
+          "name": "Sql",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Users (multiple selections)",
+          "example": "无",
+          "member": "string",
+          "name": "Users",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Databases (multiple selections)",
+          "example": "无",
+          "member": "string",
+          "name": "DbNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "SQL types (multiple selections)",
+          "example": "无",
+          "member": "string",
+          "name": "SqlTypes",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Catalog names (multiple selections)",
+          "example": "无",
+          "member": "string",
+          "name": "Catalogs",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDatabaseAuditRecordsResponse": {
+      "document": "DescribeDatabaseAuditRecords response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total",
+          "example": "123",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Record list",
+          "example": "xx",
+          "member": "DataBaseAuditRecord",
+          "name": "SlowQueryRecords",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceNodesInfoRequest": {
+      "document": "DescribeInstanceNodesInfo request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cdwdoris-xxx",
+          "member": "string",
+          "name": "InstanceID",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceNodesInfoResponse": {
+      "document": "DescribeInstanceNodesInfo response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Be node\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "已废弃",
+          "member": "string",
+          "name": "BeNodes",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Fe node\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "已废弃",
+          "member": "string",
+          "name": "FeNodes",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Fe master node",
+          "example": "无",
+          "member": "string",
+          "name": "FeMaster",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Be node information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "NodeInfo",
+          "name": "BeNodeInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Fe node information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "NodeInfo",
+          "name": "FeNodeInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceNodesRequest": {
+      "document": "DescribeInstanceNodes request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster instance ID",
+          "example": "cdwch-12345678",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cluster role type, defaulted as \"data node\".",
+          "example": "DATA",
+          "member": "string",
+          "name": "NodeRole",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameters. The first page is 0, and the second page is 10.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameters. The pagination step length is 10 by default.",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Display policy, and all items are displayed when All is selected.",
+          "example": "All",
+          "member": "string",
+          "name": "DisplayPolicy",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceNodesResponse": {
+      "document": "DescribeInstanceNodes response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number",
+          "example": "2",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of instance nodes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "InstanceNode",
+          "name": "InstanceNodesList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceRequest": {
+      "document": "DescribeInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster instance ID",
+          "example": "cdwch-12345678",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceResponse": {
+      "document": "DescribeInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance description information",
+          "example": "无",
+          "member": "InstanceInfo",
+          "name": "InstanceInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceStateRequest": {
+      "document": "DescribeInstanceState request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster instance name",
+          "example": "-",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstanceStateResponse": {
+      "document": "DescribeInstanceState response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster status. Example: Serving",
+          "example": "-",
+          "member": "string",
+          "name": "InstanceState",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time of cluster operation\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "FlowCreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cluster operation name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "FlowName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cluster operation progress\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "float",
+          "name": "FlowProgress",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cluster status description. Example: running\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "InstanceStateDesc",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cluster process error messages, such as \"Creation failed, insufficient resources\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "FlowMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesRequest": {
+      "document": "DescribeInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The name of the cluster ID for the search",
+          "example": "cdwch-xxxx",
+          "member": "string",
+          "name": "SearchInstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The cluster name for the search",
+          "example": "-",
+          "member": "string",
+          "name": "SearchInstanceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameters. The first page is 0, and the second page is 10.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameters. The pagination step length is 10 by default.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search tag list",
+          "example": "无",
+          "member": "SearchTags",
+          "name": "SearchTags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesResponse": {
+      "document": "DescribeInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total Number of Instances",
+          "example": "18",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quantities of instances array",
+          "example": "-",
+          "member": "InstanceInfo",
+          "name": "InstancesList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowQueryRecordsDownloadRequest": {
+      "document": "DescribeSlowQueryRecordsDownload request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "xx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Slow log time",
+          "example": "xx",
+          "member": "int64",
+          "name": "QueryDurationMs",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "xx",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time",
+          "example": "xx",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort parameters",
+          "example": "xx",
+          "member": "string",
+          "name": "DurationMs",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query SQL",
+          "example": "无",
+          "member": "string",
+          "name": "Sql",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort parameters",
+          "example": "无",
+          "member": "string",
+          "name": "ReadRows",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort parameters",
+          "example": "无",
+          "member": "string",
+          "name": "ResultBytes",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort parameters",
+          "example": "无",
+          "member": "string",
+          "name": "MemoryUsage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IsQuery condition",
+          "example": "无",
+          "member": "int64",
+          "name": "IsQuery",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Database name",
+          "example": "[\"xx\",\"xxx\"]",
+          "member": "string",
+          "name": "DbName",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "catalog name",
+          "example": "[\"xx\",\"xxx\"]",
+          "member": "string",
+          "name": "CatalogName",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowQueryRecordsDownloadResponse": {
+      "document": "DescribeSlowQueryRecordsDownload response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "cos address",
+          "example": "xx",
+          "member": "string",
+          "name": "CosUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowQueryRecordsRequest": {
+      "document": "DescribeSlowQueryRecords request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "cdwdoris-64h6w432",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Slow log time",
+          "example": "100",
+          "member": "int64",
+          "name": "QueryDurationMs",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "abc",
+          "member": "string",
+          "name": "StartTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time",
+          "example": "abc",
+          "member": "string",
+          "name": "EndTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Paging",
+          "example": "1",
+          "member": "int64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paging",
+          "example": "1",
+          "member": "int64",
+          "name": "PageNum",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sort parameters",
+          "example": "abc",
+          "member": "string",
+          "name": "DurationMs",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database name",
+          "example": "[\"xx\",\"xxx\"]",
+          "member": "string",
+          "name": "DbName",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is a query. 0 indicates no, and 1 indicates yes.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsQuery",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "catalog name",
+          "example": "[\"xx\",\"xxx\"]",
+          "member": "string",
+          "name": "CatalogName",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "SQL name",
+          "example": "select * from xxx",
+          "member": "string",
+          "name": "Sql",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ReadRows sort field",
+          "example": "ASC",
+          "member": "string",
+          "name": "ReadRows",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ResultBytes sort field",
+          "example": "ASC",
+          "member": "string",
+          "name": "ResultBytes",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "MemoryUsage sort field",
+          "example": "ASC",
+          "member": "string",
+          "name": "MemoryUsage",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeSlowQueryRecordsResponse": {
+      "document": "DescribeSlowQueryRecords response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total",
+          "example": "123",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Record list",
+          "example": "[\"xx\",\"abc\"",
+          "member": "SlowQueryRecord",
+          "name": "SlowQueryRecords",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "All database names\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DBNameList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "All catalog names\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CatalogNameList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyInstanceRequest": {
+      "document": "DestroyInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DestroyInstanceResponse": {
+      "document": "DestroyInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Process ID",
+          "example": "无",
+          "member": "string",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "无",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InstanceInfo": {
+      "document": "Instance description information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster instance ID, \"cdw-xxxx\" string type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cdwch-xxxxxxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cluster instance name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "clickhouse集群",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status,\nInit is being created. Serving is running. \nDeleted indicates the cluster has been terminated. Deleting indicates the cluster is being terminated.\nModify indicates the cluster is being changed.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Running",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20.7.2.30",
+          "member": "string",
+          "name": "Version",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region, ap-guangzhou\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone, ap-guangzhou-3\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou-3",
+          "member": "string",
+          "name": "Zone",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "VPC name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "vpc-xxxxxx",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subnet name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "subnet-xxxxx",
+          "member": "string",
+          "name": "SubnetId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Payment type: hour and prepay\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "hour",
+          "member": "string",
+          "name": "PayMode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-01-01 11:11:11",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2020-02-01 11:11:11",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data node description information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "NodesSummary",
+          "name": "MasterSummary",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Zookeeper node description information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "NodesSummary",
+          "name": "CoreSummary",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "High availability, being true or false\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "string",
+          "name": "HA",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "High availability type:\n0: non-high availability\n1: read high availability\n2: read-write high availability\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "HaType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Access address. Example: 10.0.0.1:9000\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"10.0.0.1:9000\"",
+          "member": "string",
+          "name": "AccessInfo",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Record ID, in numerical type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Id",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region ID, indicating the region\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "RegionId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Note about availability zone, such as Guangzhou Zone 2\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "广州三区",
+          "member": "string",
+          "name": "ZoneDesc",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error process description information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "FlowMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status description, such as \"running\"\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "运行中",
+          "member": "string",
+          "name": "StatusDesc",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Automatic renewal marker\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "RenewFlag",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag list\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Monitoring Information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "prom-aaaaa",
+          "member": "string",
+          "name": "Monitor",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable logs.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "HasClsTopic",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Log Topic ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "ClsTopicId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Logset ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "ClsLogSetId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to support XML configuration management.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "EnableXMLConfig",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "广州",
+          "member": "string",
+          "name": "RegionDesc",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Elastic network interface address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "127.0.0.1",
+          "member": "string",
+          "name": "Eip",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cold and hot stratification coefficient\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20",
+          "member": "int64",
+          "name": "CosMoveFactor",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "external/local/yunti\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "yunti",
+          "member": "string",
+          "name": "Kind",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "COS bucket\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CosBucketName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "cbs\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "CanAttachCbs",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Minor versions\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "BuildVersion",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Component Information\nNote: The return type here is map[string]struct, not the string type displayed. You can refer to \"Sample Value\" to parse the data.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{   \"BE\": {     \"name\": \"BE\",     \"version\": \"1.0\"   } }",
+          "member": "string",
+          "name": "Components",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": true,
+          "document": "Determine whether the audit log table has a catalog field.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "IfExistCatalog",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Page features, used to block some page entrances on the front end.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"catalog\",\"xx\"]",
+          "member": "string",
+          "name": "Characteristic",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Timeout period, in seconds\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RestartTimeout",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The timeout time for the graceful restart of the kernel. If it is -1, it means it is not set.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "GraceShutdownWaitSeconds",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the table name is case sensitive, 0 refers to sensitive, 1 refers to insensitive, compared in lowercase; 2 refers to insensitive, and the table name is changed to lowercase for storage.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "CaseSensitive",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether users can bind security groups.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsWhiteSGs",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bound security group information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"sg-dasda\"]",
+          "member": "string",
+          "name": "BindSGs",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is a multi-AZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableMultiZones",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "User availability zone and subnet information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserNetworkInfos",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable hot and cold stratification. 0 refers to disabled, and 1 refers to enabled.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "EnableCoolDown",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "COS buckets are used for hot and cold stratification\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CoolDownBucket",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InstanceNode": {
+      "document": "Instance node description information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IP address",
+          "example": "10.0.0.1",
+          "member": "string",
+          "name": "Ip",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Model, such as S1",
+          "example": "SCH1",
+          "member": "string",
+          "name": "Spec",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of CPU cores",
+          "example": "2",
+          "member": "int64",
+          "name": "Core",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Memory size",
+          "example": "4",
+          "member": "int64",
+          "name": "Memory",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disk type",
+          "example": "CLOUD_HSSD",
+          "member": "string",
+          "name": "DiskType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disk size",
+          "example": "100",
+          "member": "int64",
+          "name": "DiskSize",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The name of the clickhouse cluster to which it belongs.",
+          "example": "default_cluster",
+          "member": "string",
+          "name": "Role",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "rip\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Rip",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "FE node role\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "leader",
+          "member": "string",
+          "name": "FeRole",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "UUID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2e8ed58d-bbf8-48f2-bfa6-3c5b3f4b9xas",
+          "member": "string",
+          "name": "UUID",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyInstanceRequest": {
+      "document": "ModifyInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "cdwch-12345678",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Newly modified instance name",
+          "example": "cdwch-test",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceResponse": {
+      "document": "ModifyInstance response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "NetworkInfo": {
+      "document": "Network information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Availability zone\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou-1",
+          "member": "string",
+          "name": "Zone",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subnet ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "subnet-xxxxxxx",
+          "member": "string",
+          "name": "SubnetId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The number of available IP addresses in the current subnet\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "20",
+          "member": "int64",
+          "name": "SubnetIpNum",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "NodeInfo": {
+      "document": "NodeInfo",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User IP\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Ip",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node role name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "MASTER",
+          "member": "string",
+          "name": "NodeName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Component name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "FE",
+          "member": "string",
+          "name": "ComponentName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node role\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "core",
+          "member": "string",
+          "name": "NodeRole",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The time when the node was last restarted\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LastRestartTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The availability zone where the node is located\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Zone",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "NodesSummary": {
+      "document": "Node role description information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Model, such as S1",
+          "example": "xx",
+          "member": "string",
+          "name": "Spec",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of nodes",
+          "example": "1",
+          "member": "int64",
+          "name": "NodeSize",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of CPU cores, in counts",
+          "example": "2",
+          "member": "int64",
+          "name": "Core",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Memory size, in GB",
+          "example": "4",
+          "member": "int64",
+          "name": "Memory",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disk size, in GB",
+          "example": "xx",
+          "member": "int64",
+          "name": "Disk",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disk type",
+          "example": "xx",
+          "member": "string",
+          "name": "DiskType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Disk description",
+          "example": "xx",
+          "member": "string",
+          "name": "DiskDesc",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Information of mounted cloud disks\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "AttachCBSSpec",
+          "name": "AttachCBSSpec",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Sub-product name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cdwdoris",
+          "member": "string",
+          "name": "SubProductType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specified cores\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "SpecCore",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Specified memory\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "SpecMemory",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Disk size\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "DiskCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is encrypted.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Encrypt",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maximum disk\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "MaxDiskSize",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ResizeDiskRequest": {
+      "document": "ResizeDisk request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Role (MATER/CORE), MASTER corresponds to FE, CORE corresponds to BE.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cloud disk size",
+          "example": "无",
+          "member": "uint64",
+          "name": "DiskSize",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ResizeDiskResponse": {
+      "document": "ResizeDisk response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Process ID",
+          "example": "无",
+          "member": "string",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "无",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RestartClusterForNodeRequest": {
+      "document": "RestartClusterForNode request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID, such as cdwch-xxxx",
+          "example": "cdwch-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration file's name",
+          "example": "fe/be/broken",
+          "member": "string",
+          "name": "ConfigName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Each batch of restarts",
+          "example": "1",
+          "member": "int64",
+          "name": "BatchSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Restart node",
+          "example": "[ip1,ip2]",
+          "member": "string",
+          "name": "NodeList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "False means non-rolling restart, and true means rolling restart.",
+          "example": "无",
+          "member": "bool",
+          "name": "RollingRestart",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "RestartClusterForNodeResponse": {
+      "document": "RestartClusterForNode response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Process related information",
+          "example": "-",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "-",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ScaleOutInstanceRequest": {
+      "document": "ScaleOutInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Role (MATER/CORE), MASTER corresponds to FE, CORE corresponds to BE.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of nodes",
+          "example": "无",
+          "member": "uint64",
+          "name": "NodeCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Cluster high availability type after scaled out: 0 indicates non-high availability, 1 indicates read high availability, and 2 indicates read-write high availability.",
+          "example": "0",
+          "member": "int64",
+          "name": "HaType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ScaleOutInstanceResponse": {
+      "document": "ScaleOutInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Process ID",
+          "example": "无",
+          "member": "string",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "无",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ScaleUpInstanceRequest": {
+      "document": "ScaleUpInstance request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Node specifications",
+          "example": "无",
+          "member": "string",
+          "name": "SpecName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Role (MATER/CORE). MASTER corresponds to FE, and CORE corresponds to BE.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ScaleUpInstanceResponse": {
+      "document": "ScaleUpInstance response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Process ID",
+          "example": "无",
+          "member": "string",
+          "name": "FlowId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "无",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SearchTags": {
+      "document": "The searched marker list on the list page",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag key",
+          "example": "标签一",
+          "member": "string",
+          "name": "TagKey",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag value",
+          "example": "标签值一",
+          "member": "string",
+          "name": "TagValue",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "1 means only the tag key is entered without a value, and 0 means both the key and the value are entered.",
+          "example": "1",
+          "member": "int64",
+          "name": "AllValue",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "SlowQueryRecord": {
+      "document": "Slow log records",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User query ",
+          "example": "xx",
+          "member": "string",
+          "name": "OsUser",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID query",
+          "example": "xx",
+          "member": "string",
+          "name": "InitialQueryId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SQL statement",
+          "example": "xx",
+          "member": "string",
+          "name": "Sql",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "xx",
+          "member": "string",
+          "name": "QueryStartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Execution duration",
+          "example": "xx",
+          "member": "int64",
+          "name": "DurationMs",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of read rows",
+          "example": "xx",
+          "member": "int64",
+          "name": "ReadRows",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of read bytes",
+          "example": "xx",
+          "member": "int64",
+          "name": "ResultRows",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Result bytes",
+          "example": "xx",
+          "member": "uint64",
+          "name": "ResultBytes",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Memory",
+          "example": "xx",
+          "member": "int64",
+          "name": "MemoryUsage",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Initial query IP",
+          "example": "xx",
+          "member": "string",
+          "name": "InitialAddress",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Database name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "DbName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is a query. 0 indicates no, and 1 indicates query statement.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsQuery",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "MB format of ResultBytes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3.415",
+          "member": "float",
+          "name": "ResultBytesMB",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "MemoryUsage, in MB\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "99.863",
+          "member": "float",
+          "name": "MemoryUsageMB",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "DurationMs, in seconds\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0.361",
+          "member": "float",
+          "name": "DurationSec",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Tag": {
+      "document": "Tag description",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag key",
+          "example": "标签一",
+          "member": "string",
+          "name": "TagKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag value",
+          "example": "内容一",
+          "member": "string",
+          "name": "TagValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    }
+  },
+  "version": "1.0"
+}
