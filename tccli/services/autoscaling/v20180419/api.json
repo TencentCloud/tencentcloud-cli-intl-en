@@ -344,7 +344,7 @@
       "status": "online"
     },
     "ScaleOutInstances": {
-      "document": "This API is used to add the specified number of instances to a scaling group. It returns the scaling activity ID `ActivityId`.\n* u200dMake sure that there are no ongoing scaling tasks.\n* This API is valid even when the scaling group is disabled. For more details, see [DisableAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20435?from_cn_redirect=1).\n* The total number of instances after this action cannot exceed the maximum capacity.\n* If a scale-out action failed or partially succeeded, only the number of successfully created instances is added to the number of desired capacity.\n* If the allocation policy is `SPOT_MIXED`, there may be multiple scaling activities triggered for one scaling task. u200dIn this case, the first activity ID (`ActivityId`) is returned.",
+      "document": "This API is used to add the specified number of instances to a scaling group. It returns the scaling activity ID `ActivityId`.\n* Make sure that there are no ongoing scaling tasks.\n* This API is valid even when the scaling group is disabled. For more details, see [DisableAutoScalingGroup](https://intl.cloud.tencent.com/document/api/377/20435?from_cn_redirect=1).\n* The total number of instances after this action cannot exceed the maximum capacity.\n* If a scale-out action failed or partially succeeded, only the number of successfully created instances is added to the number of desired capacity.\n* If the allocation policy is `SPOT_MIXED`, there may be multiple scaling activities triggered for one scaling task. In this case, the first activity ID (`ActivityId`) is returned.",
       "input": "ScaleOutInstancesRequest",
       "name": "Adds the specified number of instances",
       "output": "ScaleOutInstancesResponse",
@@ -633,7 +633,7 @@
         },
         {
           "disabled": false,
-          "document": "u200dRisk level of the scaling group configuration. Valid values: <br>\n<li>WARNING<br>\n<li>CRITICAL<br>",
+          "document": "Risk level of the scaling group configuration. Valid values: <br>\n<li>WARNING<br>\n<li>CRITICAL<br>",
           "example": "WARNING",
           "member": "string",
           "name": "Level",
@@ -6303,7 +6303,7 @@
         },
         {
           "disabled": false,
-          "document": "Status of the instance in the scaling activity. Valid values:\n`INIT`: Initializing\n`RUNNING`: u200dProcessing u200dthe instance\n`SUCCESSFUL`: Task succeeded on the instance\n`FAILED`: Task failed on the instance",
+          "document": "Status of the instance in the scaling activity. Valid values:\n`INIT`: Initializing\n`RUNNING`: Processing the instance\n`SUCCESSFUL`: Task succeeded on the instance\n`FAILED`: Task failed on the instance",
           "example": "无",
           "member": "string",
           "name": "InstanceStatus",
@@ -6623,7 +6623,6 @@
           "example": "asa-n6w01f6m",
           "member": "string",
           "name": "ActivityId",
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },

@@ -165,7 +165,7 @@
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: dcdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBTmpInstances\n<Common request parameters>\n\n{\n    \"InstanceId\": \"dcdbt-21dfpcv1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"0cf21c76-0382-491d-b634-f3d1ae1a4547\",\n        \"TmpInstances\": []\n    }\n}",
-        "title": "Nu200done"
+        "title": "None"
       }
     ],
     "DescribeDCDBInstanceDetail": [
@@ -261,7 +261,7 @@
         "document": " ",
         "input": "https://dcdb.tencentcloudapi.com/?Action=DescribeLogFileRetentionPeriod\n&InstanceId=dcdbt-ak4b3m9l\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Days\": 30,\n        \"InstanceId\": \"dcdbt-ak4b3m9l\",\n        \"RequestId\": \"a6e96bd9-ec89-4c02-9738-d33e783a4bae\"\n    }\n}",
-        "title": "Viewing u200dthe backup log retention days"
+        "title": "Viewing the backup log retention days"
       }
     ],
     "DescribeOrders": [
