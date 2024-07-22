@@ -3813,7 +3813,7 @@
         },
         {
           "disabled": false,
-          "document": "Type of TRTC RoomId. 【*Note】Must be the same as the RoomId type corresponding to the Record room: 0: String type RoomId 1: 32-bit Integer type RoomId (default)",
+          "document": "Type of TRTC RoomId. [*Note] Must be the same as the RoomId type corresponding to the Record room: 0: String type RoomId 1: 32-bit Integer type RoomId (default)",
           "example": "1",
           "member": "uint64",
           "name": "RoomIdType",
@@ -3831,7 +3831,7 @@
         },
         {
           "disabled": false,
-          "document": "UserSig corresponding to the Pull stream Relay Robot UserId, i.e., UserId and UserSig are equivalent to the Robot's Login password for entering the room. For the specific Calculation method, please refer to the TRTC [UserSig](https://intl.cloud.tencent.com/document/product/647/45910?from_cn_redirect=1#UserSig) Scheme.",
+          "document": "UserSig corresponding to the Pull stream Relay Robot UserId, i.e., UserId and UserSig are equivalent to the Robot's Login password for entering the room. For the specific Calculation method, please refer to the TRTC [UserSig](https://www.tencentcloud.com/zh/document/product/647/39074) Scheme.",
           "example": "recorder_1234_sig",
           "member": "string",
           "name": "UserSig",
@@ -3844,7 +3844,7 @@
           "example": "https://a.b/test.mp4",
           "member": "string",
           "name": "SourceUrl",
-          "required": true,
+          "required": false,
           "type": "list"
         },
         {
@@ -3873,6 +3873,15 @@
           "name": "AudioEncodeParams",
           "required": false,
           "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "https://a.b/test.mp4",
+          "member": "string",
+          "name": "StreamUrl",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
