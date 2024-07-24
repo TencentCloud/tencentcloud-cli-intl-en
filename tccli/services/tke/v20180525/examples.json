@@ -662,7 +662,7 @@
     ],
     "DescribeTKEEdgeScript": [
       {
-        "document": "This example shows you how to u200dobtain the URL to download scripts used to add nodes to an edge cluster.",
+        "document": "This example shows you how to obtain the URL to download scripts used to add nodes to an edge cluster.",
         "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTKEEdgeScript\n<Common request parameters>\n\n{\n    \"Interface\": \"eth0\",\n    \"Config\": \"{\\\"Interface\\\":\\\"\\\",\\\"RuntimePath\\\":\\\"/var/lib/docker\\\",\\\"EdgeClusterVersion\\\":\\\"2.2\\\",\\\"TTL\\\":\\\"24h\\\", \\\"SkipInstallRuntime\\\":true}\",\n    \"ClusterId\": \"cls123\",\n    \"NodeName\": \"node\"\n}",
         "output": "{\n    \"Response\": {\n        \"Link\": \"www.tencent.com\",\n        \"Token\": \"123456\",\n        \"Command\": \"wget www.tencent.com\",\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\",\n        \"ScriptVersion\": \"2022112323123\"\n    }\n}",
         "title": "Querying the URL of TKE Edge script"
@@ -889,12 +889,12 @@
         "document": "This example shows you how to upgrade a cluster to the specified version.",
         "input": "https://tke.tencentcloudapi.com/?Action=UpdateClusterVersion\n&ClusterId=cls-xxxxxxxx\n&DstVersion=1.18.4\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
-        "title": "Upgrading u200da cluster to the specified version"
+        "title": "Upgrading a cluster to the specified version"
       }
     ],
     "UpdateEdgeClusterVersion": [
       {
-        "document": "u200dThis example shows you how to upgrade an edge cluster add-on. ",
+        "document": "This example shows you how to upgrade an edge cluster add-on. ",
         "input": "POST / HTTP/1.1\nHost: tke.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateEdgeClusterVersion\n<Common request parameters>\n\n{\n    \"ClusterId\": \"cls-xxxxxxxx\",\n    \"EdgeVersion\": \"1.0.1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ac430cd-f7de-482e-b98e-f78a48e785e8\"\n    }\n}",
         "title": "Upgrading an edge cluster"

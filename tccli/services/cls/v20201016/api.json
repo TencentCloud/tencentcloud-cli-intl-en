@@ -7689,7 +7689,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Import type. Valid values: `json_log` (JSON logs), `minimalist_log` (single-line full text), and fullregex_log u200d(single-line full regex)",
+          "document": "Import type. Valid values: `json_log` (JSON logs), `minimalist_log` (single-line full text), and fullregex_log (single-line full regex)",
           "example": "json_log",
           "member": "string",
           "name": "RechargeType",
