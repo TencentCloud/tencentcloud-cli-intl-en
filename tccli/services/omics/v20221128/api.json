@@ -1,0 +1,3384 @@
+{
+  "actions": {
+    "CreateEnvironment": {
+      "document": "This API is used to create an environment for Tencent Healthcare Omics Platform.",
+      "input": "CreateEnvironmentRequest",
+      "name": "Creates an environment",
+      "output": "CreateEnvironmentResponse",
+      "status": "online"
+    },
+    "CreateVolume": {
+      "document": "This API is used to create a volume.",
+      "input": "CreateVolumeRequest",
+      "name": "Creates a volume",
+      "output": "CreateVolumeResponse",
+      "status": "online"
+    },
+    "DeleteEnvironment": {
+      "document": "This API is used to delete the environment.",
+      "input": "DeleteEnvironmentRequest",
+      "name": "Delete the environment",
+      "output": "DeleteEnvironmentResponse",
+      "status": "online"
+    },
+    "DeleteVolume": {
+      "document": "This API is used to delete the volume.",
+      "input": "DeleteVolumeRequest",
+      "name": "Deletes the volume",
+      "output": "DeleteVolumeResponse",
+      "status": "online"
+    },
+    "DeleteVolumeData": {
+      "document": "This API is used to delete the volume data.",
+      "input": "DeleteVolumeDataRequest",
+      "name": "Deletes the volume data",
+      "output": "DeleteVolumeDataResponse",
+      "status": "online"
+    },
+    "DescribeEnvironments": {
+      "document": "This API is used to query the environment list.",
+      "input": "DescribeEnvironmentsRequest",
+      "name": "Queries the environment list",
+      "output": "DescribeEnvironmentsResponse",
+      "status": "online"
+    },
+    "DescribeRunGroups": {
+      "document": "This API is used to query the run group list.",
+      "input": "DescribeRunGroupsRequest",
+      "name": "Queries the run group list",
+      "output": "DescribeRunGroupsResponse",
+      "status": "online"
+    },
+    "DescribeRuns": {
+      "document": "This API is used to query the run list.",
+      "input": "DescribeRunsRequest",
+      "name": "Queries the run list",
+      "output": "DescribeRunsResponse",
+      "status": "online"
+    },
+    "DescribeTables": {
+      "document": "This API is used to query the table.",
+      "input": "DescribeTablesRequest",
+      "name": "Queries the table",
+      "output": "DescribeTablesResponse",
+      "status": "online"
+    },
+    "DescribeTablesRows": {
+      "document": "This API is used to query the table row data.",
+      "input": "DescribeTablesRowsRequest",
+      "name": "Queries the table row data",
+      "output": "DescribeTablesRowsResponse",
+      "status": "online"
+    },
+    "DescribeVolumes": {
+      "document": "This API is used to query the volume list.",
+      "input": "DescribeVolumesRequest",
+      "name": "Queries the volume list",
+      "output": "DescribeVolumesResponse",
+      "status": "online"
+    },
+    "GetRunCalls": {
+      "document": "This API is used to query job details.",
+      "input": "GetRunCallsRequest",
+      "name": "Queries job details",
+      "output": "GetRunCallsResponse",
+      "status": "online"
+    },
+    "GetRunMetadataFile": {
+      "document": "This API is used to get the run details file.",
+      "input": "GetRunMetadataFileRequest",
+      "name": "Gets the run details file",
+      "output": "GetRunMetadataFileResponse",
+      "status": "online"
+    },
+    "GetRunStatus": {
+      "document": "This API is used to query run details.",
+      "input": "GetRunStatusRequest",
+      "name": "Queries run details",
+      "output": "GetRunStatusResponse",
+      "status": "online"
+    },
+    "ImportTableFile": {
+      "document": "This API is used to import the table file.",
+      "input": "ImportTableFileRequest",
+      "name": "Imports the table file",
+      "output": "ImportTableFileResponse",
+      "status": "online"
+    },
+    "ModifyVolume": {
+      "document": "This API is used to modify the volume.",
+      "input": "ModifyVolumeRequest",
+      "name": "Modifies the volume",
+      "output": "ModifyVolumeResponse",
+      "status": "online"
+    },
+    "RetryRuns": {
+      "document": "This API is used to retry the run.",
+      "input": "RetryRunsRequest",
+      "name": "Retries the run",
+      "output": "RetryRunsResponse",
+      "status": "online"
+    },
+    "RunApplication": {
+      "document": "This API is used to run the application.",
+      "input": "RunApplicationRequest",
+      "name": "Runs the application",
+      "output": "RunApplicationResponse",
+      "status": "online"
+    },
+    "RunWorkflow": {
+      "document": "This API is used to run the workflow.",
+      "input": "RunWorkflowRequest",
+      "name": "Runs the workflow",
+      "output": "RunWorkflowResponse",
+      "status": "online"
+    },
+    "TerminateRunGroup": {
+      "document": "This API is used to terminate the run group.",
+      "input": "TerminateRunGroupRequest",
+      "name": "Terminates the run group",
+      "output": "TerminateRunGroupResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2022-11-28",
+    "serviceNameCN": "腾讯健康组学平台",
+    "serviceShortName": "omics"
+  },
+  "objects": {
+    "ApplicationVersion": {
+      "document": "Application version",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Version type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Version ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationVersionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Release name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Release description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Entry file\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Entrypoint",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creator name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreatorName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creator ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreatorId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Git information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "GitInfo",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "CVMOption": {
+      "document": "CVM configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CVM availability zone",
+          "example": "ap-guangzhou-6",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "CVM instance specifications",
+          "example": "SA3.MEDIUM8",
+          "member": "string",
+          "name": "InstanceType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
+    "CacheInfo": {
+      "document": "Cache information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cache cleanup time (hours)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "CacheClearDelay",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cache cleanup schedule time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "CacheClearTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether the cache has been cleaned up\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "CacheCleared",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ClusterOption": {
+      "document": "Computing cluster configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Computing cluster availability zone",
+          "example": "ap-guangzhou-6",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Computing cluster type. Valid values:\n- KUBERNETES",
+          "example": "KUBERNETES",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Computing cluster Service CIDR. It must not overlap with the VPC IP range.",
+          "example": "192.168.0.0/20",
+          "member": "string",
+          "name": "ServiceCidr",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resource quota",
+          "example": "无",
+          "member": "ResourceQuota",
+          "name": "ResourceQuota",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Limit scope",
+          "example": "无",
+          "member": "LimitRange",
+          "name": "LimitRange",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "CreateEnvironmentRequest": {
+      "document": "CreateEnvironment request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Environment name",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment configuration information",
+          "example": "无",
+          "member": "EnvironmentConfig",
+          "name": "Config",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Environment description",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is the default environment.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsDefault",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEnvironmentResponse": {
+      "document": "CreateEnvironment response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Environment ID",
+          "example": "无",
+          "member": "string",
+          "name": "EnvironmentId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Workflow UUID",
+          "example": "无",
+          "member": "string",
+          "name": "WorkflowUuid",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateVolumeRequest": {
+      "document": "CreateVolume request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Environment ID",
+          "example": "无",
+          "member": "string",
+          "name": "EnvironmentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Name",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Volume type. Valid values:\n* SHARED: Multi-point mount shared storage",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Volume specifications. Valid values:\n\n- SD: standard\n- HP: high-performance\n- TB: standard Turbo\n- TP: high-performance Turbo",
+          "example": "无",
+          "member": "string",
+          "name": "Spec",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Description",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Volume size (GB), which is required to be specified for the Turbo series.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Capacity",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateVolumeResponse": {
+      "document": "CreateVolume response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Volume ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VolumeId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DatabaseOption": {
+      "document": "Database configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database availability zone",
+          "example": "ap-guangzhou-4",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
+    "DeleteEnvironmentRequest": {
+      "document": "DeleteEnvironment request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Environment ID",
+          "example": "无",
+          "member": "string",
+          "name": "EnvironmentId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteEnvironmentResponse": {
+      "document": "DeleteEnvironment response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Workflow UUID",
+          "example": "无",
+          "member": "string",
+          "name": "WorkflowUuid",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteVolumeDataRequest": {
+      "document": "DeleteVolumeData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Volume ID",
+          "example": "无",
+          "member": "string",
+          "name": "VolumeId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Path to be deleted",
+          "example": "无",
+          "member": "string",
+          "name": "Path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteVolumeDataResponse": {
+      "document": "DeleteVolumeData response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteVolumeRequest": {
+      "document": "DeleteVolume request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Volume ID",
+          "example": "无",
+          "member": "string",
+          "name": "VolumeId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteVolumeResponse": {
+      "document": "DeleteVolume response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEnvironmentsRequest": {
+      "document": "DescribeEnvironments request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Offset, which defaults to 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Quantity of returns. It is 20 by default, and the maximum value is 100.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter, which supports filtering fields:\n- EnvironmentId: Environment ID\n- Name: Name\n- Status: Environmental status",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEnvironmentsResponse": {
+      "document": "DescribeEnvironments response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of qualified items",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of Environment details",
+          "example": "无",
+          "member": "Environment",
+          "name": "Environments",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRunGroupsRequest": {
+      "document": "DescribeRunGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID\n(If you leave it blank, the default item in the specified region will be used.)",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Quantity of returns. It is 10 by default, and the maximum value is 100.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset, which defaults to 0.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter, which supports filtering fields:\n- Name: Run group name\n- RunGroupId: Run group ID\n- Status: Run group status",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRunGroupsResponse": {
+      "document": "DescribeRunGroups response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of qualified items",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Run group list",
+          "example": "无",
+          "member": "RunGroup",
+          "name": "RunGroups",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRunsRequest": {
+      "document": "DescribeRuns request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID\n(If you leave it blank, the default item in the specified region will be used.)",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Quantity of returns. It is 10 by default, and the maximum value is 100.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset, which defaults to 0.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter, which supports filtering fields:\n- RunGroupId: run group ID\n- Status: run status\n- RunUuid: run UUID\n- UserDefinedId: user-defined ID",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeRunsResponse": {
+      "document": "DescribeRuns response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of qualified items",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Run list",
+          "example": "无",
+          "member": "Run",
+          "name": "Runs",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTablesRequest": {
+      "document": "DescribeTables request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Quantity of returns. It is 10 by default, and the maximum value is 100.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset, which defaults to 0",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter, which supports filtering fields:\n- Name: Table name\n- TableId: Table ID",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTablesResponse": {
+      "document": "DescribeTables response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of results",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Table list",
+          "example": "无",
+          "member": "Table",
+          "name": "Tables",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTablesRowsRequest": {
+      "document": "DescribeTablesRows request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Table ID",
+          "example": "无",
+          "member": "string",
+          "name": "TableId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Quantity of returns. It is 10 by default, and the maximum value is 100.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset, which defaults to 0.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter, which supports filtering fields:\n- Tr: Table data, which supports fuzzy query.\n- TableRowUuid: table row UUID",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTablesRowsResponse": {
+      "document": "DescribeTablesRows response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of results",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Table row list",
+          "example": "无",
+          "member": "TableRow",
+          "name": "Rows",
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVolumesRequest": {
+      "document": "DescribeVolumes request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Environment ID",
+          "example": "env-dus7da1",
+          "member": "string",
+          "name": "EnvironmentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Quantity of returns. It is 20 by default, and the maximum value is 100.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset, defaults to 0",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter, supports filtering fields:\n- Name: Name\n- IsDefault: Whether it is the default.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVolumesResponse": {
+      "document": "DescribeVolumes response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Volume\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Volume",
+          "name": "Volumes",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of qualified items\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Environment": {
+      "document": "Tencent Healthcare Omics Platform environment details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Environment ID",
+          "example": "无",
+          "member": "string",
+          "name": "EnvironmentId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Environment name",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Environment description information",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Environment region",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Environment type. Valid values:\n- KUBERNETES: Kubernetes container cluster\n- HPC:HPC HCC ",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Environment status. Valid values:\n- INITIALIZING: Creating\n- INITIALIZATION_ERROR: Creation failed\n- RUNNING: Running\n- ERROR: Exceptional\n- DELETING: Deleting\n- DELETE_ERROR: Deletion failed.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the environment is available. The environment needs to be available before computing runs can be delivered.",
+          "example": "无",
+          "member": "bool",
+          "name": "Available",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the environment is the default environment.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsDefault",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether the environment is a managed environment.",
+          "example": "无",
+          "member": "bool",
+          "name": "IsManaged",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Environment information",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cloud resource ID",
+          "example": "无",
+          "member": "ResourceIds",
+          "name": "ResourceIds",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The UUID of the previous workflow\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "LastWorkflowUuid",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "CreationTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "EnvironmentConfig": {
+      "document": "Environment configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VPC configuration",
+          "example": "无",
+          "member": "VPCOption",
+          "name": "VPCOption",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Computing cluster configuration",
+          "example": "无",
+          "member": "ClusterOption",
+          "name": "ClusterOption",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Database configuration",
+          "example": "无",
+          "member": "DatabaseOption",
+          "name": "DatabaseOption",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Storage configuration",
+          "example": "无",
+          "member": "StorageOption",
+          "name": "StorageOption",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "CVM configuration",
+          "example": "无",
+          "member": "CVMOption",
+          "name": "CVMOption",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Security group configuration",
+          "example": "无",
+          "member": "SecurityGroupOption",
+          "name": "SecurityGroupOption",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "ExecutionTime": {
+      "document": "Execution time",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Submission time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "SubmitTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "End time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "Filter": {
+      "document": "Description key-value pair filter, which is used for conditional filtering queries.\n\n- If there are multiple Filters, the logical relationship between them is AND.\n\n- If there are multiple Values in the same Filter, the logical relationship between the Values under the same Filter is OR.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filtering fields",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Filtering field values",
+          "example": "无",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
+    "GetRunCallsRequest": {
+      "document": "GetRunCalls request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Run UUID",
+          "example": "无",
+          "member": "string",
+          "name": "RunUuid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Job path",
+          "example": "无",
+          "member": "string",
+          "name": "Path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID\n(If you leave it blank, the default item in the specified region will be used.)",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRunCallsResponse": {
+      "document": "GetRunCalls response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Job details",
+          "example": "无",
+          "member": "RunMetadata",
+          "name": "Calls",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRunMetadataFileRequest": {
+      "document": "GetRunMetadataFile request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Run UUID",
+          "example": "无",
+          "member": "string",
+          "name": "RunUuid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID\n(If you leave it blank, the default item in the specified region will be used.)",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "File names to be get\n\nThe following files are supported by default:\n- nextflow.log\n\nWhen report is specified as true in NFOption during submission, the following files are additionally supported:\n- execution_report.html\n- execution_timeline.html\n- execution_trace.txt\n- pipeline_dag.html",
+          "example": "无",
+          "member": "string",
+          "name": "Key",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "File names to be get in batch\n\nThe following files are supported by default:\n- nextflow.log\n\nWhen report is specified as true in NFOption during submission, the following files are additionally supported:\n- execution_report.html\n- execution_timeline.html\n- execution_trace.txt\n- pipeline_dag.html",
+          "example": "无",
+          "member": "string",
+          "name": "Keys",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRunMetadataFileResponse": {
+      "document": "GetRunMetadataFile response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Document pre-signed link that works in a minute",
+          "example": "无",
+          "member": "string",
+          "name": "CosSignedUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Batch document pre-signed link that works in a minute\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CosSignedUrls",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRunStatusRequest": {
+      "document": "GetRunStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Run UUID",
+          "example": "无",
+          "member": "string",
+          "name": "RunUuid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID\n(If you leave it blank, the default item in the specified region will be used.)",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetRunStatusResponse": {
+      "document": "GetRunStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Job details",
+          "example": "无",
+          "member": "RunMetadata",
+          "name": "Metadata",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GitInfo": {
+      "document": "Git information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Git URL",
+          "example": "无",
+          "member": "string",
+          "name": "GitHttpPath",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Git username .",
+          "example": "无",
+          "member": "string",
+          "name": "GitUserName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Git password or Token",
+          "example": "无",
+          "member": "string",
+          "name": "GitTokenOrPassword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Branch",
+          "example": "无",
+          "member": "string",
+          "name": "Branch",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag",
+          "example": "无",
+          "member": "string",
+          "name": "Tag",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "ImportTableFileRequest": {
+      "document": "ImportTableFile request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID associated with the table",
+          "example": "prj-aggressive-lime-porcupine-752427",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Table name: Up to 200 characters in length is supported.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Table file COS object path",
+          "example": "cos://bucket/testFile.csv",
+          "member": "string",
+          "name": "CosUri",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data type of each column in the table file. Supported types include Int, Float, String, File, Boolean, Array[Int], Array[Float], Array[String], Array[File], and Array[Boolean].",
+          "example": "[\"File\",\"String\",\"Int\",\"Float\",\"Boolean\",\"Array[File]\",\"Array[String]\",\"Array[Int]\",\"Array[Float]\",\"Array[Boolean]\"]",
+          "member": "string",
+          "name": "DataType",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Table description: Up to 500 characters in length is supported.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImportTableFileResponse": {
+      "document": "ImportTableFile response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Table ID",
+          "example": "无",
+          "member": "string",
+          "name": "TableId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "LimitRange": {
+      "document": "Resource limit scope",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Maximum CPU setting\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MaxCPU",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maximum memory setting (unit: Mi, Gi, Ti, M, G, and T)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MaxMemory",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ModifyVolumeRequest": {
+      "document": "ModifyVolume request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Volume ID",
+          "example": "无",
+          "member": "string",
+          "name": "VolumeId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Name",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Description",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyVolumeResponse": {
+      "document": "ModifyVolume response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "NFOption": {
+      "document": "Nextflow option",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Config.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Config",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Profile.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Profile",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Report.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "Report",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resume.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "Resume",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Nextflow engine version. Valid values:\n- 22.10.4\n- 22.10.8 \n- 23.10.1\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "NFVersion",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ResourceIds": {
+      "document": "Cloud resource ID",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VPC ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VPCId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subnet ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Security group ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "TDSQL-C for MySQL database ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TDSQLCId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": " CFS ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CFSId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "CFS type. Valid values:\n- SD: standard\n- HP: high-performance\n- TB: standard Turbo\n- TP: high-performance Turbo\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CFSStorageType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": " Cloud Virtual Machine ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CVMId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Elastic container cluster ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "EKSId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ResourceQuota": {
+      "document": "Resource quota",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CPU limit setting\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CPULimit",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Memory limit setting (Unit: Mi, Gi, Ti, M, G, and T)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MemoryLimit",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pod quantity setting\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Pods",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "RetryRunsRequest": {
+      "document": "RetryRuns request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID. (If you leave it blank, the default item in the specified region will be used.)",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The run group ID that needs to be retried",
+          "example": "无",
+          "member": "string",
+          "name": "RunGroupId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The run UUID that needs to be retried",
+          "example": "无",
+          "member": "string",
+          "name": "RunUuids",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "WDL running option. If you leave it blank, the retried run group running option will be used.",
+          "example": "无",
+          "member": "RunOption",
+          "name": "WDLOption",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Nextflow running option. If you leave it blank, the retried run group running option will be used.",
+          "example": "无",
+          "member": "NFOption",
+          "name": "NFOption",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "RetryRunsResponse": {
+      "document": "RetryRuns response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "New run group ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RunGroupId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Run": {
+      "document": "Run",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Run UUID",
+          "example": "无",
+          "member": "string",
+          "name": "RunUuid",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application ID",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Run group ID",
+          "example": "无",
+          "member": "string",
+          "name": "RunGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Environment ID",
+          "example": "无",
+          "member": "string",
+          "name": "EnvironmentId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User-defined ID. Null for running in singleton mode.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UserDefinedId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Table ID. Null for running in singleton mode.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TableId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Table row UUID. Null for running in singleton mode.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TableRowUuid",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Run status",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Run input",
+          "example": "无",
+          "member": "string",
+          "name": "Input",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": true,
+          "document": "Running option",
+          "example": "无",
+          "member": "RunOption",
+          "name": "Option",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Execution time",
+          "example": "无",
+          "member": "ExecutionTime",
+          "name": "ExecutionTime",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cache information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CacheInfo",
+          "name": "Cache",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "无",
+          "member": "string",
+          "name": "ErrorMessage",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RunApplicationRequest": {
+      "document": "RunApplication request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Run group name",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Delivery environment ID",
+          "example": "无",
+          "member": "string",
+          "name": "EnvironmentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID. (If you leave it blank, the default item in the specified region will be used.)",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Run group description",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Run input COS path. (Either InputBase64 or InputCosUri must be selected.)",
+          "example": "无",
+          "member": "string",
+          "name": "InputCosUri",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Run input JSON. Base64 encoding is required. (Either InputBase64 or InputCosUri must be selected.)",
+          "example": "无",
+          "member": "string",
+          "name": "InputBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Batch deliver table ID. Leaving it blank indicates delivery in singleton mode.",
+          "example": "无",
+          "member": "string",
+          "name": "TableId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Batch deliver table row UUID. Leaving it blank indicates all rows of the table.",
+          "example": "无",
+          "member": "string",
+          "name": "TableRowUuids",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Run cache cleanup time (hours). Leaving it blank or entering 0 indicates no cleanup.",
+          "example": "无",
+          "member": "uint64",
+          "name": "CacheClearDelay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Application version ID. Leaving it blank indicates that the latest version is used.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationVersionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "WDL running option",
+          "example": "无",
+          "member": "RunOption",
+          "name": "Option",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Nextflow running option",
+          "example": "无",
+          "member": "NFOption",
+          "name": "NFOption",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Working directory. You can fill in the absolute path in the specified volume. If you leave it blank, the default path in the default volume will be used. Currently, only Nextflow is supported.",
+          "example": "无",
+          "member": "string",
+          "name": "WorkDir",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Access mode. Leaving it blank indicates it is private by default. Valid values:\n- PRIVATE: Private application\n- PUBLIC: Public application",
+          "example": "无",
+          "member": "string",
+          "name": "AccessMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Volume ID. If you leave it blank, the default volume will be used. Currently, only Nextflow is supported.",
+          "example": "无",
+          "member": "string",
+          "name": "VolumeIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RunApplicationResponse": {
+      "document": "RunApplication response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Run group ID",
+          "example": "无",
+          "member": "string",
+          "name": "RunGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RunGroup": {
+      "document": "Run",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Run group ID",
+          "example": "无",
+          "member": "string",
+          "name": "RunGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project ID",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Project name",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application ID",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application name",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Application type",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Environment ID",
+          "example": "无",
+          "member": "string",
+          "name": "EnvironmentId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Environment name",
+          "example": "无",
+          "member": "string",
+          "name": "EnvironmentName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Table ID. Null for running in singleton mode.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TableId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Run name",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Run description",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Run status",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Run input",
+          "example": "无",
+          "member": "string",
+          "name": "Input",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "WDL running option",
+          "example": "无",
+          "member": "RunOption",
+          "name": "Option",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Nextflow running option\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "NFOption",
+          "name": "NFOption",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total number of runs",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalRun",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of runs in various status",
+          "example": "无",
+          "member": "RunStatusCount",
+          "name": "RunStatusCounts",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Execution time",
+          "example": "无",
+          "member": "ExecutionTime",
+          "name": "ExecutionTime",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "无",
+          "member": "string",
+          "name": "ErrorMessage",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creator\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Creator",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creator ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreatorId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Running result notification method\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ResultNotify",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Application version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ApplicationVersion",
+          "name": "ApplicationVersion",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RunMetadata": {
+      "document": "Run job details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Run type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RunType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Run ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RunId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Parent layer ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ParentId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Job ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "JobId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Job name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CallName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Scatter index\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ScatterIndex",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Input\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Input",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Output\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Output",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ErrorMessage",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Submission time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "SubmitTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "End time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "EndTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Command Line\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Command",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Runtime\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Runtime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Preprocessing\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "Preprocess",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Post-processing\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "PostProcess",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cache hit\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "CallCached",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Standard output\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Stdout",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error output\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Stderr",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Other information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Meta",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RunOption": {
+      "document": "Application running option",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Operation failure mode. Valid values:\n- ContinueWhilePossible\n- NoNewCalls",
+          "example": "无",
+          "member": "string",
+          "name": "FailureMode",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to use the Call-Caching feature.",
+          "example": "无",
+          "member": "bool",
+          "name": "UseCallCache",
+          "output_required": true,
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to use the error suspension feature.",
+          "example": "无",
+          "member": "bool",
+          "name": "UseErrorOnHold",
+          "output_required": true,
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output archive COS path\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "FinalWorkflowOutputsDir",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to use the relative directory archive output.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "bool",
+          "name": "UseRelativeOutputPaths",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "RunStatusCount": {
+      "document": "Run running status",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Status",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Quantity",
+          "example": "无",
+          "member": "uint64",
+          "name": "Count",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "RunWorkflowRequest": {
+      "document": "RunWorkflow request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Run group name",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Delivery environment ID",
+          "example": "无",
+          "member": "string",
+          "name": "EnvironmentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Workflow Git repository information",
+          "example": "无",
+          "member": "GitInfo",
+          "name": "GitSource",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Workflow type\n\nSupported type:\n- NEXTFLOW",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Nextflow option",
+          "example": "无",
+          "member": "NFOption",
+          "name": "NFOption",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID\n(If you leave it blank, the default item in the specified region will be used.)",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Run group description",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Run input JSON. Base64 encoding is required.\n(Either InputBase64 or InputCosUri must be selected.)",
+          "example": "无",
+          "member": "string",
+          "name": "InputBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Run input COS path\n(Either InputBase64 or InputCosUri must be selected.)",
+          "example": "无",
+          "member": "string",
+          "name": "InputCosUri",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Run cache cleanup time (hours). Leaving it blank or entering 0 indicates no cleanup.",
+          "example": "无",
+          "member": "uint64",
+          "name": "CacheClearDelay",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Working directory. You can fill in the absolute path in the specified volume. If you leave it blank, the default path in the default volume will be used. Currently, only Nextflow is supported.",
+          "example": "无",
+          "member": "string",
+          "name": "WorkDir",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Volume ID. If you leave it blank, the default volume will be used. Currently, only Nextflow is supported.",
+          "example": "无",
+          "member": "string",
+          "name": "VolumeIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RunWorkflowResponse": {
+      "document": "RunWorkflow response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Run group ID",
+          "example": "无",
+          "member": "string",
+          "name": "RunGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SecurityGroupOption": {
+      "document": "Security group configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Security group ID",
+          "example": "无",
+          "member": "string",
+          "name": "SecurityGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "StorageOption": {
+      "document": "CFS configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CFS type. Valid values:\n- SD: standard\n- HP: high-performance\n- TB: standard Turbo\n- TP: high-performance Turbo",
+          "example": "SD",
+          "member": "string",
+          "name": "StorageType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "CFS availability zone",
+          "example": "ap-guangzhou-6",
+          "member": "string",
+          "name": "Zone",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "CFS capacity in GiB, required for the Turbo series\n- Standard Turbo has a minimum capacity of 40 TiB, or 40,960 GiB; the capacity expansion step is 20 TiB, or 20,480 GiB.\n- High-performance Turbo has a minimum capacity of 20 TiB, or 20,480 GiB; the capacity expansion step is 10 TiB, or 10,240 GiB.",
+          "example": "40960",
+          "member": "uint64",
+          "name": "Capacity",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
+    "Table": {
+      "document": "Table",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Table ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TableId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Associated project ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Table name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Table description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Table column\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TableColumn",
+          "name": "Columns",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creator\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Creator",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TableColumn": {
+      "document": "Table column",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Column name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Header",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Column data type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DataType",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TableRow": {
+      "document": "Table row",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Table row UUID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TableRowUuid",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Table row content\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Content",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TerminateRunGroupRequest": {
+      "document": "TerminateRunGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Run group ID",
+          "example": "无",
+          "member": "string",
+          "name": "RunGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project ID\n(If you leave it blank, the default item in the specified region will be used.)",
+          "example": "无",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TerminateRunGroupResponse": {
+      "document": "TerminateRunGroup response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "VPCOption": {
+      "document": "VPC configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VPC ID (Either VPCId or VPCCIDRBlock must be selected. If VPCId is selected, the existing VPCs will be used; if VPCCIDRBlock is selected, a new VPC will be created.)",
+          "example": "无",
+          "member": "string",
+          "name": "VPCId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subnet ID (Either SubnetId or SubnetZone&SubnetCIDRBlock must be selected. If SubnetId is selected, the existing subnet will be used; if SubnetZone&SubnetCIDRBlock is selected, a new subnet will be created.)",
+          "example": "无",
+          "member": "string",
+          "name": "SubnetId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subnet availability zone",
+          "example": "ap-guangzhou-6",
+          "member": "string",
+          "name": "SubnetZone",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": " VPC CIDR.",
+          "example": "10.8.0.0/16",
+          "member": "string",
+          "name": "VPCCIDRBlock",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subnet CIDR",
+          "example": "10.8.16.0/20",
+          "member": "string",
+          "name": "SubnetCIDRBlock",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "Volume": {
+      "document": "Volume",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Volume ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "vol-chs8x9",
+          "member": "string",
+          "name": "VolumeId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "默认数据卷",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "默认数据卷",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Environment ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "EnvironmentId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Volume type. Valid values:\n* SHARED: Multi-point mount shared storage\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "SHARED",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Volume specifications. Valid values:\n\n- SD: standard\n- HP: high-performance\n- TB: standard Turbo\n- TP: high-performance Turbo\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "HP",
+          "member": "string",
+          "name": "Spec",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Volume size (GB)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1024",
+          "member": "uint64",
+          "name": "Capacity",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Volume usage (Byte)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1024",
+          "member": "uint64",
+          "name": "Usage",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Volume throughput upper limit (MiB/s)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "200",
+          "member": "float",
+          "name": "BandwidthLimit",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Default mount path\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "/vlm-vhs6snl",
+          "member": "string",
+          "name": "DefaultMountPath",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is the default volume.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "IsDefault",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "AVAILABLE",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}
