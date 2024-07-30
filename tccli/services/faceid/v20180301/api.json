@@ -1633,7 +1633,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Pass status. When Warning and Rejected are returned, please check the specific reasons in the WarnInfo structure return. Example values are as follows:\nPassed\nWarning\nRejected",
+          "document": "Pass status. When Warning and Rejected are returned, please check the specific reasons in the WarnInfo structure return. Example values are as follows:\nPASSED\nWARNING\nREJECTED\nPROCESSING",
           "example": "0：PASSED 1：WARNING 2：REJECTED 3：PROCESSING",
           "member": "string",
           "name": "Status",

@@ -232,7 +232,7 @@
       "status": "online"
     },
     "DescribeDBInstanceHAConfig": {
-      "document": "This API is used to query the HA configuration of an instance, u200cwhich includes:\n<li>Allow a standby node to promote to a primary node.\n<li>Allow a semi-sync instance to adopt sync or async replication.",
+      "document": "This API is used to query the HA configuration of an instance, which includes:\n<li>Allow a standby node to promote to a primary node.\n<li>Allow a semi-sync instance to adopt sync or async replication.",
       "input": "DescribeDBInstanceHAConfigRequest",
       "name": "Queries the HA configuration of an instance",
       "output": "DescribeDBInstanceHAConfigResponse",
@@ -477,7 +477,7 @@
       "status": "online"
     },
     "ModifyDBInstanceHAConfig": {
-      "document": "This API is used to modify the HA configuration of an instance. u200cwhich includes:\n<li>Allow the standby node to promote to the primary node.\n<li>Allow a semi-sync instance to adopt sync or async replication.",
+      "document": "This API is used to modify the HA configuration of an instance. which includes:\n<li>Allow the standby node to promote to the primary node.\n<li>Allow a semi-sync instance to adopt sync or async replication.",
       "input": "ModifyDBInstanceHAConfigRequest",
       "name": "Modifies the HA configuration of an instance",
       "output": "ModifyDBInstanceHAConfigResponse",
@@ -4747,7 +4747,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum data sync lag for u200du200dstandby server. If data lag of the standby node and the delay time are both less than or equals to the values of `MaxSyncStandbyLatency` and `MaxSyncStandbyLag` respectively, the standby server adopts semi-sync replication; if not, it adopts async replication.\nThis value is only valid for the instance with `SyncMode` set to `Semi-sync`.\nThis field returns null for async instance\nand semi-sync (non-downgradable to async) instance.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Maximum data sync lag for standby server. If data lag of the standby node and the delay time are both less than or equals to the values of `MaxSyncStandbyLatency` and `MaxSyncStandbyLag` respectively, the standby server adopts semi-sync replication; if not, it adopts async replication.\nThis value is only valid for the instance with `SyncMode` set to `Semi-sync`.\nThis field returns null for async instance\nand semi-sync (non-downgradable to async) instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1000000",
           "member": "uint64",
           "name": "MaxSyncStandbyLatency",
@@ -4757,7 +4757,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum sync delay time for u200dstandby server. If the delay time for u200dstandby server and the data lag are both less than or equals to the values of `MaxSyncStandbyLag` and `MaxSyncStandbyLatency` respectively, the standby server adopts sync replication mode; if not, it adopts async replication.\nThis value is only valid for the instance with `SyncMode` set to `Semi-sync`.\nThis field will not return for async instance\nand semi-sync (non-downgradable to async) instance.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "document": "Maximum sync delay time for standby server. If the delay time for standby server and the data lag are both less than or equals to the values of `MaxSyncStandbyLag` and `MaxSyncStandbyLatency` respectively, the standby server adopts sync replication mode; if not, it adopts async replication.\nThis value is only valid for the instance with `SyncMode` set to `Semi-sync`.\nThis field will not return for async instance\nand semi-sync (non-downgradable to async) instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "5",
           "member": "uint64",
           "name": "MaxSyncStandbyLag",
@@ -7492,7 +7492,7 @@
         },
         {
           "disabled": false,
-          "document": "u200cMaximum data lag for high-availability standby server. The standby node can be promoted to the primary node when its data lag and the delay time are both less than the value of `MaxStandbyLatency` and `MaxStandbyLag` respectively.\n<li>Unit: byte\n<li>Value range: 1073741824-322122547200",
+          "document": "Maximum data lag for high-availability standby server. The standby node can be promoted to the primary node when its data lag and the delay time are both less than the value of `MaxStandbyLatency` and `MaxStandbyLag` respectively.\n<li>Unit: byte\n<li>Value range: 1073741824-322122547200",
           "example": "1000000000",
           "member": "uint64",
           "name": "MaxStandbyLatency",
@@ -7510,7 +7510,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum data sync lag for u200dstandby server. If data lag of the standby node and the delay ime are both less than or equals to the values of `MaxSyncStandbyLatency` and `MaxSyncStandbyLag`, the standby server adopts semi-sync replication; if not, it adopts async replication.\nThis value is only valid for the instance with `SyncMode` set to `Semi-sync`.\nWhen the semi-sync replication mode of the instance is not allowed to downgrade to async replication, `MaxSyncStandbyLatency` and `MaxSyncStandbyLag` are not required.\nWhen the semi-sync instance is allowed to downgrade to async replication, `MaxSyncStandbyLatency` is required and `MaxSyncStandbyLag` must be left empty for PostgreSQL 9; `MaxSyncStandbyLatency` and MaxSyncStandbyLag` are required for PostgreSQL 10 and later.",
+          "document": "Maximum data sync lag for standby server. If data lag of the standby node and the delay ime are both less than or equals to the values of `MaxSyncStandbyLatency` and `MaxSyncStandbyLag`, the standby server adopts semi-sync replication; if not, it adopts async replication.\nThis value is only valid for the instance with `SyncMode` set to `Semi-sync`.\nWhen the semi-sync replication mode of the instance is not allowed to downgrade to async replication, `MaxSyncStandbyLatency` and `MaxSyncStandbyLag` are not required.\nWhen the semi-sync instance is allowed to downgrade to async replication, `MaxSyncStandbyLatency` is required and `MaxSyncStandbyLag` must be left empty for PostgreSQL 9; `MaxSyncStandbyLatency` and MaxSyncStandbyLag` are required for PostgreSQL 10 and later.",
           "example": "1000000",
           "member": "uint64",
           "name": "MaxSyncStandbyLatency",
@@ -7519,7 +7519,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum delay for u200dsync u200dstandby server. If the delay time for u200dstandby server and the data lag are both less than or equals to the value of `MaxSyncStandbyLag` and `MaxSyncStandbyLatency` respectively, the standby server adopts sync replication mode; if not, it adopts async replication.\nThis value is only valid for the instance with `SyncMode` set to `Semi-sync`.\nWhen the semi-sync replication mode of the instance is not allowed to downgrade to async replication, `MaxSyncStandbyLatency` and `MaxSyncStandbyLag` are not required.\nWhen the semi-sync instance is allowed to downgrade to async replication, `MaxSyncStandbyLatency` is required and `MaxSyncStandbyLag` must be left empty for PostgreSQL 9; `MaxSyncStandbyLatency` and MaxSyncStandbyLag` are required for PostgreSQL 10 and later.",
+          "document": "Maximum delay for sync standby server. If the delay time for standby server and the data lag are both less than or equals to the value of `MaxSyncStandbyLag` and `MaxSyncStandbyLatency` respectively, the standby server adopts sync replication mode; if not, it adopts async replication.\nThis value is only valid for the instance with `SyncMode` set to `Semi-sync`.\nWhen the semi-sync replication mode of the instance is not allowed to downgrade to async replication, `MaxSyncStandbyLatency` and `MaxSyncStandbyLag` are not required.\nWhen the semi-sync instance is allowed to downgrade to async replication, `MaxSyncStandbyLatency` is required and `MaxSyncStandbyLag` must be left empty for PostgreSQL 9; `MaxSyncStandbyLatency` and MaxSyncStandbyLag` are required for PostgreSQL 10 and later.",
           "example": "5",
           "member": "uint64",
           "name": "MaxSyncStandbyLag",
