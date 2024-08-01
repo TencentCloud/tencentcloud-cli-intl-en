@@ -1,5 +1,37 @@
 {
   "actions": {
+    "AddUsersToWorkGroup": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddUsersToWorkGroup\n<Common request parameters>\n\n{\n    \"AddInfo\": {\n        \"WorkGroupId\": 122,\n        \"UserIds\": [\n            \"10003237654\"\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c8900a05-8939-4b47-a3ab-3f3e92e439b7\"\n    }\n}",
+        "title": "Adding Users to a Working Group"
+      }
+    ],
+    "AttachUserPolicy": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AttachUserPolicy\n<Common request parameters>\n\n{\n    \"UserId\": \"1248065439\",\n    \"PolicySet\": [\n        {\n            \"Table\": \"TableName\",\n            \"Catalog\": \"COSDataCatalog\",\n            \"Operation\": \"ALL\",\n            \"Database\": \"DatabaseName\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1287310-badou889lodj-1231jk12\"\n    }\n}",
+        "title": "Binding the Authentication Policy to Users"
+      }
+    ],
+    "AttachWorkGroupPolicy": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AttachWorkGroupPolicy\n<Common request parameters>\n\n{\n    \"WorkGroupId\": 112,\n    \"PolicySet\": [\n        {\n            \"Table\": \"TableName\",\n            \"Catalog\": \"COSDataCatalog\",\n            \"Operation\": \"ALL\",\n            \"Database\": \"DatabaseName\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0ebb0fdc-0cbd-4408-9f08-ee75a7d6d80f\"\n    }\n}",
+        "title": "Binding the Authentication Policy to the Working Group"
+      }
+    ],
+    "BindWorkGroupsToUser": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindWorkGroupsToUser\n<Common request parameters>\n\n{\n    \"AddInfo\": {\n        \"UserId\": \"10003237654\",\n        \"WorkGroupIds\": [\n            112\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"27633f02-4b56-4963-91a4-7fabe4b82cba\"\n    }\n}",
+        "title": "Binding Working Groups to Users"
+      }
+    ],
     "CancelSparkSessionBatchSQL": [
       {
         "document": "This example shows you how to cancel a Spark SQL batch task.",
@@ -14,6 +46,38 @@
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CancelTask\n<Common request parameters>\n\n{\n    \"TaskId\": \"4ad30ca9-8b0e-499f-b4e1-d6e43ba0e564\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"48d09166-9ddc-4734-8cea-0cdf69c7d685\"\n    }\n}",
         "title": "Canceling a task"
+      }
+    ],
+    "CheckDataEngineConfigPairsValidity": [
+      {
+        "document": "This example shows you how to check the validity of the engine's user-defined parameters.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckDataEngineConfigPairsValidity\n<Common request parameters>\n\n{\n    \"ChildImageVersionId\": \"b8sddsad7-ekd4-4e5e-993e-e5db64fa21c1\",\n    \"ImageVersionId\": \"\",\n    \"DataEngineConfigPairs\": [\n        {\n            \"ConfigItem\": \"key\",\n            \"ConfigValue\": \"value\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"IsAvailable\": true,\n        \"UnavailableConfig\": [\n            \"key\"\n        ],\n        \"RequestId\": \"b8sd7dd7-ekd4-4e5e-993e-e5db64fa21c1\"\n    }\n}",
+        "title": "Checking the Validity of the Engine's User-Defined Parameters"
+      }
+    ],
+    "CheckDataEngineImageCanBeRollback": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckDataEngineImageCanBeRollback\n<Common request parameters>\n\n{\n    \"DataEngineId\": \"DataEngine-1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FromRecordId\": \"d3018ad4-9a7e-4f64-a3f4-f38507c69742\",\n        \"ToRecordId\": \"89570c65-49de-4bbd-ac0a-a67c724fc80f\",\n        \"IsRollback\": true,\n        \"RequestId\": \"b8sd7dd7-ekd4-4e5e-993e-e5db64fa21c1\"\n    }\n}",
+        "title": "Checking Whether the Cluster Can Be Rolled Back"
+      }
+    ],
+    "CheckDataEngineImageCanBeUpgrade": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckDataEngineImageCanBeUpgrade\n<Common request parameters>\n\n{\n    \"DataEngineId\": \"DataEngine-1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ChildImageVersionId\": \"d3ftghd4-9a7e-4f64-a3f4-f38507c69742\",\n        \"IsUpgrade\": true,\n        \"RequestId\": \"b8sd7dd7-ekd4-4e5e-993e-e5db64fa21c1\"\n    }\n}",
+        "title": "Checking Whether the Cluster Image Can Be Upgraded"
+      }
+    ],
+    "CreateCHDFSBindingProduct": [
+      {
+        "document": "This example shows you the example.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCHDFSBindingProduct\n<Common request parameters>\n\n{\n    \"MountPoint\": \"abc\",\n    \"BucketType\": \"abc\",\n    \"ProductName\": \"abc\",\n    \"EngineName\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "CreateDataEngine": [
@@ -58,10 +122,18 @@
     ],
     "CreateSparkSessionBatchSQL": [
       {
-        "document": "This example shows you how to submit a Spark SQL batch task to the Spark job engine.",
-        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSparkSessionBatchSQL\n<Common request parameters>\n\n{\n    \"DataEngineName\": \"data_engine_1\",\n    \"ExecuteSQL\": \"select 1\",\n    \"DriverSize\": \"small\",\n    \"ExecutorSize\": \"small\",\n    \"ExecutorNumbers\": 1,\n    \"ExecutorMaxNumbers\": 1,\n    \"TimeoutInSecond\": 2,\n    \"SessionId\": \"\",\n    \"SessionName\": \"livy-session-123\",\n    \"Arguments\": [\n        {\n            \"Value\": \"eni\",\n            \"Key\": \"test_eni\"\n        }\n    ]\n}",
+        "document": "This API (CreateSparkSessionBatchSQL) is used to submit Spark SQL batch tasks to the Spark job engine.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSparkSessionBatchSQL\n<Common request parameters>\n\n{\n    \"DataEngineName\": \"data_engine_1\",\n    \"ExecuteSQL\": \"c2VsZWN0IDE=\",\n    \"DriverSize\": \"small\",\n    \"ExecutorSize\": \"small\",\n    \"ExecutorNumbers\": 1,\n    \"ExecutorMaxNumbers\": 1,\n    \"TimeoutInSecond\": 2,\n    \"SessionId\": \"\",\n    \"SessionName\": \"livy-session-123\",\n    \"Arguments\": [\n        {\n            \"Value\": \"eni\",\n            \"Key\": \"test_eni\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b8sd7dd7-ekd4-4e5e-993e-e5db64fa21c1\",\n        \"BatchId\": \"d3018ad4-9a7e-4f64-a3f4-f38507c69742\"\n    }\n}",
-        "title": "Creating and executing a Spark SQL batch task"
+        "title": "Creating and Executing Spark SQL Batch Tasks"
+      }
+    ],
+    "CreateStoreLocation": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStoreLocation\n<Common request parameters>\n\n{\n    \"StoreLocation\": \"cosn://ricky-1301xxx708/test2/\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4aa0c835-d58e-4faa-b7d9-be9b34a9e931\"\n    }\n}",
+        "title": "Creating or Modifying the Calculation Result Storage Path"
       }
     ],
     "CreateTask": [
@@ -80,12 +152,130 @@
         "title": "Creating and executing SQL tasks in batch"
       }
     ],
+    "CreateUser": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateUser\n<Common request parameters>\n\n{\n    \"UserDescription\": \"Test User\",\n    \"UserAlias\": \"Testname\",\n    \"UserId\": \"1248065439\",\n    \"PolicySet\": [\n        {\n            \"Table\": \"TableName\",\n            \"Catalog\": \"COSDataCatalog\",\n            \"Operation\": \"ALL\",\n            \"Database\": \"DatabaseName\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1287310-badou889lodj-1231jk12\"\n    }\n}",
+        "title": "Creating a User"
+      }
+    ],
+    "CreateWorkGroup": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateWorkGroup\n<Common request parameters>\n\n{\n    \"WorkGroupName\": \"Group1\",\n    \"WorkGroupDescription\": \"testGroup\",\n    \"PolicySet\": [\n        {\n            \"Table\": \"TableName\",\n            \"Catalog\": \"COSDataCatalog\",\n            \"Operation\": \"ALL\",\n            \"Database\": \"DatabaseName\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"WorkGroupId\": 1,\n        \"RequestId\": \"1287310-badou889lodj-1231jk12\"\n    }\n}",
+        "title": "Creating Working Groups"
+      }
+    ],
+    "DeleteCHDFSBindingProduct": [
+      {
+        "document": "This example shows you the example.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCHDFSBindingProduct\n<Common request parameters>\n\n{\n    \"MountPoint\": \"abc\",\n    \"BucketType\": \"abc\",\n    \"ProductName\": \"abc\",\n    \"EngineName\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DeleteDataEngine": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDataEngine\n<Common request parameters>\n\n{\n    \"DataEngineNames\": [\n        \"xx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "test"
+      }
+    ],
     "DeleteSparkApp": [
       {
         "document": "u200cThis example shows you how to delete a Spark job.",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action:DeleteSparkApp\n<Common request parameters>\n\n{\n    \"AppName\": \"spark-app\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ae4707a-9f72-44aa-9fd4-65cb739d6301\"\n    }\n}",
         "title": "Deleting a Spark job"
+      }
+    ],
+    "DeleteThirdPartyAccessUser": [
+      {
+        "document": "This example shows you how to delete a registered user.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteThirdPartyAccessUser\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1584c994-e31c-4fb8-9a71-03b07c8fb729\"\n    }\n}",
+        "title": "Example One"
+      },
+      {
+        "document": "This example shows you how to register to be a third-party access user.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteThirdPartyAccessUser\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7be43271-5667-4fd4-b37a-030955cbc56f\"\n    }\n}",
+        "title": "Instance One"
+      }
+    ],
+    "DeleteUser": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteUser\n<Common request parameters>\n\n{\n    \"UserIds\": [\n        \"10003237654\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1081f6e9-2687-4426-a4fc-8ea3c6d285eb\"\n    }\n}",
+        "title": "Deleting a user"
+      }
+    ],
+    "DeleteUsersFromWorkGroup": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteUsersFromWorkGroup\n<Common request parameters>\n\n{\n    \"AddInfo\": {\n        \"WorkGroupId\": 112,\n        \"UserIds\": [\n            \"10003237654\"\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1fd1d314-00e1-421b-9838-6e6b6c9c5419\"\n    }\n}",
+        "title": "Removing a User from a Working Group"
+      }
+    ],
+    "DeleteWorkGroup": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteWorkGroup\n<Common request parameters>\n\n{\n    \"WorkGroupIds\": [\n        112\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ba481e7d-e3cc-437c-b2dc-94f431a3d106\"\n    }\n}",
+        "title": "Deleting Working Groups"
+      }
+    ],
+    "DescribeAdvancedStoreLocation": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAdvancedStoreLocation\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"StoreLocation\": \"xx\",\n        \"HasLakeFs\": false,\n        \"Enable\": 1,\n        \"LakeFsStatus\": \"xx\",\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Querying Advanced Settings"
+      }
+    ],
+    "DescribeDLCCatalogAccess": [
+      {
+        "document": "This example shows you how to query the DLC Catalog authorization list.",
+        "input": "POST / HTTP/1.1\nHost: xxx.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstances\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 20,\n        \"Rows\": [\n            {\n                \"VpcId\": \"vpc-12345\",\n                \"Product\": \"EMR\",\n                \"Description\": \"EMR production cluster\",\n                \"CreateTime\": \"October 1, 2024\"\n            }\n        ],\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Querying the DLC Catalog Authorization List"
+      }
+    ],
+    "DescribeDataEngine": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataEngine\n<Common request parameters>\n\n{\n    \"DataEngineName\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DataEngine\": {\n            \"MaxClusters\": 0,\n            \"DefaultDataEngine\": true,\n            \"UpdateTime\": 0,\n            \"SpendAfter\": 0,\n            \"DataEngineId\": \"xx\",\n            \"CidrBlock\": \"xx\",\n            \"SubAccountUin\": \"xx\",\n            \"AutoResume\": true,\n            \"ClusterType\": \"xx\",\n            \"QuotaId\": \"xx\",\n            \"State\": 0,\n            \"DataEngineName\": \"xx\",\n            \"Mode\": 0,\n            \"Message\": \"xx\",\n            \"CreateTime\": 0,\n            \"EngineType\": \"xx\",\n            \"MinClusters\": 0,\n            \"Size\": 0\n        },\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "test"
+      }
+    ],
+    "DescribeDataEngineImageVersions": [
+      {
+        "document": "This API is used to get the major version image list of dedicated clusters.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataEngineImageVersions\n<Common request parameters>\n\n{\n    \"EngineType\": \"SQL\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b8sd7dd7-ekd4-4e5e-993e-e5db64fa21c1\",\n        \"Total\": 1,\n        \"ImageParentVersions\": [\n            {\n                \"UpdateTime\": \"2020-01-01:00:00:00\",\n                \"Description\": \"Test\",\n                \"IsSharedEngine\": 1,\n                \"ImageVersionId\": \"d3018ad4-9a7e-4f64-a3f4-f38507c69742\",\n                \"IsPublic\": 1,\n                \"State\": 1,\n                \"InsertTime\": \"2020-01-01:00:00:00\",\n                \"ImageVersion\": \"SuperSQL\",\n                \"EngineType\": \"SparkSQL\"\n            }\n        ]\n    }\n}",
+        "title": "Getting the Major Version Image List of Dedicated Clusters"
+      }
+    ],
+    "DescribeDataEnginePythonSparkImages": [
+      {
+        "document": "This API is used to get the PYSPARK image list.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataEnginePythonSparkImages\n<Common request parameters>\n\n{\n    \"ChildImageVersionId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b8sd7dd7-ekd4-4e5e-993e-e5db64fa21c1\",\n        \"PythonSparkImages\": [\n            {\n                \"UpdateTime\": \"2020-01-01:00:00:00\",\n                \"Description\": \"Test\",\n                \"ChildImageVersionId\": \"d3ksjed4-9a7e-4f64-a3f4-f38507c69742\",\n                \"SparkImageId\": \"d3018ad4-9a7e-4f64-a3f4-f38507c69742\",\n                \"SparkImageVersion\": \"Test Image\",\n                \"CreateTime\": \"2020-01-01:00:00:00\"\n            }\n        ]\n    }\n}",
+        "title": "Getting PYSPARK Image List"
+      }
+    ],
+    "DescribeDataEnginesScaleDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDataEnginesScaleDetail\n<Common request parameters>\n\n{\n    \"StartTime\": \"2024-06-06 12:00:00\",\n    \"EndTime\": \"2024-06-06 13:00:00\",\n    \"DataEngineNames\": [\n        \"dataengine-abc\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Scales\": [\n            {\n                \"DataEngineId\": \"abc\",\n                \"DataEngineName\": \"abc\",\n                \"ScaleDetail\": [\n                    {\n                        \"StartTime\": \"abc\",\n                        \"EndTime\": \"abc\",\n                        \"CU\": 0\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying Engine Specification Details"
       }
     ],
     "DescribeEngineUsageInfo": [
@@ -120,6 +310,14 @@
         "title": "Example 1"
       }
     ],
+    "DescribeOtherCHDFSBindingList": [
+      {
+        "document": "This example shows you the example.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOtherCHDFSBindingList\n<Common request parameters>\n\n{\n    \"BucketId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"OtherCHDFSBindingList\": [\n            {\n                \"ProductName\": \"abc\",\n                \"SuperUser\": [\n                    \"abc\"\n                ],\n                \"VpcInfo\": [\n                    {\n                        \"VpcId\": \"abc\",\n                        \"VpcName\": \"abc\",\n                        \"VpcCidrBlock\": [\n                            {\n                                \"CidrId\": \"abc\",\n                                \"CidrAddr\": \"abc\"\n                            }\n                        ]\n                    }\n                ],\n                \"IsBind\": true\n            }\n        ],\n        \"Total\": 0,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "DescribeResultDownload": [
       {
         "document": " ",
@@ -133,7 +331,7 @@
         "document": "This example shows you how to query the information of a Spark job.",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action:DescribeSparkAppJob\n<Common request parameters>\n\n{\n    \"JobId\": \"batch_133e005d-6486-4517-8ea7-b6b97b183a6b\",\n    \"JobName\": \"spark_app\"\n}",
         "output": "{\n    \"Response\": {\n        \"Job\": {\n            \"JobId\": \"batch_e6c5ae75-fb02-4831-a5b8-88999d09003c\",\n            \"JobName\": \"abc\",\n            \"JobType\": 1,\n            \"DataEngine\": \"testjar3\",\n            \"Eni\": \"testeni2\",\n            \"IsLocal\": \"cos\",\n            \"JobFile\": \"cosn://danierwei-test-1305424723/sparkjar/spark-ckafka-1.0-SNAPSHOT.jar\",\n            \"RoleArn\": 3,\n            \"MainClass\": \"org.apache.spark.examples.SparkPi\",\n            \"CmdArgs\": \"testArgs\",\n            \"JobConf\": \"\",\n            \"IsLocalJars\": \"abc\",\n            \"JobJars\": \"lakefs://4000002928ef2638d7ab6aabb088bd51b7db914729a5c43b13a998ffa9750511f511d0ab@dlcda57-100018379117-1636704841-100017307912-1304028854/1305424723/.system/sparkAppJar/20220513/dd3c6ad3-a746-40d8-806c-fa8b15b5e9f9/spark-examples_2.12-3.1.2.jar\",\n            \"IsLocalFiles\": \"lakefs\",\n            \"JobFiles\": \"\",\n            \"JobDriverSize\": \"small\",\n            \"JobExecutorSize\": \"small\",\n            \"JobExecutorNums\": 1,\n            \"JobMaxAttempts\": 1,\n            \"JobCreator\": \"admin\",\n            \"JobCreateTime\": 1652769991248,\n            \"JobUpdateTime\": 1652769991248,\n            \"CurrentTaskId\": \"2aedsa7a-9ds2-44ds-9fdd-65cbds9d6301\",\n            \"JobStatus\": 1,\n            \"StreamingStat\": {\n                \"StartTime\": \"2022-01-01 12:12:12\",\n                \"Receivers\": 0,\n                \"NumActiveReceivers\": 0,\n                \"NumInactiveReceivers\": 0,\n                \"NumActiveBatches\": 0,\n                \"NumRetainedCompletedBatches\": 0,\n                \"NumTotalCompletedBatches\": 0,\n                \"AverageInputRate\": 0,\n                \"AverageSchedulingDelay\": 0,\n                \"AverageProcessingTime\": 0,\n                \"AverageTotalDelay\": 0\n            },\n            \"DataSource\": \"DataLakeCatalog\",\n            \"IsLocalPythonFiles\": \"cos\",\n            \"AppPythonFiles\": \"\",\n            \"IsLocalArchives\": \"cos\",\n            \"JobArchives\": \"\",\n            \"SparkImage\": \"Spark 3.2\",\n            \"JobPythonFiles\": \"cos\",\n            \"TaskNum\": 1,\n            \"DataEngineStatus\": 0,\n            \"JobExecutorMaxNumbers\": 1,\n            \"SessionId\": \"xxssd-dsakjj-dkslk-doeks\"\n        },\n        \"IsExists\": true,\n        \"RequestId\": \"2ae4707a-9f72-44aa-9fd4-65cb739d6301\"\n    }\n}",
-        "title": "Querying the information of a Spark job"
+        "title": "Querying Spark Job Information"
       }
     ],
     "DescribeSparkAppJobs": [
@@ -146,26 +344,50 @@
     ],
     "DescribeSparkAppTasks": [
       {
-        "document": "This example shows you how to query the list of running task instances of a Spark job.",
+        "document": "This example shows you how to query the list of running tasks of a Spark job.",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action:DescribeSparkAppTasks\n<Common request parameters>\n\n{\n    \"JobId\": \"batch_133e005d-6486-4517-8ea7-b6b97b183a6b\",\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
         "output": "{\n    \"Response\": {\n        \"Tasks\": {\n            \"DatabaseName\": \"abc\",\n            \"DataAmount\": 0,\n            \"Id\": \"abc\",\n            \"UsedTime\": 0,\n            \"OutputPath\": \"abc\",\n            \"CreateTime\": \"abc\",\n            \"State\": 0,\n            \"SQLType\": \"abc\",\n            \"SQL\": \"abc\",\n            \"ResultExpired\": true,\n            \"RowAffectInfo\": \"abc\",\n            \"DataSet\": \"abc\",\n            \"Error\": \"abc\",\n            \"Percentage\": 0,\n            \"OutputMessage\": \"abc\",\n            \"TaskType\": \"abc\",\n            \"ProgressDetail\": \"abc\",\n            \"UpdateTime\": \"abc\",\n            \"DataEngineId\": \"abc\",\n            \"OperateUin\": \"abc\",\n            \"DataEngineName\": \"abc\",\n            \"InputType\": \"abc\",\n            \"InputConf\": \"abc\",\n            \"DataNumber\": 0,\n            \"CanDownload\": true,\n            \"UserAlias\": \"abc\",\n            \"SparkJobName\": \"abc\",\n            \"SparkJobId\": \"abc\",\n            \"SparkJobFile\": \"abc\",\n            \"UiUrl\": \"abc\",\n            \"TotalTime\": 0,\n            \"CmdArgs\": \"abc\",\n            \"ImageVersion\": \"abc\",\n            \"DriverSize\": \"abc\",\n            \"ExecutorSize\": \"abc\",\n            \"ExecutorNums\": 1,\n            \"ExecutorMaxNumbers\": 1\n        },\n        \"TotalCount\": 0,\n        \"SparkAppTasks\": [\n            {\n                \"DatabaseName\": \"abc\",\n                \"DataAmount\": 0,\n                \"Id\": \"abc\",\n                \"UsedTime\": 0,\n                \"OutputPath\": \"abc\",\n                \"CreateTime\": \"abc\",\n                \"State\": 0,\n                \"SQLType\": \"abc\",\n                \"SQL\": \"abc\",\n                \"ResultExpired\": true,\n                \"RowAffectInfo\": \"abc\",\n                \"DataSet\": \"abc\",\n                \"Error\": \"abc\",\n                \"Percentage\": 0,\n                \"OutputMessage\": \"abc\",\n                \"TaskType\": \"abc\",\n                \"ProgressDetail\": \"abc\",\n                \"UpdateTime\": \"abc\",\n                \"DataEngineId\": \"abc\",\n                \"OperateUin\": \"abc\",\n                \"DataEngineName\": \"abc\",\n                \"InputType\": \"abc\",\n                \"InputConf\": \"abc\",\n                \"DataNumber\": 0,\n                \"CanDownload\": true,\n                \"UserAlias\": \"abc\",\n                \"SparkJobName\": \"abc\",\n                \"SparkJobId\": \"abc\",\n                \"SparkJobFile\": \"abc\",\n                \"UiUrl\": \"abc\",\n                \"TotalTime\": 0,\n                \"CmdArgs\": \"abc\",\n                \"ImageVersion\": \"abc\",\n                \"DriverSize\": \"abc\",\n                \"ExecutorSize\": \"abc\",\n                \"ExecutorNums\": 1,\n                \"ExecutorMaxNumbers\": 1\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Querying the list of running task instances of a Spark job"
+        "title": "Querying the Running Task List of a Spark Job"
       }
     ],
     "DescribeSparkSessionBatchSqlLog": [
       {
-        "document": "This example shows you how to obtain the logs of a Spark SQL batch task.",
+        "document": "This example shows you how to query Spark SQL batch task logs.",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSparkSessionBatchSqlLog\n<Common request parameters>\n\n{\n    \"BatchId\": \"d3018ad4-9a7e-4f64-a3f4-f38507c69742\"\n}",
         "output": "{\n    \"Response\": {\n        \"State\": 0,\n        \"LogSet\": [\n            {\n                \"Step\": \"BEG\",\n                \"Time\": \"2023-03-20 12:12:12\",\n                \"Message\": \"Cluster name\",\n                \"Operate\": [\n                    {\n                        \"Text\": \"dateEngine-1\",\n                        \"Operate\": \"COPY\",\n                        \"Supplement\": [\n                            {\n                                \"Key\": \"TASKID\",\n                                \"Value\": \"d0ds1sad4-9d7e-4f64-a3f4-f385dcs6742\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"b8sd7dd7-ekd4-4e5e-993e-e5db64fa21c1\"\n    }\n}",
-        "title": "Obtaining the logs of a Spark SQL batch task"
+        "title": "Querying Spark SQL Batch Task Logs"
+      }
+    ],
+    "DescribeStoreLocation": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStoreLocation\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e54c6a1d-c56c-4412-b327-299732cfcd1c\",\n        \"StoreLocation\": \"cosn://ricky-1301xxx708/test1/\"\n    }\n}",
+        "title": "Querying Calculation Result Storage Path"
+      }
+    ],
+    "DescribeSubUserAccessPolicy": [
+      {
+        "document": "This example shows you how to query the sub-user policy.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSubUserAccessPolicy\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"PolicyDocument\": \"{\\\"statement\\\":[{\\\"action\\\":[\\\"cos:*\\\"],\\\"effect\\\":\\\"allow\\\",\\\"resource\\\":[\\\"qcs::cos:ap-beijing:uid/123456:test_bucket/*\\\",\\\"qcs::cos:ap-beijing:uid/123456:test_bucket/*\\\",\\\"qcs::cos:ap-beijing:uid/123456:test_bucket/*\\\"]}],\\\"version\\\":\\\"2.0\\\"}\",\n        \"RequestId\": \"799cd718-d0da-4f7c-a0c1-104205dc6d8f\"\n    }\n}",
+        "title": "Instance One"
+      }
+    ],
+    "DescribeTablesName": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTablesName\n<Common request parameters>\n\n{\n    \"Limit\": 0,\n    \"Offset\": 1,\n    \"DatabaseName\": \"abc\",\n    \"Filters\": [\n        {\n            \"Name\": \"abc\",\n            \"Values\": [\n                \"abc\"\n            ]\n        }\n    ],\n    \"DatasourceConnectionName\": \"abc\",\n    \"StartTime\": \"abc\",\n    \"EndTime\": \"abc\",\n    \"Sort\": \"abc\",\n    \"Asc\": true,\n    \"TableType\": \"abc\",\n    \"TableFormat\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TableNameList\": [\n            \"abc\"\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying the Data Table Name List"
       }
     ],
     "DescribeTaskResult": [
       {
-        "document": "This example shows you how to query the result of a task. 1,000 rows of data are returned each time.",
+        "document": "This example shows you how to query task results and return 1000 rows of data each time.",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTaskResult\n<Common request parameters>\n\n{\n    \"TaskId\": \"9e20f9c021cb11ec835f5254006c64af\",\n    \"NextToken\": \"\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9328049f-30bc-4feb-aecf-e3b4ff2d1b00\",\n        \"TaskInfo\": {\n            \"TaskId\": \"9e20f9c021cb11ec835f5254006c64af\",\n            \"DatasourceConnectionName\": \"CosDataCatalog\",\n            \"DatabaseName\": \"auth_test\",\n            \"SQL\": \"SELECT * FROM `auth_test`.`hive_test` LIMIT 10\",\n            \"SQLType\": \"DQL\",\n            \"State\": 2,\n            \"DataAmount\": 850363,\n            \"UsedTime\": 1761,\n            \"TotalTime\": 2000,\n            \"OutputPath\": \"cosn://dlc-nj-1258469122/test/DLCQueryResults/2021/09/30/9e20f9c021cb11ec835f5254006c64af/\",\n            \"CreateTime\": \"1632991895728\",\n            \"OutputMessage\": \"success\",\n            \"RowAffectInfo\": \"59378 rows affected (1.761000 seconds)\",\n            \"ResultSchema\": [\n                {\n                    \"Name\": \"a\",\n                    \"Type\": \"integer\",\n                    \"Comment\": \"\",\n                    \"Precision\": 0,\n                    \"Scale\": 0,\n                    \"Nullable\": \"NULLABLE\"\n                },\n                {\n                    \"Name\": \"b\",\n                    \"Type\": \"varchar\",\n                    \"Comment\": \"\",\n                    \"Precision\": 0,\n                    \"Scale\": 0,\n                    \"Nullable\": \"NULLABLE\"\n                }\n            ],\n            \"ResultSet\": \"[[\\\"3\\\",\\\"kk\\\"],[\\\"3\\\",\\\"kk\\\"],[\\\"9143\\\",\\\" \\\\\\\"28992\\\\\\\"\\\"],[\\\"19048\\\",\\\" \\\\\\\"11266\\\\\\\"\\\"],[\\\"16711\\\",\\\" \\\\\\\"17422\\\\\\\"\\\"],[\\\"3816\\\",\\\" \\\\\\\"18501\\\\\\\"\\\"],[\\\"16428\\\",\\\" \\\\\\\"13774\\\\\\\"\\\"],[\\\"30190\\\",\\\" \\\\\\\"5177\\\\\\\"\\\"],[\\\"24824\\\",\\\" \\\\\\\"19479\\\\\\\"\\\"],[\\\"9709\\\",\\\" \\\\\\\"5532\\\\\\\"\\\"]]\",\n            \"NextToken\": \"\",\n            \"Percentage\": 100,\n            \"ProgressDetail\": \"[{\\\"jobId\\\":\\\"0\\\",\\\"stages\\\":[{\\\"stageId\\\":\\\"0\\\",\\\"schedule\\\":1},{\\\"stageId\\\":\\\"1\\\",\\\"schedule\\\":1},{\\\"stageId\\\":\\\"2\\\",\\\"schedule\\\":1},{\\\"stageId\\\":\\\"3\\\",\\\"schedule\\\":1}],\\\"jobState\\\":\\\"\\\"}]\",\n            \"DisplayFormat\": \"table\"\n        }\n    }\n}",
-        "title": "Querying the result of a task"
+        "title": "Querying Task Results"
       }
     ],
     "DescribeTasks": [
@@ -174,6 +396,38 @@
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTasks\n<Common request parameters>\n\n{\n    \"Limit\": 0,\n    \"Offset\": 0,\n    \"Filters\": [\n        {\n            \"Name\": \"abc\",\n            \"Values\": [\n                \"abc\"\n            ]\n        }\n    ],\n    \"SortBy\": \"abc\",\n    \"Sorting\": \"abc\",\n    \"StartTime\": \"abc\",\n    \"EndTime\": \"abc\",\n    \"DataEngineName\": \"abc\"\n}",
         "output": "{\n    \"Response\": {\n        \"TaskList\": [\n            {\n                \"DatabaseName\": \"abc\",\n                \"DataAmount\": 0,\n                \"Id\": \"abc\",\n                \"UsedTime\": 0,\n                \"OutputPath\": \"abc\",\n                \"CreateTime\": \"abc\",\n                \"State\": 0,\n                \"SQLType\": \"abc\",\n                \"SQL\": \"abc\",\n                \"ResultExpired\": true,\n                \"RowAffectInfo\": \"abc\",\n                \"DataSet\": \"abc\",\n                \"Error\": \"abc\",\n                \"Percentage\": 0,\n                \"OutputMessage\": \"abc\",\n                \"TaskType\": \"abc\",\n                \"ProgressDetail\": \"abc\",\n                \"UpdateTime\": \"abc\",\n                \"DataEngineId\": \"abc\",\n                \"OperateUin\": \"abc\",\n                \"DataEngineName\": \"abc\",\n                \"InputType\": \"abc\",\n                \"InputConf\": \"abc\",\n                \"DataNumber\": 0,\n                \"CanDownload\": true,\n                \"UserAlias\": \"abc\",\n                \"SparkJobName\": \"abc\",\n                \"SparkJobId\": \"abc\",\n                \"SparkJobFile\": \"abc\",\n                \"UiUrl\": \"abc\",\n                \"TotalTime\": 0,\n                \"CmdArgs\": \"abc\",\n                \"ImageVersion\": \"abc\",\n                \"DriverSize\": \"abc\",\n                \"ExecutorSize\": \"abc\",\n                \"ExecutorNums\": 1,\n                \"ExecutorMaxNumbers\": 1,\n                \"CommonMetrics\": {\n                    \"CreateTaskTime\": 0,\n                    \"ProcessTime\": 0,\n                    \"QueueTime\": 0,\n                    \"ExecutionTime\": 0,\n                    \"IsResultCacheHit\": true,\n                    \"MatchedMVBytes\": 0,\n                    \"MatchedMVs\": \"abc\",\n                    \"AffectedBytes\": \"abc\",\n                    \"AffectedRows\": 0,\n                    \"ProcessedBytes\": 0,\n                    \"ProcessedRows\": 0\n                },\n                \"SparkMonitorMetrics\": {\n                    \"ShuffleWriteBytesCos\": 0,\n                    \"ShuffleWriteBytesTotal\": 0\n                },\n                \"PrestoMonitorMetrics\": {\n                    \"LocalCacheHitRate\": 0,\n                    \"FragmentCacheHitRate\": 0\n                }\n            }\n        ],\n        \"TotalCount\": 1,\n        \"TasksOverview\": {\n            \"TaskQueuedCount\": 0,\n            \"TaskInitCount\": 0,\n            \"TaskRunningCount\": 0,\n            \"TotalTaskCount\": 0\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Querying the list of tasks"
+      }
+    ],
+    "DescribeThirdPartyAccessUser": [
+      {
+        "document": "This example shows you how to query the information about registered third-party access users.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeThirdPartyAccessUser\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"584515f3-835f-459d-b93b-d6c6f64c0daa\",\n        \"UserInfo\": {\n            \"AppId\": \"123456\",\n            \"CreateTime\": \"2024-05-22T09:49:56+08:00\",\n            \"Id\": 5,\n            \"Uin\": \"123456\"\n        }\n    }\n}",
+        "title": "Instance One"
+      }
+    ],
+    "DescribeUpdatableDataEngines": [
+      {
+        "document": "This example shows you how to query the sparksql engine that needs to update the result bucket cluster configuration.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUpdatableDataEngines\n<Common request parameters>\n\n{\n    \"DataEngineConfigCommand\": \"UpdateSparkSQLResultPath\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DataEngineBasicInfos\": [\n            {\n                \"DataEngineName\": \"abc\",\n                \"State\": 0,\n                \"CreateTime\": 0,\n                \"UpdateTime\": 0,\n                \"Message\": \"abc\",\n                \"DataEngineId\": \"abc\",\n                \"DataEngineType\": \"abc\",\n                \"AppId\": 0,\n                \"UserUin\": \"abc\"\n            }\n        ],\n        \"TotalCount\": 0,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying the sparksql Engine That Needs to Update the Result Bucket Cluster Configuration"
+      }
+    ],
+    "DescribeUserDataEngineConfig": [
+      {
+        "document": "This example shows you how to query user-defined engine parameters.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserDataEngineConfig\n<Common request parameters>\n\n{\n    \"Sorting\": \"abc\",\n    \"Limit\": 0,\n    \"Offset\": 0,\n    \"SortBy\": \"abc\",\n    \"Filters\": [\n        {\n            \"Name\": \"abc\",\n            \"Values\": [\n                \"abc\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"DataEngineConfigInstanceInfos\": [\n            {\n                \"DataEngineId\": \"abc\",\n                \"DataEngineConfigPairs\": [\n                    {\n                        \"ConfigItem\": \"abc\",\n                        \"ConfigValue\": \"abc\"\n                    }\n                ],\n                \"SessionResourceTemplate\": {\n                    \"DriverSize\": \"abc\",\n                    \"ExecutorSize\": \"abc\",\n                    \"ExecutorNums\": 1,\n                    \"ExecutorMaxNumbers\": 1\n                }\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying User-Defined Engine Parameters"
+      }
+    ],
+    "DescribeUserInfo": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserInfo\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"UserInfo\": {\n            \"UserId\": \"123108743\",\n            \"UserAlias\": \"testname\",\n            \"UserType\": \"ADMIN\",\n            \"UserDescription\": \"test\",\n            \"Type\": \"Group\"\n        },\n        \"RequestId\": \"1231sad-sadsd121-fvmkl23-f124\"\n    }\n}",
+        "title": "Getting Detailed User Information"
       }
     ],
     "DescribeUserRoles": [
@@ -187,15 +441,95 @@
         "document": "",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserRoles\n<Common request parameters>\n\n{\n    \"Fuzzy\": \"1\",\n    \"Limit\": 0,\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"UserRoles\": [\n            {\n                \"RoleId\": 0,\n                \"AppId\": \"1234\",\n                \"Uin\": \"1234\",\n                \"ModifyTime\": 1650424290,\n                \"Arn\": \"11\",\n                \"Desc\": \"test role\"\n            }\n        ],\n        \"RequestId\": \"2ae4707a-9f72-44aa-9fd4-65cb739d6301\"\n    }\n}",
-        "title": "Enumerating user roles"
+        "title": "Listing User Role Information"
+      }
+    ],
+    "DescribeUserType": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserType\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"UserType\": \"ADMIN\",\n        \"RequestId\": \"1312-j1jf1920fl023na9sa-vanc\"\n    }\n}",
+        "title": "Getting the User Type"
+      }
+    ],
+    "DescribeUsers": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUsers\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Sorting\": \"create-time\",\n    \"UserId\": \"1248065439\",\n    \"SortBy\": \"desc\",\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"UserSet\": [\n            {\n                \"Creator\": \"1248065439\",\n                \"PolicySet\": [\n                    {\n                        \"Table\": \"TableName\",\n                        \"Catalog\": \"COSDataCatalog\",\n                        \"Operation\": \"ALL\",\n                        \"Database\": \"DatabaseName\"\n                    }\n                ],\n                \"UserId\": \"1248065439\",\n                \"UserType\": \"ADMIN\",\n                \"UserAlias\": \"xxxname\",\n                \"IsOwner\": true,\n                \"UserDescription\": \"Test User\",\n                \"WorkGroupSet\": [\n                    {\n                        \"WorkGroupId\": 0,\n                        \"WorkGroupName\": \"Group1\",\n                        \"CreateTime\": \"2021-07-28 16:19:32\",\n                        \"WorkGroupDescription\": \"test group\",\n                        \"Creator\": \"1248065439\"\n                    }\n                ],\n                \"CreateTime\": \"2021-07-28 16:19:32\"\n            }\n        ],\n        \"RequestId\": \"1287310-badou889lodj-1231jk12\"\n    }\n}",
+        "title": "Getting the User List"
+      }
+    ],
+    "DescribeWorkGroupInfo": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWorkGroupInfo\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"WorkGroupInfo\": {\n            \"WorkGroupId\": 12,\n            \"WorkGroupName\": \"testGroup\",\n            \"Type\": \"User\"\n        },\n        \"RequestId\": \"gsdf-213kjs9sf-f11fafsaf-12e1k\"\n    }\n}",
+        "title": "Getting Workgroup Details"
+      }
+    ],
+    "DescribeWorkGroups": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWorkGroups\n<Common request parameters>\n\n{\n    \"Sorting\": \"desc\",\n    \"WorkGroupId\": 1,\n    \"Limit\": 0,\n    \"SortBy\": \"create-time\",\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"workgroup-name\"\n            ],\n            \"Name\": \"Group1\"\n        }\n    ],\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"WorkGroupSet\": [\n            {\n                \"PolicySet\": [\n                    {\n                        \"Table\": \"TableName\",\n                        \"Catalog\": \"COSDataCatalog\",\n                        \"Operation\": \"ALL\",\n                        \"Database\": \"DatabaseName\"\n                    }\n                ],\n                \"WorkGroupId\": 1,\n                \"Creator\": \"1248065439\",\n                \"UserNum\": 1,\n                \"WorkGroupDescription\": \"test group\",\n                \"WorkGroupName\": \"Group1\",\n                \"UserSet\": [\n                    {\n                        \"UserDescription\": \"test user\",\n                        \"UserAlias\": \"testname\",\n                        \"UserId\": \"1248065439\",\n                        \"CreateTime\": \"2021-07-28 16:19:32\",\n                        \"Creator\": \"1248065439\"\n                    }\n                ],\n                \"CreateTime\": \"2021-07-28 16:19:32\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"1287310-badou889lodj-1231jk12\"\n    }\n}",
+        "title": "Getting a List of Working Groups"
+      }
+    ],
+    "DetachUserPolicy": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetachUserPolicy\n<Common request parameters>\n\n{\n    \"UserId\": \"1248065439\",\n    \"PolicySet\": [\n        {\n            \"Table\": \"TableName\",\n            \"Catalog\": \"COSDataCatalog\",\n            \"Operation\": \"ALL\",\n            \"Database\": \"DatabaseName\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"79a91d1b-c00d-4b4f-b1da-0fbf339efa9a\"\n    }\n}",
+        "title": "Unbinding User Authentication Policy"
+      }
+    ],
+    "DetachWorkGroupPolicy": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DetachWorkGroupPolicy\n<Common request parameters>\n\n{\n    \"WorkGroupId\": 112,\n    \"PolicySet\": [\n        {\n            \"Table\": \"TableName\",\n            \"Catalog\": \"COSDataCatalog\",\n            \"Operation\": \"ALL\",\n            \"Database\": \"DatabaseName\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"94899a6b-a3e0-4d61-ad83-b51cb2473305\"\n    }\n}",
+        "title": "Unbinding the Authentication Policy from the Working Group"
       }
     ],
     "GenerateCreateMangedTableSql": [
       {
-        "document": "This example shows you how to create a managed internal table.",
-        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GenerateCreateMangedTableSql\n<Common request parameters>\n\n{\n    \"TableBaseInfo\": {\n        \"DatabaseName\": \"abc\",\n        \"TableName\": \"abc\",\n        \"DatasourceConnectionName\": \"abc\",\n        \"TableComment\": \"abc\",\n        \"Type\": \"abc\",\n        \"TableFormat\": \"abc\",\n        \"UserAlias\": \"abc\",\n        \"UserSubUin\": \"abc\",\n        \"GovernPolicy\": {},\n        \"DbGovernPolicyIsDisable\": \"abc\"\n    },\n    \"Columns\": [\n        {\n            \"Name\": \"abc\",\n            \"Type\": \"abc\",\n            \"Comment\": \"abc\",\n            \"Default\": \"abc\",\n            \"NotNull\": true\n        }\n    ],\n    \"Partitions\": [\n        {\n            \"Name\": \"abc\",\n            \"Type\": \"abc\",\n            \"Comment\": \"abc\",\n            \"PartitionType\": \"abc\",\n            \"PartitionFormat\": \"abc\",\n            \"PartitionDot\": 0,\n            \"Transform\": \"abc\",\n            \"TransformArgs\": [\n                \"abc\"\n            ]\n        }\n    ],\n    \"Properties\": [\n        {\n            \"Key\": \"abc\",\n            \"Value\": \"abc\"\n        }\n    ],\n    \"UpsertKeys\": [\n        \"abc\"\n    ]\n}",
+        "document": "This example shows you how to create a managed storage internal table.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GenerateCreateMangedTableSql\n<Common request parameters>\n\n{\n    \"TableBaseInfo\": {\n        \"DatabaseName\": \"abc\",\n        \"TableName\": \"abc\",\n        \"DatasourceConnectionName\": \"abc\",\n        \"TableComment\": \"abc\",\n        \"Type\": \"abc\",\n        \"TableFormat\": \"abc\",\n        \"UserAlias\": \"abc\",\n        \"UserSubUin\": \"abc\",\n        \"GovernPolicy\": {\n            \"RuleType\": \"abc\",\n            \"GovernEngine\": \"abc\"\n        },\n        \"DbGovernPolicyIsDisable\": \"abc\",\n        \"SmartPolicy\": {\n            \"BaseInfo\": {\n                \"Uin\": \"abc\",\n                \"PolicyType\": \"abc\",\n                \"Catalog\": \"abc\",\n                \"Database\": \"abc\",\n                \"Table\": \"abc\",\n                \"AppId\": \"abc\"\n            },\n            \"Policy\": {\n                \"Inherit\": \"abc\",\n                \"Resources\": [\n                    {\n                        \"AttributionType\": \"abc\",\n                        \"ResourceType\": \"abc\",\n                        \"Name\": \"abc\",\n                        \"Instance\": \"abc\",\n                        \"Favor\": [\n                            {\n                                \"Priority\": 0,\n                                \"Catalog\": \"abc\",\n                                \"DataBase\": \"abc\",\n                                \"Table\": \"abc\"\n                            }\n                        ],\n                        \"Status\": 0\n                    }\n                ],\n                \"Written\": {},\n                \"Lifecycle\": {\n                    \"LifecycleEnable\": \"abc\",\n                    \"Expiration\": 0,\n                    \"DropTable\": true\n                },\n                \"Index\": {\n                    \"IndexEnable\": \"abc\"\n                }\n            }\n        }\n    },\n    \"Columns\": [\n        {\n            \"Name\": \"abc\",\n            \"Type\": \"abc\",\n            \"Comment\": \"abc\",\n            \"Default\": \"abc\",\n            \"NotNull\": true,\n            \"Precision\": 0,\n            \"Scale\": 0\n        }\n    ],\n    \"Partitions\": [\n        {\n            \"Name\": \"abc\",\n            \"Type\": \"abc\",\n            \"Comment\": \"abc\",\n            \"PartitionType\": \"abc\",\n            \"PartitionFormat\": \"abc\",\n            \"PartitionDot\": 0,\n            \"Transform\": \"abc\",\n            \"TransformArgs\": [\n                \"abc\"\n            ]\n        }\n    ],\n    \"Properties\": [\n        {\n            \"Key\": \"abc\",\n            \"Value\": \"abc\"\n        }\n    ],\n    \"UpsertKeys\": [\n        \"abc\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Execution\": {\n            \"SQL\": \"<create sql>\"\n        },\n        \"RequestId\": \"RequestId\"\n    }\n}",
-        "title": "Creating a managed internal table"
+        "title": "Creating a Managed Storage Internal Table."
+      }
+    ],
+    "GetOptimizerPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetOptimizerPolicy\n<Common request parameters>\n\n{\n    \"SmartPolicy\": {\n        \"BaseInfo\": {\n            \"Uin\": \"abc\",\n            \"PolicyType\": \"abc\",\n            \"Catalog\": \"abc\",\n            \"Database\": \"abc\",\n            \"Table\": \"abc\",\n            \"AppId\": \"abc\"\n        },\n        \"Policy\": {\n            \"Inherit\": \"abc\",\n            \"Resources\": [\n                {\n                    \"AttributionType\": \"abc\",\n                    \"ResourceType\": \"abc\",\n                    \"Name\": \"abc\",\n                    \"Instance\": \"abc\",\n                    \"Favor\": [\n                        {\n                            \"Priority\": 0,\n                            \"Catalog\": \"abc\",\n                            \"DataBase\": \"abc\",\n                            \"Table\": \"abc\"\n                        }\n                    ],\n                    \"Status\": 0\n                }\n            ],\n            \"Written\": {},\n            \"Lifecycle\": {\n                \"LifecycleEnable\": \"abc\",\n                \"Expiration\": 0,\n                \"DropTable\": true\n            },\n            \"Index\": {\n                \"IndexEnable\": \"abc\"\n            }\n        }\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"SmartOptimizerPolicy\": {\n            \"Inherit\": \"abc\",\n            \"Resources\": [\n                {\n                    \"AttributionType\": \"abc\",\n                    \"ResourceType\": \"abc\",\n                    \"Name\": \"abc\",\n                    \"Instance\": \"abc\",\n                    \"Favor\": [\n                        {\n                            \"Priority\": 0,\n                            \"Catalog\": \"abc\",\n                            \"DataBase\": \"abc\",\n                            \"Table\": \"abc\"\n                        }\n                    ],\n                    \"Status\": 0\n                }\n            ],\n            \"Written\": {},\n            \"Lifecycle\": {\n                \"LifecycleEnable\": \"abc\",\n                \"Expiration\": 0,\n                \"DropTable\": true\n            },\n            \"Index\": {\n                \"IndexEnable\": \"abc\"\n            }\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "test"
+      }
+    ],
+    "GrantDLCCatalogAccess": [
+      {
+        "document": "This example shows you how to grant permissions for accessing DLC metadata.",
+        "input": "POST / HTTP/1.1\nHost: xxx.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstances\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-1234\",\n    \"Product\": \"EMR\",\n    \"Description\": \"EMR production cluster\",\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1234-4567\"\n    }\n}",
+        "title": "Granting Permissions for Accessing DLC Metadata"
+      }
+    ],
+    "ModifyAdvancedStoreLocation": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyAdvancedStoreLocation\n<Common request parameters>\n\n{\n    \"StoreLocation\": \"\",\n    \"Enable\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Modifying Advanced Settings"
+      }
+    ],
+    "ModifyDataEngineDescription": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDataEngineDescription\n<Common request parameters>\n\n{\n    \"Message\": \"test-message\",\n    \"DataEngineName\": \"DataEngine-xxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"jslaciaif-1lfsva9fal-12r1fca9fasef4\"\n    }\n}",
+        "title": "Modifying Engine Description"
       }
     ],
     "ModifyGovernEventRule": [
@@ -222,6 +556,86 @@
         "title": "Modifying Spark job parameters in batches"
       }
     ],
+    "ModifyUser": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyUser\n<Common request parameters>\n\n{\n    \"UserDescription\": \"my-test-user\",\n    \"UserId\": \"10003237654\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"89d31413-a210-4553-8fdc-d2d17a1e2138\"\n    }\n}",
+        "title": "Modifying User Information"
+      }
+    ],
+    "ModifyUserType": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyUserType\n<Common request parameters>\n\n{\n    \"UserType\": \"xx\",\n    \"UserId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ks1141-dasd8ca1-acds81fa\"\n    }\n}",
+        "title": "Modifying User Types"
+      }
+    ],
+    "ModifyWorkGroup": [
+      {
+        "document": "This example shows you how to modify workgroup information.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyWorkGroup\n<Common request parameters>\n\n{\n    \"WorkGroupId\": 112,\n    \"WorkGroupDescription\": \"my-test-2\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6fd5c288-cfa1-4c7b-9229-7780d0a3e96f\"\n    }\n}",
+        "title": "Modifying Workgroup Information"
+      }
+    ],
+    "QueryResult": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryResult\n<Common request parameters>\n\n{\n    \"NextToken\": \"xx\",\n    \"TaskId\": \"xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ResultSchema\": [\n            {\n                \"Comment\": \"xx\",\n                \"Scale\": 0,\n                \"Name\": \"xx\",\n                \"Nullable\": \"xx\",\n                \"Precision\": 0,\n                \"Type\": \"xx\"\n            }\n        ],\n        \"NextToken\": \"xx\",\n        \"ResultSet\": \"xx\",\n        \"RequestId\": \"xx\",\n        \"TaskId\": \"xx\"\n    }\n}",
+        "title": "Getting a Task Result"
+      }
+    ],
+    "QueryTaskCostDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryTaskCostDetail\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"SearchAfter\": \"abc\",\n        \"Data\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying Task Consumption Details"
+      }
+    ],
+    "RegisterThirdPartyAccessUser": [
+      {
+        "document": "This example shows you how to register as a visitor.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RegisterThirdPartyAccessUser\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"346d80be-643f-4980-ad5d-d59f419a120e\"\n    }\n}",
+        "title": "Example One"
+      }
+    ],
+    "RenewDataEngine": [
+      {
+        "document": "This example shows you how to renew the data engine.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RenewDataEngine\n<Common request parameters>\n\n{\n    \"PayMode\": 0,\n    \"TimeUnit\": \"m\",\n    \"DataEngineName\": \"test_house\",\n    \"TimeSpan\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1ESASFA-121DSAD\"\n    }\n}",
+        "title": "Renewing the Data Engine"
+      }
+    ],
+    "RestartDataEngine": [
+      {
+        "document": "This example shows you how to restart a cluster.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestartDataEngine\n<Common request parameters>\n\n{\n    \"DataEngineId\": \"abc\",\n    \"ForcedOperation\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Restarting a Cluster"
+      }
+    ],
+    "RevokeDLCCatalogAccess": [
+      {
+        "document": "This example shows you how to revoke permissions for visiting DLC Catalog.",
+        "input": "POST / HTTP/1.1\nHost: xxx.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstances\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-123\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Revoking Permissions for Visiting DLC Catalog"
+      }
+    ],
+    "RollbackDataEngineImage": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RollbackDataEngineImage\n<Common request parameters>\n\n{\n    \"DataEngineId\": \"DataEngine-xx\",\n    \"FromRecordId\": \"xxxxxx\",\n    \"ToRecordId\": \"xxxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abv\"\n    }\n}",
+        "title": "Upgrading Engine Image Version"
+      }
+    ],
     "SuspendResumeDataEngine": [
       {
         "document": "This example shows you how to suspend or start a data engine.",
@@ -238,12 +652,60 @@
         "title": "test"
       }
     ],
+    "SwitchDataEngineImage": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SwitchDataEngineImage\n<Common request parameters>\n\n{\n    \"DataEngineId\": \"DataEngine-xx\",\n    \"NewImageVersionId\": \"xxxxxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Upgrading Engine Image Version"
+      }
+    ],
+    "UnbindWorkGroupsFromUser": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnbindWorkGroupsFromUser\n<Common request parameters>\n\n{\n    \"AddInfo\": {\n        \"UserId\": \"1000323\",\n        \"WorkGroupIds\": [\n            112\n        ]\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"edb8ceac-68c9-4acf-9a38-ea26abc61dfc\"\n    }\n}",
+        "title": "Unbinding User Groups from a User"
+      }
+    ],
+    "UpdateDataEngine": [
+      {
+        "document": "This example shows you how to change the engine configuration.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateDataEngine\n<Common request parameters>\n\n{\n    \"MaxClusters\": 0,\n    \"CrontabResumeSuspend\": 0,\n    \"AutoSuspend\": true,\n    \"CrontabResumeSuspendStrategy\": {\n        \"SuspendTime\": \"0\",\n        \"SuspendStrategy\": 0,\n        \"ResumeTime\": \"0\"\n    },\n    \"AutoResume\": true,\n    \"DataEngineName\": \"test\",\n    \"Message\": \"modify\",\n    \"MinClusters\": 0,\n    \"Size\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx-xxxx-xxx-xxxx\"\n    }\n}",
+        "title": "Changing the Engine Configuration"
+      }
+    ],
+    "UpdateDataEngineConfig": [
+      {
+        "document": "This example shows you how to update the result bucket configuration information for the specified engine.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateDataEngineConfig\n<Common request parameters>\n\n{\n    \"DataEngineIds\": [\n        \"DataEngine-xxx\"\n    ],\n    \"DataEngineConfigCommand\": \"UpdateSparkSQLResultPath\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Updating the Result Bucket Configuration Information for the Specified Engine"
+      }
+    ],
     "UpdateRowFilter": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateRowFilter\n<Common request parameters>\n\n{\n    \"Policy\": {\n        \"Table\": \"TableName\",\n        \"Catalog\": \"COSDataCatalog\",\n        \"Operation\": \"ALL\",\n        \"Database\": \"DatabaseName\"\n    },\n    \"PolicyId\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1287310-badou889lodj-1231jk12\"\n    }\n}",
         "title": "Updating the row filter policy"
+      }
+    ],
+    "UpdateUserDataEngineConfig": [
+      {
+        "document": "This example shows you how to modify user cluster custom configuration.",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateUserDataEngineConfig\n<Common request parameters>\n\n{\n    \"DataEngineId\": \"abc\",\n    \"DataEngineConfigPairs\": [\n        {\n            \"ConfigItem\": \"abc\",\n            \"ConfigValue\": \"abc\"\n        }\n    ],\n    \"SessionResourceTemplate\": {\n        \"DriverSize\": \"abc\",\n        \"ExecutorSize\": \"abc\",\n        \"ExecutorNums\": 1,\n        \"ExecutorMaxNumbers\": 1\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"asdfwdsf\"\n    }\n}",
+        "title": "Modifing User Cluster Custom Configuration"
+      }
+    ],
+    "UpgradeDataEngineImage": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpgradeDataEngineImage\n<Common request parameters>\n\n{\n    \"DataEngineId\": \"DataEngine-xx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Upgrading the Engine Image Version"
       }
     ]
   },
