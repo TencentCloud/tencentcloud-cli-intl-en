@@ -613,6 +613,100 @@
       ],
       "usage": "both"
     },
+    "AmazonS3Settings": {
+      "document": "Amazon S3 destination setting.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Access key ID of the S3 sub-account.",
+          "example": "无",
+          "member": "string",
+          "name": "AccessKeyID",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Secret access key of the S3 sub-account.",
+          "example": "无",
+          "member": "string",
+          "name": "SecretAccessKey",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region of S3.",
+          "example": "ap-southeast-1",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bucket name of S3.",
+          "example": "无",
+          "member": "string",
+          "name": "Bucket",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File output path, which can be empty. If it is not empty, it starts with / and ends with /.",
+          "example": "/output/ ",
+          "member": "string",
+          "name": "FilePath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User-defined name, supports alphanumeric characters, underscores, and hyphens, with a length between 1 and 32 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File suffix, only supports `jpg`.",
+          "example": "无",
+          "member": "string",
+          "name": "FileExt",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Support `unix` or `utc0`, default unix.",
+          "example": "unix",
+          "member": "string",
+          "name": "TimeFormat",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "AttachedInput": {
       "document": "Channel-associated input",
       "members": [
@@ -1118,6 +1212,78 @@
       ],
       "usage": "out"
     },
+    "CosSettings": {
+      "document": "Cos destination setting.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Region of COS.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bucket name of COS.",
+          "example": "无",
+          "member": "string",
+          "name": "Bucket",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File output path, which can be empty. If it is not empty, it  ends with /.",
+          "example": "output/ ",
+          "member": "string",
+          "name": "FilePath",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User-defined name, supports alphanumeric characters, underscores, and hyphens, with a length between 1 and 32 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File suffix, only supports `jpg`.",
+          "example": "无",
+          "member": "string",
+          "name": "FileExt",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Support `unix` or `utc0`, default unix.",
+          "example": "unix",
+          "member": "string",
+          "name": "TimeFormat",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "CreateImageSettings": {
       "document": "Watermark image settings",
       "members": [
@@ -1311,6 +1477,15 @@
           "example": "无",
           "member": "Tag",
           "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Frame capture templates.",
+          "example": "无",
+          "member": "FrameCaptureTemplate",
+          "name": "FrameCaptureTemplates",
           "required": false,
           "type": "list"
         }
@@ -2984,13 +3159,35 @@
         },
         {
           "disabled": false,
-          "document": "The destination type of the retweet. Currently available values are: Standard, AWS_MediaPackageV1, AWS_MediaPackageV2. The default is: Standard.",
+          "document": "The destination type of the retweet. Currently available values are: Standard, AWS_MediaPackageV1, AWS_MediaPackageV2. The default is: Standard. When the output group type is FRAME_CAPTURE, valid values are: AWS_AmazonS3, COS.",
           "example": "Standard",
           "member": "string",
           "name": "DestinationType",
           "output_required": false,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Aws S3 destination setting.",
+          "example": "无",
+          "member": "AmazonS3Settings",
+          "name": "AmazonS3Settings",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cos destination setting.",
+          "example": "无",
+          "member": "CosSettings",
+          "name": "CosSettings",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -3389,6 +3586,89 @@
           "name": "RecoverBehavior",
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "FrameCaptureTemplate": {
+      "document": "Frame capture template.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name of frame capture template, limited to uppercase and lowercase letters and numbers, with a length between 1 and 20 characters.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Width of frame capture, optional, input range is from 0 to 3000, must be a multiple of 2.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Width",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Height of frame capture, optional, input range is from 0 to 3000, must be a multiple of 2.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Height",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Interval of frame capture, an integer between 1 and 3600.",
+          "example": "10",
+          "member": "uint64",
+          "name": "CaptureInterval",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Interval units of frame capture, only supports SECONDS.",
+          "example": "SECONDS",
+          "member": "string",
+          "name": "CaptureIntervalUnits",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Scaling behavior of frame capture, supports DEFAULT or STRETCH_TO_OUTPUT, with DEFAULT being the default option.",
+          "example": "DEFAULT",
+          "member": "string",
+          "name": "ScalingBehavior",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sharpness, an integer between 0 and 100.",
+          "example": "50",
+          "member": "uint64",
+          "name": "Sharpness",
+          "output_required": false,
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
@@ -4286,6 +4566,15 @@
           "name": "Tags",
           "required": false,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Frame capture templates.",
+          "example": "无",
+          "member": "FrameCaptureTemplate",
+          "name": "FrameCaptureTemplates",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -4544,6 +4833,17 @@
           "required": false,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Frame capture template name array. Quantity limit: [0,1].",
+          "example": "无",
+          "member": "string",
+          "name": "FrameCaptureTemplateNames",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -5524,6 +5824,16 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Frame capture templates.",
+          "example": "无",
+          "member": "FrameCaptureTemplate",
+          "name": "FrameCaptureTemplates",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -5537,16 +5847,18 @@
           "example": "无",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Output protocol\nValid values: `HLS`, `DASH`, `HLS_ARCHIVE`, `HLS_STREAM_PACKAGE`, `DASH_STREAM_PACKAGE`",
+          "document": "Output protocol\nValid values: `HLS`, `DASH`, `HLS_ARCHIVE`, `HLS_STREAM_PACKAGE`, `DASH_STREAM_PACKAGE`, `FRAME_CAPTURE`",
           "example": "无",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -5557,6 +5869,7 @@
           "example": "无",
           "member": "OutputInfo",
           "name": "Outputs",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -5567,6 +5880,7 @@
           "example": "无",
           "member": "DestinationInfo",
           "name": "Destinations",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -5577,6 +5891,7 @@
           "example": "无",
           "member": "HlsRemuxSettingsInfo",
           "name": "HlsRemuxSettings",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -5587,6 +5902,7 @@
           "example": "无",
           "member": "DrmSettingsInfo",
           "name": "DrmSettings",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -5597,6 +5913,7 @@
           "example": "无",
           "member": "DashRemuxSettingsInfo",
           "name": "DashRemuxSettings",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -5607,6 +5924,7 @@
           "example": "无",
           "member": "StreamPackageSettingsInfo",
           "name": "StreamPackageSettings",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -5617,6 +5935,7 @@
           "example": "无",
           "member": "TimeShiftSettingsInfo",
           "name": "TimeShiftSettings",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true

@@ -105,6 +105,13 @@
       "output": "RecognizeKoreanIDCardOCRResponse",
       "status": "online"
     },
+    "RecognizeMacaoIDCardOCR": {
+      "document": "This API is used to recognize key fields on the photo side of a Hong Kong (China) identity card, including name in Chinese, name in English, telecode for name, date of birth, gender, document symbol, date of the first issue, date of the last receipt, identity card number, and permanent residency attribute. \n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
+      "input": "RecognizeMacaoIDCardOCRRequest",
+      "name": "Recognizes Macao (China) identity card",
+      "output": "RecognizeMacaoIDCardOCRResponse",
+      "status": "online"
+    },
     "RecognizeMainlandIDCardOCR": {
       "document": "This interface supports the identification of all fields on the front and back of the second-generation ID card for mainland Chinese residents.Including name, gender, ethnicity, date of birth, address, citizen ID number, issuing authority, and validity period, the identification accuracy reaches more than 99%.In addition, this interface also supports a variety of value-added capabilities to meet the needs of different scenarios. Such as the cropping function of ID card photos and portrait photos, and also has 5 alarm functions.\nAs shown in the table below. <table style=\"width:650px\"> <thead> <tr> <th width=\"150\">Value-added ability</th> <th width=\"500\">Ability items</th> </tr> </thead> <tbody> <tr> <td rowspan=\"9\">Alarm function</td> </tr> <tr> <td>ID card copy warning</td> </tr> <tr> <td>ID card copy warning</td> </tr> <tr> <td>Alarm for occlusion in the ID card frame</td> </tr> <tr> <td>ID card reflective warning</td> </tr> <tr> <td>Blurry picture warning</td> </tr> </tbody> </table> Default interface request frequency limit: 20 times/second",
       "input": "RecognizeMainlandIDCardOCRRequest",
@@ -4948,6 +4955,195 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeMacaoIDCardOCRRequest": {
+      "document": "RecognizeMacaoIDCardOCR request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The URL address of the image. \nSupported image formats: PNG, JPG, JPEG. Not support GIF yet.\nSupported image size: The downloaded image should not exceed 7M. The image download takes no more than 3 seconds.Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.",
+          "example": "https://xx/a.jpg",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Base64 value of the image.Supported image formats: PNG, JPG, JPEG. Not support GIF yet.\nSupported image size: The downloaded image should not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds.\nOne of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.",
+          "example": "无",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The following optional fields are of string type and are empty by default: \nRetImage: whether to return the processed image (base64 encrypted string); the value and meaning of RetImage are as follows: 1.preprocess returns the preprocessed image data 2.portrait Return portrait image data 3.\"\" Do not return image data SDK setting method reference: Config = Json.stringify({\"RetImage\":\"preprocess\"}) API 3.0 Explorer setting method reference: Config = {\"RetImage\":\"portrait\" }",
+          "example": "无",
+          "member": "string",
+          "name": "Config",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "RecognizeMacaoIDCardOCRResponse": {
+      "document": "RecognizeMacaoIDCardOCR response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Chinese last name",
+          "example": "何",
+          "member": "string",
+          "name": "CnLastName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "English last name",
+          "example": "HO",
+          "member": "string",
+          "name": "EnLastName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last name code",
+          "example": "0149",
+          "member": "string",
+          "name": "LastNameCode",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Chinese first name",
+          "example": "*珍",
+          "member": "string",
+          "name": "CnFirstName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "English first name",
+          "example": "CHAN YO",
+          "member": "string",
+          "name": "EnFirstName",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "First name code",
+          "example": "37****27",
+          "member": "string",
+          "name": "FirstNameCode",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID Number",
+          "example": "15****0(4)",
+          "member": "string",
+          "name": "ID",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Birthday(DD-MM-YYYY)",
+          "example": "22-04-1997",
+          "member": "string",
+          "name": "Birthday",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "gender",
+          "example": "女",
+          "member": "string",
+          "name": "Sex",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "First issue Date (DD-MM-YYYY)",
+          "example": "06-05-2011",
+          "member": "string",
+          "name": "FirstIssueDate",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Issue date (DD-MM-YYYY)",
+          "example": "01-08-2014",
+          "member": "string",
+          "name": "CurrentIssueDate",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Validity period (DD-MM-YYYY)",
+          "example": "01-08-2024",
+          "member": "string",
+          "name": "ValidityPeriod",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID symbol",
+          "example": "C",
+          "member": "string",
+          "name": "Symbol",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Height (unit: meters)",
+          "example": "1.64",
+          "member": "string",
+          "name": "Height",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Processed image (Base64)",
+          "example": "无",
+          "member": "string",
+          "name": "RetImage",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Image rotation angle, the horizontal direction of the text is 0, clockwise is positive, counterclockwise is negative",
+          "example": "0",
+          "member": "string",
+          "name": "Angle",
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"

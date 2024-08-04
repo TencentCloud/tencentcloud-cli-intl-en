@@ -144,6 +144,14 @@
         "title": "Recognizing a South Korean ID card"
       }
     ],
+    "RecognizeMacaoIDCardOCR": [
+      {
+        "document": " Recognizes Macao (China) identity card",
+        "input": "\t\nhttps://ocr.tencentcloudapi.com/?Action=RecognizeMacaoIDCardOCR\n&ImageUrl=https://xx/a.jpg\n&Config={\\\"RetImage\\\":\\\"preprocess\\\"}\n&<public parameters>",
+        "output": "{\n    \"Response\": {\n        \"Angle\": \"0\",\n        \"CnLastName\": \"\",\n        \"EnLastName\": \"HO\",\n        \"LastNameCode\": \"0149\",\n        \"CnFirstName\": \"*\",\n        \"EnFirstName\": \"CHAN YOU\",\n        \"FirstNameCode\": \"37****27\",\n        \"ID\": \"15****0(4)\",\n        \"Birthday\": \"22-04-1997\",\n        \"Sex\": \"F\",\n        \"FirstIssueDate\": \"06-05-2011\",\n        \"CurrentIssueDate\": \"01-08-2014\",\n        \"ValidityPeriod\": \"01-08-2024\",\n        \"Symbol\": \"C\",\n        \"Height\": \"1.64\",\n        \"RetImage\": \"\",\n        \"RequestId\": \"68f8fcbf-9314-6112a-ac18-6f1a9308fs100mab\"\n    }\n}",
+        "title": "Recognizes Macao (China) identity card"
+      }
+    ],
     "RecognizeMainlandIDCardOCR": [
       {
         "document": "大陆身份证示例",
