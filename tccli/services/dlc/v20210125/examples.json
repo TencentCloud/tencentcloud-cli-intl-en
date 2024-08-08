@@ -524,6 +524,14 @@
         "title": "Deleting Databases in the DMS Metadata Module"
       }
     ],
+    "DropDMSTable": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: dlc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DropDMSTable\n<Common request parameters>\n\n{\n    \"DbName\": \"abc\",\n    \"Name\": \"abc\",\n    \"DeleteData\": true,\n    \"EnvProps\": {\n        \"Key\": \"abc\",\n        \"Value\": \"abc\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx-xxx-xxx\"\n    }\n}",
+        "title": "Deleting Tables in the DMS Metadata Module"
+      }
+    ],
     "GenerateCreateMangedTableSql": [
       {
         "document": "This example shows you how to create a managed storage internal table.",
