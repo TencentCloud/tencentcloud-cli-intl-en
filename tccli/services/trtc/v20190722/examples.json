@@ -277,6 +277,14 @@
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"71993312-6ab8-4768-9124-118e0a20c45f\",\n        \"TaskId\": \"xxxx\"\n    }\n}",
         "title": "Changing the relaying parameters"
       }
+    ],
+    "UpdateStreamIngest": [
+      {
+        "document": "Update the StreamUrl of the Relay Task with TaskId 1234 under SdkAppId 1234567890",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateStreamIngest\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1234567890,\n    \"TaskId\": \"1234\",\n    \"StreamUrl\": \"https://a.b/test.mp4\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Status\": \"InProgress\",\n        \"RequestId\": \"71993312-6ab8-4768-9124-118e0a20c45f\"\n    }\n}",
+        "title": "Update Task"
+      }
     ]
   },
   "version": "1.0"
