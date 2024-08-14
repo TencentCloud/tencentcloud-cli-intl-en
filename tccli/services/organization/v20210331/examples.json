@@ -24,6 +24,14 @@
         "title": "Unbinding an organization member from a sub-account of the organization admin"
       }
     ],
+    "CreateOrgServiceAssign": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOrgServiceAssign\n<Common request parameters>\n\n{\n    \"ServiceId\": 1,\n    \"MemberUins\": [\n        111111111111\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Adding a Delegated Admin of the Organization Service"
+      }
+    ],
     "CreateOrganizationMember": [
       {
         "document": " ",
@@ -38,6 +46,14 @@
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOrganizationMemberPolicy\n<Common request parameters>\n\n{\n    \"PolicyName\": \"test\",\n    \"MemberUin\": \"100000546922\",\n    \"Description\": \"test\",\n    \"IdentityId\": \"1\"\n}",
         "output": "{\n    \"Response\": {\n        \"PolicyId\": 98081,\n        \"RequestId\": \"a1a10c6e-6723-408a-858b-2cb84e92776c\"\n    }\n}",
         "title": "Creating an organization member access policy"
+      }
+    ],
+    "DeleteOrgServiceAssign": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOrgServiceAssign\n<Common request parameters>\n\n{\n    \"ServiceId\": 1,\n    \"MemberUin\": 111111111111\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Deleting a Delegated Admin of the Organization Service"
       }
     ],
     "DeleteOrganizationMembers": [
@@ -104,12 +120,28 @@
         "title": "Getting the node list"
       }
     ],
+    "ListOrgServiceAssignMember": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListOrgServiceAssignMember\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0,\n    \"ServiceId\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"ServiceId\": 1,\n                \"ProductName\": \"CloudAudit\",\n                \"MemberUin\": 111111111111,\n                \"MemberName\": \"mamber_name\",\n                \"UsageStatus\": 2,\n                \"CreateTime\": \"2022-03-12 12:19:12\",\n                \"ManagementScope\": 1,\n                \"ManagementScopeMembers\": [],\n                \"ManagementScopeNodes\": []\n            }\n        ],\n        \"RequestId\": \"1d744bef-fa56-40e9-8e3b-5a88b122ad5e\",\n        \"Total\": 1\n    }\n}",
+        "title": "Obtaining the List of Delegated Admins of the Organization Service"
+      }
+    ],
     "ListOrganizationIdentity": [
       {
         "document": "This example shows you how to obtain the list of organization member access identities.",
         "input": "POST / HTTP/1.1Host: organization.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ListOrganizationIdentity<Common request parameters>{    \"Limit\": \"10\",    \"Offset\": \"0\"}",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"IdentityId\": 1,\n                \"IdentityAliasName\": \"test\",\n                \"Description\": \"\",\n                \"IdentityPolicy\": [\n                    {\n                        \"PolicyId\": 1,\n                        \"PolicyName\": \"AdministratorAccess\"\n                    }\n                ],\n                \"IdentityType\": 1,\n                \"UpdateTime\": \"2021-07-15 21:08:38\"\n            }\n        ],\n        \"RequestId\": \"1d744bef-fa56-40e9-8e3b-5a88b122ad5e\",\n        \"Total\": 1\n    }\n}",
         "title": "Obtaining the list of organization member access identities"
+      }
+    ],
+    "ListOrganizationService": [
+      {
+        "document": "This example shows you how to obtain the list of organization service settings.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListOrganizationService\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"ServiceId\": 1,\n                \"ProductName\": \"CloudAudit\",\n                \"IsAssign\": 1,\n                \"CanAssignCount\": 5,\n                \"Description\": \"\",\n                \"MemberNum\": \"0\",\n                \"Document\": \"\",\n                \"ConsoleUrl\": \"\",\n                \"IsUsageStatus\": 2,\n                \"Product\": \"cloudaudit\",\n                \"ServiceGrant\": 2,\n                \"GrantStatus\": \"Disabled\",\n                \"IsSetManagementScope\": 2\n            }\n        ],\n        \"RequestId\": \"1d744bef-fa56-40e9-8e3b-5a88b122ad5e\",\n        \"Total\": 1\n    }\n}",
+        "title": "Obtaining the List of Organization Service Settings"
       }
     ],
     "MoveOrganizationNodeMembers": [
