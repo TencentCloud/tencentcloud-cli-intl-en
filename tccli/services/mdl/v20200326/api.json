@@ -716,6 +716,7 @@
           "example": "AB342ED131CE",
           "member": "string",
           "name": "Id",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -726,6 +727,7 @@
           "example": "无",
           "member": "AudioSelectorInfo",
           "name": "AudioSelectors",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -736,6 +738,7 @@
           "example": "LOOP",
           "member": "string",
           "name": "PullBehavior",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -746,8 +749,20 @@
           "example": "无",
           "member": "FailOverSettings",
           "name": "FailOverSettings",
+          "output_required": true,
           "required": false,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Caption selector for the input. There can be 0 to 1 audio selectors.",
+          "example": "无",
+          "member": "CaptionSelector",
+          "name": "CaptionSelectors",
+          "output_required": false,
+          "required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -1083,6 +1098,34 @@
           "output_required": false,
           "required": false,
           "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CaptionSelector": {
+      "document": "Caption selector.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Caption selector name, which can contain 1-32 letters, digits, and underscores.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Caption source type, only support `SCTE-128`.",
+          "example": "无",
+          "member": "string",
+          "name": "CaptionSourceType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -6073,7 +6116,18 @@
         },
         {
           "disabled": false,
-          "document": "Optional values: INPUT (source subtitle information), ANALYSIS (intelligent speech recognition to subtitles, currently only supports this option).",
+          "document": "Name of caption selector. Required when CaptionSource selects `INPUT`.",
+          "example": "无",
+          "member": "string",
+          "name": "CaptionSelectorName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Optional values: INPUT (source subtitle information), ANALYSIS (intelligent speech recognition to subtitles).",
           "example": "无",
           "member": "string",
           "name": "CaptionSource",
@@ -6084,7 +6138,7 @@
         },
         {
           "disabled": false,
-          "document": "Optional values: 1 Source, 2 Source+Target, 3 Target (original language only, original language + translation language, translation language).",
+          "document": "Optional values: 1 Source, 2 Source+Target, 3 Target (original language only, original language + translation language, translation language). Required when CaptionSource selects `ANALYSIS `.",
           "example": "无",
           "member": "uint64",
           "name": "ContentType",
@@ -6095,7 +6149,7 @@
         },
         {
           "disabled": false,
-          "document": "Output mode: 1 Burn in (currently only this option is supported).",
+          "document": "Output mode: 1 Burn in, 2 Embedded. Support `2` when CaptionSource selects `INPUT`. Support `1` when CaptionSource selects `ANALYSIS `.",
           "example": "无",
           "member": "uint64",
           "name": "TargetType",
@@ -6106,7 +6160,7 @@
         },
         {
           "disabled": false,
-          "document": "Original phonetic language.\nOptional values: Chinese, English, Japanese, Korean.",
+          "document": "Original phonetic language.\nOptional values: Chinese, English, Japanese, Korean. Required when CaptionSource selects `ANALYSIS `.",
           "example": "无",
           "member": "string",
           "name": "SourceLanguage",
@@ -6117,7 +6171,7 @@
         },
         {
           "disabled": false,
-          "document": "Target language.\nOptional values: Chinese, English, Japanese, Korean.",
+          "document": "Target language.\nOptional values: Chinese, English, Japanese, Korean. Required when CaptionSource selects `ANALYSIS `.",
           "example": "无",
           "member": "string",
           "name": "TargetLanguage",
@@ -6128,7 +6182,7 @@
         },
         {
           "disabled": false,
-          "document": "Font style configuration.",
+          "document": "Font style configuration. Required when CaptionSource selects `ANALYSIS `.",
           "example": "无",
           "member": "SubtitleFontConf",
           "name": "FontStyle",
@@ -6139,7 +6193,7 @@
         },
         {
           "disabled": false,
-          "document": "There are two modes: STEADY and DYNAMIC, corresponding to steady state and unstable state respectively; the default is STEADY.",
+          "document": "There are two modes: STEADY and DYNAMIC, corresponding to steady state and unstable state respectively; the default is STEADY. Required when CaptionSource selects `ANALYSIS `.",
           "example": "无",
           "member": "string",
           "name": "StateEffectMode",
@@ -6150,7 +6204,7 @@
         },
         {
           "disabled": false,
-          "document": "Steady-state delay time, unit seconds; optional values: 10, 20, default 10.",
+          "document": "Steady-state delay time, unit seconds; optional values: 10, 20, default 10. Required when CaptionSource selects `ANALYSIS `.",
           "example": "无",
           "member": "uint64",
           "name": "SteadyStateDelayedTime",
