@@ -94,6 +94,9 @@ SERVICE_VERSIONS = {
     "cmq": [
         "2019-03-04"
     ],
+    "controlcenter": [
+        "2023-01-10"
+    ],
     "csip": [
         "2022-11-21"
     ],

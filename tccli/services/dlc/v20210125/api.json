@@ -70,11 +70,32 @@
       "output": "CheckDataEngineImageCanBeUpgradeResponse",
       "status": "online"
     },
+    "CheckGrantedPermission": {
+      "document": "This API is used to check the permission status.",
+      "input": "CheckGrantedPermissionRequest",
+      "name": "Checks the permission status",
+      "output": "CheckGrantedPermissionResponse",
+      "status": "online"
+    },
+    "CopyDLCTable": {
+      "document": "This API is used to copy a table.",
+      "input": "CopyDLCTableRequest",
+      "name": "Copies a table",
+      "output": "CopyDLCTableResponse",
+      "status": "online"
+    },
     "CreateCHDFSBindingProduct": {
       "document": "This API is used to create metadata acceleration buckets and the binding relationship between products.",
       "input": "CreateCHDFSBindingProductRequest",
       "name": "Creates metadata acceleration buckets and the binding relationship between products",
       "output": "CreateCHDFSBindingProductResponse",
+      "status": "online"
+    },
+    "CreateDLCTable": {
+      "document": "This API is used to create a table.",
+      "input": "CreateDLCTableRequest",
+      "name": "Creates a table",
+      "output": "CreateDLCTableResponse",
       "status": "online"
     },
     "CreateDMSDatabase": {
@@ -224,11 +245,32 @@
       "output": "DescribeDLCCatalogAccessResponse",
       "status": "online"
     },
+    "DescribeDLCTable": {
+      "document": "This API is used to obtain the table.",
+      "input": "DescribeDLCTableRequest",
+      "name": "Obtains the table",
+      "output": "DescribeDLCTableResponse",
+      "status": "online"
+    },
+    "DescribeDLCTableList": {
+      "document": "This API is used to obtain the list of tables.",
+      "input": "DescribeDLCTableListRequest",
+      "name": "Obtains the list of tables",
+      "output": "DescribeDLCTableListResponse",
+      "status": "online"
+    },
     "DescribeDMSDatabase": {
       "document": "This API is used to obtain databases in the DMS metadata module.",
       "input": "DescribeDMSDatabaseRequest",
       "name": "Obtains databases in the DMS metadata module",
       "output": "DescribeDMSDatabaseResponse",
+      "status": "online"
+    },
+    "DescribeDMSDatabaseList": {
+      "document": "This API is used to obtain the list of databases.",
+      "input": "DescribeDMSDatabaseListRequest",
+      "name": "Obtains the list of databases",
+      "output": "DescribeDMSDatabaseListResponse",
       "status": "online"
     },
     "DescribeDataEngine": {
@@ -273,6 +315,20 @@
       "output": "DescribeForbiddenTableProResponse",
       "status": "online"
     },
+    "DescribeJob": {
+      "document": "This API is used to obtain the job information.",
+      "input": "DescribeJobRequest",
+      "name": "Obtains jobs",
+      "output": "DescribeJobResponse",
+      "status": "online"
+    },
+    "DescribeJobs": {
+      "document": "This API is used to obtain the list of job information.",
+      "input": "DescribeJobsRequest",
+      "name": "Obtains the list of job information",
+      "output": "DescribeJobsResponse",
+      "status": "online"
+    },
     "DescribeLakeFsDirSummary": {
       "document": "This API is used to query the summary of a specified directory in a managed storage.",
       "input": "DescribeLakeFsDirSummaryRequest",
@@ -292,6 +348,13 @@
       "input": "DescribeOtherCHDFSBindingListRequest",
       "name": "Queries the list of metadata acceleration buckets bound to other products",
       "output": "DescribeOtherCHDFSBindingListResponse",
+      "status": "online"
+    },
+    "DescribeQuery": {
+      "document": "This API is used to obtain the query results.",
+      "input": "DescribeQueryRequest",
+      "name": "Obtains query results",
+      "output": "DescribeQueryResponse",
       "status": "online"
     },
     "DescribeResultDownload": {
@@ -355,6 +418,13 @@
       "input": "DescribeTaskResultRequest",
       "name": "Queries task results (used for SparkSQL, PrestoSQL, and Spark job tasks)",
       "output": "DescribeTaskResultResponse",
+      "status": "online"
+    },
+    "DescribeTaskStatistics": {
+      "document": "This API is used to describe the information on task statistics.",
+      "input": "DescribeTaskStatisticsRequest",
+      "name": "Obtains the task statistics data",
+      "output": "DescribeTaskStatisticsResponse",
       "status": "online"
     },
     "DescribeTasks": {
@@ -439,6 +509,13 @@
       "input": "DetachWorkGroupPolicyRequest",
       "name": "Unbinds the authentication policy from the working group",
       "output": "DetachWorkGroupPolicyResponse",
+      "status": "online"
+    },
+    "DropDLCTable": {
+      "document": "This API is used to delete the table.",
+      "input": "DropDLCTableRequest",
+      "name": "Deletes the table",
+      "output": "DropDLCTableResponse",
       "status": "online"
     },
     "DropDMSDatabase": {
@@ -1298,6 +1375,71 @@
       ],
       "type": "object"
     },
+    "CheckGrantedPermissionRequest": {
+      "document": "CheckGrantedPermission request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Permission check",
+          "example": "无",
+          "member": "CheckPermission",
+          "name": "CheckPermission",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckGrantedPermissionResponse": {
+      "document": "CheckGrantedPermission response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Permission status",
+          "example": "无",
+          "member": "PermissionResponseInfo",
+          "name": "PermissionResponses",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckPermission": {
+      "document": "Check permission information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Permission type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "show",
+          "member": "string",
+          "name": "AccessType",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ResourceBaseInfo",
+          "name": "ResourceBaseInfo",
+          "output_required": false,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "Column": {
       "document": "Column information of the data table.",
       "members": [
@@ -1520,6 +1662,97 @@
       ],
       "usage": "out"
     },
+    "CopyDLCTableRequest": {
+      "document": "CopyDLCTable request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Description of the source data table name",
+          "example": "无",
+          "member": "DMSSourceDatabaseInfo",
+          "name": "SourceData",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Target database name",
+          "example": "database1",
+          "member": "string",
+          "name": "DestinationDatabaseName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target data table name",
+          "example": "table1",
+          "member": "string",
+          "name": "DestinationTableName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Engine name",
+          "example": "engine1",
+          "member": "string",
+          "name": "DataEngineName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to create a new table",
+          "example": "true",
+          "member": "bool",
+          "name": "IsCreateTable",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Catalog name",
+          "example": "DataLakeLog",
+          "member": "string",
+          "name": "Catalog",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resource group name",
+          "example": "ResourceGroupName1",
+          "member": "string",
+          "name": "ResourceGroupName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CopyDLCTableResponse": {
+      "document": "CopyDLCTable response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "fdd9c5fa21ca11eca6fb5254006c64af",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CosPermission": {
       "document": "COS permissions",
       "members": [
@@ -1611,6 +1844,116 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDLCTableRequest": {
+      "document": "CreateDLCTable request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data table configuration information",
+          "example": "无",
+          "member": "TableBaseInfo",
+          "name": "TableBaseInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Table type",
+          "example": "INTERNAL_TABLE",
+          "member": "string",
+          "name": "TableType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data table column information",
+          "example": "无",
+          "member": "TColumn",
+          "name": "Columns",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Data table partition information",
+          "example": "无",
+          "member": "TPartition",
+          "name": "Partitions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Data table attribute information",
+          "example": "无",
+          "member": "Property",
+          "name": "Properties",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "External table configuration information",
+          "example": "无",
+          "member": "ExternalDataConfiguration",
+          "name": "ExternalDataConfiguration",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Engine name",
+          "example": "engine1",
+          "member": "string",
+          "name": "DataEngineName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resource group name",
+          "example": "group1",
+          "member": "string",
+          "name": "ResourceGroupname",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDLCTableResponse": {
+      "document": "CreateDLCTable response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "DLC table information object\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DLCTable",
+          "name": "DLCTable",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The SQL statement for creating a managed storage internal table",
+          "example": "create table `table1` ()",
+          "member": "string",
+          "name": "Execution",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -3018,6 +3361,607 @@
       ],
       "usage": "both"
     },
+    "DLCTable": {
+      "document": "Query table information object",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Basic information of the data table\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TableBaseInfo",
+          "name": "TableBaseInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data table column information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TColumn",
+          "name": "Columns",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data table partition information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TPartition",
+          "name": "Partitions",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data storage path\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cosn://test-bucket-123242/csvdata/",
+          "member": "string",
+          "name": "Location",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data table attribute information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Property",
+          "name": "Properties",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data table update information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1611579344000",
+          "member": "string",
+          "name": "ModifiedTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Database creation time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1611579344000",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data format\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+          "member": "string",
+          "name": "InputFormat",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Data storage size\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1024",
+          "member": "int64",
+          "name": "StorageSize",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of rows in the data table\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "RecordCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Materialized view name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "MapMaterializedViewName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Visit hot spots\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "HeatValue",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "External table configuration information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ExternalDataConfiguration",
+          "name": "ExternalDataConfiguration",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DMSColumn": {
+      "document": "Migrating column objects",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "name1",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "desc1",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "EXTERNAL",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Sort\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Position",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Additional Parameters\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "KVPair",
+          "name": "Params",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Business parameters\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "KVPair",
+          "name": "BizParams",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether partitioned\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsPartition",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DMSColumnOrder": {
+      "document": "Column sorting object",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Column name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "col1",
+          "member": "string",
+          "name": "Col",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Sort\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Order",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DMSDatabaseInfo": {
+      "document": "Metadata database objects",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "database1",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Schema name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "schema1",
+          "member": "string",
+          "name": "SchemaName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Storage address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cosn://test-bucket-123242/csvdata/",
+          "member": "string",
+          "name": "Location",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Basic object information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "Asset",
+          "name": "Asset",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DMSPartition": {
+      "document": "Partition objects of the migrating metadata",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database name",
+          "example": "11",
+          "member": "string",
+          "name": "DatabaseName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data directory name",
+          "example": "aaa",
+          "member": "string",
+          "name": "SchemaName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Table name",
+          "example": "aaa",
+          "member": "string",
+          "name": "TableName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data version",
+          "example": "1",
+          "member": "int64",
+          "name": "DataVersion",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Partition name",
+          "example": "aaa",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Value List",
+          "example": "[\"aa\", \"bb\"]",
+          "member": "string",
+          "name": "Values",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage size",
+          "example": "1",
+          "member": "int64",
+          "name": "StorageSize",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of records",
+          "example": "1",
+          "member": "int64",
+          "name": "RecordCount",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time",
+          "example": "2021-05-08 16:43:16",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modification time",
+          "example": "2021-05-08 16:43:16",
+          "member": "datetime_iso",
+          "name": "ModifiedTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Last access time",
+          "example": "2021-05-08 16:43:16",
+          "member": "datetime_iso",
+          "name": "LastAccessTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Additional attribute",
+          "example": "无",
+          "member": "KVPair",
+          "name": "Params",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Storage object",
+          "example": "无",
+          "member": "DMSSds",
+          "name": "Sds",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "DMSSds": {
+      "document": "Description of metadata storage attributes",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Storage address\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cosn://aaa",
+          "member": "string",
+          "name": "Location",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Input format\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "InputFormat",
+          "member": "string",
+          "name": "InputFormat",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Output format\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "OutputFormat",
+          "member": "string",
+          "name": "OutputFormat",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of buckets\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "NumBuckets",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is compressed\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "Compressed",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it has a subdirectory\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "StoredAsSubDirectories",
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Serialization lib\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "aaa",
+          "member": "string",
+          "name": "SerdeLib",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Serialization name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "aaa",
+          "member": "string",
+          "name": "SerdeName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bucket name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"aa\", \"bb\"]",
+          "member": "string",
+          "name": "BucketCols",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Serialization parameters\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "KVPair",
+          "name": "SerdeParams",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Additional Parameters\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "KVPair",
+          "name": "Params",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Column sorting (Expired)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DMSColumnOrder",
+          "name": "SortCols",
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Column\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DMSColumn",
+          "name": "Cols",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Column sorting field\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DMSColumnOrder",
+          "name": "SortColumns",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DMSSourceDatabaseInfo": {
+      "document": "Source database description",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Source database name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "databaseName1",
+          "member": "string",
+          "name": "SourceDatabaseName",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Array of table names in the source database\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"tablename1\"]",
+          "member": "string",
+          "name": "SourceTableNameList",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "DataEngineBasicInfo": {
       "document": "Basic information of DataEngine",
       "members": [
@@ -4298,6 +5242,326 @@
       ],
       "type": "object"
     },
+    "DescribeDLCTableListRequest": {
+      "document": "DescribeDLCTableList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database name",
+          "example": "database1",
+          "member": "string",
+          "name": "DbName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Catalog name",
+          "example": "DataLakeCatalog",
+          "member": "string",
+          "name": "Catalog",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query the list's filter criteria.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Table type",
+          "example": "INTERNAL_TABLE",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Start time",
+          "example": "2006-01-02 15:04:05",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "End time",
+          "example": "2006-01-02 15:04:05",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameters",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameters",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting fields",
+          "example": "create_time",
+          "member": "string",
+          "name": "Sort",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting rules: true for ascending order; false for descending order",
+          "example": "true",
+          "member": "bool",
+          "name": "Asc",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Data format type: hive, iceberg, etc.",
+          "example": "hive",
+          "member": "string",
+          "name": "TableFormat",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDLCTableListResponse": {
+      "document": "DescribeDLCTableList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "DLC metadata list information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DLCTable",
+          "name": "TableList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Statistical value",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDLCTableRequest": {
+      "document": "DescribeDLCTable request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database name",
+          "example": "database1",
+          "member": "string",
+          "name": "DbName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data table name",
+          "example": "table1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Catalog name",
+          "example": "DataLakeCatalog",
+          "member": "string",
+          "name": "Catalog",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Keyword",
+          "example": "tablename",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Match rules",
+          "example": "*",
+          "member": "string",
+          "name": "Pattern",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Table type",
+          "example": "INTERNAL_TABLE",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDLCTableResponse": {
+      "document": "DescribeDLCTable response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Data table information object\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DLCTable",
+          "name": "DLCTable",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDMSDatabaseListRequest": {
+      "document": "DescribeDMSDatabaseList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database name",
+          "example": "database1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Schema name",
+          "example": "schema1",
+          "member": "string",
+          "name": "SchemaName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Match rules",
+          "example": "*",
+          "member": "string",
+          "name": "Pattern",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameters, indicating the size of a single page.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameters",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting fields",
+          "example": "create_time",
+          "member": "string",
+          "name": "Sort",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting fields: true for ascending order; false for descending order",
+          "example": "true",
+          "member": "bool",
+          "name": "Asc",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDMSDatabaseListResponse": {
+      "document": "DescribeDMSDatabaseList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of database objects for the DMS",
+          "example": "无",
+          "member": "DMSDatabaseInfo",
+          "name": "DatabaseList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of databases",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDMSDatabaseRequest": {
       "document": "DescribeDMSDatabase request structure.",
       "members": [
@@ -4648,6 +5912,165 @@
       ],
       "type": "object"
     },
+    "DescribeJobRequest": {
+      "document": "DescribeJob request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Job ID",
+          "example": "9e20f9c021cb11ec835f5254006c64af",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeJobResponse": {
+      "document": "DescribeJob response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Job name",
+          "example": "Job1",
+          "member": "string",
+          "name": "JobName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task statistics information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "StatisticInfo",
+          "name": "StatisticInfo",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Job configuration",
+          "example": "无",
+          "member": "string",
+          "name": "JobConfiguration",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Job status:",
+          "example": "2",
+          "member": "int64",
+          "name": "JobStatus",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeJobsRequest": {
+      "document": "DescribeJobs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query keywords",
+          "example": "jobname",
+          "member": "string",
+          "name": "Keyword",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Matching mode",
+          "example": "*",
+          "member": "string",
+          "name": "Pattern",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameters",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination parameters",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting fields",
+          "example": "create_time",
+          "member": "string",
+          "name": "Sort",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting fields, and true means the ascending order (by default) while false means the descending order.",
+          "example": "true",
+          "member": "bool",
+          "name": "Asc",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeJobsResponse": {
+      "document": "DescribeJobs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of job information",
+          "example": "无",
+          "member": "JobResponseInfo",
+          "name": "JobList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Statistics",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeLakeFsDirSummaryRequest": {
       "document": "DescribeLakeFsDirSummary request structure.",
       "members": [],
@@ -4728,6 +6151,83 @@
           "name": "Total",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeQueryRequest": {
+      "document": "DescribeQuery request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "fdd9c5fa21ca11eca6fb5254006c64af",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeQueryResponse": {
+      "document": "DescribeQuery response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "fdd9c5fa21ca11eca6fb5254006c64af",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The SQL being executed currently. A task contains one SQL.",
+          "example": "select 1",
+          "member": "string",
+          "name": "SQL",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The currently executed task types are divided into DDL, DML, and DQL.",
+          "example": "DDL",
+          "member": "string",
+          "name": "SQLType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The current status of the task is 0: initializing; 1: running; 2: executed; 3: writing data; 4: queuing; -1: task execution failed; -3: manually terminated. The task execution result is returned only when the task is successfully executed.",
+          "example": "2",
+          "member": "int64",
+          "name": "State",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Default data set of query results",
+          "example": "{\"Schema\":[\"name\",\"age\"],\"Data\":[{\"name\":\"29\",\"age\":\"Michael\"}]}",
+          "member": "string",
+          "name": "DataSet",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -5395,6 +6895,43 @@
           "output_required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskStatisticsRequest": {
+      "document": "DescribeTaskStatistics request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID",
+          "example": "task1",
+          "member": "string",
+          "name": "TaskId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskStatisticsResponse": {
+      "document": "DescribeTaskStatistics response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task statistics information.",
+          "example": "无",
+          "member": "StatisticInfo",
+          "name": "StatisticInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -6267,6 +7804,69 @@
       ],
       "type": "object"
     },
+    "DropDLCTableRequest": {
+      "document": "DropDLCTable request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Engine name",
+          "example": "engine1",
+          "member": "string",
+          "name": "DataEngineName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database name",
+          "example": "dabase1",
+          "member": "string",
+          "name": "DbName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Data table name",
+          "example": "table1",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to delete the data",
+          "example": "true",
+          "member": "bool",
+          "name": "DeleteData",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Resource group name",
+          "example": "group1",
+          "member": "string",
+          "name": "ResourceGroupName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DropDLCTableResponse": {
+      "document": "DropDLCTable response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DropDMSDatabaseRequest": {
       "document": "DropDMSDatabase request structure.",
       "members": [
@@ -6381,6 +7981,78 @@
         }
       ],
       "usage": "out"
+    },
+    "ExternalDataConfiguration": {
+      "document": "External table configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Metadata storage object\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DMSSds",
+          "name": "Sds",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "View text\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "select 1",
+          "member": "string",
+          "name": "ViewOriginalText",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "View text\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "select 1",
+          "member": "string",
+          "name": "ViewExpandedText",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Hive maintenance version\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Retention",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Lifecycle\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "LifeTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Partition\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "DMSPartition",
+          "name": "Partitions",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "FavorInfo": {
       "document": "FavorInfo",
@@ -6631,6 +8303,56 @@
       ],
       "type": "object"
     },
+    "JobResponseInfo": {
+      "document": "Job information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Job name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "job1",
+          "member": "string",
+          "name": "JobName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Statistics\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "StatisticInfo",
+          "name": "StatisticInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Job configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "JobConfiguration",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The current status of the job: 0: initializing; 1: running; 2: executed; 3: writing data; 4: queuing; -1: execution failed; -3: manually terminated. The job execution result is returned only when the job is successfully executed.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2",
+          "member": "int64",
+          "name": "JobStatus",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "KVPair": {
       "document": "Configuration format",
       "members": [
@@ -6699,6 +8421,46 @@
           "output_required": true,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is the user's default bucket: 0: default bucket, 1: non-default bucket\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "DefaultBucket",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Managed storage short name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "DLC-Storage-123456",
+          "member": "string",
+          "name": "ShortName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Description information of the bucket\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test bucket",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The status of the managed bucket. Current values: creating, bind, readOnly, and isolate\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "creating",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -7603,6 +9365,45 @@
       ],
       "usage": "out"
     },
+    "PermissionResponseInfo": {
+      "document": "Permission information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Permission type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "show",
+          "member": "string",
+          "name": "AccessType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ResourceBaseInfo",
+          "name": "ResourceBaseInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Authentication result\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "Allowed",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "Policy": {
       "document": "Permission objects",
       "members": [
@@ -8063,26 +9864,6 @@
       "document": "QueryTaskCostDetail response structure.",
       "members": [
         {
-          "disabled": false,
-          "document": "Identifier on the next page\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "SearchAfter",
-          "output_required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Returned data\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
-          "member": "string",
-          "name": "Data",
-          "output_required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
@@ -8170,6 +9951,78 @@
         }
       ],
       "type": "object"
+    },
+    "ResourceBaseInfo": {
+      "document": "Resource basic information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Catalog name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "catalog1",
+          "member": "string",
+          "name": "Catalog",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Schema name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "schema1",
+          "member": "string",
+          "name": "Schema",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Table name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "table1",
+          "member": "string",
+          "name": "Table",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "View name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "view1",
+          "member": "string",
+          "name": "View",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Database name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "database1",
+          "member": "string",
+          "name": "Database",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Function name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "function1",
+          "member": "string",
+          "name": "Function",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "ResourceInfo": {
       "document": "ResourceInfo",
@@ -8457,7 +10310,7 @@
         {
           "disabled": false,
           "document": "Expiration time\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "100",
           "member": "int64",
           "name": "Expiration",
           "output_required": false,
@@ -8468,12 +10321,34 @@
         {
           "disabled": false,
           "document": "Whether to delete the table\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "true",
           "member": "bool",
           "name": "DropTable",
           "output_required": false,
           "required": false,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expired fields\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "pt",
+          "member": "string",
+          "name": "ExpiredField",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expired field format\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "yyyy-MM-dd",
+          "member": "string",
+          "name": "ExpiredFieldFormat",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -8542,7 +10417,19 @@
     },
     "SmartOptimizerWrittenPolicy": {
       "document": "SmartOptimizerWrittenPolicy",
-      "members": [],
+      "members": [
+        {
+          "disabled": false,
+          "document": "none/enable/disable/default\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "enable",
+          "member": "string",
+          "name": "WrittenEnable",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
       "usage": "both"
     },
     "SmartPolicy": {
@@ -9205,6 +11092,100 @@
       ],
       "usage": "out"
     },
+    "StatisticInfo": {
+      "document": "Task statistics information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "fdd9c5fa21ca11eca6fb5254006c64af",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Amount of data scanned\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1024",
+          "member": "int64",
+          "name": "TotalProcessedBytes",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Calculation time: ms\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "42",
+          "member": "int64",
+          "name": "UsedTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation Time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1632991895728",
+          "member": "int64",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task end time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1632991895728",
+          "member": "int64",
+          "name": "EndTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task start time\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1632991895728",
+          "member": "int64",
+          "name": "StartTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of rows affected\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10",
+          "member": "int64",
+          "name": "RowsAffect",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task duration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1000",
+          "member": "int64",
+          "name": "TotalTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "StreamingStatistics": {
       "document": "Statistics of the Spark flow task",
       "members": [
@@ -9443,76 +11424,105 @@
       "members": [
         {
           "disabled": false,
-          "document": "The field name.",
+          "document": "Field name\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Name",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The field type.",
+          "document": "Field type\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Type",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The field description.",
+          "document": "Field description\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Comment",
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The default field value.",
+          "document": "Field default values\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Default",
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Whether the field is not null.",
+          "document": "Is the field non-empty?\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "bool",
           "name": "NotNull",
+          "output_required": false,
           "required": false,
           "type": "bool",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Indicate the length of the entire numeric with a value of 1-38",
+          "document": "Indicate the length of the entire numeric with a value of 1-38\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "Precision",
+          "output_required": false,
           "required": false,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Indicate the length of the decimal part.\nScale is smaller than Precision.",
+          "document": "Indicates the length of the decimal part.\nScale is smaller than Precision.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "int64",
           "name": "Scale",
+          "output_required": false,
           "required": false,
           "type": "int",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Field position: Fields with smaller values need to be placed first.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Position",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether it is a partition field\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsPartition",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "TPartition": {
       "document": "Table partition information",
@@ -9598,7 +11608,7 @@
           "value_allowed_null": false
         }
       ],
-      "usage": "in"
+      "usage": "both"
     },
     "TableBaseInfo": {
       "document": "Table configurations",
