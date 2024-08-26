@@ -1,27 +1,67 @@
 {
   "actions": {
+    "AddExternalSAMLIdPCertificate": [
+      {
+        "document": "This example shows you how to add SAML signing certificates.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddExternalSAMLIdPCertificate\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-dsj3ieme\",\n    \"X509Certificate\": \"nMIIBtjCCAVugAwIBAgITBmyf1XSXNmY*****\"\n}",
+        "output": "{\n    \"Response\": {\n        \"CertificateId\": \"idp-c-2jd8923je29****\",\n        \"RequestId\": \"2ccd7ed1-24b4-4882-8f4a-5580b430bce7\"\n    }\n}",
+        "title": "Adding SAML Signing Certificates"
+      }
+    ],
     "AddOrganizationNode": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddOrganizationNode\n<Common request parameters>\n\n{\n    \"Name\": \"test\",\n    \"ParentNodeId\": 123\n}",
         "output": "{\n    \"Response\": {\n        \"NodeId\": 1123,\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
-        "title": "Adding an organization node"
+        "title": "Adding an Organization Node"
+      }
+    ],
+    "AddPermissionPolicyToRoleConfiguration": [
+      {
+        "document": "This example shows you how to add policies to permission configurations.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddPermissionPolicyToRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-29wm2iwn\",\n    \"RoleConfigurationId\": \"rc-aiwmsiw\",\n    \"RolePolicyType\": \"System\",\n    \"RolePolicyNames\": [\n        \"TestPolicy\"\n    ],\n    \"CustomPolicyDocument\": \"\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Adding Policies to Permission Configurations"
+      }
+    ],
+    "AddUserToGroup": [
+      {
+        "document": "This example shows you how to add users to a user group.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddUserToGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-d8dh38bd\",\n    \"GroupId\": \"g-dsuen8n\",\n    \"UserId\": \"u-s3ndin23\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Adding Users to a User Group"
       }
     ],
     "BindOrganizationMemberAuthAccount": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindOrganizationMemberAuthAccount\n<Common request parameters>\n\n{\n    \"MemberUin\": 100000546922,\n    \"PolicyId\": 98081,\n    \"OrgSubAccountUins\": [\n        100000546921\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindOrganizationMemberAuthAccount\n<Common request parameters>\n\n{\n    \"MemberUin\": 111111111111,\n    \"PolicyId\": 123,\n    \"OrgSubAccountUins\": [\n        222222222222\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4c2f4b68-01b2-4841-a927-6ca8fe40649b\"\n    }\n}",
-        "title": "Binding an organization member to a sub-account of the organization admin"
+        "title": "Binding an Organization Member to a Sub-Account of the Organization Admin"
       }
     ],
     "CancelOrganizationMemberAuthAccount": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CancelOrganizationMemberAuthAccount\n<Common request parameters>\n\n{\n    \"MemberUin\": \"100000546922\",\n    \"PolicyId\": \"98081\",\n    \"OrgSubAccountUin\": \"100000546921\"\n}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CancelOrganizationMemberAuthAccount\n<Common request parameters>\n\n{\n    \"MemberUin\": 111111111111,\n    \"PolicyId\": 123,\n    \"OrgSubAccountUin\": 222222222222\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"caecf1a4-72b7-48d6-8f5f-90d1c428d3f3\"\n    }\n}",
-        "title": "Unbinding an organization member from a sub-account of the organization admin"
+        "title": "Unbinding an Organization Member from a Sub-Account of the Organization Admin"
+      }
+    ],
+    "ClearExternalSAMLIdentityProvider": [
+      {
+        "document": "This example shows you how to clear the SAML identity provider configuration information.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ClearExternalSAMLIdentityProvider\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-du3jd83***\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ccd7ed1-24b4-4882-8f4a-5580b430bce7\"\n    }\n}",
+        "title": "Clearing the SAML Identity Provider Configuration Information"
+      }
+    ],
+    "CreateGroup": [
+      {
+        "document": "This example shows you how to create user groups.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-7cbs6s6gs***\",\n    \"GroupName\": \"testGroup\",\n    \"Description\": \"this is group\"\n}",
+        "output": "{\n    \"Response\": {\n        \"GroupInfo\": {\n            \"GroupName\": \"testGroup\",\n            \"Description\": \"this is group\",\n            \"CreateTime\": \"2024-01-01 12:12:12\",\n            \"GroupType\": \"Manual\",\n            \"UpdateTime\": \"2024-01-01 12:12:12\",\n            \"GroupId\": \"g-8sh7baix****\",\n            \"MemberCount\": 0\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d35d4545\"\n    }\n}",
+        "title": "Creating User Groups"
       }
     ],
     "CreateOrgServiceAssign": [
@@ -35,17 +75,57 @@
     "CreateOrganizationMember": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOrganizationMember\n<Common request parameters>\n\n{\n    \"Remark\": \"test\",\n    \"Name\": \"test\",\n    \"NodeId\": \"27\",\n    \"AccountName\": \"test\",\n    \"PermissionIds\": [\n        1,\n        2\n    ],\n    \"PolicyType\": \"Finical\",\n    \"PayUin\": \"\",\n    \"IdentityRoleID\": [\n        1\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOrganizationMember\n<Common request parameters>\n\n{\n    \"Remark\": \"test\",\n    \"Name\": \"name\",\n    \"NodeId\": 1001,\n    \"AccountName\": \"test\",\n    \"PermissionIds\": [\n        1,\n        2\n    ],\n    \"PolicyType\": \"Finical\",\n    \"PayUin\": \"\",\n    \"IdentityRoleID\": [\n        1\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Uin\": 100001919,\n        \"RequestId\": \"1a556fac-cd38-4732-86ef-6283d6abddd7\"\n    }\n}",
-        "title": "Creating an organization member"
+        "title": "Creating an Organization Member"
       }
     ],
     "CreateOrganizationMemberPolicy": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOrganizationMemberPolicy\n<Common request parameters>\n\n{\n    \"PolicyName\": \"test\",\n    \"MemberUin\": \"100000546922\",\n    \"Description\": \"test\",\n    \"IdentityId\": \"1\"\n}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOrganizationMemberPolicy\n<Common request parameters>\n\n{\n    \"PolicyName\": \"policy_name\",\n    \"MemberUin\": 111111111111,\n    \"Description\": \"description\",\n    \"IdentityId\": 11\n}",
         "output": "{\n    \"Response\": {\n        \"PolicyId\": 98081,\n        \"RequestId\": \"a1a10c6e-6723-408a-858b-2cb84e92776c\"\n    }\n}",
-        "title": "Creating an organization member access policy"
+        "title": "Creating an Access Authorization Policy for Organization Members"
+      }
+    ],
+    "CreateRoleAssignment": [
+      {
+        "document": " This example shows you how to grant authorizations on member accounts.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRoleAssignment\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-djw83n***\",\n    \"RoleAssignmentInfo\": [\n        {\n            \"RoleConfigurationId\": \"rc-sjsiw2***\",\n            \"TargetType\": \"MemberUin\",\n            \"TargetUin\": 1000023222,\n            \"PrincipalType\": \"User\",\n            \"PrincipalId\": \"u-0829jd8d***\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Tasks\": [\n            {\n                \"TaskId\": \"t-sowmiwm\",\n                \"RoleConfigurationId\": \"r-sjsosmsss\",\n                \"RoleConfigurationName\": \"test\",\n                \"TargetUin\": 10000323432,\n                \"TargetType\": \"MemberUin\",\n                \"PrincipalId\": \"u-djiem3o***\",\n                \"PrincipalType\": \"User\",\n                \"TaskType\": \"CreateRoleAssignment\",\n                \"Status\": \"InProgress\"\n            }\n        ],\n        \"RequestId\": \"10accfa5-15ed-41fa-9e09-7efffd8e9345\"\n    }\n}",
+        "title": " Granting Authorizations on Member Accounts"
+      }
+    ],
+    "CreateRoleConfiguration": [
+      {
+        "document": "This example shows you how to create permission configurations.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-33923n\",\n    \"RoleConfigurationName\": \"test\",\n    \"Description\": \"this is role configuration\",\n    \"SessionDuration\": 900,\n    \"RelayState\": \"https://console.cloud.tencent.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RoleConfigurationInfo\": {\n            \"RoleConfigurationId\": \"rc-s2ns92ns***\",\n            \"RoleConfigurationName\": \"test\",\n            \"Description\": \"this is role configuration\",\n            \"SessionDuration\": 900,\n            \"RelayState\": \"https://console.cloud.tencent.com\",\n            \"CreateTime\": \"2019-01-01 12:12:12\",\n            \"UpdateTime\": \"2019-01-01 12:12:12\"\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Creating Permission Configurations"
+      }
+    ],
+    "CreateUser": [
+      {
+        "document": "This example shows you how to create a user.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateUser\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-33w3je****\",\n    \"UserName\": \"Alice\",\n    \"FirstName\": \"Alice\",\n    \"LastName\": \"Alice\",\n    \"DisplayName\": \"Alice\",\n    \"Description\": \"this is user\",\n    \"Email\": \"Alice@example.com\",\n    \"UserStatus\": \"Enabled\"\n}",
+        "output": "{\n    \"Response\": {\n        \"UserInfo\": {\n            \"UserName\": \"Alice\",\n            \"FirstName\": \"Alice\",\n            \"LastName\": \"Alice\",\n            \"DisplayName\": \"Alice\",\n            \"Description\": \"this is user\",\n            \"Email\": \"Alice@example.com\",\n            \"UserStatus\": \"Enabled\",\n            \"UserType\": \"Manual\",\n            \"UserId\": \"u-2342ds2s\",\n            \"CreateTime\": \"2024-02-02 12:12:12\",\n            \"UpdateTime\": \"2024-02-02 12:12:12\"\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d35d4545\"\n    }\n}",
+        "title": "Creating a User"
+      }
+    ],
+    "CreateUserSyncProvisioning": [
+      {
+        "document": "This example shows you how to create sub-user synchronization tasks.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateUserSyncProvisioning\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-di3nd8e***\",\n    \"UserSyncProvisionings\": [\n        {\n            \"DuplicationStrategy\": \"KeepBoth\",\n            \"DeletionStrategy\": \"Delete\",\n            \"Description\": \"this is cam user sync provisioning\",\n            \"PrincipalId\": \"u-sienmcien\",\n            \"PrincipalType\": \"User\",\n            \"TargetType\": \"MemberUin\",\n            \"TargetUin\": 1000234382342\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Tasks\": [\n            {\n                \"TaskId\": \"t-duedin****\",\n                \"TargetUin\": 1000289211,\n                \"TargetType\": \"MemberUin\",\n                \"TaskType\": \"StartProvisioning\",\n                \"TaskStatus\": \"InProgress\",\n                \"UserProvisioningId\": \"upe-d8n3d9***\",\n                \"PrincipalId\": \"u-dend83***\",\n                \"PrincipalType\": \"User\",\n                \"PrincipalName\": \"test\",\n                \"DuplicationStrategy\": \"KeepBoth\",\n                \"DeletionStrategy\": \"Delete\"\n            }\n        ],\n        \"RequestId\": \"e297543a-80de-4039-83c8-34545s45\"\n    }\n}",
+        "title": "Creating Sub-User Synchronization Tasks"
+      }
+    ],
+    "DeleteGroup": [
+      {
+        "document": "This example shows you how to delete a user group.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-d8d7djd***\",\n    \"GroupId\": \"g-sudnd7d88\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Deleting a User Group"
       }
     ],
     "DeleteOrgServiceAssign": [
@@ -59,17 +139,57 @@
     "DeleteOrganizationMembers": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOrganizationMembers\n<Common request parameters>\n\n{\n    \"MemberUin\": [\n        10000023635\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOrganizationMembers\n<Common request parameters>\n\n{\n    \"MemberUin\": [\n        111111111111\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
-        "title": "Batch deleting organization members"
+        "title": "Batch Deleting Organization Members"
       }
     ],
     "DeleteOrganizationNodes": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOrganizationNodes\n<Common request parameters>\n\n{\n    \"NodeId\": [\n        123\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOrganizationNodes\n<Common request parameters>\n\n{\n    \"NodeId\": [\n        1001\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
-        "title": "Batch deleting organization nodes"
+        "title": "Batch Deleting Organization Nodes"
+      }
+    ],
+    "DeleteRoleAssignment": [
+      {
+        "document": "This example shows you how to remove authorizations on member accounts.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRoleAssignment\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-2ms923mw\",\n    \"RoleConfigurationId\": \"rc-smw9em32\",\n    \"TargetType\": \"MemberUin\",\n    \"TargetUin\": 10000332,\n    \"PrincipalType\": \"User\",\n    \"PrincipalId\": \"u-siwnwiene\",\n    \"DeprovisionStrategy\": \"DeprovisionForLastRoleAssignmentOnAccount\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Task\": {\n            \"TaskId\": \"t-0md93jfd3\",\n            \"RoleConfigurationId\": \"rc-dsk3323\",\n            \"RoleConfigurationName\": \"test\",\n            \"TargetUin\": 100032333,\n            \"TargetType\": \"MemberUin\",\n            \"PrincipalId\": \"u-siwnwiene\",\n            \"PrincipalType\": \"User\",\n            \"TaskType\": \"DeleteRolesAssignment\",\n            \"Status\": \"InProgress\"\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Removing Authorizations on Member Accounts"
+      }
+    ],
+    "DeleteRoleConfiguration": [
+      {
+        "document": "This example shows you how to delete the permission configuration information.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-2jsoi3ms\",\n    \"RoleConfigurationId\": \"rc-ais2ismwo2\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Deleting the Permission Configuration Information"
+      }
+    ],
+    "DeleteUser": [
+      {
+        "document": "This example shows you how to delete a user.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteUser\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-33mdo34md\",\n    \"UserId\": \"u-2sks3m2\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e297543a-80de-4039-83c8-34545s45\"\n    }\n}",
+        "title": "Deleting a User"
+      }
+    ],
+    "DeleteUserSyncProvisioning": [
+      {
+        "document": "This example shows you how to delete sub-user synchronization tasks.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteUserSyncProvisioning\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-dssmowmsd\",\n    \"UserProvisioningId\": \"up-sxins8snds\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Tasks\": {\n            \"TaskId\": \"t-duedin****\",\n            \"TargetUin\": 1000289211,\n            \"TargetType\": \"MemberUin\",\n            \"TaskType\": \"DeleteProvisioning\",\n            \"TaskStatus\": \"InProgress\",\n            \"UserProvisioningId\": \"upe-d8n3d9***\",\n            \"PrincipalId\": \"u-dend83***\",\n            \"PrincipalType\": \"User\",\n            \"PrincipalName\": \"test\",\n            \"DuplicationStrategy\": \"KeepBoth\",\n            \"DeletionStrategy\": \"Delete\"\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Deleting Sub-User Synchronization Tasks"
+      }
+    ],
+    "DescribeIdentityCenter": [
+      {
+        "document": "获取集团账号身份中心服务信息",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIdentityCenter\n<common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"CreateTime\": \"2024-05-30 10:50:11\",\n        \"RequestId\": \"da9a32a5-f6d5-4ef5-be20-0ee16b63bb6d\",\n        \"ScimSyncStatus\": \"Disabled\",\n        \"ServiceStatus\": \"Enabled\",\n        \"UpdateTime\": \"2024-06-25 10:08:21\",\n        \"ZoneId\": \"z-vft38p2hq8tq\",\n        \"ZoneName\": \"testwu\"\n    }\n}",
+        "title": "获取集团账号身份中心服务信息"
       }
     ],
     "DescribeOrganization": [
@@ -83,9 +203,9 @@
     "DescribeOrganizationMemberAuthAccounts": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationMemberAuthAccounts\n<Common request parameters>\n\n{\n    \"MemberUin\": \"100000546922\",\n    \"Limit\": \"10\",\n    \"PolicyId\": \"98081\",\n    \"Offset\": \"0\"\n}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationMemberAuthAccounts\n<Common request parameters>\n\n{\n    \"MemberUin\": 111111111111,\n    \"Limit\": 10,\n    \"PolicyId\": 11,\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2021-07-14 21:00:59\",\n                \"IdentityId\": 1,\n                \"IdentityRoleAliasName\": \"Login access\",\n                \"IdentityRoleName\": \"OrganizationAccessControlRole\",\n                \"OrgSubAccountUin\": 100000546921,\n                \"PolicyId\": 98081,\n                \"PolicyName\": \"test\",\n                \"UpdateTime\": \"2021-07-14 21:00:59\",\n                \"OrgSubAccountName\": \"test\"\n            }\n        ],\n        \"RequestId\": \"cf182a6b-8caa-4df9-b1d0-09ad41e8c434\",\n        \"Total\": 1\n    }\n}",
-        "title": "Getting the list of sub-accounts bound to an organization member"
+        "title": "Getting the List of Sub-Accounts Bound to an Organization Member"
       }
     ],
     "DescribeOrganizationMemberAuthIdentities": [
@@ -99,25 +219,137 @@
     "DescribeOrganizationMemberPolicies": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationMemberPolicies\n<Common request parameters>\n\n{\n    \"MemberUin\": \"100000546922\",\n    \"Limit\": \"10\",\n    \"Offset\": \"0\"\n}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationMemberPolicies\n<Common request parameters>\n\n{\n    \"MemberUin\": 111111111111,\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2021-07-14 20:22:30\",\n                \"Description\": \"test\",\n                \"IdentityId\": 1,\n                \"IdentityRoleAliasName\": \"Login access\",\n                \"IdentityRoleName\": \"OrganizationAccessControlRole\",\n                \"PolicyId\": 27887,\n                \"PolicyName\": \"test3\",\n                \"UpdateTime\": \"2021-07-14 20:22:30\"\n            },\n            {\n                \"CreateTime\": \"2021-07-14 20:21:21\",\n                \"Description\": \"test\",\n                \"IdentityId\": 1,\n                \"IdentityRoleAliasName\": \"Login access\",\n                \"IdentityRoleName\": \"OrganizationAccessControlRole\",\n                \"PolicyId\": 98081,\n                \"PolicyName\": \"test\",\n                \"UpdateTime\": \"2021-07-14 20:21:21\"\n            }\n        ],\n        \"RequestId\": \"a1525f09-8a00-4b76-9db5-d47aea591dff\",\n        \"Total\": 2\n    }\n}",
-        "title": "Getting the list of authorization policies of an organization member"
+        "title": "Getting the List of Organization Member Authorization Policies"
       }
     ],
     "DescribeOrganizationMembers": [
       {
         "document": "This example shows you how to obtain the member list.",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationMembers\n<Common request parameters>\n\n{\n    \"Lang\": \"zh\",\n    \"Limit\": \"10\",\n    \"Offset\": \"0\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2021-04-17 12:19:07\",\n                \"MemberType\": \"Invite\",\n                \"MemberUin\": 111111111111,\n                \"Name\": \"test2\",\n                \"NodeId\": 27,\n                \"NodeName\": \"node1\",\n                \"IsAllowQuit\": \"Denied\",\n                \"OrgPermission\": [\n                    {\n                        \"Id\": 1,\n                        \"Name\": \"Allow the root account to view the consumption information of sub-accounts\"\n                    },\n                    {\n                        \"Id\": 2,\n                        \"Name\": \"Allow the root account to view the finance information of sub-accounts\"\n                    }\n                ],\n                \"OrgPolicyName\": \"Finance management\",\n                \"OrgPolicyType\": \"Financial\",\n                \"Remark\": \"123\",\n                \"PayUin\": \"\",\n                \"PayName\": \"\",\n                \"OrgIdentity\": [],\n                \"BindStatus\": \"Unbound\",\n                \"PermissionStatus\": \"Confirmed\",\n                \"UpdateTime\": \"2021-04-17 12:19:07\"\n            },\n            {\n                \"CreateTime\": \"2021-04-16 11:49:39\",\n                \"MemberType\": \"Create\",\n                \"MemberUin\": 222222222222,\n                \"Name\": \"name2\",\n                \"NodeId\": 26,\n                \"NodeName\": \"node2\",\n                \"IsAllowQuit\": \"Denied\",\n                \"OrgPermission\": [\n                    {\n                        \"Id\": 1,\n                        \"Name\": \"Allow the root account to view the consumption information of sub-accounts\"\n                    },\n                    {\n                        \"Id\": 2,\n                        \"Name\": \"Allow the root account to view the finance information of sub-accounts\"\n                    },\n                    {\n                        \"Id\": 3,\n                        \"Name\": \"Allow the root account to allocate funds to sub-accounts\"\n                    },\n                    {\n                        \"Id\": 4,\n                        \"Name\": \"Allow the root account to consolidate the bills of sub-accounts\"\n                    },\n                    {\n                        \"Id\": 5,\n                        \"Name\": \"Allow the root account to issue invoices on behalf of sub-accounts\"\n                    }\n                ],\n                \"OrgPolicyName\": \"Finance management\",\n                \"OrgPolicyType\": \"Financial\",\n                \"Remark\": \"\",\n                \"PayUin\": \"\",\n                \"PayName\": \"\",\n                \"OrgIdentity\": [],\n                \"BindStatus\": \"Unbound\",\n                \"PermissionStatus\": \"Confirmed\",\n                \"UpdateTime\": \"2021-04-16 11:49:39\"\n            }\n        ],\n        \"RequestId\": \"a0fe0702-5757-4aa4-8872-74b70a4c1b7a\",\n        \"Total\": 2\n    }\n}",
-        "title": "Obtaining the member list"
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationMembers\n<Common request parameters>\n\n{\n    \"Lang\": \"zh\",\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2021-04-17 12:19:07\",\n                \"MemberType\": \"Invite\",\n                \"MemberUin\": 111111111111,\n                \"Name\": \"test2\",\n                \"NodeId\": 27,\n                \"NodeName\": \"node1\",\n                \"IsAllowQuit\": \"Denied\",\n                \"OrgPermission\": [\n                    {\n                        \"Id\": 1,\n                        \"Name\": \"Allow the root account to view the consumption information of sub-accounts\"\n                    },\n                    {\n                        \"Id\": 2,\n                        \"Name\": \"Allow the root account to view the financial information of sub-accounts\"\n                    }\n                ],\n                \"OrgPolicyName\": \"Financial management\",\n                \"OrgPolicyType\": \"Financial\",\n                \"Remark\": \"123\",\n                \"PayUin\": \"\",\n                \"PayName\": \"\",\n                \"OrgIdentity\": [],\n                \"BindStatus\": \"Unbound\",\n                \"PermissionStatus\": \"Confirmed\",\n                \"UpdateTime\": \"2021-04-17 12:19:07\"\n            },\n            {\n                \"CreateTime\": \"2021-04-16 11:49:39\",\n                \"MemberType\": \"Create\",\n                \"MemberUin\": 222222222222,\n                \"Name\": \"name2\",\n                \"NodeId\": 26,\n                \"NodeName\": \"node2\",\n                \"IsAllowQuit\": \"Denied\",\n                \"OrgPermission\": [\n                    {\n                        \"Id\": 1,\n                        \"Name\": \"Allow the root account to view the consumption information of sub-accounts\"\n                    },\n                    {\n                        \"Id\": 2,\n                        \"Name\": \"Allow the root account to view the financial information of sub-accounts\"\n                    },\n                    {\n                        \"Id\": 3,\n                        \"Name\": \"Allow the root account to allocate funds to sub-accounts\"\n                    },\n                    {\n                        \"Id\": 4,\n                        \"Name\": \"Allow the root account to consolidate the bills of sub-accounts\"\n                    },\n                    {\n                        \"Id\": 5,\n                        \"Name\": \"Allow the root account to issue invoices on behalf of sub-accounts\"\n                    }\n                ],\n                \"OrgPolicyName\": \"Financial management\",\n                \"OrgPolicyType\": \"Financial\",\n                \"Remark\": \"\",\n                \"PayUin\": \"\",\n                \"PayName\": \"\",\n                \"OrgIdentity\": [],\n                \"BindStatus\": \"Unbound\",\n                \"PermissionStatus\": \"Confirmed\",\n                \"UpdateTime\": \"2021-04-16 11:49:39\"\n            }\n        ],\n        \"RequestId\": \"a0fe0702-5757-4aa4-8872-74b70a4c1b7a\",\n        \"Total\": 2\n    }\n}",
+        "title": "Obtaining the Member List"
       }
     ],
     "DescribeOrganizationNodes": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationNodes\n<Common request parameters>\n\n{\n    \"Limit\": \"10\",\n    \"Offset\": \"0\"\n}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOrganizationNodes\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CreateTime\": \"2021-04-16 11:49:39\",\n                \"Name\": \"Root\",\n                \"NodeId\": 26,\n                \"ParentNodeId\": 0,\n                \"Remark\": \"\",\n                \"UpdateTime\": \"2021-04-16 11:49:39\"\n            },\n            {\n                \"CreateTime\": \"2021-04-16 14:59:57\",\n                \"Name\": \"test\",\n                \"NodeId\": 27,\n                \"ParentNodeId\": 26,\n                \"Remark\": \"test\",\n                \"UpdateTime\": \"2021-04-16 14:59:57\"\n            },\n            {\n                \"CreateTime\": \"2021-04-16 15:55:53\",\n                \"Name\": \"test1\",\n                \"NodeId\": 29,\n                \"ParentNodeId\": 27,\n                \"Remark\": \"1\",\n                \"UpdateTime\": \"2021-04-16 15:55:53\"\n            }\n        ],\n        \"RequestId\": \"becff4cb-fe62-4288-ac6c-4fba115b94b3\",\n        \"Total\": 3\n    }\n}",
-        "title": "Getting the node list"
+        "title": "Obtaining the Node List"
+      }
+    ],
+    "DismantleRoleConfiguration": [
+      {
+        "document": "This example shows you how to undeploy permission configurations on member accounts.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DismantleRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-disanisa\",\n    \"RoleConfigurationId\": \"rc-daosmqa\",\n    \"TargetType\": \"Member\",\n    \"TargetUin\": 1000023292\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d95c7cc0-195d-4818-aa3a-e7dc73eafe37\",\n        \"Task\": {\n            \"RoleConfigurationId\": \"rc-4plmus8fdfsb\",\n            \"RoleConfigurationName\": \"testConfiguration1\",\n            \"TargetType\": \"MemberUin\",\n            \"TargetUin\": 700000145543,\n            \"TaskId\": \"t-2xdmzwphpsbd\",\n            \"TaskStatus\": \"InProgress\",\n            \"TaskType\": \"CreateRoleAssignment\"\n        }\n    }\n}",
+        "title": "Undeploying Permission Configurations on Member Accounts"
+      }
+    ],
+    "GetExternalSAMLIdentityProvider": [
+      {
+        "document": "This example shows you how to query the SAML identity provider configuration information.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetExternalSAMLIdentityProvider\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-dm239d****\"\n}",
+        "output": "{\n    \"Response\": {\n        \"SAMLIdentityProviderConfiguration\": {\n            \"EntityId\": \"http://www.okta.com/2jd83ne9m*****\",\n            \"SSOStatus\": \"Enabled\",\n            \"EncodedMetadataDocument\": \"PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxFbnRpdHlEZXNjcmlwdG9yIHhtbG5zPSJ1cm46b2FzaXM6bmFtZXM6dGM6U0FNTDoydpbi5jb20vc2FtbC9tZXRhZGF0YS8xN2NkYjEyOC03N**********\",\n            \"CertificateIds\": [\n                \"idp-c-2jd8923je29****\"\n            ],\n            \"LoginUrl\": \"https://dev-xxxxxx.okta.com/app/dev-xxxxxx_cloudssodemo_1/2jd83ne9m****/sso/saml\",\n            \"CreateTime\": \"2024-01-01 12:12:12\",\n            \"UpdateTime\": \"2024-01-01 12:12:12\"\n        },\n        \"RequestId\": \"2ccd7ed1-24b4-4882-8f4a-5580b430bce7\"\n    }\n}",
+        "title": "Querying the SAML Identity Provider Configuration Information"
+      }
+    ],
+    "GetGroup": [
+      {
+        "document": "This example shows you how to query the user group information.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-ws9sdj8****\",\n    \"GroupId\": \"g-sushsia7s8\"\n}",
+        "output": "{\n    \"Response\": {\n        \"GroupInfo\": {\n            \"GroupName\": \"testGroup\",\n            \"Description\": \"this is group\",\n            \"CreateTime\": \"2024-01-01 12:12:12\",\n            \"GroupType\": \"Manual\",\n            \"UpdateTime\": \"2024-01-01 12:12:12\",\n            \"GroupId\": \"g-sushsia7s8\",\n            \"MemberCount\": 20\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Querying the User Group Information"
+      }
+    ],
+    "GetProvisioningTaskStatus": [
+      {
+        "document": "This example shows you how to query the status of async tasks of user synchronization.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetProvisioningTaskStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-djw98wnd***\",\n    \"TaskId\": \"t-d8wjd8j3****\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskStatus\": {\n            \"Status\": \"Success\",\n            \"TaskId\": \"z-dnsudniw****\",\n            \"TaskType\": \"StartProvisioning\",\n            \"FailureReason\": \"\"\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d35d4545\"\n    }\n}",
+        "title": "Querying the Status of Async Tasks of User Synchronization"
+      }
+    ],
+    "GetRoleConfiguration": [
+      {
+        "document": "This example shows you how to query the permission configuration information.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-2s2osm2***\",\n    \"RoleConfigurationId\": \"rc-odmo23w\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RoleConfigurationInfo\": {\n            \"RoleConfigurationId\": \"rc-s2ns92ns***\",\n            \"RoleConfigurationName\": \"test\",\n            \"Description\": \"this is role configuration\",\n            \"SessionDuration\": 900,\n            \"RelayState\": \"https://console.cloud.tencent.com\",\n            \"CreateTime\": \"2019-01-01 12:12:12\",\n            \"UpdateTime\": \"2019-01-01 12:12:12\"\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Querying the Permission Configuration Information"
+      }
+    ],
+    "GetTaskStatus": [
+      {
+        "document": "This example shows you how to query the status of async tasks.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetTaskStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-dsiwnw***\",\n    \"TaskId\": \"t-duxj***\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskStatus\": {\n            \"Status\": \"Success\",\n            \"TaskId\": \"z-dksodm***\",\n            \"TaskType\": \"ProvisionRoleConfiguration\",\n            \"FailureReason\": \"fielded\"\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Querying the Status of Async Tasks"
+      }
+    ],
+    "GetUser": [
+      {
+        "document": "This example shows you how to query user information.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetUser\n<Common request parameters>\n\n{\n    \"UserId\": \"u-4i293bf3indh\",\n    \"ZoneId\": \"z-hfp2qqncf343\"\n}",
+        "output": "{\n    \"Response\": {\n        \"UserInfo\": {\n            \"UserName\": \"test\",\n            \"FirstName\": \"test\",\n            \"LastName\": \"test\",\n            \"DisplayName\": \"test\",\n            \"Description\": \"this is user\",\n            \"Email\": \"test@example.com\",\n            \"UserStatus\": \"Enabled\",\n            \"UserType\": \"Manual\",\n            \"UserId\": \"u-2jsal3jdxk\",\n            \"CreateTime\": \"2024-03-12 12:12:12\",\n            \"UpdateTime\": \"2024-03-12 12:12:12\"\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-34545s45\"\n    }\n}",
+        "title": "Querying the User Information"
+      }
+    ],
+    "GetUserSyncProvisioning": [
+      {
+        "document": "This example shows you how to query the CAM user synchronization.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetUserSyncProvisioning\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-dimd3d***\",\n    \"UserProvisioningId\": \"up-imei3rdiem\"\n}",
+        "output": "{\n    \"Response\": {\n        \"UserProvisioning\": {\n            \"UserProvisioningId\": \"up-siwnei3nso\",\n            \"Description\": \"this is cam user sync\",\n            \"Status\": \"Enabled\",\n            \"PrincipalId\": \"u-swnd8wn3\",\n            \"PrincipalName\": \"test\",\n            \"PrincipalType\": \"User\",\n            \"TargetUin\": \"10000338332\",\n            \"TargetName\": \"test\",\n            \"TargetType\": \"MemberUin\",\n            \"DuplicationStrategy\": \"KeepBoth\",\n            \"DeletionStrategy\": \"Delete\",\n            \"CreateTime\": \"2024-01-01 12:12:12\",\n            \"UpdateTime\": \"2024-01-01 12:12:12\"\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Querying the CAM User Synchronization"
+      }
+    ],
+    "GetZoneSAMLServiceProviderInfo": [
+      {
+        "document": "This example shows you how to query the SAML service provider configuration information.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetZoneSAMLServiceProviderInfo\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-di3d9em***\"\n}",
+        "output": "{\n    \"Response\": {\n        \"SAMLServiceProvider\": {\n            \"EntityId\": \"https://tencentcloudsso.com/saml/sp/z-doekeie****\",\n            \"ZoneId\": \"z-doekeie****\",\n            \"EncodedMetadataDocument\": \"JTNDJTNGeG1sJTIwdmVyc2lvbiUzRCUyMjEuMCUyMiUyMGVuY29kaW5nJTNEJTIy***\",\n            \"AcsUrl\": \"https://tencentcloudsso.com/saml/acs/d9wjd-d93je9-2me****\"\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Querying the SAML Service Provider Configuration Information"
+      }
+    ],
+    "GetZoneStatistics": [
+      {
+        "document": "This example shows you how to query space statistics.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetZoneStatistics\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-siwns82n****\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ZoneStatistics\": {\n            \"UserQuota\": 1000,\n            \"GroupQuota\": 500,\n            \"RoleConfigurationQuota\": 1000,\n            \"SystemPolicyPerRoleConfigurationQuota\": 20,\n            \"UserCount\": 10,\n            \"GroupCount\": 2,\n            \"RoleConfigurationCount\": 3,\n            \"UserProvisioningCount\": 0,\n            \"RoleConfigurationSyncCount\": 0\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Querying Space Statistics"
+      }
+    ],
+    "ListExternalSAMLIdPCertificates": [
+      {
+        "document": "This example shows you how to query the SAML signing certificate list.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListExternalSAMLIdPCertificates\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-xj239dj23***\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCounts\": 20,\n        \"SAMLIdPCertificates\": [\n            {\n                \"SerialNumber\": \"1347934239****\",\n                \"Issuer\": \"5.6.54.22.1.9.1=#dj39dj39e3w9rm3e2e3****,CN=dev-xxxxxx,OU=SSOProvider,O=Okta\",\n                \"Version\": \"1\",\n                \"CertificateId\": \"idp-c-2jd8923je29****\",\n                \"PublicKey\": \"nMIIBtjCCAVugAwIBAgITBmyf1XSXNmY****\",\n                \"SignatureAlgorithm\": \"SHA256withRSA\",\n                \"NotAfter\": \"2030-06-23 07:04:37\",\n                \"NotBefore\": \"2010-06-23 07:04:37\",\n                \"Subject\": \"5.6.54.22.1.9.1=#dj39dj39e3w9rm3e2e3****,CN=dev-xxxxxx,OU=SSOProvider,O=Okta\",\n                \"X509Certificate\": \"nMIIBtjCCAVugAwIBAgITBmyf1XSXNmY****\"\n            }\n        ],\n        \"RequestId\": \"2ccd7ed1-24b4-4882-8f4a-5580b430bce7\"\n    }\n}",
+        "title": "Querying the SAML Signing Certificate List"
+      }
+    ],
+    "ListGroupMembers": [
+      {
+        "document": "This example shows you how to query the user list of the user group.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListGroupMembers\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-ds932j9m3\",\n    \"GroupId\": \"g29sn2389e\",\n    \"NextToken\": \"\",\n    \"MaxResults\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"NextToken\": \"OTM0YzE4MzY2ZjdhMWM0MYZDhnYaxsiYTLI=\",\n        \"TotalCounts\": 20,\n        \"MaxResults\": 10,\n        \"IsTruncated\": true,\n        \"GroupMembers\": [\n            {\n                \"UserName\": \"test\",\n                \"DisplayName\": \"test\",\n                \"Description\": \"this is test user\",\n                \"Email\": \"123456@qq.com\",\n                \"UserStatus\": \"Enabled\",\n                \"UserType\": \"Manual\",\n                \"UserId\": \"u-d032med3\",\n                \"JoinTime\": \"2024-01-01 12:12:12\"\n            }\n        ],\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Querying the User List of the User Group"
+      }
+    ],
+    "ListGroups": [
+      {
+        "document": "This example shows you how to query the user group list.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListGroups\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-32s7dhd8s***\",\n    \"MaxResults\": \"20\",\n    \"GroupType\": \"Manual\"\n}",
+        "output": "{\n    \"Response\": {\n        \"NextToken\": \"OTM0YzE4MzY2ZjdhMWM0MYZD******\",\n        \"Groups\": [\n            {\n                \"GroupName\": \"testGroup\",\n                \"Description\": \"thsi is group\",\n                \"CreateTime\": \"2024-01-01 12:12:12\",\n                \"GroupType\": \"Manual\",\n                \"UpdateTime\": \"2024-01-01 12:12:12\",\n                \"GroupId\": \"g-q8shs8h****\",\n                \"MemberCount\": 20\n            }\n        ],\n        \"MaxResults\": 10,\n        \"TotalCounts\": 30,\n        \"IsTruncated\": true,\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d35d4545\"\n    }\n}",
+        "title": "Querying the User Group List"
+      }
+    ],
+    "ListJoinedGroupsForUser": [
+      {
+        "document": "This example shows you how to query the user group joined by users.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListJoinedGroupsForUser\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-2o3meo3\",\n    \"UserId\": \"u-3od3e3d\",\n    \"NextToken\": \"\",\n    \"MaxResults\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"NextToken\": \"OTM0YzE4MzY2ZjdhMWM0MYZDhnYaxsiYTLI=\",\n        \"TotalCounts\": 20,\n        \"MaxResults\": 10,\n        \"IsTruncated\": true,\n        \"JoinedGroups\": [\n            {\n                \"GroupName\": \"testGroup\",\n                \"Description\": \"this is testGroup\",\n                \"GroupId\": \"g-s23nw3e\",\n                \"GroupType\": \"Manual\",\n                \"JoinTime\": \"2021-01-01 12:12:12\"\n            }\n        ],\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Querying the User Group Joined by Users"
       }
     ],
     "ListOrgServiceAssignMember": [
@@ -131,9 +363,9 @@
     "ListOrganizationIdentity": [
       {
         "document": "This example shows you how to obtain the list of organization member access identities.",
-        "input": "POST / HTTP/1.1Host: organization.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ListOrganizationIdentity<Common request parameters>{    \"Limit\": \"10\",    \"Offset\": \"0\"}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListOrganizationIdentity\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"IdentityId\": 1,\n                \"IdentityAliasName\": \"test\",\n                \"Description\": \"\",\n                \"IdentityPolicy\": [\n                    {\n                        \"PolicyId\": 1,\n                        \"PolicyName\": \"AdministratorAccess\"\n                    }\n                ],\n                \"IdentityType\": 1,\n                \"UpdateTime\": \"2021-07-15 21:08:38\"\n            }\n        ],\n        \"RequestId\": \"1d744bef-fa56-40e9-8e3b-5a88b122ad5e\",\n        \"Total\": 1\n    }\n}",
-        "title": "Obtaining the list of organization member access identities"
+        "title": "Obtaining the List of Organization Member Access Identities"
       }
     ],
     "ListOrganizationService": [
@@ -144,20 +376,172 @@
         "title": "Obtaining the List of Organization Service Settings"
       }
     ],
+    "ListPermissionPoliciesInRoleConfiguration": [
+      {
+        "document": "This example shows you how to obtain the policy list in permission configurations.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListPermissionPoliciesInRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-d83js823n\",\n    \"RoleConfigurationId\": \"rc-s93jw3ns\",\n    \"RolePolicyType\": \"System\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCounts\": 20,\n        \"RolePolicies\": [\n            {\n                \"RolePolicyName\": \"adminPolciy\",\n                \"RolePolicyType\": \"System\",\n                \"RolePolicyDocument\": \"\",\n                \"AddTime\": \"2020-01-01 12:12:12\"\n            }\n        ],\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Obtaining the Policy List in Permission Configurations"
+      }
+    ],
+    "ListRoleAssignments": [
+      {
+        "document": "This example shows you how to query the authorization list.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListRoleAssignments\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-ssmdsowm**\",\n    \"RoleConfigurationId\": \"rc2-as245usjsm\",\n    \"MaxResults\": 30,\n    \"NextToken\": \"\",\n    \"TargetType\": \"MemeberUin\",\n    \"TargetUin\": \"10000238922\",\n    \"PrincipalType\": \"User\",\n    \"PrincipalId\": \"u-ss342md**\"\n}",
+        "output": "{\n    \"Response\": {\n        \"NextToken\": \"abc\",\n        \"TotalCounts\": 30,\n        \"MaxResults\": 10,\n        \"IsTruncated\": true,\n        \"RoleAssignments\": [\n            {\n                \"RoleConfigurationId\": \"ec-swidn****\",\n                \"RoleConfigurationName\": \"test\",\n                \"TargetUin\": 100000322,\n                \"TargetType\": \"MemberUin\",\n                \"TargetName\": \"test\",\n                \"PrincipalId\": \"u-ssiisn***\",\n                \"PrincipalType\": \"User\",\n                \"PrincipalName\": \"testConfig\",\n                \"CreateTime\": \"2024-01-01 12:12:12\",\n                \"UpdateTime\": \"2024-01-01 12:12:12\"\n            }\n        ],\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Querying the Authorization List"
+      }
+    ],
+    "ListRoleConfigurationProvisionings": [
+      {
+        "document": " This example shows you how to query the permission configuration deployment list.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListRoleConfigurationProvisionings\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-d8wj\",\n    \"RoleConfigurationId\": \"up-dnsisns***\",\n    \"MaxResults\": 20,\n    \"NextToken\": \"abc\",\n    \"TargetType\": \"MemberUin\",\n    \"TargetUin\": 1000329122,\n    \"DeploymentStatus\": \"DeployedRequired\",\n    \"Filter\": \"test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"NextToken\": \"\",\n        \"TotalCounts\": 30,\n        \"MaxResults\": 10,\n        \"IsTruncated\": true,\n        \"RoleConfigurationProvisionings\": [\n            {\n                \"DeploymentStatus\": \"DeployedRequired\",\n                \"RoleConfigurationId\": \"rc-sjwiwm2ww**\",\n                \"RoleConfigurationName\": \"testConfiguration\",\n                \"TargetUin\": 10003292021,\n                \"TargetName\": \"test\",\n                \"TargetType\": \"MemberUin\",\n                \"CreateTime\": \"2024-01-01 12:12:12\",\n                \"UpdateTime\": \"2024-01-01 12:12:12\"\n            }\n        ],\n        \"RequestId\": \"2ccd7ed1-24b4-4882-8f4a-5580b430bce7\"\n    }\n}",
+        "title": " Querying the Permission Configuration Deployment List"
+      }
+    ],
+    "ListRoleConfigurations": [
+      {
+        "document": "This example shows you how to query the permission configuration list.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-s9h39sdn2\",\n    \"NextToken\": \"sisndpmfisdnlk\",\n    \"MaxResults\": 10,\n    \"Filter\": \"RoleConfigurationName eqTestRoleConfiguration\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCounts\": 20,\n        \"MaxResults\": 10,\n        \"IsTruncated\": true,\n        \"NextToken\": \"3si2ns92ns82bos\",\n        \"RoleConfigurations\": [\n            {\n                \"RoleConfigurationId\": \"rc-s2ns92ns***\",\n                \"RoleConfigurationName\": \"test\",\n                \"Description\": \"this is role configuration\",\n                \"SessionDuration\": 900,\n                \"RelayState\": \"https://console.cloud.tencent.com\",\n                \"CreateTime\": \"2019-01-01 12:12:12\",\n                \"UpdateTime\": \"2019-01-01 12:12:12\"\n            }\n        ],\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Querying the Permission Configuration List"
+      }
+    ],
+    "ListTasks": [
+      {
+        "document": "This example shows you how to query the async task list.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListTasks\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-djwidnwidj\",\n    \"PrincipalId\": \"u-xj8sncidnc\",\n    \"NextToken\": \"xownw8db38dbe8fne==-\",\n    \"MaxResults\": 1,\n    \"PrincipalType\": \"User\",\n    \"TargetUin\": 1000023423,\n    \"TargetType\": \"Member\",\n    \"RoleConfigurationId\": \"rc-xjw9dsmw\",\n    \"Status\": \"InProgress\",\n    \"TaskType\": \"CreateRoleAssignment\"\n}",
+        "output": "{\n    \"Response\": {\n        \"NextToken\": \"abc\",\n        \"TotalCounts\": 0,\n        \"MaxResults\": 0,\n        \"IsTruncated\": true,\n        \"Tasks\": [\n            {\n                \"TaskId\": \"t-xsinsxinsdk\",\n                \"RoleConfigurationId\": \"rc-xmw9xjdsd\",\n                \"RoleConfigurationName\": \"Configuration\",\n                \"TargetUin\": 1000232234,\n                \"TargetType\": \"User\",\n                \"PrincipalId\": \"u-xm89dnsujs\",\n                \"PrincipalType\": \"Member\",\n                \"TaskType\": \"CreateRoleAssignment\",\n                \"Status\": \"InProgress\",\n                \"FailureReason\": \"test\"\n            }\n        ],\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d35d4545\"\n    }\n}",
+        "title": "Querying the Async Task List"
+      }
+    ],
+    "ListUserSyncProvisionings": [
+      {
+        "document": "This example shows you how to query the CAM user synchronization list.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListUserSyncProvisionings\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-dsjsisnus\",\n    \"PrincipalId\": \"u-sjs9smss\",\n    \"NextToken\": \"\",\n    \"MaxResults\": 10,\n    \"PrincipalType\": \"User\",\n    \"TargetUin\": 100003324902,\n    \"TargetType\": \"MemberUin\",\n    \"Filter\": \"test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"NextToken\": \"OTM0YzE4MzY2ZjdhMWM0MYZDhnYaxsiYTLI=\",\n        \"TotalCounts\": 30,\n        \"MaxResults\": 10,\n        \"IsTruncated\": true,\n        \"UserProvisionings\": [\n            {\n                \"UserProvisioningId\": \"up-siwnei3nso\",\n                \"Description\": \"this is cam user sync\",\n                \"Status\": \"Enabled\",\n                \"PrincipalId\": \"u-swnd8wn3\",\n                \"PrincipalName\": \"test\",\n                \"PrincipalType\": \"User\",\n                \"TargetUin\": \"10000338332\",\n                \"TargetName\": \"test\",\n                \"DuplicationStrategy\": \"KeepBoth\",\n                \"DeletionStrategy\": \"Delete\",\n                \"CreateTime\": \"2024-01-01 12:12:12\",\n                \"UpdateTime\": \"2024-01-01 12:12:12\",\n                \"TargetType\": \"MemberUin\"\n            }\n        ],\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d35d4545\"\n    }\n}",
+        "title": "Querying the CAM User Synchronization List"
+      }
+    ],
+    "ListUsers": [
+      {
+        "document": "This example shows you how to query the user list.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListUsers\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-2sw22w3\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCounts\": 50,\n        \"MaxResults\": 20,\n        \"Users\": [\n            {\n                \"UserName\": \"test\",\n                \"FirstName\": \"test\",\n                \"LastName\": \"test\",\n                \"DisplayName\": \"test\",\n                \"Description\": \"this is user\",\n                \"Email\": \"test@example\",\n                \"UserStatus\": \"Enabled\",\n                \"UserType\": \"Manual\",\n                \"UserId\": \"u-2s334e3***\",\n                \"CreateTime\": \"2024-03-12 12:12:12\",\n                \"UpdateTime\": \"2024-03-12 12:12:12\"\n            }\n        ],\n        \"NextToken\": \"OTM0YzE4MzY2ZjdhMWM0MYZDhnYaxsiYTLI=\",\n        \"IsTruncated\": true,\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d35d4545\"\n    }\n}",
+        "title": "Querying the User List"
+      }
+    ],
     "MoveOrganizationNodeMembers": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: MoveOrganizationNodeMembers\n<Common request parameters>\n\n{\n    \"MemberUin\": [\n        100000023837\n    ],\n    \"NodeId\": 123\n}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: MoveOrganizationNodeMembers\n<Common request parameters>\n\n{\n    \"MemberUin\": [\n        111111111111\n    ],\n    \"NodeId\": 1001\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
-        "title": "Moving a member to the specified organization node"
+        "title": "Moving a Member to the Specified Organization Node"
+      }
+    ],
+    "OpenIdentityCenter": [
+      {
+        "document": "开通身份中心服务（CIC）",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenIdentityCenter\n<common request parameters>\n\n{\n    \"ZoneName\": \"testName\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ZoneId\": \"z-dj3jk*****\",\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324f45\"\n    }\n}",
+        "title": "开通身份中心服务（CIC）"
+      }
+    ],
+    "ProvisionRoleConfiguration": [
+      {
+        "document": "This example shows you how to deploy permission configurations to member accounts.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ProvisionRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-disndw****\",\n    \"RoleConfigurationId\": \"rc-sians9wn****\",\n    \"TargetType\": \"MemberUin\",\n    \"TargetUin\": 10000293120\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d95c7cc0-195d-4818-aa3a-e7dc73eafe37\",\n        \"Task\": {\n            \"RoleConfigurationId\": \"rc-4plmus8fdfsb\",\n            \"RoleConfigurationName\": \"testConfiguration1\",\n            \"TargetType\": \"MemberUin\",\n            \"TargetUin\": 700000145543,\n            \"TaskId\": \"t-2xdmzwphpsbd\",\n            \"TaskStatus\": \"InProgress\",\n            \"TaskType\": \"CreateRoleAssignment\"\n        }\n    }\n}",
+        "title": "Deploying Permission Configurations to Member Accounts"
+      }
+    ],
+    "RemoveExternalSAMLIdPCertificate": [
+      {
+        "document": "This example shows you how to remove SAML signing certificates.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveExternalSAMLIdPCertificate\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-2js923necd***\",\n    \"CertificateId\": \"idp-c-2jd8923je29****\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ccd7ed1-24b4-4882-8f4a-5580b430bce7\"\n    }\n}",
+        "title": "Removing SAML Signing Certificates"
+      }
+    ],
+    "RemovePermissionPolicyFromRoleConfiguration": [
+      {
+        "document": "This example shows you how to remove policies from permission configurations.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemovePermissionPolicyFromRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-djw9dn3i****\",\n    \"RoleConfigurationId\": \"rc-swidddws***\",\n    \"RolePolicyType\": \"System\",\n    \"RolePolicyName\": \"test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ccd7ed1-24b4-4882-8f4a-5580b430bce7\"\n    }\n}",
+        "title": "Removing Policies from Permission Configurations"
+      }
+    ],
+    "RemoveUserFromGroup": [
+      {
+        "document": "This example shows you how to removes users from a user group.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RemoveUserFromGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-d83n8sn3\",\n    \"GroupId\": \"g-du3n83nd\",\n    \"UserId\": \"u-sd823ns82n\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Removing Users from a User Group"
+      }
+    ],
+    "SetExternalSAMLIdentityProvider": [
+      {
+        "document": "This example shows you how to configure the SAML identity provider information.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SetExternalSAMLIdentityProvider\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-d3ideodm***\",\n    \"EncodedMetadataDocument\": \"JTNDJTNGeG1sJTIwdmVyc2lvbiUzRCUyMjEuMCUyMiUyMGVuY29kaW5******\",\n    \"SSOStatus\": \"Enabled\",\n    \"EntityId\": \"http://www.okta.com/xd83nd83nd****\",\n    \"LoginUrl\": \"https://dev-xxxxxx.okta.com/app/dev-xxxxxx_cloudssodemo_1/xd83nd83nd****/sso/saml\",\n    \"X509Certificate\": \"MIIC8DCCAdigAwIBAgIQP9eomUYGeoND****\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2ccd7ed1-24b4-4882-8f4a-5580b430bce7\"\n    }\n}",
+        "title": "Configuring the SAML Identity Provider Information"
+      }
+    ],
+    "UpdateGroup": [
+      {
+        "document": "This example shows you how to modify the user group information.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-s8shs8bd***\",\n    \"GroupId\": \"g-s8dhdn3\",\n    \"NewGroupName\": \"testGroup\",\n    \"NewDescription\": \"this is group.\"\n}",
+        "output": "{\n    \"Response\": {\n        \"GroupInfo\": {\n            \"GroupName\": \"testGroup\",\n            \"Description\": \"this is group\",\n            \"CreateTime\": \"2024-01-01 12:12:12\",\n            \"GroupType\": \"Manual\",\n            \"UpdateTime\": \"2024-01-01 12:12:12\",\n            \"GroupId\": \"g-w8hd8n***\",\n            \"MemberCount\": 20\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Modifying the User Group Information"
       }
     ],
     "UpdateOrganizationNode": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateOrganizationNode\n<Common request parameters>\n\n{\n    \"NodeId\": 123,\n    \"Name\": \"test\"\n}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateOrganizationNode\n<Common request parameters>\n\n{\n    \"NodeId\": 1001,\n    \"Name\": \"name\",\n    \"Remark\": \"remark\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
-        "title": "Updating an organization node"
+        "title": "Updating the Organization Node"
+      }
+    ],
+    "UpdateRoleConfiguration": [
+      {
+        "document": "This example shows you how to modify the permission configuration information.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-22m23mo2\",\n    \"RoleConfigurationId\": \"rc-ai3n9si2m\",\n    \"NewDescription\": \"this is role configuration\",\n    \"NewSessionDuration\": 900,\n    \"NewRelayState\": \"https://console.cloud.tencent.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RoleConfigurationInfo\": {\n            \"RoleConfigurationId\": \"rc-s2ns92ns***\",\n            \"RoleConfigurationName\": \"test\",\n            \"Description\": \"this is role configuration\",\n            \"SessionDuration\": 900,\n            \"RelayState\": \"https://console.cloud.tencent.com\",\n            \"CreateTime\": \"2019-01-01 12:12:12\",\n            \"UpdateTime\": \"2019-01-01 12:12:12\"\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Modifying the Permission Configuration Information"
+      }
+    ],
+    "UpdateUser": [
+      {
+        "document": "This example shows you how to modify the user information",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateUser\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-343nh23kn\",\n    \"UserId\": \"u-3324sfdds\",\n    \"NewFirstName\": \"test\",\n    \"NewLastName\": \"test\",\n    \"NewDisplayName\": \"test\",\n    \"NewDescription\": \"this is user.\",\n    \"NewEmail\": \"test@example.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"UserInfo\": {\n            \"UserName\": \"test\",\n            \"FirstName\": \"test\",\n            \"LastName\": \"test\",\n            \"DisplayName\": \"test\",\n            \"Description\": \"this is user\",\n            \"Email\": \"test@example.com\",\n            \"UserStatus\": \"test\",\n            \"UserType\": \"Manual\",\n            \"UserId\": \"u-33sjadjsk\",\n            \"CreateTime\": \"2024-01-01 12:12:12\",\n            \"UpdateTime\": \"2024-01-01 12:12:12\"\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-34545s45\"\n    }\n}",
+        "title": "Modifying the User Information"
+      }
+    ],
+    "UpdateUserStatus": [
+      {
+        "document": "This example shows you how to modify the user status.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateUserStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-dwesfeas2\",\n    \"UserId\": \"u-d3eedws\",\n    \"NewUserStatus\": \"Disabled\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e297543a-80de-4039-83c8-34545s45\"\n    }\n}",
+        "title": "Modifying the User Status"
+      }
+    ],
+    "UpdateUserSyncProvisioning": [
+      {
+        "document": " This example shows you how to modify the CAM user synchronization.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateUserSyncProvisioning\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-susn8xnsis\",\n    \"UserProvisioningId\": \"up-xusjdjsss\",\n    \"NewDescription\": \"this is cam user sync\",\n    \"NewDuplicationStateful\": \"KeepBoth\",\n    \"NewDeletionStrategy\": \"Delete\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": " Modifying the CAM User Synchronization"
+      }
+    ],
+    "UpdateZone": [
+      {
+        "document": "This example shows you how to modify the space name.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateZone\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-vft38p2hq8tq\",\n    \"NewZoneName\": \"testzone\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14effcdf-fbae-44fb-ab21-e2e0cc6edde6\"\n    }\n}",
+        "title": "Modifying the Space Name"
       }
     ]
   },

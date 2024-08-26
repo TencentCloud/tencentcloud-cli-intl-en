@@ -1,5 +1,37 @@
 {
   "actions": {
+    "CancelBackupJob": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CancelBackupJob\n<Common request parameters>\n\n{\n    \"InstanceId\": \"abc\",\n    \"BackUpJobId\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "test"
+      }
+    ],
+    "CopyTableDatas": [
+      {
+        "document": "This example shows you how to copy SourceDb.SourceTable to TargetDb.TargetTable.",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CopyTableDatas\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-bjizjxxx\",\n    \"CopiedFromDb\": \"SourceDb\",\n    \"CopiedFromTable\": \"SourceTable\",\n    \"CopyToDb\": \"TargetDb\",\n    \"CopyToTable\": \"TargetTable\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Message\": \"\",\n        \"RequestId\": \"894fc11c-393c-4ab7-bfac-ba64af52b1f9\"\n    }\n}",
+        "title": "Copying Table"
+      }
+    ],
+    "CreateBackUpSchedule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateBackUpSchedule\n<Common request parameters>\n\n{\n    \"ScheduleId\": 0,\n    \"WeekDays\": \"1\",\n    \"BackUpTables\": [\n        {\n            \"Table\": \"1\",\n            \"TotalBytes\": 0,\n            \"Database\": \"1\"\n        }\n    ],\n    \"ExecuteHour\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "CreateDatabase": [
+      {
+        "document": "This example shows you how to create a demo database.",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDatabase\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-bjizjxxx\",\n    \"DbName\": \"demo\",\n    \"Properties\": [\n        {\n            \"PropertyKey\": \"replication_allocation\",\n            \"PropertyValue\": \"tag.location.default: 1\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Message\": \"\",\n        \"RequestId\": \"494d3ca4-1d4d-483a-b172-1fdd4acee042\"\n    }\n}",
+        "title": "Creating a Database"
+      }
+    ],
     "CreateInstanceNew": [
       {
         "document": "This example shows you how to create a cluster.",
@@ -8,12 +40,116 @@
         "title": "An Example of Creating Clusters"
       }
     ],
+    "CreateTable": [
+      {
+        "document": "This example shows you how to create a test table under the demo database.",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateTable\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-bjizjxxx\",\n    \"DbName\": \"demo\",\n    \"TableName\": \"test\",\n    \"KeysType\": \"AGG_KEY\",\n    \"Columns\": [\n        {\n            \"Name\": \"user_id\",\n            \"Type\": \"LARGEINT\",\n            \"IsNull\": false,\n            \"IsKey\": true,\n            \"IsPartition\": false,\n            \"IsDistribution\": true,\n            \"Comment\": \"User ID\"\n        },\n        {\n            \"Name\": \"date\",\n            \"Type\": \"DATE\",\n            \"IsNull\": false,\n            \"IsKey\": true,\n            \"IsPartition\": true,\n            \"IsDistribution\": false,\n            \"Comment\": \"Date and time of data writing\"\n        },\n        {\n            \"Name\": \"city\",\n            \"Type\": \"VARCHAR(20)\",\n            \"IsNull\": true,\n            \"IsKey\": true,\n            \"IsPartition\": false,\n            \"IsDistribution\": false,\n            \"Comment\": \"User's city\"\n        },\n        {\n            \"Name\": \"last_visit_date\",\n            \"Type\": \"DATETIME\",\n            \"AggType\": \"REPLACE\",\n            \"IsNull\": false,\n            \"DefaultValue\": \"1970-01-01 00:00:00\",\n            \"IsKey\": false,\n            \"IsPartition\": false,\n            \"IsDistribution\": false,\n            \"Comment\": \"User's last access time\"\n        },\n        {\n            \"Name\": \"cost\",\n            \"Type\": \"BIGINT\",\n            \"AggType\": \"SUM\",\n            \"IsNull\": false,\n            \"DefaultValue\": \"0\",\n            \"IsKey\": false,\n            \"IsPartition\": false,\n            \"IsDistribution\": false,\n            \"Comment\": \"User's total consumption\"\n        }\n    ],\n    \"Partition\": {\n        \"AutoPartition\": false,\n        \"PartitionType\": \"Range\",\n        \"RangeInfos\": [\n            {\n                \"RangeType\": \"LESS THAN\",\n                \"PartitionName\": \"0201\",\n                \"Max\": \"(\\\"2017-02-01\\\")\"\n            },\n            {\n                \"RangeType\": \"FIXED\",\n                \"PartitionName\": \"0202\",\n                \"Left\": \"(\\\"2011-02-01\\\")\",\n                \"Right\": \"(\\\"2012-02-01\\\")\"\n            }\n        ]\n    },\n    \"Distribution\": {\n        \"DistributionType\": \"Hash\",\n        \"Count\": 3\n    },\n    \"TableComment\": \"example\",\n    \"Properties\": [\n        {\n            \"PropertyKey\": \"replication_allocation\",\n            \"PropertyValue\": \"tag.location.default: 1\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"f8f5e0af-7d36-4b49-8b4d-9c103deef55a\"\n    }\n}",
+        "title": "Creating a Table"
+      }
+    ],
+    "CreateWorkloadGroup": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateWorkloadGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-xxx\",\n    \"WorkloadGroup\": {\n        \"WorkloadGroupName\": \"test\",\n        \"CpuShare\": 10,\n        \"MemoryLimit\": 20,\n        \"EnableMemoryOverCommit\": true\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Creating a Resource Group"
+      }
+    ],
+    "DeleteBackUpData": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBackUpData\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"BackUpJobId\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DeleteTable": [
+      {
+        "document": "This example shows you how to delete the test table under the demo database.",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteTable\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-bjizjxxx\",\n    \"DbName\": \"demo\",\n    \"TableName\": \"test\",\n    \"IsForce\": false\n}",
+        "output": "{\n    \"Response\": {\n        \"Message\": \"\",\n        \"RequestId\": \"41de726a-0bd6-4794-8324-5fd73c312886\"\n    }\n}",
+        "title": "Deleting Tables Under the Specified Database"
+      }
+    ],
+    "DeleteWorkloadGroup": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteWorkloadGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-xxx\",\n    \"WorkloadGroupName\": \"test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Deleting the Resource Group"
+      }
+    ],
+    "DescribeAreaRegion": [
+      {
+        "document": "This example shows you how to display regional information and the total number of clusters in each region on the cluster list page.",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAreaRegion\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"Name\": \"abc\",\n                \"Desc\": \"abc\",\n                \"Regions\": [\n                    {\n                        \"Name\": \"abc\",\n                        \"Desc\": \"abc\",\n                        \"RegionId\": 0,\n                        \"Zones\": [\n                            {\n                                \"Name\": \"abc\",\n                                \"Desc\": \"abc\",\n                                \"ZoneId\": 0,\n                                \"Encrypt\": 0\n                            }\n                        ],\n                        \"Count\": 0,\n                        \"IsInternationalSite\": 1,\n                        \"Bucket\": \"abc\"\n                    }\n                ]\n            }\n        ],\n        \"FrontEndRules\": [\n            {\n                \"ID\": 0,\n                \"Name\": \"abc\",\n                \"Rule\": \"abc\"\n            }\n        ],\n        \"AvailableWhiteListNames\": [\n            \"abc\"\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Obtaining the List of Regions"
+      }
+    ],
+    "DescribeBackUpJob": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackUpJob\n<Common request parameters>\n\n{\n    \"InstanceId\": \"1\",\n    \"PageNum\": 0,\n    \"PageSize\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"BackUpJobs\": [\n            {\n                \"JobId\": 0,\n                \"Snapshot\": \"abc\",\n                \"BackUpSize\": 0,\n                \"BackUpTime\": \"abc\",\n                \"ExpireTime\": \"abc\",\n                \"JobStatus\": \"abc\",\n                \"BackupType\": 0,\n                \"BackupTimeType\": 0,\n                \"DorisSourceInfo\": {\n                    \"Host\": \"abc\",\n                    \"Port\": 0,\n                    \"User\": \"abc\",\n                    \"Password\": \"abc\"\n                },\n                \"JobStatusNum\": 0\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeBackUpJobDetail": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackUpJobDetail\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"BackUpJobId\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"TableContents\": [\n            {\n                \"Table\": \"xx\",\n                \"TotalBytes\": 0,\n                \"Database\": \"xx\"\n            }\n        ]\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeBackUpSchedules": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackUpSchedules\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Obtaining Backup and Migration Tasks"
+      }
+    ],
+    "DescribeBackUpTables": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackUpTables\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-123\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AvailableTables\": [\n            {\n                \"Table\": \"tablename1\",\n                \"TotalBytes\": 0,\n                \"Database\": \"db1\"\n            }\n        ],\n        \"RequestId\": \"request1\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeBackUpTaskDetail": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeBackUpTaskDetail\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"BackUpJobId\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"xx\",\n        \"BackupStatus\": [\n            {\n                \"Status\": \"xx\",\n                \"FinishedTime\": \"xx\",\n                \"BackupObjects\": \"xx\",\n                \"SnapshotName\": \"xx\",\n                \"TaskErrMsg\": \"xx\",\n                \"JobId\": 0,\n                \"UnfinishedTasks\": \"xx\",\n                \"State\": \"xx\",\n                \"SnapshotFinishedTime\": \"xx\",\n                \"Timeout\": 0,\n                \"UploadFinishedTime\": \"xx\",\n                \"Progress\": \"xx\",\n                \"CreateTime\": \"xx\",\n                \"DbName\": \"xx\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "DescribeClusterConfigs": [
       {
         "document": "This example shows you how to obtain the cluster configuration file content when modifying it in XML format.",
         "input": "https://cdwdoris.tencentcloudapi.com/\n?Action=DescribeClusterConfigs\n&InstanceId=cdwch-xxxx\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ClusterConfList\": [\n            {\n                \"NeedRestart\": 1,\n                \"OriParam\": \"ss=sc\",\n                \"KeyConf\": \"ss=sc\",\n                \"FileConf\": \"ss=sc\",\n                \"FileName\": \"test\"\n            }\n        ],\n        \"RequestId\": \"xx-aa\"\n    }\n}",
         "title": "Getting Cluster Configuration File Content"
+      }
+    ],
+    "DescribeClusterConfigsHistory": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeClusterConfigsHistory\n<Common request parameters>\n\n{\n    \"InstanceId\": \"abc\",\n    \"ConfigFileNames\": [\n        \"abc\"\n    ],\n    \"Offset\": 0,\n    \"Limit\": 0,\n    \"StartTime\": \"abc\",\n    \"EndTime\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"ClusterConfHistory\": [\n            {\n                \"FileName\": \"abc\",\n                \"NewConfValue\": \"abc\",\n                \"OldConfValue\": \"abc\",\n                \"Remark\": \"abc\",\n                \"ModifyTime\": \"abc\",\n                \"UserUin\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "test"
+      }
+    ],
+    "DescribeDatabase": [
+      {
+        "document": "This example shows you how to obtain the database information of the internal data source.",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDatabase\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-bjizjxxx\",\n    \"CatalogName\": \"internal\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DbInfos\": [\n            {\n                \"DbName\": \"test\",\n                \"Location\": \"\",\n                \"Properties\": null\n            },\n            {\n                \"DbName\": \"db1\",\n                \"Location\": \"\",\n                \"Properties\": [\n                    {\n                        \"PropertyKey\": \"min_load_replica_num\",\n                        \"PropertyValue\": \"-1\"\n                    },\n                    {\n                        \"PropertyKey\": \"replication_allocation\",\n                        \"PropertyValue\": \"tag.location.default: 3\"\n                    }\n                ]\n            }\n        ],\n        \"Message\": \"\",\n        \"RequestId\": \"43516a7e-aa6c-4f43-8435-71d4e41dbd8a\"\n    }\n}",
+        "title": "Obtaining the Database Information"
       }
     ],
     "DescribeDatabaseAuditDownload": [
@@ -62,6 +198,30 @@
         "title": "Querying Node Roles"
       }
     ],
+    "DescribeInstanceNodesRole": [
+      {
+        "document": "This example shows you how to view the machine role information.",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceNodesRole\n<Common request parameters>\n\n{\n    \"InstanceId\": \"1\",\n    \"IpFilter\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"1\",\n        \"NodeInfos\": [\n            {\n                \"Status\": 0,\n                \"Ip\": \"1\",\n                \"NodeRole\": \"1\",\n                \"NodeName\": \"1\"\n            }\n        ],\n        \"RequestId\": \"1\",\n        \"TotalCount\": 0\n    }\n}",
+        "title": "DescribeInstanceNodesRole"
+      }
+    ],
+    "DescribeInstanceOperationHistory": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceOperationHistory\n<Common request parameters>\n\n{\n    \"InstanceId\": \"abc\",\n    \"PageNum\": 1,\n    \"PageSize\": 1,\n    \"StartTime\": \"abc\",\n    \"EndTime\": \"abc\",\n    \"UserName\": \"abc\",\n    \"PassWord\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Operations\": [\n            {\n                \"Name\": \"abc\",\n                \"Result\": \"abc\",\n                \"Desc\": \"abc\",\n                \"Level\": \"abc\",\n                \"LevelDesc\": \"abc\",\n                \"StartTime\": \"abc\",\n                \"EndTime\": \"abc\",\n                \"ResultDesc\": \"abc\",\n                \"OperateUin\": \"abc\",\n                \"JobId\": 0,\n                \"OperationDetail\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying Operation Records"
+      }
+    ],
+    "DescribeInstanceOperations": [
+      {
+        "document": "This example shows you how to obtain the list of cluster operations.",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceOperations\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwch-exs8Mnql\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxx-xxxx-xxxxx-xxxxx\",\n        \"TotalCount\": 2,\n        \"Operations\": [\n            {\n                \"Name\": \"CreateInstance\",\n                \"Desc\": \"Create a cluster\",\n                \"Result\": \"Success\",\n                \"Level\": \"Normal\",\n                \"LevelDesc\": \"General\",\n                \"StartTime\": \"2020-10-22 13:28:53\",\n                \"EndTime\": \"2020-10-22 13:28:53\",\n                \"JobId\": 123\n            },\n            {\n                \"Name\": \"ModifyInstance\",\n                \"Desc\": \"Adjust the cluster's configuration\",\n                \"Result\": \"Success\",\n                \"Level\": \"HighRisk\",\n                \"LevelDesc\": \"High risk\",\n                \"StartTime\": \"2020-10-22 14:38:53\",\n                \"EndTime\": \"2020-10-22 14:38:53\",\n                \"JobId\": 124\n            }\n        ]\n    }\n}",
+        "title": "Obtaining the List of Cluster Operations"
+      }
+    ],
     "DescribeInstanceState": [
       {
         "document": "This example shows you it is necessary to display the status of the cluster and the progress of operations.",
@@ -70,12 +230,44 @@
         "title": "Getting Cluster Status"
       }
     ],
+    "DescribeInstanceUsedSubnets": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceUsedSubnets\n<Common request parameters>\n\n{\n    \"InstanceId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"VpcId\": \"abc\",\n        \"UsedSubnets\": [\n            \"abc\"\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Obtaining the Information on the Cluster's Used Subnets"
+      }
+    ],
     "DescribeInstances": [
       {
         "document": "This example shows you how to get all cluster list information under a certain user.",
         "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstances\n<Common request parameters>\n\n{\n    \"Limit\": 10,\n    \"SearchInstanceName\": \"\",\n    \"SearchInstanceId\": \"\",\n    \"Offset\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"InstancesList\": [\n            {\n                \"InstanceId\": \"abc\",\n                \"InstanceName\": \"abc\",\n                \"Status\": \"abc\",\n                \"Version\": \"abc\",\n                \"Region\": \"abc\",\n                \"Zone\": \"abc\",\n                \"VpcId\": \"abc\",\n                \"SubnetId\": \"abc\",\n                \"PayMode\": \"abc\",\n                \"CreateTime\": \"abc\",\n                \"ExpireTime\": \"abc\",\n                \"MasterSummary\": {\n                    \"Spec\": \"abc\",\n                    \"NodeSize\": 0,\n                    \"Core\": 0,\n                    \"Memory\": 0,\n                    \"Disk\": 0,\n                    \"DiskType\": \"abc\",\n                    \"DiskDesc\": \"abc\",\n                    \"AttachCBSSpec\": {\n                        \"DiskType\": \"abc\",\n                        \"DiskSize\": 0,\n                        \"DiskCount\": 0,\n                        \"DiskDesc\": \"abc\"\n                    },\n                    \"SubProductType\": \"abc\",\n                    \"SpecCore\": 0,\n                    \"SpecMemory\": 0,\n                    \"DiskCount\": 0,\n                    \"Encrypt\": 0,\n                    \"MaxDiskSize\": 0\n                },\n                \"CoreSummary\": {\n                    \"Spec\": \"abc\",\n                    \"NodeSize\": 0,\n                    \"Core\": 0,\n                    \"Memory\": 0,\n                    \"Disk\": 0,\n                    \"DiskType\": \"abc\",\n                    \"DiskDesc\": \"abc\",\n                    \"AttachCBSSpec\": {\n                        \"DiskType\": \"abc\",\n                        \"DiskSize\": 0,\n                        \"DiskCount\": 0,\n                        \"DiskDesc\": \"abc\"\n                    },\n                    \"SubProductType\": \"abc\",\n                    \"SpecCore\": 0,\n                    \"SpecMemory\": 0,\n                    \"DiskCount\": 0,\n                    \"Encrypt\": 0,\n                    \"MaxDiskSize\": 0\n                },\n                \"HA\": \"abc\",\n                \"HaType\": 0,\n                \"AccessInfo\": \"abc\",\n                \"Id\": 0,\n                \"RegionId\": 0,\n                \"ZoneDesc\": \"abc\",\n                \"FlowMsg\": \"abc\",\n                \"StatusDesc\": \"abc\",\n                \"RenewFlag\": true,\n                \"Tags\": [\n                    {\n                        \"TagKey\": \"abc\",\n                        \"TagValue\": \"abc\"\n                    }\n                ],\n                \"Monitor\": \"abc\",\n                \"HasClsTopic\": true,\n                \"ClsTopicId\": \"abc\",\n                \"ClsLogSetId\": \"abc\",\n                \"EnableXMLConfig\": 0,\n                \"RegionDesc\": \"abc\",\n                \"Eip\": \"abc\",\n                \"CosMoveFactor\": 0,\n                \"Kind\": \"abc\",\n                \"CosBucketName\": \"abc\",\n                \"CanAttachCbs\": true,\n                \"BuildVersion\": \"abc\",\n                \"Components\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Getting Instance List"
+      }
+    ],
+    "DescribeInstancesHealthState": [
+      {
+        "document": "This example shows you the cluster health check.",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstancesHealthState\n<Common request parameters>\n\n{\n    \"InstanceID\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Data\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "DescribeInstancesHealthState"
+      }
+    ],
+    "DescribeQueryAnalyse": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeQueryAnalyse\n<Common request parameters>\n\n{\n    \"InstanceId\": \"abc\",\n    \"UserName\": \"abc\",\n    \"PassWord\": \"abc\",\n    \"StartTime\": \"abc\",\n    \"EndTime\": \"abc\",\n    \"SQLFragment\": \"abc\",\n    \"CatalogFilter\": \"abc\",\n    \"DatabaseFilter\": \"abc\",\n    \"SQLTypeFilter\": \"abc\",\n    \"SortField\": \"abc\",\n    \"SortOrder\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"QueryDetails\": [\n            {\n                \"Initiator\": \"abc\",\n                \"SourceAddress\": \"abc\",\n                \"InitialRequestId\": \"abc\",\n                \"Catalog\": \"abc\",\n                \"Database\": \"abc\",\n                \"SQLType\": \"abc\",\n                \"SQLStatement\": \"abc\",\n                \"StartTime\": \"abc\",\n                \"Duration\": 1,\n                \"RowsRead\": 1,\n                \"DataRead\": 0,\n                \"MemoryUsage\": 0\n            }\n        ],\n        \"TotalCount\": 1,\n        \"CurrentPage\": 1,\n        \"PageSize\": 1,\n        \"TotalPages\": 1,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying"
+      }
+    ],
+    "DescribeRestoreTaskDetail": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRestoreTaskDetail\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"BackUpJobId\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RestoreStatus\": [\n            {\n                \"Status\": \"xx\",\n                \"FinishedTime\": \"xx\",\n                \"MetaPreparedTime\": \"xx\",\n                \"RestoreObjects\": \"xx\",\n                \"Timestamp\": \"xx\",\n                \"ReplicaAllocation\": \"xx\",\n                \"TaskErrMsg\": \"xx\",\n                \"JobId\": 0,\n                \"CreateTime\": \"xx\",\n                \"State\": \"xx\",\n                \"SnapshotFinishedTime\": \"xx\",\n                \"Timeout\": 0,\n                \"DownloadFinishedTime\": \"xx\",\n                \"UnfinishedTasks\": \"xx\",\n                \"Progress\": \"xx\",\n                \"Label\": \"xx\",\n                \"ReplicationNum\": \"xx\",\n                \"DbName\": \"xx\",\n                \"AllowLoad\": true\n            }\n        ],\n        \"RequestId\": \"xx\",\n        \"ErrorMsg\": \"xx\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "DescribeSlowQueryRecords": [
@@ -94,12 +286,100 @@
         "title": "DescribeSlowQueryRecordsDownload"
       }
     ],
+    "DescribeSpec": [
+      {
+        "document": "This example shows you how to pull the specification list of the cluster's data nodes and zookeeper nodes through the purchase page.",
+        "input": "https://cdwdoris.tencentcloudapi.com/?Action=DescribeSpec\n&Zone=ap-guangzhou-1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"10058bc0-40e7-4eb0-9b4d\",\n        \"MasterSpec\": [\n            {\n                \"Name\": \"SCH3\",\n                \"Cpu\": 2,\n                \"Mem\": 4,\n                \"Type\": \"STANDARD\",\n                \"DataDisk\": {\n                    \"DiskCount\": 1,\n                    \"MaxDiskSize\": 32000,\n                    \"MinDiskSize\": 100,\n                    \"DiskType\": \"CLOUD_HSSD\",\n                    \"DiskDesc\": \"Enhanced SSD\"\n                },\n                \"SystemDisk\": {\n                    \"DiskCount\": 1,\n                    \"MaxDiskSize\": 50,\n                    \"MinDiskSize\": 50,\n                    \"DiskType\": \"CLOUD_PREMIUM\",\n                    \"DiskDesc\": \"Premium cloud disk\"\n                },\n                \"MaxNodeSize\": 50,\n                \"Available\": true,\n                \"ComputeSpecDesc\": \"2-core; 4 GB\"\n            }\n        ],\n        \"CoreSpec\": [\n            {\n                \"Name\": \"SCH6\",\n                \"Cpu\": 4,\n                \"Mem\": 16,\n                \"Type\": \"STANDARD\",\n                \"DataDisk\": {\n                    \"DiskCount\": 1,\n                    \"MaxDiskSize\": 32000,\n                    \"MinDiskSize\": 100,\n                    \"DiskType\": \"CLOUD_HSSD\",\n                    \"DiskDesc\": \"Enhanced SSD\"\n                },\n                \"SystemDisk\": {\n                    \"DiskCount\": 1,\n                    \"MaxDiskSize\": 50,\n                    \"MinDiskSize\": 50,\n                    \"DiskType\": \"CLOUD_PREMIUM\",\n                    \"DiskDesc\": \"Premium cloud disk\"\n                },\n                \"MaxNodeSize\": 50,\n                \"Available\": true,\n                \"ComputeSpecDesc\": \"4-core; 16 GB\"\n            }\n        ],\n        \"AttachCBSSpec\": [\n            {\n                \"DiskCount\": 1,\n                \"MaxDiskSize\": 32000,\n                \"MinDiskSize\": 100,\n                \"DiskType\": \"CLOUD_HSSD\",\n                \"DiskDesc\": \"Enhanced SSD\"\n            }\n        ]\n    }\n}",
+        "title": "Obtaining the Cluster Specification"
+      }
+    ],
+    "DescribeSqlApis": [
+      {
+        "document": "查询集群信息",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSqlApis\n<common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "查询集群信息"
+      }
+    ],
+    "DescribeTable": [
+      {
+        "document": "This example shows you how to obtain the test table information under the demo database.",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTable\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-bjizjxxx\",\n    \"DbName\": \"demo\",\n    \"TableName\": \"test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Columns\": [\n            {\n                \"AggType\": \"\",\n                \"AutoInc\": false,\n                \"Comment\": \"User ID\",\n                \"DefaultValue\": \"\",\n                \"IsDistribution\": true,\n                \"IsKey\": true,\n                \"IsNull\": false,\n                \"IsPartition\": false,\n                \"Name\": \"user_id\",\n                \"Type\": \"LARGEINT\"\n            },\n            {\n                \"AggType\": \"\",\n                \"AutoInc\": false,\n                \"Comment\": \"Date and time of data writing\",\n                \"DefaultValue\": \"\",\n                \"IsDistribution\": false,\n                \"IsKey\": true,\n                \"IsNull\": false,\n                \"IsPartition\": true,\n                \"Name\": \"date\",\n                \"Type\": \"DATE\"\n            },\n            {\n                \"AggType\": \"\",\n                \"AutoInc\": false,\n                \"Comment\": \"User's city\",\n                \"DefaultValue\": \"\",\n                \"IsDistribution\": false,\n                \"IsKey\": true,\n                \"IsNull\": true,\n                \"IsPartition\": false,\n                \"Name\": \"city\",\n                \"Type\": \"VARCHAR(20)\"\n            },\n            {\n                \"AggType\": \"REPLACE\",\n                \"AutoInc\": false,\n                \"Comment\": \"User's last access time\",\n                \"DefaultValue\": \"1970-01-01 00:00:00\",\n                \"IsDistribution\": false,\n                \"IsKey\": false,\n                \"IsNull\": false,\n                \"IsPartition\": false,\n                \"Name\": \"last_visit_date\",\n                \"Type\": \"DATETIME\"\n            },\n            {\n                \"AggType\": \"SUM\",\n                \"AutoInc\": false,\n                \"Comment\": \"User's total consumption\",\n                \"DefaultValue\": \"0\",\n                \"IsDistribution\": false,\n                \"IsKey\": false,\n                \"IsNull\": false,\n                \"IsPartition\": false,\n                \"Name\": \"cost\",\n                \"Type\": \"BIGINT\"\n            }\n        ],\n        \"Distribution\": {\n            \"Count\": 3,\n            \"DistributionType\": \"Hash\"\n        },\n        \"IndexInfos\": null,\n        \"KeysType\": \"AGG_KEY\",\n        \"Message\": \"\",\n        \"Partition\": {\n            \"AutoPartition\": false,\n            \"ListInfos\": null,\n            \"PartitionType\": \"Range\",\n            \"RangeInfos\": [\n                {\n                    \"Left\": \"\",\n                    \"Max\": \"(\\\"2017-02-01\\\")\",\n                    \"PartitionName\": \"0201\",\n                    \"RangeType\": \"LESS THAN\",\n                    \"Right\": \"\",\n                    \"StepLength\": 0,\n                    \"Unit\": \"\"\n                },\n                {\n                    \"Left\": \"(\\\"2011-02-01\\\")\",\n                    \"Max\": \"\",\n                    \"PartitionName\": \"0202\",\n                    \"RangeType\": \"FIXED\",\n                    \"Right\": \"(\\\"2012-02-01\\\")\",\n                    \"StepLength\": 0,\n                    \"Unit\": \"\"\n                }\n            ]\n        },\n        \"Properties\": [\n            {\n                \"PropertyKey\": \"replication_allocation\",\n                \"PropertyValue\": \"tag.location.default: 1\"\n            }\n        ],\n        \"RequestId\": \"f4f99674-26f1-49c9-86eb-40f146f26b97\",\n        \"TableComment\": \"example\"\n    }\n}",
+        "title": "Obtaining the Table Information"
+      }
+    ],
+    "DescribeTableList": [
+      {
+        "document": "This example shows you how to obtain the table list under the internal data source and demo database.",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTableList\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-bjizjxxx\",\n    \"DbName\": \"demo\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Message\": \"\",\n        \"RequestId\": \"28caf1f1-9192-477c-94d4-e910b87ca0fc\",\n        \"TableNames\": [\n            \"test\",\n            \"table\"\n        ]\n    }\n}",
+        "title": "Obtaining the List of Tables"
+      }
+    ],
+    "DescribeUserBindWorkloadGroup": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserBindWorkloadGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-xxx\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\",\n        \"UserBindInfos\": [\n            {\n                \"UserName\": \"test\",\n                \"WorkloadGroupName\": \"g1\"\n            },\n            {\n                \"UserName\": \"admin\",\n                \"WorkloadGroupName\": \"normal\"\n            }\n        ]\n    }\n}",
+        "title": "Obtaining the Resource Information Bound to Each User in the Current Cluster"
+      }
+    ],
+    "DescribeUserPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeUserPolicy\n<Common request parameters>\n\n{\n    \"InstanceId\": \"abc\",\n    \"UserName\": \"abc\",\n    \"PassWord\": \"abc\",\n    \"WhiteHost\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AccountInfo\": {\n            \"UserName\": \"abc\",\n            \"Host\": \"abc\",\n            \"UserDescription\": \"abc\"\n        },\n        \"Permissions\": [\n            {\n                \"GlobalPermissions\": [\n                    \"abc\"\n                ],\n                \"DatabasePermissions\": [\n                    {\n                        \"DatabaseName\": \"abc\",\n                        \"Permissions\": [\n                            \"abc\"\n                        ]\n                    }\n                ],\n                \"TablePermissions\": [\n                    {\n                        \"TableName\": \"abc\",\n                        \"Permissions\": [\n                            \"abc\"\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying"
+      }
+    ],
+    "DescribeWorkloadGroup": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeWorkloadGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"WorkloadGroups\": [\n            {\n                \"WorkloadGroupName\": \"abc\",\n                \"CpuShare\": 10,\n                \"MemoryLimit\": 10,\n                \"EnableMemoryOverCommit\": true\n            }\n        ],\n        \"Status\": \"abc\",\n        \"ErrorMsg\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Obtaining Information of the Resource Group"
+      }
+    ],
     "DestroyInstance": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DestroyInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-auqej7a\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": \"1231\",\n        \"InstanceId\": \"cdwdoris-auqej7a\",\n        \"ErrorMsg\": \"\",\n        \"RequestId\": \"xasdfkqe2-a12q29-axdfas\"\n    }\n}",
         "title": "An Example of Terminating Clusters"
+      }
+    ],
+    "ExecuteParametrizedQuery": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExecuteParametrizedQuery\n<Common request parameters>\n\n{\n    \"Database\": \"abc\",\n    \"Sql\": \"abc\",\n    \"QueryParameter\": [\n        {\n            \"PropertyKey\": \"abc\",\n            \"PropertyValue\": \"abc\"\n        }\n    ],\n    \"PageNum\": 1,\n    \"PageSize\": 1,\n    \"UserName\": \"abc\",\n    \"PassWord\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Fields\": [\n            \"abc\"\n        ],\n        \"FieldTypes\": [\n            \"abc\"\n        ],\n        \"Rows\": [\n            {\n                \"DataRow\": [\n                    \"abc\"\n                ]\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying with Parameters"
+      }
+    ],
+    "ExecuteSelectQuery": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ExecuteSelectQuery\n<Common request parameters>\n\n{\n    \"Database\": \"abc\",\n    \"Query\": \"abc\",\n    \"PageNum\": 1,\n    \"PageSize\": 1,\n    \"UserName\": \"abc\",\n    \"PassWord\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Fields\": [\n            \"abc\"\n        ],\n        \"FieldTypes\": [\n            \"abc\"\n        ],\n        \"Rows\": [\n            {\n                \"DataRow\": [\n                    \"abc\"\n                ]\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying According to SQL"
+      }
+    ],
+    "InsertDatasToTable": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InsertDatasToTable\n<Common request parameters>\n\n{\n    \"Database\": \"abc\",\n    \"Table\": \"abc\",\n    \"Strict\": true,\n    \"MaxFilterRatio\": 0,\n    \"Columns\": [\n        \"abc\"\n    ],\n    \"Rows\": [\n        {\n            \"DataRow\": [\n                \"abc\"\n            ]\n        }\n    ],\n    \"Label\": \"abc\",\n    \"UserName\": \"abc\",\n    \"PassWord\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Success\": true,\n        \"Message\": \"abc\",\n        \"InsertCount\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Inserting"
+      }
+    ],
+    "ModifyDatabaseTableAccess": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDatabaseTableAccess\n<Common request parameters>\n\n{\n    \"Database\": \"abc\",\n    \"Table\": \"abc\",\n    \"Privileges\": [\n        \"abc\"\n    ],\n    \"Role\": \"abc\",\n    \"GrantOrRevoke\": \"abc\",\n    \"UserName\": \"abc\",\n    \"PassWord\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Success\": true,\n        \"Message\": \"Permissions granted successfully.\",\n        \"RequestId\": \"xxxx-xxxx-xxxx-xxxx\"\n    }\n}",
+        "title": "Authorization"
       }
     ],
     "ModifyInstance": [
@@ -110,12 +390,100 @@
         "title": "Modifying Instance Information"
       }
     ],
+    "ModifyInstanceKeyValConfigs": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceKeyValConfigs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"123\",\n    \"DelItems\": [\n        {\n            \"ConfKey\": \"123\",\n            \"ConfValue\": \"123\"\n        }\n    ],\n    \"FileName\": \"123\",\n    \"UpdateItems\": [\n        {\n            \"ConfKey\": \"123\",\n            \"ConfValue\": \"123\"\n        }\n    ],\n    \"Message\": \"123\",\n    \"AddItems\": [\n        {\n            \"ConfKey\": \"123\",\n            \"ConfValue\": \"123\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"123\",\n        \"RequestId\": \"123\",\n        \"FlowId\": 0\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "ModifyNodeStatus": [
+      {
+        "document": "This example shows you how to change the node status.",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyNodeStatus\n<Common request parameters>\n\n{\n    \"InstanceId\": \"11\",\n    \"NodeInfos\": [\n        {\n            \"Status\": 0,\n            \"Ip\": \"11\",\n            \"NodeRole\": \"11\",\n            \"NodeName\": \"11\"\n        }\n    ],\n    \"OperationCode\": \"11\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx-xxx\",\n        \"FlowId\": 0,\n        \"ErrorMsg\": \"\"\n    }\n}",
+        "title": "Changing the Node Status"
+      }
+    ],
+    "ModifySecurityGroups": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySecurityGroups\n<Common request parameters>\n\n{\n    \"InstanceId\": \"abc\",\n    \"OldSecurityGroupIds\": [\n        \"abc\"\n    ],\n    \"ModifySecurityGroupIds\": [\n        \"abc\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Editing the Security Group"
+      }
+    ],
+    "ModifyUserBindWorkloadGroup": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyUserBindWorkloadGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"abc\",\n    \"BindUsers\": [\n        {\n            \"UserName\": \"test\",\n            \"Host\": \"%\"\n        },\n        {\n            \"UserName\": \"test\",\n            \"Host\": \"127.0.0.1\"\n        }\n    ],\n    \"OldWorkloadGroupName\": \"abc\",\n    \"NewWorkloadGroupName\": \"abc1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Modifying the Resource Group Bound to the User"
+      }
+    ],
+    "ModifyUserPrivilegesV3": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyUserPrivilegesV3\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-xx\",\n    \"UserName\": \"test\",\n    \"UserPrivileges\": {\n        \"IsSetGlobalCatalog\": true\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"InstanceId\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Setting Global Catalog Permissions"
+      }
+    ],
+    "ModifyWorkloadGroup": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyWorkloadGroup\n<Common request parameters>\n\n{\n    \"InstanceId\": \"abc\",\n    \"WorkloadGroup\": {\n        \"WorkloadGroupName\": \"abc\",\n        \"CpuShare\": 10,\n        \"MemoryLimit\": 10,\n        \"EnableMemoryOverCommit\": true\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Modifying the Resource Group Information"
+      }
+    ],
+    "ModifyWorkloadGroupStatus": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyWorkloadGroupStatus\n<Common request parameters>\n\n{\n    \"InstanceId\": \"abc\",\n    \"OperationType\": \"open\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Enabling or Disabling the Resource Group"
+      }
+    ],
+    "QueryTableData": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryTableData\n<Common request parameters>\n\n{\n    \"Database\": \"abc\",\n    \"Table\": \"abc\",\n    \"SelectedFields\": [\n        \"abc\"\n    ],\n    \"PageNum\": 1,\n    \"PageSize\": 1,\n    \"UserName\": \"abc\",\n    \"PassWord\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Fields\": [\n            \"abc\"\n        ],\n        \"FieldTypes\": [\n            \"abc\"\n        ],\n        \"Rows\": [\n            {\n                \"DataRow\": [\n                    \"abc\"\n                ]\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying the Table"
+      }
+    ],
+    "RecoverBackUpJob": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecoverBackUpJob\n<Common request parameters>\n\n{\n    \"InstanceId\": \"1\",\n    \"BackUpJobId\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "ReduceInstance": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ReduceInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-xqewrqx\",\n    \"Type\": \"MASTER\",\n    \"DelHosts\": [\n        \"10.0.1.12\"\n    ],\n    \"HaType\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"FlowId\": \"1231\",\n        \"InstanceId\": \"cdwdoris-xqewrqx\",\n        \"ErrorMsg\": \"\",\n        \"RequestId\": \"xasdfkqe2-a12q29-axdfas\"\n    }\n}",
+        "title": "Scale-in API"
+      }
+    ],
     "ResizeDisk": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResizeDisk\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-asdfxw\",\n    \"Type\": \"CORE\",\n    \"DiskSize\": 3000\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": \"1231\",\n        \"InstanceId\": \"cdwch-auqej7a\",\n        \"ErrorMsg\": \"\",\n        \"RequestId\": \"xasdfkqe2-a12q29-axdfas\"\n    }\n}",
         "title": "An Example of Cloud Disk Expansion"
+      }
+    ],
+    "RestartClusterForConfigs": [
+      {
+        "document": "This example shows you how to modify the cluster API on the cluster configuration page.",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RestartClusterForConfigs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"1\",\n    \"ConfigName\": \"11\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx-xxx\",\n        \"FlowId\": 0,\n        \"ErrorMsg\": \"\"\n    }\n}",
+        "title": "Modifying the Cluster Configuration API"
       }
     ],
     "RestartClusterForNode": [
@@ -140,6 +508,22 @@
         "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ScaleUpInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-xad3fa9\",\n    \"SpecName\": \"S_8_32_H\",\n    \"Type\": \"CORE\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": \"1231\",\n        \"InstanceId\": \"cdwch-auqej7a\",\n        \"ErrorMsg\": \"\",\n        \"RequestId\": \"xasdfkqe2-a12q29-axdfas\"\n    }\n}",
         "title": "An Example of Vertical Configuration Adjustment of Nodes"
+      }
+    ],
+    "UpdateDatabase": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateDatabase\n<Common request parameters>\n\n{\n    \"DbName\": \"xxx\",\n    \"Operation\": \"SET_QUOTA\",\n    \"Quota\": \"10T\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Success\": true,\n        \"Message\": \"Database quota set successfully.\",\n        \"RequestId\": \"xxxx-xxxx-xxxx-xxxx\"\n    }\n}",
+        "title": "Updating"
+      }
+    ],
+    "UpdateTableSchema": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateTableSchema\n<Common request parameters>\n\n{\n    \"InstanceId\": \"abc\",\n    \"UserName\": \"abc\",\n    \"PassWord\": \"abc\",\n    \"DbName\": \"abc\",\n    \"TableName\": \"abc\",\n    \"Columns\": [\n        {\n            \"Name\": \"abc\",\n            \"Type\": \"abc\",\n            \"AggType\": \"abc\",\n            \"IsNull\": true,\n            \"IsKey\": true,\n            \"DefaultValue\": \"abc\",\n            \"IsPartition\": true,\n            \"IsDistribution\": true,\n            \"AutoInc\": true,\n            \"Comment\": \"abc\"\n        }\n    ],\n    \"IndexInfos\": [\n        {\n            \"IdxName\": \"abc\",\n            \"ColumnName\": \"abc\",\n            \"IdxType\": \"abc\",\n            \"IdxProperties\": [\n                {\n                    \"PropertyKey\": \"abc\",\n                    \"PropertyValue\": \"abc\"\n                }\n            ],\n            \"IdxComment\": \"abc\"\n        }\n    ],\n    \"Distribution\": {\n        \"DistributionType\": \"abc\",\n        \"Count\": 0\n    },\n    \"TableComment\": \"abc\",\n    \"Properties\": [\n        {\n            \"PropertyKey\": \"abc\",\n            \"PropertyValue\": \"abc\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx-xxx-xxx\"\n    }\n}",
+        "title": "Modifying the Table"
       }
     ]
   },
