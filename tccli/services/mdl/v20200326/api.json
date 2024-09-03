@@ -1581,7 +1581,7 @@
         },
         {
           "disabled": false,
-          "document": "Input type\nValid values: `RTMP_PUSH`, `RTP_PUSH`, `UDP_PUSH`, `RTMP_PULL`, `HLS_PULL`, `MP4_PULL`",
+          "document": "Input type\nValid values: `RTMP_PUSH`, `RTP_PUSH`, `UDP_PUSH`, `RTMP_PULL`, `HLS_PULL`, `MP4_PULL`,`RTP-FEC_PUSH`,`RTSP_PULL`,`SRT_PUSH `,`SRT_PULL `",
           "example": "RTMP_PUSH",
           "member": "string",
           "name": "Type",
@@ -1599,7 +1599,7 @@
         },
         {
           "disabled": false,
-          "document": "Input settings. For the type `RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.",
+          "document": "Input settings. \nFor the type:\n`RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`,`RTSP_PULL`,`SRT_PULL` or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.\nFor the type:\n`SRT_PUSH`, 0 or 2 inputs of the corresponding type can be configured.",
           "example": "无",
           "member": "InputSettingInfo",
           "name": "InputSettings",

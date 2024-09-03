@@ -1,10 +1,24 @@
 {
   "actions": {
+    "ActionAlterUser": {
+      "document": "This API is used to add and modify a user.",
+      "input": "ActionAlterUserRequest",
+      "name": "Adds and modifies a user",
+      "output": "ActionAlterUserResponse",
+      "status": "online"
+    },
     "CancelBackupJob": {
       "document": "This API is used to cancel the corresponding backup instance task.",
       "input": "CancelBackupJobRequest",
       "name": "Cancels backup instances",
       "output": "CancelBackupJobResponse",
+      "status": "online"
+    },
+    "CheckCoolDownWorkingVariableConfigCorrect": {
+      "document": "This API is used to check whether variables and configurations for hot/cold data layering are correct.",
+      "input": "CheckCoolDownWorkingVariableConfigCorrectRequest",
+      "name": "Checks whether variables and configurations for hot/cold data layering are correct",
+      "output": "CheckCoolDownWorkingVariableConfigCorrectResponse",
       "status": "online"
     },
     "CopyTableDatas": {
@@ -19,6 +33,13 @@
       "input": "CreateBackUpScheduleRequest",
       "name": "Creates or modifies backup policies",
       "output": "CreateBackUpScheduleResponse",
+      "status": "online"
+    },
+    "CreateCoolDownPolicy": {
+      "document": "This API is used to create a hot/cold data layering policy.",
+      "input": "CreateCoolDownPolicyRequest",
+      "name": "Creates a hot/cold data layering policy",
+      "output": "CreateCoolDownPolicyResponse",
       "status": "online"
     },
     "CreateDatabase": {
@@ -52,7 +73,7 @@
     "DeleteBackUpData": {
       "document": "This API is used to delete backup data.",
       "input": "DeleteBackUpDataRequest",
-      "name": "Deletes backup data",
+      "name": "Deletes a backup instance",
       "output": "DeleteBackUpDataResponse",
       "status": "online"
     },
@@ -115,7 +136,7 @@
     "DescribeClusterConfigs": {
       "document": "This API is used to get the contents of the latest configuration files (config.xml, metrika.xml, and user.xml) of the cluster and display them to the user.",
       "input": "DescribeClusterConfigsRequest",
-      "name": "Gets the contents of the cluster configuration file",
+      "name": "Obtains the cluster configuration file",
       "output": "DescribeClusterConfigsResponse",
       "status": "online"
     },
@@ -124,6 +145,34 @@
       "input": "DescribeClusterConfigsHistoryRequest",
       "name": "Obtains the modification history of cluster configuration files",
       "output": "DescribeClusterConfigsHistoryResponse",
+      "status": "online"
+    },
+    "DescribeCoolDownBackends": {
+      "document": "This API is used to query the list of backend nodes supporting hot/cold data layering.",
+      "input": "DescribeCoolDownBackendsRequest",
+      "name": "Queries the list of backend nodes supporting hot/cold data layering",
+      "output": "DescribeCoolDownBackendsResponse",
+      "status": "online"
+    },
+    "DescribeCoolDownPolicies": {
+      "document": "This API is used to query the list of hot/cold data layering policies.",
+      "input": "DescribeCoolDownPoliciesRequest",
+      "name": "Queries the list of hot/cold data layering policies",
+      "output": "DescribeCoolDownPoliciesResponse",
+      "status": "online"
+    },
+    "DescribeCoolDownTableData": {
+      "document": "This API is used to query the layered hot and cold data in a table.",
+      "input": "DescribeCoolDownTableDataRequest",
+      "name": "Queries the layered hot and cold data in a table",
+      "output": "DescribeCoolDownTableDataResponse",
+      "status": "online"
+    },
+    "DescribeCreateTablesDDL": {
+      "document": "This API is used to batch obtain the table creation DDL.",
+      "input": "DescribeCreateTablesDDLRequest",
+      "name": "Obtains the table creation DDL",
+      "output": "DescribeCreateTablesDDLResponse",
       "status": "online"
     },
     "DescribeDatabase": {
@@ -185,7 +234,7 @@
     "DescribeInstanceOperations": {
       "document": "This API is used to pull operations of the cluster on the cluster details page.",
       "input": "DescribeInstanceOperationsRequest",
-      "name": "Pulls the cluster operation list",
+      "name": "Obtains cluster operation audit records",
       "output": "DescribeInstanceOperationsResponse",
       "status": "online"
     },
@@ -253,7 +302,7 @@
       "status": "online"
     },
     "DescribeSqlApis": {
-      "document": "This API is used to query the CK cluster API for the driver SQL command.",
+      "document": "This API is used to query the cluster information by executing SQL commands.",
       "input": "DescribeSqlApisRequest",
       "name": "Queries cluster information through SQL",
       "output": "DescribeSqlApisResponse",
@@ -322,6 +371,20 @@
       "output": "InsertDatasToTableResponse",
       "status": "online"
     },
+    "ModifyClusterConfigs": {
+      "document": "This API is used to modify the XML cluster configuration file on the cluster configuration page.",
+      "input": "ModifyClusterConfigsRequest",
+      "name": "Modifies the cluster configuration file",
+      "output": "ModifyClusterConfigsResponse",
+      "status": "online"
+    },
+    "ModifyCoolDownPolicy": {
+      "document": "This API is used to modify the hot/cold data layering policy.",
+      "input": "ModifyCoolDownPolicyRequest",
+      "name": "Modifies hot/cold data layering policy",
+      "output": "ModifyCoolDownPolicyResponse",
+      "status": "online"
+    },
     "ModifyDatabaseTableAccess": {
       "document": "This API is used to GRANT and REVOKE the database and table in the Doris database.",
       "input": "ModifyDatabaseTableAccessRequest",
@@ -339,7 +402,7 @@
     "ModifyInstanceKeyValConfigs": {
       "document": "This API is used to modify configurations in the KV mode.",
       "input": "ModifyInstanceKeyValConfigsRequest",
-      "name": "API for modifying configurations in KV mode",
+      "name": "Modifies the BE or FE configuration",
       "output": "ModifyInstanceKeyValConfigsResponse",
       "status": "online"
     },
@@ -367,7 +430,7 @@
     "ModifyUserPrivilegesV3": {
       "document": "This API is used to modify user permissions and support three permission setting categories: catalog, all db, and some db tables.",
       "input": "ModifyUserPrivilegesV3Request",
-      "name": "API for modifying permissions",
+      "name": "Modifies permissions",
       "output": "ModifyUserPrivilegesV3Response",
       "status": "online"
     },
@@ -385,6 +448,20 @@
       "output": "ModifyWorkloadGroupStatusResponse",
       "status": "online"
     },
+    "OpenCoolDown": {
+      "document": "This API is used to enable hot/cold data layering.",
+      "input": "OpenCoolDownRequest",
+      "name": "Enables hot/cold data layering",
+      "output": "OpenCoolDownResponse",
+      "status": "online"
+    },
+    "OpenCoolDownPolicy": {
+      "document": "This API is used to enable and describe the cold storage policy.",
+      "input": "OpenCoolDownPolicyRequest",
+      "name": "Enables the hot/cold data layering policy",
+      "output": "OpenCoolDownPolicyResponse",
+      "status": "online"
+    },
     "QueryTableData": {
       "document": "This API is used to query data according to the specified database and table names, and support field selection and pagination.",
       "input": "QueryTableDataRequest",
@@ -395,7 +472,7 @@
     "RecoverBackUpJob": {
       "document": "This API is used to back up and recover.",
       "input": "RecoverBackUpJobRequest",
-      "name": "Backs up and recovers",
+      "name": "Recovers the data that has been backed up",
       "output": "RecoverBackUpJobResponse",
       "status": "online"
     },
@@ -439,6 +516,13 @@
       "input": "ScaleUpInstanceRequest",
       "name": "Scales up/down computing resources",
       "output": "ScaleUpInstanceResponse",
+      "status": "online"
+    },
+    "UpdateCoolDown": {
+      "document": "This API is used to update the hot/cold data layering information on a cluster.",
+      "input": "UpdateCoolDownRequest",
+      "name": "Updates the hot/cold data layering information on a cluster",
+      "output": "UpdateCoolDownResponse",
       "status": "online"
     },
     "UpdateDatabase": {
@@ -500,6 +584,61 @@
         }
       ],
       "usage": "both"
+    },
+    "ActionAlterUserRequest": {
+      "document": "ActionAlterUser request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User information",
+          "example": "cdwch-xxxx",
+          "member": "UserInfo",
+          "name": "UserInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "API type",
+          "example": "AddSystemUser",
+          "member": "string",
+          "name": "ApiType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User permission type. 0: ordinary user; 1: administrator.",
+          "example": "1",
+          "member": "int64",
+          "name": "UserPrivilege",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ActionAlterUserResponse": {
+      "document": "ActionAlterUser response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Error message\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "AttachCBSSpec": {
       "document": "Specifications of nodes in the cluster and disk specifications description",
@@ -1093,6 +1232,43 @@
       ],
       "usage": "both"
     },
+    "CheckCoolDownWorkingVariableConfigCorrectRequest": {
+      "document": "CheckCoolDownWorkingVariableConfigCorrect request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cdwdoris-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CheckCoolDownWorkingVariableConfigCorrectResponse": {
+      "document": "CheckCoolDownWorkingVariableConfigCorrect response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Error message\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "error",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ClusterConfigsHistory": {
       "document": "Modification history of the cluster configuration files",
       "members": [
@@ -1417,6 +1593,191 @@
       ],
       "usage": "out"
     },
+    "ConfigSubmitContext": {
+      "document": "Configuration file modification information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Configuration file's name",
+          "example": "config.xml",
+          "member": "string",
+          "name": "FileName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "New Base64-encoded content of the configuration file",
+          "example": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHlhbmRleD4K",
+          "member": "string",
+          "name": "NewConfValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Original Base64-encoded content of the configuration file",
+          "example": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHlhbmRleD4K",
+          "member": "string",
+          "name": "OldConfValue",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File path",
+          "example": "/use/local/server/",
+          "member": "string",
+          "name": "FilePath",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "in"
+    },
+    "CoolDownBackend": {
+      "document": "Information on the backend node supporting hot/cold data layering",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Field: Host\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Host",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Field: DataUsedCapacity\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DataUsedCapacity",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Field: TotalCapacity\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TotalCapacity",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Field: RemoteUsedCapacity\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RemoteUsedCapacity",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CoolDownPolicyInfo": {
+      "document": "Hot/cold data layering policy",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "PolicyName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "cooldown_ttl\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CooldownDatetime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "cooldown_datetime\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CooldownTtl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CoolDownTableDataInfo": {
+      "document": "Information on the table containing layered cold and hot data",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Column: DatabaseName\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DatabaseName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Column: TableName\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TableName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Column: Size\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Size",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Column: RemoteSize\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RemoteSize",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "CopyTableDatasRequest": {
       "document": "CopyTableDatas request structure.",
       "members": [
@@ -1652,6 +2013,70 @@
     "CreateBackUpScheduleResponse": {
       "document": "CreateBackUpSchedule response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCoolDownPolicyRequest": {
+      "document": "CreateCoolDownPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cdwdoris-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy name",
+          "example": "abc",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "cooldown_ttl",
+          "example": "abc",
+          "member": "string",
+          "name": "CoolDownTtl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "cooldown_datetime",
+          "example": "abc",
+          "member": "string",
+          "name": "CoolDownDatetime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateCoolDownPolicyResponse": {
+      "document": "CreateCoolDownPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Error message\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "error",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -2069,7 +2494,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Message",
@@ -2085,6 +2510,34 @@
         }
       ],
       "type": "object"
+    },
+    "CreateTablesDDL": {
+      "document": "DDL information for creating a table",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "demo",
+          "member": "string",
+          "name": "DbName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "DDL information of the table\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TablesDDL",
+          "name": "TablesDDLs",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "CreateWorkloadGroupRequest": {
       "document": "CreateWorkloadGroup request structure.",
@@ -2335,6 +2788,34 @@
       ],
       "usage": "both"
     },
+    "DbTablesInfo": {
+      "document": "Database and table information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Database name\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "demo",
+          "member": "string",
+          "name": "DbName",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The corresponding table list under this database.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "TablesName",
+          "output_required": false,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "DeleteBackUpDataRequest": {
       "document": "DeleteBackUpData request structure.",
       "members": [
@@ -2358,7 +2839,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to delete all data",
+          "document": "Whether to delete all instances",
           "example": "true",
           "member": "bool",
           "name": "IsDeleteAll",
@@ -2995,6 +3476,239 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCoolDownBackendsRequest": {
+      "document": "DescribeCoolDownBackends request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cdwdoris-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCoolDownBackendsResponse": {
+      "document": "DescribeCoolDownBackends response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Error message\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "error",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node information list\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CoolDownBackend",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCoolDownPoliciesRequest": {
+      "document": "DescribeCoolDownPolicies request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cdwdoris-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCoolDownPoliciesResponse": {
+      "document": "DescribeCoolDownPolicies response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Error message\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "error",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "List of hot/cold data layering policies\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CoolDownPolicyInfo",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCoolDownTableDataRequest": {
+      "document": "DescribeCoolDownTableData request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cdwdoris-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Database name",
+          "example": "无",
+          "member": "string",
+          "name": "DatabaseName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCoolDownTableDataResponse": {
+      "document": "DescribeCoolDownTableData response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Error message\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "error",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "List of tables containing layered hot and cold data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CoolDownTableDataInfo",
+          "name": "List",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCreateTablesDDLRequest": {
+      "document": "DescribeCreateTablesDDL request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID, TCHouse-D resource ID.",
+          "example": "cdwdoris-bjizjxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Require the database and table for the table creation DDL.",
+          "example": "无",
+          "member": "DbTablesInfo",
+          "name": "DbTablesInfos",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.",
+          "example": "user",
+          "member": "string",
+          "name": "UserName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.",
+          "example": "***",
+          "member": "string",
+          "name": "PassWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to hide partition information",
+          "example": "false",
+          "member": "bool",
+          "name": "IsBrief",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCreateTablesDDLResponse": {
+      "document": "DescribeCreateTablesDDL response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "DDL information for creating a table\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CreateTablesDDL",
+          "name": "CreateTablesDDLs",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4010,7 +4724,7 @@
         },
         {
           "disabled": false,
-          "document": "\"\" or a cluster ID",
+          "document": "If this parameter is left blank, all clusters corresponding to the current appId are involved. Otherwise, a specific cluster is involved.",
           "example": "\"\"",
           "member": "string",
           "name": "Input",
@@ -4025,7 +4739,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Output parameter\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Base64-encoded data, which contains the cluster health information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xxx",
           "member": "string",
           "name": "Data",
@@ -4936,7 +5650,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Table data model: \nAGG_KEY: aggregation model; \nUNI_KEY: primary key model; \nDUP_KEY: detail model",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "AGG_KEY",
           "member": "string",
           "name": "KeysType",
@@ -4946,7 +5660,7 @@
         },
         {
           "disabled": false,
-          "document": "Table column information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Column",
           "name": "Columns",
@@ -4956,7 +5670,7 @@
         },
         {
           "disabled": false,
-          "document": "Index information. The inverted index and N-Gram index can be viewed through this parameter.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "IndexInfo",
           "name": "IndexInfos",
@@ -4966,7 +5680,7 @@
         },
         {
           "disabled": false,
-          "document": "Partition information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Partition",
           "name": "Partition",
@@ -4976,7 +5690,7 @@
         },
         {
           "disabled": false,
-          "document": "Bucket information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Distribution",
           "name": "Distribution",
@@ -4986,7 +5700,7 @@
         },
         {
           "disabled": false,
-          "document": "Table description\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "This is a table",
           "member": "string",
           "name": "TableComment",
@@ -4996,7 +5710,7 @@
         },
         {
           "disabled": false,
-          "document": "Table attributes\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "Property",
           "name": "Properties",
@@ -5006,7 +5720,7 @@
         },
         {
           "disabled": false,
-          "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Message",
@@ -5882,6 +6596,23 @@
       ],
       "usage": "in"
     },
+    "InstanceDetail": {
+      "document": "Detail field of the Instance table",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether the alarm policy is available\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "bool",
+          "member": "bool",
+          "name": "EnableAlarmStrategy",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "InstanceInfo": {
       "document": "Instance description information",
       "members": [
@@ -6354,6 +7085,36 @@
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance extension information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "InstanceDetail",
+          "name": "Details",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable DLC. 0: disable; 1: enable.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "EnableDlc",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Account type. 0: ordinary user; 1: CAM user.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "AccountType",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -6617,6 +7378,135 @@
         }
       ],
       "usage": "both"
+    },
+    "ModifyClusterConfigsRequest": {
+      "document": "ModifyClusterConfigs request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID, for example, cdwch-xxxx",
+          "example": "cdwch-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration file modification information",
+          "example": "无",
+          "member": "ConfigSubmitContext",
+          "name": "ModifyConfContext",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Reason for modification",
+          "example": "为了性能提升",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyClusterConfigsResponse": {
+      "document": "ModifyClusterConfigs response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Process related information",
+          "example": "-",
+          "member": "int64",
+          "name": "FlowId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "-",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCoolDownPolicyRequest": {
+      "document": "ModifyCoolDownPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cdwdoris-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy name",
+          "example": "abc",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "cooldown_ttl",
+          "example": "abc",
+          "member": "string",
+          "name": "CoolDownTtl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "cooldown_datetime",
+          "example": "abc",
+          "member": "string",
+          "name": "CoolDownDatetime",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCoolDownPolicyResponse": {
+      "document": "ModifyCoolDownPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Error message\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "error",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "ModifyDatabaseTableAccessRequest": {
       "document": "ModifyDatabaseTableAccess request structure.",
@@ -7565,6 +8455,144 @@
         }
       ],
       "usage": "out"
+    },
+    "OpenCoolDownPolicyRequest": {
+      "document": "OpenCoolDownPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "DB name",
+          "example": "无",
+          "member": "string",
+          "name": "DatabaseName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Table name",
+          "example": "无",
+          "member": "string",
+          "name": "TableName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operation type",
+          "example": "无",
+          "member": "string",
+          "name": "OperationType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Separate with commas. The DB name is required, for example, db1.tb1,db1.tb2,db2.tb1.",
+          "example": "无",
+          "member": "string",
+          "name": "BatchOpenCoolDownTables",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy name required for binding",
+          "example": "无",
+          "member": "string",
+          "name": "PolicyName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Separate with commas, for example, p1,p2,p3.",
+          "example": "无",
+          "member": "string",
+          "name": "BatchOpenCoolDownPartitions",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenCoolDownPolicyResponse": {
+      "document": "OpenCoolDownPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "无",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Returned information",
+          "example": "无",
+          "member": "string",
+          "name": "QueryDocument",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenCoolDownRequest": {
+      "document": "OpenCoolDown request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cdwdoris-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "OpenCoolDownResponse": {
+      "document": "OpenCoolDown response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Error message\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "error",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "Partition": {
       "document": "Partition information of the table",
@@ -9336,6 +10364,34 @@
       ],
       "usage": "both"
     },
+    "TablesDDL": {
+      "document": "DDL information of the table",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Table name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "unique_alltype_col13",
+          "member": "string",
+          "name": "TableName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "DDL statement for creating a table\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "CREATE TABLE `unique_alltype_col13` (`date` ...",
+          "member": "string",
+          "name": "DDLInfo",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "Tag": {
       "document": "Tag description",
       "members": [
@@ -9361,6 +10417,61 @@
         }
       ],
       "usage": "both"
+    },
+    "UpdateCoolDownRequest": {
+      "document": "UpdateCoolDown request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster ID",
+          "example": "cdwdoris-xxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable. 0: disable; 1: enable.",
+          "example": "1",
+          "member": "int64",
+          "name": "Enable",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Address of the COS bucket where the user stores layered hot and cold data",
+          "example": "abc",
+          "member": "string",
+          "name": "Bucket",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCoolDownResponse": {
+      "document": "UpdateCoolDown response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Error message\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "error",
+          "member": "string",
+          "name": "ErrorMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UpdateDatabaseRequest": {
       "document": "UpdateDatabase request structure.",
@@ -9592,6 +10703,93 @@
           "name": "IsSetGlobalCatalog",
           "required": false,
           "type": "bool"
+        }
+      ],
+      "usage": "in"
+    },
+    "UserInfo": {
+      "document": "Add or modify the user",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cluster instance ID.",
+          "example": "cdwch-xxxx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Username",
+          "example": "test",
+          "member": "string",
+          "name": "UserName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Password",
+          "example": "password",
+          "member": "string",
+          "name": "PassWord",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The IP address of the user link",
+          "example": "10.0.2.123",
+          "member": "string",
+          "name": "WhiteHost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IP address of the user link before modification",
+          "example": "10.0.2.1",
+          "member": "string",
+          "name": "OldWhiteHost",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Description",
+          "example": "描述",
+          "member": "string",
+          "name": "Describe",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Original password",
+          "example": "pwd—***",
+          "member": "string",
+          "name": "OldPwd",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "UIN of the bound sub-user",
+          "example": "123124123",
+          "member": "string",
+          "name": "CamUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Ranger group id list",
+          "example": "[]",
+          "member": "int64",
+          "name": "CamRangerGroupIds",
+          "required": false,
+          "type": "list"
         }
       ],
       "usage": "in"

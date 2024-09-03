@@ -1,11 +1,27 @@
 {
   "actions": {
+    "ActionAlterUser": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ActionAlterUser\n<Common request parameters>\n\n\n\n{\n    \"UserInfo\": {\n        \"InstanceId\": \"abc\",\n        \"UserName\": \"abc\",\n        \"PassWord\": \"abc\",\n        \"WhiteHost\": \"abc\",\n        \"OldWhiteHost\": \"abc\",\n        \"Describe\": \"abc\",\n        \"OldPwd\": \"abc\"\n    },\n    \"ApiType\": \"abc\",\n    \"UserPrivilege\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Adding and Modifying a CK Cluster User"
+      }
+    ],
     "CancelBackupJob": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CancelBackupJob\n<Common request parameters>\n\n{\n    \"InstanceId\": \"abc\",\n    \"BackUpJobId\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "test"
+      }
+    ],
+    "CheckCoolDownWorkingVariableConfigCorrect": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CheckCoolDownWorkingVariableConfigCorrect\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "CopyTableDatas": [
@@ -21,6 +37,14 @@
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateBackUpSchedule\n<Common request parameters>\n\n{\n    \"ScheduleId\": 0,\n    \"WeekDays\": \"1\",\n    \"BackUpTables\": [\n        {\n            \"Table\": \"1\",\n            \"TotalBytes\": 0,\n            \"Database\": \"1\"\n        }\n    ],\n    \"ExecuteHour\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "CreateCoolDownPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateCoolDownPolicy\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"abc\",\n    \"PolicyName\": \"abc\",\n    \"CoolDownTtl\": \"abc\",\n    \"CoolDownDatetime\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Example"
       }
     ],
@@ -59,7 +83,7 @@
     "DeleteBackUpData": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBackUpData\n<Common request parameters>\n\n{\n    \"InstanceId\": \"xx\",\n    \"BackUpJobId\": 0\n}",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteBackUpData\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"abc\",\n    \"BackUpJobId\": 0,\n    \"IsDeleteAll\": true\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Example"
       }
@@ -144,6 +168,38 @@
         "title": "test"
       }
     ],
+    "DescribeCoolDownBackends": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCoolDownBackends\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"List\": [\n            {\n                \"Host\": \"abc\",\n                \"DataUsedCapacity\": \"abc\",\n                \"TotalCapacity\": \"abc\",\n                \"RemoteUsedCapacity\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeCoolDownPolicies": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCoolDownPolicies\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"List\": [\n            {\n                \"PolicyName\": \"abc\",\n                \"CooldownDatetime\": \"abc\",\n                \"CooldownTtl\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeCoolDownTableData": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCoolDownTableData\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"abc\",\n    \"DatabaseName\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"List\": [\n            {\n                \"TableName\": \"abc\",\n                \"Size\": \"abc\",\n                \"RemoteSize\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "DescribeCreateTablesDDL": [
+      {
+        "document": "This example shows you how to obtain the table creation DDL.",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCreateTablesDDL\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-bjizjxxx\",\n    \"DbTablesInfos\": [\n        {\n            \"DbName\": \"demo1\",\n            \"TablesName\": [\n                \"unique_idx_col13\"\n            ]\n        },\n        {\n            \"DbName\": \"demo2\",\n            \"TablesName\": [\n                \"duplicate_list_partition\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"CreateTablesDDLs\": [\n            {\n                \"DbName\": \"demo1\",\n                \"TablesDDLs\": [\n                    {\n                        \"DDLInfo\": \"CREATE TABLE `unique_idx_col13` (\\n  `user_id` LARGEINT NOT NULL COMMENT 'User id',\\n  `date` DATE NOT NULL COMMENT 'Date and time of data import',\\n  `city` VARCHAR(20) NULL COMMENT 'User's city',\\n  `age` SMALLINT NULL COMMENT 'User's age',\\n  `sex` TINYINT NULL COMMENT 'User's gender',\\n  `f6_decimal` DECIMAL(10, 6) NULL COMMENT 'DECIMAL column',\\n  `f7_boolean` BOOLEAN NULL COMMENT 'BOOLEAN column; 0 represents false and 1 represents true.',\\n  `f8_double` DOUBLE NULL COMMENT 'DOUBLE column',\\n  `f9_float` FLOAT NULL COMMENT 'FLOAT column',\\n  `f10_string` TEXT NULL COMMENT 'STRING column',\\n  `last_visit_date` DATETIME NULL COMMENT 'User's last access time',\\n  `cost` BIGINT NULL COMMENT 'User's total consumption, which is 0 by default.',\\n  `max_dwell_time` INT NULL COMMENT 'User's maximum stay time, which is 0 by default.'\\n) ENGINE=OLAP\\nUNIQUE KEY(`user_id`, `date`, `city`)\\nDISTRIBUTED BY HASH(`user_id`) BUCKETS 1\\nPROPERTIES (\\n\\\"replication_allocation\\\" = \\\"tag.location.default: 1\\\",\\n\\\"min_load_replica_num\\\" = \\\"-1\\\",\\n\\\"is_being_synced\\\" = \\\"false\\\",\\n\\\"storage_medium\\\" = \\\"hdd\\\",\\n\\\"storage_format\\\" = \\\"V2\\\",\\n\\\"inverted_index_storage_format\\\" = \\\"V1\\\",\\n\\\"enable_unique_key_merge_on_write\\\" = \\\"true\\\",\\n\\\"light_schema_change\\\" = \\\"true\\\",\\n\\\"disable_auto_compaction\\\" = \\\"false\\\",\\n\\\"enable_single_replica_compaction\\\" = \\\"false\\\",\\n\\\"group_commit_interval_ms\\\" = \\\"10000\\\",\\n\\\"group_commit_data_bytes\\\" = \\\"134217728\\\",\\n\\\"enable_mow_light_delete\\\" = \\\"false\\\"\\n);\",\n                        \"TableName\": \"unique_idx_col13\"\n                    }\n                ]\n            },\n            {\n                \"DbName\": \"demo2\",\n                \"TablesDDLs\": [\n                    {\n                        \"DDLInfo\": \"CREATE TABLE `duplicate_list_partition` (\\n  `user_id` LARGEINT NOT NULL COMMENT 'User ID',\\n  `date` DATE NOT NULL COMMENT 'Date and time of data import',\\n  `city` VARCHAR(20) NOT NULL COMMENT 'User's city',\\n  `age` SMALLINT NULL COMMENT 'User's age',\\n  `sex` TINYINT NULL COMMENT 'User's gender',\\n  `f6_decimal` DECIMAL(10, 6) NULL COMMENT 'DECIMAL column',\\n  `f7_boolean` BOOLEAN NULL COMMENT 'BOOLEAN column; 0 represents false and 1 represents true.',\\n  `f8_double` DOUBLE NULL COMMENT 'DOUBLE column',\\n  `f9_float` FLOAT NULL COMMENT 'FLOAT column',\\n  `f10_string` TEXT NULL COMMENT 'STRING column',\\n  `last_visit_date` DATETIME NULL COMMENT 'User's last access time',\\n  `cost` BIGINT NULL COMMENT 'User's total consumption, which is 0 by default.',\\n  `max_dwell_time` INT NULL COMMENT 'User's maximum stay time, which is 0 by default.'\\n) ENGINE=OLAP\\nDUPLICATE KEY(`user_id`, `date`, `city`)\\nPARTITION BY LIST(`city`)\\n(PARTITION city_bj VALUES IN (\\\"Beijing\\\",\\\"beijing\\\",\\\"BEIJING\\\",\\\"BeiJing\\\",\\\"Beijing\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION city_cd VALUES IN (\\\"Chengdu\\\",\\\"chengdu\\\",\\\"CHENGDU\\\",\\\"ChengDu\\\",\\\"Chengdu\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION city_sh VALUES IN (\\\"Shanghai\\\",\\\"shanghai\\\",\\\"SHANGHAI\\\",\\\"ShangHai\\\",\\\"Shanghai\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p1 VALUES IN (\\\"haha1\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p10 VALUES IN (\\\"haha10\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p11 VALUES IN (\\\"haha11\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p12 VALUES IN (\\\"haha12\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p13 VALUES IN (\\\"haha13\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p14 VALUES IN (\\\"haha14\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p15 VALUES IN (\\\"haha15\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p16 VALUES IN (\\\"haha16\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p17 VALUES IN (\\\"haha17\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p18 VALUES IN (\\\"haha18\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p19 VALUES IN (\\\"haha19\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p2 VALUES IN (\\\"haha2\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p20 VALUES IN (\\\"haha20\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p21 VALUES IN (\\\"haha21\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p22 VALUES IN (\\\"haha22\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p23 VALUES IN (\\\"haha23\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p24 VALUES IN (\\\"haha24\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p25 VALUES IN (\\\"haha25\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p26 VALUES IN (\\\"haha26\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p27 VALUES IN (\\\"haha27\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p28 VALUES IN (\\\"haha28\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p29 VALUES IN (\\\"haha29\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p3 VALUES IN (\\\"haha3\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p30 VALUES IN (\\\"haha30\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p4 VALUES IN (\\\"haha4\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p5 VALUES IN (\\\"haha5\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p6 VALUES IN (\\\"haha6\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p7 VALUES IN (\\\"haha7\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p8 VALUES IN (\\\"haha8\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION add_p9 VALUES IN (\\\"haha9\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION wh_partition_0 VALUES IN (\\\"wuhan0\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION wh_partition_1 VALUES IN (\\\"wuhan1\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION wh_partition_10 VALUES IN (\\\"wuhan10\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION wh_partition_2 VALUES IN (\\\"wuhan2\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION wh_partition_3 VALUES IN (\\\"wuhan3\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION wh_partition_4 VALUES IN (\\\"wuhan4\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION wh_partition_5 VALUES IN (\\\"wuhan5\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION wh_partition_6 VALUES IN (\\\"wuhan6\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION wh_partition_7 VALUES IN (\\\"wuhan7\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION wh_partition_8 VALUES IN (\\\"wuhan8\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"),\\nPARTITION wh_partition_9 VALUES IN (\\\"wuhan9\\\") (\\\"storage_policy\\\" = \\\"20240806-16-48-Cold storage\\\"))\\nDISTRIBUTED BY HASH(`user_id`) BUCKETS 1\\nPROPERTIES (\\n\\\"replication_allocation\\\" = \\\"tag.location.default: 3\\\",\\n\\\"min_load_replica_num\\\" = \\\"-1\\\",\\n\\\"is_being_synced\\\" = \\\"false\\\",\\n\\\"storage_medium\\\" = \\\"hdd\\\",\\n\\\"storage_format\\\" = \\\"V2\\\",\\n\\\"inverted_index_storage_format\\\" = \\\"V1\\\",\\n\\\"light_schema_change\\\" = \\\"true\\\",\\n\\\"disable_auto_compaction\\\" = \\\"false\\\",\\n\\\"enable_single_replica_compaction\\\" = \\\"false\\\",\\n\\\"group_commit_interval_ms\\\" = \\\"10000\\\",\\n\\\"group_commit_data_bytes\\\" = \\\"134217728\\\"\\n);\",\n                        \"TableName\": \"duplicate_list_partition\"\n                    }\n                ]\n            }\n        ],\n        \"Message\": \"\",\n        \"RequestId\": \"f8f5e0af-7d36-4b49-8b4d-9c103deef55a\"\n    }\n}",
+        "title": "Obtaining the Table Creation DDL"
+      }
+    ],
     "DescribeDatabase": [
       {
         "document": "This example shows you how to obtain the database information of the internal data source.",
@@ -217,9 +273,9 @@
     "DescribeInstanceOperations": [
       {
         "document": "This example shows you how to obtain the list of cluster operations.",
-        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceOperations\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwch-exs8Mnql\"\n}",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceOperations\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"cdwch-exs8Mnql\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxx-xxxx-xxxxx-xxxxx\",\n        \"TotalCount\": 2,\n        \"Operations\": [\n            {\n                \"Name\": \"CreateInstance\",\n                \"Desc\": \"Create a cluster\",\n                \"Result\": \"Success\",\n                \"Level\": \"Normal\",\n                \"LevelDesc\": \"General\",\n                \"StartTime\": \"2020-10-22 13:28:53\",\n                \"EndTime\": \"2020-10-22 13:28:53\",\n                \"JobId\": 123\n            },\n            {\n                \"Name\": \"ModifyInstance\",\n                \"Desc\": \"Adjust the cluster's configuration\",\n                \"Result\": \"Success\",\n                \"Level\": \"HighRisk\",\n                \"LevelDesc\": \"High risk\",\n                \"StartTime\": \"2020-10-22 14:38:53\",\n                \"EndTime\": \"2020-10-22 14:38:53\",\n                \"JobId\": 124\n            }\n        ]\n    }\n}",
-        "title": "Obtaining the List of Cluster Operations"
+        "title": "Obtaining the Cluster Operation List"
       }
     ],
     "DescribeInstanceState": [
@@ -296,10 +352,10 @@
     ],
     "DescribeSqlApis": [
       {
-        "document": "查询集群信息",
-        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSqlApis\n<common request parameters>\n\n{}",
+        "document": "Query Cluster Information",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSqlApis\n<Common request parameters>\n\n\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "查询集群信息"
+        "title": "Query Cluster Information"
       }
     ],
     "DescribeTable": [
@@ -374,6 +430,22 @@
         "title": "Inserting"
       }
     ],
+    "ModifyClusterConfigs": [
+      {
+        "document": "This example shows you how to modify the XML cluster configuration file on the cluster configuration page.",
+        "input": "https://cdwdoris.tencentcloudapi.com/\n?Action=ModifyClusterConfigs\n&InstanceId=cdwch-xxxx\n&ModifyConfContext.0.FileName=xxxx\n&ModifyConfContext.0.OldConfValue=xxxxx\n&ModifyConfContext.0.NewConfValue=xxxx\n&Remark=xxxxx\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx-xxx\",\n        \"FlowId\": 0,\n        \"ErrorMsg\": \"\"\n    }\n}",
+        "title": "Modifying the Cluster Configuration File"
+      }
+    ],
+    "ModifyCoolDownPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCoolDownPolicy\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"abc\",\n    \"PolicyName\": \"abc\",\n    \"CoolDownTtl\": \"abc\",\n    \"CoolDownDatetime\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
     "ModifyDatabaseTableAccess": [
       {
         "document": "",
@@ -446,6 +518,22 @@
         "title": "Enabling or Disabling the Resource Group"
       }
     ],
+    "OpenCoolDown": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenCoolDown\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example"
+      }
+    ],
+    "OpenCoolDownPolicy": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenCoolDownPolicy\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"abc\",\n    \"DatabaseName\": \"abc\",\n    \"TableName\": \"abc\",\n    \"OperationType\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"QueryDocument\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Enabling"
+      }
+    ],
     "QueryTableData": [
       {
         "document": "",
@@ -508,6 +596,14 @@
         "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ScaleUpInstance\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdwdoris-xad3fa9\",\n    \"SpecName\": \"S_8_32_H\",\n    \"Type\": \"CORE\"\n}",
         "output": "{\n    \"Response\": {\n        \"FlowId\": \"1231\",\n        \"InstanceId\": \"cdwch-auqej7a\",\n        \"ErrorMsg\": \"\",\n        \"RequestId\": \"xasdfkqe2-a12q29-axdfas\"\n    }\n}",
         "title": "An Example of Vertical Configuration Adjustment of Nodes"
+      }
+    ],
+    "UpdateCoolDown": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdwdoris.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCoolDown\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"abc\",\n    \"Enable\": 1,\n    \"Bucket\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ErrorMsg\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Example"
       }
     ],
     "UpdateDatabase": [
