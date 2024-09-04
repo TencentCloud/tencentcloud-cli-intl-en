@@ -11,7 +11,7 @@ import webbrowser
 from tccli import oauth
 from tccli.plugins.auth import texts
 
-_APP_ID = 700001249938
+_APP_ID = 200038425648
 _AUTH_URL = "https://www.tencentcloud.com/account/open/authorize"
 _REDIRECT_URL = "https://cli.cloud.tencent.com/oauth"
 _SITE = "intl"
@@ -102,6 +102,7 @@ def _get_token_no_browser(state, language):
     redirect_params = {
         "browser": "no",
         "lang": language,
+        "site": _SITE,
     }
     redirect_query = urlencode(redirect_params)
     redirect_url = _REDIRECT_URL + "?" + redirect_query
