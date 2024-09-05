@@ -21,6 +21,13 @@
       "output": "BatchDeregisterTargetsResponse",
       "status": "online"
     },
+    "BatchModifyTargetTag": {
+      "document": "This API is used to modify the tags of real servers bound to CLB listeners in batches. The maximum number of resources that can be modified in a batch is 500. This is a synchronous API. <br/> It is supported for Layer-4 and Layer-7 listeners of CLB instances, but not for classic CLB instances.",
+      "input": "BatchModifyTargetTagRequest",
+      "name": "Modifies tags of real servers bound to listeners in batches",
+      "output": "BatchModifyTargetTagResponse",
+      "status": "online"
+    },
     "BatchModifyTargetWeight": {
       "document": "This API is used to modify forwarding weights of real servers bound to CLB listeners in batches. Up to 500 servers can be unbound in a batch. As this API is async, you should check whether the task is successful by passing the RequestId returned to the API call `DescribeTaskStatus`.<br/> This API is supported by CLB layer-4 and layer-7 listeners, but not Classis CLB counterparts.\n",
       "input": "BatchModifyTargetWeightRequest",
@@ -36,7 +43,7 @@
       "status": "online"
     },
     "CloneLoadBalancer": {
-      "document": "This API is used to create a clone of the source CLB instance with the same forwarding rules and binding relations. Note that this API is asynchronous, which means that changes to the source CLB after invocation of the API are not included in the clone.\n\nLimits:\nInstance attribute restrictions\n  Only pay-as-you-go instances can be cloned. Monthly-subscribed instances cannot be cloned. \n  CLB instances without any billable items cannot be cloned.\n  Classic CLB instances and CLB instances created for Anti-DDoS service cannot be cloned.\n  Classic network-based instances cannot be cloned.\n  IPv6 instances, IPv6 NAT64 instances, and instances bound with both IPv4 and IPv6 cannot be cloned.\n  The following settings will not be cloned: **Custom configuration**, **Redirection configurations**, and **Allow Traffic by Default** in security groups.\n  Before cloning an instance, make sure all certificates used on the instance are valid. Cloning will fail if there are any expired certificates.\nListener restrictions\n  Instances with QUIC listeners or port range listeners cannot be cloned.\n  Private network CLB instances with TCP_SSL listeners cannot be cloned.\n  Instances with layer-7 listeners that have no forwarding rules cannot be cloned.\n  Instances with more than 50 listeners cannot be cloned. \nBackend service restrictions\n  Instances with target groups and SCF cloud functions as the backend services cannot be cloned.\n\nNotes:\nIf you are using a BGP bandwidth package, you need to pass the package ID.\nTo create a dedicated cluster-based CLB by cloning the source CLB, you need to pass the cluster ID. Otherwise, a normal CLB is created.\nThis API is only available for beta users. To try it out, [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&step=1).",
+      "document": "This API is used to clone a CLB instance. CLB instance cloning indicates copying a specified CLB instance to create one with the same rules and binding relationships. The operation of this cloning API is asynchronous. The cloned data is based on the state when CloneLoadBalancer is called. If the cloned CLB instance changes after CloneLoadBalancer is called, the changed rules will not be cloned.Note: You can query the instance creation status by calling the [DescribeTaskStatus](https://intl.cloud.tencent.com/document/product/214/30683?from_cn_redirect=1) API with the returned requestId.RestrictionsInstance attribute restrictions:- Instances billed in pay-as-you-go and monthly subscription modes can be cloned. For a new instance cloned from a monthly subscription instance, its network billing mode will switch to billing by hourly bandwidth, but its bandwidth and specifications will remain the same as the settings of the original instance.- CLB instances not associated with any billable items cannot be cloned.- Classic CLB instances and CLB instances with Anti-DDoS Pro cannot be cloned.- Classic network-based instances cannot be cloned.- Anycast instances cannot be cloned.- IPv6 NAT64 instances cannot be cloned.- Blocked or frozen instances cannot be cloned.- Before cloning an instance, make sure that all certificates used on the instance have not expired; otherwise, the cloning will fail.Quota restrictions:- Instances with more than 50 listeners cannot be cloned.- Shared instances with the public network bandwidth cap exceeding 2 Gbps cannot be cloned.API calling restrictions:The bandwidth package ID must be input for BGP bandwidth packages.Corresponding parameters should be input for cloning of an exclusive cluster; otherwise, a shared instance will be created.The feature is in beta test. You can submit a [beta test application](https://intl.cloud.tencent.com/apply/p/1akuvsmyn0g?from_cn_redirect=1).",
       "input": "CloneLoadBalancerRequest",
       "name": "Clones a CLB instance",
       "output": "CloneLoadBalancerResponse",
@@ -227,7 +234,7 @@
     "DescribeCustomizedConfigAssociateList": {
       "document": "This API is used to query the configured location, bound server or bound CLB instance. If there are domain names, the result will be filtered by domain name.",
       "input": "DescribeCustomizedConfigAssociateListRequest",
-      "name": "Queries the bound server or configured location",
+      "name": "Queries the bound server or location in configurations",
       "output": "DescribeCustomizedConfigAssociateListResponse",
       "status": "online"
     },
@@ -442,7 +449,7 @@
       "status": "online"
     },
     "ModifyLoadBalancerAttributes": {
-      "document": "This API is used to modify the attributes of a CLB instance such as name and cross-region attributes.\nThis is an async API. After it is returned successfully, you can check the task result by calling `DescribeTaskStatus` with the returned `RequestID`.",
+      "document": "This API is used to modify the attributes of a CLB instance, such as name and cross-region attributes.\n\nNote: For CLB instances of bill-by-CVM users, cross-region attributes can be set only after a bandwidth package is purchased.This is an asynchronous API. After it returns a result successfully, the obtained RequestID should be used as an input parameter to call the DescribeTaskStatus API, for checking whether this task succeeds.",
       "input": "ModifyLoadBalancerAttributesRequest",
       "name": "Modifies the attributes of a CLB instance",
       "output": "ModifyLoadBalancerAttributesResponse",
@@ -554,10 +561,17 @@
       "status": "online"
     },
     "SetLoadBalancerSecurityGroups": {
-      "document": "This API (SetLoadBalancerSecurityGroups) is used to bind/unbind security groups for a public network CLB instance. You can use the DescribeLoadBalancers API to query the security groups bound to a CLB instance. This API uses `set` semantics.\nDuring a binding operation, the input parameters need to be all security groups to be bound to the CLB instance (including those already bound ones and new ones).\nDuring an unbinding operation, the input parameters need to be all the security groups still bound to the CLB instance after the unbinding operation. To unbind all security groups, you can leave this parameter empty or pass in an empty array. Note: Private network CLB do not support binding security groups.",
+      "document": "This API is used to configure (bind and unbind) security groups for a public network CLB instance. You can use the DescribeLoadBalancers API to query the security groups currently bound to a CLB instance. This API follows the set semantics.For binding operations, the input parameters should specify all security groups that should be bound (have been bound and will be bound) to the CLB instance.For unbinding operations, the input parameters should specify all security groups bound to a CLB instance after unbinding. If you want to unbind all security groups, you can omit this parameter or input an empty array. Note: After a private network CLB is bound to an EIP, the security groups on the CLB do not take effect for the traffic from the EIP, but take effect for the traffic from the private network CLB.",
       "input": "SetLoadBalancerSecurityGroupsRequest",
       "name": "Configures security groups for a CLB instance",
       "output": "SetLoadBalancerSecurityGroupsResponse",
+      "status": "online"
+    },
+    "SetLoadBalancerStartStatus": {
+      "document": "This API is used to enable or disable a CLB instance or listener.This is an asynchronous API. After it returns a result successfully, the obtained RequestID should be used as an input parameter to call the DescribeTaskStatus API, for checking whether this task succeeds.This feature is currently in beta test. To use it, submit a [ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1) for application.",
+      "input": "SetLoadBalancerStartStatusRequest",
+      "name": "Enables or disables a CLB instance or listener",
+      "output": "SetLoadBalancerStartStatusResponse",
       "status": "online"
     },
     "SetSecurityGroupForLoadbalancers": {
@@ -579,7 +593,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Association array",
+          "document": "Binding relationship array. A single request supports up to 20 items.",
           "example": "无",
           "member": "TargetGroupAssociation",
           "name": "Associations",
@@ -593,7 +607,7 @@
       "document": "AssociateTargetGroups response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -752,7 +766,7 @@
       "document": "AutoRewrite response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -765,91 +779,101 @@
       "members": [
         {
           "disabled": false,
-          "document": "Real server type. Valid values: CVM, ENI.",
-          "example": "",
+          "document": "Real server type. Valid values: CVM, ENI, CCN.",
+          "example": "CVM",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Unique ID of a real server, which can be obtained from the unInstanceId field in the return of the DescribeInstances API",
-          "example": "",
+          "example": "ins-abcd1234",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Listening port of a real server",
-          "example": "",
+          "example": "80",
           "member": "int64",
           "name": "Port",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Forwarding weight of a real server. Value range: [0, 100]. Default value: 10.",
-          "example": "",
+          "example": "10",
           "member": "int64",
           "name": "Weight",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Public IP of a real server\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1.1.1.1",
           "member": "string",
           "name": "PublicIpAddresses",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Private IP of a real server\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "10.0.0.1",
           "member": "string",
           "name": "PrivateIpAddresses",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Real server instance names\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "test-cvm",
           "member": "string",
           "name": "InstanceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Bound time of a real server\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "2021-12-29 14:38:50",
           "member": "string",
           "name": "RegisteredTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Unique ENI ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "eni-1234abcd",
           "member": "string",
           "name": "EniId",
-          "required": true,
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Tag",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": true
         }
@@ -920,7 +944,43 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchModifyTargetTagRequest": {
+      "document": "BatchModifyTargetTag request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CLB instance ID.",
+          "example": "lb-dx98lwo0",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of tags to be modified in batches.",
+          "example": "无",
+          "member": "RsTagRule",
+          "name": "ModifyList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "BatchModifyTargetTagResponse": {
+      "document": "BatchModifyTargetTag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -956,7 +1016,7 @@
       "document": "BatchModifyTargetWeight response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -993,15 +1053,26 @@
       "members": [
         {
           "disabled": false,
-          "document": "IDs of the listeners failed to bind. If this is blank, all listeners are bound successfully.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "document": "ID of the listener failed to bind. Empty indicates all listeners are bound successfully.",
+          "example": "[]",
           "member": "string",
           "name": "FailListenerIdSet",
+          "output_required": true,
           "type": "list",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "disabled": false,
+          "document": "Information of the binding failure cause.",
+          "example": "IP  x.x.x.x not found.",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -1015,12 +1086,11 @@
         {
           "disabled": false,
           "document": "Listener ID.",
-          "example": "lb-cuxw****",
+          "example": "lbl-2gas****",
           "member": "string",
           "name": "ListenerId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -1029,8 +1099,7 @@
           "member": "int64",
           "name": "Port",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -1039,8 +1108,7 @@
           "member": "string",
           "name": "InstanceId",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -1049,8 +1117,7 @@
           "member": "string",
           "name": "EniIp",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -1059,18 +1126,25 @@
           "member": "int64",
           "name": "Weight",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
-          "document": "Layer-7 rule ID.",
+          "document": "Layer-7 rule ID. This parameter is required for Layer-7 CLB.",
           "example": "lbl-4apy****",
           "member": "string",
           "name": "LocationId",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tag.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Tag",
+          "required": false,
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -1473,180 +1547,180 @@
         {
           "disabled": false,
           "document": "CLB listener ID",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ListenerId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "CLB listener port",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "ListenerPort",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Backend forwarding port of a listener",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "InstancePort",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Listener name",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ListenerName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Listener protocol type",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Protocol",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Session persistence time",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "SessionExpire",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether health check is enabled. 1: enabled; 0: disabled.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "HealthSwitch",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Response timeout period",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "TimeOut",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Check interval",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "IntervalTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Health threshold",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "HealthNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Unhealthy threshold",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "UnhealthNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "A request balancing method for HTTP and HTTPS listeners of a public network classic CLB. wrr means weighted round robin, while ip_hash means consistent hashing based on source IPs of access requests.",
-          "example": "",
+          "document": "Request balancing method for listeners of the classic public network CLB. An empty string or wrr indicates weighted round robin. ip_hash indicates consistent hashing based on the accessed source IP address. least_conn indicates least connections.",
+          "example": "无",
           "member": "string",
           "name": "HttpHash",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Health check return code for HTTP and HTTPS listeners of a public network classic CLB. For more information, see the explanation of the field in the listener creating API.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "HttpCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Health check path for HTTP and HTTPS listeners of a public network classic CLB",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "HttpCheckPath",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Authentication method for an HTTPS listener of a public network classic CLB",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "SSLMode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Server certificate ID for an HTTPS listener of a public network classic CLB",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "CertId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Client certificate ID for an HTTPS listener of a public network classic CLB",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "CertCaId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Listener status. Value range: 0 (creating), 1 (running)",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -2111,14 +2185,15 @@
         {
           "disabled": false,
           "document": "Logset ID.",
-          "example": "",
+          "example": "578dd0ad-2e7c-488b-b5fe-0b23da3537eb",
           "member": "string",
           "name": "LogsetId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2299,6 +2374,15 @@
           "name": "SnatEnable",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[600]",
+          "member": "int64",
+          "name": "FullEndPorts",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2402,7 +2486,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the primary AZ for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`. It's only available to public CLB instances. \nNote: The traffic only goes to the primary AZ in normal cases. The secondary AZ is used only when the primary AZ is unavailable. To query the list of primary AZs in a region, use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).",
+          "document": "ID of the primary availability zone configured for cross-availability zone disaster recovery, such as 100001 or ap-guangzhou-1. It applies only to public network CLB.Note: The primary availability zone is the one that carries traffic. The replica availability zone does not carry traffic by default and is only used when the primary availability zone is unavailable. Currently, primary and replica availability zones are supported only for the IPv4 CLB instances in the regions of Guangzhou, Shanghai, Nanjing, Beijing, Chengdu, Shenzhen Finance Zone, Hong Kong (China), Seoul, Frankfurt, and Singapore. You can query the list of primary availability zones in a region through the [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1) API.",
           "example": "ap-guangzhou-1",
           "member": "string",
           "name": "MasterZoneId",
@@ -2420,7 +2504,7 @@
         },
         {
           "disabled": false,
-          "document": "It only works on LCU-supported instances on private networks and all instances on public networks.",
+          "document": "Maximum outbound bandwidth under the network billing mode. It applies only to LCU-supported instances of the private network type and all instances of the public network type.",
           "example": "无",
           "member": "InternetAccessible",
           "name": "InternetAccessible",
@@ -2456,7 +2540,7 @@
         },
         {
           "disabled": false,
-          "document": "Bandwidth package ID. If this parameter is specified, the network billing mode (`InternetAccessible.InternetChargeType`) will only support bill-by-bandwidth package (`BANDWIDTH_PACKAGE`).",
+          "document": "Bandwidth package ID. If this parameter is specified, the network billing mode (InternetAccessible.InternetChargeType) will only support billing by bandwidth package (BANDWIDTH_PACKAGE). The attributes of the bandwidth package determine the settlement method. For IPv6 CLB instances purchased by bill-by-CVM users, if the ISP type is not BGP, the bandwidth package ID cannot be specified.",
           "example": "bwp-pnbe****",
           "member": "string",
           "name": "BandwidthPackageId",
@@ -2474,12 +2558,21 @@
         },
         {
           "disabled": false,
-          "document": "Specification of LCU-supported instance.\n<ul><li>This parameter is required to create LCU-supported instances. Values: <ul><li>`SLA`: Super Large 4. When you have activated Super Large models, `SLA` refers to Super Large 4.</li><li>`clb.c2.medium`: Standard</li><li>`clb.c3.small`: Advanced 1</li><li>`clb.c3.medium`: Advanced 1</li><li>`clb.c4.small`: Super Large 1</li><li>`clb.c4.medium`: Super Large 2</li><li>`clb.c4.large`: Super Large 3</li><li>`clb.c4.xlarge`: Super Large 4</li> For Super Large 2 and above models, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).</ul></li><li> This parameter is not required for creating shared instances.</li></ul>For more details, see [Instance Specifications](https://intl.cloud.tencent.com/document/product/214/84689?from_cn_redirect=1).",
-          "example": "无",
+          "document": "Specification of the LCU-supported instance.<ul><li>If you need to create an LCU-supported instance, this parameter is required. Valid values:<ul><li> clb.c2.medium: Standard </li><li> clb.c3.small: Advanced 1 </li><li> clb.c3.medium: Advanced 2 </li><li> clb.c4.small: Super Large 1 </li><li> clb.c4.medium: Super Large 2 </li><li> clb.c4.large: Super Large 3 </li><li> clb.c4.xlarge: Super Large 4 </li></ul></li><li>If you need to create a shared instance, this parameter is not required.</li></ul> For specification details, see [Instance Specifications Comparison](https://intl.cloud.tencent.com/document/product/214/84689?from_cn_redirect=1).",
+          "example": "clb.c2.medium",
           "member": "string",
           "name": "SlaType",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cluster ID. This cluster identifier is used for configuring a public cloud exclusive cluster or a cloud dedicated cluster. To apply for a public cloud exclusive cluster, [submit a ticket](https://console.cloud.tencent.com/workorder/category). For cloud dedicated clusters, see the descriptions in [Cloud Dedicated Cluster](https://intl.cloud.tencent.com/document/product/1346?from_cn_redirect=1).",
+          "example": "[\"cluster-gbo2****\"]",
+          "member": "string",
+          "name": "ClusterIds",
+          "required": false,
+          "type": "list"
         },
         {
           "disabled": false,
@@ -2561,6 +2654,15 @@
           "name": "Egress",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Prepaid billing attributes of a CLB instance",
+          "example": "无",
+          "member": "LBChargePrepaid",
+          "name": "LBChargePrepaid",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2574,7 +2676,7 @@
           "example": "[\"lb-6efswuxa\"]",
           "member": "string",
           "name": "LoadBalancerIds",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -2584,12 +2686,12 @@
           "example": "2022XXXX",
           "member": "string",
           "name": "DealName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2634,7 +2736,7 @@
       "document": "CreateLoadBalancerSnatIps response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2689,7 +2791,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2703,7 +2805,7 @@
         {
           "disabled": false,
           "document": "Target group name (up to 50 characters)",
-          "example": "",
+          "example": "test-name",
           "member": "string",
           "name": "TargetGroupName",
           "required": false,
@@ -2712,7 +2814,7 @@
         {
           "disabled": false,
           "document": "`vpcid` attribute of a target group. If this parameter is left empty, the default VPC will be used.",
-          "example": "",
+          "example": "vpc-i1******",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -2720,8 +2822,8 @@
         },
         {
           "disabled": false,
-          "document": "Default port of a target group, which can be used for subsequently added servers.",
-          "example": "",
+          "document": "Default port of the target group, which can be used for adding servers subsequently. Either the Port or the port in TargetGroupInstances.N should be input.",
+          "example": "80",
           "member": "uint64",
           "name": "Port",
           "required": false,
@@ -2730,7 +2832,7 @@
         {
           "disabled": false,
           "document": "Real server bound to a target group",
-          "example": "",
+          "example": "无",
           "member": "TargetGroupInstance",
           "name": "TargetGroupInstances",
           "required": false,
@@ -2745,14 +2847,15 @@
         {
           "disabled": false,
           "document": "ID generated after target group creation",
-          "example": "",
+          "example": "lbtg-81******",
           "member": "string",
           "name": "TargetGroupId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2792,7 +2895,7 @@
         },
         {
           "disabled": false,
-          "document": "Logset retention period (in days). Default: 30 days.",
+          "document": "Logset retention period, in days. Default value: 30 days. Value range: [1, 3600].",
           "example": "30",
           "member": "uint64",
           "name": "Period",
@@ -2820,12 +2923,12 @@
           "example": "b046ae5f-00cf-4e90-880c-215e5ae7b6xy",
           "member": "string",
           "name": "TopicId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2947,7 +3050,7 @@
       "document": "DeleteListener response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -2983,7 +3086,7 @@
       "document": "DeleteLoadBalancerListeners response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3010,7 +3113,7 @@
       "document": "DeleteLoadBalancer response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3046,7 +3149,7 @@
       "document": "DeleteLoadBalancerSnatIps response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3100,7 +3203,7 @@
       "document": "DeleteRewrite response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3172,7 +3275,7 @@
       "document": "DeleteRule response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3199,7 +3302,7 @@
       "document": "DeleteTargetGroups response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3271,7 +3374,7 @@
       "document": "DeregisterFunctionTargets response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3307,7 +3410,7 @@
       "document": "DeregisterTargetGroupInstances response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3343,7 +3446,7 @@
       "document": "DeregisterTargetsFromClassicalLB response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3415,7 +3518,7 @@
       "document": "DeregisterTargets response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3487,7 +3590,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3523,7 +3626,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3560,7 +3663,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3606,7 +3709,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3674,12 +3777,12 @@
           "example": "无",
           "member": "ClassicalListener",
           "name": "Listeners",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3716,7 +3819,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3753,7 +3856,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3818,7 +3921,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3877,7 +3980,7 @@
           "example": "无",
           "member": "BindDetailItem",
           "name": "BindList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3887,12 +3990,12 @@
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -3966,10 +4069,10 @@
         {
           "disabled": false,
           "document": "Configuration list.",
-          "example": "[{",
+          "example": "[             {                 \"UconfigId\": \"pz-go2gs3d6\",                 \"ConfigType\": \"CLB\",                 \"ConfigContent\": \"client_max_body_size 1m;\",                 \"ConfigName\": \"122222\",                 \"CreateTimestamp\": \"2019-11-28 20:44:24\",                 \"UpdateTimestamp\": \"2020-03-01 11:11:27\"             }         ]",
           "member": "ConfigListItem",
           "name": "ConfigList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3979,12 +4082,12 @@
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4049,7 +4152,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4086,7 +4189,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4145,7 +4248,7 @@
           "example": "无",
           "member": "Listener",
           "name": "Listeners",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4155,12 +4258,12 @@
           "example": "3",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4189,14 +4292,15 @@
         {
           "disabled": false,
           "document": "Certificate ID and list of CLB instances associated with it",
-          "example": "",
+          "example": "无",
           "member": "CertIdRelatedWithLoadBalancers",
           "name": "CertSet",
+          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4218,7 +4322,6 @@
           "example": "0",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4228,7 +4331,6 @@
           "example": "0",
           "member": "int64",
           "name": "RunningCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4238,7 +4340,6 @@
           "example": "0",
           "member": "int64",
           "name": "IsolationCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4248,12 +4349,11 @@
           "example": "0",
           "member": "int64",
           "name": "WillExpireCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4285,12 +4385,11 @@
           "example": "无",
           "member": "LoadBalancerTraffic",
           "name": "LoadBalancerTraffic",
-          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4322,7 +4421,7 @@
         {
           "disabled": false,
           "document": "List of fields. Only fields specified will be returned. If it’s left blank, `null` is returned. The fields `LoadBalancerId` and `LoadBalancerName` are added by default. For details about fields, see <a href=\"https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#LoadBalancerDetail\">LoadBalancerDetail</a>.",
-          "example": "无",
+          "example": "[\"LoadBalancerId\",\"LoadBalancerName\"]",
           "member": "string",
           "name": "Fields",
           "required": false,
@@ -4330,7 +4429,7 @@
         },
         {
           "disabled": false,
-          "document": "Target type. Valid values: NODE and GROUP. If the list of fields contains `TargetId`, `TargetAddress`, `TargetPort`, `TargetWeight` and other fields, `Target` of the target group or non-target group must be exported.",
+          "document": "When the Fields include TargetId, TargetAddress, TargetPort, TargetWeight, ListenerId, Protocol, Port, LocationId, Domain, and Url, you should select exporting the Target of the target group or a non-target group. Valid values: NODE, GROUP.",
           "example": "NODE",
           "member": "string",
           "name": "TargetType",
@@ -4355,23 +4454,25 @@
         {
           "disabled": false,
           "document": "Total number of lists describing CLB instance details.",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of CLB instance details.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "LoadBalancerDetail",
           "name": "LoadBalancerDetailSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4385,7 +4486,7 @@
         {
           "disabled": false,
           "document": "CLB instance IDs. There can be up to 20 IDs.",
-          "example": "无",
+          "example": "[\"lb-rbw5****\"]",
           "member": "string",
           "name": "LoadBalancerIds",
           "required": false,
@@ -4394,7 +4495,7 @@
         {
           "disabled": false,
           "document": "CLB instance network type:\nOPEN: public network; INTERNAL: private network.",
-          "example": "无",
+          "example": "OPEN",
           "member": "string",
           "name": "LoadBalancerType",
           "required": false,
@@ -4403,7 +4504,7 @@
         {
           "disabled": false,
           "document": "CLB instance type. 1: generic CLB instance; 0: classic CLB instance",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "Forward",
           "required": false,
@@ -4412,7 +4513,7 @@
         {
           "disabled": false,
           "document": "CLB instance name.",
-          "example": "无",
+          "example": "test_internal",
           "member": "string",
           "name": "LoadBalancerName",
           "required": false,
@@ -4421,7 +4522,7 @@
         {
           "disabled": false,
           "document": "The domain name that Tencent Cloud assigned for the CLB instance.",
-          "example": "无",
+          "example": "lb-6m46rm32-se******o0q2g.clb.ap-guangzhou.testclb.com",
           "member": "string",
           "name": "Domain",
           "required": false,
@@ -4430,7 +4531,7 @@
         {
           "disabled": false,
           "document": "VIP address of a CLB instance (there can be multiple addresses)",
-          "example": "无",
+          "example": "[\"44.23.xxx.xxx\"]",
           "member": "string",
           "name": "LoadBalancerVips",
           "required": false,
@@ -4439,7 +4540,7 @@
         {
           "disabled": false,
           "document": "Public IPs of the backend services bound with the load balancer. Only the public IPs of CVMs are supported now.",
-          "example": "无",
+          "example": "[\"102.23.xxx.xxx\"]",
           "member": "string",
           "name": "BackendPublicIps",
           "required": false,
@@ -4448,7 +4549,7 @@
         {
           "disabled": false,
           "document": "Private IPs of the backend services bound with the load balancer. Only the private IPs of CVMs are supported now.",
-          "example": "无",
+          "example": "[\"172.16.xxx.xxx\"]",
           "member": "string",
           "name": "BackendPrivateIps",
           "required": false,
@@ -4457,7 +4558,7 @@
         {
           "disabled": false,
           "document": "Data offset. Default value: 0.",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -4466,7 +4567,7 @@
         {
           "disabled": false,
           "document": "Number of returned CLB instances. Default value: 20. Maximum value: 100.",
-          "example": "无",
+          "example": "20",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -4475,7 +4576,7 @@
         {
           "disabled": false,
           "document": "Sort by parameter. Value range: LoadBalancerName, CreateTime, Domain, LoadBalancerType.",
-          "example": "无",
+          "example": "LoadBalancerName",
           "member": "string",
           "name": "OrderBy",
           "required": false,
@@ -4484,7 +4585,7 @@
         {
           "disabled": false,
           "document": "1: reverse; 0: sequential. Default value: reverse by creation time |",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "OrderType",
           "required": false,
@@ -4493,7 +4594,7 @@
         {
           "disabled": false,
           "document": "Search field which fuzzy matches name, domain name, or VIP.",
-          "example": "无",
+          "example": "test-name",
           "member": "string",
           "name": "SearchKey",
           "required": false,
@@ -4502,7 +4603,7 @@
         {
           "disabled": false,
           "document": "ID of the project to which a CLB instance belongs, which can be obtained through the DescribeProject API.",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "ProjectId",
           "required": false,
@@ -4511,7 +4612,7 @@
         {
           "disabled": false,
           "document": "Whether a CLB instance is bound to a real server. 0: no; 1: yes; -1: query all.",
-          "example": "无",
+          "example": "-1",
           "member": "int64",
           "name": "WithRs",
           "required": false,
@@ -4520,7 +4621,7 @@
         {
           "disabled": false,
           "document": "VPC where a CLB instance resides, such as vpc-bhqkbhdx.\nBasic network does not support queries by VpcId.",
-          "example": "无",
+          "example": "vpc-bhqk****",
           "member": "string",
           "name": "VpcId",
           "required": false,
@@ -4529,7 +4630,7 @@
         {
           "disabled": false,
           "document": "Security group ID, e.g., `sg-m1cc****`.",
-          "example": "无",
+          "example": "sg-m1cc****",
           "member": "string",
           "name": "SecurityGroup",
           "required": false,
@@ -4537,8 +4638,8 @@
         },
         {
           "disabled": false,
-          "document": "Primary AZ ID, e.g., `100001` (Guangzhou Zone 1).",
-          "example": "无",
+          "document": "Primary availability zone ID, such as 100001 (corresponding to Guangzhou Zone 1). You can obtain the list of availability zones through [DescribeZones](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1).",
+          "example": "100001",
           "member": "string",
           "name": "MasterZone",
           "required": false,
@@ -4562,23 +4663,25 @@
         {
           "disabled": false,
           "document": "Total number of CLB instances that meet the filter criteria. This value is independent of the Limit in the input parameter.",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Array of returned CLB instances.",
-          "example": "",
+          "example": "无",
           "member": "LoadBalancer",
           "name": "LoadBalancerSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4597,14 +4700,15 @@
         {
           "disabled": false,
           "document": "Quota list",
-          "example": "",
+          "example": "无",
           "member": "Quota",
           "name": "QuotaSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4635,7 +4739,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter to query the list of AZ resources as detailed below:\n<li> `zone` - String - Optional - Filter by AZ, such as \"ap-guangzhou-1\".</li>\n<li> `isp` -- String - Optional - Filter by the ISP. Values: `BGP`, `CMCC`, `CUCC` and `CTCC`.</li>",
+          "document": "Conditions for querying the list of availability zone resources. Detailed filter criteria are as follows:<li>master-zone -- String - Required: No - (Filter criterion) Filter by region type, such as ap-guangzhou-2.</li><li>ip-version -- String - Required: No - (Filter criterion) Filter by IP type. Valid values: IPv4, IPv6, IPv6_Nat.</li><li> isp -- String - Required: No - (Filter criterion) Filter by ISP type, such as BGP, CMCC, CUCC, and CTCC.</li>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -4654,7 +4758,7 @@
           "example": "无",
           "member": "ZoneResource",
           "name": "ZoneResourceSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4664,12 +4768,12 @@
           "example": "3",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4719,12 +4823,11 @@
           "example": "无",
           "member": "RuleOutput",
           "name": "RewriteSet",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4774,7 +4877,6 @@
           "example": "2",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4784,7 +4886,6 @@
           "example": "无",
           "member": "TargetGroupBackend",
           "name": "TargetGroupInstanceSet",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4794,12 +4895,11 @@
           "example": "2",
           "member": "uint64",
           "name": "RealCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4858,7 +4958,7 @@
           "example": "2",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4868,12 +4968,12 @@
           "example": "无",
           "member": "TargetGroupInfo",
           "name": "TargetGroupSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4932,7 +5032,6 @@
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4942,12 +5041,11 @@
           "example": "无",
           "member": "TargetGroupInfo",
           "name": "TargetGroupSet",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -4984,7 +5082,7 @@
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -5007,7 +5105,7 @@
         {
           "disabled": false,
           "document": "List of listener IDs (20 IDs at most).",
-          "example": "无",
+          "example": "[\"lbl-4fo6k8na\"]",
           "member": "string",
           "name": "ListenerIds",
           "required": false,
@@ -5033,7 +5131,7 @@
         },
         {
           "disabled": false,
-          "document": "Query the list of backend services associated with a load balancer\n<li> `location-id` - String - Optional - Rule ID, such as \"loc-12345678\".</li>\n<li> `private-ip-address` - String - Optional - Backend service private IP, such as `172.16.1.1`</li>",
+          "document": "Conditions for querying the list of real servers bound to the CLB. The filter criteria are as follows:<li> location-id - String - Required: No - (Filter criterion) Filter by rule ID, such as loc-12345678.</li><li> private-ip-address - String - Required: No - (Filter criterion) Filter by private IP address of the real server, such as 172.16.1.1.</li><li> tag - String - Required: No - (Filter criterion) Filter by tag, such as tag-test.</li>",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -5052,12 +5150,12 @@
           "example": "无",
           "member": "ListenerBackend",
           "name": "Listeners",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -5098,7 +5196,6 @@
           "example": "0",
           "member": "int64",
           "name": "Status",
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5108,12 +5205,11 @@
           "example": "[\"lb-6efswuxa\"]",
           "member": "string",
           "name": "LoadBalancerIds",
-          "required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -5140,7 +5236,7 @@
       "document": "DisassociateTargetGroups response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -5208,7 +5304,7 @@
           "value_allowed_null": true
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "Filter": {
       "document": "Filter",
@@ -5324,7 +5420,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check response timeout period in seconds (applicable only to layer-4 listeners). Value range: 2-60. Default value: 2. This parameter should be less than the check interval.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "2",
           "member": "int64",
           "name": "TimeOut",
@@ -5335,7 +5431,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check probing interval period. It defaults to `5`. For IPv4 CLB instances, the range is 2-300. For IPv6 CLB instances, the range is 5-300. Unit: second\nNote: For some IPv4 CLB instances created long ago, the range is 5-300.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "5",
           "member": "int64",
           "name": "IntervalTime",
@@ -5346,7 +5442,7 @@
         },
         {
           "disabled": false,
-          "document": "Health threshold. Default value: 3, indicating that if a forward is found healthy three consecutive times, it is considered to be normal. Value range: 2-10\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "3",
           "member": "int64",
           "name": "HealthNum",
@@ -5357,7 +5453,7 @@
         },
         {
           "disabled": false,
-          "document": "Unhealthy threshold. Default value: 3, indicating that if a forward is found unhealthy three consecutive times, it is considered to be exceptional. Value range: 2-10\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "3",
           "member": "int64",
           "name": "UnHealthNum",
@@ -5368,7 +5464,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check status code (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners). Value range: 1-31. Default value: 31.\n`1`: Returns code 1xx for healthy status. `2`: Returns code 2xx for healthy status. `4`: Returns code 3xx for healthy status. `8`: Returns code 4xx for healthy status. `16`: Returns code 5xx for healthy status. If you want multiple return codes to represent healthy, sum up the corresponding values. \nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "8",
           "member": "int64",
           "name": "HttpCode",
@@ -5379,7 +5475,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check path (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "/xxx",
           "member": "string",
           "name": "HttpCheckPath",
@@ -5390,7 +5486,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check domain name. It's applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners. It's required for HTTP health check of TCP listeners.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "www.xxxx.com",
           "member": "string",
           "name": "HttpCheckDomain",
@@ -5401,7 +5497,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check method (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners). Value range: HEAD, GET. Default value: HEAD.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "HEAD",
           "member": "string",
           "name": "HttpCheckMethod",
@@ -5412,7 +5508,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check port (a custom check parameter), which is the port of the real server by default. Unless you want to specify a port, it is recommended to leave it empty. (Applicable only to TCP/UDP listeners.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "8000",
           "member": "int64",
           "name": "CheckPort",
@@ -5423,7 +5519,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check protocol (a custom check parameter), which is required if the value of CheckType is CUSTOM. This parameter represents the input format of the health check. Value range: HEX, TEXT. If the value is HEX, the characters of SendContext and RecvContext can only be selected from 0123456789ABCDEF and the length must be an even number. (Applicable only to TCP/UDP listeners.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "TEXT",
           "member": "string",
           "name": "ContextType",
@@ -5434,7 +5530,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check protocol (a custom check parameter), which is required if the value of CheckType is CUSTOM. This parameter represents the content of the request sent by the health check. Only ASCII visible characters are allowed, and the maximum length is 500. (Applicable only to TCP/UDP listeners.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "request-info",
           "member": "string",
           "name": "SendContext",
@@ -5445,7 +5541,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check protocol (a custom check parameter), which is required if the value of CheckType is CUSTOM. This parameter represents the result returned by the health check. Only ASCII visible characters are allowed, and the maximum length is 500. (Applicable only to TCP/UDP listeners.)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "response-info",
           "member": "string",
           "name": "RecvContext",
@@ -5456,7 +5552,7 @@
         },
         {
           "disabled": false,
-          "document": "Health check protocol. Values: `TCP`, `HTTP`, `HTTPS`, `GRPC`, `PING`, and `CUSTOM`. UDP listeners support `PING`/`CUSTOM`. TCP listener support `TCP`/`HTTP`/`CUSTOM`. TCP_SSL and QUIC listeners support `TCP`/`HTTP`. HTTP rules support `HTTP`/`GRPC. HTTPS rules support `HTTP`/`HTTPS`/`GRPC`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "HTTP",
           "member": "string",
           "name": "CheckType",
@@ -5467,7 +5563,7 @@
         },
         {
           "disabled": false,
-          "document": "HTTP version. HTTP version of the backend service. Values: `HTTP/1.0`, HTTP/1.1`. It is only applicable to TCP listeners, and is required when `CheckType`=`HTTP`. \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "HTTP/1.1",
           "member": "string",
           "name": "HttpVersion",
@@ -5478,7 +5574,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the type of health check source IP. `0` (default): CLB VIP. `1`: 100.64 IP range.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "SourceIpType",
@@ -5489,7 +5585,7 @@
         },
         {
           "disabled": false,
-          "document": "GRPC health check status code, which is only applicable to rules with GRPC as the backend forwarding protocol. It can be a single number (such as `20`), multiple numbers (such as `20,25`) or a range (such as `0-99`). The default value is `12`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "12",
           "member": "string",
           "name": "ExtendedCode",
@@ -5646,7 +5742,7 @@
         },
         {
           "disabled": false,
-          "document": "To query the price of monthly subscribed LCU-supported instances, specify the instance specification in this parameter, such as `clb.c3.small`. For PAYG instances, use `SLA`.",
+          "document": "Specification of the LCU-supported instance, which is input to query the monthly subscription price. Valid values: <li>clb.c2.medium: Standard</li><li>clb.c3.small: Advanced 1</li><li>clb.c3.medium: Advanced 2</li><li>clb.c4.small: Super Large 1</li><li>clb.c4.medium: Super Large 2</li><li>clb.c4.large: Super Large 3</li><li>clb.c4.xlarge: Super Large 4</li>SLA is input to query the pay-as-you-go price.",
           "example": "clb.c3.small",
           "member": "string",
           "name": "SlaType",
@@ -5664,7 +5760,7 @@
         },
         {
           "disabled": false,
-          "document": "ISP of VIP. Values: `CMCC` (China Mobile), `CUCC` (China Unicom) and `CTCC` (China Telecom). You need to activate static single-line IPs. This feature is in beta and is only available in Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu and Chongqing regions. To try it out, please contact your sales rep. If it's specified, the network billing mode must be `BANDWIDTH_PACKAGE`. If it's not specified, BGP is used by default. To query ISPs supported in a region, please use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). ",
+          "document": "It only applies to public CLB. Currently, the static single-line IP type is supported only for the regions of Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu, and Chongqing. If you need to experience it, contact your business manager. After approval, you can select the ISP type as China Mobile (CMCC), China Unicom (CUCC), or China Telecom (CTCC). The network billing mode should be selected as billing by bandwidth package (BANDWIDTH_PACKAGE). If this parameter is not specified, BGP is used by default. You can use the DescribeResources API to query ISPs supported for a region.",
           "example": "CMCC",
           "member": "string",
           "name": "VipIsp",
@@ -5688,7 +5784,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -5733,7 +5829,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -5769,7 +5865,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -5814,7 +5910,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -5828,29 +5924,32 @@
         {
           "disabled": false,
           "document": "TRAFFIC_POSTPAID_BY_HOUR: hourly pay-as-you-go by traffic; BANDWIDTH_POSTPAID_BY_HOUR: hourly pay-as-you-go by bandwidth;\nBANDWIDTH_PACKAGE: billed by bandwidth package (currently, this method is supported only if the ISP is specified)",
-          "example": "无",
+          "example": "BANDWIDTH_POSTPAID_BY_HOUR",
           "member": "string",
           "name": "InternetChargeType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Maximum outgoing bandwidth in Mbps. It works on LCU-supported instances on private networks and all instances on public networks.\n- For shared and dedicated CLB instances on public networks, the range is 1Mbps-2048Mbps.\n- For all LCU-supported CLB instances:\n  - It defaults to General LCU-supported instance. SLA corresponds to Super Large 1, and the range of maximum outgoing bandwidth is 1 Mbps - 10240 Mbps.\n  - If you have enabled Super Large specification, the range of maximum outgoing bandwidth is 1 Mbps - 61440 Mbps Super Large LCU-supported specification is in beta now. To join the beta, [submit a ticket](https://console.cloud.tencent.com/workorder/category).\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Maximum outbound bandwidth, in Mbps. This applies only to shared, LCU-supported, and exclusive CLB instances of the public network type, as well as the LCU-supported CLB instances of the private network type.- For shared and exclusive CLB instances of the public network type, the maximum outbound bandwidth ranges from 1 Mbps to 2048 Mbps.- For LCU-supported CLB instances of the public network type and the private network type, the maximum outbound bandwidth ranges from 1 Mbps to 61440 Mbps.(If this parameter is not specified when CreateLoadBalancer is called to create a CLB instance, it defaults to 10 Mbps. This upper limit can be adjusted.)Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
           "member": "int64",
           "name": "InternetMaxBandwidthOut",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Bandwidth package type, such as SINGLEISP\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Bandwidth package type, such as SINGLEISP (single-line) and BGP (multi-line).Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "SINGLEISP",
           "member": "string",
           "name": "BandwidthpkgSubType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6133,7 +6232,7 @@
         },
         {
           "disabled": false,
-          "document": "Request scheduling method\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Request scheduling method. WRR, LEAST_CONN, and IP_HASH respectively indicate weighted round robin, least connections, and IP hash.Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "WRR",
           "member": "string",
           "name": "Scheduler",
@@ -6308,6 +6407,16 @@
           "member": "int64",
           "name": "IdleConnectTimeout",
           "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Scheduling time. After forced rescheduling is triggered, long connections will be disconnected and reassigned within the set scheduling time.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "600",
+          "member": "uint64",
+          "name": "RescheduleInterval",
+          "output_required": false,
           "type": "int",
           "value_allowed_null": true
         }
@@ -6551,7 +6660,7 @@
         },
         {
           "disabled": false,
-          "document": "Domain name of the CLB instance. It is only available for public classic CLBs. This parameter will be discontinued soon. Please use `LoadBalancerDomain` instead.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Domain name of the CLB instance. This field is provided only for classic public network CLB instances and domain name-based CLB instances. It is being gradually phased out, so use LoadBalancerDomain instead.Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "www.aaa.com",
           "member": "string",
           "name": "Domain",
@@ -6563,7 +6672,7 @@
         {
           "disabled": false,
           "document": "List of VIPs of a CLB instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "x.x.x.x",
+          "example": "[43.123.xx.xxx]",
           "member": "string",
           "name": "LoadBalancerVips",
           "output_required": true,
@@ -6660,7 +6769,7 @@
           "value_allowed_null": true
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Log information. Only the public network CLB that have HTTP or HTTPS listeners can generate logs.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": " null",
           "member": "string",
@@ -6749,7 +6858,7 @@
         },
         {
           "disabled": false,
-          "document": "ISP to which a CLB IP address belongs\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "ISP for the IP address of the CLB instance. Valid values: BGP, CMCC, CTCC, CUCC.Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "BGP",
           "member": "string",
           "name": "VipIsp",
@@ -6958,7 +7067,7 @@
         },
         {
           "disabled": false,
-          "document": "Specification of the LCU-supported instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specification of the LCU-supported instance. <ul><li> clb.c2.medium: Standard </li><li> clb.c3.small: Advanced 1 </li><li> clb.c3.medium: Advanced 2 </li><li> clb.c4.small: Super Large 1 </li><li> clb.c4.medium: Super Large 2 </li><li> clb.c4.large: Super Large 3 </li><li> clb.c4.xlarge: Super Large 4 </li><li>null: Shared instance</li></ul>Note: This field may return null, indicating that no valid values can be obtained.",
           "example": " null",
           "member": "string",
           "name": "SlaType",
@@ -7109,6 +7218,17 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "uint64",
+          "name": "Exclusive",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -7208,7 +7328,7 @@
         },
         {
           "disabled": false,
-          "document": "ISP to which the CLB IP address belongs.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "ISP for the IP address of the CLB instance. Valid values: BGP (multi-line), CMCC (China Mobile), CUCC (China Unicom), CTCC (China Telecom), INTERNAL (private network).Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "CMCC",
           "member": "string",
           "name": "AddressIsp",
@@ -7248,7 +7368,7 @@
         },
         {
           "disabled": false,
-          "document": "CLB instance billing mode.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Billing type of a CLB instance. Valid values: PREPAID (prepaid), POSTPAID_BY_HOUR (pay-as-you-go).Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "POSTPAID_BY_HOUR",
           "member": "string",
           "name": "ChargeType",
@@ -7428,7 +7548,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the CLB instance is billed by IP.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Whether to enable moving up CLB security groups. Valid values: 1 (enabled), 0 (not enabled).Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "LoadBalancerPassToTarget",
@@ -7504,6 +7624,36 @@
           "name": "Egress",
           "output_required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "DeleteProtect",
+          "member": "string",
+          "name": "AttributeFlags",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "clb.c2.medium",
+          "member": "string",
+          "name": "SlaType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "Exclusive",
+          "output_required": false,
+          "type": "int",
           "value_allowed_null": true
         }
       ],
@@ -7657,7 +7807,7 @@
       "document": "ManualRewrite response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -7693,7 +7843,7 @@
       "document": "MigrateClassicalLoadBalancers response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -7774,7 +7924,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -7877,7 +8027,7 @@
         },
         {
           "disabled": false,
-          "document": "Certificate information of the domain name. It is only applicable to listeners with SNI enabled. You can specify multiple server-side certificates with different algorithm types. `Certificate` and `MultiCertInfo` cannot be specified at the same time. ",
+          "document": "Certificate information related to the domain name. Note: This applies only to listeners with SNI enabled. Multiple server certificates with different algorithm types can be input simultaneously, but this parameter cannot be input together with the Certificate.",
           "example": "无",
           "member": "MultiCertInfo",
           "name": "MultiCertInfo",
@@ -7891,7 +8041,7 @@
       "document": "ModifyDomainAttributes response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -7945,7 +8095,7 @@
       "document": "ModifyDomain response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8017,7 +8167,7 @@
       "document": "ModifyFunctionTargets response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8084,7 +8234,7 @@
         },
         {
           "disabled": false,
-          "document": "Forwarding method of a listener. Value range: WRR, LEAST_CONN.\nThey represent weighted round robin and least connections, respectively. Default value: WRR.",
+          "document": "Listener forwarding method. Valid values: WRR, LEAST_CONN.These values respectively indicate weighted round robin and least connections. The default value is WRR.Use cases: This applies to TCP/UDP/TCP_SSL/QUIC listeners. The balancing method for Layer-7 listeners should be modified in the forwarding rules.",
           "example": "LEAST_CONN",
           "member": "string",
           "name": "Scheduler",
@@ -8093,7 +8243,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable the SNI feature. This parameter is applicable only to HTTPS listeners. Note: The SNI feature can be enabled but cannot be disabled once enabled.",
+          "document": "Whether to enable the SNI feature. This parameter applies only to HTTPS listeners. The default value is 0, indicating disabled, and 1 indicates enabled. Note: The SNI feature can be enabled for listeners that have not enabled SNI, but cannot be disabled for listeners that have enabled SNI.",
           "example": "0",
           "member": "int64",
           "name": "SniSwitch",
@@ -8111,7 +8261,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable a persistent connection. This parameter is applicable only to HTTP and HTTPS listeners.",
+          "document": "Whether to enable long connections. This parameter applies only to HTTP and HTTPS listeners.The default value is 0, indicating disabled, and 1 indicates enabled.",
           "example": "0",
           "member": "int64",
           "name": "KeepaliveEnable",
@@ -8129,7 +8279,7 @@
         },
         {
           "disabled": false,
-          "document": "Session persistence type. `NORMAL`: default session persistence type (L4/L7 session persistence); `QUIC_CID`: session persistence by QUIC connection ID. The `QUIC_CID` value can only be configured in UDP listeners.",
+          "document": "Session persistence type. NORMAL indicates the default session persistence type, and QUIC_CID indicates session persistence by QUIC connection ID. QUIC_CID only supports UDP protocols.Use cases: This applies to TCP/UDP/TCP_SSL/QUIC listeners.",
           "example": "NORMAL",
           "member": "string",
           "name": "SessionType",
@@ -8147,7 +8297,7 @@
         },
         {
           "disabled": false,
-          "document": "The maximum number of concurrent connections at the listener level. This parameter takes effect only on LCU-supported instances and TCP/UDP/TCP_SSL/QUIC listeners. Value range: 1 to the maximum concurrency of the instance. -1 indicates that no limit is set on concurrent connections.",
+          "document": "Maximum number of concurrent connections at the listener level. This parameter is supported only for LCU-supported instances with TCP/UDP/TCP_SSL/QUIC listeners currently. Value range: 1 to the maximum number of concurrent connections for the instance specification. -1 indicates that no limit is set on the concurrent connections at the listener level. Classic network instances do not support this parameter.",
           "example": "-1",
           "member": "int64",
           "name": "MaxConn",
@@ -8156,7 +8306,7 @@
         },
         {
           "disabled": false,
-          "document": "The maximum number of new connections at the listener level. This parameter takes effect only on LCU-supported instances and TCP/UDP/TCP_SSL/QUIC listeners. Value range: 1 to the maximum number of new connections of the instance. -1 indicates that no limit is set on concurrent connections.",
+          "document": "Maximum number of new connections at the listener level. This parameter is supported only for LCU-supported instances with TCP/UDP/TCP_SSL/QUIC listeners currently. Value range: 1 to the maximum number of new connections for the instance specification. -1 indicates that no limit is set on the new connections at the listener level. Classic network instances do not support this parameter.",
           "example": "-1",
           "member": "int64",
           "name": "MaxCps",
@@ -8171,6 +8321,15 @@
           "name": "IdleConnectTimeout",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable SNAT.",
+          "example": "False",
+          "member": "bool",
+          "name": "SnatEnable",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -8179,7 +8338,7 @@
       "document": "ModifyListener response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8271,14 +8430,15 @@
         {
           "disabled": false,
           "document": "This parameter can be used to query whether CLB billing mode switch is successful.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "null",
           "member": "string",
           "name": "DealName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8297,6 +8457,15 @@
           "name": "LoadBalancerSla",
           "required": true,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to force upgrade. The default is no.",
+          "example": "false",
+          "member": "bool",
+          "name": "Force",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"
@@ -8305,7 +8474,7 @@
       "document": "ModifyLoadBalancerSla response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8319,7 +8488,7 @@
         {
           "disabled": false,
           "document": "IDs of CLB instances ID(s).",
-          "example": "[\"lb-1234abcd\\r\\n\",\"lb-5678wwqq\\r\\n\"]",
+          "example": "[\"lb-1234abcd\",\"lb-5678wwqq\"]",
           "member": "string",
           "name": "LoadBalancerIds",
           "required": true,
@@ -8327,7 +8496,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID",
+          "document": "Project ID. You can obtain it through the [DescribeProject](https://intl.cloud.tencent.com/document/api/651/78725?from_cn_redirect=1) API.",
           "example": "1122",
           "member": "uint64",
           "name": "ProjectId",
@@ -8341,7 +8510,7 @@
       "document": "ModifyLoadBalancersProject response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8408,7 +8577,7 @@
         },
         {
           "disabled": false,
-          "document": "Session persistence time",
+          "document": "Session persistence duration, in seconds. Value range: 0 or 30-86400.",
           "example": "75",
           "member": "int64",
           "name": "SessionExpireTime",
@@ -8417,7 +8586,7 @@
         },
         {
           "disabled": false,
-          "document": "Forwarding protocol between CLB instance and real server. Default value: HTTP. Valid values: HTTP, HTTPS, and TRPC.",
+          "document": "Forwarding protocol between a CLB instance and the real server. Default value: HTTP. Valid values: HTTP, HTTPS, GRPC. This parameter is valid only for HTTPS listeners.",
           "example": "HTTP",
           "member": "string",
           "name": "ForwardType",
@@ -8441,6 +8610,15 @@
           "name": "TrpcFunc",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "OAuth configuration information.",
+          "example": "无",
+          "member": "OAuth",
+          "name": "OAuth",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -8449,7 +8627,7 @@
       "document": "ModifyRule response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8494,7 +8672,7 @@
       "document": "ModifyTargetGroupAttribute response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8530,7 +8708,7 @@
       "document": "ModifyTargetGroupInstancesPort response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8566,7 +8744,7 @@
       "document": "ModifyTargetGroupInstancesWeight response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8647,7 +8825,7 @@
       "document": "ModifyTargetPort response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8728,7 +8906,7 @@
       "document": "ModifyTargetWeight response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8761,6 +8939,34 @@
         }
       ],
       "usage": "in"
+    },
+    "OAuth": {
+      "document": "OAuth configuration information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Enable or disable authentication.True: Enable;False: Disable.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "True",
+          "member": "bool",
+          "name": "OAuthEnable",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to reject or allow the request if all IAPs fail. BYPASS: Allow;REJECT: Reject.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "BYPASS",
+          "member": "string",
+          "name": "OAuthFailureStatus",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "Price": {
       "document": "Price of CLB instances.",
@@ -8898,7 +9104,7 @@
       "document": "RegisterFunctionTargets response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -8934,7 +9140,7 @@
       "document": "RegisterTargetGroupInstances response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -9006,7 +9212,7 @@
       "document": "RegisterTargets response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -9042,7 +9248,7 @@
       "document": "RegisterTargetsWithClassicalLB response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -9078,7 +9284,7 @@
       "document": "ReplaceCertForLoadBalancers response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -9265,6 +9471,48 @@
       ],
       "usage": "out"
     },
+    "RsTagRule": {
+      "document": "Data type of the modified node tag.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "CLB listener ID.",
+          "example": "lis-cuxw****",
+          "member": "string",
+          "name": "ListenerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of real servers with tags to be modified.",
+          "example": "无",
+          "member": "Target",
+          "name": "Targets",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Forwarding rule ID, which is required only for Layer-7 rules but not for Layer-4 rules.",
+          "example": "loc-o8cn****",
+          "member": "string",
+          "name": "LocationId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modified tag of the real server. This parameter has a lower priority than the Tag parameter in the aforementioned [Target](https://intl.cloud.tencent.com/document/api/214/30694?from_cn_redirect=1#Target). The final tag value is based on the Tag parameter in the Target. The Tag parameter in RsTagRule will be used only when the Weight parameter in the Target is empty.",
+          "example": "xxxx",
+          "member": "string",
+          "name": "Tag",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "RsWeightRule": {
       "document": "Modifies the data type of a node weight",
       "members": [
@@ -9400,8 +9648,8 @@
         },
         {
           "disabled": false,
-          "document": "Session persistence time in seconds. Value range: 30-3,600. Setting it to 0 indicates that session persistence is disabled.",
-          "example": "0",
+          "document": "Session persistence duration, in seconds. 0 indicates that session persistence is disabled, and a value ranging from 30 to 86400 indicates that session persistence is enabled.",
+          "example": "30",
           "member": "int64",
           "name": "SessionExpireTime",
           "required": false,
@@ -9527,7 +9775,7 @@
           "example": "loc-xxx",
           "member": "string",
           "name": "LocationId",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9537,7 +9785,7 @@
           "example": "www.xxxx.com",
           "member": "string",
           "name": "Domain",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -9547,17 +9795,17 @@
           "example": "/test",
           "member": "string",
           "name": "Url",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Session persistence time",
-          "example": "无",
+          "example": "0",
           "member": "int64",
           "name": "SessionExpireTime",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -9567,7 +9815,7 @@
           "example": "无",
           "member": "HealthCheck",
           "name": "HealthCheck",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -9577,27 +9825,27 @@
           "example": "无",
           "member": "CertificateOutput",
           "name": "Certificate",
-          "required": false,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Request forwarding method of the rule",
-          "example": "无",
+          "document": "Request forwarding method in the rules.WRR, LEAST_CONN, and IP_HASH respectively indicate weighted round robin, least connections, and IP hash.",
+          "example": "WRR",
           "member": "string",
           "name": "Scheduler",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "ID of the listener to which the forwarding rule belongs",
-          "example": "无",
+          "example": "lbl-8cnl****",
           "member": "string",
           "name": "ListenerId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9607,77 +9855,77 @@
           "example": "无",
           "member": "RewriteTarget",
           "name": "RewriteTarget",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Whether to enable gzip",
-          "example": "无",
+          "example": "true",
           "member": "bool",
           "name": "HttpGzip",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether the forwarding rule is automatically created",
-          "example": "无",
+          "example": "false",
           "member": "bool",
           "name": "BeAutoCreated",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether to use as the default domain name",
-          "example": "无",
+          "example": "true",
           "member": "bool",
           "name": "DefaultServer",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether to enable Http2",
-          "example": "无",
+          "example": "false",
           "member": "bool",
           "name": "Http2",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Forwarding protocol between CLB and real server",
-          "example": "无",
+          "example": "HTTP",
           "member": "string",
           "name": "ForwardType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Forwarding rule creation time",
-          "example": "无",
+          "example": "2024-01-22 14:36:12",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Real server type",
-          "example": "无",
+          "document": "Real server type. NODE indicates binding to a general node, and TARGETGROUP indicates binding to a target group.",
+          "example": "NODE",
           "member": "string",
           "name": "TargetType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -9687,47 +9935,47 @@
           "example": "无",
           "member": "BasicTargetGroupInfo",
           "name": "TargetGroup",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "WAF instance ID\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "\"\"",
           "member": "string",
           "name": "WafDomainId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "TRPC callee server route, which is valid when `ForwardType` is `TRPC`. This is now only for internal usage.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "\"\"",
           "member": "string",
           "name": "TrpcCallee",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "TRPC calling service API, which is valid when `ForwardType` is `TRPC`. This is now only for internal usage.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "\"\"",
           "member": "string",
           "name": "TrpcFunc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "QUIC status\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "QUIC status. QUIC_ACTIVE indicates enabled, and QUIC_INACTIVE indicates disabled. Note: QUIC can be enabled only for HTTPS domain names.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "QUIC_INACTIVE",
           "member": "string",
           "name": "QuicStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -9737,18 +9985,28 @@
           "example": "[\"www.xxxx.com\"]",
           "member": "string",
           "name": "Domains",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "List of bound target groups\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "null",
           "member": "BasicTargetGroupInfo",
           "name": "TargetGroupList",
-          "required": true,
+          "output_required": true,
           "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "OAuth configuration status information.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OAuth",
+          "name": "OAuth",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],
@@ -9921,7 +10179,7 @@
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -9943,7 +10201,7 @@
         },
         {
           "disabled": false,
-          "document": "CLS logset ID\n<li>Enter the ID of logset you need to add or update. You can acquire the ID by invoking [DescribeLogsets](https://intl.cloud.tencent.com/document/product/614/56454?from_cn_redirect=1).</li>\n<li>To delete the log set, set this parameter to `null`.</li>",
+          "document": "Logset ID of the Cloud Log Service (CLS).<li>When adding or updating a log topic, call the [DescribeLogsets](https://intl.cloud.tencent.com/document/product/614/58624?from_cn_redirect=1) API to obtain the logset ID.</li><li>When deleting a log topic, set this parameter to null.</li>",
           "example": "xxxx-xx-xx-xx-xxxxxxxx",
           "member": "string",
           "name": "LogSetId",
@@ -9952,7 +10210,7 @@
         },
         {
           "disabled": false,
-          "document": "CLS log topic ID\n<li>Enter the ID of log topic you need to add or update. You can acquire the ID by invoking [DescribeTopics](https://intl.cloud.tencent.com/document/product/614/56454?from_cn_redirect=1).</li>\n<li>To delete the log set, set this parameter to `null`.</li>",
+          "document": "Log topic ID of the CLS.<li>When adding or updating a log topic, call the [DescribeTopics](https://intl.cloud.tencent.com/document/product/614/56454?from_cn_redirect=1) API to obtain the log topic ID.</li><li>When deleting a log topic, set this parameter to null.</li>",
           "example": "xxxx-xx-xx-xx-yyyyyyyy",
           "member": "string",
           "name": "LogTopicId",
@@ -9975,7 +10233,7 @@
       "document": "SetLoadBalancerClsLog response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -10011,7 +10269,52 @@
       "document": "SetLoadBalancerSecurityGroups response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SetLoadBalancerStartStatusRequest": {
+      "document": "SetLoadBalancerStartStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Operation type. Start: Start the instance; Stop: Stop the instance.",
+          "example": "Stop",
+          "member": "string",
+          "name": "OperationType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "CLB instance ID.",
+          "example": "\"lb-xxxxxxxx\"",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Listener ID. If this field is empty, it indicates operating the CLB instance; if not empty, it indicates operating the listener.",
+          "example": "[\"lbl-xxxxxxxx\"]",
+          "member": "string",
+          "name": "ListenerIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "SetLoadBalancerStartStatusResponse": {
+      "document": "SetLoadBalancerStartStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -10056,7 +10359,7 @@
       "document": "SetSecurityGroupForLoadbalancers response structure.",
       "members": [
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -10078,7 +10381,7 @@
         },
         {
           "disabled": false,
-          "document": "LCU-supported instance specification. Value:\n<li>`SLA`: If you have activated Super Large LCU-supported instances, `SLA` indicates Super Large 4.</li>\n<li>`clb.c2.medium`: Standard</li>\n<li>`clb.c3.small`: Advanced 1</li>\n<li>`clb.c3.medium`: Advanced 2</li>\n<li>`clb.c4.small`: Super Large 1</li>\n<li>`clb.c4.medium`: Super Large 2</li>\n<li>`clb.c4.large`: Super Large 3</li>\n<li>`clb.c4.xlarge`: Super Large 4</li> For Super Large 2 and above specifications, please [submit a ticket](https://console.cloud.tencent.com/workorder/category). For more specifications, see [Specifications Comparison](https://intl.cloud.tencent.com/document/product/214/84689?from_cn_redirect=1)",
+          "document": "Specification of the LCU-supported instance. Valid values:<li> clb.c2.medium: Standard </li><li> clb.c3.small: Advanced 1 </li><li> clb.c3.medium: Advanced 2 </li><li> clb.c4.small: Super Large 1 </li><li> clb.c4.medium: Super Large 2 </li><li> clb.c4.large: Super Large 3 </li><li> clb.c4.xlarge: Super Large 4 </li> For specification details, see [Instance Specifications Comparison](https://intl.cloud.tencent.com/document/product/214/84689?from_cn_redirect=1).",
           "example": "SLA",
           "member": "string",
           "name": "SlaType",
@@ -10119,21 +10422,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "Specification type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Specification type.<li>clb.c2.medium: Standard</li><li>clb.c3.small: Advanced 1</li><li>clb.c3.medium: Advanced 2</li><li>clb.c4.small: Super Large 1</li><li>clb.c4.medium: Super Large 2</li><li>clb.c4.large: Super Large 3</li><li>clb.c4.xlarge: Super Large 4</li><li>shared: Shared</li>Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "shared",
           "member": "string",
           "name": "SpecType",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Specification availability\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "document": "Specification availability. It indicates the resource availability. Valid values: Available, Unavailable.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "Available",
           "member": "string",
           "name": "Availability",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -10175,6 +10478,7 @@
           "example": "80",
           "member": "int64",
           "name": "Port",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": true
@@ -10185,6 +10489,7 @@
           "example": "CVM",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -10192,9 +10497,10 @@
         {
           "disabled": false,
           "document": "Unique ID of a CVM instance, which is required when binding a CVM instance. It can be obtained from the `InstanceId` field in the response of the `DescribeInstances` API. It indicates binding the primary IP of the primary ENI.\nNote: Either `InstanceId` or `EniIp` can be passed in.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "lb-cuxw****",
+          "example": "ins-xxxxxxxx",
           "member": "string",
           "name": "InstanceId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -10205,6 +10511,7 @@
           "example": "10",
           "member": "int64",
           "name": "Weight",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -10212,9 +10519,21 @@
         {
           "disabled": false,
           "document": "It is required when binding an IP. ENI IPs and other private IPs are supported. To bind an ENI IP, the ENI should be bound to a CVM instance before being bound to a CLB instance.\nNote: Either `InstanceId` or `EniIp` can be passed in. `EniIp` is required in a cross-region binding or when the dual-stack IPV6 CVM is bound.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "ip6-199z****",
+          "example": "x.x.x.x",
           "member": "string",
           "name": "EniIp",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Tag",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -10228,42 +10547,47 @@
         {
           "disabled": false,
           "document": "CLB instance ID",
-          "example": "",
+          "example": "lb-agcadfe",
           "member": "string",
           "name": "LoadBalancerId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Listener ID",
-          "example": "",
-          "member": "string",
-          "name": "ListenerId",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Target group ID",
-          "example": "",
+          "example": "lbtg-0nzo3czo",
           "member": "string",
           "name": "TargetGroupId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Listener ID. This parameter is required when the AssociateTargetGroups and DisassociateTargetGroups APIs are called.",
+          "example": "lbl-xxxx",
+          "member": "string",
+          "name": "ListenerId",
+          "required": false,
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Forwarding rule ID",
-          "example": "",
+          "example": "loc-aaaaaa",
           "member": "string",
           "name": "LocationId",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Weight of the target group. Value range: [0, 100]. It takes effect only for binding v2 target groups. If not specified, it defaults to 10.",
+          "example": "100",
+          "member": "int64",
+          "name": "Weight",
+          "required": false,
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -10390,70 +10714,70 @@
         {
           "disabled": false,
           "document": "Target group ID",
-          "example": "",
+          "example": "lbtg-xxxxxxxx",
           "member": "string",
           "name": "TargetGroupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "`vpcid` of target group",
-          "example": "",
+          "example": "vpc-xxxxxxxx",
           "member": "string",
           "name": "VpcId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Target group name",
-          "example": "",
+          "example": "Name",
           "member": "string",
           "name": "TargetGroupName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Default port of target group\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "60",
           "member": "uint64",
           "name": "Port",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Target group creation time",
-          "example": "",
+          "example": "2022-03-23 10:37:16",
           "member": "datetime",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Target group modification time",
-          "example": "",
+          "example": "2022-03-23 10:37:16",
           "member": "datetime",
           "name": "UpdatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Array of associated rules\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "document": "Associated rule array. This parameter cannot be obtained when the DescribeTargetGroupList API is called.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
           "member": "AssociationItem",
           "name": "AssociatedRule",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -10688,7 +11012,7 @@
           "value_allowed_null": true
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "ZoneResource": {
       "document": "List of AZs",
