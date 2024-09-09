@@ -1,8 +1,16 @@
 {
   "actions": {
+    "AbortAgentCruiseDialingCampaign": [
+      {
+        "document": "If you want to stop running agent's individual auto task, then call AbortAgentCruiseDialingCampaign to terminate.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AbortAgentCruiseDialingCampaign\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400000000,\n    \"CampaignId\": 2569\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Abort Agent Cruise Dialing Campaign"
+      }
+    ],
     "AbortPredictiveDialingCampaign": [
       {
-        "document": "This example shows you how to stop the predictive outbound call task.",
+        "document": "This example shows you how to stop the Predictive Dialing Campaign",
         "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AbortPredictiveDialingCampaign\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"CampaignId\": 2569\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Stopping Predictive Outbound Call Task"
@@ -10,7 +18,7 @@
     ],
     "BindNumberCallOutSkillGroup": [
       {
-        "document": "This example shows you how to bind numbers and skill groups.",
+        "document": "This example shows you how to bind numbers with outbound skill groups.",
         "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindNumberCallOutSkillGroup\n<Common request parameters>\n{\n    \"Number\": \"0086075512345678\",\n    \"SkillGroupIds\": [\n        1,\n        2,\n        3\n    ],\n    \"SdkAppId\": 1400000000\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Binding Number and Skill Group"
@@ -21,15 +29,23 @@
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindStaffSkillGroupList\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"StaffEmail\": \"staff1@xxx.com\",\n    \"StaffSkillGroupList\": [\n        {\n            \"SkillGroupId\": 100,\n            \"Priority\": 1\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"48edd236-7ef1-45af-9e12-fc376ba355bf\"\n    }\n}",
-        "title": "Binding Agent's Skill Group"
+        "title": "Bind Agent to Skill Group Example"
       }
     ],
     "CreateAdminURL": [
       {
-        "document": "This example shows you how to create the admin log-in link.",
+        "document": "This example shows you how to create Management Panel Login link",
         "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAdminURL\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"SeatUserId\": \"foo@tencent.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"48edd236-7ef1-45af-9e12-fc376ba355bf\",\n        \"URL\": \"https://tccc.qcloud.com/saas-manage/#/1400000000/home?token=6bb56a09-2787-40bc-80c5-dc6dab783eff\"\n    }\n}",
-        "title": "Creating Admin Log-in Link"
+        "title": "Create Management Panel Login"
+      }
+    ],
+    "CreateAgentCruiseDialingCampaign": [
+      {
+        "document": "This is an example shows how to create an individual auto dialing campaign for agent",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAgentCruiseDialingCampaign\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400000000,\n    \"Name\": \"New energy SUV recommendation\",\n    \"Callees\": [\n        \"+8613012345678\",\n        \"+8613012345679\",\n        \"+8613012345670\"\n    ],\n    \"Callers\": [\n        \"0086075586013388\"\n    ],\n    \"Agent\": \"foo@tencent.com\",\n    \"ConcurrencyNumber\": 3,\n    \"CallOrder\": 0,\n    \"StartTime\": 1708483433,\n    \"EndTime\": 1708485433\n}",
+        "output": "{\n    \"Response\": {\n        \"CampaignId\": 2569,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Create Agent Cruise Dialing Campaign"
       }
     ],
     "CreateAutoCalloutTask": [
@@ -62,6 +78,14 @@
         "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateExtension\n<Common Request Parameters>\n{\n    \"SdkAppId\": 140000000,\n    \"ExtensionId\": \"1001\",\n\"ExtensionName\": \"Extension 1\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"86a17f0e-bcb3-46bf-ac66-8f165fe52127\"\n    }\n}",
         "title": "Creating Telephone Account"
+      }
+    ],
+    "CreateIVRSession": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateIVRSession\n<Common request parameters>\n\n{\n    \"Callee\": \"008612300000000\",\n    \"SdkAppId\": 1400000000,\n    \"IVRId\": 4500\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6bb56a09-2787-40bc-80c5-dc6dab783eff\",\n        \"SessionId\": \"6bb56a09278740bc80c5dc6dab783eff\"\n    }\n}",
+        "title": "Create a session associated with IVR example"
       }
     ],
     "CreatePredictiveDialingCampaign": [
@@ -112,6 +136,14 @@
         "title": "Deleting Agent Information"
       }
     ],
+    "DescribeAgentCruiseDialingCampaign": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAgentCruiseDialingCampaign\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1400000000,\n    \"CampaignId\": 2569\n}",
+        "output": "{\n    \"Response\": {\n        \"Name\": \"New energy SUV recommendation\",\n        \"Agent\": \"foo@tencent.com\",\n        \"ConcurrencyNumber\": 3,\n        \"CallOrder\": 0,\n        \"StartTime\": 1708483433,\n        \"EndTime\": 1708485433,\n        \"UUI\": \"\",\n        \"State\": 2,\n        \"TotalCalleeCount\": 200,\n        \"CalledCalleeCount\": 200,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Query agent cruising outbound call task example"
+      }
+    ],
     "DescribeAutoCalloutTask": [
       {
         "document": " ",
@@ -158,6 +190,14 @@
         "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeExtensions\n<Common Request Parameters>\n{\n    \"PageNumber\": 0,\n    \"PageSize\": 35,\n    \"SdkAppId\": 1400264214,\n    \"ExtensionIds\": [\n        \"1001\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"86a17f0e-bcb3-46bf-ac66-8f165fe52127\",\n        \"Total\": 1,\n        \"ExtensionList\": [\n            {\n                \"SdkAppId\": 1400000014,\n                \"FullExtensionId\": \"1001@140000014.tccc.qcloud.com\",\n                \"ExtensionId\": \"1001\",\n                \"SkillGroupId\": \"1532\",\n                \"ExtensionName\": \"lulu\",\n                \"CreateTime\": 0,\n                \"ModifyTime\": 0,\n                \"Status\": 0,\n                \"Register\": false,\n                \"Relation\": \"123456\",\n                \"RelationName\": \"foobar\"\n            }\n        ]\n    }\n}",
         "title": "Querying Telephone List Information"
+      }
+    ],
+    "DescribeIvrAudioList": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIvrAudioList\n<Common request parameters>\n\n{\n    \"SdkAppId\": 160000000,\n    \"CustomFileName\": [\n        \"abc\"\n    ],\n    \"AudioFileName\": [],\n    \"FileId\": [],\n    \"PageSize\": 1,\n    \"PageNumber\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"FileInfo\": [\n            {\n                \"FileId\": 1,\n                \"CustomFileName\": \"abc\",\n                \"AudioFileName\": \"a.mp3\",\n                \"Status\": 0\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Query IVR audio file list example"
       }
     ],
     "DescribeNumbers": [
@@ -211,17 +251,17 @@
     "DescribeSkillGroupInfoList": [
       {
         "document": "This example shows you how to access the skill group list.",
-        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSkillGroupInfoList\n<Common request parameters>\n{\n    \"PageSize\": 10,\n    \"PageNumber\": 0,\n    \"ModifiedTime\": 1590147606,\n    \"SdkAppId\": 1400000000,\n    \"SkillGroupId\": 12\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ac74e13-ef15-41a6-9639-f1bc8c9896bd\",\n        \"TotalCount\": 2,\n        \"SkillGroupList\": [\n            {\n                \"SkillGroupId\": 1115,\n                \"SkillGroupName\": \"luluttt\",\n                \"SkillGroupType\": 1,\n                \"Type\": \"TEL\",\n                \"RoutePolicy\": \"firstCreate\",\n                \"UsingLastSeat\": 0,\n                \"MaxConcurrency\": 1,\n                \"LastModifyTimestamp\": 1613976392\n            }\n        ]\n    }\n}",
-        "title": "Accessing Skill Group List"
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSkillGroupInfoList\n<Common request parameters>\n\n{\n    \"PageSize\": 10,\n    \"PageNumber\": 0,\n    \"ModifiedTime\": 1590147606,\n    \"SdkAppId\": 1400000000,\n    \"SkillGroupId\": 12\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ac74e13-ef15-41a6-9639-f1bc8c9896bd\",\n        \"TotalCount\": 2,\n        \"SkillGroupList\": [\n            {\n                \"SkillGroupId\": 1115,\n                \"SkillGroupName\": \"luluttt\",\n                \"SkillGroupType\": 1,\n                \"Type\": \"TEL\",\n                \"RoutePolicy\": \"firstCreate\",\n                \"UsingLastSeat\": 0,\n                \"MaxConcurrency\": 1,\n                \"LastModifyTimestamp\": 1613976392,\n                \"Alias\": \"6666\"\n            }\n        ]\n    }\n}",
+        "title": "This example shows you how to access the skill group list."
       }
     ],
     "DescribeStaffInfoList": [
       {
         "document": "This example shows you how to access agent list.",
-        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStaffInfoList\n<Common Request Parameters>\n{\n    \"ModifiedTime\": 1590147606,\n    \"PageSize\": 10,\n    \"PageNumber\": 0,\n    \"StaffMail\": \"“121223@qq.com”\",\n    \"SdkAppId\": \"1400000000\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ac74e13-ef15-41a6-9639-f1bc8c9896bd\",\n        \"TotalCount\": 602,\n        \"StaffList\": [\n            {\n                \"Name\": \"xiao\",\n                \"Mail\": \"1000273@qq.com\",\n                \"Phone\": \"008617636049517\",\n                \"Nick\": \"Test 3\",\n                \"StaffNumber\": \"125\",\n                \"SkillGroupList\": [\n                    {\n                        \"SkillGroupId\": 53,\n                        \"SkillGroupName\": \"ALL-dingoding-Test\",\n                        \"Priority\": 3,\n                        \"Type\": \"ALL\"\n                    },\n                    {\n                        \"SkillGroupId\": 82,\n                        \"SkillGroupName\": \"uu\",\n                        \"Priority\": 1,\n                        \"Type\": \"IM\"\n                    }\n                ],\n                \"LastModifyTimestamp\": 1613988825\n            }\n        ]\n    }\n}",
-        "title": "Accessing Agent List"
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStaffInfoList\n<Common request parameters>\n\n{\n    \"ModifiedTime\": 1590147606,\n    \"PageSize\": 10,\n    \"PageNumber\": 0,\n    \"StaffMail\": \"\"121223@qq.com\"\",\n    \"SdkAppId\": \"1400000000\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5ac74e13-ef15-41a6-9639-f1bc8c9896bd\",\n        \"TotalCount\": 602,\n        \"StaffList\": [\n            {\n                \"Name\": \"xiao\",\n                \"Mail\": \"1000273@qq.com\",\n                \"Phone\": \"008617636049517\",\n                \"Nick\": \"Test 3\",\n                \"StaffNumber\": \"125\",\n                \"RoleId\": 1,\n                \"SkillGroupList\": [\n                    {\n                        \"SkillGroupId\": 53,\n                        \"SkillGroupName\": \"ALL-dingoding-Test\",\n                        \"Priority\": 3,\n                        \"Type\": \"ALL\"\n                    },\n                    {\n                        \"SkillGroupId\": 82,\n                        \"SkillGroupName\": \"uu\",\n                        \"Priority\": 1,\n                        \"Type\": \"IM\"\n                    }\n                ],\n                \"LastModifyTimestamp\": 1613988825\n            }\n        ]\n    }\n}",
+        "title": "This example shows you how to access agent list."
       }
     ],
     "DescribeStaffStatusMetrics": [
@@ -234,10 +274,10 @@
     ],
     "DescribeTelCallInfo": [
       {
-        "document": "This example shows you how to access phone call statistics",
+        "document": "This example shows you how to access call detail records",
         "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeTelCallInfo\n<Common request parameters>\n{\n    \"StartTimeStamp\": \"0\",\n    \"EndTimeStamp\": \"0\",\n    \"SdkAppIdList\": [\n        \"0\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TelCallOutCount\": 0,\n        \"TelCallInCount\": 0,\n        \"SeatUsedCount\": 0,\n        \"VOIPCallInCount\": 0,\n        \"AsrOfflineCount\": 0,\n        \"AsrRealtimeCount\": 0,\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Accessing Phone Call Statistics"
+        "title": "Accessing call detail records "
       }
     ],
     "DescribeTelCdr": [
@@ -286,6 +326,14 @@
         "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStaff\n<Common request parameters>\n{\n    \"Phone\": \"008618092688910\",\n    \"Email\": \"xxx@tencent.com\",\n    \"SdkAppId\": 1400000000\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6bb56a09-2787-40bc-80c5-dc6dab783eff\"\n    }\n}",
         "title": "Modifying Customer Service"
+      }
+    ],
+    "ModifyStaffPassword": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStaffPassword\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1600000000,\n    \"Email\": \"a@qq.com\",\n    \"Password\": \"foobar\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Changing the password"
       }
     ],
     "PausePredictiveDialingCampaign": [
@@ -350,6 +398,14 @@
         "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdatePredictiveDialingCampaign\n<Common request parameters>\n{\n    \"SdkAppId\": 1400000000,\n    \"CampaignId\": 2569,\n    \"Name\": \"New energy SUV recommendation\",\n    \"Callees\": [\n        \"+8613012345678\",\n        \"+8613012345679\",\n        \"+8613012345670\"\n    ],\n    \"Callers\": [\n        \"0086075586013388\"\n    ],\n    \"CallOrder\": 0,\n    \"SkillGroupId\": 255,\n    \"IVRId\": 4600,\n    \"Priority\": 3,\n    \"ExpectedAbandonRate\": 10,\n    \"RetryTimes\": 1,\n    \"RetryInterval\": 1800,\n    \"StartTime\": 1708483433,\n    \"EndTime\": 1708485433\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Updating Predictive Outbound Call Task"
+      }
+    ],
+    "UploadIvrAudio": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UploadIvrAudio\n<Common request parameters>\n\n{\n    \"SdkAppId\": 0,\n    \"AudioList\": [\n        {\n            \"CustomFileName\": \"abc\",\n            \"AudioUrl\": \"http://xxxx.com/a.mp3\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a\",\n        \"FailedFileList\": [],\n        \"SuccessFileList\": [\n            {\n                \"AudioFileName\": \"business_id_pic5.mp3\",\n                \"CustomFileName\": \"1231\",\n                \"FileId\": 50,\n                \"Status\": 0\n            },\n            {\n                \"AudioFileName\": \"business_id_pic6.mp3\",\n                \"CustomFileName\": \"4561\",\n                \"FileId\": 51,\n                \"Status\": 0\n            }\n        ]\n    }\n}",
+        "title": "Upload IVR Audio Files"
       }
     ]
   },

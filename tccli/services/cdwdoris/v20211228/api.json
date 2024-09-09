@@ -2875,7 +2875,7 @@
         },
         {
           "disabled": false,
-          "document": "The name of the database where the table belongs needs to be deleted",
+          "document": "The name of the database where the table belongs needs to be deleted.",
           "example": "demo",
           "member": "string",
           "name": "DbName",

@@ -1,31 +1,45 @@
 {
   "actions": {
+    "AbortAgentCruiseDialingCampaign": {
+      "document": "If you want to stop running agent's individual auto task, then call AbortAgentCruiseDialingCampaign to terminate.",
+      "input": "AbortAgentCruiseDialingCampaignRequest",
+      "name": "Abort Agent Cruise Dialing Campaign",
+      "output": "AbortAgentCruiseDialingCampaignResponse",
+      "status": "online"
+    },
     "AbortPredictiveDialingCampaign": {
-      "document": "This API is used to pause the predictive outbound call task.",
+      "document": "This API is used to pause predictive dialing campaign",
       "input": "AbortPredictiveDialingCampaignRequest",
-      "name": "Stops predictive dialing task",
+      "name": "Abort Predictive Dialing Campaign",
       "output": "AbortPredictiveDialingCampaignResponse",
       "status": "online"
     },
     "BindNumberCallOutSkillGroup": {
-      "document": "This API is used to bind outbound skill group of number.",
+      "document": "This API is used to assign outbound skill group(s) to your number",
       "input": "BindNumberCallOutSkillGroupRequest",
-      "name": "Binds outbound skill group of number",
+      "name": "Bind number with outbound skill group",
       "output": "BindNumberCallOutSkillGroupResponse",
       "status": "online"
     },
     "BindStaffSkillGroupList": {
-      "document": "This API is used to bind the agent's skill group.",
+      "document": "This API is used to assign an agent to skill group",
       "input": "BindStaffSkillGroupListRequest",
-      "name": "Binds the skill group to which the agent belongs",
+      "name": "Bind Agent to Skill Group",
       "output": "BindStaffSkillGroupListResponse",
       "status": "online"
     },
     "CreateAdminURL": {
       "document": "This API is used to create a management access link.",
       "input": "CreateAdminURLRequest",
-      "name": "Creates a management access link",
+      "name": "Create Management Panel Login",
       "output": "CreateAdminURLResponse",
+      "status": "online"
+    },
+    "CreateAgentCruiseDialingCampaign": {
+      "document": "This document shows how to call API to create an individual auto dialing campaign for agent",
+      "input": "CreateAgentCruiseDialingCampaignRequest",
+      "name": "Create Agent Cruise Dialing Campaign",
+      "output": "CreateAgentCruiseDialingCampaignResponse",
       "status": "online"
     },
     "CreateAutoCalloutTask": {
@@ -54,6 +68,13 @@
       "input": "CreateExtensionRequest",
       "name": "Creates telephone account",
       "output": "CreateExtensionResponse",
+      "status": "online"
+    },
+    "CreateIVRSession": {
+      "document": "Create a session associated with IVR. This feature is supported only in the Advanced Version. Currently, it supports inbound and automatic outbound IVR types. Upon receiving the request, TCCC will first attempt to call the callee, then enter the IVR flow.",
+      "input": "CreateIVRSessionRequest",
+      "name": "CreateIVRSession",
+      "output": "CreateIVRSessionResponse",
       "status": "online"
     },
     "CreatePredictiveDialingCampaign": {
@@ -98,6 +119,13 @@
       "output": "DeleteStaffResponse",
       "status": "online"
     },
+    "DescribeAgentCruiseDialingCampaign": {
+      "document": "Query Agent Cruise-style Outbound Call Task",
+      "input": "DescribeAgentCruiseDialingCampaignRequest",
+      "name": "Query Agent Cruise-style Outbound Call Task",
+      "output": "DescribeAgentCruiseDialingCampaignResponse",
+      "status": "online"
+    },
     "DescribeAutoCalloutTask": {
       "document": "This API is used to query automatic outbound call task details.",
       "input": "DescribeAutoCalloutTaskRequest",
@@ -106,9 +134,9 @@
       "status": "online"
     },
     "DescribeAutoCalloutTasks": {
-      "document": "This API is used to query auto-task outbound calls in batch.",
+      "document": "Batch Query Automatic Outbound Call Tasks",
       "input": "DescribeAutoCalloutTasksRequest",
-      "name": "Queries auto-task outgoing calls in batch",
+      "name": "Batch Query Automatic Outbound Call Tasks",
       "output": "DescribeAutoCalloutTasksResponse",
       "status": "online"
     },
@@ -138,6 +166,13 @@
       "input": "DescribeExtensionsRequest",
       "name": "Queries telephone list information",
       "output": "DescribeExtensionsResponse",
+      "status": "online"
+    },
+    "DescribeIvrAudioList": {
+      "document": "Query IVR Audio File List Information",
+      "input": "DescribeIvrAudioListRequest",
+      "name": "Query IVR Audio File List",
+      "output": "DescribeIvrAudioListResponse",
       "status": "online"
     },
     "DescribeNumbers": {
@@ -204,9 +239,9 @@
       "status": "online"
     },
     "DescribeTelCallInfo": {
-      "document": "This API is used to access telephone consumption statistics by instance.",
+      "document": "This API is used to access call detail records by application",
       "input": "DescribeTelCallInfoRequest",
-      "name": "Accesses telephone consumption statistics by instance",
+      "name": "Access call detail records by application",
       "output": "DescribeTelCallInfoResponse",
       "status": "online"
     },
@@ -246,10 +281,17 @@
       "status": "online"
     },
     "ModifyStaff": {
-      "document": "This API is used to modify the customer service account.",
+      "document": "This API is used to modify  customer service / agent account.",
       "input": "ModifyStaffRequest",
-      "name": "Modifies customer service account",
+      "name": "Modify customer service / agent account",
       "output": "ModifyStaffResponse",
+      "status": "online"
+    },
+    "ModifyStaffPassword": {
+      "document": "Modify Agent's Password",
+      "input": "ModifyStaffPasswordRequest",
+      "name": "Modify agent password",
+      "output": "ModifyStaffPasswordResponse",
       "status": "online"
     },
     "PausePredictiveDialingCampaign": {
@@ -307,6 +349,13 @@
       "name": "Updates predictive outbound call task",
       "output": "UpdatePredictiveDialingCampaignResponse",
       "status": "online"
+    },
+    "UploadIvrAudio": {
+      "document": "Upload audio files used in IVR, with a daily upload limit of 50 files. (It is recommended to use temporary links stored in Tencent Cloud Cos for the audio file URL in the parameters)",
+      "input": "UploadIvrAudioRequest",
+      "name": "Upload IVR prompt",
+      "output": "UploadIvrAudioResponse",
+      "status": "online"
     }
   },
   "metadata": {
@@ -315,6 +364,42 @@
     "serviceShortName": "ccc"
   },
   "objects": {
+    "AbortAgentCruiseDialingCampaignRequest": {
+      "document": "AbortAgentCruiseDialingCampaign request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "2569",
+          "member": "uint64",
+          "name": "CampaignId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "AbortAgentCruiseDialingCampaignResponse": {
+      "document": "AbortAgentCruiseDialingCampaign response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "AbortPredictiveDialingCampaignRequest": {
       "document": "AbortPredictiveDialingCampaign request structure.",
       "members": [
@@ -350,6 +435,52 @@
         }
       ],
       "type": "object"
+    },
+    "AudioFileInfo": {
+      "document": "Audio file review information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "FileId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "File alias\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "欢迎",
+          "member": "string",
+          "name": "CustomFileName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Filename\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx.mp3",
+          "member": "string",
+          "name": "AudioFileName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Review status, 0-Not reviewed, 1-Approved, 2-Rejected\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "AutoCalloutTaskCalleeInfo": {
       "document": "Outbound call task called information.",
@@ -452,7 +583,7 @@
         },
         {
           "disabled": false,
-          "document": "Task status: 0 - initial, 1 - running, 2 - completed, 3 - ending, 4 - closed.",
+          "document": "Task status:\n0 Initial: Task created, calling not started\n1 Running\n2  Completed: All calls in the task are completed\n3 Ending: The task is due, but some calls are still not finished\n4 Ended: Task terminated due to expiration",
           "example": "1",
           "member": "uint64",
           "name": "State",
@@ -839,6 +970,124 @@
       ],
       "type": "object"
     },
+    "CreateAgentCruiseDialingCampaignRequest": {
+      "document": "CreateAgentCruiseDialingCampaign request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Task Name",
+          "example": "新能源SUV推荐",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Agent Account",
+          "example": "foo@tencent.com",
+          "member": "string",
+          "name": "Agent",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Single-round Concurrent Call Volume 1-20",
+          "example": "3",
+          "member": "int64",
+          "name": "ConcurrencyNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Task start time. Unix timestamp. The task will automatically start after this time.",
+          "example": "1708483433",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Task termination time. Unix timestamp. The task will automatically terminate after this time.",
+          "example": "1708485433",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Called list supporting E.164 or number formats without country code.",
+          "example": "+8613012345678",
+          "member": "string",
+          "name": "Callees",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Calling list using the number formats displayed on the management side.",
+          "example": "0086075586013388",
+          "member": "string",
+          "name": "Callers",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Being called sequence: 0 for random 1 for in order.",
+          "example": "0",
+          "member": "int64",
+          "name": "CallOrder",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Caller Custom Data, Maximum Length 1024",
+          "example": "foobar",
+          "member": "string",
+          "name": "UUI",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAgentCruiseDialingCampaignResponse": {
+      "document": "CreateAgentCruiseDialingCampaign response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Generated task ID.",
+          "example": "2569",
+          "member": "int64",
+          "name": "CampaignId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateAutoCalloutTaskRequest": {
       "document": "CreateAutoCalloutTask request structure.",
       "members": [
@@ -916,7 +1165,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum attempts.",
+          "document": "Maximum attempts, 1-3 times",
           "example": "1",
           "member": "uint64",
           "name": "Tries",
@@ -1202,6 +1451,88 @@
       ],
       "type": "object"
     },
+    "CreateIVRSessionRequest": {
+      "document": "CreateIVRSession request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Called.",
+          "example": "+8613012345678",
+          "member": "string",
+          "name": "Callee",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specified IVR Id. Currently, it supports inbound and automatic outbound types",
+          "example": "4600",
+          "member": "int64",
+          "name": "IVRId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "List of calling numbers.",
+          "example": "无",
+          "member": "string",
+          "name": "Callers",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Custom variable",
+          "example": "无",
+          "member": "Variable",
+          "name": "Variables",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "User Data",
+          "example": "foobar",
+          "member": "string",
+          "name": "UUI",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIVRSessionResponse": {
+      "document": "CreateIVRSession response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Newly created session ID.",
+          "example": "adcf61b8-dbb9-4c20-87bf-c0744c04bade",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreatePredictiveDialingCampaignRequest": {
       "document": "CreatePredictiveDialingCampaign request structure.",
       "members": [
@@ -1386,7 +1717,7 @@
         {
           "disabled": false,
           "document": "SDK log-in Token.",
-          "example": "6bb56a09278740bc80c5dc6dab783eff",
+          "example": "some_token",
           "member": "string",
           "name": "Token",
           "output_required": true,
@@ -1406,7 +1737,7 @@
         {
           "disabled": false,
           "document": "The path in which the SDK is loaded will change with its release.",
-          "example": "https://29294-22989-29805-29810.cdn-go.cn/tccc-agent-sdk/latest/",
+          "example": "https://tccc/sdk.js",
           "member": "string",
           "name": "SdkURL",
           "output_required": true,
@@ -1563,7 +1894,7 @@
         },
         {
           "disabled": false,
-          "document": "List of customer service emails to be deleted.",
+          "document": "Customer service emails, supports up to 200 at a time.",
           "example": "[\"a\",\"b\",\"c\"]",
           "member": "string",
           "name": "StaffList",
@@ -1585,6 +1916,142 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAgentCruiseDialingCampaignRequest": {
+      "document": "DescribeAgentCruiseDialingCampaign request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "2569",
+          "member": "int64",
+          "name": "CampaignId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAgentCruiseDialingCampaignResponse": {
+      "document": "DescribeAgentCruiseDialingCampaign response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task Name",
+          "example": "新能源SUV推荐",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Agent Account",
+          "example": "foo@tencent.com",
+          "member": "string",
+          "name": "Agent",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Single-round Concurrent Call Volume 1-20",
+          "example": "3",
+          "member": "int64",
+          "name": "ConcurrencyNumber",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task start time. Unix timestamp. The task will automatically start after this time.",
+          "example": "1708483433",
+          "member": "int64",
+          "name": "StartTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task termination time. Unix timestamp. The task will automatically terminate after this time.",
+          "example": "1708485433",
+          "member": "int64",
+          "name": "EndTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Being called sequence: 0 for random 1 for in order.",
+          "example": "0",
+          "member": "int64",
+          "name": "CallOrder",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Caller Custom Data, Maximum Length 1024",
+          "example": "foobar",
+          "member": "string",
+          "name": "UUI",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task status 0 Not started 1 Running 2 Completed 3 Terminated",
+          "example": "2",
+          "member": "int64",
+          "name": "State",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of called parties",
+          "example": "200",
+          "member": "int64",
+          "name": "TotalCalleeCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of called parties",
+          "example": "200",
+          "member": "int64",
+          "name": "CalledCalleeCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -2105,6 +2572,98 @@
       ],
       "type": "object"
     },
+    "DescribeIvrAudioListRequest": {
+      "document": "DescribeIvrAudioList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "example": "1600000001",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page size, upper limit 50",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page number starting from 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "PageNumber",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "File alias",
+          "example": "欢迎",
+          "member": "string",
+          "name": "CustomFileName",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filename",
+          "example": "aaa.mp3",
+          "member": "string",
+          "name": "AudioFileName",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "File ID",
+          "example": "12",
+          "member": "uint64",
+          "name": "FileId",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIvrAudioListResponse": {
+      "document": "DescribeIvrAudioList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "File Information",
+          "example": "无",
+          "member": "AudioFileInfo",
+          "name": "FileInfo",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeNumbersRequest": {
       "document": "DescribeNumbers request structure.",
       "members": [
@@ -2608,7 +3167,7 @@
         {
           "disabled": false,
           "document": "List of session IDs for a call. You can access detailed call bills in batches through https://intl.cloud.tencent.com/document/product/679/47714.?from_cn_redirect=1",
-          "example": "无",
+          "example": "[\"e4b2d3f1-8c27-4a9d-bef1-0b412a7c5e8d\", \"a3e8f4c9-2b7d-4e1f-9d82-6c5a8b0d3f1e\", \"f7d2b4e9-1c8a-5d9e-b0f3-2e1a3c4b5d6f\"]",
           "member": "string",
           "name": "SessionList",
           "output_required": false,
@@ -2933,8 +3492,8 @@
         },
         {
           "disabled": false,
-          "document": "Filter agent status list.",
-          "example": "[0,100,200,300,400,500,600,700,800]",
+          "document": "Filter agent status list Agent status free Available | busy Busy | rest On Break | notReady Not Ready | afterCallWork Post-call Adjustment | offline Offline",
+          "example": "[\"free\"]",
           "member": "string",
           "name": "StatusList",
           "required": false,
@@ -2970,7 +3529,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start timestamp Unix timestamp (supports only day dimension. For example, for querying May 1st, you should pass a timestamp from \"2023-05-01 00:00:00\" to \"2023-05-01 23:59:59\" and for querying both May 1st and 2nd, you should pass a timestamp from \"2023-05-01 00:00:00\" to \"2023-05-02 23:59:59\").",
+          "document": "Start timestamp, Unix timestamp (query dimension supports only daily. For example, to query May 1st, pass startTime:\"2023-05-01 00:00:00\",\"endTime\":\"2023-05-01 23:59:59\" timestamp. To query May 1st and May 2nd, pass startTime:\"2023-05-01 00:00:00\",\"endTime\":\"2023-05-02 23:59:59\" timestamp)",
           "example": "0",
           "member": "int64",
           "name": "StartTimeStamp",
@@ -2979,7 +3538,7 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp. Unix timestamp and the maximum query time range is 90 days (supports only day dimension, for example, for querying May 1st, you should pass timestamp from \"2023-05-01 00:00:00\" to \"2023-05-01 23:59:59\" and for querying both May 1st and May 2nd, you should pass timestamp from \"2023-05-01 00:00:00\" to \"2023-05-02 23:59:59\").",
+          "document": "End timestamp, Unix timestamp, the query time range is up to 90 days (query dimension supports only daily. For example, to query May 1st, pass startTime:\"2023-05-01 00:00:00\",\"endTime\":\"2023-05-01 23:59:59\" timestamp. To query May 1st and May 2nd, pass startTime:\"2023-05-01 00:00:00\",\"endTime\":\"2023-05-02 23:59:59\" timestamp)",
           "example": "0",
           "member": "int64",
           "name": "EndTimeStamp",
@@ -3085,7 +3644,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start timestamp. Unix second-level timestamp.",
+          "document": "Start timestamp, Unix Timestamp in Seconds. Supports up to the past 180 days.",
           "example": "1611631881",
           "member": "int64",
           "name": "StartTimeStamp",
@@ -3094,7 +3653,7 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp. Unix second-level timestamp.",
+          "document": "End timestamp, Unix Timestamp in Seconds. The range between the end time and start time is less than 90 days.",
           "example": "1611631881",
           "member": "int64",
           "name": "EndTimeStamp",
@@ -3314,11 +3873,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "Agent email address.",
+          "document": "Agent Email Address",
           "example": "xxx@xxx.com",
           "member": "string",
           "name": "StaffEmail",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3328,7 +3887,7 @@
           "example": "err",
           "member": "string",
           "name": "Code",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3338,7 +3897,7 @@
           "example": "some error ",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -3354,7 +3913,7 @@
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3364,7 +3923,7 @@
           "example": "xxx@xxx.com",
           "member": "string",
           "name": "FullExtensionId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3374,7 +3933,7 @@
           "example": "1001",
           "member": "string",
           "name": "ExtensionId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3384,7 +3943,7 @@
           "example": "1000,1001",
           "member": "string",
           "name": "SkillGroupId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3394,7 +3953,7 @@
           "example": "分机1",
           "member": "string",
           "name": "ExtensionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3404,7 +3963,7 @@
           "example": "1617184839",
           "member": "int64",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3414,7 +3973,7 @@
           "example": "1617184839",
           "member": "int64",
           "name": "ModifyTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3424,7 +3983,7 @@
           "example": "100",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3434,27 +3993,27 @@
           "example": "true",
           "member": "bool",
           "name": "Register",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Bind agent email.",
+          "document": "Bind Agent Email",
           "example": "xxx@xxx.com",
           "member": "string",
           "name": "Relation",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Bind agent name",
-          "example": "坐席1",
+          "document": "Bind Agent Name",
+          "example": "座席1",
           "member": "string",
           "name": "RelationName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -3586,6 +4145,51 @@
       ],
       "type": "object"
     },
+    "ModifyStaffPasswordRequest": {
+      "document": "ModifyStaffPassword request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "example": "16000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Agent email.",
+          "example": "a@qq.com",
+          "member": "string",
+          "name": "Email",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The set password ",
+          "example": "abcdefg",
+          "member": "string",
+          "name": "Password",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyStaffPasswordResponse": {
+      "document": "ModifyStaffPassword response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyStaffRequest": {
       "document": "ModifyStaff request structure.",
       "members": [
@@ -3631,6 +4235,15 @@
           "example": "XXX",
           "member": "string",
           "name": "Nick",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Agent ID",
+          "example": "114514",
+          "member": "string",
+          "name": "StaffNo",
           "required": false,
           "type": "string"
         },
@@ -3721,7 +4334,7 @@
           "example": "d62a280a-b7dc-4a05-8295-eba7b61c2490",
           "member": "string",
           "name": "SessionID",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3731,7 +4344,7 @@
           "example": "0",
           "member": "string",
           "name": "RoomID",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3741,7 +4354,7 @@
           "example": "00861010101033",
           "member": "string",
           "name": "Caller",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3751,7 +4364,7 @@
           "example": "00861010101031",
           "member": "string",
           "name": "Callee",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3761,7 +4374,7 @@
           "example": "1617184839",
           "member": "int64",
           "name": "StartTimestamp",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3771,7 +4384,7 @@
           "example": "1617184839",
           "member": "int64",
           "name": "RingTimestamp",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3781,7 +4394,7 @@
           "example": "1617184839",
           "member": "int64",
           "name": "AcceptTimestamp",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3791,27 +4404,27 @@
           "example": "foo@tencent.com",
           "member": "string",
           "name": "StaffEmail",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Agent work number.",
+          "document": "Agent ID",
           "example": "007",
           "member": "string",
           "name": "StaffNumber",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Session state.\nringing - In progress.\nseatJoining - Waiting for agent to receive call.\nInProgress - Ongoing.\nfinished - Completed.",
+          "document": "Session Status\nringing Ringing\nseatJoining  waiting for the agent to answer\ninProgress  Ongoing\nfinished - Completed.",
           "example": "finished",
           "member": "string",
           "name": "SessionStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3821,7 +4434,7 @@
           "example": "0",
           "member": "int64",
           "name": "Direction",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3831,7 +4444,7 @@
           "example": "00861010101031",
           "member": "string",
           "name": "OutBoundCaller",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3841,7 +4454,7 @@
           "example": "00861010101032",
           "member": "string",
           "name": "OutBoundCallee",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3851,7 +4464,7 @@
           "example": "008613XXXX5678",
           "member": "string",
           "name": "ProtectedCaller",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3861,7 +4474,7 @@
           "example": "008613XXXX5678",
           "member": "string",
           "name": "ProtectedCallee",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -3877,7 +4490,7 @@
           "example": "1",
           "member": "string",
           "name": "SessionID",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3887,7 +4500,7 @@
           "example": "1",
           "member": "string",
           "name": "RoomID",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3897,7 +4510,7 @@
           "example": "13712345678",
           "member": "string",
           "name": "Caller",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3907,7 +4520,7 @@
           "example": "13712345678",
           "member": "string",
           "name": "Callee",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3917,7 +4530,7 @@
           "example": "1617184839",
           "member": "string",
           "name": "StartTimestamp",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3927,7 +4540,7 @@
           "example": "1617184839",
           "member": "string",
           "name": "AcceptTimestamp",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3937,27 +4550,27 @@
           "example": "xxx@xxx.com",
           "member": "string",
           "name": "StaffEmail",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Agent work number.",
+          "document": "Agent ID",
           "example": "1",
           "member": "string",
           "name": "StaffNumber",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Agent status: inProgress for in progress.",
+          "document": "Agent Status inProgress Ongoing",
           "example": "inProgress",
           "member": "string",
           "name": "SessionStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3967,7 +4580,7 @@
           "example": "0",
           "member": "int64",
           "name": "Direction",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3977,7 +4590,7 @@
           "example": "1617184839",
           "member": "int64",
           "name": "RingTimestamp",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3987,7 +4600,7 @@
           "example": "008613XXXX5678",
           "member": "string",
           "name": "ProtectedCaller",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3997,7 +4610,7 @@
           "example": "008613XXXX5678",
           "member": "string",
           "name": "ProtectedCallee",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -4263,7 +4876,7 @@
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4273,27 +4886,27 @@
           "example": "Test",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Number of agents purchased (still within the validity period).",
+          "document": "Agent Purchase Count (still within the validity period)",
           "example": "10",
           "member": "int64",
           "name": "StaffBuyNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "List of agents purchased (still within the validity period).",
+          "document": "Agent Purchase List (still within the validity period)",
           "example": "[]",
           "member": "StaffBuyInfo",
           "name": "StaffBuyList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4303,7 +4916,7 @@
           "example": "[]",
           "member": "PhoneNumBuyInfo",
           "name": "PhoneNumBuyList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -4313,7 +4926,7 @@
           "example": "10",
           "member": "int64",
           "name": "SipBuyNum",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         }
@@ -4321,7 +4934,7 @@
       "usage": "out"
     },
     "SeatUserInfo": {
-      "document": "Agent user information.",
+      "document": "Agent User Information",
       "members": [
         {
           "disabled": false,
@@ -4358,7 +4971,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent phone number (preceded by 0086).",
+          "document": "Agent's Telephone Number (With 0086 Prefix)",
           "example": "008613012345678",
           "member": "string",
           "name": "Phone",
@@ -4391,7 +5004,7 @@
         },
         {
           "disabled": false,
-          "document": "List of skill groups associated with the agent.\nNote: This field may return null, indicating that no valid value could be obtained.",
+          "document": "List of skill groups associated with the seat\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "\"\"",
           "member": "string",
           "name": "SkillGroupNameList",
@@ -4423,17 +5036,17 @@
           "example": "foo@tencent.com",
           "member": "string",
           "name": "Mail",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Agent phone number.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Agent Telephone\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "008613012345678",
           "member": "string",
           "name": "Phone",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4443,7 +5056,7 @@
           "example": "1611631881",
           "member": "int64",
           "name": "RingTimestamp",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4453,7 +5066,7 @@
           "example": "1611631881",
           "member": "int64",
           "name": "AcceptTimestamp",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4463,17 +5076,17 @@
           "example": "1611631891",
           "member": "int64",
           "name": "EndedTimestamp",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Recording ID can be indexed to the agent side recording.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Recording ID, which can be used to index the recording on the agent side\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1611631881",
           "member": "string",
           "name": "RecordId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4483,17 +5096,17 @@
           "example": "staffSeat",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Transfer source agent information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Transfer Source Agent Information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "bar@tencent.com",
           "member": "string",
           "name": "TransferFrom",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4503,17 +5116,17 @@
           "example": "staffSeat",
           "member": "string",
           "name": "TransferFromType",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Transfer destination agent information.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Transfer Destination Agent Information\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "san@tencent.com",
           "member": "string",
           "name": "TransferTo",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4523,7 +5136,7 @@
           "example": "staffSeat",
           "member": "string",
           "name": "TransferToType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4533,7 +5146,7 @@
           "example": "1101",
           "member": "int64",
           "name": "SkillGroupId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4543,7 +5156,7 @@
           "example": "ok unconnected seatGiveUp seatForward outboundForward ivrGiveUp ",
           "member": "string",
           "name": "EndStatusString",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4553,7 +5166,7 @@
           "example": "https://xxxxxxx",
           "member": "string",
           "name": "RecordURL",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4563,7 +5176,7 @@
           "example": "0",
           "member": "int64",
           "name": "Sequence",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4573,7 +5186,7 @@
           "example": "1611631881",
           "member": "int64",
           "name": "StartTimestamp",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4583,7 +5196,7 @@
           "example": "tel",
           "member": "string",
           "name": "SkillGroupName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4593,7 +5206,7 @@
           "example": "https://xxxxxxx",
           "member": "string",
           "name": "CustomRecordURL",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -4609,7 +5222,7 @@
           "example": "1400000000",
           "member": "int64",
           "name": "SkillGroupId",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4619,7 +5232,7 @@
           "example": "Test",
           "member": "string",
           "name": "SkillGroupName",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4629,7 +5242,7 @@
           "example": "IM",
           "member": "string",
           "name": "Type",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4639,17 +5252,17 @@
           "example": "fifo",
           "member": "string",
           "name": "RoutePolicy",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "Whether the session is allocated to the last serviced agent first.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Should the conversation allocation prioritize the last service seat?\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "UsingLastSeat",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4659,7 +5272,7 @@
           "example": "1",
           "member": "int64",
           "name": "MaxConcurrency",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4669,7 +5282,7 @@
           "example": "1611631881",
           "member": "int64",
           "name": "LastModifyTimestamp",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4679,8 +5292,18 @@
           "example": "1",
           "member": "int64",
           "name": "SkillGroupType",
-          "required": false,
+          "output_required": true,
           "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Extension number within the skill group\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "6666",
+          "member": "string",
+          "name": "Alias",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -4733,15 +5356,15 @@
       "usage": "out"
     },
     "StaffBuyInfo": {
-      "document": "Agent Purchase Information.",
+      "document": "Agent purchase information",
       "members": [
         {
           "disabled": false,
-          "document": "Number of agents purchased.",
+          "document": "Number of agents purchased",
           "example": "10",
           "member": "int64",
           "name": "Num",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4751,7 +5374,7 @@
           "example": "163000000",
           "member": "int64",
           "name": "BuyTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4761,7 +5384,7 @@
           "example": "164000000",
           "member": "int64",
           "name": "EndTime",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4771,7 +5394,7 @@
           "example": "12",
           "member": "int64",
           "name": "SipNum",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         }
@@ -4779,11 +5402,11 @@
       "usage": "out"
     },
     "StaffInfo": {
-      "document": "Agent information with skill group priority.",
+      "document": "Agent Information with Skill Group Priority",
       "members": [
         {
           "disabled": false,
-          "document": "Agent name.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Agent name.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xiaowang",
           "member": "string",
           "name": "Name",
@@ -4803,7 +5426,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent telephone number.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Agent's Telephone Number\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "18092226822",
           "member": "string",
           "name": "Phone",
@@ -4813,7 +5436,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent nickname.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Agent nickname.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "xiaohong",
           "member": "string",
           "name": "Nick",
@@ -4823,7 +5446,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent number.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Agent ID\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "101",
           "member": "string",
           "name": "StaffNumber",
@@ -4833,7 +5456,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "User Role ID",
           "example": "1",
           "member": "uint64",
           "name": "RoleId",
@@ -4889,7 +5512,7 @@
       "usage": "in"
     },
     "StaffStatusExtra": {
-      "document": "Supplementary agent status information.",
+      "document": "Supplementary Information on Agent Status",
       "members": [
         {
           "disabled": false,
@@ -4897,7 +5520,7 @@
           "example": "tel",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4907,7 +5530,7 @@
           "example": "in",
           "member": "string",
           "name": "Direct",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -4915,7 +5538,7 @@
       "usage": "out"
     },
     "StaffStatusMetrics": {
-      "document": "Agent status information.",
+      "document": "Agent status-related information",
       "members": [
         {
           "disabled": false,
@@ -4923,27 +5546,27 @@
           "example": "xxx@xxx.com",
           "member": "string",
           "name": "Email",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Agent status: Free for Available | busy for Busy | rest for Break | notReady for Not Ready | afterCallWork for After Call Work | offline for Offline.",
+          "document": "Agent status free Available | busy Busy | rest On Break | notReady Not Ready | afterCallWork Post-call Adjustment | offline Offline",
           "example": "free",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Supplementary agent status information.",
+          "document": "Supplementary Information on Agent Status",
           "example": "无",
           "member": "StaffStatusExtra",
           "name": "StatusExtra",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4953,7 +5576,7 @@
           "example": "0",
           "member": "int64",
           "name": "OnlineDuration",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4963,7 +5586,7 @@
           "example": "0",
           "member": "int64",
           "name": "FreeDuration",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4973,7 +5596,7 @@
           "example": "0",
           "member": "int64",
           "name": "BusyDuration",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4983,7 +5606,7 @@
           "example": "0",
           "member": "int64",
           "name": "NotReadyDuration",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4993,7 +5616,7 @@
           "example": "0",
           "member": "int64",
           "name": "RestDuration",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5003,7 +5626,7 @@
           "example": "0",
           "member": "int64",
           "name": "AfterCallWorkDuration",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5013,7 +5636,7 @@
           "example": "会议",
           "member": "string",
           "name": "Reason",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5023,7 +5646,7 @@
           "example": "false",
           "member": "bool",
           "name": "ReserveRest",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -5033,7 +5656,7 @@
           "example": "false",
           "member": "bool",
           "name": "ReserveNotReady",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -5043,7 +5666,7 @@
           "example": "0",
           "member": "int64",
           "name": "UseMobileAccept",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5053,7 +5676,7 @@
           "example": "false",
           "member": "bool",
           "name": "UseMobileCallOut",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -5063,7 +5686,7 @@
           "example": "1679300000",
           "member": "int64",
           "name": "LastOnlineTimestamp",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -5073,7 +5696,7 @@
           "example": "1679300000",
           "member": "int64",
           "name": "LastStatusTimestamp",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         }
@@ -5191,7 +5814,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent information.",
+          "document": "Agent Information",
           "example": "0",
           "member": "SeatUserInfo",
           "name": "SeatUser",
@@ -5201,7 +5824,7 @@
         },
         {
           "disabled": false,
-          "document": "EndStatus corresponds one-to-one with EndStatusString, the specific enumeration is as follows:\n**Scenario        EndStatus\tEndStatusString\tStatus Description**\nInbound & Outbound Call\t1\t        ok\t                        Successfully ended\nInbound & Outbound Call\t0\t        error\t                System error\nInbound Call\t             102\t        ivrGiveUp\t        User hangs up during IVR\nInbound Call\t             103\t        waitingGiveUp\t        User hangs up while on hold\nInbound Call\t             104\t        ringingGiveUp\t        User hangs up when ringing\nInbound Call\t             105\t        noSeatOnline\t       No agent online\nInbound Call              106\t       notWorkTime\t       Non-working hours\nInbound Call\t            107\t       ivrEnd\t              Ends after IVR\nInbound Call\t            100\t      Inbound call blocklist \nOutgoing Call               2\t              unconnected\tUnanswered\n< 10,000 minutesOutgoing Call             201            unknown\tUnknown status\nOutgoing Call             202            notAnswer\tUnanswered\nOutgoing Call            203\t    userReject\tCall declined\nOutgoing Call\t          204\t    powerOff\tPhone switched off\nOutgoing Call           205            numberNotExist\tNonexistent number\nOutgoing Call\t         206\t           busy\tOn another call\nOutgoing Call   \t 207\t           outOfCredit\tOverdue\nOutgoing Call\t         208\t           operatorError\t ISP channel exception\nOutgoing Call         \t209\t           callerCancel\tCaller cancellation\nOutgoing Call\t        210\t           notInService\tNot in service area\nInbound & Outbound Calls\t211    clientError    Client error\n",
+          "document": "EndStatus corresponds one-to-one with EndStatusString, specific enumerations are as follows:\n\n**Scenario\t         EndStatus\tEndStatusString\tStatus Description**\n\nIncoming & Outgoing Calls\t1\t        ok\t                        Normal End\n\nIncoming & Outgoing Calls\t0\t        error\t                System Error\n\nIncoming Call\t             102\t        ivrGiveUp\t        User Gave Up During IVR\n\nIncoming Call\t             103\t        waitingGiveUp\t       User Gave Up During Queue\n\nIncoming Call\t             104\t        ringingGiveUp\t       User Gave Up During Ringing\n\nIncoming Call\t             105\t        noSeatOnline\t       No Seat Online\n\nIncoming Call              106\t       notWorkTime\t       Non-Working Hours   \n\nIncoming Call\t            107\t       ivrEnd\t               Ended Directly After IVR\n\nIncoming Call\t            100\t      blackList Incoming blocklist  \n\nOutgoing Call               2\t              unconnected\tUnconnected\n\nOutgoing Call             108\t        restrictedCallee\tCallee restricted due to high risk\n\nOutgoing Call             109\t        tooManyRequest\t    Frequency limit exceeded\n\nOutgoing Call             110\t        restrictedArea\t    Call to restricted area\n\nOutgoing Call             111\t        restrictedTime\tCall time restricted\n                         \nOutgoing Call             201            unknown\tUnknown status\n\nOutgoing Call             202            notAnswer\tMissed call\n\nOutgoing Call            203\t    userReject\tReject/Hang Up\n\nOutgoing Call\t          204\t    powerOff\tShutting down\n\nOutgoing Call           205            numberNotExist\tDisconnected Number\n\nOutgoing Call\t         206\t           busy\tDuring the call\n\nOutgoing Call   \t        207\t           outOfCredit\tOverdue Payment\n\nOutgoing Call\t         208\t           operatorError\t ISP Carrier Line Anomaly\n\nOutgoing Call         \t209\t           callerCancel\tCaller Cancelled\n\nOutgoing Call\t        210\t           notInService\tOut of Service Area\n\nIncoming & Outgoing Calls\t211    clientError    Client Error\n",
           "example": "1",
           "member": "int64",
           "name": "EndStatus",
@@ -5281,7 +5904,7 @@
         },
         {
           "disabled": false,
-          "document": "Hang-up side, seat, user, system.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Hanging Up Party seat Seat user Users system system\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "user",
           "member": "string",
           "name": "HungUpSide",
@@ -5311,7 +5934,7 @@
         },
         {
           "disabled": false,
-          "document": "EndStatus corresponds one-to-one with EndStatusString, the specific enumeration is as follows:\n**Scenario        EndStatus\tEndStatusString\tStatus Description**\nInbound & Outbound Call\t1\t        ok\t                        Successfully ended\nInbound & Outbound Call\t0\t        error\t                System error\nInbound Call\t             102\t        ivrGiveUp\t        User hangs up during IVR\nInbound Call\t             103\t        waitingGiveUp\t        User hangs up while on hold\nInbound Call\t             104\t        ringingGiveUp\t        User hangs up when ringing\nInbound Call\t             105\t        noSeatOnline\t       No agent online\nInbound Call              106\t       notWorkTime\t       Non-working hours\nInbound Call\t            107\t       ivrEnd\t              Ends after IVR\nInbound Call\t            100\t      Inbound call blocklist \nOutgoing Call               2\t              unconnected\tUnanswered\n< 10,000 minutesOutgoing Call             201            unknown\tUnknown status\nOutgoing Call             202            notAnswer\tUnanswered\nOutgoing Call            203\t    userReject\tCall declined\nOutgoing Call\t          204\t    powerOff\tPhone switched off\nOutgoing Call           205            numberNotExist\tNonexistent number\nOutgoing Call\t         206\t           busy\tOn another call\nOutgoing Call   \t 207\t           outOfCredit\tOverdue\nOutgoing Call\t         208\t           operatorError\t ISP channel exception\nOutgoing Call         \t209\t           callerCancel\tCaller cancellation\nOutgoing Call\t        210\t           notInService\tNot in service area\nInbound & Outbound Calls\t211    clientError    Client error\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "EndStatus corresponds one-to-one with EndStatusString, specific enumerations are as follows:\n\n**Scenario\t         EndStatus\tEndStatusString\tStatus Description**\n\nIncoming & Outgoing Calls\t1\t        ok\t                        Normal End\n\nIncoming & Outgoing Calls\t0\t        error\t                System Error\n\nIncoming Call\t             102\t        ivrGiveUp\t        User Gave Up During IVR\n\nIncoming Call\t             103\t        waitingGiveUp\t       User Gave Up During Queue\n\nIncoming Call\t             104\t        ringingGiveUp\t       User Gave Up During Ringing\n\nIncoming Call\t             105\t        noSeatOnline\t       No Seat Online\n\nIncoming Call              106\t       notWorkTime\t       Non-Working Hours   \n\nIncoming Call\t            107\t       ivrEnd\t               Ended Directly After IVR\n\nIncoming Call\t            100\t      blackList Incoming blocklist  \n\nOutgoing Call               2\t              unconnected\tUnconnected\n\nOutgoing Call             108\t        restrictedCallee\tCallee restricted due to high risk\n\nOutgoing Call             109\t        tooManyRequest\t    Frequency limit exceeded\n\nOutgoing Call             110\t        restrictedArea\t    Call to restricted area\n\nOutgoing Call             111\t        restrictedTime\tCall time restricted\n                         \nOutgoing Call             201            unknown\tUnknown status\n\nOutgoing Call             202            notAnswer\tMissed call\n\nOutgoing Call            203\t    userReject\tReject/Hang Up\n\nOutgoing Call\t          204\t    powerOff\tShutting down\n\nOutgoing Call           205            numberNotExist\tDisconnected Number\n\nPhone Call Out\t         206\t           busy\tIn Call\n\nOutgoing Call   \t        207\t           outOfCredit\tOverdue Payment\n\nOutgoing Call\t         208\t           operatorError\t ISP Carrier Line Anomaly\n\nOutgoing Call         \t209\t           callerCancel\tCaller Cancelled\n\nOutgoing Call\t        210\t           notInService\tOut of Service Area\n\nPhone Call In & Out\t211    clientError    Client Error\n\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "ok",
           "member": "string",
           "name": "EndStatusString",
@@ -5770,6 +6393,112 @@
     "UpdatePredictiveDialingCampaignResponse": {
       "document": "UpdatePredictiveDialingCampaign response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UploadAudioInfo": {
+      "document": "Upload Audio File Information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File Alias (can be duplicated)",
+          "example": "呼入使用",
+          "member": "string",
+          "name": "CustomFileName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Audio File Link (supports mp3 and wav formats, file size not exceeding 5MB)",
+          "example": "http://xxx.com/aa.mp3",
+          "member": "string",
+          "name": "AudioUrl",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "UploadIvrAudioFailedInfo": {
+      "document": "Failed to upload audio file information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filename\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "xxx.mp3",
+          "member": "string",
+          "name": "FileName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Reason for failure\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "文件内容重复",
+          "member": "string",
+          "name": "FailedMsg",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "UploadIvrAudioRequest": {
+      "document": "UploadIvrAudio request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "example": "1600000001",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Audio File List",
+          "example": "无",
+          "member": "UploadAudioInfo",
+          "name": "AudioList",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UploadIvrAudioResponse": {
+      "document": "UploadIvrAudio response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of failed uploads\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UploadIvrAudioFailedInfo",
+          "name": "FailedFileList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "List of successful uploads\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AudioFileInfo",
+          "name": "SuccessFileList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
