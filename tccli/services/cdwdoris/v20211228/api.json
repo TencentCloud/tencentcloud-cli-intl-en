@@ -1186,6 +1186,34 @@
       ],
       "type": "object"
     },
+    "CatalogPermission": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "CatalogName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Permissions",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "ChargeProperties": {
       "document": "Cluster billing-related information",
       "members": [
@@ -4388,7 +4416,7 @@
         {
           "disabled": false,
           "document": "Start time",
-          "example": "无",
+          "example": "\"2024-07-28 00:00:00\"",
           "member": "string",
           "name": "StartTime",
           "required": false,
@@ -4397,7 +4425,7 @@
         {
           "disabled": false,
           "document": "End time",
-          "example": "无",
+          "example": "\"2024-07-28 00:00:00\"",
           "member": "string",
           "name": "EndTime",
           "required": false,
@@ -4418,6 +4446,15 @@
           "example": "无",
           "member": "string",
           "name": "PassWord",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": true,
+          "document": "Information, deprecated.\n",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
           "required": false,
           "type": "string"
         }
@@ -4445,6 +4482,16 @@
           "name": "Operations",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -4940,6 +4987,15 @@
           "name": "SortOrder",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Minimum query execution time, in milliseconds.",
+          "example": "500",
+          "member": "uint64",
+          "name": "QueryTime",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -4995,6 +5051,16 @@
           "name": "TotalPages",
           "output_required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -6167,6 +6233,24 @@
           "name": "PassWord",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Catalog name, defaults to 'internal' if not specified.",
+          "example": "无",
+          "member": "string",
+          "name": "CatalogName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "InstanceId",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -6212,6 +6296,16 @@
           "name": "Rows",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -6279,6 +6373,24 @@
           "name": "PassWord",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Catalog name, defaults to 'internal' if not specified.\n",
+          "example": "无",
+          "member": "string",
+          "name": "CatalogName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "InstanceId",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -6324,6 +6436,16 @@
           "name": "Rows",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -6517,11 +6639,38 @@
           "type": "string"
         },
         {
-          "disabled": false,
-          "document": "Column type",
+          "disabled": true,
+          "document": "Column type, this field has been deprecated, please use Types",
           "example": "string",
           "member": "string",
           "name": "ColumnTypes",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Array of column types\n",
+          "example": "[\"int64\",\"string\",\"int64\"]",
+          "member": "string",
+          "name": "Types",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Catalog name, defaults to 'internal' if not specified.",
+          "example": "internal",
+          "member": "string",
+          "name": "CatalogName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "InstanceId",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
           "required": false,
           "type": "string"
         }
@@ -7573,6 +7722,33 @@
           "name": "PassWord",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Catalog name, defaults to internal if not specified.",
+          "example": "无",
+          "member": "string",
+          "name": "CatalogName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "InstanceId",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Machine Group, defaults to % if not specified.",
+          "example": "%",
+          "member": "string",
+          "name": "WhiteHost",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -7592,7 +7768,7 @@
         },
         {
           "disabled": false,
-          "document": "Message description of the operation result",
+          "document": "Error message",
           "example": "无",
           "member": "string",
           "name": "Message",
@@ -8679,6 +8855,17 @@
           "required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The key is the full name of the catalog, and the value is the permission list of the user on the catalog.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "CatalogPermission",
+          "name": "CatalogPermissions",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -8799,7 +8986,7 @@
         },
         {
           "disabled": false,
-          "document": "SQL type\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "SQL Type: 0 is non-query, 1 is query, -1 is unrestricted.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "select",
           "member": "string",
           "name": "SQLType",
@@ -8942,6 +9129,24 @@
           "name": "PassWord",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Catalog name, defaults to 'internal' if not specified.\n",
+          "example": "无",
+          "member": "string",
+          "name": "CatalogName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "InstanceId",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -8987,6 +9192,16 @@
           "name": "Rows",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -10538,6 +10753,15 @@
           "name": "PassWord",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "InstanceId",
+          "example": "无",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -10679,6 +10903,16 @@
           "example": "无",
           "member": "string",
           "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Is it successful",
+          "example": "true",
+          "member": "string",
+          "name": "Success",
           "output_required": false,
           "type": "string",
           "value_allowed_null": false
