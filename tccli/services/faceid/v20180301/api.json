@@ -3837,11 +3837,21 @@
           "value_allowed_null": true
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "OCR result of the ID card.",
           "example": "无",
           "member": "CardInfo",
           "name": "CardInfo",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "OCR result of the ID card.",
+          "example": "无",
+          "member": "NormalCardInfo",
+          "name": "NormalCardInfo",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
@@ -4787,7 +4797,7 @@
         },
         {
           "disabled": false,
-          "document": "The type of lisence used for verification. The following types are supported.\n1.HKIDCard: Hong Kong (China) ID card\n2.MLIDCard: Malaysia ID card\n3.IndonesiaIDCard: Indonesia ID card\n4.PhilippinesVoteID: Philippines VoteID card\n5.PhilippinesDrivingLicense: Philippines driving license\n6.PhilippinesTinID: Philippines TinID card\n7.PhilippinesSSSID: Philippines SSSID card\n8.PhilippinesUMID: Philippines UMID card\n9.InternationalIDPassport: ID cards of Hong Kong, Macao and Taiwan (China), and international passport.\nExample: HKIDCard",
+          "document": "The type of lisence used for verification. The following types are supported.\n1.HKIDCard: Hong Kong (China) ID card\n2.MLIDCard: Malaysia ID card\n3.IndonesiaIDCard: Indonesia ID card\n4.PhilippinesVoteID: Philippines VoteID card\n5.PhilippinesDrivingLicense: Philippines driving license\n6.PhilippinesTinID: Philippines TinID card\n7.PhilippinesSSSID: Philippines SSSID card\n8.PhilippinesUMID: Philippines UMID card\n9.InternationalIDPassport: ID cards of Hong Kong, Macao and Taiwan (China), and international passport.\n10.IndonesiaDrivingLicense:Indonesia driving license\n11.ThailandIDCard: Thailand ID card\n12.ThailandDrivingLicense: Thailand driving license\n13.MLDrivingLicense: Malaysia driving license\n14.SingaporeIDCard: Singapore ID card\n15.SingaporeDrivingLicense: Singapore driving license\n16.JapanIDCard: Japan ID card\n17.JapanDrivingLicense: Japan driving license\n18.PhilippinesIDCard: Philippines ID card\n19.MainlandIDCard: Mainland ID card\n20.MacaoIDCard: Macao ID card\nExample: HKIDCard",
           "example": "HKIDCard",
           "member": "string",
           "name": "IDCardType",
