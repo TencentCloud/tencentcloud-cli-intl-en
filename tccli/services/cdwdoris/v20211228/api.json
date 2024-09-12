@@ -1169,7 +1169,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Error message\nNote: This field may return null, indicating that no valid values can be obtained",
           "example": "无",
           "member": "string",
           "name": "ErrorMsg",
@@ -1820,7 +1820,7 @@
         },
         {
           "disabled": false,
-          "document": "Name of the database where the source table is located",
+          "document": "Name of the database where the source table is located.",
           "example": "sourceDB",
           "member": "string",
           "name": "CopiedFromDb",
@@ -4927,7 +4927,7 @@
         },
         {
           "disabled": false,
-          "document": "End time of operation period",
+          "document": "End time of operation period.",
           "example": "\"2024-07-11 10:00:00\"",
           "member": "string",
           "name": "EndTime",
