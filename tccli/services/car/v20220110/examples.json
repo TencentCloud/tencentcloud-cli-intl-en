@@ -8,12 +8,28 @@
         "title": "Requesting Concurrency Quota"
       }
     ],
+    "BindConcurrentPackagesToProject": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: BindConcurrentPackagesToProject\n<Common request parameters>\n\n\n\n{\n    \"ConcurrentIds\": [\n        \"abc\"\n    ],\n    \"ProjectId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Binding a Concurrency Pack to a Project"
+      }
+    ],
     "CreateApplication": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplication\n<Common request parameters>\n\n\n\n{\n    \"ApplicationName\": \"xxx\",\n    \"ApplicationType\": \"Application3D\"\n}",
         "output": "{\n    \"Response\": {\n        \"ApplicationId\": \"app-xkfad8s7\",\n        \"RequestId\": \"4eb17e58-68da-4e9a-b298-0894723c9022\"\n    }\n}",
         "title": "Creating an Application"
+      }
+    ],
+    "CreateApplicationProject": [
+      {
+        "document": "This example shows you how to create a cloud application project.",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateApplicationProject\n<Common request parameters>\n\n\n\n{\n    \"Name\": \"abc\",\n    \"ApplicationId\": \"abc\",\n    \"Type\": \"abc\",\n    \"IsPreload\": true,\n    \"ApplicationParams\": \"abc\",\n    \"Resolution\": \"abc\",\n    \"ProjectType\": \"abc\",\n    \"FPS\": 0,\n    \"PreloadDuration\": \"10s\",\n    \"ReconnectTimeout\": \"20s\",\n    \"MinBitrate\": 0,\n    \"MaxBitrate\": 10,\n    \"DisableVideoCodecs\": []\n}",
+        "output": "{\n    \"Response\": {\n        \"ProjectId\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Creating a Cloud Application Project"
       }
     ],
     "CreateApplicationSnapshot": [
@@ -48,6 +64,14 @@
         "title": "Deleting a Cloud Application"
       }
     ],
+    "DeleteApplicationProjects": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteApplicationProjects\n<Common request parameters>\n\n\n\n{\n    \"ProjectIds\": [\n        \"cap-xxxx\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Deleting Cloud Application Projects in Batches"
+      }
+    ],
     "DeleteApplicationVersion": [
       {
         "document": " ",
@@ -80,6 +104,22 @@
         "title": "Querying the Cloud Application Startup Path List"
       }
     ],
+    "DescribeApplicationProjectAdvancedConfig": [
+      {
+        "document": "This example shows you how to obtain advanced configuration parameters of a cloud application.",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApplicationProjectAdvancedConfig\n<Common request parameters>\n\n\n\n{\n    \"ProjectId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ApplicationParams\": \"abc\",\n        \"Resolution\": \"abc\",\n        \"FPS\": 0,\n        \"MinBitrate\": 0,\n        \"MaxBitrate\": 0,\n        \"PreloadDuration\": \"10s\",\n        \"ReconnectTimeout\": \"10s\",\n        \"DisableVideoCodecs\": [\n            \"H265\"\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Obtaining the Advanced Configuration Data of a Cloud Application Project"
+      }
+    ],
+    "DescribeApplicationProjects": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApplicationProjects\n<Common request parameters>\n\n\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\",\n        \"Projects\": [\n            {\n                \"IsPreload\": true,\n                \"Description\": \"app\",\n                \"ProjectId\": \"cap-a1b2c3\",\n                \"ApplicationStatus\": \"NoConcurrent\",\n                \"ApplicationName\": \"abc\",\n                \"Resolution\": \"1920x1080\",\n                \"ProjectType\": \"SHARED\",\n                \"Purpose\": \"EXPERIENCE\",\n                \"Amount\": 0,\n                \"CreateTime\": \"2020-09-22T00:00:00+00:00\",\n                \"Using\": 0,\n                \"ApplicationId\": \"app-a1b2c3\",\n                \"Type\": \"XL2\",\n                \"ApplicationParams\": \"\",\n                \"Name\": \"\",\n                \"ApplicationRegions\": [\n                    \"ap-chinese-mainland\",\n                    \"na-north-america-fusion\"\n                ],\n                \"ConcurrentRegions\": [\n                    \"ap-chinese-mainland\",\n                    \"na-north-america-fusion\"\n                ]\n            }\n        ],\n        \"Total\": 0\n    }\n}",
+        "title": "Obtaining the Cloud Application Project List"
+      }
+    ],
     "DescribeApplicationStatus": [
       {
         "document": " ",
@@ -102,6 +142,22 @@
         "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConcurrentCount\n<Common request parameters>\n\n\n\n{\n    \"ProjectId\": \"cap-abcdefgh\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4eb17e58-68da-4e9a-b298-0894723c9022\",\n        \"Total\": 10,\n        \"Running\": 6\n    }\n}",
         "title": "Obtaining the Concurrency Count"
+      }
+    ],
+    "DescribeConcurrentPackages": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConcurrentPackages\n<Common request parameters>\n\n\n\n{\n    \"Limit\": 0,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"xx\"\n            ],\n            \"Name\": \"xx\"\n        }\n    ],\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xx\",\n        \"Total\": 0,\n        \"ConcurrentPackages\": []\n    }\n}",
+        "title": "Obtaining the Cloud Application Concurrency Pack List"
+      }
+    ],
+    "DescribeConcurrentSummary": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConcurrentSummary\n<Common request parameters>\n\n\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"PrepaidConcurrentTotal\": 100,\n        \"HourlyRemainDuration\": \"100h0m0s\",\n        \"RequestId\": \"4eb17e58-68da-4e9a-b298-0894723c9022\"\n    }\n}",
+        "title": "Querying the Concurrency Overview"
       }
     ],
     "DescribeCosCredential": [
@@ -128,6 +184,14 @@
         "title": "Modifying Basic Information of a Cloud Application"
       }
     ],
+    "ModifyApplicationProject": [
+      {
+        "document": "This example shows you how to modify a cloud application project.",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyApplicationProject\n<Common request parameters>\n\n\n\n{\n    \"IsPreload\": true,\n    \"ProjectId\": \"abc\",\n    \"ApplicationParams\": \"abc\",\n    \"Name\": \"abc\",\n    \"Type\": \"L1\",\n    \"FPS\": 0,\n    \"PreloadDuration\": \"10s\",\n    \"ReconnectTimeout\": \"20s\",\n    \"MinBitrate\": 0,\n    \"MaxBitrate\": 10,\n    \"DisableVideoCodecs\": [\n        \"H265\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Modifying a Cloud Application Project"
+      }
+    ],
     "ModifyApplicationVersion": [
       {
         "document": " ",
@@ -136,12 +200,28 @@
         "title": "Modifying a Cloud Application Version"
       }
     ],
+    "ModifyConcurrentPackage": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyConcurrentPackage\n<Common request parameters>\n\n\n\n{\n    \"ConcurrentId\": \"abc\",\n    \"Name\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Modifying a Cloud Application Concurrency Pack"
+      }
+    ],
     "ModifyMobileApplicationInfo": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMobileApplicationInfo\n<Common request parameters>\n\n\n\n{\n    \"ApplicationId\": \"app-a1b2c3\",\n    \"ApplicationName\": \"testname\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4eb17e58-68da-4e9a-b298-0894723c9022\"\n    }\n}",
         "title": "Modifying Mobile Application Information"
+      }
+    ],
+    "ResetConcurrentPackages": [
+      {
+        "document": "This example shows you how to reset a concurrency pack and disconnect all user connections.",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetConcurrentPackages\n<Common request parameters>\n\n\n\n{\n    \"ConcurrentPackageIds\": [\n        \"cac-1234abcd\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Resetting a Concurrency Pack"
       }
     ],
     "SetApplicationVersionOnline": [
@@ -154,18 +234,18 @@
     ],
     "StartPublishStream": [
       {
-        "document": "This example shows you how to start cloud-based streaming.",
+        "document": "This example shows you how to start pushing streams.",
         "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartPublishStream\n<Common request parameters>\n\n\n\n{\n    \"UserId\": \"abc123\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4eb17e58-68da-4e9a-b298-0894723c9022\"\n    }\n}",
-        "title": "Starting Cloud-Based Streaming"
+        "title": "Starting Pushing Streams"
       }
     ],
     "StartPublishStreamWithURL": [
       {
-        "document": "This example shows you how to start cloud-based streaming to the specified URL.",
+        "document": "This example shows you how to start pushing your cloud application's video streams to a specified URL",
         "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartPublishStreamWithURL\n<Common request parameters>\n\n\n\n{\n    \"UserId\": \"abc\",\n    \"PublishStreamURL\": \"abc\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Starting Cloud-Based Streaming to the Specified URL"
+        "title": "Starting Pushing Streams to the Specified URL"
       }
     ],
     "StopPublishStream": [
@@ -173,7 +253,15 @@
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopPublishStream\n<Common request parameters>\n\n\n\n{\n    \"UserId\": \"abc123\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4eb17e58-68da-4e9a-b298-0894723c9022\"\n    }\n}",
-        "title": "Stopping Cloud-Based Streaming"
+        "title": "Stopping Pushing Streams"
+      }
+    ],
+    "UnbindConcurrentPackagesFromProject": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: car.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UnbindConcurrentPackagesFromProject\n<Common request parameters>\n\n\n\n{\n    \"ProjectId\": \"abc\",\n    \"ConcurrentIds\": [\n        \"abc\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Unbinding a Concurrency Pack from a Project"
       }
     ]
   },

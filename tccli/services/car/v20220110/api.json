@@ -7,11 +7,25 @@
       "output": "ApplyConcurrentResponse",
       "status": "online"
     },
+    "BindConcurrentPackagesToProject": {
+      "document": "This API is used to bind a concurrency pack to a project.",
+      "input": "BindConcurrentPackagesToProjectRequest",
+      "name": "Binds a concurrency pack to a project",
+      "output": "BindConcurrentPackagesToProjectResponse",
+      "status": "online"
+    },
     "CreateApplication": {
       "document": "This API is used to create an application.",
       "input": "CreateApplicationRequest",
       "name": "Creates a cloud application",
       "output": "CreateApplicationResponse",
+      "status": "online"
+    },
+    "CreateApplicationProject": {
+      "document": "This API is used to create a cloud application project.",
+      "input": "CreateApplicationProjectRequest",
+      "name": "Creates a cloud application project",
+      "output": "CreateApplicationProjectResponse",
       "status": "online"
     },
     "CreateApplicationSnapshot": {
@@ -42,6 +56,13 @@
       "output": "DeleteApplicationResponse",
       "status": "online"
     },
+    "DeleteApplicationProjects": {
+      "document": "This API is used to delete cloud application projects in batches.",
+      "input": "DeleteApplicationProjectsRequest",
+      "name": "Deletes cloud application projects in batches",
+      "output": "DeleteApplicationProjectsResponse",
+      "status": "online"
+    },
     "DeleteApplicationVersion": {
       "document": "This API is used to delete a cloud application version.",
       "input": "DeleteApplicationVersionRequest",
@@ -70,6 +91,20 @@
       "output": "DescribeApplicationPathListResponse",
       "status": "online"
     },
+    "DescribeApplicationProjectAdvancedConfig": {
+      "document": "This API is used to obtain the advanced configuration information of a cloud application project.",
+      "input": "DescribeApplicationProjectAdvancedConfigRequest",
+      "name": "Obtains the configuration information of a cloud application project",
+      "output": "DescribeApplicationProjectAdvancedConfigResponse",
+      "status": "online"
+    },
+    "DescribeApplicationProjects": {
+      "document": "This API is used to obtain the cloud application project list.",
+      "input": "DescribeApplicationProjectsRequest",
+      "name": "Obtains the cloud application project list",
+      "output": "DescribeApplicationProjectsResponse",
+      "status": "online"
+    },
     "DescribeApplicationStatus": {
       "document": "This API is used to query the running status of a cloud application and update status information.",
       "input": "DescribeApplicationStatusRequest",
@@ -89,6 +124,20 @@
       "input": "DescribeConcurrentCountRequest",
       "name": "Obtains the concurrency count",
       "output": "DescribeConcurrentCountResponse",
+      "status": "online"
+    },
+    "DescribeConcurrentPackages": {
+      "document": "This API is used to obtain the cloud application concurrency pack list.",
+      "input": "DescribeConcurrentPackagesRequest",
+      "name": "Obtains the cloud application concurrency pack list",
+      "output": "DescribeConcurrentPackagesResponse",
+      "status": "online"
+    },
+    "DescribeConcurrentSummary": {
+      "document": "This API is used to query the concurrency overview.",
+      "input": "DescribeConcurrentSummaryRequest",
+      "name": "Queries the concurrency overview",
+      "output": "DescribeConcurrentSummaryResponse",
       "status": "online"
     },
     "DescribeCosCredential": {
@@ -112,6 +161,13 @@
       "output": "ModifyApplicationBaseInfoResponse",
       "status": "online"
     },
+    "ModifyApplicationProject": {
+      "document": "This API is used to modify a cloud application project.",
+      "input": "ModifyApplicationProjectRequest",
+      "name": "Modifies a cloud application project",
+      "output": "ModifyApplicationProjectResponse",
+      "status": "online"
+    },
     "ModifyApplicationVersion": {
       "document": "This API is used to modify the version information of a cloud application.",
       "input": "ModifyApplicationVersionRequest",
@@ -119,11 +175,25 @@
       "output": "ModifyApplicationVersionResponse",
       "status": "online"
     },
+    "ModifyConcurrentPackage": {
+      "document": "This API is used to modify a cloud application concurrency pack.",
+      "input": "ModifyConcurrentPackageRequest",
+      "name": "Modifies a cloud application concurrency pack",
+      "output": "ModifyConcurrentPackageResponse",
+      "status": "online"
+    },
     "ModifyMobileApplicationInfo": {
       "document": "This API is used to modify the mobile application data.",
       "input": "ModifyMobileApplicationInfoRequest",
       "name": "Modifies the mobile application information",
       "output": "ModifyMobileApplicationInfoResponse",
+      "status": "online"
+    },
+    "ResetConcurrentPackages": {
+      "document": "This API is used to reset a concurrency pack and disconnect all user connections.",
+      "input": "ResetConcurrentPackagesRequest",
+      "name": "Resets a concurrency pack",
+      "output": "ResetConcurrentPackagesResponse",
       "status": "online"
     },
     "SetApplicationVersionOnline": {
@@ -134,24 +204,31 @@
       "status": "online"
     },
     "StartPublishStream": {
-      "document": "This API is used to start cloud-based streaming. The codec for the cloud-based streaming is automatically selected based on the client's (SDK) capabilities, with a default order of H.265, H.264, VP8, and VP9.",
+      "document": "This API is used to start pushing your cloud application's video streams in real time to CSS. The codec for the streaming is automatically selected based on the client's (SDK) capabilities, with a default order of H.265, H.264, VP8, and VP9.",
       "input": "StartPublishStreamRequest",
-      "name": "Starts cloud-based streaming",
+      "name": "Starts pushing streams",
       "output": "StartPublishStreamResponse",
       "status": "online"
     },
     "StartPublishStreamWithURL": {
-      "document": "This API is used to start cloud-based streaming to the specified URL. The codec for the cloud-based streaming is automatically selected based on the client's (SDK) capabilities, with a default order of H.265, H.264, VP8, and VP9. This streaming method will be billed separately. For details about the billing method, see [Charging for Streaming to Specified URL](https://intl.cloud.tencent.com/document/product/1547/72168?from_cn_redirect=1#98ac188a-d122-4caf-88be-05268ecefdf6).",
+      "document": "This API is used to start pushing your cloud application's video streams to a specified URL. The codec for the streaming is automatically selected based on the client's (SDK) capabilities, with a default order of H.265, H.264, VP8, and VP9. This streaming method will be billed separately. For details about the billing method, see [Charging for Streaming to Specified URL](https://intl.cloud.tencent.com/document/product/1547/72168?from_cn_redirect=1#98ac188a-d122-4caf-88be-05268ecefdf6).",
       "input": "StartPublishStreamWithURLRequest",
-      "name": "Starts cloud-based streaming to the specified URL",
+      "name": "Starts pushing streams to a specified URL",
       "output": "StartPublishStreamWithURLResponse",
       "status": "online"
     },
     "StopPublishStream": {
-      "document": "This API is used to stop cloud-based streaming.",
+      "document": "This API is used to stop pushing streams.",
       "input": "StopPublishStreamRequest",
-      "name": "Stops cloud-based streaming",
+      "name": "Stops pushing streams",
       "output": "StopPublishStreamResponse",
+      "status": "online"
+    },
+    "UnbindConcurrentPackagesFromProject": {
+      "document": "This API is used to unbind a concurrency pack from a project.",
+      "input": "UnbindConcurrentPackagesFromProjectRequest",
+      "name": "Unbinds a concurrency pack from a project",
+      "output": "UnbindConcurrentPackagesFromProjectResponse",
       "status": "online"
     }
   },
@@ -211,6 +288,215 @@
       ],
       "usage": "both"
     },
+    "ApplicationConcurrentPackage": {
+      "document": "Cloud application concurrency packs.",
+      "members": [],
+      "usage": "both"
+    },
+    "ApplicationProject": {
+      "document": "Cloud application project type.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project name.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project description.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Concurrency type required for project operation.S1: concurrency for rendering small cloud applications.M1: concurrency for rendering medium cloud applications.L1: concurrency for rendering large cloud applications.L2: concurrency for rendering large cloud applications.XL2: concurrency for rendering extra large cloud applications.MM1_HD: concurrency for performance-based cloud ARM (HD).MM1_FHD: concurrency for performance-based cloud ARM (FHD).Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "L1",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cloud application ID.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ApplicationId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pre-launch.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsPreload",
+          "output_required": true,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of concurrencies already configured.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Amount",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of concurrencies in use.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Using",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Application status. NoConcurrent: no concurrency pack configured; Online: activated. Cloud application status: applicationCreating: creating; applicationCreateFail: creation failed; applicationDeleting: deleting; applicationNoConfigured: startup parameters not configured.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ApplicationStatus",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Application startup parameters.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ApplicationParams",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Application name.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ApplicationName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resolution, in the format of widthxheight, such as 1920x1080.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "“1920x1080”",
+          "member": "string",
+          "name": "Resolution",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project type.SHARED: shared by all applications.EXCLUSIVE (default value): dedicated for one application.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "SHARED",
+          "member": "string",
+          "name": "ProjectType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Purpose.EXPERIENCE: Experience.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "EXPERIENCE",
+          "member": "string",
+          "name": "Purpose",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Application distribution area. Standard areas are as follows. ap-chinese-mainland: Chinese mainland; na-north-america: North America; eu-frankfurt: Frankfurt; ap-mumbai: Mumbai; ap-tokyo: Tokyo; ap-seoul: Seoul; ap-singapore: Singapore; ap-bangkok: Bangkok; ap-hongkong: Hong Kong (China). Fusion areas are as follows. me-middle-east-fusion: Middle East; na-north-america-fusion: North America; sa-south-america-fusion: South America; ap-tokyo-fusion: Tokyo; ap-seoul-fusion: Seoul; eu-frankfurt-fusion: Frankfurt; ap-singapore-fusion: Singapore; ap-hongkong-fusion: Hong Kong (China).Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-chinese-mainland",
+          "member": "string",
+          "name": "ApplicationRegions",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Concurrency area. Standard areas are as follows. ap-chinese-mainland: Chinese mainland; na-north-america: North America; eu-frankfurt: Frankfurt; ap-mumbai: Mumbai; ap-tokyo: Tokyo; ap-seoul: Seoul; ap-singapore: Singapore; ap-bangkok: Bangkok; ap-hongkong: Hong Kong (China). Fusion areas are as follows. me-middle-east-fusion: Middle East; na-north-america-fusion: North America; sa-south-america-fusion: South America; ap-tokyo-fusion: Tokyo; ap-seoul-fusion: Seoul; eu-frankfurt-fusion: Frankfurt; ap-singapore-fusion: Singapore; ap-hongkong-fusion: Hong Kong (China).Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-chinese-mainland",
+          "member": "string",
+          "name": "ConcurrentRegions",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Project category.DESKTOP: desktop (default value).MOBILE: mobile.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "MOBILE",
+          "member": "string",
+          "name": "ProjectCategory",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "ApplyConcurrentRequest": {
       "document": "ApplyConcurrent request structure.",
       "members": [
@@ -265,6 +551,282 @@
     "ApplyConcurrentResponse": {
       "document": "ApplyConcurrent response structure.",
       "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BackgroundImage": {
+      "document": "Background image information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the COS file.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "cf-abcd1234",
+          "member": "string",
+          "name": "COSFileId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Download URL.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "https://abc",
+          "member": "string",
+          "name": "URL",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Name\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123.png",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-07-02T10:15:36Z",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "BindConcurrentPackagesToProjectRequest": {
+      "document": "BindConcurrentPackagesToProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Concurrency pack ID list.",
+          "example": "[\"\"]",
+          "member": "string",
+          "name": "ConcurrentIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Cloud application project ID.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "BindConcurrentPackagesToProjectResponse": {
+      "document": "BindConcurrentPackagesToProject response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateApplicationProjectRequest": {
+      "document": "CreateApplicationProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project name, which is user-defined.",
+          "example": "南头古城",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Bound application ID.",
+          "example": "app-xacbxs",
+          "member": "string",
+          "name": "ApplicationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Concurrency type required for project operation.S1: concurrency for rendering small cloud applications.M1: concurrency for rendering medium cloud applications.L1: concurrency for rendering large cloud applications.L2: concurrency for rendering large cloud applications.XL2: concurrency for rendering extra large cloud applications.MM1_HD: concurrency for performance-based cloud ARM (HD).MM1_FHD: concurrency for performance-based cloud ARM (FHD).",
+          "example": "L1",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable warm-up. The default value is false.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsPreload",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Application startup parameters.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationParams",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resolution, in the format of widthxheight, such as 1920x1080.",
+          "example": "1920x1080",
+          "member": "string",
+          "name": "Resolution",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project type.SHARED: shared by all applications.EXCLUSIVE (default value): dedicated for one application.",
+          "example": "SHARED",
+          "member": "string",
+          "name": "ProjectType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Frame rate.",
+          "example": "30",
+          "member": "int64",
+          "name": "FPS",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Waiting time for application pre-launch.",
+          "example": "30",
+          "member": "string",
+          "name": "PreloadDuration",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Waiting time for reconnection.",
+          "example": "10",
+          "member": "string",
+          "name": "ReconnectTimeout",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Minimum bitrate, in Mbps.",
+          "example": "0",
+          "member": "int64",
+          "name": "MinBitrate",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum bitrate, in Mbps.",
+          "example": "10",
+          "member": "int64",
+          "name": "MaxBitrate",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Upstream audio options.DisableMixIntoStreamPush: not mixing upstream audio in streaming.",
+          "example": "DisableMixIntoStreamPush",
+          "member": "string",
+          "name": "UpstreamAudioOption",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Video encoding configuration.",
+          "example": "无",
+          "member": "VideoEncodeConfig",
+          "name": "VideoEncodeConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Upper limit of the XR application resolution.If the project concurrency type is L or L2, the upper limit is 5000; if the project concurrency type is XL2, the upper limit is 6000.",
+          "example": "5000",
+          "member": "uint64",
+          "name": "XRMaxWidth",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the background image COS file.",
+          "example": "cf-abcd1234",
+          "member": "string",
+          "name": "BackgroundImageCOSFileId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project category.DESKTOP: desktop (default value).MOBILE: mobile.",
+          "example": "MOBILE",
+          "member": "string",
+          "name": "ProjectCategory",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Disabled code list.",
+          "example": "[\"H265\"]",
+          "member": "string",
+          "name": "DisableVideoCodecs",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateApplicationProjectResponse": {
+      "document": "CreateApplicationProject response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Generated project ID.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ProjectId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -502,6 +1064,33 @@
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteApplicationProjectsRequest": {
+      "document": "DeleteApplicationProjects request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID list of cloud application projects.",
+          "example": "[\"cap-xxxx\"]",
+          "member": "string",
+          "name": "ProjectIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteApplicationProjectsResponse": {
+      "document": "DeleteApplicationProjects response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -750,6 +1339,227 @@
       ],
       "type": "object"
     },
+    "DescribeApplicationProjectAdvancedConfigRequest": {
+      "document": "DescribeApplicationProjectAdvancedConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application project ID.",
+          "example": "\"cap-azwmtcoe\"",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationProjectAdvancedConfigResponse": {
+      "document": "DescribeApplicationProjectAdvancedConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application startup parameters.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"xxx\"",
+          "member": "string",
+          "name": "ApplicationParams",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resolution, in the format of widthxheight, such as 1920x1080.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"1920*1680\"",
+          "member": "string",
+          "name": "Resolution",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Frame rate. Valid values: 0, 30, 60.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "FPS",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Minimum bitrate, in Mbps.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "MinBitrate",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maximum bitrate, in Mbps.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxBitrate",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Waiting time for application pre-launch.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "PreloadDuration",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Waiting time for reconnection.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "string",
+          "name": "ReconnectTimeout",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Upstream audio options.DisableMixIntoStreamPush: not mixing upstream audio in streaming.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "DisableMixIntoStreamPush",
+          "member": "string",
+          "name": "UpstreamAudioOption",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Video encoding configuration.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VideoEncodeConfig",
+          "name": "VideoEncodeConfig",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Upper limit of the XR application resolution.If the project concurrency type is L or L2, the upper limit is 5000; if the project concurrency type is XL2, the upper limit is 6000.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "5000",
+          "member": "uint64",
+          "name": "XRMaxWidth",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Background image information.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "BackgroundImage",
+          "name": "BackgroundImage",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Disabled code list.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"H265\"]",
+          "member": "string",
+          "name": "DisableVideoCodecs",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationProjectsRequest": {
+      "document": "DescribeApplicationProjects request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Subscript.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of entries per page.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Project category.DESKTOP: desktop (default value).MOBILE: mobile.",
+          "example": "MOBILE",
+          "member": "string",
+          "name": "ProjectCategory",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeApplicationProjectsResponse": {
+      "document": "DescribeApplicationProjects response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project list.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ApplicationProject",
+          "name": "Projects",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total number.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeApplicationStatusRequest": {
       "document": "DescribeApplicationStatus request structure.",
       "members": [
@@ -860,6 +1670,108 @@
           "name": "Running",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConcurrentPackagesRequest": {
+      "document": "DescribeConcurrentPackages request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Subscript.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of entries per page.",
+          "example": "0",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter List",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConcurrentPackagesResponse": {
+      "document": "DescribeConcurrentPackages response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Total",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Concurrency pack list.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "ApplicationConcurrentPackage",
+          "name": "ConcurrentPackages",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeConcurrentSummaryRequest": {
+      "document": "DescribeConcurrentSummary request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DescribeConcurrentSummaryResponse": {
+      "document": "DescribeConcurrentSummary response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of prepaid (monthly subscription) concurrencies.",
+          "example": "100",
+          "member": "uint64",
+          "name": "PrepaidConcurrentTotal",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remaining duration of an hourly package.",
+          "example": "100h0m0s",
+          "member": "string",
+          "name": "HourlyRemainDuration",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -1119,6 +2031,177 @@
       ],
       "type": "object"
     },
+    "ModifyApplicationProjectRequest": {
+      "document": "ModifyApplicationProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Project ID returned by cloud.",
+          "example": "\"car-vdscvd\"",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Project name.",
+          "example": "\"南头古城\"",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Concurrency type required for project operation.",
+          "example": "\"L1\"",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to Enable Pre-launch.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsPreload",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Application startup parameters.",
+          "example": "无",
+          "member": "string",
+          "name": "ApplicationParams",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Cloud application project description.",
+          "example": "无",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Resolution, in the format of widthxheight, such as 1920x1080.",
+          "example": "“1920x1080”",
+          "member": "string",
+          "name": "Resolution",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Frame rate.",
+          "example": "30",
+          "member": "int64",
+          "name": "FPS",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Waiting time for application pre-launch.",
+          "example": "10",
+          "member": "string",
+          "name": "PreloadDuration",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Waiting time for reconnection.",
+          "example": "60",
+          "member": "string",
+          "name": "ReconnectTimeout",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Minimum bitrate, in Mbps.",
+          "example": "0",
+          "member": "int64",
+          "name": "MinBitrate",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum bitrate, in Mbps.",
+          "example": "6",
+          "member": "int64",
+          "name": "MaxBitrate",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Upstream audio options.DisableMixIntoStreamPush: not mixing upstream audio in streaming.",
+          "example": "DisableMixIntoStreamPush",
+          "member": "string",
+          "name": "UpstreamAudioOption",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Video encoding configuration.",
+          "example": "无",
+          "member": "VideoEncodeConfig",
+          "name": "VideoEncodeConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Upper limit of the XR application resolution.If the project concurrency type is L or L2, the upper limit is 5000; if the project concurrency type is XL2, the upper limit is 6000.",
+          "example": "5000",
+          "member": "uint64",
+          "name": "XRMaxWidth",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the background image COS file.",
+          "example": "cf-abcd1234",
+          "member": "string",
+          "name": "BackgroundImageCOSFileId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Disabled code list.",
+          "example": "[\"H265\"]",
+          "member": "string",
+          "name": "DisableVideoCodecs",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyApplicationProjectResponse": {
+      "document": "ModifyApplicationProject response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyApplicationVersionRequest": {
       "document": "ModifyApplicationVersion request structure.",
       "members": [
@@ -1164,6 +2247,42 @@
       ],
       "type": "object"
     },
+    "ModifyConcurrentPackageRequest": {
+      "document": "ModifyConcurrentPackage request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Concurrency pack ID.",
+          "example": "xxx",
+          "member": "string",
+          "name": "ConcurrentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Concurrency pack name.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyConcurrentPackageResponse": {
+      "document": "ModifyConcurrentPackage response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyMobileApplicationInfoRequest": {
       "document": "ModifyMobileApplicationInfo request structure.",
       "members": [
@@ -1190,6 +2309,33 @@
     },
     "ModifyMobileApplicationInfoResponse": {
       "document": "ModifyMobileApplicationInfo response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetConcurrentPackagesRequest": {
+      "document": "ResetConcurrentPackages request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Concurrency pack ID array.",
+          "example": "cac-1234abcd",
+          "member": "string",
+          "name": "ConcurrentPackageIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ResetConcurrentPackagesResponse": {
+      "document": "ResetConcurrentPackages response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1335,6 +2481,42 @@
     },
     "StopPublishStreamResponse": {
       "document": "StopPublishStream response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindConcurrentPackagesFromProjectRequest": {
+      "document": "UnbindConcurrentPackagesFromProject request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Concurrency pack ID list.",
+          "example": "[\"\"]",
+          "member": "string",
+          "name": "ConcurrentIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Cloud application project ID.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ProjectId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UnbindConcurrentPackagesFromProjectResponse": {
+      "document": "UnbindConcurrentPackagesFromProject response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1785,6 +2967,23 @@
         }
       ],
       "usage": "out"
+    },
+    "VideoEncodeConfig": {
+      "document": "Video encoding configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Streaming GOP length, in seconds.Note: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3",
+          "member": "uint64",
+          "name": "StreamPushGOPSeconds",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     }
   },
   "version": "1.0"
