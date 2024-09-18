@@ -375,7 +375,7 @@
         },
         {
           "disabled": false,
-          "document": "Bitrate control mode. Valid values: `CBR`, `ABR` (default)",
+          "document": "Bitrate control mode. Valid values: `CBR`, `ABR` (default), `VBR`.",
           "example": "ABR",
           "member": "string",
           "name": "RateControlMode",
@@ -566,6 +566,28 @@
           "example": "无",
           "member": "AudioTrackInfo",
           "name": "AudioTracks",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "uint64",
+          "name": "VideoEnhanceEnabled",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "VideoEnhanceSetting",
+          "name": "VideoEnhanceSettings",
           "output_required": false,
           "required": false,
           "type": "list",
@@ -797,11 +819,11 @@
       "usage": "both"
     },
     "AudioNormalizationSettings": {
-      "document": "",
+      "document": "Special configuration information for audio transcoding.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether to enable special configuration for audio transcoding: 1: Enable 0: Disable, the default value is 0.",
           "example": "1",
           "member": "uint64",
           "name": "AudioNormalizationEnabled",
@@ -812,7 +834,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Loudness value, floating-point number, rounded to one decimal place, range -5 to -70.",
           "example": "-2",
           "member": "float",
           "name": "TargetLUFS",
@@ -3347,7 +3369,7 @@
         },
         {
           "disabled": false,
-          "document": "The DRM type. Valid values: `FAIRPLAY`, `WIDEVINE`, `AES128`, `PLAYREADY`. For HLS, this can be `FAIRPLAY` or `AES128` or `PLAYREADY`. For DASH, valid values: `WIDEVINE` or `PLAYREADY`. ",
+          "document": "Optional Types:\n`FAIRPLAY`, `WIDEVINE`, `PLAYREADY`, `AES128`\n\nHLS-TS supports `FAIRPLAY` and `AES128`.\n\nHLS-FMP4 supports `FAIRPLAY`, `WIDEVINE`, `PLAYREADY`, `AES128`, and combinations of two or three from `FAIRPLAY`, `WIDEVINE`, and `PLAYREADY` (concatenated with commas, e.g., \"FAIRPLAY,WIDEVINE,PLAYREADY\").\n\nDASH supports `WIDEVINE`, `PLAYREADY`, and combinations of `PLAYREADY` and `WIDEVINE` (concatenated with commas, e.g., \"PLAYREADY,WIDEVINE\").",
           "example": "1",
           "member": "string",
           "name": "DrmType",
@@ -3910,7 +3932,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of segments. Value range: [1,30]. Default value: 5.",
+          "document": "Number of segments. Value range: [3,30]. Default value: 5.",
           "example": "5",
           "member": "uint64",
           "name": "SegmentNumber",
@@ -4236,6 +4258,7 @@
           "example": "live",
           "member": "string",
           "name": "AppName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4246,6 +4269,7 @@
           "example": "streamid",
           "member": "string",
           "name": "StreamName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4256,6 +4280,7 @@
           "example": "http://www.domain.com/path/source.mp4",
           "member": "string",
           "name": "SourceUrl",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4266,6 +4291,7 @@
           "example": "rtp://1.1.1.1:1",
           "member": "string",
           "name": "InputAddress",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4276,6 +4302,7 @@
           "example": "TencentCOS",
           "member": "string",
           "name": "SourceType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4286,16 +4313,18 @@
           "example": "0",
           "member": "int64",
           "name": "DelayTime",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
-          "document": "The domain of an SRT_PUSH address. If this is a request parameter, you don’t need to specify it.\nNote: This field may return `null`, indicating that no valid value was found.",
+          "document": "The domain name of the SRT_PUSH push address. No need to fill in the input parameter.",
           "example": "www.domain.com",
           "member": "string",
           "name": "InputDomain",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4306,6 +4335,7 @@
           "example": "name",
           "member": "string",
           "name": "UserName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4316,6 +4346,18 @@
           "example": "passwd",
           "member": "string",
           "name": "Password",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "This parameter is valid when the input source is HLS_PULL and MP4_PULL. It indicates the type of file the source is. The optional values are: LIVE, VOD. Please note that if you do not enter this parameter, the system will take the default input value VOD.",
+          "example": "VOD",
+          "member": "string",
+          "name": "ContentType",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4676,7 +4718,7 @@
         },
         {
           "disabled": false,
-          "document": "Input settings\nFor the type `RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.\nThis parameter can be left empty for RTP_PUSH and UDP_PUSH inputs.\nNote: If this parameter is not specified or empty, the original input settings will be used.",
+          "document": "Input settings. \nFor the type:\n`RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`,`RTSP_PULL`,`SRT_PULL` or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.\nFor the type:\n`SRT_PUSH`, 0 or 2 inputs of the corresponding type can be configured.\nThis parameter can be left empty for RTP_PUSH and UDP_PUSH inputs.\n\nNote: If this parameter is not specified or empty, the original input settings will be used.",
           "example": "无",
           "member": "InputSettingInfo",
           "name": "InputSettings",
@@ -5897,7 +5939,7 @@
         },
         {
           "disabled": false,
-          "document": "Output protocol\nValid values: `HLS`, `DASH`, `HLS_ARCHIVE`, `HLS_STREAM_PACKAGE`, `DASH_STREAM_PACKAGE`, `FRAME_CAPTURE`",
+          "document": "Output protocol\nValid values: `HLS`, `DASH`, `HLS_ARCHIVE`, `DASH_ARCHIVE`,`HLS_STREAM_PACKAGE`, `DASH_STREAM_PACKAGE`, `FRAME_CAPTURE`,`RTP`,`RTMP`.",
           "example": "无",
           "member": "string",
           "name": "Type",
@@ -6632,6 +6674,34 @@
       ],
       "usage": "both"
     },
+    "VideoEnhanceSetting": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "GameEnhance",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0.5",
+          "member": "float",
+          "name": "Strength",
+          "output_required": true,
+          "required": true,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "VideoPipelineInputStatistics": {
       "document": "Pipeline input video statistics.",
       "members": [
@@ -6761,7 +6831,7 @@
         },
         {
           "disabled": false,
-          "document": "Bitrate control mode. Valid values: `CBR`, `ABR` (default)",
+          "document": "Bitrate control mode. Valid values: `CBR`, `ABR` (default), `VBR`.",
           "example": "ABR",
           "member": "string",
           "name": "RateControlMode",
@@ -6867,6 +6937,28 @@
           "output_required": false,
           "required": false,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "uint64",
+          "name": "VideoEnhanceEnabled",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "VideoEnhanceSetting",
+          "name": "VideoEnhanceSettings",
+          "output_required": false,
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
