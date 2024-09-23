@@ -320,6 +320,14 @@
         "title": "Querying Space Statistics"
       }
     ],
+    "InviteOrganizationMember": [
+      {
+        "document": "This example shows you how to invite a member.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InviteOrganizationMember\n<Common request parameters>\n\n\n\n{\n    \"Remark\": \"\",\n    \"MemberUin\": 111111111111,\n    \"Name\": \"member_name\",\n    \"NodeId\": 1001,\n    \"PermissionIds\": [\n        1,\n        2\n    ],\n    \"PolicyType\": \"Financial\",\n    \"PayUin\": \"\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"9be34d82-b614-4010-8cd8-d907b4d303f2\"\n    }\n}",
+        "title": "Inviting a Member"
+      }
+    ],
     "ListExternalSAMLIdPCertificates": [
       {
         "document": "This example shows you how to query the SAML signing certificate list.",

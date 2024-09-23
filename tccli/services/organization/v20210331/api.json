@@ -280,6 +280,13 @@
       "output": "GetZoneStatisticsResponse",
       "status": "online"
     },
+    "InviteOrganizationMember": {
+      "document": "This API is used to invite a member.",
+      "input": "InviteOrganizationMemberRequest",
+      "name": "Invites a member",
+      "output": "InviteOrganizationMemberResponse",
+      "status": "online"
+    },
     "ListExternalSAMLIdPCertificates": {
       "document": "This API is used to query the SAML signing certificate list.",
       "input": "ListExternalSAMLIdPCertificatesRequest",
@@ -558,6 +565,15 @@
           "name": "Remark",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Department tag list, with a maximum of 10.",
+          "example": "[]",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -700,6 +716,34 @@
         }
       ],
       "type": "object"
+    },
+    "AuthRelationFile": {
+      "document": "Real-name mutual trust application proof file.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "File path.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "aaa/test.txt",
+          "member": "string",
+          "name": "Url",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "BindOrganizationMemberAuthAccountRequest": {
       "document": "BindOrganizationMemberAuthAccount request structure.",
@@ -1092,6 +1136,15 @@
           "name": "AuthRelationId",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Member tag list, with a maximum of 10.",
+          "example": "[]",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2041,7 +2094,7 @@
         {
           "disabled": false,
           "document": "Valid values: `en` (Tencent Cloud International); `zh` (Tencent Cloud).",
-          "example": "en",
+          "example": "zh",
           "member": "string",
           "name": "Lang",
           "required": false,
@@ -2050,7 +2103,7 @@
         {
           "disabled": false,
           "document": "Search by member name or ID.",
-          "example": "test",
+          "example": "\"\"",
           "member": "string",
           "name": "SearchKey",
           "required": false,
@@ -2073,6 +2126,15 @@
           "name": "Product",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Member tag search list, with a maximum of 10.",
+          "example": "[]",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -2129,6 +2191,15 @@
           "name": "Offset",
           "required": true,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Department tag search list, with a maximum of 10.",
+          "example": "[]",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -3049,6 +3120,123 @@
         }
       ],
       "usage": "both"
+    },
+    "InviteOrganizationMemberRequest": {
+      "document": "InviteOrganizationMember request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "UIN of an invited account.",
+          "example": "111111111111",
+          "member": "int64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Member name, which contains up to 25 characters, including English letters, digits, and symbols `+@&._[]-:,`.",
+          "example": "member_name",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Relationship policy. Valid value: `Financial`.",
+          "example": "Finical",
+          "member": "string",
+          "name": "PolicyType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of member financial permission IDs. Valid values: 1: View bills. 2: View balance. 3: Transfer funds. 4: Consolidate bills. 5: Issue invoice. 6: Inherit discounts. 7: Pay on behalf. 1 and 2 are required by default.",
+          "example": "[1,2]",
+          "member": "uint64",
+          "name": "PermissionIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Node ID of the member's department, which can be obtained through [DescribeOrganizationNodes](https://intl.cloud.tencent.com/document/product/850/82926?from_cn_redirect=1).",
+          "example": "1001",
+          "member": "int64",
+          "name": "NodeId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Remarks.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to allow a member to exit. Valid values: Allow, Denied.",
+          "example": "Allow",
+          "member": "string",
+          "name": "IsAllowQuit",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Payer UIN, which is required when pay-on-behalf mode is used.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "PayUin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Name of a mutual trust real-name entity.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "RelationAuthName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of proof files of a mutual trust entity.",
+          "example": "[]",
+          "member": "AuthRelationFile",
+          "name": "AuthFile",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Member tag list, with a maximum of 10.",
+          "example": "[]",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "InviteOrganizationMemberResponse": {
+      "document": "InviteOrganizationMember response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "JoinedGroups": {
       "document": "User group joined by the user.",
@@ -4886,7 +5074,7 @@
           "example": "1000001",
           "member": "int64",
           "name": "MemberUin",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4896,7 +5084,7 @@
           "example": "tt",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4906,7 +5094,7 @@
           "example": "Invite",
           "member": "string",
           "name": "MemberType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4916,7 +5104,7 @@
           "example": "Finical",
           "member": "string",
           "name": "OrgPolicyType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4926,7 +5114,7 @@
           "example": "财务管理",
           "member": "string",
           "name": "OrgPolicyName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4936,7 +5124,7 @@
           "example": "无",
           "member": "OrgPermission",
           "name": "OrgPermission",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -4946,7 +5134,7 @@
           "example": "1002",
           "member": "int64",
           "name": "NodeId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -4956,7 +5144,7 @@
           "example": "Root",
           "member": "string",
           "name": "NodeName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4966,7 +5154,7 @@
           "example": "tt",
           "member": "string",
           "name": "Remark",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4976,7 +5164,7 @@
           "example": "2021-03-12 12:12:22",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4986,7 +5174,7 @@
           "example": "2021-03-12 12:12:22",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4996,7 +5184,7 @@
           "example": "Allow",
           "member": "string",
           "name": "IsAllowQuit",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5006,7 +5194,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "PayUin",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5016,7 +5204,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "PayName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5026,7 +5214,7 @@
           "example": "无",
           "member": "MemberIdentity",
           "name": "OrgIdentity",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -5036,7 +5224,7 @@
           "example": "Unbound",
           "member": "string",
           "name": "BindStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5046,8 +5234,18 @@
           "example": "Confirmed",
           "member": "string",
           "name": "PermissionStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Member tag list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -5350,7 +5548,7 @@
           "example": "1001",
           "member": "int64",
           "name": "NodeId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -5360,7 +5558,7 @@
           "example": "test",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5370,7 +5568,7 @@
           "example": "1000",
           "member": "int64",
           "name": "ParentNodeId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -5380,7 +5578,7 @@
           "example": "test",
           "member": "string",
           "name": "Remark",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5390,7 +5588,7 @@
           "example": "2021-03-12 12:12:11",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5400,8 +5598,18 @@
           "example": "2021-03-12 12:12:11",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Member tag list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": true
         }
       ],
@@ -6730,6 +6938,34 @@
         }
       ],
       "type": "object"
+    },
+    "Tag": {
+      "document": "Tag key-value pair.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag key\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "key",
+          "member": "string",
+          "name": "TagKey",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag value\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "value",
+          "member": "string",
+          "name": "TagValue",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "TaskInfo": {
       "document": "Task status information.",
