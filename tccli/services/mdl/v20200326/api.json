@@ -342,7 +342,7 @@
         },
         {
           "disabled": false,
-          "document": "Audio codec. Valid value: `AAC` (default)",
+          "document": "Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.",
           "example": "AAC",
           "member": "string",
           "name": "Acodec",
@@ -975,7 +975,7 @@
         },
         {
           "disabled": false,
-          "document": "Audio codec. Valid value: AAC. Default value: AAC.",
+          "document": "Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.",
           "example": "无",
           "member": "string",
           "name": "Acodec",
@@ -1058,7 +1058,7 @@
         },
         {
           "disabled": false,
-          "document": "Only AAC is supported.",
+          "document": "Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.",
           "example": "AAC",
           "member": "string",
           "name": "AudioCodec",

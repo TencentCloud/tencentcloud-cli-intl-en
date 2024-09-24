@@ -2244,7 +2244,7 @@
         },
         {
           "disabled": false,
-          "document": "List of APIs bound with the plugin.",
+          "document": "List of APIs bound with the plugin",
           "example": "['api-buz84890','api-9nb6hd46']",
           "member": "string",
           "name": "ApiIds",

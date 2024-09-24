@@ -730,6 +730,14 @@
         "title": "Describe Enhance Media Templates."
       }
     ],
+    "DescribeEventConfig": [
+      {
+        "document": " ",
+        "input": "https://vod.tencentcloudapi.com/?Action=DescribeEventConfig\n&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Mode\": \"PUSH\",\n        \"NotificationUrl\": \"http://mydemo.com/receiveevent\",\n        \"UploadMediaCompleteEventSwitch\": \"ON\",\n        \"DeleteMediaCompleteEventSwitch\": \"OFF\",\n        \"PersistenceCompleteEventSwitch\": \"OFF\",\n        \"RequestId\": \"27217d38-95c0-4335-8532-e5154ffb03aa\"\n    }\n}",
+        "title": "查询事件通知配置"
+      }
+    ],
     "DescribeFileAttributes": [
       {
         "document": "This example shows you how to initiate a task to get the attributes of the file whose file ID is 5285485487985271487.",
@@ -1708,16 +1716,16 @@
     ],
     "SimpleHlsClip": [
       {
-        "document": "This example shows you how to clip a video from 00:02 to 00:10.",
-        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SimpleHlsClip\n<Common request parameters>\n\n{\n    \"Url\": \"http://xxxxx.vod2.myqcloud.com/xxxxx/aaaaaa/hhh.m3u8\",\n    \"StartTimeOffset\": 2.0,\n    \"EndTimeOffset\": 10.0\n}",
-        "output": "{\n    \"Response\": {\n        \"Url\": \"http://xxxxx.vod2.myqcloud.com/xxxxx/aaaaaa/10_50.m3u8\",\n        \"FileId\": \"\",\n        \"TaskId\": \"\",\n        \"MetaData\": {\n            \"Size\": 0,\n            \"Container\": \"hls\",\n            \"Bitrate\": 622014,\n            \"Height\": 480,\n            \"Width\": 640,\n            \"Duration\": 48.0,\n            \"Rotate\": 0,\n            \"VideoStreamSet\": [\n                {\n                    \"Bitrate\": 592385,\n                    \"Height\": 480,\n                    \"Width\": 640,\n                    \"Codec\": \"h264\",\n                    \"Fps\": 25,\n                    \"CodecTag\": \"\",\n                    \"DynamicRangeInfo\": {\n                        \"Type\": \"\",\n                        \"HDRType\": \"\"\n                    }\n                }\n            ],\n            \"AudioStreamSet\": [\n                {\n                    \"Bitrate\": 29629,\n                    \"SamplingRate\": 44100,\n                    \"Codec\": \"aac\"\n                }\n            ],\n            \"VideoDuration\": 0.0,\n            \"AudioDuration\": 0.0,\n            \"Md5\": \"Md5\"\n        },\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
-        "title": "Clipping an HLS video (with positive offsets)"
-      },
-      {
         "document": "This example shows you how to clip a video that starts at two seconds from the beginning of the original video and ends ten seconds from the end of the original video.",
         "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SimpleHlsClip\n<Common request parameters>\n\n{\n    \"Url\": \"http://xxxxx.vod2.myqcloud.com/xxxxx/aaaaaa/hhhh.m3u8\",\n    \"StartTimeOffset\": 2.0,\n    \"EndTimeOffset\": 10.0\n}",
         "output": "{\n    \"Response\": {\n        \"Url\": \"http://xxxxx.vod2.myqcloud.com/xxxxx/aaaaaa/10_50.m3u8\",\n        \"FileId\": \"\",\n        \"TaskId\": \"\",\n        \"MetaData\": {\n            \"Size\": 0,\n            \"Container\": \"hls\",\n            \"Bitrate\": 622014,\n            \"Height\": 480,\n            \"Width\": 640,\n            \"Duration\": 48.0,\n            \"Rotate\": 0,\n            \"VideoStreamSet\": [\n                {\n                    \"Bitrate\": 592385,\n                    \"Height\": 480,\n                    \"Width\": 640,\n                    \"Codec\": \"h264\",\n                    \"Fps\": 25,\n                    \"CodecTag\": \"\",\n                    \"DynamicRangeInfo\": {\n                        \"Type\": \"\",\n                        \"HDRType\": \"\"\n                    }\n                }\n            ],\n            \"AudioStreamSet\": [\n                {\n                    \"Bitrate\": 29629,\n                    \"SamplingRate\": 44100,\n                    \"Codec\": \"aac\"\n                }\n            ],\n            \"VideoDuration\": 0.0,\n            \"AudioDuration\": 0.0,\n            \"Md5\": \"Md5\"\n        },\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Clipping an HLS video (with negative offsets)"
+      },
+      {
+        "document": "This example shows you how to clip a video from 00:02 to 00:10.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SimpleHlsClip\n<Common request parameters>\n\n{\n    \"Url\": \"http://xxxxx.vod2.myqcloud.com/xxxxx/aaaaaa/hhh.m3u8\",\n    \"StartTimeOffset\": 2.0,\n    \"EndTimeOffset\": 10.0\n}",
+        "output": "{\n    \"Response\": {\n        \"Url\": \"http://xxxxx.vod2.myqcloud.com/xxxxx/aaaaaa/10_50.m3u8\",\n        \"FileId\": \"\",\n        \"TaskId\": \"\",\n        \"MetaData\": {\n            \"Size\": 0,\n            \"Container\": \"hls\",\n            \"Bitrate\": 622014,\n            \"Height\": 480,\n            \"Width\": 640,\n            \"Duration\": 48.0,\n            \"Rotate\": 0,\n            \"VideoStreamSet\": [\n                {\n                    \"Bitrate\": 592385,\n                    \"Height\": 480,\n                    \"Width\": 640,\n                    \"Codec\": \"h264\",\n                    \"Fps\": 25,\n                    \"CodecTag\": \"\",\n                    \"DynamicRangeInfo\": {\n                        \"Type\": \"\",\n                        \"HDRType\": \"\"\n                    }\n                }\n            ],\n            \"AudioStreamSet\": [\n                {\n                    \"Bitrate\": 29629,\n                    \"SamplingRate\": 44100,\n                    \"Codec\": \"aac\"\n                }\n            ],\n            \"VideoDuration\": 0.0,\n            \"AudioDuration\": 0.0,\n            \"Md5\": \"Md5\"\n        },\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Clipping an HLS video (with positive offsets)"
       }
     ],
     "SplitMedia": [
