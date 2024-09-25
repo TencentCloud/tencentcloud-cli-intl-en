@@ -1,0 +1,701 @@
+{
+  "actions": {
+    "FuseFace": {
+      "document": "This API is used to perform the fusion of a single face, multiple faces, and specified faces with the material template by uploading face images. Users can add logos to generated images. See <a href=\"https://intl.cloud.tencent.com/document/product/670/38247?from_cn_redirect=1\" target=\"_blank\">Fusion Access Guide</a>.\n\n\n\n- The signature method in the public parameters must be specified as the V3 version. In other words, set the SignatureMethod parameter to TC3-HMAC-SHA256.",
+      "input": "FuseFaceRequest",
+      "name": "Image Face Fusion (Basic)",
+      "output": "FuseFaceResponse",
+      "status": "online"
+    },
+    "QueryVideoFaceFusionJob": {
+      "document": "This API is used to query the progress and status of video face fusion tasks by Job ID.",
+      "input": "QueryVideoFaceFusionJobRequest",
+      "name": "Queries video face fusion tasks",
+      "output": "QueryVideoFaceFusionJobResponse",
+      "status": "online"
+    },
+    "SubmitVideoFaceFusionJob": {
+      "document": "This API is used to submit asynchronous processing tasks of video face fusion. After a task is submitted, the Job ID, estimated completion time, and current queue length will be returned.",
+      "input": "SubmitVideoFaceFusionJobRequest",
+      "name": "Video Face Fusion",
+      "output": "SubmitVideoFaceFusionJobResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2022-09-27",
+    "serviceNameCN": "人脸融合",
+    "serviceShortName": "facefusion"
+  },
+  "objects": {
+    "FaceRect": {
+      "document": "Face box information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Top-left X-axis coordinate of the face box",
+          "example": "1",
+          "member": "int64",
+          "name": "X",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Top-left Y-axis coordinate of the face box",
+          "example": "1",
+          "member": "int64",
+          "name": "Y",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Face box width",
+          "example": "30",
+          "member": "int64",
+          "name": "Width",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Face box height",
+          "example": "30",
+          "member": "int64",
+          "name": "Height",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
+    "FuseFaceRequest": {
+      "document": "FuseFace request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Activity ID. Check the ID in the <a href=\"https://console.cloud.tencent.com/facefusion\" target=\"_blank\"> Face Fusion console</a>.",
+          "example": "300029",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Material ID. Check the ID in the <a href=\"https://console.cloud.tencent.com/facefusion\" target=\"_blank\"> Face Fusion console</a>.",
+          "example": "qc_300029_453345_1",
+          "member": "string",
+          "name": "ModelId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Image return method (url or base64). You cannot use both methods at the same time. The URL is valid for 7 days.",
+          "example": "url",
+          "member": "string",
+          "name": "RspImgType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Face position information on the user face image and material template image. No more than 6 entries.",
+          "example": "[]",
+          "member": "MergeInfo",
+          "name": "MergeInfos",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Switch indicating whether to add a synthesis logo to the fusion result image. Default value: 1.\n1: add logo\n0: do not add logo\nOther values: add logo\nIt is recommended to use an obvious logo to indicate that the result image uses face fusion technology and is synthesized by AI.",
+          "example": "1",
+          "member": "int64",
+          "name": "LogoAdd",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Logo content settings\nBy default, the text \"Synthesized by AI\" is added to the bottom right corner of the fusion result image. You can also use other texts.",
+          "example": "{}",
+          "member": "LogoParam",
+          "name": "LogoParam",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Fusion parameter.",
+          "example": "无",
+          "member": "FuseParam",
+          "name": "FuseParam",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "FuseFaceResponse": {
+      "document": "FuseFace response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "When RspImgType is set to url, return the URL (valid for 7 days). When RspImgType is set to base64, return the Base64 code.",
+          "example": "http://cloud.com/result.png",
+          "member": "string",
+          "name": "FusedImage",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "FuseFaceReviewDetail": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "string",
+          "member": "string",
+          "name": "Field",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "string",
+          "member": "string",
+          "name": "Label",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "float",
+          "name": "Confidence",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "string",
+          "member": "string",
+          "name": "Suggestion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "FuseFaceReviewResult": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Category",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Code",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "CodeDescription",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "float",
+          "name": "Confidence",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Suggestion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "FuseFaceReviewDetail",
+          "name": "DetailSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "FuseParam": {
+      "document": "Fusion parameter",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Image encoding parameter",
+          "example": "{}",
+          "member": "ImageCodecParam",
+          "name": "ImageCodecParam",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "ImageCodecParam": {
+      "document": "Image encoding parameter",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Metadata. The number of metadata entries cannot exceed 1.",
+          "example": "[]",
+          "member": "MetaData",
+          "name": "MetaData",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "LogoParam": {
+      "document": "Logo parameter",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Coordinates of the logo image in the fusion result image. The logo image will be stretched according to the coordinates.",
+          "example": "{}",
+          "member": "FaceRect",
+          "name": "LogoRect",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Logo image URL\n●Either the Base64 code or URL must be provided. If both are provided, URL prevails.\n●Supported image format: JPG or PNG",
+          "example": "string",
+          "member": "string",
+          "name": "LogoUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Logo image Base64 code\n●Either the Base64 code or URL must be provided. If both are provided, URL prevails.\n●Supported image format: JPG or PNG",
+          "example": "string",
+          "member": "string",
+          "name": "LogoImage",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "MergeInfo": {
+      "document": "Face position information on the face image and material template image for fusion",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Enter the image Base64 code.\n●Either the Base64 code or URL must be provided. If both are provided, URL prevails.\n●Material image limitation: face size in the image greater than 34×34 pixels; image size greater than 64×64 pixels. (After encoding, the image size may increase by about 30%. It is recommended to control the image size reasonably.)\n●Supported image format: JPG or PNG",
+          "example": "string",
+          "member": "string",
+          "name": "Image",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Enter the image URL.\n●Either the Base64 code or URL must be provided. If both are provided, URL prevails.\n●Material image limitation: face size in the image greater than 34×34 pixels; image size greater than 64×64 pixels. (After encoding, the image size may increase by about 30%. It is recommended to control the image size reasonably.)\n●Supported image format: JPG or PNG",
+          "example": "string",
+          "member": "string",
+          "name": "Url",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Face position information (face box) on the uploaded image\nWidth and height are no less than 30.",
+          "example": "{}",
+          "member": "FaceRect",
+          "name": "InputImageFaceRect",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Material face ID. If this parameter is left blank, the largest face is used by default.",
+          "example": "string",
+          "member": "string",
+          "name": "TemplateFaceID",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Face position information (face box) on the template. If this parameter is left blank, the largest face is used by default. This parameter applies to scenes where custom material templates are used for fusion.\nWidth and height are no less than 30.",
+          "example": "无",
+          "member": "FaceRect",
+          "name": "TemplateFaceRect",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "usage": "in"
+    },
+    "MetaData": {
+      "document": "Metadata structure, in key/value format",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Metadata key",
+          "example": "string",
+          "member": "string",
+          "name": "MetaKey",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Metadata value",
+          "example": "string",
+          "member": "string",
+          "name": "MetaValue",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "in"
+    },
+    "QueryVideoFaceFusionJobRequest": {
+      "document": "QueryVideoFaceFusionJob request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Job ID of the video face fusion task",
+          "example": "C0a5EXaNR7JzGvlg",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryVideoFaceFusionJobResponse": {
+      "document": "QueryVideoFaceFusionJob response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Current task status: queuing, processing, processing failed, or processing completed",
+          "example": "处理完成",
+          "member": "string",
+          "name": "JobStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Video face fusion result\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{             \"VideoUrl\": \"http://bda-video-bodyseg-1254418846.c",
+          "member": "VideoFaceFusionOutput",
+          "name": "VideoFaceFusionOutput",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task status code. 1: queuing; 3: processing; 5: processing failed; 7: processing completed.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "JobStatusCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task failure error code\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "string",
+          "member": "string",
+          "name": "JobErrorCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task failure error message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "string",
+          "member": "string",
+          "name": "JobErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SubmitVideoFaceFusionJobRequest": {
+      "document": "SubmitVideoFaceFusionJob request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Activity ID. Check it in the video face fusion console.",
+          "example": "300314",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Material ID. Check it in the video face fusion console.",
+          "example": "qc_300314_789050_75",
+          "member": "string",
+          "name": "ModelId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Face position information on the user face image and material template image. Only one entry is allowed.",
+          "example": "[{",
+          "member": "MergeInfo",
+          "name": "MergeInfos",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "0: inappropriate content recognition not required; 1: inappropriate content recognition required. Default value: 0.\nNote: Once the inappropriate content recognition service is enabled, you need to decide whether to adjust your business logic based on the returned results. For example, you need to replace the image if the system informs you that the image does not meet the requirements.\n**<font color=#1E90FF>Note: This field will be deprecated later due to business adjustments. It is not recommended for use.</font>**",
+          "example": "0",
+          "member": "int64",
+          "name": "CelebrityIdentify",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Video watermark logo parameter",
+          "example": "{}",
+          "member": "LogoParam",
+          "name": "LogoParam",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "COS pre-signed URL (PUT method). If this parameter is specified, the video after fusion will be uploaded to this URL.\n**<font color=#1E90FF>Note: If upload to this URL fails, the video will be uploaded to the default address of Tencent Cloud.</font>**",
+          "example": "无",
+          "member": "string",
+          "name": "UserDesignatedUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User IP address",
+          "example": "string",
+          "member": "string",
+          "name": "UserIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Video metadata field",
+          "example": "无",
+          "member": "MetaData",
+          "name": "MetaData",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "SubmitVideoFaceFusionJobResponse": {
+      "document": "SubmitVideoFaceFusionJob response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Job ID of the video face fusion task",
+          "example": "C0a5EXaNR7JzGvlg",
+          "member": "string",
+          "name": "JobId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Estimated processing time of the video face fusion task, in seconds",
+          "example": "30",
+          "member": "float",
+          "name": "EstimatedProcessTime",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Estimated processing time of the video face fusion task, in seconds",
+          "example": "1",
+          "member": "int64",
+          "name": "JobQueueLength",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Inappropriate content recognition result. The element order of this array is the same as that of mergeinfo in the request, with a one-to-one relationship.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "FuseFaceReviewResult",
+          "name": "ReviewResultSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "VideoFaceFusionOutput": {
+      "document": "Returned video face fusion result",
+      "members": [
+        {
+          "disabled": false,
+          "document": "URL of the video output after video face fusion",
+          "example": "无",
+          "member": "string",
+          "name": "VideoUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MD5 value of the video output after video face fusion, which is used for verification",
+          "example": "无",
+          "member": "string",
+          "name": "VideoMD5",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Video width",
+          "example": "无",
+          "member": "int64",
+          "name": "Width",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Video height",
+          "example": "无",
+          "member": "int64",
+          "name": "Height",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Frames per second",
+          "example": "无",
+          "member": "int64",
+          "name": "FPS",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Video duration, in seconds",
+          "example": "无",
+          "member": "float",
+          "name": "DurationInSec",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of frames",
+          "example": "无",
+          "member": "int64",
+          "name": "Frame",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

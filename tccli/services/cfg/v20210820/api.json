@@ -526,7 +526,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the instance participating in the experiment",
+          "document": "ID of the instance participating in the experiment.",
           "example": "[\"ins-87b12frpq\"]",
           "member": "string",
           "name": "TaskInstances",
