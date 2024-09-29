@@ -408,7 +408,7 @@
         },
         {
           "disabled": false,
-          "document": "The identity document type. Valid values: \n1. HK (default): Identity card of Hong Kong (China)\n2. ML: Malaysian identity card\n3. IndonesiaIDCard: Indonesian identity card\n4. PhilippinesVoteID: Philippine voters ID card\n5. PhilippinesDrivingLicense: Philippine driver's license\n6. PhilippinesTinID: Philippine TIN ID card\n7. PhilippinesSSSID: Philippine SSS ID card\n8. PhilippinesUMID: Philippine UMID card\n9. MLIDPassport: Passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions\n10..MacaoIDCard: Macao ID Card\n11.ThailandIDCard: Thailand ID Card\n12.MainlandIDCard: Mainland ID Card\n13.SingaporeIDCard: Singapore ID Card\n14.JapanIDCard: Japan ID Card\n15.MLDrivingLicense: Malaysian Driving License\n16.IndonesiaDrivingLicense: Indonesia Driving License\n17.ThailandDrivingLicense: Thailand Driving License\n18.SingaporeDrivingLicense: Singapore Driving License\n19.JapanDrivingLicense: Japan Driving License",
+          "document": "The identity document type. Valid values: \n1. HK (default): Identity card of Hong Kong (China)\n2. ML: Malaysian identity card\n3. IndonesiaIDCard: Indonesian identity card\n4. PhilippinesVoteID: Philippine voters ID card\n5. PhilippinesDrivingLicense: Philippine driver's license\n6. PhilippinesTinID: Philippine TIN ID card\n7. PhilippinesSSSID: Philippine SSS ID card\n8. PhilippinesUMID: Philippine UMID card\n9. MLIDPassport: Passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions\n10..MacaoIDCard: Macao ID Card\n11.ThailandIDCard: Thailand ID Card\n12.MainlandIDCard: Mainland ID Card\n13.SingaporeIDCard: Singapore ID Card\n14.JapanIDCard: Japan ID Card\n15.MLDrivingLicense: Malaysian Driving License\n16.IndonesiaDrivingLicense: Indonesia Driving License\n17.ThailandDrivingLicense: Thailand Driving License\n18.SingaporeDrivingLicense: Singapore Driving License\n19.JapanDrivingLicense: Japan Driving License\n20.TaiWanIDCard:Taiwan ID Card\n21.HMTPermit: exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan",
           "example": "HK",
           "member": "string",
           "name": "IdCardType",
@@ -2512,6 +2512,92 @@
       ],
       "usage": "out"
     },
+    "HMTPermit": {
+      "document": "Exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name",
+          "example": "李明",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "English name",
+          "example": "LIMING",
+          "member": "string",
+          "name": "EnglishName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "License number",
+          "example": "C00000000",
+          "member": "string",
+          "name": "Number",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Gender",
+          "example": "男",
+          "member": "string",
+          "name": "Sex",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Valid date",
+          "example": "2018.10.09-2028.10.08",
+          "member": "string",
+          "name": "ValidDate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Issued authority",
+          "example": "公安部出入境管理局",
+          "member": "string",
+          "name": "IssueAuthority",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Issued address",
+          "example": "广东",
+          "member": "string",
+          "name": "IssueAddress",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Birthday",
+          "example": "1981.08.03",
+          "member": "string",
+          "name": "Birthday",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "IndonesiaDrivingLicense": {
       "document": "Indonesia driving license.",
       "members": [
@@ -3506,6 +3592,16 @@
           "example": "无",
           "member": "TaiWanIDCard",
           "name": "TaiWanIDCard",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "HMTPermit",
+          "name": "HMTPermitCard",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
