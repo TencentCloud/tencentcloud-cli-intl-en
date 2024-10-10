@@ -653,7 +653,7 @@
           "example": "doc-1fa3rs3s",
           "member": "string",
           "name": "ApiDocId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -663,7 +663,7 @@
           "example": "test",
           "member": "string",
           "name": "ApiDocName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -673,7 +673,7 @@
           "example": "PROCESSING",
           "member": "string",
           "name": "ApiDocStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -689,7 +689,7 @@
           "example": "apidoc-a7ragqam",
           "member": "string",
           "name": "ApiDocId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -699,7 +699,7 @@
           "example": "test",
           "member": "string",
           "name": "ApiDocName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -709,7 +709,7 @@
           "example": "COMPLETED",
           "member": "string",
           "name": "ApiDocStatus",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -719,7 +719,7 @@
           "example": "1",
           "member": "int64",
           "name": "ApiCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -729,7 +729,7 @@
           "example": "2",
           "member": "int64",
           "name": "ViewCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -739,7 +739,7 @@
           "example": "3",
           "member": "int64",
           "name": "ReleaseCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -749,7 +749,7 @@
           "example": "https://apidoc-a7ragqam-apigw.doc.coding.io",
           "member": "string",
           "name": "ApiDocUri",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -759,7 +759,7 @@
           "example": "000000",
           "member": "string",
           "name": "SharePassword",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -769,7 +769,7 @@
           "example": "2021-01-25T05:46:25Z",
           "member": "datetime",
           "name": "UpdatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -779,7 +779,7 @@
           "example": "service-2nuhovb7",
           "member": "string",
           "name": "ServiceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -789,7 +789,7 @@
           "example": "release",
           "member": "string",
           "name": "Environment",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -799,7 +799,7 @@
           "example": "[api-d2sdvxd]",
           "member": "string",
           "name": "ApiIds",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -809,7 +809,7 @@
           "example": "service",
           "member": "string",
           "name": "ServiceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -819,7 +819,7 @@
           "example": "[api]",
           "member": "string",
           "name": "ApiNames",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -858,7 +858,7 @@
         {
           "disabled": false,
           "document": "Application name\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiAppName",
           "required": true,
@@ -868,7 +868,7 @@
         {
           "disabled": false,
           "document": "Application ID",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiAppId",
           "required": true,
@@ -878,7 +878,7 @@
         {
           "disabled": false,
           "document": "API ID\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiId",
           "required": true,
@@ -888,7 +888,7 @@
         {
           "disabled": false,
           "document": "API name\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiName",
           "required": true,
@@ -898,7 +898,7 @@
         {
           "disabled": false,
           "document": "Service ID\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -908,7 +908,7 @@
         {
           "disabled": false,
           "document": "Binding authorization time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "datetime_iso",
           "name": "AuthorizedTime",
           "required": true,
@@ -918,7 +918,7 @@
         {
           "disabled": false,
           "document": "API region\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiRegion",
           "required": true,
@@ -928,7 +928,7 @@
         {
           "disabled": false,
           "document": "Authorized binding environment\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "EnvironmentName",
           "required": true,
@@ -970,70 +970,70 @@
         {
           "disabled": false,
           "document": "Application name\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "x x",
           "member": "string",
           "name": "ApiAppName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Application ID",
-          "example": "",
+          "example": "x x",
           "member": "string",
           "name": "ApiAppId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Application SECRET\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "sajsnda",
           "member": "string",
           "name": "ApiAppSecret",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Application description\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "x x",
           "member": "string",
           "name": "ApiAppDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "2021-09-01",
           "member": "datetime_iso",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Modification time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "2021-09-01",
           "member": "datetime_iso",
           "name": "ModifiedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Application KEY\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "sajsnda",
           "member": "string",
           "name": "ApiAppKey",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -1122,12 +1122,12 @@
       ],
       "usage": "out"
     },
-    "ApiEnvironmentStrategyStataus": {
-      "document": "List of policies bound to API",
+    "ApiEnvironmentStrategyStatus": {
+      "document": "",
       "members": [
         {
           "disabled": false,
-          "document": "Number of throttling policies bound to API.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "",
           "member": "int64",
           "name": "TotalCount",
@@ -1137,7 +1137,7 @@
         },
         {
           "disabled": false,
-          "document": "List of throttling policies bound to API.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "",
           "example": "",
           "member": "ApiEnvironmentStrategy",
           "name": "ApiEnvironmentStrategySet",
@@ -1340,510 +1340,510 @@
         {
           "disabled": false,
           "document": "Unique service ID of API.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Service name of API.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Service description of API.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Unique API ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "API description.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "datetime_iso",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "datetime_iso",
           "name": "ModifiedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "API name.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "API type. Valid values: NORMAL (general API), TSF (microservice API).\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "API frontend request type, such as HTTP, HTTPS, or HTTP and HTTPS.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Protocol",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "API authentication type. Valid values: SECRET (key pair authentication), NONE (no authentication), OAUTH.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "AuthType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "OAuth API type. Valid values: NORMAL (business API), \bOAUTH (authorization API).\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiBusinessType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Unique ID of the authorization API associated with OAuth business API.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "AuthRelationApiId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "OAuth configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "OauthConfig",
           "name": "OauthConfig",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Whether to enable debugging after purchase (reserved field for the marketplace).\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "false",
           "member": "bool",
           "name": "IsDebugAfterCharge",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Request frontend configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "RequestConfig",
           "name": "RequestConfig",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Return type.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ResponseType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Sample response for successful custom response configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ResponseSuccessExample",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Sample response for failed custom response configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ResponseFailExample",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Custom error code configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ErrorCodes",
           "name": "ResponseErrorCodes",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Frontend request parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ReqParameter",
           "name": "RequestParameters",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "API backend service timeout period in seconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "ServiceTimeout",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "API backend service type. Valid values: HTTP, MOCK, TSF, CLB, SCF, WEBSOCKET, TARGET (in beta test).\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "API backend service configuration.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ServiceConfig",
           "name": "ServiceConfig",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "API backend service parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
-          "member": "ServiceParameter",
+          "example": "无",
+          "member": "DescribeApiResultServiceParametersInfo",
           "name": "ServiceParameters",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Constant parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ConstantParameter",
           "name": "ConstantParameters",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Returned message of API backend Mock, which is required if `ServiceType` is `Mock`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceMockReturnMessage",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "SCF function name, which takes effect if the backend type is `SCF`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceScfFunctionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "SCF function namespace, which takes effect if the backend type is `SCF`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceScfFunctionNamespace",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "SCF function version, which takes effect if the backend type is `SCF`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceScfFunctionQualifier",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Whether integrated response is enabled.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "false",
           "member": "bool",
           "name": "ServiceScfIsIntegratedResponse",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceWebsocketRegisterFunctionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "SCF WebSocket registration function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceWebsocketRegisterFunctionNamespace",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceWebsocketRegisterFunctionQualifier",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "SCF WebSocket cleanup function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceWebsocketCleanupFunctionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "SCF WebSocket cleanup function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceWebsocketCleanupFunctionNamespace",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "SCF WebSocket cleanup function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceWebsocketCleanupFunctionQualifier",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "WebSocket callback address.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "InternalDomain",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "SCF WebSocket transfer function, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceWebsocketTransportFunctionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "SCF WebSocket transfer function namespace, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceWebsocketTransportFunctionNamespace",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "SCF WebSocket transfer function version, which takes effect if the frontend type is `WEBSOCKET` and the backend type is `SCF`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceWebsocketTransportFunctionQualifier",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "List of microservices bound to API.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "MicroService",
           "name": "MicroServices",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Microservice details.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "MicroServicesInfo",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Load balancing configuration of microservice.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "TsfLoadBalanceConfResp",
           "name": "ServiceTsfLoadBalanceConf",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Health check configuration of microservice.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "HealthCheckConf",
           "name": "ServiceTsfHealthCheckConf",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Whether to enable CORS.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "false",
           "member": "bool",
           "name": "EnableCORS",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Information of tags bound to API.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "Tag",
           "name": "Tags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Environment information published for API.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Environments",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Whether to enable Base64 encoding. This parameter takes effect only when the backend is SCF.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "false",
           "member": "bool",
           "name": "IsBase64Encoded",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Whether to trigger Base64 encoding by header. This parameter takes effect only when the backend is SCF.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "false",
           "member": "bool",
           "name": "IsBase64Trigger",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Header trigger rules. The number of rules cannot exceed 10.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "Base64EncodedTriggerRule",
           "name": "Base64EncodedTriggerRules",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -1882,70 +1882,70 @@
         {
           "disabled": false,
           "document": "Created API key ID.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "AccessKeyId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Created API key.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "AccessKeySecret",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Key type. Valid values: auto, manual.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "AccessKeyType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Custom key name.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "SecretName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.",
-          "example": "",
+          "example": "无",
           "member": "datetime_iso",
           "name": "ModifiedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Key status. 0: disabled. 1: enabled.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.",
-          "example": "",
+          "example": "无",
           "member": "datetime_iso",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -2010,150 +2010,150 @@
         {
           "disabled": false,
           "document": "Unique service ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Unique API ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "API name.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "API path.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Path",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "API method.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Method",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Unique usage plan ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "UsagePlanId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Usage plan name.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "UsagePlanName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Usage plan description.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "UsagePlanDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Service environment bound to usage plan.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Environment",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Used quota.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "InUseRequestNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Total number of requests allowed. `-1` indicates no limit.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "MaxRequestNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Request QPS upper limit. `-1` indicates no limit.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "MaxRequestNumPreSec",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Usage plan creation time.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "datetime_iso",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Last modified time of usage plan.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "datetime_iso",
           "name": "ModifiedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Service name.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -2186,30 +2186,9 @@
       ],
       "usage": "out"
     },
-    "ApisStatus": {
-      "document": "API list status description",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Number of eligible APIs.",
-          "example": "",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "API list.",
-          "example": "",
-          "member": "DesApisStatus",
-          "name": "ApiIdStatusSet",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": false
-        }
-      ],
+    "ApigatewayTags": {
+      "document": "key-value",
+      "members": [],
       "usage": "out"
     },
     "AttachPluginRequest": {
@@ -2282,7 +2261,7 @@
         {
           "disabled": false,
           "document": "ID of the service to which the API belongs",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -2292,7 +2271,7 @@
         {
           "disabled": false,
           "document": "Name of the service to which the API belongs",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceName",
           "required": true,
@@ -2302,7 +2281,7 @@
         {
           "disabled": false,
           "document": "Description of the service to which the API belongs\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ServiceDesc",
           "required": true,
@@ -2312,7 +2291,7 @@
         {
           "disabled": false,
           "document": "API ID",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiId",
           "required": true,
@@ -2322,7 +2301,7 @@
         {
           "disabled": false,
           "document": "API name",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiName",
           "required": true,
@@ -2332,7 +2311,7 @@
         {
           "disabled": false,
           "document": "API description\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiDesc",
           "required": true,
@@ -2342,7 +2321,7 @@
         {
           "disabled": false,
           "document": "Environment of the API bound with the plugin",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Environment",
           "required": true,
@@ -2352,7 +2331,7 @@
         {
           "disabled": false,
           "document": "Time when the plugin was bound to the API",
-          "example": "",
+          "example": "无",
           "member": "datetime_iso",
           "name": "AttachedTime",
           "required": true,
@@ -2499,7 +2478,7 @@
           "example": "api-d2sdvx",
           "member": "string",
           "name": "ApiId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2509,7 +2488,7 @@
           "example": "helloapi",
           "member": "string",
           "name": "ApiName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2519,7 +2498,7 @@
           "example": "Normal",
           "member": "string",
           "name": "ApiType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2529,7 +2508,7 @@
           "example": "/happy",
           "member": "string",
           "name": "Path",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2539,7 +2518,7 @@
           "example": "GET",
           "member": "string",
           "name": "Method",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2549,7 +2528,7 @@
           "example": "true",
           "member": "bool",
           "name": "AttachedOtherPlugin",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -2559,7 +2538,7 @@
           "example": "true",
           "member": "bool",
           "name": "IsAttached",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         }
@@ -2615,7 +2594,7 @@
         },
         {
           "disabled": false,
-          "document": "Unique ID of the service to be bound.",
+          "document": "Unique ID of the service to be bound",
           "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
@@ -2718,7 +2697,7 @@
         {
           "disabled": false,
           "document": "List of unique IDs of the usage plans to be bound.",
-          "example": "",
+          "example": "[\"usagePlan-quqxvett\\r\\n\"]",
           "member": "string",
           "name": "UsagePlanIds",
           "required": true,
@@ -2727,7 +2706,7 @@
         {
           "disabled": false,
           "document": "Binding type. Valid values: API, SERVICE. Default value: SERVICE.",
-          "example": "",
+          "example": "SERVICE",
           "member": "string",
           "name": "BindType",
           "required": true,
@@ -2736,7 +2715,7 @@
         {
           "disabled": false,
           "document": "Environment to be bound.",
-          "example": "",
+          "example": "test",
           "member": "string",
           "name": "Environment",
           "required": true,
@@ -2745,7 +2724,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the service to be bound.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -2754,7 +2733,7 @@
         {
           "disabled": false,
           "document": "Unique API ID array, which is required if `bindType` is `API`.",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "ApiIds",
           "required": false,
@@ -2769,9 +2748,10 @@
         {
           "disabled": false,
           "document": "Whether binding succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -2790,7 +2770,7 @@
         {
           "disabled": false,
           "document": "Unique service ID of the IP policy to be bound.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -2799,7 +2779,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the IP policy to be bound.",
-          "example": "",
+          "example": "IPStrategy-0ez0c8to",
           "member": "string",
           "name": "StrategyId",
           "required": true,
@@ -2808,7 +2788,7 @@
         {
           "disabled": false,
           "document": "Environment to be bound to IP policy.",
-          "example": "",
+          "example": "test",
           "member": "string",
           "name": "EnvironmentName",
           "required": true,
@@ -2817,7 +2797,7 @@
         {
           "disabled": false,
           "document": "List of APIs to be bound to IP policy.",
-          "example": "",
+          "example": "[\"api-e92i2jds\\r\\n\"]",
           "member": "string",
           "name": "BindApiIds",
           "required": true,
@@ -2832,9 +2812,10 @@
         {
           "disabled": false,
           "document": "Whether binding succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -2853,7 +2834,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the usage plan to be bound.",
-          "example": "",
+          "example": "usagePlan-quqxvett",
           "member": "string",
           "name": "UsagePlanId",
           "required": true,
@@ -2862,7 +2843,7 @@
         {
           "disabled": false,
           "document": "Array of IDs of the keys to be bound.",
-          "example": "",
+          "example": "[\"AKIDmyE2z0gvi2p6***************\\n\"]",
           "member": "string",
           "name": "AccessKeyIds",
           "required": true,
@@ -2877,7 +2858,7 @@
         {
           "disabled": false,
           "document": "Whether binding succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
           "type": "bool",
@@ -2898,7 +2879,7 @@
         {
           "disabled": false,
           "document": "Unique service ID.",
-          "example": "",
+          "example": "service-1w9ekbwo",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -2907,7 +2888,7 @@
         {
           "disabled": false,
           "document": "Custom domain name to be bound.",
-          "example": "",
+          "example": "xxx.com",
           "member": "string",
           "name": "SubDomain",
           "required": true,
@@ -2916,7 +2897,7 @@
         {
           "disabled": false,
           "document": "Protocol supported by service. Valid values: http, https, http&https.",
-          "example": "",
+          "example": "http",
           "member": "string",
           "name": "Protocol",
           "required": true,
@@ -2925,7 +2906,7 @@
         {
           "disabled": false,
           "document": "Network type. Valid values: OUTER, INNER.",
-          "example": "",
+          "example": "OUTER",
           "member": "string",
           "name": "NetType",
           "required": true,
@@ -2934,7 +2915,7 @@
         {
           "disabled": false,
           "document": "Whether the default path mapping is used. The default value is `true`. If the value is `false`, the custom path mapping will be used and `PathMappingSet` will be required in this case.",
-          "example": "",
+          "example": "TRUE",
           "member": "bool",
           "name": "IsDefaultMapping",
           "required": true,
@@ -2943,7 +2924,7 @@
         {
           "disabled": false,
           "document": "Default domain name.",
-          "example": "",
+          "example": "service-1w9ekbwo-1259027407.gz.apigw.tencentcs.com",
           "member": "string",
           "name": "NetSubDomain",
           "required": true,
@@ -2952,7 +2933,7 @@
         {
           "disabled": false,
           "document": "Unique certificate ID of the custom domain name to be bound. The certificate can be uploaded if `Protocol` is `https` or `http&https`.",
-          "example": "",
+          "example": "x x",
           "member": "string",
           "name": "CertificateId",
           "required": false,
@@ -2961,7 +2942,7 @@
         {
           "disabled": false,
           "document": "Custom domain name path mapping. It can contain up to 3 `Environment` values which can be set to only `test`, `prepub`, and `release`, respectively.",
-          "example": "",
+          "example": "无",
           "member": "PathMapping",
           "name": "PathMappingSet",
           "required": false,
@@ -2970,7 +2951,7 @@
         {
           "disabled": false,
           "document": "Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.",
-          "example": "",
+          "example": "TRUE",
           "member": "bool",
           "name": "IsForcedHttps",
           "required": false,
@@ -3180,7 +3161,7 @@
           "example": "无",
           "member": "APIDoc",
           "name": "Result",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -3245,7 +3226,7 @@
         {
           "disabled": false,
           "document": "Custom key name.",
-          "example": "",
+          "example": "test",
           "member": "string",
           "name": "SecretName",
           "required": true,
@@ -3254,7 +3235,7 @@
         {
           "disabled": false,
           "document": "Key type. Valid values: auto, manual (custom key). Default value: auto.",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "AccessKeyType",
           "required": false,
@@ -3263,7 +3244,7 @@
         {
           "disabled": false,
           "document": "Custom key ID, which is required if `AccessKeyType` is `manual`. It can contain 5–50 letters, digits, and underscores.",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "AccessKeyId",
           "required": false,
@@ -3272,7 +3253,7 @@
         {
           "disabled": false,
           "document": "Custom key, which is required if `AccessKeyType` is `manual`. It can contain 10–50 letters, digits, and underscores.",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "AccessKeySecret",
           "required": false,
@@ -3287,9 +3268,10 @@
         {
           "disabled": false,
           "document": "New key details.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ApiKey",
           "name": "Result",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -3791,9 +3773,10 @@
         {
           "disabled": false,
           "document": "API information\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
-          "member": "CreateApiRsp",
+          "example": "无",
+          "member": "CreateApiResultInfo",
           "name": "Result",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -3805,6 +3788,52 @@
         }
       ],
       "type": "object"
+    },
+    "CreateApiResultInfo": {
+      "document": "Response of API creation",
+      "members": [
+        {
+          "disabled": false,
+          "document": "API ID\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "api-sdfsdf",
+          "member": "string",
+          "name": "ApiId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Path\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "/",
+          "member": "string",
+          "name": "Path",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Request method\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "GET",
+          "member": "string",
+          "name": "Method",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "2022-03-02T14:27:56Z",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "CreateApiRsp": {
       "document": "Return of API creation",
@@ -3956,9 +3985,10 @@
         {
           "disabled": false,
           "document": "New IP policy details.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "IPStrategy",
           "name": "Result",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -4076,15 +4106,6 @@
         },
         {
           "disabled": false,
-          "document": "Dedicated cluster name, which is used to specify the dedicated cluster where the service is to be created.",
-          "example": "xxx",
-          "member": "string",
-          "name": "ExclusiveSetName",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "disabled": false,
           "document": "Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER.",
           "example": "xxx",
           "member": "string",
@@ -4155,72 +4176,80 @@
         {
           "disabled": false,
           "document": "Unique service ID.",
-          "example": "",
+          "example": "service-0c96l2bo",
           "member": "string",
           "name": "ServiceId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Custom service name.",
-          "example": "",
+          "example": "test_https",
           "member": "string",
           "name": "ServiceName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Custom service description.",
-          "example": "",
+          "example": "https",
           "member": "string",
           "name": "ServiceDesc",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Default public domain name.",
-          "example": "",
+          "example": "service-0c96l2bo-1251006373.ap-guangzhou.apigateway.myqcloud.com",
           "member": "string",
           "name": "OuterSubDomain",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Default VPC domain name.",
-          "example": "",
+          "example": "service-0c96l2bo-1251006373.ap-guangzhou.apigateway.myqcloud.com",
           "member": "string",
           "name": "InnerSubDomain",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Service creation time in the format of `YYYY-MM-DDThh:mm:ssZ` according to ISO 8601 standard. UTC time is used.",
-          "example": "",
+          "example": "2020-09-22T00:00:00+00:00",
           "member": "datetime_iso",
           "name": "CreatedTime",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Network type list. INNER: private network access; OUTER: public network access.",
-          "example": "",
+          "example": "[\"OUTER\"]",
           "member": "string",
           "name": "NetTypes",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "IP version number.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "IPv4",
           "member": "string",
           "name": "IpVersion",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4356,7 +4385,7 @@
           "example": "upstream-0c96l2bo",
           "member": "string",
           "name": "UpstreamId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -4375,7 +4404,7 @@
         {
           "disabled": false,
           "document": "Custom usage plan name.",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "UsagePlanName",
           "required": true,
@@ -4384,7 +4413,7 @@
         {
           "disabled": false,
           "document": "Custom usage plan description.",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "UsagePlanDesc",
           "required": false,
@@ -4393,7 +4422,7 @@
         {
           "disabled": false,
           "document": "Total number of requests allowed. Valid values: -1, [1,99999999]. The default value is `-1`, which indicates no limit.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "MaxRequestNum",
           "required": false,
@@ -4402,7 +4431,7 @@
         {
           "disabled": false,
           "document": "Limit of requests per second. Valid values: -1, [1,2000]. The default value is `-1`, which indicates no limit.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "MaxRequestNumPreSec",
           "required": false,
@@ -4417,9 +4446,10 @@
         {
           "disabled": false,
           "document": "Usage plan details.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "UsagePlanInfo",
           "name": "Result",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -4512,7 +4542,7 @@
         {
           "disabled": false,
           "document": "ID of the key to be deleted.",
-          "example": "",
+          "example": "AKID8my5MRr9i6VM98F3dZG9zV0KuBq5ID7pMG83",
           "member": "string",
           "name": "AccessKeyId",
           "required": true,
@@ -4527,9 +4557,10 @@
         {
           "disabled": false,
           "document": "Whether deletion succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -4548,7 +4579,7 @@
         {
           "disabled": false,
           "document": "Unique service ID of API.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -4557,7 +4588,7 @@
         {
           "disabled": false,
           "document": "Unique API ID.",
-          "example": "",
+          "example": "api-e92i2jds",
           "member": "string",
           "name": "ApiId",
           "required": true,
@@ -4572,9 +4603,10 @@
         {
           "disabled": false,
           "document": "Whether deletion succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -4593,7 +4625,7 @@
         {
           "disabled": false,
           "document": "Unique service ID of the IP policy to be deleted.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -4602,7 +4634,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the IP policy to be deleted.",
-          "example": "",
+          "example": "IPStrategy-4xj4r1ou",
           "member": "string",
           "name": "StrategyId",
           "required": true,
@@ -4617,9 +4649,10 @@
         {
           "disabled": false,
           "document": "Whether deletion succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -4699,9 +4732,10 @@
         {
           "disabled": false,
           "document": "Whether deletion succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -4720,7 +4754,7 @@
         {
           "disabled": false,
           "document": "Unique service ID.",
-          "example": "",
+          "example": "service-19c5fnhy",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -4729,7 +4763,7 @@
         {
           "disabled": false,
           "document": "Custom domain name bound to service.",
-          "example": "",
+          "example": "xxxxxxx",
           "member": "string",
           "name": "SubDomain",
           "required": true,
@@ -4738,7 +4772,7 @@
         {
           "disabled": false,
           "document": "Name of the environment whose mapping is to be deleted. Valid values: test (test environment), prepub (pre-release environment), release (release environment).",
-          "example": "",
+          "example": "test",
           "member": "string",
           "name": "Environment",
           "required": true,
@@ -4753,9 +4787,10 @@
         {
           "disabled": false,
           "document": "Whether the path mapping of the custom domain name is successfully deleted.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -4811,7 +4846,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the usage plan to be deleted.",
-          "example": "",
+          "example": "usagePlan-bxtnltfd",
           "member": "string",
           "name": "UsagePlanId",
           "required": true,
@@ -4826,9 +4861,10 @@
         {
           "disabled": false,
           "document": "Whether deletion succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -4847,7 +4883,7 @@
         {
           "disabled": false,
           "document": "Usage plan ID.",
-          "example": "",
+          "example": "usagePlan-bxtnltfd",
           "member": "string",
           "name": "UsagePlanId",
           "required": true,
@@ -4856,7 +4892,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the service to be demoted.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -4865,7 +4901,7 @@
         {
           "disabled": false,
           "document": "Environment name.",
-          "example": "",
+          "example": "test",
           "member": "string",
           "name": "Environment",
           "required": true,
@@ -4880,9 +4916,10 @@
         {
           "disabled": false,
           "document": "Whether demotion succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -5049,12 +5086,12 @@
           "value_allowed_null": true
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "List of business APIs associated with authorization API.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "[]",
           "member": "string",
           "name": "RelationBuniessApiIds",
-          "required": true,
+          "required": false,
           "type": "list",
           "value_allowed_null": true
         },
@@ -5335,7 +5372,7 @@
           "example": "无",
           "member": "ApiAppInfos",
           "name": "Result",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -5390,7 +5427,7 @@
           "example": "无",
           "member": "ApiAppInfos",
           "name": "Result",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -5482,7 +5519,7 @@
         {
           "disabled": false,
           "document": "Unique service ID of API.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -5491,7 +5528,7 @@
         {
           "disabled": false,
           "document": "Environment list.",
-          "example": "",
+          "example": "[\"test\\r\\n\"]",
           "member": "string",
           "name": "EnvironmentNames",
           "required": false,
@@ -5500,7 +5537,7 @@
         {
           "disabled": false,
           "document": "Unique API ID.",
-          "example": "",
+          "example": "XX",
           "member": "string",
           "name": "ApiId",
           "required": false,
@@ -5509,7 +5546,7 @@
         {
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
-          "example": "",
+          "example": "XX",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -5518,7 +5555,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
-          "example": "",
+          "example": "XX",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -5533,9 +5570,10 @@
         {
           "disabled": false,
           "document": "Details of policies bound to API\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
-          "member": "ApiEnvironmentStrategyStataus",
+          "example": "无",
+          "member": "ApiEnvironmentStrategyStatus",
           "name": "Result",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -5609,7 +5647,7 @@
         {
           "disabled": false,
           "document": "API key ID.",
-          "example": "",
+          "example": "AKID1IGx7Tu5mk150ds6fhbdi1RqD8KlI6dW32MD",
           "member": "string",
           "name": "AccessKeyId",
           "required": true,
@@ -5624,9 +5662,10 @@
         {
           "disabled": false,
           "document": "Key details.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ApiKey",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -5645,7 +5684,7 @@
         {
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -5654,7 +5693,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -5663,7 +5702,7 @@
         {
           "disabled": false,
           "document": "Filter. Valid values: AccessKeyId, AccessKeySecret, SecretName, NotUsagePlanId, Status, KeyWord (match with `name` or `path`).",
-          "example": "",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -5678,9 +5717,10 @@
         {
           "disabled": false,
           "document": "Key list.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ApiKeysStatus",
           "name": "Result",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -5699,7 +5739,7 @@
         {
           "disabled": false,
           "document": "Unique service ID of API.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -5708,7 +5748,7 @@
         {
           "disabled": false,
           "document": "Unique API ID.",
-          "example": "",
+          "example": "api-3v4tzy3u",
           "member": "string",
           "name": "ApiId",
           "required": true,
@@ -5723,9 +5763,10 @@
         {
           "disabled": false,
           "document": "API details.",
-          "example": "",
+          "example": " 见输出示例",
           "member": "ApiInfo",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -5738,13 +5779,79 @@
       ],
       "type": "object"
     },
+    "DescribeApiResultServiceParametersInfo": {
+      "document": "ServiceParameter",
+      "members": [
+        {
+          "disabled": false,
+          "document": "API backend service parameter name. This is only applicable when `ServiceType` is `HTTP`. Names of frontend and backend parameters can be different. \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Location of the API backend service parameter, such as `head` This is only applicable when `ServiceType` is `HTTP`. Configurations of frontend and backend parameters can be different. \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Position",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Location of the frontend parameter corresponding to the API backend service parameter, such as `head` This is only applicable when `ServiceType` is `HTTP`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RelevantRequestParameterPosition",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Name of the frontend parameter corresponding to the API backend service parameter. This is only applicable when `ServiceType` is `HTTP`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RelevantRequestParameterName",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Default value of API backend service parameter. This is only applicable when `ServiceType` is `HTTP`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "DefaultValue",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Description of API backend service parameter. This is only applicable when `ServiceType` is `HTTP`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "RelevantRequestParameterDesc",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "DescribeApiUsagePlanRequest": {
       "document": "DescribeApiUsagePlan request structure.",
       "members": [
         {
           "disabled": false,
           "document": "Unique ID of the service to be queried.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -5753,7 +5860,7 @@
         {
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -5762,7 +5869,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -5777,9 +5884,10 @@
         {
           "disabled": false,
           "document": "List of usage plans bound to API.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ApiUsagePlanSet",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -5840,9 +5948,10 @@
         {
           "disabled": false,
           "document": "List of API details.",
-          "example": "",
-          "member": "ApisStatus",
+          "example": "无",
+          "member": "DescribeApisStatusResultInfo",
           "name": "Result",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -5855,13 +5964,235 @@
       ],
       "type": "object"
     },
+    "DescribeApisStatusResultApiIdStatusSetInfo": {
+      "document": "API status details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique service ID.",
+          "example": "service-2nuhovb7",
+          "member": "string",
+          "name": "ServiceId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unique API ID.",
+          "example": "api-d2sdvx",
+          "member": "string",
+          "name": "ApiId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom API description.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "API",
+          "member": "string",
+          "name": "ApiDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time. u200dIt is the UTC time in ISO-8601 format. Format: YYYY-MM-DDThh:mm:ssZ.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Last modification time u200dIt is the UTC time in ISO-8601 format. Format: YYYY-MM-DDThh:mm:ssZ.\nNote: u200dThis field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "datetime_iso",
+          "name": "ModifiedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "API name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "apiname",
+          "member": "string",
+          "name": "ApiName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "VPC ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "-1",
+          "member": "int64",
+          "name": "VpcId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Unique VPC ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "API type API type. Valid values: `NORMAL` (general API), `TSF` (microservice API).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "NORMAL",
+          "member": "string",
+          "name": "ApiType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "API protocol.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "HTTP",
+          "member": "string",
+          "name": "Protocol",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable debugging after purchase. (This field is reserved for Marketplace\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "False",
+          "member": "bool",
+          "name": "IsDebugAfterCharge",
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "API authentication type. Valid values: `SECRET` (key pair authentication), `NONE` (no authentication), `OAUTH`, and `EIAM`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "EIAM",
+          "member": "string",
+          "name": "AuthType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "OAuth API type. Valid values: u200d`NORMAL` (service API), `OAUTH` (authorization API). It is only applicable when `AuthType` is `OAUTH`. \nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "OAUTH",
+          "member": "string",
+          "name": "ApiBusinessType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of associated authorization API. It is applicable when `AuthType` is `OAUTH` and `ApiBusinessType` is `NORMAL`. It is the unique ID of the OAuth 2.0 authorization API bound to the service API.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "api-dd3acs",
+          "member": "string",
+          "name": "AuthRelationApiId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "OAUTH configuration information. It is applicable when `AuthType` is `OAUTH`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "OauthConfig",
+          "name": "OauthConfig",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": true,
+          "document": "List of business APIs associated with authorization API.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "string",
+          "name": "RelationBuniessApiIds",
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Information of tags associated with API.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "[]",
+          "member": "ApigatewayTags",
+          "name": "Tags",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "API path, such as `/path`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "/hello",
+          "member": "string",
+          "name": "Path",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "API request method, such as `GET`.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "GET",
+          "member": "string",
+          "name": "Method",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "DescribeApisStatusResultInfo": {
+      "document": "API list status description",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of eligible APIs.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of APIs",
+          "example": "无",
+          "member": "DescribeApisStatusResultApiIdStatusSetInfo",
+          "name": "ApiIdStatusSet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "DescribeIPStrategyApisStatusRequest": {
       "document": "DescribeIPStrategyApisStatus request structure.",
       "members": [
         {
           "disabled": false,
           "document": "Unique service ID.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -5870,7 +6201,7 @@
         {
           "disabled": false,
           "document": "Unique policy ID.",
-          "example": "",
+          "example": "IPStrategy-0ez0c8to",
           "member": "string",
           "name": "StrategyId",
           "required": true,
@@ -5879,7 +6210,7 @@
         {
           "disabled": false,
           "document": "Policy environment.",
-          "example": "",
+          "example": "test",
           "member": "string",
           "name": "EnvironmentName",
           "required": true,
@@ -5888,7 +6219,7 @@
         {
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -5897,7 +6228,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
-          "example": "",
+          "example": "xx",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -5906,7 +6237,7 @@
         {
           "disabled": false,
           "document": "Filter. Valid values: ApiPath, ApiName, KeyWord (fuzzy search by `Path` and `Name`).",
-          "example": "",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -5921,9 +6252,10 @@
         {
           "disabled": false,
           "document": "List of APIs bound to environment.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "IPStrategyApiStatus",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -5942,7 +6274,7 @@
         {
           "disabled": false,
           "document": "Unique service ID.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -5951,7 +6283,7 @@
         {
           "disabled": false,
           "document": "Unique IP policy ID.",
-          "example": "",
+          "example": "IPStrategy-0ez0c8to",
           "member": "string",
           "name": "StrategyId",
           "required": true,
@@ -5960,7 +6292,7 @@
         {
           "disabled": false,
           "document": "Environment associated with policy.",
-          "example": "",
+          "example": "test",
           "member": "string",
           "name": "EnvironmentName",
           "required": false,
@@ -5969,7 +6301,7 @@
         {
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -5978,7 +6310,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -5987,7 +6319,7 @@
         {
           "disabled": false,
           "document": "Filter, which is a reserved field. Filtering is not supported currently.",
-          "example": "",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -6002,9 +6334,10 @@
         {
           "disabled": false,
           "document": "IP policy details.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "IPStrategy",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -6023,7 +6356,7 @@
         {
           "disabled": false,
           "document": "Unique service ID.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -6032,7 +6365,7 @@
         {
           "disabled": false,
           "document": "Filter. Valid values: StrategyName.",
-          "example": "",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -6047,9 +6380,10 @@
         {
           "disabled": false,
           "document": "List of eligible policies.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
-          "member": "IPStrategysStatus",
+          "example": "无",
+          "member": "IPStrategiesStatus",
           "name": "Result",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -6068,7 +6402,7 @@
         {
           "disabled": false,
           "document": "Log start time",
-          "example": "",
+          "example": "2020-05-28 22:00:00",
           "member": "datetime",
           "name": "StartTime",
           "required": true,
@@ -6077,7 +6411,7 @@
         {
           "disabled": false,
           "document": "Log end time",
-          "example": "",
+          "example": "2020-05-28 23:00:00",
           "member": "datetime",
           "name": "EndTime",
           "required": true,
@@ -6086,7 +6420,7 @@
         {
           "disabled": false,
           "document": "Service ID",
-          "example": "",
+          "example": "service-8xipv0ua",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -6095,7 +6429,7 @@
         {
           "disabled": false,
           "document": "Reserved field",
-          "example": "",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -6104,7 +6438,7 @@
         {
           "disabled": false,
           "document": "Number of logs to be returned at a time. Maximum value: 100",
-          "example": "",
+          "example": "xx",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -6113,7 +6447,7 @@
         {
           "disabled": false,
           "document": "Subsequent content can be obtained based on the `ConText` returned last time. Up to 10,000 data entries can be obtained",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "ConText",
           "required": false,
@@ -6122,7 +6456,7 @@
         {
           "disabled": false,
           "document": "Sorting by time. Valid values: asc (ascending), desc (descending). Default value: desc",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "Sort",
           "required": false,
@@ -6131,16 +6465,16 @@
         {
           "disabled": false,
           "document": "Reserved field",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "Query",
           "required": false,
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Search criterion. Valid values:\nreq_id: \"=\"\napi_id: \"=\"\ncip: \"=\"\nuip: \":\"\nerr_msg: \":\"\nrsp_st: \"=\", \"!=\", \":\", \">\", \"<\"\nreq_t: \">=\", \"<=\"\n\nNote:\n\":\" indicates included, and \"!=\" indicates not equal to. For the meanings of fields, please see the `LogSet` description of the output parameter",
-          "example": "",
+          "example": "无",
           "member": "LogQuery",
           "name": "LogQuerys",
           "required": false,
@@ -6155,27 +6489,30 @@
         {
           "disabled": false,
           "document": "Cursor for getting more search results. If the value is `\"\"`, there will be no subsequent results",
-          "example": "",
+          "example": "xxxxxxxx",
           "member": "string",
           "name": "ConText",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The returned result contains any number of logs, which are in the following format:\n'[$app_id][$env_name][$service_id][$http_host][$api_id][$uri][$scheme][rsp_st:$status][ups_st:$upstream_status]'\n'[cip:$remote_addr][uip:$upstream_addr][vip:$server_addr][rsp_len:$bytes_sent][req_len:$request_length]'\n'[req_t:$request_time][ups_rsp_t:$upstream_response_time][ups_conn_t:$upstream_connect_time][ups_head_t:$upstream_header_time]’\n'[err_msg:$err_msg][tcp_rtt:$tcpinfo_rtt][$pid][$time_local][req_id:$request_id]';\n\nNote:\napp_id: user ID.\nenv_name: environment name.\nservice_id: service ID.\nhttp_host: domain name.\napi_id: API ID.\nuri: request path.\nscheme: HTTP/HTTPS protocol.\nrsp_st: request response status code.\nups_st: backend business server response status code (if the request is passed through to the backend, this variable will not be empty. If the request is blocked in API Gateway, this variable will be displayed as `-`).\ncip: client IP.\nuip: backend business service (upstream) IP.\nvip: VIP requested to be accessed.\nrsp_len: response length.\nreq_len: request length.\nreq_t: total request response time.\nups_rsp_t: total backend response time (time between connection establishment by API Gateway and backend response receipt).\nups_conn_t: time when the backend business server is successfully connected to.\nups_head_t: time when the backend response header arrives.\nerr_msg: error message.\ntcp_rtt: client TCP connection information. RTT (Round Trip Time) consists of three parts: link propagation delay, end system processing delay, and queuing delay in router cache.\nreq_id: request ID.",
-          "example": "",
+          "example": "[\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:12500][20260][28\\/May\\/2020:22:42:42 +0800][req_id:a26f8eaf6ef7e4ef466a25036332139a]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:13500][20247][28\\/May\\/2020:22:42:41 +0800][req_id:53500963839556bc40ae185c2a135353]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:12500][20244][28\\/May\\/2020:22:42:41 +0800][req_id:e4a934687379333230168e4674655b00]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:12500][20261][28\\/May\\/2020:22:42:41 +0800][req_id:74ddc940596054cd16fc7b2ccfa6b36d]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:14000][20240][28\\/May\\/2020:22:42:40 +0800][req_id:ad1f06dd126d10930dbed41c2dbcd90a]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:14500][20253][28\\/May\\/2020:22:42:40 +0800][req_id:56865fe7631a4ca9efaaeeeebe739707]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:14000][20249][28\\/May\\/2020:22:42:39 +0800][req_id:51a305fc4f84248695b0313f58002e54]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:15500][20273][28\\/May\\/2020:22:42:39 +0800][req_id:81cc0eb9d1cabe580c0f91e4cd514b6a]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:16000][20254][28\\/May\\/2020:22:42:38 +0800][req_id:138467bbff388882dadf7d101ff321e0]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:14500][20236][28\\/May\\/2020:22:42:38 +0800][req_id:bd80236f63a0cc276b3e37596aadd41b]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:11500][20259][28\\/May\\/2020:22:42:37 +0800][req_id:a9f65829cf6e6b89f1ac1667eb1f7917]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:11500][20246][28\\/May\\/2020:22:42:37 +0800][req_id:946d51c39f23bdc99f1949420aab32cb]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:11500][20252][28\\/May\\/2020:22:42:36 +0800][req_id:e762ac1b039098de1d140b4369c3e478]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:11500][20235][28\\/May\\/2020:22:42:36 +0800][req_id:0b353eac83a78dbdaa6366f5ec5dedfc]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:12500][20247][28\\/May\\/2020:22:42:35 +0800][req_id:55371f19fb83913ff86755c2ae52362c]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:12000][20268][28\\/May\\/2020:22:42:35 +0800][req_id:32ab8e63e7dfaa8b553ba58085fd754c]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:12500][20232][28\\/May\\/2020:22:42:34 +0800][req_id:21c6c7c1e21bc7e39c290bf3d56bd3ba]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:12000][20263][28\\/May\\/2020:22:42:33 +0800][req_id:3970867bbb023265a03b86d49ef52b59]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:12000][20255][28\\/May\\/2020:22:42:33 +0800][req_id:caaa1b83b0bcd7a5b1325281769b9364]\",\"[1300127097][release][service-8xipv0ua][service-8xipv0ua-1300127097.gz.apigw.tencentcs.com][api-55rj9ide][\\/][http][rsp_st:200][ups_st:-][cip:119.123.71.59][uip:-][vip:193.112.148.212][rsp_len:328][req_len:114][req_t:0.000][ups_rsp_t:-][ups_conn_t:-][ups_head_t:-][err_msg:-][tcp_rtt:8500][20246][28\\/May\\/2020:22:42:32 +0800][req_id:64866292cce1f59504e4ae30796d3731]\"]",
           "member": "string",
           "name": "LogSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of logs returned for one search (`TotalCount <= Limit`)",
-          "example": "",
+          "example": "20",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6377,7 +6714,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the service to be queried.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -6386,7 +6723,7 @@
         {
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
-          "example": "",
+          "example": "xx",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -6395,7 +6732,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
-          "example": "",
+          "example": "xx",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -6410,9 +6747,10 @@
         {
           "disabled": false,
           "document": "Details of environments bound to service.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ServiceEnvironmentSet",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -6431,7 +6769,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the service to be queried.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -6440,16 +6778,16 @@
         {
           "disabled": false,
           "document": "Environment name.",
-          "example": "",
+          "example": "test",
           "member": "string",
           "name": "EnvironmentName",
-          "required": true,
+          "required": false,
           "type": "string"
         },
         {
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -6458,7 +6796,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -6473,9 +6811,10 @@
         {
           "disabled": false,
           "document": "Service release history.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ServiceReleaseHistory",
           "name": "Result",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -6494,7 +6833,7 @@
         {
           "disabled": false,
           "document": "Unique service ID.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -6503,7 +6842,7 @@
         {
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -6512,7 +6851,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -6527,9 +6866,10 @@
         {
           "disabled": false,
           "document": "Throttling policy list.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ServiceEnvironmentStrategyStatus",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -6575,7 +6915,7 @@
           "example": "service-rypiqi13",
           "member": "string",
           "name": "ServiceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6585,7 +6925,7 @@
           "example": "[\"release\"]",
           "member": "string",
           "name": "AvailableEnvironments",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6595,7 +6935,7 @@
           "example": "dd",
           "member": "string",
           "name": "ServiceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6605,7 +6945,7 @@
           "example": "test",
           "member": "string",
           "name": "ServiceDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6615,7 +6955,7 @@
           "example": "http",
           "member": "string",
           "name": "Protocol",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6625,7 +6965,7 @@
           "example": "2020-04-15T11:03:41Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6635,17 +6975,7 @@
           "example": "2020-04-15T11:03:42Z",
           "member": "datetime_iso",
           "name": "ModifiedTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Self-Deployed cluster name.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "test",
-          "member": "string",
-          "name": "ExclusiveSetName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6655,7 +6985,7 @@
           "example": "[\"OUTER\"]",
           "member": "string",
           "name": "NetTypes",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6665,7 +6995,7 @@
           "example": "service-rypiqi13-1259027407.bj-in.apigw.tencentcs.com",
           "member": "string",
           "name": "InternalSubDomain",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6675,7 +7005,7 @@
           "example": "service-rypiqi13-1259027407.bj.apigw.tencentcs.com",
           "member": "string",
           "name": "OuterSubDomain",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6685,7 +7015,7 @@
           "example": "0",
           "member": "int64",
           "name": "InnerHttpPort",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6695,7 +7025,7 @@
           "example": "0",
           "member": "int64",
           "name": "InnerHttpsPort",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6705,7 +7035,7 @@
           "example": "1",
           "member": "int64",
           "name": "ApiTotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6715,7 +7045,7 @@
           "example": "无",
           "member": "ApiIdStatus",
           "name": "ApiIdStatusSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6725,7 +7055,7 @@
           "example": "0",
           "member": "int64",
           "name": "UsagePlanTotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6735,7 +7065,7 @@
           "example": "无",
           "member": "UsagePlan",
           "name": "UsagePlanList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6745,7 +7075,7 @@
           "example": "IPv4",
           "member": "string",
           "name": "IpVersion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6755,7 +7085,7 @@
           "example": "xxx",
           "member": "string",
           "name": "UserType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6765,7 +7095,7 @@
           "example": "1",
           "member": "int64",
           "name": "SetId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -6775,7 +7105,7 @@
           "example": "无",
           "member": "Tag",
           "name": "Tags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -6794,7 +7124,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the service to be queried.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -6803,7 +7133,7 @@
         {
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
-          "example": "",
+          "example": "xx",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -6812,7 +7142,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
-          "example": "",
+          "example": "xx",
           "member": "uint64",
           "name": "Offset",
           "required": false,
@@ -6827,9 +7157,10 @@
         {
           "disabled": false,
           "document": "Service release version list.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ServiceReleaseVersion",
           "name": "Result",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -6842,13 +7173,39 @@
       ],
       "type": "object"
     },
+    "DescribeServiceReleaseVersionResultVersionListInfo": {
+      "document": "Service version details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Version ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VersionName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Version description. \nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "VersionDesc",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "DescribeServiceRequest": {
       "document": "DescribeService request structure.",
       "members": [
         {
           "disabled": false,
           "document": "Unique ID of the service to be queried.",
-          "example": "",
+          "example": "service-rypiqi13",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -6866,7 +7223,7 @@
           "example": "service-rypiqi13",
           "member": "string",
           "name": "ServiceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6876,7 +7233,7 @@
           "example": "[\"release\"]",
           "member": "string",
           "name": "AvailableEnvironments",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6886,7 +7243,7 @@
           "example": "dd",
           "member": "string",
           "name": "ServiceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6896,7 +7253,7 @@
           "example": "xxxx",
           "member": "string",
           "name": "ServiceDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -6906,7 +7263,7 @@
           "example": "http",
           "member": "string",
           "name": "Protocol",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6916,7 +7273,7 @@
           "example": "2020-04-15T11:03:41Z",
           "member": "datetime_iso",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6926,17 +7283,7 @@
           "example": "2020-04-15T11:03:42Z",
           "member": "datetime_iso",
           "name": "ModifiedTime",
-          "required": true,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Dedicated cluster name.",
-          "example": "xxxx",
-          "member": "string",
-          "name": "ExclusiveSetName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6946,7 +7293,7 @@
           "example": "[\"OUTER\"]",
           "member": "string",
           "name": "NetTypes",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -6956,7 +7303,7 @@
           "example": "xxxx",
           "member": "string",
           "name": "InternalSubDomain",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6966,7 +7313,7 @@
           "example": "service-rypiqi13-1259027407.bj.apigw.tencentcs.com",
           "member": "string",
           "name": "OuterSubDomain",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -6976,7 +7323,7 @@
           "example": "0",
           "member": "int64",
           "name": "InnerHttpPort",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6986,7 +7333,7 @@
           "example": "0",
           "member": "int64",
           "name": "InnerHttpsPort",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -6996,7 +7343,7 @@
           "example": "1",
           "member": "int64",
           "name": "ApiTotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7006,7 +7353,7 @@
           "example": "无",
           "member": "ApiIdStatus",
           "name": "ApiIdStatusSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -7016,7 +7363,7 @@
           "example": "0",
           "member": "int64",
           "name": "UsagePlanTotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -7026,7 +7373,7 @@
           "example": "无",
           "member": "UsagePlan",
           "name": "UsagePlanList",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -7036,7 +7383,7 @@
           "example": "IPv4",
           "member": "string",
           "name": "IpVersion",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -7046,7 +7393,7 @@
           "example": "xxx",
           "member": "string",
           "name": "UserType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -7056,7 +7403,7 @@
           "example": "1",
           "member": "int64",
           "name": "SetId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -7066,7 +7413,7 @@
           "example": "无",
           "member": "Tag",
           "name": "Tags",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -7076,7 +7423,7 @@
           "example": "InstanceId-xxxx",
           "member": "string",
           "name": "InstanceId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -7086,7 +7433,7 @@
           "example": "xxxx",
           "member": "string",
           "name": "InstanceName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -7096,7 +7443,7 @@
           "example": "xxx",
           "member": "string",
           "name": "SetType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -7106,7 +7453,7 @@
           "example": "DEFAULT",
           "member": "string",
           "name": "DeploymentType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -7116,7 +7463,17 @@
           "example": "DEFAULT",
           "member": "string",
           "name": "SpecialUse",
-          "required": true,
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "vpc-syandask",
+          "member": "string",
+          "name": "UniqVpcId",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -7135,7 +7492,7 @@
         {
           "disabled": false,
           "document": "Unique service ID.",
-          "example": "",
+          "example": "service-19c5fnhy",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -7144,7 +7501,7 @@
         {
           "disabled": false,
           "document": "Custom domain name bound to service.",
-          "example": "",
+          "example": "xxxxxx",
           "member": "string",
           "name": "SubDomain",
           "required": true,
@@ -7159,9 +7516,10 @@
         {
           "disabled": false,
           "document": "Custom path mapping list.",
-          "example": "",
+          "example": "无",
           "member": "ServiceSubDomainMappings",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -7180,7 +7538,7 @@
         {
           "disabled": false,
           "document": "Unique service ID.",
-          "example": "",
+          "example": "service-19c5fnhy",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -7189,7 +7547,7 @@
         {
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -7198,7 +7556,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -7213,9 +7571,10 @@
         {
           "disabled": false,
           "document": "Custom service domain name query.",
-          "example": "",
+          "example": "无",
           "member": "DomainSets",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -7234,7 +7593,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the service to be queried.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -7243,7 +7602,7 @@
         {
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
-          "example": "",
+          "example": "XX",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -7252,7 +7611,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
-          "example": "",
+          "example": "XX",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -7267,9 +7626,10 @@
         {
           "disabled": false,
           "document": "List of usage plans bound to service.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ServiceUsagePlanSet",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -7321,9 +7681,10 @@
         {
           "disabled": false,
           "document": "Service list query result.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ServicesStatus",
           "name": "Result",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -7513,7 +7874,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the usage plan to be queried.",
-          "example": "",
+          "example": "usagePlan-quqxvett",
           "member": "string",
           "name": "UsagePlanId",
           "required": true,
@@ -7522,7 +7883,7 @@
         {
           "disabled": false,
           "document": "Binding type. Valid values: API, SERVICE. Default value: SERVICE.",
-          "example": "",
+          "example": "API",
           "member": "string",
           "name": "BindType",
           "required": true,
@@ -7531,7 +7892,7 @@
         {
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -7540,7 +7901,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -7555,9 +7916,10 @@
         {
           "disabled": false,
           "document": "Usage plan binding details.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "UsagePlanEnvironmentStatus",
           "name": "Result",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -7576,7 +7938,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the usage plan to be queried.",
-          "example": "",
+          "example": "usagePlan-bxtnltfd",
           "member": "string",
           "name": "UsagePlanId",
           "required": true,
@@ -7591,9 +7953,10 @@
         {
           "disabled": false,
           "document": "Usage plan details.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "UsagePlanInfo",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -7612,7 +7975,7 @@
         {
           "disabled": false,
           "document": "Unique ID of bound usage plan.",
-          "example": "",
+          "example": "usagePlan-quqxvett",
           "member": "string",
           "name": "UsagePlanId",
           "required": true,
@@ -7621,7 +7984,7 @@
         {
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -7630,7 +7993,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -7645,9 +8008,10 @@
         {
           "disabled": false,
           "document": "List of keys bound to usage plan.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "UsagePlanBindSecretStatus",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -7666,7 +8030,7 @@
         {
           "disabled": false,
           "document": "Number of results to be returned. Default value: 20. Maximum value: 100.",
-          "example": "",
+          "example": "10",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -7675,7 +8039,7 @@
         {
           "disabled": false,
           "document": "Offset. Default value: 0.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -7684,7 +8048,7 @@
         {
           "disabled": false,
           "document": "Usage plan filter. Valid values: UsagePlanId, UsagePlanName, NotServiceId, NotApiId, Environment.",
-          "example": "",
+          "example": "无",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -7699,9 +8063,10 @@
         {
           "disabled": false,
           "document": "Usage plan list.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "UsagePlansStatus",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -7784,7 +8149,7 @@
         {
           "disabled": false,
           "document": "ID of the key to be disabled.",
-          "example": "",
+          "example": "AKID8my5MRr9i6VM98F3dZG9zV0KuBq5ID7pMG83",
           "member": "string",
           "name": "AccessKeyId",
           "required": true,
@@ -7799,9 +8164,10 @@
         {
           "disabled": false,
           "document": "Whether the key is successfully disabled.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -7932,7 +8298,7 @@
         {
           "disabled": false,
           "document": "ID of the key to be enabled.",
-          "example": "",
+          "example": "AKID8my5MRr9i6VM98F3dZG9zV0KuBq5ID7pMG83",
           "member": "string",
           "name": "AccessKeyId",
           "required": true,
@@ -7947,9 +8313,10 @@
         {
           "disabled": false,
           "document": "Whether the key is successfully enabled.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -7968,40 +8335,40 @@
         {
           "disabled": false,
           "document": "Environment name.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "EnvironmentName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Access path.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Url",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Release status. 1: published. 0: not published.",
-          "example": "",
+          "example": "无",
           "member": "uint64",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Running version.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "VersionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -8030,16 +8397,6 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "Maximum quota value\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "1",
-          "member": "int64",
-          "name": "MaxQuota",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -8171,6 +8528,32 @@
         }
       ],
       "usage": "both"
+    },
+    "IPStrategiesStatus": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "",
+          "member": "int64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "",
+          "member": "IPStrategy",
+          "name": "StrategySet",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "IPStrategy": {
       "document": "IP policy",
@@ -8370,32 +8753,6 @@
       ],
       "usage": "out"
     },
-    "IPStrategysStatus": {
-      "document": "Policy list",
-      "members": [
-        {
-          "disabled": false,
-          "document": "Number of policies.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
-          "member": "int64",
-          "name": "TotalCount",
-          "required": true,
-          "type": "int",
-          "value_allowed_null": true
-        },
-        {
-          "disabled": false,
-          "document": "Policy list.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
-          "member": "IPStrategy",
-          "name": "StrategySet",
-          "required": true,
-          "type": "list",
-          "value_allowed_null": true
-        }
-      ],
-      "usage": "out"
-    },
     "ImportOpenApiRequest": {
       "document": "ImportOpenApi request structure.",
       "members": [
@@ -8512,7 +8869,7 @@
         {
           "disabled": false,
           "document": "Namespace of the container",
-          "example": "default",
+          "example": "Default",
           "member": "string",
           "name": "Namespace",
           "required": true,
@@ -8675,20 +9032,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "API document ID",
-          "example": "doc-v8tsladd",
-          "member": "string",
-          "name": "ApiDocId",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "disabled": false,
           "document": "API document name",
           "example": "ApiGateWay Doc",
           "member": "string",
           "name": "ApiDocName",
-          "required": false,
+          "required": true,
           "type": "string"
         },
         {
@@ -8697,7 +9045,7 @@
           "example": "service-2nuhovb7",
           "member": "string",
           "name": "ServiceId",
-          "required": false,
+          "required": true,
           "type": "string"
         },
         {
@@ -8706,7 +9054,7 @@
           "example": "release",
           "member": "string",
           "name": "Environment",
-          "required": false,
+          "required": true,
           "type": "string"
         },
         {
@@ -8715,8 +9063,17 @@
           "example": "[api-2dvasde2,api-zewq23]",
           "member": "string",
           "name": "ApiIds",
-          "required": false,
+          "required": true,
           "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "API document ID",
+          "example": "doc-v8tsladd",
+          "member": "string",
+          "name": "ApiDocId",
+          "required": true,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -8730,7 +9087,7 @@
           "example": "无",
           "member": "APIDoc",
           "name": "Result",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -8804,7 +9161,7 @@
         {
           "disabled": false,
           "document": "Unique service ID.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -8813,7 +9170,7 @@
         {
           "disabled": false,
           "document": "Throttling value.",
-          "example": "",
+          "example": "3",
           "member": "int64",
           "name": "Strategy",
           "required": true,
@@ -8822,7 +9179,7 @@
         {
           "disabled": false,
           "document": "Environment name.",
-          "example": "",
+          "example": "test",
           "member": "string",
           "name": "EnvironmentName",
           "required": true,
@@ -8831,7 +9188,7 @@
         {
           "disabled": false,
           "document": "API list.",
-          "example": "",
+          "example": "[\"api-e92i2jds\\n\"]",
           "member": "string",
           "name": "ApiIds",
           "required": true,
@@ -8846,9 +9203,10 @@
         {
           "disabled": false,
           "document": "Whether modification succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -8867,7 +9225,7 @@
         {
           "disabled": false,
           "document": "Service ID",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -8876,7 +9234,7 @@
         {
           "disabled": false,
           "document": "API ID",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "ApiId",
           "required": true,
@@ -8885,7 +9243,7 @@
         {
           "disabled": false,
           "document": "Authorization type of the API to be modified (you can select `OAUTH`, i.e., authorization API)",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "BusinessType",
           "required": true,
@@ -8894,7 +9252,7 @@
         {
           "disabled": false,
           "document": "Public key value to be modified by OAuth API",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "PublicKey",
           "required": false,
@@ -8903,7 +9261,7 @@
         {
           "disabled": false,
           "document": "OAuth API redirect address",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "LoginRedirectUrl",
           "required": false,
@@ -9434,7 +9792,7 @@
         {
           "disabled": false,
           "document": "Unique service ID of the policy to be modified.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -9443,7 +9801,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the policy to be modified.",
-          "example": "",
+          "example": "IPStrategy-0ez0c8to",
           "member": "string",
           "name": "StrategyId",
           "required": true,
@@ -9452,7 +9810,7 @@
         {
           "disabled": false,
           "document": "Details of the policy to be modified.",
-          "example": "",
+          "example": "3.3.3.3",
           "member": "string",
           "name": "StrategyData",
           "required": true,
@@ -9467,9 +9825,10 @@
         {
           "disabled": false,
           "document": "Whether modification succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -9552,7 +9911,7 @@
         {
           "disabled": false,
           "document": "Unique service ID.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -9561,7 +9920,7 @@
         {
           "disabled": false,
           "document": "Throttling value.",
-          "example": "",
+          "example": "3",
           "member": "int64",
           "name": "Strategy",
           "required": true,
@@ -9570,7 +9929,7 @@
         {
           "disabled": false,
           "document": "Environment list.",
-          "example": "",
+          "example": "[\"test\\n\"]",
           "member": "string",
           "name": "EnvironmentNames",
           "required": true,
@@ -9585,9 +9944,10 @@
         {
           "disabled": false,
           "document": "Whether modification succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -9606,7 +9966,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the service to be modified.",
-          "example": "",
+          "example": "service-0c96l2bo",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -9615,7 +9975,7 @@
         {
           "disabled": false,
           "document": "Service name after modification.",
-          "example": "",
+          "example": "test_https",
           "member": "string",
           "name": "ServiceName",
           "required": false,
@@ -9624,7 +9984,7 @@
         {
           "disabled": false,
           "document": "Service description after modification.",
-          "example": "",
+          "example": "https",
           "member": "string",
           "name": "ServiceDesc",
           "required": false,
@@ -9633,7 +9993,7 @@
         {
           "disabled": false,
           "document": "Service frontend request type after modification, such as `http`, `https`, and `http&https`.",
-          "example": "",
+          "example": "https",
           "member": "string",
           "name": "Protocol",
           "required": false,
@@ -9642,7 +10002,7 @@
         {
           "disabled": false,
           "document": "Network type list, which is used to specify the supported network types. INNER: private network access; OUTER: public network access. Default value: OUTER.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "NetTypes",
           "required": false,
@@ -9669,7 +10029,7 @@
         {
           "disabled": false,
           "document": "Unique service ID.",
-          "example": "",
+          "example": "service-19c5fnhy",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -9678,7 +10038,7 @@
         {
           "disabled": false,
           "document": "Custom domain name whose path mapping is to be modified.",
-          "example": "",
+          "example": "xxxxxx",
           "member": "string",
           "name": "SubDomain",
           "required": true,
@@ -9687,7 +10047,7 @@
         {
           "disabled": false,
           "document": "Whether to change to the default path mapping. true: use the default path mapping; false: use the custom path mapping.",
-          "example": "",
+          "example": "false",
           "member": "bool",
           "name": "IsDefaultMapping",
           "required": true,
@@ -9696,7 +10056,7 @@
         {
           "disabled": false,
           "document": "Certificate ID, which is required if the HTTPS protocol is included.",
-          "example": "",
+          "example": "x x",
           "member": "string",
           "name": "CertificateId",
           "required": false,
@@ -9705,7 +10065,7 @@
         {
           "disabled": false,
           "document": "Custom domain name protocol type after modification. Valid values: http, https, http&https.",
-          "example": "",
+          "example": "http",
           "member": "string",
           "name": "Protocol",
           "required": false,
@@ -9714,7 +10074,7 @@
         {
           "disabled": false,
           "document": "Path mapping list after modification.",
-          "example": "",
+          "example": "无",
           "member": "PathMapping",
           "name": "PathMappingSet",
           "required": false,
@@ -9723,7 +10083,7 @@
         {
           "disabled": false,
           "document": "Network type. Valid values: INNER, OUTER.",
-          "example": "",
+          "example": "OUTER",
           "member": "string",
           "name": "NetType",
           "required": false,
@@ -9732,7 +10092,7 @@
         {
           "disabled": false,
           "document": "Whether to force HTTP requests to redirect to HTTPS. Default value: `false`. When this parameter is `true`, API Gateway will redirect all requests using the custom domain name over the HTTP protocol to the HTTPS protocol for forwarding.",
-          "example": "",
+          "example": "x x",
           "member": "bool",
           "name": "IsForcedHttps",
           "required": false,
@@ -9747,9 +10107,10 @@
         {
           "disabled": false,
           "document": "Whether the custom domain name is successfully modified.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -9883,9 +10244,8 @@
           "disabled": false,
           "document": "Return modified upstream information\nNote: This field may return `NULL`, indicating that no valid value was found.",
           "example": "无",
-          "member": "UpstreamInfo",
+          "member": "ModifyUpstreamResultInfo",
           "name": "Result",
-          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -9898,13 +10258,149 @@
       ],
       "type": "object"
     },
+    "ModifyUpstreamResultInfo": {
+      "document": "Upstream details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique upstream ID",
+          "example": "upstream-xxxx",
+          "member": "string",
+          "name": "UpstreamId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Upstream name",
+          "example": "test_upstream",
+          "member": "string",
+          "name": "UpstreamName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Upstream description",
+          "example": "description",
+          "member": "string",
+          "name": "UpstreamDescription",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backend protocol. Valid values: `HTTP`, `HTTPS`",
+          "example": "HTTP",
+          "member": "string",
+          "name": "Scheme",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Load balancing algorithm. Valid value: `ROUND_ROBIN`",
+          "example": "ROUND_ROBIN",
+          "member": "string",
+          "name": "Algorithm",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unique VPC ID",
+          "example": "vpc-123456",
+          "member": "string",
+          "name": "UniqVpcId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of retry attempts",
+          "example": "3",
+          "member": "uint64",
+          "name": "Retries",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backend nodes",
+          "example": "x x",
+          "member": "UpstreamNode",
+          "name": "Nodes",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time",
+          "example": "x x",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Health check configuration\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "UpstreamHealthChecker",
+          "name": "HealthChecker",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Upstream type. Valid values: `IP_PORT`, `K8S`",
+          "example": "K8S",
+          "member": "string",
+          "name": "UpstreamType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configuration of TKE service\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "K8sService",
+          "name": "K8sServices",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The Host header that the gateway forwards to the upstream\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "UpstreamHost",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "ModifyUsagePlanRequest": {
       "document": "ModifyUsagePlan request structure.",
       "members": [
         {
           "disabled": false,
           "document": "Unique usage plan ID.",
-          "example": "",
+          "example": "usagePlan-bxtnltfd",
           "member": "string",
           "name": "UsagePlanId",
           "required": true,
@@ -9913,7 +10409,7 @@
         {
           "disabled": false,
           "document": "Custom usage plan name after modification.",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "UsagePlanName",
           "required": false,
@@ -9922,7 +10418,7 @@
         {
           "disabled": false,
           "document": "Custom usage plan description after modification.",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "UsagePlanDesc",
           "required": false,
@@ -9931,7 +10427,7 @@
         {
           "disabled": false,
           "document": "Total number of requests allowed. Valid values: -1, [1,99999999]. The default value is `-1`, which indicates no limit.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "MaxRequestNum",
           "required": false,
@@ -9940,7 +10436,7 @@
         {
           "disabled": false,
           "document": "Limit of requests per second. Valid values: -1, [1,2000]. The default value is `-1`, which indicates no limit.",
-          "example": "",
+          "example": "xx",
           "member": "int64",
           "name": "MaxRequestNumPreSec",
           "required": false,
@@ -9955,9 +10451,10 @@
         {
           "disabled": false,
           "document": "Usage plan details.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "UsagePlanInfo",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -10160,7 +10657,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the service to be published.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -10169,7 +10666,7 @@
         {
           "disabled": false,
           "document": "Name of the environment to be published. Valid values: test (test environment), prepub (pre-release environment), release (release environment).",
-          "example": "",
+          "example": "prepub",
           "member": "string",
           "name": "EnvironmentName",
           "required": true,
@@ -10178,7 +10675,7 @@
         {
           "disabled": false,
           "document": "Release description.",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "ReleaseDesc",
           "required": true,
@@ -10187,7 +10684,7 @@
         {
           "disabled": false,
           "document": "`apiId` list, which is reserved. Full API release is used by default.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ApiIds",
           "required": false,
@@ -10202,9 +10699,10 @@
         {
           "disabled": false,
           "document": "Release information.",
-          "example": "",
+          "example": "无",
           "member": "ReleaseService",
           "name": "Result",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -10418,50 +10916,50 @@
         {
           "disabled": false,
           "document": "Custom response configuration error code.",
-          "example": "",
+          "example": "400",
           "member": "int64",
           "name": "Code",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Custom response configuration error message.",
-          "example": "",
+          "example": "Invalid Format",
           "member": "string",
           "name": "Msg",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Custom response configuration error code remarks.",
-          "example": "",
+          "example": "参数错误",
           "member": "string",
           "name": "Desc",
-          "required": true,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Custom error code conversion.",
-          "example": "",
+          "example": "401",
           "member": "int64",
           "name": "ConvertedCode",
-          "required": true,
+          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether to enable error code conversion.",
-          "example": "",
+          "example": "false",
           "member": "bool",
           "name": "NeedConvert",
-          "required": true,
+          "required": false,
           "type": "bool",
           "value_allowed_null": false
         }
@@ -10673,6 +11171,7 @@
           "example": "clb",
           "member": "string",
           "name": "Product",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -10683,6 +11182,7 @@
           "example": "vpc-ssaasd",
           "member": "string",
           "name": "UniqVpcId",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -10693,6 +11193,7 @@
           "example": "172.17.0.16",
           "member": "string",
           "name": "Url",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -10703,6 +11204,7 @@
           "example": "/",
           "member": "string",
           "name": "Path",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -10713,6 +11215,7 @@
           "example": "GET",
           "member": "string",
           "name": "Method",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -10723,6 +11226,7 @@
           "example": "upstream-sadad",
           "member": "string",
           "name": "UpstreamId",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -10733,6 +11237,7 @@
           "example": "{\"Key\":\"/cos.txt\",\"Action\":\"GetObject\",\"BucketName\":\"test\",\"Auth",
           "member": "CosConfig",
           "name": "CosConfig",
+          "output_required": false,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -10966,30 +11471,30 @@
         {
           "disabled": false,
           "document": "Version ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "VersionName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Version description.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "VersionDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Version release time.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ReleaseTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -11002,7 +11507,7 @@
         {
           "disabled": false,
           "document": "Total number of published versions.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "TotalCount",
           "required": true,
@@ -11012,8 +11517,8 @@
         {
           "disabled": false,
           "document": "Release version list.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
-          "member": "ServiceReleaseHistoryInfo",
+          "example": "无",
+          "member": "DescribeServiceReleaseVersionResultVersionListInfo",
           "name": "VersionList",
           "required": true,
           "type": "list",
@@ -11188,7 +11693,7 @@
         {
           "disabled": false,
           "document": "Whether load balancing is enabled.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "bool",
           "name": "IsLoadBalance",
           "required": false,
@@ -11198,7 +11703,7 @@
         {
           "disabled": false,
           "document": "Load balancing method.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Method",
           "required": false,
@@ -11208,7 +11713,7 @@
         {
           "disabled": false,
           "document": "Whether session persistence is enabled.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "bool",
           "name": "SessionStickRequired",
           "required": false,
@@ -11218,7 +11723,7 @@
         {
           "disabled": false,
           "document": "Session persistence timeout period.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "SessionStickTimeout",
           "required": false,
@@ -11234,7 +11739,7 @@
         {
           "disabled": false,
           "document": "Binding type. Valid values: API, SERVICE. Default value: SERVICE.",
-          "example": "",
+          "example": "SERVICE",
           "member": "string",
           "name": "BindType",
           "required": true,
@@ -11243,7 +11748,7 @@
         {
           "disabled": false,
           "document": "List of unique IDs of the usage plans to be bound.",
-          "example": "",
+          "example": "[\"usagePlan-quqxvett\\r\\n\"]",
           "member": "string",
           "name": "UsagePlanIds",
           "required": true,
@@ -11252,7 +11757,7 @@
         {
           "disabled": false,
           "document": "Service environment to be unbound.",
-          "example": "",
+          "example": "test",
           "member": "string",
           "name": "Environment",
           "required": true,
@@ -11261,7 +11766,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the service to be unbound.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -11270,7 +11775,7 @@
         {
           "disabled": false,
           "document": "Unique API ID array, which is required if `BindType` is `API`.",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "ApiIds",
           "required": false,
@@ -11285,9 +11790,10 @@
         {
           "disabled": false,
           "document": "Whether unbinding succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -11306,7 +11812,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the service to be unbound.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -11315,7 +11821,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the IP policy to be unbound.",
-          "example": "",
+          "example": "IPStrategy-0ez0c8to",
           "member": "string",
           "name": "StrategyId",
           "required": true,
@@ -11324,7 +11830,7 @@
         {
           "disabled": false,
           "document": "Environment to be unbound.",
-          "example": "",
+          "example": "test",
           "member": "string",
           "name": "EnvironmentName",
           "required": true,
@@ -11333,7 +11839,7 @@
         {
           "disabled": false,
           "document": "List of APIs to be unbound.",
-          "example": "",
+          "example": "[\"api-e92i2jds\\r\\n\"]",
           "member": "string",
           "name": "UnBindApiIds",
           "required": true,
@@ -11348,9 +11854,10 @@
         {
           "disabled": false,
           "document": "Whether unbinding succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -11369,7 +11876,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the usage plan to be unbound.",
-          "example": "",
+          "example": "usagePlan-quqxvett",
           "member": "string",
           "name": "UsagePlanId",
           "required": true,
@@ -11378,7 +11885,7 @@
         {
           "disabled": false,
           "document": "Array of IDs of the keys to be unbound.",
-          "example": "",
+          "example": "[\"AKIDmyE2z0gvi2p6i9lWr3bbetpTaquaxQ8s8iob\\n\"]",
           "member": "string",
           "name": "AccessKeyIds",
           "required": true,
@@ -11393,9 +11900,10 @@
         {
           "disabled": false,
           "document": "Whether unbinding succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -11414,7 +11922,7 @@
         {
           "disabled": false,
           "document": "Unique service ID.",
-          "example": "",
+          "example": "service-19c5fnhy",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -11423,7 +11931,7 @@
         {
           "disabled": false,
           "document": "Custom domain name to be unbound.",
-          "example": "",
+          "example": "xxxxxxxx",
           "member": "string",
           "name": "SubDomain",
           "required": true,
@@ -11438,9 +11946,10 @@
         {
           "disabled": false,
           "document": "Whether the custom domain name is successfully unbound.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -11459,7 +11968,7 @@
         {
           "disabled": false,
           "document": "Unique ID of the service to be deactivated.",
-          "example": "",
+          "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
           "required": true,
@@ -11468,7 +11977,7 @@
         {
           "disabled": false,
           "document": "Name of the environment to be deactivated. Valid values: test (test environment), prepub (pre-release environment), release (release environment).",
-          "example": "",
+          "example": "prepub",
           "member": "string",
           "name": "EnvironmentName",
           "required": true,
@@ -11477,7 +11986,7 @@
         {
           "disabled": false,
           "document": "List of APIs to be deactivated, which is a reserved field.",
-          "example": "",
+          "example": "api-hnetytr6",
           "member": "string",
           "name": "ApiIds",
           "required": false,
@@ -11492,9 +12001,10 @@
         {
           "disabled": false,
           "document": "Whether deactivation succeeded.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "bool",
           "name": "Result",
+          "required": true,
           "type": "bool",
           "value_allowed_null": true
         },
@@ -11632,7 +12142,7 @@
         {
           "disabled": false,
           "document": "ID of the key to be changed.",
-          "example": "",
+          "example": "AKID8my5MRr9i6VM98F3dZG9zV0KuBq5ID7pMG83",
           "member": "string",
           "name": "AccessKeyId",
           "required": true,
@@ -11641,7 +12151,7 @@
         {
           "disabled": false,
           "document": "Key to be updated, which is required when a custom key is updated. It can contain 10–50 letters, digits, and underscores.",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "AccessKeySecret",
           "required": false,
@@ -11656,9 +12166,10 @@
         {
           "disabled": false,
           "document": "Key details after change.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ApiKey",
           "name": "Result",
+          "required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12087,7 +12598,7 @@
         {
           "disabled": false,
           "document": "TKE namespace\nNote: This field may return `NULL`, indicating that no valid value was found.",
-          "example": "default",
+          "example": "Default",
           "member": "string",
           "name": "NameSpace",
           "required": false,
@@ -12449,30 +12960,30 @@
         {
           "disabled": false,
           "document": "Unique usage plan ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "UsagePlanId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Usage plan name.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "UsagePlanName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Usage plan description.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "UsagePlanDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -12489,20 +13000,20 @@
         {
           "disabled": false,
           "document": "Limit of requests per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "MaxRequestNumPreSec",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Maximum number of calls.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "MaxRequestNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -12519,60 +13030,60 @@
         {
           "disabled": false,
           "document": "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "datetime_iso",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "datetime_iso",
           "name": "ModifiedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Number of bound keys.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "BindSecretIdTotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Details of bound keys.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "BindSecretIds",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Number of bound environments.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "BindEnvironmentTotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Details of bound environments.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "UsagePlanBindEnvironment",
           "name": "BindEnvironments",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -12585,70 +13096,70 @@
         {
           "disabled": false,
           "document": "Unique usage plan ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "UsagePlanId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Custom usage plan name.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "UsagePlanName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Custom usage plan description.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "UsagePlanDesc",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Maximum number of requests per second.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "MaxRequestNumPreSec",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Total number of requests allowed. `-1` indicates no limit.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "MaxRequestNum",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Creation time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "datetime_iso",
           "name": "CreatedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Last modified time in the format of YYYY-MM-DDThh:mm:ssZ according to ISO 8601 standard. UTC time is used.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "datetime_iso",
           "name": "ModifiedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }

@@ -30,6 +30,14 @@
         "title": "Adding a Custom Access Control Policy"
       }
     ],
+    "AddCustomWhiteRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddCustomWhiteRule\n<Common request parameters>\n\n\n\n{\n    \"Name\": \"test\",\n    \"SortId\": \"100\",\n    \"ExpireTime\": \"\",\n    \"Domain\": \"waf.tencentcloudapi.com\",\n    \"Bypass\": \"\",\n    \"Strategies\": [\n        {\n            \"Field\": \"COOKIE\",\n            \"CompareFunc\": \"eq\",\n            \"Content\": \"abc\",\n            \"Arg\": \"\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5d207f4f-0d41-4f5d-bce2-0320090c98d8\",\n        \"RuleId\": 7025,\n        \"Success\": {\n            \"Message\": \"Success\",\n            \"Code\": \"Success\"\n        }\n    }\n}",
+        "title": "Add precision allowlist rules"
+      }
+    ],
     "AddSpartaProtection": [
       {
         "document": "This example shows you how to add a domain name.",
@@ -72,6 +80,14 @@
         "title": "Adding a Domain Name Protected by CLB WAF"
       }
     ],
+    "CreateIpAccessControl": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpsertIpAccessControlV2\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"waf_0xabc\",\n    \"Domain\": \"www.qcloudwaf.com\",\n    \"IpList\": [\n        \"192.168.1.1\",\n        \"192.168.2.1\"\n    ],\n    \"Edition\": \"abc\",\n    \"ValidTS\": 1680570420,\n    \"ActionType\": 42,\n    \"SourceType\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleId\": 55201922,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Adding an IP Blocklist/Allowlist"
+      }
+    ],
     "DeleteAntiFakeUrl": [
       {
         "document": " ",
@@ -104,12 +120,36 @@
         "title": "Deleting a Specified Custom Rule"
       }
     ],
+    "DeleteCustomWhiteRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCustomWhiteRule\n<Common request parameters>\n\n\n\n{\n    \"RuleId\": 1100000001,\n    \"Domain\": \"waf.tencentcloudapi.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5d207f4f-0d41-4f5d-bce2-0320090c98d8\",\n        \"Success\": {\n            \"Message\": \"Success\",\n            \"Code\": \"Success\"\n        }\n    }\n}",
+        "title": "Deleting a Specified Precise Allowlist Rule"
+      }
+    ],
     "DeleteHost": [
       {
         "document": "",
         "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteHost\n<Common request parameters>\n\n\n\n{\n    \"HostsDel\": [\n        {\n            \"Domain\": \"test.clb.qcloud.com\",\n            \"DomainId\": \"waf-n7GFuVNJ\",\n            \"InstanceID\": \"waf_2kuil2fm02vqm7z3\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Success\": {\n            \"Code\": \"Success\",\n            \"Message\": \"Success\"\n        },\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Deleting Domain Names Protected by CLB WAF"
+      }
+    ],
+    "DeleteIpAccessControlV2": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteIpAccessControlV2\n<Common request parameters>\n\n\n\n{\n    \"Domain\": \"www.qcloudwaf.com\",\n    \"DeleteAll\": true,\n    \"SourceType\": \"log\",\n    \"ActionType\": 1,\n    \"RuleIds\": [\n        55102222,\n        55562222\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"FailedCount\": 0,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Deleting an IP Blocklist/Allowlist"
+      }
+    ],
+    "DeleteSession": [
+      {
+        "document": " ",
+        "input": "https://waf.tencentcloudapi.com/?Action=DeleteSession\n&Domain=test.com\n&Edition=clb-waf\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Data\": null,\n        \"RequestId\": \"0746a563-2597-43ec-8aaf-d3267b093efa\"\n    }\n}",
+        "title": "Deleting the WAF Session Definition"
       }
     ],
     "DescribeAntiFakeRules": [
@@ -224,6 +264,14 @@
         "title": "Obtaining the Access Control Rule List"
       }
     ],
+    "DescribeCustomWhiteRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomWhiteRule\n<Common request parameters>\n\n\n\n{\n    \"Domain\": \"test.qcloudwaf.com\",\n    \"Limit\": 1,\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"1234567890\"\n            ],\n            \"Name\": \"RuleID\",\n            \"ExactMatch\": true\n        }\n    ],\n    \"Offset\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5d207f4f-0d41-4f5d-bce2-0320090c98d8\",\n        \"RuleList\": [\n            {\n                \"EventId\": \"\",\n                \"ActionType\": \"1\",\n                \"Bypass\": \"geoip,cc,owasp,ai,antileakage\",\n                \"CreateTime\": \"2020-02-20 14:00:12\",\n                \"ExpireTime\": \"0\",\n                \"Name\": \"test\",\n                \"Redirect\": \"/\",\n                \"RuleId\": \"17958569\",\n                \"SortId\": \"100\",\n                \"Status\": \"1\",\n                \"Strategies\": [\n                    {\n                        \"Arg\": \"\",\n                        \"CompareFunc\": \"ipmatch\",\n                        \"Content\": \"1.1.1.2\",\n                        \"Field\": \"IP\"\n                    }\n                ]\n            }\n        ],\n        \"TotalCount\": \"1\"\n    }\n}",
+        "title": "Obtaining the List of Precise Allowlist Rules"
+      }
+    ],
     "DescribeDomainCountInfo": [
       {
         "document": " ",
@@ -246,6 +294,14 @@
         "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDomainDetailsSaas\n<Common request parameters>\n\n\n\n{\n    \"Domain\": \"lucasssli3.qcloud.com\",\n    \"DomainId\": \"20200728142847163546341\",\n    \"InstanceId\": \"waf_000000002\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b4f13899-561b-46a0-a045-6ba6b72c38f2\",\n        \"DomainsPartInfo\": {\n            \"Domain\": \"\",\n            \"DomainId\": \"\",\n            \"InstanceId\": \"\",\n            \"Edition\": \"\",\n            \"InstanceName\": \"\",\n            \"Cert\": \"\",\n            \"CertType\": 0,\n            \"Cls\": 0,\n            \"CreateTime\": \"\",\n            \"Cname\": \"\",\n            \"Engine\": 0,\n            \"SniType\": 0,\n            \"SniHost\": \"\",\n            \"ProxySendTimeout\": 0,\n            \"ProxyReadTimeout\": 0,\n            \"Ciphers\": [\n                0\n            ],\n            \"HttpsRewrite\": 0,\n            \"HttpsUpstreamPort\": \"\",\n            \"IsKeepAlive\": 0,\n            \"IsCdn\": 0,\n            \"IsGray\": 0,\n            \"IsHttp2\": 0,\n            \"IsWebsocket\": 0,\n            \"LoadBalance\": 0,\n            \"Mode\": 0,\n            \"PrivateKey\": \"\",\n            \"SSLId\": \"\",\n            \"UpstreamDomain\": \"\",\n            \"UpstreamScheme\": \"\",\n            \"UpstreamType\": 0,\n            \"TLSVersion\": 0,\n            \"CipherTemplate\": 0,\n            \"SrcList\": [],\n            \"Ports\": [],\n            \"ActiveCheck\": 1,\n            \"Weights\": [\n                \"10,10,10\"\n            ],\n            \"IpHeaders\": [\n                \"abc\"\n            ],\n            \"XFFReset\": 0\n        }\n    }\n}",
         "title": "Query individual SaaS WAF domain details"
+      }
+    ],
+    "DescribeDomainVerifyResult": [
+      {
+        "document": " ",
+        "input": "https://waf.tencentcloudapi.com/?Action=DescribeDomainVerifyResult\n&Domain=test1.qcloud.com\n&InstanceID=aaaaa\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Msg\": \"xx\",\n        \"VerifyCode\": 1,\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "Obtaining Verification Results for Domain Name Addition"
       }
     ],
     "DescribeDomains": [
@@ -296,6 +352,22 @@
         "title": "Obtaining the List of Protected Domain Names"
       }
     ],
+    "DescribeInstances": [
+      {
+        "document": "Query detailed information of all user instances",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstances\n<Common request parameters>\n\n\n\n{\n    \"Offset\": 1,\n    \"Limit\": 20,\n    \"Filters\": [\n        {\n            \"Name\": \"Edition\",\n            \"Values\": [],\n            \"ExactMatch\": true\n        },\n        {\n            \"Name\": \"Region\",\n            \"Values\": [\n                \"ap-beijing\",\n                \"ap-guangzhou\"\n            ],\n            \"ExactMatch\": true\n        },\n        {\n            \"Name\": \"InstanceName\",\n            \"Values\": [\n                \"Instance\"\n            ],\n            \"ExactMatch\": false\n        },\n        {\n            \"Name\": \"InstanceId\",\n            \"Values\": [\n                \"waf\"\n            ],\n            \"ExactMatch\": false\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Instances\": [\n            {\n                \"InstanceId\": \"abc\",\n                \"InstanceName\": \"abc\",\n                \"ResourceIds\": \"abc\",\n                \"Region\": \"abc\",\n                \"PayMode\": 1,\n                \"RenewFlag\": 1,\n                \"Mode\": 1,\n                \"Level\": 1,\n                \"ValidTime\": \"abc\",\n                \"BeginTime\": \"abc\",\n                \"DomainCount\": 1,\n                \"SubDomainLimit\": 1,\n                \"MainDomainCount\": 1,\n                \"MainDomainLimit\": 1,\n                \"MaxQPS\": 1,\n                \"QPS\": {\n                    \"ResourceIds\": \"abc\",\n                    \"ValidTime\": \"abc\",\n                    \"RenewFlag\": 0,\n                    \"Count\": 0,\n                    \"Region\": \"abc\",\n                    \"BillingItem\": \"abc\"\n                },\n                \"DomainPkg\": {\n                    \"ResourceIds\": \"abc\",\n                    \"ValidTime\": \"abc\",\n                    \"RenewFlag\": 1,\n                    \"Count\": 1,\n                    \"Region\": \"abc\"\n                },\n                \"AppId\": 1,\n                \"Edition\": \"abc\",\n                \"FraudPkg\": {\n                    \"ResourceIds\": \"abc\",\n                    \"Status\": 0,\n                    \"Region\": 0,\n                    \"BeginTime\": \"abc\",\n                    \"EndTime\": \"abc\",\n                    \"InquireNum\": 0,\n                    \"UsedNum\": 0,\n                    \"RenewFlag\": 1\n                },\n                \"BotPkg\": {\n                    \"ResourceIds\": \"abc\",\n                    \"Status\": 0,\n                    \"Region\": 0,\n                    \"BeginTime\": \"abc\",\n                    \"EndTime\": \"abc\",\n                    \"InquireNum\": 0,\n                    \"UsedNum\": 0,\n                    \"Type\": \"abc\",\n                    \"RenewFlag\": 1,\n                    \"BotCPWaf\": 0,\n                    \"BotNPWaf\": 0,\n                    \"IsBotTrial\": 0\n                },\n                \"BotQPS\": {\n                    \"ResourceIds\": \"abc\",\n                    \"ValidTime\": \"abc\",\n                    \"Count\": 1,\n                    \"Region\": \"abc\",\n                    \"MaxBotQPS\": 1,\n                    \"RenewFlag\": 1\n                },\n                \"ElasticBilling\": 1,\n                \"AttackLogPost\": 0,\n                \"MaxBandwidth\": 1,\n                \"APISecurity\": 1,\n                \"QpsStandard\": 1,\n                \"BandwidthStandard\": 1,\n                \"Status\": 1,\n                \"SandboxQps\": 1,\n                \"IsAPISecurityTrial\": 1,\n                \"MajorEventsPkg\": {\n                    \"ResourceIds\": \"abc\",\n                    \"Status\": 0,\n                    \"Region\": 0,\n                    \"BeginTime\": \"abc\",\n                    \"EndTime\": \"abc\",\n                    \"InquireNum\": 0,\n                    \"UsedNum\": 0,\n                    \"RenewFlag\": 1,\n                    \"BillingItem\": \"abc\",\n                    \"HWState\": 0\n                },\n                \"HybridPkg\": {\n                    \"ResourceIds\": \"abc\",\n                    \"Status\": 0,\n                    \"Region\": 0,\n                    \"BeginTime\": \"abc\",\n                    \"EndTime\": \"abc\",\n                    \"InquireNum\": 0,\n                    \"UsedNum\": 0,\n                    \"RenewFlag\": 1\n                },\n                \"ApiPkg\": {\n                    \"ResourceIds\": \"abc\",\n                    \"Status\": 0,\n                    \"Region\": 0,\n                    \"BeginTime\": \"abc\",\n                    \"EndTime\": \"abc\",\n                    \"InquireNum\": 0,\n                    \"UsedNum\": 0,\n                    \"RenewFlag\": 1,\n                    \"BillingItem\": \"abc\",\n                    \"IsAPISecurityTrial\": 0\n                },\n                \"MiniPkg\": {\n                    \"ResourceIds\": \"abc\",\n                    \"Status\": 0,\n                    \"Region\": 0,\n                    \"BeginTime\": \"abc\",\n                    \"EndTime\": \"abc\",\n                    \"Count\": 0,\n                    \"RenewFlag\": 1,\n                    \"BillingItem\": \"abc\"\n                },\n                \"MiniQpsStandard\": 1,\n                \"MiniMaxQPS\": 1,\n                \"LastQpsExceedTime\": \"abc\",\n                \"MiniExtendPkg\": {\n                    \"ResourceIds\": \"abc\",\n                    \"Status\": 0,\n                    \"Region\": 0,\n                    \"BeginTime\": \"abc\",\n                    \"EndTime\": \"abc\",\n                    \"Count\": 0,\n                    \"RenewFlag\": 1,\n                    \"BillingItem\": \"abc\"\n                },\n                \"BillingItem\": \"abc\",\n                \"FreeDelayFlag\": 1\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Query detailed information of all user instances"
+      }
+    ],
+    "DescribeIpAccessControl": [
+      {
+        "document": "This example shows you how to query the WAF IP blocklist.",
+        "input": "https://waf.tencentcloudapi.com/?Action=DescribeIpAccessControl\r\n&Domain=www.test.com\r\n&Count=1\r\n&ActionType=42\r\n&Limit=20\r\n&OffSet=0\r\n&Sort=ts_version:-1\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Data\": {\n            \"Res\": [\n                {\n                    \"ActionType\": 42,\n                    \"Ip\": \"1.1.1.1\",\n                    \"Note\": \"\",\n                    \"Source\": \"custom\",\n                    \"TsVersion\": 1579074751421,\n                    \"ValidTs\": 1579017599\n                }\n            ],\n            \"TotalCount\": 1\n        },\n        \"RequestId\": \"c937ce96-cf53-4df8-b288-07c6e092072d\"\n    }\n}",
+        "title": "WAF IP blocklist/allowlist query"
+      }
+    ],
     "DescribeModuleStatus": [
       {
         "document": " ",
@@ -326,6 +398,14 @@
         "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePolicyStatus\n<Common request parameters>\n\n\n\n{\n    \"Domain\": \"test.com\",\n    \"Edition\": \"saas-waf\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b7984267-1b60-4979-accb-8f1ca497f827\",\n        \"InstanceId\": \"aaa\",\n        \"Status\": 0\n    }\n}",
         "title": "DescribePolicyStatus"
+      }
+    ],
+    "DescribePorts": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribePorts\n<Common request parameters>\n\n\n\n{\n    \"InstanceID\": \"test-instance\",\n    \"Edition\": \"sass-waf\"\n}",
+        "output": "{\n    \"Response\": {\n        \"HttpPorts\": [\n            \"80\",\n            \"8080\"\n        ],\n        \"HttpsPorts\": [\n            \"443\",\n            \"8443\"\n        ],\n        \"RequestId\": \"ae989097-a74b-448a-94e6-4e87366b173b\"\n    }\n}",
+        "title": "Obtaining the List of Protected Ports"
       }
     ],
     "DescribeRuleLimit": [
@@ -378,6 +458,14 @@
         "input": "https://waf.tencentcloudapi.com/?Action=DescribeTopAttackDomain\n&FromTime=2020-02-20 00:00:00\n&ToTime=2020-02-21 00:00:00\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"CC\": [],\n        \"Web\": [],\n        \"RequestId\": \"a4010dd1-d24b-43f5-bab4-8a6b204835b7\"\n    }\n}",
         "title": "Query top 5 attack domains"
+      }
+    ],
+    "DescribeUserClbWafRegions": [
+      {
+        "document": " ",
+        "input": "https://waf.tencentcloudapi.com/?Action=DescribeUserClbWafRegions\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Data\": [\n            \"ap-guangzhou\",\n            \"ap-shanghai\"\n        ],\n        \"RequestId\": \"4c8827fc-839c-4ecc-8ac5-d39456d163b9\"\n    }\n}",
+        "title": "Obtaining the Regions Where CLBWAF Is Available to Customers"
       }
     ],
     "DescribeUserDomainInfo": [
@@ -434,6 +522,22 @@
         "input": "https://waf.tencentcloudapi.com/?Action=GetAttackTotalCount\n&StartTime=2021-02-01T00:00:00+08:00\n&EndTime=2021-02-25T23:59:59+08:00\n&Domain=xxx\n&QueryString=yyy\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 271652,\n        \"RequestId\": \"9b02bf9e-c89c-42c3-9ae1-685f968fa02d\"\n    }\n}",
         "title": "Total attack count"
+      }
+    ],
+    "GetInstanceQpsLimit": [
+      {
+        "document": "This example shows you how to obtain the default value of elastic QPS.",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetInstanceQpsLimit\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"QpsData\": {\n            \"ElasticBillingDefault\": 1,\n            \"ElasticBillingMin\": 1,\n            \"ElasticBillingMax\": 1\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Obtaining the Default Value of Elastic QPS"
+      }
+    ],
+    "ImportIpAccessControl": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteIpAccessControlV2\n<Common request parameters>\n\n\n\n{\n    \"Domain\": \"www.qcloudwaf.com\",\n    \"Data\": [\n        {\n            \"IpList\": [\n                \"2.3.4.5\"\n            ],\n            \"ValidTs\": 1709222399,\n            \"ActionType\": 42,\n            \"Note\": \"\"\n        },\n        {\n            \"IpList\": [\n                \"2.3.4.6\"\n            ],\n            \"ValidTs\": 1709222399,\n            \"ActionType\": 42,\n            \"Note\": \"\"\n        }\n    ],\n    \"InstanceId\": \"waf_2kxt4nou00atrvn1\",\n    \"SourceType\": \"custom\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "This API is used to import IP allowlists/blocklists."
       }
     ],
     "ModifyAntiFakeUrl": [
@@ -524,6 +628,14 @@
         "title": "Switching the Custom Rule"
       }
     ],
+    "ModifyCustomWhiteRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCustomWhiteRule\n<Common request parameters>\n\n\n\n{\n    \"RuleId\": 1100000001,\n    \"Domain\": \"waf.tencentcloudapi.com\",\n    \"RuleName\": \"test\",\n    \"Bypass\": \"cc\",\n    \"SortId\": 100,\n    \"ExpireTime\": 123456,\n    \"Strategies\": [\n        {\n            \"Field\": \"COOKIE\",\n            \"CompareFunc\": \"eq\",\n            \"Content\": \"abc\",\n            \"Arg\": \"\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5d207f4f-0d41-4f5d-bce2-0320090c98d8\",\n        \"Success\": {\n            \"Message\": \"Success\",\n            \"Code\": \"Success\"\n        }\n    }\n}",
+        "title": "Editing a Precise Allowlist Rule"
+      }
+    ],
     "ModifyCustomWhiteRuleStatus": [
       {
         "document": " ",
@@ -578,6 +690,46 @@
         "input": "https://waf.tencentcloudapi.com/?Action=ModifyHostStatus\r\n&HostsStatus='[{\"Domain\":\"lsd.qcloudwaf.com\", \"DomainId\":\"waf-MyBQKIZe\", \"Status\":1}]'\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Success\": {\n            \"Code\": \"Success\",\n            \"Message\": \"Success\"\n        },\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459397\"\n    }\n}",
         "title": "Enabling or Disabling WAF for Protected Domain Names"
+      }
+    ],
+    "ModifyInstanceElasticMode": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceElasticMode\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"waf_000000001\",\n    \"Mode\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b4f13899-561b-46a0-a045-6ba6b72c38f2\"\n    }\n}",
+        "title": "Modifying the Elastic Billing Switch for an Instance"
+      }
+    ],
+    "ModifyInstanceName": [
+      {
+        "document": " ",
+        "input": "https://waf.tencentcloudapi.com/?Action=ModifyInstanceName\n&InstanceName=test1.qcloud.com\n&InstanceID=aaaaa\n&Edition=aaaaa\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"ModifyCode\": 0,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Modifying the Instance Name"
+      }
+    ],
+    "ModifyInstanceQpsLimit": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceQpsLimit\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"waf_2kugtqmk020i74z5\",\n    \"QpsLimit\": 100000\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"93c70d0b-624e-46c7-95b5-2269818e65be\"\n    }\n}",
+        "title": "Setting the Elastic QPS Upper Limit for an Package Instance"
+      }
+    ],
+    "ModifyInstanceRenewFlag": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyInstanceRenewFlag\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"waf_000000001\",\n    \"RenewFlag\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b4f13899-561b-46a0-a045-6ba6b72c38f2\"\n    }\n}",
+        "title": "Enable or disable auto-renewal for instance"
+      }
+    ],
+    "ModifyIpAccessControl": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyIpAccessControl\n<Common request parameters>\n\n\n\n{\n    \"InstanceId\": \"waf_accc\",\n    \"Domain\": \"www.qcloudwaf.com\",\n    \"IpList\": [\n        \"192.168.1.1\",\n        \"192.168.1.2\"\n    ],\n    \"Edition\": \"clb-waf\",\n    \"SourceType\": \"batch\",\n    \"RuleId\": 5512222,\n    \"ActionType\": 42,\n    \"ValidTS\": 0,\n    \"Note\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Editing an IP Blocklist/Allowlist"
       }
     ],
     "ModifyModuleStatus": [
@@ -674,6 +826,14 @@
         "input": "https://waf.tencentcloudapi.com/?Action=RefreshAccessCheckResult\r\n&Domain=www.test.com\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9ee8be5b-6caa-4c39-ab70-890e0e673515\"\n    }\n}",
         "title": "Refreshing the Access Configuration Check Result"
+      }
+    ],
+    "SwitchElasticMode": [
+      {
+        "document": "Toggle elasticity switch",
+        "input": "POST / HTTP/1.1\nHost: waf.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SwitchElasticMode\n<Common request parameters>\n\n\n\n{\n    \"Edition\": \"clb-waf\",\n    \"Mode\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"123894afsa90577\"\n    }\n}",
+        "title": "Toggle elasticity switch"
       }
     ],
     "UpsertCCRule": [

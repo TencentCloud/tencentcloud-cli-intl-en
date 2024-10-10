@@ -21,6 +21,13 @@
       "output": "AddCustomRuleResponse",
       "status": "online"
     },
+    "AddCustomWhiteRule": {
+      "document": "Add precision allowlist rules",
+      "input": "AddCustomWhiteRuleRequest",
+      "name": "Adds a precise allowlist rule",
+      "output": "AddCustomWhiteRuleResponse",
+      "status": "online"
+    },
     "AddSpartaProtection": {
       "document": "Add SaaS WAF protection domain",
       "input": "AddSpartaProtectionRequest",
@@ -40,6 +47,13 @@
       "input": "CreateHostRequest",
       "name": "Adds a protected domain name to CLB WAF",
       "output": "CreateHostResponse",
+      "status": "online"
+    },
+    "CreateIpAccessControl": {
+      "document": "This API is used to add WAF IP allowlists/blocklists.",
+      "input": "CreateIpAccessControlRequest",
+      "name": "Adds an IP blocklist/allowlist",
+      "output": "CreateIpAccessControlResponse",
       "status": "online"
     },
     "DeleteAntiFakeUrl": {
@@ -70,11 +84,32 @@
       "output": "DeleteCustomRuleResponse",
       "status": "online"
     },
+    "DeleteCustomWhiteRule": {
+      "document": "Delete precision allowlist rules",
+      "input": "DeleteCustomWhiteRuleRequest",
+      "name": "Delete precision allowlist rules",
+      "output": "DeleteCustomWhiteRuleResponse",
+      "status": "online"
+    },
     "DeleteHost": {
       "document": "This API is used to delete a domain name protected by CLB WAF. Batch operation is supported.",
       "input": "DeleteHostRequest",
       "name": "Deletes a domain name protected by CLB WAF",
       "output": "DeleteHostResponse",
+      "status": "online"
+    },
+    "DeleteIpAccessControlV2": {
+      "document": "This API is used to delete latest versions of WAF IP allowlists/blocklists.",
+      "input": "DeleteIpAccessControlV2Request",
+      "name": "Deletes an IP blocklist/allowlist",
+      "output": "DeleteIpAccessControlV2Response",
+      "status": "online"
+    },
+    "DeleteSession": {
+      "document": "Delete CC attack session settings",
+      "input": "DeleteSessionRequest",
+      "name": "Delete CC attack session settings",
+      "output": "DeleteSessionResponse",
       "status": "online"
     },
     "DeleteSpartaProtection": {
@@ -161,6 +196,13 @@
       "output": "DescribeCustomRuleListResponse",
       "status": "online"
     },
+    "DescribeCustomWhiteRule": {
+      "document": "Obtain the precision allowlist policy list in the protection configuration",
+      "input": "DescribeCustomWhiteRuleRequest",
+      "name": "Queries precise allowlist rules",
+      "output": "DescribeCustomWhiteRuleResponse",
+      "status": "online"
+    },
     "DescribeDomainCountInfo": {
       "document": "Obtain domain overview",
       "input": "DescribeDomainCountInfoRequest",
@@ -180,6 +222,13 @@
       "input": "DescribeDomainDetailsSaasRequest",
       "name": "Queries a single domain details of  SaaS WAF instance",
       "output": "DescribeDomainDetailsSaasResponse",
+      "status": "online"
+    },
+    "DescribeDomainVerifyResult": {
+      "document": "Obtain the result of adding domain operation",
+      "input": "DescribeDomainVerifyResultRequest",
+      "name": "Obtain the result of adding domain operation",
+      "output": "DescribeDomainVerifyResultResponse",
       "status": "online"
     },
     "DescribeDomains": {
@@ -224,6 +273,20 @@
       "output": "DescribeHostsResponse",
       "status": "online"
     },
+    "DescribeInstances": {
+      "document": "Query detailed information of all user instances",
+      "input": "DescribeInstancesRequest",
+      "name": "Query detailed information of all user instances",
+      "output": "DescribeInstancesResponse",
+      "status": "online"
+    },
+    "DescribeIpAccessControl": {
+      "document": "WAF IP blocklist/allowlist query",
+      "input": "DescribeIpAccessControlRequest",
+      "name": "Queries IP blocklists and allowlists",
+      "output": "DescribeIpAccessControlResponse",
+      "status": "online"
+    },
     "DescribeModuleStatus": {
       "document": "Query the switch status of each WAF basic security module, check if each module is enabled",
       "input": "DescribeModuleStatusRequest",
@@ -250,6 +313,13 @@
       "input": "DescribePolicyStatusRequest",
       "name": "Obtain protection status and the effective instance ID",
       "output": "DescribePolicyStatusResponse",
+      "status": "online"
+    },
+    "DescribePorts": {
+      "document": "Obtain the SaaS-type WAF protection port list",
+      "input": "DescribePortsRequest",
+      "name": "Obtain the SaaS-type WAF protection port list",
+      "output": "DescribePortsResponse",
       "status": "online"
     },
     "DescribeRuleLimit": {
@@ -285,6 +355,13 @@
       "input": "DescribeTopAttackDomainRequest",
       "name": "Query top 5 attack domains",
       "output": "DescribeTopAttackDomainResponse",
+      "status": "online"
+    },
+    "DescribeUserClbWafRegions": {
+      "document": "During the addition and modification of Domain Configuration for CLB-type WAF, it is required to display the supported region list for CLB-type WAF (clb-waf) through DescribeUserClbWafRegions to obtain the currently available region list for the customer.",
+      "input": "DescribeUserClbWafRegionsRequest",
+      "name": "Obtains the regions where CLB WAF (clb-waf) is available to customers",
+      "output": "DescribeUserClbWafRegionsResponse",
       "status": "online"
     },
     "DescribeUserDomainInfo": {
@@ -334,6 +411,20 @@
       "input": "GetAttackTotalCountRequest",
       "name": "Total attack count",
       "output": "GetAttackTotalCountResponse",
+      "status": "online"
+    },
+    "GetInstanceQpsLimit": {
+      "document": "Obtain the elastic QPS limit of package instances",
+      "input": "GetInstanceQpsLimitRequest",
+      "name": "Obtain the elastic QPS limit of package instances",
+      "output": "GetInstanceQpsLimitResponse",
+      "status": "online"
+    },
+    "ImportIpAccessControl": {
+      "document": "This API is used to import IP allowlists/blocklists.",
+      "input": "ImportIpAccessControlRequest",
+      "name": "This API is used to import IP allowlists/blocklists.",
+      "output": "ImportIpAccessControlResponse",
       "status": "online"
     },
     "ModifyAntiFakeUrl": {
@@ -392,6 +483,13 @@
       "output": "ModifyCustomRuleStatusResponse",
       "status": "online"
     },
+    "ModifyCustomWhiteRule": {
+      "document": "This API is used to edit a precise allowlist.",
+      "input": "ModifyCustomWhiteRuleRequest",
+      "name": "Edits a precise allowlist",
+      "output": "ModifyCustomWhiteRuleResponse",
+      "status": "online"
+    },
     "ModifyCustomWhiteRuleStatus": {
       "document": "Enable or disable a precision allowlist",
       "input": "ModifyCustomWhiteRuleStatusRequest",
@@ -439,6 +537,41 @@
       "input": "ModifyHostStatusRequest",
       "name": "Enables or disables WAF for protected domain names",
       "output": "ModifyHostStatusResponse",
+      "status": "online"
+    },
+    "ModifyInstanceElasticMode": {
+      "document": "Modify the QPS elastic billing switch for an instance",
+      "input": "ModifyInstanceElasticModeRequest",
+      "name": "Modify the QPS elastic billing switch for an instance",
+      "output": "ModifyInstanceElasticModeResponse",
+      "status": "online"
+    },
+    "ModifyInstanceName": {
+      "document": "Modify instance name",
+      "input": "ModifyInstanceNameRequest",
+      "name": "Modifies the instance name",
+      "output": "ModifyInstanceNameResponse",
+      "status": "online"
+    },
+    "ModifyInstanceQpsLimit": {
+      "document": "Set elastic QPS limit for package instances",
+      "input": "ModifyInstanceQpsLimitRequest",
+      "name": "Set elastic QPS limit for package instances",
+      "output": "ModifyInstanceQpsLimitResponse",
+      "status": "online"
+    },
+    "ModifyInstanceRenewFlag": {
+      "document": "Enable or disable auto-renewal for instance",
+      "input": "ModifyInstanceRenewFlagRequest",
+      "name": "Enable or disable auto-renewal for instance",
+      "output": "ModifyInstanceRenewFlagResponse",
+      "status": "online"
+    },
+    "ModifyIpAccessControl": {
+      "document": "This API is used to edit WAF IP allowlists/blocklists.",
+      "input": "ModifyIpAccessControlRequest",
+      "name": "Edits an IP blocklist/allowlist",
+      "output": "ModifyIpAccessControlResponse",
       "status": "online"
     },
     "ModifyModuleStatus": {
@@ -502,6 +635,13 @@
       "input": "RefreshAccessCheckResultRequest",
       "name": "Refreshes the access configuration check result",
       "output": "RefreshAccessCheckResultResponse",
+      "status": "online"
+    },
+    "SwitchElasticMode": {
+      "document": "Toggle elasticity switch",
+      "input": "SwitchElasticModeRequest",
+      "name": "Toggles the switch of the elastic QPS",
+      "output": "SwitchElasticModeResponse",
       "status": "online"
     },
     "UpsertCCRule": {
@@ -831,6 +971,116 @@
           "document": "Successfully added rule ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "7025",
           "member": "int64",
+          "name": "RuleId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AddCustomWhiteRuleRequest": {
+      "document": "AddCustomWhiteRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule name",
+          "example": "test",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Priority",
+          "example": "test",
+          "member": "string",
+          "name": "SortId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time",
+          "example": "2023-11-15 19:23:06",
+          "member": "string",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Policy details",
+          "example": "[]",
+          "member": "Strategy",
+          "name": "Strategies",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Domain name for adding policy",
+          "example": "test.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Details of release",
+          "example": "test",
+          "member": "string",
+          "name": "Bypass",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled task type",
+          "example": "test",
+          "member": "string",
+          "name": "JobType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled task configuration",
+          "example": "{}",
+          "member": "JobDateTime",
+          "name": "JobDateTime",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "AddCustomWhiteRuleResponse": {
+      "document": "AddCustomWhiteRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Operation status code: if all resource operations succeed, the success status code is returned; if any resource operation fails, the content of Message needs to be parsed to see which resource failed.",
+          "example": "{}",
+          "member": "ResponseCode",
+          "name": "Success",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Successfully added rule ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "7025",
+          "member": "uint64",
           "name": "RuleId",
           "output_required": true,
           "type": "int",
@@ -1205,6 +1455,122 @@
       ],
       "type": "object"
     },
+    "ApiPkg": {
+      "document": "API security resource information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sada",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Region",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-05",
+          "member": "string",
+          "name": "BeginTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "End time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-05",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Application Quantity\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "InquireNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Usage Quantity\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "UsedNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Renewal flag.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RenewFlag",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing item.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sv_wsm_waf_scene_major_events_basic",
+          "member": "string",
+          "name": "BillingItem",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "API security 7-day trial flag. 1 for trial. 0 for no trial.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsAPISecurityTrial",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "BatchIpAccessControlData": {
       "document": "Returned description of the multi-domain blocklist/allowlist",
       "members": [
@@ -1386,6 +1752,216 @@
         }
       ],
       "usage": "out"
+    },
+    "BotPkg": {
+      "document": "Bot Resource Information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sada",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Region",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-05",
+          "member": "string",
+          "name": "BeginTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "End time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-05",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Application Quantity\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "InquireNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Usage Quantity\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "UsedNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Sub-product code.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sp_wsm_waf_bot",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Renewal flag.\t\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RenewFlag",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Purchase Page Bot 40% Off\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "BotCPWaf",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Console Buy Bot with 50% Off\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "BotNPWaf",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "7-day Bot Trial Identification, 1 for Trial, 0 for No Trial\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "IsBotTrial",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "BotQPS": {
+      "document": "Bot's QPS details",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID",
+          "example": "waf_2kuj8hls00b7bo99_bot",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time",
+          "example": "2022-08-11 17:39:53",
+          "member": "string",
+          "name": "ValidTime",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource quantity.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Count",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource Location",
+          "example": "gz",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum QPS Usage",
+          "example": "0",
+          "member": "uint64",
+          "name": "MaxBotQPS",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Renewal flag.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RenewFlag",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "CCRuleData": {
       "document": "Data Encapsulation",
@@ -2305,6 +2881,52 @@
       ],
       "usage": "out"
     },
+    "ClbWafRegionItem": {
+      "document": "CLB-WAF Regional Information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Region ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"gz\"",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Regional Chinese Description\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"广州\"",
+          "member": "string",
+          "name": "Text",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Full English Name of the Region\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"ap-guangzhou\"",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region encoding\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "“1”",
+          "member": "string",
+          "name": "Code",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "CreateDealsGoods": {
       "document": "Input/Output parameter goods of billing & ordering API",
       "members": [
@@ -2586,6 +3208,124 @@
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIpAccessControlRequest": {
+      "document": "CreateIpAccessControl request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specific domain name, for example, test.qcloudwaf.com.\nGlobal domain name, that is, global.",
+          "example": "test.qcloudwaf.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IP parameter list.",
+          "example": "[\"192.16.8.1.1\",\"192.168.2.1\"]",
+          "member": "string",
+          "name": "IpList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "42: blocklist; 40: allowlist.",
+          "example": "42",
+          "member": "int64",
+          "name": "ActionType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "valid_ts indicates a valid date. Its value is a second-level timestamp, such as 1680570420, which indicates 2023-04-04 09:07:00.",
+          "example": "1680570420",
+          "member": "int64",
+          "name": "ValidTS",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "waf_2kxq5hru00n2dxmx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "WAF instance type: sparta-waf for SaaS WAF, clb-waf for CLB WAF.",
+          "example": "clb-waf",
+          "member": "string",
+          "name": "Edition",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Valid values: batch (adding in batches), bot (adding to the bot details list in bot traffic analysis), cc (adding to IP addresses of the CC attack type in the attack log list), custom (default value for adding not in batches).",
+          "example": "custom",
+          "member": "string",
+          "name": "SourceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "备注",
+          "member": "string",
+          "name": "Note",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled configuration type.",
+          "example": "无",
+          "member": "string",
+          "name": "JobType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Details of scheduled configuration.",
+          "example": "无",
+          "member": "JobDateTime",
+          "name": "JobDateTime",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateIpAccessControlResponse": {
+      "document": "CreateIpAccessControl response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the new rule.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "55211245",
+          "member": "uint64",
+          "name": "RuleId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -2882,6 +3622,52 @@
       ],
       "type": "object"
     },
+    "DeleteCustomWhiteRuleRequest": {
+      "document": "DeleteCustomWhiteRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Deleted domain",
+          "example": "test.qcloudwaf.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Deleted rule ID",
+          "example": "1100000001",
+          "member": "uint64",
+          "name": "RuleId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteCustomWhiteRuleResponse": {
+      "document": "DeleteCustomWhiteRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Operation status code: if all resource operations succeed, the success status code is returned; if any resource operation fails, the content of Message needs to be parsed to see which resource failed.",
+          "example": "无",
+          "member": "ResponseCode",
+          "name": "Success",
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteHostRequest": {
       "document": "DeleteHost request structure.",
       "members": [
@@ -2909,6 +3695,134 @@
           "output_required": true,
           "type": "object",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIpAccessControlV2Request": {
+      "document": "DeleteIpAccessControlV2 request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain name",
+          "example": "test.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID list, which supports deletion in batches.",
+          "example": "[552091011,552091010]",
+          "member": "uint64",
+          "name": "RuleIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to delete all IP blocklists/allowlists under the corresponding domain. True indicates deleting all; false indicates only deleting a specified IP list.",
+          "example": "false",
+          "member": "bool",
+          "name": "DeleteAll",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "batch: indicates batch protection IP allowlists/blocklists.",
+          "example": "batch",
+          "member": "string",
+          "name": "SourceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IP allowlist/blocklist type. 40: IP allowlist; 42: IP blocklist.",
+          "example": "42",
+          "member": "uint64",
+          "name": "ActionType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteIpAccessControlV2Response": {
+      "document": "DeleteIpAccessControlV2 response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of items that fail to be deleted during deletion in batches.",
+          "example": "10",
+          "member": "int64",
+          "name": "FailedCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSessionRequest": {
+      "document": "DeleteSession request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain name",
+          "example": "test.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "clb-waf or sparta-waf",
+          "example": "clb-waf",
+          "member": "string",
+          "name": "Edition",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "SessionID to be deleted",
+          "example": "1",
+          "member": "int64",
+          "name": "SessionID",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSessionResponse": {
+      "document": "DeleteSession response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Result\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -4192,6 +5106,98 @@
       ],
       "usage": "out"
     },
+    "DescribeCustomWhiteRuleRequest": {
+      "document": "DescribeCustomWhiteRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain name",
+          "example": "test.qcloudwaf.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Capacity",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter array. A name can be one of the following: RuleID, RuleName, and Match.",
+          "example": "无",
+          "member": "FiltersItemNew",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "asc or desc",
+          "example": "asc",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "exp_ts or mod_ts",
+          "example": "mod_ts",
+          "member": "string",
+          "name": "By",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeCustomWhiteRuleResponse": {
+      "document": "DescribeCustomWhiteRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule details",
+          "example": "无",
+          "member": "DescribeCustomRulesRspRuleListItem",
+          "name": "RuleList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of rules",
+          "example": "1",
+          "member": "string",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeDomainCountInfoRequest": {
       "document": "DescribeDomainCountInfo request structure.",
       "members": [],
@@ -4358,6 +5364,60 @@
           "name": "DomainsPartInfo",
           "output_required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDomainVerifyResultRequest": {
+      "document": "DescribeDomainVerifyResult request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain name",
+          "example": "",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "",
+          "member": "string",
+          "name": "InstanceID",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDomainVerifyResultResponse": {
+      "document": "DescribeDomainVerifyResult response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Result description: if possible, return an empty string",
+          "example": "",
+          "member": "string",
+          "name": "Msg",
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Inspection status. 0 indicates that it can be added; greater than 0 indicates that it cannot be added.",
+          "example": "",
+          "member": "int64",
+          "name": "VerifyCode",
+          "type": "int",
           "value_allowed_null": false
         },
         {
@@ -4819,6 +5879,271 @@
       ],
       "type": "object"
     },
+    "DescribeInstancesRequest": {
+      "document": "DescribeInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Capacity",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter array",
+          "example": "无",
+          "member": "FiltersItemNew",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Deletion delay flag.",
+          "example": "1",
+          "member": "uint64",
+          "name": "FreeDelayFlag",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeInstancesResponse": {
+      "document": "DescribeInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number",
+          "example": "2",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance list",
+          "example": "无",
+          "member": "InstanceInfo",
+          "name": "Instances",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIpAccessControlRequest": {
+      "document": "DescribeIpAccessControl request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Domain name",
+          "example": "test.testwaf.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Count identifier",
+          "example": "1",
+          "member": "uint64",
+          "name": "Count",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Action. 40 for querying the allowlist, 42 for querying the blocklist",
+          "example": "40",
+          "member": "uint64",
+          "name": "ActionType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": true,
+          "document": "Timestamp of the minimum valid time",
+          "example": "1674958082000",
+          "member": "uint64",
+          "name": "VtsMin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": true,
+          "document": "Timestamp of the maximum valid time",
+          "example": "1675130882000",
+          "member": "uint64",
+          "name": "VtsMax",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Timestamp for minimum creation time",
+          "example": "1643594882000",
+          "member": "uint64",
+          "name": "CtsMin",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Timestamp for Maximum Creation Time",
+          "example": "1646273282000",
+          "member": "uint64",
+          "name": "CtsMax",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paging offset, a multiple of limit. The minimum value is 0, and the maximum value is Total/Limit rounded up.",
+          "example": "0",
+          "member": "uint64",
+          "name": "OffSet",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of records returned per page, which is 20 by default.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Source.",
+          "example": "custom",
+          "member": "string",
+          "name": "Source",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sort parameters",
+          "example": "ts_version:-1",
+          "member": "string",
+          "name": "Sort",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IP",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Ip",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Effective status.",
+          "example": "1",
+          "member": "int64",
+          "name": "ValidStatus",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Timestamp of the minimum valid time",
+          "example": "1674958082000",
+          "member": "string",
+          "name": "ValidTimeStampMin",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Timestamp of the maximum valid time",
+          "example": "1674958082000",
+          "member": "string",
+          "name": "ValidTimeStampMax",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID",
+          "example": "551024411",
+          "member": "uint64",
+          "name": "RuleId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter by scheduled task type. Valid values: 0, 1, 2, 3, 4.",
+          "example": "无",
+          "member": "int64",
+          "name": "TimerType",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIpAccessControlResponse": {
+      "document": "DescribeIpAccessControl response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Output.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{       \"Res\": [         {           \"ActionType\": 40,           \"Ip\": \"1.1.1.234\",           \"Note\": \"测试白\",           \"Source\": \"custom\",           \"TsVersion\": 1675087938186,           \"ValidTs\": 2019571199         }       ],       \"TotalCount\": 1     },     \"RequestId\": \"4afdae60-51ec-44f0-b09b-faf904ae6c6b\"   }",
+          "member": "IpAccessControlData",
+          "name": "Data",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Total number of IP addresses in the used IP allowlist/blocklist.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "uint64",
+          "name": "UsedTotal",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeModuleStatusRequest": {
       "document": "DescribeModuleStatus request structure.",
       "members": [
@@ -5080,6 +6405,62 @@
           "name": "Status",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePortsRequest": {
+      "document": "DescribePorts request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "waf_2ka80zly0702e8j3",
+          "member": "string",
+          "name": "InstanceID",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance type",
+          "example": "sparta-waf",
+          "member": "string",
+          "name": "Edition",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribePortsResponse": {
+      "document": "DescribePorts response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HTTP Port List",
+          "example": "[\"80\",\"8080\"]",
+          "member": "string",
+          "name": "HttpPorts",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HTTPS port list",
+          "example": "[\"443\",\"8443\"]",
+          "member": "string",
+          "name": "HttpsPorts",
+          "output_required": true,
+          "type": "list",
           "value_allowed_null": false
         },
         {
@@ -5587,6 +6968,53 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserClbWafRegionsRequest": {
+      "document": "DescribeUserClbWafRegions request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "\"clb\"",
+          "member": "string",
+          "name": "AlbType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeUserClbWafRegionsResponse": {
+      "document": "DescribeUserClbWafRegions response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Region (in standard ap-format) list\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Geographical information with detailed attributes\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{Id:\"sh\"  Text:\"上海\"  Value:\"ap-shanghai\"  Code:\"4\"} ",
+          "member": "ClbWafRegionItem",
+          "name": "RichDatas",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -6128,6 +7556,67 @@
           "output_required": false,
           "required": false,
           "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "DomainPackageNew": {
+      "document": "CLB-WAF domain extension package",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "waf",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "年月日",
+          "member": "string",
+          "name": "ValidTime",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Auto-renewal, 1: Enabled, 0: Disabled\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RenewFlag",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of Package Purchases\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Count",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Package Purchase Region, currently not used in CLB-WAF\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "gz",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": true,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -6751,6 +8240,92 @@
       ],
       "usage": "out"
     },
+    "FraudPkg": {
+      "document": "Business security resource information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sada",
+          "member": "string",
+          "name": "ResourceIds",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Region",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-05",
+          "member": "string",
+          "name": "BeginTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "End time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-05",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Application Quantity\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "InquireNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Usage Quantity\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "UsedNum",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Renewal flag.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RenewFlag",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "FreshAntiFakeUrlRequest": {
       "document": "FreshAntiFakeUrl request structure.",
       "members": [
@@ -6916,6 +8491,51 @@
           "name": "TotalCount",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetInstanceQpsLimitRequest": {
+      "document": "GetInstanceQpsLimit request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Package instance ID",
+          "example": "waf_00000007",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Package type.",
+          "example": "sp_wsm_waf_premium_clb",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetInstanceQpsLimitResponse": {
+      "document": "GetInstanceQpsLimit response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Elastic QPS related value set",
+          "example": "详见QpsData实体",
+          "member": "QpsData",
+          "name": "QpsData",
+          "type": "object",
           "value_allowed_null": false
         },
         {
@@ -7423,6 +9043,825 @@
       ],
       "usage": "in"
     },
+    "HybridPkg": {
+      "document": "Hybrid cloud node resource information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sada",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Region",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-05",
+          "member": "string",
+          "name": "BeginTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "End time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-05",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Application Quantity\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "InquireNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Usage Quantity\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "UsedNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Renewal flag.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RenewFlag",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ImportIpAccessControlRequest": {
+      "document": "ImportIpAccessControl request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of imported IP allowlists/blocklists.",
+          "example": "无",
+          "member": "IpAccessControlParam",
+          "name": "Data",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Specific domain name, for example, test.qcloudwaf.com.\nGlobal domain name, that is, global.",
+          "example": "test.qcloudwaf.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Batch protection IP blocklists/allowlists or not. If yes, the value is batch; otherwise, it is empty.",
+          "example": "batch",
+          "member": "string",
+          "name": "SourceType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "waf_2kxq5hru00n2dxmx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImportIpAccessControlResponse": {
+      "document": "ImportIpAccessControl response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "InstanceInfo": {
+      "document": "Detailed information of an instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique Instance ID",
+          "example": "waf_2kufmr9u71ae5dz7",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance name",
+          "example": "TEST实例",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource ID corresponding to the Instance, for billing usage",
+          "example": "waf_2kufmr9u71ae5dz7",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance region",
+          "example": "gz",
+          "member": "string",
+          "name": "Region",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Payment mode",
+          "example": "1",
+          "member": "uint64",
+          "name": "PayMode",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Auto-renewal flag.\n\n0: disable\n\n1: enable",
+          "example": "1",
+          "member": "uint64",
+          "name": "RenewFlag",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Elastic billing switch.\n0: disable\n\n1: enable",
+          "example": "1",
+          "member": "uint64",
+          "name": "Mode",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance package version.\n101: Small and Micro Edition.\n102: Ultra-light Edition.\n2: Advanced Edition.\n3: Enterprise Edition.\n4: Ultimate Edition.\n6: Exclusive Edition",
+          "example": "2",
+          "member": "uint64",
+          "name": "Level",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance expiration time",
+          "example": "2023-11-15 19:23:06",
+          "member": "string",
+          "name": "ValidTime",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance Start Time",
+          "example": "2023-11-15 19:23:06",
+          "member": "string",
+          "name": "BeginTime",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configured Domain Count",
+          "example": "4",
+          "member": "uint64",
+          "name": "DomainCount",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum Domain Count",
+          "example": "5",
+          "member": "uint64",
+          "name": "SubDomainLimit",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configured Primary Domain Count",
+          "example": "4",
+          "member": "uint64",
+          "name": "MainDomainCount",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum Number of Primary Domain Names",
+          "example": "5",
+          "member": "uint64",
+          "name": "MainDomainLimit",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance QPS Peak within 30 Days",
+          "example": "10000",
+          "member": "uint64",
+          "name": "MaxQPS",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "QPS Expansion Package Information",
+          "example": "详见数据结构",
+          "member": "QPSPackageNew",
+          "name": "QPS",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Domain Extension Package Information",
+          "example": "详见数据结构",
+          "member": "DomainPackageNew",
+          "name": "DomainPkg",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User appid.",
+          "example": "129873089",
+          "member": "uint64",
+          "name": "AppId",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "CLB or SaaS",
+          "example": "sparta-waf",
+          "member": "string",
+          "name": "Edition",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Business Security Package\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{}",
+          "member": "FraudPkg",
+          "name": "FraudPkg",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bot Resource Package\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{}",
+          "member": "BotPkg",
+          "name": "BotPkg",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bot's QPS details\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{}",
+          "member": "BotQPS",
+          "name": "BotQPS",
+          "output_required": true,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "QPS Elastic Billing Cap\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10000",
+          "member": "uint64",
+          "name": "ElasticBilling",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Attack Log Shipping Switch\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "AttackLogPost",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Peak Bandwidth, in B/s (Bytes per Second)\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "111",
+          "member": "uint64",
+          "name": "MaxBandwidth",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether API security is purchased",
+          "example": "1",
+          "member": "uint64",
+          "name": "APISecurity",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Purchased QPS Specification\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10000",
+          "member": "uint64",
+          "name": "QpsStandard",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Purchased Bandwidth Specification\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "500",
+          "member": "uint64",
+          "name": "BandwidthStandard",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance status\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance Sandbox QPS Value\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "30000",
+          "member": "uint64",
+          "name": "SandboxQps",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether API Security is on Trial\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "IsAPISecurityTrial",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Premium Package\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "详情",
+          "member": "MajorEventsPkg",
+          "name": "MajorEventsPkg",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Hybrid Cloud Sub-node Package\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "详情",
+          "member": "HybridPkg",
+          "name": "HybridPkg",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "API security resource package\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "详情",
+          "member": "ApiPkg",
+          "name": "ApiPkg",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "MMPS Acceleration Package\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "详情",
+          "member": "MiniPkg",
+          "name": "MiniPkg",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Mini Program QPS Specification\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "uint64",
+          "name": "MiniQpsStandard",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Mini Program QPS Peak\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "50",
+          "member": "uint64",
+          "name": "MiniMaxQPS",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Last overage time.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2023-11-15 19:23:06",
+          "member": "string",
+          "name": "LastQpsExceedTime",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "ID quantity expansion package for secure mini program access.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "详情",
+          "member": "MiniExtendPkg",
+          "name": "MiniExtendPkg",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing item.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sv_wsm_waf_package_ultimate",
+          "member": "string",
+          "name": "BillingItem",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Flag for delay of instance deletion.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "FreeDelayFlag",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "IpAccessControlData": {
+      "document": "Data Encapsulation",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IP Blocklist/Allowlist\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "",
+          "member": "IpAccessControlItem",
+          "name": "Res",
+          "required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Counting.",
+          "example": "",
+          "member": "uint64",
+          "name": "TotalCount",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "IpAccessControlItem": {
+      "document": "IP Blocklist/Allowlist",
+      "members": [
+        {
+          "disabled": false,
+          "document": "MongoDB Table Auto-increment ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "64f9ad91ca22cf647117e44d",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Action",
+          "example": "0",
+          "member": "uint64",
+          "name": "ActionType",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ip",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Ip",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "test",
+          "member": "string",
+          "name": "Note",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source.",
+          "example": "test",
+          "member": "string",
+          "name": "Source",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update Timestamp\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "TsVersion",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expiration Timestamp",
+          "example": "0",
+          "member": "uint64",
+          "name": "ValidTs",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Effective status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "ValidStatus",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "55000001\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "规则ID",
+          "member": "uint64",
+          "name": "RuleId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "IP list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[\"12.65.102.1\",\"102.66.89.0\"]",
+          "member": "string",
+          "name": "IpList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Rule creation time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "CreateTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled task type\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "JobType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Periodic task type.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "test",
+          "member": "string",
+          "name": "CronType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Details of scheduled task configuration.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{}",
+          "member": "JobDateTime",
+          "name": "JobDateTime",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "IpAccessControlParam": {
+      "document": "IP blocklist/allowlist parameters structure, which is mainly used for IP blocklist/allowlist import.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IP list.",
+          "example": "[\"192.168.1.1\",\"192.168.1.2\"]",
+          "member": "string",
+          "name": "IpList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "valid_ts indicates a valid date. Its value is a second-level timestamp, such as 1680570420, which indicates 2023-04-04 09:07:00.",
+          "example": "1680570420",
+          "member": "uint64",
+          "name": "ValidTs",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "42: blocklist; 40: allowlist.",
+          "example": "42",
+          "member": "int64",
+          "name": "ActionType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "备注",
+          "member": "string",
+          "name": "Note",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "JobDateTime": {
       "document": "Rule execution time structure",
       "members": [
@@ -7757,6 +10196,310 @@
           "member": "string",
           "name": "LoadBalancerDomain",
           "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "MajorEventsPkg": {
+      "document": "Key protection resource information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sada",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Region",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-05",
+          "member": "string",
+          "name": "BeginTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "End time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-05",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Application Quantity\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "InquireNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Usage Quantity\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "UsedNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Renewal flag.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RenewFlag",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing item.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sv_wsm_waf_scene_major_events_basic",
+          "member": "string",
+          "name": "BillingItem",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Protection Package Status\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "HWState",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "MiniExtendPkg": {
+      "document": "Mobile Mini Programs Security access ID extension resource information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sada",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Region",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-05",
+          "member": "string",
+          "name": "BeginTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "End time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-05",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Purchase quantity.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Renewal flag.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RenewFlag",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing item.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sv_wsm_waf_scene_major_events_basic",
+          "member": "string",
+          "name": "BillingItem",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "MiniPkg": {
+      "document": "API security resource information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sada",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Region\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Region",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Start time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-05",
+          "member": "string",
+          "name": "BeginTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "End time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "2021-01-05",
+          "member": "string",
+          "name": "EndTime",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Purchase quantity.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Renewal flag.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "uint64",
+          "name": "RenewFlag",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing item.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sv_wsm_waf_scene_major_events_basic",
+          "member": "string",
+          "name": "BillingItem",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -8421,6 +11164,115 @@
       ],
       "type": "object"
     },
+    "ModifyCustomWhiteRuleRequest": {
+      "document": "ModifyCustomWhiteRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Edited domain",
+          "example": "test.qcloudwaf.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Edited rule ID",
+          "example": "1100000001",
+          "member": "uint64",
+          "name": "RuleId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Edited rule name",
+          "example": "test",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to continue executing other check logics when bypassing, continue executing regional ban protection - geoip; continue executing CC policy protection - cc; continue executing WEB application protection: owasp; continue executing AI engine protection - ai; continue executing information leakage protection - antileakage. If multiple items are selected, concatenate with commas (,).",
+          "example": "cc",
+          "member": "string",
+          "name": "Bypass",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Priority, an integer from 1 to 100. The smaller the number, the higher the execution priority of this rule.",
+          "example": "100",
+          "member": "uint64",
+          "name": "SortId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rule expiration deadline: 0 - permanently effective; other values correspond to the timestamp of the specified time.",
+          "example": "1234567",
+          "member": "uint64",
+          "name": "ExpireTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Matching condition array",
+          "example": "[]",
+          "member": "Strategy",
+          "name": "Strategies",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled task type",
+          "example": "test",
+          "member": "string",
+          "name": "JobType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled task configuration",
+          "example": "{}",
+          "member": "JobDateTime",
+          "name": "JobDateTime",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyCustomWhiteRuleResponse": {
+      "document": "ModifyCustomWhiteRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Operation status code: if all resource operations succeed, the success status code is returned; if any resource operation fails, the content of Message needs to be parsed to see which resource failed.",
+          "example": "{}",
+          "member": "ResponseCode",
+          "name": "Success",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyCustomWhiteRuleStatusRequest": {
       "document": "ModifyCustomWhiteRuleStatus request structure.",
       "members": [
@@ -8795,6 +11647,286 @@
           "type": "object",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceElasticModeRequest": {
+      "document": "ModifyInstanceElasticMode request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "waf_000001",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Elastic billing switch.",
+          "example": "1",
+          "member": "int64",
+          "name": "Mode",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceElasticModeResponse": {
+      "document": "ModifyInstanceElasticMode response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceNameRequest": {
+      "document": "ModifyInstanceName request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "New name.",
+          "example": "test1.qcloud.com",
+          "member": "string",
+          "name": "InstanceName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "aaaaa",
+          "member": "string",
+          "name": "InstanceID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Version",
+          "example": "aaaaa",
+          "member": "string",
+          "name": "Edition",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceNameResponse": {
+      "document": "ModifyInstanceName response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Modification status: 0 indicates success",
+          "example": "0",
+          "member": "int64",
+          "name": "ModifyCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceQpsLimitRequest": {
+      "document": "ModifyInstanceQpsLimit request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Package instance ID",
+          "example": "waf_00000007",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "QPS cap",
+          "example": "99999",
+          "member": "int64",
+          "name": "QpsLimit",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceQpsLimitResponse": {
+      "document": "ModifyInstanceQpsLimit response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceRenewFlagRequest": {
+      "document": "ModifyInstanceRenewFlag request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "waf_000001",
+          "member": "string",
+          "name": "InstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Renewal switch",
+          "example": "1",
+          "member": "int64",
+          "name": "RenewFlag",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyInstanceRenewFlagResponse": {
+      "document": "ModifyInstanceRenewFlag response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIpAccessControlRequest": {
+      "document": "ModifyIpAccessControl request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specific domain name, for example, test.qcloudwaf.com.\nGlobal domain name, that is, global.",
+          "example": "test.qcloudwaf.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "IP parameter list.",
+          "example": "[\"192.16.8.1.1\",\"192.168.2.1\"]",
+          "member": "string",
+          "name": "IpList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "42: blocklist; 40: allowlist.",
+          "example": "42",
+          "member": "int64",
+          "name": "ActionType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "valid_ts indicates a valid date. Its value is a second-level timestamp, such as 1680570420, which indicates 2023-04-04 09:07:00.",
+          "example": "1680570420",
+          "member": "int64",
+          "name": "ValidTS",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID",
+          "example": "551014389",
+          "member": "uint64",
+          "name": "RuleId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "waf_2kxq5hru00n2dxmx",
+          "member": "string",
+          "name": "InstanceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "WAF instance type: sparta-waf for SaaS WAF, clb-waf for CLB WAF.",
+          "example": "clb-waf",
+          "member": "string",
+          "name": "Edition",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Batch protection IP blocklists/allowlists or not. If yes, the value is batch; otherwise, it is empty.",
+          "example": "batch",
+          "member": "string",
+          "name": "SourceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remarks",
+          "example": "备注",
+          "member": "string",
+          "name": "Note",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Scheduled configuration type.",
+          "example": "无",
+          "member": "string",
+          "name": "JobType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Details of scheduled configuration.",
+          "example": "无",
+          "member": "JobDateTime",
+          "name": "JobDateTime",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIpAccessControlResponse": {
+      "document": "ModifyIpAccessControl response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -9937,6 +13069,134 @@
       ],
       "usage": "both"
     },
+    "QPSPackageNew": {
+      "document": "CLB-WAF QPS package new",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource ID\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "waf_000q6ntyb",
+          "member": "string",
+          "name": "ResourceIds",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "年月日",
+          "member": "string",
+          "name": "ValidTime",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Auto-renewal, 1: Enabled, 0: Disabled\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "RenewFlag",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of Package Purchases\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "Count",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Package Purchase Region, currently not used in CLB-WAF\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "gz",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Billing item.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "sv_wsm_waf_scene_bot_qpsep_clb",
+          "member": "string",
+          "name": "BillingItem",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "QpsData": {
+      "document": "Obtain the default value for elastic QPS",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Elastic QPS Default Value\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "3333",
+          "member": "uint64",
+          "name": "ElasticBillingDefault",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Elastic QPS Minimum Value\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100",
+          "member": "uint64",
+          "name": "ElasticBillingMin",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maximum Elastic QPS\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "100000",
+          "member": "uint64",
+          "name": "ElasticBillingMax",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maximum QPS for Business Expansion Package\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10000",
+          "member": "uint64",
+          "name": "QPSExtendMax",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maximum QPS for Overseas Business Expansion Package\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "10000",
+          "member": "uint64",
+          "name": "QPSExtendIntlMax",
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "RefreshAccessCheckResultRequest": {
       "document": "RefreshAccessCheckResult request structure.",
       "members": [
@@ -10332,6 +13592,51 @@
         }
       ],
       "usage": "in"
+    },
+    "SwitchElasticModeRequest": {
+      "document": "SwitchElasticMode request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Version, can only be sparta-waf, clb-waf, or cdn-waf",
+          "example": "clb-waf",
+          "member": "string",
+          "name": "Edition",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "0 indicates Off; 1 indicates On",
+          "example": "0",
+          "member": "int64",
+          "name": "Mode",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID",
+          "example": "实例id",
+          "member": "string",
+          "name": "InstanceID",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SwitchElasticModeResponse": {
+      "document": "SwitchElasticMode response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "TLSCiphers": {
       "document": "TLS encryption suite",
