@@ -106,6 +106,22 @@
         "title": "Creating a custom response page"
       }
     ],
+    "CreateFunction": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateFunction\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-293e7s5jne1i\",\n    \"Name\": \"test-function\",\n    \"Remark\": \"my test function\",\n    \"Content\": \"addEventListener('fetch', e => {\\r\\n  const response = new Response('Hello World!');\\r\\n  e.respondWith(response);\\r\\n});\"\n}",
+        "output": "{\n    \"Response\": {\n        \"FunctionId\": \"ef-1pakhnuy\",\n        \"RequestId\": \"85caed2d-e16e-4205-a322-1e907e830b55\"\n    }\n}",
+        "title": "Creating an Edge Function"
+      }
+    ],
+    "CreateFunctionRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateFunctionRule\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-293e7s5jne1i\",\n    \"FunctionRuleConditions\": [\n        {\n            \"RuleConditions\": [\n                {\n                    \"Operator\": \"equal\",\n                    \"Values\": [\n                        \"/123\"\n                    ],\n                    \"Target\": \"url\"\n                }\n            ]\n        }\n    ],\n    \"FunctionId\": \"ef-1pakhnuy\",\n    \"Remark\": \"my function rule\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RuleId\": \"rule-vnqup0uc\",\n        \"RequestId\": \"aab9a28a-4cce-434d-852f-5442275817aa\"\n    }\n}",
+        "title": "Creating a Rule for an Edge Function"
+      }
+    ],
     "CreateL4Proxy": [
       {
         "document": "This example shows you how to create a Layer 4 instance named 'test', with the acceleration zone of 'Availability zone in the Chinese mainland', under the zone with ZoneId 'zone-2jc2xy3hr7f7'.",
@@ -332,6 +348,22 @@
         "title": "Deleting a custom response page"
       }
     ],
+    "DeleteFunction": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteFunction\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-2gqxim9jstab\",\n    \"FunctionId\": \"ef-zcyhwq1d\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"cb52ba7d-ea45-4353-8972-88d0dc351c5b\"\n    }\n}",
+        "title": "Deleting an Edge Function"
+      }
+    ],
+    "DeleteFunctionRules": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteFunctionRules\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-2gqxim9jstab\",\n    \"RuleIds\": [\n        \"rule-vnqup0uc\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"cb52ba7d-ea45-4353-8972-88d0dc351c5b\"\n    }\n}",
+        "title": "Deleting a Rule for an Edge Function"
+      }
+    ],
     "DeleteL4Proxy": [
       {
         "document": "This example shows you how to delete a Layer 4 proxy instance with ZoneId as 'zone-24wjy25v1cwi' and ProxyId as 'sid-2qwk27xf7j9g'.",
@@ -522,6 +554,36 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEnvironments\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2k3lomh6sdcb\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"EnvInfos\": [\n            {\n                \"EnvId\": \"env-2kplomhisdcb\",\n                \"EnvType\": \"production\",\n                \"Status\": \"running\",\n                \"Scope\": [\n                    \"ALL\"\n                ],\n                \"CreateTime\": \"2023-09-21T00:00:00+00:00\",\n                \"UpdateTime\": \"2023-09-22T00:00:00+00:00\",\n                \"CurrentConfigGroupVersionInfos\": [\n                    {\n                        \"VersionId\": \"ver-2k3lomh6sdcb\",\n                        \"VersionNumber\": \"1.0\",\n                        \"GroupId\": \"cg-2k3lomh6sdcb\",\n                        \"GroupType\": \"l7_acceleration\",\n                        \"Description\": \"Used for production\",\n                        \"Status\": \"active\",\n                        \"CreateTime\": \"2023-09-22T00:00:00+00:00\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"9bd9c732-0f9a-4cd3-a3e8-1e9db5e53631\"\n    }\n}",
         "title": "Query Version Release Environment List"
+      }
+    ],
+    "DescribeFunctionRules": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeFunctionRules\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-293e7s5jne1i\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d7213f7f-a67b-4602-b630-ed6740e1a124\",\n        \"FunctionRules\": [\n            {\n                \"RuleId\": \"rule-53qpdadi\",\n                \"FunctionRuleConditions\": [\n                    {\n                        \"RuleConditions\": [\n                            {\n                                \"Operator\": \"equal\",\n                                \"Target\": \"url\",\n                                \"Values\": [\n                                    \"/test3\"\n                                ],\n                                \"IgnoreCase\": false,\n                                \"Name\": \"\"\n                            }\n                        ]\n                    }\n                ],\n                \"FunctionId\": \"ef-n1j14wfm\",\n                \"FunctionName\": \"test\",\n                \"Priority\": 2,\n                \"Remark\": \"my function rule\",\n                \"CreateTime\": \"2023-04-19T07:32:09Z\",\n                \"UpdateTime\": \"2023-04-19T07:36:43Z\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the List of Trigger Rules for an Edge Function"
+      }
+    ],
+    "DescribeFunctionRuntimeEnvironment": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeFunctionRuntimeEnvironment\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-kwsqufps\",\n    \"FunctionId\": \"ef-xs2333\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5f24d792-050d-439f-a864-353fd7b67e9f\",\n        \"EnvironmentVariables\": [\n            {\n                \"Key\": \"name\",\n                \"Type\": \"string\",\n                \"Value\": \"edgeone\"\n            }\n        ]\n    }\n}",
+        "title": "Querying the Runtime Environment of an Edge Function"
+      }
+    ],
+    "DescribeFunctions": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeFunctions\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-293e7s5jne1i\",\n    \"Filters\": [\n        {\n            \"Name\": \"name\",\n            \"Values\": [\n                \"test\"\n            ]\n        }\n    ],\n    \"Offset\": 0,\n    \"Limit\": 2\n}",
+        "output": "{\n    \"Response\": {\n        \"Functions\": [\n            {\n                \"FunctionId\": \"ef-1pakhnuy\",\n                \"ZoneId\": \"zone-293e7s5jne1i\",\n                \"Content\": \"addEventListener('fetch', e => {\\r\\n  const response = new Response('Hello World!');\\r\\n  e.respondWith(response);\\r\\n});\",\n                \"Name\": \"test-function\",\n                \"Remark\": \"my function\",\n                \"Domain\": \"test-function-zone-293e7s5jne1i-123456789.eo-edgefunctions1.com\",\n                \"CreateTime\": \"2022-09-19T15:23:25+08:00\",\n                \"UpdateTime\": \"2022-09-19T15:27:13+08:00\"\n            },\n            {\n                \"FunctionId\": \"ef-2pakw1uk\",\n                \"ZoneId\": \"zone-293e7s5jne1i\",\n                \"Content\": \"addEventListener('fetch', e => {\\r\\n  const response = new Response('Hello World test!');\\r\\n  e.respondWith(response);\\r\\n});\",\n                \"Name\": \"test-function2\",\n                \"Remark\": \"my function 2\",\n                \"Domain\": \"test-function-zone-293e7s5jne1i-123456789.eo-edgefunctions1.com\",\n                \"CreateTime\": \"2022-09-20T15:23:25+08:00\",\n                \"UpdateTime\": \"2022-09-20T15:27:13+08:00\"\n            }\n        ],\n        \"TotalCount\": 17,\n        \"RequestId\": \"ab8a61c5-4eef-45af-9384-b071f1922541\"\n    }\n}",
+        "title": "Matching the List of Edge Functions by Name"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeFunctions\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-293e7s5jne1i\",\n    \"FunctionIds\": [\n        \"ef-1pakhnuy\"\n    ],\n    \"Offset\": 0,\n    \"Limit\": 2\n}",
+        "output": "{\n    \"Response\": {\n        \"Functions\": [\n            {\n                \"FunctionId\": \"ef-1pakhnuy\",\n                \"ZoneId\": \"zone-293e7s5jne1i\",\n                \"Content\": \"addEventListener('fetch', e => {\\r\\n  const response = new Response('Hello World!');\\r\\n  e.respondWith(response);\\r\\n});\",\n                \"Name\": \"test-function\",\n                \"Remark\": \"my function\",\n                \"Domain\": \"test-function-zone-293e7s5jne1i-123456789.eo-edgefunctions1.com\",\n                \"CreateTime\": \"2022-09-19T15:23:25+08:00\",\n                \"UpdateTime\": \"2022-09-19T15:27:13+08:00\"\n            }\n        ],\n        \"TotalCount\": 1,\n        \"RequestId\": \"ab8a61c5-4eef-45af-9384-b071f1922541\"\n    }\n}",
+        "title": "Matching the List of Edge Functions by Function ID"
       }
     ],
     "DescribeHostsSetting": [
@@ -810,6 +872,32 @@
         "title": "Downloading L7 Offline Logs"
       }
     ],
+    "HandleFunctionRuntimeEnvironment": [
+      {
+        "document": "This example shows you how to add a specified environment variable list to the runtime environment of a function.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: HandleFunctionRuntimeEnvironment\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-28569s6od5na\",\n    \"FunctionId\": \"ef-22xxf22\",\n    \"Operation\": \"setEnvironmentVariable\",\n    \"EnvironmentVariables\": [\n        {\n            \"Key\": \"name\",\n            \"Type\": \"string\",\n            \"Value\": \"edgeone\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4dcgtb24-7dc5-46s2-9q3e-95825d53dcs3a\"\n    }\n}",
+        "title": "Adding Environment Variables"
+      },
+      {
+        "document": "This example shows you how to delete a specified environment variable list in the runtime environment of a function.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: HandleFunctionRuntimeEnvironment\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-28569s6od5na\",\n    \"FunctionId\": \"ef-22xxf22\",\n    \"Operation\": \"deleteEnvironmentVariable\",\n    \"EnvironmentVariables\": [\n        {\n            \"Key\": \"name\",\n            \"Value\": \"\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4dcgtb24-7dc5-46s2-9q3e-95825d53dcs3a\"\n    }\n}",
+        "title": "Deleting Environment Variables"
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: HandleFunctionRuntimeEnvironment\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-28569s6od5na\",\n    \"FunctionId\": \"ef-22xxf22\",\n    \"Operation\": \"clearEnvironmentVariable\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4dcgtb24-7dc5-46s2-9q3e-95825d53dcs3a\"\n    }\n}",
+        "title": "Clearing Environment Variables"
+      },
+      {
+        "document": "This example shows you how to use a new environment variable list to override the existing list in the runtime environment of a function.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: HandleFunctionRuntimeEnvironment\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-28569s6od5na\",\n    \"FunctionId\": \"ef-22xxf22\",\n    \"Operation\": \"resetEnvironmentVariable\",\n    \"EnvironmentVariables\": [\n        {\n            \"Key\": \"new_name\",\n            \"Type\": \"string\",\n            \"Value\": \"edgeone_new\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"4dcgtb24-7dc5-46s2-9q3e-95825d53dcs3a\"\n    }\n}",
+        "title": "Resetting Environment Variables"
+      }
+    ],
     "IdentifyZone": [
       {
         "document": "The following example shows how to verify your ownership of the site.",
@@ -904,6 +992,30 @@
         "title": "Modifying a custom response page"
       }
     ],
+    "ModifyFunction": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyFunction\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-2gqxim9jstab\",\n    \"FunctionId\": \"ef-1pakhnuy\",\n    \"Remark\": \"my function\",\n    \"Content\": \"addEventListener('fetch', e => {\\r\\n  const response = new Response('Hello World!');\\r\\n  e.respondWith(response);\\r\\n});\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b660855b-a0a7-4cd3-832d-e01fb1b8da93\"\n    }\n}",
+        "title": "Modifying an Edge Function"
+      }
+    ],
+    "ModifyFunctionRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyFunctionRule\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-2gqxim9jstab\",\n    \"RuleId\": \"rule-vnqup0uc\",\n    \"FunctionRuleConditions\": [\n        {\n            \"RuleConditions\": [\n                {\n                    \"Operator\": \"equal\",\n                    \"Values\": [\n                        \"/test\"\n                    ],\n                    \"Target\": \"url\"\n                }\n            ]\n        }\n    ],\n    \"FunctionId\": \"ef-1pakhnuy\",\n    \"Remark\": \"my function\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"7a1e998f-fa00-4670-8457-ed4b4fe5018a\"\n    }\n}",
+        "title": "Modifying a Rule for an Edge Function"
+      }
+    ],
+    "ModifyFunctionRulePriority": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyFunctionRulePriority\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"zone-xvq1df34\",\n    \"RuleIds\": [\n        \"rule-x1f2dfhl\",\n        \"rule-myuqwu2d\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"cb52ba7d-ea45-4353-8972-88d0dc351c5b\"\n    }\n}",
+        "title": "Modifying the Priority of Rules for an Edge Function"
+      }
+    ],
     "ModifyHostsCertificate": [
       {
         "document": "Add the certificate `cert-244ffgv 7m17xw` to the domain name `abc.test.com` under the site `zone-2fgd 17m17xw`.",
@@ -916,6 +1028,12 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyHostsCertificate\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2fgd17m17xw\",\n    \"Hosts\": [\n        \"abc.test.com\"\n    ],\n    \"Mode\": \"eofreecert\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"084d5612-67a7-4aca-aac9-827aa3662b2d\"\n    }\n}",
         "title": "Configuring a free certificate"
+      },
+      {
+        "document": "针对站点（ZoneId 为 zone-2fgd17m17xw）下的域名（abc.test.com）配置 边缘双向认证（CertId 为 cert-xxxxx）。",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyHostsCertificate\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-2fgd17m17xw\",\n    \"Hosts\": [\n        \"abc.test.com\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e5a0d0f-52f3-4bad-9bd3-dcf1d5c954e7\"\n    }\n}",
+        "title": "配置边缘双向认证"
       }
     ],
     "ModifyL4Proxy": [

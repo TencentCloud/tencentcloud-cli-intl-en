@@ -77,6 +77,20 @@
       "output": "CreateCustomizeErrorPageResponse",
       "status": "online"
     },
+    "CreateFunction": {
+      "document": "This API is used to create and deploy an edge function to EdgeOne edge nodes.",
+      "input": "CreateFunctionRequest",
+      "name": "Creates an edge function",
+      "output": "CreateFunctionResponse",
+      "status": "online"
+    },
+    "CreateFunctionRule": {
+      "document": "This API is used to create a trigger rule for an edge function.",
+      "input": "CreateFunctionRuleRequest",
+      "name": "Creates a trigger rule for an edge function",
+      "output": "CreateFunctionRuleResponse",
+      "status": "online"
+    },
     "CreateL4Proxy": {
       "document": "This API is used to create Layer 4 proxy instances.",
       "input": "CreateL4ProxyRequest",
@@ -194,6 +208,20 @@
       "input": "DeleteCustomErrorPageRequest",
       "name": "Deletes a custom response page",
       "output": "DeleteCustomErrorPageResponse",
+      "status": "online"
+    },
+    "DeleteFunction": {
+      "document": "This API is used to delete an edge function. Once deleted, the function cannot be recovered, and associated trigger rules are also deleted.",
+      "input": "DeleteFunctionRequest",
+      "name": "Deletes an edge function",
+      "output": "DeleteFunctionResponse",
+      "status": "online"
+    },
+    "DeleteFunctionRules": {
+      "document": "This API is used to delete a trigger rule for an edge function.",
+      "input": "DeleteFunctionRulesRequest",
+      "name": "Deletes a trigger rule for an edge function",
+      "output": "DeleteFunctionRulesResponse",
       "status": "online"
     },
     "DeleteL4Proxy": {
@@ -362,6 +390,27 @@
       "input": "DescribeEnvironmentsRequest",
       "name": "Query Environment Information",
       "output": "DescribeEnvironmentsResponse",
+      "status": "online"
+    },
+    "DescribeFunctionRules": {
+      "document": "This API is used to query the list of trigger rules for an edge function. It supports filtering by rule ID, function ID, rule description, and so on.",
+      "input": "DescribeFunctionRulesRequest",
+      "name": "Queries a trigger rule for an edge function",
+      "output": "DescribeFunctionRulesResponse",
+      "status": "online"
+    },
+    "DescribeFunctionRuntimeEnvironment": {
+      "document": "This API is used to query the runtime environment of an edge function, including environment variables.",
+      "input": "DescribeFunctionRuntimeEnvironmentRequest",
+      "name": "Queries the runtime environment of an edge function",
+      "output": "DescribeFunctionRuntimeEnvironmentResponse",
+      "status": "online"
+    },
+    "DescribeFunctions": {
+      "document": "This API is used to query the list of edge functions. It supports filtering by function ID, name, description, and so on.",
+      "input": "DescribeFunctionsRequest",
+      "name": "Queries the list of trigger rules",
+      "output": "DescribeFunctionsResponse",
       "status": "online"
     },
     "DescribeHostsSetting": {
@@ -546,6 +595,13 @@
       "output": "DownloadL7LogsResponse",
       "status": "online"
     },
+    "HandleFunctionRuntimeEnvironment": {
+      "document": "This API is used to operate the runtime environment of an edge function. It supports related settings for environment variables.\nAfter the environment variables are set, they can be used in the function code. For details, see [Edge Functions Referencing Environment Variables](https://intl.cloud.tencent.com/document/product/1552/109151?from_cn_redirect=1#0151fd9a-8b0e-407b-ae37-54553a60ded6).",
+      "input": "HandleFunctionRuntimeEnvironmentRequest",
+      "name": "Operates the runtime environment of an edge function",
+      "output": "HandleFunctionRuntimeEnvironmentResponse",
+      "status": "online"
+    },
     "IdentifyZone": {
       "document": "This API is used to verify ownership of the site.",
       "input": "IdentifyZoneRequest",
@@ -621,6 +677,27 @@
       "input": "ModifyCustomErrorPageRequest",
       "name": "Modifies a custom response page",
       "output": "ModifyCustomErrorPageResponse",
+      "status": "online"
+    },
+    "ModifyFunction": {
+      "document": "This API is used to modify an edge function. It supports modifying the function content and description. The function will take effect immediately after modification and redeployment.",
+      "input": "ModifyFunctionRequest",
+      "name": "Modifies an edge function",
+      "output": "ModifyFunctionResponse",
+      "status": "online"
+    },
+    "ModifyFunctionRule": {
+      "document": "This API is used to modify a trigger rule for an edge function. It supports modifying rule conditions, execution functions, and description.",
+      "input": "ModifyFunctionRuleRequest",
+      "name": "Modifies a trigger rule for an edge function",
+      "output": "ModifyFunctionRuleResponse",
+      "status": "online"
+    },
+    "ModifyFunctionRulePriority": {
+      "document": "This API is used to modify the priority of trigger rules for an edge function.",
+      "input": "ModifyFunctionRulePriorityRequest",
+      "name": "Modifies the priority of trigger rules for an edge function",
+      "output": "ModifyFunctionRulePriorityResponse",
       "status": "online"
     },
     "ModifyHostsCertificate": {
@@ -1010,6 +1087,7 @@
           "example": "on",
           "member": "string",
           "name": "Switch",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1020,6 +1098,7 @@
           "example": "无",
           "member": "AclUserRule",
           "name": "AclUserRules",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -1030,6 +1109,7 @@
           "example": "无",
           "member": "AclUserRule",
           "name": "Customizes",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -1799,7 +1879,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The protocol. Values:\n<li>`TCP`: TCP protocol.</li>\n<li>`UDP`: UDP protocol.</li>",
+          "document": "Protocol. Valid values:\n<li>TCP: TCP protocol;</li>\n<li>UDP: UDP protocol.</li>",
           "example": "TCP",
           "member": "string",
           "name": "Proto",
@@ -1810,7 +1890,7 @@
         },
         {
           "disabled": false,
-          "document": "The access port, which can be:\n<li>A single port, such as 80</li>\n<li>A port range, such as 81-82</li>\nNote that each rule can have up to 20 ports.",
+          "document": "Port. Supported formats:\n<li>A single port, such as 80.</li>\n<li>A port range, such as 81-82, indicating two ports 81 and 82.</li>\nNote: Up to 20 ports can be input for each rule.",
           "example": "80",
           "member": "string",
           "name": "Port",
@@ -1821,7 +1901,7 @@
         },
         {
           "disabled": false,
-          "document": "Origin server type. Valid values:<li>custom: Manually added;</li><li>loadbalancer: Cloud Load Balancer;</li><li>origins: Origin server group.</li>",
+          "document": "Origin server type. Valid values:\n<li>custom: manually added;</li>\n<li>loadbalancer: cloud load balancer;</li>\n<li>origins: origin server group.</li>",
           "example": "custom",
           "member": "string",
           "name": "OriginType",
@@ -1832,7 +1912,7 @@
         },
         {
           "disabled": false,
-          "document": "Details of the origin server:\n<li>When OriginType is custom, it indicates one or more origin servers, such as [\"8.8.8.8\",\"9.9.9.9\"] or OriginValue=[\"test.com\"];</li><li>When OriginType is loadbalancer, it indicates a single Cloud Load Balancer, such as [\"lb-xdffsfasdfs\"];</li>\n<li>When OriginType is origins, it requires one and only one element, which represents an origin server group ID, such as [\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"].</li>",
+          "document": "Origin server information.\n<li>When OriginType is custom, it indicates one or more origin servers, such as `[\"8.8.8.8\",\"9.9.9.9\"]` or `OriginValue=[\"test.com\"]`;</li>\n<li>When OriginType is loadbalancer, it indicates a cloud load balancer, such as [\"lb-xdffsfasdfs\"];</li>\n<li>When OriginType is origins, it requires one and only one element, indicating the origin server group ID, such as [\"origin-537f5b41-162a-11ed-abaa-525400c5da15\"].</li>",
           "example": "[\"1.1.1.1\",\"2.2.2.2\"]",
           "member": "string",
           "name": "OriginValue",
@@ -1843,7 +1923,7 @@
         },
         {
           "disabled": false,
-          "document": "The rule ID.",
+          "document": "Rule ID.",
           "example": "rule-xxx",
           "member": "string",
           "name": "RuleId",
@@ -1854,7 +1934,7 @@
         },
         {
           "disabled": false,
-          "document": "The rule status. Values:\n<li>`online`: Enabled.</li>\n<li>`offline`: Disabled.</li>\n<li>`progress`: Deploying</li>\n<li>`stopping`: Disabling</li>\n<li>`fail`: Failed to deploy or disable</li>",
+          "document": "Status. Valid values:\n<li>online: enabled;</li>\n<li>offline: disabled;</li>\n<li>progress: deploying;</li>\n<li>stopping: disabling;</li>\n<li>fail: deployment or disabling failed.</li>",
           "example": "online",
           "member": "string",
           "name": "Status",
@@ -1865,7 +1945,7 @@
         },
         {
           "disabled": false,
-          "document": "Passes the client IP. Values:\n<li>`TOA`: Pass the client IP via TOA (available only when `Proto=TCP`).</li>\n<li>`PPV1`: Pass the client IP via Proxy Protocol V1 (available only when `Proto=TCP`).</li>\n<li>`PPV2`: Pass the client IP via Proxy Protocol V2.</li>\n<li>`OFF`: Not pass the client IP.</li>Default value: OFF.",
+          "document": "Passing the client IP address. Valid values:\n<li>TOA: passing via TOA, available only when Proto = TCP;</li>\n<li>PPV1: passing via Proxy Protocol V1, available only when Proto = TCP;</li>\n<li>PPV2: passing via Proxy Protocol V2;</li>\n<li>OFF: no passing.</li>Default value: OFF.",
           "example": "TOA",
           "member": "string",
           "name": "ForwardClientIp",
@@ -1876,7 +1956,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to enable session persistence. Values:\n<li>`true`: Enable</li>\n<li>`false`: Disable</li>Default value: false",
+          "document": "Whether to enable session persistence. Valid values:\n<li>true: Enable;</li>\n<li>false: Disable.</li>Default value: false.",
           "example": "false",
           "member": "bool",
           "name": "SessionPersist",
@@ -1887,7 +1967,7 @@
         },
         {
           "disabled": false,
-          "document": "Duration for the persistent session. The value takes effect only when `SessionPersist = true`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Duration for session persistence. The value takes effect only when SessionPersist is true.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
           "example": "3600",
           "member": "uint64",
           "name": "SessionPersistTime",
@@ -1898,7 +1978,7 @@
         },
         {
           "disabled": false,
-          "document": "The origin port, which can be:\n<li>A single port, such as 80</li>\n<li>A port range, such as 81-82</li>",
+          "document": "Origin server port. Supported formats:\n<li>A single port, such as 80.</li>\n<li>A port range, such as 81-82, indicating two ports 81 and 82.</li>",
           "example": "80-90",
           "member": "string",
           "name": "OriginPort",
@@ -1909,7 +1989,7 @@
         },
         {
           "disabled": false,
-          "document": "Rule tag.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Rule tag.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
           "example": "rule-service1",
           "member": "string",
           "name": "RuleTag",
@@ -2810,6 +2890,7 @@
           "member": "string",
           "name": "CertId",
           "output_required": false,
+          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2820,6 +2901,7 @@
           "member": "string",
           "name": "Alias",
           "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2830,6 +2912,7 @@
           "member": "string",
           "name": "Type",
           "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2840,6 +2923,7 @@
           "member": "datetime_iso",
           "name": "ExpireTime",
           "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2850,6 +2934,7 @@
           "member": "datetime_iso",
           "name": "DeployTime",
           "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2860,6 +2945,7 @@
           "member": "string",
           "name": "SignAlgo",
           "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2870,11 +2956,12 @@
           "member": "string",
           "name": "Status",
           "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "CheckCnameStatusRequest": {
       "document": "CheckCnameStatus request structure.",
@@ -3660,7 +3747,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom response page name. The name must be 2-30 characters long.",
+          "document": "Custom error page name. The name must be 2-30 characters long.",
           "example": "错误定制页",
           "member": "string",
           "name": "Name",
@@ -3669,7 +3756,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom response page type, with values:<li>text/html; </li><li>application/json;</li><li>text/plain;</li><li>text/xml.</li>",
+          "document": "Custom error page type, with values:<li>text/html; </li><li>application/json;</li><li>text/plain;</li><li>text/xml.</li>",
           "example": "application/json",
           "member": "string",
           "name": "ContentType",
@@ -3678,7 +3765,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom response page description, not exceeding 60 characters.",
+          "document": "Custom error page description, not exceeding 60 characters.",
           "example": "web规则自定义错误页面",
           "member": "string",
           "name": "Description",
@@ -3687,7 +3774,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom response page content, not exceeding 2 KB.",
+          "document": "Custom error page content, not exceeding 2 KB.",
           "example": "{\"title\":\"自定义错误页\", \"Content\":\"自定义错误页面内容\"}",
           "member": "string",
           "name": "Content",
@@ -3702,10 +3789,138 @@
       "members": [
         {
           "disabled": false,
-          "document": "Custom response page ID.",
+          "document": "Page ID.",
           "example": "p-2kplomhisdcb",
           "member": "string",
           "name": "PageId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateFunctionRequest": {
+      "document": "CreateFunction request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-z2fc1fkl",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function name, which can contain up to 30 characters, including lowercase letters, digits, and hyphens. It should start and end with a digit or a letter.",
+          "example": "test-function",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function content, which currently only supports JavaScript code. Its maximum size is 5 MB.",
+          "example": "无",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function description, which can contain up to 60 characters.",
+          "example": "鉴权函数",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateFunctionResponse": {
+      "document": "CreateFunction response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Function ID.",
+          "example": "ef-jjhvk7ec",
+          "member": "string",
+          "name": "FunctionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateFunctionRuleRequest": {
+      "document": "CreateFunctionRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-292mnbdkdzo6",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule condition list. There is an OR relationship between different conditions of the same trigger rule.",
+          "example": "无",
+          "member": "FunctionRuleCondition",
+          "name": "FunctionRuleConditions",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Function ID, specifying a function executed when a trigger rule condition is met.",
+          "example": "ef-0agikbrr",
+          "member": "string",
+          "name": "FunctionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule description, which can contain up to 60 characters.",
+          "example": "鉴权",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateFunctionRuleResponse": {
+      "document": "CreateFunctionRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule ID.",
+          "example": "rule-02y3grbu",
+          "member": "string",
+          "name": "RuleId",
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
@@ -3733,7 +3948,7 @@
         },
         {
           "disabled": false,
-          "document": "Layer 4 proxy instance name. You can enter 1-50 characters. Valid characters are a-z, 0-9, and hyphens (-). However, hyphens (-) cannot be used individually or consecutively and should not be placed at the beginning or end of the name. Modifications are not allowed after creation.",
+          "document": "Name of the L4 proxy instance, which can contain 1-50 characters, including a-z, 0-9, and hyphens (-). However, hyphens (-) cannot be used individually or consecutively and should not be placed at the beginning or end of the name. Modification is not allowed after creation.\n",
           "example": "proxy-name",
           "member": "string",
           "name": "ProxyName",
@@ -3742,7 +3957,7 @@
         },
         {
           "disabled": false,
-          "document": "Acceleration zone of the Layer 4 proxy instance.<li>mainland: Availability zone in the Chinese mainland;</li><li>overseas: Global availability zone (excluding the Chinese mainland);</li><li>global: Global availability zone.</li>",
+          "document": "Acceleration zone of the L4 proxy instance.\n<li>mainland: Chinese mainland availability zone;</li>\n<li>overseas: global availability zone (excluding the Chinese mainland);</li>\n<li>global: global availability zone.</li>",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -3751,7 +3966,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to enable IPv6 access. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li>\n<li>off: Disable.</li>\n",
+          "document": "Whether to enable IPv6 access. If this parameter is not input, the default value `off` is used. This configuration can be enabled only in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\n\n",
           "example": "on",
           "member": "string",
           "name": "Ipv6",
@@ -3760,7 +3975,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to enable the fixed IP address. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li>\n<li>off: Disable.</li>\n",
+          "document": "Whether to enable static IP. If this parameter is not input, the default value `off` is used. This configuration can be enabled only in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\n",
           "example": "off",
           "member": "string",
           "name": "StaticIp",
@@ -3769,7 +3984,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies whether to enable network optimization in the Chinese mainland. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li>\n<li>off: Disable.</li>\n",
+          "document": "Whether to enable network optimization for the Chinese mainland. If this parameter is not input, the default value `off` is used. This configuration can be enabled only in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:\n<li>on: Enable;</li>\n<li>off: Disable.</li>\n",
           "example": "on",
           "member": "string",
           "name": "AccelerateMainland",
@@ -3778,7 +3993,7 @@
         },
         {
           "disabled": false,
-          "document": "Layer 3/Layer 4 DDoS protection. The default protection option of the platform will be used if it is left empty. For details, see [Exclusive DDoS Protection Usage](https://intl.cloud.tencent.com/document/product/1552/95994?from_cn_redirect=1).",
+          "document": "Configuration of L3/L4 DDoS protection. If this parameter is not input, the default platform protection option is used. For details, see [Exclusive DDoS Protection Usage] (https://intl.cloud.tencent.com/document/product/1552/95994?from_cn_redirect=1).",
           "example": "无",
           "member": "DDosProtectionConfig",
           "name": "DDosProtectionConfig",
@@ -3793,7 +4008,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Layer 4 instance ID.",
+          "document": "L4 instance ID.",
           "example": "无",
           "member": "string",
           "name": "ProxyId",
@@ -3999,7 +4214,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Type of plan subscribed to. Valid values:<li>personal: Personal Edition Plan, prepaid;</li><li>basic: Basic Edition Plan, prepaid;</li><li>standard: Standard Edition Plan, prepaid;</li><li>enterprise: Enterprise Edition Plan, post-paid. </li>When subscribing to a prepaid plan, ensure there is sufficient balance in the account, as insufficient balance will result in a pending payment order.\nFor an overview of billing, refer to [Billing Overview](https://intl.cloud.tencent.com/document/product/1552/94156?from_cn_redirect=1).\nFor differences between plans, refer to [ Comparison of EdgeOne Plan](https://intl.cloud.tencent.com/document/product/1552/94165?from_cn_redirect=1).",
+          "document": "Type of the subscribed plan. Valid values: <li>personal: Personal plan in prepaid mode;</li><li>basic: Basic plan in prepaid mode;</li><li>standard: Standard plan in prepaid mode;</li><li>enterprise: Enterprise plan in pay-as-you-go mode.</li>When subscribing to a prepaid plan, please ensure that your account balance is sufficient. If the balance is insufficient, an order to be paid will be generated.\nFor an overview of billing, see [EdgeOne Billing Overview](https://intl.cloud.tencent.com/document/product/1552/94156?from_cn_redirect=1).\nFor differences between plans, refer to [EdgeOne Billing Plan Comparison](https://intl.cloud.tencent.com/document/product/1552/94165?from_cn_redirect=1).",
           "example": "无",
           "member": "string",
           "name": "PlanType",
@@ -4008,7 +4223,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to automatically use a voucher. Valid values: <li>true: Yes;</li><li>false: No. </li> This parameter is valid only when PlanType is personal, basic, or standard.\nIf this field is not specified, the default value 'false' will be used.",
+          "document": "Whether to automatically use a voucher. Valid values: <li>true: Yes;</li><li>false: No.</li>This parameter is valid only when PlanType is personal, basic, or standard.\nIf this field is not specified, the default value 'false' will be used.",
           "example": "无",
           "member": "string",
           "name": "AutoUseVoucher",
@@ -4017,7 +4232,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameters for subscribing to prepaid plans. When PlanType is personal, basic, or standard, this parameter can be optionally set to specify the subscription duration and whether to enable auto-renewal for the plan.\nIf this field is not specified, the default plan duration is 1 month, with auto-renewal disabled.",
+          "document": "Parameters for subscribing to a prepaid plan. When PlanType is personal, basic, or standard, this parameter is optional and can be used to specify the subscription duration of the plan and enable auto-renewal.\nIf this field is not specified, the default plan duration is 1 month, with auto-renewal disabled.",
           "example": "无",
           "member": "PrepaidPlanParam",
           "name": "PrepaidPlanParam",
@@ -4239,7 +4454,7 @@
         },
         {
           "disabled": false,
-          "document": "The name of the real-time log delivery task, which is a combination of numbers, English letters, - and _, containing up to 200 characters.",
+          "document": "Name of a real-time log shipping task, which can contain up to 200 characters, including digits, English letters, hyphens (-) and underscores (_).",
           "example": "test_log_task",
           "member": "string",
           "name": "TaskName",
@@ -4248,7 +4463,7 @@
         },
         {
           "disabled": false,
-          "document": "The type of the real-time log delivery task. Valid values:\n<li>cls: Push to Tencent Cloud CLS;</li>\n<li>custom_endpoint: Push to a user-defined HTTP(S) address;</li>\n<li>s3: Push to an AWS S3-compatible bucket address.</li>",
+          "document": "Type of a real-time log shipping task. Valid values:\n<li>cls: push to Tencent Cloud CLS;</li>\n<li>custom_endpoint: push to a custom HTTP(S) address;</li>\n<li>s3: push to an AWS S3-compatible bucket address.</li>",
           "example": "cls",
           "member": "string",
           "name": "TaskType",
@@ -4257,7 +4472,7 @@
         },
         {
           "disabled": false,
-          "document": "The list of entities (Layer 7 domains or Layer 4 proxy instances) corresponding to the real-time log delivery task. Valid value examples:\n<li>Layer 7 domain: domain.example.com;</li>\n<li>Layer 4 proxy instance: sid-2s69eb5wcms7.</li>",
+          "document": "List of entities (L7 domain names or L4 proxy instances) corresponding to a real-time log shipping task. Valid value examples:\n<li>L7 domain name: domain.example.com;</li>\n<li>L4 proxy instance: sid-2s69eb5wcms7.</li>",
           "example": "[\"domain.example.com\"]",
           "member": "string",
           "name": "EntityList",
@@ -4266,7 +4481,7 @@
         },
         {
           "disabled": false,
-          "document": "The type of data delivery. Valid values:\n<li>domain: Site acceleration log;</li>\n<li>application: Layer 4 proxy log;</li>\n<li>web-rateLiming: Rate limit and CC attack defense log;</li>\n<li>web-attack: Managed rule log;</li>\n<li>web-rule: Custom rule log;</li>\n<li>web-bot: Bot management log.</li>",
+          "document": "Data shipping type. Valid values:\n<li>domain: site acceleration logs;</li>\n<li>application: L4 proxy logs;</li>\n<li>web-rateLiming: rate limit and CC attack defense logs;</li>\n<li>web-attack: managed rule logs;</li>\n<li>web-rule: custom rule logs;</li>\n<li>web-bot: Bot management logs.</li>",
           "example": "domain",
           "member": "string",
           "name": "LogType",
@@ -4275,7 +4490,7 @@
         },
         {
           "disabled": false,
-          "document": "The data delivery area. Valid values:\n<li>mainland: Within the Chinese mainland;</li>\n<li>overseas: Global (excluding the Chinese mainland).</li>",
+          "document": "Data shipping area. Valid values:\n<li>mainland: within the Chinese mainland;</li>\n<li>overseas: global (excluding the Chinese mainland).</li>",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -4284,7 +4499,7 @@
         },
         {
           "disabled": false,
-          "document": "The list of predefined fields for delivery.",
+          "document": "List of predefined fields for shipping.",
           "example": "[\"RequestID\",\"ClientIP\",\"RequestTime\"]",
           "member": "string",
           "name": "Fields",
@@ -4293,7 +4508,7 @@
         },
         {
           "disabled": false,
-          "document": "The list of custom fields for delivery, supporting extracting specified field values from HTTP request headers, response headers, and cookies. Each custom field name must be unique and the maximum number of fields is 200.",
+          "document": "List of custom fields for shipping. It supports extracting specified field values from HTTP request headers, response headers, and cookies. The name of each custom field must be unique and the maximum number of fields is 200.",
           "example": "无",
           "member": "CustomField",
           "name": "CustomFields",
@@ -4302,7 +4517,7 @@
         },
         {
           "disabled": false,
-          "document": "Log delivery filter conditions. If this field is not filled in, all logs will be delivered.",
+          "document": "Filter criteria of log shipping. If this parameter is not input, all logs will be shipped.",
           "example": "无",
           "member": "DeliveryCondition",
           "name": "DeliveryConditions",
@@ -4311,7 +4526,7 @@
         },
         {
           "disabled": false,
-          "document": "The sampling ratio in permille. Value range: 1 to 1000. For example, 605 represents a sampling ratio of 60.5%. If this field is not filled in, the sampling ratio is 100%.",
+          "document": "Sampling ratio in permille. Value range: 1-1000. For example, 605 indicates a sampling ratio of 60.5%. If this parameter is not input, the sampling ratio is 100%.",
           "example": "605",
           "member": "uint64",
           "name": "Sample",
@@ -4329,7 +4544,7 @@
         },
         {
           "disabled": false,
-          "document": "The configuration information of CLS. This parameter is required when TaskType is cls.",
+          "document": "Configuration information of CLS. This parameter is required when TaskType is cls.",
           "example": "无",
           "member": "CLSTopic",
           "name": "CLS",
@@ -4338,7 +4553,7 @@
         },
         {
           "disabled": false,
-          "document": "The configuration information of the custom HTTP service. This parameter is required when TaskType is custom_endpoint.",
+          "document": "Configuration information of the custom HTTP service. This parameter is required when TaskType is custom_endpoint.",
           "example": "无",
           "member": "CustomEndpoint",
           "name": "CustomEndpoint",
@@ -4347,7 +4562,7 @@
         },
         {
           "disabled": false,
-          "document": "The configuration information of the AWS S3-compatible bucket. This parameter is required when TaskType is s3.",
+          "document": "Configuration information of the AWS S3-compatible bucket. This parameter is required when TaskType is s3.",
           "example": "无",
           "member": "S3",
           "name": "S3",
@@ -4362,7 +4577,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The ID of the successfully created task.",
+          "document": "ID of the successfully created task.",
           "example": "ace8680b-55b9-498b-a113-056ab68d1da1",
           "member": "string",
           "name": "TaskId",
@@ -4558,7 +4773,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Site access types. Options include:\n<li>`partial`: (Default) Access through a CNAME record</li>\n<li>`full`: Access through a name server</li>\n<li>`noDomainAccess`: Access without using a domain name</li>",
+          "document": "Site access type. If this parameter is not input, the default value `partial` is used. Valid values of this parameter are as follows:\n<li>partial: CNAME access;</li>\n<li>full: NS access;</li>\n<li>noDomainAccess: access with no domain name.</li>\n<li>dnsPodAccess: DNSPod hosted access. To use this access mode, your domain name should have been hosted on DNSPod.</li>",
           "example": "full",
           "member": "string",
           "name": "Type",
@@ -4668,7 +4883,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The address of the custom HTTP interface for real-time log delivery. Currently, only HTTP and HTTPS protocols are supported.",
+          "document": "Address of the custom HTTP API for real-time log shipping. Currently, only HTTP and HTTPS protocols are supported.",
           "example": "http://custom.edgeone.com/post/log",
           "member": "string",
           "name": "Url",
@@ -4679,7 +4894,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the custom SecretId for generating an encrypted signature. This parameter is required if the origin server needs authentication.",
+          "document": "Custom SecretId used for generating an encrypted signature. This parameter is required if the origin server needs authentication.",
           "example": "your-access-id",
           "member": "string",
           "name": "AccessId",
@@ -4690,7 +4905,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the custom SecretKey for generating an encrypted signature. This parameter is required if the origin server needs authentication.",
+          "document": "Custom SecretKey used for generating an encrypted signature. This parameter is required if the origin server needs authentication.",
           "example": "your-access-key",
           "member": "string",
           "name": "AccessKey",
@@ -4701,7 +4916,7 @@
         },
         {
           "disabled": false,
-          "document": "The type of data compression. Valid values:<li>gzip: gzip compression.</li>If this field is not filled in, compression is disabled.",
+          "document": "Type of data compression. Valid values:<li>gzip: gzip compression.</li>If this parameter is not input, compression is disabled.",
           "example": "gzip",
           "member": "string",
           "name": "CompressType",
@@ -4712,7 +4927,7 @@
         },
         {
           "disabled": false,
-          "document": "The type of the application layer protocol used when POST requests log delivery. Valid values:\n<li>http: HTTP protocol;</li>\n<li>https: HTTPS protocol.</li>If this field is not filled in, the protocol type will be parsed from the URL field.",
+          "document": "Type of the application layer protocol used in POST requests for log shipping. Valid values: \n<li>http: HTTP protocol;</li>\n<li>https: HTTPS protocol.</li>If this parameter is not input, the protocol type is parsed from the URL field.\t",
           "example": "https",
           "member": "string",
           "name": "Protocol",
@@ -4723,7 +4938,7 @@
         },
         {
           "disabled": false,
-          "document": "The custom request header carried during log delivery. If the header name you fill in is the default header carried by EdgeOne log delivery such as Content-Type, then the header value you fill in will override the default value. The header value supports referring to a single variable ${batchSize} to obtain the number of log entries included in each POST request.",
+          "document": "Custom request header carried in log shipping. For a header carried by default in EdgeOne log pushing, such as Content-Type, the header value you input will overwrite the default value. The header value references a single variable ${batchSize} to obtain the number of log entries included in each POST request.",
           "example": "无",
           "member": "Header",
           "name": "Headers",
@@ -5339,7 +5554,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom response page ID.",
+          "document": "Custom page ID.",
           "example": "p-2kplomhisdcb",
           "member": "string",
           "name": "PageId",
@@ -5351,6 +5566,78 @@
     },
     "DeleteCustomErrorPageResponse": {
       "document": "DeleteCustomErrorPage response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteFunctionRequest": {
+      "document": "DeleteFunction request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2gqxim9jstab",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function ID.",
+          "example": "ef-0agikbrr",
+          "member": "string",
+          "name": "FunctionId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteFunctionResponse": {
+      "document": "DeleteFunction response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteFunctionRulesRequest": {
+      "document": "DeleteFunctionRules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2gqxim9jstab",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID list.",
+          "example": "[\"rule-02y3grbu\"]",
+          "member": "string",
+          "name": "RuleIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteFunctionRulesResponse": {
+      "document": "DeleteFunctionRules response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -5654,7 +5941,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Log filter conditions. Detailed filter conditions are as follows:\n<li>EdgeResponseStatusCode: Filter by status code returned to the client by the EdgeOne node.<br>      Supported operators: equal, great, less, great_equal, less_equal<br>      Value range: Any integer greater than or equal to 0</li>\n<li>OriginResponseStatusCode: Filter by response status code of the origin server.<br>      Supported operators: equal, great, less, great_equal, less_equal<br>      Value range: Any integer greater than or equal to -1</li>\n<li>SecurityAction: Filter by final action after the request hits the security rule.<br>      Supported operators: equal<br>      Options are as follows:<br>      -: Unknown/unhit<br>      Monitor: Log only<br>      JSChallenge: JavaScript challenge<br>      Deny: Interception<br>      Allow: Allow<br>      BlockIP: IP ban<br>      Redirect: Redirect<br>      ReturnCustomPage: Return to custom page<br>      ManagedChallenge: Managed challenge<br>      Silence: Silence<br>      LongDelay: Response after a long wait<br>      ShortDelay: Response after a short wait</li>\n<li>SecurityModule: Filter according to the name of the security module that ultimately handles the request. <br>      Supported operators: equal<br>      Options are as follows:<br>      -: Unknown/miss<br>      CustomRule: Web protection - custom rules<br>      RateLimitingCustomRule: Web protection - rate limiting rule<br>      ManagedRule: Web Protection - Managed Rules<br>      L7DDoS: Web Protection - CC Attack Protection<br>      BotManagement: Bot Management - Bot Basic Management<br>      BotClientReputation: Bot Management - Client Reputation Analysis<br>      BotBehaviorAnalysis: Bot Management - Bot Intelligence Analysis<br>      BotCustomRule: Bot Management - Custom Bot Rules<br>      BotActiveDetection: Bot Management - Active Detection</li>",
+          "document": "Log filter criteria. The detailed filter criteria are as follows:\n<li>EdgeResponseStatusCode: Filter by response status code returned from the EdgeOne node to the client.<br>?? Supported operators: equal, great, less, great_equal, less_equal<br>?? Valid values: any integer greater than or equal to 0</li>\n<li>OriginResponseStatusCode: Filter by response status code of the origin server.<br>?? Supported operators: equal, great, less, great_equal, less_equal.<br>?? Valid values: any integer greater than or equal to -1</li>\n<li>SecurityAction: Filter by final action after the request matches a security rule.<br>?? Supported operator: equal<br>?? Options:<br>?? -: unknown/not matched<br>?? Monitor: observation<br>?? JSChallenge: JavaScript challenge<br>?? Deny: blocking<br>?? Allow: allowing<br>?? BlockIP: IP blocking<br>?? Redirect: redirection<br>?? ReturnCustomPage: returning to a custom page<br>?? ManagedChallenge: managed challenge<br>?? Silence: silence<br>?? LongDelay: response after a long delay<br>?? ShortDelay: response after a short delay</li>\n<li>SecurityModule: Filter by name of the security module finally handling the request.<br>??Supported operator: equal<br>??Options:<br>?? -: unknown/not matched<br>?? CustomRule: Custom Rules in Web Protection<br>?? RateLimitingCustomRule: Rate Limiting Rules in Web Protection<br>?? ManagedRule: Managed Rules in Web Protection<br>?? L7DDoS: CC Attack Defense in Web Protection<br>?? BotManagement: Bot Basic Management in Bot Management<br>?? BotClientReputation: Client Reputation Analysis in Bot Management<br>?? BotBehaviorAnalysis: Bot Intelligent Analysis in Bot Management<br>?? BotCustomRule: Custom Bot Rules in Bot Management<br>?? BotActiveDetection: Active Detection in Bot Management</li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Conditions",
@@ -5828,7 +6115,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter conditions. The maximum value of Filters.Values is 20. If it is not specified, all domains related with the specific zone-id are returned.\n<li>domain-name: Filtering based on the acceleration domain name</li>\n<li>origin-type: Filtering based on the type of the origin server</li>\n<li>origin: Filtering based on the primary origin server address</li>\n<li>backup-origin: Filtering based on the secondary origin server address</li>\n<li>domain-cname: Filtering based on the CNAME</li>\n<li>share-cname: Filtering based on the shared CNAME</li>\n<li>vodeo-sub-app-id: Filtering based on [vodeo sub-application ID]</li>\n<li>vodeo-distribution-range: Filtering based on [vodeo distribution range]</li>\n<li>vodeo-bucket-id: Filtering based on [vodeo storage bucket ID];</li>",
+          "document": "Filter criteria. The maximum number of Filters.Values is 20. If this parameter is not input, all domain name information under the current zone-id will be returned. The detailed filter criteria are as follows:\n<li>domain-name: Filter by acceleration domain name;</li>\n<li>origin-type: Filter by origin server type;</li>\n<li>origin: Filter by primary origin server address;</li>\n<li>backup-origin: Filter by replica origin server address;</li>\n<li>domain-cname: Filter by CNAME;</li>\n<li>share-cname: Filter by shared CNAME.</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -6077,7 +6364,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start time of the query.",
+          "document": "Start time.",
           "example": "2014-08-03T12:00:00+08:00",
           "member": "datetime_iso",
           "name": "StartTime",
@@ -6086,7 +6373,7 @@
         },
         {
           "disabled": false,
-          "document": "End time of the query.",
+          "document": "End time.",
           "example": "2014-08-03T12:00:00+08:00",
           "member": "datetime_iso",
           "name": "EndTime",
@@ -6095,7 +6382,7 @@
         },
         {
           "disabled": false,
-          "document": "Zone ID set. This parameter is required.",
+          "document": "Site ID set. This parameter is required.",
           "example": "zone-2siulp074dz3",
           "member": "string",
           "name": "ZoneIds",
@@ -6104,7 +6391,7 @@
         },
         {
           "disabled": false,
-          "document": "Indicator list. Valid values:<li>acc_flux: Content acceleration traffic, in bytes;</li>\n<li>smt_flux: Smart acceleration traffic, in bytes;</li>\n<li>l4_flux: Layer 4 acceleration traffic, in bytes;</li>\n<li>sec_flux: Exclusive DDoS mitigation traffic, in bytes;</li>\n<li>zxctg_flux: Cross-MLC-border acceleration traffic, in bytes;</li>\n<li>acc_bandwidth: Content acceleration bandwidth, in bps;</li>\n<li>smt_bandwidth: Smart acceleration bandwidth, in bps;</li>\n<li>l4_bandwidth: Layer 4 acceleration bandwidth, in bps;</li>\n<li>sec_bandwidth: Exclusive DDoS mitigation bandwidth, in bps;</li>\n<li>zxctg_bandwidth: Cross-MLC-border acceleration bandwidth, in bps;</li><li>sec_request_clean: HTTP/HTTPS requests, in count;</li>\n<li>smt_request_clean: Smart acceleration requests, in count;</li>\n<li>quic_request: QUIC requests, in count;</li>\n<li>bot_request_clean: Bot requests, in count;</li>\n<li>cls_count: Real-time log delivery log counts, in count;</li>\n<li>ddos_bandwidth: Exclusive DDoS mitigation elastic bandwidth, in bps.</li>",
+          "document": "Metric list. Valid values:\n<li>acc_flux: content acceleration traffic, in bytes;</li>\n<li>smt_flux: smart acceleration traffic, in bytes;</li>\n<li>l4_flux: L4 acceleration traffic, in bytes;</li>\n<li>sec_flux: exclusive protection traffic, in bytes;</li>\n<li>zxctg_flux: network optimization traffic in the Chinese mainland, in bytes;</li>\n<li>acc_bandwidth: content acceleration bandwidth, in bps;</li>\n<li>smt_bandwidth: smart acceleration bandwidth, in bps;</li>\n<li>l4_bandwidth: L4 acceleration bandwidth, in bps;</li>\n<li>sec_bandwidth: exclusive protection bandwidth, in bps;</li>\n<li>zxctg_bandwidth: network optimization bandwidth in the Chinese mainland, in bps;</li>\n<li>sec_request_clean: number of HTTP/HTTPS requests;</li>\n<li>smt_request_clean: number of smart acceleration requests;</li>\n<li>quic_request: number of QUIC requests;</li>\n<li>bot_request_clean: number of Bot requests;</li>\n<li>cls_count: number of real-time log entries pushed;</li>\n<li>ddos_bandwidth: elastic DDoS protection bandwidth, in bps.</li>",
           "example": "acc_flux",
           "member": "string",
           "name": "MetricName",
@@ -6113,7 +6400,7 @@
         },
         {
           "disabled": false,
-          "document": "Query granularity. Valid values:<li>5min: 5-minute granularity;</li>\n<li>hour: 1-hour granularity;</li>\n<li>day: 1-day granularity.</li>",
+          "document": "Time granularity of the query. Valid values:\n<li>5min: 5 minutes;</li>\n<li>hour: 1 hour;</li>\n<li>day: 1 day.</li>",
           "example": "hour",
           "member": "string",
           "name": "Interval",
@@ -6122,7 +6409,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter. The detailed filters are as follows:\n<li>host: Filter by Domain Name. Example: test.example.com.<br></li>\n<li>proxy-id: Filter by Layer 4 Proxy Instance ID. Example: sid-2rugn89bkla9.<br></li>\n<li>region-id: Filter by Billing Region.Options are:<br>   CH: Chinese mainland<br>   AF: Africa<br>   AS1: Asia-Pacific Region 1<br>   AS2: Asia-Pacific Region 2<br>   AS3: Asia-Pacific Region 3<br>  EU: Europe<br>   MidEast: Middle East<br>   NA: North America<br>   SA: South America</li>",
+          "document": "Filter criteria. The detailed values of filter criteria are as follows:\n<li>host: Filter by domain name, such as test.example.com.<br></li>\n<li>proxy-id: Filter by L4 proxy instance ID, such as sid-2rugn89bkla9.<br></li>\n<li>region-id: Filter by billing region. Options:<br>  CH: Chinese mainland<br>  AF: Africa<br>  AS1: Asia-Pacific Region 1<br>  AS2: Asia-Pacific Region 2<br>  AS3: Asia-Pacific Region 3<br>  EU: Europe<br>  MidEast: Middle East<br>  NA: North America<br>  SA: South America</li>",
           "example": "无",
           "member": "BillingDataFilter",
           "name": "Filters",
@@ -6137,7 +6424,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Data point list.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
           "example": "无",
           "member": "BillingData",
           "name": "Data",
@@ -6354,7 +6641,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter criteria. The upper limit for Filters.Values is 20. The detailed filter criteria are as follows:\n<li>page-id: Filter by page ID;</li>\n<li>name: Filter by page name;</li>\n<li>description: Filter by page description;</li>\n<li>content-type: Filter by page type.</li>",
+          "document": "Filter criteria. The maximum number of Filters.Values is 20. The detailed Name values of filter criteria are as follows:\n<li>page-id: Filter by page ID;</li>\n<li>name: Filter by page name;</li>\n<li>description: Filter by page description;</li>\n<li>content-type: Filter by page type.</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -6372,7 +6659,7 @@
         },
         {
           "disabled": false,
-          "document": "The limit of paginated query. Default value: 20. Maximum value: 1,000.",
+          "document": "The limit of paginated query. Default value: 20. Maximum value: 1,000.  ",
           "example": "20",
           "member": "uint64",
           "name": "Limit",
@@ -6387,7 +6674,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of custom response pages.",
+          "document": "Total number of custom error pages.",
           "example": "0",
           "member": "uint64",
           "name": "TotalCount",
@@ -6397,7 +6684,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom response page data list.",
+          "document": "Custom error page data list.",
           "example": "无",
           "member": "CustomErrorPage",
           "name": "ErrorPages",
@@ -6957,6 +7244,181 @@
       ],
       "type": "object"
     },
+    "DescribeFunctionRulesRequest": {
+      "document": "DescribeFunctionRules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-293e7s5jne1i",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria list. There is an AND relationship between different criteria. The maximum number of Filters.Values is 20. The detailed filter criteria are as follows:\n<li>rule-id: Exact match by [rule ID].</li>\n<li>function-id: Exact match by [function ID].</li>\n<li>remark: Fuzzy match by [rule description].</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFunctionRulesResponse": {
+      "document": "DescribeFunctionRules response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule details list.",
+          "example": "无",
+          "member": "FunctionRule",
+          "name": "FunctionRules",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFunctionRuntimeEnvironmentRequest": {
+      "document": "DescribeFunctionRuntimeEnvironment request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-293e7s5jne1i",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function ID.",
+          "example": "ef-jjhvk7ec",
+          "member": "string",
+          "name": "FunctionId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFunctionRuntimeEnvironmentResponse": {
+      "document": "DescribeFunctionRuntimeEnvironment response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Environment variable list.",
+          "example": "无",
+          "member": "FunctionEnvironmentVariable",
+          "name": "EnvironmentVariables",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFunctionsRequest": {
+      "document": "DescribeFunctions request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-293e7s5jne1i",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter by function ID list.",
+          "example": "[\"ef-jjhvk7ec\", \"ef-vwbhac60\"]",
+          "member": "string",
+          "name": "FunctionIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria list. There is an AND relationship between different criteria. The maximum number of Filters.Values is 20. The detailed filter criteria are as follows:\n<li>name: Fuzzy match by [function name].</li>\n<li>remark: Fuzzy match by [function description].</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "The offset of paginated query. Default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number limit of paginated query. Default value: 20. Maximum value: 200.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeFunctionsResponse": {
+      "document": "DescribeFunctions response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of functions that meet the query condition.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Information of all functions that meet the query condition.",
+          "example": "无",
+          "member": "Function",
+          "name": "Functions",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeHostsSettingRequest": {
       "document": "DescribeHostsSetting request structure.",
       "members": [
@@ -7433,7 +7895,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The start time.",
+          "document": "Start time.",
           "example": "2020-04-20T00:00:00Z",
           "member": "datetime_iso",
           "name": "StartTime",
@@ -7442,7 +7904,7 @@
         },
         {
           "disabled": false,
-          "document": "The end time.",
+          "document": "End time.",
           "example": "2020-04-30T00:00:00Z",
           "member": "datetime_iso",
           "name": "EndTime",
@@ -7451,7 +7913,7 @@
         },
         {
           "disabled": false,
-          "document": "The metric to query. Values:\n<li>`l7Flow_outFlux`: Traffic used for EdegOne responses</li>\n<li>`l7Flow_inFlux`: Traffic used for EdegOne requests</li>\n<li>`l7Flow_outBandwidth`: Bandwidth used for EdegOne responses</li>\n<li>`l7Flow_inBandwidth`: Bandwidth used for EdegOne requests</li>\n<li>`l7Flow_hit_outFlux`: Traffic used for cache hit</li>\n<li>`l7Flow_request`: Access requests</li>\n<li>`l7Flow_flux`: Upstream and downstream traffic used for client access</li>\n<li>`l7Flow_bandwidth`: Upstream and downstream bandwidth used for client access</li>",
+          "document": "Queried metric. Valid values:\n<li>l7Flow_outFlux: EdgeOne response traffic;</li>\n<li>l7Flow_inFlux: EdgeOne request traffic;</li>\n<li>l7Flow_outBandwidth: EdgeOne response bandwidth;</li>\n<li>l7Flow_inBandwidth: EdgeOne request traffic;</li>\n<li>l7Flow_hit_outFlux: cache hit traffic;</li>\n<li>l7Flow_request: number of access requests;</li>\n<li>l7Flow_flux: upstream and downstream traffic of access requests;</li>\n<li>l7Flow_bandwidth: upstream and downstream bandwidths of access requests.</li>",
           "example": "[\"l7Flow_outFlux\"]",
           "member": "string",
           "name": "MetricNames",
@@ -7460,7 +7922,7 @@
         },
         {
           "disabled": false,
-          "document": "ZoneId set. This parameter is required.",
+          "document": "Site ID set. This parameter is required.",
           "example": "[\"zone-2mzegj4vln5f\"]",
           "member": "string",
           "name": "ZoneIds",
@@ -7469,7 +7931,7 @@
         },
         {
           "disabled": false,
-          "document": "Queried domain name set. This parameter has been discarded.",
+          "document": "Queried domain name set. This parameter has been deprecated.",
           "example": "[\"www.baidu.com\",\"www.google.com\"]",
           "member": "string",
           "name": "Domains",
@@ -7478,7 +7940,7 @@
         },
         {
           "disabled": false,
-          "document": "The protocol type. Values:\n<li>`http`: HTTP protocol;</li>\n<li>`https`: HTTPS protocol;</li>\n<li>`http2`: HTTP2 protocol;</li>\n<li>`all`: All protocols. </li>If it's not specified, `all` is used. This parameter is not yet available now.",
+          "document": "Protocol type of the query. Valid values:\n<li>http: HTTP protocol;</li>\n<li>https: HTTPS protocol;</li>\n<li>http2: HTTP/2 protocol;</li>\n<li>all: all protocols.</li>If this parameter is not input, the default value `all` is used. This parameter is not yet effective.",
           "example": "http",
           "member": "string",
           "name": "Protocol",
@@ -7487,7 +7949,7 @@
         },
         {
           "disabled": false,
-          "document": "The query granularity. Values:\n<li>`min`: 1 minute;</li>\n<li>`5min`: 5 minutes;</li>\n<li>`hour`: 1 hour;</li>\n<li>`day`: One day</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period <= 1 hour: `min`; <br>1 hour < Period <= 2 days: `5min`; <br>2 days < period <= 7 days: `hour`; <br>Period > 7 days: `day`.",
+          "document": "Time granularity of the query. Valid values:\n<li>min: 1 minute;</li>\n<li>5min: 5 minutes;</li>\n<li>hour: 1 hour;</li>\n<li>day: 1 day.</li>If this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. Specifically, the granularity value is min, 5min, hour, and day respectively for queries of data within 1 hour, within 2 days, within 7 days, and over 7 days.",
           "example": "min",
           "member": "string",
           "name": "Interval",
@@ -7496,7 +7958,7 @@
         },
         {
           "disabled": false,
-          "document": "Filtering condition. The detailed filtering condition key values are as follows: \n<li>socket: Filter based on HTTP protocol type. Corresponding value options: <br> HTTP: HTTP protocol; <br> HTTPS: HTTPS protocol; <br> QUIC: QUIC protocol. </li>\n<li>domains: Filter based on domain name. </li>\n<li>tagKey: Filter based on Tag Key. </li>\n<li>tagValue: Filter based on Tag Value. </li>",
+          "document": "Filter criteria. The detailed Key values of filter criteria are as follows:\n<li>socket:<br>   Filter by [<strong>HTTP protocol type</strong>].<br>   Valid values:<br>   HTTP: HTTP protocol; <br>   HTTPS: HTTPS protocol;<br>   QUIC: QUIC protocol.</li>\n<li>domain<br>?? Filter by [<strong>domain name</strong>].</li>\n<li>tagKey<br>?? Filter by [<strong>tag key</strong>].</li>\n<li>tagValue<br>?? Filter by [<strong>tag value</strong>].</li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -7505,7 +7967,7 @@
         },
         {
           "disabled": false,
-          "document": "Geolocation scope. Values:\n<li>`overseas`: Regions outside the Chinese mainland</li>\n<li>`mainland`: Chinese mainland</li>\n<li>`global`: Global</li>If this field is not specified, the default value `global` is used.",
+          "document": "Data ownership area. Valid values:\n<li>overseas: global (excluding the Chinese mainland) data;</li>\n<li>mainland: Chinese mainland data;</li>\n<li>global: global data.</li>If this parameter is not input, the default value `global` is used.",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -7520,7 +7982,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of query results.",
+          "document": "Total number of entries in the query result.",
           "example": "10",
           "member": "uint64",
           "name": "TotalCount",
@@ -7530,7 +7992,7 @@
         },
         {
           "disabled": false,
-          "document": "Note: This field may return 'null', which indicates a failure to obtain a valid value.",
+          "document": "List of time series traffic data in L7 monitoring.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
           "example": "无",
           "member": "TimingDataRecord",
           "name": "Data",
@@ -7552,7 +8014,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ZoneId. The parameter is required.",
+          "document": "Site ID. This parameter is required.",
           "example": "zone-xxx",
           "member": "string",
           "name": "ZoneId",
@@ -7579,7 +8041,7 @@
         },
         {
           "disabled": false,
-          "document": "Offset for paginated queries. Default value: `0`.",
+          "document": "Offset of paginated query. Default value: 0.",
           "example": "7",
           "member": "int64",
           "name": "Offset",
@@ -7588,7 +8050,7 @@
         },
         {
           "disabled": false,
-          "document": "Limit on paginated queries. Default value: `20`. Maximum value: `1000`.",
+          "document": "Number limit of paginated query. Default value: 20. Maximum value: 1000.",
           "example": "100",
           "member": "int64",
           "name": "Limit",
@@ -7597,7 +8059,7 @@
         },
         {
           "disabled": false,
-          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: \n<li>job-id \nFilter based on task ID.  job-id format: 1379afjk91u32h. Multiple values are not supported, Fuzzy search is not supported. </li>\n<li>target\nFilter based on target resource information. target format: http://www.qq.com/1.txt. Multiple values are not supported, Fuzzy search is not supported. </li>\n<li>domains \nFilter based on domain name. domains format: www.qq.com. Fuzzy search is not supported.</li>\n<li>statuses\nFilter based on task status.  Fuzzy search is not supported. Options:<br> processing: Processing<br> success: Success<br> failed: Failure<br> timeout: Timeout</li>",
+          "document": "Filter criteria. The maximum number of Filters.Values is 20. The detailed filter criteria are as follows: <li>job-id: Filter by task ID in the format like 1379afjk91u32h. Multiple values and fuzzy queries are not supported.</li><li>target: Filter by target resource information in the format like http://www.qq.com/1.txt. Multiple values and fuzzy queries are not supported.</li><li>domains: Filter by domain name in the format like www.qq.com. Fuzzy queries are not supported.</li><li>statuses: Filter by task status. Fuzzy queries are not supported. Options:<br>??processing: processing<br>??success: successful<br>??failed: failed<br>??timeout: timed out<br>??invalid: invalid, that is, the response status code of the origin server is not 2xx. Please check the origin server service.</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -7612,7 +8074,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total entries that match the specified query condition.",
+          "document": "Total number of items in the query condition.",
           "example": "100",
           "member": "uint64",
           "name": "TotalCount",
@@ -7622,7 +8084,7 @@
         },
         {
           "disabled": false,
-          "document": "List of tasks returned.",
+          "document": "Task result list.",
           "example": "无",
           "member": "Task",
           "name": "Tasks",
@@ -7644,7 +8106,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ZoneId. The parameter is required.",
+          "document": "Site ID. This parameter is required.",
           "example": "zone-xxxxxx",
           "member": "string",
           "name": "ZoneId",
@@ -7671,7 +8133,7 @@
         },
         {
           "disabled": false,
-          "document": "Offset for paginated queries. Default value: `0`.",
+          "document": "Offset of paginated query. Default value: 0.",
           "example": "7",
           "member": "int64",
           "name": "Offset",
@@ -7680,7 +8142,7 @@
         },
         {
           "disabled": false,
-          "document": "Limit on paginated queries. Default value: `20`. Maximum value: `1000`.",
+          "document": "Number limit of paginated query. Default value: 20. Maximum value: 1000.",
           "example": "100",
           "member": "int64",
           "name": "Limit",
@@ -7689,7 +8151,7 @@
         },
         {
           "disabled": false,
-          "document": "Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: \n<li>job-id\nFilter based on task ID. job-id format: 1379afjk91u32h. Multiple values are not supported, Fuzzy search is not supported;</li>\n<li>target\nFilter based on: target resource information. target format: http://www.qq.com/1.txt or tag1. Multiple values are not supported, Fuzzy search is not supported; </li>\n<li>domains\nFilter based on domain name. domains format: www.qq.com, Fuzzy search is not supported; </li>\n<li>statuses\nFilter based on task status, Fuzzy search is not supported. Options: <br>processing: Processing<br>success: Success<br>failed: Failure<br>timeout: Timeout</li>\n<li>type\nFilter based on cleared cache type. Multiple values are not supported, Fuzzy search is not supported. Options:<br> purge_url: URL<br> purge_prefix: Prefix<br> purge_all: All cache content<br> purge_host: Hostname<br> purge_cache_tag: CacheTag</li>",
+          "document": "Filter criteria. The maximum number of Filters.Values is 20. The detailed filter criteria are as follows:\n<li>job-id: Filter by task ID in the format like 1379afjk91u32h. Multiple values and fuzzy queries are not supported.</li>\n<li>target: Filter by target resource information in the format like http://www.qq.com/1.txt or tag1. Multiple values are not supported yet. Fuzzy queries are supported.</li>\n<li>domains: Filter by domain name in the format like www.qq.com. Fuzzy queries are not supported.</li>\n<li>statuses: Filter by task status. Fuzzy queries are not supported. Options:<br>?? processing: processing<br>?? success: successful<br>?? failed: failed<br>?? timeout: timed out</li>\n<li>type: Filter by cache clearance type. Multiple values and fuzzy queries are not supported yet. Options: <br>?? purge_url: URL<br>?? purge_prefix: prefix<br>?? purge_all: all cached content<br>?? purge_host: Hostname<br>?? purge_cache_tag: CacheTag</li>",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -7704,7 +8166,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total entries that match the specified query condition.",
+          "document": "Total number of items in the query condition.",
           "example": "100",
           "member": "uint64",
           "name": "TotalCount",
@@ -7714,7 +8176,7 @@
         },
         {
           "disabled": false,
-          "document": "List of tasks returned.",
+          "document": "Task result list.",
           "example": "无",
           "member": "Task",
           "name": "Tasks",
@@ -7875,7 +8337,7 @@
           "example": "无",
           "member": "RulesSettingAction",
           "name": "Actions",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -8104,7 +8566,7 @@
         },
         {
           "disabled": false,
-          "document": "Filters\n<li>ruleId<br>   Filter by the specified <strong>forwarding rule ID</strong></li>\n<li>proxyId<br>   Filter by the specified <strong>L4 agent ID</strong></li>",
+          "document": "Filter criteria. The detailed Key values of filter criteria are as follows:\n<li>ruleId: Filter by forwarding rule ID.</li>\n<li>proxyId: Filter by L4 proxy instance ID.</li>",
           "example": "无",
           "member": "QueryCondition",
           "name": "Filters",
@@ -9857,6 +10319,234 @@
       ],
       "usage": "both"
     },
+    "Function": {
+      "document": "Details of an edge function.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Function ID.",
+          "example": "ef-jjhvk7ec",
+          "member": "string",
+          "name": "FunctionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-293e7s5jne1",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Function name.",
+          "example": "example-function",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Function description.",
+          "example": "鉴权函数",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Function content.",
+          "example": "无",
+          "member": "string",
+          "name": "Content",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Default domain name of a function.",
+          "example": "test1-zone-28v607hqabcd-1231525690.eo-edgefunctions.com",
+          "member": "string",
+          "name": "Domain",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time, which adopts Coordinated Universal Time (UTC) and follows the date and time format of the ISO 8601 standard.",
+          "example": "2017-09-17T16:30:58.410670+00:00",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Modification time, which adopts Coordinated Universal Time (UTC) and follows the date and time format of the ISO 8601 standard.",
+          "example": "2017-09-17T16:30:58.410670+00:00",
+          "member": "string",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "FunctionEnvironmentVariable": {
+      "document": "Environment variables of an edge function",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Variable name, which should be unique and can only contain uppercase and lowercase letters, digits, and special characters including at signs (@), periods (.), hyphens (-), and underscores (_). Its maximum size is 64 bytes.",
+          "example": "无",
+          "member": "string",
+          "name": "Key",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Variable value. Its maximum size is 5000 bytes. The default value is empty.",
+          "example": "无",
+          "member": "string",
+          "name": "Value",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Variable type. Valid values:\n<li>string: string type;</li>\n<li>json: JSON object type.</li>Default value: string.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "FunctionRule": {
+      "document": "Trigger rules for an edge function",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule ID.",
+          "example": "rule-02y3grbu",
+          "member": "string",
+          "name": "RuleId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule condition list. There is an OR relationship between items in the list.",
+          "example": "无",
+          "member": "FunctionRuleCondition",
+          "name": "FunctionRuleConditions",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Function ID, specifying a function executed when a trigger rule condition is met.",
+          "example": "ef-jjhvk7ec",
+          "member": "string",
+          "name": "FunctionId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule description.",
+          "example": "鉴权",
+          "member": "string",
+          "name": "Remark",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Function name.",
+          "example": "TestFunction",
+          "member": "string",
+          "name": "FunctionName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Priority of a trigger rule for a function. The larger the value, the higher the priority.",
+          "example": "1",
+          "member": "int64",
+          "name": "Priority",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time, which adopts Coordinated Universal Time (UTC) and follows the date and time format of the ISO 8601 standard.",
+          "example": "2017-09-17T16:30:58.410670+00:00",
+          "member": "datetime_iso",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time, which adopts Coordinated Universal Time (UTC) and follows the date and time format of the ISO 8601 standard.",
+          "example": "2017-09-17T16:30:58.410670+00:00",
+          "member": "datetime_iso",
+          "name": "UpdateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "FunctionRuleCondition": {
+      "document": "Condition of a trigger rule for an edge function.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Condition of a trigger rule for an edge function. This condition is considered met if all items in the list are met.",
+          "example": "[]",
+          "member": "RuleCondition",
+          "name": "RuleConditions",
+          "output_required": true,
+          "required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "Grpc": {
       "document": "Configuration of gRPC support",
       "members": [
@@ -9872,6 +10562,60 @@
         }
       ],
       "usage": "both"
+    },
+    "HandleFunctionRuntimeEnvironmentRequest": {
+      "document": "HandleFunctionRuntimeEnvironment request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2gqxim9jstab",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function ID.",
+          "example": "ef-jjhvk7ec",
+          "member": "string",
+          "name": "FunctionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operation type. Valid values:\n<li>setEnvironmentVariable: Set an environment variable. If the environment variable exists, it will be modified; otherwise, it will be added.</li>\n<li>deleteEnvironmentVariable: Delete an environment variable.</li>\n<li>clearEnvironmentVariable: Clear an environment variable.</li>\n<li>resetEnvironmentVariable: Reset an environment variable.</li>",
+          "example": "setEnvironmentVariable",
+          "member": "string",
+          "name": "Operation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Environment variable list. The runtime environment of a function supports up to 64 variables. This parameter is required when the value of Operation is setEnvironmentVariable, deleteEnvironmentVariable, or resetEnvironmentVariable.",
+          "example": "无",
+          "member": "FunctionEnvironmentVariable",
+          "name": "EnvironmentVariables",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "HandleFunctionRuntimeEnvironmentResponse": {
+      "document": "HandleFunctionRuntimeEnvironment response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "Header": {
       "document": "HTTP header, used as input for the CreatePrefetchTask API",
@@ -10128,7 +10872,7 @@
           "example": "example.com",
           "member": "string",
           "name": "ZoneName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10138,7 +10882,7 @@
           "example": "a.example.com",
           "member": "string",
           "name": "Domain",
-          "required": false,
+          "output_required": false,
           "type": "string",
           "value_allowed_null": true
         },
@@ -10148,7 +10892,7 @@
           "example": "pending",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -10158,7 +10902,7 @@
           "example": "无",
           "member": "AscriptionInfo",
           "name": "Ascription",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -10168,7 +10912,7 @@
           "example": "无",
           "member": "string",
           "name": "OriginalNameServers",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -10178,7 +10922,7 @@
           "example": "无",
           "member": "FileAscriptionInfo",
           "name": "FileAscription",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         }
@@ -10399,6 +11143,7 @@
           "example": "drop",
           "member": "string",
           "name": "Action",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10409,6 +11154,7 @@
           "example": "ip",
           "member": "string",
           "name": "MatchFrom",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10419,9 +11165,10 @@
           "example": "equal",
           "member": "string",
           "name": "Operator",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10429,6 +11176,7 @@
           "example": "0",
           "member": "int64",
           "name": "RuleID",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -10439,6 +11187,7 @@
           "example": "无",
           "member": "datetime_iso",
           "name": "UpdateTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -10449,9 +11198,10 @@
           "example": "on",
           "member": "string",
           "name": "Status",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -10459,6 +11209,7 @@
           "example": "rule1",
           "member": "string",
           "name": "RuleName",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -10469,6 +11220,7 @@
           "example": "1.1.1.1",
           "member": "string",
           "name": "MatchContent",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -10727,6 +11479,45 @@
       ],
       "usage": "both"
     },
+    "L4ProxyRemoteAuth": {
+      "document": "L4 remote authentication information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable L4 remote authentication. Valid values:\n<li>on: Enable;</li>\n<li>off: Disable.</li>",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remote authentication service address, in the format of domain/ip:port, such as example.auth.com:8888.\n",
+          "example": "无",
+          "member": "string",
+          "name": "Address",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Default origin-pull behavior based on L4 forwarding rules after the remote authentication service is disabled. Valid values:\n<li>reject: Block and deny access;</li>\n<li>allow: Allow access.</li>",
+          "example": "无",
+          "member": "string",
+          "name": "ServerFaultyBehavior",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "L4ProxyRule": {
       "document": "Details of Layer 4 proxy forwarding rules.",
       "members": [
@@ -10861,6 +11652,17 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Remote authentication information.\nNote: RemoteAuth cannot be used as an input parameter in CreateL4ProxyRules or ModifyL4ProxyRules. If this parameter is input, it will be ignored. If the returned data of DescribeL4ProxyRules is empty, it indicates that remote authentication is disabled.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "L4ProxyRemoteAuth",
+          "name": "RemoteAuth",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -10956,7 +11758,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Predefined output format type for log delivery. Valid values:\n<li>json: Use the predefined log output format JSON Lines, where fields in each log record are presented as key-value pairs;</li>\n<li>csv: Use the predefined log output format csv, where fields in each log record is only presented as field values, excluding field names. </li>",
+          "document": "Predefined output format for log shipping. Valid values:\n<li>json: Use JSON Lines as the predefined log output format. In each log entry, fields are displayed as key-value pairs.</li>\n<li>csv: Use the predefined log output format csv, where each log entry only is presented as field values only, excluding field names. </li>",
           "example": "json",
           "member": "string",
           "name": "FormatType",
@@ -11011,7 +11813,7 @@
         },
         {
           "disabled": false,
-          "document": "A string inserted between log records as a separator. Valid values:\n<li>\\n: Line break;</li>\n<li>\\t: Tab character;</li>\n<li>,: Half-width comma. </li>",
+          "document": "A string inserted between log records as a separator. Valid values:\n<li>\\n: line break;</li>\n<li>\\t: tab character;</li>\n<li>,: Half-width comma. </li>",
           "example": ",",
           "member": "string",
           "name": "RecordDelimiter",
@@ -11022,7 +11824,7 @@
         },
         {
           "disabled": false,
-          "document": "A string inserted between fields as a separator within a single log record. Valid values:\n<li>\\t: Tab character;</li>\n<li>,: Half-width comma;</li>\n<li>;: Half-width semicolon. </li>",
+          "document": "A string inserted between fields as a separator within a single log record. Valid values:\n<li>\\t: tab character;</li>\n<li>,: half-width comma;</li>\n<li>;: Half-width semicolon. </li>",
           "example": ",",
           "member": "string",
           "name": "FieldDelimiter",
@@ -11614,7 +12416,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Custom response page ID.",
+          "document": "Custom error page ID.",
           "example": "p-2kplomhisdcb",
           "member": "string",
           "name": "PageId",
@@ -11632,7 +12434,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom response page name. The name must be 2-60 characters long.",
+          "document": "Custom error page name. The name must be 2-60 characters long.",
           "example": "web防护自定义错误页",
           "member": "string",
           "name": "Name",
@@ -11641,7 +12443,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom response page description, not exceeding 60 characters.",
+          "document": "Custom error page description, not exceeding 60 characters.",
           "example": "web规则自定义错误页面",
           "member": "string",
           "name": "Description",
@@ -11650,7 +12452,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom response page type, with values:<li>text/html. </li><li>application/json.</li><li>plain/text.</li><li>text/xml.</li>",
+          "document": "Custom error page type, with values:<li>text/html. </li><li>application/json.</li><li>plain/text.</li><li>text/xml.</li>",
           "example": "application/json",
           "member": "string",
           "name": "ContentType",
@@ -11659,7 +12461,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom response page content, not exceeding 2 KB.",
+          "document": "Custom error page content, not exceeding 2 KB.",
           "example": "{\"title\":\"自定义错误页\", \"Content\":\"自定义错误页面内容\"}",
           "member": "string",
           "name": "Content",
@@ -11671,6 +12473,159 @@
     },
     "ModifyCustomErrorPageResponse": {
       "document": "ModifyCustomErrorPage response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyFunctionRequest": {
+      "document": "ModifyFunction request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2gqxim9jstab",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function ID.",
+          "example": "ef-jjhvk7ec",
+          "member": "string",
+          "name": "FunctionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function description, which can contain up to 60 characters. If this parameter is not input, the original configuration is maintained.",
+          "example": "鉴权函数",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Function content, which currently only supports JavaScript code. Its maximum size is 5 MB. If this parameter is not input, the original configuration is maintained.",
+          "example": "无",
+          "member": "string",
+          "name": "Content",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyFunctionResponse": {
+      "document": "ModifyFunction response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyFunctionRulePriorityRequest": {
+      "document": "ModifyFunctionRulePriority request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-293e7s5jne1i",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID list. All rule IDs after priority adjustment must be input. Multiple rules are executed from top to bottom. If this parameter is not input, the original priority order is maintained.",
+          "example": "[\"rule-02y3grbu\", \"rule-02sfmvlw\"]",
+          "member": "string",
+          "name": "RuleIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyFunctionRulePriorityResponse": {
+      "document": "ModifyFunctionRulePriority response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyFunctionRuleRequest": {
+      "document": "ModifyFunctionRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2gqxim9jstab",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID.",
+          "example": "rule-02y3grbu",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule condition list. There is an OR relationship between different conditions of the same trigger rule. If this parameter is not input, the original configuration is maintained.",
+          "example": "无",
+          "member": "FunctionRuleCondition",
+          "name": "FunctionRuleConditions",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Function ID, specifying a function executed when a trigger rule condition is met. If this parameter is not input, the original configuration is maintained.",
+          "example": "ef-jjhvk7ec",
+          "member": "string",
+          "name": "FunctionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rule description, which can contain up to 60 characters. If this parameter is not input, the original configuration is maintained.",
+          "example": "鉴权规则",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyFunctionRuleResponse": {
+      "document": "ModifyFunctionRule response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -12309,7 +13264,7 @@
         {
           "disabled": false,
           "document": "The site ID.",
-          "example": "test.com",
+          "example": "zone-225qgrnvbi9w",
           "member": "string",
           "name": "ZoneId",
           "required": true,
@@ -12371,7 +13326,7 @@
         },
         {
           "disabled": false,
-          "document": "Access mode of the site. Values:\n<li> `full`: Access through a name server.</li>\n<li> `partial`: Access through a CNAME record. A site using domainless access can only switch to CNAME access. </li>The original configuration applies if this field is not specified.",
+          "document": "Site access method. Valid values:\n<li>full: NS access.</li>\n<li>partial: CNAME access. If the site is currently accessed with no domain name, it can be switched only to CNAME access.</li>\n<li>dnsPodAccess: DNSPod hosted access. To use this access mode, your domain name should have been hosted on DNSPod.</li>If this parameter is not input, the original configuration is maintained.",
           "example": "partial",
           "member": "string",
           "name": "Type",
@@ -12757,6 +13712,7 @@
           "example": "[\"1.1.1.1\"]",
           "member": "string",
           "name": "Origins",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -12767,6 +13723,7 @@
           "example": "[\"2.2.2.2\"]",
           "member": "string",
           "name": "BackupOrigins",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -12777,6 +13734,7 @@
           "example": "https",
           "member": "string",
           "name": "OriginPullProtocol",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -12787,6 +13745,7 @@
           "example": "off",
           "member": "string",
           "name": "CosPrivateAccess",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -12799,7 +13758,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Origin server type, with values:\n<li>IP_DOMAIN: IPv4, IPv6, or domain name type origin server;</li>\n<li>COS: Tencent Cloud COS origin server;</li>\n<li>AWS_S3: AWS S3 origin server;</li>\n<li>ORIGIN_GROUP: origin server group type origin server;</li>\n<li>VODEO: VOD on EO;</li>\n<li>VOD: Video on Demand;</li>\n<li>SPACE: origin server uninstallation. Currently only available to the allowlist;</li>\n<li>LB: load balancing. Currently only available to the allowlist. </li>",
+          "document": "Origin server type. Valid values:\n<li>IP_DOMAIN: IPv4, IPv6, or domain name type origin server;</li>\n<li>COS: Tencent Cloud COS origin server;</li>\n<li>AWS_S3: AWS S3 COS origin server;</li>\n<li>ORIGIN_GROUP: origin server group;</li>\n<li>VOD: Video on Demand;</li>\n<li>SPACE: origin server uninstallation, currently only available to the allowlist;</li>\n<li>LB: load balancing. Currently only available to the allowlist. </li>",
           "example": "ip_domain",
           "member": "string",
           "name": "OriginType",
@@ -12809,7 +13768,7 @@
         },
         {
           "disabled": false,
-          "document": "Origin server address, which varies according to the value of OriginType:\n<li>When OriginType = IP_DOMAIN, this parameter should be an IPv4 address, an IPv6 address, or a domain name;</li>\n<li>When OriginType = COS, this parameter should be the access domain name of the COS bucket;</li>\n<li>When OriginType = AWS_S3, this parameter should be the access domain name of the S3 bucket;</li>\n<li>When OriginType = ORIGIN_GROUP, this parameter should be the origin server group ID;</li>\n<li>When OriginType = VOD, this parameter should be the VOD application ID;</li>\n<li>When OriginType = VODEO, if VodeoDistributionRange = ALL, then this parameter is \"all-buckets-in-vodeo-application\"; if VodeoDistributionRange = Bucket, then this parameter is the domain name of the corresponding bucket. </li>",
+          "document": "Origin server address, which varies with the value of OriginType:\n<li>When OriginType = IP_DOMAIN, this parameter is an IPv4 address, an IPv6 address, or a domain name.</li>\n<li>When OriginType = COS, this parameter is the access domain name of the COS bucket.</li>\n<li>When OriginType = AWS_S3, this parameter is the access domain name of the S3 bucket.</li>\n<li>When OriginType = ORIGIN_GROUP, this parameter is the origin server group ID.</li>\n<li>When OriginType = VOD, this parameter is the VOD application ID.</li>",
           "example": "qq.com",
           "member": "string",
           "name": "Origin",
@@ -12868,7 +13827,7 @@
           "value_allowed_null": true
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "MO sub-application ID",
           "example": "无",
           "member": "int64",
@@ -12878,7 +13837,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "MO distribution range. Valid values: <li>All: all</li> <li>Bucket: bucket</li>",
           "example": "无",
           "member": "string",
@@ -12888,7 +13847,7 @@
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "MO bucket ID, required when the distribution range (DistributionRange) is bucket (Bucket)",
           "example": "无",
           "member": "string",
@@ -13071,7 +14030,7 @@
           "type": "list"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "VODEO sub-application ID. This parameter is required when OriginType is VODEO.",
           "example": "无",
           "member": "int64",
@@ -13080,7 +14039,7 @@
           "type": "int"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "VOD on EO distribution range. This parameter is required when OriginType = VODEO. The values are: \n<li>All: all buckets under the current application;</li> \n<li>Bucket: a specified bucket.</li>",
           "example": "无",
           "member": "string",
@@ -13089,7 +14048,7 @@
           "type": "string"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "VODEO storage bucket ID. This parameter is required when OriginType is VODEO and VodeoDistributionRange is Bucket.",
           "example": "无",
           "member": "string",
@@ -13493,6 +14452,7 @@
           "example": "查询键",
           "member": "string",
           "name": "Key",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -13503,6 +14463,7 @@
           "example": "equals",
           "member": "string",
           "name": "Operator",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -13513,6 +14474,7 @@
           "example": "查询值",
           "member": "string",
           "name": "Value",
+          "output_required": true,
           "required": true,
           "type": "list",
           "value_allowed_null": false
@@ -13751,7 +14713,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Note: This field may return null, which indicates a failure to obtain a valid value.",
+          "document": "Template level name. Valid values:\n<li>sup_loose: super loose;</li>\n<li>loose: loose;</li>\n<li>emergency: emergency;</li>\n<li>normal: normal;</li>\n<li>strict: strict;</li>\n<li>close: disabled, effective only for precise rate limiting.</li>\nNote: This field may return null, which indicates a failure to obtain a valid value.",
           "example": "loose",
           "member": "string",
           "name": "Mode",
@@ -13762,7 +14724,7 @@
         },
         {
           "disabled": false,
-          "document": "The unique ID.",
+          "document": "Unique ID.",
           "example": "xxx",
           "member": "int64",
           "name": "ID",
@@ -13773,7 +14735,7 @@
         },
         {
           "disabled": false,
-          "document": "Note: This field may return null, which indicates a failure to obtain a valid value.",
+          "document": "Template action. Valid values:\n<li>alg: JavaScript challenge;</li>\n<li>monitor: observation.</li>\nNote: This field may return null, which indicates a failure to obtain a valid value.",
           "example": "alg",
           "member": "string",
           "name": "Action",
@@ -13784,7 +14746,7 @@
         },
         {
           "disabled": false,
-          "document": "Note: This field may return null, which indicates a failure to obtain a valid value.",
+          "document": "Penalty duration, in seconds. Value range: 0-2 days.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
           "example": "10",
           "member": "int64",
           "name": "PunishTime",
@@ -13795,7 +14757,7 @@
         },
         {
           "disabled": false,
-          "document": "The request threshold. Value range: 0-4294967294.",
+          "document": "Statistical threshold, in times. Value range: 0-4294967294.",
           "example": "100",
           "member": "int64",
           "name": "Threshold",
@@ -13806,7 +14768,7 @@
         },
         {
           "disabled": false,
-          "document": "The statistical period. Value range: 0-120 seconds.",
+          "document": "Statistical cycle. Value range: 0-120 seconds.",
           "example": "10",
           "member": "int64",
           "name": "Period",
@@ -14016,7 +14978,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The ID of the real-time log delivery task.",
+          "document": "ID of a real-time log shipping task.",
           "example": "cdda4cbc-a83e-4a54-be68-82339e80bb2f",
           "member": "string",
           "name": "TaskId",
@@ -14026,7 +14988,7 @@
         },
         {
           "disabled": false,
-          "document": "The name of the real-time log delivery task.",
+          "document": "Name of a real-time log shipping task.",
           "example": "test_log_task",
           "member": "string",
           "name": "TaskName",
@@ -14036,7 +14998,7 @@
         },
         {
           "disabled": false,
-          "document": "The status of the real-time log delivery task. Valid values:<li>enabled: Enabled;</li><li>disabled: Disabled;</li><li>deleted: Abnormal deletion. Check whether the destination Tencent Cloud CLS log set/log topic has been deleted.</li>",
+          "document": "Status of a real-time log shipping task. Valid values: <li>enabled: enabled;</li><li>disabled: disabled;</li><li>deleted: deleted abnormally. Check whether the destination log set/log topic of Tencent Cloud CLS has been deleted.</li>",
           "example": "enabled",
           "member": "string",
           "name": "DeliveryStatus",
@@ -14046,7 +15008,7 @@
         },
         {
           "disabled": false,
-          "document": "The type of the real-time log delivery task. Valid values:<li>cls: Push to Tencent Cloud CLS;</li><li>custom_endpoint: Push to a custom HTTP(S) address;</li><li>s3: Push to an AWS S3-compatible bucket address.</li>",
+          "document": "Type of a real-time log shipping task. Valid values:<li>cls: push to Tencent Cloud CLS;</li><li>custom_endpoint: push to a custom HTTP(S) address;</li><li>s3: push to an AWS S3-compatible bucket address.</li>",
           "example": "cls",
           "member": "string",
           "name": "TaskType",
@@ -14056,7 +15018,7 @@
         },
         {
           "disabled": false,
-          "document": "The list of entities (Layer 7 domains or Layer 4 proxy instances) corresponding to the real-time log delivery task. Valid value examples:<li>Layer 7 domain: domain.example.com;</li><li>Layer 4 proxy instance: sid-2s69eb5wcms7.</li>",
+          "document": "List of entities (L7 domain names or L4 proxy instances) corresponding to a real-time log shipping task. Valid value examples: <li>L7 domain name: domain.example.com;</li><li>L4 proxy instance: sid-2s69eb5wcms7.</li>\t",
           "example": "[\"domain.example.com\"]",
           "member": "string",
           "name": "EntityList",
@@ -14066,7 +15028,7 @@
         },
         {
           "disabled": false,
-          "document": "The data delivery type. Valid values: <li>domain: Site acceleration log;</li><li>application: Layer 4 proxy log;</li><li>web-rateLiming: Rate limit and CC attack defense log;</li><li>web-attack: Managed rule log;</li><li>web-rule: Custom rule log;</li><li>web-bot: Bot management log.</li>",
+          "document": "Data shipping type. Valid values: <li>domain: site acceleration logs;</li><li>application: L4 proxy logs;</li><li>web-rateLiming: rate limiting and CC attack defense logs;</li><li>web-attack: managed rule logs;</li><li>web-rule: custom rule logs;</li><li>web-bot: Bot management logs.</li>",
           "example": "domain",
           "member": "string",
           "name": "LogType",
@@ -14076,7 +15038,7 @@
         },
         {
           "disabled": false,
-          "document": "The data delivery area. Valid values:<li>mainland: Within the Chinese mainland;</li><li>overseas: Global (excluding the Chinese mainland).</li>",
+          "document": "Data shipping area. Valid values:<li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding the Chinese mainland).</li>",
           "example": "mainland",
           "member": "string",
           "name": "Area",
@@ -14086,7 +15048,7 @@
         },
         {
           "disabled": false,
-          "document": "The list of predefined fields for delivery.",
+          "document": "List of predefined fields for shipping.",
           "example": "[\"RequestID\",\"ClientIP\",\"RequestTime\"]",
           "member": "string",
           "name": "Fields",
@@ -14096,7 +15058,7 @@
         },
         {
           "disabled": false,
-          "document": "The list of custom fields for delivery.",
+          "document": "List of custom fields for shipping.",
           "example": "无",
           "member": "CustomField",
           "name": "CustomFields",
@@ -14106,7 +15068,7 @@
         },
         {
           "disabled": false,
-          "document": "Log delivery filter conditions.",
+          "document": "Filter criteria of log shipping.",
           "example": "无",
           "member": "DeliveryCondition",
           "name": "DeliveryConditions",
@@ -14116,7 +15078,7 @@
         },
         {
           "disabled": false,
-          "document": "The sampling ratio in permille. Value range: 1 to 1000. For example, 605 represents a sampling ratio of 60.5%.",
+          "document": "Sampling ratio in permille. Value range: 1-1000. For example, 605 indicates a sampling ratio of 60.5%.",
           "example": "605",
           "member": "uint64",
           "name": "Sample",
@@ -14136,7 +15098,7 @@
         },
         {
           "disabled": false,
-          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Configuration information of the CLS.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
           "example": "无",
           "member": "CLSTopic",
           "name": "CLS",
@@ -14146,7 +15108,7 @@
         },
         {
           "disabled": false,
-          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Configuration information of the custom HTTP service.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
           "example": "无",
           "member": "CustomEndpoint",
           "name": "CustomEndpoint",
@@ -14156,7 +15118,7 @@
         },
         {
           "disabled": false,
-          "document": "Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Configuration information of the AWS S3-compatible bucket.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
           "example": "无",
           "member": "S3",
           "name": "S3",
@@ -14166,7 +15128,7 @@
         },
         {
           "disabled": false,
-          "document": "The creation time.",
+          "document": "Creation time.",
           "example": "无",
           "member": "datetime_iso",
           "name": "CreateTime",
@@ -14176,7 +15138,7 @@
         },
         {
           "disabled": false,
-          "document": "The update time.",
+          "document": "Update time.",
           "example": "无",
           "member": "datetime_iso",
           "name": "UpdateTime",
@@ -14426,7 +15388,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Feature execution conditions.\nNote: If any condition in the array is met, the feature will run.",
+          "document": "Judgment condition for executing the feature.\nNote: The feature can be executed if any condition in the array is met.",
           "example": "[]",
           "member": "RuleAndConditions",
           "name": "Conditions",
@@ -14437,7 +15399,7 @@
         },
         {
           "disabled": false,
-          "document": "Feature to be executed.\nNote: Actions and SubRules cannot both be empty.",
+          "document": "Executed feature. Note: Actions and SubRules cannot be both empty.",
           "example": "[]",
           "member": "Action",
           "name": "Actions",
@@ -14448,7 +15410,7 @@
         },
         {
           "disabled": false,
-          "document": "The nested rule.\nNote: Actions and SubRules cannot both be empty.",
+          "document": "Nested rule. Note: SubRules and Actions cannot be both empty.",
           "example": "[]",
           "member": "SubRuleItem",
           "name": "SubRules",
@@ -15296,7 +16258,7 @@
           "example": "默认证书",
           "member": "string",
           "name": "Alias",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -15857,11 +16819,11 @@
       "members": [
         {
           "disabled": false,
-          "document": "The query time recorded in seconds using UNIX timestamp.",
+          "document": "Time point for returning data, in the format of Unix timestamp in seconds.",
           "example": "1652659200",
           "member": "int64",
           "name": "Timestamp",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -15871,7 +16833,7 @@
           "example": "100",
           "member": "int64",
           "name": "Value",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -16433,7 +17395,7 @@
         },
         {
           "disabled": false,
-          "document": "Site connection method, valid values:\n<li>full: Connect via NS;</li>\n<li>partial: Connect via CNAME;</li>\n<li>noDomainAccess: Connect without using a domain name;</li>\n<li>vodeo: Connect by default when VODEO is enabled.</li>",
+          "document": "Site access method. Valid values:\n<li>full: NS access;</li>\n<li>partial: CNAME access;</li>\n<li>noDomainAccess: access with no domain name.</li>",
           "example": "full",
           "member": "string",
           "name": "Type",

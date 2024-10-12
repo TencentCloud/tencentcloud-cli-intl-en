@@ -28875,7 +28875,7 @@
           "member": "OpsTaskCanvasDto",
           "name": "CirculateTaskList",
           "output_required": false,
-          "type": "object",
+          "type": "list",
           "value_allowed_null": true
         }
       ],
