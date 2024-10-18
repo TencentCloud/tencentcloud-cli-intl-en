@@ -323,8 +323,7 @@
           "member": "string",
           "name": "UserId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -333,8 +332,7 @@
           "member": "string",
           "name": "UserSig",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -343,8 +341,7 @@
           "member": "uint64",
           "name": "MaxIdleTime",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -2457,8 +2454,7 @@
           "member": "string",
           "name": "PayloadContent",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -2467,8 +2463,7 @@
           "member": "uint64",
           "name": "PayloadType",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2477,8 +2472,7 @@
           "member": "string",
           "name": "PayloadUuid",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -2487,8 +2481,7 @@
           "member": "uint64",
           "name": "Interval",
           "required": false,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2497,8 +2490,7 @@
           "member": "uint64",
           "name": "FollowIdr",
           "required": false,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -2513,8 +2505,7 @@
           "member": "string",
           "name": "PublishCdnUrl",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -2523,8 +2514,7 @@
           "member": "uint64",
           "name": "IsTencentCdn",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -2565,8 +2555,7 @@
           "member": "MixUserInfo",
           "name": "UserInfo",
           "required": true,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
         }
       ],
       "usage": "in"
@@ -2641,8 +2630,7 @@
           "member": "string",
           "name": "WaterMarkUrl",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -2651,8 +2639,7 @@
           "member": "uint64",
           "name": "WaterMarkWidth",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2661,8 +2648,7 @@
           "member": "uint64",
           "name": "WaterMarkHeight",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2671,8 +2657,7 @@
           "member": "uint64",
           "name": "LocationX",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2681,8 +2666,7 @@
           "member": "uint64",
           "name": "LocationY",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2691,8 +2675,7 @@
           "member": "uint64",
           "name": "ZOrder",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -2707,8 +2690,7 @@
           "member": "uint64",
           "name": "WaterMarkType",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2717,8 +2699,7 @@
           "member": "McuWaterMarkImage",
           "name": "WaterMarkImage",
           "required": false,
-          "type": "object",
-          "value_allowed_null": false
+          "type": "object"
         },
         {
           "disabled": false,
@@ -2727,8 +2708,7 @@
           "member": "McuWaterMarkText",
           "name": "WaterMarkText",
           "required": false,
-          "type": "object",
-          "value_allowed_null": true
+          "type": "object"
         }
       ],
       "usage": "in"
@@ -2743,8 +2723,7 @@
           "member": "string",
           "name": "Text",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -2753,8 +2732,7 @@
           "member": "uint64",
           "name": "WaterMarkWidth",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2763,8 +2741,7 @@
           "member": "uint64",
           "name": "WaterMarkHeight",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2773,8 +2750,7 @@
           "member": "uint64",
           "name": "LocationX",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2783,8 +2759,7 @@
           "member": "uint64",
           "name": "LocationY",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2793,8 +2768,7 @@
           "member": "uint64",
           "name": "FontSize",
           "required": true,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         },
         {
           "disabled": false,
@@ -2803,8 +2777,7 @@
           "member": "string",
           "name": "FontColor",
           "required": false,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         },
         {
           "disabled": false,
@@ -2813,8 +2786,7 @@
           "member": "string",
           "name": "BackGroundColor",
           "required": false,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -3087,8 +3059,7 @@
           "member": "string",
           "name": "UserId",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -3097,8 +3068,7 @@
           "member": "string",
           "name": "RoomId",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
@@ -3107,8 +3077,7 @@
           "member": "uint64",
           "name": "RoomIdType",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -4621,8 +4590,7 @@
           "member": "uint64",
           "name": "Width",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -4631,8 +4599,7 @@
           "member": "uint64",
           "name": "Height",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -4641,8 +4608,7 @@
           "member": "uint64",
           "name": "Fps",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -4651,8 +4617,7 @@
           "member": "uint64",
           "name": "BitRate",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
@@ -4661,8 +4626,7 @@
           "member": "uint64",
           "name": "Gop",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
