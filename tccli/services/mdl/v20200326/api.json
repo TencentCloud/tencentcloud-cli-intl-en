@@ -592,6 +592,28 @@
           "required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Key frame interval, 300-10000, optional.",
+          "example": "无",
+          "member": "int64",
+          "name": "GopSize",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Keyframe units, only support MILLISECONDS (milliseconds).",
+          "example": "MILLISECONDS",
+          "member": "string",
+          "name": "GopSizeUnits",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -5945,7 +5967,7 @@
         },
         {
           "disabled": false,
-          "document": "Output protocol\nValid values: `HLS`, `DASH`, `HLS_ARCHIVE`, `DASH_ARCHIVE`,`HLS_STREAM_PACKAGE`, `DASH_STREAM_PACKAGE`, `FRAME_CAPTURE`,`RTP`,`RTMP`.",
+          "document": "Output protocol\nValid values: `HLS`, `DASH`, `HLS_ARCHIVE`, \n `DASH_ARCHIVE`, `HLS_STREAM_PACKAGE`, \n `DASH_STREAM_PACKAGE`, \n `FRAME_CAPTURE`, `RTP`, `RTMP`, `M2TS`.",
           "example": "无",
           "member": "string",
           "name": "Type",
@@ -5956,7 +5978,7 @@
         },
         {
           "disabled": false,
-          "document": "Output information\nIf the type is RTMP or RTP, only one output is allowed; if it is HLS or DASH, 1-10 outputs are allowed.",
+          "document": "Output information\nIf the type is RTMP, RTP or FRAME_CAPTURE, only one output is allowed; if it is HLS or DASH, 1-10 outputs are allowed.",
           "example": "无",
           "member": "OutputInfo",
           "name": "Outputs",
