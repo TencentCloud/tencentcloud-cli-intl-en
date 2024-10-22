@@ -1,5 +1,13 @@
 {
   "actions": {
+    "ControlAIConversation": [
+      {
+        "document": "When you want the robot to actively broadcast text, you can use this interface",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ControlAIConversation\n<Common request parameters>\n\n{\n    \"TaskId\": \"your-taskid\",\n    \"Command\": \"ServerPushText\",\n    \"ServerPushText\": {\n        \"Text\": \"Hello, I am glad to serve you\",\n        \"Interrupt\": true\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx-xxx\"\n    }\n}",
+        "title": "Send broadcast text"
+      }
+    ],
     "CreateCloudRecording": [
       {
         "document": "This example shows you how to start on-cloud recording in room 3560 under the application whose `SDKAppID` is `1234`.\n\nThe timeout period for recording is one minute.\nThe recording mode is mixed-stream recording.\nThe type of the streams recorded are audio and video.\nThe streams of all anchors in the room are subscribed.\nThe resolution of the recorded video is 360 x 640, the frame rate is 15 fps, and the bitrate is 500,000 bps. The default background color is used.\nThe grid layout template is used.\nThe recording file is saved to Tencent Cloud VOD.",
@@ -14,6 +22,22 @@
         "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCloudRecording\n<Common request parameters>\n\n{\n    \"TaskId\": \"xx\",\n    \"SdkAppId\": 1234\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"5df46eb2-8e4b-490e-9c3c-dbd3b84faefc\",\n        \"RequestId\": \"71993312-6ab8-4768-9124-118e0a20c45f\"\n    }\n}",
         "title": "Stopping an on-cloud recording task"
+      }
+    ],
+    "DescribeAIConversation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAIConversation\n<Common request parameters>\n\n{\n    \"TaskId\": \"SV1FR+XTtvzAjRxZZ+aof1DfJF00VSBBNE0zR9W-PEpgCPBmt402BbnqMCdom79LtZO-VbLyV1nhVY1pFauWgrW12BevPvJ5Zn010RnD6vj3hgfbV0.\"\n}",
+        "output": "{\n    \"Response\": {\n        \"StartTime\": \"abc\",\n        \"Status\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Describe the AI conversation task status"
+      }
+    ],
+    "DescribeAITranscription": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAITranscription\n<Common request parameters>\n\n{\n    \"TaskId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"StartTime\": \"abc\",\n        \"Status\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "example"
       }
     ],
     "DescribeCallDetailInfo": [
@@ -208,6 +232,22 @@
         "title": "Disabling the audio and video of a user (string-type room ID)"
       }
     ],
+    "StartAIConversation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartAIConversation\n<Common request parameters>\n\n{\n    \"SdkAppId\": 12345678,\n    \"RoomId\": \"room_987654321\",\n    \"RoomIdType\": 1,\n    \"AgentConfig\": {\n        \"UserId\": \"user_12345\",\n        \"UserSig\": \"user_signature_example\",\n        \"MaxIdleTime\": 120,\n        \"TargetUserId\": \"target_user_54321\"\n    },\n    \"SessionId\": \"session_1234567890abcdef\",\n    \"STTConfig\": {\n        \"Language\": \"en-US\",\n        \"AlternativeLanguage\": [\n            \"en-US\",\n            \"zh\"\n        ]\n    },\n    \"LLMConfig\": \"{\\\"LLMType\\\": \\\"openai\\\", \\\"Model\\\": \\\"gpt-3.5-turbo\\\", \\\"APIKey\\\": \\\"xxx\\\", \\\"APIUrl\\\": \\\"http://xxxx-api.woa.com/v1/chat/completions\\\", \\\"Streaming\\\": true}\",\n    \"TTSConfig\": \"{\\\"TTSType\\\": \\\"tencent\\\", \\\"AppId\\\": 130000000, \\\"SecretId\\\": \\\"AKIDxxxxx\\\", \\\"SecretKey\\\": \\\"HlDxxxxxx\\\", \\\"VoiceType\\\": 1008, \\\"Speed\\\": 1}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Start an AI robot conversation task"
+      }
+    ],
+    "StartAITranscription": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartAITranscription\n<Common request parameters>\n\n{\n    \"SdkAppId\": 1234,\n    \"RoomId\": \"1234\",\n    \"RoomIdType\": 1,\n    \"TranscriptionParams\": {\n        \"UserId\": \"abc\",\n        \"UserSig\": \"abc\",\n        \"MaxIdleTime\": 60,\n        \"TranscriptionMode\": 1,\n        \"TargetUserId\": \"abc\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "example"
+      }
+    ],
     "StartPublishCdnStream": [
       {
         "document": "无",
@@ -254,6 +294,14 @@
         "title": "Push an online media stream to the TRTC room."
       }
     ],
+    "StopAITranscription": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopAITranscription\n<Common request parameters>\n\n{\n    \"TaskId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "example"
+      }
+    ],
     "StopPublishCdnStream": [
       {
         "document": " ",
@@ -268,6 +316,14 @@
         "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopStreamIngest\n<common request parameters>\n\n{\n    \"SdkAppId\": 1234567890,\n    \"TaskId\": \"1234\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"71993312-6ab8-4768-9124-118e0a20c45f\"\n    }\n}",
         "title": "停止输入在线媒体流"
+      }
+    ],
+    "UpdateAIConversation": [
+      {
+        "document": "During the conversation, I want to dynamically update the tts tone",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateAIConversation\n<Common request parameters>\n\n{\n    \"TaskId\": \"your-taskid\",\n    \"TTSConfig\": \"your-tts-config-json\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxx\"\n    }\n}",
+        "title": "Update tts sound"
       }
     ],
     "UpdatePublishCdnStream": [

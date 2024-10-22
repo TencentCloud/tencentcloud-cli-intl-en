@@ -2594,7 +2594,7 @@
         },
         {
           "disabled": false,
-          "document": "Unique ID of the service to be bound",
+          "document": "Unique ID of the service to be bound.",
           "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",

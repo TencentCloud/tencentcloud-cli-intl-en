@@ -635,11 +635,11 @@
       "type": "object"
     },
     "AttackRiskDetail": {
-      "document": "",
+      "document": "Suspected attack detail",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Suspected attack trace types\nSuspectedSpoofingAttack: Suspected spoofing attack\n SuspectedSynthesisImage: Suspected synthesis image SuspectedSynthesisVideo: Suspected synthesis video SuspectedeAnomalyAttack: Suspected anomaly attack SuspectedAdversarialAttack: Suspected adversarial attack SuspectedBlackIndustry: Suspected batch generation attack\nSuspectedWatermark: Suspected watermark",
           "example": "SuspectedWatermark",
           "member": "string",
           "name": "Type",

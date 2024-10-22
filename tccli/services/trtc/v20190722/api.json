@@ -1,5 +1,12 @@
 {
   "actions": {
+    "ControlAIConversation": {
+      "document": "Provides server-side control of AI Conversation",
+      "input": "ControlAIConversationRequest",
+      "name": "Control AI Conversation task",
+      "output": "ControlAIConversationResponse",
+      "status": "online"
+    },
     "CreateCloudRecording": {
       "document": "API description:\nThis API is used to start an on-cloud recording task. It records the audio and video streams in a room and saves them to the specified cloud storage. You can use this API to record the streams in a room separately, or you can mix the streams first and then record the mixed stream.\n\nYou can use this API to perform the following operations:\n* Specify the anchors whose streams you want or do not want to record by using the `RecordParams` parameter\n* Specify the storage service you want to save recording files to by using the `StorageParams` parameter. Currently, you can save recording files to Tencent Cloud VOD or COS.\n* Specify transcoding settings for mixed-stream recording, including video resolution, video bitrate, frame rate, and audio quality, by using `MixTranscodeParams`\n* Specify the layout of different videos in mixed-stream recording mode or select an auto-arranged layout template\n\nKey concepts:\n* Single-stream recording: Record the audio and video of each subscribed user (`UserId`) in a room and save the recording files to the storage you specify.\nMixed-stream recording: Mix the audios and videos of subscribed users (`UserId`) in a room, record the mixed stream, and save the recording files to the storage you specify. After a recording task ends, you can go to the VOD console (https://console.tencentcloud.com/vod/media) or [COS console](https://console.cloud.tencent.com/cos/bucket) to view the recording files.",
       "input": "CreateCloudRecordingRequest",
@@ -12,6 +19,20 @@
       "input": "DeleteCloudRecordingRequest",
       "name": "Stops an on-cloud recording task",
       "output": "DeleteCloudRecordingResponse",
+      "status": "online"
+    },
+    "DescribeAIConversation": {
+      "document": "Describe the AI conversation task status",
+      "input": "DescribeAIConversationRequest",
+      "name": "Describe AI conversation",
+      "output": "DescribeAIConversationResponse",
+      "status": "online"
+    },
+    "DescribeAITranscription": {
+      "document": "Describe AI transcription task status",
+      "input": "DescribeAITranscriptionRequest",
+      "name": "Describe AI Transcription",
+      "output": "DescribeAITranscriptionResponse",
       "status": "online"
     },
     "DescribeCallDetailInfo": {
@@ -182,6 +203,20 @@
       "output": "SetUserBlockedByStrRoomIdResponse",
       "status": "online"
     },
+    "StartAIConversation": {
+      "document": "Initiate AI conversation task, where the AI bot enters the TRTC room to engage in AI conversation with specified members in the room. This is suitable for scenarios such as intelligent customer service and AI language teachers. The TRTC AI conversation feature has built-in speech-to-text capabilities , allowing customers to flexibly specify third-party AI model (LLM) services and text-to-speech (TTS) services. For more [feature details](https://cloud.tencent.com/document/product/647/108901).",
+      "input": "StartAIConversationRequest",
+      "name": "Start AI conversation task",
+      "output": "StartAIConversationResponse",
+      "status": "online"
+    },
+    "StartAITranscription": {
+      "document": "Initiate the transcription bot. The backend will pull the stream through the bot to perform real-time speech recognition and deliver subtitles and transcription messages. The transcription bot supports two stream pulling modes, controlled by the `TranscriptionMode` field:\n- Pull the stream of the entire room.\n- Pull the stream of a specific user.\n\nThe server delivers subtitles and transcription messages in real-time through TRTC's custom messages, with `CmdId` fixed at 1. The client only needs to listen for the callback of custom messages. For example, see the [C++ callback](https://cloud.tencent.com/document/product/647/79637#4cd82f4edb24992a15a25187089e1565). Other clients, such as Android, Web, etc., can also be found at the same link.",
+      "input": "StartAITranscriptionRequest",
+      "name": "Start AI transcription task",
+      "output": "StartAITranscriptionResponse",
+      "status": "online"
+    },
     "StartPublishCdnStream": {
       "document": "In a TRTC room, there may be multiple audio and video streams concurrently active. You can use the MixTranscoding API to notify Tencent Cloud server to mix multiple video screens from the same room or multiple rooms together, and specify the position of each screen, while mixing multiple audio streams together. The final result is a single audio and video stream, which can be used for recording and live viewing. It also supports pushing this mixed audio and video stream back to the TRTC room.\n\nThe Cloud API MixTranscoding feature includes three interfaces:\n1. StartPublishCdnStream: Start a MixTranscoding task. This interface will initiate a new MixTranscoding task. After the task is successfully started, a unique TaskId will be returned under the sdkappid dimension. You need to save this TaskId, as it will be required for updating and stopping the task later.\n2. UpdatePublishCdnStream: Update the specified MixTranscoding task, including updating the video screen layout, updating the mixing list, updating the list of CDN addresses to be relayed, and updating the list of rooms to be pushed back.\n3. StopPublishCdnStream: Stop the specified MixTranscoding task.\n\nYou can achieve the following goals through this set of interfaces:\n1. Set the final video and audio quality, including video resolution, video frame rate, video bitrate, and audio quality.\n2. Set the layout position of each screen. You only need to set it once. When you specify the MixTranscoding user to enter the room and send audio and video, the layout engine will automatically mix the user's screen to the specified layout position. You can also use the update interface to adjust the layout position.\n3. Set multiple CDN relay target addresses. A single relay task can support up to 10 CDN relay addresses at the same time.\n4. Set multiple room pushback lists. A single relay task can support up to 10 TRTC rooms for mixed stream pushback.\n\nThe following layout templates are currently supported. Dynamic layout templates (floating template, grid template, screen sharing template) only support a single TRTC room, while custom templates support mixing audio and video streams from multiple TRTC rooms. The specific descriptions are as follows:\n1. Floating template: The video screen of the first user entering the room will fill the entire screen, and the video screens of other users will be arranged horizontally from the bottom left corner, displaying as small screens, with up to 4 rows and 4 screens per row. The small screens float above the large screen. It supports up to 1 large screen and 15 small screens. If the user only sends audio, it does not occupy the layout configuration by default, but it can also be set. Each sub-screen is rendered by default using the center cropping method, and the rendering method of the sub-screen can also be set uniformly.\n2. Grid template: The video screens of all users are of the same size, evenly dividing the entire screen. The more people there are, the smaller the size of each user's screen. It supports up to 16 screens. If the user only sends audio, it does not occupy the layout configuration by default, but it can also be set. Each sub-screen is rendered by default using the center cropping method, and the rendering method of the sub-screen can also be set uniformly.\n3. Screen sharing template: Suitable for video conference and online education scenarios. The screen sharing (or the main speaker's camera) always occupies the large screen position on the left side of the screen. You need to explicitly set the MixTranscoding user information that occupies the large screen. Other users are arranged vertically on the right side, with up to two columns and 8 small screens per column. It supports up to 1 large screen and 15 small screens. If the uplink resolution aspect ratio is different from the screen output aspect ratio, the large screen on the left side will be scaled to maintain content integrity, while the small screens on the right side will be cropped. The rendering method of the sub-screen can also be set uniformly.\n4. Custom layout template: Allows you to actively set the layout position according to your business needs. Each preset layout position supports named settings (named settings require specifying the room number and username) and unnamed settings. When a sub-screen is named, the position is reserved for the user, and the user will automatically occupy the position when entering the room and sending audio and video data. Other users will not occupy this position. When the preset layout position is not named, the layout engine will automatically fill in the order of entering the room. When the preset positions are full, no other users' screens and sounds will be mixed. Each sub-screen position supports setting placeholder images (BackgroundImageUrl). When the user does not enter the room or only sends audio data, the screen at this position can display the corresponding placeholder image.\n\nWhen using the relay API, you may incur the following costs depending on the usage characteristics:\nFor MCU MixTranscoding fees, please refer to the documentation: Billing of MixTranscoding and Relay to CDN | Tencent Cloud.\nFor non-Tencent Cloud CDN relay fees, please refer to the documentation: Billing of MixTranscoding and Relay to CDN | Tencent Cloud.\n\nInstructions for using parameters:\n1. AgentParams: Each relay task will pull a robot user into the TRTC room to pull the stream. You need to set this robot user through the AgentParams.UserId parameter. This robot ID cannot conflict with the normal user ID in the room, otherwise, the relay task will be abnormally terminated due to the robot user being kicked out of the TRTC room. You can avoid this by adding a special prefix. You can control the automatic termination of the relay task by setting AgentParams.MaxIdleTime. When this parameter is set, the relay task will automatically stop when all participating MixTranscoding anchors continuously leave the TRTC room for more than MaxIdleTime duration. Note: The relay task will not automatically stop when the participating MixTranscoding anchor only stops sending audio and video.\n2. WithTranscoding: If you need to mix multiple audio and video streams into one, WithTranscoding must be set to 1.\n3. AudioParams: The audio parameters and video parameters of the relay task are set separately. If you want to mix the audio of specified users, you need to explicitly set AudioParams.SubscribeAudioList. If you do not set AudioParams.SubscribeAudioList, the mixing engine will automatically mix the audio of all users in the TRTC room. If you want to mix the audio of all users in the TRTC room except for specified users, you can set the audio blacklist list through AudioParams.UnSubscribeAudioList.\n4. VideoParams: If you want to mix user videos, you can set it through VideoParams. If you only want to mix audio, you do not need to set VideoParams. You can set the screen layout mode through VideoParams.LayoutParams.MixLayoutMode, including dynamic layout (1: floating layout (default), 2: screen sharing layout, 3: grid layout) and custom layout. The dynamic layout mode is automatically mixed by the layout engine according to a fixed layout, and there is no need to set VideoParams.LayoutParams.MixLayoutList. When using the floating layout and screen sharing layout, you can specify the large screen user by setting VideoParams.LayoutParams.MaxVideoUser. The custom layout mode provides you with the ability to layout screens independently, and you can specify the layout position of each user through VideoParams.LayoutParams.MixLayoutList. In each layout parameter, you can specify the layout position for the specified user by setting the UserMediaStream parameter, or you can not set the UserMediaStream, and the layout engine will automatically fill in the order of users entering the TRTC room. In addition, you can set the rendering method (RenderMode) and cropping method (CustomCrop) for each layout position.\n5. VideoParams.WaterMarkList: If you want to overlay a watermark on the mixed screen, you can set it through VideoParams.WaterMarkList. It supports image watermarks and text watermarks and supports transparent channels.\n6. SingleSubscribeParams: If you want to push a single stream from the TRTC room to the CDN, you can set it using the SingleSubscribeParams parameter. In this case, you need to set the WithTranscoding parameter to 0.\n7. PublishCdnParams.N: If you want to push the stream to the CDN, you can set it using the PublishCdnParams.N parameter. It supports pushing to up to 10 CDN addresses at the same time. If the relay address is Tencent Cloud CDN, please set IsTencentCdn explicitly to 1; if you need to relay to a non-Tencent Cloud CDN, please contact Tencent Cloud Technical Support to enable it. Relaying to non-Tencent Cloud will incur relay fees. For fee information, please refer to the official documentation: On-Cloud Relay Billing Overview.\n8. FeedBackRoomParams.N: If you want to push the mixed audio and video stream back to the TRTC room, you can set it using the FeedBackRoomParams.N parameter. It supports pushing up to 10 streams back to the TRTC room at the same time. You need to specify the TRTC room number and robot ID (UserId) for the pushback. The robot ID cannot conflict with the normal user ID, otherwise, the relay task will be abnormally terminated due to the robot user being kicked out of the TRTC room. You can avoid this by adding a special prefix.\n9. SeiParams: If you want to add SEI information to the mixed audio and video stream, you can set it using the SeiParams parameter. It supports volume layout SEI and overlay relay request SEI. The content of the volume layout SEI is a fixed JSON structure, please see the SEI description in the following section of this chapter. You can set the SEI to follow the keyframe by setting the FollowIdr parameter. The description of the volume layout SEI is as follows:\nIf your CDN audience needs to recognize the position of the participating MixTranscoding anchors and the volume information of the participating MixTranscoding anchors, you can use the volume layout SEI. The payload content and parameter description of the volume layout SEI are as follows:\n{ \"app_data\":\"\", \"canvas\":{ \"w\":1080, \"h\":960 }, \"regions\":[ { \"uid\":\"65949987242835883c\", \"zorder\":2, \"volume\":45, \"x\":270, \"y\":480, \"w\":540, \"h\":480 }, { \"uid\":\"659c9d8d242b328d31\", \"zorder\":2, \"volume\":0, \"x\":0, \"y\":0, \"w\":540, \"h\":480 }, { \"uid\":\"64989a82272b308c\", \"zorder\":2, \"volume\":91, \"x\":540, \"y\":0, \"w\":540, \"h\":480 } ], \"ver\":\"1.0\", \"ts\":1648544726 }\ncanvas: This is the width and height of the VideoEncode setting in the MixTranscoding signaling, that is, the width and height of the entire canvas of the MixTranscoding output.\nregions: Contains the real mixed user ID and the corresponding sub-screen position. If the participating MixTranscoding user does not enter the TRTC room or does not turn on the video uplink, the regions will not include the user.\nuid: Represents the user ID participating in MixTranscoding.\nzorder: The layer of the participating MixTranscoding userid in the MixTranscoding output.\nx/y: The coordinates of the sub-screen of the participating MixTranscoding userid on the canvas.\nw/h: The size of the sub-screen of the participating MixTranscoding userid.\nvolume: Represents the volume of the MixTranscoding user, with a value range of 0-100. The larger the value, the greater the volume of the user participating in MixTranscoding.\nts: The server local second-level timestamp for outputting SEI. \nver: can be ignored.\n\nUsage Precautions:\n1. When using the Mixed Relay Interface, you need to call the Start Relay Task Interface (StartPublishCdnStream) first to get the Task ID from the response. Then, use the Task ID to update the relay task (UpdatePublishCdnStream) and stop the relay task (StopPublishCdnStream).\n2. The Relay API does not support initiating Automatic Bypass Tasks configured in the TRTC Console, nor does it support Custom Stream ID bypass tasks set in the TRTC SDK room entry interface.\n3. To ensure the stability of the relay link, the same relay task does not support switching between Audio only, Audio and Video, and Video only.\n4. To ensure the stability of the relay link, updating video parameters (codec) and audio parameters (codec, Sample rate, bitrate, and number of channels) is not supported during the Update Video process.\n5. When initiating a single stream bypass task, filling in both Audio Parameters and Video Parameters means Audio and Video bypass. If only Audio Parameters are filled in, it means Audio only bypass, and switching from Audio only to Audio and Video is not supported during the task progress. For Audio and Video bypass, the Width, Height, Fps, BitRate, and Gop in Video Parameters must be filled in according to the real upstream parameters.\n6. The SequenceNumber parameter must be carried in the update request to prevent request disorder. Customers must ensure that the SequenceNumber parameter increases when updating the same task, otherwise, the mix task update will fail.\n7. When calling the API, choose the region according to the following instructions: If the Application ID is 1400xxx, the region can be Beijing, Shanghai, Guangzhou, or Hong Kong. If your CDN audience is mainly overseas, please choose Hong Kong. If the Application ID is 200xxx or 400xxx, please choose Singapore.\n8. Streams pushed back to the TRTC room will not participate in the mixing of other push back room tasks. If one of the following conditions is met, it can participate in the mixing of other relay CDN tasks: (1) The push stream robot is specified to participate in the mixing in the video parameters of the relay CDN task; (2) The push stream robot is specified to participate in the mixing in the audio parameters of the relay CDN task through the whitelist method; (3) The room number of the mix user participating in the relay CDN task is completely different from the room number of the mix user corresponding to the push back robot.\n9. You can create a relay task before the anchor enters the room. When the relay task is finished, you need to call the stop interface actively. If you do not call the Stop Relay Task Interface, Tencent Cloud will automatically stop the mix relay task when all users participating in the mix have no data uploaded for a period of time exceeding the timeout (AgentParams.MaxIdleTime) set when starting the relay task.",
       "input": "StartPublishCdnStreamRequest",
@@ -196,6 +231,13 @@
       "output": "StartStreamIngestResponse",
       "status": "online"
     },
+    "StopAITranscription": {
+      "document": "Stop AI Transcription task",
+      "input": "StopAITranscriptionRequest",
+      "name": "Stop AI Transcription task",
+      "output": "StopAITranscriptionResponse",
+      "status": "online"
+    },
     "StopPublishCdnStream": {
       "document": "This API is used to stop a relaying task.",
       "input": "StopPublishCdnStreamRequest",
@@ -208,6 +250,13 @@
       "input": "StopStreamIngestRequest",
       "name": "Stop Pull stream Relay",
       "output": "StopStreamIngestResponse",
+      "status": "online"
+    },
+    "UpdateAIConversation": {
+      "document": "Update AI conversation task parameters",
+      "input": "UpdateAIConversationRequest",
+      "name": "Update AI conversation task",
+      "output": "UpdateAIConversationResponse",
       "status": "online"
     },
     "UpdatePublishCdnStream": {
@@ -312,6 +361,89 @@
         }
       ],
       "usage": "out"
+    },
+    "AgentConfig": {
+      "document": "Robot parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The robot's UserId is used to enter a room and initiate tasks. [Note] This UserId cannot be repeated with the host viewer [UserId](https://cloud.tencent.com/document/product/647/46351#userid) in the current room. If multiple tasks are initiated in a room, the robot's UserId cannot be repeated, otherwise the previous task will be interrupted. The robot's UserId must be unique in the room.",
+          "example": "无",
+          "member": "string",
+          "name": "UserId",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The verification signature corresponding to the robot's UserId, that is, UserId and UserSig are equivalent to the robot's login password to enter the room. For the specific calculation method, please refer to the TRTC calculation [UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig) solution.",
+          "example": "无",
+          "member": "string",
+          "name": "UserSig",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The UserId of the robot pulling the media stream. After filling in, the robot will pull the media stream of the UserId for real-time processing",
+          "example": "无",
+          "member": "string",
+          "name": "TargetUserId",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "If there is no streaming in the room for more than MaxIdleTime, the Service will automatically close the task. The default value is 60s.",
+          "example": "无",
+          "member": "uint64",
+          "name": "MaxIdleTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Robot's welcome message",
+          "example": "无",
+          "member": "string",
+          "name": "WelcomeMessage",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Intelligent interruption mode, the default value is 0, 0 means the server automatically interrupts, 1 means the server does not interrupt, and the client sends an interrupt signal to interrupt",
+          "example": "无",
+          "member": "uint64",
+          "name": "InterruptMode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Used when InterruptMode is 0, in milliseconds, with a default value of 500ms. This means that the server will interrupt when it detects a human voice that lasts for InterruptSpeechDuration milliseconds.",
+          "example": "无",
+          "member": "uint64",
+          "name": "InterruptSpeechDuration",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "AgentParams": {
       "document": "The information of the relaying robot in the room.",
@@ -543,6 +675,51 @@
       ],
       "usage": "in"
     },
+    "ControlAIConversationRequest": {
+      "document": "ControlAIConversation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the task",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Control commands, currently supported commands are as follows:\n- ServerPushText, the server sends text to the AI robot, and the AI robot will play the text",
+          "example": "无",
+          "member": "string",
+          "name": "Command",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The server sends a text broadcast command. This is required when Command is ServerPushText.",
+          "example": "无",
+          "member": "ServerPushText",
+          "name": "ServerPushText",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ControlAIConversationResponse": {
+      "document": "ControlAIConversation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateCloudRecordingRequest": {
       "document": "CreateCloudRecording request structure.",
       "members": [
@@ -704,6 +881,176 @@
           "member": "string",
           "name": "TaskId",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAIConversationRequest": {
+      "document": "DescribeAIConversation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the transcription task.",
+          "example": "无",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The unique ID of the task.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The SessionId filled in when starting the task. ",
+          "example": "无",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAIConversationResponse": {
+      "document": "DescribeAIConversation response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The time when the task starts.",
+          "example": "无",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task status. There are 4 values: 1. Idle means the task has not started 2. Preparing means the task is being prepared 3. InProgress means the task is running 4. Stopped means the task has stopped and resources are being cleaned up",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The unique ID of the task, generated when the task is started",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The SessionId filled in when opening the conversation task.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAITranscriptionRequest": {
+      "document": "DescribeAITranscription request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query the task status. If not in use, pass in an empty string. There are two query methods: 1. Fill in only TaskId. This method uses TaskId to query tasks. 2. TaskId is an empty string. Fill in SdkAppId and SessionId. This method does not require TaskId to query tasks.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "TRTC's SdkAppId is used together with SessionId.",
+          "example": "无",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The SessionId passed in when starting the transcription task is used together with the SdkAppId.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAITranscriptionResponse": {
+      "document": "DescribeAITranscription response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The time when the task starts.",
+          "example": "无",
+          "member": "string",
+          "name": "StartTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Transcription task status. There are 4 values: 1. Idle means the task has not started 2. Preparing means the task is being prepared 3. InProgress means the task is running 4. Stopped means the task has stopped and resources are being cleaned up",
+          "example": "无",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Uniquely identifies a task.",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The SessionId filled in when starting the transcription task. If not filled in, nothing is returned.",
+          "example": "无",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3192,6 +3539,30 @@
       ],
       "usage": "out"
     },
+    "RecognizeConfig": {
+      "document": "Configuration used by speech recognition",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The supported languages for speech recognition are as follows, with the default being \"zh\" for Chinese. The values for the `Language` field follow the [ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) standard. Here is the full list of supported languages:\n\n1. Chinese = \"zh\"\n2. Chinese_TW = \"zh-TW\"\n3. Chinese_DIALECT = \"zh-dialect\"\n4. English = \"en\"\n5. Vietnamese = \"vi\"\n6. Japanese = \"ja\"\n7. Korean = \"ko\"\n8. Indonesian = \"id\"\n9. Thai = \"th\"\n10. Portuguese = \"pt\"\n11. Turkish = \"tr\"\n12. Arabic = \"ar\"\n13. Spanish = \"es\"\n14. Hindi = \"hi\"\n15. French = \"fr\"\n16. Malay = \"ms\"\n17. Filipino = \"fil\"\n18. German = \"de\"\n19. Italian = \"it\"\n20. Russian = \"ru\"\n\n**Note:** If the language you need is not listed, please contact our technical support team.",
+          "example": "zh",
+          "member": "string",
+          "name": "Language",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Initiate fuzzy recognition to replace additional language types. Fill in up to 3 language types. Note: When Language is specified as \"zh-dialect\", fuzzy recognition is not supported and this field is invalid.",
+          "example": "无",
+          "member": "string",
+          "name": "AlternativeLanguage",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
     "RecordParams": {
       "document": "The on-cloud recording parameters.",
       "members": [
@@ -3443,6 +3814,45 @@
       ],
       "usage": "both"
     },
+    "STTConfig": {
+      "document": "Speech-to-text parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The supported languages for speech recognition are as follows, with the default being \"zh\" for Chinese. The values for the `Language` field follow the [ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) standard. Here is the full list of supported languages:\n\n1. Chinese = \"zh\"\n2. Chinese_TW = \"zh-TW\"\n3. Chinese_DIALECT = \"zh-dialect\"\n4. English = \"en\"\n5. Vietnamese = \"vi\"\n6. Japanese = \"ja\"\n7. Korean = \"ko\"\n8. Indonesian = \"id\"\n9. Thai = \"th\"\n10. Portuguese = \"pt\"\n11. Turkish = \"tr\"\n12. Arabic = \"ar\"\n13. Spanish = \"es\"\n14. Hindi = \"hi\"\n15. French = \"fr\"\n16. Malay = \"ms\"\n17. Filipino = \"fil\"\n18. German = \"de\"\n19. Italian = \"it\"\n20. Russian = \"ru\"\n\n**Note:** If the language you need is not listed, please contact our technical support team.",
+          "example": "zh",
+          "member": "string",
+          "name": "Language",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Initiate fuzzy recognition to replace additional language types. Fill in up to 3 language types. Note: When Language is specified as \"zh-dialect\", fuzzy recognition is not supported and this field is invalid.",
+          "example": "无",
+          "member": "string",
+          "name": "AlternativeLanguage",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The time for speech recognition vad is in the range of 240-2000, the default value is 1000, and the unit is ms. A smaller value will make speech recognition sentence segmentation faster.",
+          "example": "无",
+          "member": "uint64",
+          "name": "VadSilenceTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ScaleInfomation": {
       "document": "The room and user number.",
       "members": [
@@ -3514,6 +3924,39 @@
         }
       ],
       "usage": "out"
+    },
+    "ServerPushText": {
+      "document": "The server controls the AI conversation robot to broadcast the specified text",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Server push broadcast text",
+          "example": "无",
+          "member": "string",
+          "name": "Text",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Allow this text to interrupt the robot",
+          "example": "无",
+          "member": "bool",
+          "name": "Interrupt",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "After the text is finished, whether to automatically close the conversation task",
+          "example": "无",
+          "member": "bool",
+          "name": "StopAfterPlay",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "usage": "in"
     },
     "SetUserBlockedByStrRoomIdRequest": {
       "document": "SetUserBlockedByStrRoomId request structure.",
@@ -3638,6 +4081,188 @@
         }
       ],
       "usage": "in"
+    },
+    "StartAIConversationRequest": {
+      "document": "StartAIConversation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the conversation task.",
+          "example": "无",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "TRTC's [RoomId](https://cloud.tencent.com/document/product/647/46351#roomid), which indicates the room number where the conversation task is started.",
+          "example": "无",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Robot parameters",
+          "example": "无",
+          "member": "AgentConfig",
+          "name": "AgentConfig",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The unique ID passed in by the caller can be used by the client to prevent repeated task initiation and to query the task status through this field.",
+          "example": "conversation_1_2",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The type of TRTC room number. 0 represents a numeric room number, and 1 represents a string room number. If not filled in, the default is a numeric room number.",
+          "example": "无",
+          "member": "uint64",
+          "name": "RoomIdType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Speech recognition configuration.",
+          "example": "无",
+          "member": "STTConfig",
+          "name": "STTConfig",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "LLM configuration. It must comply with the openai specification and be a JSON string. The example is as follows: <pre> { <br> &emsp; \"LLMType\": \"Large model type\", // String required, such as: \"openai\" <br> &emsp; \"Model\": \"Your model name\", // String required, specify the model to be used<br> \"APIKey\": \"Your LLM API key\", // String required <br> &emsp; \"APIUrl\": \"https://api.xxx.com/chat/completions\", // String required, URL for LLM API access<br> &emsp; \"Streaming\": true // Boolean optional, specify whether to use streaming<br> &emsp;} </pre>",
+          "example": "{\\\"LLMType\\\": \\\"openai\\\", \\\"Model\\\": \\\"gpt-xxx\", \\\"APIKey\\\": \\\"xxxxxxxx\\\", \\\"APIUrl\\\": \\\"https://api.xxx.com/v1\\\", \\\"Streaming\\\": true}",
+          "member": "string",
+          "name": "LLMConfig",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "TTS configuration, which is a JSON string. The Tencent Cloud TTS example is as follows: <pre>{ <br> &emsp; \"AppId\": your application ID, // Integer Required<br> &emsp; \"TTSType\": \"TTS type\", // String TTS type, fixed to \"tencent\"<br> &emsp; \"SecretId\": \"Your key ID\", // String Required<br> &emsp; \"SecretKey\": \"Your keyKey\", // String Required<br> &emsp; \"VoiceType\": 101001, // Integer Required, voice ID, including standard voice and premium voice. Premium voice has higher fidelity and different price from standard voice. For details, please refer to <a href=\"https://cloud.tencent.com/document/product/1073/34112\">Overview of Speech Synthesis Billing</a>. For a complete list of timbre IDs, see <a href=\"https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823\">List of speech synthesis timbre IDs</a>. <br> &emsp; \"Speed\": 1.25, // Integer Optional, speaking speed, range: [-2, 6], corresponding to different speaking speeds: -2: 0.6 times -1: 0.8 times 0: 1.0 times (default) 1: 1.2 times 2: 1.5 times 6: 2.5 times If a more detailed speaking speed is required, 2 decimal places can be retained, such as 0.5/1.25/2.81, etc. For the conversion between parameter value and actual speech speed, please refer to <a href=\"https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz\">Speed Conversion</a><br> &emsp; \"Volume\": 5, // Integer Optional, volume size, range: [0, 10], corresponding to 11 levels of volume, the default value is 0, representing normal volume. <br> &emsp; \"PrimaryLanguage\": \"zh-CN\" // String Optional, primary language<br> &emsp;}</pre>",
+          "example": "{\\\"TTSType\\\": \\\"tencent\\\", \\\"AppId\\\": 136666666, \\\"SecretId\\\": \\\"AKIxxxx\\\", \\\"SecretKey\\\": \\\"Hlxxxxx\\\", \\\"VoiceType\\\": 1008, \\\"Speed\\\": 1}",
+          "member": "string",
+          "name": "TTSConfig",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartAIConversationResponse": {
+      "document": "StartAIConversation response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Used to uniquely identify a conversation task.",
+          "example": "SV1FR+XTtvzAjRxZZ+aof1DfJF00VSBBNE0zR9W-PEpgCPBmt402BbnqMCdom79LtZO-VbLyV1nhVY1pFauWgrW12BevPvJ5Zn010nD6vj3hgfbVH0.",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartAITranscriptionRequest": {
+      "document": "StartAITranscription request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the transcription task.",
+          "example": "无",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "TRTC's [RoomId](https://cloud.tencent.com/document/product/647/46351#roomid), which indicates the room number where the transcription task is started.",
+          "example": "无",
+          "member": "string",
+          "name": "RoomId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Parameters of the transcription robot.",
+          "example": "无",
+          "member": "TranscriptionParams",
+          "name": "TranscriptionParams",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "The unique ID passed by the caller is used by the server to deduplicate. Note: If this parameter is passed, the server will use it first to deduplicate. If this parameter is not passed, the server's deduplication strategy is as follows: \n- If the TranscriptionMode field is 0, only one task can be opened in a room\n- If the TranscriptionMode field is 1, only one task can be opened in a TargetUserId",
+          "example": "无",
+          "member": "string",
+          "name": "SessionId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The type of TRTC room number. 0 represents a numeric room number, and 1 represents a string room number. If not filled in, the default is a numeric room number.",
+          "example": "无",
+          "member": "uint64",
+          "name": "RoomIdType",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Speech recognition configuration.",
+          "example": "无",
+          "member": "RecognizeConfig",
+          "name": "RecognizeConfig",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "StartAITranscriptionResponse": {
+      "document": "StartAITranscription response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Used to uniquely identify a transcription task.",
+          "example": "5df46eb2-8e4b-490e-9c3c-dbd3b84faefc",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "StartPublishCdnStreamRequest": {
       "document": "StartPublishCdnStream request structure.",
@@ -3911,6 +4536,33 @@
           "type": "string",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopAITranscriptionRequest": {
+      "document": "StopAITranscription request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Uniquely identifies a transcription task.",
+          "example": "-m97l2ZU7kOlV5cTRMoU6yoGp2nDYkzbJ13EC4K-4pycoZXVv+XVrNoUXQ8++8Z2PwUlAQ..",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopAITranscriptionResponse": {
+      "document": "StopAITranscription response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -4269,6 +4921,57 @@
       ],
       "usage": "out"
     },
+    "TranscriptionParams": {
+      "document": "AI Transcription Params",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The robot's UserId is used to enter a room and initiate tasks. [Note] This UserId cannot be repeated with the host viewer [UserId](https://cloud.tencent.com/document/product/647/46351#userid) in the current room. If multiple tasks are initiated in a room, the robot's UserId cannot be repeated, otherwise the previous task will be interrupted. The robot's UserId must be unique in the room.",
+          "example": "user123",
+          "member": "string",
+          "name": "UserId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The verification signature corresponding to the robot's UserId, that is, UserId and UserSig are equivalent to the robot's login password to enter the room. For the specific calculation method, please refer to the TRTC calculation [UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig) solution.",
+          "example": "无",
+          "member": "string",
+          "name": "UserSig",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "If there is no streaming in the room for more than MaxIdleTime, the background will automatically close the task. The default value is 60s.",
+          "example": "无",
+          "member": "uint64",
+          "name": "MaxIdleTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "1 means the robot subscribes to the stream of only one person, 0 means the robot subscribes to the stream of the entire room. If it is not filled in, the robot subscribes to the stream of the entire room by default.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TranscriptionMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Required when TranscriptionMode is 1. The robot will only pull the stream of the userid and ignore other users in the room.",
+          "example": "无",
+          "member": "string",
+          "name": "TargetUserId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "TrtcUsage": {
       "document": "The TRTC audio/video duration generated in a certain time period.",
       "members": [
@@ -4294,6 +4997,78 @@
         }
       ],
       "usage": "out"
+    },
+    "UpdateAIConversationRequest": {
+      "document": "UpdateAIConversation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task Unique ID",
+          "example": "无",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "If you do not fill in the form, no update will be performed. Welcome message from the robot",
+          "example": "无",
+          "member": "string",
+          "name": "WelcomeMessage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "If not filled in, no update will be performed. Intelligent interruption mode, 0 means the server automatically interrupts, 1 means the server does not interrupt, and the client sends an interrupt signal to interrupt",
+          "example": "无",
+          "member": "uint64",
+          "name": "InterruptMode",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "If not filled in, no update will be performed. Used when InterruptMode is 0, the unit is milliseconds, and the default is 500ms. It means that the server will interrupt when it detects a voice that lasts for InterruptSpeechDuration milliseconds.",
+          "example": "无",
+          "member": "uint64",
+          "name": "InterruptSpeechDuration",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "If not filled in, no update will be performed. For LLM configuration, see the StartAIConversation API for details.",
+          "example": "无",
+          "member": "string",
+          "name": "LLMConfig",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "If not filled in, no update will be performed. For TTS configuration, see the StartAIConversation API for details.",
+          "example": "无",
+          "member": "string",
+          "name": "TTSConfig",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateAIConversationResponse": {
+      "document": "UpdateAIConversation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "UpdatePublishCdnStreamRequest": {
       "document": "UpdatePublishCdnStream request structure.",
