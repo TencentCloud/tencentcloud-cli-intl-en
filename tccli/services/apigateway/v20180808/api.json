@@ -2196,7 +2196,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the plugin to be bound.",
+          "document": "ID of the bound API gateway plugin.",
           "example": "plugin-2nuhovb7",
           "member": "string",
           "name": "PluginId",
@@ -2205,7 +2205,7 @@
         },
         {
           "disabled": false,
-          "document": "Service ID.",
+          "document": "ID of the service to be operated",
           "example": "service-jzo37opy",
           "member": "string",
           "name": "ServiceId",
@@ -2214,7 +2214,7 @@
         },
         {
           "disabled": false,
-          "document": "API environment.",
+          "document": "Environment for operating the API.",
           "example": "release",
           "member": "string",
           "name": "EnvironmentName",
@@ -2223,7 +2223,7 @@
         },
         {
           "disabled": false,
-          "document": "List of APIs bound with the plugin",
+          "document": "List of APIs to be bound.",
           "example": "['api-buz84890','api-9nb6hd46']",
           "member": "string",
           "name": "ApiIds",
@@ -2238,7 +2238,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether binding succeeded.",
+          "document": "Whether the binding operation is successful.",
           "example": "true",
           "member": "bool",
           "name": "Result",

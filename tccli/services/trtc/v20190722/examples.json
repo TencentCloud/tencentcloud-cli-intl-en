@@ -294,6 +294,14 @@
         "title": "Push an online media stream to the TRTC room."
       }
     ],
+    "StopAIConversation": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: trtc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopAIConversation\n<Common request parameters>\n\n{\n    \"TaskId\": \"SV1FR+XTtvzAjRxZZ+aof1DfJF00VSBBNE0zR9W-PEpgCPBmt402BbnqMCdom79LtZO-VbLyV1nhVY1pFauWgrW12BevPvJ5Zn010RnD6vj3hgfbVH0.\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Stop AI conversation task"
+      }
+    ],
     "StopAITranscription": [
       {
         "document": "",

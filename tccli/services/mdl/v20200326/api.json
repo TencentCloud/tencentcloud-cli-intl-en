@@ -4078,6 +4078,17 @@
           "required": false,
           "type": "int",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to include the `EXT-X-ENDLIST` tag, 1 includes  `EXT-X-ENDLIST` tag, 2 does not include  `EXT-X-ENDLIST` tag; the default value is 1.",
+          "example": "无",
+          "member": "int64",
+          "name": "EndListTag",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"

@@ -4986,10 +4986,28 @@
         },
         {
           "disabled": false,
+          "document": "The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. The GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.",
+          "example": "无",
+          "member": "string",
+          "name": "BackImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "Base64 value of the image.Supported image formats: PNG, JPG, JPEG. Not support GIF yet.\nSupported image size: The downloaded image should not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds.\nOne of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.",
           "example": "无",
           "member": "string",
           "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. The GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.",
+          "example": "无",
+          "member": "string",
+          "name": "BackImageBase64",
           "required": false,
           "type": "string"
         },
@@ -5014,6 +5032,7 @@
           "example": "何",
           "member": "string",
           "name": "CnLastName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5023,6 +5042,7 @@
           "example": "HO",
           "member": "string",
           "name": "EnLastName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5032,6 +5052,7 @@
           "example": "0149",
           "member": "string",
           "name": "LastNameCode",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5041,6 +5062,7 @@
           "example": "*珍",
           "member": "string",
           "name": "CnFirstName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5050,6 +5072,7 @@
           "example": "CHAN YO",
           "member": "string",
           "name": "EnFirstName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5059,6 +5082,7 @@
           "example": "37****27",
           "member": "string",
           "name": "FirstNameCode",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5068,6 +5092,7 @@
           "example": "15****0(4)",
           "member": "string",
           "name": "ID",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5077,6 +5102,7 @@
           "example": "22-04-1997",
           "member": "string",
           "name": "Birthday",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5086,6 +5112,7 @@
           "example": "女",
           "member": "string",
           "name": "Sex",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5095,6 +5122,7 @@
           "example": "06-05-2011",
           "member": "string",
           "name": "FirstIssueDate",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5104,6 +5132,7 @@
           "example": "01-08-2014",
           "member": "string",
           "name": "CurrentIssueDate",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5113,6 +5142,7 @@
           "example": "01-08-2024",
           "member": "string",
           "name": "ValidityPeriod",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5122,6 +5152,7 @@
           "example": "C",
           "member": "string",
           "name": "Symbol",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5131,6 +5162,7 @@
           "example": "1.64",
           "member": "string",
           "name": "Height",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5140,6 +5172,7 @@
           "example": "无",
           "member": "string",
           "name": "RetImage",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5149,8 +5182,29 @@
           "example": "0",
           "member": "string",
           "name": "Angle",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resident type.",
+          "example": "永久性居民身份证",
+          "member": "string",
+          "name": "ResidentType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate,\n-9102 Alarm for photocopied certificate,\n-9103 Alarm for photographed certificate,\n-9104 Alarm for PS certificate,\n-9107 Alarm for reflective certificate,\n-9108 Alarm for blurry image,\n-9109 This capability is not enabled.",
+          "example": "无",
+          "member": "int64",
+          "name": "WarnCardInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",

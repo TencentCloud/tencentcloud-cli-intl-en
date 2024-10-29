@@ -358,6 +358,14 @@
         "title": "Getting the default alarm threshold of an IP"
       }
     ],
+    "DescribeIpBlockList": [
+      {
+        "document": " ",
+        "input": "https://antiddos.tencentcloudapi.com/?Action=DescribeIpBlockList\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"List\": [\n            {\n                \"Status\": \"xx\",\n                \"Ip\": \"xx\",\n                \"UnBlockTime\": \"2020-09-22 00:00:00\",\n                \"ActionType\": \"xx\",\n                \"BlockTime\": \"2020-09-22 00:00:00\"\n            }\n        ],\n        \"RequestId\": \"xx\"\n    }\n}",
+        "title": "get block ip list"
+      }
+    ],
     "DescribeL7RulesBySSLCertId": [
       {
         "document": " ",
