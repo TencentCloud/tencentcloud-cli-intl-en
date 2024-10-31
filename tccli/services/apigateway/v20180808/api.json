@@ -267,7 +267,7 @@
       "status": "online"
     },
     "DescribeApiKeysStatus": {
-      "document": "This API is used to query the information of one or more API keys.\n ",
+      "document": "This API is used to query the information of one or more API keys.",
       "input": "DescribeApiKeysStatusRequest",
       "name": "Queries key list",
       "output": "DescribeApiKeysStatusResponse",

@@ -18,6 +18,7 @@
       "document": "TextTranslate request structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The texts to be translated, which must be encoded in UTF-8 and can contain up to 2,000 characters in a request. For non-pure texts such as those with HTML tags, the translation may fail.",
           "example": "hello",
           "member": "string",
@@ -26,6 +27,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Supported source languages:\nauto: Automatic language detection\nzh: Simplified Chinese\nzh_TW: Traditional Chinese\nen: English\nja: Japanese\nko: Korean\nfr: French\nes: Spanish\nit: Italian\nde: German\ntr: Turkish\nru: Russian\npt: Portuguese\nvi: Vietnamese\nid: Bahasa Indonesian\nth: Thai\nms: Malay\nar: Arabic\nhi: Hindi",
           "example": "en",
           "member": "string",
@@ -34,6 +36,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "Supported target languages for the above source languages:\n\n<li> zh (Simplified Chinese): en (English), ja (Japanese), ko (Korean), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), ru (Russian), pt (Portuguese), vi (Vietnamese), id (Bahasa Indonesian), th (Thai), and ms (Malay)</li>\n<li> zh-TW (Traditional Chinese): en (English), ja (Japanese), ko (Korean), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), ru (Russian), pt (Portuguese), vi (Vietnamese), id (Bahasa Indonesian), th (Thai), and ms (Malay)</li>\n<li> en (English): zh (Simplified Chinese), ja (Japanese), ko (Korean), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), ru (Russian), pt (Portuguese), vi (Vietnamese), id (Bahasa Indonesian), th (Thai), ms (Malay), ar (Arabic), and hi (Hindi)</li>\n<li>ja (Japanese): zh (Simplified Chinese), en (English), and ko (Korean)</li>\n<li>ko (Korean): zh (Simplified Chinese), en (English), and ja (Japanese)</li>\n<li>fr (French): zh (Simplified Chinese), en (English), es (Spanish), it (Italian), de (German), tr (Turkish), ru (Russian), and pt (Portuguese)</li>\n<li>es (Spanish): zh (Simplified Chinese), en (English), fr (French), it (Italian), de (German), tr (Turkish), ru (Russian), and pt (Portuguese)</li>\n<li>it (Italian): zh (Simplified Chinese), en (English), fr (French), es (Spanish), de (German), tr (Turkish), ru (Russian), and pt (Portuguese)</li>\n<li>de (German): zh (Simplified Chinese), en (English), fr (French), es (Spanish), it (Italian), tr (Turkish), ru (Russian), and pt (Portuguese)</li>\n<li>tr (Turkish): zh (Simplified Chinese), en (English), fr (French), es (Spanish), it (Italian), de (German), ru (Russian), and pt (Portuguese)</li>\n<li>ru (Russian): zh (Simplified Chinese), en (English), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), and pt (Portuguese)</li>\n<li>pt (Portuguese): zh (Simplified Chinese), en (English), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), and ru (Russian)</li>\n<li>vi (Vietnamese): zh (Simplified Chinese) and en (English)</li\n<li>id (Bahasa Indonesian): zh (Simplified Chinese) and en (English)</li\n<li>th (Thai): zh (Simplified Chinese) and en (English)</li\n<li>ms (Malay): zh (Simplified Chinese) and en (English)</li\n<li>ar (Arabic): en (English)</li>\n<li>hi (Hindi): en (English)</li",
           "example": "zh",
           "member": "string",
@@ -42,6 +45,7 @@
           "type": "string"
         },
         {
+          "disabled": false,
           "document": "The project ID, which can be obtained from **Console -> Account Center -> Project Management**. If no one is set, enter the default project ID `0`.",
           "example": "0",
           "member": "int64",
@@ -50,8 +54,9 @@
           "type": "int"
         },
         {
+          "disabled": false,
           "document": "The parameter used to mark the text content that needs to remain untranslated, such as special symbols and names of people and places. You can set only one word for this parameter in each request. Only nouns (like names of people and places) are supported, and verbs or phrases may cause poor translation outcomes.",
-          "example": "无",
+          "example": "John",
           "member": "string",
           "name": "UntranslatedText",
           "required": false,
@@ -64,34 +69,37 @@
       "document": "TextTranslate response structure.",
       "members": [
         {
+          "disabled": false,
           "document": "The translation outcome.",
           "example": "你好",
           "member": "string",
           "name": "TargetText",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The source language. See the request parameter `Source` for details.",
           "example": "en",
           "member": "string",
           "name": "Source",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "The target language. See the request parameter `Target` for details.",
           "example": "zh",
           "member": "string",
           "name": "Target",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"

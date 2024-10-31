@@ -1754,6 +1754,14 @@
         "title": "Adjusting the pay-as-you-go bandwidth"
       }
     ],
+    "ModifyAddressesRenewFlag": [
+      {
+        "document": "Adjusting the Renewal Flag for the Monthly Subscription EIP",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyAddressesRenewFlag\n&AddressIds.0=eip-cpfph9t4\n&RenewFlag=NOTIFY_AND_MANUAL_RENEW\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c89a8c84-6943-45ad-9342-36f599d77754\"\n    }\n}",
+        "title": "Adjusting the Renewal Flag for the Monthly Subscription EIP"
+      }
+    ],
     "ModifyAssistantCidr": [
       {
         "document": "This example shows you how to add a secondary CIDR block: 172.16.1.0/24.",
