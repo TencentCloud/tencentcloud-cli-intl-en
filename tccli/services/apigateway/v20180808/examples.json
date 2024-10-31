@@ -84,7 +84,7 @@
       {
         "document": " ",
         "input": "https://apigateway.tencentcloudapi.com/?Action=CreateApiKey\n&SecretName=test\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"AccessKeyId\": \"AKID8my5MRr9i6VM98F3dZG9zV0KuBq5ID7pMG83\",\n            \"AccessKeySecret\": \"9i3BQU8lMUl2dAvrF8RvL5EM6RKEG47P770du61B\",\n            \"AccessKeyType\": \"auto\",\n            \"SecretName\": \"test\",\n            \"Status\": 1,\n            \"CreatedTime\": \"2020-02-26T06:10:01Z\",\n            \"ModifiedTime\": \"2020-02-26T06:10:01Z\"\n        },\n        \"RequestId\": \"ad5218b4-edc3-4195-ba4d-a0ef176783ba\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"AccessKeyId\": \"AKID***********************************************\",\n            \"AccessKeySecret\": \"qYSyjR************************************\",\n            \"AccessKeyType\": \"auto\",\n            \"SecretName\": \"test\",\n            \"Status\": 1,\n            \"CreatedTime\": \"2020-02-26T06:10:01Z\",\n            \"ModifiedTime\": \"2020-02-26T06:10:01Z\"\n        },\n        \"RequestId\": \"ad5218b4-edc3-4195-ba4d-a0ef176783ba\"\n    }\n}",
         "title": "CreateApiKey"
       }
     ],
