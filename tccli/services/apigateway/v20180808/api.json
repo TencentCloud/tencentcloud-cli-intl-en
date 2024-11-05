@@ -12159,7 +12159,7 @@
         },
         {
           "disabled": false,
-          "document": "Key to be updated, which is required when a custom key is updated. It can contain 10–50 letters, digits, and underscores.",
+          "document": "Key to be updated, which is required when a custom key is updated. It can contain 10-50 letters, digits, and underscores.",
           "example": "xx",
           "member": "string",
           "name": "AccessKeySecret",

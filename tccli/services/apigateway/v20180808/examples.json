@@ -35,7 +35,7 @@
     "BindSecretIds": [
       {
         "document": "\t\nThis example shows you how to bind a key to a usage plan.",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=BindSecretIds\n&UsagePlanId=usagePlan-quqxvett\n&AccessKeyIds.0=AKIDmyE2z0gvi2p6***************\n&<Common Request Parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=BindSecretIds\n&UsagePlanId=usagePlan-quqxvett\n&AccessKeyIds.0=AKID***********************************************\n&<Common Request Parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"fcc3e46c-931d-4c58-88e9-f3cfc2251769\"\n    }\n}",
         "title": "Binding a key to a usage plan"
       }
@@ -84,7 +84,7 @@
       {
         "document": " ",
         "input": "https://apigateway.tencentcloudapi.com/?Action=CreateApiKey\n&SecretName=test\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"AccessKeyId\": \"AKID***********************************************\",\n            \"AccessKeySecret\": \"qYSyjR************************************\",\n            \"AccessKeyType\": \"auto\",\n            \"SecretName\": \"test\",\n            \"Status\": 1,\n            \"CreatedTime\": \"2020-02-26T06:10:01Z\",\n            \"ModifiedTime\": \"2020-02-26T06:10:01Z\"\n        },\n        \"RequestId\": \"ad5218b4-edc3-4195-ba4d-a0ef176783ba\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"AccessKeyId\": \"AKID***********************************************\",\n            \"AccessKeySecret\": \"************************************\",\n            \"AccessKeyType\": \"auto\",\n            \"SecretName\": \"test\",\n            \"Status\": 1,\n            \"CreatedTime\": \"2020-02-26T06:10:01Z\",\n            \"ModifiedTime\": \"2020-02-26T06:10:01Z\"\n        },\n        \"RequestId\": \"ad5218b4-edc3-4195-ba4d-a0ef176783ba\"\n    }\n}",
         "title": "CreateApiKey"
       }
     ],
@@ -161,7 +161,7 @@
     "DeleteApiKey": [
       {
         "document": " ",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=DeleteApiKey\n&AccessKeyId=AKID8my5MRr9i6VM98F3dZG9zV0KuBq5ID7pMG83\n&<Common request parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DeleteApiKey\n&AccessKeyId=AKID***********************************************\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"7bc61f00-1cb0-4436-9f7e-55c3e2652248\"\n    }\n}",
         "title": "DeleteApiKey"
       }
@@ -306,7 +306,7 @@
       {
         "document": " ",
         "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeApiKey\n&AccessKeyId=AKID1IGx7Tu5mk150ds6fhbdi1RqD8KlI6dW32MD\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"AccessKeyId\": \"AKID1IGx7Tu5mk150ds6fhbdi1RqD8KlI6dW32MD\",\n            \"AccessKeySecret\": \"hvhuan76de5im5Fa0bqh8aaBcOO9cy6c7yg2ywlf\",\n            \"AccessKeyType\": \"auto\",\n            \"SecretName\": \"dd\",\n            \"Status\": 1,\n            \"CreatedTime\": \"2020-02-26T06:09:44Z\",\n            \"ModifiedTime\": \"2020-02-26T06:45:57Z\"\n        },\n        \"RequestId\": \"ac423dbe-4e28-470d-b3f7-b8c95c614124\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"AccessKeyId\": \"AKID***********************************************\",\n            \"AccessKeySecret\": \"************************************\",\n            \"AccessKeyType\": \"auto\",\n            \"SecretName\": \"dd\",\n            \"Status\": 1,\n            \"CreatedTime\": \"2020-02-26T06:09:44Z\",\n            \"ModifiedTime\": \"2020-02-26T06:45:57Z\"\n        },\n        \"RequestId\": \"ac423dbe-4e28-470d-b3f7-b8c95c614124\"\n    }\n}",
         "title": "DescribeApiKey"
       }
     ],
@@ -314,7 +314,7 @@
       {
         "document": " ",
         "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeApiKeysStatus\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"ApiKeySet\": [\n                {\n                    \"AccessKeyId\": \"AKID***********************************************\",\n                    \"AccessKeySecret\": \"qYSyjR************************************\",\n                    \"AccessKeyType\": \"auto\",\n                    \"SecretName\": \"dd\",\n                    \"Status\": 1,\n                    \"CreatedTime\": \"2020-02-26T06:09:44Z\",\n                    \"ModifiedTime\": \"2020-02-26T06:09:44Z\"\n                }\n            ]\n        },\n        \"RequestId\": \"6096c75d-1562-44be-a4af-75b5e235d319\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"ApiKeySet\": [\n                {\n                    \"AccessKeyId\": \"AKID***********************************************\",\n                    \"AccessKeySecret\": \"************************************\",\n                    \"AccessKeyType\": \"auto\",\n                    \"SecretName\": \"dd\",\n                    \"Status\": 1,\n                    \"CreatedTime\": \"2020-02-26T06:09:44Z\",\n                    \"ModifiedTime\": \"2020-02-26T06:09:44Z\"\n                }\n            ]\n        },\n        \"RequestId\": \"6096c75d-1562-44be-a4af-75b5e235d319\"\n    }\n}",
         "title": "DescribeApiKeysStatus"
       }
     ],
@@ -512,7 +512,7 @@
       {
         "document": " ",
         "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeUsagePlanSecretIds\n&UsagePlanId=usagePlan-quqxvett\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"AccessKeyList\": [\n                {\n                    \"SecretName\": \"xx\",\n                    \"AccessKeyId\": \"AKIDmyE2z0gvi2p6i9lWr3bbetpTaquaxQ8s8iob\",\n                    \"Status\": 1\n                }\n            ]\n        },\n        \"RequestId\": \"61f694d3-9c8b-4c4e-8d51-b2ab087c0d36\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"AccessKeyList\": [\n                {\n                    \"SecretName\": \"apigw-key\",\n                    \"AccessKeyId\": \"AKID***********************************************\",\n                    \"Status\": 1\n                }\n            ]\n        },\n        \"RequestId\": \"61f694d3-9c8b-4c4e-8d51-b2ab087c0d36\"\n    }\n}",
         "title": "Querying the key bound to the usage plan"
       }
     ],
@@ -535,7 +535,7 @@
     "DisableApiKey": [
       {
         "document": " ",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=DisableApiKey\n&AccessKeyId=AKID8my5MRr9i6VM98F3dZG9zV0KuBq5ID7pMG83\n&<Common request parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DisableApiKey\n&AccessKeyId=AKID***********************************************\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"6ea68436-c37c-4887-9a2b-91ed0eb72f7a\"\n    }\n}",
         "title": "DisableApiKey"
       }
@@ -543,7 +543,7 @@
     "EnableApiKey": [
       {
         "document": " ",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=EnableApiKey\n&AccessKeyId=AKID8my5MRr9i6VM98F3dZG9zV0KuBq5ID7pMG83\n&<Common request parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=EnableApiKey\n&AccessKeyId=AKID***********************************************\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"db81808c-77d5-4fc9-9ab4-de59991f9933\"\n    }\n}",
         "title": "EnableApiKey"
       }
@@ -693,7 +693,7 @@
     "UnBindSecretIds": [
       {
         "document": " ",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=UnBindSecretIds\n&UsagePlanId=usagePlan-quqxvett\n&AccessKeyIds.0=AKIDmyE2z0gvi2p6i9lWr3bbetpTaquaxQ8s8iob\n&<Common request parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=UnBindSecretIds\n&UsagePlanId=usagePlan-quqxvett\n&AccessKeyIds.0=AKID***********************************************\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"bb85842c-c0d2-4543-8f4d-396a193babe8\"\n    }\n}",
         "title": "UnBindSecretIds"
       }
@@ -725,7 +725,7 @@
     "UpdateApiAppKey": [
       {
         "document": " ",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=UpdateApiAppKey\n&ApiAppId=app-e92i2jds\n&ApiAppKey=xxx\n&<Common request parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=UpdateApiAppKey\n&ApiAppId=app-exxxx\n&ApiAppKey=AKID***********************************************\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"7787aa0e-be74-43c0-b6f6-7bf56995ce2d\"\n    }\n}",
         "title": "UpdateApiAppKey"
       }
@@ -733,8 +733,8 @@
     "UpdateApiKey": [
       {
         "document": " ",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=UpdateApiKey\n&AccessKeyId=AKID8my5MRr9i6VM98F3dZG9zV0KuBq5ID7pMG83\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"AccessKeyId\": \"AKID8my5MRr9i6VM98F3dZG9zV0KuBq5ID7pMG83\",\n            \"AccessKeySecret\": \"hvhuan76de5im5Fa0bqh8aaBcOO9cy6c7yg2ywlf\",\n            \"AccessKeyType\": \"auto\",\n            \"SecretName\": \"dd\",\n            \"Status\": 1,\n            \"CreatedTime\": \"2020-02-26T06:09:44Z\",\n            \"ModifiedTime\": \"2020-02-26T06:45:57Z\"\n        },\n        \"RequestId\": \"3d0d6dc0-1fa9-4634-9c42-a1ff635c0bd5\"\n    }\n}",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=UpdateApiKey\n&AccessKeyId=AKID***********************************************\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"AccessKeyId\": \"AKID***********************************************\",\n            \"AccessKeySecret\": \"************************************\",\n            \"AccessKeyType\": \"auto\",\n            \"SecretName\": \"dd\",\n            \"Status\": 1,\n            \"CreatedTime\": \"2020-02-26T06:09:44Z\",\n            \"ModifiedTime\": \"2020-02-26T06:45:57Z\"\n        },\n        \"RequestId\": \"3d0d6dc0-1fa9-4634-9c42-a1ff635c0bd5\"\n    }\n}",
         "title": "UpdateApiKey"
       }
     ],
