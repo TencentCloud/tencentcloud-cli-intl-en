@@ -84,6 +84,13 @@
       "output": "CreateClassResponse",
       "status": "online"
     },
+    "CreateComplexAdaptiveDynamicStreamingTask": {
+      "document": "Initiate an adaptive bitrate streaming processing task, with the following features:\n1. Output HLS and MPEG-DASH adaptive streams based on the specified templates;\n2. DRM options for the adaptive bitrate streaming include no encryption, Widevine, or FairPlay.\n3. The output adaptive bitrate streaming can include multiple audio streams in different languages, with each language sourced from different media files.\n4. The output adaptive stream can also include multiple subtitle streams in different languages.\n\n**Notes:**\n1. When using opening/closing credits, the video stream in the opening credit must be synchronized with the audio stream; otherwise, it will result in audio and video desynchronization in the output content.\n2. If the output adaptive bitrate streaming needs to include audio from the main media, the FileId of the main media must be specified in the AudioSet parameter.\n3. Subtitles must be added to the main media beforehand, which can be done through the ModifyMediaInfo API interface or the Video Management page in the console.\n4. Support for TESHD transcoding and watermarking is currently not available.",
+      "input": "CreateComplexAdaptiveDynamicStreamingTaskRequest",
+      "name": "CreateComplexAdaptiveDynamicStreamingTask",
+      "output": "CreateComplexAdaptiveDynamicStreamingTaskResponse",
+      "status": "online"
+    },
     "CreateContentReviewTemplate": {
       "document": "We have <font color=red>stopped updating</font> this API. Our new moderation templates can moderate audio/video as well as images. For details, see [CreateReviewTemplate](https://intl.cloud.tencent.com/document/api/266/84391?from_cn_redirect=1).\nThis API is used to create a custom audio/video moderation template. Up to 50 templates can be created in total.",
       "input": "CreateContentReviewTemplateRequest",
@@ -9173,6 +9180,266 @@
       ],
       "type": "object"
     },
+    "ComplexAdaptiveDynamicStreamingTask": {
+      "document": "Execution information of the adaptive bitrate streaming task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "1250000000-procedurev2-23b0ab79ee23ba1340b2ee55c7733563tt1",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task status. Valid values:\n<li>PROCESSING: processing;</li>\n<li>FINISH: completed.</li>",
+          "example": "PROCESSING",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Execution status and result of the complex adaptive bitrate streaming task. Each array element corresponds to an adaptive bitrate streaming template specified when initiating the task.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTaskResult",
+          "name": "ComplexAdaptiveDynamicStreamingTaskResultSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ComplexAdaptiveDynamicStreamingTaskAudioInput": {
+      "document": "Input parameters for audio streams in the adaptive bitrate streaming task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Media ID of the input audio file. The first audio stream in the media will be fixed, while video streams and other audio streams (if any) will be ignored.",
+          "example": "1234567890",
+          "member": "string",
+          "name": "FileId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio stream name in the output, supporting up to 16 characters.",
+          "example": "English",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The language of the audio stream in the output, supporting up to 16 characters. It must comply with the RFC5646 specification.",
+          "example": "en-US",
+          "member": "string",
+          "name": "Language",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to set as the default audio for adaptive bitrate streaming.\n<li>YES: Set as the default audio;</li>\n<li>NO: Not set as the default audio (default value).</li>",
+          "example": "YES",
+          "member": "string",
+          "name": "Default",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ComplexAdaptiveDynamicStreamingTaskInput": {
+      "document": "Input parameters for the adaptive bitrate streaming task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Adaptive bitrate streaming parameters.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTaskStreamPara",
+          "name": "StreamPara",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ComplexAdaptiveDynamicStreamingTaskOutput": {
+      "document": "Output of the adaptive bitrate streaming task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Adaptive bitrate streaming template ID.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The adaptive bitrate streaming format. Valid values:\n<li>HLS;</li>\n<li>MPEG-DASH.</li>\n",
+          "example": "HLS",
+          "member": "string",
+          "name": "Format",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DRM scheme type, value range:\n<li>Widevine;</li>\n<li>FairPlay.</li>\nThe default value is an empty string, indicating that the video will not be DRM protected.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "DrmType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Playback address of the output manifest.",
+          "example": "http://1250000000.vod2.myqcloud.com/cf72b740vodtranscq1250000000/aa2a78091397757895313140803/adp.10.m3u8",
+          "member": "string",
+          "name": "Url",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ComplexAdaptiveDynamicStreamingTaskResult": {
+      "document": "Execution information of a single adaptive bitrate stream in a complex adaptive bitrate streaming task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status of a single adaptive bitrate stream. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The execution progress of a single adaptive bitrate stream. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input of a single adaptive bitrate stream.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTaskInput",
+          "name": "Input",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output of a single adaptive bitrate stream.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTaskOutput",
+          "name": "Output",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ComplexAdaptiveDynamicStreamingTaskStreamPara": {
+      "document": "Input parameters related to the adaptive bitrate streaming template.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Adaptive bitrate streaming template ID.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Definition",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ComplexAdaptiveDynamicStreamingTaskSubtitleInput": {
+      "document": "Input parameters for subtitles in the complex adaptive bitrate streaming task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Subtitle ID, which must belongs to the main media.",
+          "example": "dYeq82",
+          "member": "string",
+          "name": "Id",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to set as the default subtitle for adaptive bitrate streaming.\n<li>YES: Set as the default subtitle;</li>\n<li>NO: Not set as the default subtitle (default value).</li>",
+          "example": "YES",
+          "member": "string",
+          "name": "Default",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ComposeMediaOutput": {
       "document": "Information of output media file.",
       "members": [
@@ -10638,6 +10905,88 @@
           "name": "ClassId",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateComplexAdaptiveDynamicStreamingTaskRequest": {
+      "document": "CreateComplexAdaptiveDynamicStreamingTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The VOD application ID.",
+          "example": "1250000000",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Media ID of the main media.",
+          "example": "1234567890",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Adaptive bitrate streaming parameters, supporting up to 8 entries.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTaskStreamPara",
+          "name": "StreamParaSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "List of video opening/closing credits configuration template IDs, supporting up to 4 entries. If this field is filled in, the start times of the media specified in AudioSet and SubtitleSet will be automatically adjusted to stay in sync with the main media.",
+          "example": "无",
+          "member": "HeadTailTaskInput",
+          "name": "HeadTailSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Audio media parameters, supporting up to 16 entries. Each array element corresponds to an audio stream in the output. If you want to add the audio stream from the main media file to the output, you also need to specify it here. The order of elements in the array will determine the order of audio streams in the output. If the input media file contains both video and audio streams, the video stream will be ignored.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTaskAudioInput",
+          "name": "AudioSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "List of subtitle IDs, supporting up to 16 entries. Each array element corresponds to an subtitle stream in the output. The order of elements in the array will determine the order of subtitles in the output.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTaskSubtitleInput",
+          "name": "SubtitleSet",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateComplexAdaptiveDynamicStreamingTaskResponse": {
+      "document": "CreateComplexAdaptiveDynamicStreamingTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "1250000000-procedurev2-463192642364261",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -16846,7 +17195,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The task type. Valid values:\n<li>`Procedure`: Video processing</li>\n<li>`EditMedia`: Video editing</li>\n<li>`SplitMedia`: Video splitting</li>\n<li>`ComposeMedia`: Media file production</li>\n<li>`WechatPublish`: Weixin publishing</li>\n<li>`WechatMiniProgramPublish`: Publishing videos on Weixin Mini Program</li>\n<li>`PullUpload`: Pulling media files for upload</li>\n<li>`FastClipMedia`: Quick clipping</li>\n<li>`RemoveWatermarkTask`: Watermark removal</li>\n<li>`DescribeFileAttributesTask`: Getting file attributes</li>\n<li> `ReviewAudioVideo`: Moderation</li>\n<li>`ExtractTraceWatermark`: Digital watermark extraction</li>\n<li>`QualityEnhance`: Enhance audio/video</li>",
+          "document": "The task type. Valid values:\n<li>`Procedure`: Video processing</li>\n<li>`EditMedia`: Video editing</li>\n<li>`SplitMedia`: Video splitting</li>\n<li>`ComposeMedia`: Media file production</li>\n<li>`WechatPublish`: Weixin publishing</li>\n<li>`WechatMiniProgramPublish`: Publishing videos on Weixin Mini Program</li>\n<li>`PullUpload`: Pulling media files for upload</li>\n<li>`FastClipMedia`: Quick clipping</li>\n<li>`RemoveWatermarkTask`: Watermark removal</li>\n<li>`DescribeFileAttributesTask`: Getting file attributes</li>\n<li> `ReviewAudioVideo`: Moderation</li>\n<li>`ExtractTraceWatermark`: Digital watermark extraction</li>\n<li>`QualityEnhance`: Enhance audio/video</li>\n<li>`ComplexAdaptiveDynamicStreaming`: Complex adaptive bitrate streaming processing task</li>",
           "example": "Procedure",
           "member": "string",
           "name": "TaskType",
@@ -17100,6 +17449,16 @@
           "example": "无",
           "member": "QualityEnhanceTask",
           "name": "QualityEnhanceTask",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Complex adaptive bitrate streaming processing task information. This field has a value only when TaskType is ComplexAdaptiveDynamicStreaming. \nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTask",
+          "name": "ComplexAdaptiveDynamicStreamingTask",
           "output_required": true,
           "type": "object",
           "value_allowed_null": true

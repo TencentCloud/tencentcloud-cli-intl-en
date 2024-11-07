@@ -138,6 +138,14 @@
         "title": "Creating a video category"
       }
     ],
+    "CreateComplexAdaptiveDynamicStreamingTask": [
+      {
+        "document": "Transcode a media file (with video and Chinese audio) and package it into adaptive bitrate streaming, while additionally adding a opening credit, English audio, Chinese subtitles, and English subtitles. The FileId of the main media is 4424135347909043783, and both Chinese and English subtitles have been set; the FileId of the English audio that matches the main media is 4424135347909043652; the adaptive streaming template is 220368; and the head tail template for the opening credit is 14591.",
+        "input": "POST / HTTP/1.1\nHost: vod.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateComplexAdaptiveDynamicStreamingTask\n<Public Request Parameter>\n\n{\n    \"SubAppId\": 1250000000,\n    \"FileId\": \"4424135347909043783\",\n    \"StreamParaSet\": [\n        {\n            \"Definition\": 220368\n        }\n    ],\n    \"HeadTailSet\": [\n        {\n            \"Definition\": 14591\n        }\n    ],\n    \"AudioSet\": [\n        {\n            \"FileId\": \"4424135347909043783\",\n            \"Name\": \"Chinese\",\n            \"Language\": \"zh\",\n            \"Default\": \"YES\"\n        },\n        {\n            \"FileId\": \"4424135347909043652\",\n            \"Name\": \"English\",\n            \"Language\": \"en\"\n        }\n    ],\n    \"SubtitleSet\": [\n        {\n            \"Id\": \"Chinese\",\n            \"Default\": \"YES\"\n        },\n        {\n            \"Id\": \"English\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"2e1af3fa-a55f-4078-9d61-df448c1e6e34\",\n        \"TaskId\": \"1250000000-ComplexAdaptiveDynamicStreaming-a9e3993dd4fdee822862cd80c43ac4c4t\"\n    }\n}",
+        "title": "Initiate an adaptive bitrate streaming processing task"
+      }
+    ],
     "CreateContentReviewTemplate": [
       {
         "document": "Create a custom AI content review template, enable the task of information with objectionable content on the screen, and at the same time enable the task of information with unsafe content and inappropriate information, determine the score threshold for violations, and determine the need for manual identification The score thresholds of are all default and no filtering label is specified.",

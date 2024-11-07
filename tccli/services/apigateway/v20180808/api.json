@@ -5656,7 +5656,7 @@
         {
           "disabled": false,
           "document": "API key ID.",
-          "example": "AKID1IGx7Tu5mk150ds6fhbdi1RqD8KlI6dW32MD",
+          "example": "AKID***********************************************",
           "member": "string",
           "name": "AccessKeyId",
           "required": true,
@@ -5674,7 +5674,7 @@
           "example": "无",
           "member": "ApiKey",
           "name": "Result",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },

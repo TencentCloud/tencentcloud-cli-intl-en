@@ -14371,7 +14371,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The non-discounted total price of monthly subscribed resources (unit: US cent)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The non-discounted total price of monthly subscribed resources (unit: 0.000001 cent)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "6000",
           "member": "int64",
           "name": "TotalPrice",
@@ -14391,7 +14391,7 @@
         },
         {
           "disabled": false,
-          "document": "The discounted total price of monthly subscribed resources (unit: US cent). If a discount is applied, `TotalPriceDiscount` will be the product of `TotalPrice` and `Discount`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The discounted total price of monthly subscribed resources (unit: 0.000001 cent). If a discount is applied, `TotalPriceDiscount` will be the product of `TotalPrice` and `Discount`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "6000",
           "member": "int64",
           "name": "TotalPriceDiscount",
@@ -14401,7 +14401,7 @@
         },
         {
           "disabled": false,
-          "document": "The non-discounted unit price of pay-as-you-go resources (unit: US cent)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The non-discounted unit price of pay-as-you-go resources (unit: 0.000001 cent)\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "350",
           "member": "int64",
           "name": "UnitPrice",
@@ -14411,7 +14411,7 @@
         },
         {
           "disabled": false,
-          "document": "The discounted unit price of pay-as-you-go resources (unit: US cent). If a discount is applied, `UnitPriceDiscount` will be the product of `UnitPrice` and `Discount`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The discounted unit price of pay-as-you-go resources (unit: 0.000001 cent). If a discount is applied, `UnitPriceDiscount` will be the product of `UnitPrice` and `Discount`.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "350",
           "member": "int64",
           "name": "UnitPriceDiscount",

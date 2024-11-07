@@ -534,7 +534,7 @@
           "example": "0",
           "member": "int64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -544,7 +544,7 @@
           "example": "“”",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -554,7 +554,7 @@
           "example": "“”",
           "member": "string",
           "name": "Comment",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -564,7 +564,7 @@
           "example": "无",
           "member": "ClassificationConfigureInfo",
           "name": "ClassificationConfigure",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -574,7 +574,7 @@
           "example": "无",
           "member": "TagConfigureInfo",
           "name": "TagConfigure",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -584,7 +584,7 @@
           "example": "无",
           "member": "CoverConfigureInfo",
           "name": "CoverConfigure",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -594,7 +594,7 @@
           "example": "无",
           "member": "FrameTagConfigureInfo",
           "name": "FrameTagConfigure",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -604,7 +604,7 @@
           "example": "“”",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -614,7 +614,7 @@
           "example": "“”",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -624,7 +624,7 @@
           "example": "“”",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -1095,7 +1095,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Adaptive bitrate streaming template ID.",
+          "document": "Adaptive dynamic streaming template ID.",
           "example": "10",
           "member": "uint64",
           "name": "Definition",
@@ -1106,7 +1106,7 @@
         },
         {
           "disabled": false,
-          "document": "List of up to 10 image or text watermarks.",
+          "document": "Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.",
           "example": "无",
           "member": "WatermarkInput",
           "name": "WatermarkSet",
@@ -1117,7 +1117,7 @@
         },
         {
           "disabled": false,
-          "document": "\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Target storage for files after adaptive dynamic streaming. If left blank, it inherits the upper-level OutputStorage value.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
@@ -1128,7 +1128,7 @@
         },
         {
           "disabled": false,
-          "document": "The relative or absolute output path of the manifest file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}.{format}`.",
+          "document": "Output path for the manifest file after adaptive dynamic streaming. It can be either a relative path or an absolute path.\nIf you need to define an output path, the path must end with `.{format}`. Refer to [Filename Variable Description](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1) for variable names.\nExample of relative path:\n<li>filename_{variable name}.{format}</li>\n<li>filename.{format}</li>\nExample of absolute path:\n<li>/custom path/filename_{variable name}.{format}</li>\nIf not filled in, it is a relative path by default: {inputName}_adaptiveDynamicStreaming_{definition}.{format}.",
           "example": "{inputName}_adaptiveDynamicStreaming_{definition}.{format}",
           "member": "string",
           "name": "OutputObjectPath",
@@ -1139,7 +1139,7 @@
         },
         {
           "disabled": false,
-          "document": "The relative output path of the substream file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`.",
+          "document": "After adaptive dynamic streaming, the output path of substream files can only be a relative path. If not filled in, it is a relative path by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`.",
           "example": "{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}",
           "member": "string",
           "name": "SubStreamObjectName",
@@ -1150,7 +1150,7 @@
         },
         {
           "disabled": false,
-          "document": "The relative output path of the segment file after being transcoded to adaptive bitrate streaming (in HLS format only). If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.",
+          "document": "After adaptive dynamic streaming (for HLS only), the output path of segment files can only be a relative path. If not filled in, it is a relative path by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.",
           "example": "{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}",
           "member": "string",
           "name": "SegmentObjectName",
@@ -1161,7 +1161,7 @@
         },
         {
           "disabled": false,
-          "document": "\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Subtitle file to be inserted.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "AddOnSubtitle",
           "name": "AddOnSubtitles",
@@ -1172,7 +1172,7 @@
         },
         {
           "disabled": false,
-          "document": "\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Drm information.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "无",
           "member": "DrmInfo",
           "name": "DrmInfo",
@@ -1326,30 +1326,33 @@
       "members": [
         {
           "disabled": false,
-          "document": "Video parameter information.",
-          "example": "",
-          "member": "VideoTemplateInfo",
-          "name": "Video",
+          "document": "Audio parameter information.",
+          "example": "null",
+          "member": "AudioTemplateInfo",
+          "name": "Audio",
+          "output_required": true,
           "required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "Audio parameter information.",
-          "example": "",
-          "member": "AudioTemplateInfo",
-          "name": "Audio",
-          "required": true,
+          "document": "Video parameter information.",
+          "example": "null",
+          "member": "VideoTemplateInfo",
+          "name": "Video",
+          "output_required": true,
+          "required": false,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether to remove audio stream. Valid values:\n<li>0: no,</li>\n<li>1: yes.</li>",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "RemoveAudio",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1357,9 +1360,10 @@
         {
           "disabled": false,
           "document": "Whether to remove video stream. Valid values:\n<li>0: no,</li>\n<li>1: yes.</li>",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "RemoveVideo",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -1552,7 +1556,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1562,7 +1566,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1572,7 +1576,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1582,7 +1586,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1592,7 +1596,7 @@
           "example": "NULL",
           "member": "AiAnalysisTaskClassificationInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1602,7 +1606,7 @@
           "example": "NULL",
           "member": "AiAnalysisTaskClassificationOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -1660,7 +1664,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1670,7 +1674,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1680,7 +1684,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1690,7 +1694,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1700,7 +1704,7 @@
           "example": "NULL",
           "member": "AiAnalysisTaskCoverInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -1710,7 +1714,7 @@
           "example": "NULL",
           "member": "AiAnalysisTaskCoverOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -1964,7 +1968,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1974,7 +1978,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1984,7 +1988,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1994,7 +1998,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2004,7 +2008,7 @@
           "example": "NULL",
           "member": "AiAnalysisTaskFrameTagInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -2014,7 +2018,7 @@
           "example": "NULL",
           "member": "AiAnalysisTaskFrameTagOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -2167,50 +2171,50 @@
         {
           "disabled": false,
           "document": "The task status. Valid values: `PROCESSING`, `SUCCESS`, `FAIL`.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Error code. `0`: The task succeeded; other values: The task failed.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The error message.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The input of the intelligent highlight generation task.",
-          "example": "",
+          "example": "无",
           "member": "AiAnalysisTaskHighlightInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The output of the intelligent highlight generation task.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AiAnalysisTaskHighlightOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -2445,7 +2449,7 @@
         {
           "disabled": false,
           "document": "Intelligent video tagging template ID.",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -2480,7 +2484,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2490,7 +2494,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2500,7 +2504,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -2510,7 +2514,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -2520,7 +2524,7 @@
           "example": "NULL",
           "member": "AiAnalysisTaskTagInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -2530,7 +2534,7 @@
           "example": "NULL",
           "member": "AiAnalysisTaskTagOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -2679,7 +2683,7 @@
         {
           "disabled": false,
           "document": "Video content audit template ID.",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -2937,30 +2941,30 @@
         {
           "disabled": false,
           "document": "List of full speech recognition segments.",
-          "example": "",
+          "example": "无",
           "member": "AiRecognitionTaskAsrFullTextSegmentItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Subtitles file address.",
-          "example": "",
+          "example": "http://lily-1256342427.cos.ap-shanghai.myqcloud.com/3109868718.vtt",
           "member": "string",
           "name": "SubtitlePath",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Subtitles file storage location.",
-          "example": "",
+          "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
-          "required": true,
+          "output_required": false,
           "type": "object",
           "value_allowed_null": false
         }
@@ -3022,7 +3026,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3032,7 +3036,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3042,7 +3046,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3052,7 +3056,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3062,7 +3066,7 @@
           "example": "NULL",
           "member": "AiRecognitionTaskAsrWordsResultInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -3072,7 +3076,7 @@
           "example": "NULL",
           "member": "AiRecognitionTaskAsrWordsResultOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -3182,7 +3186,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3192,7 +3196,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3202,7 +3206,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3212,7 +3216,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3222,7 +3226,7 @@
           "example": "NULL",
           "member": "AiRecognitionTaskFaceResultInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -3232,7 +3236,7 @@
           "example": "NULL",
           "member": "AiRecognitionTaskFaceResultOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -3264,7 +3268,7 @@
           "example": "9527",
           "member": "string",
           "name": "Id",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3274,7 +3278,7 @@
           "example": "Default",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3284,7 +3288,7 @@
           "example": "张三",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3294,7 +3298,7 @@
           "example": "NULL",
           "member": "AiRecognitionTaskFaceSegmentItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3304,7 +3308,7 @@
           "example": "Male",
           "member": "string",
           "name": "Gender",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3314,7 +3318,7 @@
           "example": "1953年6月",
           "member": "string",
           "name": "Birthday",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3324,7 +3328,7 @@
           "example": "歌手",
           "member": "string",
           "name": "Profession",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3334,7 +3338,7 @@
           "example": "清华大学",
           "member": "string",
           "name": "SchoolOfGraduation",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3344,7 +3348,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Abstract",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3354,7 +3358,7 @@
           "example": "湖北武汉",
           "member": "string",
           "name": "PlaceOfBirth",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3364,7 +3368,7 @@
           "example": "Politician",
           "member": "string",
           "name": "PersonType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3374,7 +3378,7 @@
           "example": "Normal",
           "member": "string",
           "name": "Remark",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -3384,7 +3388,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Url",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -3459,9 +3463,10 @@
         {
           "disabled": false,
           "document": "Intelligent video recognition template ID.",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "Definition",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -3638,7 +3643,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3648,7 +3653,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3658,7 +3663,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3668,7 +3673,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3678,7 +3683,7 @@
           "example": "NULL",
           "member": "AiRecognitionTaskOcrFullTextResultInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -3688,7 +3693,7 @@
           "example": "NULL",
           "member": "AiRecognitionTaskOcrFullTextResultOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -3808,7 +3813,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3818,7 +3823,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3828,7 +3833,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -3838,7 +3843,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3848,7 +3853,7 @@
           "example": "NULL",
           "member": "AiRecognitionTaskOcrWordsResultInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -3858,7 +3863,7 @@
           "example": "NULL",
           "member": "AiRecognitionTaskOcrWordsResultOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -4070,28 +4075,18 @@
           "example": "NULL",
           "member": "AiRecognitionTaskTransTextSegmentItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The subtitle URL.",
-          "example": "/xx.webvtt",
+          "example": "http://lily-1256342427.cos.ap-shanghai.myqcloud.com/3109868718.vtt",
           "member": "string",
           "name": "SubtitlePath",
-          "required": true,
+          "output_required": false,
           "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "The subtitle storage location.",
-          "example": "NULL",
-          "member": "TaskOutputStorage",
-          "name": "OutputStorage",
-          "required": true,
-          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -4599,7 +4594,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4609,7 +4604,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4619,7 +4614,7 @@
           "example": "0",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4629,7 +4624,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4639,7 +4634,7 @@
           "example": "无",
           "member": "AiReviewPoliticalAsrTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4649,7 +4644,7 @@
           "example": "NULL",
           "member": "AiReviewPoliticalAsrTaskOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -4665,7 +4660,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4675,7 +4670,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4685,7 +4680,7 @@
           "example": "0",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4695,7 +4690,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4705,7 +4700,7 @@
           "example": "无",
           "member": "AiReviewPoliticalOcrTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4715,7 +4710,7 @@
           "example": "NULL",
           "member": "AiReviewPoliticalOcrTaskOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -4731,7 +4726,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4741,7 +4736,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4751,7 +4746,7 @@
           "example": "0",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4761,7 +4756,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4771,7 +4766,7 @@
           "example": "无",
           "member": "AiReviewPoliticalTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4781,7 +4776,7 @@
           "example": "NULL",
           "member": "AiReviewPoliticalTaskOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -4797,7 +4792,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4807,7 +4802,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4817,7 +4812,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4827,7 +4822,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4837,7 +4832,7 @@
           "example": "NULL",
           "member": "AiReviewPornAsrTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4847,7 +4842,7 @@
           "example": "NULL",
           "member": "AiReviewPornAsrTaskOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -4863,7 +4858,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4873,7 +4868,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4883,7 +4878,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4893,7 +4888,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4903,7 +4898,7 @@
           "example": "NULL",
           "member": "AiReviewPornOcrTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4913,7 +4908,7 @@
           "example": "NULL",
           "member": "AiReviewPornOcrTaskOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -4929,7 +4924,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4939,7 +4934,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4949,7 +4944,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4959,7 +4954,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4969,7 +4964,7 @@
           "example": "NULL",
           "member": "AiReviewPornTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -4979,7 +4974,7 @@
           "example": "NULL",
           "member": "AiReviewPornTaskOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -4995,7 +4990,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5005,7 +5000,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5015,7 +5010,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5025,7 +5020,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5035,7 +5030,7 @@
           "example": "NULL",
           "member": "AiReviewProhibitedAsrTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -5045,7 +5040,7 @@
           "example": "NULL",
           "member": "AiReviewProhibitedAsrTaskOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -5061,7 +5056,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5071,7 +5066,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5081,7 +5076,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5091,7 +5086,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5101,7 +5096,7 @@
           "example": "NULL",
           "member": "AiReviewProhibitedOcrTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -5111,7 +5106,7 @@
           "example": "NULL",
           "member": "AiReviewProhibitedOcrTaskOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -5127,7 +5122,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5137,7 +5132,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5147,7 +5142,7 @@
           "example": "0",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5157,7 +5152,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5167,7 +5162,7 @@
           "example": "NULL",
           "member": "AiReviewTerrorismOcrTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -5177,7 +5172,7 @@
           "example": "NULL",
           "member": "AiReviewTerrorismOcrTaskOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -5193,7 +5188,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5203,7 +5198,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5213,7 +5208,7 @@
           "example": "0",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -5223,7 +5218,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5233,7 +5228,7 @@
           "example": "NULL",
           "member": "AiReviewTerrorismTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -5243,7 +5238,7 @@
           "example": "NULL",
           "member": "AiReviewTerrorismTaskOutput",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -5468,7 +5463,7 @@
         {
           "disabled": false,
           "document": "Figure ID.",
-          "example": "",
+          "example": "9527",
           "member": "string",
           "name": "PersonId",
           "required": true,
@@ -5478,7 +5473,7 @@
         {
           "disabled": false,
           "document": "Name of a figure.",
-          "example": "",
+          "example": "Default",
           "member": "string",
           "name": "Name",
           "required": true,
@@ -5488,7 +5483,7 @@
         {
           "disabled": false,
           "document": "Figure description.",
-          "example": "",
+          "example": "张三",
           "member": "string",
           "name": "Description",
           "required": true,
@@ -5498,7 +5493,7 @@
         {
           "disabled": false,
           "document": "Face information.",
-          "example": "",
+          "example": "NULL",
           "member": "AiSampleFaceInfo",
           "name": "FaceInfoSet",
           "required": true,
@@ -5508,7 +5503,7 @@
         {
           "disabled": false,
           "document": "Figure tag.",
-          "example": "",
+          "example": "NULL",
           "member": "string",
           "name": "TagSet",
           "required": true,
@@ -5518,7 +5513,7 @@
         {
           "disabled": false,
           "document": "Use case.",
-          "example": "",
+          "example": "NULL",
           "member": "string",
           "name": "UsageSet",
           "required": true,
@@ -5528,7 +5523,7 @@
         {
           "disabled": false,
           "document": "Creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
-          "example": "",
+          "example": "“”",
           "member": "string",
           "name": "CreateTime",
           "required": true,
@@ -5538,7 +5533,7 @@
         {
           "disabled": false,
           "document": "Last modified time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).",
-          "example": "",
+          "example": "“”",
           "member": "string",
           "name": "UpdateTime",
           "required": true,
@@ -5875,7 +5870,7 @@
         {
           "disabled": false,
           "document": "Switch of a full speech recognition task. Valid values:\n<li>ON: Enables an intelligent full speech recognition task;</li>\n<li>OFF: Disables an intelligent full speech recognition task.</li>",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": true,
@@ -5885,7 +5880,7 @@
         {
           "disabled": false,
           "document": "Format of the generated subtitles file. If this parameter is left empty or an empty string is entered, no subtitles files will be generated. Valid value:\n<li>vtt: Generates a WebVTT subtitles file.</li>",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "SubtitleFormat",
           "required": false,
@@ -5901,7 +5896,7 @@
         {
           "disabled": false,
           "document": "Switch of a full speech recognition task. Valid values:\n<li>ON: Enables an intelligent full speech recognition task;</li>\n<li>OFF: Disables an intelligent full speech recognition task.</li>",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
@@ -5911,7 +5906,7 @@
         {
           "disabled": false,
           "document": "Format of the generated subtitles file. If an empty string is entered, no subtitles files will be generated. Valid value:\n<li>vtt: Generates a WebVTT subtitles file.</li>",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "SubtitleFormat",
           "required": false,
@@ -7542,7 +7537,7 @@
         {
           "disabled": false,
           "document": "Video content analysis template name. Length limit: 64 characters.",
-          "example": "",
+          "example": "智能分析模板",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -7551,7 +7546,7 @@
         {
           "disabled": false,
           "document": "Video content analysis template description. Length limit: 256 characters.",
-          "example": "",
+          "example": "模板1",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -7560,7 +7555,7 @@
         {
           "disabled": false,
           "document": "Control parameter of intelligent categorization task.",
-          "example": "",
+          "example": "无",
           "member": "ClassificationConfigureInfo",
           "name": "ClassificationConfigure",
           "required": false,
@@ -7569,7 +7564,7 @@
         {
           "disabled": false,
           "document": "Control parameter of intelligent tagging task.",
-          "example": "",
+          "example": "无",
           "member": "TagConfigureInfo",
           "name": "TagConfigure",
           "required": false,
@@ -7578,7 +7573,7 @@
         {
           "disabled": false,
           "document": "Control parameter of intelligent cover generating task.",
-          "example": "",
+          "example": "无",
           "member": "CoverConfigureInfo",
           "name": "CoverConfigure",
           "required": false,
@@ -7587,7 +7582,7 @@
         {
           "disabled": false,
           "document": "Control parameter of intelligent frame-specific tagging task.",
-          "example": "",
+          "example": "无",
           "member": "FrameTagConfigureInfo",
           "name": "FrameTagConfigure",
           "required": false,
@@ -7624,7 +7619,7 @@
         {
           "disabled": false,
           "document": "Name of a video content recognition template. Length limit: 64 characters.",
-          "example": "",
+          "example": "智能识别模板",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -7633,7 +7628,7 @@
         {
           "disabled": false,
           "document": "Description of a video content recognition template. Length limit: 256 characters.",
-          "example": "",
+          "example": "模板2",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -7642,7 +7637,7 @@
         {
           "disabled": false,
           "document": "Face recognition control parameter.",
-          "example": "",
+          "example": "无",
           "member": "FaceConfigureInfo",
           "name": "FaceConfigure",
           "required": false,
@@ -7651,7 +7646,7 @@
         {
           "disabled": false,
           "document": "Full text recognition control parameter.",
-          "example": "",
+          "example": "无",
           "member": "OcrFullTextConfigureInfo",
           "name": "OcrFullTextConfigure",
           "required": false,
@@ -7660,7 +7655,7 @@
         {
           "disabled": false,
           "document": "Text keyword recognition control parameter.",
-          "example": "",
+          "example": "无",
           "member": "OcrWordsConfigureInfo",
           "name": "OcrWordsConfigure",
           "required": false,
@@ -7669,7 +7664,7 @@
         {
           "disabled": false,
           "document": "Full speech recognition control parameter.",
-          "example": "",
+          "example": "无",
           "member": "AsrFullTextConfigureInfo",
           "name": "AsrFullTextConfigure",
           "required": false,
@@ -7678,7 +7673,7 @@
         {
           "disabled": false,
           "document": "Speech keyword recognition control parameter.",
-          "example": "",
+          "example": "无",
           "member": "AsrWordsConfigureInfo",
           "name": "AsrWordsConfigure",
           "required": false,
@@ -7815,7 +7810,7 @@
         {
           "disabled": false,
           "document": "Video frame rate in Hz. Value range: [1, 30].",
-          "example": "",
+          "example": "30",
           "member": "uint64",
           "name": "Fps",
           "required": true,
@@ -7824,7 +7819,7 @@
         {
           "disabled": false,
           "document": "Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.",
-          "example": "",
+          "example": "540",
           "member": "uint64",
           "name": "Width",
           "required": false,
@@ -7833,7 +7828,7 @@
         {
           "disabled": false,
           "document": "Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.",
-          "example": "",
+          "example": "960",
           "member": "uint64",
           "name": "Height",
           "required": false,
@@ -7842,7 +7837,7 @@
         {
           "disabled": false,
           "document": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ResolutionAdaptive",
           "required": false,
@@ -7851,7 +7846,7 @@
         {
           "disabled": false,
           "document": "Animated image format. Valid values: gif; webp. Default value: gif.",
-          "example": "",
+          "example": "gif",
           "member": "string",
           "name": "Format",
           "required": false,
@@ -7860,7 +7855,7 @@
         {
           "disabled": false,
           "document": "Image quality. Value range: [1, 100]. Default value: 75.",
-          "example": "",
+          "example": "无",
           "member": "float",
           "name": "Quality",
           "required": false,
@@ -7869,7 +7864,7 @@
         {
           "disabled": false,
           "document": "Name of an animated image generating template. Length limit: 64 characters.",
-          "example": "",
+          "example": "动图图模板1",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -7878,7 +7873,7 @@
         {
           "disabled": false,
           "document": "Template description. Length limit: 256 characters.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -8671,7 +8666,7 @@
         {
           "disabled": false,
           "document": "Watermarking type. Valid values:\n<li>image: Image watermark;</li>\n<li>text: Text watermark;</li>\n<li>svg: SVG watermark.</li>",
-          "example": "",
+          "example": "image",
           "member": "string",
           "name": "Type",
           "required": true,
@@ -8680,7 +8675,7 @@
         {
           "disabled": false,
           "document": "Watermarking template name. Length limit: 64 characters.",
-          "example": "",
+          "example": "模板1",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -8689,7 +8684,7 @@
         {
           "disabled": false,
           "document": "Template description. Length limit: 256 characters.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -8698,7 +8693,7 @@
         {
           "disabled": false,
           "document": "Origin position. Valid values:\n<li>TopLeft: The origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>\n<li>TopRight: The origin of coordinates is in the top-right corner of the video, and the origin of the watermark is in the top-right corner of the image or text;</li>\n<li>BottomLeft: The origin of coordinates is in the bottom-left corner of the video, and the origin of the watermark is in the bottom-left corner of the image or text;</li>\n<li>BottomRight: The origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>\nDefault value: TopLeft.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "CoordinateOrigin",
           "required": false,
@@ -8707,7 +8702,7 @@
         {
           "disabled": false,
           "document": "The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:\n<li>If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>\n<li>If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>\nDefault value: 0 px.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "XPos",
           "required": false,
@@ -8716,7 +8711,7 @@
         {
           "disabled": false,
           "document": "The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:\n<li>If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>\n<li>If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>\nDefault value: 0 px.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "YPos",
           "required": false,
@@ -8725,7 +8720,7 @@
         {
           "disabled": false,
           "document": "Image watermarking template. This field is required and valid only when `Type` is `image`.",
-          "example": "",
+          "example": "无",
           "member": "ImageWatermarkInput",
           "name": "ImageTemplate",
           "required": false,
@@ -8734,7 +8729,7 @@
         {
           "disabled": false,
           "document": "Text watermarking template. This field is required and valid only when `Type` is `text`.",
-          "example": "",
+          "example": "无",
           "member": "TextWatermarkTemplateInput",
           "name": "TextTemplate",
           "required": false,
@@ -8743,7 +8738,7 @@
         {
           "disabled": false,
           "document": "SVG watermarking template. This field is required and valid only when `Type` is `svg`.",
-          "example": "",
+          "example": "无",
           "member": "SvgWatermarkInput",
           "name": "SvgTemplate",
           "required": false,
@@ -8944,7 +8939,7 @@
         {
           "disabled": false,
           "document": "Unique ID of video content analysis template.",
-          "example": "",
+          "example": "30",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -8971,7 +8966,7 @@
         {
           "disabled": false,
           "document": "Unique ID of a video content recognition template.",
-          "example": "",
+          "example": "30",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -8998,7 +8993,7 @@
         {
           "disabled": false,
           "document": "Unique ID of an adaptive bitrate streaming template.",
-          "example": "",
+          "example": "10001",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -9025,7 +9020,7 @@
         {
           "disabled": false,
           "document": "Unique ID of an animated image generating template.",
-          "example": "",
+          "example": "10001",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -9079,7 +9074,7 @@
         {
           "disabled": false,
           "document": "Unique ID of an image sprite generating template.",
-          "example": "",
+          "example": "10001",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -9160,7 +9155,7 @@
         {
           "disabled": false,
           "document": "Unique ID of a sampled screencapturing template.",
-          "example": "",
+          "example": "10001",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -9214,7 +9209,7 @@
         {
           "disabled": false,
           "document": "Unique ID of a time point screencapturing template.",
-          "example": "",
+          "example": "10001",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -9241,7 +9236,7 @@
         {
           "disabled": false,
           "document": "Unique ID of a transcoding template.",
-          "example": "",
+          "example": "1008",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -9268,7 +9263,7 @@
         {
           "disabled": false,
           "document": "Unique ID of a watermarking template.",
-          "example": "",
+          "example": "1001",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -9295,7 +9290,7 @@
         {
           "disabled": false,
           "document": "Keyword. Array length limit: 100 words.",
-          "example": "",
+          "example": "“”",
           "member": "string",
           "name": "Keywords",
           "required": true,
@@ -10011,7 +10006,7 @@
         },
         {
           "disabled": false,
-          "document": "Preset: preset template. Custom: custom template.",
+          "document": "\"Preset\": preset template, \"Custom\": custom template",
           "example": "Preset",
           "member": "string",
           "name": "Type",
@@ -10317,7 +10312,7 @@
         {
           "disabled": false,
           "document": "Video processing task ID.",
-          "example": "",
+          "example": "235303****-WorkflowTask-80108cc3380155d98b2e3573a48a******",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -10494,7 +10489,7 @@
         {
           "disabled": false,
           "document": "Filter: Task status. Valid values: WAITING (waiting), PROCESSING (processing), FINISH (completed).",
-          "example": "",
+          "example": "FINISH",
           "member": "string",
           "name": "Status",
           "required": true,
@@ -10503,7 +10498,7 @@
         {
           "disabled": false,
           "document": "Number of returned entries. Default value: 10. Maximum value: 100.",
-          "example": "",
+          "example": "5",
           "member": "uint64",
           "name": "Limit",
           "required": false,
@@ -10512,7 +10507,7 @@
         {
           "disabled": false,
           "document": "Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.",
-          "example": "",
+          "example": "\"\"",
           "member": "string",
           "name": "ScrollToken",
           "required": false,
@@ -10845,7 +10840,7 @@
         {
           "disabled": false,
           "document": "Workflow ID filter. Array length limit: 100.",
-          "example": "",
+          "example": "[\"78459\\n\"]",
           "member": "int64",
           "name": "WorkflowIds",
           "required": false,
@@ -10854,7 +10849,7 @@
         {
           "disabled": false,
           "document": "Workflow status. Valid values:\n<li>Enabled: Enabled,</li>\n<li>Disabled: Disabled.</li>\nIf this parameter is left empty, the workflow status will not be distinguished.",
-          "example": "",
+          "example": "“”",
           "member": "string",
           "name": "Status",
           "required": false,
@@ -10863,7 +10858,7 @@
         {
           "disabled": false,
           "document": "Paging offset. Default value: 0.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Offset",
           "required": false,
@@ -10872,7 +10867,7 @@
         {
           "disabled": false,
           "document": "Number of returned entries. Default value: 10. Maximum value: 100.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Limit",
           "required": false,
@@ -11012,7 +11007,7 @@
         {
           "disabled": false,
           "document": "Workflow ID.",
-          "example": "",
+          "example": "12345",
           "member": "int64",
           "name": "WorkflowId",
           "required": true,
@@ -11320,10 +11315,10 @@
         {
           "disabled": false,
           "document": "Information of input video file.",
-          "example": "",
+          "example": "无",
           "member": "EditMediaFileInfo",
           "name": "FileInfoSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -11336,7 +11331,7 @@
         {
           "disabled": false,
           "document": "Target storage of edited file.",
-          "example": "",
+          "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
           "required": true,
@@ -11346,7 +11341,7 @@
         {
           "disabled": false,
           "document": "Path of edited video file.",
-          "example": "",
+          "example": "/xx.mp4",
           "member": "string",
           "name": "Path",
           "required": true,
@@ -11444,7 +11439,7 @@
         {
           "disabled": false,
           "document": "Name of called backend API.",
-          "example": "",
+          "example": "ExampleFunc",
           "member": "string",
           "name": "FunctionName",
           "required": true,
@@ -11453,7 +11448,7 @@
         {
           "disabled": false,
           "document": "API parameter. Parameter format will depend on the actual function definition.",
-          "example": "",
+          "example": "XXX",
           "member": "string",
           "name": "FunctionArg",
           "required": true,
@@ -13062,7 +13057,7 @@
         {
           "disabled": false,
           "document": "Recognized text.",
-          "example": "",
+          "example": "你好",
           "member": "string",
           "name": "Text",
           "required": true,
@@ -13072,7 +13067,7 @@
         {
           "disabled": false,
           "document": "Start PTS time of recognized segment in seconds.",
-          "example": "",
+          "example": "123.301",
           "member": "float",
           "name": "StartPtsTime",
           "required": true,
@@ -13082,7 +13077,7 @@
         {
           "disabled": false,
           "document": "End PTS time of recognized segment in seconds.",
-          "example": "",
+          "example": "125.301",
           "member": "float",
           "name": "EndPtsTime",
           "required": true,
@@ -13092,7 +13087,7 @@
         {
           "disabled": false,
           "document": "Confidence of recognized segment. Value range: 0–100.",
-          "example": "",
+          "example": "99",
           "member": "float",
           "name": "Confidence",
           "required": true,
@@ -13923,50 +13918,50 @@
         {
           "disabled": false,
           "document": "The URL of the highlight segments.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "HighlightPath",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The URL of the thumbnail.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "CovImgPath",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The confidence score. Value range: 0-100.",
-          "example": "",
+          "example": "无",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The duration of the highlights.",
-          "example": "",
+          "example": "无",
           "member": "float",
           "name": "Duration",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "A list of the highlight segments.",
-          "example": "",
+          "example": "无",
           "member": "HighlightSegmentItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -14124,7 +14119,7 @@
           "example": "8000",
           "member": "int64",
           "name": "Bitrate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -14134,7 +14129,7 @@
           "example": "8000",
           "member": "int64",
           "name": "SamplingRate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -14144,7 +14139,7 @@
           "example": "aac",
           "member": "string",
           "name": "Codec",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14154,7 +14149,7 @@
           "example": "2",
           "member": "int64",
           "name": "Channel",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         }
@@ -14603,110 +14598,110 @@
         {
           "disabled": false,
           "document": "Size of an uploaded media file in bytes (which is the sum of size of m3u8 and ts files if the video is in HLS format).\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "3771548",
           "member": "int64",
           "name": "Size",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Container, such as m4a and mp4.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "flv",
           "member": "string",
           "name": "Container",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Sum of the average bitrate of a video stream and that of an audio stream in bps.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "611594",
           "member": "int64",
           "name": "Bitrate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Maximum value of the height of a video stream in px.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "480",
           "member": "int64",
           "name": "Height",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Maximum value of the width of a video stream in px.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "854",
           "member": "int64",
           "name": "Width",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Video duration in seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "49.334",
           "member": "float",
           "name": "Duration",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Selected angle during video recording in degrees.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "Rotate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Video stream information.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "MediaVideoStreamItem",
           "name": "VideoStreamSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Audio stream information.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "MediaAudioStreamItem",
           "name": "AudioStreamSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Video duration in seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "49.334",
           "member": "float",
           "name": "VideoDuration",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Audio duration in seconds.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "49.334",
           "member": "float",
           "name": "AudioDuration",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -14788,7 +14783,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14798,7 +14793,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14808,7 +14803,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -14818,7 +14813,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14828,7 +14823,7 @@
           "example": "NULL",
           "member": "AnimatedGraphicTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -14838,7 +14833,7 @@
           "example": "NULL",
           "member": "MediaAnimatedGraphicsItem",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -14854,7 +14849,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14864,7 +14859,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14874,7 +14869,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -14884,7 +14879,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -14894,7 +14889,7 @@
           "example": "NULL",
           "member": "ImageSpriteTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -14904,7 +14899,7 @@
           "example": "NULL",
           "member": "MediaImageSpriteItem",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -15062,7 +15057,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -15072,7 +15067,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -15082,7 +15077,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -15092,7 +15087,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -15102,7 +15097,7 @@
           "example": "NULL",
           "member": "SampleSnapshotTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -15112,7 +15107,7 @@
           "example": "NULL",
           "member": "MediaSampleSnapshotItem",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -15128,7 +15123,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -15138,7 +15133,7 @@
           "example": "NULL",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -15148,7 +15143,7 @@
           "example": "NULL",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -15158,7 +15153,7 @@
           "example": "NULL",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -15168,7 +15163,7 @@
           "example": "NULL",
           "member": "SnapshotByTimeOffsetTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -15178,7 +15173,7 @@
           "example": "NULL",
           "member": "MediaSnapshotByTimeOffsetItem",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -15405,120 +15400,120 @@
         {
           "disabled": false,
           "document": "Target bucket of an output file.",
-          "example": "",
+          "example": "null",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Path to an output video file.",
-          "example": "",
+          "example": "/output/test.mp4",
           "member": "string",
           "name": "Path",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Transcoding specification ID. For more information, please see [Transcoding Parameter Template](https://intl.cloud.tencent.com/document/product/266/33478?from_cn_redirect=1#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).",
-          "example": "",
+          "example": "10",
           "member": "int64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Sum of the average bitrate of a video stream and that of an audio stream in bps.",
-          "example": "",
+          "example": "1000",
           "member": "int64",
           "name": "Bitrate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Maximum value of the height of a video stream in px.",
-          "example": "",
+          "example": "1080",
           "member": "int64",
           "name": "Height",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Maximum value of the width of a video stream in px.",
-          "example": "",
+          "example": "1920",
           "member": "int64",
           "name": "Width",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total size of a media file in bytes (which is the sum of size of m3u8 and ts files if the video is in HLS format).",
-          "example": "",
+          "example": "20000",
           "member": "int64",
           "name": "Size",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Video duration in seconds.",
-          "example": "",
+          "example": "15",
           "member": "float",
           "name": "Duration",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Container, such as m4a and mp4.",
-          "example": "",
+          "example": "mp4",
           "member": "string",
           "name": "Container",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "MD5 value of a video.",
-          "example": "",
+          "example": "xxxx",
           "member": "string",
           "name": "Md5",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Audio stream information.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "MediaAudioStreamItem",
           "name": "AudioStreamSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Video stream information.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "MediaVideoStreamItem",
           "name": "VideoStreamSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -15657,7 +15652,7 @@
         {
           "disabled": false,
           "document": "Unique ID of video content analysis template.",
-          "example": "",
+          "example": "30",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -15666,7 +15661,7 @@
         {
           "disabled": false,
           "document": "Video content analysis template name. Length limit: 64 characters.",
-          "example": "",
+          "example": "\"\"",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -15675,7 +15670,7 @@
         {
           "disabled": false,
           "document": "Video content analysis template description. Length limit: 256 characters.",
-          "example": "",
+          "example": "\"\"",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -15684,7 +15679,7 @@
         {
           "disabled": false,
           "document": "Control parameter of intelligent categorization task.",
-          "example": "",
+          "example": "无",
           "member": "ClassificationConfigureInfoForUpdate",
           "name": "ClassificationConfigure",
           "required": false,
@@ -15693,7 +15688,7 @@
         {
           "disabled": false,
           "document": "Control parameter of intelligent tagging task.",
-          "example": "",
+          "example": "无",
           "member": "TagConfigureInfoForUpdate",
           "name": "TagConfigure",
           "required": false,
@@ -15702,7 +15697,7 @@
         {
           "disabled": false,
           "document": "Control parameter of intelligent cover generating task.",
-          "example": "",
+          "example": "无",
           "member": "CoverConfigureInfoForUpdate",
           "name": "CoverConfigure",
           "required": false,
@@ -15711,7 +15706,7 @@
         {
           "disabled": false,
           "document": "Control parameter of intelligent frame-specific tagging task.",
-          "example": "",
+          "example": "无",
           "member": "FrameTagConfigureInfoForUpdate",
           "name": "FrameTagConfigure",
           "required": false,
@@ -15738,7 +15733,7 @@
         {
           "disabled": false,
           "document": "Unique ID of a video content recognition template.",
-          "example": "",
+          "example": "30",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -15747,7 +15742,7 @@
         {
           "disabled": false,
           "document": "Name of a video content recognition template. Length limit: 64 characters.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -15756,7 +15751,7 @@
         {
           "disabled": false,
           "document": "Description of a video content recognition template. Length limit: 256 characters.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -15765,7 +15760,7 @@
         {
           "disabled": false,
           "document": "Face recognition control parameter.",
-          "example": "",
+          "example": "无",
           "member": "FaceConfigureInfoForUpdate",
           "name": "FaceConfigure",
           "required": false,
@@ -15774,7 +15769,7 @@
         {
           "disabled": false,
           "document": "Full text recognition control parameter.",
-          "example": "",
+          "example": "无",
           "member": "OcrFullTextConfigureInfoForUpdate",
           "name": "OcrFullTextConfigure",
           "required": false,
@@ -15783,7 +15778,7 @@
         {
           "disabled": false,
           "document": "Text keyword recognition control parameter.",
-          "example": "",
+          "example": "无",
           "member": "OcrWordsConfigureInfoForUpdate",
           "name": "OcrWordsConfigure",
           "required": false,
@@ -15792,7 +15787,7 @@
         {
           "disabled": false,
           "document": "Full speech recognition control parameter.",
-          "example": "",
+          "example": "无",
           "member": "AsrFullTextConfigureInfoForUpdate",
           "name": "AsrFullTextConfigure",
           "required": false,
@@ -15801,7 +15796,7 @@
         {
           "disabled": false,
           "document": "Speech keyword recognition control parameter.",
-          "example": "",
+          "example": "无",
           "member": "AsrWordsConfigureInfoForUpdate",
           "name": "AsrWordsConfigure",
           "required": false,
@@ -15927,7 +15922,7 @@
         {
           "disabled": false,
           "document": "Unique ID of an animated image generating template.",
-          "example": "",
+          "example": "10001",
           "member": "uint64",
           "name": "Definition",
           "required": true,
@@ -15936,7 +15931,7 @@
         {
           "disabled": false,
           "document": "Name of an animated image generating template. Length limit: 64 characters.",
-          "example": "",
+          "example": "转动图模板1",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -15945,7 +15940,7 @@
         {
           "disabled": false,
           "document": "Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.",
-          "example": "",
+          "example": "540",
           "member": "uint64",
           "name": "Width",
           "required": false,
@@ -15954,7 +15949,7 @@
         {
           "disabled": false,
           "document": "Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].\n<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>\n<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>\n<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>\n<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>\nDefault value: 0.",
-          "example": "",
+          "example": "960",
           "member": "uint64",
           "name": "Height",
           "required": false,
@@ -15963,7 +15958,7 @@
         {
           "disabled": false,
           "document": "Resolution adaption. Valid values:\n<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>\n<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>\nDefault value: open.",
-          "example": "",
+          "example": "open",
           "member": "string",
           "name": "ResolutionAdaptive",
           "required": false,
@@ -15972,7 +15967,7 @@
         {
           "disabled": false,
           "document": "Animated image format. Valid values: gif, webp.",
-          "example": "",
+          "example": "gif",
           "member": "string",
           "name": "Format",
           "required": false,
@@ -15981,7 +15976,7 @@
         {
           "disabled": false,
           "document": "Video frame rate in Hz. Value range: [1, 30].",
-          "example": "",
+          "example": "30",
           "member": "uint64",
           "name": "Fps",
           "required": false,
@@ -15990,7 +15985,7 @@
         {
           "disabled": false,
           "document": "Image quality. Value range: [1, 100]. Default value: 75.",
-          "example": "",
+          "example": "75",
           "member": "float",
           "name": "Quality",
           "required": false,
@@ -15999,7 +15994,7 @@
         {
           "disabled": false,
           "document": "Template description. Length limit: 256 characters.",
-          "example": "",
+          "example": "\"\"",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -16784,7 +16779,7 @@
         {
           "disabled": false,
           "document": "Unique ID of a watermarking template.",
-          "example": "",
+          "example": "1001",
           "member": "int64",
           "name": "Definition",
           "required": true,
@@ -16793,7 +16788,7 @@
         {
           "disabled": false,
           "document": "Watermarking template name. Length limit: 64 characters.",
-          "example": "",
+          "example": "模板2",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -16802,7 +16797,7 @@
         {
           "disabled": false,
           "document": "Template description. Length limit: 256 characters.",
-          "example": "",
+          "example": "\"\"",
           "member": "string",
           "name": "Comment",
           "required": false,
@@ -16811,7 +16806,7 @@
         {
           "disabled": false,
           "document": "Origin position. Valid values:\n<li>TopLeft: The origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>\n<li>TopRight: The origin of coordinates is in the top-right corner of the video, and the origin of the watermark is in the top-right corner of the image or text;</li>\n<li>BottomLeft: The origin of coordinates is in the bottom-left corner of the video, and the origin of the watermark is in the bottom-left corner of the image or text;</li>\n<li>BottomRight: The origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>",
-          "example": "",
+          "example": "TopLeft",
           "member": "string",
           "name": "CoordinateOrigin",
           "required": false,
@@ -16820,7 +16815,7 @@
         {
           "disabled": false,
           "document": "The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:\n<li>If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>\n<li>If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>",
-          "example": "",
+          "example": "100px",
           "member": "string",
           "name": "XPos",
           "required": false,
@@ -16829,7 +16824,7 @@
         {
           "disabled": false,
           "document": "The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:\n<li>If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>\n<li>If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>",
-          "example": "",
+          "example": "100px",
           "member": "string",
           "name": "YPos",
           "required": false,
@@ -16838,7 +16833,7 @@
         {
           "disabled": false,
           "document": "Image watermarking template. This field is valid only for image watermarking templates.",
-          "example": "",
+          "example": "无",
           "member": "ImageWatermarkInputForUpdate",
           "name": "ImageTemplate",
           "required": false,
@@ -16847,7 +16842,7 @@
         {
           "disabled": false,
           "document": "Text watermarking template. This field is valid only for text watermarking templates.",
-          "example": "",
+          "example": "无",
           "member": "TextWatermarkTemplateInputForUpdate",
           "name": "TextTemplate",
           "required": false,
@@ -16856,7 +16851,7 @@
         {
           "disabled": false,
           "document": "SVG watermarking template. This field is required when `Type` is `svg` and is invalid when `Type` is `image` or `text`.",
-          "example": "",
+          "example": "无",
           "member": "SvgWatermarkInputForUpdate",
           "name": "SvgTemplate",
           "required": false,
@@ -16893,7 +16888,7 @@
         {
           "disabled": false,
           "document": "Keyword. Length limit: 128 characters.",
-          "example": "",
+          "example": "格斗",
           "member": "string",
           "name": "Keyword",
           "required": true,
@@ -16902,7 +16897,7 @@
         {
           "disabled": false,
           "document": "<b>Keyword usage. Valid values:</b>\n1. Recognition.Ocr: OCR-based content recognition\n2. Recognition.Asr: ASR-based content recognition\n3. Review.Ocr: OCR-based inappropriate information recognition\n4. Review.Asr: ASR-based inappropriate information recognition\n<b>Valid values can also be:</b>\n5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2\n6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4\n7. All: equivalent to 1+2+3+4",
-          "example": "",
+          "example": "[\"Review\\n\"]",
           "member": "string",
           "name": "Usages",
           "required": false,
@@ -16911,7 +16906,7 @@
         {
           "disabled": false,
           "document": "Tag operation information.",
-          "example": "",
+          "example": "无",
           "member": "AiSampleTagOperation",
           "name": "TagOperationInfo",
           "required": false,
@@ -17260,7 +17255,7 @@
         {
           "disabled": false,
           "document": "Live stream event notification obtained from CMQ.",
-          "example": "",
+          "example": "xx",
           "member": "string",
           "name": "Content",
           "required": true,
@@ -17387,7 +17382,7 @@
         {
           "disabled": false,
           "document": "Event notification obtained from CMQ.",
-          "example": "",
+          "example": "\"\"",
           "member": "string",
           "name": "Content",
           "required": true,
@@ -18245,7 +18240,7 @@
         },
         {
           "disabled": false,
-          "document": "The storage location of the media processing output file. If this parameter is left empty, the storage location in `InputInfo` will be inherited.",
+          "document": "Target storage for Media Processing Service output files. If left blank, it inherits the storage location in InputInfo.\n\nNote: When InputInfo.Type is URL, this parameter is required.",
           "example": "无",
           "member": "TaskOutputStorage",
           "name": "OutputStorage",
@@ -18646,7 +18641,7 @@
           "example": "100",
           "member": "int64",
           "name": "Confidence",
-          "required": true,
+          "output_required": false,
           "type": "int",
           "value_allowed_null": true
         },
@@ -18656,7 +18651,7 @@
           "example": "12.3",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -18666,7 +18661,7 @@
           "example": "15.7",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -18676,7 +18671,7 @@
           "example": "无",
           "member": "int64",
           "name": "AreaCoordSet",
-          "required": true,
+          "output_required": false,
           "type": "list",
           "value_allowed_null": true
         }
@@ -18909,9 +18904,10 @@
         {
           "disabled": false,
           "document": "Container. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.",
-          "example": "",
+          "example": "mp4",
           "member": "string",
           "name": "Container",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -18919,9 +18915,10 @@
         {
           "disabled": false,
           "document": "Whether to remove video data. Valid values:\n<li>0: retain;</li>\n<li>1: remove.</li>\nDefault value: 0.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "RemoveVideo",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -18929,9 +18926,10 @@
         {
           "disabled": false,
           "document": "Whether to remove audio data. Valid values:\n<li>0: retain;</li>\n<li>1: remove.</li>\nDefault value: 0.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "RemoveAudio",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -18939,9 +18937,10 @@
         {
           "disabled": false,
           "document": "Video stream configuration parameter. This field is required when `RemoveVideo` is 0.",
-          "example": "",
+          "example": "无",
           "member": "VideoTemplateInfo",
           "name": "VideoTemplate",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -18949,9 +18948,10 @@
         {
           "disabled": false,
           "document": "Audio stream configuration parameter. This field is required when `RemoveAudio` is 0.",
-          "example": "",
+          "example": "无",
           "member": "AudioTemplateInfo",
           "name": "AudioTemplate",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -18959,9 +18959,10 @@
         {
           "disabled": false,
           "document": "TESHD transcoding parameter.",
-          "example": "",
+          "example": "无",
           "member": "TEHDConfig",
           "name": "TEHDConfig",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -19151,9 +19152,10 @@
           "example": "test",
           "member": "string",
           "name": "S3Bucket",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -19161,9 +19163,10 @@
           "example": "ap-southeast-1",
           "member": "string",
           "name": "S3Region",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -19171,9 +19174,10 @@
           "example": "/test.mp4",
           "member": "string",
           "name": "S3Object",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -19181,9 +19185,10 @@
           "example": "\"\"",
           "member": "string",
           "name": "S3SecretId",
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -19191,9 +19196,10 @@
           "example": "\"\"",
           "member": "string",
           "name": "S3SecretKey",
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -19207,9 +19213,10 @@
           "example": "test",
           "member": "string",
           "name": "S3Bucket",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -19217,9 +19224,10 @@
           "example": "ap-southeast-1",
           "member": "string",
           "name": "S3Region",
+          "output_required": false,
           "required": true,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -19227,9 +19235,10 @@
           "example": "\"\"",
           "member": "string",
           "name": "S3SecretId",
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -19237,9 +19246,10 @@
           "example": "\"\"",
           "member": "string",
           "name": "S3SecretKey",
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": false
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -19582,7 +19592,7 @@
           "example": "PROCESSING",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -19592,7 +19602,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -19602,7 +19612,7 @@
           "example": "0",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -19612,7 +19622,7 @@
           "example": "\"xx\"",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -19622,7 +19632,7 @@
           "example": "NULL",
           "member": "AiRecognitionTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -19632,7 +19642,7 @@
           "example": "NULL",
           "member": "AiRecognitionResult",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -19648,7 +19658,7 @@
           "example": "PROCESSING",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -19658,7 +19668,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "ErrCodeExt",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -19668,7 +19678,7 @@
           "example": "0",
           "member": "int64",
           "name": "ErrCode",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -19678,7 +19688,7 @@
           "example": "\"xx\"",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -19688,7 +19698,7 @@
           "example": "NULL",
           "member": "AiContentReviewTaskInput",
           "name": "Input",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -19698,7 +19708,7 @@
           "example": "NULL",
           "member": "AiContentReviewResult",
           "name": "Output",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         }
@@ -19998,6 +20008,45 @@
         }
       ],
       "usage": "out"
+    },
+    "SegmentSpecificInfo": {
+      "document": "Information on special segment configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Switch for segment duration at startup. Optional values:\non: Turn on the switch\noff: Turn off the switch\nDefault value: off\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "off",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Segment duration at startup. Unit: second\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "FragmentTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of effective segments, indicating the first FragmentEndNum segments with FragmentTime. Value range: >=1\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "FragmentEndNum",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "SharpEnhanceConfig": {
       "document": "Detail enhancement configuration.",
@@ -20429,9 +20478,10 @@
         {
           "disabled": false,
           "document": "TESHD type. Valid values:\n<li>TEHD-100: TESHD-100.</li>\nIf this parameter is left empty, TESHD will not be enabled.",
-          "example": "",
+          "example": "TEHD-100",
           "member": "string",
           "name": "Type",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -20439,9 +20489,10 @@
         {
           "disabled": false,
           "document": "Maximum bitrate, which is valid when `Type` is `TESHD`.\nIf this parameter is left empty or 0 is entered, there will be no upper limit for bitrate.",
-          "example": "",
-          "member": "uint64",
+          "example": "0",
+          "member": "int64",
           "name": "MaxVideoBitrate",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -20467,7 +20518,7 @@
           "disabled": false,
           "document": "The maximum video bitrate. If this parameter is not specified, no modifications will be made.\nNote: This field may return·null, indicating that no valid values can be obtained.",
           "example": "0",
-          "member": "uint64",
+          "member": "int64",
           "name": "MaxVideoBitrate",
           "output_required": false,
           "required": false,
@@ -20659,7 +20710,7 @@
           "example": "无",
           "member": "string",
           "name": "TaskId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -20669,7 +20720,7 @@
           "example": "无",
           "member": "string",
           "name": "TaskType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -20679,7 +20730,7 @@
           "example": "无",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -20689,7 +20740,7 @@
           "example": "无",
           "member": "string",
           "name": "BeginProcessTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -20699,7 +20750,7 @@
           "example": "无",
           "member": "string",
           "name": "FinishTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -20709,7 +20760,7 @@
           "example": "无",
           "member": "string",
           "name": "SubTaskTypes",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -20721,20 +20772,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "The parameters for detecting sensitive information based on OCR.",
+          "document": "The parameters for detecting sensitive information in images.",
           "example": "NULL",
-          "member": "TerrorismOcrReviewTemplateInfo",
-          "name": "OcrReviewInfo",
-          "required": true,
+          "member": "TerrorismImgReviewTemplateInfo",
+          "name": "ImgReviewInfo",
+          "output_required": true,
+          "required": false,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
-          "document": "The parameters for detecting sensitive information in images.",
+          "document": "The parameters for detecting sensitive information based on OCR.",
           "example": "NULL",
-          "member": "TerrorismImgReviewTemplateInfo",
-          "name": "ImgReviewInfo",
+          "member": "TerrorismOcrReviewTemplateInfo",
+          "name": "OcrReviewInfo",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -21191,7 +21244,7 @@
           "example": "0",
           "member": "string",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -21201,7 +21254,7 @@
           "example": "“”",
           "member": "string",
           "name": "Container",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -21211,7 +21264,7 @@
           "example": "“”",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -21221,7 +21274,7 @@
           "example": "“”",
           "member": "string",
           "name": "Comment",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -21231,7 +21284,7 @@
           "example": "“”",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -21241,7 +21294,7 @@
           "example": "0",
           "member": "int64",
           "name": "RemoveVideo",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -21251,7 +21304,7 @@
           "example": "0",
           "member": "int64",
           "name": "RemoveAudio",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -21261,7 +21314,7 @@
           "example": "无",
           "member": "VideoTemplateInfo",
           "name": "VideoTemplate",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -21271,7 +21324,7 @@
           "example": "无",
           "member": "AudioTemplateInfo",
           "name": "AudioTemplate",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -21281,7 +21334,7 @@
           "example": "无",
           "member": "TEHDConfig",
           "name": "TEHDConfig",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -21291,7 +21344,7 @@
           "example": "“”",
           "member": "string",
           "name": "ContainerType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -21301,7 +21354,7 @@
           "example": "“”",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -21311,7 +21364,7 @@
           "example": "“”",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -21321,7 +21374,7 @@
           "example": "无",
           "member": "EnhanceConfig",
           "name": "EnhanceConfig",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -21702,42 +21755,38 @@
         {
           "disabled": false,
           "document": "Switch of a custom text audit task. Valid values:\n<li>ON: Enables a custom text audit task;</li>\n<li>OFF: Disables a custom text audit task.</li>",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Switch",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.\nThere can be up to 10 tags, each with a length limit of 16 characters.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "LabelSet",
           "required": false,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
           "disabled": false,
           "document": "Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "BlockConfidence",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         },
         {
           "disabled": false,
           "document": "Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "ReviewConfidence",
           "required": false,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -21889,7 +21938,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Video stream encoding format. Valid values:\n<li>h264: H.264 encoding.</li>\n<li>h265: H.265 encoding.</li>\n<li>h266: H.266 encoding.</li>\n<li>av1: AOMedia Video 1 encoding.</li>\n<li>vp8: VP8 encoding.</li>\n<li>vp9: VP9 encoding.</li>\n<li>mpeg2: MPEG2 encoding.</li>\n<li>dnxhd: DNxHD encoding.</li>\n<li>mv-hevc: MV-HEVC encoding.</li>\nNote: A resolution within 640x480 should be specified for H.265 encoding.\n\nNote: AV1 encoding containers only support mp4, webm, and mkv.\nNote: H.266 encoding containers only support mp4, hls, ts, and mov.\nNote: VP8 and VP9 encoding containers only support webm and mkv.\nNote: MPEG2 and DNxHD encoding containers only support mxf.\nNote: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.",
+          "document": "Encoding format for video streams. Optional values:\n<li>h264: H.264 encoding</li>\n<li>h265: H.265 encoding</li>\n<li>h266: H.266 encoding</li>\n<li>av1: AOMedia Video 1 encoding</li>\n<li>vp8: VP8 encoding</li>\n<li>vp9: VP9 encoding</li>\n<li>mpeg2: MPEG2 encoding</li>\n<li>dnxhd: DNxHD encoding</li>\n<li>mv-hevc: MV-HEVC encoding</li>\n\nNote: AV1 encoding containers currently only support mp4, webm, and mkv.\nNote: H.266 encoding containers currently only support mp4, hls, ts, and mov.\nNote: VP8 and VP9 encoding containers currently only support webm and mkv.\nNote: MPEG2 and DNxHD encoding containers currently only support mxf.\nNote: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.",
           "example": "h264",
           "member": "string",
           "name": "Codec",
@@ -21955,7 +22004,7 @@
         },
         {
           "disabled": false,
-          "document": "Interval between I-frames, in frames. Value range: 0 and [1, 100000]. When it is set to 0 or not set, the system will automatically set the gop length.",
+          "document": "Interval between I-frames (keyframes), which can be customized in frames or seconds. GOP value range: 0 and [1, 100000].\nIf this parameter is 0 or left blank, the system will automatically set the GOP length.",
           "example": "0",
           "member": "uint64",
           "name": "Gop",
@@ -21966,7 +22015,18 @@
         },
         {
           "disabled": false,
-          "document": "The fill mode, which indicates how a video is resized when the video’s original aspect ratio is different from the target aspect ratio. Valid values:\n<li>stretch: Stretch the image frame by frame to fill the entire screen. The video image may become \"squashed\" or \"stretched\" after transcoding.</li>\n<li>black: Keep the image's original aspect ratio and fill the blank space with black bars.</li>\n<li>white: Keep the image’s original aspect ratio and fill the blank space with white bars.</li>\n<li>gauss: Keep the image’s original aspect ratio and apply Gaussian blur to the blank space.</li>\nDefault value: black.\nNote: Only `stretch` and `black` are supported for adaptive bitrate streaming.",
+          "document": "GOP value unit. Optional values:\nframe: indicates frame\nsecond: indicates second\nDefault value: frame\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "frame",
+          "member": "string",
+          "name": "GopUnit",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Filling mode. When the configured aspect ratio parameter for video streams differs from the aspect ratio of the original video, the processing method for transcoding is \"filling\". Optional filling modes:\n<li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be \"flattened\" or \"stretched\".</li>\n<li>black: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with black.</li>\n<li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>\n<li>gauss: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with a Gaussian blur.</li>\n\n<li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>\nDefault value: black.\nNote: Only stretch and black are supported for adaptive bitrate streaming.",
           "example": "black",
           "member": "string",
           "name": "FillType",
@@ -21977,14 +22037,25 @@
         },
         {
           "disabled": false,
-          "document": "The control factor of video constant bitrate. Value range: [1, 51]\nIf this parameter is specified, CRF (a bitrate control method) will be used for transcoding. (Video bitrate will no longer take effect.)\nIt is not recommended to specify this parameter if there are no special requirements.",
+          "document": "Control factor for constant video bitrate. Value range: [0, 51].\nIf this parameter is specified, the bitrate control mode for the CRF will be used for transcoding (the video bitrate will no longer take effect).\nIt is recommended not to specify this parameter if there are no special requirements.\n\nNote:\nIf Mode is set to ABR, the Vcrf value does not need to be configured.\nIf Mode is set to CBR, the Vcrf value does not need to be configured.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "1",
           "member": "uint64",
           "name": "Vcrf",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": false
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Average segment duration. Value range: (0-10], unit: second\nDefault value: 10\nNote: It can be used only in the container format of hls.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "10",
+          "member": "uint64",
+          "name": "HlsTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
         },
         {
           "disabled": false,
@@ -22018,6 +22089,116 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Profile, suitable for different scenarios.\nbaseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos.\nmain: It offers I-frames, P-frames, and B-frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices.\nhigh: the highest encoding level, with 8x8 prediction added to the main profile and support for custom quantification. It is widely used in scenarios such as Blu-ray storage and HDTV.\ndefault: automatic filling along with the original video.    \n\nThis configuration appears only when the encoding standard is set to H264. baseline/main/high is supported. Default value: default\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "default",
+          "member": "string",
+          "name": "VideoProfile",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Encoder level. Default value: auto (\"\")\nIf the encoding standard is set to H264, the following options are supported: \"\", 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1.\nIf the encoding standard is set to H265, the following options are supported: \"\", 1, 2, 2.1, 3, 3.1, 4, 4.1, 5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "VideoLevel",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of B-frames between reference frames. The default is auto, and a range of 0 - 16 is supported.\nNote: Leaving it blank means using the auto option.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Bframes",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bitrate control mode. Optional values:\nVBR: variable bitrate. The output bitrate is adjusted based on the complexity of the video image, ensuring higher image quality. This mode is suitable for storage scenarios as well as applications with high image quality requirements.\nABR: average bitrate. The average bitrate of the output video is kept stable to the greatest extent, but short-term bitrate fluctuations are allowed. This mode is suitable for scenarios where it is necessary to minimize the overall bitrate while a certain quality is maintained.\nCBR: constant bitrate. The output bitrate remains constant during the video encoding process, regardless of changes in image complexity. This mode is suitable for scenarios with strict network bandwidth requirements, such as live streaming.\nVCRF: constant rate factor. The video quality is controlled by setting a quality factor, achieving constant quality encoding of videos. The bitrate is automatically adjusted based on the complexity of the content. This mode is suitable for scenarios where maintaining a certain quality is desired.\nVBR is selected by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "VBR",
+          "member": "string",
+          "name": "Mode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Display aspect ratio. Optional values: [1:1, 2:1, default]\nDefault value: default\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "default",
+          "member": "string",
+          "name": "Sar",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Adaptive I-frame decision. When it is enabled, Media Processing Service will automatically identify transition points between different scenarios in the video (usually they are visually distinct frames, such as those of switching from one shot to another) and adaptively insert keyframes (I-frames) at these points to improve the random accessibility and encoding efficiency of the video. Optional values:\n0: Disable the adaptive I-frame decision \n1: Enable the adaptive I-frame decision\nDefault value: 0\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "NoScenecut",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bit: 8/10 is supported. Default value: 8\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "8",
+          "member": "int64",
+          "name": "BitDepth",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Preservation of original timestamp. Optional values:\n0: Disabled\n1: Enabled\nDefault value: Disabled\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "RawPts",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Proportional compression bitrate. When it is enabled, the bitrate of the output video will be adjusted according to the proportion. After the compression ratio is entered, the system will automatically calculate the target output bitrate based on the source video bitrate. Compression ratio range: 0-100\nLeaving this value blank means it is not enabled by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Compress",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Special segment configuration\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SegmentSpecificInfo",
+          "name": "SegmentSpecificInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -22027,7 +22208,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Video stream encoding format. Valid values:\n<li>h264: H.264 encoding.</li>\n<li>h265: H.265 encoding.</li>\n<li>h266: H.266 encoding.</li>\n<li>av1: AOMedia Video 1 encoding.</li>\n<li>vp8: VP8 encoding.</li>\n<li>vp9: VP9 encoding.</li>\n<li>mpeg2: MPEG2 encoding.</li>\n<li>dnxhd: DNxHD encoding.</li>\n<li>mv-hevc: MV-HEVC encoding.</li>\nNote: A resolution within 640x480 should be specified for H.265 encoding.\n\nNote: AV1 encoding containers only support mp4, webm, and mkv.\nNote: H.266 encoding containers only support mp4, hls, ts, and mov.\nNote: VP8 and VP9 encoding containers only support webm and mkv.\nNote: MPEG2 and DNxHD encoding containers only support mxf.\nNote: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Encoding format for video streams. Optional values:\n<li>h264: H.264 encoding</li>\n<li>h265: H.265 encoding</li>\n<li>h266: H.266 encoding</li>\n<li>av1: AOMedia Video 1 encoding</li>\n<li>vp8: VP8 encoding</li>\n<li>vp9: VP9 encoding</li>\n<li>mpeg2: MPEG2 encoding</li>\n<li>dnxhd: DNxHD encoding</li>\n<li>mv-hevc: MV-HEVC encoding</li>\n\nNote: AV1 encoding containers currently only support mp4, webm, and mkv.\nNote: H.266 encoding containers currently only support mp4, hls, ts, and mov.\nNote: VP8 and VP9 encoding containers currently only support webm and mkv.\nNote: MPEG2 and DNxHD encoding containers currently only support mxf.\nNote: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "h264",
           "member": "string",
           "name": "Codec",
@@ -22093,7 +22274,7 @@
         },
         {
           "disabled": false,
-          "document": "Frame interval between I keyframes. Value range: 0 and [1,100000]. If this parameter is 0, the system will automatically set the GOP length.",
+          "document": "Interval between I-frames (keyframes), which can be customized in frames or seconds. GOP value range: 0 and [1, 100000].\nIf this parameter is 0, the system will automatically set the GOP length.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "Gop",
@@ -22104,8 +22285,19 @@
         },
         {
           "disabled": false,
-          "document": "Fill type. \"Fill\" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:\n<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot \"shorter\" or \"longer\";</li>\n<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>\n<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>\n<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>",
-          "example": "stretch",
+          "document": "GOP value unit. Optional values: \nframe: indicates frame \nsecond: indicates second\nDefault value: frame\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "frame",
+          "member": "string",
+          "name": "GopUnit",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Filling mode. When the configured aspect ratio parameter for video streams differs from the aspect ratio of the original video, the processing method for transcoding is \"filling\". Optional filling modes:\n <li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be \"flattened\" or \"stretched\".</li>\n<li>black: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with black.</li>\n<li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>\n<li>gauss: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with a Gaussian blur.</li>\n\n<li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>\nDefault value: black.\n\nNote: Only stretch and black are supported for adaptive bitrate streaming.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "black",
           "member": "string",
           "name": "FillType",
           "output_required": false,
@@ -22115,7 +22307,7 @@
         },
         {
           "disabled": false,
-          "document": "The control factor of video constant bitrate. Value range: [0, 51]. This parameter will be disabled if you enter `0`.\nIt is not recommended to specify this parameter if there are no special requirements.",
+          "document": "Control factor for constant video bitrate. Value range: [0, 51] and 100.\nIt is recommended not to specify this parameter if there are no special requirements.\n\nNote:\nWhen you need to set it to auto, fill in 100.\nIf Mode is set to ABR, the Vcrf value does not need to be configured.\nIf Mode is set to CBR, the Vcrf value does not need to be configured.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "0",
           "member": "uint64",
           "name": "Vcrf",
@@ -22130,6 +22322,17 @@
           "example": "0",
           "member": "uint64",
           "name": "ContentAdaptStream",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Average segment duration. Value range: (0-10], unit: second\nDefault value: 10\nNote: It is used only in the format of HLS.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "10",
+          "member": "uint64",
+          "name": "HlsTime",
           "output_required": false,
           "required": false,
           "type": "int",
@@ -22166,6 +22369,116 @@
           "output_required": false,
           "required": false,
           "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Profile, suitable for different scenarios. \nbaseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos. \nmain: It offers I-frames, P-frames, and B-frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices. \nhigh: the highest encoding level, with 8x8 prediction added to the main profile and support for custom quantification. It is widely used in scenarios such as Blu-ray storage and HDTV.\ndefault: automatic filling along with the original video\n\nThis configuration appears only when the encoding standard is set to H264. Default value: default\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "default",
+          "member": "string",
+          "name": "VideoProfile",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Encoder level. Default value: auto (\"\")\nIf the encoding standard is set to H264, the following options are supported: \"\", 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1. \nIf the encoding standard is set to H265, the following options are supported: \"\", 1, 2, 2.1, 3, 3.1, 4, 4.1, 5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "string",
+          "name": "VideoLevel",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of consecutive B-frames. The default is auto, and 0 - 16 and -1 are supported.\nNote:\n\n-1 indicates auto.\t\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Bframes",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bitrate control mode. Optional values: \nVBR: variable bitrate. The output bitrate is adjusted based on the complexity of the video image, ensuring higher image quality. This mode is suitable for storage scenarios as well as applications with high image quality requirements. \nABR: average bitrate. The average bitrate of the output video is kept stable to the greatest extent, but short-term bitrate fluctuations are allowed. This mode is suitable for scenarios where it is necessary to minimize the overall bitrate while a certain quality is maintained. \nCBR: constant bitrate. The output bitrate remains constant during the video encoding process, regardless of changes in image complexity. This mode is suitable for scenarios with strict network bandwidth requirements, such as live streaming. \nVCRF: constant rate factor. The video quality is controlled by setting a quality factor, achieving constant quality encoding of videos. The bitrate is automatically adjusted based on the complexity of the content. This mode is suitable for scenarios where maintaining a certain quality is desired. \nVBR is selected by default.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "VBR",
+          "member": "string",
+          "name": "Mode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Display aspect ratio. Optional values: [1:1, 2:1, default]\nDefault value: default\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "default",
+          "member": "string",
+          "name": "Sar",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Adaptive I-frame decision. When it is enabled, Media Processing Service will automatically identify transition points between different scenarios in the video (usually they are visually distinct frames, such as those of switching from one shot to another) and adaptively insert keyframes (I-frames) at these points to improve the random accessibility and encoding efficiency of the video. Optional values: \n0: Disable the adaptive I-frame decision \n1: Enable the adaptive I-frame decision \nDefault value: 0\t\n\t\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "NoScenecut",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Bit: 8/10 is supported. Default value: 8\t\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "8",
+          "member": "int64",
+          "name": "BitDepth",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Preservation of original timestamp. Optional values: \n0: Disabled \n1: Enabled \nDefault value: Disabled\t\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "RawPts",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Proportional compression bitrate. When it is enabled, the bitrate of the output video will be adjusted according to the proportion. After the compression ratio is entered, the system will automatically calculate the target output bitrate based on the source video bitrate. Compression ratio range: 0-100, optional values: [0-100] and -1 \nNote: -1 indicates auto.\t\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "Compress",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Special segment configuration\t\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SegmentSpecificInfo",
+          "name": "SegmentSpecificInfo",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],

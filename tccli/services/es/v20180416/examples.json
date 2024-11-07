@@ -2,7 +2,7 @@
   "actions": {
     "CreateIndex": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: es.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateIndex\n<Common request parameters>\n\n{\n    \"Username\": \"xx\",\n    \"IndexName\": \"xx\",\n    \"IndexType\": \"xx\",\n    \"InstanceId\": \"xx\",\n    \"IndexMetaJson\": \"xx\",\n    \"Password\": \"xx\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"c96a110c-7493-452d-a99b-683d07xxxxxx\"\n    }\n}",
         "title": "Creating an automated index"

@@ -305,7 +305,7 @@
     "DescribeApiKey": [
       {
         "document": " ",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeApiKey\n&AccessKeyId=AKID1IGx7Tu5mk150ds6fhbdi1RqD8KlI6dW32MD\n&<Common request parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=DescribeApiKey\n&AccessKeyId=AKID***********************************************\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"AccessKeyId\": \"AKID***********************************************\",\n            \"AccessKeySecret\": \"************************************\",\n            \"AccessKeyType\": \"auto\",\n            \"SecretName\": \"dd\",\n            \"Status\": 1,\n            \"CreatedTime\": \"2020-02-26T06:09:44Z\",\n            \"ModifiedTime\": \"2020-02-26T06:45:57Z\"\n        },\n        \"RequestId\": \"ac423dbe-4e28-470d-b3f7-b8c95c614124\"\n    }\n}",
         "title": "DescribeApiKey"
       }
