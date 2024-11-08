@@ -1,5 +1,26 @@
 {
   "actions": {
+    "CreateEndPoint": {
+      "document": "This API is used to create an endpoint.",
+      "input": "CreateEndPointRequest",
+      "name": "Creates an endpoint",
+      "output": "CreateEndPointResponse",
+      "status": "online"
+    },
+    "CreateEndPointAndEndPointService": {
+      "document": "This API is used to create an endpoint and an endpoint service simultaneously.",
+      "input": "CreateEndPointAndEndPointServiceRequest",
+      "name": "Creates an endpoint and an endpoint service simultaneously",
+      "output": "CreateEndPointAndEndPointServiceResponse",
+      "status": "online"
+    },
+    "CreateForwardRule": {
+      "document": "This API is used to create a custom forwarding rule.",
+      "input": "CreateForwardRuleRequest",
+      "name": "Creates a custom forwarding rule",
+      "output": "CreateForwardRuleResponse",
+      "status": "online"
+    },
     "CreatePrivateDNSAccount": {
       "document": "This API is used to create a Private DNS account.",
       "input": "CreatePrivateDNSAccountRequest",
@@ -47,6 +68,20 @@
       "input": "DescribeDashboardRequest",
       "name": "Gets the overview of private DNS records",
       "output": "DescribeDashboardResponse",
+      "status": "online"
+    },
+    "DescribeEndPointList": {
+      "document": "This API is used to obtain the endpoint list.",
+      "input": "DescribeEndPointListRequest",
+      "name": "Obtains the endpoint list",
+      "output": "DescribeEndPointListResponse",
+      "status": "online"
+    },
+    "DescribeForwardRuleList": {
+      "document": "This API is used to query the forwarding rule list.",
+      "input": "DescribeForwardRuleListRequest",
+      "name": "Queries the forwarding rule list",
+      "output": "DescribeForwardRuleListResponse",
       "status": "online"
     },
     "DescribePrivateDNSAccountList": {
@@ -342,6 +377,334 @@
         }
       ],
       "usage": "out"
+    },
+    "CreateEndPointAndEndPointServiceRequest": {
+      "document": "CreateEndPointAndEndPointService request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "VPC instance ID.",
+          "example": "vpc-xxxxxxxx",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether automatic forwarding is supported.",
+          "example": "True",
+          "member": "bool",
+          "name": "AutoAcceptFlag",
+          "required": true,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Backend service ID.",
+          "example": "lb-xxxxxxxx",
+          "member": "string",
+          "name": "ServiceInstanceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint name.",
+          "example": "终端节点测试001",
+          "member": "string",
+          "name": "EndPointName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint region, which should be consistent with the region of the endpoint service.",
+          "example": "EndPointRegion",
+          "member": "string",
+          "name": "EndPointRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint service name.",
+          "example": "终端服务测试001",
+          "member": "string",
+          "name": "EndPointServiceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Mounted PaaS service type. Valid values: CLB, CDB, and CRS.",
+          "example": "CLB",
+          "member": "string",
+          "name": "ServiceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of endpoint IP addresses.",
+          "example": "2",
+          "member": "int64",
+          "name": "IpNum",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEndPointAndEndPointServiceResponse": {
+      "document": "CreateEndPointAndEndPointService response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Endpoint ID.",
+          "example": "eid-ax8skcs0dg",
+          "member": "string",
+          "name": "EndPointId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint name.",
+          "example": "终端节点测试001",
+          "member": "string",
+          "name": "EndPointName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint service ID.",
+          "example": "vpcsvc-xxxxxxxx",
+          "member": "string",
+          "name": "EndPointServiceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IP address list of the endpoint.",
+          "example": "[\"10.0.0.13\",\"10.0.0.14\"]",
+          "member": "string",
+          "name": "EndPointVipSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEndPointRequest": {
+      "document": "CreateEndPoint request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Endpoint name.",
+          "example": "终端节点名",
+          "member": "string",
+          "name": "EndPointName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint service ID (namely, VPC endpoint service ID).",
+          "example": "vpcsvc-gtd4gxa1",
+          "member": "string",
+          "name": "EndPointServiceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint region, which should be consistent with the region of the endpoint service.",
+          "example": "ap-guangzhou",
+          "member": "string",
+          "name": "EndPointRegion",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of endpoint IP addresses.",
+          "example": "2",
+          "member": "int64",
+          "name": "IpNum",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateEndPointResponse": {
+      "document": "CreateEndPoint response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Endpoint ID.",
+          "example": "eid-ax8skcs0dg",
+          "member": "string",
+          "name": "EndPointId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint name.",
+          "example": "终端节点名",
+          "member": "string",
+          "name": "EndPointName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint service ID.",
+          "example": "终端节点服务ID",
+          "member": "string",
+          "name": "EndPointServiceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IP address list of the endpoint.",
+          "example": "[\"10.0.0.13\",\"10.0.0.14\"]",
+          "member": "string",
+          "name": "EndPointVipSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateForwardRuleRequest": {
+      "document": "CreateForwardRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Forwarding rule name.",
+          "example": "转发规则1",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Forwarding rule type. DOWN: From cloud to off-cloud; UP: From off-cloud to cloud.",
+          "example": "UP",
+          "member": "string",
+          "name": "RuleType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Private domain ID, which can be viewed on the private domain list page.",
+          "example": "zone-1dsi8dsg",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint ID.",
+          "example": "eid-ml0mysdpsaf",
+          "member": "string",
+          "name": "EndPointId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateForwardRuleResponse": {
+      "document": "CreateForwardRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Forwarding rule ID.",
+          "example": "fid-afd2dcgsa3",
+          "member": "string",
+          "name": "RuleId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Forwarding rule name.",
+          "example": "转发规则1",
+          "member": "string",
+          "name": "RuleName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Forwarding rule type.",
+          "example": "DOWN",
+          "member": "string",
+          "name": "RuleType",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Private domain ID.",
+          "example": "zone-af2fdsfa",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint ID.",
+          "example": "eid-afsdf2sa",
+          "member": "string",
+          "name": "EndPointId",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CreatePrivateDNSAccountRequest": {
       "document": "CreatePrivateDNSAccount request structure.",
@@ -846,6 +1209,136 @@
       ],
       "type": "object"
     },
+    "DescribeEndPointListRequest": {
+      "document": "DescribeEndPointList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pagination offset, starting from 0.",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination limit. Maximum value: 100. Default value: 20.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter parameters. Valid values: EndPointName, EndPointId, EndPointServiceId, and EndPointVip.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeEndPointListResponse": {
+      "document": "DescribeEndPointList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of endpoints.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint list.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "EndPointInfo",
+          "name": "EndPointSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeForwardRuleListRequest": {
+      "document": "DescribeForwardRuleList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Pagination offset, starting from 0.",
+          "example": "无",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination limit. Maximum value: 100. Default value: 20.",
+          "example": "无",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter parameters.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeForwardRuleListResponse": {
+      "document": "DescribeForwardRuleList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of private domains.",
+          "example": "无",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Private domain list.",
+          "example": "无",
+          "member": "ForwardRule",
+          "name": "ForwardRuleSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribePrivateDNSAccountListRequest": {
       "document": "DescribePrivateDNSAccountList request structure.",
       "members": [
@@ -1169,6 +1662,72 @@
       ],
       "type": "object"
     },
+    "EndPointInfo": {
+      "document": "Endpoint information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Endpoint ID.",
+          "example": "eid-sx9cjut35k",
+          "member": "string",
+          "name": "EndPointId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint name.",
+          "example": "终端节点名",
+          "member": "string",
+          "name": "EndPointName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint service ID.",
+          "example": "终端节点服务ID",
+          "member": "string",
+          "name": "EndPointServiceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VIP list of the endpoint.",
+          "example": "[10.0.0.17:53,10.0.0.18:53]",
+          "member": "string",
+          "name": "EndPointVipSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ap-guangzhou\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "地域编码",
+          "member": "string",
+          "name": "RegionCode",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag key-value pair collection.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{TagKey: \"testtag\", TagValue: \"testtag\"}]",
+          "member": "TagInfo",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "Filter": {
       "document": "Filter parameter",
       "members": [
@@ -1227,6 +1786,132 @@
           "required": true,
           "type": "int",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ForwardRule": {
+      "document": "Forwarding rule details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Private domain name.",
+          "example": "qq.com",
+          "member": "string",
+          "name": "Domain",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Forwarding rule name.",
+          "example": "规则1",
+          "member": "string",
+          "name": "RuleName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule ID",
+          "example": "fid-af22uxicg4g",
+          "member": "string",
+          "name": "RuleId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Forwarding rule type. DOWN: From cloud to off-cloud; UP: From off-cloud to cloud.",
+          "example": "DOWN",
+          "member": "string",
+          "name": "RuleType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time",
+          "example": "2022-09-09 11:11:11",
+          "member": "string",
+          "name": "CreatedAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time",
+          "example": "2022-09-09 11:11:11",
+          "member": "string",
+          "name": "UpdatedAt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint name.",
+          "example": "终端节点1",
+          "member": "string",
+          "name": "EndPointName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Endpoint ID.",
+          "example": "eid-af2asdfblvm",
+          "member": "string",
+          "name": "EndPointId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Forwarding address.",
+          "example": "[1.1.1.1:53]",
+          "member": "string",
+          "name": "ForwardAddress",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of VPCs bound to the private domain.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "VpcInfo",
+          "name": "VpcSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "ID of the bound private domain.",
+          "example": "zone-ad2kvms0",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TagInfo",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"

@@ -1,5 +1,29 @@
 {
   "actions": {
+    "CreateEndPoint": [
+      {
+        "document": "This example shows you how to create an endpoint by entering the endpoint name, customer's endpoint service ID, and region corresponding to the endpoint service.",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEndPoint\n<Common request parameters>\n\n{\n    \"EndPointName\": \"Endpoint name.\",\n    \"EndPointServiceId\": \"vpcsvc-gtd4gxa1\",\n    \"EndPointRegion\": \"ap-guangzhou\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5cd964e2-b5e6-8a35-9ce5a1085860c845\",\n        \"EndPointId\": \"eid-scls023kfns\",\n        \"EndPointName\": \"Endpoint name.\",\n        \"EndPointServiceId\": \"vpcsvc-gtd4gxa1\",\n        \"EndPointVipSet\": [\n            \"10.0.0.13\"\n        ]\n    }\n}",
+        "title": "Creating an Endpoint"
+      }
+    ],
+    "CreateEndPointAndEndPointService": [
+      {
+        "document": "This example shows you how to create an endpoint service by entering the VPC ID, endpoint service name, instance ID, and service type and how to create an endpoint by using the endpoint name and the region corresponding to the endpoint service.",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateEndPointAndEndPointService\n<Common request parameters>\n\n{\n    \"VpcId\": \"vpc-xxxxxxxx\",\n    \"EndPointServiceName\": \"test001\",\n    \"AutoAcceptFlag\": true,\n    \"ServiceInstanceId\": \"lb-xxxxxxxx\",\n    \"ServiceType\": \"clb\",\n    \"EndPointName\": \"test001\",\n    \"EndPointRegion\": \"ap-guangzhou\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5cd964e2-b5e6-8a35-9ce5a1085860c845\",\n        \"EndPointId\": \"eid-scls023kfns\",\n        \"EndPointName\": \"Endpoint name.\",\n        \"EndPointServiceId\": \"vpcsvc-gtd4gxa1\",\n        \"EndPointVipSet\": [\n            \"10.0.0.13\"\n        ]\n    }\n}",
+        "title": "Creating an Endpoint and an Endpoint Service Simultaneously"
+      }
+    ],
+    "CreateForwardRule": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateForwardRule\n<Common request parameters>\n\n{\n    \"RuleType\": \"UP\",\n    \"ZoneId\": \"zone-fadsvas\",\n    \"RuleName\": \"Rule 1.\",\n    \"EndPointId\": \"eid-93kvksadf\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5cd964e2-b5e6-8a35-9ce5a1085860c845\",\n        \"RuleType\": \"UP\",\n        \"RuleId\": \"fid-afdfaf2fsad\",\n        \"ZoneId\": \"zone-fadsvas\",\n        \"EndPointId\": \"eid-93kvksadf\",\n        \"RuleName\": \"Rule 1.\"\n    }\n}",
+        "title": "Creating a Forwarding Rule"
+      }
+    ],
     "CreatePrivateDNSAccount": [
       {
         "document": " ",
@@ -72,6 +96,22 @@
         "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDashboard\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c979890-0dcf-917e-d7a696c04d429009\",\n        \"ZoneTotal\": 20,\n        \"ZoneVpcCount\": 7,\n        \"RequestTotalCount\": 10000,\n        \"FlowUsage\": [\n            {\n                \"FlowType\": \"zone\",\n                \"TotalQuantity\": 20,\n                \"AvailableQuantity\": 20\n            },\n            {\n                \"FlowType\": \"traffic\",\n                \"TotalQuantity\": 2000000,\n                \"AvailableQuantity\": 2000000\n            }\n        ]\n    }\n}",
         "title": "Getting the overview of private DNS records"
+      }
+    ],
+    "DescribeEndPointList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeEndPointList\n<Common request parameters>\n\n{\n    \"Limit\": 200,\n    \"Offset\": 0,\n    \"Filters\": [\n        {\n            \"Name\": \"EndPointName\",\n            \"Values\": [\n                \"Endpoint name.\"\n            ]\n        },\n        {\n            \"Name\": \"EndPointId\",\n            \"Values\": [\n                \"eid-24ed8e6319\"\n            ]\n        },\n        {\n            \"Name\": \"EndPointServiceId\",\n            \"Values\": [\n                \"vpcsvc-prvrnrlt\"\n            ]\n        },\n        {\n            \"Name\": \"EndPointVip\",\n            \"Values\": [\n                \"11.149.7.14\",\n                \"11.149.7.141\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a4ea9cc-b1df-f8f8-ffe7efbe98f9ff85\",\n        \"TotalCount\": 5,\n        \"EndPointSet\": [\n            {\n                \"EndPointId\": \"eid-24ed8e6319\",\n                \"EndPointName\": \"Name.\",\n                \"EndPointServiceId\": \"vpcsvc-prvrnrlt\",\n                \"EndPointVipSet\": [\n                    \"10.0.0.17:53\"\n                ],\n                \"Tags\": [\n                    {\n                        \"TagKey\": \"abc\",\n                        \"TagValue\": \"abc\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
+        "title": "Obtaining the Endpoint List"
+      }
+    ],
+    "DescribeForwardRuleList": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: privatedns.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeForwardRuleList\n<Common request parameters>\n\n{\n    \"Limit\": 200,\n    \"Offset\": 0,\n    \"Filters\": [\n        {\n            \"Name\": \"RuleName\",\n            \"Values\": [\n                \"Haha.\"\n            ]\n        },\n        {\n            \"Name\": \"RuleType\",\n            \"Values\": [\n                \"DOWN\"\n            ]\n        },\n        {\n            \"Name\": \"ZoneId\",\n            \"Values\": [\n                \"zone-04jlawty\"\n            ]\n        },\n        {\n            \"Name\": \"EndPointId\",\n            \"Values\": [\n                \"eid-asdfadaf\"\n            ]\n        },\n        {\n            \"Name\": \"EndPointName\",\n            \"Values\": [\n                \"zdjdhhh\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8a4ea9cc-b1df-f8f8-ffe7efbe98f9ff85\",\n        \"TotalCount\": 5,\n        \"ForwardRuleSet\": [\n            {\n                \"Domain\": \"qq.com\",\n                \"ZoneId\": \"zone-s8cs72d9\",\n                \"RuleId\": \"fid-af2skm96n\",\n                \"ForwardAddress\": [\n                    \"1.1.1.1:53\"\n                ],\n                \"RuleType\": \"UP\",\n                \"VpcSet\": [\n                    {\n                        \"Region\": \"ap-guangzhou\",\n                        \"UniqVpcId\": \"vpc-dus89eks\"\n                    }\n                ],\n                \"EndPointName\": \"Endpoint 1.\",\n                \"EndPointId\": \"eid-fxiuf872bsp\",\n                \"RuleName\": \"Forwarding rule name.\",\n                \"UpdatedAt\": \"2022-09-09 10:45:44\",\n                \"CreatedAt\": \"2022-09-09 10:45:44\",\n                \"Tags\": [\n                    {\n                        \"TagKey\": \"abc\",\n                        \"TagValue\": \"abc\"\n                    }\n                ]\n            }\n        ]\n    }\n}",
+        "title": "Obtaining the Private Domain List"
       }
     ],
     "DescribePrivateDNSAccountList": [
