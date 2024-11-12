@@ -1790,6 +1790,14 @@
         "title": "Modifying the billing mode of a bandwidth package"
       }
     ],
+    "ModifyBandwidthPackageBandwidth": [
+      {
+        "document": "This example shows you how to adjust the bandwidth of a bandwidth package.",
+        "input": "https://vpc.tencentcloudapi.com/?Action=ModifyBandwidthPackageBandwidth\n&InternetMaxBandwidth=100\n&BandwidthPackageIds.0=bwp-alfxy9c8\n&BandwidthPackageId=bwp-mwoqajk2\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"24cfceab-3492-482c-b86f-27f598b1b044\"\n    }\n}",
+        "title": "Adjusting the Bandwidth of a Bandwidth Package"
+      }
+    ],
     "ModifyCcnAttachedInstancesAttribute": [
       {
         "document": " ",

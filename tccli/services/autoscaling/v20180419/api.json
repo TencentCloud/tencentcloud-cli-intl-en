@@ -15,7 +15,7 @@
       "status": "online"
     },
     "CancelInstanceRefresh": {
-      "document": "This API is used to cancel the instance refresh activity of the scaling group.\n* Batches that have already been refreshed or are currently being refreshed remain unaffected; batches pending refresh will be canceled.\n* If a refresh fails, the affected instances will remain in the standby status and require manual intervention by the user to either attempt to exit the standby status or destroy the instances.\n* Rollback operations are not allowed after cancellation, and resuming is also unsupported.",
+      "document": "This API is used to cancel the instance refresh activity of the scaling group.\n* The batches that have already been refreshed or are currently being refreshed remain unaffected, but the batches pending refresh will be canceled.\n* If a refresh fails, the affected instances will remain in the secondary status, and require manual intervention to exit the secondary status or terminate the instances.\n* Rollback operations are not allowed after cancellation, and recovery is also unsupported.\n* The instances temporarily scaled out due to the MaxSurge parameter are automatically terminated after cancellation.\n* During scale-in, all instances have already been updated and cannot be canceled.",
       "input": "CancelInstanceRefreshRequest",
       "name": "Cancels instance refresh",
       "output": "CancelInstanceRefreshResponse",
@@ -323,14 +323,14 @@
       "status": "online"
     },
     "ResumeInstanceRefresh": {
-      "document": "This API is used to resume the paused instance refresh activity, allowing it to retry failed instances in the current batch or proceed with refreshing subsequent batches. Note that calling this interface is ineffective when the activity is not in a paused status.",
+      "document": "This API is used to resume the paused instance refresh activity, allowing it to retry failed instances in the current batch or proceed with refreshing subsequent batches. Note that calling this API is ineffective when the activity is not in a paused status.\n\n- When the MaxSurge parameter is used, the activity may be paused due to scale-out or scale-in failures. This API can also be used to retry scaling operations.",
       "input": "ResumeInstanceRefreshRequest",
       "name": "Resumes instance refresh",
       "output": "ResumeInstanceRefreshResponse",
       "status": "online"
     },
     "RollbackInstanceRefresh": {
-      "document": "This API is used to generate a new instance refresh activity, which also supports batched refreshing and operations such as pausing, resuming, and canceling. The interface returns the RefreshActivityId for the rollback activity.\n* Instances pending refresh in the original activity are updated to a canceled status. Nonexistent instances are disregarded, while instances in all other statuses proceed to enter the rollback process.\n* Instances that were being refreshed in the original activity will not be immediately terminated; instead, the rollback activity will be executed after their refresh has been completed.\n* Rollback is supported for activities that are in a paused status or those with the most recent successful refresh; it is not supported for activities in other statuses.\n* When the original refresh activity involves reinstalling instances, for the ImageId parameter, it will automatically restore to the image ID before the rollback; for parameters such as UserData, EnhancedService, LoginSettings, and HostName, they will still be retrieved from the launch configuration, requiring users to manually modify the launch configuration before initiating the rollback.",
+      "document": "This API is used to generate a new instance refresh activity, which also supports batch refreshing and operations such as pausing, resuming, and canceling. This API returns RefreshActivityId for the rollback activity.\n* The instances pending refresh in the original activity are updated to canceled status. Nonexistent instances are disregarded, while instances in all other statuses proceed to enter the rollback process.\n* The instances that are being refreshed in the original activity will not be immediately terminated. Instead, the rollback activity will be executed after their refresh complete.\n* Rollback is supported for activities that are in the paused status or those succeeded in refreshing last time. It is not supported for activities in other statuses.\n* When the original refresh activity involves reinstalling instances, for the ImageId parameter, it will automatically recover to the image ID before the rollback; for parameters such as UserData, EnhancedService, LoginSettings, and HostName, they will still be read from the launch configuration, requiring users to manually modify the launch configuration before initiating the rollback.\n* The rollback activity does not support the MaxSurge parameter currently.",
       "input": "RollbackInstanceRefreshRequest",
       "name": "Rolls back instance refresh",
       "output": "RollbackInstanceRefreshResponse",
@@ -379,7 +379,7 @@
       "status": "online"
     },
     "StopInstanceRefresh": {
-      "document": "This API is used to pause the ongoing instance refresh activity.\n* In the paused status, the scaling group will also be disabled.\n* Instances that are currently being updated will not be paused, instances pending updates will have their updates paused.",
+      "document": "This API is used to pause the ongoing instance refresh activity.\n* In the paused status, the scaling group will also be disabled.\n* The instances that are currently being updated or scaled out will not be paused, but instances pending updates will have their updates paused.\n* During scale-in, all instances have already been updated and cannot be paused.",
       "input": "StopInstanceRefreshRequest",
       "name": "Pauses instance refresh",
       "output": "StopInstanceRefreshResponse",
@@ -4331,9 +4331,10 @@
         {
           "disabled": false,
           "document": "Network billing method. Value range: <br><li>BANDWIDTH_PREPAID: Prepaid by bandwidth <br><li>TRAFFIC_POSTPAID_BY_HOUR: Postpaid by traffic on a per hour basis <br><li>BANDWIDTH_POSTPAID_BY_HOUR: Postpaid by bandwidth on a per hour basis <br><li>BANDWIDTH_PACKAGE: BWP user <br>Default value: TRAFFIC_POSTPAID_BY_HOUR.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "InternetChargeType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -4341,9 +4342,10 @@
         {
           "disabled": false,
           "document": "The maximum outbound bandwidth in Mbps of the public network. The default value is 0 Mbps. The upper limit of bandwidth varies by model. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/509?from_cn_redirect=1).\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "uint64",
           "name": "InternetMaxBandwidthOut",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -4351,9 +4353,10 @@
         {
           "disabled": false,
           "document": "Whether to assign a public IP. Value range: <br><li>TRUE: Assign a public IP <br><li>FALSE: Do not assign a public IP <br><br>If the public network bandwidth is greater than 0 Mbps, you are free to choose whether to enable the public IP (which is enabled by default). If the public network bandwidth is 0 Mbps, no public IP will be allowed to be assigned.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "bool",
           "name": "PublicIpAssigned",
+          "output_required": true,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
@@ -4361,9 +4364,10 @@
         {
           "disabled": false,
           "document": "Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.\nNote: this field may return null, indicating that no valid value was found.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "BandwidthPackageId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -6495,7 +6499,7 @@
         },
         {
           "disabled": false,
-          "document": "The recovery method for the current batch's failed instances. If there are no failed instances, this parameter becomes invalid. Default value: RETRY. Valid values: <br><li>RETRY: Retry refreshing failed instances in the current batch.</li> <li>CONTINUE: Skip failed instances in the current batch.",
+          "document": "Recovery mode of instances that have failed to be refreshed in the current batch. If there are no failed instances, this parameter is invalid. Default value: RETRY. Valid values: <li>RETRY: Retry instances that have failed to be refreshed in the current batch.</li> <li>CONTINUE: Skip instances that have failed to be refreshed in the current batch.</li>",
           "example": "RETRY",
           "member": "string",
           "name": "ResumeMode",
@@ -6597,13 +6601,24 @@
         },
         {
           "disabled": false,
-          "document": "Pause policy between batches. Default value: Automatic. Valid values: <br><li>FIRST_BATCH_PAUSE: Pause after the first batch update completes.</li> <li>BATCH_INTERVAL_PAUSE: Pause between each batch update.</li> <li>AUTOMATIC: No pauses.",
+          "document": "Pause policy between batches. Default value: Automatic. Valid values:\n<li>FIRST_BATCH_PAUSE: Pause after the first batch of updates is completed.</li>\n<li>BATCH_INTERVAL_PAUSE: Pause between batches.</li>\n<li>AUTOMATIC: Do not pause.</li>",
           "example": "Automatic",
           "member": "string",
           "name": "BatchPause",
           "output_required": true,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The maximum additional quantity of instances. After this parameter is set, create a batch of additional pay-as-you-go instances according to the launch configuration before the rolling update starts. After the rolling update is completed, the additional instances will be terminated.This parameter is used to ensure a certain number of instances available during the rolling update. The maximum additional quantity of instances cannot exceed the number of refreshing instances in a single batch of the rolling update. The rollback process does not support this parameter currently.",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxSurge",
+          "output_required": false,
+          "required": false,
+          "type": "int",
           "value_allowed_null": false
         }
       ],
