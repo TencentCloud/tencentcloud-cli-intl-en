@@ -1,7 +1,7 @@
 {
   "actions": {
     "TextTranslate": {
-      "document": "This API is used to translate text in multiple language pairs, such as Chinese-English.<br />\nNote: We recommend that you simplify your development with the SDK integration mode. For how to use the SDK, see Section 5 \"Developer Resources\".\n",
+      "document": "This API is used to translate text in multiple language pairs, such as Chinese-English.<br />\nNote: We recommend that you simplify your development with the SDK integration mode. For how to use the SDK, see Section 5 \"Developer Resources\".",
       "input": "TextTranslateRequest",
       "name": "Translates text",
       "output": "TextTranslateResponse",
@@ -28,7 +28,7 @@
         },
         {
           "disabled": false,
-          "document": "Supported source languages:\nauto: Automatic language detection\nzh: Simplified Chinese\nzh_TW: Traditional Chinese\nen: English\nja: Japanese\nko: Korean\nfr: French\nes: Spanish\nit: Italian\nde: German\ntr: Turkish\nru: Russian\npt: Portuguese\nvi: Vietnamese\nid: Bahasa Indonesian\nth: Thai\nms: Malay\nar: Arabic\nhi: Hindi",
+          "document": "Supported source languages:\nauto: Automatic language detection\nzh: Simplified Chinese\nzh_TW: Traditional Chinese\nen: English\nja: Japanese\nfr: French\nes: Spanish\nit: Italian\nde: German\ntr: Turkish\nru: Russian\npt: Portuguese\nvi: Vietnamese\nid: Bahasa Indonesian\nth: Thai\nms: Malay\nar: Arabic\nhi: Hindi",
           "example": "en",
           "member": "string",
           "name": "Source",
@@ -37,7 +37,7 @@
         },
         {
           "disabled": false,
-          "document": "Supported target languages for the above source languages:\n\n<li> zh (Simplified Chinese): en (English), ja (Japanese), ko (Korean), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), ru (Russian), pt (Portuguese), vi (Vietnamese), id (Bahasa Indonesian), th (Thai), and ms (Malay)</li>\n<li> zh-TW (Traditional Chinese): en (English), ja (Japanese), ko (Korean), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), ru (Russian), pt (Portuguese), vi (Vietnamese), id (Bahasa Indonesian), th (Thai), and ms (Malay)</li>\n<li> en (English): zh (Simplified Chinese), ja (Japanese), ko (Korean), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), ru (Russian), pt (Portuguese), vi (Vietnamese), id (Bahasa Indonesian), th (Thai), ms (Malay), ar (Arabic), and hi (Hindi)</li>\n<li>ja (Japanese): zh (Simplified Chinese), en (English), and ko (Korean)</li>\n<li>ko (Korean): zh (Simplified Chinese), en (English), and ja (Japanese)</li>\n<li>fr (French): zh (Simplified Chinese), en (English), es (Spanish), it (Italian), de (German), tr (Turkish), ru (Russian), and pt (Portuguese)</li>\n<li>es (Spanish): zh (Simplified Chinese), en (English), fr (French), it (Italian), de (German), tr (Turkish), ru (Russian), and pt (Portuguese)</li>\n<li>it (Italian): zh (Simplified Chinese), en (English), fr (French), es (Spanish), de (German), tr (Turkish), ru (Russian), and pt (Portuguese)</li>\n<li>de (German): zh (Simplified Chinese), en (English), fr (French), es (Spanish), it (Italian), tr (Turkish), ru (Russian), and pt (Portuguese)</li>\n<li>tr (Turkish): zh (Simplified Chinese), en (English), fr (French), es (Spanish), it (Italian), de (German), ru (Russian), and pt (Portuguese)</li>\n<li>ru (Russian): zh (Simplified Chinese), en (English), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), and pt (Portuguese)</li>\n<li>pt (Portuguese): zh (Simplified Chinese), en (English), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), and ru (Russian)</li>\n<li>vi (Vietnamese): zh (Simplified Chinese) and en (English)</li\n<li>id (Bahasa Indonesian): zh (Simplified Chinese) and en (English)</li\n<li>th (Thai): zh (Simplified Chinese) and en (English)</li\n<li>ms (Malay): zh (Simplified Chinese) and en (English)</li\n<li>ar (Arabic): en (English)</li>\n<li>hi (Hindi): en (English)</li",
+          "document": "Supported target languages for the above source languages:\n\n<li>zh (Simplified Chinese): en (English), ja (Japanese), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), ru (Russian), pt (Portuguese), vi (Vietnamese), id (Bahasa Indonesian), th (Thai), and ms (Malay)</li>\n<li>zh-TW (Traditional Chinese): en (English), ja (Japanese), fr (French), es (Spanish), it (Italian), tr (Turkish), ru (Russian), pt (Portuguese), vi (Vietnamese), id (Bahasa Indonesian), th (Thai), and ms (Malay)</li>\n<li>en (English): zh (Simplified Chinese), zh-TW (Traditional Chinese), ja (Japanese), fr (French), es (Spanish), it (Italian), de (German), tr (Turkish), vi (Vietnamese), id (Bahasa Indonesian), th (Thai), ms (Malay), and hi (Hindi)</li>\n<li>fr (French): zh (Simplified Chinese), zh-TW (Traditional Chinese) and en (English)</li>\n<li>it (Italian): zh (Simplified Chinese), zh-TW (Traditional Chinese) and en (English)</li>\n<li>de (German): zh (Simplified Chinese), zh-TW (Traditional Chinese) and en (English)</li>\n<li>ru (Russian): zh (Simplified Chinese) and zh-TW (Traditional Chinese)</li>\n<li>tr (Turkish): zh (Simplified Chinese) and zh-TW (Traditional Chinese)</li>\n<li>pt (Portuguese): zh (Simplified Chinese) and tr (Turkish)</li>\n<li>es (Spanish): zh (Simplified Chinese), zh-TW (Traditional Chinese) and en (English)</li>\n<li>ja (Japanese): zh (Simplified Chinese), zh-TW (Traditional Chinese) and en (English)</li>\n<li>vi (Vietnamese): zh (Simplified Chinese), zh-TW (Traditional Chinese) and en (English)</li>\n<li>th (Thai): zh (Simplified Chinese) and en (English)</li>\n<li>id (Bahasa Indonesian): zh (Simplified Chinese), zh-TW (Traditional Chinese) and en (English)</li>\n<li>ms (Malay): zh (Simplified Chinese) and zh-TW (Traditional Chinese)</li>\n<li>ar (Arabic): en (English)</li>\n<li>hi (Hindi): en (English)</li>",
           "example": "zh",
           "member": "string",
           "name": "Target",
@@ -61,6 +61,24 @@
           "name": "UntranslatedText",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[\"144aed******************fc7321d4\"]",
+          "member": "string",
+          "name": "TermRepoIDList",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[\"b77f64******************6d88df30\"]",
+          "member": "string",
+          "name": "SentRepoIDList",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"

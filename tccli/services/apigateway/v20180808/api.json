@@ -2205,7 +2205,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the service to be operated",
+          "document": "ID of the service to be operated.",
           "example": "service-jzo37opy",
           "member": "string",
           "name": "ServiceId",
@@ -4476,7 +4476,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "API document ID",
+          "document": "API document ID.",
           "example": "doc-v8tsladd",
           "member": "string",
           "name": "ApiDocId",
@@ -4491,7 +4491,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether the operation succeeded",
+          "document": "Whether the operation succeeded.",
           "example": "True",
           "member": "bool",
           "name": "Result",

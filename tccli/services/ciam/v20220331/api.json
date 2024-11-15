@@ -683,7 +683,7 @@
       "usage": "in"
     },
     "ImportUser": {
-      "document": "Imported user information\n1. One of the eight attributes of `UserName`, `PhoneNumber`, `Email`, `WechatOpenId`, `WechatUnionId`, `AlipayUserId`, `QqOpenId`, and `QqUnionId` must be included during import and comply with the regular expression rules for initializing custom attributes. The regular expressions for `UserName`, `PhoneNumber`, and `Email` can be queried in the custom attributes in the console.\n2. For password import, the imported password supports plaintext import, MD5 ciphertext import, SHA1 ciphertext import, and BCRYPT ciphertext import. This needs to be specified in the `PasswordEncryptTypeEnum` field.\n3. `IdentityVerified` and `IdentityVerificationMethod` can be imported.\nIf `IdentityVerified` is `true`, `IdentityVerificationMethod` is required.\nIf `IdentityVerificationMethod` is `nameAndIdCard`, `Name` and `ResidentIdentityCard` are required.\nIf `IdentityVerificationMethod` is `nameIdCardAndPhone`, `Name`, `PhoneNumber`, and `ResidentIdentityCard` are required.",
+      "document": "Import user information.\n1. At least one of the following nine attributes should be included during the import: UserName, PhoneNumber, Email, WeChatOpenId, WeChatUnionId, AlipayUserId, QQOpenId, QQUnionId, and WeComUserId. Each of these attributes should adhere to the regular expression rules for initial custom attributes. The regular expressions for UserName, PhoneNumber, and Email can be queried in Custom Attributes on the console.\n2. For the import of passwords, plaintext import, MD5 ciphertext import, SHA1 ciphertext import, and BCRYPT ciphertext import are supported. The import method should be specified in the PasswordEncryptTypeEnum field.\n3. IdentityVerified and IdentityVerificationMethod can be imported.\nWhen IdentityVerified is true, IdentityVerificationMethod should be entered.\nWhen IdentityVerificationMethod is nameAndIdCard, Name and ResidentIdentityCard should be entered.\nWhen IdentityVerificationMethod is nameIdCardAndPhone, Name, PhoneNumber, and ResidentIdentityCard should be entered.",
       "members": [
         {
           "disabled": false,
@@ -733,7 +733,7 @@
         {
           "disabled": false,
           "document": "Address",
-          "example": "昵称1",
+          "example": "北京市海淀区",
           "member": "string",
           "name": "Address",
           "required": false,
@@ -790,6 +790,15 @@
           "example": "alipayuserid",
           "member": "string",
           "name": "AlipayUserId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "WeCom user ID.",
+          "example": "wecomuserid",
+          "member": "string",
+          "name": "WeComUserId",
           "required": false,
           "type": "string"
         },
@@ -2253,6 +2262,16 @@
           "example": "alipayuserid",
           "member": "string",
           "name": "AlipayUserId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "WeCom user ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "wecomuserid",
+          "member": "string",
+          "name": "WeComUserId",
           "output_required": true,
           "type": "string",
           "value_allowed_null": true

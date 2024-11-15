@@ -2,10 +2,10 @@
   "actions": {
     "TextTranslate": [
       {
-        "document": " ",
+        "document": " TextTranslate from English to Chinese",
         "input": "POST / HTTP/1.1\nHost: tmt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: TextTranslate\n<common request parameters>\n\n{\n    \"SourceText\": \"hello\",\n    \"Source\": \"en\",\n    \"Target\": \"zh\",\n    \"ProjectId\": 0\n}",
         "output": "{\n    \"Response\": {\n        \"TargetText\": \"你好\",\n        \"Source\": \"en\",\n        \"Target\": \"zh\",\n        \"RequestId\": \"000ee211-f19e-4a34-a214-e2bb1122d248\"\n    }\n}",
-        "title": "文本翻译调用示例"
+        "title": "TextTranslate Example"
       }
     ]
   },
