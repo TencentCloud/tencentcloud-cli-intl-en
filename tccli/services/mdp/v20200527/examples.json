@@ -32,6 +32,38 @@
         "title": "Example1 Sample request"
       }
     ],
+    "CreateStreamPackageLinearAssemblyChannel": [
+      {
+        "document": "创建媒体包装频道。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStreamPackageLinearAssemblyChannel\n<Common request parameters>\n\n{\n    \"Name\": \"abc\",\n    \"Tier\": \"abc\",\n    \"PlaybackMode\": \"abc\",\n    \"TimeShiftEnable\": true,\n    \"TimeShiftConf\": {\n        \"TimeWindows\": 1\n    },\n    \"SlateConf\": {\n        \"SourceLocationId\": \"abc\",\n        \"VodSourceName\": \"abc\"\n    },\n    \"Outputs\": [\n        {\n            \"Type\": \"abc\",\n            \"GroupName\": \"abc\",\n            \"ManifestName\": \"abc\",\n            \"ManifestConf\": {\n                \"Windows\": 1,\n                \"AdMarkupType\": \"abc\"\n            }\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Name\": \"abc\",\n            \"Tier\": \"abc\",\n            \"PlaybackMode\": \"abc\",\n            \"TimeShiftConf\": {\n                \"TimeWindows\": 1\n            },\n            \"SlateConf\": {\n                \"SourceLocationId\": \"abc\",\n                \"VodSourceName\": \"abc\"\n            },\n            \"Outputs\": [\n                {\n                    \"Type\": \"abc\",\n                    \"GroupName\": \"abc\",\n                    \"ManifestName\": \"abc\",\n                    \"ManifestConf\": {\n                        \"Windows\": 1,\n                        \"AdMarkupType\": \"abc\"\n                    },\n                    \"PlaybackURL\": \"abc\"\n                }\n            ],\n            \"AttachedPrograms\": [\n                \"abc\"\n            ],\n            \"ProgramSchedules\": [\n                {\n                    \"ProgramName\": \"abc\",\n                    \"ProgramId\": \"abc\",\n                    \"SourceType\": \"abc\",\n                    \"SourceId\": \"abc\",\n                    \"SourceLocationId\": \"abc\",\n                    \"StartTime\": 1,\n                    \"Duration\": \"abc\"\n                }\n            ],\n            \"Id\": \"abc\",\n            \"Region\": \"abc\",\n            \"State\": \"abc\",\n            \"TimeShiftEnable\": true,\n            \"CreateTime\": 1\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "CreateStreamPackageLinearAssemblyProgram": [
+      {
+        "document": "创建线性组装Program。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStreamPackageLinearAssemblyProgram\n<Common request parameters>\n\n{\n    \"Name\": \"abc\",\n    \"AttachedChannel\": \"abc\",\n    \"SourceType\": \"abc\",\n    \"SourceLocationId\": \"abc\",\n    \"SourceName\": \"abc\",\n    \"PlaybackConf\": {\n        \"TransitionType\": \"abc\",\n        \"StartTime\": 1,\n        \"Duration\": 1,\n        \"RelativePosition\": \"abc\",\n        \"RelativeProgramId\": \"abc\",\n        \"ClipRangeConf\": {\n            \"Type\": \"abc\",\n            \"Offset\": 1\n        }\n    },\n    \"AdBreaks\": [\n        {\n            \"SourceLocationId\": \"abc\",\n            \"VodSourceName\": \"abc\",\n            \"Offset\": 1,\n            \"MessageType\": \"abc\",\n            \"TimeSignalConf\": {\n                \"EventID\": \"abc\",\n                \"UPIDType\": \"abc\",\n                \"UPID\": \"abc\",\n                \"TypeID\": \"abc\",\n                \"Num\": \"abc\",\n                \"Expected\": \"abc\",\n                \"SubsegmentNum\": \"abc\",\n                \"SubsegmentsExpected\": \"abc\"\n            },\n            \"SpliceInsertConf\": {\n                \"EventID\": \"abc\",\n                \"AvailNum\": \"abc\",\n                \"AvailExpected\": \"abc\",\n                \"ProgramID\": \"abc\"\n            },\n            \"Metadatas\": [\n                {\n                    \"Key\": \"abc\",\n                    \"Value\": \"abc\"\n                }\n            ],\n            \"SourceLocationName\": \"abc\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Name\": \"abc\",\n            \"SourceType\": \"abc\",\n            \"SourceLocationId\": \"abc\",\n            \"SourceId\": \"abc\",\n            \"SourceName\": \"abc\",\n            \"AttachedChannel\": \"abc\",\n            \"PlaybackConf\": {\n                \"Duration\": 1,\n                \"TransitionType\": \"abc\",\n                \"StartTime\": 1,\n                \"RelativePosition\": \"abc\",\n                \"RelativeProgramId\": \"abc\",\n                \"ClipRangeConf\": {\n                    \"Type\": \"abc\",\n                    \"Offset\": 1\n                },\n                \"RelativeProgramName\": \"abc\"\n            },\n            \"AdBreaks\": [\n                {\n                    \"SourceLocationId\": \"abc\",\n                    \"VodSourceName\": \"abc\",\n                    \"Offset\": 1,\n                    \"MessageType\": \"abc\",\n                    \"TimeSignalConf\": {\n                        \"EventID\": \"abc\",\n                        \"UPIDType\": \"abc\",\n                        \"UPID\": \"abc\",\n                        \"TypeID\": \"abc\",\n                        \"Num\": \"abc\",\n                        \"Expected\": \"abc\",\n                        \"SubsegmentNum\": \"abc\",\n                        \"SubsegmentsExpected\": \"abc\"\n                    },\n                    \"SpliceInsertConf\": {\n                        \"EventID\": \"abc\",\n                        \"AvailNum\": \"abc\",\n                        \"AvailExpected\": \"abc\",\n                        \"ProgramID\": \"abc\"\n                    },\n                    \"Metadatas\": [\n                        {\n                            \"Key\": \"abc\",\n                            \"Value\": \"abc\"\n                        }\n                    ],\n                    \"SourceLocationName\": \"abc\"\n                }\n            ],\n            \"Id\": \"abc\",\n            \"Region\": \"abc\",\n            \"SourceLocationName\": \"abc\"\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "CreateStreamPackageSource": [
+      {
+        "document": "创建媒体包装频道。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStreamPackageSource\n<Common request parameters>\n\n{\n    \"AttachedLocation\": \"abc\",\n    \"Name\": \"abc\",\n    \"Type\": \"abc\",\n    \"PackageConfs\": [\n        {\n            \"GroupName\": \"abc\",\n            \"Type\": \"abc\",\n            \"Path\": \"abc\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Name\": \"abc\",\n            \"Type\": \"abc\",\n            \"PackageConf\": [\n                {\n                    \"GroupName\": \"abc\",\n                    \"Type\": \"abc\",\n                    \"Path\": \"abc\"\n                }\n            ],\n            \"Id\": \"abc\",\n            \"CreateTime\": 1,\n            \"UpdateTime\": 1,\n            \"Region\": \"abc\"\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "CreateStreamPackageSourceLocation": [
+      {
+        "document": "Create Linear Assembly SourceLocation.",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStreamPackageSourceLocation\n<Common request parameters>\n\n{\n    \"Name\": \"abc\",\n    \"BaseUrl\": \"abc\",\n    \"SegmentDeliverEnable\": true,\n    \"SegmentDeliverConf\": {\n        \"DefaultSegmentUrl\": \"abc\",\n        \"NameServers\": [\n            {\n                \"Name\": \"abc\",\n                \"Url\": \"abc\"\n            }\n        ]\n    },\n    \"SegmentDeliverUsePackageEnable\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Id\": \"abc\",\n            \"Name\": \"abc\",\n            \"Region\": \"abc\",\n            \"BaseUrl\": \"abc\",\n            \"SegmentDeliverEnable\": true,\n            \"SegmentDeliverConf\": {\n                \"DefaultSegmentUrl\": \"abc\",\n                \"NameServers\": [\n                    {\n                        \"Name\": \"abc\",\n                        \"Url\": \"abc\"\n                    }\n                ]\n            },\n            \"AttachedLiveSources\": [\n                \"abc\"\n            ],\n            \"AttachedVodSources\": [\n                \"abc\"\n            ],\n            \"CreateTime\": 1,\n            \"UpdateTime\": 1,\n            \"SegmentDeliverUsePackageEnable\": true\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Request example"
+      }
+    ],
     "DeleteStreamPackageChannelEndpoints": [
       {
         "document": " ",
@@ -62,6 +94,54 @@
         "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageHarvestJobs\n<Common request parameters>\n\n{\n    \"IDs\": [\n        \"your HarvestJob IDs\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Example1 Sample request"
+      }
+    ],
+    "DeleteStreamPackageLinearAssemblyChannel": [
+      {
+        "document": "删除媒体包装Channel。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageLinearAssemblyChannel\n<Common request parameters>\n\n{\n    \"Id\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteStreamPackageLinearAssemblyChannels": [
+      {
+        "document": "批量删除媒体包装Channel。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageLinearAssemblyChannels\n<Common request parameters>\n\n{\n    \"Ids\": [\n        \"abc\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteStreamPackageLinearAssemblyProgram": [
+      {
+        "document": "删除线性组装Program。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageLinearAssemblyProgram\n<Common request parameters>\n\n{\n    \"Id\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteStreamPackageLinearAssemblyPrograms": [
+      {
+        "document": "批量删除线性组装Program。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageLinearAssemblyPrograms\n<Common request parameters>\n\n{\n    \"Ids\": [\n        \"abc\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteStreamPackageSource": [
+      {
+        "document": "批量删除媒体包装SourceLocation。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageSource\n<Common request parameters>\n\n{\n    \"Id\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DeleteStreamPackageSourceLocation": [
+      {
+        "document": "批量删除媒体包装SourceLocation。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageSourceLocation\n<Common request parameters>\n\n{\n    \"Id\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
       }
     ],
     "DescribeStreamPackageChannel": [
@@ -96,6 +176,102 @@
         "title": "Example1 Sample request"
       }
     ],
+    "DescribeStreamPackageLinearAssemblyChannel": [
+      {
+        "document": "查询媒体包装Source信息。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageLinearAssemblyChannel\n<Common request parameters>\n\n{\n    \"Id\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Name\": \"abc\",\n            \"Tier\": \"abc\",\n            \"PlaybackMode\": \"abc\",\n            \"TimeShiftConf\": {\n                \"TimeWindows\": 1\n            },\n            \"SlateConf\": {\n                \"SourceLocationId\": \"abc\",\n                \"VodSourceName\": \"abc\"\n            },\n            \"Outputs\": [\n                {\n                    \"Type\": \"abc\",\n                    \"GroupName\": \"abc\",\n                    \"ManifestName\": \"abc\",\n                    \"ManifestConf\": {\n                        \"Windows\": 1,\n                        \"AdMarkupType\": \"abc\"\n                    },\n                    \"PlaybackURL\": \"abc\"\n                }\n            ],\n            \"AttachedPrograms\": [\n                \"abc\"\n            ],\n            \"ProgramSchedules\": [\n                {\n                    \"ProgramName\": \"abc\",\n                    \"ProgramId\": \"abc\",\n                    \"SourceType\": \"abc\",\n                    \"SourceId\": \"abc\",\n                    \"SourceLocationId\": \"abc\",\n                    \"StartTime\": 1,\n                    \"Duration\": \"abc\"\n                }\n            ],\n            \"Id\": \"abc\",\n            \"Region\": \"abc\",\n            \"State\": \"abc\",\n            \"TimeShiftEnable\": true,\n            \"CreateTime\": 1\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeStreamPackageLinearAssemblyChannelAlerts": [
+      {
+        "document": "查询线性组装频道告警信息。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageLinearAssemblyChannelAlerts\n<Common request parameters>\n\n{\n    \"ChannelId\": \"abc\",\n    \"StartTime\": 1,\n    \"EndTime\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": {\n            \"ProgramAlertCounts\": [\n                {\n                    \"ProgramId\": \"abc\",\n                    \"ProgramName\": \"abc\",\n                    \"Category\": \"abc\",\n                    \"Count\": 1,\n                    \"LastModifiedTime\": 1\n                }\n            ],\n            \"ProgramAlertInfos\": [\n                {\n                    \"ChannelId\": \"abc\",\n                    \"ChannelName\": \"abc\",\n                    \"ProgramId\": \"abc\",\n                    \"ProgramName\": \"abc\",\n                    \"Code\": 1,\n                    \"Category\": \"abc\",\n                    \"Message\": \"abc\",\n                    \"LastModifiedTime\": 1\n                }\n            ]\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeStreamPackageLinearAssemblyChannels": [
+      {
+        "document": "查询Source信息列表。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageLinearAssemblyChannels\n<Common request parameters>\n\n{\n    \"PageNum\": 1,\n    \"PageSize\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"Name\": \"abc\",\n                \"Tier\": \"abc\",\n                \"PlaybackMode\": \"abc\",\n                \"TimeShiftConf\": {\n                    \"TimeWindows\": 1\n                },\n                \"SlateConf\": {\n                    \"SourceLocationId\": \"abc\",\n                    \"VodSourceName\": \"abc\"\n                },\n                \"Outputs\": [\n                    {\n                        \"Type\": \"abc\",\n                        \"GroupName\": \"abc\",\n                        \"ManifestName\": \"abc\",\n                        \"ManifestConf\": {\n                            \"Windows\": 1,\n                            \"AdMarkupType\": \"abc\"\n                        },\n                        \"PlaybackURL\": \"abc\"\n                    }\n                ],\n                \"AttachedPrograms\": [\n                    \"abc\"\n                ],\n                \"ProgramSchedules\": [\n                    {\n                        \"ProgramName\": \"abc\",\n                        \"ProgramId\": \"abc\",\n                        \"SourceType\": \"abc\",\n                        \"SourceId\": \"abc\",\n                        \"SourceLocationId\": \"abc\",\n                        \"StartTime\": 1,\n                        \"Duration\": \"abc\"\n                    }\n                ],\n                \"Id\": \"abc\",\n                \"Region\": \"abc\",\n                \"State\": \"abc\",\n                \"TimeShiftEnable\": true,\n                \"CreateTime\": 1\n            }\n        ],\n        \"PageNum\": 1,\n        \"PageSize\": 1,\n        \"TotalNum\": 1,\n        \"TotalPage\": 1,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeStreamPackageLinearAssemblyProgram": [
+      {
+        "document": "查询媒体包装Program信息。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageLinearAssemblyProgram\n<Common request parameters>\n\n{\n    \"Id\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Name\": \"abc\",\n            \"SourceType\": \"abc\",\n            \"SourceLocationId\": \"abc\",\n            \"SourceId\": \"abc\",\n            \"SourceName\": \"abc\",\n            \"AttachedChannel\": \"abc\",\n            \"PlaybackConf\": {\n                \"Duration\": 1,\n                \"TransitionType\": \"abc\",\n                \"StartTime\": 1,\n                \"RelativePosition\": \"abc\",\n                \"RelativeProgramId\": \"abc\",\n                \"ClipRangeConf\": {\n                    \"Type\": \"abc\",\n                    \"Offset\": 1\n                },\n                \"RelativeProgramName\": \"abc\"\n            },\n            \"AdBreaks\": [\n                {\n                    \"SourceLocationId\": \"abc\",\n                    \"VodSourceName\": \"abc\",\n                    \"Offset\": 1,\n                    \"MessageType\": \"abc\",\n                    \"TimeSignalConf\": {\n                        \"EventID\": \"abc\",\n                        \"UPIDType\": \"abc\",\n                        \"UPID\": \"abc\",\n                        \"TypeID\": \"abc\",\n                        \"Num\": \"abc\",\n                        \"Expected\": \"abc\",\n                        \"SubsegmentNum\": \"abc\",\n                        \"SubsegmentsExpected\": \"abc\"\n                    },\n                    \"SpliceInsertConf\": {\n                        \"EventID\": \"abc\",\n                        \"AvailNum\": \"abc\",\n                        \"AvailExpected\": \"abc\",\n                        \"ProgramID\": \"abc\"\n                    },\n                    \"Metadatas\": [\n                        {\n                            \"Key\": \"abc\",\n                            \"Value\": \"abc\"\n                        }\n                    ],\n                    \"SourceLocationName\": \"abc\"\n                }\n            ],\n            \"Id\": \"abc\",\n            \"Region\": \"abc\",\n            \"SourceLocationName\": \"abc\"\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeStreamPackageLinearAssemblyProgramSchedules": [
+      {
+        "document": "查询Programe信息列表。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageLinearAssemblyProgramSchedules\n<Common request parameters>\n\n{\n    \"ChannelId\": \"abc\",\n    \"TimeWindow\": 1,\n    \"PageNum\": 1,\n    \"PageSize\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"Name\": \"abc\",\n                \"SourceType\": \"abc\",\n                \"SourceLocationId\": \"abc\",\n                \"SourceId\": \"abc\",\n                \"SourceName\": \"abc\",\n                \"AttachedChannel\": \"abc\",\n                \"PlaybackConf\": {\n                    \"Duration\": 1,\n                    \"TransitionType\": \"abc\",\n                    \"StartTime\": 1,\n                    \"RelativePosition\": \"abc\",\n                    \"RelativeProgramId\": \"abc\",\n                    \"ClipRangeConf\": {\n                        \"Type\": \"abc\",\n                        \"Offset\": 1\n                    },\n                    \"RelativeProgramName\": \"abc\"\n                },\n                \"AdBreaks\": [\n                    {\n                        \"SourceLocationId\": \"abc\",\n                        \"VodSourceName\": \"abc\",\n                        \"Offset\": 1,\n                        \"MessageType\": \"abc\",\n                        \"TimeSignalConf\": {\n                            \"EventID\": \"abc\",\n                            \"UPIDType\": \"abc\",\n                            \"UPID\": \"abc\",\n                            \"TypeID\": \"abc\",\n                            \"Num\": \"abc\",\n                            \"Expected\": \"abc\",\n                            \"SubsegmentNum\": \"abc\",\n                            \"SubsegmentsExpected\": \"abc\"\n                        },\n                        \"SpliceInsertConf\": {\n                            \"EventID\": \"abc\",\n                            \"AvailNum\": \"abc\",\n                            \"AvailExpected\": \"abc\",\n                            \"ProgramID\": \"abc\"\n                        },\n                        \"Metadatas\": [\n                            {\n                                \"Key\": \"abc\",\n                                \"Value\": \"abc\"\n                            }\n                        ],\n                        \"SourceLocationName\": \"abc\"\n                    }\n                ],\n                \"Id\": \"abc\",\n                \"Region\": \"abc\",\n                \"SourceLocationName\": \"abc\"\n            }\n        ],\n        \"PageNum\": 1,\n        \"PageSize\": 1,\n        \"TotalNum\": 1,\n        \"TotalPage\": 1,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeStreamPackageLinearAssemblyPrograms": [
+      {
+        "document": "查询Programe信息列表。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageLinearAssemblyPrograms\n<Common request parameters>\n\n{\n    \"PageNum\": 1,\n    \"PageSize\": 1,\n    \"ChannelId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"Name\": \"abc\",\n                \"SourceType\": \"abc\",\n                \"SourceLocationId\": \"abc\",\n                \"SourceId\": \"abc\",\n                \"SourceName\": \"abc\",\n                \"AttachedChannel\": \"abc\",\n                \"PlaybackConf\": {\n                    \"Duration\": 1,\n                    \"TransitionType\": \"abc\",\n                    \"StartTime\": 1,\n                    \"RelativePosition\": \"abc\",\n                    \"RelativeProgramId\": \"abc\",\n                    \"ClipRangeConf\": {\n                        \"Type\": \"abc\",\n                        \"Offset\": 1\n                    },\n                    \"RelativeProgramName\": \"abc\"\n                },\n                \"AdBreaks\": [\n                    {\n                        \"SourceLocationId\": \"abc\",\n                        \"VodSourceName\": \"abc\",\n                        \"Offset\": 1,\n                        \"MessageType\": \"abc\",\n                        \"TimeSignalConf\": {\n                            \"EventID\": \"abc\",\n                            \"UPIDType\": \"abc\",\n                            \"UPID\": \"abc\",\n                            \"TypeID\": \"abc\",\n                            \"Num\": \"abc\",\n                            \"Expected\": \"abc\",\n                            \"SubsegmentNum\": \"abc\",\n                            \"SubsegmentsExpected\": \"abc\"\n                        },\n                        \"SpliceInsertConf\": {\n                            \"EventID\": \"abc\",\n                            \"AvailNum\": \"abc\",\n                            \"AvailExpected\": \"abc\",\n                            \"ProgramID\": \"abc\"\n                        },\n                        \"Metadatas\": [\n                            {\n                                \"Key\": \"abc\",\n                                \"Value\": \"abc\"\n                            }\n                        ],\n                        \"SourceLocationName\": \"abc\"\n                    }\n                ],\n                \"Id\": \"abc\",\n                \"Region\": \"abc\",\n                \"SourceLocationName\": \"abc\"\n            }\n        ],\n        \"PageNum\": 1,\n        \"PageSize\": 1,\n        \"TotalNum\": 1,\n        \"TotalPage\": 1,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeStreamPackageSource": [
+      {
+        "document": "查询媒体包装Source信息。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageSource\n<Common request parameters>\n\n{\n    \"Id\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Name\": \"abc\",\n            \"Type\": \"abc\",\n            \"PackageConf\": [\n                {\n                    \"GroupName\": \"abc\",\n                    \"Type\": \"abc\",\n                    \"Path\": \"abc\"\n                }\n            ],\n            \"Id\": \"abc\",\n            \"CreateTime\": 1,\n            \"UpdateTime\": 1,\n            \"Region\": \"abc\"\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeStreamPackageSourceAlerts": [
+      {
+        "document": "查询线性组装Source告警信息。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageSourceAlerts\n<Common request parameters>\n\n{\n    \"SourceId\": \"abc\",\n    \"StartTime\": 1,\n    \"EndTime\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"SourceId\": \"abc\",\n                \"SourceName\": \"abc\",\n                \"Code\": 1,\n                \"Category\": \"abc\",\n                \"Message\": \"abc\",\n                \"LastModifiedTime\": 1\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeStreamPackageSourceLocation": [
+      {
+        "document": "查询媒体包装SourceLocation信息。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageSourceLocation\n<Common request parameters>\n\n{\n    \"Id\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"Id\": \"abc\",\n            \"Name\": \"abc\",\n            \"Region\": \"abc\",\n            \"BaseUrl\": \"abc\",\n            \"SegmentDeliverEnable\": true,\n            \"SegmentDeliverConf\": {\n                \"DefaultSegmentUrl\": \"abc\",\n                \"NameServers\": [\n                    {\n                        \"Name\": \"abc\",\n                        \"Url\": \"abc\"\n                    }\n                ]\n            },\n            \"AttachedLiveSources\": [\n                \"abc\"\n            ],\n            \"AttachedVodSources\": [\n                \"abc\"\n            ],\n            \"CreateTime\": 1,\n            \"UpdateTime\": 1,\n            \"SegmentDeliverUsePackageEnable\": true\n        },\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeStreamPackageSourceLocationAlerts": [
+      {
+        "document": "查询线性组装Location告警信息。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageSourceLocationAlerts\n<Common request parameters>\n\n{\n    \"LocationId\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"LocationId\": \"abc\",\n                \"Code\": 1,\n                \"Category\": \"abc\",\n                \"Message\": \"abc\",\n                \"LastModifiedTime\": 1,\n                \"LocationName\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeStreamPackageSourceLocations": [
+      {
+        "document": "查询SourceLocation信息列表。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageSourceLocations\n<Common request parameters>\n\n{\n    \"PageNum\": 1,\n    \"PageSize\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"Id\": \"abc\",\n                \"Name\": \"abc\",\n                \"Region\": \"abc\",\n                \"BaseUrl\": \"abc\",\n                \"SegmentDeliverEnable\": true,\n                \"SegmentDeliverConf\": {\n                    \"DefaultSegmentUrl\": \"abc\",\n                    \"NameServers\": [\n                        {\n                            \"Name\": \"abc\",\n                            \"Url\": \"abc\"\n                        }\n                    ]\n                },\n                \"AttachedLiveSources\": [\n                    \"abc\"\n                ],\n                \"AttachedVodSources\": [\n                    \"abc\"\n                ],\n                \"CreateTime\": 1,\n                \"UpdateTime\": 1,\n                \"SegmentDeliverUsePackageEnable\": true\n            }\n        ],\n        \"PageNum\": 1,\n        \"PageSize\": 1,\n        \"TotalNum\": 1,\n        \"TotalPage\": 1,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "DescribeStreamPackageSources": [
+      {
+        "document": "查询Source信息列表。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageSources\n<Common request parameters>\n\n{\n    \"PageNum\": 1,\n    \"PageSize\": 1,\n    \"LocationId\": \"abc\",\n    \"Type\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"Name\": \"abc\",\n                \"Type\": \"abc\",\n                \"PackageConf\": [\n                    {\n                        \"GroupName\": \"abc\",\n                        \"Type\": \"abc\",\n                        \"Path\": \"abc\"\n                    }\n                ],\n                \"Id\": \"abc\",\n                \"CreateTime\": 1,\n                \"UpdateTime\": 1,\n                \"Region\": \"abc\"\n            }\n        ],\n        \"PageNum\": 1,\n        \"PageSize\": 1,\n        \"TotalNum\": 1,\n        \"TotalPage\": 1,\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
     "ModifyStreamPackageChannel": [
       {
         "document": " ",
@@ -117,6 +293,54 @@
         "document": " ",
         "input": "https://mdp.tencentcloudapi.com/?Action=ModifyStreamPackageChannelInputAuthInfo\n&Id=xxx\n&Url=xxx\n&ActionType=UPDATE\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"11-222-333\",\n        \"AuthInfo\": {\n            \"Username\": \"Sdsai3412y7\",\n            \"Password\": \"jsada54rhnj2SS\"\n        }\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyStreamPackageLinearAssemblyChannel": [
+      {
+        "document": "修改媒体包装Source信息。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStreamPackageLinearAssemblyChannel\n<Common request parameters>\n\n{\n    \"Id\": \"abc\",\n    \"Name\": \"abc\",\n    \"Tier\": \"abc\",\n    \"PlaybackMode\": \"abc\",\n    \"TimeShiftEnable\": true,\n    \"TimeShiftConf\": {\n        \"TimeWindows\": 1\n    },\n    \"SlateConf\": {\n        \"SourceLocationId\": \"abc\",\n        \"VodSourceName\": \"abc\"\n    },\n    \"Outputs\": [\n        {\n            \"Type\": \"abc\",\n            \"GroupName\": \"abc\",\n            \"ManifestName\": \"abc\",\n            \"ManifestConf\": {\n                \"Windows\": 1,\n                \"AdMarkupType\": \"abc\"\n            },\n            \"PlaybackURL\": \"abc\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyStreamPackageLinearAssemblyProgram": [
+      {
+        "document": "修改媒体包装Program信息。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStreamPackageLinearAssemblyProgram\n<Common request parameters>\n\n{\n    \"Id\": \"abc\",\n    \"Name\": \"abc\",\n    \"SourceType\": \"abc\",\n    \"SourceLocationId\": \"abc\",\n    \"SourceName\": \"abc\",\n    \"PlaybackConf\": {\n        \"TransitionType\": \"abc\",\n        \"StartTime\": 1,\n        \"Duration\": 1,\n        \"RelativePosition\": \"abc\",\n        \"RelativeProgramId\": \"abc\",\n        \"ClipRangeConf\": {\n            \"Type\": \"abc\",\n            \"Offset\": 1\n        }\n    },\n    \"AdBreaks\": [\n        {\n            \"SourceLocationId\": \"abc\",\n            \"VodSourceName\": \"abc\",\n            \"Offset\": 1,\n            \"MessageType\": \"abc\",\n            \"TimeSignalConf\": {\n                \"EventID\": \"abc\",\n                \"UPIDType\": \"abc\",\n                \"UPID\": \"abc\",\n                \"TypeID\": \"abc\",\n                \"Num\": \"abc\",\n                \"Expected\": \"abc\",\n                \"SubsegmentNum\": \"abc\",\n                \"SubsegmentsExpected\": \"abc\"\n            },\n            \"SpliceInsertConf\": {\n                \"EventID\": \"abc\",\n                \"AvailNum\": \"abc\",\n                \"AvailExpected\": \"abc\",\n                \"ProgramID\": \"abc\"\n            },\n            \"Metadatas\": [\n                {\n                    \"Key\": \"abc\",\n                    \"Value\": \"abc\"\n                }\n            ],\n            \"SourceLocationName\": \"abc\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyStreamPackageSource": [
+      {
+        "document": "修改媒体包装Source信息。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStreamPackageSource\n<Common request parameters>\n\n{\n    \"Id\": \"abc\",\n    \"Name\": \"abc\",\n    \"Type\": \"abc\",\n    \"PackageConfs\": [\n        {\n            \"GroupName\": \"abc\",\n            \"Type\": \"abc\",\n            \"Path\": \"abc\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "ModifyStreamPackageSourceLocation": [
+      {
+        "document": "修改媒体包装SourceLocation信息。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStreamPackageSourceLocation\n<Common request parameters>\n\n{\n    \"Id\": \"abc\",\n    \"Name\": \"abc\",\n    \"BaseUrl\": \"abc\",\n    \"SegmentDeliverEnable\": true,\n    \"SegmentDeliverConf\": {\n        \"DefaultSegmentUrl\": \"abc\",\n        \"NameServers\": [\n            {\n                \"Name\": \"abc\",\n                \"Url\": \"abc\"\n            }\n        ]\n    },\n    \"SegmentDeliverUsePackageEnable\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "StartStreamPackageLinearAssemblyChannel": [
+      {
+        "document": "启动媒体包装频道。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartStreamPackageLinearAssemblyChannel\n<Common request parameters>\n\n{\n    \"Id\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Sample request"
+      }
+    ],
+    "StopStreamPackageLinearAssemblyChannel": [
+      {
+        "document": "停止线性组装频道。",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopStreamPackageLinearAssemblyChannel\n<Common request parameters>\n\n{\n    \"Id\": \"abc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Sample request"
       }
     ],

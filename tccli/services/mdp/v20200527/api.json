@@ -28,6 +28,34 @@
       "output": "CreateStreamPackageHarvestJobResponse",
       "status": "online"
     },
+    "CreateStreamPackageLinearAssemblyChannel": {
+      "document": "Create a linear assembly channel.",
+      "input": "CreateStreamPackageLinearAssemblyChannelRequest",
+      "name": "Create a linear assembly channel",
+      "output": "CreateStreamPackageLinearAssemblyChannelResponse",
+      "status": "online"
+    },
+    "CreateStreamPackageLinearAssemblyProgram": {
+      "document": "Create a linear assembly program.",
+      "input": "CreateStreamPackageLinearAssemblyProgramRequest",
+      "name": "Create a linear assembly program",
+      "output": "CreateStreamPackageLinearAssemblyProgramResponse",
+      "status": "online"
+    },
+    "CreateStreamPackageSource": {
+      "document": "Create channel linear assembly Source.",
+      "input": "CreateStreamPackageSourceRequest",
+      "name": "Create channel linear assembly Source",
+      "output": "CreateStreamPackageSourceResponse",
+      "status": "online"
+    },
+    "CreateStreamPackageSourceLocation": {
+      "document": "Create Linear Assembly SourceLocation.",
+      "input": "CreateStreamPackageSourceLocationRequest",
+      "name": "Create Linear Assembly SourceLocation",
+      "output": "CreateStreamPackageSourceLocationResponse",
+      "status": "online"
+    },
     "DeleteStreamPackageChannelEndpoints": {
       "document": "This API is used to delete endpoints from a StreamPackage channel in batches.",
       "input": "DeleteStreamPackageChannelEndpointsRequest",
@@ -54,6 +82,48 @@
       "input": "DeleteStreamPackageHarvestJobsRequest",
       "name": "DeleteStreamPackageHarvestJobs",
       "output": "DeleteStreamPackageHarvestJobsResponse",
+      "status": "online"
+    },
+    "DeleteStreamPackageLinearAssemblyChannel": {
+      "document": "Delete channel linear assemblyChannel.",
+      "input": "DeleteStreamPackageLinearAssemblyChannelRequest",
+      "name": "Delete channel linear assemblyChannel",
+      "output": "DeleteStreamPackageLinearAssemblyChannelResponse",
+      "status": "online"
+    },
+    "DeleteStreamPackageLinearAssemblyChannels": {
+      "document": "Delete channels in batches and linearly assemble channels.",
+      "input": "DeleteStreamPackageLinearAssemblyChannelsRequest",
+      "name": "Delete channels in batches and linearly assemble channels",
+      "output": "DeleteStreamPackageLinearAssemblyChannelsResponse",
+      "status": "online"
+    },
+    "DeleteStreamPackageLinearAssemblyProgram": {
+      "document": "Delete Channel Linear Assembly Program.",
+      "input": "DeleteStreamPackageLinearAssemblyProgramRequest",
+      "name": "Delete Channel Linear Assembly Program",
+      "output": "DeleteStreamPackageLinearAssemblyProgramResponse",
+      "status": "online"
+    },
+    "DeleteStreamPackageLinearAssemblyPrograms": {
+      "document": "Batch deletion of channels linear assembly program.",
+      "input": "DeleteStreamPackageLinearAssemblyProgramsRequest",
+      "name": "Batch deletion of channels linear assembly program",
+      "output": "DeleteStreamPackageLinearAssemblyProgramsResponse",
+      "status": "online"
+    },
+    "DeleteStreamPackageSource": {
+      "document": "Delete channel linear assembly Source.",
+      "input": "DeleteStreamPackageSourceRequest",
+      "name": "Delete channel linear assembly Source",
+      "output": "DeleteStreamPackageSourceResponse",
+      "status": "online"
+    },
+    "DeleteStreamPackageSourceLocation": {
+      "document": "Batch delete media packaging SourceLocation.",
+      "input": "DeleteStreamPackageSourceLocationRequest",
+      "name": "Batch delete linear assembly SourceLocation",
+      "output": "DeleteStreamPackageSourceLocationResponse",
       "status": "online"
     },
     "DescribeStreamPackageChannel": {
@@ -84,6 +154,90 @@
       "output": "DescribeStreamPackageHarvestJobsResponse",
       "status": "online"
     },
+    "DescribeStreamPackageLinearAssemblyChannel": {
+      "document": "Query channel linear assembly Channel information.",
+      "input": "DescribeStreamPackageLinearAssemblyChannelRequest",
+      "name": "Query channel linear assembly Channel information",
+      "output": "DescribeStreamPackageLinearAssemblyChannelResponse",
+      "status": "online"
+    },
+    "DescribeStreamPackageLinearAssemblyChannelAlerts": {
+      "document": "Query linear assembly channel alarm information.",
+      "input": "DescribeStreamPackageLinearAssemblyChannelAlertsRequest",
+      "name": "Query linear assembly channel alarm information",
+      "output": "DescribeStreamPackageLinearAssemblyChannelAlertsResponse",
+      "status": "online"
+    },
+    "DescribeStreamPackageLinearAssemblyChannels": {
+      "document": "Query channel linear assembly Channel information list.",
+      "input": "DescribeStreamPackageLinearAssemblyChannelsRequest",
+      "name": "Query channel linear assembly Channel information list",
+      "output": "DescribeStreamPackageLinearAssemblyChannelsResponse",
+      "status": "online"
+    },
+    "DescribeStreamPackageLinearAssemblyProgram": {
+      "document": "Query channel linear assembly program information.",
+      "input": "DescribeStreamPackageLinearAssemblyProgramRequest",
+      "name": "Query channel linear assembly program information",
+      "output": "DescribeStreamPackageLinearAssemblyProgramResponse",
+      "status": "online"
+    },
+    "DescribeStreamPackageLinearAssemblyProgramSchedules": {
+      "document": "Query channel linear assembly Programl assembly scheduling information list.",
+      "input": "DescribeStreamPackageLinearAssemblyProgramSchedulesRequest",
+      "name": "Query channel linear assembly Programl assembly scheduling information list",
+      "output": "DescribeStreamPackageLinearAssemblyProgramSchedulesResponse",
+      "status": "online"
+    },
+    "DescribeStreamPackageLinearAssemblyPrograms": {
+      "document": "Query channel linear assembly Programl information list.",
+      "input": "DescribeStreamPackageLinearAssemblyProgramsRequest",
+      "name": "Query channel linear assembly Programl information list",
+      "output": "DescribeStreamPackageLinearAssemblyProgramsResponse",
+      "status": "online"
+    },
+    "DescribeStreamPackageSource": {
+      "document": "Query channel linear assembly Source information.",
+      "input": "DescribeStreamPackageSourceRequest",
+      "name": "Query channel linear assembly Source information",
+      "output": "DescribeStreamPackageSourceResponse",
+      "status": "online"
+    },
+    "DescribeStreamPackageSourceAlerts": {
+      "document": "Query channel linear assembly Source alarm information.",
+      "input": "DescribeStreamPackageSourceAlertsRequest",
+      "name": "Query channel linear assembly Source alarm information",
+      "output": "DescribeStreamPackageSourceAlertsResponse",
+      "status": "online"
+    },
+    "DescribeStreamPackageSourceLocation": {
+      "document": "Query channel linear assembly sourceLocation information.",
+      "input": "DescribeStreamPackageSourceLocationRequest",
+      "name": "Query channel linear assembly sourceLocation information",
+      "output": "DescribeStreamPackageSourceLocationResponse",
+      "status": "online"
+    },
+    "DescribeStreamPackageSourceLocationAlerts": {
+      "document": "Query channel linear assembly Location alarm information.",
+      "input": "DescribeStreamPackageSourceLocationAlertsRequest",
+      "name": "Query channel linear assembly Location alarm information",
+      "output": "DescribeStreamPackageSourceLocationAlertsResponse",
+      "status": "online"
+    },
+    "DescribeStreamPackageSourceLocations": {
+      "document": "Query channel linear assembly SourceLocation information list.",
+      "input": "DescribeStreamPackageSourceLocationsRequest",
+      "name": "Query channel linear assembly SourceLocation information list",
+      "output": "DescribeStreamPackageSourceLocationsResponse",
+      "status": "online"
+    },
+    "DescribeStreamPackageSources": {
+      "document": "Query channel linear assembly Source information list.",
+      "input": "DescribeStreamPackageSourcesRequest",
+      "name": "Query channel linear assembly Source information list",
+      "output": "DescribeStreamPackageSourcesResponse",
+      "status": "online"
+    },
     "ModifyStreamPackageChannel": {
       "document": "This API is used to modify a StreamPackage channel.",
       "input": "ModifyStreamPackageChannelRequest",
@@ -105,6 +259,48 @@
       "output": "ModifyStreamPackageChannelInputAuthInfoResponse",
       "status": "online"
     },
+    "ModifyStreamPackageLinearAssemblyChannel": {
+      "document": "Modify channel linear assembly Channel configuration.",
+      "input": "ModifyStreamPackageLinearAssemblyChannelRequest",
+      "name": "Modify channel linear assembly Channel configuration",
+      "output": "ModifyStreamPackageLinearAssemblyChannelResponse",
+      "status": "online"
+    },
+    "ModifyStreamPackageLinearAssemblyProgram": {
+      "document": "Modify channel linear assembly Program configuration.",
+      "input": "ModifyStreamPackageLinearAssemblyProgramRequest",
+      "name": "Modify channel linear assembly Program configuration",
+      "output": "ModifyStreamPackageLinearAssemblyProgramResponse",
+      "status": "online"
+    },
+    "ModifyStreamPackageSource": {
+      "document": "Modify channel linear assembly Source configuration.",
+      "input": "ModifyStreamPackageSourceRequest",
+      "name": "Modify channel linear assembly Source configuration",
+      "output": "ModifyStreamPackageSourceResponse",
+      "status": "online"
+    },
+    "ModifyStreamPackageSourceLocation": {
+      "document": "Modify channel linear assembly SourceLocation configuration",
+      "input": "ModifyStreamPackageSourceLocationRequest",
+      "name": "Modify channel linear assembly SourceLocation configuration",
+      "output": "ModifyStreamPackageSourceLocationResponse",
+      "status": "online"
+    },
+    "StartStreamPackageLinearAssemblyChannel": {
+      "document": "Start Linear Assembly Channel.",
+      "input": "StartStreamPackageLinearAssemblyChannelRequest",
+      "name": "Start Linear Assembly Channel",
+      "output": "StartStreamPackageLinearAssemblyChannelResponse",
+      "status": "online"
+    },
+    "StopStreamPackageLinearAssemblyChannel": {
+      "document": "Stop linear assembly channel.",
+      "input": "StopStreamPackageLinearAssemblyChannelRequest",
+      "name": "Stop linear assembly channel",
+      "output": "StopStreamPackageLinearAssemblyChannelResponse",
+      "status": "online"
+    },
     "UnbindCdnDomainWithChannel": {
       "document": "This API is used to unbind a CDN playback domain name from a channel.",
       "input": "UnbindCdnDomainWithChannelRequest",
@@ -119,6 +315,100 @@
     "serviceShortName": "mdp"
   },
   "objects": {
+    "AdBreakInfo": {
+      "document": "AdBreakInfo.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SourceLocationId.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceLocationId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VodSourceName.",
+          "example": "无",
+          "member": "string",
+          "name": "VodSourceName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Offset.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MessageType, divided into SpliceInsert and TimeSignal.",
+          "example": "无",
+          "member": "string",
+          "name": "MessageType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "TimeSignalConf.",
+          "example": "无",
+          "member": "TimeSignalInfo",
+          "name": "TimeSignalConf",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SpliceInsertConf.",
+          "example": "无",
+          "member": "SpliceInsertInfo",
+          "name": "SpliceInsertConf",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Metadatas.",
+          "example": "无",
+          "member": "Metadata",
+          "name": "Metadatas",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SourceLocationName.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceLocationName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "AliasValueConf": {
       "document": "Alias-value configuration information.",
       "members": [
@@ -233,6 +523,32 @@
       ],
       "usage": "both"
     },
+    "ChannelAlertResp": {
+      "document": "Linear assembly channel alarm return information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Program alarm aggregation information.",
+          "example": "无",
+          "member": "ProgramAlertCounts",
+          "name": "ProgramAlertCounts",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Program alarm details.",
+          "example": "无",
+          "member": "ProgramAlertInfos",
+          "name": "ProgramAlertInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "ChannelInfo": {
       "document": "Channel information.",
       "members": [
@@ -288,6 +604,34 @@
         }
       ],
       "usage": "out"
+    },
+    "ClipRangeInfo": {
+      "document": "Spacer configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The vod type is valid, the content is valid starting time, Entire and SpecifyTimeRange are optional.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Offset, valid when Type is SpecifyTimeRange.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Offset",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "ConfigAliasesInfo": {
       "document": "Parameter configuration.",
@@ -411,7 +755,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Channel name",
+          "document": "Channel name.",
           "example": "xxx",
           "member": "string",
           "name": "Name",
@@ -420,7 +764,7 @@
         },
         {
           "disabled": false,
-          "document": "Channel protocol. Valid values: HLS, DASH",
+          "document": "Channel protocol. Valid values: HLS, DASH, CMAF.",
           "example": "HLS",
           "member": "string",
           "name": "Protocol",
@@ -429,7 +773,7 @@
         },
         {
           "disabled": false,
-          "document": "Cache configuration",
+          "document": "Cache configuration.",
           "example": "无",
           "member": "CacheInfo",
           "name": "CacheInfo",
@@ -549,6 +893,325 @@
           "member": "HarvestJobResp",
           "name": "Info",
           "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStreamPackageLinearAssemblyChannelRequest": {
+      "document": "CreateStreamPackageLinearAssemblyChannel request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Channel name.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Define the characteristics of the channel. Standard supports live broadcast and on-demand sources. Basic only supports on-demand source arrangement. Optional values: Standard and Basic.",
+          "example": "Basic",
+          "member": "string",
+          "name": "Tier",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The source switching modes in the channel are divided into Linear and Loop. Basic only supports Linear, and Standatd supports both.\nOptional values: Linear, Standatd.",
+          "example": "无",
+          "member": "string",
+          "name": "PlaybackMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time shift enable switch, only valid when Tier is Standard.",
+          "example": "无",
+          "member": "bool",
+          "name": "TimeShiftEnable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Time shift configuration, effective when the time shift switch is turned on.",
+          "example": "无",
+          "member": "TimeShiftInfo",
+          "name": "TimeShiftConf",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Spacer configuration is only valid when PlaybackMode is Linear.",
+          "example": "无",
+          "member": "SlateInfo",
+          "name": "SlateConf",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Output configuration.",
+          "example": "无",
+          "member": "OutputReq",
+          "name": "Outputs",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStreamPackageLinearAssemblyChannelResponse": {
+      "document": "CreateStreamPackageLinearAssemblyChannel response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "channel information.",
+          "example": "无",
+          "member": "LinearAssemblyChannelInfo",
+          "name": "Info",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStreamPackageLinearAssemblyProgramRequest": {
+      "document": "CreateStreamPackageLinearAssemblyProgram request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Program name.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The bound channel.",
+          "example": "无",
+          "member": "string",
+          "name": "AttachedChannel",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The type of arrangement target source is divided into live broadcast and on-demand VOD.\nOptional values: Live, VOD.",
+          "example": "Tier",
+          "member": "string",
+          "name": "SourceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The associated source location.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceLocationId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The associated live broadcast or on-demand broadcast, source name, and location are globally unique.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "PlaybackConf.",
+          "example": "无",
+          "member": "PlaybackInfoReq",
+          "name": "PlaybackConf",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "AdBreaks is only valid when the source type is Vod.",
+          "example": "无",
+          "member": "AdBreakInfo",
+          "name": "AdBreaks",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStreamPackageLinearAssemblyProgramResponse": {
+      "document": "CreateStreamPackageLinearAssemblyProgram response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "channel information.",
+          "example": "无",
+          "member": "LinearAssemblyProgramInfo",
+          "name": "Info",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStreamPackageSourceLocationRequest": {
+      "document": "CreateStreamPackageSourceLocation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SourceLocation name.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "BaseUrl.",
+          "example": "http://base.com",
+          "member": "string",
+          "name": "BaseUrl",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable patching.",
+          "example": "false",
+          "member": "bool",
+          "name": "SegmentDeliverEnable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Patch configuration.",
+          "example": "无",
+          "member": "SegmentDeliverInfo",
+          "name": "SegmentDeliverConf",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable package distribution sharding, it is enabled by default.",
+          "example": "无",
+          "member": "bool",
+          "name": "SegmentDeliverUsePackageEnable",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStreamPackageSourceLocationResponse": {
+      "document": "CreateStreamPackageSourceLocation response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SourceLocation information.",
+          "example": "无",
+          "member": "SourceLocationInfo",
+          "name": "Info",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStreamPackageSourceRequest": {
+      "document": "CreateStreamPackageSource request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The location id to which this source belongs is required and uniquely bound to one location.",
+          "example": "无",
+          "member": "string",
+          "name": "AttachedLocation",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Source name, globally unique under location.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Distinguish between live broadcast and on-demand VOD source types. Optional values: Live, VOD.",
+          "example": "http://base.com",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "source specific configuration.",
+          "example": "无",
+          "member": "SourcePackageConf",
+          "name": "PackageConfs",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateStreamPackageSourceResponse": {
+      "document": "CreateStreamPackageSource response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Source information.",
+          "example": "无",
+          "member": "SourceInfo",
+          "name": "Info",
+          "output_required": false,
           "type": "object",
           "value_allowed_null": false
         },
@@ -688,6 +1351,168 @@
     },
     "DeleteStreamPackageHarvestJobsResponse": {
       "document": "DeleteStreamPackageHarvestJobs response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageLinearAssemblyChannelRequest": {
+      "document": "DeleteStreamPackageLinearAssemblyChannel request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "channel id.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageLinearAssemblyChannelResponse": {
+      "document": "DeleteStreamPackageLinearAssemblyChannel response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageLinearAssemblyChannelsRequest": {
+      "document": "DeleteStreamPackageLinearAssemblyChannels request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of channel ids.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageLinearAssemblyChannelsResponse": {
+      "document": "DeleteStreamPackageLinearAssemblyChannels response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageLinearAssemblyProgramRequest": {
+      "document": "DeleteStreamPackageLinearAssemblyProgram request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Program id.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageLinearAssemblyProgramResponse": {
+      "document": "DeleteStreamPackageLinearAssemblyProgram response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageLinearAssemblyProgramsRequest": {
+      "document": "DeleteStreamPackageLinearAssemblyPrograms request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Program id list.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Ids",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageLinearAssemblyProgramsResponse": {
+      "document": "DeleteStreamPackageLinearAssemblyPrograms response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageSourceLocationRequest": {
+      "document": "DeleteStreamPackageSourceLocation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SourceLocation Id.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageSourceLocationResponse": {
+      "document": "DeleteStreamPackageSourceLocation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageSourceRequest": {
+      "document": "DeleteStreamPackageSource request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SourceLocation Id.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteStreamPackageSourceResponse": {
+      "document": "DeleteStreamPackageSource response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -931,6 +1756,776 @@
           "member": "uint64",
           "name": "TotalNum",
           "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageLinearAssemblyChannelAlertsRequest": {
+      "document": "DescribeStreamPackageLinearAssemblyChannelAlerts request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Channel ID.",
+          "example": "xxx",
+          "member": "string",
+          "name": "ChannelId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query start time, Unix timestamp, supports queries in the last seven days.",
+          "example": "无",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Query end time, Unix timestamp, supports queries in the last seven days.",
+          "example": "无",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageLinearAssemblyChannelAlertsResponse": {
+      "document": "DescribeStreamPackageLinearAssemblyChannelAlerts response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Channel alarm information.",
+          "example": "无",
+          "member": "ChannelAlertResp",
+          "name": "Infos",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageLinearAssemblyChannelRequest": {
+      "document": "DescribeStreamPackageLinearAssemblyChannel request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "channel id.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageLinearAssemblyChannelResponse": {
+      "document": "DescribeStreamPackageLinearAssemblyChannel response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Channel information.",
+          "example": "无",
+          "member": "LinearAssemblyChannelInfo",
+          "name": "Info",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageLinearAssemblyChannelsRequest": {
+      "document": "DescribeStreamPackageLinearAssemblyChannels request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Paging query page number, the value range is [1, 1000].",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paging query the size of each page, the value range is [1, 1000].",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageLinearAssemblyChannelsResponse": {
+      "document": "DescribeStreamPackageLinearAssemblyChannels response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Channel list.",
+          "example": "无",
+          "member": "LinearAssemblyChannelInfo",
+          "name": "Infos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Size per page.",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The total amount.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "total pages.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalPage",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageLinearAssemblyProgramRequest": {
+      "document": "DescribeStreamPackageLinearAssemblyProgram request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "program id.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageLinearAssemblyProgramResponse": {
+      "document": "DescribeStreamPackageLinearAssemblyProgram response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Program information.",
+          "example": "无",
+          "member": "LinearAssemblyProgramInfo",
+          "name": "Info",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageLinearAssemblyProgramSchedulesRequest": {
+      "document": "DescribeStreamPackageLinearAssemblyProgramSchedules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query all Programs under a Channel.",
+          "example": "无",
+          "member": "string",
+          "name": "ChannelId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Window duration information, in seconds.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TimeWindow",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paging query page number, the value range is [1, 1000].",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paging query the size of each page, the value range is [1, 1000].",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageLinearAssemblyProgramSchedulesResponse": {
+      "document": "DescribeStreamPackageLinearAssemblyProgramSchedules response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Program's scheduling list.",
+          "example": "无",
+          "member": "LinearAssemblyProgramInfo",
+          "name": "Infos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Size per page.",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The total amount.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total pages.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalPage",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageLinearAssemblyProgramsRequest": {
+      "document": "DescribeStreamPackageLinearAssemblyPrograms request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Paging query page number, the value range is [1, 1000].",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paging query the size of each page, the value range is [1, 1000].",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Query all Programs under a Channel.",
+          "example": "无",
+          "member": "string",
+          "name": "ChannelId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageLinearAssemblyProgramsResponse": {
+      "document": "DescribeStreamPackageLinearAssemblyPrograms response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Program list.",
+          "example": "无",
+          "member": "LinearAssemblyProgramInfo",
+          "name": "Infos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Size per page.",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The total amount.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "total pages.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalPage",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageSourceAlertsRequest": {
+      "document": "DescribeStreamPackageSourceAlerts request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Source ID.",
+          "example": "xxx",
+          "member": "string",
+          "name": "SourceId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Query start time, Unix timestamp, supports queries in the last seven days.",
+          "example": "无",
+          "member": "uint64",
+          "name": "StartTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Query end time, Unix timestamp, supports queries in the last seven days.",
+          "example": "无",
+          "member": "uint64",
+          "name": "EndTime",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageSourceAlertsResponse": {
+      "document": "DescribeStreamPackageSourceAlerts response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Source alarm information.",
+          "example": "无",
+          "member": "SourceAlert",
+          "name": "Infos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageSourceLocationAlertsRequest": {
+      "document": "DescribeStreamPackageSourceLocationAlerts request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Location ID.",
+          "example": "xxx",
+          "member": "string",
+          "name": "LocationId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageSourceLocationAlertsResponse": {
+      "document": "DescribeStreamPackageSourceLocationAlerts response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Location alarm information.",
+          "example": "无",
+          "member": "LocationAlert",
+          "name": "Infos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageSourceLocationRequest": {
+      "document": "DescribeStreamPackageSourceLocation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SourceLocation Id.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageSourceLocationResponse": {
+      "document": "DescribeStreamPackageSourceLocation response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SourceLocation information.",
+          "example": "无",
+          "member": "SourceLocationInfo",
+          "name": "Info",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageSourceLocationsRequest": {
+      "document": "DescribeStreamPackageSourceLocations request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Paging query page number, the value range is [1, 1000].",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paging query the size of each page, the value range is [1, 1000].",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageSourceLocationsResponse": {
+      "document": "DescribeStreamPackageSourceLocations response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SourceLocation list.",
+          "example": "无",
+          "member": "SourceLocationInfo",
+          "name": "Infos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Size per page.",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The total amount.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "total pages.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalPage",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageSourceRequest": {
+      "document": "DescribeStreamPackageSource request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SourceLocation Id.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageSourceResponse": {
+      "document": "DescribeStreamPackageSource response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Source information.",
+          "example": "无",
+          "member": "SourceInfo",
+          "name": "Info",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageSourcesRequest": {
+      "document": "DescribeStreamPackageSources request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Paging query page number, the value range is [1, 1000].",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Paging query the size of each page, the value range is [1, 1000].",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Location Id, query all sources under the location.",
+          "example": "无",
+          "member": "string",
+          "name": "LocationId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The type of source is divided into live broadcast and on-demand VOD.\nOptional values: Live, VOD.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeStreamPackageSourcesResponse": {
+      "document": "DescribeStreamPackageSources response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Source list.",
+          "example": "无",
+          "member": "SourceInfo",
+          "name": "Infos",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of pages.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PageNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Size per page.",
+          "example": "10",
+          "member": "uint64",
+          "name": "PageSize",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The total amount.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalNum",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "total pages.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalPage",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1283,6 +2878,404 @@
       ],
       "usage": "out"
     },
+    "LinearAssemblyChannelInfo": {
+      "document": "Linearly assembled channel information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Linear assembly channel name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Define the characteristics of the channel. Standard supports live broadcast and on-demand sources, while Basic only supports on-demand source arrangement.",
+          "example": "无",
+          "member": "string",
+          "name": "Tier",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The source switching mode in the channel is divided into Linear and Loop. Live broadcast only supports Linear.",
+          "example": "无",
+          "member": "string",
+          "name": "PlaybackMode",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time shift configuration, vod is valid.",
+          "example": "无",
+          "member": "TimeShiftInfo",
+          "name": "TimeShiftConf",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Spacer configuration.",
+          "example": "无",
+          "member": "SlateInfo",
+          "name": "SlateConf",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "output information.",
+          "example": "无",
+          "member": "OutputInfo",
+          "name": "Outputs",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of programs bound to this channel.",
+          "example": "无",
+          "member": "string",
+          "name": "AttachedPrograms",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "program information.",
+          "example": "无",
+          "member": "ProgramScheduleInfo",
+          "name": "ProgramSchedules",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "State.",
+          "example": "无",
+          "member": "string",
+          "name": "State",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Time shift on switch.",
+          "example": "无",
+          "member": "bool",
+          "name": "TimeShiftEnable",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Channel creation time, unix seconds timestamp.",
+          "example": "无",
+          "member": "uint64",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "LinearAssemblyProgramInfo": {
+      "document": "Channel linear assembly program information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Channel linear assembly program information.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The type of the arrangement target source, divided into live broadcast and on-demand.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The associated source location id.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceLocationId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SourceId, uniquely identifies a source.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The associated live broadcast or on-demand broadcast, source name, and location are globally unique.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The bound channel.",
+          "example": "无",
+          "member": "string",
+          "name": "AttachedChannel",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Play configuration.",
+          "example": "无",
+          "member": "PlaybackInfo",
+          "name": "PlaybackConf",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AdBreaks.",
+          "example": "无",
+          "member": "AdBreakInfo",
+          "name": "AdBreaks",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SourceLocation name.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceLocationName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "LocationAlert": {
+      "document": "Channel Linear Assembly Location Alarm Information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Location ID.",
+          "example": "无",
+          "member": "string",
+          "name": "LocationId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm event code.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Code",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm classification.",
+          "example": "无",
+          "member": "string",
+          "name": "Category",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm message.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time.",
+          "example": "无",
+          "member": "uint64",
+          "name": "LastModifiedTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Location name.",
+          "example": "无",
+          "member": "string",
+          "name": "LocationName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ManifestInfo": {
+      "document": "Linear assembly channel configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Time window, in seconds.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Windows",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Enter the format of the output advertising tag. Optional values are: Date Range and Enhanced SCTE-35.",
+          "example": "无",
+          "member": "string",
+          "name": "AdMarkupType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "Metadata": {
+      "document": "Metadata.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Key.",
+          "example": "无",
+          "member": "string",
+          "name": "Key",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Value.",
+          "example": "无",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ModifyStreamPackageChannelEndpointRequest": {
       "document": "ModifyStreamPackageChannelEndpoint request structure.",
       "members": [
@@ -1460,7 +3453,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Channel ID",
+          "document": "Channel ID.",
           "example": "xxx",
           "member": "string",
           "name": "Id",
@@ -1469,7 +3462,7 @@
         },
         {
           "disabled": false,
-          "document": "New channel name",
+          "document": "New channel name.",
           "example": "xxx",
           "member": "string",
           "name": "Name",
@@ -1478,7 +3471,7 @@
         },
         {
           "disabled": false,
-          "document": "New channel protocol. Valid values: HLS, DASH",
+          "document": "New channel protocol. Valid values: HLS, DASH, CMAF.",
           "example": "HLS",
           "member": "string",
           "name": "Protocol",
@@ -1487,7 +3480,7 @@
         },
         {
           "disabled": false,
-          "document": "Cache configuration",
+          "document": "Cache configuration.",
           "example": "无",
           "member": "CacheInfo",
           "name": "CacheInfo",
@@ -1508,6 +3501,597 @@
         }
       ],
       "type": "object"
+    },
+    "ModifyStreamPackageLinearAssemblyChannelRequest": {
+      "document": "ModifyStreamPackageLinearAssemblyChannel request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Channel ID.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modified name.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Define the characteristics of the channel. Standard supports live broadcast and on-demand sources, while Basic only supports on-demand source arrangement.",
+          "example": "无",
+          "member": "string",
+          "name": "Tier",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The source switching mode in the channel is divided into Linear and Loop. Live broadcast only supports Linear.\nOptional values: Linear, Loop.",
+          "example": "无",
+          "member": "string",
+          "name": "PlaybackMode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Time shift on switch.",
+          "example": "无",
+          "member": "bool",
+          "name": "TimeShiftEnable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Time shift configuration.",
+          "example": "无",
+          "member": "TimeShiftInfo",
+          "name": "TimeShiftConf",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "padding configuration.",
+          "example": "无",
+          "member": "SlateInfo",
+          "name": "SlateConf",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Output configuration.",
+          "example": "无",
+          "member": "OutputInfo",
+          "name": "Outputs",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyStreamPackageLinearAssemblyChannelResponse": {
+      "document": "ModifyStreamPackageLinearAssemblyChannel response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyStreamPackageLinearAssemblyProgramRequest": {
+      "document": "ModifyStreamPackageLinearAssemblyProgram request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Program ID.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modified name.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The type of the arrangement target source, divided into live broadcast and on-demand.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The associated source location.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceLocationId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The associated live broadcast or on-demand broadcast, source name, and location are globally unique.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "PlaybackConf.",
+          "example": "无",
+          "member": "PlaybackInfoReq",
+          "name": "PlaybackConf",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "AdBreaks.",
+          "example": "无",
+          "member": "AdBreakInfo",
+          "name": "AdBreaks",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyStreamPackageLinearAssemblyProgramResponse": {
+      "document": "ModifyStreamPackageLinearAssemblyProgram response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyStreamPackageSourceLocationRequest": {
+      "document": "ModifyStreamPackageSourceLocation request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SourceLocation Id.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modified name.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "BaseUrl.",
+          "example": "http://base.com\t",
+          "member": "string",
+          "name": "BaseUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable patching.",
+          "example": "无",
+          "member": "bool",
+          "name": "SegmentDeliverEnable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Patch configuration.",
+          "example": "无",
+          "member": "SegmentDeliverInfo",
+          "name": "SegmentDeliverConf",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable package distribution sharding, it is enabled by default.",
+          "example": "无",
+          "member": "bool",
+          "name": "SegmentDeliverUsePackageEnable",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyStreamPackageSourceLocationResponse": {
+      "document": "ModifyStreamPackageSourceLocation response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyStreamPackageSourceRequest": {
+      "document": "ModifyStreamPackageSource request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Source Id.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Modified name.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Distinguish between live broadcast and on-demand VOD source types.\nOptional values: Live, VOD (on demand)",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "source configuration.",
+          "example": "无",
+          "member": "SourcePackageConf",
+          "name": "PackageConfs",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyStreamPackageSourceResponse": {
+      "document": "ModifyStreamPackageSource response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "NameServer": {
+      "document": "Custom server information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "address.",
+          "example": "无",
+          "member": "string",
+          "name": "Url",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "OutputInfo": {
+      "document": "Channel linear assembly output information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HLS DASH.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The output group name can be associated with the source group name.",
+          "example": "无",
+          "member": "string",
+          "name": "GroupName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The file name output by the channel program after scheduling.",
+          "example": "无",
+          "member": "string",
+          "name": "ManifestName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Advertisement configuration.",
+          "example": "无",
+          "member": "ManifestInfo",
+          "name": "ManifestConf",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Playback address.",
+          "example": "无",
+          "member": "string",
+          "name": "PlaybackURL",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "OutputReq": {
+      "document": "Channel linear assembly output information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Output type, distinguish HLS DASH.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The output group name can be associated with the source group name.",
+          "example": "无",
+          "member": "string",
+          "name": "GroupName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The file name output by the channel program after scheduling.",
+          "example": "无",
+          "member": "string",
+          "name": "ManifestName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Advertisement configuration.",
+          "example": "无",
+          "member": "ManifestInfo",
+          "name": "ManifestConf",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "PlaybackInfo": {
+      "document": "program playback configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Program duration, in milliseconds, valid for live broadcast.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Duration",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Program startup method, live broadcast only supports Absolute, on-demand also supports Relative.",
+          "example": "无",
+          "member": "string",
+          "name": "TransitionType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unix timestamp, the start execution time of the program in the Absolute scenario.",
+          "example": "无",
+          "member": "uint64",
+          "name": "StartTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "It is related to the insertion order of the selected program, divided into After and Before.",
+          "example": "无",
+          "member": "string",
+          "name": "RelativePosition",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The selected insertion reference program id.",
+          "example": "无",
+          "member": "string",
+          "name": "RelativeProgramId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Spacer configuration.",
+          "example": "无",
+          "member": "ClipRangeInfo",
+          "name": "ClipRangeConf",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "RelativeProgramName.",
+          "example": "无",
+          "member": "string",
+          "name": "RelativeProgramName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "PlaybackInfoReq": {
+      "document": "program playback configuration request.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Program startup method, live broadcast only supports Absolute, on-demand also supports Relative.\nOptional values: Absolute, Relative.",
+          "example": "无",
+          "member": "string",
+          "name": "TransitionType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unix timestamp, the start execution time of the program in absolute scenarios.",
+          "example": "无",
+          "member": "uint64",
+          "name": "StartTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Program duration, in milliseconds, valid for live broadcast.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Duration",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "It is related to the insertion order of the selected program, divided into After and Before.",
+          "example": "无",
+          "member": "string",
+          "name": "RelativePosition",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The selected insertion reference program id.",
+          "example": "无",
+          "member": "string",
+          "name": "RelativeProgramId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Spacer configuration.",
+          "example": "无",
+          "member": "ClipRangeInfo",
+          "name": "ClipRangeConf",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "PointInfo": {
       "document": "Channel input and output.",
@@ -1534,6 +4118,231 @@
         }
       ],
       "usage": "out"
+    },
+    "ProgramAlertCounts": {
+      "document": "Channel Linear Assembly Program Aggregation Alarm Information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Program ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ProgramId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Program name.",
+          "example": "无",
+          "member": "string",
+          "name": "ProgramName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm classification.",
+          "example": "无",
+          "member": "string",
+          "name": "Category",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The number of occurrences",
+          "example": "无",
+          "member": "uint64",
+          "name": "Count",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time.",
+          "example": "无",
+          "member": "uint64",
+          "name": "LastModifiedTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ProgramAlertInfos": {
+      "document": "Channel linear assembly program alarm information details.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Channel ID.",
+          "example": "无",
+          "member": "string",
+          "name": "ChannelId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Channel name.\n",
+          "example": "无",
+          "member": "string",
+          "name": "ChannelName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ProgramID.",
+          "example": "无",
+          "member": "string",
+          "name": "ProgramId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ProgramName.",
+          "example": "无",
+          "member": "string",
+          "name": "ProgramName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm event code.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Code",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm classification.",
+          "example": "无",
+          "member": "string",
+          "name": "Category",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm message.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time.",
+          "example": "无",
+          "member": "uint64",
+          "name": "LastModifiedTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ProgramScheduleInfo": {
+      "document": "The scheduling information of the Program under this channel.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "program name.",
+          "example": "无",
+          "member": "string",
+          "name": "ProgramName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "program id.",
+          "example": "无",
+          "member": "string",
+          "name": "ProgramId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "source type.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "source id.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The id of the source location.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceLocationId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start timestamp.",
+          "example": "无",
+          "member": "uint64",
+          "name": "StartTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Duration.",
+          "example": "无",
+          "member": "string",
+          "name": "Duration",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "SSAIConf": {
       "document": "SSAI ad insertion configuration.",
@@ -1636,6 +4445,592 @@
           "required": false,
           "type": "int",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "SegmentDeliverInfo": {
+      "document": "SourceLocation shim configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Default content source address.",
+          "example": "无",
+          "member": "string",
+          "name": "DefaultSegmentUrl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom server address.",
+          "example": "无",
+          "member": "NameServer",
+          "name": "NameServers",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SlateInfo": {
+      "document": "Channel linear assembly channel spacer configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The ID of the source location.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceLocationId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The corresponding vod shim content source name.",
+          "example": "无",
+          "member": "string",
+          "name": "VodSourceName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SourceAlert": {
+      "document": "Channel Linear Assembly Location Alarm Information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Source ID.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source name.",
+          "example": "无",
+          "member": "string",
+          "name": "SourceName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm event code.",
+          "example": "无",
+          "member": "uint64",
+          "name": "Code",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm classification.",
+          "example": "无",
+          "member": "string",
+          "name": "Category",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Alarm message.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update time.",
+          "example": "无",
+          "member": "uint64",
+          "name": "LastModifiedTime",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "SourceInfo": {
+      "document": "SourceInfo.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The source type distinguishes between live broadcast and on-demand Vod.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source configuration.",
+          "example": "无",
+          "member": "SourcePackageConf",
+          "name": "PackageConf",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ID.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Create timestamp.",
+          "example": "无",
+          "member": "uint64",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Update timestamp.",
+          "example": "无",
+          "member": "uint64",
+          "name": "UpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SourceLocationInfo": {
+      "document": "SourceLocation configuration information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID, unique identification.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SourceLocation name.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "area.",
+          "example": "无",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "BaseUrl information.",
+          "example": "无",
+          "member": "string",
+          "name": "BaseUrl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable patching.",
+          "example": "无",
+          "member": "bool",
+          "name": "SegmentDeliverEnable",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Patch configuration.",
+          "example": "无",
+          "member": "SegmentDeliverInfo",
+          "name": "SegmentDeliverConf",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of bound live broadcast source ids.",
+          "example": "无",
+          "member": "string",
+          "name": "AttachedLiveSources",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of bound on-demand source ids.",
+          "example": "无",
+          "member": "string",
+          "name": "AttachedVodSources",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source location creation time, Unix timestamp.",
+          "example": "1707117485",
+          "member": "uint64",
+          "name": "CreateTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Source location last modified time, Unix timestamp.",
+          "example": "1707117485",
+          "member": "uint64",
+          "name": "UpdateTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable package distribution sharding, it is enabled by default.",
+          "example": "无",
+          "member": "bool",
+          "name": "SegmentDeliverUsePackageEnable",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SourcePackageConf": {
+      "document": "Source file information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Group name. When the channel is in Linear mode and vod source is selected, the group name corresponds to the output group name of the channel output.",
+          "example": "无",
+          "member": "string",
+          "name": "GroupName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Type, distinguish between HLS and DASH, optional values: HLS, DASH.",
+          "example": "无",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "access path.",
+          "example": "无",
+          "member": "string",
+          "name": "Path",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "SpliceInsertInfo": {
+      "document": "SpliceInsertInfo.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "EventID.",
+          "example": "无",
+          "member": "string",
+          "name": "EventID",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AvailNum.",
+          "example": "无",
+          "member": "string",
+          "name": "AvailNum",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "AvailExpected.",
+          "example": "无",
+          "member": "string",
+          "name": "AvailExpected",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "ProgramID.",
+          "example": "无",
+          "member": "string",
+          "name": "ProgramID",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "StartStreamPackageLinearAssemblyChannelRequest": {
+      "document": "StartStreamPackageLinearAssemblyChannel request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Channel ID.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StartStreamPackageLinearAssemblyChannelResponse": {
+      "document": "StartStreamPackageLinearAssemblyChannel response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopStreamPackageLinearAssemblyChannelRequest": {
+      "document": "StopStreamPackageLinearAssemblyChannel request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Channel ID.",
+          "example": "xxx",
+          "member": "string",
+          "name": "Id",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "StopStreamPackageLinearAssemblyChannelResponse": {
+      "document": "StopStreamPackageLinearAssemblyChannel response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TimeShiftInfo": {
+      "document": "Linearly assembled channel time-shift configuration information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Lookback window, in seconds.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TimeWindows",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TimeSignalInfo": {
+      "document": "TimeSignalInfo.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "EventID.",
+          "example": "无",
+          "member": "string",
+          "name": "EventID",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "UPIDType.",
+          "example": "无",
+          "member": "string",
+          "name": "UPIDType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "UPID.",
+          "example": "无",
+          "member": "string",
+          "name": "UPID",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "TypeID.",
+          "example": "无",
+          "member": "string",
+          "name": "TypeID",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Num.",
+          "example": "无",
+          "member": "string",
+          "name": "Num",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expected.",
+          "example": "无",
+          "member": "string",
+          "name": "Expected",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SubsegmentNum.",
+          "example": "无",
+          "member": "string",
+          "name": "SubsegmentNum",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SubsegmentsExpected.",
+          "example": "无",
+          "member": "string",
+          "name": "SubsegmentsExpected",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"

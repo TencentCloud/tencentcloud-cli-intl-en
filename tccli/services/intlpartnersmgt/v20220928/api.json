@@ -15,7 +15,7 @@
       "status": "online"
     },
     "CreateAccount": {
-      "document": "This API is used to create Tencent Cloud customer accounts for first-level resellers/second-level resellers. After the account is created, it will be automatically bound to the partner account.Note:1. Create a Tencent Cloud account. The entered email address and mobile phone number need to be verified by the partner for validity.2. Customers need to add personal information when logging in for the first time.3. This interface needs to be applied for allowlist usage. Please contact the channel manager to initiate the application process.",
+      "document": "This API is used to create Tencent Cloud customer accounts for first-level resellers/second-level resellers.After the account is created, it will be automatically bound to the partner account.Note:\n1. Create a Tencent Cloud account. The entered email address and mobile phone number need to be verified by the partner for validity.\n2.  Customers need to add personal information when logging in for the first time.\n3.  This interface needs to be applied for allowlist usage. Please contact the channel manager to initiate the application process.",
       "input": "CreateAccountRequest",
       "name": "Creates a customer account",
       "output": "CreateAccountResponse",
@@ -856,7 +856,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Account type of a new customer. Valid values: `personal`, `company`.",
+          "document": "Account type of a new customer.\nValid values: `personal`, `company`.",
           "example": "business",
           "member": "string",
           "name": "AccountType",
@@ -874,7 +874,7 @@
         },
         {
           "disabled": false,
-          "document": "Account password\nLength limit: 8-20 characters\nA password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not allowed.",
+          "document": "Account password.\nLength limit: 8-20 characters\nA password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not allowed.",
           "example": "无",
           "member": "string",
           "name": "Password",
@@ -892,7 +892,7 @@
         },
         {
           "disabled": false,
-          "document": "Customer's mobile number. The caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed. Starting from October 25, 2024, the system will perform binding limit verification of the mobile number you provide, allowing a maximum of 5 accounts per mobile number.",
+          "document": "Customer's mobile number. \nThe caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed. \nThe system will perform binding limit verification of the mobile number you provide, allowing a maximum of 5 accounts per mobile number.",
           "example": "18888888888",
           "member": "string",
           "name": "PhoneNum",
@@ -901,7 +901,7 @@
         },
         {
           "disabled": false,
-          "document": "Customer's country/region code, which can be obtained via the `GetCountryCodes` API, such as \"852\".",
+          "document": "Customer's country/region code, which can be obtained via the `GetCountryCodes` API, such as \"852\".\nParameter value is not allowed to be 7,380,86.",
           "example": "852",
           "member": "string",
           "name": "CountryCode",
@@ -928,7 +928,7 @@
         },
         {
           "disabled": false,
-          "document": "Verification code. Starting from October 25, 2024, a new parameter will be used to verify the validity of the mobile number you provide. When the interface is requested for the first time, a null value can be passed in. The interface will send a 6-digit verification code by SMS to the mobile number you provide, and you need to pass it in again together with other parameters after you receive it.",
+          "document": "Verification code. \nIt will be used to verify the validity of the mobile number you provide. \nWhen the interface is requested for the first time, a null value can be passed in. The interface will send a 6-digit verification code by SMS to the mobile number you provide, and you need to pass it in again together with other parameters after you receive it.",
           "example": "123456",
           "member": "string",
           "name": "VerifyCode",
@@ -2972,7 +2972,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Country code.",
+          "document": "Country code.\nParameter value is not allowed to be 7,380,86.",
           "example": "852",
           "member": "string",
           "name": "CountryCode",
