@@ -26,16 +26,16 @@
     ],
     "AnalyzeAuditLogs": [
       {
-        "document": "This example shows you how to aggregate audit logs after filtering them.",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AnalyzeAuditLogs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-r9bpb9gs\",\n    \"StartTime\": \"2023-02-16 00:00:00\",\n    \"EndTime\": \"2023-02-17 00:00:00\",\n    \"AuditLogFilter\": {\n        \"SqlTypes\": [\n            \"create\"\n        ]\n    },\n    \"AggregationConditions\": [\n        {\n            \"AggregationField\": \"host\",\n            \"Offset\": 0,\n            \"Limit\": 3\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"AggregationField\": \"host\",\n                \"Buckets\": [\n                    {\n                        \"Count\": 3,\n                        \"Key\": \"100.122.76.176\"\n                    },\n                    {\n                        \"Count\": 2,\n                        \"Key\": \"9.71.156.179\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"0000000000000-00000-015\",\n        \"TotalCount\": 5\n    }\n}",
-        "title": "Aggregating audit logs after filtering them"
-      },
-      {
         "document": "This example shows you how to aggregate the statistics of an audit log.",
         "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AnalyzeAuditLogs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-r9bpb9gs\",\n    \"StartTime\": \"2023-02-16 00:00:20\",\n    \"EndTime\": \"2023-02-16 00:10:20\",\n    \"AggregationConditions\": [\n        {\n            \"AggregationField\": \"host\",\n            \"Offset\": 0,\n            \"Limit\": 3\n        },\n        {\n            \"AggregationField\": \"sqlType\",\n            \"Offset\": 3,\n            \"Limit\": 3\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"AggregationField\": \"host\"\n            },\n            {\n                \"AggregationField\": \"sqlType\",\n                \"Buckets\": [\n                    {\n                        \"Count\": 13,\n                        \"Key\": \"LOGOUT\"\n                    },\n                    {\n                        \"Count\": 5,\n                        \"Key\": \"CREATE\"\n                    },\n                    {\n                        \"Count\": 2,\n                        \"Key\": \"INSERT\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"0000000000000-00000-014\",\n        \"TotalCount\": 100\n    }\n}",
         "title": "Aggregating the statistics of an audit log"
+      },
+      {
+        "document": "This example shows you how to aggregate audit logs after filtering them.",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AnalyzeAuditLogs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-r9bpb9gs\",\n    \"StartTime\": \"2023-02-16 00:00:00\",\n    \"EndTime\": \"2023-02-17 00:00:00\",\n    \"AuditLogFilter\": {\n        \"SqlTypes\": [\n            \"create\"\n        ]\n    },\n    \"AggregationConditions\": [\n        {\n            \"AggregationField\": \"host\",\n            \"Offset\": 0,\n            \"Limit\": 3\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"AggregationField\": \"host\",\n                \"Buckets\": [\n                    {\n                        \"Count\": 3,\n                        \"Key\": \"100.122.76.176\"\n                    },\n                    {\n                        \"Count\": 2,\n                        \"Key\": \"9.71.156.179\"\n                    }\n                ]\n            }\n        ],\n        \"RequestId\": \"0000000000000-00000-015\",\n        \"TotalCount\": 5\n    }\n}",
+        "title": "Aggregating audit logs after filtering them"
       }
     ],
     "AssociateSecurityGroups": [
@@ -250,16 +250,16 @@
         "title": "Querying a database audit log"
       },
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditLogs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-0ei6rgrp\",\n    \"StartTime\": \"2023-08-01 00:00:00\",\n    \"EndTime\": \"2023-08-07 00:00:00\",\n    \"Limit\": 20,\n    \"LogFilter\": [\n        {\n            \"Type\": \"sql\",\n            \"Compare\": \"WINC\",\n            \"Value\": [\n                \"select\"\n            ]\n        },\n        {\n            \"Type\": \"sql\",\n            \"Compare\": \"WINC\",\n            \"Value\": [\n                \"test_db\"\n            ]\n        },\n        {\n            \"Type\": \"host\",\n            \"Compare\": \"NEQ\",\n            \"Value\": [\n                \"10.0.0.1\",\n                \"100.0.0.1\"\n            ]\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"Items\": null,\n        \"RequestId\": \"90d90456-2a5b-4015-81b8-9e2fca52012b\",\n        \"TotalCount\": 0\n    }\n}",
-        "title": "Querying records within xx where the SQL statement contains \"SELECT\" and \"test_db\", and the source IP is not 10.0.0.1 or 100.0.0.1"
-      },
-      {
         "document": "SQL sample: `select * from test_db limit 1;`\n`sql  INC selec` cu200can be used for search.\n`sql  WINC selec` cannot be used for search.",
         "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditLogs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-0ei6rgrp\",\n    \"StartTime\": \"2023-08-01 00:00:00\",\n    \"EndTime\": \"2023-08-07 00:00:00\",\n    \"Limit\": 20,\n    \"LogFilter\": [\n        {\n            \"Type\": \"sql\",\n            \"Compare\": \"INC\",\n            \"Value\": [\n                \"selec\",\n                \"up\"\n            ]\n        },\n        {\n            \"Type\": \"host\",\n            \"Compare\": \"INC\",\n            \"Value\": [\n                \"10.0.\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Items\": null,\n        \"RequestId\": \"90d90456-2a5b-4015-81b8-9e2fca52012b\",\n        \"TotalCount\": 0\n    }\n}",
         "title": "Querying records within xx where the SQL statement contains \"SELECT\" and \"UPDA\", and the source IP contains 10.0."
+      },
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAuditLogs\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-0ei6rgrp\",\n    \"StartTime\": \"2023-08-01 00:00:00\",\n    \"EndTime\": \"2023-08-07 00:00:00\",\n    \"Limit\": 20,\n    \"LogFilter\": [\n        {\n            \"Type\": \"sql\",\n            \"Compare\": \"WINC\",\n            \"Value\": [\n                \"select\"\n            ]\n        },\n        {\n            \"Type\": \"sql\",\n            \"Compare\": \"WINC\",\n            \"Value\": [\n                \"test_db\"\n            ]\n        },\n        {\n            \"Type\": \"host\",\n            \"Compare\": \"NEQ\",\n            \"Value\": [\n                \"10.0.0.1\",\n                \"100.0.0.1\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": null,\n        \"RequestId\": \"90d90456-2a5b-4015-81b8-9e2fca52012b\",\n        \"TotalCount\": 0\n    }\n}",
+        "title": "Querying records within xx where the SQL statement contains \"SELECT\" and \"test_db\", and the source IP is not 10.0.0.1 or 100.0.0.1"
       }
     ],
     "DescribeAuditPolicies": [
@@ -598,10 +598,10 @@
     ],
     "DescribeRoGroups": [
       {
-        "document": " ",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoGroups\n<Common request parameters>\n\n{\n    \"InstanceId\": \"cdb-eggz8oj5\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"RoGroups\": [\n            {\n                \"RoGroupName\": \"ro_group_172023\",\n                \"RoMaxDelayTime\": 1,\n                \"RoOfflineDelay\": 0,\n                \"RoGroupMode\": \"alone\",\n                \"RoInstances\": [\n                    {\n                        \"Zone\": \"ap-guangzhou-3\",\n                        \"MasterInstanceId\": \"cdb-eggz8oj5\",\n                        \"Memory\": 2000,\n                        \"Status\": 1,\n                        \"VpcId\": 0,\n                        \"InstanceId\": \"cdbro-h9k7cx05\",\n                        \"Volume\": 100,\n                        \"SubnetId\": 0,\n                        \"HourFeeStatus\": 1,\n                        \"RoStatus\": \"online\",\n                        \"OfflineTime\": \"0000-00-00 00:00:00\",\n                        \"Region\": \"ap-guangzhou\",\n                        \"DeadlineTime\": \"2018-01-04 16:48:30\",\n                        \"DeviceType\": \"CUSTOM\",\n                        \"EngineVersion\": \"5.6\",\n                        \"TaskStatus\": 1,\n                        \"InstanceName\": \"cdb_ro_172023\",\n                        \"Weight\": 1,\n                        \"PayType\": 0,\n                        \"InstanceType\": 3,\n                        \"Vip\": \"10.66.199.133\",\n                        \"Qps\": 2400,\n                        \"Vport\": 3306\n                    }\n                ],\n                \"RoGroupId\": \"cdbrg-eb2w7dto\",\n                \"Vip\": \"10.66.199.133\",\n                \"MinRoInGroup\": 1,\n                \"Vport\": 3306,\n                \"WeightMode\": \"system\"\n            }\n        ]\n    }\n}",
-        "title": "Querying the information of all RO groups of a TencentDB instance"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRoGroups\n<common request parameters>\n\n{\n    \"InstanceId\": \"cdb-93hvfefg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e18a101-e6f5-440c-a9d3-3b30aef256e1\",\n        \"RoGroups\": [\n            {\n                \"DelayReplicationTime\": 0,\n                \"MinRoInGroup\": 1,\n                \"RoGroupId\": \"cdbrg-lsj**ijm\",\n                \"RoGroupMode\": \"\",\n                \"RoGroupName\": \"tommy1\",\n                \"RoGroupRegion\": \"ap-beijing\",\n                \"RoGroupZone\": \"ap-beijing-6\",\n                \"RoInstances\": [\n                    {\n                        \"DeadlineTime\": \"2024-11-12 16:11:06\",\n                        \"DeviceType\": \"CUSTOM\",\n                        \"EngineVersion\": \"8.0\",\n                        \"HourFeeStatus\": 1,\n                        \"InstanceId\": \"cdbro-lsjh**jm\",\n                        \"InstanceName\": \"cdb_ro_21**63\",\n                        \"InstanceType\": 3,\n                        \"MasterInstanceId\": \"cdb-93**fefg\",\n                        \"Memory\": 4000,\n                        \"OfflineTime\": \"2024-01-25 15:05:59\",\n                        \"PayType\": 0,\n                        \"Qps\": 4400,\n                        \"Region\": \"ap-beijing\",\n                        \"RoStatus\": \"online\",\n                        \"Status\": 1,\n                        \"SubnetId\": 2738750,\n                        \"TaskStatus\": 0,\n                        \"Vip\": \"172.*.32.13\",\n                        \"Volume\": 60,\n                        \"VpcId\": 7078258,\n                        \"Vport\": 3306,\n                        \"Weight\": 2,\n                        \"Zone\": \"ap-beijing-6\"\n                    }\n                ],\n                \"RoMaxDelayTime\": 10,\n                \"RoOfflineDelay\": 1,\n                \"UniqSubnetId\": \"subnet-jp6**13n\",\n                \"UniqVpcId\": \"vpc-4ko**3u6\",\n                \"Vip\": \"172.*.64.7\",\n                \"Vport\": 3306,\n                \"Weight\": 0,\n                \"WeightMode\": \"system\"\n            }\n        ]\n    }\n}",
+        "title": "查询云数据库实例的所有 RO 组的信息"
       }
     ],
     "DescribeRoMinScale": [
@@ -698,14 +698,6 @@
         "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisassociateSecurityGroups\n<Common request parameters>\n\n{\n    \"SecurityGroupId\": \"sg-ajr1jzgj\",\n    \"InstanceIds\": [\n        \"cdb-eb2w7dto\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"1a42feb9-82087f71-6a0031ac-699a92a8\"\n    }\n}",
         "title": "Unbinding security groups in batches"
-      }
-    ],
-    "InitDBInstances": [
-      {
-        "document": " ",
-        "input": "https://cdb.tencentcloudapi.com/?Action=InitDBInstances\r\n&InstanceIds.0=cdb-f35wr6wj\r\n&NewPassword=Gx18ux23F^X\r\n&Parameters.0.name=lower_case_table_names\r\n&Parameters.0.value=1\r\n&Parameters.1.name=character_set_server\r\n&Parameters.1.value=utf8\r\n&<common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\",\n        \"AsyncRequestIds\": [\n            \"8cd119d4-61ba-11e7-aeff-018cfa1f5560\"\n        ]\n    }\n}",
-        "title": "Initializing new instance"
       }
     ],
     "IsolateDBInstance": [
@@ -1028,10 +1020,10 @@
     ],
     "StopCpuExpand": [
       {
-        "document": "u200cThis API is used to disable the elastic expansion configuration for the current instance.",
-        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopCpuExpand\n<Common request parameters>\n\n{\n    \"InstanceId\": \"abc\"\n}",
-        "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": \"abc\",\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Disabling elastic expansion"
+        "document": "用于关闭当前实例的弹性扩容配置。",
+        "input": "POST / HTTP/1.1\nHost: cdb.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StopCpuExpand\n<common request parameters>\n\n{\n    \"InstanceId\": \"cdb-himitj11\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AsyncRequestId\": \"02e874af-e4876fb4-4c672e64-86f17866\",\n        \"RequestId\": \"d5b053f3-d58e-4048-aef9-b8cc9f044951\"\n    }\n}",
+        "title": "关闭弹性扩容"
       }
     ],
     "StopDBImportJob": [

@@ -540,7 +540,7 @@
           "example": "48000",
           "member": "uint64",
           "name": "SampleRate",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
@@ -549,7 +549,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Channel",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
@@ -558,7 +558,7 @@
           "example": "64",
           "member": "uint64",
           "name": "BitRate",
-          "required": true,
+          "required": false,
           "type": "int"
         }
       ],
@@ -4526,6 +4526,15 @@
           "name": "MaxDuration",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Volume. Valid value range: [0, 100], default value is 100, indicating the original volume.",
+          "example": "90",
+          "member": "uint64",
+          "name": "Volume",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -5249,8 +5258,17 @@
           "example": "https://a.b/test.mp4",
           "member": "string",
           "name": "StreamUrl",
-          "required": true,
+          "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Volume. Valid value range: [0, 100], default value is 100, indicating the original volume.",
+          "example": "90",
+          "member": "uint64",
+          "name": "Volume",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -5449,7 +5467,7 @@
           "example": "1280",
           "member": "uint64",
           "name": "Width",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
@@ -5458,7 +5476,7 @@
           "example": "720",
           "member": "uint64",
           "name": "Height",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
@@ -5467,7 +5485,7 @@
           "example": "15",
           "member": "uint64",
           "name": "Fps",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
@@ -5476,7 +5494,7 @@
           "example": "1500",
           "member": "uint64",
           "name": "BitRate",
-          "required": true,
+          "required": false,
           "type": "int"
         },
         {
@@ -5485,7 +5503,7 @@
           "example": "2",
           "member": "uint64",
           "name": "Gop",
-          "required": true,
+          "required": false,
           "type": "int"
         }
       ],

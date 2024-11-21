@@ -1941,58 +1941,6 @@ def doDescribeTables(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doDeleteTimeWindow(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
-        cred = credential.CVMRoleCredential()
-    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
-        cred = credential.STSAssumeRoleCredential(
-            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
-            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
-        )
-    elif os.getenv(OptionsDefine.ENV_TKE_REGION)             and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID)             and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE)             and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
-        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
-    else:
-        cred = credential.Credential(
-            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-        )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint],
-        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    if g_param[OptionsDefine.Language]:
-        profile.language = g_param[OptionsDefine.Language]
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DeleteTimeWindowRequest()
-    model.from_json_string(json.dumps(args))
-    start_time = time.time()
-    while True:
-        rsp = client.DeleteTimeWindow(model)
-        result = rsp.to_json_string()
-        try:
-            json_obj = json.loads(result)
-        except TypeError as e:
-            json_obj = json.loads(result.decode('utf-8'))  # python3.3
-        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
-            break
-        cur_time = time.time()
-        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
-            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
-            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
-            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
-        else:
-            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
-        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
 def doDescribeAccountPrivileges(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
@@ -2409,7 +2357,7 @@ def doDescribeBackups(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyAccountMaxUserConnections(args, parsed_globals):
+def doCreateParamTemplate(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -2438,11 +2386,11 @@ def doModifyAccountMaxUserConnections(args, parsed_globals):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyAccountMaxUserConnectionsRequest()
+    model = models.CreateParamTemplateRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifyAccountMaxUserConnections(model)
+        rsp = client.CreateParamTemplate(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -3033,7 +2981,7 @@ def doDescribeSlowLogs(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyInstanceParam(args, parsed_globals):
+def doModifyLocalBinlogConfig(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -3062,11 +3010,11 @@ def doModifyInstanceParam(args, parsed_globals):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyInstanceParamRequest()
+    model = models.ModifyLocalBinlogConfigRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifyInstanceParam(model)
+        rsp = client.ModifyLocalBinlogConfig(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -4385,7 +4333,7 @@ def doDescribeCdbProxyInfo(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doModifyLocalBinlogConfig(args, parsed_globals):
+def doModifyInstanceParam(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -4414,11 +4362,11 @@ def doModifyLocalBinlogConfig(args, parsed_globals):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.ModifyLocalBinlogConfigRequest()
+    model = models.ModifyInstanceParamRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.ModifyLocalBinlogConfig(model)
+        rsp = client.ModifyInstanceParam(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -4471,6 +4419,58 @@ def doCloseCDBProxy(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.CloseCDBProxy(model)
+        result = rsp.to_json_string()
+        try:
+            json_obj = json.loads(result)
+        except TypeError as e:
+            json_obj = json.loads(result.decode('utf-8'))  # python3.3
+        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
+            break
+        cur_time = time.time()
+        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
+            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
+            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
+            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
+        else:
+            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
+        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
+    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
+
+
+def doModifyAccountMaxUserConnections(args, parsed_globals):
+    g_param = parse_global_arg(parsed_globals)
+
+    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
+        cred = credential.CVMRoleCredential()
+    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
+        cred = credential.STSAssumeRoleCredential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
+            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
+        )
+    elif os.getenv(OptionsDefine.ENV_TKE_REGION)             and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID)             and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE)             and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
+        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
+    else:
+        cred = credential.Credential(
+            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
+        )
+    http_profile = HttpProfile(
+        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
+        reqMethod="POST",
+        endpoint=g_param[OptionsDefine.Endpoint],
+        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
+    )
+    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
+    if g_param[OptionsDefine.Language]:
+        profile.language = g_param[OptionsDefine.Language]
+    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
+    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
+    client._sdkVersion += ("_CLI_" + __version__)
+    models = MODELS_MAP[g_param[OptionsDefine.Version]]
+    model = models.ModifyAccountMaxUserConnectionsRequest()
+    model.from_json_string(json.dumps(args))
+    start_time = time.time()
+    while True:
+        rsp = client.ModifyAccountMaxUserConnections(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -4853,7 +4853,7 @@ def doAssociateSecurityGroups(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doInitDBInstances(args, parsed_globals):
+def doDescribeDBPrice(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -4882,11 +4882,11 @@ def doInitDBInstances(args, parsed_globals):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.InitDBInstancesRequest()
+    model = models.DescribeDBPriceRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.InitDBInstances(model)
+        rsp = client.DescribeDBPrice(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -5823,58 +5823,6 @@ def doModifyCdbProxyAddressVipAndVPort(args, parsed_globals):
     start_time = time.time()
     while True:
         rsp = client.ModifyCdbProxyAddressVipAndVPort(model)
-        result = rsp.to_json_string()
-        try:
-            json_obj = json.loads(result)
-        except TypeError as e:
-            json_obj = json.loads(result.decode('utf-8'))  # python3.3
-        if not g_param[OptionsDefine.Waiter] or search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj) == g_param['OptionsDefine.WaiterInfo']['to']:
-            break
-        cur_time = time.time()
-        if cur_time - start_time >= g_param['OptionsDefine.WaiterInfo']['timeout']:
-            raise ClientError('Request timeout, wait `%s` to `%s` timeout, last request is %s' %
-            (g_param['OptionsDefine.WaiterInfo']['expr'], g_param['OptionsDefine.WaiterInfo']['to'],
-            search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj)))
-        else:
-            print('Inquiry result is %s.' % search(g_param['OptionsDefine.WaiterInfo']['expr'], json_obj))
-        time.sleep(g_param['OptionsDefine.WaiterInfo']['interval'])
-    FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
-
-
-def doDescribeDBPrice(args, parsed_globals):
-    g_param = parse_global_arg(parsed_globals)
-
-    if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
-        cred = credential.CVMRoleCredential()
-    elif g_param[OptionsDefine.RoleArn.replace('-', '_')] and g_param[OptionsDefine.RoleSessionName.replace('-', '_')]:
-        cred = credential.STSAssumeRoleCredential(
-            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.RoleArn.replace('-', '_')],
-            g_param[OptionsDefine.RoleSessionName.replace('-', '_')], endpoint=g_param["sts_cred_endpoint"]
-        )
-    elif os.getenv(OptionsDefine.ENV_TKE_REGION)             and os.getenv(OptionsDefine.ENV_TKE_PROVIDER_ID)             and os.getenv(OptionsDefine.ENV_TKE_WEB_IDENTITY_TOKEN_FILE)             and os.getenv(OptionsDefine.ENV_TKE_ROLE_ARN):
-        cred = credential.DefaultTkeOIDCRoleArnProvider().get_credentials()
-    else:
-        cred = credential.Credential(
-            g_param[OptionsDefine.SecretId], g_param[OptionsDefine.SecretKey], g_param[OptionsDefine.Token]
-        )
-    http_profile = HttpProfile(
-        reqTimeout=60 if g_param[OptionsDefine.Timeout] is None else int(g_param[OptionsDefine.Timeout]),
-        reqMethod="POST",
-        endpoint=g_param[OptionsDefine.Endpoint],
-        proxy=g_param[OptionsDefine.HttpsProxy.replace('-', '_')]
-    )
-    profile = ClientProfile(httpProfile=http_profile, signMethod="HmacSHA256")
-    if g_param[OptionsDefine.Language]:
-        profile.language = g_param[OptionsDefine.Language]
-    mod = CLIENT_MAP[g_param[OptionsDefine.Version]]
-    client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
-    client._sdkVersion += ("_CLI_" + __version__)
-    models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.DescribeDBPriceRequest()
-    model.from_json_string(json.dumps(args))
-    start_time = time.time()
-    while True:
-        rsp = client.DescribeDBPrice(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -6933,7 +6881,7 @@ def doModifyRemoteBackupConfig(args, parsed_globals):
     FormatOutput.output("action", json_obj, g_param[OptionsDefine.Output], g_param[OptionsDefine.Filter])
 
 
-def doCreateParamTemplate(args, parsed_globals):
+def doDeleteTimeWindow(args, parsed_globals):
     g_param = parse_global_arg(parsed_globals)
 
     if g_param[OptionsDefine.UseCVMRole.replace('-', '_')]:
@@ -6962,11 +6910,11 @@ def doCreateParamTemplate(args, parsed_globals):
     client = mod.CdbClient(cred, g_param[OptionsDefine.Region], profile)
     client._sdkVersion += ("_CLI_" + __version__)
     models = MODELS_MAP[g_param[OptionsDefine.Version]]
-    model = models.CreateParamTemplateRequest()
+    model = models.DeleteTimeWindowRequest()
     model.from_json_string(json.dumps(args))
     start_time = time.time()
     while True:
-        rsp = client.CreateParamTemplate(model)
+        rsp = client.DeleteTimeWindow(model)
         result = rsp.to_json_string()
         try:
             json_obj = json.loads(result)
@@ -7033,7 +6981,6 @@ ACTION_MAP = {
     "DisassociateSecurityGroups": doDisassociateSecurityGroups,
     "ModifyCdbProxyParam": doModifyCdbProxyParam,
     "DescribeTables": doDescribeTables,
-    "DeleteTimeWindow": doDeleteTimeWindow,
     "DescribeAccountPrivileges": doDescribeAccountPrivileges,
     "ReleaseIsolatedDBInstances": doReleaseIsolatedDBInstances,
     "CreateCloneInstance": doCreateCloneInstance,
@@ -7042,7 +6989,7 @@ ACTION_MAP = {
     "SwitchForUpgrade": doSwitchForUpgrade,
     "DeleteParamTemplate": doDeleteParamTemplate,
     "DescribeBackups": doDescribeBackups,
-    "ModifyAccountMaxUserConnections": doModifyAccountMaxUserConnections,
+    "CreateParamTemplate": doCreateParamTemplate,
     "CreateDBInstanceHour": doCreateDBInstanceHour,
     "AddTimeWindow": doAddTimeWindow,
     "DescribeProxySupportParam": doDescribeProxySupportParam,
@@ -7054,7 +7001,7 @@ ACTION_MAP = {
     "CreateDatabase": doCreateDatabase,
     "DescribeProjectSecurityGroups": doDescribeProjectSecurityGroups,
     "DescribeSlowLogs": doDescribeSlowLogs,
-    "ModifyInstanceParam": doModifyInstanceParam,
+    "ModifyLocalBinlogConfig": doModifyLocalBinlogConfig,
     "CreateDBInstance": doCreateDBInstance,
     "ModifyParamTemplate": doModifyParamTemplate,
     "DescribeInstanceParams": doDescribeInstanceParams,
@@ -7080,8 +7027,9 @@ ACTION_MAP = {
     "DescribeProxyCustomConf": doDescribeProxyCustomConf,
     "AdjustCdbProxyAddress": doAdjustCdbProxyAddress,
     "DescribeCdbProxyInfo": doDescribeCdbProxyInfo,
-    "ModifyLocalBinlogConfig": doModifyLocalBinlogConfig,
+    "ModifyInstanceParam": doModifyInstanceParam,
     "CloseCDBProxy": doCloseCDBProxy,
+    "ModifyAccountMaxUserConnections": doModifyAccountMaxUserConnections,
     "DescribeAsyncRequestInfo": doDescribeAsyncRequestInfo,
     "DescribeAuditLogs": doDescribeAuditLogs,
     "DescribeDBInstanceRebootTime": doDescribeDBInstanceRebootTime,
@@ -7089,7 +7037,7 @@ ACTION_MAP = {
     "ModifyRoGroupInfo": doModifyRoGroupInfo,
     "DescribeUploadedFiles": doDescribeUploadedFiles,
     "AssociateSecurityGroups": doAssociateSecurityGroups,
-    "InitDBInstances": doInitDBInstances,
+    "DescribeDBPrice": doDescribeDBPrice,
     "ModifyAccountPrivileges": doModifyAccountPrivileges,
     "DescribeDBImportRecords": doDescribeDBImportRecords,
     "DescribeDBSwitchRecords": doDescribeDBSwitchRecords,
@@ -7108,7 +7056,6 @@ ACTION_MAP = {
     "DescribeAuditRules": doDescribeAuditRules,
     "DescribeRemoteBackupConfig": doDescribeRemoteBackupConfig,
     "ModifyCdbProxyAddressVipAndVPort": doModifyCdbProxyAddressVipAndVPort,
-    "DescribeDBPrice": doDescribeDBPrice,
     "DescribeDBInstanceLogToCLS": doDescribeDBInstanceLogToCLS,
     "CreateCdbProxy": doCreateCdbProxy,
     "ModifyAutoRenewFlag": doModifyAutoRenewFlag,
@@ -7129,7 +7076,7 @@ ACTION_MAP = {
     "UpgradeDBInstance": doUpgradeDBInstance,
     "UpgradeCDBProxyVersion": doUpgradeCDBProxyVersion,
     "ModifyRemoteBackupConfig": doModifyRemoteBackupConfig,
-    "CreateParamTemplate": doCreateParamTemplate,
+    "DeleteTimeWindow": doDeleteTimeWindow,
 
 }
 
