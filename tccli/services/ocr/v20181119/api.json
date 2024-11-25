@@ -6258,7 +6258,7 @@
         {
           "disabled": false,
           "document": "The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.\nEither `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, `ImageUrl` is used.",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -6267,7 +6267,7 @@
         {
           "disabled": false,
           "document": "The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.",
-          "example": "https://xx/a.jpg",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -6421,7 +6421,7 @@
         {
           "disabled": false,
           "document": "Identity photo",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "PortraitImage",
           "output_required": true,
@@ -6436,6 +6436,16 @@
           "name": "WarnCardInfos",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Field confidence:\n { \"ID\": { \"Confidence\": 0.9999 }, \"ThaiName\": { \"Confidence\": 0.9996 } }",
+          "example": "{\"ID\":{\"Confidence\":\"0.9500\"},\"ThaiName\":{\"Confidence\":\"0.9500\"}}",
+          "member": "string",
+          "name": "AdvancedInfo",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {
