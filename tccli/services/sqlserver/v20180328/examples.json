@@ -40,6 +40,14 @@
         "title": "Creating a backup file import task"
       }
     ],
+    "CreateBasicDBInstances": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateBasicDBInstances\n<common request parameters>\n\n{\n    \"VpcId\": \"vpc-huew581t\",\n    \"AutoRenewFlag\": \"0\",\n    \"Zone\": \"ap-guangzhou-3\",\n    \"GoodsNum\": \"1\",\n    \"TimeZone\": \"China Standard Time\",\n    \"DBVersion\": \"2008R2\",\n    \"Storage\": \"20\",\n    \"Period\": \"1\",\n    \"MachineType\": \"CLOUD_PREMIUM\",\n    \"Collation\": \"Chinese_PRC_CI_AS\",\n    \"InstanceChargeType\": \"PREPAID\",\n    \"StartTime\": \"00:00\",\n    \"Memory\": \"2\",\n    \"SubnetId\": \"subnet-pudyecyk\",\n    \"Span\": \"6\",\n    \"Cpu\": \"1\",\n    \"Weekly\": [\n        \"1\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"DealName\": \"20200713383000001111250\",\n        \"RequestId\": \"d84adfca-3ff0-46d2-b400-b5527446df72\"\n    }\n}",
+        "title": "创建基础版实例"
+      }
+    ],
     "CreateBusinessDBInstances": [
       {
         "document": "This example shows you how to create a business intelligence service instance.",
@@ -104,6 +112,14 @@
         "title": "Creating a migration task"
       }
     ],
+    "CreateReadOnlyDBInstances": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateReadOnlyDBInstances\n<common request parameters>\n\n{\n    \"ReadOnlyGroupMaxDelayTime\": \"10\",\n    \"VpcId\": \"vpc-3xq2t5al\",\n    \"GoodsNum\": \"1\",\n    \"Zone\": \"ap-guangzhou-2\",\n    \"InstanceId\": \"mssql-6upluvd5\",\n    \"Period\": \"1\",\n    \"Storage\": \"10\",\n    \"ReadOnlyGroupIsOfflineDelay\": \"1\",\n    \"ReadOnlyGroupMinInGroup\": \"1\",\n    \"ReadOnlyGroupName\": \"default_name\",\n    \"Collation\": \"Chinese_PRC_CI_AS\",\n    \"ReadOnlyGroupType\": \"2\",\n    \"InstanceChargeType\": \"POSTPAID\",\n    \"Memory\": \"2\",\n    \"SubnetId\": \"subnet-gdy95gfs\",\n    \"TimeZone\": \"China Standard Time\",\n    \"ReadOnlyGroupForcedUpgrade\": \"1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"DealNames\": [\n            \"20200722117963\"\n        ],\n        \"RequestId\": \"0509b6b8-8906-479f-9489-10620ec6d4ce\"\n    }\n}",
+        "title": "创建只读实例"
+      }
+    ],
     "DeleteAccount": [
       {
         "document": " ",
@@ -162,22 +178,22 @@
     ],
     "DescribeBackupCommand": [
       {
-        "document": " ",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupCommand\n&BackupFileType=FULL\n&DataBaseName=db1\n&IsRecovery=YES\n&LocalPath=E:/\n&<common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Command\": \"BACKUP DATABASE db1 TO DISK='E:/db1.bak' WITH INIT\",\n        \"RequestId\": \"1de3aea3-5fef-4891-b8b0-faeb4e3b5543\"\n    }\n}",
-        "title": "Querying the command of creating a full backup"
-      },
-      {
         "document": "This example shows you how to query the command to create a full backup and an incremental transaction log backup when you need to import the incremental transaction log backup. The full backup created does not need to be restored.\n\\\\\\\\n in the command means a line feed.",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupCommand\n&BackupFileType=FULL_LOG\n&DataBaseName=db1\n&IsRecovery=NO\n&LocalPath=E:/\n&<common request parameters>",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupCommand\n&BackupFileType=FULL\n&DataBaseName=db1\n&IsRecovery=YES\n&LocalPath=E:/\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Command\": \"declare @dbname varchar(100)\\\\\\\\ndeclare @localtime varchar(20)\\\\\\\\ndeclare @str varchar(8000)\\\\\\\\nset @dbname='db1'\\\\\\\\nset @localtime =replace(replace(replace(CONVERT(varchar, getdate(), 120 ),'-',''),' ',''),':','')\\\\\\\\nset @str='BACKUP DATABASE [' + @dbname + '] TO  DISK = N''E:/' + @dbname + '_' + @localtime + '_2full2_2noreconvery2.bak'' WITH INIT'\\\\\\\\nexec(@str)\\\\\\\\ngo\",\n        \"RequestId\": \"03199d88-9dda-49eb-a045-7c69eb4d3591\"\n    }\n}",
-        "title": "Querying the command of creating a full backup and an incremental transaction log backup"
+        "title": "Querying the Command of Creating a Full Backup"
       },
       {
-        "document": "This example shows you how to query the command to create an incremental transaction log backup when you need to import it. The incremental transaction log backup created needs to be restored.\n\\\\\\\\n in the command means a line feed.",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupCommand\n&BackupFileType=LOG\n&DataBaseName=db1\n&IsRecovery=YES\n&LocalPath=E:/\n&<common request parameters>",
+        "document": "This example shows you how to obtain the recovered incremental backup of transaction logs by this API when an incremental import of transaction logs is needed.\n\\\\\\\\n in the command means a line feed.",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupCommand\n&BackupFileType=LOG\n&DataBaseName=db1\n&IsRecovery=YES\n&LocalPath=E:/\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Command\": \"BACKUP DATABASE db1 TO DISK='E:/db1.bak' WITH INIT\",\n        \"RequestId\": \"1de3aea3-5fef-4891-b8b0-faeb4e3b5543\"\n    }\n}",
+        "title": "Querying the Command of Creating an Incremental Transaction Log Backup"
+      },
+      {
+        "document": "This example shows you how to obtain the full backup without recovery by this API when an incremental import of transaction logs is needed.\\\\\\\\n in the command means a line feed.",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeBackupCommand\n&BackupFileType=FULL_LOG\n&DataBaseName=db1\n&IsRecovery=NO\n&LocalPath=E:/\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Command\": \"declare @dbname varchar(100)\\\\\\\\ndeclare @localtime varchar(20)\\\\\\\\ndeclare @str varchar(8000)\\\\\\\\nset @dbname='db1'\\\\\\\\nset @localtime =replace(replace(replace(CONVERT(varchar, getdate(), 120 ),'-',''),' ',''),':','')\\\\\\\\nset @str='BACKUP LOG [' + @dbname + '] TO  DISK = N''E:/' + @dbname + '_' + @localtime + '_2log2_2reconvery2.bak'' WITH FORMAT, INIT'\\\\\\\\nexec(@str)\\\\\\\\ngo\",\n        \"RequestId\": \"8d53700f-b80b-415a-8738-0c340eff2057\"\n    }\n}",
-        "title": "Querying the command of creating an incremental transaction log backup"
+        "title": "Querying the Command of Creating a Full Backup and an Incremental Transaction Log Backup"
       }
     ],
     "DescribeBackupFiles": [
@@ -245,17 +261,17 @@
     "DescribeDBInstances": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstances\n<Common request parameters>\n\n{\n    \"Status\": \"2\",\n    \"SearchKey\": \"172.17.0.12\",\n    \"VpcId\": \"vpc-mknbt351\",\n    \"Zone\": \"ap-guangzhou-2\",\n    \"VersionSet\": [\n        \"2008R2\"\n    ],\n    \"ProjectId\": \"0\",\n    \"Offset\": \"0\",\n    \"PayMode\": \"1\",\n    \"Limit\": \"3\",\n    \"InstanceIdSet\": [\n        \"mssql-3l3fgqn7\"\n    ],\n    \"SubnetId\": \"subnet-f72hylo6\",\n    \"TagKeys\": [\n        \"Test tag\"\n    ],\n    \"VipSet\": [\n        \"172.1.0.12\"\n    ],\n    \"InstanceNameSet\": [\n        “Data warehouse”\n    ]\n}",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstances\n<Common request parameters>\n\n{\n    \"Status\": \"2\",\n    \"SearchKey\": \"172.17.0.12\",\n    \"VpcId\": \"vpc-mknbt351\",\n    \"Zone\": \"ap-guangzhou-2\",\n    \"VersionSet\": [\n        \"2008R2\"\n    ],\n    \"ProjectId\": \"0\",\n    \"Offset\": \"0\",\n    \"PayMode\": \"1\",\n    \"Limit\": \"3\",\n    \"InstanceIdSet\": [\n        \"mssql-3l3fgqn7\"\n    ],\n    \"SubnetId\": \"subnet-f72hylo6\",\n    \"TagKeys\": [\n        \"Test tag\"\n    ],\n    \"VipSet\": [\n        \"172.1.0.12\"\n    ],\n    \"InstanceNameSet\": [\n        \"Data warehouse\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"DBInstances\": [\n            {\n                \"BackupCycle\": [\n                    1\n                ],\n                \"BackupCycleType\": \"daily\",\n                \"BackupModel\": \"master_pkg\",\n                \"BackupSaveDays\": 7,\n                \"BackupTime\": \"07:03:00\",\n                \"Collation\": \"Chinese_PRC_CI_AS\",\n                \"Cpu\": 4,\n                \"CreateTime\": \"2022-11-07 16:21:01\",\n                \"CrossBackupEnabled\": \"disable\",\n                \"CrossBackupSaveDays\": 0,\n                \"CrossRegions\": [],\n                \"DnsPodDomain\": \"\",\n                \"EndTime\": \"0000-00-00 00:00:00\",\n                \"HAFlag\": \"SINGLE\",\n                \"InstanceId\": \"mssql-fz80u7u1\",\n                \"InstanceNote\": \"\",\n                \"InstanceType\": \"SI\",\n                \"IsolateOperator\": \"\",\n                \"IsolateTime\": \"0000-00-00 00:00:00\",\n                \"Memory\": 8,\n                \"Model\": 2,\n                \"Name\": \"2008-2012-2016\",\n                \"PayMode\": 0,\n                \"Pid\": 1003456,\n                \"ProjectId\": 0,\n                \"ROFlag\": \"\",\n                \"Region\": \"ap-guangzhou\",\n                \"RegionId\": 1,\n                \"RenewFlag\": 0,\n                \"ResourceTags\": null,\n                \"IsDrZone\": false,\n                \"SlaveZones\": {\n                    \"SlaveZone\": \"\",\n                    \"SlaveZoneName\": \"\"\n                },\n                \"StartTime\": \"2022-11-07 16:21:01\",\n                \"Status\": 2,\n                \"Storage\": 40,\n                \"SubFlag\": \"\",\n                \"SubnetId\": 2118677,\n                \"TgwWanVPort\": 0,\n                \"TimeZone\": \"China Standard Time\",\n                \"Type\": \"CLOUD_PREMIUM\",\n                \"Uid\": \"gamedb.gz1208.cdb.db\",\n                \"UniqSubnetId\": \"subnet-ieianm0o\",\n                \"UniqVpcId\": \"vpc-o739nubl\",\n                \"UpdateTime\": \"2022-11-07 20:04:03\",\n                \"UsedStorage\": 0,\n                \"Version\": \"2019\",\n                \"VersionName\": \"SQL Server 2019 Enterprise\",\n                \"Vip\": \"10.24.12.28\",\n                \"VpcId\": 5350471,\n                \"Vport\": 1433,\n                \"Zone\": \"ap-guangzhou-1\"\n                \"ZoneId\": 100003\n            }\n        ],\n        \"RequestId\": \"de641788-0565-4617-a7f4-639de128772b\",\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the list of instances"
       }
     ],
     "DescribeDBInstancesAttribute": [
       {
-        "document": "This example shows you how to query the attributes of an instance.",
+        "document": "This example shows you how to query the attributes of an instance by this API.",
         "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDBInstancesAttribute\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mssql-j8kv137v\"\n}",
         "output": "{\n    \"Response\": {\n        \"InstanceId\": \"mssql-j8kv137v\",\n        \"RegularBackupSaveDays\": 1,\n        \"RequestId\": \"7\",\n        \"RegularBackupCounts\": 1,\n        \"RegularBackupEnable\": \"enable\",\n        \"RegularBackupStrategy\": \"months\",\n        \"RegularBackupStartTime\": \"2022-10-10\",\n        \"EventSaveDays\": 0,\n        \"TDEConfig\": {\n            \"Encryption\": \"disable\",\n            \"CertificateAttribution\": \"self\",\n            \"QuoteUin\": \"\"\n        },\n        \"BlockedThreshold\": 6\n    }\n}",
-        "title": "Querying the attributes of the \"mssql-j8kv137v\" instance"
+        "title": "Querying the Attributes of the Instance mssql-j8kv137v"
       }
     ],
     "DescribeDBs": [
@@ -352,6 +368,14 @@
         "input": "https://sqlserver.tencentcloudapi.com/?Action=DescribeRegions\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9b0beca5-f3ea-44d3-97de-ec8f02effaea\",\n        \"TotalCount\": 9,\n        \"RegionSet\": [\n            {\n                \"Region\": \"ap-hongkong\",\n                \"RegionName\": \"Hong Kong (China)\",\n                \"RegionId\": 5,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-shanghai-fsi\",\n                \"RegionName\": \"Shanghai Finance\",\n                \"RegionId\": 7,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-shantou\",\n                \"RegionName\": \"Shantou\",\n                \"RegionId\": 2,\n                \"RegionState\": \"UNAVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-tianjin\",\n                \"RegionName\": \"Tianjin\",\n                \"RegionId\": 3,\n                \"RegionState\": \"UNAVAILABLE\"\n            },\n            {\n                \"Region\": \"na-toronto\",\n                \"RegionName\": \"North America\",\n                \"RegionId\": 6,\n                \"RegionState\": \"UNAVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-beijing\",\n                \"RegionName\": \"Beijing\",\n                \"RegionId\": 8,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-shenzhen-fsi\",\n                \"RegionName\": \"Shenzhen Finance\",\n                \"RegionId\": 11,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-guangzhou\",\n                \"RegionName\": \"Guangzhou\",\n                \"RegionId\": 1,\n                \"RegionState\": \"AVAILABLE\"\n            },\n            {\n                \"Region\": \"ap-shanghai\",\n                \"RegionName\": \"Shanghai\",\n                \"RegionId\": 4,\n                \"RegionState\": \"AVAILABLE\"\n            }\n        ]\n    }\n}",
         "title": "Querying all regions"
+      }
+    ],
+    "DescribeRestoreTimeRange": [
+      {
+        "document": "This example shows you how to query the time range available for rollback by time point by this API (DescribeRestoreTimeRange).",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeRestoreTimeRange\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mssql-aj89iq78\",\n    \"TargetInstanceId\": \"mssql-jkoa09sf\"\n}",
+        "output": "{\n    \"Response\": {\n        \"MinTime\": \"2024-01-01 00:00:00\",\n        \"MaxTime\": \"2024-01-07 00:00:00\",\n        \"RequestId\": \"cd7a35be-2fbf-f3a6-210a-ea9afe158817\"\n    }\n}",
+        "title": "Querying the Time Range Available for Rollback by Time Point."
       }
     ],
     "DescribeRollbackTime": [
@@ -461,15 +485,15 @@
     "ModifyDBInstanceNetwork": [
       {
         "document": " ",
-        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBInstanceNetwork\n&InstanceId=mssql-p2yli7gv\n&NewVpcId=vpc-ilki4qdp\n&NewSubnetId=subnet-lru6dhh8\n&Vip=127.0.0.1\n&OldIpRetainTime=12\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceNetwork\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mssql-e720ieef\",\n    \"NewVpcId\": \"vpc-kw88teud\",\n    \"NewSubnetId\": \"subnet-8z5n8tcg\",\n    \"OldIpRetainTime\": \"0\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"20db6661-2a85-49d9-8a37-976b931649fb\",\n        \"FlowId\": 100125\n    }\n}",
-        "title": "Modifying the instance network"
+        "title": "Network Change"
       },
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDBInstanceNetwork\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mssql-e720ieef\",\n    \"NewVpcId\": \"vpc-kw88teud\",\n    \"NewSubnetId\": \"subnet-8z5n8tcg\",\n    \"OldIpRetainTime\": \"0\"\n}",
+        "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBInstanceNetwork\n&InstanceId=mssql-p2yli7gv\n&NewVpcId=vpc-ilki4qdp\n&NewSubnetId=subnet-lru6dhh8\n&Vip=127.0.0.1\n&OldIpRetainTime=12\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"FlowId\": 1011581,\n        \"RequestId\": \"bdac237c-b9b7-4050-9284-97898cca5883\"\n    }\n}",
-        "title": "Modifying the instance network"
+        "title": "Instance Network Modification"
       }
     ],
     "ModifyDBInstanceProject": [
@@ -494,6 +518,14 @@
         "input": "https://sqlserver.tencentcloudapi.com/?Action=ModifyDBRemark\n&InstanceId=mssql-njj2mtpl\n&DBRemarks.0.Name=db_test\n&DBRemarks.0.Remark=Test database\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"08fdf411-5d39-44f2-8e1d-a58ee60b237d\"\n    }\n}",
         "title": "Modifying database remarks"
+      }
+    ],
+    "ModifyDReadable": [
+      {
+        "document": "This example shows you how to enable or disable the read-only feature of the replica server by this API.",
+        "input": "POST / HTTP/1.1\nHost: sqlserver.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDReadable\n<Common request parameters>\n\n{\n    \"InstanceId\": \"mssql-j8kv137v\",\n    \"Type\": \"enable\",\n    \"VpcId\": \"vpc-jh8ah7\",\n    \"SubnetId\": \"sub-i90aoa\",\n    \"Vip\": \"127.0.0.1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"1fed8472-f117-11ec-be47-525400853186\",\n        \"FlowId\": 1012152\n    }\n}",
+        "title": "Enabling or Disabling the Read-Only Feature of the Replica Server"
       }
     ],
     "ModifyDatabaseCDC": [
