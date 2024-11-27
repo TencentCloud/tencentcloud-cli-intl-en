@@ -3,8 +3,8 @@
     "DescribeCaptchaResult": [
       {
         "document": "This example shows you how to verify the ticket.",
-        "input": "POST / HTTP/1.1\nHost: captcha.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCaptchaResult\n<Common request parameters>\n\n{\n    \"CaptchaAppId\": 201111111,\n    \"CaptchaType\": 9,\n    \"NeedGetCaptchaTime\": 1,\n    \"Randstr\": \"123\",\n    \"UserIp\": \"127.0.0.1\",\n    \"Ticket\": \"123\",\n    \"AppSecretKey\": \"123\"\n}",
-        "output": "{\n    \"Response\": {\n        \"CaptchaCode\": 0,\n        \"CaptchaMsg\": \"not valid\",\n        \"EvilLevel\": 0,\n        \"GetCaptchaTime\": 0,\n        \"SubmitCaptchaTime\": 0,\n        \"EvilBitmap\": 0,\n        \"RequestId\": \"123\"\n    },\n    \"retcode\": 0,\n    \"retmsg\": \"success\"\n}",
+        "input": "POST / HTTP/1.1\nHost: captcha.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCaptchaResult\n<Common request parameters>\n\n{\n    \"CaptchaAppId\": 199999164,\n    \"CaptchaType\": 9,\n    \"NeedGetCaptchaTime\": 1,\n    \"Randstr\": \"@Vki\",\n    \"UserIp\": \"127.0.0.1\",\n    \"Ticket\": \"tr03XaCUZPAlPdIMqv17yvcfdXCzkqvLE09AbCA4ghlWfD8hkySfbU2TZVCyoOCjNI84pAYEMopKv7Uh8XwQDSE9DC0xJpXVC7kmlPENlbFINs_N937qkoEmU6Pl8e-9EkFQzvrrwsZOTKQ*\",\n    \"AppSecretKey\": \"E4kwK9AcXQMHkktiItyMEyQPn\"\n}",
+        "output": "{\n    \"Response\": {\n        \"CaptchaCode\": 0,\n        \"CaptchaMsg\": \"not valid\",\n        \"EvilLevel\": 0,\n        \"GetCaptchaTime\": 1729583235,\n        \"SubmitCaptchaTime\": 1729583239,\n        \"EvilBitmap\": 0,\n        \"RequestId\": \"7c370964-7deb-4008-8b29-47e87e60c1e0\"\n    },\n    \"retcode\": 0,\n    \"retmsg\": \"success\"\n}",
         "title": "Request and response examples"
       }
     ]

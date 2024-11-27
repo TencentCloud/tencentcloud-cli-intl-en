@@ -1,0 +1,1806 @@
+{
+  "actions": {
+    "AssociateTargetGroups": {
+      "document": "This API is used to bind target groups to a CLB.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
+      "input": "AssociateTargetGroupsRequest",
+      "name": "Associates a CLB with a target group",
+      "output": "AssociateTargetGroupsResponse",
+      "status": "online"
+    },
+    "CreateGatewayLoadBalancer": {
+      "document": "This API is used to create a GWLB instance. To use the GWLB service, you must purchase one or more GWLB instances. After this API is called successfully, a unique ID for the GWLB instance will be returned.Note: The default purchase quota for each account in each region is 10.This is an async API. After the API is called successfully, you can use the DescribeGatewayLoadBalancers API to query the status of the GWLB instance (such as creating and normal) to determine whether the creation is successful.",
+      "input": "CreateGatewayLoadBalancerRequest",
+      "name": "Purchases a GWLB Instance",
+      "output": "CreateGatewayLoadBalancerResponse",
+      "status": "online"
+    },
+    "CreateTargetGroup": {
+      "document": "This API is used to create a target group. This feature is in beta testing. If you need to use it, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1).",
+      "input": "CreateTargetGroupRequest",
+      "name": "Creates a target group",
+      "output": "CreateTargetGroupResponse",
+      "status": "online"
+    },
+    "DeleteGatewayLoadBalancer": {
+      "document": "This API is used to delete one or more specified GWLB instances. After successful deletion, the GWLB instances will be unbound from the backend service.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestId as an input parameter to check whether this task is successful.",
+      "input": "DeleteGatewayLoadBalancerRequest",
+      "name": "Deletes a GWLB instance",
+      "output": "DeleteGatewayLoadBalancerResponse",
+      "status": "online"
+    },
+    "DeleteTargetGroups": {
+      "document": "This API is used to delete a target group.",
+      "input": "DeleteTargetGroupsRequest",
+      "name": "Deletes a target group",
+      "output": "DeleteTargetGroupsResponse",
+      "status": "online"
+    },
+    "DeregisterTargetGroupInstances": {
+      "document": "This API is used to unbind a server from a target group.\nThis is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
+      "input": "DeregisterTargetGroupInstancesRequest",
+      "name": "Unbinds instances in the target group",
+      "output": "DeregisterTargetGroupInstancesResponse",
+      "status": "online"
+    },
+    "DescribeGatewayLoadBalancers": {
+      "document": "This API is used to query the list of GWLB instances in a region.",
+      "input": "DescribeGatewayLoadBalancersRequest",
+      "name": "Queries the list of GWLB instances",
+      "output": "DescribeGatewayLoadBalancersResponse",
+      "status": "online"
+    },
+    "DescribeTargetGroupInstanceStatus": {
+      "document": "This API is used to query the backend service status of a target group. Currently, only GWLB type target groups support querying backend service status.",
+      "input": "DescribeTargetGroupInstanceStatusRequest",
+      "name": "Queries the backend service status of a target group",
+      "output": "DescribeTargetGroupInstanceStatusResponse",
+      "status": "online"
+    },
+    "DescribeTargetGroupInstances": {
+      "document": "This API is used to obtain information on servers bound to a target group.",
+      "input": "DescribeTargetGroupInstancesRequest",
+      "name": "Obtains the list of instances bound to the target group",
+      "output": "DescribeTargetGroupInstancesResponse",
+      "status": "online"
+    },
+    "DescribeTargetGroupList": {
+      "document": "This API is used to obtain a target group list.",
+      "input": "DescribeTargetGroupListRequest",
+      "name": "Obtains a target group list.",
+      "output": "DescribeTargetGroupListResponse",
+      "status": "online"
+    },
+    "DescribeTargetGroups": {
+      "document": "This API is used to query target group information.",
+      "input": "DescribeTargetGroupsRequest",
+      "name": "Queries target group information",
+      "output": "DescribeTargetGroupsResponse",
+      "status": "online"
+    },
+    "DescribeTaskStatus": {
+      "document": "This API is used to query the execution status of an async task. After non-query APIs (for example, used to create/delete CLB instances) are called successfully, this API needs to be used to query whether the task is successful.",
+      "input": "DescribeTaskStatusRequest",
+      "name": "Queries the status of an async task",
+      "output": "DescribeTaskStatusResponse",
+      "status": "online"
+    },
+    "DisassociateTargetGroups": {
+      "document": "This API is used to disassociate a CLB from a target group.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
+      "input": "DisassociateTargetGroupsRequest",
+      "name": "Disassociates a CLB from a target group",
+      "output": "DisassociateTargetGroupsResponse",
+      "status": "online"
+    },
+    "InquirePriceCreateGatewayLoadBalancer": {
+      "document": "This API is used to query the price for creating a GWLB.",
+      "input": "InquirePriceCreateGatewayLoadBalancerRequest",
+      "name": "Queries the price for purchasing a GWLB",
+      "output": "InquirePriceCreateGatewayLoadBalancerResponse",
+      "status": "online"
+    },
+    "ModifyGatewayLoadBalancerAttribute": {
+      "document": "This API is used to modify the attributes of a CLB instance. It supports modifying the name and bandwidth cap of the CLB instance.",
+      "input": "ModifyGatewayLoadBalancerAttributeRequest",
+      "name": "Modifies the attributes of a GWLB instance",
+      "output": "ModifyGatewayLoadBalancerAttributeResponse",
+      "status": "online"
+    },
+    "ModifyTargetGroupAttribute": {
+      "document": "This API is used to modify the name, health check, and other attributes of the target group.",
+      "input": "ModifyTargetGroupAttributeRequest",
+      "name": "Modifies target group attributes",
+      "output": "ModifyTargetGroupAttributeResponse",
+      "status": "online"
+    },
+    "ModifyTargetGroupInstancesWeight": {
+      "document": "This API is used to modify the server weight of a target group.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
+      "input": "ModifyTargetGroupInstancesWeightRequest",
+      "name": "Modifies the server weight of a target group",
+      "output": "ModifyTargetGroupInstancesWeightResponse",
+      "status": "online"
+    },
+    "RegisterTargetGroupInstances": {
+      "document": "This API is used to register servers to a target group.This is an async API. After the API return succeeds, you can call the DescribeTaskStatus API with the returned RequestID as an input parameter to check whether this task is successful.",
+      "input": "RegisterTargetGroupInstancesRequest",
+      "name": "Adds instances to the target group",
+      "output": "RegisterTargetGroupInstancesResponse",
+      "status": "online"
+    }
+  },
+  "metadata": {
+    "apiVersion": "2024-09-06",
+    "serviceNameCN": "网关负载均衡",
+    "serviceShortName": "gwlb"
+  },
+  "objects": {
+    "AssociateTargetGroupsRequest": {
+      "document": "AssociateTargetGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Binding relationship array. A single request supports up to 20 items.",
+          "example": "无",
+          "member": "TargetGroupAssociation",
+          "name": "Associations",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateTargetGroupsResponse": {
+      "document": "AssociateTargetGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociationItem": {
+      "document": "Rule associated with target group",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Associated GWLB instance ID",
+          "example": "无",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "GWLB instance name",
+          "example": "无",
+          "member": "string",
+          "name": "LoadBalancerName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "CreateGatewayLoadBalancerRequest": {
+      "document": "CreateGatewayLoadBalancer request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID of the VPC to which the backend target device of the GWLB belongs, such as vpc-12345678. It can be obtained through the DescribeVpcEx interface. If left blank, it defaults to DefaultVPC. This parameter is required when a private network CLB instance is created.",
+          "example": "vpc-30xq****",
+          "member": "string",
+          "name": "VpcId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subnet ID of the VPC to which the backend target device of the GWLB belongs.",
+          "example": "subnet-xxx",
+          "member": "string",
+          "name": "SubnetId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "GWLB instance name. It supports input of 1 to 60 characters. If not filled in, it will be generated automatically by default.",
+          "example": "gwlb-xxx",
+          "member": "string",
+          "name": "LoadBalancerName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of GWLBs to create, with a default of 1. The maximum batch creation quantity is 10.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Number",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "While the GWLB is purchased, it is tagged, with a maximum of 20 tag key-value pairs.",
+          "example": "无",
+          "member": "TagInfo",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "GWLB instance billing type, which currently supports POSTPAID_BY_HOUR only. The default is POSTPAID_BY_HOUR.",
+          "example": "POSTPAID_BY_HOUR",
+          "member": "string",
+          "name": "LBChargeType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateGatewayLoadBalancerResponse": {
+      "document": "CreateGatewayLoadBalancer response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Array of unique GWLB instance IDs.In certain scenarios, for example, when there is a delay in creation, this field may return null; at this time, you can query the created resource ID through the DescribeTaskStatus API using the RequestId or DealName parameter returned by the API.Note: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "[\"gwlb-6efswuxa\"]",
+          "member": "string",
+          "name": "LoadBalancerIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Order number.\n\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2022XXXX",
+          "member": "string",
+          "name": "DealName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTargetGroupRequest": {
+      "document": "CreateTargetGroup request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target group name, limited to 60 characters.",
+          "example": "test-name",
+          "member": "string",
+          "name": "TargetGroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "VPCID attribute of target group. If this parameter is left blank, the default VPC will be used.",
+          "example": "vpc-i1******",
+          "member": "string",
+          "name": "VpcId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Default port of the target group, which can be used when servers are added later. Either 'Port' or 'TargetGroupInstances.N.port' must be filled in.",
+          "example": "80",
+          "member": "uint64",
+          "name": "Port",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Real server bound to a target group",
+          "example": "无",
+          "member": "TargetGroupInstance",
+          "name": "TargetGroupInstances",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "GWLB target group protocol.\n- TENCENT_GENEVE: GENEVE standard protocol\n\n- AWS_GENEVE: GENEVE compatibility protocol (a ticket is required for allowlisting)",
+          "example": "GENEVE",
+          "member": "string",
+          "name": "Protocol",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Health check settings.",
+          "example": "无",
+          "member": "TargetGroupHealthCheck",
+          "name": "HealthCheck",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Load balancing algorithm.\n- IP_HASH_3_ELASTIC: elastic hashing",
+          "example": "IP_HASH_3_ELASTIC",
+          "member": "string",
+          "name": "ScheduleAlgorithm",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Whether \"All Dead, All Alive\" is supported. It is supported by default.",
+          "example": "true",
+          "member": "bool",
+          "name": "AllDeadToAlive",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateTargetGroupResponse": {
+      "document": "CreateTargetGroup response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "ID generated after target group creation",
+          "example": "lbtg-81******",
+          "member": "string",
+          "name": "TargetGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGatewayLoadBalancerRequest": {
+      "document": "DeleteGatewayLoadBalancer request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Array of GWLB instance IDs to be deleted, with the array size up to 20.",
+          "example": "[\"gwlb-hs******\\r\\n\"]",
+          "member": "string",
+          "name": "LoadBalancerIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteGatewayLoadBalancerResponse": {
+      "document": "DeleteGatewayLoadBalancer response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTargetGroupsRequest": {
+      "document": "DeleteTargetGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target group ID list.",
+          "example": "[\"lbtg-f1phe5j6\"]",
+          "member": "string",
+          "name": "TargetGroupIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteTargetGroupsResponse": {
+      "document": "DeleteTargetGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeregisterTargetGroupInstancesRequest": {
+      "document": "DeregisterTargetGroupInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target group ID.",
+          "example": "lbtg-815iz538",
+          "member": "string",
+          "name": "TargetGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Information on server to be unbound.",
+          "example": "无",
+          "member": "TargetGroupInstance",
+          "name": "TargetGroupInstances",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeregisterTargetGroupInstancesResponse": {
+      "document": "DeregisterTargetGroupInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGatewayLoadBalancersRequest": {
+      "document": "DescribeGatewayLoadBalancers request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "GWLB instance ID. Batch filtering is supported with a maximum of 20 instance IDs.",
+          "example": "gwlb-pnzsdc1a",
+          "member": "string",
+          "name": "LoadBalancerIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Number of GWLB instances returned in a batch, with a default value of 20 and a maximum value of 100.",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Starting offset for returning the list of GWLB instances, with a default value of 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criteria for querying the CLB details list. For each request, the maximum value of Filters is 10, and the maximum value of Filter.Values is 100.Filter.Name and Filter.Values are both required. Detailed filter criteria are as follows:- name - String - required: No - (filter criteria) filter by GWLB instance name, such as \"gwlb-xxxx\".- VpcId - String - required: No - (filter criteria) filter by the VPC to which the GWLB instance belongs, such as \"vpc-bhqk****\".",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Search field, for fuzzy matching of name and VIP.",
+          "example": "test-name",
+          "member": "string",
+          "name": "SearchKey",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeGatewayLoadBalancersResponse": {
+      "document": "DescribeGatewayLoadBalancers response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of CLB instances that meet the filter criteria. This value is independent of the Limit in the input parameters.",
+          "example": "无",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Returned GWLB instance array.",
+          "example": "无",
+          "member": "GatewayLoadBalancer",
+          "name": "LoadBalancerSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTargetGroupInstanceStatusRequest": {
+      "document": "DescribeTargetGroupInstanceStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique target group ID",
+          "example": "lbtg-xxx",
+          "member": "string",
+          "name": "TargetGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of backend service IPs bound to the target group",
+          "example": "[\"10.0.0.1\"]",
+          "member": "string",
+          "name": "TargetGroupInstanceIps",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTargetGroupInstanceStatusResponse": {
+      "document": "DescribeTargetGroupInstanceStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Health check backend RS status list",
+          "example": "null",
+          "member": "TargetGroupInstanceStatus",
+          "name": "TargetGroupInstanceSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTargetGroupInstancesRequest": {
+      "document": "DescribeTargetGroupInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter criteria. Currently, only filtering by TargetGroupId, BindIP, or InstanceId is supported.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Number of displayed results. Default value: 20.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Displayed offset. Default value: 0.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTargetGroupInstancesResponse": {
+      "document": "DescribeTargetGroupInstances response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of results returned for the current query.",
+          "example": "2",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Information on bound server.",
+          "example": "无",
+          "member": "TargetGroupBackend",
+          "name": "TargetGroupInstanceSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Actual statistical quantity, which is not affected by Limit, Offset, or CAM.",
+          "example": "2",
+          "member": "uint64",
+          "name": "RealCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTargetGroupListRequest": {
+      "document": "DescribeTargetGroupList request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target group ID array.",
+          "example": "[\"lbtg-5xu****\"]",
+          "member": "string",
+          "name": "TargetGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criterion array, which supports TargetGroupVpcId and TargetGroupName.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Starting display offset.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Limit on the number of displayed entries. Default value: 20.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTargetGroupListResponse": {
+      "document": "DescribeTargetGroupList response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of displayed results.",
+          "example": "2",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Collection of displayed target group information.",
+          "example": "无",
+          "member": "TargetGroupInfo",
+          "name": "TargetGroupSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTargetGroupsRequest": {
+      "document": "DescribeTargetGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target group ID, which is mutually exclusive with Filters.",
+          "example": "[\"lbtg-5xunivs0\\r\\n\"]",
+          "member": "string",
+          "name": "TargetGroupIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Limit on the number of displayed entries. Default value: 20.",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Starting display offset.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter criterion array, which supports TargetGroupVpcId and TargetGroupName.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTargetGroupsResponse": {
+      "document": "DescribeTargetGroups response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of displayed results.",
+          "example": "1",
+          "member": "uint64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Collection of displayed target group information.",
+          "example": "无",
+          "member": "TargetGroupInfo",
+          "name": "TargetGroupSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskStatusRequest": {
+      "document": "DescribeTaskStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Request ID, which is the RequestId parameter returned by the API.",
+          "example": "55c85074-3e7f-4c6d-864f-673660d4f8de",
+          "member": "string",
+          "name": "TaskId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTaskStatusResponse": {
+      "document": "DescribeTaskStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Current status of task. Valid values: 0 (succeeded), 1 (failed), 2 (in progress).",
+          "example": "0",
+          "member": "int64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Array of unique CLB instance IDs.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "[\"gwlb-6efswuxa\"]",
+          "member": "string",
+          "name": "LoadBalancerIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Auxiliary description information, such as failure causes.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateTargetGroupsRequest": {
+      "document": "DisassociateTargetGroups request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of target groups to unbind.",
+          "example": "无",
+          "member": "TargetGroupAssociation",
+          "name": "Associations",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateTargetGroupsResponse": {
+      "document": "DisassociateTargetGroups response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Filter": {
+      "document": "Filter criteria",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Filter name",
+          "example": "",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter value array",
+          "example": "",
+          "member": "string",
+          "name": "Values",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "GatewayLoadBalancer": {
+      "document": "Information on the GWLB instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "GWLB instance ID.",
+          "example": "gwlb-xxx",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name of the GWLB instance.",
+          "example": "Name",
+          "member": "string",
+          "name": "LoadBalancerName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPC to which the GWLB belongs.Note: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "vpc-mj65xxxx",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subnet to which the GWLB belongs.",
+          "example": "subnet-lzj3xxxx",
+          "member": "string",
+          "name": "SubnetId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Virtual IP of GWLB for providing service.",
+          "example": "x.x.x.x",
+          "member": "string",
+          "name": "Vips",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "GWLB instance status.0: creating, 1: normal operation, 3: deleting.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Status",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of associated target group.Note: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "lbtg-xxx",
+          "member": "string",
+          "name": "TargetGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable the deletion protection feature.Note: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "DeleteProtect",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag information on the CLB instance.Note: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "TagInfo",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Creation time.",
+          "example": "2024-10-15 20:30:48",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Billing type of the GWLB instance. POSTPAID_BY_HOUR: pay-as-you-goNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "POSTPAID_BY_HOUR",
+          "member": "string",
+          "name": "ChargeType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "0: Not isolated; 1: Isolated.\n\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Isolation",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "CLB instance isolation time\n\nNote: this field may return `null`, indicating that no valid values can be obtained.",
+          "example": "2022-02-12 12:15:08",
+          "member": "string",
+          "name": "IsolatedTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "InquirePriceCreateGatewayLoadBalancerRequest": {
+      "document": "InquirePriceCreateGatewayLoadBalancer request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of GWLB instances for inquiry, with a default of 1",
+          "example": "1",
+          "member": "uint64",
+          "name": "GoodsNum",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "InquirePriceCreateGatewayLoadBalancerResponse": {
+      "document": "InquirePriceCreateGatewayLoadBalancer response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "This parameter represents the corresponding price.",
+          "example": "无",
+          "member": "Price",
+          "name": "Price",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ItemPrice": {
+      "document": "It describes the price information of a single item.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Postpaid unit price. Unit: CNY.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "10",
+          "member": "float",
+          "name": "UnitPrice",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Pay-as-you-go billing unit. Valid values: HOUR: indicates that the billing unit is calculated by hour. Current scenarios involving this billing unit include: postpaid by hour for instances (POSTPAID_BY_HOUR).Note: This field may return null, indicating that no valid value can be obtained.",
+          "example": "HOUR",
+          "member": "string",
+          "name": "ChargeUnit",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Original price of pre-payment (in CNY).\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "50",
+          "member": "float",
+          "name": "OriginalPrice",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Discount price of prepaid costs, unit: CNY.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "50",
+          "member": "float",
+          "name": "DiscountPrice",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Discounted unit price for pay-as-you-go. Unit: CNY.Note: This field may return null, indicating that no valid value can be obtained.",
+          "example": "10",
+          "member": "float",
+          "name": "UnitPriceDiscount",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Discount, such as 20.0 representing 80% off.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "100",
+          "member": "float",
+          "name": "Discount",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ModifyGatewayLoadBalancerAttributeRequest": {
+      "document": "ModifyGatewayLoadBalancerAttribute request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique GWLB ID.",
+          "example": "gwlb-xxx",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "GWLB instance name. It supports input of 1 to 60 characters.",
+          "example": "newname",
+          "member": "string",
+          "name": "LoadBalancerName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyGatewayLoadBalancerAttributeResponse": {
+      "document": "ModifyGatewayLoadBalancerAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTargetGroupAttributeRequest": {
+      "document": "ModifyTargetGroupAttribute request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target group ID.",
+          "example": "lbtg-815iz538",
+          "member": "string",
+          "name": "TargetGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "New name of target group.",
+          "example": "xxxxholic",
+          "member": "string",
+          "name": "TargetGroupName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Health check details.",
+          "example": "null",
+          "member": "TargetGroupHealthCheck",
+          "name": "HealthCheck",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Whether \"All Dead, All Alive\" is supported.",
+          "example": "true",
+          "member": "bool",
+          "name": "AllDeadToAlive",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTargetGroupAttributeResponse": {
+      "document": "ModifyTargetGroupAttribute response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTargetGroupInstancesWeightRequest": {
+      "document": "ModifyTargetGroupInstancesWeight request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target group ID.",
+          "example": "lbtg-815iz538",
+          "member": "string",
+          "name": "TargetGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Instance binding configuration array.",
+          "example": "无",
+          "member": "TargetGroupInstance",
+          "name": "TargetGroupInstances",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyTargetGroupInstancesWeightResponse": {
+      "document": "ModifyTargetGroupInstancesWeight response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "Price": {
+      "document": "It indicates the price of the GWLB.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "It describes the instance price.Note: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ItemPrice",
+          "name": "InstancePrice",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "It describes the price of GLCU.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ItemPrice",
+          "name": "LcuPrice",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "RegisterTargetGroupInstancesRequest": {
+      "document": "RegisterTargetGroupInstances request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target group ID",
+          "example": "lbtg-815iz538",
+          "member": "string",
+          "name": "TargetGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Server instance array",
+          "example": "无",
+          "member": "TargetGroupInstance",
+          "name": "TargetGroupInstances",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "RegisterTargetGroupInstancesResponse": {
+      "document": "RegisterTargetGroupInstances response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "TagInfo": {
+      "document": "Tag information on GWLB",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Tag key",
+          "example": "key-xxx",
+          "member": "string",
+          "name": "TagKey",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Tag value",
+          "example": "value-xxx",
+          "member": "string",
+          "name": "TagValue",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TargetGroupAssociation": {
+      "document": "Association relationship between rules and target groups.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "GWLB instance ID.",
+          "example": "gwlb-20dhh498",
+          "member": "string",
+          "name": "LoadBalancerId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target group ID.",
+          "example": "lbtg-0nzo3czo",
+          "member": "string",
+          "name": "TargetGroupId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "TargetGroupBackend": {
+      "document": "Real server bound to a target group",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target group ID",
+          "example": "lbtg-5f37****",
+          "member": "string",
+          "name": "TargetGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Backend service type. Valid values: CVM, ENI (to be supported soon)",
+          "example": "CVM",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unique backend service ID",
+          "example": "ins-2bei****",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Listening port of backend service",
+          "example": "80",
+          "member": "uint64",
+          "name": "Port",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Forwarding weight of backend service. Value range: [0, 100]. Default value: 10.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Weight",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Public network IP of the real server\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "[1.1.1.1]",
+          "member": "string",
+          "name": "PublicIpAddresses",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Private network IP of backend serviceNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "[2.2.2.2]",
+          "member": "string",
+          "name": "PrivateIpAddresses",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Instance name of the real server\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "testName",
+          "member": "string",
+          "name": "InstanceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Real server binding time\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "2021-03-16T00:00:00+08:00",
+          "member": "datetime_iso",
+          "name": "RegisteredTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the ENI\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "eni-jf7u****",
+          "member": "string",
+          "name": "EniId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Available zone ID of backend serviceNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "400001",
+          "member": "uint64",
+          "name": "ZoneId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TargetGroupHealthCheck": {
+      "document": "Details of target group health check",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable the health check.",
+          "example": "true",
+          "member": "bool",
+          "name": "HealthSwitch",
+          "output_required": true,
+          "required": true,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Protocol used for health check, which supports PING and TCP and is PING by default.\n\n- PING: icmp\n- TCP: tcp",
+          "example": "icmp",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Health check port, which is required when the probe protocol is TCP.",
+          "example": "80",
+          "member": "int64",
+          "name": "Port",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Health check timeout. The default is 2 seconds. Value range: 2-30 seconds.",
+          "example": "2",
+          "member": "int64",
+          "name": "Timeout",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Detection interval time. The default is 5 seconds. Value range: 2-300 seconds.",
+          "example": "5",
+          "member": "int64",
+          "name": "IntervalTime",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Health detection threshold. The default is 3 times. Value range: 2-10 times.",
+          "example": "3",
+          "member": "int64",
+          "name": "HealthNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Unhealth detection threshold. The default is 3 times. Value range: 2-10 times.",
+          "example": "3",
+          "member": "int64",
+          "name": "UnHealthNum",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TargetGroupInfo": {
+      "document": "Target group information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target group ID",
+          "example": "lbtg-xxxxxxxx",
+          "member": "string",
+          "name": "TargetGroupId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "VPCID of target group",
+          "example": "vpc-xxxxxxxx",
+          "member": "string",
+          "name": "VpcId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target group name",
+          "example": "Name",
+          "member": "string",
+          "name": "TargetGroupName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Default port of a target group\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "60",
+          "member": "uint64",
+          "name": "Port",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Target group creation time",
+          "example": "2024-10-15T10:37:16+08:00",
+          "member": "datetime_iso",
+          "name": "CreatedTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target group modification time",
+          "example": "2024-10-15T10:37:16+08:00",
+          "member": "datetime_iso",
+          "name": "UpdatedTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Associated rule array. This parameter cannot be obtained when the DescribeTargetGroupList API is called.Note: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "AssociationItem",
+          "name": "AssociatedRule",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Backend protocol type.Note: This field may return null, indicating that no valid value can be obtained.",
+          "example": "geneve",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Scheduling algorithm.\nip_hash_3: elastic hashing\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "ip_hash_3",
+          "member": "string",
+          "name": "ScheduleAlgorithm",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Health check details.Note: This field may return null, indicating that no valid value can be obtained.",
+          "example": "null",
+          "member": "TargetGroupHealthCheck",
+          "name": "HealthCheck",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether \"All Dead, All Alive\" is supported.Note: This field may return null, indicating that no valid value can be obtained.",
+          "example": "true",
+          "member": "bool",
+          "name": "AllDeadToAlive",
+          "output_required": true,
+          "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of rules associated with the target group.Note: This field may return null, indicating that no valid value can be obtained.",
+          "example": "60",
+          "member": "int64",
+          "name": "AssociatedRuleCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Number of instances in the target group.Note: This field may return null, indicating that no valid value can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "RegisteredInstancesCount",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "TargetGroupInstance": {
+      "document": "Target group instance",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Private network IP of target group instance.",
+          "example": "x.x.x.x",
+          "member": "string",
+          "name": "BindIP",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Port of target group instance. Only 6081 is supported.",
+          "example": "6081",
+          "member": "uint64",
+          "name": "Port",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Weight of target group instance. Only 0 or 16 is supported, and non-0 is uniformly treated as 16.",
+          "example": "0",
+          "member": "uint64",
+          "name": "Weight",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
+    "TargetGroupInstanceStatus": {
+      "document": "It is used for the health check status of the target group backend RS.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IP of backend RS",
+          "example": "10.0.0.1",
+          "member": "string",
+          "name": "InstanceIp",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Health check status, with parameter values and meanings as follows:● on: indicates being under detection.● off: indicates that the health check is disabled.● health: indicates being healthy.● unhealth: indicates being abnormal.",
+          "example": "health",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    }
+  },
+  "version": "1.0"
+}

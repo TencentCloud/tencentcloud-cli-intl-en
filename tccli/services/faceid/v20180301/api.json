@@ -459,6 +459,15 @@
           "name": "Extra",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "This interface is used to control th action sequences.\nAction types are as follows:\n\"blink\"\n\"mouth\"\n\"nod\"\n\"shake\"\nYou can choose 1-2 actions out of the four.\nSingle action example: \"blink\"\nMultiple action example: \"blink,mouth\"\nThe default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2 or 4; otherwise, the interface reports an error.",
+          "example": "blink",
+          "member": "string",
+          "name": "ActionList",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -500,7 +509,7 @@
         {
           "disabled": false,
           "document": "The Base64-encoded string (max 8 MB in size) of the photo to be compared.The Data URI scheme header needs to be removed from the encoded string\nExample: xhBQAAACBjSFJNAAB6****AAAASUVORK5CYII=",
-          "example": "CompareImageBase64String",
+          "example": "xhBQAAACBjSFJNAAB6************AAAASUVORK5CYII=",
           "member": "string",
           "name": "CompareImageBase64",
           "required": false,
@@ -635,11 +644,11 @@
       "type": "object"
     },
     "AttackRiskDetail": {
-      "document": "",
+      "document": "Suspected attack detail",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Suspected attack trace types\nSuspectedSpoofingAttack: Suspected spoofing attack\n SuspectedSynthesisImage: Suspected synthesis image SuspectedSynthesisVideo: Suspected synthesis video SuspectedeAnomalyAttack: Suspected anomaly attack SuspectedAdversarialAttack: Suspected adversarial attack SuspectedBlackIndustry: Suspected batch generation attack\nSuspectedWatermark: Suspected watermark",
           "example": "SuspectedWatermark",
           "member": "string",
           "name": "Type",
@@ -2033,6 +2042,15 @@
           "name": "Extra",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "This interface is used to control th action sequences.\nAction types are as follows:\n\"blink\"\n\"mouth\"\n\"nod\"\n\"shake\"\nYou can choose 1-2 actions out of the four.\nSingle action example: \"blink\"\nMultiple action example: \"blink,mouth\"\nThe default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2 or 4; otherwise, the interface reports an error.",
+          "example": "blink",
+          "member": "string",
+          "name": "ActionList",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -2046,6 +2064,7 @@
           "example": "0749c982-499e-4d1d-9e6a-103390933016",
           "member": "string",
           "name": "SdkToken",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5192,6 +5211,15 @@
           "name": "AutoDowngrade",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "This interface is used to control th action sequences.\nAction types are as follows:\n\"blink\"\n\"mouth\"\n\"nod\"\n\"shake\"\nYou can choose 1-2 actions out of the four.\nSingle action example: \"blink\"\nMultiple action example: \"blink,mouth\"\nThe default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2, 4, or 5; otherwise, the interface reports an error.",
+          "example": "blink",
+          "member": "string",
+          "name": "ActionList",
+          "required": false,
+          "type": "string"
         }
       ],
       "usage": "in"

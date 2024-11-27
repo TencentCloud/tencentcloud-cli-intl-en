@@ -6,6 +6,20 @@
       "name": "Image Face Fusion (Basic)",
       "output": "FuseFaceResponse",
       "status": "online"
+    },
+    "QueryVideoFaceFusionJob": {
+      "document": "This API is used to query the progress and status of video face fusion tasks by Job ID.",
+      "input": "QueryVideoFaceFusionJobRequest",
+      "name": "Queries video face fusion tasks",
+      "output": "QueryVideoFaceFusionJobResponse",
+      "status": "online"
+    },
+    "SubmitVideoFaceFusionJob": {
+      "document": "This API is used to submit asynchronous processing tasks of video face fusion. After a task is submitted, the Job ID, estimated completion time, and current queue length will be returned.",
+      "input": "SubmitVideoFaceFusionJobRequest",
+      "name": "Submit the face fusion task",
+      "output": "SubmitVideoFaceFusionJobResponse",
+      "status": "online"
     }
   },
   "metadata": {
@@ -62,7 +76,7 @@
         {
           "disabled": false,
           "document": "Activity ID. Check the ID in the <a href=\"https://console.cloud.tencent.com/facefusion\" target=\"_blank\"> Face Fusion console</a>.",
-          "example": "300029",
+          "example": "at_1603326187690926080",
           "member": "string",
           "name": "ProjectId",
           "required": true,
@@ -71,7 +85,7 @@
         {
           "disabled": false,
           "document": "Material ID. Check the ID in the <a href=\"https://console.cloud.tencent.com/facefusion\" target=\"_blank\"> Face Fusion console</a>.",
-          "example": "qc_300029_453345_1",
+          "example": "mt_1603586676924403712_1",
           "member": "string",
           "name": "ModelId",
           "required": true,
@@ -89,7 +103,7 @@
         {
           "disabled": false,
           "document": "Face position information on the user face image and material template image. No more than 6 entries.",
-          "example": "[]",
+          "example": "[{\"Url\":\"https://liudehua-9527.cos.ap-guangzhou.myqcloud.com/image.jpeg\"}]",
           "member": "MergeInfo",
           "name": "MergeInfos",
           "required": true,
@@ -107,7 +121,7 @@
         {
           "disabled": false,
           "document": "Logo content settings\nBy default, the text \"Synthesized by AI\" is added to the bottom right corner of the fusion result image. You can also use other texts.",
-          "example": "{}",
+          "example": "{\"LogoUrl\": \"https://cos.ap-guangzhou.myqcloud.com/logo.png\", \"LogoRect\": {\"X\": 10, \"Y\": 10, \"Width\": 20, \"Height\": 20}}",
           "member": "LogoParam",
           "name": "LogoParam",
           "required": false,
@@ -116,7 +130,7 @@
         {
           "disabled": false,
           "document": "Fusion parameter.",
-          "example": "无",
+          "example": "{\"ImageCodecParam\":{\"MetaData\": {\"MetaKey\":\"aigc\",\"MetaValue\":\"1\"}}}",
           "member": "FuseParam",
           "name": "FuseParam",
           "required": false,
@@ -131,7 +145,7 @@
         {
           "disabled": false,
           "document": "When RspImgType is set to url, return the URL (valid for 7 days). When RspImgType is set to base64, return the Base64 code.",
-          "example": "http://cloud.com/result.png",
+          "example": "https://liudehua-9527.cos.ap-guangzhou.myqcloud.com/result.jpeg",
           "member": "string",
           "name": "FusedImage",
           "output_required": true,
@@ -146,6 +160,118 @@
         }
       ],
       "type": "object"
+    },
+    "FuseFaceReviewDetail": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "string",
+          "member": "string",
+          "name": "Field",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "string",
+          "member": "string",
+          "name": "Label",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "float",
+          "name": "Confidence",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "string",
+          "member": "string",
+          "name": "Suggestion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "FuseFaceReviewResult": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Politics",
+          "member": "string",
+          "name": "Category",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "string",
+          "name": "Code",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "OK",
+          "member": "string",
+          "name": "CodeDescription",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "PASS",
+          "member": "float",
+          "name": "Confidence",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "30",
+          "member": "string",
+          "name": "Suggestion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[{\"Label\": \"丁俊晖\",\"Confidence\": 30,\"Suggestion\": \"PASS\"}]",
+          "member": "FuseFaceReviewDetail",
+          "name": "DetailSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     },
     "FuseParam": {
       "document": "Fusion parameter",
@@ -271,8 +397,7 @@
           "member": "string",
           "name": "MetaKey",
           "required": true,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         },
         {
           "disabled": false,
@@ -281,11 +406,294 @@
           "member": "string",
           "name": "MetaValue",
           "required": true,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         }
       ],
       "usage": "in"
+    },
+    "QueryVideoFaceFusionJobRequest": {
+      "document": "QueryVideoFaceFusionJob request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Job ID of the video face fusion task",
+          "example": "C0a5EXaNR7JzGvlg",
+          "member": "string",
+          "name": "JobId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryVideoFaceFusionJobResponse": {
+      "document": "QueryVideoFaceFusionJob response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Current task status: queuing, processing, processing failed, or processing completed",
+          "example": "处理完成",
+          "member": "string",
+          "name": "JobStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Video face fusion result\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "{             \"VideoUrl\": \"http://bda-video-bodyseg-1254418846.c",
+          "member": "VideoFaceFusionOutput",
+          "name": "VideoFaceFusionOutput",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task status code. 1: queuing; 3: processing; 5: processing failed; 7: processing completed.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "1",
+          "member": "int64",
+          "name": "JobStatusCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task failure error code\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "FailedOperation.NoFaceDetected",
+          "member": "string",
+          "name": "JobErrorCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Task failure error message\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "未检测到人脸",
+          "member": "string",
+          "name": "JobErrorMsg",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SubmitVideoFaceFusionJobRequest": {
+      "document": "SubmitVideoFaceFusionJob request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Activity ID. Check it in the video face fusion console.",
+          "example": "300314",
+          "member": "string",
+          "name": "ProjectId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Material ID. Check it in the video face fusion console.",
+          "example": "qc_300314_789050_75",
+          "member": "string",
+          "name": "ModelId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Face position information on the user face image and material template image. Only one entry is allowed.",
+          "example": "[{\"Url\": \"https://cos.ap-guangzhou.myqcloud.com/merge.png\"}]",
+          "member": "MergeInfo",
+          "name": "MergeInfos",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "0: inappropriate content recognition not required; 1: inappropriate content recognition required. Default value: 0.\nNote: Once the inappropriate content recognition service is enabled, you need to decide whether to adjust your business logic based on the returned results. For example, you need to replace the image if the system informs you that the image does not meet the requirements.\n**<font color=#1E90FF>Note: This field will be deprecated later due to business adjustments. It is not recommended for use.</font>**",
+          "example": "0",
+          "member": "int64",
+          "name": "CelebrityIdentify",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Video watermark logo parameter",
+          "example": "{\"LogoUrl\": \"https://cos.ap-guangzhou.myqcloud.com/logo.png\", \"LogoRect\": {\"X\": 10, \"Y\": 10, \"Width\": 20, \"Height\": 20}}",
+          "member": "LogoParam",
+          "name": "LogoParam",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "COS pre-signed URL (PUT method). If this parameter is specified, the video after fusion will be uploaded to this URL.\n**<font color=#1E90FF>Note: If upload to this URL fails, the video will be uploaded to the default address of Tencent Cloud.</font>**",
+          "example": "https://cos.ap-guangzhou.myqcloud.com/sign.jpg?q-sign-algorithm=sha1&q-ak=AKIoTFy&q-sign-time=1731412419;1731419619&q-key-time=1731412419;1731419619&q-header-list=&q-url-param-list=&q-signature=380f",
+          "member": "string",
+          "name": "UserDesignatedUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User IP address",
+          "example": "111.206.96.1",
+          "member": "string",
+          "name": "UserIp",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Video metadata field",
+          "example": "{\"MetaKey\":\"aigc\",MetaValue:\"1\"}",
+          "member": "MetaData",
+          "name": "MetaData",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "SubmitVideoFaceFusionJobResponse": {
+      "document": "SubmitVideoFaceFusionJob response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Job ID of the video face fusion task",
+          "example": "C0a5EXaNR7JzGvlg",
+          "member": "string",
+          "name": "JobId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Estimated processing time of the video face fusion task, in seconds",
+          "example": "30",
+          "member": "float",
+          "name": "EstimatedProcessTime",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Estimated processing time of the video face fusion task, in seconds",
+          "example": "1",
+          "member": "int64",
+          "name": "JobQueueLength",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Inappropriate content recognition result. The element order of this array is the same as that of mergeinfo in the request, with a one-to-one relationship.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "[{\"Category\": \"Politics\",\"Code\": \"0\",\"CodeDescription\": \"OK\",\"Suggestion\": \"PASS\",\"Confidence\": 30,\"DetailSet\": [{\"Label\": \"丁俊晖\",\"Confidence\": 30,\"Suggestion\": \"PASS\"}]}]",
+          "member": "FuseFaceReviewResult",
+          "name": "ReviewResultSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "VideoFaceFusionOutput": {
+      "document": "Returned video face fusion result",
+      "members": [
+        {
+          "disabled": false,
+          "document": "URL of the video output after video face fusion",
+          "example": "http://bda-video-bodyseg-1254418846.cos.ap-guangzhou.myqcloud.com/video_fusion_test/1.0/251006455/20210119164402_83ecff39-2e4a-41d5-8562-1f8898326565_qc_300314_789050_75_1611045834157_result.mp4",
+          "member": "string",
+          "name": "VideoUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MD5 value of the video output after video face fusion, which is used for verification",
+          "example": "3AA00F9A2914DF3F2268628C45C4E4CE",
+          "member": "string",
+          "name": "VideoMD5",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Video width",
+          "example": "720",
+          "member": "int64",
+          "name": "Width",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Video height",
+          "example": "1080",
+          "member": "int64",
+          "name": "Height",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Frames per second",
+          "example": "25",
+          "member": "int64",
+          "name": "FPS",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Video duration, in seconds",
+          "example": "15.079999923",
+          "member": "float",
+          "name": "DurationInSec",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Number of frames",
+          "example": "375",
+          "member": "int64",
+          "name": "Frame",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
     }
-  }
+  },
+  "version": "1.0"
 }

@@ -267,7 +267,7 @@
       "status": "online"
     },
     "DescribeApiKeysStatus": {
-      "document": "This API is used to query the information of one or more API keys.\n ",
+      "document": "This API is used to query the information of one or more API keys.",
       "input": "DescribeApiKeysStatusRequest",
       "name": "Queries key list",
       "output": "DescribeApiKeysStatusResponse",
@@ -2196,7 +2196,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the plugin to be bound.",
+          "document": "ID of the bound API gateway plugin.",
           "example": "plugin-2nuhovb7",
           "member": "string",
           "name": "PluginId",
@@ -2205,7 +2205,7 @@
         },
         {
           "disabled": false,
-          "document": "Service ID.",
+          "document": "ID of the service to be operated.",
           "example": "service-jzo37opy",
           "member": "string",
           "name": "ServiceId",
@@ -2214,7 +2214,7 @@
         },
         {
           "disabled": false,
-          "document": "API environment.",
+          "document": "Environment for operating the API.",
           "example": "release",
           "member": "string",
           "name": "EnvironmentName",
@@ -2223,7 +2223,7 @@
         },
         {
           "disabled": false,
-          "document": "List of APIs bound with the plugin",
+          "document": "List of APIs to be bound.",
           "example": "['api-buz84890','api-9nb6hd46']",
           "member": "string",
           "name": "ApiIds",
@@ -2238,7 +2238,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether binding succeeded.",
+          "document": "Whether the binding operation is successful.",
           "example": "true",
           "member": "bool",
           "name": "Result",
@@ -2594,7 +2594,7 @@
         },
         {
           "disabled": false,
-          "document": "Unique ID of the service to be bound",
+          "document": "Unique ID of the service to be bound.",
           "example": "service-ody35h5e",
           "member": "string",
           "name": "ServiceId",
@@ -3243,7 +3243,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom key ID, which is required if `AccessKeyType` is `manual`. It can contain 5–50 letters, digits, and underscores.",
+          "document": "Custom key ID, which is required if `AccessKeyType` is `manual`. It can contain 5-50 letters, digits, and underscores.",
           "example": "xx",
           "member": "string",
           "name": "AccessKeyId",
@@ -3252,12 +3252,21 @@
         },
         {
           "disabled": false,
-          "document": "Custom key, which is required if `AccessKeyType` is `manual`. It can contain 10–50 letters, digits, and underscores.",
+          "document": "Custom key, which is required if `AccessKeyType` is `manual`. It can contain 10-50 letters, digits, and underscores.",
           "example": "xx",
           "member": "string",
           "name": "AccessKeySecret",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -4467,7 +4476,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "API document ID",
+          "document": "API document ID.",
           "example": "doc-v8tsladd",
           "member": "string",
           "name": "ApiDocId",
@@ -4482,7 +4491,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Whether the operation succeeded",
+          "document": "Whether the operation succeeded.",
           "example": "True",
           "member": "bool",
           "name": "Result",
@@ -5647,7 +5656,7 @@
         {
           "disabled": false,
           "document": "API key ID.",
-          "example": "AKID1IGx7Tu5mk150ds6fhbdi1RqD8KlI6dW32MD",
+          "example": "AKID***********************************************",
           "member": "string",
           "name": "AccessKeyId",
           "required": true,
@@ -5665,7 +5674,7 @@
           "example": "无",
           "member": "ApiKey",
           "name": "Result",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -12150,7 +12159,7 @@
         },
         {
           "disabled": false,
-          "document": "Key to be updated, which is required when a custom key is updated. It can contain 10–50 letters, digits, and underscores.",
+          "document": "Key to be updated, which is required when a custom key is updated. It can contain 10-50 letters, digits, and underscores.",
           "example": "xx",
           "member": "string",
           "name": "AccessKeySecret",

@@ -57,7 +57,7 @@
       "status": "online"
     },
     "MLIDPassportOCR": {
-      "document": "This API is used to recognize a passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions. Recognizable fields include passport ID, name, date of birth, gender, expiration date, issuing country/region, and nationality. It has the features of cropping identity photos and alarming for photographed or photocopied documents.",
+      "document": "This API is used to recognize a passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions. Recognizable fields include passport ID, name, date of birth, gender, expiration date, issuing country/region, and nationality. It has the features of cropping identity photos and alarming for photographed or photocopied documents.\nThis interface supports regional scope: countries with machine-readable passports",
       "input": "MLIDPassportOCRRequest",
       "name": "Recognizes a non-Mainland China passport",
       "output": "MLIDPassportOCRResponse",
@@ -4978,7 +4978,7 @@
         {
           "disabled": false,
           "document": "The URL address of the image. \nSupported image formats: PNG, JPG, JPEG. Not support GIF yet.\nSupported image size: The downloaded image should not exceed 7M. The image download takes no more than 3 seconds.Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.",
-          "example": "https://xx/a.jpg",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -4986,8 +4986,17 @@
         },
         {
           "disabled": false,
+          "document": "The URL address of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. The GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. Storing images in Tencent Cloud URLs can ensure higher download speed and stability. It is recommended that images be stored in Tencent Cloud. The URL speed and stability of non-Tencent cloud storage may be affected to a certain extent.",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
+          "member": "string",
+          "name": "BackImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "Base64 value of the image.Supported image formats: PNG, JPG, JPEG. Not support GIF yet.\nSupported image size: The downloaded image should not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds.\nOne of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -4995,8 +5004,17 @@
         },
         {
           "disabled": false,
-          "document": "The following optional fields are of string type and are empty by default: \nRetImage: whether to return the processed image (base64 encrypted string); the value and meaning of RetImage are as follows: 1.preprocess returns the preprocessed image data 2.portrait Return portrait image data 3.\"\" Do not return image data SDK setting method reference: Config = Json.stringify({\"RetImage\":\"preprocess\"}) API 3.0 Explorer setting method reference: Config = {\"RetImage\":\"portrait\" }",
-          "example": "无",
+          "document": "Base64 value of the image on the back of the card. Supported image formats: PNG, JPG, JPEG. The GIF format is not supported yet. Supported image size: The downloaded image does not exceed 7M after Base64 encoding. The image download takes no more than 3 seconds. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "BackImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The following optional fields are of string type and are empty by default: \nRetImage: whether to return the processed image (base64 encrypted string); the value and meaning of RetImage are as follows: 1.portrait Return portrait image data 2.\"\" Do not return image data SDK setting method reference: Config = Json.stringify({\"RetImage\":\"portrait\"}) API 3.0 Explorer setting method reference: Config = {\"RetImage\":\"portrait\" }",
+          "example": "{\"RetImage\":\"portrait\"}",
           "member": "string",
           "name": "Config",
           "required": false,
@@ -5014,6 +5032,7 @@
           "example": "何",
           "member": "string",
           "name": "CnLastName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5023,6 +5042,7 @@
           "example": "HO",
           "member": "string",
           "name": "EnLastName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5032,6 +5052,7 @@
           "example": "0149",
           "member": "string",
           "name": "LastNameCode",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5041,6 +5062,7 @@
           "example": "*珍",
           "member": "string",
           "name": "CnFirstName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5050,6 +5072,7 @@
           "example": "CHAN YO",
           "member": "string",
           "name": "EnFirstName",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5059,6 +5082,7 @@
           "example": "37****27",
           "member": "string",
           "name": "FirstNameCode",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5068,6 +5092,7 @@
           "example": "15****0(4)",
           "member": "string",
           "name": "ID",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5077,6 +5102,7 @@
           "example": "22-04-1997",
           "member": "string",
           "name": "Birthday",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5086,6 +5112,7 @@
           "example": "女",
           "member": "string",
           "name": "Sex",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5095,6 +5122,7 @@
           "example": "06-05-2011",
           "member": "string",
           "name": "FirstIssueDate",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5104,6 +5132,7 @@
           "example": "01-08-2014",
           "member": "string",
           "name": "CurrentIssueDate",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5113,6 +5142,7 @@
           "example": "01-08-2024",
           "member": "string",
           "name": "ValidityPeriod",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5122,6 +5152,7 @@
           "example": "C",
           "member": "string",
           "name": "Symbol",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -5131,15 +5162,17 @@
           "example": "1.64",
           "member": "string",
           "name": "Height",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Processed image (Base64)",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "RetImage",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5149,8 +5182,29 @@
           "example": "0",
           "member": "string",
           "name": "Angle",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resident type.",
+          "example": "永久性居民身份证",
+          "member": "string",
+          "name": "ResidentType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Card Warning Information\n\n-9101 Alarm for covered certificate,\n-9102 Alarm for photocopied certificate,\n-9103 Alarm for photographed certificate,\n-9104 Alarm for PS certificate,\n-9107 Alarm for reflective certificate,\n-9108 Alarm for blurry image,\n-9109 This capability is not enabled.",
+          "example": "无",
+          "member": "int64",
+          "name": "WarnCardInfos",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -5938,7 +5992,7 @@
         {
           "disabled": false,
           "document": "The Base64 value of the image. The image is required to be no larger than 7M after Base64 encoding, and the resolution is recommended to be 500*800 or above. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. One of ImageUrl and ImageBase64 of the image must be provided. If both are provided, only ImageUrl will be used.",
-          "example": "image",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -5947,7 +6001,7 @@
         {
           "disabled": false,
           "document": "The URL address of the image. The image is required to be no larger than 7M after Base64 encoding, and the resolution is recommended to be 500*800 or above. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupies at least 2/3 of the picture. It is recommended that images be stored in Tencent Cloud to ensure higher download speed and stability.",
-          "example": "https://xx/a.jpg",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -5971,7 +6025,7 @@
         {
           "disabled": false,
           "document": "Chinese name",
-          "example": "李三",
+          "example": "夏*阳",
           "member": "string",
           "name": "ChName",
           "output_required": true,
@@ -5981,7 +6035,7 @@
         {
           "disabled": false,
           "document": "English name",
-          "example": "sam",
+          "example": "IA ***YANG",
           "member": "string",
           "name": "EnName",
           "output_required": true,
@@ -6001,7 +6055,7 @@
         {
           "disabled": false,
           "document": "Birth Country",
-          "example": "新加坡",
+          "example": "CHINA",
           "member": "string",
           "name": "CountryOfBirth",
           "output_required": true,
@@ -6011,7 +6065,7 @@
         {
           "disabled": false,
           "document": "Brithday",
-          "example": "1990-01-01",
+          "example": "12/04/1988",
           "member": "string",
           "name": "Birthday",
           "output_required": true,
@@ -6021,7 +6075,7 @@
         {
           "disabled": false,
           "document": "Address(back side)",
-          "example": "XX街道XX",
+          "example": "**街道**",
           "member": "string",
           "name": "Address",
           "output_required": true,
@@ -6031,7 +6085,7 @@
         {
           "disabled": false,
           "document": "License number",
-          "example": "0975",
+          "example": "S7***22",
           "member": "string",
           "name": "ID",
           "output_required": true,
@@ -6041,7 +6095,7 @@
         {
           "disabled": false,
           "document": "Nationality(back side)",
-          "example": "新加坡",
+          "example": "CHINESE",
           "member": "string",
           "name": "Race",
           "output_required": true,
@@ -6091,7 +6145,7 @@
         {
           "disabled": false,
           "document": "Head image ",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "Photo",
           "output_required": true,
@@ -6204,7 +6258,7 @@
         {
           "disabled": false,
           "document": "The Base64-encoded value of an image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.\nEither `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, `ImageUrl` is used.",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "ImageBase64",
           "required": false,
@@ -6213,7 +6267,7 @@
         {
           "disabled": false,
           "document": "The URL of the image. The image cannot exceed 7 MB after being Base64-encoded. A resolution above 500 x 800 is recommended. PNG, JPG, JPEG, and BMP formats are supported. It is recommended that the card part occupy more than 2/3 area of the image.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.",
-          "example": "https://xx/a.jpg",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg",
           "member": "string",
           "name": "ImageUrl",
           "required": false,
@@ -6367,7 +6421,7 @@
         {
           "disabled": false,
           "document": "Identity photo",
-          "example": "无",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "PortraitImage",
           "output_required": true,
@@ -6382,6 +6436,16 @@
           "name": "WarnCardInfos",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Field confidence:\n { \"ID\": { \"Confidence\": 0.9999 }, \"ThaiName\": { \"Confidence\": 0.9996 } }",
+          "example": "{\"ID\":{\"Confidence\":\"0.9500\"},\"ThaiName\":{\"Confidence\":\"0.9500\"}}",
+          "member": "string",
+          "name": "AdvancedInfo",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         },
         {

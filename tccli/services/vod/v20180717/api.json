@@ -84,6 +84,13 @@
       "output": "CreateClassResponse",
       "status": "online"
     },
+    "CreateComplexAdaptiveDynamicStreamingTask": {
+      "document": "Initiate an adaptive bitrate streaming processing task, with the following features:\n1. Output HLS and MPEG-DASH adaptive streams based on the specified templates;\n2. DRM options for the adaptive bitrate streaming include no encryption, Widevine, or FairPlay.\n3. The output adaptive bitrate streaming can include multiple audio streams in different languages, with each language sourced from different media files.\n4. The output adaptive stream can also include multiple subtitle streams in different languages.\n\n**Notes:**\n1. When using opening/closing credits, the video stream in the opening credit must be synchronized with the audio stream; otherwise, it will result in audio and video desynchronization in the output content.\n2. If the output adaptive bitrate streaming needs to include audio from the main media, the FileId of the main media must be specified in the AudioSet parameter.\n3. Subtitles must be added to the main media beforehand, which can be done through the ModifyMediaInfo API interface or the Video Management page in the console.\n4. Support for TESHD transcoding and watermarking is currently not available.",
+      "input": "CreateComplexAdaptiveDynamicStreamingTaskRequest",
+      "name": "CreateComplexAdaptiveDynamicStreamingTask",
+      "output": "CreateComplexAdaptiveDynamicStreamingTaskResponse",
+      "status": "online"
+    },
     "CreateContentReviewTemplate": {
       "document": "We have <font color=red>stopped updating</font> this API. Our new moderation templates can moderate audio/video as well as images. For details, see [CreateReviewTemplate](https://intl.cloud.tencent.com/document/api/266/84391?from_cn_redirect=1).\nThis API is used to create a custom audio/video moderation template. Up to 50 templates can be created in total.",
       "input": "CreateContentReviewTemplateRequest",
@@ -1290,145 +1297,165 @@
       "usage": "out"
     },
     "AIRecognitionTemplateItem": {
-      "document": "Video content recognition template details",
+      "document": "Video content recognition template details.",
       "members": [
         {
           "disabled": false,
           "document": "Unique ID of video content recognition template.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Video content recognition template name.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Name",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Video content recognition template description.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Comment",
-          "required": true,
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Template type, values:\n<li>Preset: system preset template;</li>\n<li>Custom: user-defined template.</li>",
+          "example": "Preset",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Control parameter of opening and closing credits recognition.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "HeadTailConfigureInfo",
           "name": "HeadTailConfigure",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Control parameter of splitting recognition.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "SegmentConfigureInfo",
           "name": "SegmentConfigure",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Face recognition control parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "FaceConfigureInfo",
           "name": "FaceConfigure",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Full text recognition control parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "OcrFullTextConfigureInfo",
           "name": "OcrFullTextConfigure",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Text keyword recognition control parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "OcrWordsConfigureInfo",
           "name": "OcrWordsConfigure",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Full speech recognition control parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AsrFullTextConfigureInfo",
           "name": "AsrFullTextConfigure",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Speech keyword recognition control parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AsrWordsConfigureInfo",
           "name": "AsrWordsConfigure",
-          "required": true,
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Voice translation control parameter.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "无",
+          "member": "AsrTranslateConfigureInfo",
+          "name": "AsrTranslateConfigure",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Control parameter of object recognition.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "ObjectConfigureInfo",
           "name": "ObjectConfigure",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Screencapturing interval in seconds.",
-          "example": "",
+          "example": "无",
           "member": "float",
           "name": "ScreenshotInterval",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1513,7 +1540,6 @@
           "member": "int64",
           "name": "Definition",
           "output_required": true,
-          "required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1524,7 +1550,6 @@
           "member": "string",
           "name": "Package",
           "output_required": true,
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1535,7 +1560,6 @@
           "member": "string",
           "name": "DrmType",
           "output_required": true,
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1546,7 +1570,6 @@
           "member": "string",
           "name": "Url",
           "output_required": true,
-          "required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1557,7 +1580,6 @@
           "member": "int64",
           "name": "Size",
           "output_required": true,
-          "required": false,
           "type": "int",
           "value_allowed_null": false
         },
@@ -1568,7 +1590,6 @@
           "member": "string",
           "name": "DigitalWatermarkType",
           "output_required": true,
-          "required": false,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1579,7 +1600,6 @@
           "member": "MediaSubStreamInfoItem",
           "name": "SubStreamSet",
           "output_required": true,
-          "required": false,
           "type": "list",
           "value_allowed_null": false
         },
@@ -1590,7 +1610,6 @@
           "member": "string",
           "name": "CopyRightWatermarkText",
           "output_required": true,
-          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1606,6 +1625,7 @@
           "example": "10",
           "member": "uint64",
           "name": "Definition",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -1616,6 +1636,7 @@
           "example": "[]",
           "member": "WatermarkInput",
           "name": "WatermarkSet",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -1626,6 +1647,7 @@
           "example": "无",
           "member": "TraceWatermarkInput",
           "name": "TraceWatermark",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -1636,6 +1658,7 @@
           "example": "无",
           "member": "CopyRightWatermarkInput",
           "name": "CopyRightWatermark",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": false
@@ -1646,6 +1669,7 @@
           "example": "[]",
           "member": "string",
           "name": "SubtitleSet",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
@@ -2805,91 +2829,101 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task type. Valid values:\n<li>FaceRecognition: face recognition,</li>\n<li>AsrWordsRecognition: speech keyword recognition,</li>\n<li>OcrWordsRecognition: text keyword recognition,</li>\n<li>AsrFullTextRecognition: full speech recognition,</li>\n<li>OcrFullTextRecognition: full text recognition,</li>\n<li>HeadTailRecognition: video opening and ending credits recognition,</li>\n<li>ObjectRecognition: object recognition.</li>",
-          "example": "",
+          "document": "Task type. Valid values:\n<li>FaceRecognition: face recognition,</li>\n<li>AsrWordsRecognition: speech keyword recognition,</li>\n<li>OcrWordsRecognition: text keyword recognition,</li>\n<li>AsrFullTextRecognition: full speech recognition,</li>\n<li>AsrTranslateRecognition: voice translation recognition,</li>\n<li>OcrFullTextRecognition: full text recognition,</li>\n<li>HeadTailRecognition: video opening and ending credits recognition,</li>\n<li>ObjectRecognition: object recognition.</li>",
+          "example": "无",
           "member": "string",
           "name": "Type",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Video opening and ending credits recognition result, which is valid when `Type` is\n `HeadTailRecognition`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AiRecognitionTaskHeadTailResult",
           "name": "HeadTailTask",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Video splitting recognition result, which is valid when `Type` is\n `SegmentRecognition`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AiRecognitionTaskSegmentResult",
           "name": "SegmentTask",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Face recognition result, which is valid when `Type` is \n `FaceRecognition`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AiRecognitionTaskFaceResult",
           "name": "FaceTask",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Speech keyword recognition result, which is valid when `Type` is\n `AsrWordsRecognition`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AiRecognitionTaskAsrWordsResult",
           "name": "AsrWordsTask",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Full speech recognition result, which is valid when `Type` is\n `AsrFullTextRecognition`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AiRecognitionTaskAsrFullTextResult",
           "name": "AsrFullTextTask",
-          "required": true,
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Voice translation result, valid when Type is AsrTranslateRecognition.",
+          "example": "无",
+          "member": "AiRecognitionTaskAsrTranslateResult",
+          "name": "AsrTranslateTask",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Text keyword recognition result, which is valid when `Type` is\n `OcrWordsRecognition`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AiRecognitionTaskOcrWordsResult",
           "name": "OcrWordsTask",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Full text recognition result, which is valid when `Type` is\n `OcrFullTextRecognition`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AiRecognitionTaskOcrFullTextResult",
           "name": "OcrFullTextTask",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Object recognition result, which is valid when `Type` is\n `ObjectRecognition`.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "AiRecognitionTaskObjectResult",
           "name": "ObjectTask",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         }
@@ -3017,7 +3051,7 @@
           "example": "null",
           "member": "AiRecognitionTaskAsrFullTextSegmentItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3027,7 +3061,7 @@
           "example": "http://123xxx",
           "member": "string",
           "name": "SegmentSetFileUrl",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3037,7 +3071,7 @@
           "example": "2018-10-01T10:00:00Z",
           "member": "string",
           "name": "SegmentSetFileUrlExpireTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -3047,7 +3081,7 @@
           "example": "无",
           "member": "AiRecognitionTaskAsrFullTextResultOutputSubtitleItem",
           "name": "SubtitleSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -3057,7 +3091,7 @@
           "example": "http://123xxx",
           "member": "string",
           "name": "SubtitleUrl",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -3065,8 +3099,38 @@
       "usage": "out"
     },
     "AiRecognitionTaskAsrFullTextResultOutputSubtitleItem": {
-      "document": "The subtitle information.",
+      "document": "Subtitle information.",
       "members": [
+        {
+          "disabled": false,
+          "document": "Media asset subtitle ID, used for media asset subtitle management, only valid when Format is vtt.\n<font color=red>Note:</font> Tasks before 2024-11-01T10:00:00Z return this field as invalid.",
+          "example": "无",
+          "member": "string",
+          "name": "Id",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Media asset subtitle name, used for player display, only valid when Format is vtt.\n<font color=red>Note:</font> Tasks before 2024-11-01T10:00:00Z return this field as invalid.",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle Language.",
+          "example": "无",
+          "member": "string",
+          "name": "Language",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
         {
           "disabled": false,
           "document": "The format of the subtitle files. Valid values:\n<li>vtt</li>\n<li>srt</li>",
@@ -3130,6 +3194,220 @@
           "member": "string",
           "name": "Text",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiRecognitionTaskAsrTranslateResult": {
+      "document": "Voice translation result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "PROCESSING",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. 0 indicates the task is successful; other values indicate failure. It is not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.",
+          "example": "0",
+          "member": "int64",
+          "name": "ErrCode",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input information of the voice translation task.",
+          "example": "null",
+          "member": "AiRecognitionTaskAsrTranslateResultInput",
+          "name": "Input",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output information of the voice translation task.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "example": "null",
+          "member": "AiRecognitionTaskAsrTranslateResultOutput",
+          "name": "Output",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Progress of the voice translation task, value range [0-100].",
+          "example": "0",
+          "member": "int64",
+          "name": "Progress",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Begin process time of the voice translation task, in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).",
+          "example": "2018-10-01T18:00:00+08:00",
+          "member": "string",
+          "name": "BeginProcessTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The time when the voice translation task is completed, in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).",
+          "example": "2018-10-01T18:00:00+08:00",
+          "member": "string",
+          "name": "FinishTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiRecognitionTaskAsrTranslateResultInput": {
+      "document": "Input of voice translation.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Voice translation template ID.",
+          "example": "无",
+          "member": "int64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiRecognitionTaskAsrTranslateResultOutput": {
+      "document": "Voice translation result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Voice translation segments list.\n<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.",
+          "example": "null",
+          "member": "AiRecognitionTaskAsrTranslateSegmentItem",
+          "name": "SegmentSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "URL to the file of the list for voice translation segments. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.",
+          "example": "http://123xxx",
+          "member": "string",
+          "name": "SegmentSetFileUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The expiration time of the URLs of voice translation segments in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-date-format).",
+          "example": "2018-10-01T10:00:00Z",
+          "member": "string",
+          "name": "SegmentSetFileUrlExpireTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Generated subtitle list.",
+          "example": "无",
+          "member": "AiRecognitionTaskAsrFullTextResultOutputSubtitleItem",
+          "name": "SubtitleSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AiRecognitionTaskAsrTranslateSegmentItem": {
+      "document": "Voice translation segment.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Confidence level of the voice translation segment. Value: 0~100.",
+          "example": "无",
+          "member": "float",
+          "name": "Confidence",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Start time offset of the voice translation segment in seconds.",
+          "example": "无",
+          "member": "float",
+          "name": "StartTimeOffset",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "End time offset of the voice translation segment in seconds.",
+          "example": "无",
+          "member": "float",
+          "name": "EndTimeOffset",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Recognized text.",
+          "example": "无",
+          "member": "string",
+          "name": "Text",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The translation.",
+          "example": "无",
+          "member": "string",
+          "name": "Translation",
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -6903,11 +7181,22 @@
         },
         {
           "disabled": false,
-          "document": "Media source language value range: <li>zh: Mandarin </li> <li>en: English</li> <li>ja: Japanese </li> <li>zh-ca: Cantonese</li><font color=red>Note：</font> If it fills in an empty string or leave this parameter blank, it will be automatically recognized (it is recommended to fill in the language corresponding to the media to improve the recognition accuracy).",
+          "document": "Media source language value range: <li>zh: Mandarin </li> <li>en: English</li> <li>ja: Japanese </li> <li>zh-ca: Cantonese</li><font color=red>Note: </font> If it fills in an empty string or leaves this parameter blank, it will be automatically recognized (it is recommended to fill in the language corresponding to the media to improve the recognition accuracy).",
           "example": "zh",
           "member": "string",
           "name": "SrcLanguage",
           "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specify subtitle name, length limit: 64 characters. This value will be displayed by the player. If not provided, VOD will automatically generate it.\n<font color=red>Note:</font> This field is valid only when SubtitleFormats includes vtt.\n",
+          "example": "test",
+          "member": "string",
+          "name": "SubtitleName",
+          "output_required": false,
           "required": false,
           "type": "string",
           "value_allowed_null": false
@@ -6951,6 +7240,127 @@
           "example": "zh",
           "member": "string",
           "name": "SrcLanguage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specify subtitle name, length limit: 64 characters. This value will be used for player display.",
+          "example": "test2",
+          "member": "string",
+          "name": "SubtitleName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
+    "AsrTranslateConfigureInfo": {
+      "document": "Control parameters of voice translation recognition task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Voice translation task switch, optional values:\n<li>ON: switch on;</li>\n<li>OFF: switch off.</li><font color=red>Note:</font> The task results of voice translation include asr full text recognition result. To avoid duplicate charges, simultaneous activation of voice translation and asr full text recognition features is prohibited.\n",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Media source language. When the Switch is ON, this parameter is mandatory. Value range:\n<li>`zh`: Chinese;</li>\n<li>`en`: English;</li>\n<li>`ja`: Japanese;</li>\n<li>`ko`: Korean;</li>\n<li>`vi`: Vietnamese;</li>\n<li>`ms`: Malay;</li>\n<li>`th`: Thai;</li>\n<li>`pt`: Portuguese;</li>\n<li>`tr`: Turkish;</li>\n<li>`ar`: Arabic;</li>\n<li>`es`: Spanish;</li>\n<li>`hi`: Hindi;</li>\n<li>`fr`: French.</li>",
+          "example": "zh",
+          "member": "string",
+          "name": "SrcLanguage",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Translation target language. When the Switch is ON, this parameter is mandatory.\nWhen SrcLanguage is zh (Chinese), the value range:\n<li>`en`: English;</li>\n<li>`ja`: Japanese;</li>\n<li>`ko`: Korean;</li>\n<li>`fr`: French;</li>\n<li>`es`: Spanish;</li>\n<li>`it`: Italian;</li>\n<li>`de`: German;</li>\n<li>`tr`: Turkish;</li>\n<li>`ru`: Russian;</li>\n<li>`pt`: Portuguese;</li>\n<li>`vi`: Vietnamese;</li>\n<li>`id`: Indonesian;</li>\n<li>`th`: Thai;</li>\n<li>`ms`: Malay.</li>\n\nWhen SrcLanguage is en (English), the value range:\n<li>`zh`: Chinese;</li>\n<li>`ja`: Japanese;</li>\n<li>`ko`: Korean;</li>\n<li>`fr`: French;</li>\n<li>`es`: Spanish;</li>\n<li>`it`: Italian;</li>\n<li>`de`: German;</li>\n<li>`tr`: Turkish;</li>\n<li>`ru`: Russian;</li>\n<li>`pt`: Portuguese;</li>\n<li>`vi`: Vietnamese;</li>\n<li>`id`: Indonesian;</li>\n<li>`th`: Thai;</li>\n<li>`ms`: Malay;</li>\n<li>`ar`: Arabic;</li>\n<li>`hi`: Hindi.</li>\n\nWhen SrcLanguage is ja (Japanese), the valid options are:\n<li>`zh`: Chinese;</li>\n<li>`en`: English;</li>\n<li>`ko`: Korean.</li>\n\nWhen SrcLanguage is ko (Korean), the valid options are:\n<li>`zh`: Chinese;</li>\n<li>`en`: English;</li>\n<li>`ja`: Japanese.</li>\n\nWhen SrcLanguage is vi (Vietnamese), ms (Malay), or th (Thai), the valid options are:\n<li>`zh`: Chinese;</li>\n<li>`en`: English.</li>\n\nWhen SrcLanguage is pt (Portuguese), the valid options are:\n<li>`zh`: Chinese;</li>\n<li>`en`: English;</li>\n<li>`fr`: French;</li>\n<li>`es`: Spanish;</li>\n<li>`it`: Italian;</li>\n<li>`de`: German;</li>\n<li>`tr`: Turkish;</li>\n<li>`ru`: Russian.</li>\n\nWhen SrcLanguage is tr (Turkish), the value range is:\n<li>`zh`: Chinese;</li>\n<li>`en`: English;</li>\n<li>`fr`: French;</li>\n<li>`es`: Spanish;</li>\n<li>`it`: Italian;</li>\n<li>`de`: German;</li>\n<li>`ru`: Russian;</li>\n<li>`pt`: Portuguese.</li>\n\nWhen SrcLanguage is es (Spanish), the value range is:\n<li>`zh`: Chinese;</li>\n<li>`en`: English;</li>\n<li>`fr`: French;</li>\n<li>`it`: Italian;</li>\n<li>`de`: German;</li>\n<li>`tr`: Turkish;</li>\n<li>`ru`: Russian;</li>\n<li>`pt`: Portuguese.</li>\n\nWhen SrcLanguage is ar (Arabic) or hi (Hindi), the value range is:\n<li>`en`: English.</li>\n\nWhen SrcLanguage is fr (French), the value range is:\n<li>`zh`: Chinese;</li>\n<li>`en`: English;</li>\n<li>`es`: Spanish;</li>\n<li>`it`: Italian;</li>\n<li>`de`: German;</li>\n<li>`tr`: Turkish;</li>\n<li>`ru`: Russian;</li>\n<li>`pt`: Portuguese.</li>",
+          "example": "en",
+          "member": "string",
+          "name": "DstLanguage",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Generated subtitle file format list. If not filled or an empty array is provided, no subtitle file will be generated. Optional values:\n<li>vtt: generate WebVTT subtitle file;</li>\n<li>srt: generate SRT subtitle files.</li><font color=red>Note:</font> VOD media assets only support adding vtt subtitles. Therefore, VOD will add generated subtitles to media assets only when SubtitleFormats includes vtt.",
+          "example": "[\"vtt\"]",
+          "member": "string",
+          "name": "SubtitleFormats",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specify subtitle name, length limit: 64 characters. This value will be displayed by the player. If not provided, VOD will automatically generate it.",
+          "example": "test",
+          "member": "string",
+          "name": "SubtitleName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AsrTranslateConfigureInfoForUpdate": {
+      "document": "Control parameters of voice translation.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Voice translation task switch, optional values:\n<li>ON: switch on;</li>\n<li>OFF: switch off.</li>",
+          "example": "ON",
+          "member": "string",
+          "name": "Switch",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Media source language, value range:\n<li>`zh`: Chinese;</li>\n<li>`en`: English;</li>\n<li>`ja`: Japanese;</li>\n<li>`ko`: Korean;</li>\n<li>`vi`: Vietnamese;</li>\n<li>`ms`: Malay;</li>\n<li>`th`: Thai;</li>\n<li>`pt`: Portuguese;</li>\n<li>`tr`: Turkish;</li>\n<li>`ar`: Arabic;</li>\n<li>`es`: Spanish;</li>\n<li>`hi`: Hindi;</li>\n<li>`fr`: French.</li>",
+          "example": "zh",
+          "member": "string",
+          "name": "SrcLanguage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Translation target language.\nWhen SrcLanguage is zh(Chinese), value range:\n<li>`en`: English;</li>\n<li>`ja`: Japanese;</li>\n<li>`ko`: Korean;</li>\n<li>`fr`: French;</li>\n<li>`es`: Spanish;</li>\n<li>`it`: Italian;</li>\n<li>`de`: German;</li>\n<li>`tr`: Turkish;</li>\n<li>`ru`: Russian;</li>\n<li>`pt`: Portuguese;</li>\n<li>`vi`: Vietnamese;</li>\n<li>`id`: Indonesian;</li>\n<li>`th`: Thai;</li>\n<li>`ms`: Malay.</li>\n\nWhen SrcLanguage is en(English), value range:\n<li>`zh`: Chinese;</li>\n<li>`ja`: Japanese;</li>\n<li>`ko`: Korean;</li>\n<li>`fr`: French;</li>\n<li>`es`: Spanish;</li>\n<li>`it`: Italian;</li>\n<li>`de`: German;</li>\n<li>`tr`: Turkish;</li>\n<li>`ru`: Russian;</li>\n<li>`pt`: Portuguese;</li>\n<li>`vi`: Vietnamese;</li>\n<li>`id`: Indonesian;</li>\n<li>`th`: Thai;</li>\n<li>`ms`: Malay;</li>\n<li>`ar`: Arabic;</li>\n<li>`hi`: Hindi.</li>\n\nWhen SrcLanguage is ja (Japanese), value range:\n<li>zh: Chinese;</li>\n<li>en: English;</li>\n<li>ko: Korean.</li>\n\nWhen SrcLanguage is ko (Korean), value range:\n<li>`zh`: Chinese;</li>\n<li>`en`: English;</li>\n<li>`ja`: Japanese.</li>\n\nWhen SrcLanguage is vi (Vietnamese) or ms (Malay) or th (Thai), value range:\n<li>`zh`: Chinese;</li>\n<li>`en`: English.</li>\n\nWhen SrcLanguage is pt (Portuguese), value range:\n<li>`zh`: Chinese;</li>\n<li>`en`: English;</li>\n<li>`fr`: French;</li>\n<li>`es`: Spanish;</li>\n<li>`it`: Italian;</li>\n<li>`de`: German;</li>\n<li>`tr`: Turkish;</li>\n<li>`ru`: Russian.</li>\n\nWhen SrcLanguage is tr (Turkish), value range:\n<li>`zh`: Chinese;</li>\n<li>`en`: English;</li>\n<li>`fr`: French;</li>\n<li>`es`: Spanish;</li>\n<li>`it`: Italian;</li>\n<li>`de`: German;</li>\n<li>`ru`: Russian;</li>\n<li>`pt`: Portuguese.</li>\n\nWhen SrcLanguage is es (Spanish), value range:\n<li>`zh`: Chinese;</li>\n<li>`en`: English;</li>\n<li>`fr`: French;</li>\n<li>`it`: Italian;</li>\n<li>`de`: German;</li>\n<li>`tr`: Turkish;</li>\n<li>`ru`: Russian;</li>\n<li>`pt`: Portuguese.</li>\n\nWhen SrcLanguage is ar (Arabic) or hi (Hindi), value range:\n<li>`en`: English.</li>\n\nWhen SrcLanguage is fr (French), value range:\n<li>`zh`: Chinese;</li>\n<li>`en`: English;</li>\n<li>`es`: Spanish;</li>\n<li>`it`: Italian;</li>\n<li>`de`: German;</li>\n<li>`tr`: Turkish;</li>\n<li>`ru`: Russian;</li>\n<li>`pt`: Portuguese.</li>",
+          "example": "en",
+          "member": "string",
+          "name": "DstLanguage",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Operation information about subtitle format list.",
+          "example": "无",
+          "member": "SubtitleFormatsOperation",
+          "name": "SubtitleFormatsOperation",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Specify subtitle name, length limit: 64 characters. This value will be used for player display.",
+          "example": "test2",
+          "member": "string",
+          "name": "SubtitleName",
           "required": false,
           "type": "string"
         }
@@ -8770,6 +9180,266 @@
       ],
       "type": "object"
     },
+    "ComplexAdaptiveDynamicStreamingTask": {
+      "document": "Execution information of the adaptive bitrate streaming task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "1250000000-procedurev2-23b0ab79ee23ba1340b2ee55c7733563tt1",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Task status. Valid values:\n<li>PROCESSING: processing;</li>\n<li>FINISH: completed.</li>",
+          "example": "PROCESSING",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Execution status and result of the complex adaptive bitrate streaming task. Each array element corresponds to an adaptive bitrate streaming template specified when initiating the task.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTaskResult",
+          "name": "ComplexAdaptiveDynamicStreamingTaskResultSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ComplexAdaptiveDynamicStreamingTaskAudioInput": {
+      "document": "Input parameters for audio streams in the adaptive bitrate streaming task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Media ID of the input audio file. The first audio stream in the media will be fixed, while video streams and other audio streams (if any) will be ignored.",
+          "example": "1234567890",
+          "member": "string",
+          "name": "FileId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Audio stream name in the output, supporting up to 16 characters.",
+          "example": "English",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The language of the audio stream in the output, supporting up to 16 characters. It must comply with the RFC5646 specification.",
+          "example": "en-US",
+          "member": "string",
+          "name": "Language",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to set as the default audio for adaptive bitrate streaming.\n<li>YES: Set as the default audio;</li>\n<li>NO: Not set as the default audio (default value).</li>",
+          "example": "YES",
+          "member": "string",
+          "name": "Default",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ComplexAdaptiveDynamicStreamingTaskInput": {
+      "document": "Input parameters for the adaptive bitrate streaming task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Adaptive bitrate streaming parameters.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTaskStreamPara",
+          "name": "StreamPara",
+          "output_required": true,
+          "required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ComplexAdaptiveDynamicStreamingTaskOutput": {
+      "document": "Output of the adaptive bitrate streaming task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Adaptive bitrate streaming template ID.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Definition",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The adaptive bitrate streaming format. Valid values:\n<li>HLS;</li>\n<li>MPEG-DASH.</li>\n",
+          "example": "HLS",
+          "member": "string",
+          "name": "Format",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DRM scheme type, value range:\n<li>Widevine;</li>\n<li>FairPlay.</li>\nThe default value is an empty string, indicating that the video will not be DRM protected.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "DrmType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Playback address of the output manifest.",
+          "example": "http://1250000000.vod2.myqcloud.com/cf72b740vodtranscq1250000000/aa2a78091397757895313140803/adp.10.m3u8",
+          "member": "string",
+          "name": "Url",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "ComplexAdaptiveDynamicStreamingTaskResult": {
+      "document": "Execution information of a single adaptive bitrate stream in a complex adaptive bitrate streaming task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task status of a single adaptive bitrate stream. Valid values: PROCESSING, SUCCESS, FAIL.",
+          "example": "SUCCESS",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).",
+          "example": "\"\"",
+          "member": "string",
+          "name": "ErrCodeExt",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Error message.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The execution progress of a single adaptive bitrate stream. Value range: 0-100.",
+          "example": "100",
+          "member": "int64",
+          "name": "Progress",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Input of a single adaptive bitrate stream.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTaskInput",
+          "name": "Input",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Output of a single adaptive bitrate stream.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTaskOutput",
+          "name": "Output",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ComplexAdaptiveDynamicStreamingTaskStreamPara": {
+      "document": "Input parameters related to the adaptive bitrate streaming template.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Adaptive bitrate streaming template ID.",
+          "example": "10",
+          "member": "uint64",
+          "name": "Definition",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ComplexAdaptiveDynamicStreamingTaskSubtitleInput": {
+      "document": "Input parameters for subtitles in the complex adaptive bitrate streaming task.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Subtitle ID, which must belongs to the main media.",
+          "example": "dYeq82",
+          "member": "string",
+          "name": "Id",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to set as the default subtitle for adaptive bitrate streaming.\n<li>YES: Set as the default subtitle;</li>\n<li>NO: Not set as the default subtitle (default value).</li>",
+          "example": "YES",
+          "member": "string",
+          "name": "Default",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ComposeMediaOutput": {
       "document": "Information of output media file.",
       "members": [
@@ -9096,7 +9766,7 @@
         {
           "disabled": false,
           "document": "File type, such as mp4 and mp3.",
-          "example": "",
+          "example": "mp4",
           "member": "string",
           "name": "FileType",
           "required": true,
@@ -9106,7 +9776,7 @@
         {
           "disabled": false,
           "document": "Media file ID.",
-          "example": "",
+          "example": "523xxx",
           "member": "string",
           "name": "FileId",
           "required": true,
@@ -9116,7 +9786,7 @@
         {
           "disabled": false,
           "document": "Media file playback address.",
-          "example": "",
+          "example": "http://125xxx.vod2.myqcloud.com/xxx/xxx/xx.mp4",
           "member": "string",
           "name": "FileUrl",
           "required": true,
@@ -9126,7 +9796,7 @@
         {
           "disabled": false,
           "document": "Filename of up to 64 characters.",
-          "example": "",
+          "example": "fileName",
           "member": "string",
           "name": "MediaName",
           "required": true,
@@ -9136,7 +9806,7 @@
         {
           "disabled": false,
           "document": "Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API.\n<li>Default value: 0, which means \"Other\".</li>",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "ClassId",
           "required": true,
@@ -9146,7 +9816,7 @@
         {
           "disabled": false,
           "document": "Expiration time of output media file in ISO 8601 format, after which the file will be deleted. Files will never expire by default. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).",
-          "example": "",
+          "example": "9999-12-31T23:59:59Z",
           "member": "string",
           "name": "ExpireTime",
           "required": true,
@@ -9780,7 +10450,7 @@
         {
           "disabled": false,
           "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
-          "example": "无",
+          "example": "1490012345",
           "member": "uint64",
           "name": "SubAppId",
           "required": false,
@@ -9869,6 +10539,15 @@
         },
         {
           "disabled": false,
+          "document": "Control parameter of voice translation.",
+          "example": "无",
+          "member": "AsrTranslateConfigureInfo",
+          "name": "AsrTranslateConfigure",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
           "document": "Control parameter of object recognition.",
           "example": "无",
           "member": "ObjectConfigureInfo",
@@ -9879,7 +10558,7 @@
         {
           "disabled": false,
           "document": "Frame capturing interval in seconds. If this parameter is left empty, 1 second will be used by default. Minimum value: 0.5 seconds.",
-          "example": "无",
+          "example": "1",
           "member": "float",
           "name": "ScreenshotInterval",
           "required": false,
@@ -9897,6 +10576,7 @@
           "example": "30",
           "member": "int64",
           "name": "Definition",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -10225,6 +10905,88 @@
           "name": "ClassId",
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateComplexAdaptiveDynamicStreamingTaskRequest": {
+      "document": "CreateComplexAdaptiveDynamicStreamingTask request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The VOD application ID.",
+          "example": "1250000000",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Media ID of the main media.",
+          "example": "1234567890",
+          "member": "string",
+          "name": "FileId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Adaptive bitrate streaming parameters, supporting up to 8 entries.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTaskStreamPara",
+          "name": "StreamParaSet",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "List of video opening/closing credits configuration template IDs, supporting up to 4 entries. If this field is filled in, the start times of the media specified in AudioSet and SubtitleSet will be automatically adjusted to stay in sync with the main media.",
+          "example": "无",
+          "member": "HeadTailTaskInput",
+          "name": "HeadTailSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Audio media parameters, supporting up to 16 entries. Each array element corresponds to an audio stream in the output. If you want to add the audio stream from the main media file to the output, you also need to specify it here. The order of elements in the array will determine the order of audio streams in the output. If the input media file contains both video and audio streams, the video stream will be ignored.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTaskAudioInput",
+          "name": "AudioSet",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "List of subtitle IDs, supporting up to 16 entries. Each array element corresponds to an subtitle stream in the output. The order of elements in the array will determine the order of subtitles in the output.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTaskSubtitleInput",
+          "name": "SubtitleSet",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateComplexAdaptiveDynamicStreamingTaskResponse": {
+      "document": "CreateComplexAdaptiveDynamicStreamingTask response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "1250000000-procedurev2-463192642364261",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -13387,6 +14149,15 @@
         },
         {
           "disabled": false,
+          "document": "Template type filter. Optional values:\n<li>Preset: preset template;</li>\n<li>Custom: user-defined template.</li>If not filled default is empty, i.e., no template type filter.",
+          "example": "Custom",
+          "member": "string",
+          "name": "Type",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
           "document": "Pagination offset. Default value: 0.",
           "example": "0",
           "member": "uint64",
@@ -13415,6 +14186,7 @@
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -13424,6 +14196,7 @@
           "example": "无",
           "member": "AIRecognitionTemplateItem",
           "name": "AIRecognitionTemplateSet",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -16422,7 +17195,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The task type. Valid values:\n<li>`Procedure`: Video processing</li>\n<li>`EditMedia`: Video editing</li>\n<li>`SplitMedia`: Video splitting</li>\n<li>`ComposeMedia`: Media file production</li>\n<li>`WechatPublish`: Weixin publishing</li>\n<li>`WechatMiniProgramPublish`: Publishing videos on Weixin Mini Program</li>\n<li>`PullUpload`: Pulling media files for upload</li>\n<li>`FastClipMedia`: Quick clipping</li>\n<li>`RemoveWatermarkTask`: Watermark removal</li>\n<li>`DescribeFileAttributesTask`: Getting file attributes</li>\n<li> `ReviewAudioVideo`: Moderation</li>\n<li>`ExtractTraceWatermark`: Digital watermark extraction</li>\n<li>`QualityEnhance`: Enhance audio/video</li>",
+          "document": "The task type. Valid values:\n<li>`Procedure`: Video processing</li>\n<li>`EditMedia`: Video editing</li>\n<li>`SplitMedia`: Video splitting</li>\n<li>`ComposeMedia`: Media file production</li>\n<li>`WechatPublish`: Weixin publishing</li>\n<li>`WechatMiniProgramPublish`: Publishing videos on Weixin Mini Program</li>\n<li>`PullUpload`: Pulling media files for upload</li>\n<li>`FastClipMedia`: Quick clipping</li>\n<li>`RemoveWatermarkTask`: Watermark removal</li>\n<li>`DescribeFileAttributesTask`: Getting file attributes</li>\n<li> `ReviewAudioVideo`: Moderation</li>\n<li>`ExtractTraceWatermark`: Digital watermark extraction</li>\n<li>`QualityEnhance`: Enhance audio/video</li>\n<li>`ComplexAdaptiveDynamicStreaming`: Complex adaptive bitrate streaming processing task</li>",
           "example": "Procedure",
           "member": "string",
           "name": "TaskType",
@@ -16676,6 +17449,16 @@
           "example": "无",
           "member": "QualityEnhanceTask",
           "name": "QualityEnhanceTask",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Complex adaptive bitrate streaming processing task information. This field has a value only when TaskType is ComplexAdaptiveDynamicStreaming. \nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ComplexAdaptiveDynamicStreamingTask",
+          "name": "ComplexAdaptiveDynamicStreamingTask",
           "output_required": true,
           "type": "object",
           "value_allowed_null": true
@@ -17831,7 +18614,7 @@
         {
           "disabled": false,
           "document": "File type, such as mp4 and flv.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "mp4",
           "member": "string",
           "name": "FileType",
           "required": true,
@@ -17841,7 +18624,7 @@
         {
           "disabled": false,
           "document": "Media file playback address.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "http://125xxx.vod2.myqcloud.com/xxx/xxx/xx.mp4",
           "member": "string",
           "name": "FileUrl",
           "required": true,
@@ -17851,7 +18634,7 @@
         {
           "disabled": false,
           "document": "Media file ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "523xxx",
           "member": "string",
           "name": "FileId",
           "required": true,
@@ -17861,7 +18644,7 @@
         {
           "disabled": false,
           "document": "Output filename of up to 64 characters, which is generated by the system by default.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "fileName",
           "member": "string",
           "name": "MediaName",
           "required": true,
@@ -17871,7 +18654,7 @@
         {
           "disabled": false,
           "document": "Category ID, which is used to categorize the media for management. A category can be created and its ID can be obtained by using the [category creating](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API.\n<li>Default value: 0, which means \"Other\".</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "0",
           "member": "int64",
           "name": "ClassId",
           "required": true,
@@ -17881,7 +18664,7 @@
         {
           "disabled": false,
           "document": "Expiration time of output media file in ISO 8601 format, after which the file will be deleted. Files will never expire by default. For more information, please see [Notes on ISO Date Format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "9999-12-31T23:59:59Z",
           "member": "string",
           "name": "ExpireTime",
           "required": true,
@@ -18224,7 +19007,7 @@
         },
         {
           "disabled": false,
-          "document": "<b>Supported event types:</b><li>`NewFileUpload`: Video uploaded.</li><li>`ProcedureStateChanged`: Task flow status changed.</li><li>`FileDeleted`: Video deleted.</li><li>`RestoreMediaComplete`: Video retrieved.</li><li>`PullComplete`: Finished video pulling.</li><li>`EditMediaComplete`: Finished video editing.</li><li>`SplitMediaComplete`: Finished video splitting.</li><li>`ComposeMediaComplete`: Finished producing the media file.</li><li>`WechatMiniProgramPublishComplete`: Finished publishing on Weixin Mini Program.</li><li>`RemoveWatermark`: Watermark removed.</li><li>`RebuildMediaComplete`: Finished audio/video remastering.</li><li>`ReviewAudioVideoComplete`: Finished moderation.</li><li>`ExtractTraceWatermarkComplete`: Finished digital watermark extraction.</li><li>`DescribeFileAttributesComplete`: Finished getting file attributes.</li><li>`QualityEnhanceComplete`: FinishedQualityEnhance.</li><li>`PersistenceComplete`: Clipping persistented. </li><b>v2017 task types:</b><li>`TranscodeComplete`: Finished video transcoding.</li><li>`ConcatComplete`: Finished video splicing.</li><li>`ClipComplete`: Finished video clipping.</li><li>`CreateImageSpriteComplete`: Finished image sprite generation.</li><li>`CreateSnapshotByTimeOffsetComplete`: Finished time point screencapturing.</li>",
+          "document": "<b>Supported event types:</b><li>`NewFileUpload`: Video uploaded.</li><li>`ProcedureStateChanged`: Task flow status changed.</li><li>`FileDeleted`: Video deleted.</li><li>`RestoreMediaComplete`: Video retrieved.</li><li>`PullComplete`: Finished video pulling.</li><li>`EditMediaComplete`: Finished video editing.</li><li>`SplitMediaComplete`: Finished video splitting.</li><li>`ComposeMediaComplete`: Finished producing the media file.</li><li>`WechatMiniProgramPublishComplete`: Finished publishing on Weixin Mini Program.</li><li>`RemoveWatermark`: Watermark removed.</li><li>`RebuildMediaComplete`: Finished audio/video remastering.</li><li>`ReviewAudioVideoComplete`: Finished moderation.</li><li>`ExtractTraceWatermarkComplete`: Finished digital watermark extraction.</li><li>`DescribeFileAttributesComplete`: Finished getting file attributes.</li><li>`QualityEnhanceComplete`: FinishedQualityEnhance.</li><li>`PersistenceComplete`: Clipping persistented. </li><li>`ComplexAdaptiveDynamicStreamingComplete `: Finished complex adaptive bitrate streaming processing. </li><b>v2017 task types:</b><li>`TranscodeComplete`: Finished video transcoding.</li><li>`ConcatComplete`: Finished video splicing.</li><li>`ClipComplete`: Finished video clipping.</li><li>`CreateImageSpriteComplete`: Finished image sprite generation.</li><li>`CreateSnapshotByTimeOffsetComplete`: Finished time point screencapturing.</li>",
           "example": "null",
           "member": "string",
           "name": "EventType",
@@ -18488,6 +19271,16 @@
           "example": "null",
           "member": "PersistenceCompleteTask",
           "name": "PersistenceCompleteEvent",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Complex adaptive bitrate streaming processing completion event, valid when the event type is ComplexAdaptiveDynamicStreamingComplete.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "null",
+          "member": "ComplexAdaptiveDynamicStreamingTask",
+          "name": "ComplexAdaptiveDynamicStreamingCompleteEvent",
           "output_required": true,
           "type": "object",
           "value_allowed_null": true
@@ -19009,7 +19802,7 @@
           "example": "abc",
           "member": "string",
           "name": "Uv",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -19019,7 +19812,7 @@
           "example": "abc",
           "member": "string",
           "name": "Uid",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -21703,100 +22496,100 @@
         {
           "disabled": false,
           "document": "Address of generated animated image.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Url",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Animated image generating template ID. For more information, please see [Animated Image Generating Parameter Template](https://intl.cloud.tencent.com/document/product/266/33481?from_cn_redirect=1#.3Cspan-id-.3D-.22zdt.22.3E.3C.2Fspan.3E.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF).\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Animated image format, such as gif.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Container",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Height of animated image in px.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Height",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Width of animated image in px.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Width",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Bitrate of animated image in bps.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Bitrate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Size of animated image in bytes.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Size",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "MD5 value of an animated image.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "Md5",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Start time offset of animated image in video in seconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "End time offset of animated image in video in seconds.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         }
@@ -21809,30 +22602,30 @@
         {
           "disabled": false,
           "document": "Bitrate of audio stream in bps.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "Bitrate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Sample rate of audio stream in Hz.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1",
           "member": "int64",
           "name": "SamplingRate",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Audio stream encoder, such as aac.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "aac",
           "member": "string",
           "name": "Codec",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -22503,60 +23296,60 @@
         {
           "disabled": false,
           "document": "Image sprite specification. For more information, please see [Image Sprite Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Subimage height of image sprite.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Height",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Subimage width of image sprite.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Width",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total number of subimages in each image sprite.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "TotalCount",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Address of each image sprite.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ImageUrlSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Address of WebVtt file for the position-time relationship among subimages in an image sprite. The WebVtt file indicates the corresponding time points of each subimage and their coordinates in the image sprite, which is typically used by the player for implementing preview.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "WebVttUrl",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -22757,9 +23550,10 @@
         {
           "disabled": false,
           "document": "Offset time of video timestamp in seconds.",
-          "example": "",
+          "example": "0",
           "member": "float",
           "name": "TimeOffset",
+          "output_required": true,
           "required": true,
           "type": "float",
           "value_allowed_null": false
@@ -22767,9 +23561,10 @@
         {
           "disabled": false,
           "document": "Content string of timestamp containing 1-128 characters.",
-          "example": "",
+          "example": "打点内容",
           "member": "string",
           "name": "Content",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -23903,50 +24698,50 @@
         {
           "disabled": false,
           "document": "Sampled screenshot specification ID. For more information, please see [Sampled Screencapturing Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Sample type. Valid values:\n<li>Percent: samples at a specified percentage interval.</li>\n<li>Time: samples at a specified time interval.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "SampleType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Sampling interval\n<li>If `SampleType` is `Percent`, this value means taking a screenshot at an interval of the specified percentage.</li>\n<li>If `SampleType` is `Time`, this value means taking a screenshot at an interval of the specified time (in seconds). The first screenshot is always the first video frame.</li>\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "Interval",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of URLs of generated screenshots.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ImageUrlSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of watermarking template IDs if the screenshots are watermarked.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "int64",
           "name": "WaterMarkDefinition",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -23975,20 +24770,20 @@
         {
           "disabled": false,
           "document": "Specification of a time point screenshot. For more information, please see [Parameter Template for Time Point Screencapturing](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "10",
           "member": "int64",
           "name": "Definition",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Information set of screenshots of the same specification. Each element represents a screenshot.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "null",
           "member": "MediaSnapshotByTimePicInfoItem",
           "name": "PicInfoSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -24163,8 +24958,8 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle language. Common values:\n<li>`cn`: Chinese</li>\n<li>`ja`: Japanese</li>\n<li>`en-US`: English</li>\nFor other valid values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).",
-          "example": "cn",
+          "document": "Subtitle language. Common values:\n<li>`zh`: Chinese</li>\n<li>`en`: English</li>\n<li>`ja`: Japanese</li>\n<li>`ko`: Korean</li>\n<li>`vi`: Vietnamese</li>\n<li>`ms`: Malay</li>\n<li>`th`: Thai</li>\n<li>`pt`: Portuguese</li>\n<li>`tr`: Turkish</li>\n<li>`ar`: Arabic</li>\n<li>`es`: Spanish</li>\n<li>`hi`: Hindi</li>\n<li>`fr`: French</li>For other valid values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).",
+          "example": "zh",
           "member": "string",
           "name": "Language",
           "required": true,
@@ -24225,8 +25020,8 @@
         },
         {
           "disabled": false,
-          "document": "Subtitle language. Common values:\n<li>`cn`: Chinese</li>\n<li>`ja`: Japanese</li>\n<li>`en-US`: English</li>\nFor other values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).",
-          "example": "cn",
+          "document": "Subtitle language. Common values:\n<li>`zh`: Chinese</li>\n<li>`en`: English</li>\n<li>`ja`: Japanese</li>\n<li>`ko`: Korean</li>\n<li>`vi`: Vietnamese</li>\n<li>`ms`: Malay</li>\n<li>`th`: Thai</li>\n<li>`pt`: Portuguese</li>\n<li>`tr`: Turkish</li>\n<li>`ar`: Arabic</li>\n<li>`es`: Spanish</li>\n<li>`hi`: Hindi</li>\n<li>`fr`: French</li>For other valid values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).",
+          "example": "zh",
           "member": "string",
           "name": "Language",
           "output_required": true,
@@ -24249,6 +25044,16 @@
           "example": "http://xxx.vod2.myqcloud.com/xxx/xxx/subtitles/MySubtitleId.vtt",
           "member": "string",
           "name": "Url",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle source, values:\n<li>UserUploaded: user uploaded;</li>\n<li>AIRecognition: AI recognition, generated through asr full text recognition or voice translation.</li>",
+          "example": "UserUploaded",
+          "member": "string",
+          "name": "Source",
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
@@ -24354,7 +25159,7 @@
         {
           "disabled": false,
           "document": "Information set of transcoding with each specification. Each element represents a result of transcoding with a specification.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "MediaTranscodeItem",
           "name": "TranscodeSet",
           "required": true,
@@ -24813,6 +25618,15 @@
           "example": "无",
           "member": "AsrWordsConfigureInfoForUpdate",
           "name": "AsrWordsConfigure",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Control parameter of voice translation.",
+          "example": "无",
+          "member": "AsrTranslateConfigureInfoForUpdate",
+          "name": "AsrTranslateConfigure",
           "required": false,
           "type": "object"
         },
@@ -34210,9 +35024,10 @@
         {
           "disabled": false,
           "document": "Sampled screencapturing template ID.",
-          "example": "",
+          "example": "10",
           "member": "uint64",
           "name": "Definition",
+          "output_required": true,
           "required": true,
           "type": "int",
           "value_allowed_null": false
@@ -34220,9 +35035,10 @@
         {
           "disabled": false,
           "document": "List of up to 10 image or text watermarks.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "WatermarkInput",
           "name": "WatermarkSet",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": false
