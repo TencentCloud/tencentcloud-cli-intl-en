@@ -950,7 +950,7 @@
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: tcss.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAssetImageRegistryListExport\n<Common request parameters>\n\n{\n    \"ExportField\": [\n        \"InstanceName\",\n        \"InstanceId\",\n        \"RegistryType\",\n        \"Namespace\",\n        \"ImageName\",\n        \"ImageTag\",\n        \"ImageSize\",\n        \"ImageDigest\",\n        \"ImageId\",\n        \"ImageRepoAddress\",\n        \"ScanStatus\",\n        \"VulCnt\",\n        \"VirusCnt\",\n        \"RiskCnt\",\n        \"ScanStartTime\",\n        \"ScanEndTime\",\n        \"OsName\",\n        \"IsAuthorized\",\n        \"RegistryRegion\"\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c00f4492-6973-4d8f-872b-c29d22c8eee0\",\n        \"DownloadUrl\": \"https://image-registory-1302977000.cos.ap-guangzhou.myqcloud.com/251011530-100015468030-ImageListExport.csv?q-sign-algorithm=sha1&q-ak=AKIDSefQCiRPhjYAW4BR9b1B9qqd4E71a63k&q-sign-time=1611991144%3B1611991204&q-key-time=1611991144%3B1611991204&q-header-list=host&q-url-param-list=&q-signature=e3fc796e87165f7401098b83208d973e8e1af6ec\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c00f4492-6973-4d8f-872b-c29d22c8eee0\",\n        \"DownloadUrl\": \"https://image-registory-1302977000.cos.ap-guangzhou.myqcloud.com/251011530-100015468030-ImageListExport.csv?q-sign-algorithm=sha1&q-ak=AKIDSefQCiRPhjYAW4BR9b1B9qqd*****&q-sign-time=1611991144%3B1611991204&q-key-time=1611991144%3B1611991204&q-header-list=host&q-url-param-list=&q-signature=e3fc796e87165f7401098b83208d973e8e1af6ec\"\n    }\n}",
         "title": "Exporting the list of images for an image repository"
       }
     ],
@@ -971,8 +971,8 @@
     "DescribeAssetImageRegistryRegistryList": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: tcss.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAssetImageRegistryRegistryList\n<Common request parameters>\n\n{}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e59f97b7-87d4-4909-8289-61bd28423d2f\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: tcss.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeAssetImageRegistryRegistryList\n<Common request parameters>\n\n{\n    \"Limit\": 100,\n    \"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e59f97b7-87d4-4909-8289-61bd28423d2f\",\n        \"TotalCount\": 15525,\n        \"List\": [\n            {\n                \"ConnDetectDetail\": [\n                    {\n                        \"ConnDetectMessage\": \"\",\n                        \"ConnDetectStatus\": \"status_connected\",\n                        \"FailReason\": \"\",\n                        \"Quuid\": \"backend\",\n                        \"Solution\": \"\",\n                        \"Uuid\": \"backend\"\n                    }\n                ],\n                \"ConnDetectHostCount\": 1,\n                \"ConnDetectType\": \"backend\",\n                \"ConnectMsg\": \"\",\n                \"InstanceID\": \"\",\n                \"LatestSyncTime\": \"2024-10-23 03:12:50\",\n                \"Name\": \"aws_public\",\n                \"NetType\": \"public\",\n                \"RegistryId\": 10000,\n                \"RegistryRegion\": \"default\",\n                \"RegistryType\": \"aws\",\n                \"RegistryVersion\": \"V1\",\n                \"SyncFailReason\": \"\",\n                \"SyncMessage\": \"\",\n                \"SyncSolution\": \"\",\n                \"SyncStatus\": \"success\",\n                \"Url\": \"https://public.xxx.aws/xxxxxxxx\"\n            }\n        ]\n    }\n}",
         "title": "Querying the list of image repositories"
       }
     ],

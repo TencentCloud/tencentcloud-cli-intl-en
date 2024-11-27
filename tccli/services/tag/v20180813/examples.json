@@ -1,5 +1,13 @@
 {
   "actions": {
+    "AddProject": [
+      {
+        "document": " ",
+        "input": "https://tag.tencentcloudapi.com/?Action=AddProject\r\n&ProjectName=tp2\r\n&<Common Request Parameters>",
+        "output": "{\n    \"Response\": {\n        \"IsNew\": 1,\n        \"ProjectId\": 1024690,\n        \"RequestId\": \"caf5c6ba-b21b-4769-b0bb-0b3090e0c282\"\n    }\n}",
+        "title": "Create a project"
+      }
+    ],
     "AddResourceTag": [
       {
         "document": " ",
@@ -201,15 +209,15 @@
     "ModifyResourceTags": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: tag.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyResourceTags\n<Common request parameters>\n\n{\n    \"ReplaceTags\": [\n        {\n            \"TagKey\": \"testTagKey2\",\n            \"TagValue\": \"testTagValue2\"\n        },\n        {\n            \"TagKey\": \"testTagKey1\",\n            \"TagValue\": \"testTagValue1\"\n        }\n    ],\n    \"Resource\": \"qcs::cvm:ap-beijing:uin/1234567:instance/ins-123\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
-        "title": "Replacing tags associated with a resource with input tags"
-      },
-      {
-        "document": " ",
         "input": "POST / HTTP/1.1\nHost: tag.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyResourceTags\n<Common request parameters>\n\n{\n    \"DeleteTags\": [\n        {\n            \"TagKey\": \"testTagKey2\"\n        },\n        {\n            \"TagKey\": \"testTagKey1\"\n        }\n    ],\n    \"Resource\": \"qcs::cvm:ap-beijing:uin/1234567:instance/ins-123\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
         "title": "Unassociating multiple tags from a resource"
+      },
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: tag.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyResourceTags\n<Common request parameters>\n\n{\n    \"ReplaceTags\": [\n        {\n            \"TagKey\": \"testTagKey2\",\n            \"TagValue\": \"testTagValue2\"\n        },\n        {\n            \"TagKey\": \"testTagKey1\",\n            \"TagValue\": \"testTagValue1\"\n        }\n    ],\n    \"Resource\": \"qcs::cvm:ap-beijing:uin/1234567:instance/ins-123\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\"\n    }\n}",
+        "title": "Replacing tags associated with a resource with input tags"
       }
     ],
     "ModifyResourcesTagValue": [

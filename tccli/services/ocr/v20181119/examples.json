@@ -202,10 +202,10 @@
     ],
     "RecognizeSingaporeIDCardOCR": [
       {
-        "document": " ",
-        "input": "\t\nPOST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeSingaporeIDCardOCR\n\n{\n    \"ReturnHeadImage\": \"false\",\n    \"ImageUrl\": \"https:\\/\\/xx\\/a.jpg\"\n}",
-        "output": "{\n    \"Response\": {\n        \"ChName\": \"abc\",\n        \"EnName\": \"abc\",\n        \"Sex\": \"abc\",\n        \"CountryOfBirth\": \"abc\",\n        \"Birthday\": \"abc\",\n        \"Address\": \"abc\",\n        \"ID\": \"abc\",\n        \"Race\": \"abc\",\n        \"NRICCode\": \"abc\",\n        \"PostCode\": \"abc\",\n        \"DateOfExpiration\": \"abc\",\n        \"DateOfIssue\": \"abc\",\n        \"Photo\": \"abc\",\n        \"WarnCardInfos\": [\n            0\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "Recognize Singapore ID Card"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeSingaporeIDCardOCR\n<common request parameters>\n\n{\n    \"ReturnHeadImage\": \"false\",\n    \"ImageUrl\": \"https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Address\": \"\",\n        \"Birthday\": \"12/04/1988\",\n        \"ChName\": \"夏*阳\",\n        \"CountryOfBirth\": \"CHINA\",\n        \"DateOfExpiration\": \"\",\n        \"DateOfIssue\": \"\",\n        \"EnName\": \"XIA ***YANG\",\n        \"ID\": \"S7***22E\",\n        \"NRICCode\": \"\",\n        \"Photo\": \"\",\n        \"PostCode\": \"\",\n        \"Race\": \"CHINESE\",\n        \"RequestId\": \"65b41f06-2759-4a7f-b5dd-639f1e676e28\",\n        \"Sex\": \"M\",\n        \"WarnCardInfos\": [\n            -9104\n        ]\n    }\n}",
+        "title": "RecognizeSingaporeIDCardOCR调用"
       }
     ],
     "RecognizeTableAccurateOCR": [
@@ -218,10 +218,10 @@
     ],
     "RecognizeThaiIDCardOCR": [
       {
-        "document": "This example shows you how to recognize a Thai identity card.",
-        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeThaiIDCardOCR\n<Common request parameters>\n\n{\n    \"ImageUrl\": \"https://xx/a.jpg\"\n}",
-        "output": "{\n    \"Response\": {\n        \"ID\": \"3102001968756\",\n        \"ThaiName\": \"[ThaiName in thai]\",\n        \"EnFirstName\": \"Mr. Thanakit\",\n        \"Address\": \"Boonyopakron\",\n        \"Birthday\": \"[Birthday in thai]\",\n        \"IssueDate\": \"[IssueDate in thai]\",\n        \"ExpirationDate\": \"[ExpirationDate in thai]\",\n        \"EnLastName\": \"Boonyopakron\",\n        \"PortraitImage\": \"oiuu\",\n        \"RequestId\": \"98f8fcbf-933a-4e95-ac48-6f1a9308fs51\"\n    }\n}",
-        "title": "Recognizing a Thai identity card"
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeThaiIDCardOCR\n<common request parameters>\n\n{\n    \"ImageUrl\": \"https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"ID\": \"3102001968756\",\n        \"ThaiName\": \"นาย ธนกฤต  บุญโญปกรุณ์\",\n        \"EnFirstName\": \"Mr. Thanakit\",\n        \"Address\": \"Boonyopakron\",\n        \"Birthday\": \"ที่อยู่21/19หมู่ที่3ต.บางคูครัดอ.บางบัวทอง\",\n        \"IssueDate\": \"14ธ.ค.2509\",\n        \"ExpirationDate\": \"9ธ.ค.2559\",\n        \"EnLastName\": \"Boonyopakron\",\n        \"PortraitImage\": \"oiuu\",\n        \"RequestId\": \"98f8fcbf-933a-4e95-ac48-6f1a9308fs51\"\n    }\n}",
+        "title": "RecognizeThaiIDCardOCR调用"
       }
     ],
     "SealOCR": [
