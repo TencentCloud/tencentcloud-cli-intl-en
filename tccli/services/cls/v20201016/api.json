@@ -1525,6 +1525,34 @@
       ],
       "usage": "both"
     },
+    "AnonymousInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Operations",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ConditionInfo",
+          "name": "Conditions",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ApplyConfigToMachineGroupRequest": {
       "document": "ApplyConfigToMachineGroup request structure.",
       "members": [
@@ -1854,6 +1882,45 @@
           "member": "string",
           "name": "Format",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ConditionInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "VpcID",
+          "member": "string",
+          "name": "Attributes",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "Rule",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "vpc-6jfhit1t",
+          "member": "string",
+          "name": "ConditionValue",
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -11614,6 +11681,23 @@
       ],
       "usage": "both"
     },
+    "TopicExtendInfo": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "AnonymousInfo",
+          "name": "AnonymousAccess",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "TopicInfo": {
       "document": "Basic Topic Information",
       "members": [
@@ -11795,6 +11879,16 @@
           "name": "IsWebTracking",
           "output_required": true,
           "type": "bool",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "TopicExtendInfo",
+          "name": "Extends",
+          "output_required": false,
+          "type": "object",
           "value_allowed_null": true
         }
       ],

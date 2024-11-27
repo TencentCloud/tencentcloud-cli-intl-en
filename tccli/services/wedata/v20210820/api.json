@@ -4713,7 +4713,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Project ID/Workspace ID",
+          "document": "Project ID/Workspace ID.",
           "example": "\"11022568003970304\"",
           "member": "string",
           "name": "ProjectId",
@@ -4722,7 +4722,7 @@
         },
         {
           "disabled": false,
-          "document": "Task Type (consistent with scheduling parameters)",
+          "document": "Task Type (consistent with scheduling parameters).",
           "example": "27",
           "member": "int64",
           "name": "TypeId",
@@ -4731,7 +4731,7 @@
         },
         {
           "disabled": false,
-          "document": "Task Name",
+          "document": "Task Name.",
           "example": "\"testTaskName\"",
           "member": "string",
           "name": "TaskName",

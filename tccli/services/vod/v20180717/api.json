@@ -12867,6 +12867,15 @@
         },
         {
           "disabled": false,
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
+          "example": "1490012345",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
           "document": "Region to enable acceleration. Valid values:\n<li>`Chinese Mainland`</li>\n<li>`Outside Chinese Mainland`</li>\n<li>`Global`</li>\nIf `AccelerateArea` is not specified, VOD will enable acceleration in or outside Chinese mainland based on the regional information a user has configured with Tencent Cloud.",
           "example": "Chinese Mainland",
           "member": "string",
@@ -12876,12 +12885,12 @@
         },
         {
           "disabled": false,
-          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
-          "example": "1490012345",
-          "member": "uint64",
-          "name": "SubAppId",
+          "document": "Domain type. Valid values:\n<li>`VOD`: Domain name distributed using the VOD product;</li> <li>`EdgeOne`: Domain name distributed using the EdgeOne product.</li>default value: VOD. ",
+          "example": "VOD",
+          "member": "string",
+          "name": "Type",
           "required": false,
-          "type": "int"
+          "type": "string"
         }
       ],
       "type": "object"
@@ -18012,6 +18021,26 @@
           "output_required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "IPFilterPolicy",
+          "name": "IPFilterPolicy",
+          "output_required": true,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Domain type. Valid values:\n<li>`VOD`: Domain name distributed using the VOD product;</li> <li>`EdgeOne`: Domain name distributed using the EdgeOne product.</li>",
+          "example": "VOD",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -20846,6 +20875,45 @@
           "output_required": true,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "IPFilterPolicy": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Enabled",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "Black",
+          "member": "string",
+          "name": "FilterType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[\"1.1.1.1\"]",
+          "member": "string",
+          "name": "IPList",
+          "output_required": true,
+          "required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],

@@ -1719,7 +1719,7 @@
         {
           "disabled": false,
           "document": "Target mobile number in the E.164 standard in the format of +[country/region code][mobile number]. Up to 200 mobile numbers are supported in one request (which should be all Chinese mainland mobile numbers or all global mobile numbers). For example, +60198890000, which has a + sign followed by 60 (country/region code) and then by 198890000 (mobile number).",
-          "example": "+8618511122233",
+          "example": "[\"+8618501234444\"]",
           "member": "string",
           "name": "PhoneNumberSet",
           "required": true,
@@ -1755,7 +1755,7 @@
         {
           "disabled": false,
           "document": "Template parameter. If there is no template parameter, leave this field empty.\n<dx-alert infotype=\"notice\" title=\"Note\">The number of template parameters should be consistent with that of the template variables of `TemplateId`.</dx-alert>",
-          "example": "[1234]",
+          "example": "[\"4370\"]",
           "member": "string",
           "name": "TemplateParamSet",
           "required": false,
@@ -1764,7 +1764,7 @@
         {
           "disabled": false,
           "document": "SMS code number extension, which is not activated by default. If you need to activate it, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).",
-          "example": "12",
+          "example": "10",
           "member": "string",
           "name": "ExtendCode",
           "required": false,
@@ -1773,7 +1773,7 @@
         {
           "disabled": false,
           "document": "User session content, which can carry context information such as user-side ID and will be returned as-is by the server. Note that the length must be less than 512 bytes.",
-          "example": "test",
+          "example": "outsid_1729495320_1011",
           "member": "string",
           "name": "SessionContext",
           "required": false,
@@ -1797,7 +1797,7 @@
         {
           "disabled": false,
           "document": "SMS delivery status.",
-          "example": "[{\"SerialNo\":\"5000:1045710669157053657849499619\",\"PhoneNumber\":\"+8618511122233\",\"Fee\":1,\"SessionContext\":\"test\",\"Code\":\"Ok\",\"Message\":\"send success\",\"IsoCode\":\"CN\"}]",
+          "example": "[{\"SerialNo\":\"5000:1045710669157053657849499619\",\"PhoneNumber\":\"+8618501234444\",\"Fee\":1,\"SessionContext\":\"outsid_1729495320_1011\",\"Code\":\"Ok\",\"Message\":\"send success\",\"IsoCode\":\"CN\"}]",
           "member": "SendStatus",
           "name": "SendStatusSet",
           "output_required": true,
@@ -1822,17 +1822,17 @@
           "example": "5000:1045710669157053657849499619",
           "member": "string",
           "name": "SerialNo",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Mobile number in the E.164 standard (+[country/region code][mobile number]), such as +8613711112222, which has a + sign followed by 86 (country/region code) and then by 13711112222 (mobile number).",
-          "example": "+8618511122233",
+          "example": "+8618501234444",
           "member": "string",
           "name": "PhoneNumber",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1842,17 +1842,17 @@
           "example": "1",
           "member": "uint64",
           "name": "Fee",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "User session content.",
-          "example": "test",
+          "example": "outsid_1729495320_1011",
           "member": "string",
           "name": "SessionContext",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1862,7 +1862,7 @@
           "example": "Ok",
           "member": "string",
           "name": "Code",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1872,7 +1872,7 @@
           "example": "send success",
           "member": "string",
           "name": "Message",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -1882,7 +1882,7 @@
           "example": "CN",
           "member": "string",
           "name": "IsoCode",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }

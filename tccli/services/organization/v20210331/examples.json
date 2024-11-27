@@ -11,17 +11,17 @@
     "AddOrganizationNode": [
       {
         "document": " ",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddOrganizationNode\n<Common request parameters>\n\n{\n    \"Name\": \"test\",\n    \"ParentNodeId\": 123\n}",
-        "output": "{\n    \"Response\": {\n        \"NodeId\": 1123,\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddOrganizationNode\n<Common request parameters>\n\n{\n    \"Name\": \"node_name\",\n    \"ParentNodeId\": 123\n}",
+        "output": "{\n    \"Response\": {\n        \"NodeId\": 1001,\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
         "title": "Adding an Organization Node"
       }
     ],
     "AddPermissionPolicyToRoleConfiguration": [
       {
         "document": "This example shows you how to add policies to permission configurations.",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddPermissionPolicyToRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-29wm2iwn\",\n    \"RoleConfigurationId\": \"rc-aiwmsiw\",\n    \"RolePolicyType\": \"System\",\n    \"RolePolicyNames\": [\n        \"TestPolicy\"\n    ],\n    \"CustomPolicyDocument\": \"\"\n}",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AddPermissionPolicyToRoleConfiguration\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"z-29wm2iwn\",\n    \"RoleConfigurationId\": \"rc-aiwmsiw\",\n    \"RolePolicyType\": \"System\",\n    \"RolePolicyNames\": [\n        \"TestPolicy\"\n    ],\n    \"CustomPolicyDocument\": \"{\\\"statement\\\":{\\\"action\\\":[\\\"name/cvm:*\\\",\\\"name/vpc:*\\\",\\\"name/cos:*\\\",\\\"name/cmqtopic:*\\\",\\\"name/cmqqueue:*\\\"],\\\"effect\\\":\\\"allow\\\",\\\"resource\\\":\\\"*\\\"},\\\"version\\\":\\\"2.0\\\"}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
-        "title": "Adding Policies to Permission Configurations"
+        "title": "This example shows you how to add policies to permission configurations."
       }
     ],
     "AddUserToGroup": [
@@ -72,6 +72,22 @@
         "title": "Adding a Delegated Admin of the Organization Service"
       }
     ],
+    "CreateOrganization": [
+      {
+        "document": " ",
+        "input": "https://organization.tencentcloudapi.com/?Action=CreateOrganization\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"OrgId\": 123,\n        \"NickName\": \"test\",\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Creating an Organization"
+      }
+    ],
+    "CreateOrganizationIdentity": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOrganizationIdentity\n<Common request parameters>\n\n{\n    \"Description\": \"\",\n    \"IdentityAliasName\": \"test\",\n    \"IdentityPolicy\": [\n        {\n            \"PolicyId\": 1,\n            \"PolicyName\": \"AdministratorAccess\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"IdentityId\": 123,\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Adding an Organization Identity"
+      }
+    ],
     "CreateOrganizationMember": [
       {
         "document": " ",
@@ -80,12 +96,28 @@
         "title": "Creating an Organization Member"
       }
     ],
+    "CreateOrganizationMemberAuthIdentity": [
+      {
+        "document": "This example shows you how to add organization member access authorization.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOrganizationMemberAuthIdentity\n<Common request parameters>\n\n{\n    \"MemberUins\": [\n        111111111111\n    ],\n    \"IdentityIds\": [\n        13\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3840f6f4-3976-4b44-9ecc-cb0578129059\"\n    }\n}",
+        "title": "Adding Organization Member Access Authorization"
+      }
+    ],
     "CreateOrganizationMemberPolicy": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOrganizationMemberPolicy\n<Common request parameters>\n\n{\n    \"PolicyName\": \"policy_name\",\n    \"MemberUin\": 111111111111,\n    \"Description\": \"description\",\n    \"IdentityId\": 11\n}",
         "output": "{\n    \"Response\": {\n        \"PolicyId\": 98081,\n        \"RequestId\": \"a1a10c6e-6723-408a-858b-2cb84e92776c\"\n    }\n}",
         "title": "Creating an Access Authorization Policy for Organization Members"
+      }
+    ],
+    "CreateOrganizationMembersPolicy": [
+      {
+        "document": "This example shows you how to create an organization member access policy.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateOrganizationMembersPolicy\n<Common request parameters>\n\n{\n    \"MemberUins\": [\n        111111111111\n    ],\n    \"PolicyName\": \"policy_name\",\n    \"IdentityId\": 11,\n    \"Description\": \"description\"\n}",
+        "output": "{\n    \"Response\": {\n        \"PolicyId\": 123,\n        \"RequestId\": \"3840f6f4-3976-4b44-9ecc-cb0578129059\"\n    }\n}",
+        "title": "Creating an Organization Member Access Policy"
       }
     ],
     "CreateRoleAssignment": [
@@ -102,6 +134,14 @@
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-33923n\",\n    \"RoleConfigurationName\": \"test\",\n    \"Description\": \"this is role configuration\",\n    \"SessionDuration\": 900,\n    \"RelayState\": \"https://console.cloud.tencent.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RoleConfigurationInfo\": {\n            \"RoleConfigurationId\": \"rc-s2ns92ns***\",\n            \"RoleConfigurationName\": \"test\",\n            \"Description\": \"this is role configuration\",\n            \"SessionDuration\": 900,\n            \"RelayState\": \"https://console.cloud.tencent.com\",\n            \"CreateTime\": \"2019-01-01 12:12:12\",\n            \"UpdateTime\": \"2019-01-01 12:12:12\"\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
         "title": "Creating Permission Configurations"
+      }
+    ],
+    "CreateSCIMCredential": [
+      {
+        "document": "This example shows you how to create a SCIM key.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSCIMCredential\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-vft38p2hq8tq\"\n}",
+        "output": "{\n    \"Response\": {\n        \"CreateTime\": \"2024-05-31 15:04:53\",\n        \"CredentialId\": \"scimcred-un1tgbnt0s9j\",\n        \"CredentialSecret\": \"YlBKbEhkYXI2cy9xOEFjSyj9sngcXTyzqPMSkQl_qJ7IVNQGJoQJ9tUerclttS7PAWiabsIxkbCx3f3gR0qOWEqKmIF5N1RGrMqHxl0KhBq-BLowGXx8fpOipLmzYKYtjiO7CCUdkJ5_7de2nTCGEeC2yIu9dmJ5gtKwYBmjPW4F22cnReLf-2VeI5PDvqjKkZTu_WJ5vvUBoGlZsprEKapgVKEDdmYL04rvc-3u1__zTRbjC8PtncjqLvCx-9JsSilTZsVwldFCUDWAlOfmpcbdT1DaV9W8Ule-yOrqS-NJUUnJ4HsUzW3cL2nYiNQ2s5xD_DS7n691G6nhwK6xzu0po8Wy12oHx9RIhZ48d9kI9SwCwlrHZ0yNx7G__dtWdurhce2owPGLdETPPJlcOtCKFiNoHOc5EZox3ZKEVqo2CUA=\",\n        \"CredentialStatus\": \"Enabled\",\n        \"CredentialType\": \"BearerToken\",\n        \"ExpireTime\": \"2025-05-31 15:04:53\",\n        \"RequestId\": \"b835edd6-8ac0-4e79-9b78-917d3faff9ed\",\n        \"ZoneId\": \"z-vft38p2hq8tq\"\n    }\n}",
+        "title": "Creating a SCIM Key"
       }
     ],
     "CreateUser": [
@@ -136,12 +176,44 @@
         "title": "Deleting a Delegated Admin of the Organization Service"
       }
     ],
+    "DeleteOrganization": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOrganization\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Deleting an Organization"
+      }
+    ],
+    "DeleteOrganizationIdentity": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOrganizationIdentity\n<Common request parameters>\n\n{\n    \"IdentityId\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Deleting an Organization Identity"
+      }
+    ],
+    "DeleteOrganizationMemberAuthIdentity": [
+      {
+        "document": "This example shows you how to delete organization member access authorization.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOrganizationMemberAuthIdentity\n<Common request parameters>\n\n{\n    \"MemberUin\": 11111111111,\n    \"IdentityId\": 11\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bebe4b80-bca5-45fe-a460-455045879f89\"\n    }\n}",
+        "title": "Deleting Organization Member Access Authorization"
+      }
+    ],
     "DeleteOrganizationMembers": [
       {
         "document": " ",
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOrganizationMembers\n<Common request parameters>\n\n{\n    \"MemberUin\": [\n        111111111111\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
         "title": "Batch Deleting Organization Members"
+      }
+    ],
+    "DeleteOrganizationMembersPolicy": [
+      {
+        "document": "This example shows you how to delete an organization member access policy.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteOrganizationMembersPolicy\n<Common request parameters>\n\n{\n    \"PolicyId\": 123\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3840f6f4-3976-4b44-9ecc-cb0578129059\"\n    }\n}",
+        "title": "Deleting an Organization Member Access Policy"
       }
     ],
     "DeleteOrganizationNodes": [
@@ -168,6 +240,14 @@
         "title": "Deleting the Permission Configuration Information"
       }
     ],
+    "DeleteSCIMCredential": [
+      {
+        "document": "This example shows you how to delete a SCIM key.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteSCIMCredential\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-vft38p2hq8tq\",\n    \"CredentialId\": \"scimcred-un1tgbnt0s9j\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b9a87af3-a121-471b-bb61-16a2985b4619\"\n    }\n}",
+        "title": "Deleting a SCIM Key"
+      }
+    ],
     "DeleteUser": [
       {
         "document": "This example shows you how to delete a user.",
@@ -186,10 +266,10 @@
     ],
     "DescribeIdentityCenter": [
       {
-        "document": "获取集团账号身份中心服务信息",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIdentityCenter\n<common request parameters>\n\n{}",
+        "document": "This example shows you how to obtain TCO Identity Center service information.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIdentityCenter\n<Common request parameters>\n\n\n\n{}",
         "output": "{\n    \"Response\": {\n        \"CreateTime\": \"2024-05-30 10:50:11\",\n        \"RequestId\": \"da9a32a5-f6d5-4ef5-be20-0ee16b63bb6d\",\n        \"ScimSyncStatus\": \"Disabled\",\n        \"ServiceStatus\": \"Enabled\",\n        \"UpdateTime\": \"2024-06-25 10:08:21\",\n        \"ZoneId\": \"z-vft38p2hq8tq\",\n        \"ZoneName\": \"testwu\"\n    }\n}",
-        "title": "获取集团账号身份中心服务信息"
+        "title": "Obtaining TCO Identity Center Service Information"
       }
     ],
     "DescribeOrganization": [
@@ -278,6 +358,14 @@
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-2s2osm2***\",\n    \"RoleConfigurationId\": \"rc-odmo23w\"\n}",
         "output": "{\n    \"Response\": {\n        \"RoleConfigurationInfo\": {\n            \"RoleConfigurationId\": \"rc-s2ns92ns***\",\n            \"RoleConfigurationName\": \"test\",\n            \"Description\": \"this is role configuration\",\n            \"SessionDuration\": 900,\n            \"RelayState\": \"https://console.cloud.tencent.com\",\n            \"CreateTime\": \"2019-01-01 12:12:12\",\n            \"UpdateTime\": \"2019-01-01 12:12:12\"\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
         "title": "Querying the Permission Configuration Information"
+      }
+    ],
+    "GetSCIMSynchronizationStatus": [
+      {
+        "document": "This example shows you how to query SCIM synchronization status.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: GetSCIMSynchronizationStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-vft38p2hq8tq\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a9c83496-1656-4e86-88ba-4cbc26bef4ba\",\n        \"SCIMSynchronizationStatus\": \"Disabled\"\n    }\n}",
+        "title": "Querying SCIM Synchronization Status"
       }
     ],
     "GetTaskStatus": [
@@ -416,6 +504,14 @@
         "title": "Querying the Permission Configuration List"
       }
     ],
+    "ListSCIMCredentials": [
+      {
+        "document": "This example shows you how to query the SCIM key list.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ListSCIMCredentials\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-vft38p2hq8tq\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"60ebab32-73ff-4d3d-abdf-af9b1e866add\",\n        \"SCIMCredentials\": [],\n        \"TotalCounts\": 0\n    }\n}",
+        "title": "Querying the SCIM Key List"
+      }
+    ],
     "ListTasks": [
       {
         "document": "This example shows you how to query the async task list.",
@@ -450,10 +546,10 @@
     ],
     "OpenIdentityCenter": [
       {
-        "document": "开通身份中心服务（CIC）",
-        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenIdentityCenter\n<common request parameters>\n\n{\n    \"ZoneName\": \"testName\"\n}",
+        "document": "This example shows you how to activate Identity Center service (CIC).",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: OpenIdentityCenter\n<Common request parameters>\n\n\n\n{\n    \"ZoneName\": \"testName\"\n}",
         "output": "{\n    \"Response\": {\n        \"ZoneId\": \"z-dj3jk*****\",\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324f45\"\n    }\n}",
-        "title": "开通身份中心服务（CIC）"
+        "title": "Activating Identity Center Service (CIC)"
       }
     ],
     "ProvisionRoleConfiguration": [
@@ -462,6 +558,14 @@
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ProvisionRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-disndw****\",\n    \"RoleConfigurationId\": \"rc-sians9wn****\",\n    \"TargetType\": \"MemberUin\",\n    \"TargetUin\": 10000293120\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d95c7cc0-195d-4818-aa3a-e7dc73eafe37\",\n        \"Task\": {\n            \"RoleConfigurationId\": \"rc-4plmus8fdfsb\",\n            \"RoleConfigurationName\": \"testConfiguration1\",\n            \"TargetType\": \"MemberUin\",\n            \"TargetUin\": 700000145543,\n            \"TaskId\": \"t-2xdmzwphpsbd\",\n            \"TaskStatus\": \"InProgress\",\n            \"TaskType\": \"CreateRoleAssignment\"\n        }\n    }\n}",
         "title": "Deploying Permission Configurations to Member Accounts"
+      }
+    ],
+    "QuitOrganization": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QuitOrganization\n<Common request parameters>\n\n{\n    \"OrgId\": 1234\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Exiting an Organization"
       }
     ],
     "RemoveExternalSAMLIdPCertificate": [
@@ -496,12 +600,36 @@
         "title": "Configuring the SAML Identity Provider Information"
       }
     ],
+    "UpdateCustomPolicyForRoleConfiguration": [
+      {
+        "document": "This example shows you how to modify a custom policy for permission configurations.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateCustomPolicyForRoleConfiguration\n<Common request parameters>\n\n\n\n{\n    \"ZoneId\": \"z-fdk3o32kqw\",\n    \"RoleConfigurationId\": \"rc-sin23wj29s\",\n    \"CustomPolicyName\": \"test\",\n    \"NewCustomPolicyDocument\": \"{\\\"statement\\\":{\\\"action\\\":[\\\"name/cvm:*\\\",\\\"name/vpc:*\\\",\\\"name/cos:*\\\",\\\"name/cmqtopic:*\\\",\\\"name/cmqqueue:*\\\"],\\\"effect\\\":\\\"allow\\\",\\\"resource\\\":\\\"*\\\"},\\\"version\\\":\\\"2.0\\\"}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
+        "title": "Modifying a Custom Policy for Permission Configurations"
+      }
+    ],
     "UpdateGroup": [
       {
         "document": "This example shows you how to modify the user group information.",
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateGroup\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-s8shs8bd***\",\n    \"GroupId\": \"g-s8dhdn3\",\n    \"NewGroupName\": \"testGroup\",\n    \"NewDescription\": \"this is group.\"\n}",
         "output": "{\n    \"Response\": {\n        \"GroupInfo\": {\n            \"GroupName\": \"testGroup\",\n            \"Description\": \"this is group\",\n            \"CreateTime\": \"2024-01-01 12:12:12\",\n            \"GroupType\": \"Manual\",\n            \"UpdateTime\": \"2024-01-01 12:12:12\",\n            \"GroupId\": \"g-w8hd8n***\",\n            \"MemberCount\": 20\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
         "title": "Modifying the User Group Information"
+      }
+    ],
+    "UpdateOrganizationIdentity": [
+      {
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateOrganizationIdentity\n<Common request parameters>\n\n{\n    \"Description\": \"\",\n    \"IdentityId\": 1,\n    \"IdentityPolicy\": [\n        {\n            \"PolicyId\": 1,\n            \"PolicyName\": \"AdministratorAccess\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b46d2afe-6893-4529-bc96-2c82d9214957\"\n    }\n}",
+        "title": "Updating an Organization Identity"
+      }
+    ],
+    "UpdateOrganizationMember": [
+      {
+        "document": "This example shows you how to update organization member information.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateOrganizationMember\n<Common request parameters>\n\n{\n    \"Remark\": \"remark\",\n    \"MemberUin\": 111111111111,\n    \"Name\": \"name\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"3a1f4733-a2ff-406d-9ff6-44c1d2d3f33a\"\n    }\n}",
+        "title": "Updating Organization Member Information"
       }
     ],
     "UpdateOrganizationNode": [
@@ -518,6 +646,22 @@
         "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateRoleConfiguration\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-22m23mo2\",\n    \"RoleConfigurationId\": \"rc-ai3n9si2m\",\n    \"NewDescription\": \"this is role configuration\",\n    \"NewSessionDuration\": 900,\n    \"NewRelayState\": \"https://console.cloud.tencent.com\"\n}",
         "output": "{\n    \"Response\": {\n        \"RoleConfigurationInfo\": {\n            \"RoleConfigurationId\": \"rc-s2ns92ns***\",\n            \"RoleConfigurationName\": \"test\",\n            \"Description\": \"this is role configuration\",\n            \"SessionDuration\": 900,\n            \"RelayState\": \"https://console.cloud.tencent.com\",\n            \"CreateTime\": \"2019-01-01 12:12:12\",\n            \"UpdateTime\": \"2019-01-01 12:12:12\"\n        },\n        \"RequestId\": \"e297543a-80de-4039-83c8-9d324545\"\n    }\n}",
         "title": "Modifying the Permission Configuration Information"
+      }
+    ],
+    "UpdateSCIMCredentialStatus": [
+      {
+        "document": "This example shows you how to modify SCIM key status.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateSCIMCredentialStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-vft38p2hq8tq\",\n    \"CredentialId\": \"scimcred-un1tgbnt0s9j\",\n    \"NewStatus\": \"Disabled\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d0b5fffc-c7b9-4513-a080-8dfcf72c6e56\"\n    }\n}",
+        "title": "Modifying SCIM Key Status"
+      }
+    ],
+    "UpdateSCIMSynchronizationStatus": [
+      {
+        "document": "This example shows you how to update SCIM synchronization status.",
+        "input": "POST / HTTP/1.1\nHost: organization.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: UpdateSCIMSynchronizationStatus\n<Common request parameters>\n\n{\n    \"ZoneId\": \"z-vft38p2hq8tq\",\n    \"SCIMSynchronizationStatus\": \"Enabled\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"520e1475-6042-4353-b85a-7c67e5e98e58\"\n    }\n}",
+        "title": "Updating SCIM Synchronization Status"
       }
     ],
     "UpdateUser": [

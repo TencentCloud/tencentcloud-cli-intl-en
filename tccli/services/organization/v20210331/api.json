@@ -63,6 +63,20 @@
       "output": "CreateOrgServiceAssignResponse",
       "status": "online"
     },
+    "CreateOrganization": {
+      "document": "This API is used to create an organization.",
+      "input": "CreateOrganizationRequest",
+      "name": "Creates an organization",
+      "output": "CreateOrganizationResponse",
+      "status": "online"
+    },
+    "CreateOrganizationIdentity": {
+      "document": "This API is used to add an organization identity.",
+      "input": "CreateOrganizationIdentityRequest",
+      "name": "Adds an organization identity",
+      "output": "CreateOrganizationIdentityResponse",
+      "status": "online"
+    },
     "CreateOrganizationMember": {
       "document": "This API is used to create an organization member.",
       "input": "CreateOrganizationMemberRequest",
@@ -70,11 +84,25 @@
       "output": "CreateOrganizationMemberResponse",
       "status": "online"
     },
+    "CreateOrganizationMemberAuthIdentity": {
+      "document": "This API is used to add organization member access authorization.",
+      "input": "CreateOrganizationMemberAuthIdentityRequest",
+      "name": "Adds organization member access authorization",
+      "output": "CreateOrganizationMemberAuthIdentityResponse",
+      "status": "online"
+    },
     "CreateOrganizationMemberPolicy": {
-      "document": "This API is used to create an organization member access policy.",
+      "document": "This API is used to create an organization member access authorization policy.",
       "input": "CreateOrganizationMemberPolicyRequest",
-      "name": "Creates an organization member access policy",
+      "name": "Creates an organization member access authorization policy",
       "output": "CreateOrganizationMemberPolicyResponse",
+      "status": "online"
+    },
+    "CreateOrganizationMembersPolicy": {
+      "document": "This API is used to create an organization member access policy.",
+      "input": "CreateOrganizationMembersPolicyRequest",
+      "name": "Creates an organization member access policy",
+      "output": "CreateOrganizationMembersPolicyResponse",
       "status": "online"
     },
     "CreateRoleAssignment": {
@@ -89,6 +117,13 @@
       "input": "CreateRoleConfigurationRequest",
       "name": "Creates permission configurations",
       "output": "CreateRoleConfigurationResponse",
+      "status": "online"
+    },
+    "CreateSCIMCredential": {
+      "document": "This API is used to create a SCIM key.",
+      "input": "CreateSCIMCredentialRequest",
+      "name": "Creates a SCIM key",
+      "output": "CreateSCIMCredentialResponse",
       "status": "online"
     },
     "CreateUser": {
@@ -119,11 +154,39 @@
       "output": "DeleteOrgServiceAssignResponse",
       "status": "online"
     },
+    "DeleteOrganization": {
+      "document": "This API is used to delete an organization.",
+      "input": "DeleteOrganizationRequest",
+      "name": "Deletes an organization",
+      "output": "DeleteOrganizationResponse",
+      "status": "online"
+    },
+    "DeleteOrganizationIdentity": {
+      "document": "This API is used to delete an organization identity.",
+      "input": "DeleteOrganizationIdentityRequest",
+      "name": "Deletes an organization identity",
+      "output": "DeleteOrganizationIdentityResponse",
+      "status": "online"
+    },
+    "DeleteOrganizationMemberAuthIdentity": {
+      "document": "This API is used to delete organization member access authorization.",
+      "input": "DeleteOrganizationMemberAuthIdentityRequest",
+      "name": "Deletes organization member access authorization",
+      "output": "DeleteOrganizationMemberAuthIdentityResponse",
+      "status": "online"
+    },
     "DeleteOrganizationMembers": {
       "document": "This API is used to remove a member account from the organization, rather than delete the account.",
       "input": "DeleteOrganizationMembersRequest",
       "name": "Batch removes organization members",
       "output": "DeleteOrganizationMembersResponse",
+      "status": "online"
+    },
+    "DeleteOrganizationMembersPolicy": {
+      "document": "This API is used to delete an organization member access policy.",
+      "input": "DeleteOrganizationMembersPolicyRequest",
+      "name": "Deletes an organization member access policy",
+      "output": "DeleteOrganizationMembersPolicyResponse",
       "status": "online"
     },
     "DeleteOrganizationNodes": {
@@ -147,6 +210,13 @@
       "output": "DeleteRoleConfigurationResponse",
       "status": "online"
     },
+    "DeleteSCIMCredential": {
+      "document": "This API is used to delete a SCIM key.",
+      "input": "DeleteSCIMCredentialRequest",
+      "name": "Deletes a SCIM key",
+      "output": "DeleteSCIMCredentialResponse",
+      "status": "online"
+    },
     "DeleteUser": {
       "document": "This API is used to delete a user.",
       "input": "DeleteUserRequest",
@@ -162,9 +232,9 @@
       "status": "online"
     },
     "DescribeIdentityCenter": {
-      "document": "This API is used to obtain the CAM Identity Center service information.",
+      "document": "This API is used to obtain TCO Identity Center service information.",
       "input": "DescribeIdentityCenterRequest",
-      "name": "Obtains the user's CAM Identity Center service information",
+      "name": "Obtains TCO Identity Center service information",
       "output": "DescribeIdentityCenterResponse",
       "status": "online"
     },
@@ -213,7 +283,7 @@
     "DismantleRoleConfiguration": {
       "document": "This API is used to undeploy permission configurations on member accounts.",
       "input": "DismantleRoleConfigurationRequest",
-      "name": "Undeploys access configurations on member accounts",
+      "name": "Removes permission configuration deployment",
       "output": "DismantleRoleConfigurationResponse",
       "status": "online"
     },
@@ -243,6 +313,13 @@
       "input": "GetRoleConfigurationRequest",
       "name": "Queries the permission configuration information",
       "output": "GetRoleConfigurationResponse",
+      "status": "online"
+    },
+    "GetSCIMSynchronizationStatus": {
+      "document": "This API is used to query SCIM synchronization status.",
+      "input": "GetSCIMSynchronizationStatusRequest",
+      "name": "Queries SCIM synchronization status",
+      "output": "GetSCIMSynchronizationStatusResponse",
       "status": "online"
     },
     "GetTaskStatus": {
@@ -364,6 +441,13 @@
       "output": "ListRoleConfigurationsResponse",
       "status": "online"
     },
+    "ListSCIMCredentials": {
+      "document": "This API is used to query the user SCIM key list.",
+      "input": "ListSCIMCredentialsRequest",
+      "name": "Queries the SCIM key list",
+      "output": "ListSCIMCredentialsResponse",
+      "status": "online"
+    },
     "ListTasks": {
       "document": "This API is used to query the async task list.",
       "input": "ListTasksRequest",
@@ -393,17 +477,24 @@
       "status": "online"
     },
     "OpenIdentityCenter": {
-      "document": "This API is used to activate the CIC service.",
+      "document": "This API is used to activate Identity Center service (CIC).",
       "input": "OpenIdentityCenterRequest",
-      "name": "Activates the CAM Identity Center service",
+      "name": "Activates TCO Identity Center service",
       "output": "OpenIdentityCenterResponse",
       "status": "online"
     },
     "ProvisionRoleConfiguration": {
       "document": "This API is used to deploy permission configurations on member accounts.",
       "input": "ProvisionRoleConfigurationRequest",
-      "name": "Deploys access configurations on member accounts",
+      "name": "This API is used to deploy permission configurations on member accounts.",
       "output": "ProvisionRoleConfigurationResponse",
+      "status": "online"
+    },
+    "QuitOrganization": {
+      "document": "This API is used to exit an organization.",
+      "input": "QuitOrganizationRequest",
+      "name": "Exits an organization",
+      "output": "QuitOrganizationResponse",
       "status": "online"
     },
     "RemoveExternalSAMLIdPCertificate": {
@@ -434,11 +525,32 @@
       "output": "SetExternalSAMLIdentityProviderResponse",
       "status": "online"
     },
+    "UpdateCustomPolicyForRoleConfiguration": {
+      "document": "This API is used to modify a custom policy for permission configurations.",
+      "input": "UpdateCustomPolicyForRoleConfigurationRequest",
+      "name": "Modifies a custom policy for permission configurations",
+      "output": "UpdateCustomPolicyForRoleConfigurationResponse",
+      "status": "online"
+    },
     "UpdateGroup": {
       "document": "This API is used to modify user group information.",
       "input": "UpdateGroupRequest",
       "name": "Modifies the user group information",
       "output": "UpdateGroupResponse",
+      "status": "online"
+    },
+    "UpdateOrganizationIdentity": {
+      "document": "This API is used to update an organization identity.",
+      "input": "UpdateOrganizationIdentityRequest",
+      "name": "Updates an organization identity",
+      "output": "UpdateOrganizationIdentityResponse",
+      "status": "online"
+    },
+    "UpdateOrganizationMember": {
+      "document": "This API is used to update organization member information.",
+      "input": "UpdateOrganizationMemberRequest",
+      "name": "Updates organization member information",
+      "output": "UpdateOrganizationMemberResponse",
       "status": "online"
     },
     "UpdateOrganizationNode": {
@@ -453,6 +565,20 @@
       "input": "UpdateRoleConfigurationRequest",
       "name": "Modifies the permission configuration information",
       "output": "UpdateRoleConfigurationResponse",
+      "status": "online"
+    },
+    "UpdateSCIMCredentialStatus": {
+      "document": "This API is used to enable or disable a SCIM key.",
+      "input": "UpdateSCIMCredentialStatusRequest",
+      "name": "Enables or disables a SCIM key",
+      "output": "UpdateSCIMCredentialStatusResponse",
+      "status": "online"
+    },
+    "UpdateSCIMSynchronizationStatus": {
+      "document": "This API is used to enable or disable user SCIM synchronization.",
+      "input": "UpdateSCIMSynchronizationStatusRequest",
+      "name": "Enables or disables SCIM synchronization",
+      "output": "UpdateSCIMSynchronizationStatusResponse",
       "status": "online"
     },
     "UpdateUser": {
@@ -623,7 +749,7 @@
         },
         {
           "disabled": false,
-          "document": "Permission policy type. Valid values: System: system policy, namely the CAM system policy reused; Custom: custom policy, namely the custom policy prepared according to the CAM permission policy syntax and structure. Only the system policy is supported at the early stage, and the custom policy will be supported later.",
+          "document": "Permission policy type. Valid values: System: system policy, namely the CAM system policy reused; Custom: custom policy, namely the custom policy prepared according to the CAM permission policy syntax and structure.  ",
           "example": "System",
           "member": "string",
           "name": "RolePolicyType",
@@ -632,7 +758,7 @@
         },
         {
           "disabled": false,
-          "document": "Permission policy name, which includes up to 20 policies, each containing up to 32 characters.",
+          "document": "Permission policy name, supporting up to 20 policies, with each policy having a maximum of 32 characters. If you need to add a system policy, it is recommended to use the RolePolicies parameter. For custom policies, the array length is up to 1.",
           "example": "[\"TestPolicy\",\"Admin\"]",
           "member": "string",
           "name": "RolePolicyNames",
@@ -641,7 +767,7 @@
         },
         {
           "disabled": false,
-          "document": "Policy details.",
+          "document": "Details of an added system policy.",
           "example": "[{'PolicyId':426322, 'PolicyName':'QcloudAccessForOceanusRole'}]",
           "member": "PolicyDetail",
           "name": "RolePolicies",
@@ -651,7 +777,7 @@
         {
           "disabled": false,
           "document": "Custom policy content, which contains up to 4096 characters. When RolePolicyType is Inline, this parameter must be configured. For details, see the permission policy syntax and structure.",
-          "example": "{   \"Version\": \"1\",   \"Statement\": [     {       \"Effect\": \"Allow\",       \"Action\": \"*\",       \"Resource\": \"*\"     }   ] }",
+          "example": "{\\\"statement\\\":{\\\"action\\\":[\\\"name/cvm:*\\\",\\\"name/vpc:*\\\",\\\"name/cos:*\\\",\\\"name/cmqtopic:*\\\",\\\"name/cmqqueue:*\\\"],\\\"effect\\\":\\\"allow\\\",\\\"resource\\\":\\\"*\\\"},\\\"version\\\":\\\"2.0\\\"}",
           "member": "string",
           "name": "CustomPolicyDocument",
           "required": false,
@@ -891,6 +1017,15 @@
           "name": "Description",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User group type. Manual: manually created, Synchronized: imported from external sources.",
+          "example": "Manual",
+          "member": "string",
+          "name": "GroupType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -970,6 +1105,97 @@
     },
     "CreateOrgServiceAssignResponse": {
       "document": "CreateOrgServiceAssign response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOrganizationIdentityRequest": {
+      "document": "CreateOrganizationIdentity request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Identity name.",
+          "example": "test",
+          "member": "string",
+          "name": "IdentityAliasName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Identity policy.",
+          "example": "无",
+          "member": "IdentityPolicy",
+          "name": "IdentityPolicy",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Identity description.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOrganizationIdentityResponse": {
+      "document": "CreateOrganizationIdentity response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Identity ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123",
+          "member": "uint64",
+          "name": "IdentityId",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOrganizationMemberAuthIdentityRequest": {
+      "document": "CreateOrganizationMemberAuthIdentity request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Member UIN list, including up to 10 items.",
+          "example": "[111111111111]",
+          "member": "uint64",
+          "name": "MemberUins",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Identity ID list, including up to 5 items, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).",
+          "example": "[13]",
+          "member": "uint64",
+          "name": "IdentityIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOrganizationMemberAuthIdentityResponse": {
+      "document": "CreateOrganizationMemberAuthIdentity response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -1171,6 +1397,107 @@
       ],
       "type": "object"
     },
+    "CreateOrganizationMembersPolicyRequest": {
+      "document": "CreateOrganizationMembersPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Member UIN list, including up to 10 items.",
+          "example": "[111111111111]",
+          "member": "int64",
+          "name": "MemberUins",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Policy name, which contains 1 to 128 characters, including English letters, digits, and symbols `+=,.@_-`.",
+          "example": "policy_name",
+          "member": "string",
+          "name": "PolicyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Member access identity ID, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).",
+          "example": "11",
+          "member": "int64",
+          "name": "IdentityId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Policy description, which contains up to 128 characters.",
+          "example": "description",
+          "member": "string",
+          "name": "Description",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOrganizationMembersPolicyResponse": {
+      "document": "CreateOrganizationMembersPolicy response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy ID.\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "example": "123",
+          "member": "int64",
+          "name": "PolicyId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOrganizationRequest": {
+      "document": "CreateOrganization request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "CreateOrganizationResponse": {
+      "document": "CreateOrganization response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Organization ID.",
+          "example": "123",
+          "member": "uint64",
+          "name": "OrgId",
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creator's nickname.",
+          "example": "test",
+          "member": "string",
+          "name": "NickName",
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateRoleAssignmentRequest": {
       "document": "CreateRoleAssignment request structure.",
       "members": [
@@ -1231,7 +1558,7 @@
         },
         {
           "disabled": false,
-          "document": "Access configuration name, which contains up to 128 characters, including English letters, digits, and hyphens (-).",
+          "document": "Permission configuration name, which contains up to 128 characters, including English letters, digits, and hyphens (-).",
           "example": "test",
           "member": "string",
           "name": "RoleConfigurationName",
@@ -1240,7 +1567,7 @@
         },
         {
           "disabled": false,
-          "document": "Access configuration description, which contains up to 1024 characters.",
+          "document": "Permission configuration description, which contains up to 1,024 characters.",
           "example": "this is role configuration",
           "member": "string",
           "name": "Description",
@@ -1249,7 +1576,7 @@
         },
         {
           "disabled": false,
-          "document": "Session duration. It indicates the maximum session duration when CIC users use the access configuration to access the target account of the Tencent Cloud Organization. Unit: seconds. Value range: 900-43,200 (15 minutes to 12 hours). Default value: 3600 (1 hour).",
+          "document": "Session duration, in seconds. It is the maximum time a CIC user can maintain a session while using permission configurations to access a target account in TCO. Value range: 900 to 43200 (15 minutes to 12 hours). Default: 3600 (1 hour).",
           "example": "900",
           "member": "int64",
           "name": "SessionDuration",
@@ -1258,7 +1585,7 @@
         },
         {
           "disabled": false,
-          "document": "Initial access page. It indicates the initial access page URL when CIC users use the access configuration to access the target account of the Tencent Cloud Organization. This page must be the Tencent Cloud console page. The default is null, which indicates navigating to the home page of the Tencent Cloud console.",
+          "document": "Initial access page. It is the initial page address when a CIC user uses permission configurations to access a target account in TCO. This page must be a Tencent Cloud console page. The default value is empty, representing a redirection to the home page of the Tencent Cloud console.",
           "example": "https://console.cloud.tencent.com",
           "member": "string",
           "name": "RelayState",
@@ -1279,6 +1606,103 @@
           "name": "RoleConfigurationInfo",
           "output_required": true,
           "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSCIMCredentialRequest": {
+      "document": "CreateSCIMCredential request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.",
+          "example": "z-00fdsg****",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateSCIMCredentialResponse": {
+      "document": "CreateSCIMCredential response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.",
+          "example": "z-00fdsg****",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SCIM key ID, which starts with the scimcred- prefix, followed by 12 random digits/lowercase letters.",
+          "example": "scimcred-lkj****",
+          "member": "string",
+          "name": "CredentialId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SCIM key type.",
+          "example": "BearerToken",
+          "member": "string",
+          "name": "CredentialType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time of a SCIM key.",
+          "example": "2024-04-29 15:04:05",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time of a SCIM key.",
+          "example": "2025-04-29 15:04:05",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SCIM key status. Enabled: enabled. Disabled: disabled.",
+          "example": "Enabled",
+          "member": "string",
+          "name": "CredentialStatus",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SCIM key.",
+          "example": "sJf[mc5kPJ8saXeYDgyw****",
+          "member": "string",
+          "name": "CredentialSecret",
+          "output_required": true,
+          "type": "string",
           "value_allowed_null": false
         },
         {
@@ -1362,6 +1786,15 @@
           "example": "Enabled",
           "member": "string",
           "name": "UserStatus",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "User type. Manual: manually created, Synchronized: imported from external sources.",
+          "example": "Manual",
+          "member": "string",
+          "name": "UserType",
           "required": false,
           "type": "string"
         }
@@ -1508,6 +1941,96 @@
       ],
       "type": "object"
     },
+    "DeleteOrganizationIdentityRequest": {
+      "document": "DeleteOrganizationIdentity request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Identity ID, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).",
+          "example": "1",
+          "member": "uint64",
+          "name": "IdentityId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationIdentityResponse": {
+      "document": "DeleteOrganizationIdentity response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationMemberAuthIdentityRequest": {
+      "document": "DeleteOrganizationMemberAuthIdentity request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Member UIN.",
+          "example": "111111111111",
+          "member": "uint64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Identity ID, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).",
+          "example": "11",
+          "member": "uint64",
+          "name": "IdentityId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationMemberAuthIdentityResponse": {
+      "document": "DeleteOrganizationMemberAuthIdentity response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationMembersPolicyRequest": {
+      "document": "DeleteOrganizationMembersPolicy request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Access policy ID, which can be obtained through [DescribeOrganizationMemberPolicies](https://intl.cloud.tencent.com/document/product/850/82935?from_cn_redirect=1).",
+          "example": "123",
+          "member": "uint64",
+          "name": "PolicyId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteOrganizationMembersPolicyResponse": {
+      "document": "DeleteOrganizationMembersPolicy response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteOrganizationMembersRequest": {
       "document": "DeleteOrganizationMembers request structure.",
       "members": [
@@ -1562,6 +2085,23 @@
       ],
       "type": "object"
     },
+    "DeleteOrganizationRequest": {
+      "document": "DeleteOrganization request structure.",
+      "members": [],
+      "type": "object"
+    },
+    "DeleteOrganizationResponse": {
+      "document": "DeleteOrganization response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteRoleAssignmentRequest": {
       "document": "DeleteRoleAssignment request structure.",
       "members": [
@@ -1603,7 +2143,7 @@
         },
         {
           "disabled": false,
-          "document": "Identity type for the CAM user synchronization. Valid values: User: indicates that the identity for the CAM user synchronization is a CIC user; Group: indicates that the identity for the CAM user synchronization is a CIC user group.",
+          "document": "Identity types synchronized for CAM users. Valid values: User: indicates the synchronized identity is a user. Group: indicates the synchronized identity is a user group.",
           "example": "User",
           "member": "string",
           "name": "PrincipalType",
@@ -1612,7 +2152,7 @@
         },
         {
           "disabled": false,
-          "document": "Identity ID for the CAM user synchronization. Valid values: When the PrincipalType value is Group, it is the CIC user group ID (g-********). When the PrincipalType value is User, it is the CIC user ID (u-********).  \t",
+          "document": "User synchronization ID. Valid values: When PrincipalType is Group, it is a user group ID (g-********). When PrincipalType is User, it is a user ID (u-********).",
           "example": "u-sniassda****",
           "member": "string",
           "name": "PrincipalId",
@@ -1621,7 +2161,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to undeploy an access configuration synchronously when you remove the last authorization for using this access configuration on the target account of the Tencent Cloud Organization. Valid values: DeprovisionForLastRoleAssignmentOnAccount: Undeploy the access configuration; None (default): Do not undeploy access configuration.",
+          "document": "Whether to remove the permission configuration deployment when removing the last authorization with a certain permission configuration from a target account in TCO. Valid values: DeprovisionForLastRoleAssignmentOnAccount: Remove the permission configuration deployment. None (default): Do not remove the permission configuration deployment.",
           "example": "无",
           "member": "string",
           "name": "DeprovisionStrategy",
@@ -1679,6 +2219,42 @@
     },
     "DeleteRoleConfigurationResponse": {
       "document": "DeleteRoleConfiguration response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSCIMCredentialRequest": {
+      "document": "DeleteSCIMCredential request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.",
+          "example": "z-00fdsg****",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "SCIM key ID, which starts with the scimcred- prefix, followed by 12 random digits/lowercase letters.",
+          "example": "scimcred-lkj****",
+          "member": "string",
+          "name": "CredentialId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteSCIMCredentialResponse": {
+      "document": "DeleteSCIMCredential response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -2671,6 +3247,43 @@
       ],
       "type": "object"
     },
+    "GetSCIMSynchronizationStatusRequest": {
+      "document": "GetSCIMSynchronizationStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.",
+          "example": "z-00fdsg****",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "GetSCIMSynchronizationStatusResponse": {
+      "document": "GetSCIMSynchronizationStatus response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "SCIM synchronization status. Enabled: enabled. Disabled: disabled.",
+          "example": "Enabled",
+          "member": "string",
+          "name": "SCIMSynchronizationStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "GetTaskStatusRequest": {
       "document": "GetTaskStatus request structure.",
       "members": [
@@ -3533,6 +4146,15 @@
           "name": "SortType",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset. Do not use it together with NextToken, prioritizing using NextToken.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -4049,7 +4671,7 @@
         },
         {
           "disabled": false,
-          "document": "Identity type for the CAM user synchronization. Valid values: User: indicates that the identity for the CAM user synchronization is a CIC user; Group: indicates that the identity for the CAM user synchronization is a CIC user group.",
+          "document": "Identity types synchronized for CAM users. Valid values: User: indicates the synchronized identity is a user. Group: indicates the synchronized identity is a user group.",
           "example": "User",
           "member": "string",
           "name": "PrincipalType",
@@ -4058,7 +4680,7 @@
         },
         {
           "disabled": false,
-          "document": "Identity ID for the CAM user synchronization. Valid values: When the PrincipalType value is Group, it is the CIC user group ID (g-********). When the PrincipalType value is User, it is the CIC user ID (u-********).",
+          "document": "User synchronization ID. Valid values: When PrincipalType is Group, it is a user group ID (g-****). When PrincipalType is User, it is a user ID (u-****).",
           "example": "u-djwismoa***",
           "member": "string",
           "name": "PrincipalId",
@@ -4311,8 +4933,8 @@
         },
         {
           "disabled": false,
-          "document": "Filter criterion, case-insensitive. Currently, only RoleConfigurationName is supported, and only eq (Equals) and sw (Starts With) are supported. For example, Filter = \"RoleConfigurationName, sw test\" indicates querying all access configurations with names starting with test; Filter = \"RoleConfigurationName, eq TestRoleConfiguration\" indicates querying the access configuration with the name TestRoleConfiguration.",
-          "example": "RoleConfigurationName eq TestRoleConfiguration",
+          "document": "Filter criteria, which are case insensitive. Currently, only RoleConfigurationName is supported and only eq (Equals) and sw (Start With) are supported. Example: Filter = \"RoleConfigurationName, only sw test\" means querying all permission configurations starting with test. Filter = \"RoleConfigurationName, only eq TestRoleConfiguration\" means querying the permission configuration named TestRoleConfiguration.",
+          "example": "test",
           "member": "string",
           "name": "Filter",
           "required": false,
@@ -4401,6 +5023,62 @@
       ],
       "type": "object"
     },
+    "ListSCIMCredentialsRequest": {
+      "document": "ListSCIMCredentials request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.",
+          "example": "z-00fdsg****",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "SCIM key ID.",
+          "example": "scimcred-lkj****",
+          "member": "string",
+          "name": "CredentialId",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListSCIMCredentialsResponse": {
+      "document": "ListSCIMCredentials response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of SCIM keys.",
+          "example": "0",
+          "member": "int64",
+          "name": "TotalCounts",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SCIM key information.",
+          "example": "[]",
+          "member": "SCIMCredential",
+          "name": "SCIMCredentials",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ListTasksRequest": {
       "document": "ListTasks request structure.",
       "members": [
@@ -4415,7 +5093,7 @@
         },
         {
           "disabled": false,
-          "document": "Identity ID for the CAM user synchronization. Valid values: When the PrincipalType value is Group, it is the CIC user group ID (g-********). When the PrincipalType value is User, it is the CIC user ID (u-********).",
+          "document": "User synchronization ID. Valid values: When PrincipalType is Group, it is a user group ID (g-****). When PrincipalType is User, it is a user ID (u-****).",
           "example": "u-siws8sn***",
           "member": "string",
           "name": "PrincipalId",
@@ -4442,7 +5120,7 @@
         },
         {
           "disabled": false,
-          "document": "Identity type for the CAM user synchronization. Valid values: User: indicates that the identity for the CAM user synchronization is a CIC user; Group: indicates that the identity for the CAM user synchronization is a CIC user group.",
+          "document": "Identity types synchronized for CAM users. Valid values: User: indicates the synchronized identity is a user. Group: indicates the synchronized identity is a user group.",
           "example": "User",
           "member": "string",
           "name": "PrincipalType",
@@ -4573,7 +5251,7 @@
         },
         {
           "disabled": false,
-          "document": "Identity ID for the CAM user synchronization. Valid values: When the PrincipalType value is Group, it is the CIC user group ID (g-********). When the PrincipalType value is User, it is the CIC user ID (u-********).",
+          "document": "User synchronization ID. Valid values: When PrincipalType is Group, it is a user group ID (g-********). When PrincipalType is User, it is a user ID (u-********).",
           "example": "u-siws8sn***",
           "member": "string",
           "name": "PrincipalId",
@@ -4600,7 +5278,7 @@
         },
         {
           "disabled": false,
-          "document": "Identity type for the CAM user synchronization. Valid values: User: indicates that the identity for the CAM user synchronization is a CIC user; Group: indicates that the identity for the CAM user synchronization is a CIC user group.",
+          "document": "Identity types synchronized for CAM users. Valid values: User: indicates the synchronized identity is a user. Group: indicates the synchronized identity is a user group.",
           "example": "无",
           "member": "string",
           "name": "PrincipalType",
@@ -4782,6 +5460,15 @@
           "name": "SortType",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Pagination offset. Do not use it together with NextToken, prioritizing using NextToken.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -5008,7 +5695,7 @@
           "example": "10",
           "member": "int64",
           "name": "IdentityId",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -5018,7 +5705,7 @@
           "example": "test",
           "member": "string",
           "name": "IdentityAliasName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5028,7 +5715,7 @@
           "example": "\"\"",
           "member": "string",
           "name": "Description",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -5038,7 +5725,7 @@
           "example": "无",
           "member": "IdentityPolicy",
           "name": "IdentityPolicy",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -5048,7 +5735,7 @@
           "example": "1",
           "member": "uint64",
           "name": "IdentityType",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -5058,7 +5745,7 @@
           "example": "2021-02-12 12:12:10",
           "member": "string",
           "name": "UpdateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         }
@@ -5956,6 +6643,33 @@
           "type": "object",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QuitOrganizationRequest": {
+      "document": "QuitOrganization request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Organization ID.",
+          "example": "1234",
+          "member": "uint64",
+          "name": "OrgId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "QuitOrganizationResponse": {
+      "document": "QuitOrganization response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -6867,6 +7581,72 @@
       ],
       "usage": "both"
     },
+    "SCIMCredential": {
+      "document": "SCIM key.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.",
+          "example": "z-00fdsg****",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SCIM key status. Enabled: enabled. Disabled: disabled.",
+          "example": "Enabled",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SCIM key ID, which starts with the scimcred- prefix, followed by 12 random digits/lowercase letters.",
+          "example": "scimcred-lkj****",
+          "member": "string",
+          "name": "CredentialId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SCIM key type.",
+          "example": "BearerToken",
+          "member": "string",
+          "name": "CredentialType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time of a SCIM key.",
+          "example": "2024-04-29 15:04:05",
+          "member": "string",
+          "name": "CreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Expiration time of a SCIM key.",
+          "example": "2025-04-29 15:04:05",
+          "member": "string",
+          "name": "ExpireTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "SetExternalSAMLIdentityProviderRequest": {
       "document": "SetExternalSAMLIdentityProvider request structure.",
       "members": [
@@ -7133,6 +7913,60 @@
       ],
       "usage": "both"
     },
+    "UpdateCustomPolicyForRoleConfigurationRequest": {
+      "document": "UpdateCustomPolicyForRoleConfiguration request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Space ID.",
+          "example": "z-29n23ien",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Permission configuration ID.",
+          "example": "rc-so2msow",
+          "member": "string",
+          "name": "RoleConfigurationId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Permission policy name, which contains up to 32 characters.",
+          "example": "TestPolicy",
+          "member": "string",
+          "name": "CustomPolicyName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom policy content, which contains up to 4096 characters. When RolePolicyType is Inline, this parameter must be configured. For details, see the permission policy syntax and structure.",
+          "example": "{\\\"statement\\\":{\\\"action\\\":[\\\"name/cvm:*\\\",\\\"name/vpc:*\\\",\\\"name/cos:*\\\",\\\"name/cmqtopic:*\\\",\\\"name/cmqqueue:*\\\"],\\\"effect\\\":\\\"allow\\\",\\\"resource\\\":\\\"*\\\"},\\\"version\\\":\\\"2.0\\\"}",
+          "member": "string",
+          "name": "NewCustomPolicyDocument",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateCustomPolicyForRoleConfigurationResponse": {
+      "document": "UpdateCustomPolicyForRoleConfiguration response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "UpdateGroupRequest": {
       "document": "UpdateGroup request structure.",
       "members": [
@@ -7188,6 +8022,132 @@
           "type": "object",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateOrganizationIdentityRequest": {
+      "document": "UpdateOrganizationIdentity request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Identity ID, which can be obtained through [ListOrganizationIdentity](https://intl.cloud.tencent.com/document/product/850/82934?from_cn_redirect=1).",
+          "example": "1",
+          "member": "uint64",
+          "name": "IdentityId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Identity description.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Identity policy.",
+          "example": "无",
+          "member": "IdentityPolicy",
+          "name": "IdentityPolicy",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateOrganizationIdentityResponse": {
+      "document": "UpdateOrganizationIdentity response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateOrganizationMemberRequest": {
+      "document": "UpdateOrganizationMember request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Member UIN.",
+          "example": "111111111111",
+          "member": "uint64",
+          "name": "MemberUin",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Member name, which contains up to 25 characters, including English letters, digits, and symbols `+@&._[]-:,`.",
+          "example": "name",
+          "member": "string",
+          "name": "Name",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Remarks, which contain up to 40 characters.",
+          "example": "remark",
+          "member": "string",
+          "name": "Remark",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Relationship policy type. When PolicyType is not empty, PermissionIds cannot be empty. Value: Financial.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "PolicyType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of member financial permission IDs. When PermissionIds is not empty, PolicyType cannot be empty.\nValid values: 1: View bills. 2: View balance. 3: Allocate funds. 4: Consolidate bills. 5: Issue invoices. 6: Inherit discounts. 7: Pay on behalf. 8: Analyze costs. 1 and 2 are required by default.",
+          "example": "无",
+          "member": "uint64",
+          "name": "PermissionIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to allow members to exit an organization. Valid values: Allow: permitted, Denied: not permitted.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "IsAllowQuit",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Payer UIN, which is required when pay-on-behalf mode is used in member financial permission. The value is the principal administrator UIN of the corresponding member.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "PayUin",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateOrganizationMemberResponse": {
+      "document": "UpdateOrganizationMember response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
@@ -7265,7 +8225,7 @@
         },
         {
           "disabled": false,
-          "document": "Description of new access configuration, which contains up to 1024 characters.",
+          "document": "New permission configuration description, which contains up to 1,024 characters.",
           "example": "this is role configuration",
           "member": "string",
           "name": "NewDescription",
@@ -7274,7 +8234,7 @@
         },
         {
           "disabled": false,
-          "document": "New session duration. It indicates the maximum session duration when CIC users use the access configuration to access the target account of the Tencent Cloud Organization. Unit: seconds. Value range: 900-43,200 (15 minutes to 12 hours).",
+          "document": "New session duration, in seconds. It is the maximum time a CIC user can maintain a session while using permission configurations to access a target account in TCO. Value range: 900 to 43200 (15 minutes to 12 hours).",
           "example": "900",
           "member": "int64",
           "name": "NewSessionDuration",
@@ -7283,7 +8243,7 @@
         },
         {
           "disabled": false,
-          "document": "New initial access page. It indicates the initial access page URL when CIC users use the access configuration to access the target account of the Tencent Cloud Organization. This page must be the Tencent Cloud console page.",
+          "document": "New initial access page. It is the initial page address when a CIC user uses permission configurations to access a target account in TCO. This page must be a Tencent Cloud console page.",
           "example": "https://console.cloud.tencent.com",
           "member": "string",
           "name": "NewRelayState",
@@ -7306,6 +8266,87 @@
           "type": "object",
           "value_allowed_null": false
         },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateSCIMCredentialStatusRequest": {
+      "document": "UpdateSCIMCredentialStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.",
+          "example": "z-00fdsg****",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "SCIM key ID, which starts with the scimcred- prefix, followed by 12 random digits/lowercase letters.",
+          "example": "scimcred-lkj****",
+          "member": "string",
+          "name": "CredentialId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "SCIM key status. Enabled: enabled. Disabled: disabled.",
+          "example": "Enabled",
+          "member": "string",
+          "name": "NewStatus",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateSCIMCredentialStatusResponse": {
+      "document": "UpdateSCIMCredentialStatus response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateSCIMSynchronizationStatusRequest": {
+      "document": "UpdateSCIMSynchronizationStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Space ID, which starts with the z- prefix, followed by 12 random digits/lowercase letters.",
+          "example": "z-00fdsg****",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "SCIM synchronization status. Enabled: enabled. Disabled: disabled.",
+          "example": "Enabled",
+          "member": "string",
+          "name": "SCIMSynchronizationStatus",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "UpdateSCIMSynchronizationStatusResponse": {
+      "document": "UpdateSCIMSynchronizationStatus response structure.",
+      "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",

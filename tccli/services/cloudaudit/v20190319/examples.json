@@ -10,7 +10,7 @@
     ],
     "CreateAuditTrack": [
       {
-        "document": "",
+        "document": " ",
         "input": "POST / HTTP/1.1\nHost: cloudaudit.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAuditTrack\n<Common request parameters>\n\n{\n    \"Name\": \"audit\",\n    \"ActionType\": \"Read\",\n    \"ResourceType\": \"audit\",\n    \"Status\": 1,\n    \"TrackForAllMembers\": 1,\n    \"EventNames\": [\n        \"LookUpEvents\",\n        \"DeleteAudit\"\n    ],\n    \"Storage\": {\n        \"StorageType\": \"cos\",\n        \"StorageRegion\": \"ap-guangzhou\",\n        \"StorageName\": \"audit-cos\",\n        \"StoragePrefix\": \"test\"\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"TrackId\": 1,\n        \"RequestId\": \"2d4a7fba-bba8-452e-a99e-ccf11fdaa583\"\n    }\n}",
         "title": "Creating a tracking set"

@@ -4282,7 +4282,7 @@
           "example": "10000",
           "member": "int64",
           "name": "Balance",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4292,7 +4292,7 @@
           "example": "1",
           "member": "uint64",
           "name": "Uin",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -4302,7 +4302,7 @@
           "example": "1",
           "member": "float",
           "name": "RealBalance",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4312,7 +4312,7 @@
           "example": "1",
           "member": "float",
           "name": "CashAccountBalance",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4322,7 +4322,7 @@
           "example": "1",
           "member": "float",
           "name": "IncomeIntoAccountBalance",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4332,7 +4332,7 @@
           "example": "1",
           "member": "float",
           "name": "PresentAccountBalance",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4342,7 +4342,7 @@
           "example": "1",
           "member": "float",
           "name": "FreezeAmount",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4352,7 +4352,7 @@
           "example": "1",
           "member": "float",
           "name": "OweAmount",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4362,7 +4362,7 @@
           "example": "true",
           "member": "bool",
           "name": "IsAllowArrears",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -4372,7 +4372,7 @@
           "example": "true",
           "member": "bool",
           "name": "IsCreditLimited",
-          "required": true,
+          "output_required": true,
           "type": "bool",
           "value_allowed_null": false
         },
@@ -4382,7 +4382,7 @@
           "example": "1",
           "member": "float",
           "name": "CreditAmount",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4392,7 +4392,7 @@
           "example": "1",
           "member": "float",
           "name": "CreditBalance",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4402,7 +4402,7 @@
           "example": "1",
           "member": "float",
           "name": "RealCreditBalance",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
