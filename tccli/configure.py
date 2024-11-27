@@ -69,11 +69,11 @@ class BasicConfigure(BasicCommand):
                 if mod in conf_data and mod != 'autoscaling':
                     continue
                 conf_data[mod] = {}
-                conf_data[mod]["endpoint"] = "%s.tencentcloudapi.com" % mod
+                conf_data[mod]["endpoint"] = "%s.intl.tencentcloudapi.com" % mod
                 # we have to do this because as is a keyword in python
                 # as has been changed to autoscaling only in python sdk & cli
                 if mod == 'autoscaling':
-                    conf_data[mod]["endpoint"] = "as.tencentcloudapi.com"
+                    conf_data[mod]["endpoint"] = "as.intl.tencentcloudapi.com"
                 conf_data[mod]["version"] = self._cli_data.get_available_services()[mod][0]
         for k in extra.keys():
             try:
