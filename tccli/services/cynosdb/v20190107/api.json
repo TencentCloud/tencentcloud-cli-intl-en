@@ -828,6 +828,7 @@
           "example": "yes",
           "member": "string",
           "name": "IsSupportSlaveZone",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -838,6 +839,7 @@
           "example": "无",
           "member": "string",
           "name": "NonsupportSlaveZoneReason",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -848,6 +850,7 @@
           "example": "yes",
           "member": "string",
           "name": "IsSupportRo",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -858,6 +861,7 @@
           "example": "无",
           "member": "string",
           "name": "NonsupportRoReason",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": true
@@ -3860,7 +3864,7 @@
         {
           "disabled": false,
           "document": "Database type. Valid values: `normal`, `serverless`.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "normal",
+          "example": "NORMAL",
           "member": "string",
           "name": "DbMode",
           "output_required": true,
@@ -6454,7 +6458,7 @@
         {
           "disabled": false,
           "document": "Cluster ID",
-          "example": "",
+          "example": "cynosdbpg-5804k48e",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -6469,9 +6473,10 @@
         {
           "disabled": false,
           "document": "Cluster details",
-          "example": "",
+          "example": "无",
           "member": "CynosdbClusterDetail",
           "name": "Detail",
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
@@ -11120,9 +11125,10 @@
         {
           "disabled": false,
           "document": "Auto-Incrementing task ID\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "1000",
           "member": "int64",
           "name": "TaskId",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": true
@@ -11130,9 +11136,10 @@
         {
           "disabled": false,
           "document": "Task type\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "TaskType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -11140,9 +11147,10 @@
         {
           "disabled": false,
           "document": "Task status\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "TaskStatus",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -11150,9 +11158,10 @@
         {
           "disabled": false,
           "document": "Task ID (cluster ID | instance group ID | instance ID)\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ObjectId",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -11160,9 +11169,10 @@
         {
           "disabled": false,
           "document": "Task type\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "ObjectType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -14250,9 +14260,10 @@
         {
           "disabled": false,
           "document": "Tag key",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "TagKey",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -14260,9 +14271,10 @@
         {
           "disabled": false,
           "document": "Tag value",
-          "example": "",
+          "example": "无",
           "member": "string",
           "name": "TagValue",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false

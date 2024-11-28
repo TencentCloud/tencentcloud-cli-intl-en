@@ -484,7 +484,6 @@
           "example": "[\"tdsqlshard-cq3ndzu7\"]",
           "member": "string",
           "name": "SuccessInstanceIds",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -494,7 +493,6 @@
           "example": "[]",
           "member": "string",
           "name": "FailedInstanceIds",
-          "required": true,
           "type": "list",
           "value_allowed_null": false
         },
