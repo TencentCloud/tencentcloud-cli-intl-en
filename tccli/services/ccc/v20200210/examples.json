@@ -32,6 +32,14 @@
         "title": "Bind Agent to Skill Group Example"
       }
     ],
+    "CreateAICall": [
+      {
+        "document": "This example simulates a hospital using a large model to conduct telephone follow-up surveys with the parents of patients discharged from surgery.",
+        "input": "POST / HTTP/1.1\nHost: ccc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAICall\n<Common request parameters>\n\n{\n    \"Callee\": \"008612300000000\",\n    \"SdkAppId\": 1400000000,\n    \"SystemPrompt\": \"You are Dr. Li, a friendly and kind follow-up doctor from People's Hospital, calling the parent of the patient Xiaoming.\",\n    \"WelcomeMessage\": \"Hello\",\n    \"LLMType\": \"openai\",\n    \"Model\": \"gpt-4o-mini\",\n    \"APIKey\": \"sk-proj-xxxxx\",\n    \"APIUrl\": \"https://api.openai.com/v1/\",\n    \"VoiceType\": \"ZhiXi\",\n    \"EndFunctionEnable\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6bb56a09-2787-40bc-80c5-dc6dab783eff\",\n        \"SessionId\": \"6bb56a09278740bc80c5dc6dab783eff\"\n    }\n}",
+        "title": "Create an AI call example (Patient Follow-up Scenario)"
+      }
+    ],
     "CreateAdminURL": [
       {
         "document": "This example shows you how to create Management Panel Login link",

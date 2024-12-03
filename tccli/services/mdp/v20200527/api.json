@@ -1224,6 +1224,56 @@
       ],
       "type": "object"
     },
+    "DashManifestInfo": {
+      "document": "The manifest info used when Type is DASH.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The total duration of each manifest in seconds. [30, 3600], type: integer, default value 60.",
+          "example": "无",
+          "member": "int64",
+          "name": "Windows",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The minimum cache time (in seconds) that the player keeps in the buffer. [2, 60], type: integer, default value 30.",
+          "example": "无",
+          "member": "int64",
+          "name": "MinBufferTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The minimum time (in seconds) that the player should wait before requesting an update to the manifest. [2, 60], type: integer, default value 2.",
+          "example": "无",
+          "member": "int64",
+          "name": "MinUpdatePeriod",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The time from the latest live broadcast time point when the player starts broadcasting is a rollback amount (in seconds). [2, 60], type: integer, default value 10.",
+          "example": "无",
+          "member": "int64",
+          "name": "SuggestedPresentationDelay",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "DeleteStreamPackageChannelEndpointsRequest": {
       "document": "DeleteStreamPackageChannelEndpoints request structure.",
       "members": [
@@ -3865,7 +3915,7 @@
         },
         {
           "disabled": false,
-          "document": "Advertisement configuration.",
+          "document": "The manifest info, used when Type is HLS.",
           "example": "无",
           "member": "ManifestInfo",
           "name": "ManifestConf",
@@ -3883,6 +3933,17 @@
           "output_required": false,
           "required": false,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The manifest info, used when Type is DASH.",
+          "example": "无",
+          "member": "DashManifestInfo",
+          "name": "DashManifestConf",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],
@@ -3926,10 +3987,21 @@
         },
         {
           "disabled": false,
-          "document": "Advertisement configuration.",
+          "document": "The manifest info, used when Type is HLS.",
           "example": "无",
           "member": "ManifestInfo",
           "name": "ManifestConf",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The manifest info, used when Type is DASH.",
+          "example": "无",
+          "member": "DashManifestInfo",
+          "name": "DashManifestConf",
           "output_required": false,
           "required": false,
           "type": "object",

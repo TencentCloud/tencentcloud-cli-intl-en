@@ -58,8 +58,8 @@
     ],
     "DeleteIntlTemplate": [
       {
-        "document": "",
-        "input": "POST / HTTP/1.1\nHost: domain.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteIntlTemplate\n<Common request parameters>\n\n{\n    \"TemplateId\": \"template-1000q\"\n}",
+        "document": " ",
+        "input": "POST / HTTP/1.1\nHost: domain.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteIntlTemplate\n<Common request parameters>\n\n{\n    \"TemplateId\": \"template-10000q\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"eac6b301-a322-493a-8e36-83b295459398\"\n    }\n}",
         "title": "Deleting a registrant profile"
       }

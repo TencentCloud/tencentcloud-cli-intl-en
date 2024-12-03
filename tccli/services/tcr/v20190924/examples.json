@@ -104,16 +104,16 @@
     ],
     "CreateServiceAccount": [
       {
-        "document": "This example shows you how to create a service account with the specified `Duration`.",
-        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateServiceAccount\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-45uu7ras\",\n    \"Name\": \"test\",\n    \"Description\": \"for test\",\n    \"Duration\": 10,\n    \"Permissions\": [\n        {\n            \"Resource\": \"test\",\n            \"Actions\": [\n                \"tcr:PullRepository\",\n                \"tcr:PushRepository\",\n                \"tcr:CreateRepository\"\n            ]\n        }\n    ]\n}",
-        "output": "{\n    \"Response\": {\n        \"CreateTime\": \"2023-03-28T15:48:31+08:00\",\n        \"ExpiresAt\": 1680853711137,\n        \"Name\": \"tcr$test\",\n        \"Password\": \"oNKUtqrB5Eb68JufkVanSwuhmC4Ergn7\",\n        \"RequestId\": \"20b67612-28a0-4c51-8efb-0fe14bc23a64\"\n    }\n}",
-        "title": "Creating a service account with specified `Duration`"
-      },
-      {
         "document": "This example shows you how to create a service account.",
         "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateServiceAccount\n<Common request parameters>\n\n{\n    \"RegistryId\": \"abc\",\n    \"Name\": \"abc\",\n    \"Description\": \"abc\",\n    \"Duration\": 0,\n    \"ExpiresAt\": 0,\n    \"Disable\": true,\n    \"Permissions\": [\n        {\n            \"Resource\": \"abc\",\n            \"Actions\": [\n                \"abc\"\n            ]\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"Name\": \"tcr$abc\",\n        \"Password\": \"abc\",\n        \"ExpiresAt\": 0,\n        \"CreateTime\": \"2020-09-22T00:00:00+00:00\",\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Creating a service account"
+      },
+      {
+        "document": "This example shows you how to create a service account with the specified `Duration`.",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateServiceAccount\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-45uu7ras\",\n    \"Name\": \"test\",\n    \"Description\": \"for test\",\n    \"Duration\": 10,\n    \"Permissions\": [\n        {\n            \"Resource\": \"test\",\n            \"Actions\": [\n                \"tcr:PullRepository\",\n                \"tcr:PushRepository\",\n                \"tcr:CreateRepository\"\n            ]\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"CreateTime\": \"2023-03-28T15:48:31+08:00\",\n        \"ExpiresAt\": 1680853711137,\n        \"Name\": \"tcr$test\",\n        \"Password\": \"oNKUtqrB5Eb68JufkVanSwuhmC4Ergn7\",\n        \"RequestId\": \"20b67612-28a0-4c51-8efb-0fe14bc23a64\"\n    }\n}",
+        "title": "Creating a service account with specified `Duration`"
       }
     ],
     "CreateSignature": [
@@ -470,10 +470,10 @@
     ],
     "DescribeTagRetentionRules": [
       {
-        "document": " ",
-        "input": "https://tcr.tencentcloudapi.com/?Action=DescribeTagRetentionRules\n&RegistryId=tcr-12345\n&NamespaceName=test\n&Limit=20\n&Offset=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7abb9f2-9440-43ea-a12f-ae58875acf3d\",\n        \"RetentionPolicyList\": [\n            {\n                \"NextExecutionTime\": \"xx\",\n                \"RetentionId\": 1,\n                \"NamespaceName\": \"aaaa\",\n                \"RetentionRuleList\": [\n                    {\n                        \"Key\": \"latestPushedK\",\n                        \"Value\": 10\n                    }\n                ],\n                \"CronSetting\": \"weekly\",\n                \"Disabled\": false\n            }\n        ],\n        \"TotalCount\": 0\n    }\n}",
-        "title": "Querying tag retention rules"
+        "document": "",
+        "input": "https://tcr.tencentcloudapi.com/?Action=DescribeTagRetentionRules\n&RegistryId=tcr-12345\n&NamespaceName=test\n&Limit=20\n&Offset=1\n&<common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"c7abb9f2-9440-43ea-a12f-ae58875acf3d\",\n        \"RetentionPolicyList\": [\n            {\n                \"NextExecutionTime\": \"2024-06-24\",\n                \"RetentionId\": 1,\n                \"NamespaceName\": \"aaaa\",\n                \"RetentionRuleList\": [\n                    {\n                        \"Key\": \"latestPushedK\",\n                        \"Value\": 10\n                    }\n                ],\n                \"CronSetting\": \"weekly\",\n                \"Disabled\": false\n            }\n        ],\n        \"TotalCount\": 0\n    }\n}",
+        "title": "查询镜像版本保留规则"
       }
     ],
     "DescribeWebhookTrigger": [
@@ -557,6 +557,12 @@
     "ModifyInstanceToken": [
       {
         "document": " ",
+        "input": "https://tcr.tencentcloudapi.com/?Action=ModifyInstanceToken\n&RegistryId=tcr-12345\n&TokenId=2ab3af0d-893d-423f-91b1-27713566f95f\n&Desc=aaa\n&ModifyFlag=1\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6cd302c6-c4c9-425a-8d07-8c59b7f4cf3f\"\n    }\n}",
+        "title": "Updating the description"
+      },
+      {
+        "document": " ",
         "input": "https://tcr.tencentcloudapi.com/?Action=ModifyInstanceToken\n&RegistryId=tcr-12345\n&TokenId=2ab3af0d-893d-423f-91b1-27713566f95f\n&Enable=true\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6cd302c6-c4c9-425a-8d07-8c59b7f4cf3f\"\n    }\n}",
         "title": "Enabling a long-term access credential of an instance"
@@ -566,12 +572,6 @@
         "input": "https://tcr.tencentcloudapi.com/?Action=ModifyInstanceToken\n&RegistryId=tcr-12345\n&TokenId=2ab3af0d-893d-423f-91b1-27713566f95f\n&Enable=false\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"6cd302c6-c4c9-425a-8d07-8c59b7f4cf3f\"\n    }\n}",
         "title": "Disabling a long-term access credential of an instance"
-      },
-      {
-        "document": " ",
-        "input": "https://tcr.tencentcloudapi.com/?Action=ModifyInstanceToken\n&RegistryId=tcr-12345\n&TokenId=2ab3af0d-893d-423f-91b1-27713566f95f\n&Desc=aaa\n&ModifyFlag=1\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6cd302c6-c4c9-425a-8d07-8c59b7f4cf3f\"\n    }\n}",
-        "title": "Updating the description"
       }
     ],
     "ModifyNamespace": [
@@ -608,16 +608,16 @@
     ],
     "ModifyServiceAccountPassword": [
       {
-        "document": "This example shows you how to customize service level account password.",
-        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyServiceAccountPassword\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-gijwqid7\",\n    \"Name\": \"robot\",\n    \"Random\": false,\n    \"Password\": \"NewPass123\"\n}",
-        "output": "{\n    \"Response\": {\n        \"Password\": \"NewPass123\",\n        \"RequestId\": \"8c63b1e6-02b8-48af-94c2-416aa71e0c12\"\n    }\n}",
-        "title": "Customizing Service Level Account Password"
-      },
-      {
         "document": "This example shows you how to reset service level account password.",
         "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyServiceAccountPassword\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-gijwqid7\",\n    \"Name\": \"robot\",\n    \"Random\": true\n}",
         "output": "{\n    \"Response\": {\n        \"Password\": \"kukui1ECDL8kr9cm6W66Me8PlhHemFmC\",\n        \"RequestId\": \"60e7d0ce-c8ed-4495-9814-9397482f0d4a\"\n    }\n}",
         "title": "Resetting Service Level Account Password"
+      },
+      {
+        "document": "This example shows you how to customize service level account password.",
+        "input": "POST / HTTP/1.1\nHost: tcr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyServiceAccountPassword\n<Common request parameters>\n\n{\n    \"RegistryId\": \"tcr-gijwqid7\",\n    \"Name\": \"robot\",\n    \"Random\": false,\n    \"Password\": \"NewPass123\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Password\": \"NewPass123\",\n        \"RequestId\": \"8c63b1e6-02b8-48af-94c2-416aa71e0c12\"\n    }\n}",
+        "title": "Customizing Service Level Account Password"
       }
     ],
     "ModifyTagRetentionRule": [

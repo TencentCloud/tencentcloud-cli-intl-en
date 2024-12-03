@@ -1260,7 +1260,7 @@
         {
           "disabled": false,
           "document": "Billing record IDNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "1234",
+          "example": "1852019429362647040",
           "member": "string",
           "name": "Id",
           "output_required": false,
@@ -1531,7 +1531,7 @@
         },
         {
           "disabled": false,
-          "document": "Cash credit: The amount paid from the user’s cash account",
+          "document": "Cash credit: The amount paid from the user's cash account\n",
           "example": "0.00000000",
           "member": "string",
           "name": "CashPayAmount",
@@ -1541,7 +1541,7 @@
         },
         {
           "disabled": false,
-          "document": "Free credit: The amount paid with the user’s free credit",
+          "document": "Free credit: The amount paid with the user's free credit\n",
           "example": "0.00000000",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -1551,7 +1551,7 @@
         },
         {
           "disabled": false,
-          "document": "Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00000000",
           "member": "string",
           "name": "TransferPayAmount",
@@ -1662,12 +1662,42 @@
         {
           "disabled": false,
           "document": "Configuration description: The specification configuration of an instance.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "[{\"Name\":\"项目\",\"Value\":\"element_test\"},{\"Name\":\"主机\",\"Value\":\"ins-wxf3fmq8\"},{\"Name\":\"内网IP\",\"Value\":\"10.12.0.42\"}]",
           "member": "BillDetailComponentConfig",
           "name": "ComponentConfig",
           "output_required": false,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The tax rate.",
+          "example": "0.7",
+          "member": "string",
+          "name": "TaxRate",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The tax amount.",
+          "example": "10",
+          "member": "string",
+          "name": "TaxAmount",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The currency used for the settlement of a component.",
+          "example": "USD",
+          "member": "string",
+          "name": "Currency",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -2099,7 +2129,7 @@
         },
         {
           "disabled": false,
-          "document": "Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM – Standard S1.",
+          "document": "Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM Computing C5t.",
           "example": "实时音视频-音视频通话",
           "member": "string",
           "name": "ProductCodeName",
@@ -2230,7 +2260,7 @@
         {
           "disabled": false,
           "document": "Extended field 1: Extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef1",
           "member": "string",
           "name": "ExtendField1",
           "output_required": true,
@@ -2240,7 +2270,7 @@
         {
           "disabled": false,
           "document": "Extended field 2: Extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef2",
           "member": "string",
           "name": "ExtendField2",
           "output_required": true,
@@ -2279,7 +2309,7 @@
         },
         {
           "disabled": false,
-          "document": "Total amount after discount",
+          "document": "Total amount after discount (Including Tax):  = Total Amount After Discount (Excluding Tax) + TaxAmount",
           "example": "7.00000000",
           "member": "string",
           "name": "RealTotalCost",
@@ -2299,7 +2329,7 @@
         },
         {
           "disabled": false,
-          "document": "Cash credit: The amount paid from the user’s cash account",
+          "document": "Cash credit: The amount paid from the user's cash account\n",
           "example": "7.00000000",
           "member": "string",
           "name": "CashPayAmount",
@@ -2309,7 +2339,7 @@
         },
         {
           "disabled": false,
-          "document": "Free credit: The amount paid with the user’s free credit",
+          "document": "Free credit: The amount paid with the user's free credit\n",
           "example": "0.00000000",
           "member": "string",
           "name": "IncentivePayAmount",
@@ -2319,7 +2349,7 @@
         },
         {
           "disabled": false,
-          "document": "Commission credit: The amount paid with the user’s commission credit. Note: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Commission credit: The amount paid with the user's commission credit. Note: This field may return null, indicating that no valid values can be obtained.",
           "example": "0.00000000",
           "member": "string",
           "name": "TransferPayAmount",
@@ -2330,7 +2360,7 @@
         {
           "disabled": false,
           "document": "Extended field 3: Extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef3",
           "member": "string",
           "name": "ExtendField3",
           "output_required": true,
@@ -2340,7 +2370,7 @@
         {
           "disabled": false,
           "document": "Extended field 4: Extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef4",
           "member": "string",
           "name": "ExtendField4",
           "output_required": true,
@@ -2350,7 +2380,7 @@
         {
           "disabled": false,
           "document": "Extended field 5: Extended attribute information of a product, which is displayed on the resource bill only.",
-          "example": "-",
+          "example": "ef5",
           "member": "string",
           "name": "ExtendField5",
           "output_required": true,
@@ -2360,7 +2390,7 @@
         {
           "disabled": false,
           "document": "Tag information. Note: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "example": "[{\"TagKey\":\"项目\",\"TagValue\":\"element_test\"}]",
           "member": "BillTagInfo",
           "name": "Tags",
           "output_required": true,
@@ -2370,7 +2400,7 @@
         {
           "disabled": false,
           "document": "Payer account ID: The account ID of the payer, which is the unique identifier of a Tencent Cloud user.",
-          "example": "xxx",
+          "example": "909619411",
           "member": "string",
           "name": "PayerUin",
           "output_required": true,
@@ -2380,7 +2410,7 @@
         {
           "disabled": false,
           "document": "Owner account ID: The account ID of the actual resource user",
-          "example": "xxx",
+          "example": "909619412",
           "member": "string",
           "name": "OwnerUin",
           "output_required": true,
@@ -2390,7 +2420,7 @@
         {
           "disabled": false,
           "document": "Operator account ID: The account or role ID of the operator who purchases or activates a resource.",
-          "example": "xxx",
+          "example": "909619413",
           "member": "string",
           "name": "OperateUin",
           "output_required": true,
@@ -2486,20 +2516,20 @@
         {
           "disabled": false,
           "document": "Cost allocation tag key",
-          "example": "",
+          "example": "游戏",
           "member": "string",
           "name": "TagKey",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Tag value",
-          "example": "",
+          "example": "王者",
           "member": "string",
           "name": "TagValue",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         }
@@ -4740,7 +4770,7 @@
         },
         {
           "disabled": false,
-          "document": "Action type to query. Valid values:\nPurchase\nRenewal\nModify\nRefund\nDeduction\nHourly settlement\nDaily settlement\nMonthly settlement\nOffline project deduction\nOffline deduction\nadjust-CR\nadjust-DR\nOne-off RI Fee\nSpot\nHourly RI fee\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription specification adjustment\nMonthly subscription refund",
+          "document": "Hourly settlement\nDaily settlement\nMonthly settlement\nSpot\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription refund\nAdjustment - deduction\nAdjustment - refund\nHourly RI fee\nOne-off RI Fee\nHourly Savings Plan fee\nOffline project deduction\nOffline product deduction",
           "example": "按量计费日结",
           "member": "string",
           "name": "ActionType",
@@ -4792,7 +4822,7 @@
         {
           "disabled": false,
           "document": "Details list",
-          "example": "无",
+          "example": "[{\"ActionType\":\"pre_to_post\",\"ActionTypeName\":\"包年包月转按量\",\"AssociatedOrder\":{\"PrepayPurchase\":\"20230707400000442656611\",\"PrepayRenew\":\"20230707400000442695851,20230707400000442708571\"},\"BillDay\":\"2023-07-17 00:00:00\",\"BillId\":\"20230707400000442821061\",\"BusinessCode\":\"p_cvm\",\"BusinessCodeName\":\"云服务器CVM\",\"BillMonth\":\"2023-07-01 00:00:00\",\"ComponentSet\":[{\"BlendedDiscount\":\"1.00000000\",\"CashPayAmount\":\"-80.43264806\",\"ComponentCode\":\"virtual_v_cvm_compute\",\"ComponentCodeName\":\"运算组件\",\"ComponentConfig\":[{\"Name\":\"项目\",\"Value\":\"element_test\"},{\"Name\":\"主机\",\"Value\":\"ins-wxf3fmq8\"},{\"Name\":\"内网IP\",\"Value\":\"10.12.0.42\"},{\"Name\":\"所属网络\",\"Value\":\"私有网络\"},{\"Name\":\"可用区\",\"Value\":\"广州二区\"}],\"ContractPrice\":\"-80.89000000\",\"Cost\":\"-80.89000000\",\"DeductedMeasure\":\"-\",\"Discount\":\"1\",\"IncentivePayAmount\":\"-0.45735194\",\"InstanceType\":\"\",\"ItemCode\":\"virtual_v_cvm_compute_s2\",\"ItemCodeName\":\"运算组件-标准型S2-2核4G\",\"OriginalCostWithRI\":\"0.00000000\",\"OriginalCostWithSP\":\"0.00000000\",\"PriceUnit\":\"元/个/月\",\"RealCost\":\"-80.89000000\",\"RealTotalMeasure\":\"-\",\"ReduceType\":\"折扣\",\"RiTimeSpan\":\"0.00000000\",\"SPDeduction\":\"0.00000000\",\"SPDeductionRate\":\"0.00000000\",\"SinglePrice\":\"-80.89000000\",\"SpecifiedPrice\":\"-80.89000000\",\"TimeSpan\":\"1\",\"TimeUnitName\":\"月\",\"TransferPayAmount\":\"0\",\"UsedAmount\":\"1\",\"UsedAmountUnit\":\"个\",\"VoucherPayAmount\":\"0\"}],\"FeeBeginTime\":\"2023-07-07 16:14:21\",\"FeeEndTime\":\"2023-07-07 16:14:21\",\"Formula\":\"退款：343.12元，现金券： 0元,代金券/折扣券不退（订单号20230707400000442656611：部件cvm:现金支付88.81元-已使用第一阶梯按量:0.02元=剩余88.79元;订单号20230707400000442656611：部件bandwidth:现金支付0元=剩余0元;订单号20230707400000442695851：部件cvm:现金支付172.92元=剩余172.92元;订单号20230707400000442695851：部件bandwidth:现金支付0元=剩余0元;订单号20230707400000442708571：部件cvm:现金支付84.12元-原价95.6*使用时间3.2258%*折扣:88=剩余81.41元;\",\"FormulaUrl\":\"https://buy.cloud.tencent.com/price/cvm\",\"Id\":\"1725547686519644160\",\"OperateUin\":\"909619400\",\"OrderId\":\"20230707400000442821061\",\"OwnerUin\":\"909619400\",\"PayModeName\":\"包年包月\",\"PayTime\":\"2023-07-07 16:14:18\",\"PayerUin\":\"909619400\",\"PriceInfo\":[\"操作系统: linux\",\"连续使用时长T: 不分阶梯\",\"平台: 云平\"],\"ProductCode\":\"sp_cvm_s2\",\"ProductCodeName\":\"云服务器CVM-标准型S2\",\"ProjectId\":1002227,\"ProjectName\":\"element_test\",\"RegionId\":\"1\",\"RegionName\":\"华南地区（广州）\",\"ResourceId\":\"ins-wxf3fmq8\",\"ResourceName\":\"\",\"Tags\":[],\"ZoneName\":\"广州二区\"}]",
           "member": "BillDetail",
           "name": "DetailSet",
           "output_required": true,
@@ -5061,8 +5091,8 @@
           "type": "string"
         },
         {
-          "disabled": false,
-          "document": "The period type. byUsedTime: By usage period; byPayTime: by payment period. Must be the same as the period of the current monthly bill of the Billing Center. You can check your bill statistics period type at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.",
+          "disabled": true,
+          "document": "The period type. byUsedTime",
           "example": "byPayTime",
           "member": "string",
           "name": "PeriodType",
@@ -5072,7 +5102,7 @@
         {
           "disabled": false,
           "document": "Indicates whether or not the total number of records of accessing the list is required, used for frontend pages.\n1 = yes, 0 = no",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "NeedRecordNum",
           "required": false,
@@ -5080,7 +5110,7 @@
         },
         {
           "disabled": false,
-          "document": "Action type to query. Valid values:\nPurchase\nRenewal\nModify\nRefund\nDeduction\nHourly settlement\nDaily settlement\nMonthly settlement\nOffline project deduction\nOffline deduction\nadjust-CR\nadjust-DR\nOne-off RI Fee\nSpot\nHourly RI fee\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription refund",
+          "document": "Hourly settlement\nDaily settlement\nMonthly settlement\nSpot\nNew monthly subscription\nMonthly subscription renewal\nMonthly subscription specification adjustment\nMonthly subscription refund\nAdjustment - deduction\nAdjustment - refund\nHourly RI fee\nOne-off RI Fee\nHourly Savings Plan fee\nOffline project deduction\nOffline product deduction",
           "example": "按量计费扣费",
           "member": "string",
           "name": "ActionType",
@@ -5098,7 +5128,7 @@
         },
         {
           "disabled": false,
-          "document": "Billing mode. Valid values: `prePay` (prepaid), `postPay` (postpaid)",
+          "document": "Billing mode: prePay/postPay",
           "example": "prePay",
           "member": "string",
           "name": "PayMode",
@@ -5117,7 +5147,7 @@
         {
           "disabled": false,
           "document": "The account ID of the payer, which is the unique identifier of a Tencent Cloud user. This account is allowed to query its own bills by default. If an organization admin account needs to query the self-pay bills of members, this field should be specified as the member account ID.",
-          "example": "无",
+          "example": "909619400",
           "member": "string",
           "name": "PayerUin",
           "required": false,
@@ -5150,7 +5180,7 @@
         {
           "disabled": false,
           "document": "Resource summary list",
-          "example": "无",
+          "example": "[{\"PayerUin\":\"909619400\",\"OwnerUin\":\"909619400\",\"OperateUin\":\"909619400\",\"BusinessCodeName\":\"COS 对象存储\",\"ProductCodeName\":\"COS 标准存储\",\"BusinessCode\":\"p_cos\",\"ProductCode\":\"sp_cos_std\",\"PayModeName\":\"按量计费\",\"ProjectName\":\"默认项目\",\"RegionName\":\"华东地区（上海）\",\"RegionId\":4,\"ZoneName\":\"上海一区\",\"ResourceId\":\"sta-19039\",\"ResourceName\":\"sta-3\",\"ActionTypeName\":\"按量计费日结\",\"OrderId\":\"12321-abdef-342132-aac23\",\"PayTime\":\"0000-00-00 00:00:00\",\"FeeBeginTime\":\"2024-11-01 00:00:00\",\"FeeEndTime\":\"2024-11-13 23:59:59\",\"BillMonth\":\"2024-11-01 00:00:00\",\"ConfigDesc\":\"COS 标准存储存储容量: 0.39 GB\",\"ExtendField1\":\"ef 1\",\"ExtendField2\":\"ef 2\",\"ExtendField3\":\"ef 3\",\"ExtendField4\":\"ef 4\",\"ExtendField5\":\"ef 5\",\"TotalCost\":\"0.00007068\",\"Discount\":\"0.232072\",\"ReduceType\":\"折扣\",\"RealTotalCost\":\"0.00124116\",\"VoucherPayAmount\":\"0.00000000\",\"CashPayAmount\":\"0.00000000\",\"IncentivePayAmount\":\"0.00114116\",\"TransferPayAmount\":\"0.00000000\",\"InstanceType\":\"it\",\"OriginalCostWithRI\":\"0.00000000\",\"SPDeduction\":\"0.00000000\",\"OriginalCostWithSP\":\"0.00000000\",\"Tags\":[]}]",
           "member": "BillResourceSummary",
           "name": "ResourceSummarySet",
           "output_required": true,

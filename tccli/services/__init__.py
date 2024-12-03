@@ -103,6 +103,9 @@ SERVICE_VERSIONS = {
     "cmq": [
         "2019-03-04"
     ],
+    "config": [
+        "2022-08-02"
+    ],
     "controlcenter": [
         "2023-01-10"
     ],
