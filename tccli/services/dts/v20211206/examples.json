@@ -8,6 +8,14 @@
         "title": "Completing a data migration task"
       }
     ],
+    "ConfigureSubscribeJob": [
+      {
+        "document": "This example shows you how to configure a subscription task of an entire CDB instance, where the data of db1.table1 is delivered to different Kafka partitions based on the ID column value, while the rest of the data is delivered based on the table name.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ConfigureSubscribeJob\n<Common request parameters>\n\n{\n    \"SubscribeMode\": \"all\",\n    \"SubscribeId\": \"subs-5ft0e2nrc0\",\n    \"KafkaConfig\": {\n        \"DistributeRules\": [\n            {\n                \"DbPattern\": \"db1\",\n                \"RuleType\": \"cols\",\n                \"TablePattern\": \"table1\",\n                \"Columns\": [\n                    \"id\"\n                ]\n            }\n        ],\n        \"NumberOfPartitions\": 8,\n        \"DefaultRuleType\": \"table\"\n    },\n    \"AccessType\": \"cdb\",\n    \"Protocol\": \"json\",\n    \"Endpoints\": [\n        {\n            \"InstanceId\": \"cdb-kdxona7h\",\n            \"DatabaseRegion\": \"ap-guangzhou\",\n            \"EncryptConn\": \"Encrypted\",\n            \"User\": \"root\",\n            \"Password\": \"******\"\n        }\n    ],\n    \"ExtraAttr\": [\n        {\n            \"Value\": \"true\",\n            \"Key\": \"ProcessXA\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Configuring a subscription task"
+      }
+    ],
     "ConfigureSyncJob": [
       {
         "document": "This example shows you how to configure a task of syncing an entire database.",
@@ -54,6 +62,14 @@
         "title": "Creating a data consistency check task"
       }
     ],
+    "CreateConsumerGroup": [
+      {
+        "document": "This example shows you how to creat a consumer group.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateConsumerGroup\n<Common request parameters>\n\n{\n    \"SubscribeId\": \"subs-9jyki7hniw\",\n    \"ConsumerGroupName\": \"test\",\n    \"AccountName\": \"test\",\n    \"Password\": \"123\",\n    \"Description\": \"this is a test account\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"20461920-b18e-11ec-ae1a-cfe224f4f21f\"\n    }\n}",
+        "title": "Creating a consumer group"
+      }
+    ],
     "CreateMigrateCheckJob": [
       {
         "document": " ",
@@ -78,6 +94,22 @@
         "title": "Creating an object modification check task"
       }
     ],
+    "CreateSubscribe": [
+      {
+        "document": "This example shows you how to create a pay-as-you-go mysql subscription task.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSubscribe\n<Common Request Parameters>\n\n{\n    \"Product\": \"mysql\",\n    \"PayType\": 1,\n    \"Count\": 1,\n    \"Tags\": [\n        {\n            \"TagKey\": \"abc\",\n            \"TagValue\": \"abc\"\n        }\n    ],\n    \"Name\": \"test-subscribe\"\n}",
+        "output": "{\n    \"Response\": {\n        \"SubscribeIds\": [\n            \"subs-b6x64o31tm\"\n        ],\n        \"RequestId\": \"xxxxxxxxxxxxxxx\"\n    }\n}",
+        "title": "Creating a pay-as-you-go mysql subscription task"
+      }
+    ],
+    "CreateSubscribeCheckJob": [
+      {
+        "document": "This example shows you how to start a subscription check task. The task must have successfully called the ConfigureSubscribeJob interface to configure all necessary information before starting the check.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateSubscribeCheckJob\n<Common Request Parameters>\n\n{\n    \"SubscribeId\": \"subs-l4d3a7izai\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"77501ba0-f097-11ed-ac7d-b1056735c0c8\"\n    }\n}",
+        "title": "Starting a subscription check task"
+      }
+    ],
     "CreateSyncJob": [
       {
         "document": "This example shows you how to create a sync task.",
@@ -92,6 +124,14 @@
         "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCompareTask\n<Common request parameters>\n\n{\n    \"JobId\": \"dts-amm1jw5q\",\n    \"CompareTaskId\": \"dts-amm1jw5q-cmp-bmuum7jk\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"ac300ff0-00f2-11ed-b005-4930e69d89c2\"\n    }\n}",
         "title": "Deleting a data consistency check task"
+      }
+    ],
+    "DeleteConsumerGroup": [
+      {
+        "document": "This example shows you how to delete a consumer group.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteConsumerGroup\n<Common request parameters>\n\n{\n    \"SubscribeId\": \"subs-9jyki7hniw\",\n    \"ConsumerGroupName\": \"account-subs-9jyki7hniw-test\",\n    \"AccountName\": \"consumer-grp-subs-9jyki7hniw-test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bef6a6f0-f3b1-11ed-b987-7301347aa36f\"\n    }\n}",
+        "title": "Deleting a consumer group"
       }
     ],
     "DescribeCheckSyncJobResult": [
@@ -116,6 +156,14 @@
         "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCompareTasks\n<Common request parameters>\n\n{\n    \"JobId\": \"dts-e7ukka6g\"\n}",
         "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"CheckProcess\": {\n                    \"Message\": \"\",\n                    \"Status\": \"\",\n                    \"StepAll\": 0,\n                    \"StepNow\": 0,\n                    \"Percent\": 0,\n                    \"Steps\": []\n                },\n                \"CompareProcess\": {\n                    \"Message\": \"done\",\n                    \"Status\": \"\",\n                    \"StepAll\": 0,\n                    \"StepNow\": 0,\n                    \"Steps\": []\n                },\n                \"CompareTaskId\": \"dts-amm1jw5q-cmp-bmuum7jk\",\n                \"Conclusion\": \"same\",\n                \"Config\": {\n                    \"ObjectItems\": [\n                        {\n                            \"DbMode\": \"partial\",\n                            \"DbName\": \"big100\",\n                            \"SchemaName\": \"\",\n                            \"TableMode\": \"partial\",\n                            \"Tables\": null,\n                            \"ViewMode\": \"none\",\n                            \"Views\": null\n                        },\n                        {\n                            \"DbMode\": \"all\",\n                            \"DbName\": \"db1\",\n                            \"SchemaName\": \"\",\n                            \"TableMode\": \"all\",\n                            \"Tables\": null,\n                            \"ViewMode\": \"all\",\n                            \"Views\": null\n                        }\n                    ],\n                    \"ObjectMode\": \"partial\"\n                },\n                \"CreatedAt\": \"2022-07-11 17:21:02\",\n                \"FinishedAt\": \"2022-07-11 17:24:54\",\n                \"Method\": \"dataCheck\",\n                \"Options\": {\n                    \"Method\": \"dataCheck\",\n                    \"SampleRate\": 100,\n                    \"ThreadCount\": 1\n                },\n                \"JobId\": \"dts-amm1jw5q\",\n                \"Message\": \"done\",\n                \"StartedAt\": \"2022-07-11 17:24:09\",\n                \"Status\": \"success\",\n                \"TaskName\": \"defaultCmpTask\"\n            }\n        ],\n        \"RequestId\": \"11d35c90-01bb-11ed-bad9-7b3bbe11abda\",\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the list of data consistency check tasks"
+      }
+    ],
+    "DescribeConsumerGroups": [
+      {
+        "document": "This example shows you how to obtain a consumer group of data subscription.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeConsumerGroups\n<Common request parameters>\n\n{\n    \"SubscribeId\": \"subs-9jyki7hniw\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"Account\": \"account-subs-47damshnra-3\",\n                \"ConsumerGroupLag\": 464948,\n                \"ConsumerGroupName\": \"consumer-grp-subs-47damshnra-3\",\n                \"ConsumerGroupOffset\": -1,\n                \"ConsumerGroupState\": \"Dead\",\n                \"CreatedAt\": \"2022-03-25 17:31:31\",\n                \"Description\": \"sdfjo\",\n                \"Latency\": 528268,\n                \"PartitionAssignment\": [],\n                \"StateOfPartition\": [\n                    {\n                        \"ConsumerGroupLag\": 464948,\n                        \"ConsumerGroupOffset\": -1,\n                        \"Latency\": 528268,\n                        \"PartitionNo\": 0\n                    }\n                ],\n                \"UpdatedAt\": \"2022-03-25 17:31:31\"\n            },\n            {\n                \"Account\": \"account-subs-47damshnra-2\",\n                \"ConsumerGroupLag\": 464948,\n                \"ConsumerGroupName\": \"consumer-grp-subs-47damshnra-2\",\n                \"ConsumerGroupOffset\": -1,\n                \"ConsumerGroupState\": \"Dead\",\n                \"CreatedAt\": \"2022-03-22 17:34:31\",\n                \"Description\": \"sdfjo\",\n                \"Latency\": 528268,\n                \"PartitionAssignment\": [],\n                \"StateOfPartition\": [\n                    {\n                        \"ConsumerGroupLag\": 464948,\n                        \"ConsumerGroupOffset\": -1,\n                        \"Latency\": 528268,\n                        \"PartitionNo\": 0\n                    }\n                ],\n                \"UpdatedAt\": \"2022-03-22 17:34:31\"\n            },\n            {\n                \"Account\": \"account-subs-47damshnra-1\",\n                \"ConsumerGroupLag\": 464948,\n                \"ConsumerGroupName\": \"consumer-grp-subs-47damshnra-1\",\n                \"ConsumerGroupOffset\": -1,\n                \"ConsumerGroupState\": \"Dead\",\n                \"CreatedAt\": \"2022-03-04 15:14:18\",\n                \"Description\": \"sdfjo\",\n                \"Latency\": 528268,\n                \"PartitionAssignment\": [],\n                \"StateOfPartition\": [\n                    {\n                        \"ConsumerGroupLag\": 464948,\n                        \"ConsumerGroupOffset\": -1,\n                        \"Latency\": 528268,\n                        \"PartitionNo\": 0\n                    }\n                ],\n                \"UpdatedAt\": \"2022-03-04 15:14:18\"\n            }\n        ],\n        \"RequestId\": \"68c04ba0-b0d8-11ec-98f5-11f9ac4a2e37\",\n        \"TotalCount\": 3\n    }\n}",
+        "title": "Obtaining a consumer group of data subscription"
       }
     ],
     "DescribeMigrateDBInstances": [
@@ -158,12 +206,60 @@
         "title": "Querying the result of the object modification check task"
       }
     ],
+    "DescribeOffsetByTime": [
+      {
+        "document": "This example shows you how to query the most recent checkpoint and its offset before the specified time in the KafkaTopic.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeOffsetByTime\n<Common Request Parameters>\n\n{\n    \"SubscribeId\": \"subs-9jyki7hniw\",\n    \"Time\": \"2023-05-15 16:31:30\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Items\": [\n            {\n                \"Offset\": 62856,\n                \"PartitionNo\": 0\n            },\n            {\n                \"Offset\": 62842,\n                \"PartitionNo\": 1\n            },\n            {\n                \"Offset\": 62842,\n                \"PartitionNo\": 2\n            },\n            {\n                \"Offset\": 62842,\n                \"PartitionNo\": 3\n            }\n        ],\n        \"RequestId\": \"087e2780-f3bc-11ed-8dff-ff5f3734b02b\"\n    }\n}",
+        "title": "Querying the checkpoint messages in Kafka based on time"
+      }
+    ],
+    "DescribeSubscribeCheckJob": [
+      {
+        "document": "This example shows you how to query the results of a subscription check task.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSubscribeCheckJob\n<Common Request Parameters>\n\n{\n    \"SubscribeId\": \"subs-l4d3a7izai\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Message\": \"success\",\n        \"Progress\": 100,\n        \"RequestId\": \"b048a800-f2fe-11ed-a211-5df19a912eab\",\n        \"Status\": \"success\",\n        \"StepAll\": 5,\n        \"StepNow\": 5,\n        \"Steps\": [\n            {\n                \"Errors\": [],\n                \"Percent\": 100,\n                \"Status\": \"finished\",\n                \"StepId\": \"ConnectDBCheck\",\n                \"StepName\": \"Database Connection Check\",\n                \"StepNo\": 1,\n                \"Warnings\": []\n            },\n            {\n                \"Errors\": [],\n                \"Percent\": 100,\n                \"Status\": \"finished\",\n                \"StepId\": \"OptimizeCheck\",\n                \"StepName\": \"Peripheral Check\",\n                \"StepNo\": 2,\n                \"Warnings\": []\n            },\n            {\n                \"Errors\": [],\n                \"Percent\": 100,\n                \"Status\": \"finished\",\n                \"StepId\": \"VersionCheck\",\n                \"StepName\": \"Version Check\",\n                \"StepNo\": 3,\n                \"Warnings\": []\n            },\n            {\n                \"Errors\": [],\n                \"Percent\": 100,\n                \"Status\": \"finished\",\n                \"StepId\": \"SrcPrivilegeCheck\",\n                \"StepName\": \"Source Instance Permission Check\",\n                \"StepNo\": 4,\n                \"Warnings\": [\n                    {\n                        \"HelpDoc\": \"\",\n                        \"Message\": \"We do not require permissions to modify your source data, please cancel them. For example, your authorization: GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER, CREATE TABLESPACE, CREATE ROLE, DROP ROLE ON *.* TO `root`@`%` WITH GRANT OPTION,GRANT APPLICATION_PASSWORD_ADMIN,ROLE_ADMIN,SHOW_ROUTINE,XA_RECOVER_ADMIN ON *.* TO `root`@`%` WITH GRANT OPTION. Please refer to https://cloud.tencent.com/document/product/571/52412.\"\n                    }\n                ]\n            },\n            {\n                \"Errors\": [],\n                \"Percent\": 100,\n                \"Status\": \"finished\",\n                \"StepId\": \"BinlogParamCheck\",\n                \"StepName\": \"Binlog Parameter Check\",\n                \"StepNo\": 5,\n                \"Warnings\": []\n            }\n        ],\n        \"SubscribeId\": \"subs-9jyki7hniw\"\n    }\n}",
+        "title": "Querying the results of a subscription check task"
+      }
+    ],
+    "DescribeSubscribeDetail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSubscribeDetail\n<Common Request Parameters>\n\n{\n    \"SubscribeId\": \"subs-0b2up6hk4u\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Region\": \"ap-guangzhou\",\n        \"AccessType\": \"cdb\",\n        \"AutoRenewFlag\": 0,\n        \"Broker\": \"guangzhoutest-kafka-3.cdb-dts.tencentcs.com.cn:32339\",\n        \"CreateTime\": \"2023-12-06 14:31:27\",\n        \"Endpoints\": [\n            {\n                \"DatabaseRegion\": \"ap-guangzhou\",\n                \"EncryptConn\": \"UnEncrypted\",\n                \"InstanceId\": \"cdb-kdxona7h\",\n                \"User\": \"root\"\n            }\n        ],\n        \"ExpireTime\": \"0000-00-00 00:00:00\",\n        \"InstanceId\": \"cdb-kdxona7h\",\n        \"InstanceStatus\": \"running\",\n        \"IsolateTime\": \"0000-00-00 00:00:00\",\n        \"KafkaConfig\": {\n            \"DistributeRules\": [\n                {\n                    \"DbPattern\": \"db1\",\n                    \"RuleType\": \"cols\",\n                    \"TablePattern\": \"table1\",\n                    \"Columns\": [\n                        \"id\"\n                    ]\n                },\n                {\n                    \"DbPattern\": \".*\",\n                    \"RuleType\": \"table\",\n                    \"TablePattern\": \".*\",\n                    \"Columns\": null\n                }\n            ],\n            \"NumberOfPartitions\": 8\n        },\n        \"ModifyTime\": \"2023-12-06 14:33:47\",\n        \"OfflineTime\": \"0000-00-00 00:00:00\",\n        \"PayType\": 0,\n        \"Product\": \"mysql\",\n        \"Protocol\": \"json\",\n        \"Status\": \"normal\",\n        \"SubsStatus\": \"running\",\n        \"SubscribeId\": \"subs-0b2up6hk4u\",\n        \"SubscribeName\": \"test\",\n        \"SubscribeMode\": \"all\",\n        \"Topic\": \"topic-subs-0b2up6hk4u-cdb-kdxona7h\",\n        \"RequestId\": \"7bd11a40-9406-11ee-9689-216abbbe2107\"\n    }\n}",
+        "title": "Quering the details of a subscription task"
+      }
+    ],
+    "DescribeSubscribeJobs": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSubscribeJobs\n<Common request parameters>\n\n{\n    \"Offset\": 0,\n    \"Limit\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Items\": [\n            {\n                \"SubscribeId\": \"subs-5ft0e2nrc0\",\n                \"SubscribeName\": \"name-5ft0e2nrc0\",\n                \"Topic\": \"topic-subs-5ft0e2nrc0-cdb-kdxona7h\",\n                \"Product\": \"mysql\",\n                \"InstanceId\": \"cdb-kdxona7h\",\n                \"InstanceStatus\": \"running\",\n                \"Status\": \"normal\",\n                \"SubsStatus\": \"running\",\n                \"ModifyTime\": \"2023-10-01 12:00:00\",\n                \"CreateTime\": \"2023-09-01 12:00:00\",\n                \"IsolateTime\": \"0000-00-00 00:00:00\",\n                \"ExpireTime\": \"2023-11-01 12:00:00\",\n                \"OfflineTime\": \"0000-00-00 00:00:00\",\n                \"PayType\": 0,\n                \"AutoRenewFlag\": 0,\n                \"Region\": \"ap-guangzhou\",\n                \"AccessType\": \"cdb\",\n                \"Endpoints\": [\n                    {\n                        \"DatabaseRegion\": \"ap-guangzhou\",\n                        \"InstanceId\": \"cdb-kdxona7h\",\n                        \"EncryptConn\": \"Encrypted\",\n                        \"User\": \"root\"\n                    }\n                ],\n                \"SubscribeVersion\": \"kafka\"\n            }\n        ],\n        \"RequestId\": \"cd6eebd0-9405-11ee-9689-216abbbe2107\"\n    }\n}",
+        "title": "Querying the subscription task list"
+      }
+    ],
+    "DescribeSubscribeReturnable": [
+      {
+        "document": "This example shows you how to query whether the subscription instance can be returned.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSubscribeReturnable\n<Common request parameters>\n\n{\n    \"SubscribeId\": \"subs-9jyki7hniw\"\n}",
+        "output": "{\n    \"Response\": {\n        \"IsReturnable\": true,\n        \"ReturnFailMessage\": \"\",\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
+        "title": "Querying whether the subscription instance can be returned"
+      }
+    ],
     "DescribeSyncJobs": [
       {
         "document": "This example shows you how to query the list of sync tasks.",
         "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeSyncJobs\n<Common Request Parameters>\n\n{\n    \"JobId\": \"sync-bkm3mppi\"\n}",
         "output": "{\n    \"Response\": {\n        \"JobList\": [\n            {\n                \"Actions\": [\n                    \"pause\",\n                    \"stop\",\n                    \"limitRate\",\n                    \"view\",\n                    \"resize\",\n                    \"isolate\",\n                    \"postPay2prePay\",\n                    \"configureOptObj\"\n                ],\n                \"AllActions\": [\n                    \"view\",\n                    \"configure\",\n                    \"check\",\n                    \"start\",\n                    \"stop\",\n                    \"resume\",\n                    \"pause\",\n                    \"continue\",\n                    \"limitRate\",\n                    \"resize\",\n                    \"isolate\",\n                    \"offline\",\n                    \"recover\",\n                    \"postPay2prePay\",\n                    \"configureOptObj\",\n                    \"checkOptObj\",\n                    \"startOptObj\",\n                    \"createCmpTask\"\n                ],\n                \"AutoRenew\": 0,\n                \"AutoRetryTimeRangeMinutes\": 0,\n                \"CreateTime\": \"2023-12-18 20:55:27\",\n                \"Detail\": {\n                    \"CauseOfCompareDisable\": \"The current task has opened DML filtering().\",\n                    \"CurrentStepProgress\": 0,\n                    \"ErrInfo\": {\n                        \"Message\": \"\",\n                        \"Reason\": \"\",\n                        \"Solution\": \"\"\n                    },\n                    \"MasterSlaveDistance\": 0,\n                    \"Message\": \"\",\n                    \"Progress\": -1,\n                    \"SecondsBehindMaster\": 0,\n                    \"StepAll\": 4,\n                    \"StepInfos\": [\n                        {\n                            \"Errors\": null,\n                            \"Progress\": -1,\n                            \"StartTime\": \"2023-12-20 17:03:39\",\n                            \"Status\": \"finished\",\n                            \"StepId\": \"schema-init\",\n                            \"StepName\": \"Incremental database table initialization\",\n                            \"StepNo\": 1,\n                            \"Warnings\": []\n                        },\n                        {\n                            \"Errors\": null,\n                            \"Progress\": -1,\n                            \"StartTime\": \"2023-12-20 17:03:49\",\n                            \"Status\": \"finished\",\n                            \"StepId\": \"dumper\",\n                            \"StepName\": \"Full export\",\n                            \"StepNo\": 2,\n                            \"Warnings\": []\n                        },\n                        {\n                            \"Errors\": null,\n                            \"Progress\": -1,\n                            \"StartTime\": \"2023-12-20 17:07:50\",\n                            \"Status\": \"finished\",\n                            \"StepId\": \"loader\",\n                            \"StepName\": \"Full import\",\n                            \"StepNo\": 3,\n                            \"Warnings\": []\n                        },\n                        {\n                            \"Errors\": null,\n                            \"Progress\": -1,\n                            \"StartTime\": \"2023-12-20 17:16:49\",\n                            \"Status\": \"running\",\n                            \"StepId\": \"sinker\",\n                            \"StepName\": \"Sync incrementally\",\n                            \"StepNo\": 4,\n                            \"Warnings\": []\n                        }\n                    ],\n                    \"StepNow\": 4\n                },\n                \"DstAccessType\": \"noProxy\",\n                \"DstDatabaseType\": \"mysql\",\n                \"DstInfo\": {\n                    \"Account\": \"\",\n                    \"AccountMode\": \"\",\n                    \"AccountRole\": \"\",\n                    \"CcnId\": \"\",\n                    \"CcnOwnerUin\": \"\",\n                    \"CvmInstanceId\": \"\",\n                    \"DatabaseNetEnv\": \"\",\n                    \"DbKernel\": \"\",\n                    \"DbName\": \"\",\n                    \"EncryptConn\": \"\",\n                    \"EngineVersion\": \"\",\n                    \"InstanceId\": \"\",\n                    \"Ip\": \"11.141.232.156\",\n                    \"Password\": \"\",\n                    \"Port\": 3306,\n                    \"Region\": \"ap-guangzhou\",\n                    \"Role\": \"\",\n                    \"RoleExternalId\": \"\",\n                    \"SubnetId\": \"\",\n                    \"Supplier\": \"\",\n                    \"TmpSecretId\": \"\",\n                    \"TmpSecretKey\": \"\",\n                    \"TmpToken\": \"\",\n                    \"UniqDcgId\": \"\",\n                    \"UniqVpnGwId\": \"\",\n                    \"User\": \"root\",\n                    \"VpcId\": \"\"\n                },\n                \"DstInfos\": {\n                    \"AccessType\": \"\",\n                    \"DatabaseType\": \"\",\n                    \"Info\": null,\n                    \"Region\": \"\"\n                },\n                \"DstNodeType\": \"single\",\n                \"DstRegion\": \"ap-qingyuan\",\n                \"DumperResumeCtrl\": \"yes\",\n                \"EndTime\": \"0000-00-00 00:00:00\",\n                \"ExpectRunTime\": \"0000-00-00 00:00:00\",\n                \"ExpireTime\": \"0000-00-00 00:00:00\",\n                \"InstanceClass\": \"medium\",\n                \"JobId\": \"sync-09vy1os1\",\n                \"JobName\": \"roger_test\",\n                \"Objects\": {\n                    \"Databases\": [\n                        {\n                            \"DbMode\": \"All\",\n                            \"DbName\": \"db_big\",\n                            \"EventMode\": \"\",\n                            \"FunctionMode\": \"\",\n                            \"NewDbName\": \"\",\n                            \"NewSchemaName\": \"\",\n                            \"ProcedureMode\": \"\",\n                            \"SchemaName\": \"\",\n                            \"TableMode\": \"All\",\n                            \"TriggerMode\": \"\",\n                            \"ViewMode\": \"All\"\n                        }\n                    ],\n                    \"Mode\": \"Partial\",\n                    \"OnlineDDL\": {\n                        \"Status\": \"\"\n                    }\n                },\n                \"OfflineTime\": \"0000-00-00 00:00:00\",\n                \"Options\": {\n                    \"AddAdditionalColumn\": false,\n                    \"AutoRetryTimeRangeMinutes\": 0,\n                    \"ConflictHandleOption\": {\n                        \"ConditionColumn\": \"\",\n                        \"ConditionOperator\": \"\",\n                        \"ConditionOrderInSrcAndDst\": \"\"\n                    },\n                    \"ConflictHandleType\": \"Cover\",\n                    \"DdlOptions\": null,\n                    \"DealOfExistSameTable\": \"ExecuteAfterIgnore\",\n                    \"InitType\": \"Full\",\n                    \"KafkaOption\": {\n                        \"DDLTopicName\": \"\",\n                        \"DataType\": \"\",\n                        \"TopicRules\": [],\n                        \"TopicType\": \"\"\n                    },\n                    \"OpTypes\": null,\n                    \"RateLimitOption\": {\n                        \"CurrentDumpRps\": 0,\n                        \"CurrentDumpThread\": 8,\n                        \"CurrentLoadRps\": 0,\n                        \"CurrentLoadThread\": 8,\n                        \"CurrentSinkerThread\": 32,\n                        \"DefaultDumpRps\": 0,\n                        \"DefaultDumpThread\": 8,\n                        \"DefaultLoadRps\": 0,\n                        \"DefaultLoadThread\": 8,\n                        \"DefaultSinkerThread\": 32,\n                        \"HasUserSetRateLimit\": \"no\"\n                    }\n                },\n                \"PayMode\": \"PostPay\",\n                \"RunMode\": \"Immediate\",\n                \"Specification\": \"\",\n                \"SrcAccessType\": \"noProxy\",\n                \"SrcDatabaseType\": \"mysql\",\n                \"SrcInfo\": {\n                    \"Account\": \"\",\n                    \"AccountMode\": \"\",\n                    \"AccountRole\": \"\",\n                    \"CcnId\": \"\",\n                    \"CcnOwnerUin\": \"\",\n                    \"CvmInstanceId\": \"\",\n                    \"DatabaseNetEnv\": \"\",\n                    \"DbKernel\": \"\",\n                    \"DbName\": \"\",\n                    \"EncryptConn\": \"\",\n                    \"EngineVersion\": \"\",\n                    \"InstanceId\": \"\",\n                    \"Ip\": \"11.141.232.195\",\n                    \"Password\": \"\",\n                    \"Port\": 3306,\n                    \"Region\": \"ap-guangzhou\",\n                    \"Role\": \"\",\n                    \"RoleExternalId\": \"\",\n                    \"SubnetId\": \"\",\n                    \"Supplier\": \"\",\n                    \"TmpSecretId\": \"\",\n                    \"TmpSecretKey\": \"\",\n                    \"TmpToken\": \"\",\n                    \"UniqDcgId\": \"\",\n                    \"UniqVpnGwId\": \"\",\n                    \"User\": \"root\",\n                    \"VpcId\": \"\"\n                },\n                \"SrcInfos\": {\n                    \"AccessType\": \"\",\n                    \"DatabaseType\": \"\",\n                    \"Info\": null,\n                    \"Region\": \"\"\n                },\n                \"SrcNodeType\": \"single\",\n                \"SrcRegion\": \"ap-qingyuan\",\n                \"StartTime\": \"2023-12-19 15:54:18\",\n                \"Status\": \"Running\",\n                \"Tags\": [],\n                \"TradeStatus\": \"Normal\"\n            }\n        ],\n        \"RequestId\": \"268b0711-a3b2-4692-8c91-88d743bc8b9f\",\n        \"TotalCount\": 1\n    }\n}",
         "title": "Querying the list of sync tasks"
+      }
+    ],
+    "DestroyIsolatedSubscribe": [
+      {
+        "document": "This example shows you how to initiate an deactivation task immediately after the subscription task has been isolated.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DestroyIsolatedSubscribe\n<Common Request Parameters>\n\n{\n    \"SubscribeId\": \"subs-9jyki7hniw\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
+        "title": "Deactivating an isolated data subscription instance"
       }
     ],
     "DestroyMigrateJob": [
@@ -190,6 +286,14 @@
         "title": "Isolating a data migration task"
       }
     ],
+    "IsolateSubscribe": [
+      {
+        "document": "This example shows you how to isolate a subscription task.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: IsolateSubscribe\n<Common request parameters>\n\n{\n    \"SubscribeId\": \"subs-9jyki7hniw\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
+        "title": "Isolating a subscription task"
+      }
+    ],
     "IsolateSyncJob": [
       {
         "document": "This example shows you how to isolate a billed sync task.",
@@ -214,6 +318,22 @@
         "title": "Renaming a data consistency check task"
       }
     ],
+    "ModifyConsumerGroupDescription": [
+      {
+        "document": "This example shows you how to modify the description of a consumer group.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyConsumerGroupDescription\n<Common Request Parameters>\n\n{\n    \"SubscribeId\": \"subs-9jyki7hniw\",\n    \"AccountName\": \"account-subs-9jyki7hniw-1\",\n    \"ConsumerGroupName\": \"consumer-grp-subs-9jyki7hniw-1\",\n    \"Description\": \"this is a test group\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bef6a6f0-f3b1-11ed-b987-7301347aa36f\"\n    }\n}",
+        "title": "Modifying the description of a consumer group."
+      }
+    ],
+    "ModifyConsumerGroupPassword": [
+      {
+        "document": "This example shows you how to modify the password of a consumer group.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyConsumerGroupPassword\n<Common Request Parameters>\n\n{\n    \"SubscribeId\": \"subs-9jyki7hniw\",\n    \"AccountName\": \"account-subs-9jyki7hniw-1\",\n    \"ConsumerGroupName\": \"consumer-grp-subs-9jyki7hniw-1\",\n    \"OldPassword\": \"123\",\n    \"NewPassword\": \"asdiouy09\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"bef6a6f0-f3b1-11ed-b987-7301347aa36f\"\n    }\n}",
+        "title": "Modifying the password of a consumer group"
+      }
+    ],
     "ModifyMigrateJobSpec": [
       {
         "document": " ",
@@ -230,6 +350,22 @@
         "title": "Renaming a migration task"
       }
     ],
+    "ModifyMigrateRateLimit": [
+      {
+        "document": "This example shows you how to modify the number of full export threads.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMigrateRateLimit\n<Common request parameters>\n\n{\n    \"JobId\": \"dts-lfjkazze\",\n    \"DumpThread\": 12\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"ce7594b5-3fbc-40d8-a514-c35186cef95a\"\n    }\n}",
+        "title": "Modifying the number of full export threads"
+      }
+    ],
+    "ModifyMigrateRuntimeAttribute": [
+      {
+        "document": "This example shows you how to modify the writing mode for the Redis target database by filling in relevant parameters. Multiple parameters can be adjusted simultaneously.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyMigrateRuntimeAttribute\n<Common request parameters>\n\n{\n    \"JobId\": \"dts-2rgv0f09\",\n    \"OtherOptions\": [\n        {\n            \"Key\": \"DstWriteMode\",\n            \"Value\": \"clearData\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
+        "title": "Modifying the writing mode for the Redis target database"
+      }
+    ],
     "ModifyMigrationJob": [
       {
         "document": "",
@@ -238,12 +374,44 @@
         "title": "Configuring a migration task"
       }
     ],
+    "ModifySubscribeAutoRenewFlag": [
+      {
+        "document": "This example shows you how to change a monthly subscription task from manual renewal to automatic renewal.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySubscribeAutoRenewFlag\n<Common request parameters>\n\n{\n    \"SubscribeId\": \"subs-9jyki7hniw\",\n    \"AutoRenewFlag\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
+        "title": "Modifying the automatic renewal flag for data subscriptions"
+      }
+    ],
+    "ModifySubscribeName": [
+      {
+        "document": "This example shows you how to modify the name of the data subscription instance.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySubscribeName\n<Common Request Parameters>\n\n{\n    \"SubscribeId\": \"subs-9jyki7hniw\",\n    \"SubscribeName\": \"subscribe-test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
+        "title": "Modifying the name of the data subscription instance"
+      }
+    ],
+    "ModifySubscribeObjects": [
+      {
+        "document": "This example shows you how to modify the subscription rule of a data subscription, such as adding or removing certain tables.",
+        "input": "https://dts.tencentcloudapi.com/?Action=ModifySubscribeObjects\r\n&SubscribeId=subs-ieuwi83j2e\r\n&SubscribeObjectType=0\r\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
+        "title": "Modifying the subscription rule of a data subscription channel"
+      }
+    ],
     "ModifySyncJobConfig": [
       {
         "document": "This example shows you how to start an object modification task as needed.",
         "input": "POST / HTTP/1.1Host: dts.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: ModifySyncJobConfig<Common request parameters>{    \"JobId\": \"sync-4t8k7e8t\",    \"DynamicObjects\": {        \"Mode\": \"Partial\",        \"Databases\": [            {                \"DbName\": \"db1\",                \"DbMode\": \"All\",                \"TableMode\": \"All\",                \"ViewMode\": \"All\"            }        ]    },    \"DynamicOptions\": {        \"ConflictHandleOption\": {},        \"ConflictHandleType\": \"ReportError\",        \"DdlOptions\": [            {                \"DdlObject\": \"Database\",                \"DdlValue\": []            },            {                \"DdlObject\": \"Table\",                \"DdlValue\": []            },            {                \"DdlObject\": \"View\",                \"DdlValue\": []            },            {                \"DdlObject\": \"Index\",                \"DdlValue\": []            }        ],        \"OpTypes\": [            \"Insert\",            \"Update\",            \"Delete\",            \"DDL\"        ]    }}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"xxxaasassas\"\n    }\n}",
         "title": "Configuring an object modification task"
+      }
+    ],
+    "ModifySyncRateLimit": [
+      {
+        "document": "This example shows you how to modify the number of full export threads.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifySyncRateLimit\n<Common Request Parameters>\n\n{\n    \"JobId\": \"sync-asasdasa\",\n    \"DumpThread\": 12,\n    \"DumpRps\": 0,\n    \"LoadThread\": 0,\n    \"SinkerThread\": 0,\n    \"LoadRps\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Modifying the number of full export threads"
       }
     ],
     "PauseMigrateJob": [
@@ -278,6 +446,22 @@
         "title": "Recovering a sync task"
       }
     ],
+    "ResetConsumerGroupOffset": [
+      {
+        "document": "This example shows you how to reset the Kafka offset of a subscription task to a checkpoint around 2023-05-16 00:00:00.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResetConsumerGroupOffset\n<Common request parameters>\n\n{\n    \"ConsumerGroupName\": \"consumer-grp-subs-635ns8r71g-1\",\n    \"PartitionNos\": [\n        \"0\",\n        \"1\",\n        \"2\",\n        \"3\"\n    ],\n    \"ResetMode\": \"datetime\",\n    \"ResetDatetime\": \"2023-05-16 00:00:00\",\n    \"SubscribeId\": \"subs-635ns8r71g\",\n    \"TopicName\": \"account-subs-635ns8r71g-1\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"20461920-b18e-11ec-ae1a-cfe224f4f21f\"\n    }\n}",
+        "title": "Resetting the offset of a consumer group"
+      }
+    ],
+    "ResetSubscribe": [
+      {
+        "document": "This example shows you how to reset a data subscription task.",
+        "input": "https://dts.tencentcloudapi.com/?Action=ResetSubscribe\r\n&SubscribeId=subs-ieuwi83j2e\r\n&<Common Request Parameters>",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
+        "title": "Resetting a data subscription task"
+      }
+    ],
     "ResizeSyncJob": [
       {
         "document": " ",
@@ -292,6 +476,14 @@
         "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResumeMigrateJob\n<Common request parameters>\n\n{\n    \"JobId\": \"dts-j7bt5sid\",\n    \"ResumeOption\": \"normal\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"22f6b9ca-e94d-4a4d-b48f-a5133e791374\"\n    }\n}",
         "title": "Retrying a failed data migration task"
+      }
+    ],
+    "ResumeSubscribe": [
+      {
+        "document": "This example shows you how to resume an error-reported task by restarting it.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ResumeSubscribe\n<Common Request Parameters>\n\n{\n    \"SubscribeId\": \"subs-9jyki7hniw\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"b048a800-f2fe-11ed-a211-5df19a912eab\"\n    }\n}",
+        "title": "Resuming a subscription task"
       }
     ],
     "ResumeSyncJob": [
@@ -340,6 +532,14 @@
         "input": "POST / HTTP/1.1Host: dts.tencentcloudapi.comContent-Type: application/jsonX-TC-Action: StartModifySyncJob<Common request parameters>{    \"JobId\": \"sync-sxxssss\"}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abcsasxasxasxasxa\"\n    }\n}",
         "title": "Starting modifying objects"
+      }
+    ],
+    "StartSubscribe": [
+      {
+        "document": "This example shows you how to start a data subscription task.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: StartSubscribe\n<Common Request Parameters>\n\n{\n    \"SubscribeId\": \"subs-635ns8r71g\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"da826d80-f2fa-11ed-9136-c7bfacc9cf90\"\n    }\n}",
+        "title": "Starting a data subscription task"
       }
     ],
     "StartSyncJob": [
