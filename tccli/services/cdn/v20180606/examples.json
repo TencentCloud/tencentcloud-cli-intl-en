@@ -274,16 +274,10 @@
     ],
     "ModifyDomainConfig": [
       {
-        "document": "This example shows you how to modify the HTTPS server certificate. A certificate ID is auto-generated when the certificate is added to Tencent Cloud SSL Certificates.",
-        "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainConfig\n<Common request parameters>\n\n{\n    \"Domain\": \"www.test.com\",\n    \"Route\": \"Https.CertInfo.CertId\",\n    \"Value\": \"{\\\"update\\\":\\\"0VpOXiPz\\\"}\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"56a166ec-d784-4001-a850-7d62a5c07971\"\n    }\n}",
-        "title": "Modifying the HTTPS server certificate"
-      },
-      {
-        "document": "This example shows you how to modify the timeout threshold of establishing a connection with the origin.",
-        "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainConfig\n<Common request parameters>\n\n{\n    \"Domain\": \"www.test.com\",\n    \"Route\": \"OriginPullTimeout.ConnectTimeout\",\n    \"Value\": \"{\\\"update\\\":10}\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"23cd4005-496f-4bc4-87d8-ab348d5b0c11\"\n    }\n}",
-        "title": "Modifying the origin connection timeout threshold"
+        "document": "This example shows how to modify the configuration of a domain name.",
+        "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainConfig\n<Common request parameters>\n\n{\n    \"Domain\": \"www.test.com\",\n    \"Route\": \"Origin.Origins\",\n    \"Value\": \"{\\\"update\\\":[\\\"1.1.1.1\\\"]}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eb029ee0-7e91-4a18-86f3-7fac952a446e\"\n    }\n}",
+        "title": "Modifying the configuration of a domain name"
       },
       {
         "document": "This example shows you how to modify the timeout threshold of pulling resources from the origin.",
@@ -292,10 +286,16 @@
         "title": "Modifying the origin-pull timeout"
       },
       {
-        "document": "This example shows how to modify the configuration of a domain name.",
-        "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainConfig\n<Common request parameters>\n\n{\n    \"Domain\": \"www.test.com\",\n    \"Route\": \"Origin.Origins\",\n    \"Value\": \"{\\\"update\\\":[\\\"1.1.1.1\\\"]}\"\n}",
-        "output": "{\n    \"Response\": {\n        \"RequestId\": \"eb029ee0-7e91-4a18-86f3-7fac952a446e\"\n    }\n}",
-        "title": "Modifying the configuration of a domain name"
+        "document": "This example shows you how to modify the timeout threshold of establishing a connection with the origin.",
+        "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainConfig\n<Common request parameters>\n\n{\n    \"Domain\": \"www.test.com\",\n    \"Route\": \"OriginPullTimeout.ConnectTimeout\",\n    \"Value\": \"{\\\"update\\\":10}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"23cd4005-496f-4bc4-87d8-ab348d5b0c11\"\n    }\n}",
+        "title": "Modifying the origin connection timeout threshold"
+      },
+      {
+        "document": "This example shows you how to modify the HTTPS server certificate. A certificate ID is auto-generated when the certificate is added to Tencent Cloud SSL Certificates.",
+        "input": "POST / HTTP/1.1\nHost: cdn.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDomainConfig\n<Common request parameters>\n\n{\n    \"Domain\": \"www.test.com\",\n    \"Route\": \"Https.CertInfo.CertId\",\n    \"Value\": \"{\\\"update\\\":\\\"0VpOXiPz\\\"}\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"56a166ec-d784-4001-a850-7d62a5c07971\"\n    }\n}",
+        "title": "Modifying the HTTPS server certificate"
       }
     ],
     "PurgePathCache": [

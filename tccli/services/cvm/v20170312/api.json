@@ -1804,7 +1804,7 @@
         {
           "disabled": false,
           "document": "Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.",
-          "example": "无",
+          "example": "50",
           "member": "int64",
           "name": "DiskSize",
           "output_required": true,
@@ -1814,8 +1814,8 @@
         },
         {
           "disabled": false,
-          "document": "Data disk type. For restrictions on data disk types, refer to [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br/>\n<li>\n  LOCAL_BASIC: local disk.<br/>\n  <li>\n    LOCAL_SSD: local SSD.<br/>\n    <li>\n      LOCAL_NVME: local NVMe disk, which is closely related to InstanceType, and cannot be specified.<br/>\n      <li>\n        LOCAL_PRO: local HDD, which is closely related to InstanceType, and cannot be specified.<br/>\n        <li>\n          CLOUD_BASIC: basic cloud disk.<br/>\n          <li>\n            CLOUD_PREMIUM: premium cloud disk.<br/>\n            <li>\n              CLOUD_SSD: cloud SSD.<br />\n              <li>\n                CLOUD_HSSD: enhanced SSD.<br/>\n                <li>\n                  CLOUD_TSSD: tremendous SSD.<br/>\n                  <li>\n                    CLOUD_BSSD: balanced SSD.<br/><br/>Default value: LOCAL_BASIC.<br/><br/>This parameter is invalid for the `ResizeInstanceDisk` API.\n                  </li>\n                </li>\n              </li>\n            </li>\n          </li>\n        </li>\n      </li>\n    </li>\n  </li>\n</li>",
-          "example": "无",
+          "document": "Data disk type. For the detailed restrictions on the data disk type, refer to [Storage Overview] (https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Value range: <br /><li>LOCAL_BASIC: Local Disk <br /><li>LOCAL_SSD: Local SSD Disk <br /><li>LOCAL_NVME: Local NVME Disk, which is strongly related with InstanceType and can not be specified <br /><li>LOCAL_PRO: Local HDD Disk, which is strongly related with InstanceType and can not be specified <br /><li>CLOUD_BASIC: HDD Cloud Disk <br /><li>CLOUD_PREMIUM: Premium Cloud Disk <br /><li>CLOUD_SSD: Cloud SSD <br /><li>CLOUD_HSSD: Enhanced SSD <br /><li>CLOUD_TSSD: ulTra SSD <br /><li>CLOUD_BSSD: Balanced SSD <br /><br />Default value: LOCAL_BASIC. <br /><br />This parameter is invalid for the `ResizeInstanceDisk` API.</li></li></li> </li> </li></li></li></li></li></li>",
+          "example": "CLOUD_SSD",
           "member": "string",
           "name": "DiskType",
           "output_required": true,
@@ -1826,7 +1826,7 @@
         {
           "disabled": false,
           "document": "Data disk ID. Note that it’s not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.\nIt is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.",
-          "example": "无",
+          "example": "disk-ciezoimt",
           "member": "string",
           "name": "DiskId",
           "output_required": true,
@@ -1836,8 +1836,8 @@
         },
         {
           "disabled": false,
-          "document": "Whether a data disk is terminated when the associated CVM instance is terminated. Valid values:\n<li>TRUE: The data disk is terminated when the associated CVM instance is terminated. This only supports pay-as-you-go cloud disks that are billed by hour.</li>\n<li>\n  FALSE: The data disk is retained when the associated CVM instance is terminated.<br/>\n  Default value: TRUE.<br/>\n  This parameter is currently used only in the `RunInstances` API.\n</li>\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "document": "Whether the data disk is destroyed with the Cloud Virtual Machine (CVM). Value range:\n<li>true: Destroy the data disk when the CVM is destroyed. Only the pay-as-you-go cloud disk billed by hour is supported.</li>\n<li>\n  false: Retain the data disk when the CVM is destroyed.<br />\n  Default value: true.<br />\n  This parameter is currently only used for the `RunInstances` API.\n</li>\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "true",
           "member": "bool",
           "name": "DeleteWithInstance",
           "output_required": true,
@@ -1848,7 +1848,7 @@
         {
           "disabled": false,
           "document": "Data disk snapshot ID. The size of the selected data disk snapshot must be smaller than that of the data disk.\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "snap-6yczrj8x",
           "member": "string",
           "name": "SnapshotId",
           "output_required": true,
@@ -1870,7 +1870,7 @@
         {
           "disabled": false,
           "document": "ID of the custom CMK in the format of UUID or “kms-abcd1234”. This parameter is used to encrypt cloud disks.\n\nCurrently, this parameter is only used in the `RunInstances` API.\nNote: this field may return null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "kms-abcd1234",
           "member": "string",
           "name": "KmsKeyId",
           "output_required": true,
@@ -1881,7 +1881,7 @@
         {
           "disabled": false,
           "document": "Cloud disk performance, in MB/s\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "20",
           "member": "int64",
           "name": "ThroughputPerformance",
           "output_required": true,
@@ -1892,7 +1892,7 @@
         {
           "disabled": false,
           "document": "ID of the dedicated cluster to which the instance belongs.\nNote: this field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "cdc-1648zauv",
           "member": "string",
           "name": "CdcId",
           "output_required": true,
@@ -1903,13 +1903,24 @@
         {
           "disabled": false,
           "document": "Burst performance.\n\n <b>Note: This field is in beta test.</b>\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "false",
           "member": "bool",
           "name": "BurstPerformance",
           "output_required": false,
           "required": false,
           "type": "bool",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Disk name, with a length of not more than 128 characters.\n\nThis parameter is in invite-only testing and is not yet open for use.",
+          "example": "MyDiskName",
+          "member": "string",
+          "name": "DiskName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -6589,7 +6600,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Login password of the instance. <br><li>For Linux instances, the password must include 8-30 characters, and contain at least two of the following character sets: [a-z], [A-Z], [0-9] and [()\\`~!@#$%^&*-+=|{}[]:;',.?/]. <br><li>For Windows instances, the password must include 12-30 characters, and contain at least three of the following character sets: [a-z], [A-Z], [0-9] and [()\\`~!@#$%^&*-+=|{}[]:;',.?/]. <br><br>If it's not specified, the user needs to set the login password using the **Reset password** option in the CVM console or calling the API `ResetInstancesPassword` to complete the creation of the CVM instance(s).\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "Instance login password. The password complexity limits vary with the operating system type as follows: <br><li>The Linux instance password must be 8 to 30 characters long and include at least two of the following: [a-z], [A-Z], [0-9], and special characters of [( ) \\` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]. <br><li>The Windows instance password must be 12 to 30 characters long and include at least three of the following: [a-z], [A-Z], [0-9], and special characters [( ) \\` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]. <br><br>If this parameter is not specified, you need to set it before login by using the console to \"reset password\" or by calling the ResetInstancesPassword API.",
           "example": "123456@ABC",
           "member": "string",
           "name": "Password",
@@ -8962,7 +8973,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "System disk type. For more information about the limits of system disk types, please see [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Valid values:<br><li>LOCAL_BASIC: local disk<br><li>LOCAL_SSD: local SSD disk<br><li>CLOUD_BASIC: HDD cloud disk<br><li>CLOUD_SSD: SSD cloud disk<br><li>CLOUD_PREMIUM: Premium cloud storage<br><li>CLOUD_BSSD: Balanced SSD<br><br>The disk currently in stock will be used by default.",
+          "document": "System disk type. For the restrictions on the system disk type, refer to [Storage Overview] (https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Value range:<br>\n<li>LOCAL_BASIC: Local Disk</li>\n<li>LOCAL_SSD: Local SSD Disk</li>\n<li>CLOUD_BASIC: HDD Cloud Disk</li>\n<li>CLOUD_SSD: Cloud SSD</li>\n<li>CLOUD_PREMIUM: Premium Cloud Disk</li>\n<li>CLOUD_BSSD: Balanced SSD</li>\n<li>CLOUD_HSSD: Enhanced SSD</li>\n<li>CLOUD_TSSD: ulTra SSD</li><br>\nDefault value: Current disk types with inventory available.",
           "example": "无",
           "member": "string",
           "name": "DiskType",
@@ -8999,6 +9010,17 @@
           "example": "无",
           "member": "string",
           "name": "CdcId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Disk name, with a length of not more than 128 characters.\n\nThis parameter is in invite-only testing and is not yet open for use.\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "name",
+          "member": "string",
+          "name": "DiskName",
           "output_required": false,
           "required": false,
           "type": "string",
@@ -9126,7 +9148,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "VPC ID in the format of `vpc-xxx`. To obtain valid VPC IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/vpc?rid=1) or call the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API and look for the `unVpcId` fields in the response. If you specify `DEFAULT` for both `VpcId` and `SubnetId` when creating an instance, the default VPC will be used.",
+          "document": "VPC ID in the format of `vpc-xxx`. To obtain valid VPC IDs, you can log in to the [console](https://console.cloud.tencent.com/vpc/vpc?rid=1) or call the [DescribeVpcs](https://www.tencentcloud.com/document/product/215/15778) API and look for the `unVpcId` fields in the response. If you specify `DEFAULT` for both `VpcId` and `SubnetId` when creating an instance, the default VPC will be used.",
           "example": "vpc-2ij",
           "member": "string",
           "name": "VpcId",
