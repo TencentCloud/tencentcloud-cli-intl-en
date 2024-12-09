@@ -937,7 +937,7 @@
         {
           "disabled": false,
           "document": "Base64 value of photos used for face comparison. \nThe size of image data encoded by Base64 shall not exceed 3M, only jpg and png are supported. \nPlease use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. \nExample values: \"/9j/4AAQSk... (total length:61944)KiiK//2Q==\"",
-          "example": "\"/9j/4AAQSk...(total length:61944)KiiK//2Q==\"",
+          "example": "/9j/4AAQSk...KiiK//2Q==",
           "member": "string",
           "name": "ImageBase64",
           "required": true,
@@ -946,7 +946,7 @@
         {
           "disabled": false,
           "document": "Base64 value of videos used for face comparison. \nThe size of videos data encoded by Base64 shall not exceed 8M, only mp4,avi,flv are supported. \nPlease use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. \nExample values: \"/9j/4AAQSk... (total length:61944)KiiK//2Q==\"",
-          "example": "\"/9j/4AAQSk...(total length: 597242)U7JbKxuf/Z\"",
+          "example": "/9j/4AAQSk...U7JbKxuf/Z",
           "member": "string",
           "name": "VideoBase64",
           "required": true,
@@ -954,8 +954,8 @@
         },
         {
           "disabled": false,
-          "document": "The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.\n`LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.\nExample value: \"SILENT\"",
-          "example": "\"SILENT\"",
+          "document": "The liveness detection type. Valid values: `ACTION`, and `SILENT`.\n`ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.\nExample value: \"SILENT\"",
+          "example": "SILENT",
           "member": "string",
           "name": "LivenessType",
           "required": true,
@@ -964,7 +964,7 @@
         {
           "disabled": false,
           "document": "When the \"LivenessType\" parameter is \"ACTION\", it must be specified.\nIt is used to control the action sequence. Action types: \n1 (open mouth)\n2 (blink)\n3 (nod)\n4 (shake head). \nSelect one or two from the four actions.\nExample of passing single action parameter: \"1\".\nExample of passing multiple action parameters: \"4,2\".\nWhen the \"LivenessType\" parameter value is \"SILENT\", it shall be unspecified.\nExample value: \"\"",
-          "example": "\"\"",
+          "example": "1",
           "member": "string",
           "name": "ValidateData",
           "required": false,
@@ -979,7 +979,7 @@
         {
           "disabled": false,
           "document": "Service error code. When the return value is \"Success\", it indicates that the liveness detection and face comparison succeeded. It is determined that they are the same person. When the return value is \"FailedOperation.CompareLowSimilarity\", it indicates that the liveness detection succeeded, and the face comparison similarity is lower than 70 points. It is determined that they are not the same person. For other error cases, please refer to Liveness Face Comparison (Pure API) Error Code (https://www.tencentcloud.com/document/product/1061/55390). \nExample Value: \"Success\".",
-          "example": "\"Success\"",
+          "example": "Success",
           "member": "string",
           "name": "Result",
           "output_required": true,
@@ -989,7 +989,7 @@
         {
           "disabled": false,
           "document": "Description of business results. \nExample value: \"Success\"",
-          "example": "\"Success\"",
+          "example": "Success",
           "member": "string",
           "name": "Description",
           "output_required": true,
@@ -1009,7 +1009,7 @@
         {
           "disabled": false,
           "document": "The optimal screenshot of the video after verification is the value encoded by BASE64, jpg format. \nNote: This field may return \"null\", indicating that no valid value can be obtained. \nExample values: \"/9j/4AAQSk... (total length:142036)s97n//2Q==\"",
-          "example": "\"/9j/4AAQSk...(total length:142036)s97n//2Q==\"",
+          "example": "/9j/4AAQSk...s97n//2Q==",
           "member": "string",
           "name": "BestFrameBase64",
           "output_required": true,

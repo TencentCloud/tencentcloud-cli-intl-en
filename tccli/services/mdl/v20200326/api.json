@@ -614,6 +614,17 @@
           "required": false,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Color space setting.",
+          "example": "无",
+          "member": "ColorSpaceSetting",
+          "name": "ColorSpaceSettings",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1298,6 +1309,23 @@
         }
       ],
       "usage": "out"
+    },
+    "ColorSpaceSetting": {
+      "document": "Color space setting.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Color space, supports `PASSTHROUGH` (transparent transmission, only supports H265); optional.",
+          "example": "PASSTHROUGH",
+          "member": "string",
+          "name": "ColorSpace",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "CosSettings": {
       "document": "Cos destination setting.",
@@ -7001,6 +7029,17 @@
           "output_required": false,
           "required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Color space setting.",
+          "example": "无",
+          "member": "ColorSpaceSetting",
+          "name": "ColorSpaceSettings",
+          "output_required": false,
+          "required": false,
+          "type": "object",
           "value_allowed_null": false
         }
       ],

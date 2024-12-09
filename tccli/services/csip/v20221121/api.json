@@ -50,9 +50,9 @@
       "status": "online"
     },
     "DescribeClusterPodAssets": {
-      "document": "This API is used to list cluster pods. ",
+      "document": "This API is used to list cluster pods.",
       "input": "DescribeClusterPodAssetsRequest",
-      "name": "Lists cluster pods. ",
+      "name": "Lists cluster pods.",
       "output": "DescribeClusterPodAssetsResponse",
       "status": "online"
     },
@@ -552,7 +552,7 @@
         {
           "disabled": false,
           "document": "Tenant ID",
-          "example": "无",
+          "example": "13022151396",
           "member": "int64",
           "name": "AppId",
           "output_required": true,
@@ -562,7 +562,7 @@
         {
           "disabled": false,
           "document": "Tenant UIN",
-          "example": "无",
+          "example": "1000217891459",
           "member": "string",
           "name": "Uin",
           "output_required": true,
@@ -572,7 +572,7 @@
         {
           "disabled": false,
           "document": "Tenant name",
-          "example": "无",
+          "example": "nickname",
           "member": "string",
           "name": "Nick",
           "output_required": true,
@@ -582,17 +582,17 @@
         {
           "disabled": false,
           "document": "Region\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "ap-guangzhou",
           "member": "string",
           "name": "Region",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Pod ID",
-          "example": "无",
+          "example": "002a244ad33cb024s246c01b91ae63a9",
           "member": "string",
           "name": "AssetId",
           "output_required": true,
@@ -602,7 +602,7 @@
         {
           "disabled": false,
           "document": "Pod name",
-          "example": "无",
+          "example": "kubernetes-proxy-6dd4f2b74-mqf4n",
           "member": "string",
           "name": "AssetName",
           "output_required": true,
@@ -612,142 +612,142 @@
         {
           "disabled": false,
           "document": "Creation time of the pod\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "2024-08-22 21:45:10",
           "member": "string",
           "name": "InstanceCreateTime",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Namespace\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "default",
           "member": "string",
           "name": "Namespace",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Status\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "Running",
           "member": "string",
           "name": "Status",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Cluster ID\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "cls-0hdxu91s",
           "member": "string",
           "name": "ClusterId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Cluster name\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "cluster-name",
           "member": "string",
           "name": "ClusterName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Server ID\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "ins-ml4xc7ds",
           "member": "string",
           "name": "MachineId",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Server name\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "cluster-node-10.26",
           "member": "string",
           "name": "MachineName",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Pod IP\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "10.255.1.8",
           "member": "string",
           "name": "PodIp",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of associated services\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "ServiceCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Number of associated containers\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "3",
           "member": "int64",
           "name": "ContainerCount",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Public IP\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "106.*.*.220",
           "member": "string",
           "name": "PublicIp",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Private IP\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "10.255.1.8",
           "member": "string",
           "name": "PrivateIp",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether it's a critical asset. Values: `1` (critical asset), `0` (non-critical asset)\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "IsCore",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Whether it's a newly-added asset. Values: `1` (Yes), `0` (No)\nNote: This field may return·null, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "uint64",
           "name": "IsNewAsset",
           "output_required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "out"
@@ -3647,8 +3647,17 @@
       "members": [
         {
           "disabled": false,
+          "document": "Member id",
+          "example": "[\"mem-6wfo0fzks3\",\"mem-85fo0fzks4\"]",
+          "member": "string",
+          "name": "MemberId",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
           "document": "Filter conditions",
-          "example": "无",
+          "example": "{   \"Filters\": [     {       \"Name\": \"Status\",       \"Values\": [         \"0\"       ],       \"OperatorType\": 7     },     {       \"Name\": \"Uin\",       \"Values\": [         \"100065\"       ],       \"OperatorType\": 7     }   ],   \"Limit\": 10,   \"Offset\": 0,   \"StartTime\": \"2024-10-26 00:00:00\",   \"EndTime\": \"2024-11-01 23:59:59\" }",
           "member": "Filter",
           "name": "Filter",
           "required": false,
@@ -3663,54 +3672,60 @@
         {
           "disabled": false,
           "document": "Data list",
-          "example": "无",
+          "example": "[       {         \"AppId\": 1302396211,         \"AssetId\": \"002a244ad33***6b7ec01b91ae63a9\",         \"AssetName\": \"kubernetes-proxy-6dd44f7b74-mqf4n\",         \"ClusterId\": \"cls-0hdxu91s\",         \"ClusterName\": \"yancyw\",         \"ContainerCount\": 1,         \"InstanceCreateTime\": \"2024-08-22 21:45:10\",         \"IsCore\": 2,         \"IsNewAsset\": 0,         \"MachineId\": \"ins-0hdxu91s\",         \"MachineName\": \"my-vm\",         \"Namespace\": \"default\",         \"Nick\": \"声声乌龙\",         \"PodIp\": \"10.**.0.**\",         \"PrivateIp\": \"10.**.0.**\",         \"PublicIp\": \"118.**.**.**\",         \"Region\": \"ap-guangzhou\",         \"ServiceCount\": 1,         \"Status\": \"Running\",         \"Uin\": \"100014111178\"       }     ]",
           "member": "AssetClusterPod",
           "name": "Data",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Total number of results",
-          "example": "无",
+          "example": "10",
           "member": "int64",
           "name": "TotalCount",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of cluster pod status",
-          "example": "无",
+          "example": "[       {         \"Text\": \"running\",         \"Value\": \"running\"       },       {         \"Text\": \"succeeded\",         \"Value\": \"succeeded\"       }     ]",
           "member": "FilterDataObject",
           "name": "PodStatusList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of namespaces",
-          "example": "无",
+          "example": "[       {         \"Text\": \"default\",         \"Value\": \"default\"       },       {         \"Text\": \"kube-system\",         \"Value\": \"kube-system\"       },       {         \"Text\": \"tcss\",         \"Value\": \"tcss\"       }     ]",
           "member": "FilterDataObject",
           "name": "NamespaceList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of regions",
-          "example": "无",
+          "example": "[       {         \"Text\": \"广州\",         \"Value\": \"ap-guangzhou\"       }     ]",
           "member": "FilterDataObject",
           "name": "RegionList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "List of users (AppId)",
-          "example": "无",
+          "example": "[       {         \"Text\": \"1302396211\",         \"Value\": \"1302396211\"       }     ]",
           "member": "FilterDataObject",
           "name": "AppIdList",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -5837,8 +5852,7 @@
           "member": "int64",
           "name": "Limit",
           "required": false,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         },
         {
           "disabled": false,
@@ -5847,8 +5861,7 @@
           "member": "int64",
           "name": "Offset",
           "required": false,
-          "type": "int",
-          "value_allowed_null": true
+          "type": "int"
         },
         {
           "disabled": false,
@@ -5857,8 +5870,7 @@
           "member": "string",
           "name": "Order",
           "required": false,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         },
         {
           "disabled": false,
@@ -5867,18 +5879,16 @@
           "member": "string",
           "name": "By",
           "required": false,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         },
         {
           "disabled": false,
           "document": "Filtered columns and content",
-          "example": "无",
+          "example": "[       {         \"Name\": \"Status\",         \"Values\": [           \"0\"         ],         \"OperatorType\": 7       },       {         \"Name\": \"Uin\",         \"Values\": [           \"100065\"         ],         \"OperatorType\": 7       }     ]",
           "member": "WhereFilter",
           "name": "Filters",
           "required": false,
-          "type": "list",
-          "value_allowed_null": true
+          "type": "list"
         },
         {
           "disabled": false,
@@ -5887,8 +5897,7 @@
           "member": "string",
           "name": "StartTime",
           "required": false,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         },
         {
           "disabled": false,
@@ -5897,8 +5906,7 @@
           "member": "string",
           "name": "EndTime",
           "required": false,
-          "type": "string",
-          "value_allowed_null": true
+          "type": "string"
         }
       ],
       "usage": "in"
@@ -8851,8 +8859,10 @@
           "example": "Appid",
           "member": "string",
           "name": "Name",
+          "output_required": true,
           "required": true,
-          "type": "string"
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8860,8 +8870,10 @@
           "example": "[\"1300448058\"]",
           "member": "string",
           "name": "Values",
+          "output_required": true,
           "required": true,
-          "type": "list"
+          "type": "list",
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -8869,8 +8881,10 @@
           "example": "9",
           "member": "int64",
           "name": "OperatorType",
+          "output_required": false,
           "required": false,
-          "type": "int"
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
