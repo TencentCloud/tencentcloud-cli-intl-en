@@ -371,7 +371,7 @@
         "document": "This example shows you how to query bandwidth specifications.",
         "input": "POST / HTTP/1.1\nHost: redis.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeInstanceSpecBandwidth\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"4297c734-2f56-49d9-9c14-9d092fXXXXXX\"\n    }\n}",
-        "title": "Query Bandwidth Specifications"
+        "title": "Querying Bandwidth Specifications"
       }
     ],
     "DescribeInstanceSupportFeature": [
@@ -403,7 +403,7 @@
         "document": "This example shows you how to modify the instance maintenance window to 03:00-06:00.",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeMaintenanceWindow\n&InstanceId=crs-5a4p****\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"StartTime\": \"03:00\",\n        \"EndTime\": \"06:00\",\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
-        "title": "Configuring Instance Access Window"
+        "title": "Configuring an Instance Access Window"
       }
     ],
     "DescribeParamTemplateInfo": [

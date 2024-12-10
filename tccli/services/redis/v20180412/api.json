@@ -1898,7 +1898,7 @@
         {
           "disabled": false,
           "document": "Custom account name for accessing the database.\n- It contains only letters, digits, underscores (_), and hyphens (-).\n- The length cannot exceed 32 characters.",
-          "example": "test",
+          "example": "username_01",
           "member": "string",
           "name": "AccountName",
           "required": true,
@@ -1934,7 +1934,7 @@
         {
           "disabled": false,
           "document": "Sub-account description information, with a length of [0, 64] bytes, supports Chinese characters.",
-          "example": "\"\"",
+          "example": "\"生产账号\"",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -1949,7 +1949,7 @@
         {
           "disabled": false,
           "document": "Task ID",
-          "example": "123456",
+          "example": "29600111",
           "member": "int64",
           "name": "TaskId",
           "output_required": true,
@@ -2325,7 +2325,7 @@
         {
           "disabled": false,
           "document": "Replication group name. The name should contain 2 to 64 characters, including only letters, digits, underscores (_), and hyphens (-).",
-          "example": "test",
+          "example": "example_group_name",
           "member": "string",
           "name": "GroupName",
           "required": false,
@@ -2416,7 +2416,7 @@
         {
           "disabled": false,
           "document": "Sub-account name. Log in to the [Redis console](https://console.tencentcloud.com/redis) and switch to the **Account Management** page to obtain it. For details, see [Managing Account](https://www.tencentcloud.com/document/product/239/34590).",
-          "example": "test",
+          "example": "example_name",
           "member": "string",
           "name": "AccountName",
           "required": true,
@@ -2431,7 +2431,7 @@
         {
           "disabled": false,
           "document": "Task ID",
-          "example": "123456",
+          "example": "101",
           "member": "int64",
           "name": "TaskId",
           "output_required": true,
@@ -4702,7 +4702,7 @@
         {
           "disabled": false,
           "document": "Setting keywords field for fuzzy query, only instance names support fuzzy query.",
-          "example": "test",
+          "example": "模糊查询实例名称",
           "member": "string",
           "name": "SearchKey",
           "required": false,
@@ -4720,7 +4720,7 @@
         {
           "disabled": false,
           "document": "Instance name",
-          "example": "test",
+          "example": "example_InstanceName",
           "member": "string",
           "name": "InstanceName",
           "required": false,
@@ -4846,7 +4846,7 @@
         {
           "disabled": false,
           "document": "Resources filter by tag key. If this parameter is not specified or is an empty array, resources will not be filtered.",
-          "example": "test",
+          "example": "keyname",
           "member": "string",
           "name": "TagKeys",
           "required": false,
@@ -8624,7 +8624,7 @@
         {
           "disabled": false,
           "document": "Remarks for manual backup task",
-          "example": "xxxx",
+          "example": "Backup instructions",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -8991,7 +8991,7 @@
         {
           "disabled": false,
           "document": "Sub-account name. If you want to change it to the root account, fill in root.",
-          "example": "test",
+          "example": "example_name",
           "member": "string",
           "name": "AccountName",
           "required": true,
@@ -9009,7 +9009,7 @@
         {
           "disabled": false,
           "document": "Sub-account description information",
-          "example": "test",
+          "example": "some account instruction",
           "member": "string",
           "name": "Remark",
           "required": false,
@@ -9051,7 +9051,7 @@
         {
           "disabled": false,
           "document": "Task ID",
-          "example": "123456",
+          "example": "11011",
           "member": "int64",
           "name": "TaskId",
           "output_required": true,
@@ -9273,7 +9273,7 @@
         {
           "disabled": false,
           "document": "Region where the logset is located. If it is not provided, the region where the instance is located will be used by default.",
-          "example": "无",
+          "example": "ap-shanghai",
           "member": "string",
           "name": "LogRegion",
           "required": false,

@@ -1,7 +1,7 @@
 {
   "actions": {
     "CompleteMigrateJob": {
-      "document": "This API is used to complete a data migration task.\nFor tasks in incremental migration mode, you need to call this API before migration gets ready for completion to stop migrating incremental data.\nIf the task status queried through the `DescribeMigrationJobs` API is ready (`Status` = `readyComplete), you can call this API to complete the migration task.\n",
+      "document": "This API is used to complete a data migration task.\nFor tasks in incremental migration mode, you need to call this API before migration gets ready for completion to stop migrating incremental data.\nIf the task status queried through the `DescribeMigrationJobs` API is ready (`Status` = `readyComplete`), you can call this API to complete the migration task.",
       "input": "CompleteMigrateJobRequest",
       "name": "Completes a data migration task",
       "output": "CompleteMigrateJobResponse",

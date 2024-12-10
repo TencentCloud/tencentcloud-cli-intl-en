@@ -10,7 +10,7 @@
     ],
     "CompleteMigrateJob": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://dts.tencentcloudapi.com/?Action=CompleteMigrateJob\n&JobId=dts-1kl0iy0v\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"5268ea15-6636-44d1-89f9-e989d1c82e7d\"\n    }\n}",
         "title": "Completing a data migration task"
@@ -18,19 +18,13 @@
     ],
     "CreateMigrateCheckJob": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://dts.tencentcloudapi.com/?Action=CreateMigrateCheckJob\n&JobId=dts-1kl0iy0v\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"46b45da1-3e8e-4ef2-8de8-b1bffa027385\"\n    }\n}",
         "title": "Creating a migration check task"
       }
     ],
     "CreateMigrateJob": [
-      {
-        "document": "This example shows you how to fully migrate the data from a public network MySQL instance in Guangzhou to the instance cdb-e78e0nnv in Shanghai and perform a full data consistency check.",
-        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMigrateJob\n<Common request parameters>\n\n{\n    \"JobName\": \"Set an identifiable name\",\n    \"SrcDatabaseType\": \"mysql\",\n    \"SrcAccessType\": \"extranet\",\n    \"SrcInfo\": {\n        \"Supplier\": \"others\",\n        \"Ip\": \"14.17.22.36\",\n        \"Region\": \"ap-guangzhou\",\n        \"User\": \"root\",\n        \"Password\": \"yourPassword\",\n        \"Port\": 3306\n    },\n    \"DstDatabaseType\": \"mysql\",\n    \"DstAccessType\": \"cdb\",\n    \"DstInfo\": {\n        \"InstanceId\": \"cdb-e78e0nnv\",\n        \"Region\": \"ap-shanghai\",\n        \"ReadOnly\": 0,\n        \"User\": \"root\",\n        \"Password\": \"yourPassword\"\n    },\n    \"DatabaseInfo\": \"[]\",\n    \"Tags\": [\n        {\n            \"TagKey\": \"Owner\",\n            \"TagValue\": \"bob\"\n        }\n    ],\n    \"MigrateOption\": {\n        \"ExternParams\": \"{}\",\n        \"MigrateObject\": 1,\n        \"RunMode\": 1,\n        \"ExpectTime\": \"2020-09-22 00:00:00\",\n        \"ConsistencyType\": 2,\n        \"MigrateType\": 2,\n        \"IsOverrideRoot\": 0\n    }\n}",
-        "output": "{\n    \"Response\": {\n        \"JobId\": \"dts-1kl0iy0v\",\n        \"RequestId\": \"2201c42a-714f-4faa-915b-a51cc09f5cec\"\n    }\n}",
-        "title": "Creating a data migration task over public network"
-      },
       {
         "document": "This example shows you how to fully and incrementally migrate a Direct Connect-enabled MySQL instance in Guangzhou to the instance cdb-d0dqi8nv in Shanghai.",
         "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMigrateJob\n<Common request parameters>\n\n{\n    \"JobName\": \"Set an identifiable name\",\n    \"SrcDatabaseType\": \"mysql\",\n    \"SrcAccessType\": \"dcg\",\n    \"SrcInfo\": {\n        \"Supplier\": \"others\",\n        \"UniqDcgId\": \"dcg-cyrjcc09\",\n        \"VpcId\": \"vpc-72jblfaa\",\n        \"SubnetId\": \"subnet-7raec42a\",\n        \"Ip\": \"192.168.120.136\",\n        \"Region\": \"ap-guangzhou\",\n        \"User\": \"root\",\n        \"Password\": \"yourPassword\",\n        \"Port\": 3306\n    },\n    \"DstDatabaseType\": \"mysql\",\n    \"DstAccessType\": \"cdb\",\n    \"DstInfo\": {\n        \"InstanceId\": \"cdb-d0dqi8nv\",\n        \"Region\": \"ap-shanghai\",\n        \"ReadOnly\": 0,\n        \"User\": \"root\",\n        \"Password\": \"yourPassword\"\n    },\n    \"DatabaseInfo\": \"[{\\\"Database\\\":\\\"test\\\",\\\"Table\\\":[\\\"user\\\",\\\"log\\\"]}]\",\n    \"Tags\": [\n        {\n            \"TagKey\": \"Owner\",\n            \"TagValue\": \"bob\"\n        }\n    ],\n    \"MigrateOption\": {\n        \"ExternParams\": \"{}\",\n        \"MigrateObject\": 1,\n        \"RunMode\": 1,\n        \"ExpectTime\": \"2020-09-22 00:00:00\",\n        \"ConsistencyType\": 2,\n        \"MigrateType\": 2,\n        \"IsOverrideRoot\": 0\n    }\n}",
@@ -42,11 +36,17 @@
         "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMigrateJob\n<Common request parameters>\n\n{\n    \"JobName\": \"Set an identifiable name\",\n    \"SrcDatabaseType\": \"mysql\",\n    \"SrcAccessType\": \"cdb\",\n    \"SrcInfo\": {\n        \"Supplier\": \"others\",\n        \"InstanceId\": \"cdb-ieow93923\",\n        \"User\": \"root\",\n        \"Password\": \"yourPassword\"\n    },\n    \"DstDatabaseType\": \"mysql\",\n    \"DstAccessType\": \"cdb\",\n    \"DstInfo\": {\n        \"InstanceId\": \"cdb-e78e0nnv\",\n        \"Region\": \"ap-shanghai\",\n        \"ReadOnly\": 0,\n        \"User\": \"root\",\n        \"Password\": \"yourPassword\"\n    },\n    \"DatabaseInfo\": \"[]\",\n    \"Tags\": [\n        {\n            \"TagKey\": \"Owner\",\n            \"TagValue\": \"bob\"\n        }\n    ],\n    \"MigrateOption\": {\n        \"ExternParams\": \"{}\",\n        \"MigrateObject\": 1,\n        \"RunMode\": 1,\n        \"ExpectTime\": \"2020-09-22 00:00:00\",\n        \"ConsistencyType\": 5,\n        \"MigrateType\": 2,\n        \"IsOverrideRoot\": 0\n    }\n}",
         "output": "{\n    \"Response\": {\n        \"JobId\": \"dts-46i7easd\",\n        \"RequestId\": \"bc94c57b-9d69-11e9-84cb-256e968056b0\"\n    }\n}",
         "title": "Creating a database migration task"
+      },
+      {
+        "document": "This example shows you how to fully migrate the data from a public network MySQL instance in Guangzhou to the instance cdb-e78e0nnv in Shanghai and perform a full data consistency check.",
+        "input": "POST / HTTP/1.1\nHost: dts.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateMigrateJob\n<Common request parameters>\n\n{\n    \"JobName\": \"Set an identifiable name\",\n    \"SrcDatabaseType\": \"mysql\",\n    \"SrcAccessType\": \"extranet\",\n    \"SrcInfo\": {\n        \"Supplier\": \"others\",\n        \"Ip\": \"14.17.22.36\",\n        \"Region\": \"ap-guangzhou\",\n        \"User\": \"root\",\n        \"Password\": \"yourPassword\",\n        \"Port\": 3306\n    },\n    \"DstDatabaseType\": \"mysql\",\n    \"DstAccessType\": \"cdb\",\n    \"DstInfo\": {\n        \"InstanceId\": \"cdb-e78e0nnv\",\n        \"Region\": \"ap-shanghai\",\n        \"ReadOnly\": 0,\n        \"User\": \"root\",\n        \"Password\": \"yourPassword\"\n    },\n    \"DatabaseInfo\": \"[]\",\n    \"Tags\": [\n        {\n            \"TagKey\": \"Owner\",\n            \"TagValue\": \"bob\"\n        }\n    ],\n    \"MigrateOption\": {\n        \"ExternParams\": \"{}\",\n        \"MigrateObject\": 1,\n        \"RunMode\": 1,\n        \"ExpectTime\": \"2020-09-22 00:00:00\",\n        \"ConsistencyType\": 2,\n        \"MigrateType\": 2,\n        \"IsOverrideRoot\": 0\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"JobId\": \"dts-1kl0iy0v\",\n        \"RequestId\": \"2201c42a-714f-4faa-915b-a51cc09f5cec\"\n    }\n}",
+        "title": "Creating a data migration task over public network"
       }
     ],
     "CreateSubscribe": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://dts.tencentcloudapi.com/?Action=CreateSubscribe\r\n&Product=mysql\r\n&PayType=1\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"SubscribeIds\": [\n            \"subs-ieuwi83j2e\"\n        ],\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
         "title": "Creating data subscription instance"
@@ -54,7 +54,7 @@
     ],
     "DeleteMigrateJob": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://dts.tencentcloudapi.com/?Action=DeleteMigrateJob\n&JobId=dts-1kl0iy0v\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"e15f9b4c-9841-40d2-a28b-dea284a17315\"\n    }\n}",
         "title": "Deleting a data migration task"
@@ -62,7 +62,7 @@
     ],
     "DescribeAsyncRequestInfo": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://dts.tencentcloudapi.com/?Action=DescribeAsyncRequestInfo\r\n&AsyncRequestId=cafebabe-254f-11ea-8995-e92c139e6918\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Status\": \"success\",\n        \"Info\": \"ok\"\n    }\n}",
         "title": "Querying task execution result"
@@ -70,37 +70,29 @@
     ],
     "DescribeMigrateCheckJob": [
       {
-        "document": "Check failed",
-        "input": "https://dts.tencentcloudapi.com/?Action=DescribeMigrateCheckJob\n&JobId=dts-1kl0iy0v\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"Status\": \"finished\",\n        \"ErrorCode\": -1,\n        \"ErrorMessage\": \"The selected table does not exist. Please select another one [the input parameter \"table\" was not found in the source instance]\",\n        \"Progress\": \"100\",\n        \"CheckFlag\": 0,\n        \"RequestId\": \"67b4cfcf-6957-48ae-b7ef-ba33209895e3\"\n    }\n}",
-        "title": "Getting the migration check result - 2"
-      },
-      {
         "document": "Check succeeded",
         "input": "https://dts.tencentcloudapi.com/?Action=DescribeMigrateCheckJob\n&JobId=dts-dau5czmd\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Status\": \"finished\",\n        \"ErrorCode\": 0,\n        \"ErrorMessage\": \"ok\",\n        \"Progress\": \"100\",\n        \"CheckFlag\": 1,\n        \"RequestId\": \"336448b0-2a45-4be4-8356-c245eab5784f\"\n    }\n}",
         "title": "Getting the migration check result"
+      },
+      {
+        "document": "Check failed",
+        "input": "https://dts.tencentcloudapi.com/?Action=DescribeMigrateCheckJob\n&JobId=dts-1kl0iy0v\n&<Common request parameters>",
+        "output": "{\n    \"Response\": {\n        \"Status\": \"finished\",\n        \"ErrorCode\": -1,\n        \"ErrorMessage\": \"The selected table does not exist. Please select another one [the input parameter \"table\" was not found in the source instance]\",\n        \"Progress\": \"100\",\n        \"CheckFlag\": 0,\n        \"RequestId\": \"67b4cfcf-6957-48ae-b7ef-ba33209895e3\"\n    }\n}",
+        "title": "Getting the migration check result - 2"
       }
     ],
     "DescribeMigrateJobs": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://dts.tencentcloudapi.com/?Action=DescribeMigrateJobs\n&Order=CreateTime\n&OrderSeq=DESC\n&Offset=0\n&Limit=2\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"JobList\": [\n            {\n                \"JobId\": \"dts-1kl0iy0v\",\n                \"JobName\": \"userdts\",\n                \"MigrateOption\": {\n                    \"RunMode\": 1,\n                    \"ExpectTime\": \"0000-00-00 00:00:00\",\n                    \"MigrateType\": 2,\n                    \"MigrateObject\": 2,\n                    \"ConsistencyType\": 5,\n                    \"IsOverrideRoot\": 0,\n                    \"ExternParams\": \"[]\",\n                    \"ConsistencyParams\": {\n                        \"SelectRowsPerTable\": 0,\n                        \"TablesSelectAll\": 0,\n                        \"TablesSelectCount\": 0\n                    }\n                },\n                \"SrcAccessType\": \"extranet\",\n                \"SrcDatabaseType\": \"mysql\",\n                \"SrcInfo\": {\n                    \"AccessKey\": \"\",\n                    \"Ip\": \"9.18.84.24\",\n                    \"Port\": 10304,\n                    \"User\": \"root\",\n                    \"Password\": \"\",\n                    \"RdsInstanceId\": \"\",\n                    \"CvmInstanceId\": \"\",\n                    \"UniqDcgId\": \"\",\n                    \"SubnetId\": \"\",\n                    \"UniqVpnGwId\": \"\",\n                    \"InstanceId\": \"\",\n                    \"Region\": \"ap-guangzhou\",\n                    \"VpcId\": \"\"\n                },\n                \"DstAccessType\": \"cdb\",\n                \"DstDatabaseType\": \"mysql\",\n                \"DstInfo\": {\n                    \"InstanceId\": \"cdb-l78e0nbv\",\n                    \"Ip\": \"\",\n                    \"Port\": 0,\n                    \"Region\": \"ap-shanghai\",\n                    \"ReadOnly\": 0\n                },\n                \"Tags\": [\n                    {\n                        \"TagKey\": \"Owner\",\n                        \"TagValue\": \"alice\"\n                    }\n                ],\n                \"Detail\": {\n                    \"StepAll\": 0,\n                    \"StepNow\": 0,\n                    \"Progress\": \"0\",\n                    \"CurrentStepProgress\": \"0\",\n                    \"MasterSlaveDistance\": 0,\n                    \"SecondsBehindMaster\": 0,\n                    \"StepInfo\": []\n                },\n                \"Status\": 1,\n                \"DatabaseInfo\": \"[]\",\n                \"CreateTime\": \"2018-05-24 15:06:03\",\n                \"StartTime\": \"0000-00-00 00:00:00\",\n                \"EndTime\": \"0000-00-00 00:00:00\",\n                \"ErrorInfo\": []\n            }\n        ],\n        \"RequestId\": \"c032aab5-b56a-428d-9cf7-e5f324ee408b\"\n    }\n}",
         "title": "Querying data migration tasks"
       }
     ],
-    "DescribeRegionConf": [
-      {
-        "document": "",
-        "input": "https://dts.tencentcloudapi.com/?Action=DescribeRegionConf\r\n&<Common request parameters>",
-        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Items\": [\n            {\n                \"RegionName\": \"Guangzhou\",\n                \"Region\": \"ap-guangzhou\",\n                \"Area\": \"South China\",\n                \"IsDefaultRegion\": 1,\n                \"Status\": 1\n            }\n        ]\n    }\n}",
-        "title": "Querying purchasable subscription region"
-      }
-    ],
     "DescribeSubscribeConf": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://dts.tencentcloudapi.com/?Action=DescribeSubscribeConf\n&SubscribeId=subs-ieuwi83j2e\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"ChannelId\": \"dts-channel-C9rS58f2rFx11ZEZ\",\n        \"ConsumeStartTime\": \"2019-12-19 16:23:45\",\n        \"CreateTime\": \"2019-12-20 14:59:07\",\n        \"ExpireTime\": \"0000-00-00 00:00:00\",\n        \"InstanceId\": \"cdb-forsubsc\",\n        \"InstanceStatus\": \"running\",\n        \"IsolateTime\": \"0000-00-00 00:00:00\",\n        \"ModifyTime\": \"2019-12-20 18:06:26\",\n        \"OfflineTime\": \"0000-00-00 00:00:00\",\n        \"PayType\": 1,\n        \"Product\": \"mysql\",\n        \"Region\": \"ap-guangzhou\",\n        \"RequestId\": \"e580eac0-26c7-11ea-8e66-910ac0afe95e\",\n        \"SdkConsumedTime\": \"0000-00-00 00:00:00\",\n        \"SdkHost\": \"\",\n        \"Status\": \"normal\",\n        \"SubsStatus\": \"configured\",\n        \"SubscribeId\": \"subs-58zcu8bax0\",\n        \"SubscribeName\": \"Test instance\",\n        \"SubscribeObjectType\": 3,\n        \"SubscribeObjects\": [\n            {\n                \"DatabaseName\": \"dts\",\n                \"ObjectsType\": 0,\n                \"TableNames\": null\n            }\n        ],\n        \"UniqSubnetId\": \"subnet-4p1hpsj8\",\n        \"SubscribeVersion\": \"kafka\",\n        \"UniqVpcId\": \"vpc-fbg8gh1j\",\n        \"Vip\": \"192.168.1.143\",\n        \"Vport\": 7507,\n        \"AutoRenewFlag\": 0,\n        \"Errors\": [\n            {\n                \"Message\": \"\"\n            }\n        ],\n        \"Tags\": [\n            {\n                \"TagKey\": \"userDefineKey\",\n                \"TagValue\": \"userDefineValue\"\n            }\n        ]\n    }\n}",
         "title": "Viewing subscription configuration details"
@@ -108,7 +100,7 @@
     ],
     "DescribeSubscribes": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://dts.tencentcloudapi.com/?Action=DescribeSubscribes\n&Status.0=isolate\n&Offset=0\n&Limit=1\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"Items\": [\n            {\n                \"ChannelId\": \"dts-channel-C9rS58f2rFx11ZEZ\",\n                \"ConsumeStartTime\": \"2019-12-19 16:23:45\",\n                \"CreateTime\": \"2019-12-20 14:59:07\",\n                \"ExpireTime\": \"0000-00-00 00:00:00\",\n                \"InstanceId\": \"cdb-forsubsc\",\n                \"InstanceStatus\": \"running\",\n                \"IsolateTime\": \"0000-00-00 00:00:00\",\n                \"ModifyTime\": \"2019-12-20 18:06:26\",\n                \"OfflineTime\": \"0000-00-00 00:00:00\",\n                \"PayType\": 1,\n                \"Product\": \"mysql\",\n                \"Region\": \"ap-guangzhou\",\n                \"SdkConsumedTime\": \"0000-00-00 00:00:00\",\n                \"Status\": \"normal\",\n                \"SubsStatus\": \"configured\",\n                \"SubscribeId\": \"subs-58zcu8bax0\",\n                \"SubscribeName\": \"Test instance\",\n                \"UniqSubnetId\": \"subnet-4p1hpsj8\",\n                \"UniqVpcId\": \"vpc-fbg8gh1j\",\n                \"Vip\": \"192.168.1.143\",\n                \"Vport\": 7507\n            }\n        ],\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
         "title": "Querying data subscription instance list"
@@ -116,7 +108,7 @@
     ],
     "IsolateSubscribe": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://dts.tencentcloudapi.com/?Action=IsolateSubscribe\n&SubscribeId=subs-ieuwi83j2e\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
         "title": "Isolating subscription objects"
@@ -140,7 +132,7 @@
     ],
     "ModifySubscribeName": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://dts.tencentcloudapi.com/?Action=ModifySubscribeName\n&SubscribeId=subs-ieuwi83j2e\n&SubscribeName=test\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
         "title": "Renaming a data subscription instance"
@@ -156,7 +148,7 @@
     ],
     "ModifySubscribeVipVport": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://dts.tencentcloudapi.com/?Action=ModifySubscribeVipVport\r\n&SubscribeId=subs-ieuwi83j2e\r\n&DstVip=192.168.0.1\r\n&DstPort=7575\r\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
         "title": "Modifying the IP and port number of data subscription instance"
@@ -172,7 +164,7 @@
     ],
     "ResetSubscribe": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://dts.tencentcloudapi.com/?Action=ResetSubscribe\n&SubscribeId=subs-ieuwi83j2e\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"14a719b5-ffb34ab6-816c43c1-8c6a23eb\"\n    }\n}",
         "title": "Resetting a data subscription instance"
@@ -180,7 +172,7 @@
     ],
     "StartMigrateJob": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://dts.tencentcloudapi.com/?Action=StartMigrateJob\n&JobId=dts-1kl0iy0v\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"bab78b9b-ce8a-4645-bfb2-5b03397d6ea0\"\n    }\n}",
         "title": "Starting a migration task"
@@ -188,7 +180,7 @@
     ],
     "StopMigrateJob": [
       {
-        "document": "",
+        "document": " ",
         "input": "https://dts.tencentcloudapi.com/?Action=StopMigrateJob\n&JobId=dts-1kl0iy0v\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"22f6b9ca-e94d-4a4d-b48f-a5133e791374\"\n    }\n}",
         "title": "Canceling a data migration task"

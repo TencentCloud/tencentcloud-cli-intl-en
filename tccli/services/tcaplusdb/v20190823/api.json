@@ -641,7 +641,7 @@
         {
           "disabled": false,
           "document": "ID of the cluster instance where a table resides",
-          "example": "",
+          "example": "123",
           "member": "string",
           "name": "ClusterId",
           "required": true,
@@ -650,7 +650,7 @@
         {
           "disabled": false,
           "document": "List of information of tables to be cleared",
-          "example": "",
+          "example": "null",
           "member": "SelectedTableInfoNew",
           "name": "SelectedTables",
           "required": true,
@@ -665,7 +665,7 @@
         {
           "disabled": false,
           "document": "Number of cleared tables",
-          "example": "",
+          "example": "0",
           "member": "uint64",
           "name": "TotalCount",
           "type": "int",
@@ -674,7 +674,7 @@
         {
           "disabled": false,
           "document": "List of table clearing results",
-          "example": "",
+          "example": "null",
           "member": "TableResultNew",
           "name": "TableResults",
           "type": "list",
