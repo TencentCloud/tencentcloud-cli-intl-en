@@ -36,6 +36,9 @@ SERVICE_VERSIONS = {
     "apigateway": [
         "2018-08-08"
     ],
+    "asr": [
+        "2019-06-14"
+    ],
     "autoscaling": [
         "2018-04-19"
     ],

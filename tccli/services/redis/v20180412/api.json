@@ -542,7 +542,7 @@
     "ModifyConnectionConfig": {
       "document": "This API is used to modify the connection configuration of an instance, including the bandwidth and maximum number of connections.",
       "input": "ModifyConnectionConfigRequest",
-      "name": "Modifies instance connection configuration",
+      "name": "Modifies the number of connections and bandwidth of an instance",
       "output": "ModifyConnectionConfigResponse",
       "status": "online"
     },
@@ -9664,7 +9664,7 @@
         },
         {
           "disabled": false,
-          "document": "Retention duration of the original private IPv4 address.\n- Unit: day.\n- Valid values: 0, 1, 2, 3, 7, and 15.\n",
+          "document": "Retention duration of the original private IPv4 address.\n- Unit: day.\n- Valid values: 0, 1, 2, 3, 7, and 15.\n**Note**: If the retention duration is not set or set to 0, the original network address will be released immediately.",
           "example": "7",
           "member": "int64",
           "name": "Recycle",

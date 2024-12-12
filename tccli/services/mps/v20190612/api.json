@@ -497,6 +497,13 @@
       "output": "ParseNotificationResponse",
       "status": "online"
     },
+    "ProcessImage": {
+      "document": "This API is used to initiate image processing. Its features include:\n1. Format conversion;\n2. Image enhancement;",
+      "input": "ProcessImageRequest",
+      "name": "Initiates image processing",
+      "output": "ProcessImageResponse",
+      "status": "online"
+    },
     "ProcessLiveStream": {
       "document": "This API is used to initiate live stream processing tasks. Such tasks may include the following:\n\n* Intelligent content moderation (detection of pornographic content in images and audio, detection of sensitive information)\n* Intelligent content recognition (face, full text, text keyword, full speech, speech keyword, real-time speech translation, object recognition, game event tracking)\n* Intelligent content analysis (real-time news splitting)\n* Quality control, including recognizing live stream format, checking audio/video content for flickering, blur, low light, overexposure, black bars, white bars, black screen, white screen, noise, pixelation, QR code, etc., and no-reference scoring.\n* Recording\n\nHTTP callbacks are supported for live stream processing events. Notifications can also be written in real time to and read from a CMQ queue. The output files of processing tasks are saved to the storage you specify.",
       "input": "ProcessLiveStreamRequest",
@@ -2380,9 +2387,19 @@
           "example": "无",
           "member": "SegmentRecognitionItem",
           "name": "SegmentSet",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Video abstract, used for offline scenarios.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "xx",
+          "member": "string",
+          "name": "Abstract",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -2977,41 +2994,51 @@
         {
           "disabled": false,
           "document": "Confidence of a recognition segment. Value range: 0-100.",
-          "example": "",
+          "example": "100",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Start time offset of a recognition segment in seconds.",
-          "example": "",
+          "example": "3.204",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "End time offset of a recognition segment in seconds.",
-          "example": "",
+          "example": "7.204",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Recognized text.",
-          "example": "",
+          "example": "腾讯云媒体处理",
           "member": "string",
           "name": "Text",
-          "required": true,
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Word timestamp information.",
+          "example": "无",
+          "member": "WordResult",
+          "name": "Wordlist",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -3469,6 +3496,17 @@
           "output_required": true,
           "required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User extension field, which does not need to be filled in for general scenarios.",
+          "example": "无",
+          "member": "string",
+          "name": "UserExtPara",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -4101,7 +4139,7 @@
           "example": "100",
           "member": "float",
           "name": "Confidence",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4111,7 +4149,7 @@
           "example": "17.45",
           "member": "float",
           "name": "StartTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4121,7 +4159,7 @@
           "example": "29.99",
           "member": "float",
           "name": "EndTimeOffset",
-          "required": true,
+          "output_required": true,
           "type": "float",
           "value_allowed_null": false
         },
@@ -4131,7 +4169,7 @@
           "example": "你好",
           "member": "string",
           "name": "Text",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": false
         },
@@ -4141,8 +4179,18 @@
           "example": "Hello",
           "member": "string",
           "name": "Trans",
-          "required": true,
+          "output_required": true,
           "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Word timestamp information.",
+          "example": "无",
+          "member": "WordResult",
+          "name": "Wordlist",
+          "output_required": false,
+          "type": "list",
           "value_allowed_null": false
         }
       ],
@@ -10016,7 +10064,7 @@
         {
           "disabled": false,
           "document": "Filter condition for media quality inspection template identifiers, with a length limit of 64 characters.",
-          "example": "“”",
+          "example": "\"\"",
           "member": "string",
           "name": "Name",
           "required": false,
@@ -10632,6 +10680,24 @@
           "name": "Name",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Video scenario. Optional values: \nnormal: General transcoding scenario: General transcoding and compression scenario. \npgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. \nmaterials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. \nugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. \ne-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. \neducational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. \nno_config: Not configured.",
+          "example": "normal",
+          "member": "string",
+          "name": "SceneType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Transcoding policy. Optional values: \nultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. \nstandard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. \nhigh_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. \nlow_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. \nno_config: Not configured.",
+          "example": "standard_compress",
+          "member": "string",
+          "name": "CompressType",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -11122,7 +11188,7 @@
         },
         {
           "disabled": false,
-          "document": "The clip mode. Valid values: `normal` (default), `fast`.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "Editing mode. Optional values:\nnormal (default): Precise editing\nfast: Fast editing, with faster processing speed but lower precision to some extent\nNote: fast only supports individual files, and the default output transcoding format of normal is h264.\nNote: This field may return null, indicating that no valid value can be obtained.",
           "example": "fast",
           "member": "string",
           "name": "Type",
@@ -11777,6 +11843,84 @@
       ],
       "usage": "out"
     },
+    "ImageEncodeConfig": {
+      "document": "Image encoding format parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Image format. Valid values: JPG, BMP, GIF, PNG, and WebP. The default is the original image format.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "JPEG",
+          "member": "string",
+          "name": "Format",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Relative image quality. Valid range: 1 - 100. The value is based on the original image quality, and the default is the original image quality.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "50",
+          "member": "int64",
+          "name": "Quality",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ImageEnhanceConfig": {
+      "document": "Image enhancement parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Super-resolution configuration.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "SuperResolutionConfig",
+          "name": "SuperResolution",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "ColorEnhanceConfig",
+          "name": "ColorEnhance",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "SharpEnhanceConfig",
+          "name": "SharpEnhance",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "FaceEnhanceConfig",
+          "name": "FaceEnhance",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "ImageQualityEnhanceConfig": {
       "document": "Overall enhancement configuration.",
       "members": [
@@ -12019,6 +12163,34 @@
         }
       ],
       "usage": "out"
+    },
+    "ImageTaskInput": {
+      "document": "Image task input parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Image encoding configuration.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ImageEncodeConfig",
+          "name": "EncodeConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Image enhancement configuration.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "ImageEnhanceConfig",
+          "name": "EnhanceConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "ImageWatermarkInput": {
       "document": "Input parameter of an image watermarking template",
@@ -13556,10 +13728,21 @@
       "members": [
         {
           "disabled": false,
-          "document": "The notification type, `CMQ` by default. If this parameter is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`.\n\n<font color=\"red\">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>",
+          "document": "Notification type:\n\n\"CMQ\": Callback messages are written to the CMQ queue; \n\"URL\": When a URL is specified, the HTTP callback is pushed to the address specified by NotifyUrl. The callback protocol is http+json. The content of the packet body is the same as the output parameters of the [ParseLiveStreamProcessNotification API](https://intl.cloud.tencent.com/document/product/862/39229?from_cn_redirect=1).\n\n<font color=\"red\">Note: If left blank, it is CMQ by default. To use the other type, you need to fill in the corresponding type value.</font>",
           "example": "URL",
           "member": "string",
           "name": "NotifyType",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HTTP callback URL, required if `NotifyType` is set to `URL`",
+          "example": "http://www.qq.com/callback",
+          "member": "string",
+          "name": "NotifyUrl",
           "output_required": true,
           "required": false,
           "type": "string",
@@ -13604,17 +13787,6 @@
           "example": "test",
           "member": "string",
           "name": "TopicName",
-          "output_required": true,
-          "required": false,
-          "type": "string",
-          "value_allowed_null": false
-        },
-        {
-          "disabled": false,
-          "document": "HTTP callback URL, required if `NotifyType` is set to `URL`",
-          "example": "http://www.qq.com/callback",
-          "member": "string",
-          "name": "NotifyUrl",
           "output_required": true,
           "required": false,
           "type": "string",
@@ -18099,6 +18271,70 @@
       ],
       "usage": "in"
     },
+    "ProcessImageRequest": {
+      "document": "ProcessImage request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "File input information for image processing.",
+          "example": "无",
+          "member": "MediaInputInfo",
+          "name": "InputInfo",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Target storage for image processing output files. If left blank, it inherits the storage location in InputInfo.",
+          "example": "无",
+          "member": "TaskOutputStorage",
+          "name": "OutputStorage",
+          "required": false,
+          "type": "object"
+        },
+        {
+          "disabled": false,
+          "document": "Output file path for image processing. If left blank, it is the directory of the file in InputInfo. If it is a directory, such as `/image/201907/`, it means inheriting the original filename and outputting to this directory.",
+          "example": "无",
+          "member": "string",
+          "name": "OutputDir",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Image processing parameter.",
+          "example": "无",
+          "member": "ImageTaskInput",
+          "name": "ImageTask",
+          "required": false,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ProcessImageResponse": {
+      "document": "ProcessImage response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "125xxx65-procedurev2-bffb15f07530b57bc1aabb01fac74bca",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ProcessLiveStreamRequest": {
       "document": "ProcessLiveStream request structure.",
       "members": [
@@ -18683,7 +18919,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Quality inspection item name. Valid values:\n<li>LowEvaluation: no-reference scoring.</li>\n<li>Mosaic: mosaic detection.</li>\n<li>CrashScreen: screen glitch detection.</li>\n<li>VideoFreezedFrame: video freezing.</li>\n<li>Blur: blur detection.</li>\n<li>BlackWhiteEdge: black and white edges detection.</li>\n<li>SolidColorScreen: solid color screen detection.</li>\n<li>LowLighting: low light.</li>\n<li>HighLighting: overexposure.</li>\n<li>NoVoice: no voice detection.</li>\n<li>LowVoice: low voice detection.</li>\n<li>HighVoice: high voice detection.</li>\n<li>Jitter: jitter detection.</li>\n<li>Noise: noise detection.</li>\n<li>QRCode: QR code detection.</li>\n<li>BarCode: barcode detection.</li>\n<li>AppletCode: mini program code detection.</li>\n<li>VideoResolutionChanged: video resolution change.</li>\n<li>AudioSampleRateChanged: audio sample rate change.</li>\n<li>AudioChannelsChanged: audio channel quantity change.</li>\n<li>ParameterSetsChanged: stream parameter set information change.</li>\n<li>DarOrSarInvalid: video aspect ratio exception.</li>\n<li>TimestampFallback: DTS timestamp rollback.</li>\n<li>DtsJitter: DTS jitter too high.</li>\n<li>PtsJitter: PTS jitter too high.</li>\n<li>AACDurationDeviation: improper AAC frame timestamp interval.</li>\n<li>AudioDroppingFrames: audio frame dropping.</li>\n<li>VideoDroppingFrames: video frame dropping.</li>\n<li>AVTimestampInterleave: improper audio-video interleaving.</li>\n<li>PtsLessThanDts: PTS less than DTS for media streams.</li>\n<li>ReceiveFpsJitter: significant jitter in the network receive frame rate.</li>\n<li>ReceiveFpsTooSmall: network receive video frame rate too low.</li>\n<li>FpsJitter: significant jitter in the stream frame rate calculated via PTS.</li>\n<li>StreamOpenFailed: stream open failure.</li>\n<li>StreamEnd: stream end.</li>\n<li>StreamParseFailed: stream parsing failure.</li>\n<li>VideoFirstFrameNotIdr: first frame not an IDR frame.</li>\n<li>StreamNALUError: NALU start code error.</li>\n<li>TsStreamNoAud: no AUD NALU in the H26x stream of MPEG-TS.</li>\n<li>AudioStreamLack: no audio stream.</li>\n<li>VideoStreamLack: no video stream.</li>\n<li>LackAudioRecover: missing audio stream recovery.</li>\n<li>LackVideoRecover: missing video stream recovery.</li>\n<li>VideoBitrateOutofRange: video stream bitrate (kbps) out of range.</li>\n<li>AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.</li>\n<li>VideoDecodeFailed: video decoding error.</li>\n<li>AudioDecodeFailed: audio decoding error.</li>\n<li>AudioOutOfPhase: opposite phase in dual-channel audio.</li>\n<li>VideoDuplicatedFrame: duplicate frames in video streams.</li>\n<li>AudioDuplicatedFrame: duplicate frames in audio streams.</li>\n<li>VideoRotation: video rotation.</li>\n<li>TsMultiPrograms: multiple programs in MPEG2-TS streams.</li>\n<li>Mp4InvalidCodecFourcc: codec FourCC in MP4 not meeting Apple HLS requirements.</li>\n<li>HLSBadM3u8Format: invalid M3U8 file.</li>\n<li>HLSInvalidMasterM3u8: invalid main M3U8 file.</li>\n<li>HLSInvalidMediaM3u8: invalid media M3U8 file.</li>\n<li>HLSMasterM3u8Recommended: parameters recommended by standards missing in main M3U8.</li>\n<li>HLSMediaM3u8Recommended: parameters recommended by standards missing in media M3U8.</li>\n<li>HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY in media M3U8.</li>\n<li>HLSMediaSegmentsStreamNumChange: changed number of streams in segments.</li>\n<li>HLSMediaSegmentsPTSJitterDeviation: PTS jumps between segments without EXT-X-DISCONTINUITY.</li>\n<li>HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments without EXT-X-DISCONTINUITY.</li>\n<li>TimecodeTrackExist: TMCD track in MP4.</li>",
+          "document": "Quality control item name. The quality control item values are as follows:\n<li>LowEvaluation: No reference score.</li>\n<li>Mosaic: Mosaic detection.</li>\n<li>CrashScreen: Screen crash detection.</li>\n<li>Blur: Blur detection.</li>\n<li>BlackWhiteEdge: Black and white edge detection.</li>\n<li>SolidColorScreen: Solid color screen detection.</li>\n<li>LowLighting: Low lighting.</li>\n<li>HighLighting: Overexposure.</li>\n<li>NoVoice: Silence detection.</li>\n<li>LowVoice: Low voice detection.</li>\n<li>HighVoice: High voice detection.</li>\n<li>Jitter: Jitter detection.</li>\n<li>Noise: Noise detection.</li>\n<li>QRCode: QR code detection.</li>\n<li>BarCode: Barcode detection.</li>\n<li>AppletCode: Applet code detection.</li>\n<li>VideoResolutionChanged: The video resolution changed.</li>\n<li>AudioSampleRateChanged: The audio sampling rate changed.</li>\n<li>AudioChannelsChanged: The audio channel count changed.</li>\n<li>ParameterSetsChanged: The stream parameter set information changed.</li>\n<li>DarOrSarInvalid: Abnormal video aspect ratio.</li>\n<li>TimestampFallback: DTS timestamp fallback.</li>\n<li>DtsJitter: Excessive DTS jitter.</li>\n<li>PtsJitter: Excessive PTS jitter.</li>\n<li>AACDurationDeviation: Unreasonable AAC frame timestamp interval.</li>\n<li>AudioDroppingFrames: Audio frame loss.</li>\n<li>VideoDroppingFrames: Video frame loss.</li>\n<li>AVTimestampInterleave: Unreasonable audio and video interleaving.</li>\n<li>PtsLessThanDts: The PTS of media streams is less than DTS.</li>\n<li>ReceiveFpsJitter: Excessive jitter of the frame rate received by the network.</li>\n<li>ReceiveFpsTooSmall: Too low video frame rate received by the network.</li>\n<li>FpsJitter: Excessive stream frame rate jitter calculated through PTS.</li>\n<li>StreamOpenFailed: Stream opening failed.</li>\n<li>StreamEnd: The stream ended.</li>\n<li>StreamParseFailed: Stream parsing failed.</li>\n<li>VideoFirstFrameNotIdr: The first frame is not an IDR frame.</li>\n<li>StreamNALUError: NALU start code error.</li>\n<li>TsStreamNoAud: The H26x stream of MPEGTS lacks AUD NALU.</li>\n<li>AudioStreamLack: No audio stream.</li>\n<li>VideoStreamLack: No video stream.</li>\n<li>LackAudioRecover: Lack of audio stream recovery.</li>\n<li>LackVideoRecover: Lack of video stream recovery.</li>\n<li>VideoBitrateOutofRange: Out-of-range video stream bitrate (kbps).</li>\n<li>AudioBitrateOutofRange: Out-of-range audio stream bitrate (kbps).</li>\n<li>VideoDecodeFailed: Video decoding error.</li>\n<li>AudioDecodeFailed: Audio decoding error.</li>\n<li>AudioOutOfPhase: Opposite phase in Dual-channel audio.</li>\n<li>VideoDuplicatedFrame: Duplicate frames in the video stream.</li>\n<li>AudioDuplicatedFrame: Duplicate frames in the audio stream.</li>\n<li>VideoRotation: Video image rotation.</li>\n<li>TsMultiPrograms: The MPEG2-TS stream has multiple programs.</li>\n<li>Mp4InvalidCodecFourcc: The codec fourcc in MP4 does not meet Apple HLS requirements.</li>\n<li>HLSBadM3u8Format: Invalid m3u8 file.</li>\n<li>HLSInvalidMasterM3u8: Invalid main m3u8 file.</li>\n<li>HLSInvalidMediaM3u8: Invalid media m3u8 file.</li>\n<li>HLSMasterM3u8Recommended: The main m3u8 file lacks parameters recommended by the standard.</li>\n<li>HLSMediaM3u8Recommended: The media m3u8 file lacks parameters recommended by the standard.</li>\n<li>HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY exists in the media m3u8 file.</li>\n<li>HLSMediaSegmentsStreamNumChange: The number of streams in the segment has changed.</li>\n<li>HLSMediaSegmentsPTSJitterDeviation: PTS jitter between segments without EXT-X-DISCONTINUITY.</li>\n<li>HLSMediaSegmentsDTSJitterDeviation: DTS jitter between segments without EXT-X-DISCONTINUITY.</li>\n<li>TimecodeTrackExist: TMCD track in MP4.</li>",
           "example": "无",
           "member": "string",
           "name": "Type",
@@ -19988,6 +20224,16 @@
         },
         {
           "disabled": false,
+          "document": "Segment cover.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "CovImgUrl",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
           "document": "Segment title.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
@@ -20002,6 +20248,36 @@
           "example": "无",
           "member": "string",
           "name": "Summary",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Segmentation keywords.",
+          "example": "无",
+          "member": "string",
+          "name": "Keywords",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The start time of a live streaming segment, in the ISO date format.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "2024-10-21T17:18:34+08:00",
+          "member": "string",
+          "name": "BeginTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The end time of a live streaming segment, in the ISO date format.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "2024-10-21T17:26:19+08:00",
+          "member": "string",
+          "name": "EndTime",
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
@@ -21377,6 +21653,16 @@
           "output_required": true,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Transcoding template alias.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "“”",
+          "member": "string",
+          "name": "AliasName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "out"
@@ -22199,6 +22485,39 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable scenario-based settings for the template \n0: disable \n1: enable \n \nDefault value: 0\t\n\t\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "ScenarioBased",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Video scenario. Optional values: \nnormal: General transcoding scenario: General transcoding and compression scenario.\npgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. \nmaterials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. \nugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. \ne-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. \neducational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed. \nDefault value: normal\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "normal",
+          "member": "string",
+          "name": "SceneType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Transcoding policy. Optional values: \nultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. \nstandard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. \nhigh_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. \nlow_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. \nDefault value: standard_compress \nNote: If you need to watch videos on TV, it is recommended no to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "standard_compress",
+          "member": "string",
+          "name": "CompressType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -22480,6 +22799,39 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable scenario-based settings for the template \n0: disable \n1: enable \n \nDefault value: 0\t\n\t\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "0",
+          "member": "int64",
+          "name": "ScenarioBased",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Video scenario. Optional values: \nnormal: General transcoding scenario: General transcoding and compression scenario\npgc: PGC HD TV shows and movies: At the time of compression, focus is placed on the viewing experience of TV shows and movies and ROI encoding is performed according to their characteristics, while high-quality contents of videos and audio are retained. \nmaterials_video: HD materials: Scenario involving material resources, where requirements for image quality are extremely high and there are many transparent images, with almost no visual loss during compression. \nugc: UGC content: It is suitable for a wide range of UGC/short video scenarios, with an optimized encoding bitrate for short video characteristics, improved image quality, and enhanced business QOS/QOE metrics. \ne-commerce_video: Fashion show/e-commerce: At the time of compression, emphasis is placed on detail clarity and ROI enhancement, with a particular focus on maintaining the image quality of the face region. \neducational_video: Education: At the time of compression, emphasis is placed on the clarity and readability of text and images to help students better understand the content, ensuring that the teaching content is clearly conveyed.\nDefault value: normal\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "normal",
+          "member": "string",
+          "name": "SceneType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Transcoding policy. Optional values: \nultra_compress: Extreme compression: Compared to standard compression, this policy can maximize bitrate compression while ensuring a certain level of image quality, thus greatly saving bandwidth and storage costs. \nstandard_compress: Comprehensively optimal: The compression ratio and image quality are balanced, and files are compressed as much as possible without a noticeable reduction in subjective image quality. Only audio and video TSC transcoding fees are charged for this policy. \nhigh_compress: Bitrate priority: Priority is given to reducing file size, which may result in certain image quality loss. Only audio and video TSC transcoding fees are charged for this policy. \nlow_compress: Image quality priority: Priority is given to ensuring image quality, and the size of compressed files may be relatively large. Only audio and video TSC transcoding fees are charged for this policy. \nDefault value: standard_compress \nNote: If you need to watch videos on TV, it is recommended no to use the ultra_compress policy. The billing standard for the ultra_compress policy is TSC transcoding + audio and video enhancement - artifacts removal.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "standard_compress",
+          "member": "string",
+          "name": "CompressType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -22705,6 +23057,42 @@
           "name": "CoordinateOrigin",
           "required": true,
           "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "WordResult": {
+      "document": "Word information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Word text.",
+          "example": "腾讯云",
+          "member": "string",
+          "name": "Word",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Word start timestamp, in seconds.",
+          "example": "3.204",
+          "member": "float",
+          "name": "Start",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Word end timestamp, in seconds.",
+          "example": "5.404",
+          "member": "float",
+          "name": "End",
+          "output_required": false,
+          "type": "float",
           "value_allowed_null": false
         }
       ],

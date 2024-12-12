@@ -400,10 +400,10 @@
     ],
     "DescribeMaintenanceWindow": [
       {
-        "document": "This example shows you how to modify the instance maintenance window to 03:00-06:00.",
+        "document": "This example shows you how to query an instance maintenance window. The query result is 03:00-06:00.",
         "input": "https://redis.tencentcloudapi.com/?Action=DescribeMaintenanceWindow\n&InstanceId=crs-5a4p****\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"StartTime\": \"03:00\",\n        \"EndTime\": \"06:00\",\n        \"RequestId\": \"0e728fa9-c2e5-4bf8-8d6b-c1c4fab7b6db\"\n    }\n}",
-        "title": "Configuring an Instance Access Window"
+        "title": "Querying an Instance Maintenance Window"
       }
     ],
     "DescribeParamTemplateInfo": [
