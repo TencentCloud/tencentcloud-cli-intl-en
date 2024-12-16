@@ -588,6 +588,13 @@
       "output": "DescribeTopL7CacheDataResponse",
       "status": "online"
     },
+    "DescribeZoneConfigImportResult": {
+      "document": "This API is used to query the results of site configuration import via API (ImportZoneConfig). This feature only supports the sites in the plans of the Standard Edition and the Enterprise Edition.",
+      "input": "DescribeZoneConfigImportResultRequest",
+      "name": "Queries site configuration import results",
+      "output": "DescribeZoneConfigImportResultResponse",
+      "status": "online"
+    },
     "DescribeZoneSetting": {
       "document": "This API is used to query the site configuration.",
       "input": "DescribeZoneSettingRequest",
@@ -623,6 +630,13 @@
       "output": "DownloadL7LogsResponse",
       "status": "online"
     },
+    "ExportZoneConfig": {
+      "document": "This API is used to export site configuration . The exported configuration is used for import via the API (ImportZoneConfig). This feature only supports the sites in the plans of the Standard Edition and the Enterprise Edition.",
+      "input": "ExportZoneConfigRequest",
+      "name": "Exports site configuration",
+      "output": "ExportZoneConfigResponse",
+      "status": "online"
+    },
     "HandleFunctionRuntimeEnvironment": {
       "document": "This API is used to operate the runtime environment of an edge function. It supports related settings for environment variables.\nAfter the environment variables are set, they can be used in the function code. For details, see [Edge Functions Referencing Environment Variables](https://intl.cloud.tencent.com/document/product/1552/109151?from_cn_redirect=1#0151fd9a-8b0e-407b-ae37-54553a60ded6).",
       "input": "HandleFunctionRuntimeEnvironmentRequest",
@@ -635,6 +649,13 @@
       "input": "IdentifyZoneRequest",
       "name": "Verifies site ownership",
       "output": "IdentifyZoneResponse",
+      "status": "online"
+    },
+    "ImportZoneConfig": {
+      "document": "This API is used to quickly import site configuration files. After the import is initiated, the API will return the corresponding task ID (TaskId). Users need to use the site configuration import result query API (DescribeZoneConfigImportResult) to obtain the results of this import task. This feature only supports the sites in the plans of the Standard Edition and the Enterprise Edition.",
+      "input": "ImportZoneConfigRequest",
+      "name": "Imports site configuration",
+      "output": "ImportZoneConfigResponse",
       "status": "online"
     },
     "IncreasePlanQuota": {
@@ -9221,7 +9242,7 @@
         },
         {
           "disabled": false,
-          "document": "The metrics queried. Valid values:\n<li> l7Flow_outFlux_country: statistics of the L7 EdgeOne response traffic by country/region;</li>\n<li> l7Flow_outFlux_province: statistics of the L7 EdgeOne response traffic by province within the Chinese mainland;</li>\n<li> l7Flow_outFlux_statusCode: statistics of the L7 EdgeOne response traffic by status code;</li>\n<li> l7Flow_outFlux_domain: statistics of the L7 EdgeOne response traffic by domain name;</li>\n<li> l7Flow_outFlux_url: statistics of the L7 EdgeOne response traffic by URL path;</li>\n<li> l7Flow_outFlux_resourceType: statistics of the L7 EdgeOne response traffic by resource type;</li>\n<li> l7Flow_outFlux_sip: statistics of the L7 EdgeOne response traffic by client IP;</li>\n<li> l7Flow_outFlux_referers: statistics of the L7 EdgeOne response traffic by Referer;</li>\n<li> l7Flow_outFlux_ua_device: statistics of the L7 EdgeOne response traffic by device type;</li>\n<li> l7Flow_outFlux_ua_browser: statistics of the L7 EdgeOne response traffic by browser type;</li>\n<li> l7Flow_outFlux_us_os: statistics of the L7 EdgeOne response traffic by operating system type;</li>\n<li> l7Flow_request_country: statistics of the L7 access request count by country/region;</li>\n<li> l7Flow_request_province: statistics of the L7 access request count by province within the Chinese mainland;</li>\n<li> l7Flow_request_statusCode: statistics of the L7 access request count by status code;</li>\n<li> l7Flow_request_domain: statistics of the L7 access request count by domain name;</li>\n<li> l7Flow_request_url: statistics of the L7 access request count by URL path;</li>\n<li> l7Flow_request_resourceType: statistics of the L7 access request count by resource type;</li>\n<li> l7Flow_request_sip: statistics of the L7 access request count by client IP;</li>\n<li> l7Flow_request_referer: statistics of the L7 access request count by Referer;</li>\n<li> l7Flow_request_ua_device: statistics of the L7 access request count by device type;</li>\n<li> l7Flow_request_ua_browser: statistics of the L7 access request count by browser type;</li>\n<li> l7Flow_request_us_os: statistics of the L7 access request count by operating system type.</li>\n",
+          "document": "Queried metric. Valid values:\n<li> l7Flow_outFlux_country: L7 EdgeOne response traffic metric counted by the country/region dimension;</li>\n<li> l7Flow_outFlux_province: L7 EdgeOne response traffic metric counted by the dimension of provinces in Chinese mainland;</li>\n<li> l7Flow_outFlux_statusCode: L7 EdgeOne response traffic metric counted by the status code dimension;</li>\n<li> l7Flow_outFlux_domain: L7 EdgeOne response traffic metric counted by the domain name dimension;</li>\n<li> l7Flow_outFlux_url: L7 EdgeOne response traffic metric counted by the URL path dimension;</li>\n<li> l7Flow_outFlux_resourceType: L7 EdgeOne response traffic metric counted by the resource type dimension;</li>\n<li> l7Flow_outFlux_sip: L7 EdgeOne response traffic metric counted by the client IP dimension;</li>\n<li> l7Flow_outFlux_referers: L7 EdgeOne response traffic metric counted by the referer dimension;</li>\n<li> l7Flow_outFlux_ua_device: L7 EdgeOne response traffic metric counted by the device type dimension;</li>\n<li> l7Flow_outFlux_ua_browser: L7 EdgeOne response traffic metric counted by the browser type dimension;</li>\n<li> l7Flow_outFlux_ua_os: L7 EdgeOne response traffic metric counted by the operating system type dimension;</li>\n<li> l7Flow_request_country: L7 access request count metric counted by the country/region dimension;</li>\n<li> l7Flow_request_province: L7 access request count metric counted by the dimension of provinces in the Chinese mainland;</li>\n<li> l7Flow_request_statusCode: L7 access request count metric counted by the status code dimension;</li>\n<li> l7Flow_request_domain: L7 access request count metric counted by the domain name dimension;</li>\n<li> l7Flow_request_url: L7 access request count metrics counted by the URL path dimension;</li>\n<li> l7Flow_request_resourceType: L7 access request count metric counted by the resource type dimension;</li>\n<li> l7Flow_request_sip: L7 access request count metric counted by the client IP dimension;</li>\n<li> l7Flow_request_referer: L7 access request count metric counted by the referer dimension;</li>\n<li> l7Flow_request_ua_device: L7 access request count metric counted by the device type dimension;</li>\n<li> l7Flow_request_ua_browser: L7 access request count metric counted by the browser type dimension;</li>\n<li> l7Flow_request_ua_os: L7 access request count metric counted by the operating system type dimension.</li>\n",
           "example": "l7Flow_outFlux_country",
           "member": "string",
           "name": "MetricName",
@@ -9408,6 +9429,92 @@
           "output_required": true,
           "type": "list",
           "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeZoneConfigImportResultRequest": {
+      "document": "DescribeZoneConfigImportResult request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2zpqp7qztest",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "It indicates the configuration import task ID for which the result needs to be queried. The import task ID is only retained for 7 days.",
+          "example": "33mz68e4gwka",
+          "member": "string",
+          "name": "TaskId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeZoneConfigImportResultResponse": {
+      "document": "DescribeZoneConfigImportResult response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The status of this import task. Valid values: <li>success: It indicates the configuration was successfully imported;</li> <li>failure: It indicates the configuration import failed;</li> <li>doing: It indicates the configuration is being imported.</li>",
+          "example": "success",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The status message of this import task. If the configuration item import fails, you can view the failure cause through this field.",
+          "example": "success",
+          "member": "string",
+          "name": "Message",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The configuration content of this import task.",
+          "example": "{   \"L7AccelerationConfig\": {     \"FormatVersion\": \"1.0\",     \"ZoneConfig\": {       \"SmartRouting\": {         \"Switch\": \"off\"       },       \"Cache\": {         \"NoCache\": {           \"Switch\": \"on\"         },         \"FollowOrigin\": {           \"Switch\": \"off\",           \"DefaultCache\": \"on\",           \"DefaultCacheStrategy\": \"on\",           \"DefaultCacheTime\": 0         },         \"CustomTime\": {           \"Switch\": \"off\",           \"CacheTime\": 2592000         }       },       \"MaxAge\": {         \"FollowOrigin\": \"on\",         \"CacheTime\": 600       },       \"CacheKey\": {         \"FullURLCache\": \"on\",         \"QueryString\": {           \"Switch\": \"off\",           \"Action\": \"includeCustom\"         },         \"IgnoreCase\": \"off\"       },       \"CachePrefresh\": {         \"Switch\": \"off\",         \"CacheTimePercent\": 90       },       \"OfflineCache\": {         \"Switch\": \"on\"       },       \"Compression\": {         \"Switch\": \"on\",         \"Algorithms\": [           \"brotli\",           \"gzip\"         ]       },       \"ForceRedirectHTTPS\": {         \"Switch\": \"off\",         \"RedirectStatusCode\": 302       },       \"HSTS\": {         \"Switch\": \"off\",         \"Timeout\": 0,         \"IncludeSubDomains\": \"off\",         \"Preload\": \"off\"       },       \"TLSConfig\": {         \"Version\": [           \"TLSv1\",           \"TLSv1.1\",           \"TLSv1.2\",           \"TLSv1.3\"         ],         \"CipherSuite\": \"loose-v2023\"       },       \"OCSPStapling\": {         \"Switch\": \"off\"       },       \"HTTP2\": {         \"Switch\": \"off\"       },       \"QUIC\": {         \"Switch\": \"off\"       },       \"UpstreamHTTP2\": {         \"Switch\": \"off\"       },       \"IPv6\": {         \"Switch\": \"off\"       },       \"WebSocket\": {         \"Switch\": \"off\",         \"Timeout\": 30       },       \"PostMaxSize\": {         \"Switch\": \"on\",         \"MaxSize\": 838860800       },       \"ClientIPHeader\": {         \"Switch\": \"off\"       },       \"ClientIPCountry\": {         \"Switch\": \"off\"       },       \"gRPC\": {         \"Switch\": \"off\"       },       \"AccelerateMainland\": {         \"Switch\": \"off\"       },       \"StandardDebug\": {         \"Switch\": \"off\"       }     },     \"Rules\": []   } }",
+          "member": "string",
+          "name": "Content",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The start time of this import task.",
+          "example": "2024-10-17 20:12:02",
+          "member": "datetime_iso",
+          "name": "ImportTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The end time of this import task.",
+          "example": "2024-10-17 20:14:30",
+          "member": "datetime_iso",
+          "name": "FinishTime",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -10496,6 +10603,52 @@
       ],
       "usage": "both"
     },
+    "ExportZoneConfigRequest": {
+      "document": "ExportZoneConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2zpqp7qztest",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "It indicates exporting the type list of configuration . If it is left blank, all types of configurations will be exported. Currently supported valid values:<li>L7AccelerationConfig: It indicates exporting the Layer-7 acceleration configuration, corresponding to the console's \"Site Acceleration - Global Acceleration Configuration\" and \"Site Acceleration - Rule Engine\".</li>\nNote: The types that will be supported for export in the future will increase with iterations. When exporting all types, pay attention to the export file size. It is recommended to specify the configuration types to be exported to control the request and response packet payload size.",
+          "example": "L7AccelerationConfig",
+          "member": "string",
+          "name": "Types",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ExportZoneConfigResponse": {
+      "document": "ExportZoneConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The specific content of the exported configuration, returned in the JSON format and encoded in the UTF-8 mode. Refer to the example below for the configuration content.",
+          "example": "无",
+          "member": "string",
+          "name": "Content",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "FailReason": {
       "document": "Failure reason",
       "members": [
@@ -11534,6 +11687,52 @@
         }
       ],
       "usage": "both"
+    },
+    "ImportZoneConfigRequest": {
+      "document": "ImportZoneConfig request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone ID.",
+          "example": "zone-2zpqp7qztest",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The configuration content to be imported, which should be in the JSON format and be encoded in the UTF-8 mode. The configuration content can be obtained through the site configuration export API (ExportZoneConfig). You can individually import \"Site Acceleration - Global Acceleration Configuration\" or \"Site Acceleration - Rule Engine\" by passing in the corresponding fields. Refer to the example below for details.",
+          "example": "无",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ImportZoneConfigResponse": {
+      "document": "ImportZoneConfig response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "It indicates the task ID of this import configuration. You can obtain the result of this import task through the site configuration import result query API (DescribeZoneConfigImportResult). Note: The import task ID is only retained for 7 days.",
+          "example": "33mz68e4gwka",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "IncreasePlanQuotaRequest": {
       "document": "IncreasePlanQuota request structure.",
@@ -16510,7 +16709,7 @@
         },
         {
           "disabled": false,
-          "document": "Match type. Valid values: <li> filename: File name; </li> <li> extension: File extension; </li> <li> host: Host name; </li> <li> full_url: The complete URL path under the current site, which must include the HTTP protocol, host, and path; </li> <li> url: Request for the URL path under the current site; </li><li> client_country: Client country/region;</li> <li> query_string: The query string of the URL requested under the current site; </li> <li> request_header: HTTP request header; </li><li> client_ip: Client IP address; </li><li> request_protocol: Request Protocol; </li><li> request_method: HTTP Request Methods. </li>",
+          "document": "Matching type. Valid values: <li>filename: Filename;</li><li>extension: File suffix;</li><li>host: Host;</li><li>full_url: A complete URL path under the current site, including the HTTP protocol, the host, and the path;</li><li>url: The request for a URL path under the current site;</li><li>client_country: Client country/region;</li><li>query_string: The query string for a requested URL under the current site;</li><li>request_header: HTTP request header;</li><li>client_ip: Client IP;</li><li>request_protocol: Request protocol;</li><li>request_method: HTTP request method.</li>",
           "example": "url",
           "member": "string",
           "name": "Target",
@@ -16521,7 +16720,7 @@
         },
         {
           "disabled": false,
-          "document": "The parameter values for match types. It is allowed to pass an empty array only when the match type is query_string or request_header and the operator value is Exist or Does Not Exist. The corresponding match types include:\n<li> File extension: Extensions like jpg, txt, etc.;</li>\n<li> File name: For example, foo in foo.jpg;</li>\n<li> All: All requests for domain names under the site; </li>\n<li> HOST: The host under the current site, for example, www.maxx55.com;</li>\n<li> URL Path: Request for the URL path under the current site, for example, /example;</li>\n<li> URL Full: The complete URL request under the current site, which must include the HTTP protocol, host, and path, for example, https://www.maxx55.cn/example;</li>\n<li> Client country/region: Country/region codes compliant with the ISO3166 standard;</li>\n<li> Query string: The parameter values in the query string of the URL requested under the current site, for example, cn and 1 in lang=cn&version=1; </li>\n<li> HTTP request header: The value of the HTTP request header field, for example, zh-CN,zh;q=0.9 in Accept-Language:zh-CN,zh;q=0.9; </li>\n<li> Client IP: The client IP address carried by the current request, supporting IPv4, IPv6, and an IP range; </li>\n<li> Request Protocol: The protocol of the current request, with possible values: HTTP, HTTPS; </li>\n<li> HTTP Request Methods: The method of the current request, with possible values: GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT, OPTIONS, PATCH, COPY, LOCK, MKCOL, MOVE, PROPFIND, PROPPATCH, UNLOCK. </li>",
+          "document": "Parameter values for corresponding matching types. It is allowed to pass an empty array only when the matching type is query_string or request_header and the operator value is exist or not exist. Corresponding match types include:\n<li>extension: File suffix such as jpg or txt;</li>\n<li> filename: For example, foo in foo.jpg;</li>\n<li> all (any request under the site): all;</li>\n<li> host: The host under the current site. For example, www.maxx55.com;</li>\n<li> URL path: The request for a URL path under the current site. For example, /example;</li>\n<li> URL full: The request for a complete URL under the current site, including the HTTP protocol, the host, and the path. For example: https://www.maxx55.cn/example;</li>\n<li> client_country: Country/region identifier compliant with the ISO3166 standard;</li>\n<li> query_string: The parameter value in the query string of the requested URL under the current site. For example, cn and 1 in lang=cn&version=1;</li>\n<li> request_header: The value of the HTTP request header field. For example, zh-CN,zh;q=0.9 in Accept-Language:zh-CN,zh;q=0.9;</li>\n<li> client_ip: The client request IP carried in the current request, which supports IPv4/IPv6 and an IP range;</li>\n<li> request_protocol: The protocol of the current request. Valid values: HTTP and HTTPS;</li>\n<li> request_method: The method of the current request. Valid values: GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT, OPTIONS, PATCH, COPY, LOCK, MKCOL, MOVE, PROPFIND, PROPPATCH, and UNLOCK. </li>",
           "example": "[\"www.maxx55.com\"]",
           "member": "string",
           "name": "Values",

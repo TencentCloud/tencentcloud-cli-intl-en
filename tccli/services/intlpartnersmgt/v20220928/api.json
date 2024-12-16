@@ -161,6 +161,13 @@
       "output": "QueryPartnerCreditResponse",
       "status": "online"
     },
+    "QueryPolicyProductListByCode": {
+      "document": "This API is used to query the product list information within the specified policy range. To call this API, contact your account manager to add it to the allowlist.",
+      "input": "QueryPolicyProductListByCodeRequest",
+      "name": "Queries the policy product range",
+      "output": "QueryPolicyProductListByCodeResponse",
+      "status": "online"
+    },
     "QueryVoucherAmountByUin": {
       "document": "This API is used to query the voucher quota based on the customer UIN.",
       "input": "QueryVoucherAmountByUinRequest",
@@ -2145,6 +2152,122 @@
       ],
       "usage": "out"
     },
+    "PolicyProductList": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy code.",
+          "example": "StandardPolicy2024",
+          "member": "string",
+          "name": "PolicyCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product code, if the return is *, any item under this level is included in the policy product scope.",
+          "example": "p_cvm",
+          "member": "string",
+          "name": "ProductCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Product name, if the return is *, any item under this level is included in the policy product scope.",
+          "example": "Cloud Virtual Machine(CVM)",
+          "member": "string",
+          "name": "ProductName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SubProduct code, if the return is *, any item under this level is included in the policy product scope.",
+          "example": "sp_cvm_oc3",
+          "member": "string",
+          "name": "SubProductCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "SubProduct name, if the return is *, any item under this level is included in the policy product scope.",
+          "example": "CVM Offline Computing OC3",
+          "member": "string",
+          "name": "SubProductName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Component type code, if the return is *, any item under this level is included in the policy product scope.",
+          "example": "v_cpu",
+          "member": "string",
+          "name": "ComponentTypeCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Component type name, if the return is *, any item under this level is included in the policy product scope.",
+          "example": "volume size",
+          "member": "string",
+          "name": "ComponentTypeName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Component code, if the return is *, any item under this level is included in the policy product scope.",
+          "example": "sv_cpu",
+          "member": "string",
+          "name": "ComponentCode",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Component name, if the return is *, any item under this level is included in the policy product scope.",
+          "example": "Balanced SSD cloud block storage-volume size",
+          "member": "string",
+          "name": "ComponentName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy effective date.",
+          "example": "2024-01-01 00:00:00",
+          "member": "string",
+          "name": "StartDate",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Policy expiration date.",
+          "example": "2024-12-31 00:00:00",
+          "member": "string",
+          "name": "EndDate",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "QueryAccountVerificationStatusRequest": {
       "document": "QueryAccountVerificationStatus request structure.",
       "members": [
@@ -2699,6 +2822,79 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryPolicyProductListByCodeRequest": {
+      "document": "QueryPolicyProductListByCode request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy code",
+          "example": "StandardPolicy2024",
+          "member": "string",
+          "name": "PolicyCode",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Product code",
+          "example": "p_cvm",
+          "member": "string",
+          "name": "ProductCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Product name",
+          "example": "Cloud Virtual Machine(CVM)",
+          "member": "string",
+          "name": "ProductName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct code",
+          "example": "sp_cvm_oc3",
+          "member": "string",
+          "name": "SubProductCode",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Subproduct name",
+          "example": "CVM Offline Computing OC3",
+          "member": "string",
+          "name": "SubProductName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "QueryPolicyProductListByCodeResponse": {
+      "document": "QueryPolicyProductListByCode response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Policy product list",
+          "example": "[...]",
+          "member": "PolicyProductList",
+          "name": "ProductList",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
