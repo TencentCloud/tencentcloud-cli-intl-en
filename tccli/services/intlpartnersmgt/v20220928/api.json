@@ -15,7 +15,7 @@
       "status": "online"
     },
     "CreateAccount": {
-      "document": "This API is used to create Tencent Cloud customer accounts for first-level resellers/second-level resellers.After the account is created, it will be automatically bound to the partner account.Note:\n1. Create a Tencent Cloud account. The entered email address and mobile phone number need to be verified by the partner for validity.\n2.  Customers need to add personal information when logging in for the first time.\n3.  This interface needs to be applied for allowlist usage. Please contact the channel manager to initiate the application process.",
+      "document": "This API is used to create Tencent Cloud customer accounts for distributor/second-level resellers.After the account is created, it will be automatically bound to the partner account.Note:\n1. Create a Tencent Cloud account. The entered email address and mobile phone number need to be verified by the partner for validity.\n2.  Customers need to add personal information when logging in for the first time.\n3.  This interface needs to be applied for allowlist usage. Please contact the channel manager to initiate the application process.",
       "input": "CreateAccountRequest",
       "name": "Creates a customer account",
       "output": "CreateAccountResponse",
@@ -92,7 +92,7 @@
       "status": "online"
     },
     "ForceQN": {
-      "document": "This API is used to set and cancel forced service suspension.Reseller need to be allowlisted to use the API.",
+      "document": "This API is used to set and cancel forced service suspension.\nNote:Reseller need to be allowlisted to use the API, please contact your business representative to apply for allowlist.",
       "input": "ForceQNRequest",
       "name": "Sets and cancels forced service suspension",
       "output": "ForceQNResponse",
@@ -879,7 +879,7 @@
         },
         {
           "disabled": false,
-          "document": "Registered email address, which should be valid and correct.\nFor example, account@qq.com.",
+          "document": "Registered email address, which should be valid and correct.\nsuch as \"account@qq.com\"",
           "example": "account@qq.com",
           "member": "string",
           "name": "Mail",
@@ -889,7 +889,7 @@
         {
           "disabled": false,
           "document": "Account password.\nLength limit: 8-20 characters\nA password must contain numbers, letters, and symbols (!@#$%^&*()). Space is not allowed.",
-          "example": "无",
+          "example": "Bejs%2745!",
           "member": "string",
           "name": "Password",
           "required": true,
@@ -898,7 +898,7 @@
         {
           "disabled": false,
           "document": "The confirmed password, which must be the same as that entered in the `Password` field.",
-          "example": "无",
+          "example": "Bejs%2745!",
           "member": "string",
           "name": "ConfirmPassword",
           "required": true,
@@ -906,7 +906,7 @@
         },
         {
           "disabled": false,
-          "document": "Customer's mobile number. \nThe caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed. \nThe system will perform binding limit verification of the mobile number you provide, allowing a maximum of 5 accounts per mobile number.",
+          "document": "Customer's mobile number.\nThe caller needs to ensure the validity and correctness of the mobile number. A global mobile number within a range of 1-32 digits is allowed.\nThe system will perform binding limit verification of the mobile number you provide, allowing a maximum of 5 accounts per mobile number.",
           "example": "18888888888",
           "member": "string",
           "name": "PhoneNum",
@@ -915,7 +915,7 @@
         },
         {
           "disabled": false,
-          "document": "Customer's country/region code, which can be obtained via the `GetCountryCodes` API, such as \"852\".\nParameter value is not allowed to be 7,380,86.",
+          "document": "Customer's country/region code, which can be obtained via the  [GetCountryCodes API](https://www.tencentcloud.com/document/product/1085/51416), such as \"852\".\nParameter value is not allowed to be 7,380,86.",
           "example": "852",
           "member": "string",
           "name": "CountryCode",
@@ -924,7 +924,7 @@
         },
         {
           "disabled": false,
-          "document": "Customer's ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.",
+          "document": "Customer's ISO2 standard country/region code, which can be obtained via the [GetCountryCodes API](https://www.tencentcloud.com/document/product/1085/51416). It should correspond to the `CountryCode` field, such as `HK`.",
           "example": "HK",
           "member": "string",
           "name": "Area",
@@ -934,7 +934,7 @@
         {
           "disabled": false,
           "document": "Extension field, which is left empty by default.",
-          "example": "**********",
+          "example": "other info",
           "member": "string",
           "name": "Extended",
           "required": false,
@@ -942,8 +942,8 @@
         },
         {
           "disabled": false,
-          "document": "Verification code. \nIt will be used to verify the validity of the mobile number you provide. \nWhen the interface is requested for the first time, a null value can be passed in. The interface will send a 6-digit verification code by SMS to the mobile number you provide, and you need to pass it in again together with other parameters after you receive it.",
-          "example": "123456",
+          "document": "VerifyCode. This field is required. \nUse the [SendVerifyCode API](https://www.tencentcloud.com/document/product/1085/65907) to obtain the verifycode.The SendVerifyCode API sends a 6-digit verifycode to your specified mobile number via SMS. After receiving it, you need to pass it along with other parameters.",
+          "example": "584265",
           "member": "string",
           "name": "VerifyCode",
           "required": false,
@@ -958,7 +958,7 @@
         {
           "disabled": false,
           "document": "Account UIN",
-          "example": "无",
+          "example": "200000000000",
           "member": "string",
           "name": "Uin",
           "output_required": true,
@@ -1992,7 +1992,7 @@
           "name": "C",
           "output_required": true,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": true,
@@ -2002,7 +2002,7 @@
           "name": "M",
           "output_required": true,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",

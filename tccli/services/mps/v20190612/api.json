@@ -1383,7 +1383,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The mode. Valid values:\n<li>`subtitle-stream`: Add a subtitle track.</li>\n<li>`close-caption-708`: Embed CEA-708 subtitles in SEI frames.</li>\n<li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The mode. Valid values:\n<li>`subtitle-stream`: Add a subtitle track.</li>\n<li>`close-caption-708`: Embed CEA-708 subtitles in SEI frames.</li>\n<li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "string",
           "name": "Type",
@@ -1394,13 +1394,24 @@
         },
         {
           "disabled": false,
-          "document": "The subtitle file.\nNote: This field may return·null, indicating that no valid values can be obtained.",
+          "document": "The subtitle file.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "无",
           "member": "MediaInputInfo",
           "name": "Subtitle",
           "output_required": false,
           "required": false,
           "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Subtitle name.\t\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "\"\"",
+          "member": "string",
+          "name": "SubtitleName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": true
         }
       ],
@@ -11876,7 +11887,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Super-resolution configuration.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Super-resolution configuration.\n",
           "example": "无",
           "member": "SuperResolutionConfig",
           "name": "SuperResolution",
@@ -11887,7 +11898,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Color enhancement configuration.\n",
           "example": "无",
           "member": "ColorEnhanceConfig",
           "name": "ColorEnhance",
@@ -11898,7 +11909,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Detail enhancement configuration.\n",
           "example": "无",
           "member": "SharpEnhanceConfig",
           "name": "SharpEnhance",
@@ -11909,7 +11920,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Face enhancement configuration.\n",
           "example": "无",
           "member": "FaceEnhanceConfig",
           "name": "FaceEnhance",
@@ -17441,7 +17452,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Live stream processing result type, including:\n<li>AiReviewResult: content moderation result;</li>\n<li>AiRecognitionResult: content recognition result;</li>\n<li>LiveRecordResult: live recording result;</li>\n<li>ProcessEof: live stream processing result.</li>",
+          "document": "Live stream processing result type, including:\n<li>AiReviewResult: content auditing result.</li>\n<li>AiRecognitionResult: content recognition result.</li>\n<li>LiveRecordResult: live recording result.</li>\n<li>AiQualityControlResult: media quality inspection result.</li>\n<li>ProcessEof: live stream processing result.</li>",
           "example": "ProcessEof",
           "member": "string",
           "name": "NotificationType",
@@ -17461,7 +17472,7 @@
         },
         {
           "disabled": false,
-          "document": "Information of a live stream processing error, which is valid when `NotificationType` is `ProcessEof`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Information of a live stream processing error, which is valid when `NotificationType` is `ProcessEof`.\nNote: when this field return null, means no valid values can be obtained.",
           "example": "无",
           "member": "LiveStreamProcessErrorInfo",
           "name": "ProcessEofInfo",
@@ -17471,7 +17482,7 @@
         },
         {
           "disabled": false,
-          "document": "Content audit result, which is valid when `NotificationType` is `AiReviewResult`.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Content audit result, which is valid when `NotificationType` is `AiReviewResult`.\nNote: when this field return null, means no valid values can be obtained.",
           "example": "无",
           "member": "LiveStreamAiReviewResultInfo",
           "name": "AiReviewResultInfo",
@@ -17491,7 +17502,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Content analysis result, which is valid if `NotificationType` is `AiAnalysisResult`.",
           "example": "无",
           "member": "LiveStreamAiAnalysisResultInfo",
           "name": "AiAnalysisResultInfo",
@@ -17501,7 +17512,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Media quality inspection result, which is valid if `NotificationType` is `AiQualityControlResult`.",
           "example": "无",
           "member": "LiveStreamAiQualityControlResultInfo",
           "name": "AiQualityControlResultInfo",
@@ -17511,7 +17522,7 @@
         },
         {
           "disabled": false,
-          "document": "Live recording result is valid when NotificationType is LiveRecordResult.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Live recording result is valid when NotificationType is LiveRecordResult.\nNote: when this field return null, means no valid values can be obtained.",
           "example": "无",
           "member": "LiveStreamRecordResultInfo",
           "name": "LiveRecordResultInfo",
@@ -17538,6 +17549,26 @@
           "output_required": true,
           "type": "string",
           "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "- Expiration time, event notification signature expiration UNIX timestamp. - By default, notifications sent by MPS expire after 10 minutes. If the expiration time specified has elapsed, a notification will be considered invalid. This can prevent replay attacks. - The format of Timestamp is a decimal UNIX timestamp, which is the number of seconds that have elapsed since January 1, 1970 (midnight UTC/GMT).\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "int64",
+          "name": "Timestamp",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Event notification security signature. Sign = MD5 (Timestamp + NotifyKey). Note: Media Processing Service concatenates Timestamp and NotifyKey from TaskNotifyConfig as a string and calculates the Sign value through MD5. This value is included in the notification message. Your backend server can verify whether the Sign is correct using the same algorithm, to confirm whether the message is indeed from the Media Processing Service backend.\n\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "example": "无",
+          "member": "string",
+          "name": "Sign",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
