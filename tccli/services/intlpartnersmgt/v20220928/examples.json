@@ -24,6 +24,14 @@
         "title": "Applying to create a customer account"
       }
     ],
+    "CreateAndSendClientInvitationMail": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateAndSendClientInvitationMail\n<Common request parameters>\n\n{\n    \"Email\": \"abc@gmail.com\"\n}",
+        "output": "{\n    \"Response\": {\n        \"InvitationLink\": \"https://www.tencentcloud.com/reseller-customer/invitation?RegisterToken=28c******2f\",\n        \"RequestId\": \"91158930-****-496f-****-8f32f5edabcc\"\n    }\n}",
+        "title": "Creating an Invitation Link for the Customer"
+      }
+    ],
     "DescribeBillDetail": [
       {
         "document": "This example shows you how to query the customer bill details.\n\t\nPOST / HTTP/1.1\n\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomerBillDetail\n<Common request parameters>\n\n",
