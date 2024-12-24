@@ -8942,6 +8942,24 @@
           "name": "ImageSetRequired",
           "required": false,
           "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to synchronize as an encrypted custom image.\nDefault value is `false`.\nSynchronization to an encrypted custom image is only supported within the same region.",
+          "example": "false",
+          "member": "bool",
+          "name": "Encrypt",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "KMS key ID used when synchronizing to an encrypted custom image. \nThis parameter is valid only synchronizing to an encrypted image.\nIf KmsKeyId is not specified, the default CBS cloud product KMS key is used.",
+          "example": "2bb53791-c2e9-4c42-8772-ecf135a1d92x",
+          "member": "string",
+          "name": "KmsKeyId",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
