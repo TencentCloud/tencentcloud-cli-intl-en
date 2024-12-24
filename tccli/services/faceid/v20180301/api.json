@@ -5133,7 +5133,7 @@
         },
         {
           "disabled": false,
-          "document": "Detection mode, parameter values are as follows:\n1: OCR+living detection & face comparison;\n2: Living detection & face comparison;\n3: Living detection;\nThe default value is 2.\nExample value: 3",
+          "document": "Detection mode, parameter values are as follows:\n1: OCR+living detection & face comparison;\n2: Living detection & face comparison;\n3: Living detection;\n4: OCR;\nThe default value is 2.\nExample value: 3",
           "example": "1",
           "member": "int64",
           "name": "CheckMode",
