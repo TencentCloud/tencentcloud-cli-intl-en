@@ -90,6 +90,14 @@
         "title": "Creating an image sprite generating template"
       }
     ],
+    "CreateLiveRecordTemplate": [
+      {
+        "document": "This example shows you how to create a live streaming recording template",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateLiveRecordTemplate\n<Common request parameters>\n\n{\n    \"HLSConfigure\": {\n        \"ItemDuration\": 10,\n        \"Interval\": 3600\n    },\n    \"Name\": \"Template 1\",\n    \"Comment\": \"test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Definition\": 20001,\n        \"RequestId\": \"12ae8cxc-dce3-4151-9cyt-5594145287e1\"\n    }\n}",
+        "title": "Creating a Live Streaming Recording Template"
+      }
+    ],
     "CreatePersonSample": [
       {
         "document": "2",
@@ -234,6 +242,14 @@
         "title": "Deleting an image sprite generating template"
       }
     ],
+    "DeleteLiveRecordTemplate": [
+      {
+        "document": "This example shows you how to delete a live recording template.",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteLiveRecordTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 20001\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8cxc-dce3-4151-9cyt-5594145287e1\"\n    }\n}",
+        "title": "Deleting a Live Recording Template"
+      }
+    ],
     "DeletePersonSample": [
       {
         "document": " ",
@@ -376,6 +392,14 @@
         "input": "https://mps.tencentcloudapi.com/?Action=DescribeImageSpriteTemplates\n&Definitions.0=10001\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"ImageSpriteTemplateSet\": [\n            {\n                \"Definition\": 10001,\n                \"Name\": \"Image sprite generating template 1\",\n                \"CreateTime\": \"2018-10-01T10:00:00Z\",\n                \"UpdateTime\": \"2018-10-01T10:00:00Z\",\n                \"Height\": 540,\n                \"SampleType\": \"Percent\",\n                \"SampleInterval\": 10,\n                \"RowCount\": 10,\n                \"ColumnCount\": 5,\n                \"ResolutionAdaptive\": \"xx\",\n                \"FillType\": \"black\",\n                \"Comment\": \"\",\n                \"Type\": \"Preset\",\n                \"Width\": 960\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Obtaining a List of Sprite Templates"
+      }
+    ],
+    "DescribeLiveRecordTemplates": [
+      {
+        "document": "This example shows you how to get a live streaming recording template",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeLiveRecordTemplates\n<Common request parameters>\n\n{\n    \"Definitions\": [\n        20001\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"LiveRecordTemplateSet\": [\n            {\n                \"Definition\": 20001,\n                \"HLSConfigure\": {\n                    \"ItemDuration\": 10,\n                    \"Interval\": 3600\n                },\n                \"Name\": \"Template 1\",\n                \"Comment\": \"\",\n                \"Type\": \"Preset\",\n                \"CreateTime\": \"2023-05-04T10:00:00Z\",\n                \"UpdateTime\": \"2023-05-04T10:00:00Z\"\n            }\n        ],\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
+        "title": "Getting a Live Streaming Recording Template"
       }
     ],
     "DescribeMediaMetaData": [
@@ -642,6 +666,14 @@
         "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyImageSpriteTemplate\n<Common request parameters>\n\n{\n    \"ColumnCount\": \"10\",\n    \"Definition\": \"10001\",\n    \"Name\": \"Image sprite generating template 1\",\n    \"RowCount\": \"5\",\n    \"SampleType\": \"Percent\",\n    \"Height\": \"96\",\n    \"Width\": \"54\",\n    \"SampleInterval\": \"10\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8d8e-dce3-4151-9d4b-5594145287e1\"\n    }\n}",
         "title": "Modifying an image sprite generating template"
+      }
+    ],
+    "ModifyLiveRecordTemplate": [
+      {
+        "document": "This example shows you how to modify a live recording template.",
+        "input": "POST / HTTP/1.1\nHost: mps.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyLiveRecordTemplate\n<Common request parameters>\n\n{\n    \"Definition\": 20001,\n    \"Name\": \"test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"12ae8cxc-dce3-4151-9cyt-5594145287e1\"\n    }\n}",
+        "title": "Modifying a Live Recording Template"
       }
     ],
     "ModifyPersonSample": [
