@@ -11118,7 +11118,26 @@
     },
     "CreateDomainVerifyRecordRequest": {
       "document": "CreateDomainVerifyRecord request structure.",
-      "members": [],
+      "members": [
+        {
+          "disabled": false,
+          "document": "Need to access the VOD acceleration domain name.",
+          "example": "abc.com",
+          "member": "string",
+          "name": "Domain",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2024, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
+          "example": "1490012345",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
+        }
+      ],
       "type": "object"
     },
     "CreateDomainVerifyRecordResponse": {
@@ -38715,6 +38734,15 @@
           "name": "Domain",
           "required": true,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "<b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2024, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>",
+          "example": "1490012345",
+          "member": "uint64",
+          "name": "SubAppId",
+          "required": false,
+          "type": "int"
         },
         {
           "disabled": false,
