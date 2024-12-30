@@ -1718,6 +1718,54 @@
         "title": "Querying the price of creating a direct connect gateway"
       }
     ],
+    "InquiryPriceAllocateAddresses": [
+      {
+        "document": "This example shows you how to inquire about an elastic IP billed by hourly traffic.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceAllocateAddresses\n<Common request parameters>\n\n{\n    \"AddressType\": \"EIP\",\n    \"InternetMaxBandwidthOut\": \"1\",\n    \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"AddressPrice\": {\n                \"ChargeUnit\": \"HOUR\",\n                \"UnitPrice\": 0.8,\n                \"DiscountPrice\": 0.8\n            }\n        },\n        \"RequestId\": \"90d508a8-9ee8-4220-9c8e-9faeedce3ab4\"\n    }\n}",
+        "title": "Inquiring About an Elastic IP Billed by Hourly Traffic"
+      },
+      {
+        "document": "This example shows you how to inquire about an elastic IP billed by hourly bandwidth.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceAllocateAddresses\n<Common request parameters>\n\n{\n    \"AddressType\": \"EIP\",\n    \"InternetMaxBandwidthOut\": \"1\",\n    \"InternetChargeType\": \"BANDWIDTH_POSTPAID_BY_HOUR\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"AddressPrice\": {\n                \"UnitPrice\": 0.063,\n                \"DiscountPrice\": 0.063,\n                \"ChargeUnit\": \"HOUR\"\n            }\n        },\n        \"RequestId\": \"ebc826be-ec1a-4522-b08f-8da3fe5adedc\"\n    }\n}",
+        "title": "Hourly Bandwidth Billing Mode Elastic IP Inquiry"
+      },
+      {
+        "document": "This example shows you how to inquire about Elastic IP in monthly bandwidth billing mode.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceAllocateAddresses\n<Common request parameters>\n\n{\n    \"AddressChargePrepaid\": {\n        \"Period\": 1\n    },\n    \"AddressType\": \"EIP\",\n    \"InternetChargeType\": \"BANDWIDTH_PREPAID_BY_MONTH\",\n    \"InternetMaxBandwidthOut\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"AddressPrice\": {\n                \"OriginalPrice\": 20,\n                \"DiscountPrice\": 20\n            }\n        },\n        \"RequestId\": \"136605f0-ca35-4d22-9b77-e053168fa25f\"\n    }\n}",
+        "title": "Monthly Bandwidth Billing Mode Elastic IP Inquiry"
+      }
+    ],
+    "InquiryPriceModifyAddressesBandwidth": [
+      {
+        "document": "Hourly traffic EIP bandwidth modification inquiry.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceModifyAddressesBandwidth\n<Common request parameters>\n\n{\n    \"InternetMaxBandwidthOut\": \"2\",\n    \"AddressIds\": [\n        \"eip-hxlqja90\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"AddressPrice\": {\n                \"UnitPrice\": 0.8,\n                \"DiscountPrice\": 0.8,\n                \"ChargeUnit\": \"HOUR\"\n            }\n        },\n        \"RequestId\": \"7daad6af-50de-4df5-8238-0d76c7be62e1\"\n    }\n}",
+        "title": "Modifying Bandwidth Inquiry for Hourly Traffic EIP"
+      },
+      {
+        "document": "This example shows you how to modify the bandwidth inquiry for hourly bandwidth EIP.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceModifyAddressesBandwidth\n<Common request parameters>\n\n{\n    \"AddressIds\": [\n        \"eip-3hwtklhj\"\n    ],\n    \"InternetMaxBandwidthOut\": 5\n}",
+        "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"AddressPrice\": {\n                \"UnitPrice\": 0.315,\n                \"DiscountPrice\": 0.315,\n                \"ChargeUnit\": \"HOUR\"\n            }\n        },\n        \"RequestId\": \"db071565-27cb-482a-a3fe-1c7bba77e4a9\"\n    }\n}",
+        "title": "Modifying Bandwidth Inquiry for Hourly Bandwidth EIP"
+      },
+      {
+        "document": "This example shows you how to modify the bandwidth inquiry for monthly bandwidth EIP.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceModifyAddressesBandwidth\n<Common request parameters>\n\n{\n    \"AddressIds\": [\n        \"eip-iu4ml5pp\"\n    ],\n    \"InternetMaxBandwidthOut\": 5\n}",
+        "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"AddressPrice\": {\n                \"OriginalPrice\": 95,\n                \"DiscountPrice\": 95\n            }\n        },\n        \"RequestId\": \"ddf8edf2-0457-4ba7-b2ab-e66e98823cc6\"\n    }\n}",
+        "title": "Modifying Bandwidth Inquiry for Monthly Bandwidth EIP"
+      }
+    ],
+    "InquiryPriceRenewAddresses": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: InquiryPriceRenewAddresses\n<Common request parameters>\n\n{\n    \"AddressIds\": [\n        \"eip-iu4ml5pp\"\n    ],\n    \"AddressChargePrepaid\": {\n        \"Period\": 12\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Price\": {\n            \"AddressPrice\": {\n                \"OriginalPrice\": 240,\n                \"DiscountPrice\": 240\n            }\n        },\n        \"RequestId\": \"84658acc-bdb9-4a3e-a37a-84a2e0c14e44\"\n    }\n}",
+        "title": "Monthly Bandwidth Billing Mode EIP Renewal Inquiry"
+      }
+    ],
     "InquiryPriceRenewVpnGateway": [
       {
         "document": " ",

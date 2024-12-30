@@ -5237,7 +5237,7 @@
         {
           "disabled": false,
           "document": "The SDKAppId of TRTC should be the same as the SDKAppId corresponding to the task room.",
-          "example": "1234",
+          "example": "1600011111",
           "member": "uint64",
           "name": "SdkAppId",
           "required": true,
@@ -5246,7 +5246,7 @@
         {
           "disabled": false,
           "document": "The unique Id of the task, will return after successfully starting the task.",
-          "example": "1234",
+          "example": "HMLm5HWNuUAXSb0gTEOx0z1x+nLMZNjXrY3keyUSvu7uu8mF9O656uNtbUtvaWLkpMY134jTN2Ix4vuqgOJ68nQ8tho3ri",
           "member": "string",
           "name": "TaskId",
           "required": true,
@@ -5269,6 +5269,15 @@
           "name": "Volume",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to pause, the default value of false indicates no pause. During the pause, the task is still in progress and is billed. If you want to terminate the task, please call the stop interface.",
+          "example": "false",
+          "member": "bool",
+          "name": "IsPause",
+          "required": false,
+          "type": "bool"
         }
       ],
       "type": "object"

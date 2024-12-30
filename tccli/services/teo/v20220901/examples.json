@@ -106,6 +106,26 @@
         "title": "Creating a custom response page"
       }
     ],
+    "CreateDnsRecord": [
+      {
+        "document": " Create a DNS record under the site with ZoneId \"zone-225qgrnvbi9w\". The record should have the name \"www.example.com\", be of type \"A\", contain the value \"1.2.3.4\", and have a TTL (Time to Live) of 60 seconds.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDnsRecord\n<Common request parameters>\n\n{\n    \"Priority\": 1,\n    \"Name\": \"www.example.com\",\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"Content\": \"1.2.3.4\",\n    \"TTL\": 300,\n    \"Type\": \"A\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\"\n    }\n}",
+        "title": "Creating a DNS record"
+      },
+      {
+        "document": "Create a DNS record under the site with ZoneId \"zone-225qgrnvbi9w\". The record should have the name \"www.example.com\", be of type \"A\", contain the value \"1.2.3.4\", have a TTL (Time to Live) of 60 seconds, and a record weight of 100.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDnsRecord\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"Name\": \"www.example.com\",\n    \"Type\": \"A\",\n    \"Content\": \"1.2.3.4\",\n    \"TTL\": 60,\n    \"Weight\": 100\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"RecordId\": \"record-225rcy8bw85g\"\n    }\n}",
+        "title": "Create a DNS record to assign weights"
+      },
+      {
+        "document": "在 ZoneId 为 zone-225qgrnvbi9w 的站点下，创建一个记录名为 www.example.com，记录类型为 A，解析线路为北京（CN.BJ），记录内容为1.2.3.4，缓存时间为60秒的 DNS 记录。",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateDnsRecord\n<common request parameters>\n\n{\n    \"ZoneId\": \"zone-225qgrnvbi9w\",\n    \"Name\": \"www.example.com\",\n    \"Type\": \"A\",\n    \"Location\": \"CN.BJ\",\n    \"Content\": \"1.2.3.4\",\n    \"TTL\": 60\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"5e0a2b4e-df6d-4d2a-ac39-1706cbf8a707\",\n        \"RecordId\": \"record-225rcy8bw85g\"\n    }\n}",
+        "title": "创建分配解析线路的 DNS 记录"
+      }
+    ],
     "CreateFunction": [
       {
         "document": " ",
@@ -386,6 +406,14 @@
         "title": "Deleting a custom response page"
       }
     ],
+    "DeleteDnsRecords": [
+      {
+        "document": "Delete the DNS records with IDs record-25ryzh92h8qh and record-3suf7slrsobg under the site with ZoneId zone-25ryyvog1qih.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteDnsRecords\n<Common request parameters>\n\n{\n    \"RecordIds\": [\n        \"record-25ryzh92h8qh\",\n        \"record-3suf7slrsobg\"\n    ],\n    \"ZoneId\": \"zone-25ryyvog1qih\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"6ef60bec-0242-43af-bb20-270359fb54a7\"\n    }\n}",
+        "title": "Delete DNS Records"
+      }
+    ],
     "DeleteFunction": [
       {
         "document": " ",
@@ -592,6 +620,26 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeCustomErrorPages\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-3swlomhssdcb\",\n    \"EnvId\": \"env-2kpeomhisdwb\"\n}",
         "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"Records\": [\n            {\n                \"ConfigGroupVersionInfos\": [\n                    {\n                        \"VersionId\": \"ver-2kplomhiqdcb\",\n                        \"VersionNumber\": \"1.0\",\n                        \"GroupId\": \"cg-2kplomhisdcb\",\n                        \"GroupType\": \"l7_acceleration\",\n                        \"Description\": \"Test version\",\n                        \"Status\": \"active\",\n                        \"CreateTime\": \"2020-09-22T00:00:00+00:00\"\n                    }\n                ],\n                \"RecordId\": \"dr-2nvehs3fa40u\",\n                \"DeployTime\": \"2023-09-22T00:00:00+00:00\",\n                \"Status\": \"success\",\n                \"Message\": \"Released successfully.\"\n            }\n        ],\n        \"RequestId\": \"9bd9c732-8f9a-4cd3-a3e0-1c2db5e53631\"\n    }\n}",
         "title": "Query Version Release History"
+      }
+    ],
+    "DescribeDnsRecords": [
+      {
+        "document": "Query the DNS record list for the site with ZoneId zone-2zo8myp3av8i, for the record with ID record-3277epj0rm2y, and sort the records in descending order by creation time.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDnsRecords\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2zo8myp3av8i\",\n    \"Offset\": 0,\n    \"Limit\": 100,\n    \"Filters\": [\n        {\n            \"Fuzzy\": false,\n            \"Values\": [\n                \"record-3277epj0rm2y\"\n            ],\n            \"Name\": \"id\"\n        }\n    ],\n    \"SortBy\": \"created-on\",\n    \"SortOrder\": \"desc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\",\n        \"DnsRecords\": [\n            {\n                \"ZoneId\": \"zone-2zo8myp3av8i\",\n                \"RecordId\": \"record-3277epj0rm2y\",\n                \"Name\": \"test.example.com\",\n                \"Type\": \"A\",\n                \"Location\": \"Default\",\n                \"Content\": \"1.1.1.1\",\n                \"TTL\": 300,\n                \"Weight\": -1,\n                \"Priority\": 5,\n                \"Status\": \"enable\",\n                \"CreatedOn\": \"2024-09-18T05:03:46Z\",\n                \"ModifiedOn\": \"2024-09-18T05:03:46Z\"\n            }\n        ]\n    }\n}",
+        "title": "Query the DNS record list for a specified record ID."
+      },
+      {
+        "document": "Perform a fuzzy query for DNS records with the name 'example' under the site with ZoneId zone-2zo8myp3av8i, and sort the records in ascending order by record name.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDnsRecords\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2zo8myp3av8i\",\n    \"Offset\": 0,\n    \"Limit\": 100,\n    \"Filters\": [\n        {\n            \"Fuzzy\": true,\n            \"Values\": [\n                \"example\"\n            ],\n            \"Name\": \"name\"\n        }\n    ],\n    \"SortBy\": \"name\",\n    \"SortOrder\": \"asc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\",\n        \"DnsRecords\": [\n            {\n                \"ZoneId\": \"zone-2zo8myp3av8i\",\n                \"RecordId\": \"record-3277epj0rm2y\",\n                \"Name\": \"test.example.com\",\n                \"Type\": \"A\",\n                \"Location\": \"Default\",\n                \"Content\": \"1.1.1.1\",\n                \"TTL\": 300,\n                \"Weight\": 40,\n                \"Priority\": 5,\n                \"Status\": \"enable\",\n                \"CreatedOn\": \"2024-09-18T05:03:46Z\",\n                \"ModifiedOn\": \"2024-09-18T05:03:46Z\"\n            },\n            {\n                \"ZoneId\": \"zone-2zo8myp3av8i\",\n                \"RecordId\": \"record-3277epj0rm2y\",\n                \"Name\": \"test.example.com\",\n                \"Type\": \"A\",\n                \"Location\": \"Default\",\n                \"Content\": \"2.2.2.2\",\n                \"TTL\": 300,\n                \"Weight\": 60,\n                \"Priority\": 5,\n                \"Status\": \"enable\",\n                \"CreatedOn\": \"2024-09-18T05:03:46Z\",\n                \"ModifiedOn\": \"2024-09-18T05:03:46Z\"\n            }\n        ]\n    }\n}",
+        "title": "Fuzzy query the DNS record list for the specified record name."
+      },
+      {
+        "document": "Query the DNS record list with the record type CNAME under the site with ZoneId zone-2zo8myp3av8i, and sort the records in ascending order by record content.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeDnsRecords\n<Common request parameters>\n\n{\n    \"ZoneId\": \"zone-2zo8myp3av8i\",\n    \"Offset\": 0,\n    \"Limit\": 100,\n    \"Filters\": [\n        {\n            \"Fuzzy\": false,\n            \"Values\": [\n                \"CNAME\"\n            ],\n            \"Name\": \"type\"\n        }\n    ],\n    \"SortBy\": \"content\",\n    \"SortOrder\": \"asc\"\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 2,\n        \"RequestId\": \"3c140219-cfe9-470e-b241-907877d6fb03\",\n        \"DnsRecords\": [\n            {\n                \"ZoneId\": \"zone-2zo8myp3av8i\",\n                \"RecordId\": \"record-3277epj0rm2y\",\n                \"Name\": \"test.example.com\",\n                \"Type\": \"CNAME\",\n                \"Location\": \"CN.BJ\",\n                \"Content\": \"test1.eo.dnse2.com\",\n                \"TTL\": 300,\n                \"Weight\": -1,\n                \"Priority\": 0,\n                \"Status\": \"enable\",\n                \"CreatedOn\": \"2024-09-18T05:03:46Z\",\n                \"ModifiedOn\": \"2024-09-18T05:03:46Z\"\n            },\n            {\n                \"ZoneId\": \"zone-2zo8myp3av8i\",\n                \"RecordId\": \"record-3277epj0rm2y\",\n                \"Name\": \"test.example.com\",\n                \"Type\": \"CNAME\",\n                \"Location\": \"CN.FJ\",\n                \"Content\": \"test2.eo.dnse2.com\",\n                \"TTL\": 300,\n                \"Weight\": -1,\n                \"Priority\": 0,\n                \"Status\": \"enable\",\n                \"CreatedOn\": \"2024-09-18T05:03:46Z\",\n                \"ModifiedOn\": \"2024-09-18T05:03:46Z\"\n            }\n        ]\n    }\n}",
+        "title": "Query the DNS record list for the specified record type."
       }
     ],
     "DescribeEnvironments": [
@@ -1040,6 +1088,34 @@
         "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyCustomErrorPage\n<Common request parameters>\n\n{\n    \"PageId\": \"p-2kplomhisdcb\",\n    \"ZoneId\": \"zone-2kplomhisdcb\",\n    \"Name\": \"Web Protection Custom Response Page\",\n    \"Description\": \"web protection custom response page\",\n    \"ContentType\": \"application/json\",\n    \"Content\": \"{\\\"title\\\": \\\"custom response page title\\\",\\\"content\\\": \\\"custom response page content\\\"}\"\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"9bd9c732-8f9a-4cd3-a3e8-1c9db5e53631\"\n    }\n}",
         "title": "Modifying a custom response page"
+      }
+    ],
+    "ModifyDnsRecords": [
+      {
+        "document": "Under the site with ZoneId zone-225qgrnvbi9w, change the record name of the DNS record with record ID record-3d5dg39c to eo-test1.com, change the record type to CNAME, and change the record content to eo-test1.c4games.com.eo.dnse2.com; change the record name of the DNS record with record ID record-gkd9gyrv to eo-test2.com, change the record type to A, and change the record content to 1.2.3.4.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDnsRecords\n<Common request parameters>\n\n{\n    \"DnsRecords\": [\n        {\n            \"RecordId\": \"record-3d5dg39c\",\n            \"Name\": \"eo-test1.com\",\n            \"Type\": \"CNAME\",\n            \"Content\": \"eo-test1.c4games.com.eo.dnse2.com\"\n        },\n        {\n            \"RecordId\": \"record-gkd9gyrv\",\n            \"Name\": \"eo-test2.com\",\n            \"Type\": \"A\",\n            \"Content\": \"1.2.3.4\"\n        }\n    ],\n    \"ZoneId\": \"zone-20hzkd4rdmy0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d08bed0d-15bf-4d65-ab56-906aee0c845\"\n    }\n}",
+        "title": "Batch modify DNS records for specified record IDs."
+      },
+      {
+        "document": "Under the site with ZoneId zone-225qgrnvbi9w, change the record weight of the DNS record with record ID record-3d5dg39c to 40; change the record weight of the DNS record with record ID record-gkd9gyrv to 60.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDnsRecords\n<Common request parameters>\n\n{\n    \"DnsRecords\": [\n        {\n            \"RecordId\": \"record-3d5dg39c\",\n            \"Weight\": 40\n        },\n        {\n            \"RecordId\": \"record-gkd9gyrv\",\n            \"Weight\": 60\n        }\n    ],\n    \"ZoneId\": \"zone-20hzkd4rdmy0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d08bed0d-15bf-4d65-ab56-906aee0c845\"\n    }\n}",
+        "title": "Batch modify the record weight of DNS records for specified record IDs."
+      },
+      {
+        "document": "Under the site with ZoneId zone-225qgrnvbi9w, change the resolution line of the DNS record with record ID record-3d5dg39c to Beijing (CN.BJ), and change the record content to eo-test1.c4games.com.eo.dnse2.com; change the resolution line of the DNS record with record ID record-gkd9gyrv to Fujian (CN.FJ), and change the record content to eo-test2.c4games.com.eo.dnse2.com.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDnsRecords\n<Common request parameters>\n\n{\n    \"DnsRecords\": [\n        {\n            \"RecordId\": \"record-3d5dg39c\",\n            \"Location\": \"CN.BJ\",\n            \"Content\": \"eo-test1.c4games.com.eo.dnse2.com\"\n        },\n        {\n            \"RecordId\": \"record-gkd9gyrv\",\n            \"Location\": \"CN.FJ\",\n            \"Content\": \"eo-test2.c4games.com.eo.dnse2.com\"\n        }\n    ],\n    \"ZoneId\": \"zone-20hzkd4rdmy0\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"d08bed0d-15bf-4d65-ab56-906aee0c845\"\n    }\n}",
+        "title": "Batch modify the resolution line and record content of DNS records for specified record IDs."
+      }
+    ],
+    "ModifyDnsRecordsStatus": [
+      {
+        "document": " Under the site with ZoneId zone-25ryyvog1qih, change the status of DNS records with record IDs record-25ryzh92h8qh and record-dldu75sgz4r1 to enabled, and change the status of DNS records with record IDs record-gkd9gyrvk8d7 and record-lgubhs6rf9s3 to disabled.",
+        "input": "POST / HTTP/1.1\nHost: teo.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyDnsRecordsStatus\n<Common request parameters>\n\n{\n    \"RecordsToEnable\": [\n        \"record-25ryzh92h8qh\",\n        \"record-dldu75sgz4r1\"\n    ],\n    \"RecordsToDisable\": [\n        \"record-gkd9gyrvk8d7\",\n        \"record-lgubhs6rf9s3\"\n    ],\n    \"ZoneId\": \"zone-25ryyvog1qih\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"952c708d-abaf-464c-84cf-d1447887cf65\"\n    }\n}",
+        "title": "Batch modify DNS record status."
       }
     ],
     "ModifyFunction": [

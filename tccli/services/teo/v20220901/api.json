@@ -77,6 +77,13 @@
       "output": "CreateCustomizeErrorPageResponse",
       "status": "online"
     },
+    "CreateDnsRecord": {
+      "document": "This API is used to create a DNS record.",
+      "input": "CreateDnsRecordRequest",
+      "name": "Creates a DNS record",
+      "output": "CreateDnsRecordResponse",
+      "status": "online"
+    },
     "CreateFunction": {
       "document": "This API is used to create and deploy an edge function to EdgeOne edge nodes.",
       "input": "CreateFunctionRequest",
@@ -215,6 +222,13 @@
       "input": "DeleteCustomErrorPageRequest",
       "name": "Deletes a custom response page",
       "output": "DeleteCustomErrorPageResponse",
+      "status": "online"
+    },
+    "DeleteDnsRecords": {
+      "document": "This API is used to delete DNS records in batches.",
+      "input": "DeleteDnsRecordsRequest",
+      "name": "Deletes DNS records in batches",
+      "output": "DeleteDnsRecordsResponse",
       "status": "online"
     },
     "DeleteFunction": {
@@ -397,6 +411,13 @@
       "input": "DescribeDeployHistoryRequest",
       "name": "Query Version Release History",
       "output": "DescribeDeployHistoryResponse",
+      "status": "online"
+    },
+    "DescribeDnsRecords": {
+      "document": "This API is used to query DNS records. Paging, sorting and filtering are supported.",
+      "input": "DescribeDnsRecordsRequest",
+      "name": "Queries DNS records",
+      "output": "DescribeDnsRecordsResponse",
       "status": "online"
     },
     "DescribeEnvironments": {
@@ -726,6 +747,20 @@
       "input": "ModifyCustomErrorPageRequest",
       "name": "Modifies a custom response page",
       "output": "ModifyCustomErrorPageResponse",
+      "status": "online"
+    },
+    "ModifyDnsRecords": {
+      "document": "You can use this interface to batch modify DNS records.",
+      "input": "ModifyDnsRecordsRequest",
+      "name": "ModifyDnsRecords",
+      "output": "ModifyDnsRecordsResponse",
+      "status": "online"
+    },
+    "ModifyDnsRecordsStatus": {
+      "document": "You can use this interface to batch modify the status of DNS records, enabling and disabling records in bulk.",
+      "input": "ModifyDnsRecordsStatusRequest",
+      "name": "ModifyDnsRecordsStatus",
+      "output": "ModifyDnsRecordsStatusResponse",
       "status": "online"
     },
     "ModifyFunction": {
@@ -3922,6 +3957,106 @@
       ],
       "type": "object"
     },
+    "CreateDnsRecordRequest": {
+      "document": "CreateDnsRecord request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The site ID of the DNS record.",
+          "example": "zone-225qgrnvbi9w",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The DNS record name.If the domain name is in Chinese, Korean, or Japanese, it needs to be converted to Punycode before being entered.",
+          "example": "www.example.com",
+          "member": "string",
+          "name": "Name",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "DNS record types include:\n\n- A:Points the domain to an external IPv4 address, such as 8.8.8.8.\n- AAAA: Points the domain to an external IPv6 address.\n- MX: Used for mail servers. When multiple MX records exist, the one with the lowest priority value is preferred.\n- CNAME: Points the domain to another domain, which then resolves to the final IP address.\n- TXT: Provides identification and description for the domain, commonly used for domain verification and SPF records (anti-spam).\n- NS: If you need to delegate a subdomain to another DNS service provider, you need to add an NS record. NS records cannot be added to the root domain.\n- CAA: Specifies which Certificate Authorities (CAs) are allowed to issue certificates for the site.\n- SRV: Indicates that a specific server is using a particular service, commonly used in Microsoft's directory management systems.\n\nDifferent record types, such as SRV and CAA, have specific requirements for the host record name and record value format. For detailed descriptions and format examples of each record type, please refer to: [Introduction to DNS Record Types](https://www.tencentcloud.com/zh/document/product/1145/54764#2f681022-91ab-4a9e-ac3d-0a6c454d954e).",
+          "example": "A",
+          "member": "string",
+          "name": "Type",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "DNS record content should be filled in according to the corresponding Type value. If the domain name is in Chinese, Korean, or Japanese, it needs to be converted to Punycode before being entered.",
+          "example": "1.2.3.4",
+          "member": "string",
+          "name": "Content",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "DNS record resolution location, if not specified, default to \"Default,\" which means the default resolution location and is effective for all regions.\n- Resolution location configuration is only applicable when the Type (DNS record type) is A, AAAA, or CNAME.\n- Resolution location configuration is only available for Standard and Enterprise packages.\n\nFor the values, please refer to: [Resolution Lines and Corresponding Codes Enumeration](https://www.tencentcloud.com/zh/document/product/1145/67229).",
+          "example": "Default",
+          "member": "string",
+          "name": "Location",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "TTL (in seconds). The smaller the value, the faster the record changes take effect. Default value: 300",
+          "example": "60",
+          "member": "int64",
+          "name": "TTL",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "DNS record weight can be specified within the range of -1 to 100. Setting the weight to 0 means the record will not be resolved. If not specified, the default value is -1, indicating that no weight is set.\n\nWeight configuration is only applicable when the Type (DNS record type) is A, AAAA, or CNAME.\n\nNote: For the same subdomain, different DNS records on the same resolution line should either all have weights set or none should have weights set.",
+          "example": "100",
+          "member": "int64",
+          "name": "Weight",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The MX record priority parameter is only effective when the Type (DNS record type) is MX. The smaller the value, the higher the priority. Users can specify a value in the range of 0 to 50. If not specified, the default value is 0.",
+          "example": "10",
+          "member": "int64",
+          "name": "Priority",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateDnsRecordResponse": {
+      "document": "CreateDnsRecord response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The ID of the DNS record.",
+          "example": "record-225rcy8bw85g",
+          "member": "string",
+          "name": "RecordId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateFunctionRequest": {
       "document": "CreateFunction request structure.",
       "members": [
@@ -5811,6 +5946,42 @@
       ],
       "type": "object"
     },
+    "DeleteDnsRecordsRequest": {
+      "document": "DeleteDnsRecords request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The site ID of the DNS record to be deleted.",
+          "example": "zone-25ryyvog1qih",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of DNS record IDs to be deleted, with a maximum limit of 1000.",
+          "example": "[\"record-25ryzh92h8\"]\t",
+          "member": "string",
+          "name": "RecordIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteDnsRecordsResponse": {
+      "document": "DeleteDnsRecords response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteFunctionRequest": {
       "document": "DeleteFunction request structure.",
       "members": [
@@ -7455,6 +7626,107 @@
           "example": "无",
           "member": "DeployRecord",
           "name": "Records",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDnsRecordsRequest": {
+      "document": "DescribeDnsRecords request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The site ID of the DNS record.",
+          "example": "zone-20hyebgyfsko",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The page offset. Default value: 0",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The paginated query limit. Default value: 20. Maximum value: 1000.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The upper limit of Filters.Values is 20. The detailed filtering conditions are as follows: <li>id: Filter by DNS record ID, supports fuzzy query;</li><li>name: Filter by DNS record name, supports fuzzy query;</li><li>content: Filter by DNS record content, supports fuzzy query;</li><li>type: Filter by DNS record type, does not support fuzzy query. Options:<br> A: Point the domain name to an external IPv4 address, such as 8.8.8.8;<br> AAAA: Point the domain name to an external IPv6 address;<br> CNAME: Point the domain name to another domain name, which then resolves to the final IP address;<br> TXT: Identify and describe the domain name, often used for domain verification and SPF records (anti-spam);<br> NS: If you need to delegate subdomain resolution to another DNS service provider, you need to add an NS record. Root domains cannot add NS records;<br> CAA: Specify the CA that can issue certificates for this site;<br> SRV: Identify a server using a specific service, commonly used in Microsoft's directory management;<br> MX: Specify the recipient's mail server.</li><li>ttl: Filter by the time-to-live (TTL) of the record, does not support fuzzy query.</li>",
+          "example": "无",
+          "member": "AdvancedFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Sort criteria, with possible values:\n<li>content: DNS record content;</li>\n<li>created-on: DNS record creation time;</li>\n<li>name: DNS record name;</li>\n<li>ttl: Time-to-live (TTL);</li>\n<li>type: DNS record type.</li>\nThe default sorting is based on a combination of type and name attributes.",
+          "example": "recordName",
+          "member": "string",
+          "name": "SortBy",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List sorting order, with possible values:\n<li>asc: Ascending order;</li>\n<li>desc: Descending order.</li>\nThe default value is asc.",
+          "example": "asc",
+          "member": "string",
+          "name": "SortOrder",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The match mode. Values:\n<li>`all`: Return all records that match the specified filter.</li>\n<li>`any`: Return any record that matches the specified filter.</li>Default value: all.",
+          "example": "all",
+          "member": "string",
+          "name": "Match",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeDnsRecordsResponse": {
+      "document": "DescribeDnsRecords response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of DNS records.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of DNS records",
+          "example": "无",
+          "member": "DnsRecord",
+          "name": "DnsRecords",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
@@ -9953,6 +10225,144 @@
         }
       ],
       "usage": "out"
+    },
+    "DnsRecord": {
+      "document": "DNS record",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Site ID. \nNote: ZoneId is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.",
+          "example": "zone-20hyebgyfsko",
+          "member": "string",
+          "name": "ZoneId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DNS record ID.",
+          "example": "record-3d5dg39c",
+          "member": "string",
+          "name": "RecordId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DNS record name.",
+          "example": "www.a.com",
+          "member": "string",
+          "name": "Name",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DNS record type, with possible values: <li>A: Points the domain name to an external IPv4 address, such as 8.8.8.8;</li> <li>AAAA: Points the domain name to an external IPv6 address;</li> <li>MX: Used for mail servers. When there are multiple MX records, the lower the priority value, the higher the priority;</li> <li>CNAME: Points the domain name to another domain name, which then resolves to the final IP address;</li> <li>TXT: Identifies and describes the domain name, commonly used for domain verification and SPF records (anti-spam);</li> <li>NS: If you need to delegate the subdomain to another DNS service provider for resolution, you need to add an NS record. NS records cannot be added to the root domain;</li> <li>CAA: Specifies the CA that can issue certificates for this site;</li> <li>SRV: Identifies a server that uses a specific service, commonly used in Microsoft's directory management.</li>",
+          "example": "A",
+          "member": "string",
+          "name": "Type",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DNS record resolution line. If not specified, the default is Default, which means the default resolution line and is effective for all regions. The resolution line configuration is only applicable when Type (DNS record type) is A, AAAA, or CNAME. For values, please refer to: [Resolution Line and Corresponding Code Enumeration](https://www.tencentcloud.com/zh/document/product/1145/67229).",
+          "example": "Default",
+          "member": "string",
+          "name": "Location",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DNS record content. Fill in the corresponding content according to the Type value.",
+          "example": "1.1.1.1",
+          "member": "string",
+          "name": "Content",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cache time, with a range of 60~86400. The smaller the value, the faster the record modification takes effect in various regions. Unit: seconds.",
+          "example": "60",
+          "member": "int64",
+          "name": "TTL",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DNS record weight, with a range of -1~100. A value of -1 means no weight is assigned, and a value of 0 means no resolution. Weight configuration is only applicable when Type (DNS record type) is A, AAAA, or CNAME.",
+          "example": "100",
+          "member": "int64",
+          "name": "Weight",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "MX record priority, with a range of 0~50. The smaller the value, the higher the priority.",
+          "example": "10",
+          "member": "int64",
+          "name": "Priority",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "DNS record resolution status, with possible values: <li>enable: Effective;</li> <li>disable: Disabled.</li> Note: Status is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.",
+          "example": "enable",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The creation time.\nNote: CreatedOn is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.",
+          "example": "2020-09-22T00:00:00Z",
+          "member": "datetime_iso",
+          "name": "CreatedOn",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The modification time.\nNote: ModifiedOn is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.",
+          "example": "2020-09-22T00:00:00Z",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "DnsVerification": {
       "document": "",
@@ -13329,6 +13739,87 @@
     },
     "ModifyCustomErrorPageResponse": {
       "document": "ModifyCustomErrorPage response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDnsRecordsRequest": {
+      "document": "ModifyDnsRecords request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Site ID.",
+          "example": "zone-2psss4drfg29",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of DNS record modification data, with a maximum of 100 modifications at a time.",
+          "example": "无",
+          "member": "DnsRecord",
+          "name": "DnsRecords",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDnsRecordsResponse": {
+      "document": "ModifyDnsRecords response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDnsRecordsStatusRequest": {
+      "document": "ModifyDnsRecordsStatus request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Site ID.",
+          "example": "zone-25ryyvog1qih",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of DNS record IDs to be enabled, with a limit of 200. Note: The same DNS record ID cannot exist in both RecordsToEnable and RecordsToDisable.",
+          "example": "[“record-25ryzh92h8qh”]",
+          "member": "string",
+          "name": "RecordsToEnable",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "List of DNS record IDs to be disabled, with a limit of 200. Note: The same DNS record ID cannot exist in both RecordsToEnable and RecordsToDisable.",
+          "example": "[“record-25ryzh92h8qh”]",
+          "member": "string",
+          "name": "RecordsToDisable",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyDnsRecordsStatusResponse": {
+      "document": "ModifyDnsRecordsStatus response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
