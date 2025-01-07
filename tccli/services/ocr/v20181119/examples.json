@@ -240,6 +240,14 @@
         "title": "Recognizing structured information"
       }
     ],
+    "SmartStructuralPro": [
+      {
+        "document": "Smart Structured Information OCR Pro",
+        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: SmartStructuralPro\n<Common request parameters>\n\n{\n    \"ImageUrl\": \"https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/document/SmartStructuralOCR/SmartStructuralPro1.png\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Angle\": 0,\n        \"StructuralList\": [\n            {\n                \"Groups\": [\n                    {\n                        \"Lines\": [\n                            {\n                                \"Key\": {\n                                    \"AutoName\": \"abc\"\n                                },\n                                \"Value\": {\n                                    \"AutoContent\": \"abc\",\n                                    \"Coord\": {\n                                        \"LeftTop\": {\n                                            \"X\": 0,\n                                            \"Y\": 0\n                                        },\n                                        \"RightTop\": {\n                                            \"X\": 0,\n                                            \"Y\": 0\n                                        },\n                                        \"RightBottom\": {\n                                            \"X\": 0,\n                                            \"Y\": 0\n                                        }\n                                    }\n                                }\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"WordList\": [\n            {\n                \"DetectedText\": \"abc\",\n                \"Coord\": {}\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Smart Structured Information OCR Pro"
+      }
+    ],
     "TableOCR": [
       {
         "document": "This example shows you how to recognize a form.",

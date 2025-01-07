@@ -189,6 +189,13 @@
       "output": "SmartStructuralOCRV2Response",
       "status": "online"
     },
+    "SmartStructuralPro": {
+      "document": "This API is used to recognize fields from cards, documents, bills, forms, contracts, and other structured information. It is flexible and efficient to use, without any configuration required. This API is suitable for recognizing structured information.\n\nA maximum of 10 requests can be initiated per second for this API.",
+      "input": "SmartStructuralProRequest",
+      "name": "Smart Structured Information OCR Pro",
+      "output": "SmartStructuralProResponse",
+      "status": "online"
+    },
     "TableOCR": {
       "document": "This API is used to detect and recognize Chinese and English forms in images. It can return the text content of each cell and save the recognition result as Excel.\n\nThis API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).",
       "input": "TableOCRRequest",
@@ -858,20 +865,20 @@
         {
           "disabled": false,
           "document": "Horizontal coordinate",
-          "example": "",
+          "example": "480",
           "member": "int64",
           "name": "X",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Vertical coordinate",
-          "example": "",
+          "example": "640",
           "member": "int64",
           "name": "Y",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         }
@@ -4248,40 +4255,40 @@
         {
           "disabled": false,
           "document": "The coordinates of the upper-left vertex.",
-          "example": "",
+          "example": "20",
           "member": "Coord",
           "name": "LeftTop",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The coordinates of the upper-right vertex.",
-          "example": "",
+          "example": "20",
           "member": "Coord",
           "name": "RightTop",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The coordinates of the lower-left vertex.",
-          "example": "",
+          "example": "80",
           "member": "Coord",
           "name": "RightBottom",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "The coordinates of the lower-right vertex.",
-          "example": "",
+          "example": "80",
           "member": "Coord",
           "name": "LeftBottom",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": false
         }
@@ -7142,6 +7149,117 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "SmartStructuralProRequest": {
+      "document": "SmartStructuralPro request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The URL of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nWe recommend that you store the image in Tencent Cloud for higher download speed and stability.\nThe download speed and stability of non-Tencent Cloud URLs may be low.",
+          "example": "https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/document/SmartStructuralOCR/SmartStructuralPro1.png",
+          "member": "string",
+          "name": "ImageUrl",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The Base64-encoded value of the image.\nSupported image formats: PNG, JPG, and JPEG. GIF is currently not supported.\nSupported image size: The downloaded image after Base64 encoding can be up to 7 MB. The download time of the image cannot exceed 3s.\nEither `ImageUrl` or `ImageBase64` of the image must be provided. If both are provided, only `ImageUrl` is used.",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
+          "member": "string",
+          "name": "ImageBase64",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The number of the PDF page that needs to be recognized. Only one single PDF page can be recognized. This parameter is valid if the uploaded file is a PDF `. Default value: `1`.",
+          "example": "1",
+          "member": "uint64",
+          "name": "PdfPageNumber",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "The names of the fields you want to return for the structured information recognition.\nFor example, if you want to return only the recognition result of the \"Name\" and \"Gender\" fields, set this parameter as follows:\nItemNames=[\"Name\",\"Gender\"]",
+          "example": "[\"姓名\",\"性别\"]",
+          "member": "string",
+          "name": "ItemNames",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to enable recognition of all fields.",
+          "example": "false",
+          "member": "bool",
+          "name": "ReturnFullText",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration ID support: General \n-- General scenarios; InvoiceEng \n-- Ocean bill of lading, international invoice template; \n-- Ocean shipment order template; WayBillEng \n-- CustomsDeclaration\n-- WeightNote\n-- MedicalMeter",
+          "example": "General",
+          "member": "string",
+          "name": "ConfigId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Enable recognition of coordinate values in full-text fields",
+          "example": "false",
+          "member": "bool",
+          "name": "EnableCoord",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "SmartStructuralProResponse": {
+      "document": "SmartStructuralPro response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The rotation angle (degrees) of the text on the image. 0: The text is horizontal. Positive value: The text is rotated clockwise. Negative value: The text is rotated counterclockwise.",
+          "example": "0",
+          "member": "float",
+          "name": "Angle",
+          "output_required": true,
+          "type": "float",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The structural information (key-value).",
+          "example": "无",
+          "member": "GroupInfo",
+          "name": "StructuralList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The recognized text information.",
+          "example": "无",
+          "member": "WordItem",
+          "name": "WordList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
