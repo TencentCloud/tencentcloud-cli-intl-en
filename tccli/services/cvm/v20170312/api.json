@@ -567,6 +567,39 @@
           "required": false,
           "type": "object",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Timer ID.",
+          "example": "57z0f8ef-8112-460f-8203-fab753580f68",
+          "member": "string",
+          "name": "ActionTimerId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Timer status. Valid values:\n\nUNDO: Not triggered.\nDOING: Triggering.\nDONE: Triggered already.\n",
+          "example": "UNDO",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Instance ID corresponding to a timer.",
+          "example": "ins-dpa3e3at",
+          "member": "string",
+          "name": "InstanceId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -1814,7 +1847,7 @@
         },
         {
           "disabled": false,
-          "document": "Data disk type. For the detailed restrictions on the data disk type, refer to [Storage Overview] (https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Value range: <br /><li>LOCAL_BASIC: Local Disk <br /><li>LOCAL_SSD: Local SSD Disk <br /><li>LOCAL_NVME: Local NVME Disk, which is strongly related with InstanceType and can not be specified <br /><li>LOCAL_PRO: Local HDD Disk, which is strongly related with InstanceType and can not be specified <br /><li>CLOUD_BASIC: HDD Cloud Disk <br /><li>CLOUD_PREMIUM: Premium Cloud Disk <br /><li>CLOUD_SSD: Cloud SSD <br /><li>CLOUD_HSSD: Enhanced SSD <br /><li>CLOUD_TSSD: ulTra SSD <br /><li>CLOUD_BSSD: Balanced SSD <br /><br />Default value: LOCAL_BASIC. <br /><br />This parameter is invalid for the `ResizeInstanceDisk` API.</li></li></li> </li> </li></li></li></li></li></li>",
+          "document": "Data disk type. For the detailed restrictions on the data disk type, refer to [Storage Overview](https://cloud.tencent.com/document/product/213/4952). Valid values: <br /><li>LOCAL_BASIC: Local Disk <br /><li>LOCAL_SSD: Local SSD <br /><li>LOCAL_NVME: Local NVMe Disk, which is strongly related with InstanceType and can not be specified <br /><li>LOCAL_PRO: Local HDD, which is strongly related with InstanceType and can not be specified <br /><li>CLOUD_BASIC: Basic Cloud Disk <br /><li>CLOUD_PREMIUM: Premium Disk <br /><li>CLOUD_SSD: Cloud SSD <br /><li>CLOUD_HSSD: Enhanced SSD <br /><li>CLOUD_TSSD: Tremendous SSD <br /><li>CLOUD_BSSD: Balanced SSD <br /><br />Default value: LOCAL_BASIC. <br /><br />This parameter is invalid for the `ResizeInstanceDisk` API.</li></li></li> </li> </li></li></li></li></li></li>",
           "example": "CLOUD_SSD",
           "member": "string",
           "name": "DiskType",
@@ -1825,7 +1858,7 @@
         },
         {
           "disabled": false,
-          "document": "Data disk ID. Note that it’s not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.\nIt is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.",
+          "document": "Data disk ID. Note that it's not available for `LOCAL_BASIC` and `LOCAL_SSD` disks.\nIt is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.",
           "example": "disk-ciezoimt",
           "member": "string",
           "name": "DiskId",
@@ -1836,7 +1869,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the data disk is destroyed with the Cloud Virtual Machine (CVM). Value range:\n<li>true: Destroy the data disk when the CVM is destroyed. Only the pay-as-you-go cloud disk billed by hour is supported.</li>\n<li>\n  false: Retain the data disk when the CVM is destroyed.<br />\n  Default value: true.<br />\n  This parameter is currently only used for the `RunInstances` API.\n</li>\nNote: This field may return null, indicating that no valid value is found.",
+          "document": "Whether the data disk is terminated with the Cloud Virtual Machine (CVM). Valid values:\n\n<li>true: Terminate the data disk when the CVM is terminated. Only the pay-as-you-go cloud disk billed by hour is supported.</li>\n<li>\n  false: Retain the data disk when the CVM is terminated.<br />\n  Default value: true.<br />\n  This parameter is currently only used for the `RunInstances` API.\n</li>\nNote: This field may return null, indicating that no valid value is found.",
           "example": "true",
           "member": "bool",
           "name": "DeleteWithInstance",
@@ -1869,7 +1902,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the custom CMK in the format of UUID or “kms-abcd1234”. This parameter is used to encrypt cloud disks.\n\nCurrently, this parameter is only used in the `RunInstances` API.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "ID of the custom CMK in the format of UUID or \"kms-abcd1234\". This parameter is used to encrypt cloud disks.\n\nCurrently, this parameter is only used in the `RunInstances` API.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "kms-abcd1234",
           "member": "string",
           "name": "KmsKeyId",
@@ -3724,7 +3757,7 @@
         {
           "disabled": false,
           "document": "Release address\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "true",
           "member": "bool",
           "name": "ReleaseAddress",
           "output_required": false,
@@ -3735,7 +3768,7 @@
         {
           "disabled": false,
           "document": "Not supported network. Value: <br><li>BASIC: classic network<br><li>VPC1.0: VPC1.0\nNote: This field may return null, indicating that no valid value was found.",
-          "example": "无",
+          "example": "VPC1.0",
           "member": "string",
           "name": "UnsupportNetworks",
           "output_required": false,
@@ -3746,7 +3779,7 @@
         {
           "disabled": false,
           "document": "Attributes of local HDD storage\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "{     \"Type\": \"LOCAL_NVME\",     \"MinSize\": 3570,     \"MaxSize\": 3570 }",
           "member": "StorageBlock",
           "name": "StorageBlockAttr",
           "output_required": false,
@@ -5413,7 +5446,7 @@
         {
           "disabled": false,
           "document": "Subscription period (in month). Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`, `48’, `60`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "1",
           "member": "int64",
           "name": "Period",
           "output_required": true,
@@ -5424,7 +5457,7 @@
         {
           "disabled": false,
           "document": "Auto-renewal flag. Valid values:<br><li>NOTIFY_AND_AUTO_RENEW: Notify of expiration and automatically renew.</li><br><li>NOTIFY_AND_MANUAL_RENEW: Notify of expiration and manually renew.</li><br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Do not notify of expiration and do not automatically renew.</li><br><br>Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is set to NOTIFY_AND_AUTO_RENEW, an instance will be automatically renewed monthly after expiration, provided that the account balance is sufficient.\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "DISABLE_NOTIFY_AND_MANUAL_RENEW",
           "member": "string",
           "name": "RenewFlag",
           "output_required": true,
@@ -5467,9 +5500,10 @@
         {
           "disabled": false,
           "document": "Spot-related options\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "0.12",
           "member": "SpotMarketOptions",
           "name": "SpotOptions",
+          "output_required": true,
           "required": true,
           "type": "object",
           "value_allowed_null": true
@@ -5477,9 +5511,10 @@
         {
           "disabled": false,
           "document": "Market type. Valid value: `spot`.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
-          "example": "无",
+          "example": "spot",
           "member": "string",
           "name": "MarketType",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -5755,7 +5790,7 @@
         {
           "disabled": false,
           "document": "Network connection billing plan. Valid value: <br><li>TRAFFIC_POSTPAID_BY_HOUR: pay after use. You are billed for your traffic, by the hour.",
-          "example": "无",
+          "example": "BANDWIDTH_PREPAID",
           "member": "string",
           "name": "InternetChargeType",
           "output_required": true,
@@ -5766,7 +5801,7 @@
         {
           "disabled": false,
           "document": "The maximum outbound bandwidth of the public network, in Mbps. The default value is 0 Mbps. The upper limit of bandwidth varies for different models. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).",
-          "example": "无",
+          "example": "10",
           "member": "int64",
           "name": "InternetMaxBandwidthOut",
           "output_required": true,
@@ -5788,7 +5823,7 @@
         {
           "disabled": false,
           "document": "Bandwidth package ID. To obatin the IDs, you can call [`DescribeBandwidthPackages`](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) and look for the `BandwidthPackageId` fields in the response.",
-          "example": "无",
+          "example": "bwp-h1ro",
           "member": "string",
           "name": "BandwidthPackageId",
           "output_required": false,
@@ -6623,7 +6658,7 @@
         {
           "disabled": false,
           "document": "Maintains the original settings of the image. This parameter cannot be specified simultaneously with Password or KeyIds.N. It can be set to true only when an instance is created with a custom image, shared image, or externally imported image. Valid values: <li>true: indicates that the login settings of the image are maintained</li><li>false: indicates that the login settings of the image are not maintained</li>Default value: false.\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "abc",
+          "example": "true",
           "member": "string",
           "name": "KeepImageLogin",
           "output_required": false,
@@ -8727,7 +8762,7 @@
         {
           "disabled": false,
           "document": "Bidding price",
-          "example": "无",
+          "example": "0.01",
           "member": "string",
           "name": "MaxPrice",
           "output_required": false,
@@ -8738,7 +8773,7 @@
         {
           "disabled": false,
           "document": "Bidding request type. Currently only \"one-time\" is supported.",
-          "example": "无",
+          "example": "one-time",
           "member": "string",
           "name": "SpotInstanceType",
           "output_required": false,
@@ -8836,7 +8871,7 @@
         {
           "disabled": false,
           "document": "Local HDD storage type. Value: LOCAL_PRO.\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "LOCAL_PRO",
           "member": "string",
           "name": "Type",
           "output_required": true,
@@ -8847,7 +8882,7 @@
         {
           "disabled": false,
           "document": "Minimum capacity of local HDD storage\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "100",
           "member": "int64",
           "name": "MinSize",
           "output_required": true,
@@ -8858,7 +8893,7 @@
         {
           "disabled": false,
           "document": "Maximum capacity of local HDD storage\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "200",
           "member": "int64",
           "name": "MaxSize",
           "output_required": true,
@@ -8991,8 +9026,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "System disk type. For the restrictions on the system disk type, refer to [Storage Overview] (https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Value range:<br>\n<li>LOCAL_BASIC: Local Disk</li>\n<li>LOCAL_SSD: Local SSD Disk</li>\n<li>CLOUD_BASIC: HDD Cloud Disk</li>\n<li>CLOUD_SSD: Cloud SSD</li>\n<li>CLOUD_PREMIUM: Premium Cloud Disk</li>\n<li>CLOUD_BSSD: Balanced SSD</li>\n<li>CLOUD_HSSD: Enhanced SSD</li>\n<li>CLOUD_TSSD: ulTra SSD</li><br>\nDefault value: Current disk types with inventory available.",
-          "example": "无",
+          "document": "System disk type. For the restrictions on the system disk type, refer to [Storage Overview](https://intl.cloud.tencent.com/document/product/213/4952?from_cn_redirect=1). Value values:<br>\n<li>LOCAL_BASIC: Local Disk</li>\n<li>LOCAL_SSD: Local SSD</li>\n<li>CLOUD_BASIC: Basic Cloud Disk</li>\n<li>CLOUD_SSD: Cloud SSD</li>\n<li>CLOUD_PREMIUM: Premium Disk</li>\n<li>CLOUD_BSSD: Balanced SSD</li>\n<li>CLOUD_HSSD: Enhanced SSD</li>\n<li>CLOUD_TSSD: Tremendous SSD</li><br>\nDefault value: Current disk types with inventory available.",
+          "example": "CLOUD_HSSD",
           "member": "string",
           "name": "DiskType",
           "output_required": true,
@@ -9003,7 +9038,7 @@
         {
           "disabled": false,
           "document": "System disk ID. System disks whose type is `LOCAL_BASIC` or `LOCAL_SSD` do not have an ID and do not support this parameter.\nIt is only used as a response parameter for APIs such as `DescribeInstances`, and cannot be used as a request parameter for APIs such as `RunInstances`.",
-          "example": "无",
+          "example": "disk-xyzw1234",
           "member": "string",
           "name": "DiskId",
           "output_required": true,
@@ -9014,7 +9049,7 @@
         {
           "disabled": false,
           "document": "System disk size; unit: GB; default value: 50 GB.",
-          "example": "无",
+          "example": "50",
           "member": "int64",
           "name": "DiskSize",
           "output_required": true,
@@ -9025,7 +9060,7 @@
         {
           "disabled": false,
           "document": "ID of the dedicated cluster to which the instance belongs.",
-          "example": "无",
+          "example": "cdc-xxxxxx",
           "member": "string",
           "name": "CdcId",
           "output_required": false,
@@ -9053,9 +9088,10 @@
         {
           "disabled": false,
           "document": "Tag key",
-          "example": "无",
+          "example": "myKey",
           "member": "string",
           "name": "Key",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -9063,9 +9099,10 @@
         {
           "disabled": false,
           "document": "Tag value",
-          "example": "无",
+          "example": "myValue",
           "member": "string",
           "name": "Value",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
