@@ -29,7 +29,7 @@
       "status": "online"
     },
     "CreateAICall": {
-      "document": "Used to make outbound calls by invoking AI models, limited to the use of proprietary phone numbers. Currently, the Advanced version seats are available for a **limited time** free trial.\n\nBefore initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://intl.cloud.tencent.com/document/product/679/112100?from_cn_redirect=1).",
+      "document": "Used to make outbound calls by invoking AI models, limited to the use of proprietary phone numbers. Currently, the Advanced version seats are available for a **limited time** free trial.\n\nBefore initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://www.tencentcloud.com/document/product/1229/66889).",
       "input": "CreateAICallRequest",
       "name": "Create AI Session",
       "output": "CreateAICallResponse",
@@ -371,6 +371,39 @@
     "serviceShortName": "ccc"
   },
   "objects": {
+    "AITransferItem": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "transfer_to_human",
+          "member": "string",
+          "name": "TransferFunctionName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "TransferFunctionDesc",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "1",
+          "member": "uint64",
+          "name": "TransferSkillGroupId",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "usage": "in"
+    },
     "AbortAgentCruiseDialingCampaignRequest": {
       "document": "AbortAgentCruiseDialingCampaign request structure.",
       "members": [
@@ -1089,6 +1122,24 @@
         },
         {
           "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "bool",
+          "name": "TransferFunctionEnable",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "AITransferItem",
+          "name": "TransferItems",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
           "document": "The duration after which the user hasn't spoken to trigger a notification, minimum 10 seconds, default 10 seconds",
           "example": "10000",
           "member": "int64",
@@ -1117,11 +1168,20 @@
         {
           "disabled": false,
           "document": "<p>And VoiceType field needs to select one, here is to use your own custom TTS, VoiceType is some built-in sound qualities</p>\n<ul>\n<li>Tencent TTS<br>\nFor configuration, please refer to <a href=\"https://intl.cloud.tencent.com/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823\" target=\"_blank\">Tencent Cloud TTS documentation link</a></li>\n</ul>\n<div><div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n    &quot;TTSType&quot;: &quot;tencent&quot;, // String TTS type, currently supports &quot;tencent&quot; and \"minixmax\", other vendors support in progress\n    &quot;AppId&quot;: &quot;Your application ID&quot;, // String required\n    &quot;SecretId&quot;: &quot;Your Secret ID&quot;, // String Required\n    &quot;SecretKey&quot;:  &quot;Your Secret Key&quot;, // String Required\n    &quot;VoiceType&quot;: 101001, // Integer Required, Sound quality ID, includes standard and premium sound quality. Premium sound quality is more realistic and differently priced than standard sound quality. See TTS billing overview for details. For the full list of sound quality IDs, see the TTS sound quality list.\n    \"Speed\": 1.25, // Integer Optional, speech speed, range: [-2,6], corresponding to different speeds: -2: represents 0.6x -1: represents 0.8x 0: represents 1.0x (default) 1: represents 1.2x 2: represents 1.5x 6: represents 2.5x For more precise speed control, you can retain two decimal places, such as 0.5/1.25/2.81, etc. For parameter value to actual speed conversion, refer to Speed Conversion\n    &quot;Volume&quot;: 5, // Integer Optional, Volume level, range: [0,10], corresponding to 11 levels of volume, default is 0, which represents normal volume.\n    &quot;PrimaryLanguage&quot;: 1, // Integer Optional, Primary language 1- Chinese (default) 2- English 3- Japanese\n    &quot;FastVoiceType&quot;: &quot;xxxx&quot;   // Optional parameter, Fast VRS parameter\n  }\n</code></pre>\n\n  </div></div><ul>\n<li>Minimax TTS<br>\nFor configuration, please refer to the <a href=\"https://platform.minimaxi.com/document/T2A%20V2?key=66719005a427f0c8a5701643\" target=\"_blank\">Minimax TTS documentation link</a>. Note that Minimax TTS has frequency limits, and exceeding the limit may cause response delays, <a href=\"https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572\" target=\"_blank\">Minimax TTS frequency limit related documentation link</a>.</li>\n</ul>\n<div><div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n        &quot;TTSType&quot;: &quot;minimax&quot;,  // String TTS type,\n        &quot;Model&quot;: &quot;speech-01-turbo&quot;,\n        &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,\n        &quot;APIKey&quot;: &quot;eyxxxx&quot;,\n        &quot;GroupId&quot;: &quot;181000000000000&quot;,\n        &quot;VoiceType&quot;:&quot;female-tianmei-yujie&quot;,\n        &quot;Speed&quot;: 1.2\n}\n</code></pre>\n</div></div><ul>\n<li>Volcano TTS</li>\n</ul>\n<p>For type of sound quality configuration, refer to the<a href=\"https://www.volcengine.com/docs/6561/162929\" target=\"_blank\">Volcano TTS documentation</a><br>\nTTS Sound Quality List - Voice Technology - Volcano Engine<br>\nLarge Model TTS Sound Quality List - Voice Technology - Volcano Engine</p>\n<div><div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n    &quot;TTSType&quot;: &quot;volcengine&quot;,  // Required: String TTS type\n    &quot;AppId&quot; : &quot;xxxxxxxx&quot;,   // Required: String Volcano Engine assigned AppId\n    &quot;Token&quot; : &quot;TY9d4sQXHxxxxxxx&quot;, // Required: String type Volcano Engine access token\n    &quot;Speed&quot; : 1.0,            // Optional parameter: Playback speed, default is 1.0\n    &quot;Volume&quot;: 1.0,            // Optional parameter: Volume, default is 1.0\n    &quot;Cluster&quot; : &quot;volcano_tts&quot;, // Optional parameter: Business cluster, default is volcano_tts\n    &quot;VoiceType&quot; : &quot;zh_male_aojiaobazong_moon_bigtts&quot;   // Sound quality type, default is the sound quality of the large model TTS. If using normal TTS, fill in the corresponding sound quality type. Incorrect sound quality type will result in no sound.\n}\n</code></pre>\n\n</div></div><ul>\n<li>Azure TTS<br>\nFor configuration, refer to the<a href=\"https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice\" target=\"_blank\">Azure TTS documentation</a></li>\n</ul>\n<div><div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n    &quot;TTSType&quot;: &quot;azure&quot;, // Required: String TTS type\n    &quot;SubscriptionKey&quot;: &quot;xxxxxxxx&quot;, // Required: String subscription key\n    &quot;Region&quot;: &quot;chinanorth3&quot;,  // Required: String subscription region\n    &quot;VoiceName&quot;: &quot;zh-CN-XiaoxiaoNeural&quot;, // Required: String Timbre Name required\n    &quot;Language&quot;: &quot;zh-CN&quot;, // Required: String Language for synthesis\n    &quot;Rate&quot;: 1 // Optional: float Playback Speed 0.5-2 default is 1\n}\n</code></pre>\n\n</div></div><ul>\n<li>Custom</li>\n</ul>\n<p>TTS<br>\nPlease refer to the specific protocol standards in the <a href=\"https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw\" target=\"_blank\">Tencent documentation</a></p>\n<div><div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n  &quot;TTSType&quot;: &quot;custom&quot;, // Required String\n  &quot;APIKey&quot;: &quot;ApiKey&quot;, // Required String for Authentication\n  &quot;APIUrl&quot;: &quot;http://0.0.0.0:8080/stream-audio&quot; // Required String, TTS API URL\n  &quot;AudioFormat&quot;: &quot;wav&quot;, // String, optional, expected audio format, such as mp3, ogg_opus, pcm, wav, default is wav, currently only pcm and wav are supported,\n  &quot;SampleRate&quot;: 16000,  // Integer, optional, audio sample rate, default is 16000 (16k), recommended value is 16000\n  &quot;AudioChannel&quot;: 1,    // Integer, optional, number of audio channels, values: 1 or 2, default is 1\n}\n</code></pre>\n\n</div></div>",
-          "example": "{ \t\"TTSType\": \"azure\", \t\"SubscriptionKey\": \"xxxxxxxx\", \t\"Region\": \"chinanorth3\", \t\"VoiceName\": \"zh-CN-XiaoxiaoNeural\", \t\"Language\": \"zh-CN\", \t\"Rate\": 1 }",
+          "example": "{ \"TTSType\": \"azure\", \"SubscriptionKey\": \"xx\", \"Region\": \"chinanorth3\", \"VoiceName\": \"zh-CN-\", \"Language\": \"zh-CN\", \"Rate\": 1 }",
           "member": "string",
           "name": "CustomTTSConfig",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[{\"Key\":\"foo\",\"Value\":\"bar\"}]",
+          "member": "Variable",
+          "name": "PromptVariables",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
