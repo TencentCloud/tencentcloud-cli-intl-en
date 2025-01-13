@@ -67,15 +67,15 @@
     "DeleteCertificate": [
       {
         "document": " ",
-        "input": "https://ssl.tencentcloudapi.com/?Action=DeleteCertificate\n&CertificateId=CertificateId\n&<Common request parameters>",
+        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCertificate\n\n{\n    \"CertificateId\": \"hhe**jjsj\",\n    \"IsCheckResource\": false\n}",
         "output": "{\n    \"Response\": {\n        \"DeleteResult\": true,\n        \"RequestId\": \"0b39eaa4-f938-476d-9b26-19fb07b80936\"\n    }\n}",
         "title": "Deleting a certificate"
       },
       {
         "document": "",
-        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCertificate\n<common request parameters>\n\n{\n    \"CertificateId\": \"abc\"\n}",
-        "output": "{\n    \"Response\": {\n        \"DeleteResult\": false,\n        \"RequestId\": \"abc\"\n    }\n}",
-        "title": "异步删除"
+        "input": "POST / HTTP/1.1\nHost: ssl.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteCertificate\n\n{\n    \"CertificateId\": \"tey**hdh\",\n    \"IsCheckResource\": true\n}",
+        "output": "{\n    \"Response\": {\n        \"DeleteResult\": false,\n        \"TaskId\": \"1251261\",\n        \"RequestId\": \"14727a68-3b90-4408-99c9-dea6d7de9456\"\n    }\n}",
+        "title": "Deleting a certificate asynchronously"
       }
     ],
     "DescribeCSR": [

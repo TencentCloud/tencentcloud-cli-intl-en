@@ -35,9 +35,9 @@
     "BindSecretIds": [
       {
         "document": "\t\nThis example shows you how to bind a key to a usage plan.",
-        "input": "https://apigateway.tencentcloudapi.com/?Action=BindSecretIds\n&UsagePlanId=usagePlan-quqxvett\n&AccessKeyIds.0=AKID***********************************************\n&<Common Request Parameters>",
+        "input": "https://apigateway.tencentcloudapi.com/?Action=BindSecretIds\n&UsagePlanId=usagePlan-quqxvett\n&AccessKeyIds.0=AKID***********************************************\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"Result\": true,\n        \"RequestId\": \"fcc3e46c-931d-4c58-88e9-f3cfc2251769\"\n    }\n}",
-        "title": "Binding a key to a usage plan"
+        "title": "Binding a Key to a Usage Plan"
       }
     ],
     "BindSubDomain": [
@@ -332,6 +332,14 @@
         "input": "POST / HTTP/1.1\nHost: apigateway.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeApisStatus\n<Common Request Parameters>\n\n{\n    \"ServiceId\": \"service-ody35h5e\"\n}",
         "output": "{\n    \"Response\": {\n        \"Result\": {\n            \"TotalCount\": 1,\n            \"ApiIdStatusSet\": [\n                {\n                    \"RelationBuniessApiIds\": [\n                        \"123\"\n                    ],\n                    \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                    \"Method\": \"123\",\n                    \"VpcId\": 0,\n                    \"Tags\": [\n                        \"123\"\n                    ],\n                    \"IsDebugAfterCharge\": false,\n                    \"ApiBusinessType\": \"1\",\n                    \"ApiName\": \"1\",\n                    \"Path\": \"1\",\n                    \"AuthType\": \"1\",\n                    \"ApiDesc\": \"1\",\n                    \"OauthConfig\": {\n                        \"PublicKey\": \"1\",\n                        \"LoginRedirectUrl\": \"1\",\n                        \"TokenLocation\": \"1\"\n                    },\n                    \"AuthRelationApiId\": \"1\",\n                    \"Protocol\": \"1\",\n                    \"ModifiedTime\": \"2020-09-22T00:00:00+00:00\",\n                    \"UniqVpcId\": \"1\",\n                    \"ApiId\": \"1\",\n                    \"ApiType\": \"1\",\n                    \"ServiceId\": \"1\"\n                }\n            ]\n        },\n        \"RequestId\": \"1\"\n    }\n}",
         "title": "Querying API status"
+      }
+    ],
+    "DescribeExclusiveInstanceRegions": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: apigateway.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeExclusiveInstanceRegions\n<Common request parameters>\n\n{}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"8e6e4a58-8059-4734-a2bf-c8fb3dfe0b19\"\n    }\n}",
+        "title": "Obtaining the Region List"
       }
     ],
     "DescribeIPStrategy": [
