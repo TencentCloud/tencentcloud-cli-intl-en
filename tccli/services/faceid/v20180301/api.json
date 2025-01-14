@@ -15,7 +15,7 @@
       "status": "online"
     },
     "ApplySdkVerificationToken": {
-      "document": "This API is used to apply for a token before calling the Identity Verification SDK service each time. This token is required for initiating the verification process and getting the result after the verification is completed.",
+      "document": "This API is used to apply for a token before calling the eKYC SDK service each time. This token is required for initiating the verification process and getting the result after the verification is completed.",
       "input": "ApplySdkVerificationTokenRequest",
       "name": "Applies for tokens for SDK-based verification",
       "output": "ApplySdkVerificationTokenResponse",
@@ -64,7 +64,7 @@
       "status": "online"
     },
     "GenerateReflectSequence": {
-      "document": "This API is used to generate an appropriate light sequence based on the information collected by the liveness comparison (reflection-based) SDK and pass the light sequence into the SDK to start the identity verification process.\nThe data generated with the SDK must be stored in COS, and the region of the COS bucket must be same as that of requests made with this API. We recommend that you pass resources with upload link APIs.",
+      "document": "This API is used to generate an appropriate light sequence based on the information collected by the liveness comparison (reflection-based) SDK and pass the light sequence into the SDK to start the eKYC process.\nThe data generated with the SDK must be stored in COS, and the region of the COS bucket must be same as that of requests made with this API. We recommend that you pass resources with upload link APIs.",
       "input": "GenerateReflectSequenceRequest",
       "name": "Obtains light sequences",
       "output": "GenerateReflectSequenceResponse",
@@ -85,7 +85,7 @@
       "status": "online"
     },
     "GetFaceIdTokenIntl": {
-      "document": "This API is used to apply for an SDK token before calling the liveness detection and face comparison SDK each time. The SDK token is used throughout the identity verification process and to get the verification result after the verification is completed. A token is valid for one identity verification process only.",
+      "document": "This API is used to apply for an SDK token before calling the selfie verification SDK each time. The SDK token is used throughout the eKYC process and to get the verification result after the verification is completed. A token is valid for one eKYC process only.",
       "input": "GetFaceIdTokenIntlRequest",
       "name": "Gets the SDK token for liveness detection and face comparison",
       "output": "GetFaceIdTokenIntlResponse",
@@ -1052,7 +1052,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Base64 value of photos used for face comparison. \nThe size of image data encoded by Base64 shall not exceed 3M, only jpg and png are supported. \nPlease use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. \nExample values: \"/9j/4AAQSk... (total length:61944)KiiK//2Q==\"",
+          "document": "Base64 string of the image for face comparison.\n- The size of the Base64-encoded image data can be up to 3 MB. JPG and PNG formats are supported.\n- Please use the standard Base64 encoding method (with = padding). Refer to RFC4648 for the encoding specification.",
           "example": "/9j/4AAQSk...KiiK//2Q==",
           "member": "string",
           "name": "ImageBase64",
@@ -1061,7 +1061,7 @@
         },
         {
           "disabled": false,
-          "document": "Base64 value of videos used for face comparison. \nThe size of videos data encoded by Base64 shall not exceed 8M, only mp4,avi,flv are supported. \nPlease use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. \nExample values: \"/9j/4AAQSk... (total length:61944)KiiK//2Q==\"",
+          "document": "Base64 string of the video for liveness detection.\n- The size of the Base64-encoded video data can be up to 8 MB. MP4, AVI, and FLV formats are supported.\n-Use standard Base64 encoding (with = padding), following RFC4648.",
           "example": "/9j/4AAQSk...U7JbKxuf/Z",
           "member": "string",
           "name": "VideoBase64",
@@ -1070,7 +1070,7 @@
         },
         {
           "disabled": false,
-          "document": "The liveness detection type. Valid values: `ACTION`, and `SILENT`.\n`ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.\nExample value: \"SILENT\"",
+          "document": "Liveness detection type.\n-Values:\nACTION is action mode.\nSILENT is silent mode.\n-Choose one of the two modes to pass in.",
           "example": "SILENT",
           "member": "string",
           "name": "LivenessType",
@@ -1079,7 +1079,7 @@
         },
         {
           "disabled": false,
-          "document": "When the \"LivenessType\" parameter is \"ACTION\", it must be specified.\nIt is used to control the action sequence. Action types: \n1 (open mouth)\n2 (blink)\n3 (nod)\n4 (shake head). \nSelect one or two from the four actions.\nExample of passing single action parameter: \"1\".\nExample of passing multiple action parameters: \"4,2\".\nWhen the \"LivenessType\" parameter value is \"SILENT\", it shall be unspecified.\nExample value: \"\"",
+          "document": "Control the action sequence. Action types include: 1 (open mouth), 2 (blink), 3 (nod), 4 (shake head). Supports one or two actions.\n-Required when the LivenessType parameter is set to ACTION.\n-Single action example: \"1\".\n-Multiple actions parameter passing example: \"4,2\".\n-When the LivenessType parameter is set to SILENT, leave it blank.",
           "example": "1",
           "member": "string",
           "name": "ValidateData",
@@ -1094,7 +1094,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Service error code. When the return value is \"Success\", it indicates that the liveness detection and face comparison succeeded. It is determined that they are the same person. When the return value is \"FailedOperation.CompareLowSimilarity\", it indicates that the liveness detection succeeded, and the face comparison similarity is lower than 70 points. It is determined that they are not the same person. For other error cases, please refer to Liveness Face Comparison (Pure API) Error Code (https://www.tencentcloud.com/document/product/1061/55390). \nExample Value: \"Success\".",
+          "document": "Business Error Codes.\n-When the return value is \"Success\", it indicates that liveness detection and face comparison passed. Determined to be the same person.\n-When the return value is \"FailedOperation.CompareLowSimilarity\", it indicates that liveness detection passed, but face comparison similarity is below 70. Determined not to be the same person.\n-For other error cases, please refer to [Liveness Face Comparison (API only) Error Codes](https://www.tencentcloud.com/zh/document/product/1061/55390?lang=zh&pg=#97df7537-87fe-4266-87e9-02c816d41ee2)",
           "example": "Success",
           "member": "string",
           "name": "Result",
@@ -1104,7 +1104,7 @@
         },
         {
           "disabled": false,
-          "document": "Description of business results. \nExample value: \"Success\"",
+          "document": "The service result description",
           "example": "Success",
           "member": "string",
           "name": "Description",
@@ -1114,7 +1114,7 @@
         },
         {
           "disabled": false,
-          "document": "This value is valid when the \"Result\" parameter is \"Success\" or \"FailedOperation.CompareLowSimilarity.\" \nThis value indicates the similarity of face comparison. Value range: [0.00, 100.00]. The false pass rate for threshold 70 is 1 in 1,000, and the false pass rate for threshold 80 is 1 in 10,000. \nExample value: 80.00",
+          "document": "This value indicates the similarity of face comparison. Value range: 0.00-100.00.\n- The false acceptance rate for a threshold of 70 is 0.1%, and for a threshold of 80, it is 0.01%.\n- This value is valid when the Result parameter is \"Success\" or \"FailedOperation.CompareLowSimilarity\".",
           "example": "80.00",
           "member": "float",
           "name": "Sim",
@@ -1124,7 +1124,7 @@
         },
         {
           "disabled": false,
-          "document": "The optimal screenshot of the video after verification is the value encoded by BASE64, jpg format. \nNote: This field may return \"null\", indicating that no valid value can be obtained. \nExample values: \"/9j/4AAQSk... (total length:142036)s97n//2Q==\"",
+          "document": "The best screenshot photo from the video after verification, encoded in BASE64, in jpg format.\nThe optimal screenshot of the video after verification is the value encoded by BASE64, jpg format. \nNote: This field may return \"null\", indicating that no valid value can be obtained. \nExample values: \"/9j/4AAQSk... (total length:142036)s97n//2Q==\"",
           "example": "/9j/4AAQSk...s97n//2Q==",
           "member": "string",
           "name": "BestFrameBase64",
@@ -1915,7 +1915,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The resource URL of the light sequence, which needs to be downloaded and passed through to the SDK to start the identity verification process.",
+          "document": "The resource URL of the light sequence, which needs to be downloaded and passed through to the SDK to start the eKYC process.",
           "example": "https://faceid-resource-sg-1254418846.cos.ap-singapore.myqcloud",
           "member": "string",
           "name": "ReflectSequenceUrl",
@@ -2044,7 +2044,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The ID of the SDK-based liveness detection and face comparison process, which is generated when the `GetFaceIdTokenIntl` API is called.\t",
+          "document": "The ID of the SDK-based selfie verification process, which is generated when the `GetFaceIdTokenIntl` API is called.\t",
           "example": "aeee6d62-b2b2-4634-9662-919a5ac729ab",
           "member": "string",
           "name": "SdkToken",
@@ -2059,7 +2059,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The return code of the verification result.\n0: Succeeded.\n1001: System error.\n1004: Liveness detection and face comparison failed.\n2004: The image passed in is too large or too small.\n2012: Several faces were detected.\n2013: No face was detected, or the face detected was incomplete.\n2014: The image resolution is too low or the quality does not meet the requirements.\n2015: Face comparison failed.\n2016: The similarity did not reach the standard passing threshold.\n-999: The verification process wasn't finished.",
+          "document": "The return code of the verification result.\n0: Succeeded.\n1001: System error.\n1004: Selfie verification comparison failed.\n2004: The image passed in is too large or too small.\n2012: Several faces were detected.\n2013: No face was detected, or the face detected was incomplete.\n2014: The image resolution is too low or the quality does not meet the requirements.\n2015: Face comparison failed.\n2016: The similarity did not reach the standard passing threshold.\n-999: The verification process wasn't finished.",
           "example": "0",
           "member": "string",
           "name": "Result",
@@ -2095,7 +2095,7 @@
         },
         {
           "disabled": false,
-          "document": "The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (liveness detection and face comparison) mode.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
+          "document": "The similarity, with a value range of 0-100. A greater value indicates higher similarity. This parameter is returned only in the `compare` (selfie verification) mode.\nNote: This field may return `null`, indicating that no valid values can be obtained.",
           "example": "89.99",
           "member": "float",
           "name": "Similarity",
@@ -2125,7 +2125,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The detection mode. Valid values:\n`liveness`: Liveness detection only.\n`compare`: Liveness detection and face comparison.\nDefault value: `liveness`.",
+          "document": "The detection mode. Valid values:\n`liveness`: Liveness detection only.\n`compare`: Selfie verification.\nDefault value: `liveness`.",
           "example": "liveness",
           "member": "string",
           "name": "CheckMode",
@@ -2367,7 +2367,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nFor other error codes, see <a href=\"https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#8a960e1e-39c0-42cb-b181-b3164d77f81e\">Liveness Detection and Face Comparison (Mobile HTML5) Error Codes</a>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "The final result of this verification. `0` indicates that the person is the same as that in the photo.\nFor other error codes, see <a href=\"https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#8a960e1e-39c0-42cb-b181-b3164d77f81e\">Selfie Verification (Mobile HTML5) Error Codes</a>\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "0",
           "member": "int64",
           "name": "ErrorCode",
