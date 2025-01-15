@@ -1350,7 +1350,7 @@
         {
           "disabled": false,
           "document": "Enter the image or video with a face to be detected, in base64 encoding. Base64 value of the image: The overall image resolution is recommended to be 480x640, and the face size is 100X100 or larger; The image data size after Base64 encoding does not exceed 3M, and only supports jpg and png formats. Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. Base64 value of the video: The size after Base64 encoding does not exceed 8M, and supports mp4, avi, and flv formats. Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. The maximum supported video length is 20s, and the recommended length is 2 to 5s. The recommended video resolution is 480x640, and the frame rate is between 25fps and 30fps.",
-          "example": "iVBORw0KGgoAA......",
+          "example": "/9j/4AAQSkZJRg.....s97n//2Q==",
           "member": "string",
           "name": "FaceInput",
           "required": false,
@@ -1359,7 +1359,7 @@
         {
           "disabled": false,
           "document": "The type of input is 1- The input type is a picture 2- The input type is a video Others - Return error code InvalidParameter",
-          "example": "true",
+          "example": "1",
           "member": "int64",
           "name": "FaceInputType",
           "required": false,
@@ -1377,7 +1377,7 @@
         {
           "disabled": false,
           "document": "Encrypted ciphertext; The data format before encryption is as follows:{\"FaceInput\":\"AAAAA\",\"FaceInputType\":1}",
-          "example": "无",
+          "example": "fH6Fc1xHm......UrjSoYE",
           "member": "string",
           "name": "EncryptedBody",
           "required": false,

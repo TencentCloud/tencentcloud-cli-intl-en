@@ -14,6 +14,13 @@
       "output": "ListAggregateConfigRulesResponse",
       "status": "online"
     },
+    "ListAggregateDiscoveredResources": {
+      "document": "Account Group access the list of resources.",
+      "input": "ListAggregateDiscoveredResourcesRequest",
+      "name": "Account Group accesses the resource list",
+      "output": "ListAggregateDiscoveredResourcesResponse",
+      "status": "online"
+    },
     "ListConfigRules": {
       "document": "This API is used to get the rule list.",
       "input": "ListConfigRulesRequest",
@@ -42,6 +49,132 @@
     "serviceShortName": "config"
   },
   "objects": {
+    "AggregateResourceInfo": {
+      "document": "Resource list information response parameters structure",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Resource type",
+          "example": "cvm",
+          "member": "string",
+          "name": "ResourceType",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource name",
+          "example": "云服务器",
+          "member": "string",
+          "name": "ResourceName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Resource ID",
+          "example": "ins-4ynwt8x5",
+          "member": "string",
+          "name": "ResourceId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region\n\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "ap-hangzhou",
+          "member": "string",
+          "name": "ResourceRegion",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource Status\n\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "Running",
+          "member": "string",
+          "name": "ResourceStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to delete. 1: Deleted; 0: Not deleted.\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ResourceDelete",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource creation time\n\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "2022-10-10 12:56:37",
+          "member": "string",
+          "name": "ResourceCreateTime",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Tag information\n\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "[]",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Availability zone\n\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "ap-hangzhou-3",
+          "member": "string",
+          "name": "ResourceZone",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Compliance status\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "COMPLIANT",
+          "member": "string",
+          "name": "ComplianceResult",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Resource owner uid",
+          "example": "23423****4234",
+          "member": "uint64",
+          "name": "ResourceOwnerId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User nickname\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "张*",
+          "member": "string",
+          "name": "ResourceOwnerName",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
     "Annotation": {
       "document": "Compliance details",
       "members": [
@@ -94,30 +227,30 @@
         {
           "disabled": false,
           "document": "Rule identifier\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "qqq",
+          "example": "cam-user-invalid-ak-check",
           "member": "string",
           "name": "Identifier",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Name of the rule\n\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "123",
+          "example": "配置规则1",
           "member": "string",
           "name": "RuleName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Rule parameters\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "[]",
           "member": "InputParameter",
           "name": "InputParameter",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -127,27 +260,27 @@
           "example": "无",
           "member": "SourceConditionForManage",
           "name": "SourceCondition",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Resource types supported by rule. The rule only applies to specified resource types.\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": " [           \"QCS::CAM::User\"         ]",
           "member": "string",
           "name": "ResourceType",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Rule ownership tag\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "[           \"用户\",           \"密钥\"         ]",
           "member": "string",
           "name": "Labels",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
@@ -157,17 +290,17 @@
           "example": "1",
           "member": "int64",
           "name": "RiskLevel",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Function corresponding to rule\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "\"\"",
+          "example": "scf1",
           "member": "string",
           "name": "ServiceFunction",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -177,7 +310,7 @@
           "example": "2022-09-01 12:00:00",
           "member": "string",
           "name": "CreateTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -187,7 +320,7 @@
           "example": "Redis实例内存总量大于等于指定的参数值，视为“合规”。默认值：1000MB",
           "member": "string",
           "name": "Description",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -197,7 +330,7 @@
           "example": "规则状态",
           "member": "string",
           "name": "Status",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -207,7 +340,7 @@
           "example": "合规状态",
           "member": "string",
           "name": "ComplianceResult",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -217,7 +350,7 @@
           "example": "合规详情",
           "member": "Annotation",
           "name": "Annotation",
-          "required": true,
+          "output_required": true,
           "type": "object",
           "value_allowed_null": true
         },
@@ -227,17 +360,17 @@
           "example": "2022-09-01 12:00:00",
           "member": "string",
           "name": "ConfigRuleInvokedTime",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Rule ID\n\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "22",
+          "example": "cr-24234234werw234",
           "member": "string",
           "name": "ConfigRuleId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -247,97 +380,97 @@
           "example": "规则类型",
           "member": "string",
           "name": "IdentifierType",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Compliance package ID\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "123",
+          "example": "cp-342424dfsdfdf",
           "member": "string",
           "name": "CompliancePackId",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Trigger Type\n\nScheduled trigger\nTriggered by configuration change\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "[           {             \"MaximumExecutionFrequency\": null,             \"MessageType\": \"ConfigurationItemChangeNotification\"           }         ]",
           "member": "TriggerType",
           "name": "TriggerType",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Parameter details\n\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "[]",
           "member": "InputParameterForManage",
           "name": "ManageInputParameter",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Rule name\n\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "合规包1",
           "member": "string",
           "name": "CompliancePackName",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Associated region\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": " [\"ap-guangzhou\"]",
           "member": "string",
           "name": "RegionsScope",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Associate Tag\n\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "[]",
           "member": "Tag",
           "name": "TagsScope",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": " The rule is invalid for the specified resource ID, meaning it does not evaluate the resource.\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "[\"23424\"]",
           "member": "string",
           "name": "ExcludeResourceIdsScope",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Account group ID\n\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "ca-34sdf345345",
           "member": "string",
           "name": "AccountGroupId",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
         {
           "disabled": false,
           "document": "Account group name\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "账号组1",
           "member": "string",
           "name": "AccountGroupName",
-          "required": false,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -347,7 +480,7 @@
           "example": "3444***4455",
           "member": "uint64",
           "name": "RuleOwnerId",
-          "required": false,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": true
         },
@@ -357,7 +490,7 @@
           "example": "[\"ScheduledNotification\"]",
           "member": "string",
           "name": "ManageTriggerType",
-          "required": false,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         }
@@ -453,7 +586,7 @@
         {
           "disabled": false,
           "document": "Resource configuration\n\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "qq",
+          "example": "{\"InstanceState\":\"STOPPED\",\"InstanceName\":\"未命名3\",\"InstanceId\":\"ins-jrkgnbhq\",\"InstanceType\":\"xxx\",\"VirtualPrivateCloud\":{\"VpcId\":\"xxx\"}",
           "member": "string",
           "name": "Configuration",
           "output_required": true,
@@ -463,7 +596,7 @@
         {
           "disabled": false,
           "document": "Resource creation time\n\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "12332",
+          "example": "2021-11-16 09:28:13",
           "member": "string",
           "name": "ResourceCreateTime",
           "output_required": true,
@@ -473,7 +606,7 @@
         {
           "disabled": false,
           "document": "Resource tag\n\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "[     {         \"tagKey\": \"运营部\",         \"tagValue\": \"开发部\"     } ]",
           "member": "Tag",
           "name": "Tags",
           "output_required": true,
@@ -483,7 +616,7 @@
         {
           "disabled": false,
           "document": "Resource update time\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "无",
+          "example": "2024-12-05 19:14:53",
           "member": "string",
           "name": "UpdateTime",
           "output_required": true,
@@ -769,6 +902,7 @@
           "example": "4",
           "member": "uint64",
           "name": "Total",
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -778,8 +912,101 @@
           "example": "无",
           "member": "ConfigRule",
           "name": "Items",
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAggregateDiscoveredResourcesRequest": {
+      "document": "ListAggregateDiscoveredResources request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Items per Page",
+          "example": "10",
+          "member": "uint64",
+          "name": "MaxResults",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Account group ID",
+          "example": "ca-sdfs7734h24",
+          "member": "string",
+          "name": "AccountGroupId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "resourceName: Resource name; resourceId: Resource ID; resourceType: Resource type",
+          "example": "[     {         \"Values\": [             \"QCS::CVM::Instance\"         ],         \"Name\": \"resourceType\"     } ]",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "<Tag>",
+          "example": "  [         {             \"TagKey\": \"TAG1\",             \"TagValue\": \"TAG3\"         }     ]",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Next page token.",
+          "example": "E5WbfJQIT0Abtaj4RxODhsX",
+          "member": "string",
+          "name": "NextToken",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Sorting method asc, desc",
+          "example": "desc",
+          "member": "string",
+          "name": "OrderType",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ListAggregateDiscoveredResourcesResponse": {
+      "document": "ListAggregateDiscoveredResources response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Details.",
+          "example": "无",
+          "member": "AggregateResourceInfo",
+          "name": "Items",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "next page\nNote: This field may return null, indicating that no valid value is found.",
+          "example": "E5WbfJQIT0Abtaj4RxODhsX",
+          "member": "string",
+          "name": "NextToken",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -868,7 +1095,7 @@
           "example": "4",
           "member": "uint64",
           "name": "Total",
-          "required": true,
+          "output_required": true,
           "type": "int",
           "value_allowed_null": false
         },
@@ -878,7 +1105,7 @@
           "example": "无",
           "member": "ConfigRule",
           "name": "Items",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
@@ -906,7 +1133,7 @@
         {
           "disabled": false,
           "document": "resourceName: Resource name resourceId: Resource ID",
-          "example": "无",
+          "example": "[]",
           "member": "Filter",
           "name": "Filters",
           "required": false,
@@ -915,7 +1142,7 @@
         {
           "disabled": false,
           "document": "Tag",
-          "example": " 无",
+          "example": "[     {         \"tagKey\": \"运营部门\",         \"tagValue\": \"开发部     } ]",
           "member": "Tag",
           "name": "Tags",
           "required": false,
@@ -924,7 +1151,7 @@
         {
           "disabled": false,
           "document": "Next page token.",
-          "example": "\"\"",
+          "example": "C3IptlTj6hTlW0WKVO3NI",
           "member": "string",
           "name": "NextToken",
           "required": false,
@@ -948,20 +1175,20 @@
         {
           "disabled": false,
           "document": "Details",
-          "example": "无",
+          "example": "{\"ResourceType\":\"cvm\"}",
           "member": "ResourceListInfo",
           "name": "Items",
-          "required": true,
+          "output_required": true,
           "type": "list",
           "value_allowed_null": false
         },
         {
           "disabled": false,
           "document": "Next page\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "x",
+          "example": "C3IptlTj6hTlW0WKVO3NI",
           "member": "string",
           "name": "NextToken",
-          "required": true,
+          "output_required": true,
           "type": "string",
           "value_allowed_null": true
         },
@@ -989,7 +1216,7 @@
         {
           "disabled": false,
           "document": "Custom rule evaluation result information.",
-          "example": "无",
+          "example": "[{         \"ComplianceResourceId\": \"disk-26itbqha\",         \"ComplianceResourceType\": \"QCS::CBS::Disk\",         \"ComplianceRegion\": \"ap-guangzhou\",         \"ComplianceType\": \"NON_COMPLIANT\",         \"Annotation\":              {                 \"Configuration\": \"1\",                 \"DesiredValue\": \"2\",                 \"Operator\": \"equal\",                 \"Property\": \"age\"             }       }]",
           "member": "Evaluation",
           "name": "Evaluations",
           "required": true,
@@ -1178,9 +1405,10 @@
         {
           "disabled": false,
           "document": "Tag key\n\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "aaa",
+          "example": "产品部",
           "member": "string",
           "name": "TagKey",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -1188,9 +1416,10 @@
         {
           "disabled": false,
           "document": "Tag value\n\nNote: This field may return null, indicating that no valid value is found.",
-          "example": "bbb",
+          "example": "运营部成员",
           "member": "string",
           "name": "TagValue",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
