@@ -2197,11 +2197,11 @@
       "usage": "out"
     },
     "PolicyProductList": {
-      "document": "",
+      "document": "Policy product list entity response parameters structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Policy code.",
+          "document": "Dealer policy code.",
           "example": "StandardPolicy2024",
           "member": "string",
           "name": "PolicyCode",
@@ -2211,7 +2211,7 @@
         },
         {
           "disabled": false,
-          "document": "Product code, if the return is *, any item under this level is included in the policy product scope.",
+          "document": "Product level 1 code. If the return value is *, any item at this level is included in the policy product range.",
           "example": "p_cvm",
           "member": "string",
           "name": "ProductCode",
@@ -2221,7 +2221,7 @@
         },
         {
           "disabled": false,
-          "document": "Product name, if the return is *, any item under this level is included in the policy product scope.",
+          "document": "Product level 1 name. If the return value is *, any item at this level is included in the policy product range.",
           "example": "Cloud Virtual Machine(CVM)",
           "member": "string",
           "name": "ProductName",
@@ -2231,7 +2231,7 @@
         },
         {
           "disabled": false,
-          "document": "SubProduct code, if the return is *, any item under this level is included in the policy product scope.",
+          "document": "Product level 2 code. If the return value is *, any item at this level is included in the policy product range.",
           "example": "sp_cvm_oc3",
           "member": "string",
           "name": "SubProductCode",
@@ -2241,7 +2241,7 @@
         },
         {
           "disabled": false,
-          "document": "SubProduct name, if the return is *, any item under this level is included in the policy product scope.",
+          "document": "Product level 2 name. If the return value is *, any item at this level is included in the policy product range.",
           "example": "CVM Offline Computing OC3",
           "member": "string",
           "name": "SubProductName",
@@ -2251,7 +2251,7 @@
         },
         {
           "disabled": false,
-          "document": "Component type code, if the return is *, any item under this level is included in the policy product scope.",
+          "document": "Product level 3 code. If the return value is *, any item at this level is included in the policy product range.",
           "example": "v_cpu",
           "member": "string",
           "name": "ComponentTypeCode",
@@ -2261,7 +2261,7 @@
         },
         {
           "disabled": false,
-          "document": "Component type name, if the return is *, any item under this level is included in the policy product scope.",
+          "document": "Product level 3 name. If the return value is *, any item at this level is included in the policy product range.",
           "example": "volume size",
           "member": "string",
           "name": "ComponentTypeName",
@@ -2271,7 +2271,7 @@
         },
         {
           "disabled": false,
-          "document": "Component code, if the return is *, any item under this level is included in the policy product scope.",
+          "document": "Product level 4 code. If the return value is *, any item at this level is included in the policy product range.",
           "example": "sv_cpu",
           "member": "string",
           "name": "ComponentCode",
@@ -2281,7 +2281,7 @@
         },
         {
           "disabled": false,
-          "document": "Component name, if the return is *, any item under this level is included in the policy product scope.",
+          "document": "Product fourth-level name. If the return value is *, any item under this level is included in the policy product scope.",
           "example": "Balanced SSD cloud block storage-volume size",
           "member": "string",
           "name": "ComponentName",
@@ -2291,7 +2291,7 @@
         },
         {
           "disabled": false,
-          "document": "Policy effective date.",
+          "document": "Policy effective time.",
           "example": "2024-01-01 00:00:00",
           "member": "string",
           "name": "StartDate",
@@ -2301,7 +2301,7 @@
         },
         {
           "disabled": false,
-          "document": "Policy expiration date.",
+          "document": "Policy expiration time.",
           "example": "2024-12-31 00:00:00",
           "member": "string",
           "name": "EndDate",
@@ -2878,7 +2878,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Policy code",
+          "document": "Dealer policy code.",
           "example": "StandardPolicy2024",
           "member": "string",
           "name": "PolicyCode",
@@ -2887,7 +2887,7 @@
         },
         {
           "disabled": false,
-          "document": "Product code",
+          "document": "Product level 1 code.",
           "example": "p_cvm",
           "member": "string",
           "name": "ProductCode",
@@ -2896,7 +2896,7 @@
         },
         {
           "disabled": false,
-          "document": "Product name",
+          "document": "Product level 1 name.",
           "example": "Cloud Virtual Machine(CVM)",
           "member": "string",
           "name": "ProductName",
@@ -2905,7 +2905,7 @@
         },
         {
           "disabled": false,
-          "document": "Subproduct code",
+          "document": "Product level 2 code.",
           "example": "sp_cvm_oc3",
           "member": "string",
           "name": "SubProductCode",
@@ -2914,12 +2914,30 @@
         },
         {
           "disabled": false,
-          "document": "Subproduct name",
+          "document": "Product level 2 name.",
           "example": "CVM Offline Computing OC3",
           "member": "string",
           "name": "SubProductName",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Page parameter: current page number. The minimum value is 1.",
+          "example": "1",
+          "member": "uint64",
+          "name": "Page",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Page parameter: Indicates the number of entries per page. Value range: [1, 200], default is 200.",
+          "example": "200",
+          "member": "uint64",
+          "name": "PageSize",
+          "required": false,
+          "type": "int"
         }
       ],
       "type": "object"
@@ -2929,12 +2947,22 @@
       "members": [
         {
           "disabled": false,
-          "document": "Policy product list",
+          "document": "Dealer policy product list.",
           "example": "[...]",
           "member": "PolicyProductList",
           "name": "ProductList",
           "output_required": false,
           "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Total number of data entries",
+          "example": "55",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
           "value_allowed_null": false
         },
         {
