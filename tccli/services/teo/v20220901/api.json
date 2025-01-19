@@ -1154,6 +1154,7 @@
           "example": "host",
           "member": "string",
           "name": "MatchFrom",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1161,9 +1162,10 @@
         {
           "disabled": false,
           "document": "The parameter of the field. When `MatchFrom = header`, the key contained in the header can be passed.",
-          "example": "a",
+          "example": "eo-test",
           "member": "string",
           "name": "MatchParam",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1174,6 +1176,7 @@
           "example": "include",
           "member": "string",
           "name": "Operator",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1181,9 +1184,10 @@
         {
           "disabled": false,
           "document": "The content to match.",
-          "example": "a",
+          "example": "192.168.3.2",
           "member": "string",
           "name": "MatchContent",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -1302,7 +1306,7 @@
         {
           "disabled": false,
           "document": "The update time, which is only used as an output parameter.",
-          "example": "xxx",
+          "example": "2024-12-16T07:47:28Z",
           "member": "string",
           "name": "UpdateTime",
           "output_required": true,
@@ -1346,7 +1350,7 @@
         {
           "disabled": false,
           "document": "(Disused) ID of the custom return page. The default value is 0, which means that the system default blocking page is used. ",
-          "example": "1111",
+          "example": "0",
           "member": "int64",
           "name": "PageId",
           "output_required": true,
@@ -2710,7 +2714,7 @@
         {
           "disabled": false,
           "document": "The update time, which is only used as an output parameter.",
-          "example": "xxx",
+          "example": "2024-12-16T07:47:28Z",
           "member": "string",
           "name": "UpdateTime",
           "output_required": true,
@@ -4674,7 +4678,7 @@
         {
           "disabled": false,
           "document": "List of failed tasks.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "example": "无",
           "member": "FailReason",
           "name": "FailedList",
           "output_required": true,
@@ -4766,7 +4770,7 @@
         {
           "disabled": false,
           "document": "List of failed tasks and reasons.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "example": "无",
           "member": "FailReason",
           "name": "FailedList",
           "output_required": true,
@@ -9102,7 +9106,7 @@
         {
           "disabled": false,
           "document": "Specifies the ID of a security IP group.\n<li>When this parameter is provided, only the configuration of the security IP group with the specified ID is queried.</li>\n<li>When this parameter is not provided, information of all security IP groups under the site is returned.</li>",
-          "example": "无",
+          "example": "123",
           "member": "int64",
           "name": "GroupIds",
           "required": false,
@@ -9117,7 +9121,7 @@
         {
           "disabled": false,
           "document": "Detailed configuration information of security IP groups, including the ID, name, and IP/IP range list information of each security IP group.",
-          "example": "{         \"GroupId\": 123,         \"Name\": \"ExampleIpGroup\",         \"Content\": [           \"2.2.2.2\",           \"23.23.23.0/24\"         ]       }",
+          "example": "{ \"GroupId\": 123, \"Name\": \"ExampleIpGroup\", \"Content\": [ \"2.2.2.2\", \"23.23.23.0/24\" ] }",
           "member": "IPGroup",
           "name": "IPGroups",
           "output_required": true,
@@ -10844,6 +10848,7 @@
           "example": "rule1",
           "member": "string",
           "name": "RuleName",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10854,6 +10859,7 @@
           "example": "skip",
           "member": "string",
           "name": "Action",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10864,6 +10870,7 @@
           "example": "on",
           "member": "string",
           "name": "RuleStatus",
+          "output_required": true,
           "required": true,
           "type": "string",
           "value_allowed_null": false
@@ -10874,6 +10881,7 @@
           "example": "1",
           "member": "int64",
           "name": "RuleID",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -10881,9 +10889,10 @@
         {
           "disabled": false,
           "document": "The update time. If it is null, the current date and time is recorded.\nNote: This field may return `null`, indicating that no valid value can be obtained.",
-          "example": "xxxx",
+          "example": "2024-07-15T00:00:00+08:00",
           "member": "datetime_iso",
           "name": "UpdateTime",
+          "output_required": true,
           "required": false,
           "type": "string",
           "value_allowed_null": true
@@ -10891,9 +10900,10 @@
         {
           "disabled": false,
           "document": "The matching condition.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "[]",
+          "example": "无",
           "member": "ExceptUserRuleCondition",
           "name": "ExceptUserRuleConditions",
+          "output_required": true,
           "required": false,
           "type": "list",
           "value_allowed_null": true
@@ -10901,9 +10911,10 @@
         {
           "disabled": false,
           "document": "The scope to which the exception rule applies.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "x",
+          "example": "无",
           "member": "ExceptUserRuleScope",
           "name": "ExceptUserRuleScope",
+          "output_required": true,
           "required": false,
           "type": "object",
           "value_allowed_null": true
@@ -10914,6 +10925,7 @@
           "example": "0",
           "member": "int64",
           "name": "RulePriority",
+          "output_required": true,
           "required": false,
           "type": "int",
           "value_allowed_null": false
@@ -11209,10 +11221,10 @@
           "example": "on",
           "member": "string",
           "name": "DefaultCache",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11220,10 +11232,10 @@
           "example": "on",
           "member": "string",
           "name": "DefaultCacheStrategy",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
           "disabled": false,
@@ -11231,10 +11243,10 @@
           "example": "0",
           "member": "int64",
           "name": "DefaultCacheTime",
-          "output_required": true,
+          "output_required": false,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -12327,7 +12339,7 @@
         {
           "disabled": false,
           "document": "The update time, which is only used as an output parameter.",
-          "example": "无",
+          "example": "2024-07-15T00:00:00+08:00",
           "member": "datetime_iso",
           "name": "UpdateTime",
           "output_required": true,
@@ -16346,7 +16358,7 @@
         {
           "disabled": false,
           "document": "Unique ID.",
-          "example": "xxx",
+          "example": "0x7ffffffd",
           "member": "int64",
           "name": "ID",
           "output_required": true,
@@ -16528,7 +16540,7 @@
         {
           "disabled": false,
           "document": "Update time. It is only used as a response parameter, and defaults to the current time. ",
-          "example": "xxx",
+          "example": "2024-07-15T00:00:00+08:00",
           "member": "string",
           "name": "UpdateTime",
           "output_required": true,
@@ -17189,7 +17201,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Operator. Valid values:\n<li>`equals`: Equals</li>\n<li>`notEquals`: Does not equal</li>\n<li>`exist`: Exists</li>\n<li>`notexist`: Does not exist</li>",
+          "document": "Operator. Valid values:\n<li>`equal`: Equal</li>\n<li>`notEquals`: Does not equal</li>\n<li>`exist`: Exists</li>\n<li>`notexist`: Does not exist</li>",
           "example": "equal",
           "member": "string",
           "name": "Operator",
