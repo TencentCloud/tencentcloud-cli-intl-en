@@ -1963,8 +1963,8 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID list of spread placement groups, obtainable via the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/api/213/17810?from_cn_redirect=1) API. You can operate up to 100 spread placement groups in each request.",
-          "example": "[\"ps-58l1hu01\\r\\n\"]",
+          "document": "ID list of spread placement groups, obtainable via the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/api/213/17810?from_cn_redirect=1) API. You can operate up to 10 spread placement groups in each request.",
+          "example": "[\"ps-58l1hu01\"]",
           "member": "string",
           "name": "DisasterRecoverGroupIds",
           "required": true,
@@ -2296,7 +2296,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID list of spread placement groups. You can operate up to 100 spread placement groups in each request.",
+          "document": "ID list of spread placement groups. You can operate up to 10 spread placement groups in each request.",
           "example": "ps-21q9ibvr",
           "member": "string",
           "name": "DisasterRecoverGroupIds",
