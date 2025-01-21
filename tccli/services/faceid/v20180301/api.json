@@ -5640,6 +5640,15 @@
           "name": "ActionList",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Control liveness retry number.The value range is 1-99.",
+          "example": "3",
+          "member": "int64",
+          "name": "LivenessRetryLimit",
+          "required": false,
+          "type": "int"
         }
       ],
       "usage": "in"

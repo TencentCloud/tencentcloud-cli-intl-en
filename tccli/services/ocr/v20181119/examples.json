@@ -224,6 +224,14 @@
         "title": "RecognizeThaiIDCardOCR调用"
       }
     ],
+    "RecognizeThaiPinkCard": [
+      {
+        "document": "",
+        "input": "\t\nPOST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeThaiPinkCard\n\n{\n    \"ImageUrl\": \"https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/***/fakeurl.jpg\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AdvancedInfo\": \"{\\\"DateOfExpiry\\\":0.6956542730331421,\\\"EnDOB\\\":0.69610595703125,\\\"RefNumber\\\":0.6244140863418579,\\\"Country\\\":0.803863525390625,\\\"PhotoNumber\\\":0.7247558832168579,\\\"ThaiAddress\\\":0.9462376236915588,\\\"ThaiName\\\":0.7324594259262085,\\\"IssuingAgency\\\":0.839324951171875,\\\"ThaiDateOfIssue\\\":0.7035577893257141,\\\"DateOfIssue\\\":0.688977062702179,\\\"IDNumber\\\":0.6976562738418579,\\\"EnName\\\":0.6729980707168579,\\\"ThaiDOB\\\":0.7289484143257141,\\\"ThaiDateOfExpiry\\\":0.71337890625}\",\n        \"Country\": \"\",\n        \"DateOfExpiry\": \"9 Aug. 2032\",\n        \"DateOfIssue\": \"10 Aug. 2022\",\n        \"EnDOB\": \"14 Feb. 1986\",\n        \"EnName\": \"Mr. *** Tun\",\n        \"IDNumber\": \"00 8401 155063 9\",\n        \"IssuingAgency\": \"\",\n        \"PhotoNumber\": \"8401-0223290\",\n        \"PortraitImage\": \"\",\n        \"RefNumber\": \"(CI) CC744457\",\n        \"RequestId\": \"4706ff76-2e7a-43d1-a697-6db531e33492\",\n        \"ThaiAddress\": \"\",\n        \"ThaiDOB\": \"\",\n        \"ThaiDateOfExpiry\": \"\",\n        \"ThaiDateOfIssue\": \"\",\n        \"ThaiName\": \"\"\n    }\n}",
+        "title": "RecognizeThaiPinkCard  Example"
+      }
+    ],
     "SealOCR": [
       {
         "document": "This example shows you how to recognize a seal.",
