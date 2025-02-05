@@ -1277,7 +1277,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to clear the CVM instance name settings. This parameter is optional and the default value is `false`.\nSetting it to `true` will clear the instance name settings, which means that CVM newly created on this launch configuration will be named in the “as-{{AutoScalingGroupName}} format.",
+          "document": "Whether to clear the CVM instance name settings. This parameter is optional and the default value is `false`.\nSetting it to `true` will clear the instance name settings, which means that CVM newly created on this launch configuration will be named in the as-{{AutoScalingGroupName}} format.",
           "example": "false",
           "member": "bool",
           "name": "ClearInstanceNameSettings",
@@ -1299,6 +1299,15 @@
           "example": "false",
           "member": "bool",
           "name": "ClearInstanceTags",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Whether to clear metadata, optional, defaults to false. Setting it to true will clear metadata, the CVMs created based on this will not be associated with custom metadata.",
+          "example": "false",
+          "member": "bool",
+          "name": "ClearMetadata",
           "required": false,
           "type": "bool"
         }
@@ -1729,7 +1738,7 @@
         },
         {
           "disabled": false,
-          "document": "Project ID of the launch configuration. The default project is used if it’s left blank.\nNote that this project ID is not the same as the project ID of the scaling group. ",
+          "document": "Project ID of the launch configuration. The default project is used if it is left blank.\nNote that this project ID is not the same as the project ID of the scaling group. ",
           "example": "0",
           "member": "uint64",
           "name": "ProjectId",
@@ -1951,6 +1960,15 @@
           "name": "DedicatedClusterId",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom metadata.",
+          "example": "无",
+          "member": "Metadata",
+          "name": "Metadata",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -2200,7 +2218,7 @@
         },
         {
           "disabled": false,
-          "document": "The method to adjust the desired capacity after the alarm is triggered. It’s only available when `ScalingPolicyType` is `Simple`. Valid values: <br><li>`CHANGE_IN_CAPACITY`: Increase or decrease the desired capacity </li><li>`EXACT_CAPACITY`: Adjust to the specified desired capacity </li> <li>`PERCENT_CHANGE_IN_CAPACITY`: Adjust the desired capacity by percentage </li>",
+          "document": "The method to adjust the desired capacity after the alarm is triggered. It is only available when `ScalingPolicyType` is `Simple`. Valid values: <br><li>`CHANGE_IN_CAPACITY`: Increase or decrease the desired capacity </li><li>`EXACT_CAPACITY`: Adjust to the specified desired capacity </li> <li>`PERCENT_CHANGE_IN_CAPACITY`: Adjust the desired capacity by percentage </li>",
           "example": "CHANGE_IN_CAPACITY",
           "member": "string",
           "name": "AdjustmentType",
@@ -2227,7 +2245,7 @@
         },
         {
           "disabled": false,
-          "document": "Alarm monitoring metric. It’s only available when `ScalingPolicyType` is `Simple`.",
+          "document": "Alarm monitoring metric. It is only available when `ScalingPolicyType` is `Simple`.",
           "example": "{\"ComparisonOperator\": \"GREATER_THAN\", \"ContinuousTime\": 1, \"MetricName\": \"CPU_UTILIZATION\", \"Period\": 60, \"Statistic\": \"AVERAGE\", \"Threshold\": 15}",
           "member": "MetricAlarm",
           "name": "MetricAlarm",
@@ -2236,7 +2254,7 @@
         },
         {
           "disabled": false,
-          "document": "Predefined monitoring item, which is applicable only to target tracking policies. Valid values:\n<li>ASG_AVG_CPU_UTILIZATION: average CPU utilization.</li>\n<li>ASG_AVG_LAN_TRAFFIC_OUT: average outbound private network bandwidth.</li>\n<li>ASG_AVG_LAN_TRAFFIC_IN: average inbound private network bandwidth.</li>\n<li>ASG_AVG_WAN_TRAFFIC_OUT: average outbound public network bandwidth.</li>\n<li>ASG_AVG_WAN_TRAFFIC_IN: average inbound public network bandwidth.</li>",
+          "document": "Predefined monitoring item, applicable only to target tracking policies. Valid values:\n<li>ASG_AVG_CPU_UTILIZATION: average CPU utilization</li>\n<li>ASG_AVG_LAN_TRAFFIC_OUT: average outbound private network bandwidth</li>\n<li>ASG_AVG_LAN_TRAFFIC_IN: average inbound private network bandwidth</li>\n<li>ASG_AVG_WAN_TRAFFIC_OUT: average outbound public network bandwidth</li>\n<li>ASG_AVG_WAN_TRAFFIC_IN: average inbound public network bandwidth</li>",
           "example": "ASG_AVG_CPU_UTILIZATION",
           "member": "string",
           "name": "PredefinedMetricType",
@@ -2254,7 +2272,7 @@
         },
         {
           "disabled": false,
-          "document": "Instance warm-up period (in seconds). It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Value range: 0-3600. Default value: 300.",
+          "document": "Instance warm-up period (in seconds). It is only available when `ScalingPolicyType` is `TARGET_TRACKING`. Value range: 0-3600. Default value: 300.",
           "example": "300",
           "member": "uint64",
           "name": "EstimatedInstanceWarmup",
@@ -5038,7 +5056,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance login password. The password complexity requirements vary according to the operating system type. The details are as follows:\n<li>The login password for Linux instances should contain 8 to 16 characters, including at least two types of the following characters: letters, digits, and special characters (such as ()`~!@#$%^&*-+=|{}[]:;',.?/).</li>\n<li>The login password for Windows instances should contain 12 to 16 characters, including at least three types of the following characters: lowercase letters, uppercase letters, digits, and special characters (such as ()`~!@#$%^&*-+={}[]:;',.?/).</li>\nIf this parameter is not specified, the system will generate a random password and notify the user via the message center.",
+          "document": "Instance login password. The password complexity requirements vary according to the operating system type. The details are as follows:\n- For a Linux system, the password should contain 8 to 30 characters consisting of at least two of the four character types: lowercase letters, uppercase letters, digits, and special characters.\n- For a Windows system, the password should contain 12 to 30 characters consisting of at least three of the four character types: lowercase letters, uppercase letters, digits, and special characters.\n- If this parameter is not specified, the system will generate a random password and notify the user via the message centerSupported special characters: ( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /",
           "example": "passExam@!7862543",
           "member": "string",
           "name": "Password",
@@ -5065,6 +5083,51 @@
         }
       ],
       "usage": "in"
+    },
+    "Metadata": {
+      "document": "Custom Metadata",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom metadata key-value pair list.",
+          "example": "[{\"Key\": \"Key123_4-5\", \"Value\": \"valueExam\"}]",
+          "member": "MetadataItem",
+          "name": "Items",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "MetadataItem": {
+      "document": "A set of key-value pair information for custom Metadata",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom metadata key.",
+          "example": "keyA-123_4",
+          "member": "string",
+          "name": "Key",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom metadata value.",
+          "example": "Value123",
+          "member": "string",
+          "name": "Value",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "MetricAlarm": {
       "document": "Alarming metric of AS",
@@ -5655,6 +5718,15 @@
           "name": "DedicatedClusterId",
           "required": false,
           "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Custom metadata.",
+          "example": "无",
+          "member": "Metadata",
+          "name": "Metadata",
+          "required": false,
+          "type": "object"
         }
       ],
       "type": "object"
@@ -6679,11 +6751,11 @@
       "usage": "both"
     },
     "RunMonitorServiceEnabled": {
-      "document": "This describes the information related to the Cloud Monitor service.",
+      "document": "Information related to Tencent Cloud Observability Platform (TCOP, formerly Cloud Monitor).",
       "members": [
         {
           "disabled": false,
-          "document": "Whether to enable the [Tencent Cloud Observability Platform](https://www.tencentcloud.com/document/product/248?lang=en&pg=) service. Valid values:\n<li>TRUE: enable.</li>\n<li>FALSE: disable.</li>\nDefault value: TRUE.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether [TCOP (formerly Cloud Monitor)](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1) is enabled. Valid values:\n<li>TRUE: enabled</li>\n<li>FALSE: disabled</li>\nDefault value: TRUE.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "{\"Enabled\": true}",
           "member": "bool",
           "name": "Enabled",
@@ -7111,6 +7183,17 @@
           "required": false,
           "type": "string",
           "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Automatic instance tag update. The default value is false. If this feature is enabled, tags of running instances in a scaling group will be updated as well if the scaling group tags are updated. (This feature takes effect for tag creation and editing but not tag deletion.) The update does not take effect immediately due to certain latency.",
+          "example": "False",
+          "member": "bool",
+          "name": "AutoUpdateInstanceTags",
+          "output_required": false,
+          "required": false,
+          "type": "bool",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
