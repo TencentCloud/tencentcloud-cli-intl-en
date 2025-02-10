@@ -16,6 +16,14 @@
         "title": "Setting a customer's credit"
       }
     ],
+    "ApproveClientApply": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ApproveClientApply\n<Common request parameters>\n\n{\n    \"ClientUin\": \"1000000000\",\n    \"ApproveType\": \"pass\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0aa8fe2c-****-4d94-b481-3f329******a\"\n    }\n}",
+        "title": "Approving the Sub-Customer Application"
+      }
+    ],
     "CreateAccount": [
       {
         "document": "Applying to create a customer account",
@@ -228,6 +236,14 @@
         "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryPartnerCredit\n<Common request parameters>\n\n{}",
         "output": "{\n    \"Response\": {\n        \"RemainingCredit\": 1000.1,\n        \"RequestId\": \"2b7c676e-bb4b-449d-89e6-4866132036c7\",\n        \"TotalCredit\": 1050.1,\n        \"AllocatedCredit\": 50\n    }\n}",
         "title": "Querying a partner's credit"
+      }
+    ],
+    "QueryPendingClientsV2": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: intlpartnersmgt.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: QueryPendingClientsV2\n<Common request parameters>\n\n{\n    \"Page\": 1,\n    \"PageSize\": 10\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 100,\n        \"Data\": [\n            {\n                \"ClientUin\": \"20000000000\",\n                \"Name\": \"tom\",\n                \"Type\": \"A\",\n                \"Mobile\": \"188****1234\",\n                \"Email\": \"abc@gmail.com\",\n                \"ApplyTime\": \"2024-01-03 15:11:10\",\n                \"Status\": \"Reviewing\"\n            }\n        ],\n        \"RequestId\": \"0aa8fe2c-****-4d94-b481-3f329******a\"\n    }\n}",
+        "title": "Querying the Sub-Customer Information In the Application"
       }
     ],
     "QueryPolicyProductListByCode": [
