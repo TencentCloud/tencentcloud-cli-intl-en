@@ -48,6 +48,14 @@
         "title": "Sample request"
       }
     ],
+    "CreateStreamPackageSSAIChannel": [
+      {
+        "document": "CreateStreamPackageSSAIChannel",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: CreateStreamPackageSSAIChannel\n<Common request parameters>\n\n{\n    \"Name\": \"TestConf\",\n    \"ContentSource\": \"http://origin-server.com/abc/\",\n    \"SSAIInfo\": {\n        \"AdsUrl\": \"https://my.ads.com/path?ad_type=[player_params.ad_type]&region=[player_params.region]\",\n        \"ConfigAliases\": [\n            {\n                \"ParamName\": \"region\",\n                \"AliasValueList\": [\n                    {\n                        \"Alias\": \"india\",\n                        \"Value\": \"ap-mumbai\"\n                    }\n                ]\n            }\n        ],\n        \"AdMarkerPassthrough\": true,\n        \"Threshold\": 12,\n        \"SlateAd\": \"https://hostname/xxx/xxx.mp4\",\n        \"SCTE35AdType\": 1,\n        \"AdTriggers\": [\n            1\n        ],\n        \"DeliveryRestrictions\": 1,\n        \"SourceCDNPrefix\": \"https://example_cdn.com/\",\n        \"AdCDNPrefix\": \"https://example_ad_cdn.com/\"\n    }\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"ID\": \"654CA8EF0000CE02BXXX\",\n            \"Name\": \"TestConf\",\n            \"ContentSource\": \"http://origin-server.com/abc/\",\n            \"PlaybackPrefix\": \"http://xxx.ap-mumbai.streampackage.srclivepull.myqcloud.com/v1/ssai/master/0194d961674a1eb4611d3xxxxxx/\",\n            \"SSAIInfo\": {\n                \"AdsUrl\": \"https://my.ads.com/path?ad_type=[player_params.ad_type]&region=[player_params.region]\",\n                \"ConfigAliases\": [\n                    {\n                        \"ParamName\": \"region\",\n                        \"AliasValueList\": [\n                            {\n                                \"Alias\": \"india\",\n                                \"Value\": \"ap-mumbai\"\n                            }\n                        ]\n                    }\n                ],\n                \"AdMarkerPassthrough\": true,\n                \"Threshold\": 12,\n                \"SlateAd\": \"https://hostname/xxx/xxx.mp4\",\n                \"SCTE35AdType\": 1,\n                \"AdTriggers\": [\n                    1\n                ],\n                \"DeliveryRestrictions\": 1,\n                \"SourceCDNPrefix\": \"https://example_cdn.com/\",\n                \"AdCDNPrefix\": \"https://example_ad_cdn.com/\",\n                \"DashMPDLocation\": false\n            }\n        },\n        \"RequestId\": \"0xxxxd32-1043-4e1b-bd20-1bfad0xxxx70\"\n    }\n}",
+        "title": "CreateStreamPackageSSAIChannel"
+      }
+    ],
     "CreateStreamPackageSource": [
       {
         "document": "创建媒体包装频道。",
@@ -126,6 +134,14 @@
         "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageLinearAssemblyPrograms\n<Common request parameters>\n\n{\n    \"Ids\": [\n        \"abc\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Sample request"
+      }
+    ],
+    "DeleteStreamPackageSSAIChannel": [
+      {
+        "document": "DeleteStreamPackageSSAIChannel",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DeleteStreamPackageSSAIChannel\n<Common request parameters>\n\n{\n    \"ID\": \"654CA8EF0000CE02BXXX\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0xxxxd32-1043-4e1b-bd20-1bfad0xxxx70\"\n    }\n}",
+        "title": "DeleteStreamPackageSSAIChannel"
       }
     ],
     "DeleteStreamPackageSource": [
@@ -224,6 +240,22 @@
         "title": "Sample request"
       }
     ],
+    "DescribeStreamPackageSSAIChannel": [
+      {
+        "document": "DescribeStreamPackageSSAIChannel",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageSSAIChannel\n<Common request parameters>\n\n{\n    \"ID\": \"654CA8EF0000CE02BXXX\"\n}",
+        "output": "{\n    \"Response\": {\n        \"Info\": {\n            \"ID\": \"654CA8EF0000CE02BXXX\",\n            \"Name\": \"TestConf\",\n            \"ContentSource\": \"http://origin-server.com/abc/\",\n            \"PlaybackPrefix\": \"http://xxx.ap-mumbai.streampackage.srclivepull.myqcloud.com/v1/ssai/master/0194d961674a1eb4611d3xxxxxx/\",\n            \"SSAIInfo\": {\n                \"AdsUrl\": \"https://my.ads.com/path?ad_type=[player_params.ad_type]&region=[player_params.region]\",\n                \"ConfigAliases\": [\n                    {\n                        \"ParamName\": \"region\",\n                        \"AliasValueList\": [\n                            {\n                                \"Alias\": \"india\",\n                                \"Value\": \"ap-mumbai\"\n                            }\n                        ]\n                    }\n                ],\n                \"AdMarkerPassthrough\": true,\n                \"Threshold\": 12,\n                \"SlateAd\": \"https://hostname/xxx/xxx.mp4\",\n                \"SCTE35AdType\": 1,\n                \"AdTriggers\": [\n                    1\n                ],\n                \"DeliveryRestrictions\": 1,\n                \"SourceCDNPrefix\": \"https://example_cdn.com/\",\n                \"AdCDNPrefix\": \"https://example_ad_cdn.com/\",\n                \"DashMPDLocation\": false\n            }\n        },\n        \"RequestId\": \"0xxxxd32-1043-4e1b-bd20-1bfad0xxxx70\"\n    }\n}",
+        "title": "DescribeStreamPackageSSAIChannel"
+      }
+    ],
+    "DescribeStreamPackageSSAIChannels": [
+      {
+        "document": "DescribeStreamPackageSSAIChannels",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeStreamPackageSSAIChannels\n<Common request parameters>\n\n{\n    \"PageNum\": 1,\n    \"PageSize\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"Infos\": [\n            {\n                \"ID\": \"654CA8EF0000CE02BXXX\",\n                \"Name\": \"TestConf\",\n                \"ContentSource\": \"http://origin-server.com/abc/\",\n                \"PlaybackPrefix\": \"http://xxx.ap-mumbai.streampackage.srclivepull.myqcloud.com/v1/ssai/master/0194d961674a1eb4611d3xxxxxx/\",\n                \"SSAIInfo\": {\n                    \"AdsUrl\": \"https://my.ads.com/path?ad_type=[player_params.ad_type]&region=[player_params.region]\",\n                    \"ConfigAliases\": [\n                        {\n                            \"ParamName\": \"region\",\n                            \"AliasValueList\": [\n                                {\n                                    \"Alias\": \"india\",\n                                    \"Value\": \"ap-mumbai\"\n                                }\n                            ]\n                        }\n                    ],\n                    \"AdMarkerPassthrough\": true,\n                    \"Threshold\": 12,\n                    \"SlateAd\": \"https://hostname/xxx/xxx.mp4\",\n                    \"SCTE35AdType\": 1,\n                    \"AdTriggers\": [\n                        1\n                    ],\n                    \"DeliveryRestrictions\": 1,\n                    \"SourceCDNPrefix\": \"https://example_cdn.com/\",\n                    \"AdCDNPrefix\": \"https://example_ad_cdn.com/\",\n                    \"DashMPDLocation\": false\n                }\n            }\n        ],\n        \"PageNum\": 1,\n        \"PageSize\": 1,\n        \"TotalNum\": 1,\n        \"RequestId\": \"0xxxxd32-1043-4e1b-bd20-1bfad0xxxx70\"\n    }\n}",
+        "title": "DescribeStreamPackageSSAIChannels"
+      }
+    ],
     "DescribeStreamPackageSource": [
       {
         "document": "查询媒体包装Source信息。",
@@ -310,6 +342,14 @@
         "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStreamPackageLinearAssemblyProgram\n<Common request parameters>\n\n{\n    \"Id\": \"abc\",\n    \"Name\": \"abc\",\n    \"SourceType\": \"abc\",\n    \"SourceLocationId\": \"abc\",\n    \"SourceName\": \"abc\",\n    \"PlaybackConf\": {\n        \"TransitionType\": \"abc\",\n        \"StartTime\": 1,\n        \"Duration\": 1,\n        \"RelativePosition\": \"abc\",\n        \"RelativeProgramId\": \"abc\",\n        \"ClipRangeConf\": {\n            \"Type\": \"abc\",\n            \"Offset\": 1\n        }\n    },\n    \"AdBreaks\": [\n        {\n            \"SourceLocationId\": \"abc\",\n            \"VodSourceName\": \"abc\",\n            \"Offset\": 1,\n            \"MessageType\": \"abc\",\n            \"TimeSignalConf\": {\n                \"EventID\": \"abc\",\n                \"UPIDType\": \"abc\",\n                \"UPID\": \"abc\",\n                \"TypeID\": \"abc\",\n                \"Num\": \"abc\",\n                \"Expected\": \"abc\",\n                \"SubsegmentNum\": \"abc\",\n                \"SubsegmentsExpected\": \"abc\"\n            },\n            \"SpliceInsertConf\": {\n                \"EventID\": \"abc\",\n                \"AvailNum\": \"abc\",\n                \"AvailExpected\": \"abc\",\n                \"ProgramID\": \"abc\"\n            },\n            \"Metadatas\": [\n                {\n                    \"Key\": \"abc\",\n                    \"Value\": \"abc\"\n                }\n            ],\n            \"SourceLocationName\": \"abc\"\n        }\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"abc\"\n    }\n}",
         "title": "Sample request"
+      }
+    ],
+    "ModifyStreamPackageSSAIChannel": [
+      {
+        "document": "ModifyStreamPackageSSAIChannel",
+        "input": "POST / HTTP/1.1\nHost: mdp.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyStreamPackageSSAIChannel\n<Common request parameters>\n\n{\n    \"Name\": \"TestConf\",\n    \"ContentSource\": \"http://origin-server.com/abc/\",\n    \"SSAIInfo\": {\n        \"AdsUrl\": \"https://my.ads.com/path?ad_type=[player_params.ad_type]&region=[player_params.region]\",\n        \"ConfigAliases\": [\n            {\n                \"ParamName\": \"region\",\n                \"AliasValueList\": [\n                    {\n                        \"Alias\": \"india\",\n                        \"Value\": \"ap-mumbai\"\n                    }\n                ]\n            }\n        ],\n        \"AdMarkerPassthrough\": true,\n        \"Threshold\": 12,\n        \"SlateAd\": \"https://hostname/xxx/xxx.mp4\",\n        \"SCTE35AdType\": 1,\n        \"AdTriggers\": [\n            1\n        ],\n        \"DeliveryRestrictions\": 1,\n        \"SourceCDNPrefix\": \"https://example_cdn.com/\",\n        \"AdCDNPrefix\": \"https://example_ad_cdn.com/\"\n    },\n    \"ID\": \"654CA8EF0000CE02BXXX\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"0xxxxd32-1043-4e1b-bd20-1bfad0xxxx70\"\n    }\n}",
+        "title": "ModifyStreamPackageSSAIChannel"
       }
     ],
     "ModifyStreamPackageSource": [
