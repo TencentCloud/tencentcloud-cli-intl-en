@@ -1022,7 +1022,7 @@
         },
         {
           "disabled": false,
-          "document": "VerifyCode. This field is required. \nUse the [SendVerifyCode API](https://www.tencentcloud.com/document/product/1085/65907) to obtain the verifycode.The SendVerifyCode API sends a 6-digit verifycode to your specified mobile number via SMS. After receiving it, you need to pass it along with other parameters.",
+          "document": "VerifyCode. This parameter is required. \nUse the [SendVerifyCode API](https://www.tencentcloud.com/document/product/1085/65907) to obtain the verifycode.The SendVerifyCode API sends a 6-digit verifycode to your specified mobile number via SMS. After receiving it, you need to pass it along with other parameters.",
           "example": "584265",
           "member": "string",
           "name": "VerifyCode",

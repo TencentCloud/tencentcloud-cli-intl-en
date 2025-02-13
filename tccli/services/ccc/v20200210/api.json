@@ -1,31 +1,38 @@
 {
   "actions": {
     "AbortAgentCruiseDialingCampaign": {
-      "document": "If you want to stop running agent's individual auto task, then call AbortAgentCruiseDialingCampaign to terminate.",
+      "document": "Stop Agent Cruise-style Outbound Call Task",
       "input": "AbortAgentCruiseDialingCampaignRequest",
-      "name": "Abort Agent Cruise Dialing Campaign",
+      "name": "Stop agent cruise-style outbound call task",
       "output": "AbortAgentCruiseDialingCampaignResponse",
       "status": "online"
     },
     "AbortPredictiveDialingCampaign": {
-      "document": "This API is used to pause predictive dialing campaign",
+      "document": "This API is used to pause the predictive outbound call task.",
       "input": "AbortPredictiveDialingCampaignRequest",
-      "name": "Abort Predictive Dialing Campaign",
+      "name": "Stops predictive dialing task",
       "output": "AbortPredictiveDialingCampaignResponse",
       "status": "online"
     },
     "BindNumberCallOutSkillGroup": {
-      "document": "This API is used to assign outbound skill group(s) to your number",
+      "document": "This API is used to bind outbound skill group of number.",
       "input": "BindNumberCallOutSkillGroupRequest",
-      "name": "Bind number with outbound skill group",
+      "name": "Binds outbound skill group of number",
       "output": "BindNumberCallOutSkillGroupResponse",
       "status": "online"
     },
     "BindStaffSkillGroupList": {
-      "document": "This API is used to assign an agent to skill group",
+      "document": "This API is used to bind the agent's skill group.",
       "input": "BindStaffSkillGroupListRequest",
-      "name": "Bind Agent to Skill Group",
+      "name": "Binds the skill group to which the agent belongs",
       "output": "BindStaffSkillGroupListResponse",
+      "status": "online"
+    },
+    "CreateAIAgentCall": {
+      "document": "This API is used to initiate outbound calls using an AI model, limited to owned phone numbers only. Currently, a limited-time free trial of Advanced Agents is available.\n\nBefore initiating a call, please ensure your AI model is compatible with OpenAI, Azure, or Minimax protocols, and visit the model provider's website to obtain relevant authentication information. For detailed feature descriptions, please refer to the documentation [Tencent Cloud Contact Center AI Call Platform](https://intl.cloud.tencent.com/document/product/679/112100?from_cn_redirect=1).",
+      "input": "CreateAIAgentCallRequest",
+      "name": "Create ai intelligent agent session",
+      "output": "CreateAIAgentCallResponse",
       "status": "online"
     },
     "CreateAICall": {
@@ -38,14 +45,14 @@
     "CreateAdminURL": {
       "document": "This API is used to create a management access link.",
       "input": "CreateAdminURLRequest",
-      "name": "Create Management Panel Login",
+      "name": "Creates a management access link",
       "output": "CreateAdminURLResponse",
       "status": "online"
     },
     "CreateAgentCruiseDialingCampaign": {
-      "document": "This document shows how to call API to create an individual auto dialing campaign for agent",
+      "document": "Agent Cruise-style Outbound Call.",
       "input": "CreateAgentCruiseDialingCampaignRequest",
-      "name": "Create Agent Cruise Dialing Campaign",
+      "name": "Create agent cruise-style outbound call task",
       "output": "CreateAgentCruiseDialingCampaignResponse",
       "status": "online"
     },
@@ -73,7 +80,7 @@
     "CreateExtension": {
       "document": "This API is used to create the telephone account.",
       "input": "CreateExtensionRequest",
-      "name": "Creates telephone account",
+      "name": "Creates SIP Phone account",
       "output": "CreateExtensionResponse",
       "status": "online"
     },
@@ -82,6 +89,13 @@
       "input": "CreateIVRSessionRequest",
       "name": "CreateIVRSession",
       "output": "CreateIVRSessionResponse",
+      "status": "online"
+    },
+    "CreateOwnNumberApply": {
+      "document": "Create customer's own number access review",
+      "input": "CreateOwnNumberApplyRequest",
+      "name": "Create customer's own number integration review",
+      "output": "CreateOwnNumberApplyResponse",
       "status": "online"
     },
     "CreatePredictiveDialingCampaign": {
@@ -94,7 +108,7 @@
     "CreateSDKLoginToken": {
       "document": "This API is used to create the SDK log-in token.",
       "input": "CreateSDKLoginTokenRequest",
-      "name": "Creates SDK log-in token",
+      "name": "Creates sdk log-in token",
       "output": "CreateSDKLoginTokenResponse",
       "status": "online"
     },
@@ -108,7 +122,7 @@
     "DeleteExtension": {
       "document": "This API is used to delete telephone accounts.",
       "input": "DeleteExtensionRequest",
-      "name": "Deletes telephone account",
+      "name": "Deletes SIP Phone  account",
       "output": "DeleteExtensionResponse",
       "status": "online"
     },
@@ -126,10 +140,17 @@
       "output": "DeleteStaffResponse",
       "status": "online"
     },
+    "DescribeAICallExtractResult": {
+      "document": "Obtain AI call content extraction result",
+      "input": "DescribeAICallExtractResultRequest",
+      "name": "Query ai call content extraction result",
+      "output": "DescribeAICallExtractResultResponse",
+      "status": "online"
+    },
     "DescribeAgentCruiseDialingCampaign": {
       "document": "Query Agent Cruise-style Outbound Call Task",
       "input": "DescribeAgentCruiseDialingCampaignRequest",
-      "name": "Query Agent Cruise-style Outbound Call Task",
+      "name": "Query agent cruise-style outbound call task",
       "output": "DescribeAgentCruiseDialingCampaignResponse",
       "status": "online"
     },
@@ -143,42 +164,42 @@
     "DescribeAutoCalloutTasks": {
       "document": "Batch Query Automatic Outbound Call Tasks",
       "input": "DescribeAutoCalloutTasksRequest",
-      "name": "Batch Query Automatic Outbound Call Tasks",
+      "name": "Batch query automatic outbound call tasks",
       "output": "DescribeAutoCalloutTasksResponse",
       "status": "online"
     },
     "DescribeCCCBuyInfoList": {
       "document": "This API is used to access the user purchasing information list.",
       "input": "DescribeCCCBuyInfoListRequest",
-      "name": "Accesses user purchasing information list",
+      "name": "Get Subscription Billing List",
       "output": "DescribeCCCBuyInfoListResponse",
       "status": "online"
     },
     "DescribeCallInMetrics": {
       "document": "This API is used to access the inbound real-time data statistical metrics.",
       "input": "DescribeCallInMetricsRequest",
-      "name": "Accesses inbound real-time data statistical metrics",
+      "name": "Get Inbound Real-Time Metrics",
       "output": "DescribeCallInMetricsResponse",
       "status": "online"
     },
     "DescribeExtension": {
       "document": "This API is used to access the telephone information.",
       "input": "DescribeExtensionRequest",
-      "name": "Accesses telephone information",
+      "name": "Get SIP Phone  information",
       "output": "DescribeExtensionResponse",
       "status": "online"
     },
     "DescribeExtensions": {
       "document": "This API is used to query the telephone list information.",
       "input": "DescribeExtensionsRequest",
-      "name": "Queries telephone list information",
+      "name": "Get SIP Phone list Info",
       "output": "DescribeExtensionsResponse",
       "status": "online"
     },
     "DescribeIvrAudioList": {
       "document": "Query IVR Audio File List Information",
       "input": "DescribeIvrAudioListRequest",
-      "name": "Query IVR Audio File List",
+      "name": "Query ivr audio file list",
       "output": "DescribeIvrAudioListResponse",
       "status": "online"
     },
@@ -192,7 +213,7 @@
     "DescribePSTNActiveSessionList": {
       "document": "This API is used to access the current calling session list.",
       "input": "DescribePSTNActiveSessionListRequest",
-      "name": "Accesses the PSTN active session list",
+      "name": "Get PSTN session list",
       "output": "DescribePSTNActiveSessionListResponse",
       "status": "online"
     },
@@ -220,7 +241,7 @@
     "DescribeProtectedTelCdr": {
       "document": "This API is used to access protected phone service records and recordings for both inbound and outbound calls.",
       "input": "DescribeProtectedTelCdrRequest",
-      "name": "Accesses protected phone service records and recordings",
+      "name": "Get Protected Call Records and Recording",
       "output": "DescribeProtectedTelCdrResponse",
       "status": "online"
     },
@@ -241,28 +262,35 @@
     "DescribeStaffStatusMetrics": {
       "document": "This API is used to access the real-time status statistics metrics of the agent.",
       "input": "DescribeStaffStatusMetricsRequest",
-      "name": "Accesses agent real-time status statistics metrics",
+      "name": "Get Agent Real-Time Metrics",
       "output": "DescribeStaffStatusMetricsResponse",
       "status": "online"
     },
     "DescribeTelCallInfo": {
-      "document": "This API is used to access call detail records by application",
+      "document": "This API is used to access telephone consumption statistics by instance.",
       "input": "DescribeTelCallInfoRequest",
-      "name": "Access call detail records by application",
+      "name": "Get Call Consumption statistics by SDKAppID",
       "output": "DescribeTelCallInfoResponse",
       "status": "online"
     },
     "DescribeTelCdr": {
       "document": "This API is used to access phone service records and recordings.",
       "input": "DescribeTelCdrRequest",
-      "name": "Accesses phone service records and recordings",
+      "name": "Get Call Service Records and Recordings",
       "output": "DescribeTelCdrResponse",
+      "status": "online"
+    },
+    "DescribeTelRecordAsr": {
+      "document": "Pull conversation recording for text information",
+      "input": "DescribeTelRecordAsrRequest",
+      "name": "Pulls session recording to text information",
+      "output": "DescribeTelRecordAsrResponse",
       "status": "online"
     },
     "DescribeTelSession": {
       "document": "This API is used to access the PSTN session information.",
       "input": "DescribeTelSessionRequest",
-      "name": "Accesses PSTN session information",
+      "name": "Accesses pstn session information",
       "output": "DescribeTelSessionResponse",
       "status": "online"
     },
@@ -283,14 +311,21 @@
     "ModifyExtension": {
       "document": "This API is used to modify telephone accounts (binding skill group, binding agent account).",
       "input": "ModifyExtensionRequest",
-      "name": "Modifies telephone account (bind skill group, bind agent account)",
+      "name": "Modifies SIP Phone  account (add agent or skillgroup)",
       "output": "ModifyExtensionResponse",
       "status": "online"
     },
+    "ModifyOwnNumberApply": {
+      "document": "Modify customer's own number approval form",
+      "input": "ModifyOwnNumberApplyRequest",
+      "name": "Modify customer's own number approval form",
+      "output": "ModifyOwnNumberApplyResponse",
+      "status": "online"
+    },
     "ModifyStaff": {
-      "document": "This API is used to modify  customer service / agent account.",
+      "document": "This API is used to modify the customer service account.",
       "input": "ModifyStaffRequest",
-      "name": "Modify customer service / agent account",
+      "name": "Modifies customer service account",
       "output": "ModifyStaffResponse",
       "status": "online"
     },
@@ -311,7 +346,7 @@
     "ResetExtensionPassword": {
       "document": "This API is used to reset the telephone register password.",
       "input": "ResetExtensionPasswordRequest",
-      "name": "Resets telephone register cipher",
+      "name": "Resets SIP Phone Password",
       "output": "ResetExtensionPasswordResponse",
       "status": "online"
     },
@@ -360,7 +395,7 @@
     "UploadIvrAudio": {
       "document": "Upload audio files used in IVR, with a daily upload limit of 50 files. (It is recommended to use temporary links stored in Tencent Cloud Cos for the audio file URL in the parameters)",
       "input": "UploadIvrAudioRequest",
-      "name": "Upload IVR prompt",
+      "name": "Upload ivr audio files",
       "output": "UploadIvrAudioResponse",
       "status": "online"
     }
@@ -371,12 +406,155 @@
     "serviceShortName": "ccc"
   },
   "objects": {
-    "AITransferItem": {
-      "document": "",
+    "AICallExtractConfigElement": {
+      "document": "AI call extraction configuration item.",
       "members": [
         {
           "disabled": false,
-          "document": "",
+          "document": "Configuration item type, including.\nText.\nSelector option.\nBoolean value.\nNumber.",
+          "example": "Number",
+          "member": "string",
+          "name": "InfoType",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Configuration item name, duplicat.",
+          "example": "姓名",
+          "member": "string",
+          "name": "InfoName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Specific content of the configuration item.",
+          "example": "客户姓名",
+          "member": "string",
+          "name": "InfoContent",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Example of extracted content from the configuration item.",
+          "example": "[\"张三\"]",
+          "member": "string",
+          "name": "Examples",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "When infotype is selector, this field needs to be configured.",
+          "example": "[\"动力\",\"内饰\",\"价格\"]",
+          "member": "string",
+          "name": "Choices",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "usage": "in"
+    },
+    "AICallExtractResultElement": {
+      "document": "AI call extraction result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Type of extracted information.\nText.\nSelector options.\nBoolean value.\nNumber.",
+          "example": "Number",
+          "member": "string",
+          "name": "InfoType",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name of the extracted information.",
+          "example": "驾龄",
+          "member": "string",
+          "name": "InfoName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specific description of the extracted information.",
+          "example": "客户具体驾龄是多少年",
+          "member": "string",
+          "name": "InfoContent",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specific result of the extracted information.",
+          "example": "{\"Boolean\":true}",
+          "member": "AICallExtractResultInfo",
+          "name": "Result",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AICallExtractResultInfo": {
+      "document": "Specific information of AI call result.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The extracted type is text.",
+          "example": "xx省xx市xx区xx街道",
+          "member": "string",
+          "name": "Text",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The extracted type is option.",
+          "example": "[\"动力\",\"价格\"]",
+          "member": "string",
+          "name": "Chosen",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The extracted type is a boolean value.",
+          "example": "true",
+          "member": "bool",
+          "name": "Boolean",
+          "output_required": false,
+          "type": "bool",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The extracted type is a number.",
+          "example": "7.0",
+          "member": "float",
+          "name": "Number",
+          "output_required": false,
+          "type": "float",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
+    "AITransferItem": {
+      "document": "AI to human configuration item.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Name of the function calling for transfer to human.",
           "example": "transfer_to_human",
           "member": "string",
           "name": "TransferFunctionName",
@@ -385,7 +563,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Takes effect when transferfunctionenable is true; the description of transfer_to_human function calling defaults to \"transfer to human when the user has to transfer to human (like says transfer to human) or you are instructed to do so.\".",
           "example": "无",
           "member": "string",
           "name": "TransferFunctionDesc",
@@ -394,7 +572,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Skill group id for transferring to human agent.",
           "example": "1",
           "member": "uint64",
           "name": "TransferSkillGroupId",
@@ -409,7 +587,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -418,7 +596,7 @@
         },
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "<Task id>.",
           "example": "2569",
           "member": "uint64",
           "name": "CampaignId",
@@ -445,7 +623,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -454,7 +632,7 @@
         },
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "Task id.",
           "example": "2569",
           "member": "int64",
           "name": "CampaignId",
@@ -476,12 +654,68 @@
       ],
       "type": "object"
     },
+    "AsrData": {
+      "document": "Speech-to-text information",
+      "members": [
+        {
+          "disabled": false,
+          "document": "User side.",
+          "example": "xxx@xxx.com",
+          "member": "string",
+          "name": "User",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Message content.",
+          "example": "hello world",
+          "member": "string",
+          "name": "Message",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": true,
+          "document": "Timestamp.",
+          "example": "1644488608",
+          "member": "int64",
+          "name": "Timestamp",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sentence start time, unix millisecond timestamp.",
+          "example": "1729697242236",
+          "member": "int64",
+          "name": "Start",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sentence end time, unix millisecond timestamp.",
+          "example": "1729697245426",
+          "member": "int64",
+          "name": "End",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "out"
+    },
     "AudioFileInfo": {
       "document": "Audio file review information",
       "members": [
         {
           "disabled": false,
-          "document": "File ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "File id.",
           "example": "1",
           "member": "uint64",
           "name": "FileId",
@@ -491,7 +725,7 @@
         },
         {
           "disabled": false,
-          "document": "File alias\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "File alias.",
           "example": "欢迎",
           "member": "string",
           "name": "CustomFileName",
@@ -501,7 +735,7 @@
         },
         {
           "disabled": false,
-          "document": "Filename\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Filename.",
           "example": "xxx.mp3",
           "member": "string",
           "name": "AudioFileName",
@@ -511,7 +745,7 @@
         },
         {
           "disabled": false,
-          "document": "Review status, 0-Not reviewed, 1-Approved, 2-Rejected\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Review status: 0 - unreviewed, 1 - approved, 2 - rejected.",
           "example": "1",
           "member": "int64",
           "name": "Status",
@@ -537,7 +771,7 @@
         },
         {
           "disabled": false,
-          "document": "Call status 0 - Initial, 1 - Answered, 2 - Unanswered, 3 - Calling, 4 - Pending Retry.",
+          "document": "Call status 0 - initial, 1 - answered, 2 - unanswered, 3 - calling, 4 - pending retry.",
           "example": "1",
           "member": "uint64",
           "name": "State",
@@ -547,7 +781,7 @@
         },
         {
           "disabled": false,
-          "document": "List of session IDs.",
+          "document": "List of session ids.",
           "example": "[\"aaaa-xxxx\"]",
           "member": "string",
           "name": "Sessions",
@@ -563,7 +797,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task Name",
+          "document": "Task name.",
           "example": "任务1",
           "member": "string",
           "name": "Name",
@@ -573,7 +807,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of calls.",
+          "document": "Number of called parties.",
           "example": "5",
           "member": "uint64",
           "name": "CalleeCount",
@@ -603,7 +837,7 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "End timestamp\n.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "null",
           "member": "int64",
           "name": "NotAfter",
@@ -623,7 +857,7 @@
         },
         {
           "disabled": false,
-          "document": "Task status:\n0 Initial: Task created, calling not started\n1 Running\n2  Completed: All calls in the task are completed\n3 Ending: The task is due, but some calls are still not finished\n4 Ended: Task terminated due to expiration",
+          "document": "Task status:.\n0 initial: task creation, call not started.\n1 running.\n2 completed: all calls in the task are completed.\n3 ending: the task has expired, but there are still some calls not ended.\n4 ended: task terminated due to expiration.",
           "example": "1",
           "member": "uint64",
           "name": "State",
@@ -633,7 +867,7 @@
         },
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "<Task id>.",
           "example": "341431",
           "member": "uint64",
           "name": "TaskId",
@@ -649,7 +883,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -667,7 +901,7 @@
         },
         {
           "disabled": false,
-          "document": "Skill group ID list to be bound.",
+          "document": "Skill group id list to be bound.",
           "example": "[1,2,3]",
           "member": "uint64",
           "name": "SkillGroupIds",
@@ -694,7 +928,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -712,7 +946,7 @@
         },
         {
           "disabled": true,
-          "document": "Bound skill group list",
+          "document": "Bound skill group list.",
           "example": "[1,2,3,4,5,6]",
           "member": "int64",
           "name": "SkillGroupList",
@@ -748,7 +982,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Number of IVR residency.",
+          "document": "Number of ivr residency.",
           "example": "0",
           "member": "int64",
           "name": "IvrCount",
@@ -778,7 +1012,7 @@
         },
         {
           "disabled": false,
-          "document": "Number in connection.",
+          "document": "Number of connections.",
           "example": "0",
           "member": "int64",
           "name": "AcceptCount",
@@ -874,7 +1108,7 @@
         },
         {
           "disabled": false,
-          "document": "Line-related metrics.",
+          "document": "Line-Related metrics.",
           "example": "{\"IvrCount\":0,\"QueueCount\":0,\"RingCount\":0,\"AcceptCount\":0,\"TransferOuterCount\":0,\"MaxQueueDuration\":0,\"AvgQueueDuration\":0,\"MaxRingDuration\":0,\"AvgRingDuration\":0,\"MaxAcceptDuration\":0,\"AvgAcceptDuration\":0}",
           "member": "CallInMetrics",
           "name": "Metrics",
@@ -900,7 +1134,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Skill group ID.",
+          "document": "Skill group id.",
           "example": "1",
           "member": "int64",
           "name": "SkillGroupId",
@@ -945,7 +1179,7 @@
         },
         {
           "disabled": false,
-          "document": "Associate data.",
+          "document": "Accompanying data.",
           "example": "foobar",
           "member": "string",
           "name": "UUI",
@@ -954,7 +1188,7 @@
         },
         {
           "disabled": false,
-          "document": "Parameter",
+          "document": "Parameter.",
           "example": "{\"foo\":\"bar\"}",
           "member": "Variable",
           "name": "Variables",
@@ -963,6 +1197,79 @@
         }
       ],
       "usage": "in"
+    },
+    "CreateAIAgentCallRequest": {
+      "document": "CreateAIAgentCall request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "AI agent id.",
+          "example": "1",
+          "member": "uint64",
+          "name": "AIAgentId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Callee number.",
+          "example": "008613012345678",
+          "member": "string",
+          "name": "Callee",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Caller number list",
+          "example": "[\"008601012341234\", \"008601012341235\"]",
+          "member": "string",
+          "name": "Callers",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Prompt variable.",
+          "example": "[{\"Key\":\"foo\",\"Value\":\"bar\"}]",
+          "member": "Variable",
+          "name": "PromptVariables",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateAIAgentCallResponse": {
+      "document": "CreateAIAgentCall response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Newly created session id.",
+          "example": "adcf61b8-dbb9-4c20-87bf-c0744c04bade",
+          "member": "string",
+          "name": "SessionId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
     },
     "CreateAICallRequest": {
       "document": "CreateAICall request structure.",
@@ -996,7 +1303,7 @@
         },
         {
           "disabled": false,
-          "document": "Model interface protocol types, currently compatible with three protocol types:\n\n- OpenAI protocol (including GPT, Hunyuan, DeepSeek, etc.):\"openai\"\n- Azure protocol:\"azure\"\n- Minimax protocol:\"minimax\"",
+          "document": "Model interface protocol types, currently compatible with three protocol types:\n\n- OpenAI protocol (including GPT, DeepSeek, etc.):\"openai\"\n- Azure protocol:\"azure\"\n- Minimax protocol:\"minimax\"",
           "example": "openai",
           "member": "string",
           "name": "LLMType",
@@ -1005,7 +1312,7 @@
         },
         {
           "disabled": false,
-          "document": "Model name, such as\n\n- OpenAI protocol\n\"gpt-4o-mini\",\"gpt-4o\",\"hunyuan-standard\", \"hunyuan-turbo\",\"deepseek-chat\";\n\n- Azure protocol\n\"gpt-4o-mini\", \"gpt-4o\";\n\n- Minimax protocol\n\"deepseek-chat\".",
+          "document": "Model name, such as\n\n- OpenAI protocol\n\"gpt-4o-mini\",\"gpt-4o\",\"deepseek-chat\";\n\n- Azure protocol\n\"gpt-4o-mini\", \"gpt-4o\";\n\n- Minimax protocol\n\"deepseek-chat\".",
           "example": "gpt-4o-mini",
           "member": "string",
           "name": "Model",
@@ -1023,7 +1330,7 @@
         },
         {
           "disabled": false,
-          "document": "Model interface address\n\n- OpenAI protocol\nGPT:\"https://api.openai.com/v1/\"\nHunyuan:\"https://api.hunyuan.cloud.tencent.com/v1\"\nDeepseek:\"https://api.deepseek.com/v1\"\n\n- Azure protocol\n \"https://{your-resource-name}.openai.azure.com?api-version={api-version}\"\n\n- Minimax protocol\n\"https://api.minimax.chat/v1\"",
+          "document": "Model interface address\n\n- OpenAI protocol\nGPT:\"https://api.openai.com/v1/\"\nDeepseek:\"https://api.deepseek.com/v1\"\n\n- Azure protocol\n \"https://{your-resource-name}.openai.azure.com?api-version={api-version}\"\n\n- Minimax protocol\n\"https://api.minimax.chat/v1\"",
           "example": "https://api.openai.com/v1/",
           "member": "string",
           "name": "APIUrl",
@@ -1041,7 +1348,7 @@
         },
         {
           "disabled": false,
-          "document": "List of calling numbers.",
+          "document": "Caller number list",
           "example": "[008613912341234, 008613912341235]",
           "member": "string",
           "name": "Callers",
@@ -1068,6 +1375,15 @@
         },
         {
           "disabled": false,
+          "document": "0: interruptible by default, 1: high priority and not interruptible.",
+          "example": "0",
+          "member": "int64",
+          "name": "WelcomeMessagePriority",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
           "document": "Maximum Waiting Duration (milliseconds), default is 60 seconds, if the user does not speak within this time, the call is automatically terminated",
           "example": "60000",
           "member": "int64",
@@ -1086,7 +1402,7 @@
         },
         {
           "disabled": false,
-          "document": "Interrupt AI speech mode, default is 0, 0 indicates the server interrupts automatically, 1 indicates the server does not interrupt, interruption signal sent by the client side.",
+          "document": "Interrupt ai speaking mode. default is 0. 0 indicates automatic interruption and 1 indicates no interruption.",
           "example": "1",
           "member": "int64",
           "name": "InterruptMode",
@@ -1122,7 +1438,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Whether the model supports (or enables) transfer_to_human function calling.",
           "example": "true",
           "member": "bool",
           "name": "TransferFunctionEnable",
@@ -1131,7 +1447,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Takes effect when transferfunctionenable is true: transfer to human configuration.",
           "example": "无",
           "member": "AITransferItem",
           "name": "TransferItems",
@@ -1158,7 +1474,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Maximum number of times to trigger ai prompt sound, unlimited by default.",
           "example": "1",
           "member": "uint64",
           "name": "NotifyMaxCount",
@@ -1167,7 +1483,7 @@
         },
         {
           "disabled": false,
-          "document": "<p>And VoiceType field needs to select one, here is to use your own custom TTS, VoiceType is some built-in sound qualities</p>\n<ul>\n<li>Tencent TTS<br>\nFor configuration, please refer to <a href=\"https://intl.cloud.tencent.com/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823\" target=\"_blank\">Tencent Cloud TTS documentation link</a></li>\n</ul>\n<div><div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n    &quot;TTSType&quot;: &quot;tencent&quot;, // String TTS type, currently supports &quot;tencent&quot; and \"minixmax\", other vendors support in progress\n    &quot;AppId&quot;: &quot;Your application ID&quot;, // String required\n    &quot;SecretId&quot;: &quot;Your Secret ID&quot;, // String Required\n    &quot;SecretKey&quot;:  &quot;Your Secret Key&quot;, // String Required\n    &quot;VoiceType&quot;: 101001, // Integer Required, Sound quality ID, includes standard and premium sound quality. Premium sound quality is more realistic and differently priced than standard sound quality. See TTS billing overview for details. For the full list of sound quality IDs, see the TTS sound quality list.\n    \"Speed\": 1.25, // Integer Optional, speech speed, range: [-2,6], corresponding to different speeds: -2: represents 0.6x -1: represents 0.8x 0: represents 1.0x (default) 1: represents 1.2x 2: represents 1.5x 6: represents 2.5x For more precise speed control, you can retain two decimal places, such as 0.5/1.25/2.81, etc. For parameter value to actual speed conversion, refer to Speed Conversion\n    &quot;Volume&quot;: 5, // Integer Optional, Volume level, range: [0,10], corresponding to 11 levels of volume, default is 0, which represents normal volume.\n    &quot;PrimaryLanguage&quot;: 1, // Integer Optional, Primary language 1- Chinese (default) 2- English 3- Japanese\n    &quot;FastVoiceType&quot;: &quot;xxxx&quot;   // Optional parameter, Fast VRS parameter\n  }\n</code></pre>\n\n  </div></div><ul>\n<li>Minimax TTS<br>\nFor configuration, please refer to the <a href=\"https://platform.minimaxi.com/document/T2A%20V2?key=66719005a427f0c8a5701643\" target=\"_blank\">Minimax TTS documentation link</a>. Note that Minimax TTS has frequency limits, and exceeding the limit may cause response delays, <a href=\"https://platform.minimaxi.com/document/Rate%20limits?key=66b19417290299a26b234572\" target=\"_blank\">Minimax TTS frequency limit related documentation link</a>.</li>\n</ul>\n<div><div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n        &quot;TTSType&quot;: &quot;minimax&quot;,  // String TTS type,\n        &quot;Model&quot;: &quot;speech-01-turbo&quot;,\n        &quot;APIUrl&quot;: &quot;https://api.minimax.chat/v1/t2a_v2&quot;,\n        &quot;APIKey&quot;: &quot;eyxxxx&quot;,\n        &quot;GroupId&quot;: &quot;181000000000000&quot;,\n        &quot;VoiceType&quot;:&quot;female-tianmei-yujie&quot;,\n        &quot;Speed&quot;: 1.2\n}\n</code></pre>\n</div></div><ul>\n<li>Volcano TTS</li>\n</ul>\n<p>For type of sound quality configuration, refer to the<a href=\"https://www.volcengine.com/docs/6561/162929\" target=\"_blank\">Volcano TTS documentation</a><br>\nTTS Sound Quality List - Voice Technology - Volcano Engine<br>\nLarge Model TTS Sound Quality List - Voice Technology - Volcano Engine</p>\n<div><div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n    &quot;TTSType&quot;: &quot;volcengine&quot;,  // Required: String TTS type\n    &quot;AppId&quot; : &quot;xxxxxxxx&quot;,   // Required: String Volcano Engine assigned AppId\n    &quot;Token&quot; : &quot;TY9d4sQXHxxxxxxx&quot;, // Required: String type Volcano Engine access token\n    &quot;Speed&quot; : 1.0,            // Optional parameter: Playback speed, default is 1.0\n    &quot;Volume&quot;: 1.0,            // Optional parameter: Volume, default is 1.0\n    &quot;Cluster&quot; : &quot;volcano_tts&quot;, // Optional parameter: Business cluster, default is volcano_tts\n    &quot;VoiceType&quot; : &quot;zh_male_aojiaobazong_moon_bigtts&quot;   // Sound quality type, default is the sound quality of the large model TTS. If using normal TTS, fill in the corresponding sound quality type. Incorrect sound quality type will result in no sound.\n}\n</code></pre>\n\n</div></div><ul>\n<li>Azure TTS<br>\nFor configuration, refer to the<a href=\"https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice\" target=\"_blank\">Azure TTS documentation</a></li>\n</ul>\n<div><div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n    &quot;TTSType&quot;: &quot;azure&quot;, // Required: String TTS type\n    &quot;SubscriptionKey&quot;: &quot;xxxxxxxx&quot;, // Required: String subscription key\n    &quot;Region&quot;: &quot;chinanorth3&quot;,  // Required: String subscription region\n    &quot;VoiceName&quot;: &quot;zh-CN-XiaoxiaoNeural&quot;, // Required: String Timbre Name required\n    &quot;Language&quot;: &quot;zh-CN&quot;, // Required: String Language for synthesis\n    &quot;Rate&quot;: 1 // Optional: float Playback Speed 0.5-2 default is 1\n}\n</code></pre>\n\n</div></div><ul>\n<li>Custom</li>\n</ul>\n<p>TTS<br>\nPlease refer to the specific protocol standards in the <a href=\"https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw\" target=\"_blank\">Tencent documentation</a></p>\n<div><div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n  &quot;TTSType&quot;: &quot;custom&quot;, // Required String\n  &quot;APIKey&quot;: &quot;ApiKey&quot;, // Required String for Authentication\n  &quot;APIUrl&quot;: &quot;http://0.0.0.0:8080/stream-audio&quot; // Required String, TTS API URL\n  &quot;AudioFormat&quot;: &quot;wav&quot;, // String, optional, expected audio format, such as mp3, ogg_opus, pcm, wav, default is wav, currently only pcm and wav are supported,\n  &quot;SampleRate&quot;: 16000,  // Integer, optional, audio sample rate, default is 16000 (16k), recommended value is 16000\n  &quot;AudioChannel&quot;: 1,    // Integer, optional, number of audio channels, values: 1 or 2, default is 1\n}\n</code></pre>\n\n</div></div>",
+          "document": "<p>And VoiceType field needs to select one, here is to use your own custom TTS, VoiceType is some built-in sound qualities</p>\n<ul>\n<li>Tencent TTS<br>\nFor configuration, please refer to <a href=\"https://intl.cloud.tencent.com/document/product/1073/92668?from_cn_redirect=1#55924b56-1a73-4663-a7a1-a8dd82d6e823\" target=\"_blank\">Tencent Cloud TTS documentation link</a></li>\n</ul>\n<div><div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n    &quot;TTSType&quot;: &quot;tencent&quot;, // String TTS type, currently supports &quot;tencent&quot; and \"minixmax\", other vendors support in progress\n    &quot;AppId&quot;: &quot;Your application ID&quot;, // String required\n    &quot;SecretId&quot;: &quot;Your Secret ID&quot;, // String Required\n    &quot;SecretKey&quot;:  &quot;Your Secret Key&quot;, // String Required\n    &quot;VoiceType&quot;: 101001, // Integer Required, Sound quality ID, includes standard and premium sound quality. Premium sound quality is more realistic and differently priced than standard sound quality. See TTS billing overview for details. For the full list of sound quality IDs, see the TTS sound quality list.\n    \"Speed\": 1.25, // Integer Optional, speech speed, range: [-2,6], corresponding to different speeds: -2: represents 0.6x -1: represents 0.8x 0: represents 1.0x (default) 1: represents 1.2x 2: represents 1.5x 6: represents 2.5x For more precise speed control, you can retain two decimal places, such as 0.5/1.25/2.81, etc. For parameter value to actual speed conversion, refer to Speed Conversion\n    &quot;Volume&quot;: 5, // Integer Optional, Volume level, range: [0,10], corresponding to 11 levels of volume, default is 0, which represents normal volume.\n    &quot;PrimaryLanguage&quot;: 1, // Integer Optional, Primary language 1- Chinese (default) 2- English 3- Japanese\n    &quot;FastVoiceType&quot;: &quot;xxxx&quot;   // Optional parameter, Fast VRS parameter\n  }\n</code></pre>\n\n  </div></div><ul>\n\n</div></div><ul>\n<li>Azure TTS<br>\nFor configuration, refer to the<a href=\"https://docs.azure.cn/zh-cn/ai-services/speech-service/speech-synthesis-markup-voice\" target=\"_blank\">Azure TTS documentation</a></li>\n</ul>\n<div><div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n    &quot;TTSType&quot;: &quot;azure&quot;, // Required: String TTS type\n    &quot;SubscriptionKey&quot;: &quot;xxxxxxxx&quot;, // Required: String subscription key\n    &quot;Region&quot;: &quot;chinanorth3&quot;,  // Required: String subscription region\n    &quot;VoiceName&quot;: &quot;zh-CN-XiaoxiaoNeural&quot;, // Required: String Timbre Name required\n    &quot;Language&quot;: &quot;zh-CN&quot;, // Required: String Language for synthesis\n    &quot;Rate&quot;: 1 // Optional: float Playback Speed 0.5-2 default is 1\n}\n</code></pre>\n\n</div></div><ul>\n<li>Custom</li>\n</ul>\n<p>TTS<br>\nPlease refer to the specific protocol standards in the <a href=\"https://doc.weixin.qq.com/doc/w3_ANQAiAbdAFwHILbJBmtSqSbV1WZ3L?scode=AJEAIQdfAAo5a1xajYANQAiAbdAFw\" target=\"_blank\">Tencent documentation</a></p>\n<div><div class=\"v-md-pre-wrapper copy-code-mode v-md-pre-wrapper- extra-class\"><pre class=\"v-md-prism-\"><code>{\n  &quot;TTSType&quot;: &quot;custom&quot;, // Required String\n  &quot;APIKey&quot;: &quot;ApiKey&quot;, // Required String for Authentication\n  &quot;APIUrl&quot;: &quot;http://0.0.0.0:8080/stream-audio&quot; // Required String, TTS API URL\n  &quot;AudioFormat&quot;: &quot;wav&quot;, // String, optional, expected audio format, such as mp3, ogg_opus, pcm, wav, default is wav, currently only pcm and wav are supported,\n  &quot;SampleRate&quot;: 16000,  // Integer, optional, audio sample rate, default is 16000 (16k), recommended value is 16000\n  &quot;AudioChannel&quot;: 1,    // Integer, optional, number of audio channels, values: 1 or 2, default is 1\n}\n</code></pre>\n\n</div></div>",
           "example": "{ \"TTSType\": \"azure\", \"SubscriptionKey\": \"xx\", \"Region\": \"chinanorth3\", \"VoiceName\": \"zh-CN-\", \"Language\": \"zh-CN\", \"Rate\": 1 }",
           "member": "string",
           "name": "CustomTTSConfig",
@@ -1176,10 +1492,28 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Prompt word variable.",
           "example": "[{\"Key\":\"foo\",\"Value\":\"bar\"}]",
           "member": "Variable",
           "name": "PromptVariables",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Automatic speech recognition vad time ranges from 240 to 2000, with a default of 1000, measured in milliseconds. smaller values will make automatic speech recognition segment faster.",
+          "example": "500",
+          "member": "int64",
+          "name": "VadSilenceTime",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Call content extraction configuration.",
+          "example": "[{\"InfoType\": \"Boolean\", \"InfoName\": \"兴趣\", \"InfoContent\": \"用户是否对产品感兴趣\"}]",
+          "member": "AICallExtractConfigElement",
+          "name": "ExtractConfig",
           "required": false,
           "type": "list"
         }
@@ -1213,7 +1547,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -1237,7 +1571,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Log-in link.",
+          "document": "Log-In link.",
           "example": "https://tccc.qcloud.com/saas-manage/#/1400000000/home?token=6bb56a09-2787-40bc-80c5-dc6dab783eff",
           "member": "string",
           "name": "URL",
@@ -1259,7 +1593,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -1268,7 +1602,7 @@
         },
         {
           "disabled": false,
-          "document": "Task Name",
+          "document": "Task name.",
           "example": "新能源SUV推荐",
           "member": "string",
           "name": "Name",
@@ -1277,7 +1611,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent Account",
+          "document": "Agent account.",
           "example": "foo@tencent.com",
           "member": "string",
           "name": "Agent",
@@ -1286,7 +1620,7 @@
         },
         {
           "disabled": false,
-          "document": "Single-round Concurrent Call Volume 1-20",
+          "document": "Single-Round concurrent call volume 1-20.",
           "example": "3",
           "member": "int64",
           "name": "ConcurrencyNumber",
@@ -1295,7 +1629,7 @@
         },
         {
           "disabled": false,
-          "document": "Task start time. Unix timestamp. The task will automatically start after this time.",
+          "document": "Task start time. unix timestamp. the task will automatically start after this time.",
           "example": "1708483433",
           "member": "int64",
           "name": "StartTime",
@@ -1304,7 +1638,7 @@
         },
         {
           "disabled": false,
-          "document": "Task termination time. Unix timestamp. The task will automatically terminate after this time.",
+          "document": "Task termination time. unix timestamp. the task will automatically terminate after this time.",
           "example": "1708485433",
           "member": "int64",
           "name": "EndTime",
@@ -1313,7 +1647,7 @@
         },
         {
           "disabled": false,
-          "document": "Called list supporting E.164 or number formats without country code.",
+          "document": "Called list supporting e.164 or number formats without country code.",
           "example": "+8613012345678",
           "member": "string",
           "name": "Callees",
@@ -1340,7 +1674,7 @@
         },
         {
           "disabled": false,
-          "document": "Caller Custom Data, Maximum Length 1024",
+          "document": "Caller custom data, maximum length 1024.",
           "example": "foobar",
           "member": "string",
           "name": "UUI",
@@ -1355,7 +1689,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Generated task ID.",
+          "document": "Generated task id.",
           "example": "2569",
           "member": "int64",
           "name": "CampaignId",
@@ -1377,7 +1711,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -1386,7 +1720,7 @@
         },
         {
           "disabled": false,
-          "document": "Task starting timestamp. Unix second-level timestamp.",
+          "document": "Task starting timestamp. unix second-level timestamp.",
           "example": "1642500621",
           "member": "int64",
           "name": "NotBefore",
@@ -1431,7 +1765,7 @@
         },
         {
           "disabled": false,
-          "document": "Task description.",
+          "document": "<Task description>.",
           "example": "任务描述1",
           "member": "string",
           "name": "Description",
@@ -1440,7 +1774,7 @@
         },
         {
           "disabled": false,
-          "document": "Task stop timestamp. Unix second-level timestamp.",
+          "document": "Task stop timestamp. unix second-level timestamp.",
           "example": "1642500622",
           "member": "int64",
           "name": "NotAfter",
@@ -1449,7 +1783,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum attempts, 1-3 times",
+          "document": "Maximum attempts, 1-3 times.",
           "example": "1",
           "member": "uint64",
           "name": "Tries",
@@ -1491,7 +1825,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "Task id.",
           "example": "2",
           "member": "uint64",
           "name": "TaskId",
@@ -1513,7 +1847,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required).",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -1531,7 +1865,7 @@
         },
         {
           "disabled": false,
-          "document": "Skill group type 0-Cell phone, 1-Online, 3-Audio, 4-Video.",
+          "document": "Skill group type 0-cell phone, 1-online, 3-audio, 4-video.",
           "example": "0",
           "member": "int64",
           "name": "SkillGroupType",
@@ -1540,7 +1874,7 @@
         },
         {
           "disabled": false,
-          "document": "The maximum number of people received by the skill group (the maximum number of people that one seat in this skill group can receive) is set to 1 by default. 1. If the skill group type is online, the maximum could be set to one and above.\n2. If the skill group type is phone, audio, or video, then the maximum must be 1",
+          "document": "The maximum number of people received by the skill group (the maximum number of people that one agent in this skill group can receive) is set to 1 by default. if the skill group type is online, the maximum can be set to one or more.\n2. if the skill group type is phone, audio, or video, then the reception limit must be 1.",
           "example": "1",
           "member": "uint64",
           "name": "MaxConcurrency",
@@ -1555,7 +1889,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Skill group ID.",
+          "document": "Skill group id.",
           "example": "10",
           "member": "int64",
           "name": "SkillGroupId",
@@ -1577,7 +1911,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID",
+          "document": "Application id.",
           "example": "14000000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -1586,7 +1920,7 @@
         },
         {
           "disabled": false,
-          "document": "Customer Service User ID usually refers to the customer service email.",
+          "document": "Customer service user id usually refers to the customer service email.",
           "example": "foo@tencent.com",
           "member": "string",
           "name": "UserId",
@@ -1604,7 +1938,7 @@
         },
         {
           "disabled": false,
-          "document": "Caller number (obsolete one and use Callers) must be preceded by 0086.",
+          "document": "Caller number (obsolete one and use callers) must be preceded by 0086.",
           "example": "008610086",
           "member": "string",
           "name": "Caller",
@@ -1613,7 +1947,7 @@
         },
         {
           "disabled": false,
-          "document": "Designated caller number list. If the prior number fails, it will automatically switch to the next number that must be preceded by 0086.",
+          "document": "Designated caller number list. if the prior number fails, it will automatically switch to the next number that must be preceded by 0086.",
           "example": "[\"0086075512345678\",\"0086075512345679\"]",
           "member": "string",
           "name": "Callers",
@@ -1655,7 +1989,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Newly created session ID.",
+          "document": "Newly created session id.",
           "example": "adcf61b8-dbb9-4c20-87bf-c0744c04bade",
           "member": "string",
           "name": "SessionId",
@@ -1677,7 +2011,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "TCCC instance application ID.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -1686,7 +2020,7 @@
         },
         {
           "disabled": false,
-          "document": "Extension",
+          "document": "Extension.",
           "example": "1001",
           "member": "string",
           "name": "ExtensionId",
@@ -1740,7 +2074,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -1758,7 +2092,7 @@
         },
         {
           "disabled": false,
-          "document": "Specified IVR Id. Currently, it supports inbound and automatic outbound types",
+          "document": "Specified ivr id. currently, it supports inbound and automatic outbound types.",
           "example": "4600",
           "member": "int64",
           "name": "IVRId",
@@ -1776,7 +2110,7 @@
         },
         {
           "disabled": false,
-          "document": "Custom variable",
+          "document": "Custom variable.",
           "example": "无",
           "member": "Variable",
           "name": "Variables",
@@ -1785,7 +2119,7 @@
         },
         {
           "disabled": false,
-          "document": "User Data",
+          "document": "User data.",
           "example": "foobar",
           "member": "string",
           "name": "UUI",
@@ -1800,7 +2134,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Newly created session ID.",
+          "document": "Newly created session id.",
           "example": "adcf61b8-dbb9-4c20-87bf-c0744c04bade",
           "member": "string",
           "name": "SessionId",
@@ -1817,12 +2151,76 @@
       ],
       "type": "object"
     },
+    "CreateOwnNumberApplyRequest": {
+      "document": "CreateOwnNumberApply request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "SIP connection id.",
+          "example": "1",
+          "member": "int64",
+          "name": "SipTrunkId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Circuit-Related parameters.",
+          "example": "无",
+          "member": "OwnNumberApplyDetailItem",
+          "name": "DetailList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Prefix for sending numbers.",
+          "example": "0",
+          "member": "string",
+          "name": "Prefix",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateOwnNumberApplyResponse": {
+      "document": "CreateOwnNumberApply response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Approval id.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ApplyId",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreatePredictiveDialingCampaignRequest": {
       "document": "CreatePredictiveDialingCampaign request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -1831,7 +2229,7 @@
         },
         {
           "disabled": false,
-          "document": "Task Name",
+          "document": "<Task name>.",
           "example": "新能源SUV推荐",
           "member": "string",
           "name": "Name",
@@ -1840,7 +2238,7 @@
         },
         {
           "disabled": false,
-          "document": "Called list supporting E.164 or number formats without country code.",
+          "document": "Called list supporting e.164 or number formats without country code.",
           "example": "+8613012345678",
           "member": "string",
           "name": "Callees",
@@ -1903,7 +2301,7 @@
         },
         {
           "disabled": false,
-          "document": "Task start time. Unix timestamp. The task will automatically start after this time.",
+          "document": "Task start time. unix timestamp. the task will automatically start after this time.",
           "example": "1708483433",
           "member": "int64",
           "name": "StartTime",
@@ -1912,7 +2310,7 @@
         },
         {
           "disabled": false,
-          "document": "Task termination time. Unix timestamp. The task will automatically terminate after this time.",
+          "document": "Task termination time. unix timestamp. the task will automatically terminate after this time.",
           "example": "1708485433",
           "member": "int64",
           "name": "EndTime",
@@ -1921,7 +2319,7 @@
         },
         {
           "disabled": false,
-          "document": "Specified IVR ID.",
+          "document": "Specified ivr id.",
           "example": "4600",
           "member": "int64",
           "name": "IVRId",
@@ -1936,6 +2334,33 @@
           "name": "RetryTimes",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom variable.",
+          "example": "[{\"Key\":\"foo\",\"Value\":\"bar\"}]",
+          "member": "Variable",
+          "name": "Variables",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "UUI",
+          "example": "foobar",
+          "member": "string",
+          "name": "UUI",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Property of the called.",
+          "example": "[{\"Callee\":\"13012345678\",\"UUI\":\"foobar\",\"Variables\":[{\"Key\":\"foo\":\"Value\":\"bar\"}]}]",
+          "member": "CalleeAttribute",
+          "name": "CalleeAttributes",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -1945,7 +2370,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Generated task ID.",
+          "document": "Generated task id.",
           "example": "2569",
           "member": "int64",
           "name": "CampaignId",
@@ -1967,7 +2392,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -1985,7 +2410,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether the generated token is for one-time verification?",
+          "document": "Whether the generated token is for one-time verification?.",
           "example": "false",
           "member": "bool",
           "name": "OnlyOnce",
@@ -2000,7 +2425,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "SDK log-in Token.",
+          "document": "SDK log-in token.",
           "example": "some_token",
           "member": "string",
           "name": "Token",
@@ -2010,7 +2435,7 @@
         },
         {
           "disabled": false,
-          "document": "Expiry timestamp. Unix timestamp.",
+          "document": "Expiry timestamp. unix timestamp.",
           "example": "1601371974",
           "member": "int64",
           "name": "ExpiredTime",
@@ -2020,7 +2445,7 @@
         },
         {
           "disabled": false,
-          "document": "The path in which the SDK is loaded will change with its release.",
+          "document": "The path in which the sdk is loaded will change with its release.",
           "example": "https://tccc/sdk.js",
           "member": "string",
           "name": "SdkURL",
@@ -2042,7 +2467,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -2060,7 +2485,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to send a password mail or not (the default is true)",
+          "document": "Whether to send a password mail or not (the default is true).",
           "example": "false",
           "member": "bool",
           "name": "SendPassword",
@@ -2075,7 +2500,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Error agent list and error information.\nNote: This field may return null, indicating that no valid value could be obtained.",
+          "document": "Error agent list and error information.",
           "example": "[{ \t\"StaffEmail\": \"foobar@example.com\" }]",
           "member": "ErrStaffItem",
           "name": "ErrorStaffList",
@@ -2097,7 +2522,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "TCCC instance application ID.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -2106,7 +2531,7 @@
         },
         {
           "disabled": false,
-          "document": "Extension",
+          "document": "Extension.",
           "example": "1001",
           "member": "string",
           "name": "ExtensionId",
@@ -2133,7 +2558,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -2142,7 +2567,7 @@
         },
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "<Task id>.",
           "example": "2569",
           "member": "int64",
           "name": "CampaignId",
@@ -2169,7 +2594,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -2178,7 +2603,7 @@
         },
         {
           "disabled": false,
-          "document": "Customer service emails, supports up to 200 at a time.",
+          "document": "List of customer service emails to be deleted, supports up to 200 at a time.",
           "example": "[\"staff1@xxx.com\",\"staff2@xxx.com\"]",
           "member": "string",
           "name": "StaffList",
@@ -2193,11 +2618,75 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of customer service staff that can't be deleted when being online.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "List of customer service staff that cannot be deleted when they are online.",
           "example": "[\"staff1@xxx.com\",\"staff2@xxx.com\"]",
           "member": "string",
           "name": "OnlineStaffList",
           "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAICallExtractResultRequest": {
+      "document": "DescribeAICallExtractResult request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Session id.",
+          "example": "adcf61b8-dbb9-4c20-87bf-c0744c04bade",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Search for the start time.",
+          "example": "1737350008",
+          "member": "int64",
+          "name": "StartTime",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Search for the end time.",
+          "example": "1737356008",
+          "member": "int64",
+          "name": "EndTime",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeAICallExtractResultResponse": {
+      "document": "DescribeAICallExtractResult response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Result list.",
+          "example": "[{\"InfoType\":\"Boolean\",\"InfoName\":\"兴趣\",\"InfoContent\":\"用户是否对产品感兴趣\",\"Result\":{\"Boolean\":true}}]",
+          "member": "AICallExtractResultElement",
+          "name": "ResultList",
+          "output_required": false,
           "type": "list",
           "value_allowed_null": false
         },
@@ -2215,7 +2704,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -2224,7 +2713,7 @@
         },
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "Task id.",
           "example": "2569",
           "member": "int64",
           "name": "CampaignId",
@@ -2239,7 +2728,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task Name",
+          "document": "Task name.",
           "example": "新能源SUV推荐",
           "member": "string",
           "name": "Name",
@@ -2249,7 +2738,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent Account",
+          "document": "Agent account.",
           "example": "foo@tencent.com",
           "member": "string",
           "name": "Agent",
@@ -2259,7 +2748,7 @@
         },
         {
           "disabled": false,
-          "document": "Single-round Concurrent Call Volume 1-20",
+          "document": "Single-Round concurrent call volume 1-20.",
           "example": "3",
           "member": "int64",
           "name": "ConcurrencyNumber",
@@ -2269,7 +2758,7 @@
         },
         {
           "disabled": false,
-          "document": "Task start time. Unix timestamp. The task will automatically start after this time.",
+          "document": "Task start time. unix timestamp. the task will automatically start after this time.",
           "example": "1708483433",
           "member": "int64",
           "name": "StartTime",
@@ -2279,7 +2768,7 @@
         },
         {
           "disabled": false,
-          "document": "Task termination time. Unix timestamp. The task will automatically terminate after this time.",
+          "document": "Task termination time. unix timestamp. the task will automatically terminate after this time.",
           "example": "1708485433",
           "member": "int64",
           "name": "EndTime",
@@ -2299,7 +2788,7 @@
         },
         {
           "disabled": false,
-          "document": "Caller Custom Data, Maximum Length 1024",
+          "document": "Caller custom data, maximum length 1024.",
           "example": "foobar",
           "member": "string",
           "name": "UUI",
@@ -2309,7 +2798,7 @@
         },
         {
           "disabled": false,
-          "document": "Task status 0 Not started 1 Running 2 Completed 3 Terminated",
+          "document": "Task status 0 not started 1 running 2 completed 3 terminated.",
           "example": "2",
           "member": "int64",
           "name": "State",
@@ -2319,7 +2808,7 @@
         },
         {
           "disabled": false,
-          "document": "Total number of called parties",
+          "document": "Total number of called parties.",
           "example": "200",
           "member": "int64",
           "name": "TotalCalleeCount",
@@ -2329,7 +2818,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of called parties",
+          "document": "Number of calls made and received.",
           "example": "200",
           "member": "int64",
           "name": "CalledCalleeCount",
@@ -2351,7 +2840,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -2360,7 +2849,7 @@
         },
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "Task id.",
           "example": "3",
           "member": "uint64",
           "name": "TaskId",
@@ -2375,7 +2864,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task Name",
+          "document": "Task name.",
           "example": "任务1",
           "member": "string",
           "name": "Name",
@@ -2385,7 +2874,7 @@
         },
         {
           "disabled": false,
-          "document": "Task Description.",
+          "document": "<Task description>.",
           "example": "任务描述",
           "member": "string",
           "name": "Description",
@@ -2467,7 +2956,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -2476,7 +2965,7 @@
         },
         {
           "disabled": false,
-          "document": "Page size",
+          "document": "<Page size>.",
           "example": "10",
           "member": "uint64",
           "name": "PageSize",
@@ -2485,7 +2974,7 @@
         },
         {
           "disabled": false,
-          "document": "Page number",
+          "document": "Page number.",
           "example": "0",
           "member": "uint64",
           "name": "PageNumber",
@@ -2510,7 +2999,7 @@
         },
         {
           "disabled": false,
-          "document": "Task list.",
+          "document": "<Task list>.",
           "example": "[{\"TaskId\":3241,\"IvrId\":1,\"CalleeCount\":1,\"Name\":\"foobar\",\"NotBefore\":0,\"NotAfter\":0,\"State\":1,\"Callers\":[\"foobar\"]}]",
           "member": "AutoCalloutTaskInfo",
           "name": "Tasks",
@@ -2532,7 +3021,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID list, query all applications when not transmitted.",
+          "document": "Application id list, query all applications when not transmitted.",
           "example": "[1400000,14000001]",
           "member": "int64",
           "name": "SdkAppIds",
@@ -2589,7 +3078,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -2598,7 +3087,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to return skill group dimension information or not (the default is \"Yes\").",
+          "document": "Whether to return skill group dimension information or not (the default is \"yes\").",
           "example": "true",
           "member": "bool",
           "name": "EnabledSkillGroup",
@@ -2607,7 +3096,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to return line dimension information or not (the default is \"No\").",
+          "document": "Whether to return line dimension information or not (the default is \"no\").",
           "example": "false",
           "member": "bool",
           "name": "EnabledNumber",
@@ -2651,7 +3140,7 @@
         },
         {
           "disabled": false,
-          "document": "Circuit dimension metrics.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Circuit dimension metrics.",
           "example": "[{\"Number\":\"021111111\",\"Metrics\":{\"IvrCount\":0,\"QueueCount\":0,\"RingCount\":0,\"AcceptCount\":0,\"TransferOuterCount\":0,\"MaxQueueDuration\":0,\"AvgQueueDuration\":0,\"MaxRingDuration\":0,\"AvgRingDuration\":0,\"MaxAcceptDuration\":0,\"AvgAcceptDuration\":0},\"SkillGroupMetrics\":[{\"SkillGroupId\":0,\"Metrics\":{\"IvrCount\":0,\"QueueCount\":0,\"RingCount\":0,\"AcceptCount\":0,\"TransferOuterCount\":0,\"MaxQueueDuration\":0,\"AvgQueueDuration\":0,\"MaxRingDuration\":0,\"AvgRingDuration\":0,\"MaxAcceptDuration\":0,\"AvgAcceptDuration\":0},\"Name\":\"abc\"}]}]",
           "member": "CallInNumberMetrics",
           "name": "NumberMetrics",
@@ -2661,7 +3150,7 @@
         },
         {
           "disabled": false,
-          "document": "Skill group dimension metrics\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Skill group dimension metrics.",
           "example": "[{\"SkillGroupId\":0,\"Name\":\"客服一组\"}]",
           "member": "CallInSkillGroupMetrics",
           "name": "SkillGroupMetrics",
@@ -2683,7 +3172,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "TCCC instance application ID.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -2692,7 +3181,7 @@
         },
         {
           "disabled": false,
-          "document": "Extension",
+          "document": "Extension.",
           "example": "1001",
           "member": "string",
           "name": "ExtensionId",
@@ -2707,7 +3196,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Extension",
+          "document": "Extension.",
           "example": "1001",
           "member": "string",
           "name": "ExtensionId",
@@ -2717,7 +3206,7 @@
         },
         {
           "disabled": false,
-          "document": "Domain name",
+          "document": "Domain name.",
           "example": "14000000.tccc.qcloud.com",
           "member": "string",
           "name": "ExtensionDomain",
@@ -2769,7 +3258,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "TCCC instance application ID.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -2778,7 +3267,7 @@
         },
         {
           "disabled": false,
-          "document": "Page number (starting from 0)",
+          "document": "Page number (starting from 0).",
           "example": "0",
           "member": "int64",
           "name": "PageNumber",
@@ -2787,7 +3276,7 @@
         },
         {
           "disabled": false,
-          "document": "Filtering extension number list",
+          "document": "Filtering extension number list.",
           "example": "[\"1001\",\"1002\"]",
           "member": "string",
           "name": "ExtensionIds",
@@ -2796,7 +3285,7 @@
         },
         {
           "disabled": false,
-          "document": "Page size",
+          "document": "Page size.",
           "example": "50",
           "member": "int64",
           "name": "PageSize",
@@ -2861,7 +3350,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1600000001",
           "member": "int64",
           "name": "SdkAppId",
@@ -2870,7 +3359,7 @@
         },
         {
           "disabled": false,
-          "document": "Page size, upper limit 50",
+          "document": "Page size, upper limit 50.",
           "example": "10",
           "member": "uint64",
           "name": "PageSize",
@@ -2888,7 +3377,7 @@
         },
         {
           "disabled": false,
-          "document": "File alias",
+          "document": "File alias.",
           "example": "欢迎",
           "member": "string",
           "name": "CustomFileName",
@@ -2897,7 +3386,7 @@
         },
         {
           "disabled": false,
-          "document": "Filename",
+          "document": "Filename.",
           "example": "aaa.mp3",
           "member": "string",
           "name": "AudioFileName",
@@ -2906,7 +3395,7 @@
         },
         {
           "disabled": false,
-          "document": "File ID",
+          "document": "File id.",
           "example": "12",
           "member": "uint64",
           "name": "FileId",
@@ -2921,7 +3410,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number",
+          "document": "Total quantity.",
           "example": "0",
           "member": "int64",
           "name": "TotalCount",
@@ -2931,7 +3420,7 @@
         },
         {
           "disabled": false,
-          "document": "File Information",
+          "document": "File information.",
           "example": "无",
           "member": "AudioFileInfo",
           "name": "FileInfo",
@@ -2953,7 +3442,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -2986,7 +3475,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total quantity",
+          "document": "Total quantity.",
           "example": "1",
           "member": "uint64",
           "name": "TotalCount",
@@ -3018,7 +3507,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -3083,7 +3572,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -3092,7 +3581,7 @@
         },
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "<Task id>.",
           "example": "2569",
           "member": "int64",
           "name": "CampaignId",
@@ -3107,7 +3596,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "Task id.",
           "example": "2569",
           "member": "int64",
           "name": "CampaignId",
@@ -3117,7 +3606,7 @@
         },
         {
           "disabled": false,
-          "document": "Task Name",
+          "document": "Task name.",
           "example": "新能源SUV推荐",
           "member": "string",
           "name": "Name",
@@ -3147,7 +3636,7 @@
         },
         {
           "disabled": false,
-          "document": "Specified IVR ID.",
+          "document": "Specified ivr id.",
           "example": "4600",
           "member": "int64",
           "name": "IVRId",
@@ -3197,7 +3686,7 @@
         },
         {
           "disabled": false,
-          "document": "Task start time. Unix timestamp. The task will automatically start after this time.",
+          "document": "Task start time. unix timestamp. the task will automatically start after this time.",
           "example": "1708483433",
           "member": "int64",
           "name": "StartTime",
@@ -3207,7 +3696,7 @@
         },
         {
           "disabled": false,
-          "document": "Task termination time. Unix timestamp. The task will automatically terminate after this time.",
+          "document": "Task termination time. unix timestamp. the task will automatically terminate after this time.",
           "example": "1708485433",
           "member": "int64",
           "name": "EndTime",
@@ -3229,7 +3718,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Task ID\nNote: This field may return null if no valid value is obtained.",
+          "document": "<Task id>.",
           "example": "2569",
           "member": "int64",
           "name": "CampaignId",
@@ -3239,7 +3728,7 @@
         },
         {
           "disabled": false,
-          "document": "Task Name\nNote: This field might return null if no valid values can be obtained.",
+          "document": "Task name.",
           "example": "新能源SUV推荐",
           "member": "string",
           "name": "Name",
@@ -3249,7 +3738,7 @@
         },
         {
           "disabled": false,
-          "document": "Task status 0 - Ready to start, 1 - In progress, 2 - Paused, 3 - Terminated, 4 - Completed.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Task status 0 - ready to start, 1 - in progress, 2 - paused, 3 - terminated, 4 - completed.",
           "example": "0",
           "member": "int64",
           "name": "Status",
@@ -3259,7 +3748,7 @@
         },
         {
           "disabled": false,
-          "document": "Task status reasons 0 - Normal, 1 - Manually ended, 2 - Ended due to overtime.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Task status reasons 0 - normal, 1 - manually ended, 2 - ended due to overtime.",
           "example": "0",
           "member": "int64",
           "name": "StatusReason",
@@ -3269,7 +3758,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of called numbers.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Number of called numbers.",
           "example": "1000",
           "member": "int64",
           "name": "CalleeCount",
@@ -3279,7 +3768,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of completed calls.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Number of completed calls.",
           "example": "0",
           "member": "int64",
           "name": "FinishedCalleeCount",
@@ -3289,7 +3778,7 @@
         },
         {
           "disabled": false,
-          "document": "Running priority of multiple tasks in the same application, from high to low 1 - 5.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Running priority of multiple tasks in the same application, from high to low 1 - 5.",
           "example": "3",
           "member": "int64",
           "name": "Priority",
@@ -3299,7 +3788,7 @@
         },
         {
           "disabled": false,
-          "document": "ID of the used skill group of agents.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "ID of the used skill group of agents.",
           "example": "255",
           "member": "int64",
           "name": "SkillGroupId",
@@ -3315,7 +3804,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -3351,7 +3840,7 @@
         },
         {
           "disabled": false,
-          "document": "Query task list skill group ID.",
+          "document": "Query task list skill group id.",
           "example": "255",
           "member": "int64",
           "name": "SkillGroupId",
@@ -3366,7 +3855,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total data volume.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Total data volume.",
           "example": "66",
           "member": "int64",
           "name": "TotalCount",
@@ -3376,7 +3865,7 @@
         },
         {
           "disabled": false,
-          "document": "Data\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Data.",
           "example": "无",
           "member": "DescribePredictiveDialingCampaignsElement",
           "name": "CampaignList",
@@ -3398,7 +3887,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -3407,7 +3896,7 @@
         },
         {
           "disabled": false,
-          "document": "Generated task ID.",
+          "document": "Generated task id.",
           "example": "2569",
           "member": "int64",
           "name": "CampaignId",
@@ -3416,7 +3905,7 @@
         },
         {
           "disabled": false,
-          "document": "Page size, maximum of 1000",
+          "document": "Page size, maximum of 1000.",
           "example": "25",
           "member": "int64",
           "name": "PageSize",
@@ -3450,7 +3939,7 @@
         },
         {
           "disabled": false,
-          "document": "List of session IDs for a call. You can access detailed call bills in batches through https://intl.cloud.tencent.com/document/product/679/47714.?from_cn_redirect=1",
+          "document": "List of session ids for a call. you can access detailed call bills in batches through https://intl.cloud.tencent.com/document/product/679/47714.?from_cn_redirect=1.",
           "example": "[\"e4b2d3f1-8c27-4a9d-bef1-0b412a7c5e8d\", \"a3e8f4c9-2b7d-4e1f-9d82-6c5a8b0d3f1e\", \"f7d2b4e9-1c8a-5d9e-b0f3-2e1a3c4b5d6f\"]",
           "member": "string",
           "name": "SessionList",
@@ -3472,7 +3961,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start timestamp. Unix second-level timestamp.",
+          "document": "Start timestamp. unix second-level timestamp.",
           "example": "1611631881",
           "member": "int64",
           "name": "StartTimeStamp",
@@ -3481,7 +3970,7 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp. Unix second-level timestamp.",
+          "document": "End timestamp. unix second-level timestamp.",
           "example": "1611631881",
           "member": "int64",
           "name": "EndTimeStamp",
@@ -3490,7 +3979,7 @@
         },
         {
           "disabled": false,
-          "document": "For the Application ID, go to https://console.cloud.tencent.com/ccc.",
+          "document": "For the application id, you can check https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -3565,7 +4054,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -3583,7 +4072,7 @@
         },
         {
           "disabled": false,
-          "document": "Page number starting from 0.",
+          "document": "<Page number starting from 0.>.",
           "example": "0",
           "member": "int64",
           "name": "PageNumber",
@@ -3592,7 +4081,7 @@
         },
         {
           "disabled": false,
-          "document": "Using skill group ID when querying a single skill group.",
+          "document": "Using skill group id when querying a single skill group.",
           "example": "12",
           "member": "int64",
           "name": "SkillGroupId",
@@ -3601,7 +4090,7 @@
         },
         {
           "disabled": false,
-          "document": "Used when querying skill groups with a modified time greater or equal to ModifiedTime.",
+          "document": "Used when querying skill groups with a modified time greater or equal to modifiedtime.",
           "example": "1611631881",
           "member": "int64",
           "name": "ModifiedTime",
@@ -3635,7 +4124,7 @@
         },
         {
           "disabled": false,
-          "document": "Skill Group Information List.",
+          "document": "Skill group information list.",
           "example": "[{\"SkillGroupId\":1115,\"SkillGroupName\":\"luluttt\",\"Type\":\"TEL\",\"RoutePolicy\":\"firstCreate\",\"UsingLastSeat\":0,\"MaxConcurrency\":1,\"LastModifyTimestamp\":1613976392}]",
           "member": "SkillGroupInfoItem",
           "name": "SkillGroupList",
@@ -3657,7 +4146,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -3666,7 +4155,7 @@
         },
         {
           "disabled": false,
-          "document": "Page size, upper limit 9,999",
+          "document": "Page size, upper limit 9,999.",
           "example": "9999",
           "member": "int64",
           "name": "PageSize",
@@ -3693,7 +4182,7 @@
         },
         {
           "disabled": false,
-          "document": "Use when querying for agents with a modification time greater or equal to ModifiedTime.",
+          "document": "Use when querying for agents with a modification time greater or equal to modifiedtime.",
           "example": "1611631881",
           "member": "int64",
           "name": "ModifiedTime",
@@ -3702,7 +4191,7 @@
         },
         {
           "disabled": false,
-          "document": "Skill group ID.",
+          "document": "Skill group id.",
           "example": "123",
           "member": "int64",
           "name": "SkillGroupId",
@@ -3749,7 +4238,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -3758,7 +4247,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter agent list. By default, do not pass all returned agent information.",
+          "document": "Filter agent list. by default, do not pass all returned agent information.",
           "example": "[a@tencent.com,b@tencent.com,c@tencent.com]",
           "member": "string",
           "name": "StaffList",
@@ -3767,7 +4256,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter skill group ID list.",
+          "document": "Filter skill group id list.",
           "example": "[1,2,3,4,5,6]",
           "member": "int64",
           "name": "GroupIdList",
@@ -3776,7 +4265,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter agent status list Agent status free Available | busy Busy | rest On Break | notReady Not Ready | afterCallWork Post-call Adjustment | offline Offline",
+          "document": "Filter agent status list agent status free available | busy busy | rest on break | notready not ready | aftercallwork post-call adjustment | offline offline . ",
           "example": "[\"free\"]",
           "member": "string",
           "name": "StatusList",
@@ -3791,7 +4280,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Real-time information on agent status.",
+          "document": "Real-Time information on agent status.",
           "example": "[{\"Email\":\"aaa@abc.com\",\"Status\":\"free\",\"StatusExtra\":{\"Type\":\"tel\",\"Direct\":\"callin\"},\"OnlineDuration\":0,\"FreeDuration\":0,\"BusyDuration\":0,\"NotReadyDuration\":0,\"RestDuration\":0,\"AfterCallWorkDuration\":0,\"Reason\":\"abc\",\"ReserveRest\":true,\"ReserveNotReady\":true,\"UseMobileAccept\":0,\"UseMobileCallOut\":true,\"LastOnlineTimestamp\":0,\"LastStatusTimestamp\":0}]",
           "member": "StaffStatusMetrics",
           "name": "Metrics",
@@ -3813,7 +4302,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start timestamp, Unix timestamp (query dimension supports only daily. For example, to query May 1st, pass startTime:\"2023-05-01 00:00:00\",\"endTime\":\"2023-05-01 23:59:59\" timestamp. To query May 1st and May 2nd, pass startTime:\"2023-05-01 00:00:00\",\"endTime\":\"2023-05-02 23:59:59\" timestamp)",
+          "document": "Start timestamp, unix timestamp (query dimension supports only daily. for example, to query may 1st, pass starttime:\"2023-05-01 00:00:00\",\"endtime\":\"2023-05-01 23:59:59\" timestamp. to query may 1st and may 2nd, pass starttime:\"2023-05-01 00:00:00\",\"endtime\":\"2023-05-02 23:59:59\" timestamp).",
           "example": "0",
           "member": "int64",
           "name": "StartTimeStamp",
@@ -3822,7 +4311,7 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp, Unix timestamp, the query time range is up to 90 days (query dimension supports only daily. For example, to query May 1st, pass startTime:\"2023-05-01 00:00:00\",\"endTime\":\"2023-05-01 23:59:59\" timestamp. To query May 1st and May 2nd, pass startTime:\"2023-05-01 00:00:00\",\"endTime\":\"2023-05-02 23:59:59\" timestamp)",
+          "document": "End timestamp, unix timestamp, the query time range is up to 90 days (query dimension supports only daily. for example, to query may 1st, pass starttime:\"2023-05-01 00:00:00\",\"endtime\":\"2023-05-01 23:59:59\" timestamp. to query may 1st and may 2nd, pass starttime:\"2023-05-01 00:00:00\",\"endtime\":\"2023-05-02 23:59:59\" timestamp).",
           "example": "0",
           "member": "int64",
           "name": "EndTimeStamp",
@@ -3831,7 +4320,7 @@
         },
         {
           "disabled": false,
-          "document": "Application ID list, when having multiple IDs, the returned value is the sum of all the IDs.",
+          "document": "Application id list, when having multiple ids, the returned value is the sum of all the ids.",
           "example": "[\"0\\n\"]",
           "member": "int64",
           "name": "SdkAppIdList",
@@ -3846,7 +4335,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Number of minutes consumed by Outbound Package.",
+          "document": "Number of minutes consumed by outbound package.",
           "example": "10",
           "member": "int64",
           "name": "TelCallOutCount",
@@ -3856,7 +4345,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of minutes consumed by Inbound Package.",
+          "document": "Number of minutes consumed by inbound package.",
           "example": "10",
           "member": "int64",
           "name": "TelCallInCount",
@@ -3876,7 +4365,7 @@
         },
         {
           "disabled": true,
-          "document": "Number of minutes consumed by Audio package.",
+          "document": "Number of minutes consumed by audio package.",
           "example": "10",
           "member": "int64",
           "name": "VoipCallInCount",
@@ -3886,7 +4375,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of minutes consumed by Audio package.",
+          "document": "Number of minutes consumed by audio package.",
           "example": "10",
           "member": "int64",
           "name": "VOIPCallInCount",
@@ -3896,7 +4385,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of minutes consumed by Offline Speech-to-Text Package.",
+          "document": "Number of minutes consumed by offline speech-to-text package.",
           "example": "1",
           "member": "int64",
           "name": "AsrOfflineCount",
@@ -3906,7 +4395,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of minutes consumed by Real-time Speech-to-Text Package.",
+          "document": "Number of minutes consumed by real-time speech-to-text package.",
           "example": "1",
           "member": "int64",
           "name": "AsrRealtimeCount",
@@ -3928,7 +4417,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Start timestamp, Unix Timestamp in Seconds. Supports up to the past 180 days.",
+          "document": "Start timestamp, unix timestamp in seconds. supports up to the past 180 days.",
           "example": "1611631881",
           "member": "int64",
           "name": "StartTimeStamp",
@@ -3937,7 +4426,7 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp, Unix Timestamp in Seconds. The range between the end time and start time is less than 90 days.",
+          "document": "End timestamp, unix timestamp in seconds. the range between the end time and start time is less than 90 days.",
           "example": "1611631881",
           "member": "int64",
           "name": "EndTimeStamp",
@@ -3946,7 +4435,7 @@
         },
         {
           "disabled": true,
-          "document": "Instance ID (deprecated).",
+          "document": "Instance id (deprecated).",
           "example": "11",
           "member": "int64",
           "name": "InstanceId",
@@ -3973,7 +4462,7 @@
         },
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -3991,7 +4480,7 @@
         },
         {
           "disabled": false,
-          "document": "Page number (required), starting from 0.",
+          "document": "<Page number (required), starting from 0.>.",
           "example": "0",
           "member": "int64",
           "name": "PageNumber",
@@ -4000,7 +4489,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter by Phone Number.",
+          "document": "Filter by phone number.",
           "example": "[\"008613012345678\"]",
           "member": "string",
           "name": "Phones",
@@ -4009,7 +4498,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter by SessionId.",
+          "document": "Filter by sessionid.",
           "example": "[\"7cb26a84-83b2-42d8-a19b-7dae78e9b78e\"]",
           "member": "string",
           "name": "SessionIds",
@@ -4061,12 +4550,12 @@
       ],
       "type": "object"
     },
-    "DescribeTelSessionRequest": {
-      "document": "DescribeTelSession request structure.",
+    "DescribeTelRecordAsrRequest": {
+      "document": "DescribeTelRecordAsr request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -4075,7 +4564,53 @@
         },
         {
           "disabled": false,
-          "document": "Session ID.",
+          "document": "Session id.",
+          "example": "6bb56a09-2787-40bc-80c5-dc6dab783eff",
+          "member": "string",
+          "name": "SessionId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTelRecordAsrResponse": {
+      "document": "DescribeTelRecordAsr response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Recording to text information.",
+          "example": "无",
+          "member": "AsrData",
+          "name": "AsrDataList",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeTelSessionRequest": {
+      "document": "DescribeTelSession request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "int64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Session id.",
           "example": "6bb56a09-2787-40bc-80c5-dc6dab783eff",
           "member": "string",
           "name": "SessionId",
@@ -4130,7 +4665,7 @@
         },
         {
           "disabled": false,
-          "document": "TCCC instance application ID.",
+          "document": "TCCC instance application id.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -4157,7 +4692,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Agent Email Address",
+          "document": "Agent email address.",
           "example": "xxx@xxx.com",
           "member": "string",
           "name": "StaffEmail",
@@ -4193,7 +4728,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Instance ID.",
+          "document": "Instance id.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -4213,7 +4748,7 @@
         },
         {
           "disabled": false,
-          "document": "Extension",
+          "document": "Extension.",
           "example": "1001",
           "member": "string",
           "name": "ExtensionId",
@@ -4243,7 +4778,7 @@
         },
         {
           "disabled": false,
-          "document": "Creation Time",
+          "document": "Creation time.",
           "example": "1617184839",
           "member": "int64",
           "name": "CreateTime",
@@ -4263,7 +4798,7 @@
         },
         {
           "disabled": false,
-          "document": "Telephone status (0 Offline, 100 Free, 200 Busy).",
+          "document": "Telephone status (0 offline, 100 free, 200 busy).",
           "example": "100",
           "member": "int64",
           "name": "Status",
@@ -4283,7 +4818,7 @@
         },
         {
           "disabled": false,
-          "document": "Bind Agent Email",
+          "document": "Bind agent email.",
           "example": "xxx@xxx.com",
           "member": "string",
           "name": "Relation",
@@ -4293,7 +4828,7 @@
         },
         {
           "disabled": false,
-          "document": "Bind Agent Name",
+          "document": "Bind agent name.",
           "example": "座席1",
           "member": "string",
           "name": "RelationName",
@@ -4309,7 +4844,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "TCCC instance application ID.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -4318,7 +4853,7 @@
         },
         {
           "disabled": false,
-          "document": "Session ID.",
+          "document": "Session id.",
           "example": "1001",
           "member": "string",
           "name": "SessionId",
@@ -4345,7 +4880,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Key.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Hit keyword or press.",
           "example": "1",
           "member": "string",
           "name": "Key",
@@ -4355,11 +4890,51 @@
         },
         {
           "disabled": false,
-          "document": "Tag associated with key.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Tag associated with the key.",
           "example": "非常满意",
           "member": "string",
           "name": "Label",
           "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "UNIX millisecond timestamp.",
+          "example": "1729697241440",
+          "member": "int64",
+          "name": "Timestamp",
+          "output_required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Node tags.",
+          "example": "分支节点",
+          "member": "string",
+          "name": "NodeLabel",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "User'S original input.",
+          "example": "1",
+          "member": "string",
+          "name": "OriginalContent",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "TTS prompt content.",
+          "example": "无",
+          "member": "string",
+          "name": "TTSPrompt",
+          "output_required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -4371,7 +4946,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "TCCC instance application ID.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -4380,7 +4955,7 @@
         },
         {
           "disabled": false,
-          "document": "Extension",
+          "document": "Extension.",
           "example": "1001",
           "member": "string",
           "name": "ExtensionId",
@@ -4429,12 +5004,66 @@
       ],
       "type": "object"
     },
+    "ModifyOwnNumberApplyRequest": {
+      "document": "ModifyOwnNumberApply request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "example": "1400000000",
+          "member": "uint64",
+          "name": "SdkAppId",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Circuit-Related parameters.",
+          "example": "无",
+          "member": "OwnNumberApplyDetailItem",
+          "name": "DetailList",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Approval id.",
+          "example": "1",
+          "member": "uint64",
+          "name": "ApplyId",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Prefix for sending numbers.",
+          "example": "0",
+          "member": "string",
+          "name": "Prefix",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyOwnNumberApplyResponse": {
+      "document": "ModifyOwnNumberApply response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyStaffPasswordRequest": {
       "document": "ModifyStaffPassword request structure.",
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "16000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -4452,7 +5081,7 @@
         },
         {
           "disabled": false,
-          "document": "The set password ",
+          "document": "The set password.",
           "example": "abcdefg",
           "member": "string",
           "name": "Password",
@@ -4479,7 +5108,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -4524,7 +5153,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent ID",
+          "document": "Agent id.",
           "example": "114514",
           "member": "string",
           "name": "StaffNo",
@@ -4533,7 +5162,7 @@
         },
         {
           "disabled": false,
-          "document": "Bind skill group ID list.",
+          "document": "Bind skill group id list.",
           "example": "[123,134]",
           "member": "int64",
           "name": "SkillGroupIds",
@@ -4551,12 +5180,21 @@
         },
         {
           "disabled": false,
-          "document": "Cell phone answering pattern: 0 - Off | 1 - Only when Offline | 2 - Always.",
+          "document": "Cell phone answering pattern: 0 - off | 1 - only when offline | 2 - always.",
           "example": "0",
           "member": "int64",
           "name": "UseMobileAccept",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Agent extension number (starting with 1 to 8, 4 - 6 digits).",
+          "example": "1003",
+          "member": "string",
+          "name": "ExtensionNumber",
+          "required": false,
+          "type": "string"
         }
       ],
       "type": "object"
@@ -4609,12 +5247,63 @@
       ],
       "usage": "out"
     },
+    "OwnNumberApplyDetailItem": {
+      "document": "User-owned number approval detail data type",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number type: 0 - inbound | 1 - outbound | 2 - inbound and outbound.",
+          "example": "2",
+          "member": "int64",
+          "name": "CallType",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Line number.",
+          "example": "02066660000",
+          "member": "string",
+          "name": "PhoneNumber",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum concurrent call number.",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxCallCount",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Maximum number of concurrencies per second.",
+          "example": "1",
+          "member": "int64",
+          "name": "MaxCallPSec",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Outbound called number format, use {+e.164} or {e.164}. ",
+          "example": "{+E.164}",
+          "member": "string",
+          "name": "OutboundCalleeFormat",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "usage": "in"
+    },
     "PSTNSession": {
       "document": "PSTN session type.",
       "members": [
         {
           "disabled": false,
-          "document": "Session ID.",
+          "document": "Session id.",
           "example": "d62a280a-b7dc-4a05-8295-eba7b61c2490",
           "member": "string",
           "name": "SessionID",
@@ -4624,7 +5313,7 @@
         },
         {
           "disabled": false,
-          "document": "Temporary room ID for session.",
+          "document": "Temporary room id for session.",
           "example": "0",
           "member": "string",
           "name": "RoomID",
@@ -4654,7 +5343,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time. Unix timestamp.",
+          "document": "Start time. unix timestamp.",
           "example": "1617184839",
           "member": "int64",
           "name": "StartTimestamp",
@@ -4664,7 +5353,7 @@
         },
         {
           "disabled": false,
-          "document": "Ring time. Unix timestamp.",
+          "document": "Ring time. unix timestamp.",
           "example": "1617184839",
           "member": "int64",
           "name": "RingTimestamp",
@@ -4674,7 +5363,7 @@
         },
         {
           "disabled": false,
-          "document": "Answer time. Unix timestamp.",
+          "document": "Answer time. unix timestamp.",
           "example": "1617184839",
           "member": "int64",
           "name": "AcceptTimestamp",
@@ -4694,7 +5383,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent ID",
+          "document": "Agent id.",
           "example": "007",
           "member": "string",
           "name": "StaffNumber",
@@ -4704,7 +5393,7 @@
         },
         {
           "disabled": false,
-          "document": "Session Status\nringing Ringing\nseatJoining  waiting for the agent to answer\ninProgress  Ongoing\nfinished - Completed.",
+          "document": "Session status.\nRinging - in progress.\nSeatJoining - waiting for the agent to answer.\nInProgress: in progress.\nFinished - completed.",
           "example": "finished",
           "member": "string",
           "name": "SessionStatus",
@@ -4714,7 +5403,7 @@
         },
         {
           "disabled": false,
-          "document": "Session call direction, 0 - Inbound | 1 - Outbound.",
+          "document": "Session call direction, 0 - inbound | 1 - outbound.",
           "example": "0",
           "member": "int64",
           "name": "Direction",
@@ -4724,7 +5413,7 @@
         },
         {
           "disabled": false,
-          "document": "The number used for transferring to the external line (Outbound Caller).",
+          "document": "The number used for transferring to the external line (outbound caller).",
           "example": "00861010101031",
           "member": "string",
           "name": "OutBoundCaller",
@@ -4744,7 +5433,7 @@
         },
         {
           "disabled": false,
-          "document": "Caller number protection ID. Effective when the number protection map feature is activated, and the Caller field is empty.",
+          "document": "Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.",
           "example": "008613XXXX5678",
           "member": "string",
           "name": "ProtectedCaller",
@@ -4754,7 +5443,7 @@
         },
         {
           "disabled": false,
-          "document": "Called number protection ID. Effective when the number protection map feature is activated, and the Callee field is empty.",
+          "document": "Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.",
           "example": "008613XXXX5678",
           "member": "string",
           "name": "ProtectedCallee",
@@ -4770,7 +5459,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Session ID.",
+          "document": "Session id.",
           "example": "1",
           "member": "string",
           "name": "SessionID",
@@ -4780,7 +5469,7 @@
         },
         {
           "disabled": false,
-          "document": "Temporary room ID for session.",
+          "document": "Temporary room id for session.",
           "example": "1",
           "member": "string",
           "name": "RoomID",
@@ -4810,7 +5499,7 @@
         },
         {
           "disabled": false,
-          "document": "Start time. Unix timestamp.",
+          "document": "Start time. unix timestamp.",
           "example": "1617184839",
           "member": "string",
           "name": "StartTimestamp",
@@ -4820,7 +5509,7 @@
         },
         {
           "disabled": false,
-          "document": "Answer time. Unix timestamp.",
+          "document": "Answer time. unix timestamp.",
           "example": "1617184839",
           "member": "string",
           "name": "AcceptTimestamp",
@@ -4840,7 +5529,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent ID",
+          "document": "Agent id.",
           "example": "1",
           "member": "string",
           "name": "StaffNumber",
@@ -4850,7 +5539,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent Status inProgress Ongoing",
+          "document": "Agent status inprogress ongoing.",
           "example": "inProgress",
           "member": "string",
           "name": "SessionStatus",
@@ -4860,7 +5549,7 @@
         },
         {
           "disabled": false,
-          "document": "Session call direction, 0 - Inbound | 1 - Outbound.",
+          "document": "Session call direction, 0 - inbound | 1 - outbound.",
           "example": "0",
           "member": "int64",
           "name": "Direction",
@@ -4870,7 +5559,7 @@
         },
         {
           "disabled": false,
-          "document": "Ring time. Unix timestamp.",
+          "document": "Ring time. unix timestamp.",
           "example": "1617184839",
           "member": "int64",
           "name": "RingTimestamp",
@@ -4880,7 +5569,7 @@
         },
         {
           "disabled": false,
-          "document": "Caller number protection ID. Effective when the number protection map feature is activated, and the Caller field is empty.",
+          "document": "Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.",
           "example": "008613XXXX5678",
           "member": "string",
           "name": "ProtectedCaller",
@@ -4890,7 +5579,7 @@
         },
         {
           "disabled": false,
-          "document": "Called number protection ID. Effective when the number protection map feature is activated, and the Callee field is empty.",
+          "document": "Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.",
           "example": "008613XXXX5678",
           "member": "string",
           "name": "ProtectedCallee",
@@ -4906,7 +5595,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Package ID.",
+          "document": "Package id.",
           "example": "1001",
           "member": "string",
           "name": "PackageId",
@@ -4916,7 +5605,7 @@
         },
         {
           "disabled": false,
-          "document": "Package type, 0 - Outbound call package | 1 - 400 inbound call package.",
+          "document": "Package type, 0 - outbound call package | 1 - 400 inbound call package.",
           "example": "1",
           "member": "int64",
           "name": "Type",
@@ -4926,7 +5615,7 @@
         },
         {
           "disabled": false,
-          "document": "Total package.",
+          "document": "<TOTAL_PACKAGE>.",
           "example": "10000",
           "member": "int64",
           "name": "CapacitySize",
@@ -4936,7 +5625,7 @@
         },
         {
           "disabled": false,
-          "document": "Remaining package.",
+          "document": "Remaining package balance.",
           "example": "143",
           "member": "int64",
           "name": "CapacityRemain",
@@ -4956,7 +5645,7 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp.",
+          "document": "Deadline timestamp.",
           "example": "1640000000",
           "member": "int64",
           "name": "EndTime",
@@ -4972,7 +5661,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -4981,7 +5670,7 @@
         },
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "Task id.",
           "example": "2569",
           "member": "int64",
           "name": "CampaignId",
@@ -5008,7 +5697,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Telephone Number",
+          "document": "Telephone number.",
           "example": "008602112345678",
           "member": "string",
           "name": "PhoneNum",
@@ -5018,7 +5707,7 @@
         },
         {
           "disabled": false,
-          "document": "Number type, 0 - Landline | 1 - Virtual Business Number | 2 - ISP Number | 3 - 400 Number.",
+          "document": "Number type, 0 - landline | 1 - virtual business number | 2 - ISP number | 3 - 400 number.",
           "example": "1",
           "member": "int64",
           "name": "Type",
@@ -5028,7 +5717,7 @@
         },
         {
           "disabled": false,
-          "document": "Call type of the number, 1 - Inbound | 2 - Outbound | 3 - Inbound and outbound.",
+          "document": "Call type of the number, 1 - inbound | 2 - outbound | 3 - inbound and outbound.",
           "example": "2",
           "member": "int64",
           "name": "CallType",
@@ -5048,7 +5737,7 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp.",
+          "document": "Deadline timestamp.",
           "example": "1640000000",
           "member": "int64",
           "name": "EndTime",
@@ -5058,7 +5747,7 @@
         },
         {
           "disabled": false,
-          "document": "Number status, 1-Normal | 2-Suspended due to non-payment | 4-Admin suspended | 5-Suspended due to violation.",
+          "document": "Number status, 1-normal | 2-suspended due to non-payment | 4-admin suspended | 5-suspended due to violation.",
           "example": "1",
           "member": "int64",
           "name": "State",
@@ -5074,7 +5763,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "TCCC instance application ID.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -5083,7 +5772,7 @@
         },
         {
           "disabled": false,
-          "document": "Extension",
+          "document": "Extension.",
           "example": "1001",
           "member": "string",
           "name": "ExtensionId",
@@ -5120,7 +5809,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -5129,7 +5818,7 @@
         },
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "<Task id>.",
           "example": "2569",
           "member": "int64",
           "name": "CampaignId",
@@ -5156,7 +5845,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID",
+          "document": "Application id.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -5166,7 +5855,7 @@
         },
         {
           "disabled": false,
-          "document": "Application Name",
+          "document": "Application name.",
           "example": "Test",
           "member": "string",
           "name": "Name",
@@ -5176,7 +5865,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent Purchase Count (still within the validity period)",
+          "document": "Agent purchase count (still within the validity period).",
           "example": "10",
           "member": "int64",
           "name": "StaffBuyNum",
@@ -5186,7 +5875,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent Purchase List (still within the validity period)",
+          "document": "Agent purchase list (still within the validity period).",
           "example": "[]",
           "member": "StaffBuyInfo",
           "name": "StaffBuyList",
@@ -5206,7 +5895,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of office telephones purchased (still within the validity period).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Number of office telephones purchased (still within the validity period).",
           "example": "10",
           "member": "int64",
           "name": "SipBuyNum",
@@ -5244,7 +5933,7 @@
         },
         {
           "disabled": false,
-          "document": "Worker number.\nNote: This field may return null, indicating that no valid value could be obtained.",
+          "document": "Worker number.",
           "example": "007",
           "member": "string",
           "name": "StaffNumber",
@@ -5255,7 +5944,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent's Telephone Number (With 0086 Prefix)",
+          "document": "Agent'S telephone number (with 0086 prefix).",
           "example": "008613012345678",
           "member": "string",
           "name": "Phone",
@@ -5277,7 +5966,7 @@
         },
         {
           "disabled": false,
-          "document": "User ID",
+          "document": "User id.",
           "example": "foo@tencent.com",
           "member": "string",
           "name": "UserId",
@@ -5288,7 +5977,7 @@
         },
         {
           "disabled": false,
-          "document": "List of skill groups associated with the seat\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List of skill groups associated with the agent.",
           "example": "[\"测试技能组\"]",
           "member": "string",
           "name": "SkillGroupNameList",
@@ -5299,13 +5988,24 @@
         },
         {
           "disabled": false,
-          "document": "1: Admin.\n2: Quality inspector.\n3: Ordinary agent.\nelse: Custom Role ID.\nNote: This field may return null, indicating that no valid value could be obtained.",
+          "document": "1: admin.\n2: quality inspector.\n3: ordinary agent.\nElse: custom role id.",
           "example": "1",
           "member": "int64",
           "name": "Role",
           "output_required": false,
           "required": false,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Agent extension number (starting with 1 to 8, 4 - 6 digits).",
+          "example": "1003",
+          "member": "string",
+          "name": "ExtensionNumber",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -5316,7 +6016,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Agent email.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Agent email.",
           "example": "foo@tencent.com",
           "member": "string",
           "name": "Mail",
@@ -5326,7 +6026,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent Telephone\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Agent phone number.",
           "example": "008613012345678",
           "member": "string",
           "name": "Phone",
@@ -5336,7 +6036,7 @@
         },
         {
           "disabled": false,
-          "document": "Ring timestamp. Unix second-level timestamp.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Ringing timestamp, unix second-level timestamp.",
           "example": "1611631881",
           "member": "int64",
           "name": "RingTimestamp",
@@ -5346,7 +6046,7 @@
         },
         {
           "disabled": false,
-          "document": "Answer timestamp. Unix second-level timestamp.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Answer timestamp. unix second-level timestamp.",
           "example": "1611631881",
           "member": "int64",
           "name": "AcceptTimestamp",
@@ -5356,7 +6056,7 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp. Unix second-level timestamp.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "End timestamp. unix second-level timestamp.",
           "example": "1611631891",
           "member": "int64",
           "name": "EndedTimestamp",
@@ -5366,7 +6066,7 @@
         },
         {
           "disabled": false,
-          "document": "Recording ID, which can be used to index the recording on the agent side\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Recording id can be indexed to the agent side recording.",
           "example": "1611631881",
           "member": "string",
           "name": "RecordId",
@@ -5376,7 +6076,7 @@
         },
         {
           "disabled": false,
-          "document": "Participant type: \"staffSeat\", \"outboundSeat\", \"staffPhoneSeat\".\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Participant type: \"staffseat\", \"outboundseat\", \"staffphoneseat\".",
           "example": "staffSeat",
           "member": "string",
           "name": "Type",
@@ -5386,7 +6086,7 @@
         },
         {
           "disabled": false,
-          "document": "Transfer Source Agent Information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Transfer source agent information.",
           "example": "bar@tencent.com",
           "member": "string",
           "name": "TransferFrom",
@@ -5396,7 +6096,7 @@
         },
         {
           "disabled": false,
-          "document": "Transfer source participant type is consistent with the Type value.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Transfer source participant type is consistent with the type value.",
           "example": "staffSeat",
           "member": "string",
           "name": "TransferFromType",
@@ -5406,7 +6106,7 @@
         },
         {
           "disabled": false,
-          "document": "Transfer Destination Agent Information\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Transfer destination agent information.",
           "example": "san@tencent.com",
           "member": "string",
           "name": "TransferTo",
@@ -5416,7 +6116,7 @@
         },
         {
           "disabled": false,
-          "document": "Transfer destination participant type is consistent with Type values.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Transfer destination participant type, which is consistent with type values.",
           "example": "staffSeat",
           "member": "string",
           "name": "TransferToType",
@@ -5426,7 +6126,7 @@
         },
         {
           "disabled": false,
-          "document": "Skill group ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Skill group id.",
           "example": "1101",
           "member": "int64",
           "name": "SkillGroupId",
@@ -5436,7 +6136,7 @@
         },
         {
           "disabled": false,
-          "document": "Ending status.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Ending status.",
           "example": "ok unconnected seatGiveUp seatForward outboundForward ivrGiveUp ",
           "member": "string",
           "name": "EndStatusString",
@@ -5446,7 +6146,7 @@
         },
         {
           "disabled": false,
-          "document": "Recording URL.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Recording url.",
           "example": "https://xxxxxxx",
           "member": "string",
           "name": "RecordURL",
@@ -5456,7 +6156,7 @@
         },
         {
           "disabled": false,
-          "document": "Participant sequence number, starting from 0.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Participant sequence number, starting from 0.",
           "example": "0",
           "member": "int64",
           "name": "Sequence",
@@ -5466,7 +6166,7 @@
         },
         {
           "disabled": false,
-          "document": "Start timestamp. Unix second-level timestamp.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Start timestamp. unix second-level timestamp.",
           "example": "1611631881",
           "member": "int64",
           "name": "StartTimestamp",
@@ -5476,7 +6176,7 @@
         },
         {
           "disabled": false,
-          "document": "Skill Group name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Skill group name.",
           "example": "tel",
           "member": "string",
           "name": "SkillGroupName",
@@ -5486,7 +6186,7 @@
         },
         {
           "disabled": false,
-          "document": "Address of the third party COS for transferring recording.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Address of the third-party cos for transferring recording.",
           "example": "https://xxxxxxx",
           "member": "string",
           "name": "CustomRecordURL",
@@ -5502,7 +6202,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Skill group ID.",
+          "document": "Skill group id.",
           "example": "1400000000",
           "member": "int64",
           "name": "SkillGroupId",
@@ -5522,7 +6222,7 @@
         },
         {
           "disabled": false,
-          "document": "(Deprecated) Type: IM, TEL, ALL (full media).",
+          "document": "(Deprecated) type: im, tel, all (full media).",
           "example": "IM",
           "member": "string",
           "name": "Type",
@@ -5532,7 +6232,7 @@
         },
         {
           "disabled": false,
-          "document": "Session allocation policy.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Session allocation policy.",
           "example": "fifo",
           "member": "string",
           "name": "RoutePolicy",
@@ -5542,7 +6242,7 @@
         },
         {
           "disabled": false,
-          "document": "Should the conversation allocation prioritize the last service seat?\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Whether the session is allocated to the last serviced agent first.",
           "example": "0",
           "member": "int64",
           "name": "UsingLastSeat",
@@ -5552,7 +6252,7 @@
         },
         {
           "disabled": false,
-          "document": "Maximum concurrency number of single client service (default 1 for telephone type).\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Maximum concurrency number of single client service (default 1 for telephone type).",
           "example": "1",
           "member": "int64",
           "name": "MaxConcurrency",
@@ -5562,7 +6262,7 @@
         },
         {
           "disabled": false,
-          "document": "Last modification time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Last modification time.",
           "example": "1611631881",
           "member": "int64",
           "name": "LastModifyTimestamp",
@@ -5572,7 +6272,7 @@
         },
         {
           "disabled": false,
-          "document": "Skill group type 0-phone, 1-online, 3-audio, 4-video.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Skill group type 0-cell phone, 1-online, 3-audio, 4-video.\t.\t",
           "example": "1",
           "member": "int64",
           "name": "SkillGroupType",
@@ -5582,7 +6282,7 @@
         },
         {
           "disabled": false,
-          "document": "Extension number within the skill group\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Intra-Skill group line number.",
           "example": "6666",
           "member": "string",
           "name": "Alias",
@@ -5598,7 +6298,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Skill group ID.",
+          "document": "Skill group id.",
           "example": "101",
           "member": "int64",
           "name": "SkillGroupId",
@@ -5618,7 +6318,7 @@
         },
         {
           "disabled": false,
-          "document": "Priority",
+          "document": "Priority.",
           "example": "1",
           "member": "int64",
           "name": "Priority",
@@ -5628,7 +6328,7 @@
         },
         {
           "disabled": false,
-          "document": "Type: IM, TEL, ALL (full media).",
+          "document": "Type: im, tel, all (full media).",
           "example": "IM",
           "member": "string",
           "name": "Type",
@@ -5644,7 +6344,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Number of agents purchased",
+          "document": "Number of agents purchased.",
           "example": "10",
           "member": "int64",
           "name": "Num",
@@ -5664,7 +6364,7 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp.",
+          "document": "Deadline timestamp.",
           "example": "164000000",
           "member": "int64",
           "name": "EndTime",
@@ -5674,7 +6374,7 @@
         },
         {
           "disabled": false,
-          "document": "Number of office telephones purchased.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Quantity of office telephones purchased.",
           "example": "12",
           "member": "int64",
           "name": "SipNum",
@@ -5690,7 +6390,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Agent name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Agent name.",
           "example": "xiaowang",
           "member": "string",
           "name": "Name",
@@ -5710,7 +6410,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent's Telephone Number\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Agent phone number.",
           "example": "18092226822",
           "member": "string",
           "name": "Phone",
@@ -5720,7 +6420,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent nickname.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Agent nickname.",
           "example": "xiaohong",
           "member": "string",
           "name": "Nick",
@@ -5730,7 +6430,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent ID\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Agent id.",
           "example": "101",
           "member": "string",
           "name": "StaffNumber",
@@ -5740,7 +6440,7 @@
         },
         {
           "disabled": false,
-          "document": "User Role ID",
+          "document": "User role id.",
           "example": "1",
           "member": "uint64",
           "name": "RoleId",
@@ -5750,7 +6450,7 @@
         },
         {
           "disabled": false,
-          "document": "Affiliated Skill Group List.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Affiliated skill group list.",
           "example": "0",
           "member": "SkillGroupItem",
           "name": "SkillGroupList",
@@ -5760,12 +6460,22 @@
         },
         {
           "disabled": false,
-          "document": "Last modification time.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Last modification time.",
           "example": "1614149408",
           "member": "int64",
           "name": "LastModifyTimestamp",
           "output_required": true,
           "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Agent extension number (starting with 1 to 8, 4 - 6 digits).",
+          "example": "1003",
+          "member": "string",
+          "name": "ExtensionNumber",
+          "output_required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -5776,7 +6486,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Skill group ID.",
+          "document": "Skill group id.",
           "example": "2134",
           "member": "int64",
           "name": "SkillGroupId",
@@ -5800,7 +6510,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "IM - Text | TEL - Cell phone | ALL - Full media.",
+          "document": "IM - text | tel - cell phone | all - full media.",
           "example": "tel",
           "member": "string",
           "name": "Type",
@@ -5810,7 +6520,7 @@
         },
         {
           "disabled": false,
-          "document": "IN - Inbound | OUT - Outbound.",
+          "document": "IN - inbound | out - outbound.",
           "example": "in",
           "member": "string",
           "name": "Direct",
@@ -5836,7 +6546,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent status free Available | busy Busy | rest On Break | notReady Not Ready | afterCallWork Post-call Adjustment | offline Offline",
+          "document": "Agent status free available | busy busy | rest on break | notready not ready | aftercallwork post-call adjustment | offline offline.",
           "example": "free",
           "member": "string",
           "name": "Status",
@@ -5846,7 +6556,7 @@
         },
         {
           "disabled": false,
-          "document": "Supplementary Information on Agent Status",
+          "document": "Supplementary information on agent status.",
           "example": "无",
           "member": "StaffStatusExtra",
           "name": "StatusExtra",
@@ -5856,7 +6566,7 @@
         },
         {
           "disabled": false,
-          "document": "Total Online duration of the day.",
+          "document": "Total online duration of the day.",
           "example": "0",
           "member": "int64",
           "name": "OnlineDuration",
@@ -5866,7 +6576,7 @@
         },
         {
           "disabled": false,
-          "document": "Total Available duration of the day.",
+          "document": "Total available duration of the day.",
           "example": "0",
           "member": "int64",
           "name": "FreeDuration",
@@ -5876,7 +6586,7 @@
         },
         {
           "disabled": false,
-          "document": "Total Busy duration of the day.",
+          "document": "Total busy duration of the day.",
           "example": "0",
           "member": "int64",
           "name": "BusyDuration",
@@ -5886,7 +6596,7 @@
         },
         {
           "disabled": false,
-          "document": "Total Not Ready status duration of the day.",
+          "document": "Total not ready status duration of the day.",
           "example": "0",
           "member": "int64",
           "name": "NotReadyDuration",
@@ -5896,7 +6606,7 @@
         },
         {
           "disabled": false,
-          "document": "Total Break duration of the day.",
+          "document": "Total break duration of the day.",
           "example": "0",
           "member": "int64",
           "name": "RestDuration",
@@ -5906,7 +6616,7 @@
         },
         {
           "disabled": false,
-          "document": "Total After Call Work duration of the day.",
+          "document": "Adjust the total duration of after-call work for the day.",
           "example": "0",
           "member": "int64",
           "name": "AfterCallWorkDuration",
@@ -5916,7 +6626,7 @@
         },
         {
           "disabled": false,
-          "document": "Reason for Break.",
+          "document": "Reason for break.",
           "example": "会议",
           "member": "string",
           "name": "Reason",
@@ -5926,7 +6636,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to reserve Break status.",
+          "document": "Whether to reserve break status.",
           "example": "false",
           "member": "bool",
           "name": "ReserveRest",
@@ -5936,7 +6646,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to reserve Not Ready status.",
+          "document": "Whether to reserve not ready status.",
           "example": "false",
           "member": "bool",
           "name": "ReserveNotReady",
@@ -5946,7 +6656,7 @@
         },
         {
           "disabled": false,
-          "document": "Cell phone answering pattern: 0 - Off | 1 - Only when Offline | 2 - Always.",
+          "document": "Cell phone answering pattern: 0 - off | 1 - only when offline | 2 - always.",
           "example": "0",
           "member": "int64",
           "name": "UseMobileAccept",
@@ -5966,7 +6676,7 @@
         },
         {
           "disabled": false,
-          "document": "Last online timestamp.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Last online timestamp.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1679300000",
           "member": "int64",
           "name": "LastOnlineTimestamp",
@@ -5976,7 +6686,7 @@
         },
         {
           "disabled": false,
-          "document": "Last status timestamp.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Last status timestamp.\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "1679300000",
           "member": "int64",
           "name": "LastStatusTimestamp",
@@ -5992,7 +6702,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Call Center Instance ID.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -6001,7 +6711,7 @@
         },
         {
           "disabled": false,
-          "document": "Task ID.",
+          "document": "Task id.",
           "example": "1",
           "member": "uint64",
           "name": "TaskId",
@@ -6024,7 +6734,7 @@
       "type": "object"
     },
     "TelCdrInfo": {
-      "document": "Phone call information.",
+      "document": "Phone call information",
       "members": [
         {
           "disabled": false,
@@ -6048,7 +6758,7 @@
         },
         {
           "disabled": false,
-          "document": "Call initiation timestamp, Unix timestamp.",
+          "document": "Call initiation timestamp, unix timestamp.",
           "example": "1611631881",
           "member": "int64",
           "name": "Time",
@@ -6058,7 +6768,7 @@
         },
         {
           "disabled": false,
-          "document": "Call direction: 0 - Inbound, 1 - Outbound.",
+          "document": "Call direction: 0 - inbound, 1 - outbound.",
           "example": "0",
           "member": "int64",
           "name": "Direction",
@@ -6078,7 +6788,7 @@
         },
         {
           "disabled": false,
-          "document": "Recording Information.",
+          "document": "Recording information.",
           "example": "https://xxxxx",
           "member": "string",
           "name": "RecordURL",
@@ -6088,7 +6798,7 @@
         },
         {
           "disabled": false,
-          "document": "Recording ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Recording id.",
           "example": "1611631881",
           "member": "string",
           "name": "RecordId",
@@ -6098,7 +6808,7 @@
         },
         {
           "disabled": false,
-          "document": "Agent Information",
+          "document": "Agent information.",
           "example": "0",
           "member": "SeatUserInfo",
           "name": "SeatUser",
@@ -6108,7 +6818,7 @@
         },
         {
           "disabled": false,
-          "document": "EndStatus corresponds one-to-one with EndStatusString, specific enumerations are as follows:\n\n**Scenario\t         EndStatus\tEndStatusString\tStatus Description**\n\nIncoming & Outgoing Calls\t1\t        ok\t                        Normal End\n\nIncoming & Outgoing Calls\t0\t        error\t                System Error\n\nIncoming Call\t             102\t        ivrGiveUp\t        User Gave Up During IVR\n\nIncoming Call\t             103\t        waitingGiveUp\t       User Gave Up During Queue\n\nIncoming Call\t             104\t        ringingGiveUp\t       User Gave Up During Ringing\n\nIncoming Call\t             105\t        noSeatOnline\t       No Seat Online\n\nIncoming Call              106\t       notWorkTime\t       Non-Working Hours   \n\nIncoming Call\t            107\t       ivrEnd\t               Ended Directly After IVR\n\nIncoming Call\t            100\t      blackList Incoming blocklist  \n\nOutgoing Call               2\t              unconnected\tUnconnected\n\nOutgoing Call             108\t        restrictedCallee\tCallee restricted due to high risk\n\nOutgoing Call             109\t        tooManyRequest\t    Frequency limit exceeded\n\nOutgoing Call             110\t        restrictedArea\t    Call to restricted area\n\nOutgoing Call             111\t        restrictedTime\tCall time restricted\n                         \nOutgoing Call             201            unknown\tUnknown status\n\nOutgoing Call             202            notAnswer\tMissed call\n\nOutgoing Call            203\t    userReject\tReject/Hang Up\n\nOutgoing Call\t          204\t    powerOff\tShutting down\n\nOutgoing Call           205            numberNotExist\tDisconnected Number\n\nOutgoing Call\t         206\t           busy\tDuring the call\n\nOutgoing Call   \t        207\t           outOfCredit\tOverdue Payment\n\nOutgoing Call\t         208\t           operatorError\t ISP Carrier Line Anomaly\n\nOutgoing Call         \t209\t           callerCancel\tCaller Cancelled\n\nOutgoing Call\t        210\t           notInService\tOut of Service Area\n\nIncoming & Outgoing Calls\t211    clientError    Client Error\n",
+          "document": "EndStatus corresponds one-to-one with endstatusstring, with specific enumerations as follows:.\n\n**Scenario\tEndStatus\tEndStatusString\tStatus description**.\n\nInbound call & call\t1\tok\tend properly.\n\nInbound call & call | 0 | error | system error.\n\nInbound call | 102 | ivrgiveup | user gives up during ivr.\n\nInbound call | 103 | waitinggiveup | user gives up during session queue.\n\nInbound call | 104 | ringinggiveup | user gives up during session ringing.\n\nInbound call | 105 | noseatonline | no agent online.\n\nInbound call              106\t       non - working hour      non - working hour.   \n\nInbound call              107\t       ivrend                   end directly after ivr.\n\nInbound call              100\t       blocklist call - in      call - in blocklist. \n\nOutgoing call            2                 unconnected            unconnected.\n\nOutgoing call            108           restricted callee      callee restricted due to high - risk.\n\nOutgoing call         109        toomanyrequest        overfrequency.\n\nOutgoing call         110        restrictedarea        outbound blind area.\n\nOutgoing call         111        restrictedtime        outbound time restriction.\n                         \nOutgoing call         201        unknown               unknown status.\n\nOutgoing call         202        notanswer             unanswered.\n\nOutgoing call - 203 - userreject: reject call.\n\nOutgoing call - 204 - poweroff: power off.\n\nOutgoing call - 205 - numbernotexist: nonexistent number.\n\nOutgoing call - 206 - busy: call in progress.\n\nOutgoing call - 207 - outofcredit: arrears.\n\nOutgoing call - 208 - operatorerror - ISP line exception.\n\nOutgoing call - 209 - callercancel - caller cancellation.\n\nOutgoing call - 210 - notinservice - not in service area.\n\nInbound and outgoing call - 211 - clienterror - client error.\nOutgoing call - 212 - carrierblocked - ISP blocking.",
           "example": "1",
           "member": "int64",
           "name": "EndStatus",
@@ -6128,7 +6838,7 @@
         },
         {
           "disabled": false,
-          "document": "Caller's location.",
+          "document": "Caller'S location.",
           "example": "广东深圳",
           "member": "string",
           "name": "CallerLocation",
@@ -6138,7 +6848,7 @@
         },
         {
           "disabled": false,
-          "document": "Time spent in IVR stage.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Time spent in ivr stage.",
           "example": "5",
           "member": "int64",
           "name": "IVRDuration",
@@ -6148,7 +6858,7 @@
         },
         {
           "disabled": false,
-          "document": "Ring timestamp. UNIX second-level timestamp\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Ring timestamp. unix second-level timestamp.",
           "example": "1611631881",
           "member": "int64",
           "name": "RingTimestamp",
@@ -6158,7 +6868,7 @@
         },
         {
           "disabled": false,
-          "document": "Answer timestamp. UNIX second-Level timestamp\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Answer timestamp. unix second-level timestamp.",
           "example": "1611631881",
           "member": "int64",
           "name": "AcceptTimestamp",
@@ -6168,7 +6878,7 @@
         },
         {
           "disabled": false,
-          "document": "End timestamp. UNIX second-level timestamp\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "End timestamp. unix second-level timestamp.",
           "example": "1611631881",
           "member": "int64",
           "name": "EndedTimestamp",
@@ -6178,7 +6888,7 @@
         },
         {
           "disabled": false,
-          "document": "IVR key information, e.g. [\"1\",\"2\",\"3\"]\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "IVR key information, e.g. [\"1\",\"2\",\"3\"].",
           "example": "[\"1\",\"2\",\"3\"]",
           "member": "string",
           "name": "IVRKeyPressed",
@@ -6188,7 +6898,7 @@
         },
         {
           "disabled": false,
-          "document": "Hanging Up Party seat Seat user Users system system\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Hang-Up side, seat, user, system.",
           "example": "user",
           "member": "string",
           "name": "HungUpSide",
@@ -6198,7 +6908,7 @@
         },
         {
           "disabled": false,
-          "document": "List of Service Participants\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Service participant list.",
           "example": "0",
           "member": "ServeParticipant",
           "name": "ServeParticipants",
@@ -6208,7 +6918,7 @@
         },
         {
           "disabled": false,
-          "document": "Skill group ID.\nNote: this field may return null, indicating that no valid values can be obtained.",
+          "document": "Skill group id.",
           "example": "110",
           "member": "int64",
           "name": "SkillGroupId",
@@ -6218,7 +6928,7 @@
         },
         {
           "disabled": false,
-          "document": "EndStatus corresponds one-to-one with EndStatusString, specific enumerations are as follows:\n\n**Scenario\t         EndStatus\tEndStatusString\tStatus Description**\n\nIncoming & Outgoing Calls\t1\t        ok\t                        Normal End\n\nIncoming & Outgoing Calls\t0\t        error\t                System Error\n\nIncoming Call\t             102\t        ivrGiveUp\t        User Gave Up During IVR\n\nIncoming Call\t             103\t        waitingGiveUp\t       User Gave Up During Queue\n\nIncoming Call\t             104\t        ringingGiveUp\t       User Gave Up During Ringing\n\nIncoming Call\t             105\t        noSeatOnline\t       No Seat Online\n\nIncoming Call              106\t       notWorkTime\t       Non-Working Hours   \n\nIncoming Call\t            107\t       ivrEnd\t               Ended Directly After IVR\n\nIncoming Call\t            100\t      blackList Incoming blocklist  \n\nOutgoing Call               2\t              unconnected\tUnconnected\n\nOutgoing Call             108\t        restrictedCallee\tCallee restricted due to high risk\n\nOutgoing Call             109\t        tooManyRequest\t    Frequency limit exceeded\n\nOutgoing Call             110\t        restrictedArea\t    Call to restricted area\n\nOutgoing Call             111\t        restrictedTime\tCall time restricted\n                         \nOutgoing Call             201            unknown\tUnknown status\n\nOutgoing Call             202            notAnswer\tMissed call\n\nOutgoing Call            203\t    userReject\tReject/Hang Up\n\nOutgoing Call\t          204\t    powerOff\tShutting down\n\nOutgoing Call           205            numberNotExist\tDisconnected Number\n\nPhone Call Out\t         206\t           busy\tIn Call\n\nOutgoing Call   \t        207\t           outOfCredit\tOverdue Payment\n\nOutgoing Call\t         208\t           operatorError\t ISP Carrier Line Anomaly\n\nOutgoing Call         \t209\t           callerCancel\tCaller Cancelled\n\nOutgoing Call\t        210\t           notInService\tOut of Service Area\n\nPhone Call In & Out\t211    clientError    Client Error\n\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "EndStatus corresponds one-to-one with endstatusstring, with specific enumerations as follows:.\n\n**Scenario\tEndStatus\tEndStatusString\tStatus description**.\n\nInbound call & call\t1\tok\tend properly.\n\nInbound call & call | 0 | error | system error.\n\nInbound call | 102 | ivrgiveup | user gives up during ivr.\n\nInbound call | 103 | waitinggiveup | user gives up during session queue.\n\nInbound call | 104 | ringinggiveup | user gives up during session ringing.\n\nInbound call | 105 | noseatonline | no agent online.\n\nInbound call              106\t       non - working hour      non - working hour.   \n\nInbound call              107\t       ivrend                   end directly after ivr.\n\nInbound call              100\t       blocklist call - in      call - in blocklist. \n\nOutgoing call            2                 unconnected            unconnected.\n\nOutgoing call            108           restricted callee      callee restricted due to high - risk.\n\nOutgoing call         109        toomanyrequest        overfrequency.\n\nOutgoing call         110        restrictedarea        outbound blind area.\n\nOutgoing call         111        restrictedtime        outbound time restriction.\n                         \nOutgoing call         201        unknown               unknown status.\n\nOutgoing call         202        notanswer             unanswered.\n\nOutgoing call - 203 - userreject: reject call.\n\nOutgoing call - 204 - poweroff: power off.\n\nOutgoing call - 205 - numbernotexist: nonexistent number.\n\nOutgoing call - 206 - busy: call in progress.\n\nOutgoing call - 207 - outofcredit: arrears.\n\nOutgoing call - 208 - operatorerror - ISP line exception.\n\nOutgoing call - 209 - callercancel - caller cancellation.\n\nOutgoing call - 210 - notinservice - not in service area.\n\nInbound and outgoing call - 211 - clienterror - client error.\nOutgoing call - 212 - carrierblocked - ISP blocking.",
           "example": "ok",
           "member": "string",
           "name": "EndStatusString",
@@ -6228,7 +6938,7 @@
         },
         {
           "disabled": false,
-          "document": "Session start timestamp. UNIX second-level timestamp.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Session start timestamp. unix second-level timestamp.",
           "example": "1611631891",
           "member": "int64",
           "name": "StartTimestamp",
@@ -6238,7 +6948,7 @@
         },
         {
           "disabled": false,
-          "document": "Queue entry time. Unix second-level timestamp.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Queue entry time. unix second-level timestamp.",
           "example": "1611631891",
           "member": "int64",
           "name": "QueuedTimestamp",
@@ -6248,7 +6958,7 @@
         },
         {
           "disabled": false,
-          "document": "Post-IVR key information (e.g. [{\"Key\":\"1\",\"Label\":\"Very Satisfied\"}])\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Post-IVR key information (e.g. [{\"key\":\"1\",\"label\":\"very satisfied\"}]).",
           "example": "0",
           "member": "IVRKeyPressedElement",
           "name": "PostIVRKeyPressed",
@@ -6258,7 +6968,7 @@
         },
         {
           "disabled": false,
-          "document": "Queue Skill Group ID.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Queue skill group id.",
           "example": "110",
           "member": "int64",
           "name": "QueuedSkillGroupId",
@@ -6268,7 +6978,7 @@
         },
         {
           "disabled": false,
-          "document": "Session ID.\nNote: This field may return null, indicating that no valid value can be obtained.",
+          "document": "Session id.",
           "example": "c2b303a5-7814-42f4-ab7d-573b7f195d30",
           "member": "string",
           "name": "SessionId",
@@ -6278,7 +6988,7 @@
         },
         {
           "disabled": false,
-          "document": "Caller number protection ID. (Effective when the number protection map feature is activated, and the Caller field is empty).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Caller number protection id. effective when the number protection map feature is activated, and the caller field is empty.",
           "example": "008613XXXX5678",
           "member": "string",
           "name": "ProtectedCaller",
@@ -6288,7 +6998,7 @@
         },
         {
           "disabled": false,
-          "document": "Called number protection ID (Effective when the number protection map feature is activated, and the Callee field is empty).\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Called number protection id. effective when the number protection map feature is activated, and the callee field is empty.",
           "example": "008613XXXX5678",
           "member": "string",
           "name": "ProtectedCallee",
@@ -6298,7 +7008,7 @@
         },
         {
           "disabled": true,
-          "document": "Customer custom data. (User-to-User Interface)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Customer custom data. (user - to - user interface).\nNote: this field may return null, indicating that no valid values can be obtained.",
           "example": "whatever",
           "member": "string",
           "name": "Uui",
@@ -6308,7 +7018,7 @@
         },
         {
           "disabled": false,
-          "document": "Customer custom data. (User-to-User Interface)\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Customer custom data. (user - to - user interface).",
           "example": "whatever",
           "member": "string",
           "name": "UUI",
@@ -6318,7 +7028,7 @@
         },
         {
           "disabled": false,
-          "document": "IVR key information (e.g.?[{\"Key\":\"1\",\"Label\":\"highly satisfied\"}])\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "IVR key information (e.g. [{\"key\":\"1\",\"label\":\"very satisfied\"}]).",
           "example": "0",
           "member": "IVRKeyPressedElement",
           "name": "IVRKeyPressedEx",
@@ -6328,7 +7038,7 @@
         },
         {
           "disabled": false,
-          "document": "Access to the ASR text information address of the recording.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Access to the asr text information address of the recording.",
           "example": "https://api.tccc.qcloud.com/tcccadmin/cdr/getAsrText?session_id=",
           "member": "string",
           "name": "AsrUrl",
@@ -6338,7 +7048,17 @@
         },
         {
           "disabled": false,
-          "document": "Address of the third party COS for transferring recording.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "ASRUrl status: complete.\nCompleted;.\nProcessing.\nGenerating.\nNotExists.\nNo record (offline asr generation is not enabled or no package is available).",
+          "example": "Complete",
+          "member": "string",
+          "name": "AsrStatus",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Address of the third-party cos for transferring recording.",
           "example": "https://xxxxx",
           "member": "string",
           "name": "CustomRecordURL",
@@ -6348,7 +7068,7 @@
         },
         {
           "disabled": false,
-          "document": "Remarks\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Remarks.",
           "example": "备注",
           "member": "string",
           "name": "Remark",
@@ -6358,7 +7078,7 @@
         },
         {
           "disabled": false,
-          "document": "Queue skill group name.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Queue skill group name.",
           "example": "销售组",
           "member": "string",
           "name": "QueuedSkillGroupName",
@@ -6368,7 +7088,7 @@
         },
         {
           "disabled": false,
-          "document": "Audio message recording URL during call.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Audio message recording url during call.",
           "example": "[\"https://xxxxx\"]",
           "member": "string",
           "name": "VoicemailRecordURL",
@@ -6378,7 +7098,7 @@
         },
         {
           "disabled": false,
-          "document": "Text Information address of ASR audio message during a call.\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Text information address of asr audio message during a call.",
           "example": "[\"https://xxxxx\"]",
           "member": "string",
           "name": "VoicemailAsrURL",
@@ -6394,7 +7114,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -6412,7 +7132,7 @@
         },
         {
           "disabled": false,
-          "document": "List of skill group IDs to be unbound.",
+          "document": "List of skill group ids to be unbound.",
           "example": "[1,2,3]",
           "member": "uint64",
           "name": "SkillGroupIds",
@@ -6439,7 +7159,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -6484,7 +7204,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required).",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "uint64",
           "name": "SdkAppId",
@@ -6493,7 +7213,7 @@
         },
         {
           "disabled": false,
-          "document": "Skill group ID.",
+          "document": "Skill group id.",
           "example": "12345678",
           "member": "int64",
           "name": "SkillGroupID",
@@ -6511,7 +7231,7 @@
         },
         {
           "disabled": false,
-          "document": "Modified maximum concurrency and the maximum synchronization is 2.",
+          "document": "Modified maximum concurrency, with the maximum synchronization being 2.",
           "example": "1",
           "member": "int64",
           "name": "MaxConcurrency",
@@ -6547,7 +7267,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1400000000",
           "member": "int64",
           "name": "SdkAppId",
@@ -6556,7 +7276,7 @@
         },
         {
           "disabled": false,
-          "document": "Generated task ID.",
+          "document": "Generated task id.",
           "example": "2569",
           "member": "int64",
           "name": "CampaignId",
@@ -6565,7 +7285,7 @@
         },
         {
           "disabled": false,
-          "document": "Task Name",
+          "document": "Task name.",
           "example": "新能源SUV推荐",
           "member": "string",
           "name": "Name",
@@ -6574,7 +7294,7 @@
         },
         {
           "disabled": false,
-          "document": "Called list supporting E.164 or number formats without country code.",
+          "document": "Called list supporting e.164 or number formats without country code.",
           "example": "+8613012345678",
           "member": "string",
           "name": "Callees",
@@ -6619,7 +7339,7 @@
         },
         {
           "disabled": false,
-          "document": "Expected call drop rate, percentage, 5 - 50.",
+          "document": "Expected call drop rate, percentage, 5 - 50.\t.\t",
           "example": "10",
           "member": "int64",
           "name": "ExpectedAbandonRate",
@@ -6637,7 +7357,7 @@
         },
         {
           "disabled": false,
-          "document": "Task start time. Unix timestamp. The task will automatically start after this time.",
+          "document": "Task start time. unix timestamp. the task will automatically start after this time.",
           "example": "1708483433",
           "member": "int64",
           "name": "StartTime",
@@ -6646,7 +7366,7 @@
         },
         {
           "disabled": false,
-          "document": "Task termination time. Unix timestamp. The task will automatically terminate after this time.",
+          "document": "Task termination time. unix timestamp. the task will automatically terminate after this time.",
           "example": "1708485433",
           "member": "int64",
           "name": "EndTime",
@@ -6655,7 +7375,7 @@
         },
         {
           "disabled": false,
-          "document": "Specified IVR ID.",
+          "document": "Specified ivr id.",
           "example": "4600",
           "member": "int64",
           "name": "IVRId",
@@ -6670,6 +7390,33 @@
           "name": "RetryTimes",
           "required": false,
           "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Custom variable.",
+          "example": "[{\"Key\":\"foo\",\"Value\":\"bar\"}]",
+          "member": "Variable",
+          "name": "Variables",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "\tUUI",
+          "example": "foobar",
+          "member": "string",
+          "name": "UUI",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Property of the called.",
+          "example": "[{\"Callee\":\"13012345678\",\"UUI\":\"foobar\",\"Variables\":[{\"Key\":\"foo\":\"Value\":\"bar\"}]}]",
+          "member": "CalleeAttribute",
+          "name": "CalleeAttributes",
+          "required": false,
+          "type": "list"
         }
       ],
       "type": "object"
@@ -6691,7 +7438,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "File Alias (can be duplicated)",
+          "document": "File alias (can be duplicated).",
           "example": "呼入使用",
           "member": "string",
           "name": "CustomFileName",
@@ -6700,7 +7447,7 @@
         },
         {
           "disabled": false,
-          "document": "Audio File Link (supports mp3 and wav formats, file size not exceeding 5MB)",
+          "document": "Audio file link (supports mp3 and wav formats, file size not exceeding 5mb).",
           "example": "http://xxx.com/aa.mp3",
           "member": "string",
           "name": "AudioUrl",
@@ -6715,7 +7462,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Filename\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Filename.",
           "example": "xxx.mp3",
           "member": "string",
           "name": "FileName",
@@ -6725,7 +7472,7 @@
         },
         {
           "disabled": false,
-          "document": "Reason for failure\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Reason for failure.",
           "example": "文件内容重复",
           "member": "string",
           "name": "FailedMsg",
@@ -6741,7 +7488,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Application ID (required) can be found at https://console.cloud.tencent.com/ccc.",
+          "document": "Application id (required) can be found at https://console.cloud.tencent.com/ccc.",
           "example": "1600000001",
           "member": "int64",
           "name": "SdkAppId",
@@ -6750,7 +7497,7 @@
         },
         {
           "disabled": false,
-          "document": "Audio File List",
+          "document": "Audio file list.",
           "example": "无",
           "member": "UploadAudioInfo",
           "name": "AudioList",
@@ -6765,7 +7512,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "List of failed uploads\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List of files that failed to be uploaded.",
           "example": "无",
           "member": "UploadIvrAudioFailedInfo",
           "name": "FailedFileList",
@@ -6775,7 +7522,7 @@
         },
         {
           "disabled": false,
-          "document": "List of successful uploads\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "List of successfully uploaded files.",
           "example": "无",
           "member": "AudioFileInfo",
           "name": "SuccessFileList",
