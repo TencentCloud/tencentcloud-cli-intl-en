@@ -56,6 +56,22 @@
         "title": "申请EIP失败"
       }
     ],
+    "AllocateIPv6Addresses": [
+      {
+        "document": "This example shows you how to apply for a regular BGP IPv6 address billed by hourly traffic.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AllocateIPv6Addresses\n<Common request parameters>\n\n{\n    \"AddressCount\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"AddressSet\": [\n            \"eipv6-m44ku5d2\"\n        ],\n        \"TaskId\": \"61531421\",\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
+        "title": "Applying for a Regular BGP IPv6 Address Billed by Hourly Traffic"
+      }
+    ],
+    "AllocateIp6AddressesBandwidth": [
+      {
+        "document": "Specify one or multiple IPv6 addresses to enable public network access capability",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AllocateIp6AddressesBandwidth\n<Common request parameters>\n\n{\n    \"Ip6Addresses\": [\n        \"2402:4e00:1000:200:0:8d8a:60b7:87f8\"\n    ],\n    \"InternetMaxBandwidthOut\": 1\n}",
+        "output": "{\n    \"Response\": {\n        \"AddressSet\": [\n            \"eip-68dqs5ri\"\n        ],\n        \"TaskId\": \"194395704\",\n        \"RequestId\": \"283a29bf-982d-4d55-984a-0d464f61f9ae\"\n    }\n}",
+        "title": "Specify one or multiple IPv6 addresses to enable public network access capability"
+      }
+    ],
     "AssignIpv6Addresses": [
       {
         "document": "This example shows you how to apply for specified IPv6 addresses for an ENI.",
@@ -108,6 +124,14 @@
         "input": "https://vpc.tencentcloudapi.com/?Action=AssociateDirectConnectGatewayNatGateway\n&VpcId=vpc-8xpno8ee\n&DirectConnectGatewayId=dcg-fxa6gh5t\n&NatGatewayId=nat-ig8xpno8\n&<Common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"dbffc3f0-1807-4683-89ee-2d2b96425ee1\"\n    }\n}",
         "title": "Binding a direct connect gateway with a NAT gateway"
+      }
+    ],
+    "AssociateIPv6Address": [
+      {
+        "document": "This example shows you how to bind an EIPv6 to the ENI.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: AssociateIPv6Address\n<Common request parameters>\n\n{\n    \"IPv6AddressId\": \"eipv6-3lxpc6sh\",\n    \"NetworkInterfaceId\": \"eni-0c454zph\",\n    \"PrivateIPv6Address\": \"fc00:200:300:700:0:9c64:2c95:b711\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"631011dd-6dfa-41b5-be7c-47bd61d82978\"\n    }\n}",
+        "title": "Binding an EIPv6 to the ENI"
       }
     ],
     "AssociateNatGatewayAddress": [
@@ -1102,6 +1126,28 @@
         "title": "Querying the HAVIP details by multiple conditions"
       }
     ],
+    "DescribeIPv6Addresses": [
+      {
+        "document": "\t\n\nThis example shows you how to query the IPv6 information based on IPv6AddressIds.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIPv6Addresses\n<Common request parameters>\n\n{\n    \"IPv6AddressIds\": [\n        \"eipv6-11112222\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 0,\n        \"AddressSet\": [\n            {\n                \"AddressId\": \"eipv6-11112222\",\n                \"AddressName\": \"abc\",\n                \"AddressStatus\": \"abc\",\n                \"AddressIp\": \"abc\",\n                \"InstanceId\": \"abc\",\n                \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                \"NetworkInterfaceId\": \"abc\",\n                \"PrivateAddressIp\": \"abc\",\n                \"IsArrears\": true,\n                \"IsBlocked\": true,\n                \"IsEipDirectConnection\": true,\n                \"AddressType\": \"abc\",\n                \"CascadeRelease\": true,\n                \"EipAlgType\": {\n                    \"Ftp\": true,\n                    \"Sip\": true\n                },\n                \"InternetServiceProvider\": \"abc\",\n                \"LocalBgp\": true,\n                \"Bandwidth\": 1,\n                \"InternetChargeType\": \"abc\",\n                \"TagSet\": [\n                    {\n                        \"Key\": \"abc\",\n                        \"Value\": \"abc\"\n                    }\n                ],\n                \"DeadlineDate\": \"2020-09-22\",\n                \"InstanceType\": \"abc\",\n                \"Egress\": \"abc\"\n            }\n        ],\n        \"RequestId\": \"abc\"\n    }\n}",
+        "title": "Querying the IPv6 Information Based on IPv6AddressIds"
+      }
+    ],
+    "DescribeIp6Addresses": [
+      {
+        "document": "Query IPv6 information based on the filter",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIp6Addresses\n<Common request parameters>\n\n{\n    \"Filters\": [\n        {\n            \"Values\": [\n                \"2402:4e00:1000:2d00:0:8f3f:6:9895\"\n            ],\n            \"Name\": \"address-ip\"\n        }\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AddressSet\": [\n            {\n                \"AddressId\": \"eip-lrhy2lpe\",\n                \"AddressName\": \"demo\",\n                \"AddressStatus\": \"BIND\",\n                \"AddressIp\": \"2402:4e00:1000:2d00:0:8f3f:6:9895\",\n                \"InstanceId\": \"ins-0cu6wix4\",\n                \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                \"NetworkInterfaceId\": \"eni-85sohtb7\",\n                \"PrivateAddressIp\": \"2402:4e00:1000:2d00:0:8f3f:6:9895\",\n                \"IsArrears\": true,\n                \"IsBlocked\": true,\n                \"IsEipDirectConnection\": true,\n                \"AddressType\": \"EIP6\",\n                \"CascadeRelease\": true,\n                \"EipAlgType\": {\n                    \"Ftp\": true,\n                    \"Sip\": true\n                },\n                \"InternetServiceProvider\": \"BGP\",\n                \"LocalBgp\": true,\n                \"Bandwidth\": 1,\n                \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                \"TagSet\": [\n                    {\n                        \"Key\": \"role\",\n                        \"Value\": \"developer\"\n                    }\n                ],\n                \"DeadlineDate\": \"2020-09-22\",\n                \"InstanceType\": \"CVM\",\n                \"Egress\": \"center_egress1\"\n            }\n        ],\n        \"RequestId\": \"64b212c4-d541-44c3-80ff-1131967a77c5\"\n    }\n}",
+        "title": "Query IPv6 information based on the filter"
+      },
+      {
+        "document": "Query IPv6 information based on Ip6AddressIds",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DescribeIp6Addresses\n<Common request parameters>\n\n{\n    \"Ip6AddressIds\": [\n        \"eip-lrhy2lpe\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TotalCount\": 1,\n        \"AddressSet\": [\n            {\n                \"AddressId\": \"eip-lrhy2lpe\",\n                \"AddressName\": \"demo\",\n                \"AddressStatus\": \"BIND\",\n                \"AddressIp\": \"2402:4e00:1000:2d00:0:8f3f:6:9895\",\n                \"InstanceId\": \"ins-0cu6wix4\",\n                \"CreatedTime\": \"2020-09-22T00:00:00+00:00\",\n                \"NetworkInterfaceId\": \"eni-85sohtb7\",\n                \"PrivateAddressIp\": \"2402:4e00:1000:2d00:0:8f3f:6:9895\",\n                \"IsArrears\": true,\n                \"IsBlocked\": true,\n                \"IsEipDirectConnection\": true,\n                \"AddressType\": \"EIP6\",\n                \"CascadeRelease\": true,\n                \"EipAlgType\": {\n                    \"Ftp\": true,\n                    \"Sip\": true\n                },\n                \"InternetServiceProvider\": \"BGP\",\n                \"LocalBgp\": true,\n                \"Bandwidth\": 1,\n                \"InternetChargeType\": \"TRAFFIC_POSTPAID_BY_HOUR\",\n                \"TagSet\": [\n                    {\n                        \"Key\": \"role\",\n                        \"Value\": \"developer\"\n                    }\n                ],\n                \"DeadlineDate\": \"2020-09-22\",\n                \"InstanceType\": \"CVM\",\n                \"Egress\": \"center_egress1\"\n            }\n        ],\n        \"RequestId\": \"64b212c4-d541-44c3-80ff-1131967a77c5\"\n    }\n}",
+        "title": "Query IPv6 information based on Ip6AddressIds"
+      }
+    ],
     "DescribeIpGeolocationDatabaseUrl": [
       {
         "document": "This example shows you how to obtain the download link of an IPv4 location database.",
@@ -1592,6 +1638,14 @@
         "title": "Unbinding a direct connect gateway from a NAT gateway"
       }
     ],
+    "DisassociateIPv6Address": [
+      {
+        "document": "This example shows you how to unbind an EIPv6.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: DisassociateIPv6Addresses\n<Common request parameters>\n\n{\n    \"IPv6AddressId\": \"eipv6-or8cse19\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"631011dd-6dfa-41b5-be7c-47bd61d82978\"\n    }\n}",
+        "title": "Unbinding an EIPv6"
+      }
+    ],
     "DisassociateNatGatewayAddress": [
       {
         "document": " ",
@@ -1946,6 +2000,30 @@
         "title": "Modifying the HAVIP name"
       }
     ],
+    "ModifyIPv6AddressesAttributes": [
+      {
+        "document": "This example shows you how to modify the names of EIPv6 addresses in batches.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyIPv6AddressesAttributes\n<Common request parameters>\n\n{\n    \"IPv6AddressIds\": [\n        \"eipv6-2ucdpy9t\",\n        \"eipv6-3lxpc6sh\"\n    ],\n    \"IPv6AddressName\": \"test\"\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a75d9b1a-0640-43a2-837b-6334247e9fbc\"\n    }\n}",
+        "title": "Modifying the Names of EIPv6 Addresses in Batches"
+      }
+    ],
+    "ModifyIPv6AddressesBandwidth": [
+      {
+        "document": "This example shows you how to modify the bandwidth of EIPv6 addresses in batches.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyIPv6AddressesBandwidth\n<Common request parameters>\n\n{\n    \"IPv6AddressIds\": [\n        \"eipv6-2ucdpy9t\",\n        \"eipv6-3lxpc6sh\"\n    ],\n    \"InternetMaxBandwidthOut\": 20\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"a6661e38-e981-4369-af26-b6f1a7e21a1d\"\n    }\n}",
+        "title": "Modifying the Bandwidth of EIPv6 Addresses in Batches"
+      }
+    ],
+    "ModifyIp6AddressesBandwidth": [
+      {
+        "document": "This example shows you how to modify the bandwidth limit of a specified traditional elastic IPv6 address.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ModifyIp6AddressesBandwidth\n<Common request parameters>\n\n{\n    \"Ip6Addresses\": [\n        \"2402:4e00:1000:200:0:8d8a:60b7:87f8\"\n    ],\n    \"InternetMaxBandwidthOut\": 50\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"12579795\",\n        \"RequestId\": \"61b49567-8cbf-4523-8f25-7a2c9da23ddb\"\n    }\n}",
+        "title": "Modifying the Bandwidth Limit of a Traditional Elastic IPv6 Address"
+      }
+    ],
     "ModifyIpv6AddressesAttribute": [
       {
         "document": " ",
@@ -2216,6 +2294,28 @@
         "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ReleaseAddresses\n<Common request parameters>\n\n{\n    \"AddressIds\": [\n        \"eip-gzc5rgr2\"\n    ]\n}",
         "output": "{\n    \"Response\": {\n        \"TaskId\": \"12331420\",\n        \"RequestId\": \"6EF60BEC-0242-43AF-BB20-270359FB54A7\"\n    }\n}",
         "title": "Releasing an EIP"
+      }
+    ],
+    "ReleaseIPv6Addresses": [
+      {
+        "document": "This example shows you how to release an EIPv6.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ReleaseIPv6Addresses\n<Common request parameters>\n\n{\n    \"IPv6AddressIds\": [\n        \"eipv6-xkcjvisl\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"RequestId\": \"431f1a1a-7612-43ec-887c-85da46b15774\"\n    }\n}",
+        "title": "Releasing an EIPv6"
+      }
+    ],
+    "ReleaseIp6AddressesBandwidth": [
+      {
+        "document": "The input parameter Ip6AddressIds is required.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ReleaseIp6AddressesBandwidth\n<Common request parameters>\n\n{\n    \"Ip6AddressIds\": [\n        \"eip-31g37kea\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"12579789\",\n        \"RequestId\": \"fe6aa94a-2a74-41d8-9570-337a575443fe\"\n    }\n}",
+        "title": "Disable the bandwidth of classic elastic public IPv6 based on the instance ID"
+      },
+      {
+        "document": "The input parameter Ip6Addresses is required.",
+        "input": "POST / HTTP/1.1\nHost: vpc.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: ReleaseIp6AddressesBandwidth\n<Common request parameters>\n\n{\n    \"Ip6Addresses\": [\n        \"2402:4e00:1000:200:0:8d8a:60b7:87f8\"\n    ]\n}",
+        "output": "{\n    \"Response\": {\n        \"TaskId\": \"12579786\",\n        \"RequestId\": \"3287c8ef-2bfb-4ae7-8874-f3628c0344b1\"\n    }\n}",
+        "title": "Disable the bandwidth of classic elastic public IPv6 based on the IPv6 Addresses"
       }
     ],
     "RemoveBandwidthPackageResources": [

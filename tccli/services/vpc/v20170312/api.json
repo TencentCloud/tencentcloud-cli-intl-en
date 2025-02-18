@@ -28,6 +28,20 @@
       "output": "AllocateAddressesResponse",
       "status": "online"
     },
+    "AllocateIPv6Addresses": {
+      "document": "This API is used to apply for one or more Elastic IPv6 (EIPv6) instances.\n\n- EIPv6 is a fixed public IPv6 address that can be independently applied for and held in a Tencent Cloud region, providing a consistent product experience with Elastic IPv4.\n- You can quickly bind an EIPv6 instance to the private IPv6 address of a cloud resource, so as to quickly enable IPv6 public bandwidth for the cloud resource.\n- You can also bind an EIPv6 instance to other cloud resources as needed, so as to shield instance failures.",
+      "input": "AllocateIPv6AddressesRequest",
+      "name": "Creates an EIPv6",
+      "output": "AllocateIPv6AddressesResponse",
+      "status": "online"
+    },
+    "AllocateIp6AddressesBandwidth": {
+      "document": "This API is used to allocate IPv6 public network bandwidth for classic elastic public IPv6 addresses.\n\n- Classic elastic public IPv6 addresses only have the private network communication capability by default. They can have the IPv6 public network communication capability and be displayed in the list of Classic Elastic Public IPv6 only after IPv6 public network bandwidth is allocated in the console or by calling this API. \n- You can allocate public network bandwidth for one or multiple Classic elastic public IPv6 addresses each time.",
+      "input": "AllocateIp6AddressesBandwidthRequest",
+      "name": "Allocates the IPv6 public network bandwidth",
+      "output": "AllocateIp6AddressesBandwidthResponse",
+      "status": "online"
+    },
     "AssignIpv6Addresses": {
       "document": "This API is used to apply for an IPv6 address for the ENI. <br />\nThis API is completed asynchronously. If you need to query the execution result of an async task, please use the `RequestId` returned by this API to poll the `DescribeVpcTaskResult` API.\n* The number of IPs bound with an ENI is limited. For more information, see <a href=\"/document/product/576/18527\">ENI Use Limits</a>.\n* You can apply for a specified IPv6 address. Currently, the IPv6 address can only be used as a secondary IP, instead of the primary IP.\n* The address must be an idle IP in the subnet to which the ENI belongs.\n* When applying for one or more secondary IPv6 addresses for an ENI, the API will return the specified number of secondary IPv6 addresses in the subnet range where the ENI is located.",
       "input": "AssignIpv6AddressesRequest",
@@ -68,6 +82,13 @@
       "input": "AssociateDirectConnectGatewayNatGatewayRequest",
       "name": "Binds a direct connect gateway to a NAT Gateway",
       "output": "AssociateDirectConnectGatewayNatGatewayResponse",
+      "status": "online"
+    },
+    "AssociateIPv6Address": {
+      "document": "This API is used to bind an EIPv6 instance to the private IPv6 address configured on the CVM or ENI.\n\n- Binding an EIPv6 to the CVM essentially indicates binding the EIPv6 to the private IPv6 address configured on the ENI of the CVM.\n- Before binding an EIPv6 to the private IPv6 of a specified ENI, ensure that the private IPv6 address is unbound before the binding operation is performed.",
+      "input": "AssociateIPv6AddressRequest",
+      "name": "Binds an EIPv6",
+      "output": "AssociateIPv6AddressResponse",
       "status": "online"
     },
     "AssociateNatGatewayAddress": {
@@ -833,6 +854,20 @@
       "output": "DescribeHaVipsResponse",
       "status": "online"
     },
+    "DescribeIPv6Addresses": {
+      "document": "This API is used to query detailed information of one or more EIPv6 instances.\n\n- You can query EIPv6 and traditional EIPv6 instance information in a specified region.\n- The system returns a certain number (as specified by the Limit, the default value is 20) of EIPv6 instances of the current user if the parameter is empty.",
+      "input": "DescribeIPv6AddressesRequest",
+      "name": "Queries the EIPv6 list",
+      "output": "DescribeIPv6AddressesResponse",
+      "status": "online"
+    },
+    "DescribeIp6Addresses": {
+      "document": "This API is used to query the detailed information on one or multiple classic elastic public IPv6 instances.",
+      "input": "DescribeIp6AddressesRequest",
+      "name": "Queries the list of classic elastic public IPv6 instances",
+      "output": "DescribeIp6AddressesResponse",
+      "status": "online"
+    },
     "DescribeIpGeolocationDatabaseUrl": {
       "document": "This API is used to obtain the download link of an IP location database.\n<font color=\"#FF0000\">This API will be discontinued soon and is only available for existing users.</font>",
       "input": "DescribeIpGeolocationDatabaseUrlRequest",
@@ -1204,6 +1239,13 @@
       "output": "DisassociateDirectConnectGatewayNatGatewayResponse",
       "status": "online"
     },
+    "DisassociateIPv6Address": {
+      "document": "This API is used to unbind an EIPv6 instance.\n\n- You can unbind EIPv6 instances bound to Cloud Virtual Machine (CVM) or Elastic Network Interface (ENI).\n- Only EIPv6 instances in BIND or BIND_ENI status can be unbound.",
+      "input": "DisassociateIPv6AddressRequest",
+      "name": "Unbinds an EIPv6",
+      "output": "DisassociateIPv6AddressResponse",
+      "status": "online"
+    },
     "DisassociateNatGatewayAddress": {
       "document": "This API is used to unbind an EIP from a NAT gateway.",
       "input": "DisassociateNatGatewayAddressRequest",
@@ -1477,6 +1519,27 @@
       "output": "ModifyHaVipAttributeResponse",
       "status": "online"
     },
+    "ModifyIPv6AddressesAttributes": {
+      "document": "This API is used to modify the name of an EIPv6 instance.\n\n- You can modify the name of both EIPv6 and traditional EIPv6 instances.",
+      "input": "ModifyIPv6AddressesAttributesRequest",
+      "name": "Modifies EIPv6 attributes",
+      "output": "ModifyIPv6AddressesAttributesResponse",
+      "status": "online"
+    },
+    "ModifyIPv6AddressesBandwidth": {
+      "document": "This API is used to modify the bandwidth cap of an EIPv6 instance.",
+      "input": "ModifyIPv6AddressesBandwidthRequest",
+      "name": "Modifies the EIPv6 bandwidth",
+      "output": "ModifyIPv6AddressesBandwidthResponse",
+      "status": "online"
+    },
+    "ModifyIp6AddressesBandwidth": {
+      "document": "This API is used to adjust the bandwidth limit of a classic elastic public IPv6 instance.\n\n- You can adjust the bandwidth limit of only classic elastic public IPv6 instances.\n- To adjust the bandwidth limit of an elastic public IPv6 instance, call the ModifyIPv6AddressesBandwidth API.",
+      "input": "ModifyIp6AddressesBandwidthRequest",
+      "name": "Adjusts the bandwidth limit of a classic elastic public IPv6 instance",
+      "output": "ModifyIp6AddressesBandwidthResponse",
+      "status": "online"
+    },
     "ModifyIpv6AddressesAttribute": {
       "document": "This API (ModifyIpv6AddressesAttribute) is used to modify the private IPv6 address attributes of an ENI.",
       "input": "ModifyIpv6AddressesAttributeRequest",
@@ -1692,6 +1755,20 @@
       "input": "ReleaseAddressesRequest",
       "name": "Releases the EIP",
       "output": "ReleaseAddressesResponse",
+      "status": "online"
+    },
+    "ReleaseIPv6Addresses": {
+      "document": "This API is used to release one or more EIPv6 instances.\n\n- You can release the obtained EIPv6 instances. To use them again, please reapply.\n- Only EIPv6 instances in UNBIND status can be released.",
+      "input": "ReleaseIPv6AddressesRequest",
+      "name": "Releases an EIPv6",
+      "output": "ReleaseIPv6AddressesResponse",
+      "status": "online"
+    },
+    "ReleaseIp6AddressesBandwidth": {
+      "document": "This API is used to release the IPv6 public network bandwidth of classic elastic public IPv6 instances.\n\n- Classic elastic public IPv6 addresses still have the IPv6 private network communication capability after the public network bandwidth is released.\n- To allocate IPV6 public network bandwidth, call the AllocateIp6AddressesBandwidth API.",
+      "input": "ReleaseIp6AddressesBandwidthRequest",
+      "name": "Releases the IPv6 public network bandwidth",
+      "output": "ReleaseIp6AddressesBandwidthResponse",
       "status": "online"
     },
     "RemoveBandwidthPackageResources": {
@@ -2095,7 +2172,7 @@
         },
         {
           "disabled": false,
-          "document": "IP type. Valid values: `CalcIP` (device IP), `WanIP` (public network IP), `EIP` (general elastic IP), `AnycastEIP` (accelerated EIP), and `AntiDDoSEIP` (Anti DDoS EIP).",
+          "document": "EIP resource type. Valid values: `CalcIP` (device IP), `WanIP` (public IP), `EIP` (elastic IP), `AnycastEIP` (accelerated EIP), and `AntiDDoSEIP` (anti-DDoS EIP).",
           "example": "EIP",
           "member": "string",
           "name": "AddressType",
@@ -2195,7 +2272,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Static single-line IP network egress\nNote: This field may return null, indicating that no valid value was found.",
           "example": "center_egress1",
           "member": "string",
           "name": "Egress",
@@ -2215,7 +2292,7 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Indicates whether the current EIP is auto-renewed. This field is displayed only for EIPs with monthly prepaid bandwidth. Valid values are as follows:\n<li>NOTIFY_AND_MANUAL_RENEW: Normal renewal</li><li>NOTIFY_AND_AUTO_RENEW: Automatic renewal</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: No renewal upon expiration</li>\n",
           "example": "NOTIFY_AND_MANUAL_RENEW",
           "member": "string",
           "name": "RenewFlag",
@@ -2225,10 +2302,30 @@
         },
         {
           "disabled": false,
-          "document": "",
+          "document": "Indicates the ID of the Bandwidth Package associated with the current public IP. If the public IP is not billed by Bandwidth Package, this field is empty.\nNote: This field may return null, indicating that no valid value was found.",
           "example": "bwp-ki2fa60h",
           "member": "string",
           "name": "BandwidthPackageId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Indicates the unique ID of the VPC to which the traditional EIPv6 belongs.\nNote: This field may return null, indicating that no valid value was found.",
+          "example": "vpc-xxxxxxxx",
+          "member": "string",
+          "name": "UnVpcId",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Indicates the unique ID of the CDC.\nNote: This field may return 'null', indicating that no valid value was found.",
+          "example": "cluster-gbo27yc4",
+          "member": "string",
+          "name": "DedicatedClusterId",
           "output_required": false,
           "type": "string",
           "value_allowed_null": true
@@ -2728,6 +2825,208 @@
       ],
       "type": "object"
     },
+    "AllocateIPv6AddressesRequest": {
+      "document": "AllocateIPv6Addresses request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "EIPv6 name, which is the custom EIPv6 name given by the user when the user applies for the EIPv6. Default: not named.",
+          "example": "demo",
+          "member": "string",
+          "name": "AddressName",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates the type of EIPv6. Valid values:\n\n- EIPv6: common IPv6\n- HighQualityEIPv6: dedicated IPv6\nNote: Contact the product team to enable the dedicated IPv6 allowlist. The dedicated IPv6 is only supported in some regions.\n\nDefault: EIPv6.",
+          "example": "EIPv6",
+          "member": "string",
+          "name": "AddressType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Number of applied EIPv6 addresses. Default: 1.",
+          "example": "1",
+          "member": "int64",
+          "name": "AddressCount",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates the billing method of EIPv6. Valid values:\n\n- BANDWIDTH_PACKAGE: billed by [Bandwidth Package](https://intl.cloud.tencent.com/document/product/684/15255?from_cn_redirect=1)\n- TRAFFIC_POSTPAID_BY_HOUR: postpaid by traffic on an hourly basis\n\nDefault: TRAFFIC_POSTPAID_BY_HOUR.",
+          "example": "TRAFFIC_POSTPAID_BY_HOUR",
+          "member": "string",
+          "name": "InternetChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates the type of EIPv6 line. Default: BGP.\n\nFor a user who has enabled the static single-line IP allowlist, valid values include:\n- CMCC: China Mobile\n- CTCC: China Telecom\n- CUCC: China Unicom\nNote: The static single-line IP is only supported in some regions.",
+          "example": "BGP",
+          "member": "string",
+          "name": "InternetServiceProvider",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "EIPv6 bandwidth cap, in Mbps.\n\nValid values depend on the EIP billing method:\n\n- BANDWIDTH_PACKAGE: 1 Mbps to 2000 Mbps\n- TRAFFIC_POSTPAID_BY_HOUR: 1 Mbps to 100 Mbps\n\nDefault: 1 Mbps.",
+          "example": "10",
+          "member": "int64",
+          "name": "InternetMaxBandwidthOut",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Unique ID of the bandwidth package.\nSetting this parameter and having InternetChargeType as BANDWIDTH_PACKAGE indicate that the created EIP will join this BGP bandwidth package and the billing method of bandwidth package will be adopted.",
+          "example": "bwp-6jnvlsv4",
+          "member": "string",
+          "name": "BandwidthPackageId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of tags to be associated.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "EIPv6 network egress. Valid values:\n\n- CENTER_EGRESS_1: Central egress point 1\n- CENTER_EGRESS_2: Central egress point 2\n- CENTER_EGRESS_3: Central egress point 3\nNote: The network egress for different Internet Service Providers (ISPs) or resource types requires contacting the product team for enablement.\n\nDefault: CENTER_EGRESS_1.",
+          "example": "center_egress1",
+          "member": "string",
+          "name": "Egress",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AllocateIPv6AddressesResponse": {
+      "document": "AllocateIPv6Addresses response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of unique IDs of applied EIPv6 addresses.",
+          "example": "[\"eipv6-m44ku5d2\"]",
+          "member": "string",
+          "name": "AddressSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.",
+          "example": "61531428",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AllocateIp6AddressesBandwidthRequest": {
+      "document": "AllocateIp6AddressesBandwidth request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IPv6 addresses that require the public network access capability.",
+          "example": "[\"2402:4e00:1011:9b02:0:98e8:f0fd:3a85\"]",
+          "member": "string",
+          "name": "Ip6Addresses",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Bandwidth, in Mbps. The default value is 1 Mbps.",
+          "example": "50",
+          "member": "int64",
+          "name": "InternetMaxBandwidthOut",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Network billing mode. IPv6 addresses currently support \"TRAFFIC_POSTPAID_BY_HOUR\" and \"BANDWIDTH_PACKAGE\". The default network billing mode is \"TRAFFIC_POSTPAID_BY_HOUR\".",
+          "example": "TRAFFIC_POSTPAID_BY_HOUR",
+          "member": "string",
+          "name": "InternetChargeType",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Bandwidth package ID. This ID is required for standard accounts to add the IPv6 addresses to the bandwidth package, thus using the billing mode.",
+          "example": "bwp-12345678",
+          "member": "string",
+          "name": "BandwidthPackageId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of tags to be associated.\t\t",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "AllocateIp6AddressesBandwidthResponse": {
+      "document": "AllocateIp6AddressesBandwidth response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of unique IDs of Classic elastic Public IPv6 instances.",
+          "example": "[\"eip-68dqs5ri\"]",
+          "member": "string",
+          "name": "AddressSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Asynchronous task ID. You can call the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.",
+          "example": "194395704",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "AssignIpv6AddressesRequest": {
       "document": "AssignIpv6Addresses request structure.",
       "members": [
@@ -3093,6 +3392,51 @@
     },
     "AssociateDirectConnectGatewayNatGatewayResponse": {
       "document": "AssociateDirectConnectGatewayNatGateway response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateIPv6AddressRequest": {
+      "document": "AssociateIPv6Address request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the EIPv6, such as eipv6-11112222.",
+          "example": "eipv6-nzvwsush",
+          "member": "string",
+          "name": "IPv6AddressId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "ID of the ENI to be bound, such as eni-11112222. NetworkInterfaceId and InstanceId cannot be specified at the same time. The ENI ID can be queried by logging in to the console or obtained from the networkInterfaceId field in the returned value of the DescribeNetworkInterfaces API.",
+          "example": "eni-jyhoxx61",
+          "member": "string",
+          "name": "NetworkInterfaceId",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Private IPv6 to be bound. If NetworkInterfaceId is specified, PrivateIPv6Address must also be specified, which indicates that the EIP will be bound to the specified private IPv6 of the specified ENI. At the same time, it shall be ensured that the specified PrivateIPv6Address is a private IPv6 on the specified NetworkInterfaceId. The specified ENI's private IPv6 can be queried by logging in to the console or obtained from the Ipv6AddressSet.Address field in the returned value of the DescribeNetworkInterfaces API.",
+          "example": "fc00:200:300:700:0:9c64:2c95:b711",
+          "member": "string",
+          "name": "PrivateIPv6Address",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "AssociateIPv6AddressResponse": {
+      "document": "AssociateIPv6Address response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -10806,6 +11150,163 @@
       ],
       "type": "object"
     },
+    "DescribeIPv6AddressesRequest": {
+      "document": "DescribeIPv6Addresses request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID column identifying IPv6.\n\n- Unique ID of the traditional EIPv6, such as `eip-11112222`\n- Unique ID of the EIPv6, such as `eipv6-11112222`\n\nNote: `IPv6AddressIds` and `Filters` cannot be specified at the same time.",
+          "example": "[\"eipv6-kxjsieow\"]",
+          "member": "string",
+          "name": "IPv6AddressIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Each request can have up to 10 `Filters` and 100 `Filter.Values`. `IPv6AddressIds` and `Filters` cannot be specified at the same time. The detailed filter conditions are as follows:\n\n- address-id - String - Required: No - (Filter condition) Filter by the unique ID of the EIPv6.\n- public-ipv6-address - String - Required: No - (Filter condition) Filter by the public IPv6 address.\n- network-interface-id - String - Required: No - (Filter condition) Filter by the unique ID of the ENI.\n- instance-id - String - Required: No - (Filter condition) Filter by the unique ID of the bound instance.\n- charge-type - String - Required: No - (Filter condition) Filter by the billing type.\n- private-ipv6-address - String - Required: No - (Filter condition) Filter by the bound private IPv6 address.\n- egress - String - Required: No - (Filter condition) Filter by the egress.\n- address-type - String - Required: No - (Filter condition) Filter by the IPv6 type. Valid values: 'EIP6', 'EIPv6', 'WanIPv6', and 'HighQualityEIPv6'. Default: 'EIPv6'.\n- address-isp - String - Required: No - (Filter condition) Filter by the ISP type. Valid values: 'BGP', 'CMCC', 'CUCC', and 'CTCC'.\n- address-status - String - Required: No - (Filter condition) Filter by the EIP status. Valid values: 'CREATING', 'BINDING', 'BIND', 'UNBINDING', 'UNBIND', 'OFFLINING', 'BIND_ENI', and 'PRIVATE'.\n- address-name - String - Required: No - (Filter condition) Filter by the EIP name. Fuzzy filtering is not supported.\n- tag-key - String - Required: No - (Filter condition) Filter by the tag key.\n- tag-value - String - Required: No - (Filter condition) Filter by the tag value.\n- tag:tag-key - String - Required: No - (Filter condition) Filter by the tag-key - value pair. Replace tag-key with a specific tag key.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to query the traditional IPv6 address information.",
+          "example": "False",
+          "member": "bool",
+          "name": "Traditional",
+          "required": false,
+          "type": "bool"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Default: 0. For more information on Offset, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned results. Default: 20. Maximum: 100. For more information on Limit, see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIPv6AddressesResponse": {
+      "document": "DescribeIPv6Addresses response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of IPv6 meeting conditions.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IPv6 detailed information list.",
+          "example": "无",
+          "member": "Address",
+          "name": "AddressSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIp6AddressesRequest": {
+      "document": "DescribeIp6Addresses request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of unique IDs that identify IPv6 instances. The unique ID of an IPv6 instance is in the format of `eip-11112222`. Parameters `Ip6AddressIds` and `Filters` cannot be specified at the same time.",
+          "example": "[\"eip-ciel20fd\"]",
+          "member": "string",
+          "name": "Ip6AddressIds",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Each request can have up to 10 `Filters` values and 100 `Filter.Values` values. Parameters `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:\n<li>address-ip - String - Required: No - (Filter condition) Filter by the IP address of IPv6 instances.</li>\n<li>network-interface-id - String - Required: No - (Filter condition) Filter by the unique ID of ENIs.</li>",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).",
+          "example": "20",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeIp6AddressesResponse": {
+      "document": "DescribeIp6Addresses response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Number of IPv6 meeting conditions.",
+          "example": "1",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "IPv6 detailed information list.",
+          "example": "无",
+          "member": "Address",
+          "name": "AddressSet",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeIpGeolocationDatabaseUrlRequest": {
       "document": "DescribeIpGeolocationDatabaseUrl request structure.",
       "members": [
@@ -14486,6 +14987,42 @@
       ],
       "type": "object"
     },
+    "DisassociateIPv6AddressRequest": {
+      "document": "DisassociateIPv6Address request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Indicates the unique ID of the EIPv6, such as eipv6-11112222.",
+          "example": "eipv6-nzvwsush",
+          "member": "string",
+          "name": "IPv6AddressId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Indicates whether to keep the ENI bound when unbinding.",
+          "example": "false",
+          "member": "bool",
+          "name": "KeepBindWithEni",
+          "required": false,
+          "type": "bool"
+        }
+      ],
+      "type": "object"
+    },
+    "DisassociateIPv6AddressResponse": {
+      "document": "DisassociateIPv6Address response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DisassociateNatGatewayAddressRequest": {
       "document": "DisassociateNatGatewayAddress request structure.",
       "members": [
@@ -17666,6 +18203,133 @@
       ],
       "type": "object"
     },
+    "ModifyIPv6AddressesAttributesRequest": {
+      "document": "ModifyIPv6AddressesAttributes request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of unique IDs of EIPv6.",
+          "example": "[\"eipv6-2ucdpy9t\"]",
+          "member": "string",
+          "name": "IPv6AddressIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Name of the EIPv6 address",
+          "example": "demo",
+          "member": "string",
+          "name": "IPv6AddressName",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIPv6AddressesAttributesResponse": {
+      "document": "ModifyIPv6AddressesAttributes response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIPv6AddressesBandwidthRequest": {
+      "document": "ModifyIPv6AddressesBandwidth request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the EIPv6 address",
+          "example": "[\"eipv6-3lxpc6sh\"]",
+          "member": "string",
+          "name": "IPv6AddressIds",
+          "required": true,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Network bandwidth of the EIPv6 address",
+          "example": "10",
+          "member": "int64",
+          "name": "InternetMaxBandwidthOut",
+          "required": true,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIPv6AddressesBandwidthResponse": {
+      "document": "ModifyIPv6AddressesBandwidth response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIp6AddressesBandwidthRequest": {
+      "document": "ModifyIp6AddressesBandwidth request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Modified target bandwidth, in Mbps.",
+          "example": "50",
+          "member": "int64",
+          "name": "InternetMaxBandwidthOut",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "IPv6 addresses. Both Ip6Addresses and Ip6AddressId are required, but they cannot be specified at the same time.",
+          "example": "[\"2402:4e00:1000:200:0:8d8a:60b7:87f8\"]",
+          "member": "string",
+          "name": "Ip6Addresses",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Unique IDs corresponding to the IPv6 addresses. Format: eip-xxxxxxxx. Both Ip6Addresses and Ip6AddressId are required, but they cannot be specified at the same time.",
+          "example": "[\"eip-6kr6f42w\"]",
+          "member": "string",
+          "name": "Ip6AddressIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyIp6AddressesBandwidthResponse": {
+      "document": "ModifyIp6AddressesBandwidth response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Task ID.",
+          "example": "53734868",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyIpv6AddressesAttributeRequest": {
       "document": "ModifyIpv6AddressesAttribute request structure.",
       "members": [
@@ -20623,6 +21287,79 @@
           "disabled": false,
           "document": "The async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.",
           "example": "12331420",
+          "member": "string",
+          "name": "TaskId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReleaseIPv6AddressesRequest": {
+      "document": "ReleaseIPv6Addresses request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Unique ID of the IPv6 address.",
+          "example": "['eipv6-jfiwlckv']",
+          "member": "string",
+          "name": "IPv6AddressIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ReleaseIPv6AddressesResponse": {
+      "document": "ReleaseIPv6Addresses response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ReleaseIp6AddressesBandwidthRequest": {
+      "document": "ReleaseIp6AddressesBandwidth request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "IPv6 addresses. Both Ip6Addresses and Ip6AddressIds are required, but they cannot be specified at the same time.",
+          "example": "[\"2402:4e00:1205:8c00:0:9835:2940:98d3\"]",
+          "member": "string",
+          "name": "Ip6Addresses",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Unique IDs corresponding to the IPv6 addresses. Format: eip-xxxxxxxx. Both Ip6Addresses and Ip6AddressIds are required, but they cannot be specified at the same time.",
+          "example": "[\"eip-68dqs5ri\"]",
+          "member": "string",
+          "name": "Ip6AddressIds",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "ReleaseIp6AddressesBandwidthResponse": {
+      "document": "ReleaseIp6AddressesBandwidth response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Asynchronous task ID. You can call the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.",
+          "example": "384569",
           "member": "string",
           "name": "TaskId",
           "output_required": true,
