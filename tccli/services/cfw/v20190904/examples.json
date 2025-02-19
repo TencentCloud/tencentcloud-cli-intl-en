@@ -300,6 +300,20 @@
         "title": "DescribeUnHandleEventTabList"
       }
     ],
+    "DescribeVpcAcRule": [
+      {
+        "document": " Query Inter-VPC rules and filter IpVersion=0",
+        "input": "{\n  \"Filters\": [\n    {\n      \"Name\": \"IpVersion\",\n      \"Values\": [\n        \"0\"\n      ],\n      \"OperatorType\": 1\n    }\n  ],\n\"Limit\": 10,\n\"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Data\": [\n            {\n                \"Uuid\": 221579,\n                \"InternalUuid\": 1729666998976364,\n                \"OrderIndex\": 1,\n                \"SourceContent\": \"mb_1256532032_1666263807415\",\n                \"SourceType\": \"template\",\n                \"DestContent\": \"192.168.1.2\",\n                \"DestType\": \"net\",\n                \"Port\": \"-1/-1\",\n                \"Protocol\": \"TCP\",\n                \"RuleAction\": \"accept\",\n                \"Description\": \"Internet grouping rule\",\n                \"Enable\": \"true\",\n                \"Deleted\": 0,\n                \"EdgeId\": \"ALL\",\n                \"EdgeName\": \"edge Name\",\n                \"DetectedTimes\": 0,\n                \"FwGroupId\": \"ALL\",\n                \"FwGroupName\": \"Internet grouping\",\n                \"BetaList\": [\n                    {\n                        \"TaskId\": \"9001\",\n                        \"TaskName\": \"autotest\",\n                        \"LastTime\": \"1999-01-01 00:00:01\"\n                    }\n                ],\n                \"ParamTemplateId\": \"pp-ie03er\",\n                \"ParamTemplateName\": \"Custom port parameter template\",\n                \"TargetName\": \"Template Rule\",\n                \"SourceName\": \"Template Rule\",\n                \"IpVersion\": 0\n            }\n        ],\n        \"RequestId\": \"9afc19d7-0036-4f3d-af1a-80088236f4ed\"\n    }\n}",
+        "title": "Query Inter-VPC rules"
+      },
+      {
+        "document": " Query Inter-VPC rules and filter SrcIp=192.168.1.10",
+        "input": "{\n  \"Filters\": [\n  {\n    \"Name\": \"SrcIP\",\n    \"Values\": [\n      \"192.168.1.10\"\n    ],\n    \"OperatorType\": 9\n  },\n  {\n    \"Name\": \"IpVersion\",\n    \"Values\": [\n      \"0\"\n    ],\n    \"OperatorType\": 1\n  }\n],\n\"Limit\": 10,\n\"Offset\": 0\n}",
+        "output": "{\n    \"Response\": {\n        \"Total\": 1,\n        \"Data\": [\n            {\n                \"Uuid\": 221579,\n                \"InternalUuid\": 1729666998976364,\n                \"OrderIndex\": 1,\n                \"SourceContent\": \"mb_1256532032_1666263807415\",\n                \"SourceType\": \"template\",\n                \"DestContent\": \"192.168.1.2\",\n                \"DestType\": \"net\",\n                \"Port\": \"-1/-1\",\n                \"Protocol\": \"TCP\",\n                \"RuleAction\": \"accept\",\n                \"Description\": \"Internet grouping rule\",\n                \"Enable\": \"true\",\n                \"Deleted\": 0,\n                \"EdgeId\": \"ALL\",\n                \"EdgeName\": \"edge Name\",\n                \"DetectedTimes\": 0,\n                \"FwGroupId\": \"ALL\",\n                \"FwGroupName\": \"Internet grouping\",\n                \"BetaList\": [\n                    {\n                        \"TaskId\": \"9001\",\n                        \"TaskName\": \"autotest\",\n                        \"LastTime\": \"1999-01-01 00:00:01\"\n                    }\n                ],\n                \"ParamTemplateId\": \"pp-ie03er\",\n                \"ParamTemplateName\": \"Custom port parameter template\",\n                \"TargetName\": \"Template Rule\",\n                \"SourceName\": \"Template Rule\",\n                \"IpVersion\": 0\n            }\n        ],\n        \"RequestId\": \"9afc19d7-0036-4f3d-af1a-80088236f4ed\"\n    }\n}",
+        "title": "Query Inter-VPC rules Filter IP"
+      }
+    ],
     "ExpandCfwVertical": [
       {
         "document": "",

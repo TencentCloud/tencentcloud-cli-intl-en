@@ -712,10 +712,10 @@
     ],
     "ModifyProtectionStatus": [
       {
-        "document": " ",
-        "input": "https://waf.tencentcloudapi.com/?Action=ModifyProtectionStatus\r\n&Domain=www.test.com\r\n&Status=0\r\n&<Common request parameters>",
+        "document": "",
+        "input": "https://waf.tencentcloudapi.com/?Action=ModifyProtectionStatus\r\n&Domain=www.test.com\r\n&Status=0\r\n&<common request parameters>",
         "output": "{\n    \"Response\": {\n        \"RequestId\": \"d680b87a-8c4a-4840-af18-3acb5c9f0e54\"\n    }\n}",
-        "title": "WAF Sparta-WAF Switch"
+        "title": "关闭WAF开关"
       }
     ],
     "ModifySpartaProtection": [

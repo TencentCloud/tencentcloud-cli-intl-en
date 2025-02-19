@@ -112,6 +112,14 @@
         "title": "Recognizing an exit/entry permit for traveling to and from Hong Kong, Macao, or Taiwan"
       }
     ],
+    "RecognizeBrazilDriverLicenseOCR": [
+      {
+        "document": "",
+        "input": "POST / HTTP/1.1\nHost: ocr.tencentcloudapi.com\nContent-Type: application/json\nX-TC-Action: RecognizeBrazilDriverLicenseOCR\n<public parameter>\n\n{\n    \"ImageBase64\": \"/9j/4AAQSkZJRg.....s97n//2Q==\"\n}",
+        "output": "{\n    \"Response\": {\n        \"AdvancedInfo\": \"{\\\"NOME\\\":0.71914065,\\\"CatHab\\\":0.46235353,\\\"CNHNumber\\\":0.64985657,\\\"VALIDADE\\\":0.73679197,\\\"QUALIFICATION\\\":0.7534424,\\\"IDENTIDADE\\\":0.7685954,\\\"CPF\\\":0.74205434,\\\"NASCIMENTO\\\":0.73850095,\\\"MEMBERSHIP\\\":0.8054733,\\\"REGISTRO\\\":0.67544556}\",\n        \"CNHNumber\": \"235*****10\",\n        \"CPF\": \"238.550.758-75\",\n        \"CatHab\": \"B\",\n        \"IDENTIDADE\": \"F048055D DIREX EX\",\n        \"MEMBERSHIP\": \"JINJI PAN/WEIHONG CHEN\",\n        \"NASCIMENTO\": \"28/03/1992\",\n        \"NOME\": \"ZHAOLIN PAN\",\n        \"PortraitImage\": \"\",\n        \"QUALIFICATION\": \"23/05/2012\",\n        \"REGISTRO\": \"07343723357\",\n        \"RequestId\": \"667fbb53-8bf9-46e2-b411-e53ae8cea7e1\",\n        \"VALIDADE\": \"07/08/2024\"\n    }\n}",
+        "title": "RecognizeBrazilDriverLicenseOCR example"
+      }
+    ],
     "RecognizeGeneralInvoice": [
       {
         "document": "This example shows you how to recognize a general invoice or ticket (advanced).",

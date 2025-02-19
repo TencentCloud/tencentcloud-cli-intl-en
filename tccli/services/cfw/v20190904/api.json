@@ -252,6 +252,13 @@
       "output": "DescribeUnHandleEventTabListResponse",
       "status": "online"
     },
+    "DescribeVpcAcRule": {
+      "document": "Query Inter-VPC rules",
+      "input": "DescribeVpcAcRuleRequest",
+      "name": "Query Inter-VPC rules",
+      "output": "DescribeVpcAcRuleResponse",
+      "status": "online"
+    },
     "ExpandCfwVertical": {
       "document": "This API is used to increase the firewall bandwidth.",
       "input": "ExpandCfwVerticalRequest",
@@ -898,34 +905,40 @@
       "document": "Canary publish information of the rule",
       "members": [
         {
+          "disabled": false,
           "document": "Task ID.\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "1001",
           "member": "int64",
           "name": "TaskId",
+          "output_required": true,
           "required": false,
           "type": "int",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Task name.\nNote: This field may return null, indicating that no valid values can be obtained.",
-          "example": "任务xxx",
+          "example": "任务名称",
           "member": "string",
           "name": "TaskName",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         },
         {
+          "disabled": false,
           "document": "Last execution time\nNote: This field may return null, indicating that no valid values can be obtained.",
           "example": "2023-03-02 10:00:00",
           "member": "string",
           "name": "LastTime",
+          "output_required": true,
           "required": false,
           "type": "string",
-          "value_allowed_null": true
+          "value_allowed_null": false
         }
       ],
-      "usage": "out"
+      "usage": "both"
     },
     "BlockIgnoreRule": {
       "document": "Allowlist or blocklist for intrusion prevention",
@@ -1141,31 +1154,31 @@
       "document": "Common filters for search",
       "members": [
         {
+          "disabled": false,
           "document": "Search key.",
-          "example": "SrcIP",
+          "example": "src_ip",
           "member": "string",
           "name": "Name",
           "required": true,
-          "type": "string",
-          "value_allowed_null": false
+          "type": "string"
         },
         {
+          "disabled": false,
           "document": "Search values.",
-          "example": "[\"1.1.1.1\",\"2.2.2.2\"]",
+          "example": "[\"109.24.115.11\",\"83.24.11.24\"]",
           "member": "string",
           "name": "Values",
           "required": true,
-          "type": "list",
-          "value_allowed_null": false
+          "type": "list"
         },
         {
+          "disabled": false,
           "document": "Enum of integers that represent relations between Name and Values.\nenum FilterOperatorType {\n    // Invalid\n    FILTER_OPERATOR_TYPE_INVALID = 0;\n    // Equal to\n    FILTER_OPERATOR_TYPE_EQUAL = 1;\n    // Greater than\n    FILTER_OPERATOR_TYPE_GREATER = 2;\n    // Less than\n    FILTER_OPERATOR_TYPE_LESS = 3;\n    // Greater than or equal to\n    FILTER_OPERATOR_TYPE_GREATER_EQ = 4;\n    // Less than or equal to\n    FILTER_OPERATOR_TYPE_LESS_EQ = 5;\n    // Not equal to\n    FILTER_OPERATOR_TYPE_NO_EQ = 6;\n    // In (contained in the array)\n    FILTER_OPERATOR_TYPE_IN = 7;\n    // Not in\n    FILTER_OPERATOR_TYPE_NOT_IN = 8;\n    // Fuzzily matched\n    FILTER_OPERATOR_TYPE_FUZZINESS = 9;\n    // Existing\n    FILTER_OPERATOR_TYPE_EXIST = 10;\n    // Not existing\n    FILTER_OPERATOR_TYPE_NOT_EXIST = 11;\n    // Regular\n    FILTER_OPERATOR_TYPE_REGULAR = 12;\n}",
           "example": "1",
           "member": "int64",
           "name": "OperatorType",
           "required": true,
-          "type": "int",
-          "value_allowed_null": false
+          "type": "int"
         }
       ],
       "usage": "in"
@@ -4001,6 +4014,116 @@
         },
         {
           "document": "The unique request ID, which is returned for each request. RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpcAcRuleRequest": {
+      "document": "DescribeVpcAcRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Limit",
+          "example": "20",
+          "member": "uint64",
+          "name": "Limit",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset",
+          "example": "0",
+          "member": "uint64",
+          "name": "Offset",
+          "required": true,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Index to be queried, used in specific scenarios, can be left blank",
+          "example": "vpc_rule",
+          "member": "string",
+          "name": "Index",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter combinations",
+          "example": "[{\"Name\":\"IpVersion\",\"OperatorType\":1,\"Values\":[\"1\"]}]",
+          "member": "CommonFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Search start time",
+          "example": "2022-07-27 16:00:00",
+          "member": "string",
+          "name": "StartTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Search end time",
+          "example": "2022-07-27 16:00:00",
+          "member": "string",
+          "name": "EndTime",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Order Type:desc,asc",
+          "example": "desc",
+          "member": "string",
+          "name": "Order",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Order By FileName",
+          "example": "OrderIndex",
+          "member": "string",
+          "name": "By",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeVpcAcRuleResponse": {
+      "document": "DescribeVpcAcRule response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total Data",
+          "example": "1",
+          "member": "uint64",
+          "name": "Total",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Data list",
+          "example": "[{\"Uuid\":224867,\"InternalUuid\":1730373315349063,\"OrderIndex\":1,\"SourceContent\":\"2400:ee00:101c:6200:0:9d41:e4f1:1a08,2400:ee00:101c:6200:0:9d41:e4f1:1a08,2400:ee00:101c:6200:0:9d41:e4f1:1a08,2400:ee00:101c:6200:0:9d41:e4f1:1a08,2400:ee00:101c:6200:0:9d41:e4f1:1a08,2400:ee00:101c:6200:0:9d41:e4f1:1a08,2400:ee00:101c:6200:0:9d41:e4f1:1a08,2400:ee00:101c:6200:0:9d41:e4f1:1a08,2400:ee00:101c:6200:0:9d41:e4f1:1a08,2400:ee00:101c:6200:0:9d41:e4f1:1a08\",\"SourceType\":\"net\",\"DestContent\":\"::/0\",\"DestType\":\"net\",\"Port\":\"-1/-1\",\"Protocol\":\"ANY\",\"RuleAction\":\"accept\",\"Description\":\"test\",\"Enable\":\"false\",\"Deleted\":0,\"EdgeId\":\"ALL\",\"EdgeName\":\"none\",\"DetectedTimes\":15388462,\"LastHitTime\":\"2024-11-01 03:06:11\",\"FwGroupId\":\"ALL\",\"FwGroupName\":\"\",\"BetaList\":[],\"ParamTemplateId\":\"\",\"ParamTemplateName\":\"\",\"DnsParseCnt\":0,\"TargetName\":\"\",\"SourceName\":\"\",\"IpVersion\":1}]",
+          "member": "VpcRuleItem",
+          "name": "Data",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
           "member": "string",
           "name": "RequestId",
           "type": "string"
@@ -7268,6 +7391,287 @@
         }
       ],
       "usage": "out"
+    },
+    "VpcRuleItem": {
+      "document": "",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "192.168.0.2",
+          "member": "string",
+          "name": "SourceContent",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "net",
+          "member": "string",
+          "name": "SourceType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "*.qq.com",
+          "member": "string",
+          "name": "DestContent",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "net",
+          "member": "string",
+          "name": "DestType",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "ANY",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "accept",
+          "member": "string",
+          "name": "RuleAction",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "-1/-1",
+          "member": "string",
+          "name": "Port",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "andy使用的模板",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "-1",
+          "member": "int64",
+          "name": "OrderIndex",
+          "output_required": true,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "true",
+          "member": "string",
+          "name": "Enable",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cfws-d92f04f8或者ALL",
+          "member": "string",
+          "name": "EdgeId",
+          "output_required": true,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "8888",
+          "member": "int64",
+          "name": "Uuid",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "DetectedTimes",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "andy的edge",
+          "member": "string",
+          "name": "EdgeName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "8921",
+          "member": "int64",
+          "name": "InternalUuid",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "Deleted",
+          "output_required": true,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "cfwew-d92f04f8",
+          "member": "string",
+          "name": "FwGroupId",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "防火墙名称",
+          "member": "string",
+          "name": "FwGroupName",
+          "output_required": true,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "[{\"TaskId\":\"9001\",\"TaskName\":\"autotest\",\"LastTime\":\"1999-01-01 00:00:01\"}]",
+          "member": "BetaInfoByACL",
+          "name": "BetaList",
+          "output_required": true,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "pp-1q2w3e4r",
+          "member": "string",
+          "name": "ParamTemplateId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "常用参数模版",
+          "member": "string",
+          "name": "ParamTemplateName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "目的Cvm",
+          "member": "string",
+          "name": "TargetName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "来源实例",
+          "member": "string",
+          "name": "SourceName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "IpVersion",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "",
+          "example": "0",
+          "member": "int64",
+          "name": "Invalid",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     }
   },
   "version": "1.0"
