@@ -70,6 +70,13 @@
       "output": "CreateConfigGroupVersionResponse",
       "status": "online"
     },
+    "CreateContentIdentifier": {
+      "document": "This API is used to create content identifiers, where you can set descriptions, tags, and other information. It is also necessary to bind an enterprise edition package for billing data statistics. A content identifier can only bind one billing package, while a billing package can bind multiple content identifiers. This feature is only available to the allowlist.",
+      "input": "CreateContentIdentifierRequest",
+      "name": "Create content identifiers",
+      "output": "CreateContentIdentifierResponse",
+      "status": "online"
+    },
     "CreateCustomizeErrorPage": {
       "document": "This API is used to create a custom response page.",
       "input": "CreateCustomizeErrorPageRequest",
@@ -78,9 +85,9 @@
       "status": "online"
     },
     "CreateDnsRecord": {
-      "document": "This API is used to create a DNS record.",
+      "document": "After creating a site and the site is accessed in NS mode, you can create DNS records through this API.",
       "input": "CreateDnsRecordRequest",
-      "name": "Creates a DNS record",
+      "name": "Creates a dns record",
       "output": "CreateDnsRecordResponse",
       "status": "online"
     },
@@ -110,6 +117,13 @@
       "input": "CreateL4ProxyRulesRequest",
       "name": "Creates Layer 4 proxy forwarding rules",
       "output": "CreateL4ProxyRulesResponse",
+      "status": "online"
+    },
+    "CreateL7AccRules": {
+      "document": "This API is used to create rules in the [rule engine](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1). Batch creation is supported.",
+      "input": "CreateL7AccRulesRequest",
+      "name": "Create layer-7 acceleration rules",
+      "output": "CreateL7AccRulesResponse",
       "status": "online"
     },
     "CreateLoadBalancer": {
@@ -162,9 +176,9 @@
       "status": "online"
     },
     "CreateRule": {
-      "document": "This API is used to create a rule in the rule engine.",
+      "document": "This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [CreateL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115822?from_cn_redirect=1).",
       "input": "CreateRuleRequest",
-      "name": "Creates a rule in the rule engine.",
+      "name": "Creates a rule in the rule engine (old)",
       "output": "CreateRuleResponse",
       "status": "online"
     },
@@ -217,6 +231,13 @@
       "output": "DeleteApplicationProxyRuleResponse",
       "status": "online"
     },
+    "DeleteContentIdentifier": {
+      "document": "Delete the specified content identifier. This feature is only available to the allowlist.",
+      "input": "DeleteContentIdentifierRequest",
+      "name": "Delete content identifiers",
+      "output": "DeleteContentIdentifierResponse",
+      "status": "online"
+    },
     "DeleteCustomErrorPage": {
       "document": "This API is used to delete a custom response page.",
       "input": "DeleteCustomErrorPageRequest",
@@ -225,9 +246,9 @@
       "status": "online"
     },
     "DeleteDnsRecords": {
-      "document": "This API is used to delete DNS records in batches.",
+      "document": "You can use this API to batch delete DNS records.",
       "input": "DeleteDnsRecordsRequest",
-      "name": "Deletes DNS records in batches",
+      "name": "Batch deletes dns records",
       "output": "DeleteDnsRecordsResponse",
       "status": "online"
     },
@@ -259,6 +280,13 @@
       "output": "DeleteL4ProxyRulesResponse",
       "status": "online"
     },
+    "DeleteL7AccRules": {
+      "document": "This API is used to delete rules of the [rule engine](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1), supporting batch deletion.",
+      "input": "DeleteL7AccRulesRequest",
+      "name": "Delete layer-7 acceleration rules",
+      "output": "DeleteL7AccRulesResponse",
+      "status": "online"
+    },
     "DeleteLoadBalancer": {
       "document": "This API is used to delete a LoadBalancer. If the LoadBalancer is referenced by other services (for example, Layer-4 proxy), the LoadBalancer cannot be deleted until the reference relationship is removed. The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).",
       "input": "DeleteLoadBalancerRequest",
@@ -281,9 +309,9 @@
       "status": "online"
     },
     "DeleteRules": {
-      "document": "This API is used to batch delete rules from the rule engine.",
+      "document": "This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [DeleteL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115821?from_cn_redirect=1).",
       "input": "DeleteRulesRequest",
-      "name": "Batch deletes rules from the rule engine.",
+      "name": "Batch delete rules from the rule engine (old)",
       "output": "DeleteRulesResponse",
       "status": "online"
     },
@@ -364,6 +392,13 @@
       "output": "DescribeConfigGroupVersionsResponse",
       "status": "online"
     },
+    "DescribeContentIdentifiers": {
+      "document": "Batch query content identifiers, which can be filtered by ID, description, status, or Tag. Deleted content identifiers queried by status are retained for only three months. This feature is only open to the allowlist.",
+      "input": "DescribeContentIdentifiersRequest",
+      "name": "Batch query content identifiers",
+      "output": "DescribeContentIdentifiersResponse",
+      "status": "online"
+    },
     "DescribeContentQuota": {
       "document": "This API is used to query content management quotas.",
       "input": "DescribeContentQuotaRequest",
@@ -414,9 +449,9 @@
       "status": "online"
     },
     "DescribeDnsRecords": {
-      "document": "This API is used to query DNS records. Paging, sorting and filtering are supported.",
+      "document": "This API is used to view DNS record information under a site, including DNS record name, record type, and record content. It supports querying specific DNS record information by specifying filter conditions.",
       "input": "DescribeDnsRecordsRequest",
-      "name": "Queries DNS records",
+      "name": "Query dns record list",
       "output": "DescribeDnsRecordsResponse",
       "status": "online"
     },
@@ -449,9 +484,9 @@
       "status": "online"
     },
     "DescribeHostsSetting": {
-      "document": "This API is used to query detailed domain name configuration.",
+      "document": "This API is an old version. EdgeOne has fully upgraded the APIs related to the rule engine. You can obtain detailed configurations of domain names through [DescribeL7AccSetting](https://intl.cloud.tencent.com/document/product/1552/115819?from_cn_redirect=1) and [DescribeL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115820?from_cn_redirect=1).",
       "input": "DescribeHostsSettingRequest",
-      "name": "Queries detailed domain name configuration",
+      "name": "Query detailed configurations of the domain name (old)",
       "output": "DescribeHostsSettingResponse",
       "status": "online"
     },
@@ -481,6 +516,20 @@
       "input": "DescribeL4ProxyRulesRequest",
       "name": "Queries a Layer 4 proxy forwarding rule list",
       "output": "DescribeL4ProxyRulesResponse",
+      "status": "online"
+    },
+    "DescribeL7AccRules": {
+      "document": "This API is used to query the rule list of the rule engine (https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1).",
+      "input": "DescribeL7AccRulesRequest",
+      "name": "Query layer-7 acceleration rules",
+      "output": "DescribeL7AccRulesResponse",
+      "status": "online"
+    },
+    "DescribeL7AccSetting": {
+      "document": "This API is used to query the global configuration of [Site Acceleration](https://intl.cloud.tencent.com/document/product/1552/96193?from_cn_redirect=1).",
+      "input": "DescribeL7AccSettingRequest",
+      "name": "Query global configurations of layer-7 acceleration",
+      "output": "DescribeL7AccSettingResponse",
       "status": "online"
     },
     "DescribeLoadBalancerList": {
@@ -540,16 +589,16 @@
       "status": "online"
     },
     "DescribeRules": {
-      "document": "This API is used to query the rules in the rule engine.",
+      "document": "This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [DescribeL7AccRules](https://intl.cloud.tencent.com/document/product/1552/115820?from_cn_redirect=1).",
       "input": "DescribeRulesRequest",
-      "name": "Queries the rules in the rule engine.",
+      "name": "Query the rules in the rule engine (old)",
       "output": "DescribeRulesResponse",
       "status": "online"
     },
     "DescribeRulesSetting": {
-      "document": "This API is used to return the list of the settings of the rule engine that can be used for request match and their detailed recommended configuration information.",
+      "document": "This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [RuleEngineAction](https://intl.cloud.tencent.com/document/product/1552/80721?from_cn_redirect=1#RuleEngineAction).",
       "input": "DescribeRulesSettingRequest",
-      "name": "Queries the setting parameters of the rule engine.",
+      "name": "Query the setting parameters of the rule engine (old)",
       "output": "DescribeRulesSettingResponse",
       "status": "online"
     },
@@ -617,9 +666,9 @@
       "status": "online"
     },
     "DescribeZoneSetting": {
-      "document": "This API is used to query the site configuration.",
+      "document": "This API is an old version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [DescribeL7AccSetting](https://intl.cloud.tencent.com/document/product/1552/115819?from_cn_redirect=1).",
       "input": "DescribeZoneSettingRequest",
-      "name": "Queries the site configuration",
+      "name": "Query zone configuration (old)",
       "output": "DescribeZoneSettingResponse",
       "status": "online"
     },
@@ -742,6 +791,13 @@
       "output": "ModifyApplicationProxyStatusResponse",
       "status": "online"
     },
+    "ModifyContentIdentifier": {
+      "document": "Modify content identifier, only description modification is supported. This feature is only open to the allowlist.",
+      "input": "ModifyContentIdentifierRequest",
+      "name": "Modify content identifier",
+      "output": "ModifyContentIdentifierResponse",
+      "status": "online"
+    },
     "ModifyCustomErrorPage": {
       "document": "This API is used to modify a custom response page.",
       "input": "ModifyCustomErrorPageRequest",
@@ -750,16 +806,16 @@
       "status": "online"
     },
     "ModifyDnsRecords": {
-      "document": "You can use this interface to batch modify DNS records.",
+      "document": "This API is used to bulk modify DNS records.",
       "input": "ModifyDnsRecordsRequest",
-      "name": "ModifyDnsRecords",
+      "name": "Batch modify dns records",
       "output": "ModifyDnsRecordsResponse",
       "status": "online"
     },
     "ModifyDnsRecordsStatus": {
-      "document": "You can use this interface to batch modify the status of DNS records, enabling and disabling records in bulk.",
+      "document": "You can batch modify the status of DNS records through this API, enabling and disabling records in bulk.",
       "input": "ModifyDnsRecordsStatusRequest",
-      "name": "ModifyDnsRecordsStatus",
+      "name": "Batch modify dns record status",
       "output": "ModifyDnsRecordsStatusResponse",
       "status": "online"
     },
@@ -819,6 +875,20 @@
       "output": "ModifyL4ProxyStatusResponse",
       "status": "online"
     },
+    "ModifyL7AccRule": {
+      "document": "This API is used to modify rules in the [rule engine](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1), supporting only one rule modification per request.",
+      "input": "ModifyL7AccRuleRequest",
+      "name": "Modify layer-7 acceleration rules",
+      "output": "ModifyL7AccRuleResponse",
+      "status": "online"
+    },
+    "ModifyL7AccSetting": {
+      "document": "This API is used to modify the global configuration of [Site Acceleration](https://intl.cloud.tencent.com/document/product/1552/96193?from_cn_redirect=1).",
+      "input": "ModifyL7AccSettingRequest",
+      "name": "Modify global configurations of layer-7 acceleration",
+      "output": "ModifyL7AccSettingResponse",
+      "status": "online"
+    },
     "ModifyLoadBalancer": {
       "document": "This API is used to modify LoadBalancer configuration. The load balancing feature is in beta test. If you need to use it, [contact us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).",
       "input": "ModifyLoadBalancerRequest",
@@ -848,9 +918,9 @@
       "status": "online"
     },
     "ModifyRule": {
-      "document": "This API is used to modify a rule in the rule engine.",
+      "document": "This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [ModifyL7AccRule](https://intl.cloud.tencent.com/document/product/1552/115818?from_cn_redirect=1).",
       "input": "ModifyRuleRequest",
-      "name": "Modifies a rule in the rule engine.",
+      "name": "Modify a rule in the rule engine (old)",
       "output": "ModifyRuleResponse",
       "status": "online"
     },
@@ -876,9 +946,9 @@
       "status": "online"
     },
     "ModifyZoneSetting": {
-      "document": "This API is used to modify the site configuration.",
+      "document": "This API is an older version. EdgeOne has fully upgraded the APIs related to the rule engine. For details, please refer to [ModifyL7AccSetting](https://intl.cloud.tencent.com/document/product/1552/115817?from_cn_redirect=1).",
       "input": "ModifyZoneSettingRequest",
-      "name": "Modifies the site configuration",
+      "name": "Modify site configuration (old)",
       "output": "ModifyZoneSettingResponse",
       "status": "online"
     },
@@ -927,6 +997,23 @@
           "member": "string",
           "name": "Switch",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AccelerateMainlandParameters": {
+      "document": "Accelerate optimization and configuration in mainland China.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Mainland china acceleration optimization switch. valid values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -1140,6 +1227,84 @@
           "output_required": false,
           "required": false,
           "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "AccessURLRedirectParameters": {
+      "document": "Access URL redirect configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Status code. valid values: 301, 302, 303, 307, 308.",
+          "example": "301",
+          "member": "int64",
+          "name": "StatusCode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target request protocol. valid values:.\n<Li>Http: target request protocol http;</li>.\n<Li>Https: target request protocol https;</li>.\n<Li>Follow: follow the request.</li>.",
+          "example": "follow",
+          "member": "string",
+          "name": "Protocol",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Target hostname.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "HostName",
+          "name": "HostName",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Target path.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "URLPath",
+          "name": "URLPath",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Carry query parameters.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "AccessURLRedirectQueryString",
+          "name": "QueryString",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "AccessURLRedirectQueryString": {
+      "document": "Access URL redirect configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Action to be executed. values:.\n<Li>`Full`: retain all</li>.\n<Li>`Ignore`: ignore all</li>.",
+          "example": "full",
+          "member": "string",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "string",
           "value_allowed_null": false
         }
       ],
@@ -1399,7 +1564,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Common feature operations. The options for this category include:\n<li> Access URL overriding (AccessUrlRedirect);</li>\n<li> Origin URL overriding (UpstreamUrlRedirect);</li>\n<li> QUIC;</li>\n<li> WebSocket;</li>\n<li> Video dragging (VideoSeek);</li>\n<li> Token authentication (Authentication);</li>\n<li> Custom CacheKey (CacheKey);</li>\n<li> Node caching TTL (Cache);</li>\n<li> Browser caching TTL (MaxAge);</li>\n<li> Offline caching (OfflineCache);</li>\n<li> Smart routing (SmartRouting);</li>\n<li> Range-based origin pull (RangeOriginPull);</li>\n<li> HTTP/2 origin pull (UpstreamHttp2);</li>\n<li> Host header overriding (HostHeader);</li>\n<li> Forced HTTPS (ForceRedirect);</li>\n<li> HTTPS origin pull (OriginPullProtocol);</li>\n<li> Cache pre-refresh (CachePrefresh);</li>\n<li> Smart compression (Compression);</li>\n<li> Hsts;</li>\n<li> ClientIpHeader;</li>\n<li> SslTlsSecureConf;</li>\n<li> OcspStapling;</li>\n<li> HTTP/2 access (Http2);</li>\n<li> Redirection during origin pull (UpstreamFollowRedirect);</li>\n<li> Modifying origin server (Origin);</li>\n<li> Layer 7 origin pull timeout (HTTPUpstreamTimeout);</li>\n<li> HTTP response (HttpResponse).</li>\nNote: This field may return null, indicating that no valid values can be obtained.",
+          "document": "Common feature operations. the options for this category include:.\n<Li>Access url rewrite (`accessurlredirect`).</li>.\n<Li> origin url overriding (upstreamurlredirect);</li>.\n<Li> quic;</li>.\n<Li> websocket;</li>.\n<Li> video dragging (videoseek);</li>.\n<Li> token authentication (authentication);</li>.\n<Li> custom cachekey (cachekey);</li>.\n<Li> node caching ttl (cache);</li>.\n<Li> browser cache ttl (maxage);</li>.\n<Li> offline caching (offlinecache);</li>.\n<Li> smart acceleration (smartrouting);</li>.\n<Li> range-based origin pull (rangeoriginpull);</li>.\n<Li> http/2 origin pull (upstreamhttp2);</li>.\n<Li> host header overriding (hostheader);</li>.\n<Li> force https (forceredirect);</li>.\n<Li> https origin pull (originpullprotocol);</li>.\n<Li>`ResponseSpeedLimit`: single connection download speed limit.</li>.\n<Li>`CachePrefresh`: cache prefresh.</li>.\n<Li>`Compression`: smart compression.</li>.\n<Li>Hsts;</Li>.\n<Li>ClientIpHeader;</Li>.\n<Li> ssltlssecureconf;</li>.\n<Li> ocspstapling;</li>.\n<Li> http/2 access (http2);</li>.\n<Li> redirection during origin pull (upstreamfollowredirect);</li>.\n<Li> modifying origin server (origin);</li>.\n<Li> layer 7 origin pull timeout (httpupstreamtimeout).</li>.\n<Li> http response (httpresponse).</li>.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
           "example": "无",
           "member": "NormalAction",
           "name": "NormalAction",
@@ -2153,6 +2318,89 @@
         }
       ],
       "usage": "out"
+    },
+    "AuthenticationParameters": {
+      "document": "Token authentication configuration parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Authentication type. valid values:.\n\n<Li>TypeA: authentication method a type, for specific meaning please refer to [authentication method a](https://intl.cloud.tencent.com/document/product/1552/109329?from_cn_redirect=1);</li>.\n<Li>TypeB: authentication method b type, for specific meaning please refer to [authentication method b](https://intl.cloud.tencent.com/document/product/1552/109330?from_cn_redirect=1);</li>.\n<Li>TypeC: authentication method c type, for specific meaning please refer to [authentication method c](https://intl.cloud.tencent.com/document/product/1552/109331?from_cn_redirect=1);</li>.\n<Li>TypeD: authentication method d type, for specific meaning please refer to [authentication method d](https://intl.cloud.tencent.com/document/product/1552/109332?from_cn_redirect=1);</li>.\n<Li>TypeVOD: authentication method v type, for specific meaning please refer to [authentication method v](https://intl.cloud.tencent.com/document/product/1552/109333?from_cn_redirect=1).</li>.",
+          "example": "TypeA",
+          "member": "string",
+          "name": "AuthType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The primary authentication key consists of 6–40 uppercase and lowercase english letters or digits, and cannot contain \" and $.",
+          "example": "无",
+          "member": "string",
+          "name": "SecretKey",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Validity period of the authentication url, in seconds, value range: 1–630720000. used to determine if the client access request has expired:.\n<Li>If the current time exceeds \"timestamp + validity period\", it is an expired request, and a 403 is returned directly.</li>.\n<Li>If the current time does not exceed \"timestamp + validity period\", the request is not expired, and the md5 string is further validated.</li> note: when authtype is one of typea, typeb, typec, or typed, this field is required.",
+          "example": "500",
+          "member": "int64",
+          "name": "Timeout",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The backup authentication key consists of 6–40 uppercase and lowercase english letters or digits, and cannot contain \" and $.",
+          "example": "无",
+          "member": "string",
+          "name": "BackupSecretKey",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authentication parameters name. the node will validate the value corresponding to this parameter name. consists of 1-100 uppercase and lowercase letters, numbers, or underscores.<br>note: this field is required when authtype is either typea or typed.",
+          "example": "auth_param",
+          "member": "string",
+          "name": "AuthParam",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authentication timestamp. it cannot be the same as the value of the authparam field.<br>note: this field is required when authtype is typed.",
+          "example": "auth_time",
+          "member": "string",
+          "name": "TimeParam",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authentication time format. values:.\n<Li>Dec: decimal;</li>.\n<Li>Hex: hexadecimal.</li>note: this field is required when authtype is typed. the default is hex.",
+          "example": "dec",
+          "member": "string",
+          "name": "TimeFormat",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "BillingData": {
       "document": "Billing data item",
@@ -2920,6 +3168,73 @@
       ],
       "usage": "both"
     },
+    "CacheConfigCustomTime": {
+      "document": "Node cache TTL custom cache time configuration parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom cache time switch. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom cache time value, unit: seconds. value range: 0-315360000.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.",
+          "example": "10800",
+          "member": "int64",
+          "name": "CacheTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CacheConfigParameters": {
+      "document": "Node Cache TTL configuration parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Follow origin server cache configuration. only one of followorigin, nocache, customtime can have switch set to on.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "FollowOrigin",
+          "name": "FollowOrigin",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "No cache configuration. only one of followorigin, nocache, customtime can have switch set to on.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "NoCache",
+          "name": "NoCache",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Custom cache time configuration. only one of followorigin, nocache, customtime can have switch set to on.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "CacheConfigCustomTime",
+          "name": "CustomTime",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "CacheKey": {
       "document": "The cache key configuration.",
       "members": [
@@ -2956,6 +3271,262 @@
       ],
       "usage": "both"
     },
+    "CacheKeyConfigParameters": {
+      "document": "The cache key configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable full-path cache. values:.\n<Li>`On`: enable full-path cache (i.e., disable ignore query string).</li>.\n<Li>`Off`: disable full-path cache (i.e., enable ignore query string).</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "FullURLCache",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to ignore case in the cache key. values:.\n<Li>`On`: ignore;</li>.\n<Li>`Off`: not ignore.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "IgnoreCase",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Query string retention configuration parameter. this field and fullurlcache must be set simultaneously, but cannot both be `on`.",
+          "example": "无",
+          "member": "CacheKeyQueryString",
+          "name": "QueryString",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CacheKeyCookie": {
+      "document": "Custom Cache Key Cookie configuration parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable feature. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cache action. values:.\n<Li>`Full`: retain all</li>.\n<Li> `ignore`: ignore all;</li>.\n<Li> `includecustom`: retain specified parameters;</li>.\n<Li> `excludecustom`: ignore specified parameters.</li> **note**: when `switch` is on, this field is required. when `switch` is off, this field is not required and will not take effect if filled.",
+          "example": "full",
+          "member": "string",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom cache key cookie name list.<br>note: this field is required when action is includecustom or excludecustom; when action is full or ignore, this field is not required and will not take effect if filled.",
+          "example": "[\"\"]",
+          "member": "string",
+          "name": "Values",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CacheKeyHeader": {
+      "document": "Custom Cache Key HTTP request header configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable feature. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom cache key http request header list.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.",
+          "example": "[\"\"]",
+          "member": "string",
+          "name": "Values",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CacheKeyParameters": {
+      "document": "Custom Cache Key configuration parameters. The FullURLCache and QueryString parameters are combined. For specific examples, refer to:\n- Retain all query strings. Enable ignore case.\n```\n{\n  \"CacheKey\": {\n    \"FullURLCache\": \"on\",\n    \"QueryString\": {\n      \"Switch\": \"off\"\n    },\n    \"IgnoreCase\": \"on\"\n  }\n}\n```\n- Ignore all query strings. Enable ignore case.\n```\n{\n  \"CacheKey\": {\n    \"FullURLCache\": \"off\",\n    \"QueryString\": {\n      \"Switch\": \"off\"\n    },\n    \"IgnoreCase\": \"on\"\n  }\n}\n```\n- Retain specified query string parameters. Disable ignore case.\n```\n{\n  \"CacheKey\": {\n    \"FullURLCache\": \"off\",\n    \"QueryString\": {\n        \"Switch\": \"on\",\n        \"Action\": \"includeCustom\",\n        \"Values\": [\"name1\",\"name2\",\"name3\"]\n    },\n    \"IgnoreCase\": \"off\"\n  }\n}\n```\n-Query string ignore specified parameters. Disable ignore case.\n```\n{\n  \"CacheKey\": {\n    \"FullURLCache\": \"off\",\n    \"QueryString\": {\n        \"Switch\": \"on\",\n        \"Action\": \"excludeCustom\",\n        \"Values\": [\"name1\",\"name2\",\"name3\"]\n    },\n    \"IgnoreCase\": \"off\"\n  }\n}\n```",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Switch for retaining the complete query string. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li> note: at least one of fullurlcache, ignorecase, header, scheme, or cookie must be configured. this field and querystring.switch must be set simultaneously, but cannot both be on.",
+          "example": "on",
+          "member": "string",
+          "name": "FullURLCache",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Configuration parameter for retaining the query string. this field and fullurlcache must be set simultaneously, but cannot both be on.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "CacheKeyQueryString",
+          "name": "QueryString",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Switch for ignoring case. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li> note: at least one of fullurlcache, ignorecase, header, scheme, or cookie must be configured.",
+          "example": "on",
+          "member": "string",
+          "name": "IgnoreCase",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HTTP request header configuration parameters. at least one of the following configurations must be set: fullurlcache, ignorecase, header, scheme, cookie.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "CacheKeyHeader",
+          "name": "Header",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Request protocol switch. valid values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li> note: at least one of fullurlcache, ignorecase, header, scheme, or cookie must be configured.",
+          "example": "on",
+          "member": "string",
+          "name": "Scheme",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cookie configuration parameters. at least one of the following configurations must be set: fullurlcache, ignorecase, header, scheme, cookie.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "CacheKeyCookie",
+          "name": "Cookie",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CacheKeyQueryString": {
+      "document": "Custom Cache Key query string configuration parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query string retain/ignore specified parameter switch. valid values are:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Actions to retain/ignore specified parameters in the query string. values:.\n<Li>`IncludeCustom`: retain partial parameters.</li>.\n<Li>`ExcludeCustom`: ignore partial parameters.</li> note: this field is required when `switch` is on. when `switch` is off, this field is not required and will not take effect if filled.",
+          "example": "includeCustom",
+          "member": "string",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "List of parameter names to be retained/ignored in the query string. <br>note: this field is required when `switch` is on. when `switch` is off, this field is not required and will not take effect if filled.",
+          "example": "[\"\"]",
+          "member": "string",
+          "name": "Values",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "CacheParameters": {
+      "document": "Node Cache TTL configuration parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Cache follows origin server. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "FollowOrigin",
+          "name": "FollowOrigin",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "No cache. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "NoCache",
+          "name": "NoCache",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Custom cache time. if not specified, this configuration is not set. only one of followorigin, nocache, or customtime can have switch set to on.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "CustomTime",
+          "name": "CustomTime",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "CachePrefresh": {
       "document": "Cache prefresh",
       "members": [
@@ -2978,6 +3549,34 @@
           "required": false,
           "type": "int",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CachePrefreshParameters": {
+      "document": "Cache prefresh configuration parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable cache prefresh. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Prefresh interval set as a percentage of the node cache time. value range: 1-99.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.",
+          "example": "80",
+          "member": "int64",
+          "name": "CacheTimePercent",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -3162,6 +3761,62 @@
       ],
       "usage": "out"
     },
+    "ClientIPCountryParameters": {
+      "document": "Location information of the Client IP carried in origin-pull. It is formatted as a two-letter ISO-3166-1 country/region code.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable configuration. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name of the request header that contains the client ip region. it is valid when `switch=on`. the default value `eo-client-ipcountry` is used when it is not specified.",
+          "example": "EO-Client-IPCountry",
+          "member": "string",
+          "name": "HeaderName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ClientIPHeaderParameters": {
+      "document": "The header configuration for storing client request IP.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable configuration. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Name of the request header containing the client ip address for origin-pull. when switch is on, this parameter is required. x-forwarded-for is not allowed for this parameter.",
+          "example": "X-ClientIp",
+          "member": "string",
+          "name": "HeaderName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ClientIpCountry": {
       "document": "Location information of the client IP carried in origin-pull. It is formatted as a two-letter ISO-3166-1 country/region code.",
       "members": [
@@ -3306,6 +3961,34 @@
       ],
       "usage": "both"
     },
+    "CompressionParameters": {
+      "document": "Smart compression configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable smart compression. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Supported compression algorithm list. this field is required when switch is on; otherwise, it is not effective. valid values:.\n<Li>`Brotli`: brotli algorithm;</li>.\n<Li>`Gzip`: gzip algorithm.</li>.",
+          "example": "[\"brotli\",\"gzip\"]",
+          "member": "string",
+          "name": "Algorithms",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ConfigGroupVersionInfo": {
       "document": "Version information about the configuration group.",
       "members": [
@@ -3388,6 +4071,102 @@
         }
       ],
       "usage": "both"
+    },
+    "ContentIdentifier": {
+      "document": "Content identifier. This feature is only available to the allowlist.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Content identifier id.",
+          "example": "content-3277epj0rm2y",
+          "member": "string",
+          "name": "ContentId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Content identifier description.",
+          "example": "content-test",
+          "member": "string",
+          "name": "Description",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Count of citations by the rule engine.",
+          "example": "10",
+          "member": "int64",
+          "name": "ReferenceCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bound package id.",
+          "example": "edgeone-2ycvr8ml4zpq",
+          "member": "string",
+          "name": "PlanId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Bound tags.",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Content identifier status. valid values:.\n<Li>`Active`: activated</li>.\n<Li>`Deleted`: deleted</li>.",
+          "example": "active",
+          "member": "string",
+          "name": "Status",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Creation time, which adopts coordinated universal time (utc) and follows the date and time format of the iso 8601 standard.",
+          "example": "2023-10-05T15:30:45Z",
+          "member": "datetime_iso",
+          "name": "CreatedOn",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Latest update time, which adopts coordinated universal time (utc) and follows the date and time format of the iso 8601 standard.",
+          "example": "2023-10-05T15:30:45Z",
+          "member": "datetime_iso",
+          "name": "ModifiedOn",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Deletion time, which is empty when the status is not `deleted`. the time format follows the iso 8601 standard and is represented in coordinated universal time (utc).\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "2023-10-05T15:30:45Z",
+          "member": "datetime_iso",
+          "name": "DeletedOn",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
     },
     "CreateAccelerationDomainRequest": {
       "document": "CreateAccelerationDomain request structure.",
@@ -3888,6 +4667,61 @@
       ],
       "type": "object"
     },
+    "CreateContentIdentifierRequest": {
+      "document": "CreateContentIdentifier request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Description of the content identifier, length limit of up to 20 characters.",
+          "example": "content-test",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Target plan id to be bound, available only for the enterprise edition. <li>if there is already a plan under your account, go to [plan management](https://console.cloud.tencent.com/edgeone/package) to get the plan id and directly bind the content identifier to the plan;</li><li>if you do not have a plan to bind, please purchase an enterprise edition plan first.</li>.",
+          "example": "edgeone-2ycvr8ml4zpq",
+          "member": "string",
+          "name": "PlanId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Tags of the content identifier. this parameter is used for authority control. to create tags, go to the [tag console](https://console.cloud.tencent.com/tag/taglist).",
+          "example": "无",
+          "member": "Tag",
+          "name": "Tags",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateContentIdentifierResponse": {
+      "document": "CreateContentIdentifier response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Generated content identifier id. after creation, you can go to the rule engine to \"set the content identifier\" under certain match conditions.",
+          "example": "eocontent-27q0p0sali16",
+          "member": "string",
+          "name": "ContentId",
+          "output_required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "CreateCustomizeErrorPageRequest": {
       "document": "CreateCustomizeErrorPage request structure.",
       "members": [
@@ -3966,7 +4800,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The site ID of the DNS record.",
+          "document": "Zone id.",
           "example": "zone-225qgrnvbi9w",
           "member": "string",
           "name": "ZoneId",
@@ -3975,7 +4809,7 @@
         },
         {
           "disabled": false,
-          "document": "The DNS record name.If the domain name is in Chinese, Korean, or Japanese, it needs to be converted to Punycode before being entered.",
+          "document": "DNS record name. if the domain name is in chinese, korean, or japanese, it needs to be converted to punycode before input.",
           "example": "www.example.com",
           "member": "string",
           "name": "Name",
@@ -3984,7 +4818,7 @@
         },
         {
           "disabled": false,
-          "document": "DNS record types include:\n\n- A:Points the domain to an external IPv4 address, such as 8.8.8.8.\n- AAAA: Points the domain to an external IPv6 address.\n- MX: Used for mail servers. When multiple MX records exist, the one with the lowest priority value is preferred.\n- CNAME: Points the domain to another domain, which then resolves to the final IP address.\n- TXT: Provides identification and description for the domain, commonly used for domain verification and SPF records (anti-spam).\n- NS: If you need to delegate a subdomain to another DNS service provider, you need to add an NS record. NS records cannot be added to the root domain.\n- CAA: Specifies which Certificate Authorities (CAs) are allowed to issue certificates for the site.\n- SRV: Indicates that a specific server is using a particular service, commonly used in Microsoft's directory management systems.\n\nDifferent record types, such as SRV and CAA, have specific requirements for the host record name and record value format. For detailed descriptions and format examples of each record type, please refer to: [Introduction to DNS Record Types](https://www.tencentcloud.com/zh/document/product/1145/54764#2f681022-91ab-4a9e-ac3d-0a6c454d954e).",
+          "document": "DNS record type. valid values are: <li>a: points the domain name to an external ipv4 address, such as 8.8.8.8;</li><li>aaaa: points the domain name to an external ipv6 address;</li><li>mx: used for email servers. when there are multiple mx records, the lower the priority value, the higher the priority;</li><li>cname: points the domain name to another domain name, which then resolves to the final ip address;</li><li>txt: identifies and describes the domain name, commonly used for domain verification and spf records (anti-spam);</li><li>ns: if you need to delegate the subdomain to another dns service provider for resolution, you need to add an ns record. the root domain cannot add ns records;</li><li>caa: specifies the ca that can issue certificates for this site;</li><li>srv: identifies a server using a service, commonly used in microsoft's directory management.</li>.\nDifferent record types, such as srv and caa records, have different requirements for host record names and record value formats. for detailed descriptions and format examples of each record type, please refer to: [introduction to dns record types](https://intl.cloud.tencent.com/document/product/1552/90453?from_cn_redirect=1#2f681022-91ab-4a9e-ac3d-0a6c454d954e).",
           "example": "A",
           "member": "string",
           "name": "Type",
@@ -3993,7 +4827,7 @@
         },
         {
           "disabled": false,
-          "document": "DNS record content should be filled in according to the corresponding Type value. If the domain name is in Chinese, Korean, or Japanese, it needs to be converted to Punycode before being entered.",
+          "document": "DNS record content. fill in the corresponding content according to the type value. if the domain name is in chinese, korean, or japanese, it needs to be converted to punycode before input.",
           "example": "1.2.3.4",
           "member": "string",
           "name": "Content",
@@ -4002,7 +4836,7 @@
         },
         {
           "disabled": false,
-          "document": "DNS record resolution location, if not specified, default to \"Default,\" which means the default resolution location and is effective for all regions.\n- Resolution location configuration is only applicable when the Type (DNS record type) is A, AAAA, or CNAME.\n- Resolution location configuration is only available for Standard and Enterprise packages.\n\nFor the values, please refer to: [Resolution Lines and Corresponding Codes Enumeration](https://www.tencentcloud.com/zh/document/product/1145/67229).",
+          "document": "DNS record resolution route. if not specified, the default is default, which means the default resolution route and is effective in all regions.\n\n- resolution route configuration is only applicable when type (dns record type) is a, aaaa, or cname.\n- resolution route configuration is only applicable to standard version and enterprise edition packages. for valid values, please refer to: [resolution routes and corresponding code enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1).",
           "example": "Default",
           "member": "string",
           "name": "Location",
@@ -4011,7 +4845,7 @@
         },
         {
           "disabled": false,
-          "document": "TTL (in seconds). The smaller the value, the faster the record changes take effect. Default value: 300",
+          "document": "Cache time. users can specify a value range of 60-86400. the smaller the value, the faster the modification records will take effect in all regions. default value: 300. unit: seconds.",
           "example": "60",
           "member": "int64",
           "name": "TTL",
@@ -4020,7 +4854,7 @@
         },
         {
           "disabled": false,
-          "document": "DNS record weight can be specified within the range of -1 to 100. Setting the weight to 0 means the record will not be resolved. If not specified, the default value is -1, indicating that no weight is set.\n\nWeight configuration is only applicable when the Type (DNS record type) is A, AAAA, or CNAME.\n\nNote: For the same subdomain, different DNS records on the same resolution line should either all have weights set or none should have weights set.",
+          "document": "DNS record weight. users can specify a value range of -1 to 100. a value of 0 means no resolution. if not specified, the default is -1, which means no weight is set. weight configuration is only applicable when type (dns record type) is a, aaaa, or cname.<br>note: for the same subdomain, different dns records with the same resolution route should either all have weights set or none have weights set.",
           "example": "100",
           "member": "int64",
           "name": "Weight",
@@ -4029,7 +4863,7 @@
         },
         {
           "disabled": false,
-          "document": "The MX record priority parameter is only effective when the Type (DNS record type) is MX. The smaller the value, the higher the priority. Users can specify a value in the range of 0 to 50. If not specified, the default value is 0.",
+          "document": "MX record priority, which takes effect only when type (dns record type) is mx. the smaller the value, the higher the priority. users can specify a value range of 0–50. the default value is 0 if not specified.",
           "example": "10",
           "member": "int64",
           "name": "Priority",
@@ -4044,7 +4878,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The ID of the DNS record.",
+          "document": "DNS record id.",
           "example": "record-225rcy8bw85g",
           "member": "string",
           "name": "RecordId",
@@ -4322,6 +5156,52 @@
           "example": "无",
           "member": "string",
           "name": "L4ProxyRuleIds",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateL7AccRulesRequest": {
+      "document": "CreateL7AccRules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone id.",
+          "example": "zone-27q0p0bali16",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "The rule content.",
+          "example": "无",
+          "member": "RuleEngineItem",
+          "name": "Rules",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "CreateL7AccRulesResponse": {
+      "document": "CreateL7AccRules response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule id list.",
+          "example": "[\"rule-qbjifysd\"]",
+          "member": "string",
+          "name": "RuleIds",
           "output_required": true,
           "type": "list",
           "value_allowed_null": false
@@ -4642,7 +5522,7 @@
           "type": "list"
         },
         {
-          "disabled": false,
+          "disabled": true,
           "document": "Whether to encode a URL according to RFC3986. Enable this field when the URL contains non-ASCII characters.",
           "example": "true",
           "member": "bool",
@@ -4699,7 +5579,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "ID of the site.",
+          "document": "Zone id.\n.\nIf you want to quickly submit targets urls under different sites, you can set it to *, but the account calling this api must have permission for all site resources under the main account.",
           "example": "zone-8afj24jzg9",
           "member": "string",
           "name": "ZoneId",
@@ -4982,7 +5862,7 @@
         {
           "disabled": false,
           "document": "Tag of the rule.",
-          "example": "[]",
+          "example": "test",
           "member": "string",
           "name": "Tags",
           "required": false,
@@ -5407,6 +6287,45 @@
           "required": false,
           "type": "bool",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "CustomTime": {
+      "document": "Node cache TTL custom cache time parameter configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom cache time switch. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Ignore origin server cachecontrol switch. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li> note: this field is required when `switch` is on. when `switch` is off, this field is not required and will not take effect if filled.",
+          "example": "on",
+          "member": "string",
+          "name": "IgnoreCacheControl",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom cache time value, unit: seconds. value range: 0-315360000.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.",
+          "example": "0",
+          "member": "int64",
+          "name": "CacheTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -5914,6 +6833,33 @@
       ],
       "type": "object"
     },
+    "DeleteContentIdentifierRequest": {
+      "document": "DeleteContentIdentifier request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Content identifier id.",
+          "example": "eocontent-27q0p0bali16",
+          "member": "string",
+          "name": "ContentId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteContentIdentifierResponse": {
+      "document": "DeleteContentIdentifier response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DeleteCustomErrorPageRequest": {
       "document": "DeleteCustomErrorPage request structure.",
       "members": [
@@ -5955,7 +6901,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The site ID of the DNS record to be deleted.",
+          "document": "Zone id.",
           "example": "zone-25ryyvog1qih",
           "member": "string",
           "name": "ZoneId",
@@ -5964,7 +6910,7 @@
         },
         {
           "disabled": false,
-          "document": "List of DNS record IDs to be deleted, with a maximum limit of 1000.",
+          "document": "List of dns record ids to be deleted, upper limit: 1000.",
           "example": "[\"record-25ryzh92h8\"]\t",
           "member": "string",
           "name": "RecordIds",
@@ -6129,6 +7075,42 @@
     },
     "DeleteL4ProxyRulesResponse": {
       "document": "DeleteL4ProxyRules response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteL7AccRulesRequest": {
+      "document": "DeleteL7AccRules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone id.",
+          "example": "zone-26r78x31ny86",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "List of rule ids to be deleted. you can obtain ruleid through describel7accrules.",
+          "example": "[\"rule-bx3zke8q\"]",
+          "member": "string",
+          "name": "RuleIds",
+          "required": true,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DeleteL7AccRulesResponse": {
+      "document": "DeleteL7AccRules response structure.",
       "members": [
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -7026,6 +8008,71 @@
       ],
       "type": "object"
     },
+    "DescribeContentIdentifiersRequest": {
+      "document": "DescribeContentIdentifiers request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The offset of paginated query. default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Limit on paginated queries. default value: `20`. maximum value: `100`.",
+          "example": "100",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Filter conditions. the upper limit for filters is 20, and the upper limit for filters.values is 20. if this parameter is not filled in, the content identifiers with permissions under the current appid are returned by default. detailed filtering conditions are as follows: <li>description: filter by content identifier description in batches; for example: test;</li><li>content-id: filter by content identifier id in batches; for example: eocontent-2noz78a8ev6k;</li><li>tag-key: filter by Tag key;</li><li>tag-value: filter by Tag value;</li><li>status: filter by content identifier status. valid values: active: active; deleted: deleted.</li>only description supports fuzzy query, other fields require precise query.",
+          "example": "无",
+          "member": "AdvancedFilter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeContentIdentifiersResponse": {
+      "document": "DescribeContentIdentifiers response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of content identifiers that meet the filter conditions.\t",
+          "example": "100",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Detailed content identifier list.",
+          "example": "无",
+          "member": "ContentIdentifier",
+          "name": "ContentIdentifiers",
+          "output_required": true,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "DescribeContentQuotaRequest": {
       "document": "DescribeContentQuota request structure.",
       "members": [
@@ -7648,7 +8695,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "The site ID of the DNS record.",
+          "document": "Zone id.",
           "example": "zone-20hyebgyfsko",
           "member": "string",
           "name": "ZoneId",
@@ -7657,7 +8704,7 @@
         },
         {
           "disabled": false,
-          "document": "The page offset. Default value: 0",
+          "document": "Offset of paginated query. default value: 0.",
           "example": "0",
           "member": "int64",
           "name": "Offset",
@@ -7666,7 +8713,7 @@
         },
         {
           "disabled": false,
-          "document": "The paginated query limit. Default value: 20. Maximum value: 1000.",
+          "document": "Number limit of paginated query. default value: 20. maximum value: 1000.",
           "example": "10",
           "member": "int64",
           "name": "Limit",
@@ -7675,7 +8722,7 @@
         },
         {
           "disabled": false,
-          "document": "The upper limit of Filters.Values is 20. The detailed filtering conditions are as follows: <li>id: Filter by DNS record ID, supports fuzzy query;</li><li>name: Filter by DNS record name, supports fuzzy query;</li><li>content: Filter by DNS record content, supports fuzzy query;</li><li>type: Filter by DNS record type, does not support fuzzy query. Options:<br> A: Point the domain name to an external IPv4 address, such as 8.8.8.8;<br> AAAA: Point the domain name to an external IPv6 address;<br> CNAME: Point the domain name to another domain name, which then resolves to the final IP address;<br> TXT: Identify and describe the domain name, often used for domain verification and SPF records (anti-spam);<br> NS: If you need to delegate subdomain resolution to another DNS service provider, you need to add an NS record. Root domains cannot add NS records;<br> CAA: Specify the CA that can issue certificates for this site;<br> SRV: Identify a server using a specific service, commonly used in Microsoft's directory management;<br> MX: Specify the recipient's mail server.</li><li>ttl: Filter by the time-to-live (TTL) of the record, does not support fuzzy query.</li>",
+          "document": "Filter conditions. up to 20 values for each filter. detailed filter conditions are as follows: <li>id: filter by dns record id, supports fuzzy search;</li><li>name: filter by dns record name, supports fuzzy search;</li><li>content: filter by dns record content, supports fuzzy search;</li><li>type: filter by dns record type, does not support fuzzy search. valid values:<br>   a: points the domain name to an external ipv4 address, such as 8.8.8.8;<br>   aaaa: points the domain name to an external ipv6 address;<br>   cname: points the domain name to another domain name, which then resolves to the final ip address;<br>   txt: identifies and describes the domain name, commonly used for domain verification and spf records (anti-spam);<br>   ns: if you need to delegate the subdomain to another dns service provider, you need to add an ns record. root domain cannot add ns records;<br>   caa: specifies the ca that can issue certificates for this site;<br>   srv: identifies a server using a specific service, commonly used in microsoft's directory management;<br>   mx: specifies the recipient's mail server.</li><li>ttl: filter by resolution effective time, does not support fuzzy search.</li>.",
           "example": "无",
           "member": "AdvancedFilter",
           "name": "Filters",
@@ -7684,7 +8731,7 @@
         },
         {
           "disabled": false,
-          "document": "Sort criteria, with possible values:\n<li>content: DNS record content;</li>\n<li>created-on: DNS record creation time;</li>\n<li>name: DNS record name;</li>\n<li>ttl: Time-to-live (TTL);</li>\n<li>type: DNS record type.</li>\nThe default sorting is based on a combination of type and name attributes.",
+          "document": "Sorting basis. values include: <li>`content`: dns record content</li><li>`created-on`: dns record creation time</li><li>`name`: dns record name</li><li>`ttl`: cache time</li><li>`type`: dns record type</li> default sorting is by the combination of `type`, `name`.",
           "example": "recordName",
           "member": "string",
           "name": "SortBy",
@@ -7693,7 +8740,7 @@
         },
         {
           "disabled": false,
-          "document": "List sorting order, with possible values:\n<li>asc: Ascending order;</li>\n<li>desc: Descending order.</li>\nThe default value is asc.",
+          "document": "List sort method. values: <li>`asc`: ascending order</li><li>`desc`: sort in descending order</li> default value: `asc`.",
           "example": "asc",
           "member": "string",
           "name": "SortOrder",
@@ -7702,7 +8749,7 @@
         },
         {
           "disabled": false,
-          "document": "The match mode. Values:\n<li>`all`: Return all records that match the specified filter.</li>\n<li>`any`: Return any record that matches the specified filter.</li>Default value: all.",
+          "document": "Match method. values: <li>`all`: return records that match all query conditions</li><li>`any`: return records that match any query condition</li> default value: `all`.",
           "example": "all",
           "member": "string",
           "name": "Match",
@@ -7717,7 +8764,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Total number of DNS records.",
+          "document": "Total number of dns records.",
           "example": "1",
           "member": "int64",
           "name": "TotalCount",
@@ -7727,7 +8774,7 @@
         },
         {
           "disabled": false,
-          "document": "List of DNS records",
+          "document": "List of dns records.",
           "example": "无",
           "member": "DnsRecord",
           "name": "DnsRecords",
@@ -8289,6 +9336,117 @@
           "output_required": false,
           "type": "list",
           "value_allowed_null": false
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeL7AccRulesRequest": {
+      "document": "DescribeL7AccRules request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone id.",
+          "example": "zone-qbjifysd",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Filter conditions. the upper limit for filters.values is 20. if this parameter is not filled in, the rules under the site are returned in order by default. detailed filtering conditions are as follows:.\n<Li>Rule-Id: filter by rule id.</li>.",
+          "example": "无",
+          "member": "Filter",
+          "name": "Filters",
+          "required": false,
+          "type": "list"
+        },
+        {
+          "disabled": false,
+          "document": "Number limit of paginated query. default value: 20. maximum value: 1000.",
+          "example": "10",
+          "member": "int64",
+          "name": "Limit",
+          "required": false,
+          "type": "int"
+        },
+        {
+          "disabled": false,
+          "document": "Offset of paginated query. default value: 0.",
+          "example": "0",
+          "member": "int64",
+          "name": "Offset",
+          "required": false,
+          "type": "int"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeL7AccRulesResponse": {
+      "document": "DescribeL7AccRules response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Total number of rules.",
+          "example": "10",
+          "member": "int64",
+          "name": "TotalCount",
+          "output_required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule list. rules are executed in top-down order. for details, refer to [rule priority](https://intl.cloud.tencent.com/document/product/1552/70901?from_cn_redirect=1#.e4.bc.98.e5.85.88.e7.ba.a7).\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "RuleEngineItem",
+          "name": "Rules",
+          "output_required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeL7AccSettingRequest": {
+      "document": "DescribeL7AccSetting request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone id.",
+          "example": "zone-21xfqlh4qjee",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "DescribeL7AccSettingResponse": {
+      "document": "DescribeL7AccSetting response structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Global configuration for site acceleration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ZoneConfigParameters",
+          "name": "ZoneSetting",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
         },
         {
           "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
@@ -8957,7 +10115,7 @@
         },
         {
           "disabled": false,
-          "document": "Filter conditions. Each filter condition can have up to 20 entries. See below for details:\n<li>`rule-id`:<br>   Filter by the <strong>rule ID</strong><br>   Type: String<br>   Required: No</li>",
+          "document": "Filter criteria. the maximum value of filters.values is 20. the detailed filter criteria are as follows:\n.\n<Li>Rule-Id: filter by rule id.</li>.",
           "example": "无",
           "member": "Filter",
           "name": "Filters",
@@ -9105,7 +10263,7 @@
         },
         {
           "disabled": false,
-          "document": "Specifies the ID of a security IP group.\n<li>When this parameter is provided, only the configuration of the security IP group with the specified ID is queried.</li>\n<li>When this parameter is not provided, information of all security IP groups under the site is returned.</li>",
+          "document": "Specifies the security ip group id. <li>when this parameter is provided, only the configuration of the specified security ip group id is queried;</li> <li>when this parameter is not provided, information of all security ip groups under the site is returned.</li>.",
           "example": "123",
           "member": "int64",
           "name": "GroupIds",
@@ -9316,7 +10474,7 @@
         },
         {
           "disabled": false,
-          "document": "Metric list. Valid values:\n<li>l7Flow_outFlux: L7 EdgeOne response traffic;</li>\n<li>l7Flow_inFlux: L7 client request traffic;</li>\n<li>l7Flow_flux: L7 total access traffic (including the EdgeOne response traffic and client request traffic);</li>\n<li>l7Flow_outBandwidth: L7 EdgeOne response bandwidth;</li>\n<li>l7Flow_inBandwidth: L7 client request bandwidth;</li>\n<li>l7Flow_bandwidth: L7 total access bandwidth (including the EdgeOne response bandwidth and client request bandwidth);</li>\n<li>l7Flow_request: L7 access request count.</li>",
+          "document": "Metric list. valid values:.\n<Li>L7Flow_outFlux: l7 edgeone response traffic, unit: byte;</li>.\n<Li>L7Flow_inFlux: l7 client request traffic, unit: byte;</li>.\n<Li>L7Flow_flux: l7 total access traffic (including the edgeone response traffic and client request traffic), unit: byte;</li>.\n<Li>L7Flow_outBandwidth: l7 edgeone response bandwidth, unit: bps;</li>.\n<Li>L7Flow_inBandwidth: l7 client request bandwidth, unit: bps;</li>.\n<Li>L7Flow_bandwidth: l7 total access bandwidth (including the edgeone response bandwidth and client request bandwidth), unit: bps;</li>.\n<Li>L7Flow_request: l7 access request count, unit: times;</li>.\n<Li> l7flow_avgresponsetime: l7 average response time, unit: ms (milliseconds);</li>.\n<Li> l7flow_avgfirstbyteresponsetime: l7 average first byte response time for access, unit: ms.</li>.",
           "example": "l7Flow_outFlux",
           "member": "string",
           "name": "MetricNames",
@@ -10235,7 +11393,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Site ID. \nNote: ZoneId is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.",
+          "document": "Zone id.<br>note: zoneid is for output parameter use only and cannot be used as an input parameter in modifydnsrecords. if this parameter is passed, it will be ignored.",
           "example": "zone-20hyebgyfsko",
           "member": "string",
           "name": "ZoneId",
@@ -10246,7 +11404,7 @@
         },
         {
           "disabled": false,
-          "document": "DNS record ID.",
+          "document": "DNS record id.",
           "example": "record-3d5dg39c",
           "member": "string",
           "name": "RecordId",
@@ -10268,7 +11426,7 @@
         },
         {
           "disabled": false,
-          "document": "DNS record type, with possible values: <li>A: Points the domain name to an external IPv4 address, such as 8.8.8.8;</li> <li>AAAA: Points the domain name to an external IPv6 address;</li> <li>MX: Used for mail servers. When there are multiple MX records, the lower the priority value, the higher the priority;</li> <li>CNAME: Points the domain name to another domain name, which then resolves to the final IP address;</li> <li>TXT: Identifies and describes the domain name, commonly used for domain verification and SPF records (anti-spam);</li> <li>NS: If you need to delegate the subdomain to another DNS service provider for resolution, you need to add an NS record. NS records cannot be added to the root domain;</li> <li>CAA: Specifies the CA that can issue certificates for this site;</li> <li>SRV: Identifies a server that uses a specific service, commonly used in Microsoft's directory management.</li>",
+          "document": "DNS record type. valid values are:.\n<Li>A: point the domain to a public network ipv4 address, such as 8.8.8.8;</li>.\n<Li>AAAA: point the domain to a public network ipv6 address;</li>.\n<Li>MX: used for email servers. when there are multiple mx records, the lower the priority, the higher the precedence;</li>.\n<Li>CNAME: point the domain to another domain name, which will resolve to the final ip address;</li>.\n<Li>TXT: identify and describe the domain, commonly used for domain verification and spf records (anti-spam);</li>.\n<Li>NS: if you need to delegate the resolution of a subdomain to another dns service provider, you need to add an ns record. ns records cannot be added to the root domain name;</li>.\n<Li>CAA: specifies the ca that can issue certificates for this site;</li>.\n<Li>SRV: indicates that a server is using a service, commonly seen in microsoft system directory management.</li>.",
           "example": "A",
           "member": "string",
           "name": "Type",
@@ -10279,7 +11437,7 @@
         },
         {
           "disabled": false,
-          "document": "DNS record resolution line. If not specified, the default is Default, which means the default resolution line and is effective for all regions. The resolution line configuration is only applicable when Type (DNS record type) is A, AAAA, or CNAME. For values, please refer to: [Resolution Line and Corresponding Code Enumeration](https://www.tencentcloud.com/zh/document/product/1145/67229).",
+          "document": "DNS record resolution route, if not specified, defaults to default, indicating the default resolution route, effective in all regions.<br>resolution route configuration only applies when type (dns record type) is a, aaaa, or cname.<br>for valid values, refer to: [resolution routes and corresponding code enumeration](https://intl.cloud.tencent.com/document/product/1552/112542?from_cn_redirect=1).",
           "example": "Default",
           "member": "string",
           "name": "Location",
@@ -10290,7 +11448,7 @@
         },
         {
           "disabled": false,
-          "document": "DNS record content. Fill in the corresponding content according to the Type value.",
+          "document": "DNS record content. fill in the corresponding content based on the type value.",
           "example": "1.1.1.1",
           "member": "string",
           "name": "Content",
@@ -10301,7 +11459,7 @@
         },
         {
           "disabled": false,
-          "document": "Cache time, with a range of 60~86400. The smaller the value, the faster the record modification takes effect in various regions. Unit: seconds.",
+          "document": "Cache time. value range: 60–86400. the smaller the value, the faster the record modification will take effect globally. unit: seconds.",
           "example": "60",
           "member": "int64",
           "name": "TTL",
@@ -10312,7 +11470,7 @@
         },
         {
           "disabled": false,
-          "document": "DNS record weight, with a range of -1~100. A value of -1 means no weight is assigned, and a value of 0 means no resolution. Weight configuration is only applicable when Type (DNS record type) is A, AAAA, or CNAME.",
+          "document": "DNS record weight. value range: -1–100. a value of -1 means no weight is assigned, and 0 means no parsing. weight configuration is only applicable when type (dns record type) is a, aaaa, or cname.",
           "example": "100",
           "member": "int64",
           "name": "Weight",
@@ -10323,7 +11481,7 @@
         },
         {
           "disabled": false,
-          "document": "MX record priority, with a range of 0~50. The smaller the value, the higher the priority.",
+          "document": "MX record priority. value range: 0–50. the smaller the value, the higher the priority.",
           "example": "10",
           "member": "int64",
           "name": "Priority",
@@ -10334,7 +11492,7 @@
         },
         {
           "disabled": false,
-          "document": "DNS record resolution status, with possible values: <li>enable: Effective;</li> <li>disable: Disabled.</li> Note: Status is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.",
+          "document": "DNS record parsing status. valid values are: <li>enable: takes effect;</li><li>disable: disabled.</li> note: status is only used as an output parameter and cannot be used as an input parameter in modifydnsrecords. if this parameter is passed, it will be ignored.",
           "example": "enable",
           "member": "string",
           "name": "Status",
@@ -10345,7 +11503,7 @@
         },
         {
           "disabled": false,
-          "document": "The creation time.\nNote: CreatedOn is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.",
+          "document": "Creation time.<br>note: createdon is only used as an output parameter and cannot be used as an input parameter in modifydnsrecords. if this parameter is passed, it will be ignored.",
           "example": "2020-09-22T00:00:00Z",
           "member": "datetime_iso",
           "name": "CreatedOn",
@@ -10356,7 +11514,7 @@
         },
         {
           "disabled": false,
-          "document": "The modification time.\nNote: ModifiedOn is only used as an output parameter and cannot be used as an input parameter in ModifyDnsRecords. If this parameter is passed, it will be ignored.",
+          "document": "Modification time.<br>note: modifiedon is for output parameter only and cannot be used as an input parameter in modifydnsrecords. if this parameter is passed, it will be ignored.",
           "example": "2020-09-22T00:00:00Z",
           "member": "datetime_iso",
           "name": "ModifiedOn",
@@ -10797,6 +11955,51 @@
       ],
       "usage": "out"
     },
+    "ErrorPage": {
+      "document": "Custom error page.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Status code. supported values are 400, 403, 404, 405, 414, 416, 451, 500, 501, 502, 503, 504.",
+          "example": "404",
+          "member": "int64",
+          "name": "StatusCode",
+          "output_required": false,
+          "required": true,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Redirect url. requires a full redirect path, such as https://www.test.com/error.html.",
+          "example": "http://www.test.com/error.html",
+          "member": "string",
+          "name": "RedirectURL",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "ErrorPageParameters": {
+      "document": "Custom error page configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Custom error page configuration list.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ErrorPage",
+          "name": "ErrorPageParams",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "ErrorPageReference": {
       "document": "Custom error page's referenced source",
       "members": [
@@ -11217,7 +12420,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to cache when an origin server does not return the Cache-Control header. This field is required when Switch is on; otherwise, it is ineffective. Valid values:\n<li>on: Cache.</li>\n<li>off: Do not cache.</li>\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "document": "Whether to cache when an origin server does not return the cache-control header. this field is required when switch is on; when switch is off, this field is not required and will be ineffective if filled. valid values:.\n<Li>On: cache;</li>.\n<Li>Off: do not cache.</li>.",
           "example": "on",
           "member": "string",
           "name": "DefaultCache",
@@ -11228,7 +12431,7 @@
         },
         {
           "disabled": false,
-          "document": "Whether to use the default caching policy when an origin server does not return the Cache-Control header. This field is required when DefaultCache is set to on; otherwise, it is ineffective. When DefaultCacheTime is not 0, this field should be off. Valid values:\n<li>on: Use the default caching policy.</li>\n<li>off: Do not use the default caching policy.</li>\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "document": "Whether to use the default caching policy when an origin server does not return the cache-control header. this field is required when defaultcache is set to on; otherwise, it is ineffective. when defaultcachetime is not 0, this field should be off. valid values:.\n<Li>On: use the default caching policy.</li>.\n<Li>Off: do not use the default caching policy.</li>.",
           "example": "on",
           "member": "string",
           "name": "DefaultCacheStrategy",
@@ -11239,7 +12442,7 @@
         },
         {
           "disabled": false,
-          "document": "The default cache time in seconds when an origin server does not return the Cache-Control header. The value ranges from 0 to 315360000. This field is required when DefaultCache is set to on; otherwise, it is ineffective. When DefaultCacheStrategy is on, this field should be 0.\nNote: This field may return null, which indicates a failure to obtain a valid value.",
+          "document": "The default cache time in seconds when an origin server does not return the cache-control header. the value ranges from 0 to 315360000. this field is required when defaultcache is set to on; otherwise, it is ineffective. when defaultcachestrategy is on, this field should be 0.",
           "example": "0",
           "member": "int64",
           "name": "DefaultCacheTime",
@@ -11275,6 +12478,34 @@
           "required": false,
           "type": "int",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ForceRedirectHTTPSParameters": {
+      "document": "Forced HTTPS redirect configuration for access protocols.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable forced redirect configuration switch. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Redirection status code. this field is required when switch is on; otherwise, it is not effective. valid values are:.\n<Li>`301`: 301 redirect;</li>.\n<Li>`302`: 302 redirect.</li>.",
+          "example": "302",
+          "member": "int64",
+          "name": "RedirectStatusCode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -11523,6 +12754,135 @@
       ],
       "usage": "both"
     },
+    "GrpcParameters": {
+      "document": "gRPC configuration item.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable grpc. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "HSTSParameters": {
+      "document": "HSTS configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable hsts. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cache hsts header time, unit: seconds. value range: 1-31536000.<br>note: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.",
+          "example": "10800",
+          "member": "int64",
+          "name": "Timeout",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to allow other subdomains to inherit the same hsts header. values:.\n<Li>On: allows other subdomains to inherit the same hsts header.</li>.\n<Li>Off: does not allow other subdomains to inherit the same hsts header.</li> note: when switch is on, this field is required; when switch is off, this field is not required and will not take effect if filled.",
+          "example": "on",
+          "member": "string",
+          "name": "IncludeSubDomains",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether to allow the browser to preload the hsts header. valid values:.\n<Li>On: allows the browser to preload the hsts header.</li>.\n<Li>Off: does not allow the browser to preload the hsts header.</li> note: when switch is on, this field is required; when switch is off, this field is not required and will not take effect if filled.",
+          "example": "on",
+          "member": "string",
+          "name": "Preload",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "HTTP2Parameters": {
+      "document": "HTTP2 integration configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable http2 access. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "HTTPResponseParameters": {
+      "document": "HTTP response configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Response status code. supports 2xx, 4xx, 5xx, excluding 499, 514, 101, 301, 302, 303, 509, 520-599.",
+          "example": "400",
+          "member": "int64",
+          "name": "StatusCode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Response page id.",
+          "example": "p-30tcxgl8i0ls",
+          "member": "string",
+          "name": "ResponsePage",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "HTTPUpstreamTimeoutParameters": {
+      "document": "Layer-7 origin-pull timeout configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HTTP response timeout in seconds. value range: 5–600.",
+          "example": "15",
+          "member": "int64",
+          "name": "ResponseTimeout",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "HandleFunctionRuntimeEnvironmentRequest": {
       "document": "HandleFunctionRuntimeEnvironment request structure.",
       "members": [
@@ -11597,6 +12957,45 @@
           "member": "string",
           "name": "Value",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "HeaderAction": {
+      "document": "HTTP header setting rules.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HTTP header setting methods. valid values are:.\n<Li>`Set`: sets a value for an existing header parameter;</li>.\n<Li>`Del`: deletes a header parameter;</li>.\n<Li>`Add`: adds a header parameter.</li>.",
+          "example": "set",
+          "member": "string",
+          "name": "Action",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HTTP header name.",
+          "example": "X-Header",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "HTTP header value. this parameter is required when the action is set to `set` or `add`; it is optional when the action is set to `del`.",
+          "example": "X-value",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -11744,6 +13143,62 @@
           "example": "recv_context",
           "member": "string",
           "name": "RecvContext",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "HostHeaderParameters": {
+      "document": "Host Header Rewrite configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Action to be executed. values:.\n<Li>FollowOrigin: follow origin server domain name;</li>.\n<Li>`Custom`: custom</li>.",
+          "example": "followOrigin",
+          "member": "string",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Host header rewrite requires a complete domain name.<br>note: this field is required when switch is on; when switch is off, this field is not required and any value will be ignored.",
+          "example": "www.qq.com",
+          "member": "string",
+          "name": "ServerName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "HostName": {
+      "document": "Access URL redirect HostName configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Target hostname configuration, valid values are:.\n<Li>`Follow`: follow the request;</li>.\n<Li>`Custom`: custom</li>.",
+          "example": "follow",
+          "member": "string",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom value for target hostname, maximum length is 1024.<br>note: when action is custom, this field is required; when action is follow, this field is not effective.",
+          "example": "www.show.com",
+          "member": "string",
+          "name": "Value",
           "output_required": false,
           "required": false,
           "type": "string",
@@ -11971,6 +13426,23 @@
         }
       ],
       "usage": "out"
+    },
+    "IPv6Parameters": {
+      "document": "IPv6 access configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable ipv6 access functionality. valid values:.\n<Li>`On`: enable ipv6 access;</li>.\n<Li>`Off`: disable ipv6 access feature.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "Identification": {
       "document": "The site verification information",
@@ -13140,6 +14612,34 @@
       ],
       "usage": "both"
     },
+    "MaxAgeParameters": {
+      "document": "Browser Cache TTL configuration parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Specifies whether to follow the origin server cache-control configuration, with the following values:.\n<Li>`On`: follow the origin server and ignore the field cachetime;</li>.\n<Li>`Off`: do not follow the origin server and apply the field cachetime.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "FollowOrigin",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Custom cache time value, unit: seconds. value range: 0-315360000.<br>note: when followorigin is off, it means not following the origin server and using cachetime to set the cache time; otherwise, this field will not take effect.",
+          "example": "无",
+          "member": "int64",
+          "name": "CacheTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "ModifyAccelerationDomainRequest": {
       "document": "ModifyAccelerationDomain request structure.",
       "members": [
@@ -13689,6 +15189,42 @@
       ],
       "type": "object"
     },
+    "ModifyContentIdentifierRequest": {
+      "document": "ModifyContentIdentifier request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Content identifier id.",
+          "example": "eocontent-27q0p0bali16",
+          "member": "string",
+          "name": "ContentId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Content identifier description. length limit: 20 characters.",
+          "example": "identifier-test",
+          "member": "string",
+          "name": "Description",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyContentIdentifierResponse": {
+      "document": "ModifyContentIdentifier response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyCustomErrorPageRequest": {
       "document": "ModifyCustomErrorPage request structure.",
       "members": [
@@ -13766,7 +15302,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Site ID.",
+          "document": "Zone id.",
           "example": "zone-2psss4drfg29",
           "member": "string",
           "name": "ZoneId",
@@ -13775,7 +15311,7 @@
         },
         {
           "disabled": false,
-          "document": "List of DNS record modification data, with a maximum of 100 modifications at a time.",
+          "document": "DNS record modification data list, up to 100 entries can be modified at a time.",
           "example": "无",
           "member": "DnsRecord",
           "name": "DnsRecords",
@@ -13802,7 +15338,7 @@
       "members": [
         {
           "disabled": false,
-          "document": "Site ID.",
+          "document": "Zone id.",
           "example": "zone-25ryyvog1qih",
           "member": "string",
           "name": "ZoneId",
@@ -13811,7 +15347,7 @@
         },
         {
           "disabled": false,
-          "document": "List of DNS record IDs to be enabled, with a limit of 200. Note: The same DNS record ID cannot exist in both RecordsToEnable and RecordsToDisable.",
+          "document": "List of dns record ids to be enabled, upper limit: 200. <br>note: the same dns record id cannot exist in both recordstoenable and recordstodisable.",
           "example": "[“record-25ryzh92h8qh”]",
           "member": "string",
           "name": "RecordsToEnable",
@@ -13820,7 +15356,7 @@
         },
         {
           "disabled": false,
-          "document": "List of DNS record IDs to be disabled, with a limit of 200. Note: The same DNS record ID cannot exist in both RecordsToEnable and RecordsToDisable.",
+          "document": "List of dns record ids to be disabled, upper limit: 200. <br>note: the same dns record id cannot exist in both recordstoenable and recordstodisable.",
           "example": "[“record-25ryzh92h8qh”]",
           "member": "string",
           "name": "RecordsToDisable",
@@ -14265,6 +15801,78 @@
       ],
       "type": "object"
     },
+    "ModifyL7AccRuleRequest": {
+      "document": "ModifyL7AccRule request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone id.",
+          "example": "zone-djuqmq",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Rules to be modified. you can first obtain the ruleid of the rule to be modified through the describel7accrules api, then pass in the modified rule content. the original rule content will be updated in an overriding manner.",
+          "example": "无",
+          "member": "RuleEngineItem",
+          "name": "Rule",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyL7AccRuleResponse": {
+      "document": "ModifyL7AccRule response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyL7AccSettingRequest": {
+      "document": "ModifyL7AccSetting request structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Zone id.",
+          "example": "zone-21xfqlh4qjee",
+          "member": "string",
+          "name": "ZoneId",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "disabled": false,
+          "document": "Site acceleration global configuration. the settings in this parameter will apply to all domain names under the site. you only need to modify the required settings directly, and other settings not passed in will remain unchanged.\n\n",
+          "example": "无",
+          "member": "ZoneConfig",
+          "name": "ZoneConfig",
+          "required": true,
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    },
+    "ModifyL7AccSettingResponse": {
+      "document": "ModifyL7AccSetting response structure.",
+      "members": [
+        {
+          "document": "The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.",
+          "member": "string",
+          "name": "RequestId",
+          "type": "string"
+        }
+      ],
+      "type": "object"
+    },
     "ModifyLoadBalancerRequest": {
       "document": "ModifyLoadBalancer request structure.",
       "members": [
@@ -14417,6 +16025,89 @@
         }
       ],
       "type": "object"
+    },
+    "ModifyOriginParameters": {
+      "document": "Modifying origin server configuration parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The origin type. values:.\n<Li>IPDomain: ipv4, ipv6, or domain name type origin server;</li>.\n<Li>OriginGroup: origin server group type origin server;</li>.\n<Li>LoadBalance: cloud load balancer (clb), this feature is in beta test. to use it, please submit a ticket or contact smart customer service;</li>.\n<Li>COS: tencent cloud COS origin server;</li>.\n<Li>AWSS3: all object storage origin servers that support the aws s3 protocol.</li>.",
+          "example": "IPDomain",
+          "member": "string",
+          "name": "OriginType",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin server address, which varies according to the value of origintype:.\n<Li>When origintype = ipdomain, fill in an ipv4 address, an ipv6 address, or a domain name;</li>.\n<Li>When origintype = cos, please fill in the access domain name of the cos bucket;</li>.\n<Li>When origintype = awss3, fill in the access domain name of the s3 bucket;</li>.\n<Li>When origintype = origingroup, fill in the origin server group id;</li>.\n<Li>When origintype = loadbalance, fill in the cloud load balancer instance id. this feature is currently only available to the allowlist.</li>.",
+          "example": "1.2.3.4",
+          "member": "string",
+          "name": "Origin",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin-Pull protocol configuration. this parameter is required when origintype is ipdomain, origingroup, or loadbalance. valid values are:.\n<Li>Http: use http protocol;</li>.\n<Li>Https: use https protocol;</li>.\n<Li>Follow: follow the protocol.</li>.",
+          "example": "follow",
+          "member": "string",
+          "name": "OriginProtocol",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Ports for http origin-pull requests. value range: 1-65535. this parameter takes effect only when the origin-pull protocol originprotocol is http or follow.",
+          "example": "80",
+          "member": "int64",
+          "name": "HTTPOriginPort",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Ports for https origin-pull requests. value range: 1-65535. this parameter takes effect only when the origin-pull protocol originprotocol is https or follow.",
+          "example": "443",
+          "member": "int64",
+          "name": "HTTPSOriginPort",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Whether access to the private object storage origin server is allowed. this parameter is valid only when the origin server type origintype is COS or awss3. valid values:.\n<Li>On: enable private authentication;</li>.\n<Li>Off: disable private authentication.</li> if not specified, the default value is off.",
+          "example": "on",
+          "member": "string",
+          "name": "PrivateAccess",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Private authentication parameter. this parameter is valid only when origintype = awss3 and privateaccess = on.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "OriginPrivateParameters",
+          "name": "PrivateParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
     },
     "ModifyPlanRequest": {
       "document": "ModifyPlan request structure.",
@@ -14580,6 +16271,40 @@
       ],
       "type": "object"
     },
+    "ModifyRequestHeaderParameters": {
+      "document": "Modify HTTP request header configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "List of http header setting rules.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "HeaderAction",
+          "name": "HeaderActions",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ModifyResponseHeaderParameters": {
+      "document": "Modify HTTP node response header configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "HTTP origin-pull header rules list.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "HeaderAction",
+          "name": "HeaderActions",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
     "ModifyRuleRequest": {
       "document": "ModifyRule request structure.",
       "members": [
@@ -14631,7 +16356,7 @@
         {
           "disabled": false,
           "document": "Tag of the rule.",
-          "example": "[]",
+          "example": "test",
           "member": "string",
           "name": "Tags",
           "required": false,
@@ -15173,6 +16898,23 @@
       ],
       "usage": "out"
     },
+    "OCSPStaplingParameters": {
+      "document": "OCSP stapling configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable ocsp stapling configuration switch. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "OfflineCache": {
       "document": "Offline cache feature status switch.",
       "members": [
@@ -15183,6 +16925,23 @@
           "member": "string",
           "name": "Switch",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "OfflineCacheParameters": {
+      "document": "Offline cache feature status switch.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable offline caching. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -15687,6 +17446,56 @@
       ],
       "usage": "in"
     },
+    "OriginPrivateParameters": {
+      "document": "Private authentication parameters for Cloud Object Storage origin server.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Authentication parameter access key id.",
+          "example": "sdfwae12",
+          "member": "string",
+          "name": "AccessKeyId",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authentication parameter secret access key.",
+          "example": "afdfe122",
+          "member": "string",
+          "name": "SecretAccessKey",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Authentication version. values:.\n<Li>V2: v2 version;</li>.\n<Li>V4: v4 version.</li>.",
+          "example": "v4",
+          "member": "string",
+          "name": "SignatureVersion",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Region of the bucket.",
+          "example": "us-east1",
+          "member": "string",
+          "name": "Region",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "OriginProtectionInfo": {
       "document": "Origin protection configuration",
       "members": [
@@ -16019,6 +17828,34 @@
       ],
       "usage": "both"
     },
+    "PostMaxSizeParameters": {
+      "document": "Maximum size of the file uploaded for streaming via a POST request.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable post request file upload limit, in bytes (default limit: 32 * 2<sup>20</sup> bytes). valid values: <li>`on`: enable limit;</li><li>`off`: disable limit.</li>.",
+          "example": "on/off",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Maximum size of the file uploaded for streaming via a post request, in bytes. value range: 1 * 2<sup>20</sup> bytes to 500 * 2<sup>20</sup> bytes.",
+          "example": "10000000",
+          "member": "int64",
+          "name": "MaxSize",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "PrepaidPlanParam": {
       "document": "Prepaid Plan Billing Parameters",
       "members": [
@@ -16065,6 +17902,23 @@
           "name": "Value",
           "output_required": true,
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "QUICParameters": {
+      "document": "QUIC configuration item.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable quic. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -16207,6 +18061,23 @@
         }
       ],
       "usage": "out"
+    },
+    "RangeOriginPullParameters": {
+      "document": "Configuration parameters for range back-to-source.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable range gets. values are:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
     },
     "RateLimitConfig": {
       "document": "Rate limiting rules",
@@ -16988,6 +18859,45 @@
       ],
       "usage": "out"
     },
+    "ResponseSpeedLimitParameters": {
+      "document": "Single-link download speed limit configuration parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Download rate limit mode. valid values:.\n<Li>LimitUponDownload: rate limit throughout the download process;</li>.\n<Li>LimitAfterSpecificBytesDownloaded: rate limit after downloading specific bytes at full speed;</li>.\n<Li>LimitAfterSpecificSecondsDownloaded: start speed limit after downloading at full speed for a specific duration.</li>.",
+          "example": "LimitUponDownload",
+          "member": "string",
+          "name": "Mode",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rate-Limiting value, in kb/s. enter a numerical value to specify the rate limit.",
+          "example": "1000",
+          "member": "string",
+          "name": "MaxSpeed",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rate-Limiting start value, which can be the download size or specified duration, in kb or s. this parameter is required when mode is set to limitafterspecificbytesdownloaded or limitafterspecificsecondsdownloaded. enter a numerical value to specify the download size or duration.",
+          "example": "10",
+          "member": "string",
+          "name": "StartAt",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "RewriteAction": {
       "document": "Rule engine action for the HTTP request/response header",
       "members": [
@@ -17067,6 +18977,45 @@
           "required": true,
           "type": "list",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RuleBranch": {
+      "document": "Sub-rule branch.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "[Match condition].\n](Https://Cloud.Tencent.Com/Document/Product/1552/90438#33f65828-C6c6-4b66-A011-25a20b548d5d).",
+          "example": "\"${http.request.host} in ['test.test.com']\"",
+          "member": "string",
+          "name": "Condition",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "[Operations](Https://Cloud.Tencent.Com/Document/Product/1552/90438#C7bd7e02-9247-4a72-B0e4-11c27cadb198).<Br>Note: actions and subrules cannot both be empty.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "RuleEngineAction",
+          "name": "Actions",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "List of sub-rules. multiple rules exist in this list and are executed sequentially from top to bottom.<br>note: subrules and actions cannot both be empty. currently, only one layer of subrules is supported.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "RuleEngineSubRule",
+          "name": "SubRules",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -17264,6 +19213,497 @@
           "required": false,
           "type": "bool",
           "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "RuleEngineAction": {
+      "document": "Rule engine operations.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "",
+          "example": "无",
+          "member": "string",
+          "name": "Name",
+          "output_required": false,
+          "required": true,
+          "type": "string",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node cache ttl configuration parameter. when name is cache, this parameter is required.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "CacheParameters",
+          "name": "CacheParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Custom cache key configuration parameter. when name is cachekey, this parameter is required.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "CacheKeyParameters",
+          "name": "CacheKeyParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The cache prefresh configuration parameter. this parameter is required when `name` is `cacheprefresh`.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "CachePrefreshParameters",
+          "name": "CachePrefreshParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The access url redirection configuration parameter. this parameter is required when `name` is `accessurlredirect`.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "AccessURLRedirectParameters",
+          "name": "AccessURLRedirectParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The origin-pull url rewrite configuration parameter. this parameter is required when `name` is `upstreamurlrewrite`.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "UpstreamURLRewriteParameters",
+          "name": "UpstreamURLRewriteParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The quic configuration parameter. this parameter is required when `name` is `quic`.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "QUICParameters",
+          "name": "QUICParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The websocket configuration parameter. this parameter is required when `name` is `websocket`.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "WebSocketParameters",
+          "name": "WebSocketParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Token authentication configuration parameter. this parameter is required when `name` is `authentication`.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "AuthenticationParameters",
+          "name": "AuthenticationParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Browser cache ttl configuration parameter. this parameter is required when `name` is `maxage`.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "MaxAgeParameters",
+          "name": "MaxAgeParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Status code cache ttl configuration parameter. this parameter is required when `name` is `statuscodecache`.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "StatusCodeCacheParameters",
+          "name": "StatusCodeCacheParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Offline cache configuration parameter. this parameter is required when `name` is `offlinecache`.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "OfflineCacheParameters",
+          "name": "OfflineCacheParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Smart acceleration configuration parameter. this parameter is required when `name` is `smartrouting`.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "SmartRoutingParameters",
+          "name": "SmartRoutingParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Shard source retrieval configuration parameter. this parameter is required when name is set to rangeoriginpull.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "RangeOriginPullParameters",
+          "name": "RangeOriginPullParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "HTTP2 origin-pull configuration parameter. this parameter is required when name is set to upstreamhttp2.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "UpstreamHTTP2Parameters",
+          "name": "UpstreamHTTP2Parameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Host header rewrite configuration parameter. this parameter is required when name is set to hostheader.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "HostHeaderParameters",
+          "name": "HostHeaderParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Force https redirect configuration parameter. this parameter is required when the name is set to forceredirecthttps.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ForceRedirectHTTPSParameters",
+          "name": "ForceRedirectHTTPSParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Intelligent compression configuration. this parameter is required when name is set to compression.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "CompressionParameters",
+          "name": "CompressionParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "HSTS configuration parameter. this parameter is required when name is hsts.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "HSTSParameters",
+          "name": "HSTSParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Client ip header configuration for storing client request ip information. this parameter is required when name is clientipheader.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ClientIPHeaderParameters",
+          "name": "ClientIPHeaderParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "OCSP stapling configuration parameter. this parameter is required when the name is set to ocspstapling.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "OCSPStaplingParameters",
+          "name": "OCSPStaplingParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "HTTP2 access configuration parameter. this parameter is required when name is http2.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "HTTP2Parameters",
+          "name": "HTTP2Parameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Maximum size configuration for file streaming upload via a post request. this parameter is required when name is postmaxsize.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "PostMaxSizeParameters",
+          "name": "PostMaxSizeParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configuration parameter for carrying the region information of the client ip during origin-pull. this parameter is required when the name is set to clientipcountry.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ClientIPCountryParameters",
+          "name": "ClientIPCountryParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configuration parameter for following redirects during origin-pull. this parameter is required when the name is set to upstreamfollowredirect.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "UpstreamFollowRedirectParameters",
+          "name": "UpstreamFollowRedirectParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configuration parameter for origin-pull request. this parameter is required when the name is set to upstreamrequest.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "UpstreamRequestParameters",
+          "name": "UpstreamRequestParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "SSL/TLS security configuration parameter. this parameter is required when the name is set to tlsconfig.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "TLSConfigParameters",
+          "name": "TLSConfigParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configuration parameter for modifying the origin server. this parameter is required when the name is set to modifyorigin.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ModifyOriginParameters",
+          "name": "ModifyOriginParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configuration of layer 7 origin timeout. this parameter is required when name is httpupstreamtimeout.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "HTTPUpstreamTimeoutParameters",
+          "name": "HTTPUpstreamTimeoutParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "HTTP response configuration parameters. this parameter is required when name is httpresponse.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "HTTPResponseParameters",
+          "name": "HttpResponseParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Custom error page configuration parameters. this parameter is required when name is errorpage.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ErrorPageParameters",
+          "name": "ErrorPageParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Modify http node response header configuration parameters. this parameter is required when name is modifyresponseheader.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ModifyResponseHeaderParameters",
+          "name": "ModifyResponseHeaderParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Modify http node request header configuration parameters. this parameter is required when name is modifyrequestheader.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ModifyRequestHeaderParameters",
+          "name": "ModifyRequestHeaderParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Single connection download speed limit configuration parameter. this parameter is required when name is responsespeedlimit.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ResponseSpeedLimitParameters",
+          "name": "ResponseSpeedLimitParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Content identification configuration parameter. this parameter is required when name is httpresponse.\n\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "SetContentIdentifierParameters",
+          "name": "SetContentIdentifierParameters",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "RuleEngineItem": {
+      "document": "Rule details of the rule engine.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Rule status. values: <li>`enable`: enabled</li> <li>`disable`: disabled</li>.",
+          "example": "enable",
+          "member": "string",
+          "name": "Status",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule id. a unique identifier for the rule. this parameter is required when calling `modifyl7accrules`.",
+          "example": "rule-30maftui9q4f",
+          "member": "string",
+          "name": "RuleId",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule name. name length limit: 255 characters.",
+          "example": "rule test",
+          "member": "string",
+          "name": "RuleName",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Rule annotation. multiple annotations can be added.",
+          "example": "[\"name1\"]",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Sub-Rule branch. this list currently supports filling in only one rule; multiple entries are invalid.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "RuleBranch",
+          "name": "Branches",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Rule priority. only used as an output parameter.",
+          "example": "1",
+          "member": "int64",
+          "name": "RulePriority",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "RuleEngineSubRule": {
+      "document": "Sub-rule",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Sub-Rule branch.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "RuleBranch",
+          "name": "Branches",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Rule comments.",
+          "example": "[\"tag1\", \"tag2\"]",
+          "member": "string",
+          "name": "Description",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
         }
       ],
       "usage": "both"
@@ -17472,7 +19912,7 @@
         },
         {
           "disabled": false,
-          "document": "The parameter value type.\n<li>`CHOICE`: `If Type=CHOICE`, choose a value in `ChoiceValue`.</li>\n<li>`TOGGLE`: If `Type=TOGGLE`, choose `on` or `off` from `ChoicesValue`.</li>\n<li>`OBJECT`: Specify an object. If this is specified, `ChoiceProperties` includes attributes of the specified object. See [Example 2. Create a rule with Type=OBJECT](https://intl.cloud.tencent.com/document/product/1552/80622?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B2-.E5.8F.82.E6.95.B0.E4.B8.BA-OBJECT-.E7.B1.BB.E5.9E.8B.E7.9A.84.E5.88.9B.E5.BB.BA)</li>\n<li>`CUSTOM_NUM`: (Integer) Custom value.</li>\n<li>`CUSTOM_STRING`: (String) Custom value.</li>",
+          "document": "The parameter value type.\n<Li>`CHOICE`: the parameter value can only be selected from `choicesvalue`.</li>.\n<Li>TOGGLE: the parameter value is of switch type and can be selected from `choicesvalue`.</li>.\n<Li>OBJECT: the parameter value is of object type, and `choiceproperties` are the properties associated with this object type.</li>.\n<Li>`CUSTOM_NUM`: (integer) custom value.</li>.\n<Li> custom_string: parameter value is user-customized, string type.</li> note: when the parameter type is object, please refer to [example 2: creating a parameter of object type](https://intl.cloud.tencent.com/document/product/1552/80622?from_cn_redirect=1#.e7.a4.ba.e4.be.8b2-.e4.bf.ae.e6.94.b9.e6.ba.90.e7.ab.99.e4.b8.baip.e5.9f.9f.e5.90.8d).",
           "example": "CHOICE",
           "member": "string",
           "name": "Type",
@@ -17954,6 +20394,23 @@
       ],
       "usage": "both"
     },
+    "SetContentIdentifierParameters": {
+      "document": "Content identifier configuration parameters",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Content identifier id.",
+          "example": "eocontent-33lltqf1cmyf",
+          "member": "string",
+          "name": "ContentIdentifier",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "SkipCondition": {
       "document": "Exception rule conditions, used to filter requests by specific fields",
       "members": [
@@ -18128,6 +20585,23 @@
       ],
       "usage": "both"
     },
+    "SmartRoutingParameters": {
+      "document": "Smart acceleration configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable smart acceleration. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "StandardDebug": {
       "document": "Standard debugging",
       "members": [
@@ -18163,6 +20637,90 @@
           "required": true,
           "type": "string",
           "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "StandardDebugParameters": {
+      "document": "Debug structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable standard debugging. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The client ip to allow. it can be an ipv4/ipv6 address or a cidr block. 0.0.0.0/0 means to allow all ipv4 clients for debugging; ::/0 means to allow all ipv6 clients for debugging; 127.0.0.1 is not allowed. <br>note: this field is required when `switch=on` and the number of entries should be 1-100. when `switch=off`, this field is not required and any value specified will not take effect.",
+          "example": "[\"9.142.236.194\", \"43.154.226.0/24\"]",
+          "member": "string",
+          "name": "AllowClientIPList",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Debug feature expiration time. the feature will be disabled after the set time. <br>note: this field is required when `switch=on`. when `switch=off`, this field is not required and any value specified will not take effect.",
+          "example": "2023-06-30T17:37:56+0800",
+          "member": "datetime_iso",
+          "name": "Expires",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "StatusCodeCacheParam": {
+      "document": "Status Code Cache TTL configuration internal structure.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Status code. valid values: 400, 401, 403, 404, 405, 407, 414, 500, 501, 502, 503, 504, 509, 514.",
+          "example": "400",
+          "member": "int64",
+          "name": "StatusCode",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cache time value in seconds. value range: 0–31536000.",
+          "example": "0",
+          "member": "int64",
+          "name": "CacheTime",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "StatusCodeCacheParameters": {
+      "document": "Status Code Cache TTL configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Status code cache ttl.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "StatusCodeCacheParam",
+          "name": "StatusCodeCacheParams",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": true
         }
       ],
       "usage": "both"
@@ -18285,6 +20843,34 @@
           "member": "string",
           "name": "WebSwitch",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "TLSConfigParameters": {
+      "document": "SSL/TLS Security configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "TLS version. at least one must be specified. if multiple versions are specified, they must be consecutive, e.g., enable tls1, 1.1, 1.2, and 1.3. it is not allowed to enable only 1 and 1.2 while disabling 1.1. valid values: <li>`tlsv1`: tlsv1 version;</li><li>`tlsv1.1`: tlsv1.1 version;</li><li>`tlsv1.2`: tlsv1.2 version;</li><li>`tlsv1.3`: tlsv1.3 version.</li>.",
+          "example": "[\"TLSv1\", \"TLSv1.1\", \"TLSv1.2\", \"TLSv1.3\"]",
+          "member": "string",
+          "name": "Version",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Cipher suite. for detailed information, please refer to [tls versions and cipher suites description](https://intl.cloud.tencent.com/document/product/1552/86545?from_cn_redirect=1). valid values: <li>`loose-v2023`: loose-v2023 cipher suite;</li><li>`general-v2023`: general-v2023 cipher suite;</li><li>`strict-v2023`: strict-v2023 cipher suite.</li>.",
+          "example": "loose-v2023",
+          "member": "string",
+          "name": "CipherSuite",
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -18659,6 +21245,45 @@
       ],
       "usage": "out"
     },
+    "URLPath": {
+      "document": "Access URL redirect path configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Action to be executed. values:.\n<Li>`Follow`: follow the request;</li>.\n<Li>`Custom`: custom;</li>.\n<Li>`Regex`: regular expression matching.</li>.",
+          "example": "custom",
+          "member": "string",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Regular expression matching expression, length range is 1-1024.<br>note: when action is regex, this field is required; when action is follow or custom, this field is not required and will not take effect if filled.",
+          "example": "无",
+          "member": "string",
+          "name": "Regex",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Redirect target url, length range is 1-1024.<br>note: when action is regex or custom, this field is required; when action is follow, this field is not required and will not take effect if filled.",
+          "example": "无",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "UpgradePlanRequest": {
       "document": "UpgradePlan request structure.",
       "members": [
@@ -18731,6 +21356,51 @@
       ],
       "usage": "both"
     },
+    "UpstreamFollowRedirectParameters": {
+      "document": "Origin-pull redirection parameters configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable origin-pull to follow the redirection configuration. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "The maximum number of redirects. value range: 1-5.\nNote: this field is required when switch is on; when switch is off, this field is not required and will not take effect if filled.",
+          "example": "5",
+          "member": "int64",
+          "name": "MaxTimes",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UpstreamHTTP2Parameters": {
+      "document": "HTTP2 origin-pull configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable http2 origin-pull. valid values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "UpstreamHttp2": {
       "document": "HTTP2 origin-pull configuration",
       "members": [
@@ -18741,6 +21411,151 @@
           "member": "string",
           "name": "Switch",
           "required": true,
+          "type": "string",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UpstreamRequestCookie": {
+      "document": "Origin-pull request parameters Cookie configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable the origin-pull request parameter cookie. valid values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin-Pull request parameter cookie mode. this parameter is required when `switch` is on. valid values are:.\n<Li>Full: indicates full retention;</li>.\n<Li>Ignore: ignore all.</li>.\n<Li>`IncludeCustom`: retain partial parameters.</li>.\n<Li>ExcludeCustom: ignore partial parameters.</li>.",
+          "example": "includeCustom",
+          "member": "string",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies parameter values. this parameter takes effect only when the query string mode action is `includecustom` or `excludecustom`, and is used to specify the parameters to be reserved or ignored. up to 10 parameters are supported.",
+          "example": "[\"name1\", \"name2\"]",
+          "member": "string",
+          "name": "Values",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UpstreamRequestParameters": {
+      "document": "Origin-pull request parameters configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Query string configuration. optional. if not provided, it will not be configured.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "UpstreamRequestQueryString",
+          "name": "QueryString",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cookie configuration. optional. if not provided, it will not be configured.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "UpstreamRequestCookie",
+          "name": "Cookie",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "UpstreamRequestQueryString": {
+      "document": "Origin-pull request parameters query string configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable origin-pull request parameter query string. values:.\n<Li>`On`: enable;</li>\n.\n<Li>Off: disable.</li>.",
+          "example": "on",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Query string mode. this parameter is required when switch is on. values:.\n<Li>`Full`: retain all</li>.\n<Li>`Ignore`: ignore all;</li>.\n<Li>IncludeCustom: retain partial parameters.</li>.\n<Li>ExcludeCustom: ignore partial parameters.</li>.",
+          "example": "includeCustom",
+          "member": "string",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Specifies parameter values. this parameter takes effect only when the query string mode action is `includecustom` or `excludecustom`, and is used to specify the parameters to be reserved or ignored. up to 10 parameters are supported.",
+          "example": "[\"name1\", \"name2\"]",
+          "member": "string",
+          "name": "Values",
+          "output_required": false,
+          "required": false,
+          "type": "list",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
+    "UpstreamURLRewriteParameters": {
+      "document": "Origin URL rewrite configuration parameters.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Origin-Pull url rewriting type, only path is supported.",
+          "example": "Path",
+          "member": "string",
+          "name": "Type",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin-Pull url rewrite action. valid values are:.\n<Li>`Replace`: replace the path prefix.</li>.\n<Li>`AddPrefix`: add the path prefix.</li>.\n<Li>`RmvPrefix`: remove the path prefix.</li>.",
+          "example": "replace",
+          "member": "string",
+          "name": "Action",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Origin-Pull url rewrite value, maximum length 1024, must start with /.<br>note: when action is addprefix, it cannot end with /; when action is rmvprefix, * cannot be present.",
+          "example": "/prefix",
+          "member": "string",
+          "name": "Value",
+          "output_required": false,
+          "required": false,
           "type": "string",
           "value_allowed_null": false
         }
@@ -18990,6 +21805,34 @@
       ],
       "usage": "both"
     },
+    "WebSocketParameters": {
+      "document": "WebSocket configuration",
+      "members": [
+        {
+          "disabled": false,
+          "document": "Whether to enable websocket connection timeout. values:.\n<Li>On: use timeout as the websocket timeout;</li>.\n<Li>Off: the platform still supports websocket connections, using the system default timeout of 15 seconds.</li>.",
+          "example": "off",
+          "member": "string",
+          "name": "Switch",
+          "output_required": false,
+          "required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Timeout, unit: seconds. maximum timeout is 120 seconds.<br>note: this field is required when switch is on; otherwise, this field will not take effect.",
+          "example": "10",
+          "member": "int64",
+          "name": "Timeout",
+          "output_required": false,
+          "required": false,
+          "type": "int",
+          "value_allowed_null": false
+        }
+      ],
+      "usage": "both"
+    },
     "Zone": {
       "document": "Site information",
       "members": [
@@ -19199,6 +22042,280 @@
           "example": "无",
           "member": "OwnershipVerification",
           "name": "OwnershipVerification",
+          "output_required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "out"
+    },
+    "ZoneConfig": {
+      "document": "Site acceleration configuration.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "<Intelligent acceleration configuration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "SmartRoutingParameters",
+          "name": "SmartRouting",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Node cache expiration time configuration.\n.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "CacheConfigParameters",
+          "name": "Cache",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Browser cache rule configuration, which is used to set the default value of maxage and is disabled by default.\n.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "MaxAgeParameters",
+          "name": "MaxAge",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "The node cache key configuration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "CacheKeyConfigParameters",
+          "name": "CacheKey",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Cache prefresh configuration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "CachePrefreshParameters",
+          "name": "CachePrefresh",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Offline cache configuration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "OfflineCacheParameters",
+          "name": "OfflineCache",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Smart compression configuration.\n.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "CompressionParameters",
+          "name": "Compression",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Forced https redirect configuration for access protocols.\n.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ForceRedirectHTTPSParameters",
+          "name": "ForceRedirectHTTPS",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "HSTS configuration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "HSTSParameters",
+          "name": "HSTS",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "TLS configuration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "TLSConfigParameters",
+          "name": "TLSConfig",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "OCSP stapling configuration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "OCSPStaplingParameters",
+          "name": "OCSPStapling",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "HTTP/2 configuration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "HTTP2Parameters",
+          "name": "HTTP2",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "QUIC access configuration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "QUICParameters",
+          "name": "QUIC",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "HTTP2 origin-pull configuration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "UpstreamHTTP2Parameters",
+          "name": "UpstreamHTTP2",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "IPv6 access configuration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "IPv6Parameters",
+          "name": "IPv6",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "WebSocket configuration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "WebSocketParameters",
+          "name": "WebSocket",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "POST request transport configuration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "PostMaxSizeParameters",
+          "name": "PostMaxSize",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Client ip origin-pull request header configuration.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ClientIPHeaderParameters",
+          "name": "ClientIPHeader",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Whether to carry the region information of the client ip during origin-pull.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ClientIPCountryParameters",
+          "name": "ClientIPCountry",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Configuration of grpc support.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "GrpcParameters",
+          "name": "Grpc",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Accelerate optimization and configuration in mainland china.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "AccelerateMainlandParameters",
+          "name": "AccelerateMainland",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        },
+        {
+          "disabled": false,
+          "document": "Standard debugging configuration.\n.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "StandardDebugParameters",
+          "name": "StandardDebug",
+          "output_required": false,
+          "required": false,
+          "type": "object",
+          "value_allowed_null": true
+        }
+      ],
+      "usage": "both"
+    },
+    "ZoneConfigParameters": {
+      "document": "Site configuration information.",
+      "members": [
+        {
+          "disabled": false,
+          "document": "The site name.",
+          "example": "example.com",
+          "member": "string",
+          "name": "ZoneName",
+          "output_required": false,
+          "type": "string",
+          "value_allowed_null": false
+        },
+        {
+          "disabled": false,
+          "document": "Site configuration information.\nNote: this field may return null, which indicates a failure to obtain a valid value.",
+          "example": "无",
+          "member": "ZoneConfig",
+          "name": "ZoneConfig",
           "output_required": false,
           "type": "object",
           "value_allowed_null": true
